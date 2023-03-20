@@ -3221,9 +3221,9 @@ export type HSAVEDUILANGUAGES = Deno.PointerValue;
  */
 export interface FONTSIGNATURE {
   /** array */
-  fsUsb: Deno.PointerValue | null;
+  fsUsb: Deno.PointerValue;
   /** array */
-  fsCsb: Deno.PointerValue | null;
+  fsCsb: Deno.PointerValue;
 }
 
 export const sizeofFONTSIGNATURE = 16;
@@ -3232,9 +3232,9 @@ export function allocFONTSIGNATURE(data?: Partial<FONTSIGNATURE>): Uint8Array {
   const buf = new Uint8Array(sizeofFONTSIGNATURE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.fsUsb !== undefined) view.setBigUint64(0, data.fsUsb === null ? 0n : BigInt(util.toPointer(data.fsUsb)), true);
+  if (data?.fsUsb !== undefined) view.setBigUint64(0, data.fsUsb === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fsUsb))), true);
   // 0x08: pointer
-  if (data?.fsCsb !== undefined) view.setBigUint64(8, data.fsCsb === null ? 0n : BigInt(util.toPointer(data.fsCsb)), true);
+  if (data?.fsCsb !== undefined) view.setBigUint64(8, data.fsCsb === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fsCsb))), true);
   return buf;
 }
 
@@ -3249,25 +3249,25 @@ export class FONTSIGNATUREView {
   }
 
   // 0x00: pointer
-  get fsUsb(): Uint8Array | Deno.PointerValue | null {
+  get fsUsb(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get fsCsb(): Uint8Array | Deno.PointerValue | null {
+  get fsCsb(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set fsUsb(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set fsUsb(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set fsCsb(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set fsCsb(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3280,7 +3280,7 @@ export interface CHARSETINFO {
   /** u32 */
   ciACP: number;
   /** Windows.Win32.Globalization.FONTSIGNATURE */
-  fs: Uint8Array | Deno.PointerValue | null;
+  fs: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofCHARSETINFO = 16;
@@ -3293,7 +3293,7 @@ export function allocCHARSETINFO(data?: Partial<CHARSETINFO>): Uint8Array {
   // 0x04: u32
   if (data?.ciACP !== undefined) view.setUint32(4, Number(data.ciACP), true);
   // 0x08: pointer
-  if (data?.fs !== undefined) view.setBigUint64(8, data.fs === null ? 0n : BigInt(util.toPointer(data.fs)), true);
+  if (data?.fs !== undefined) view.setBigUint64(8, data.fs === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fs))), true);
   return buf;
 }
 
@@ -3318,9 +3318,9 @@ export class CHARSETINFOView {
   }
 
   // 0x08: pointer
-  get fs(): Uint8Array | Deno.PointerValue | null {
+  get fs(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -3334,8 +3334,8 @@ export class CHARSETINFOView {
   }
 
   // 0x08: pointer
-  set fs(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set fs(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3344,11 +3344,11 @@ export class CHARSETINFOView {
  */
 export interface LOCALESIGNATURE {
   /** array */
-  lsUsb: Deno.PointerValue | null;
+  lsUsb: Deno.PointerValue;
   /** array */
-  lsCsbDefault: Deno.PointerValue | null;
+  lsCsbDefault: Deno.PointerValue;
   /** array */
-  lsCsbSupported: Deno.PointerValue | null;
+  lsCsbSupported: Deno.PointerValue;
 }
 
 export const sizeofLOCALESIGNATURE = 24;
@@ -3357,11 +3357,11 @@ export function allocLOCALESIGNATURE(data?: Partial<LOCALESIGNATURE>): Uint8Arra
   const buf = new Uint8Array(sizeofLOCALESIGNATURE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.lsUsb !== undefined) view.setBigUint64(0, data.lsUsb === null ? 0n : BigInt(util.toPointer(data.lsUsb)), true);
+  if (data?.lsUsb !== undefined) view.setBigUint64(0, data.lsUsb === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lsUsb))), true);
   // 0x08: pointer
-  if (data?.lsCsbDefault !== undefined) view.setBigUint64(8, data.lsCsbDefault === null ? 0n : BigInt(util.toPointer(data.lsCsbDefault)), true);
+  if (data?.lsCsbDefault !== undefined) view.setBigUint64(8, data.lsCsbDefault === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lsCsbDefault))), true);
   // 0x10: pointer
-  if (data?.lsCsbSupported !== undefined) view.setBigUint64(16, data.lsCsbSupported === null ? 0n : BigInt(util.toPointer(data.lsCsbSupported)), true);
+  if (data?.lsCsbSupported !== undefined) view.setBigUint64(16, data.lsCsbSupported === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lsCsbSupported))), true);
   return buf;
 }
 
@@ -3376,36 +3376,36 @@ export class LOCALESIGNATUREView {
   }
 
   // 0x00: pointer
-  get lsUsb(): Uint8Array | Deno.PointerValue | null {
+  get lsUsb(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get lsCsbDefault(): Uint8Array | Deno.PointerValue | null {
+  get lsCsbDefault(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get lsCsbSupported(): Uint8Array | Deno.PointerValue | null {
+  get lsCsbSupported(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set lsUsb(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set lsUsb(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set lsCsbDefault(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set lsCsbDefault(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set lsCsbSupported(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set lsCsbSupported(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3780,9 +3780,9 @@ export class NEWTEXTMETRICAView {
  */
 export interface NEWTEXTMETRICEXA {
   /** Windows.Win32.Graphics.Gdi.NEWTEXTMETRICA */
-  ntmTm: Uint8Array | Deno.PointerValue | null;
+  ntmTm: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Globalization.FONTSIGNATURE */
-  ntmFontSig: Uint8Array | Deno.PointerValue | null;
+  ntmFontSig: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofNEWTEXTMETRICEXA = 16;
@@ -3791,9 +3791,9 @@ export function allocNEWTEXTMETRICEXA(data?: Partial<NEWTEXTMETRICEXA>): Uint8Ar
   const buf = new Uint8Array(sizeofNEWTEXTMETRICEXA);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ntmTm !== undefined) view.setBigUint64(0, data.ntmTm === null ? 0n : BigInt(util.toPointer(data.ntmTm)), true);
+  if (data?.ntmTm !== undefined) view.setBigUint64(0, data.ntmTm === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ntmTm))), true);
   // 0x08: pointer
-  if (data?.ntmFontSig !== undefined) view.setBigUint64(8, data.ntmFontSig === null ? 0n : BigInt(util.toPointer(data.ntmFontSig)), true);
+  if (data?.ntmFontSig !== undefined) view.setBigUint64(8, data.ntmFontSig === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ntmFontSig))), true);
   return buf;
 }
 
@@ -3808,25 +3808,25 @@ export class NEWTEXTMETRICEXAView {
   }
 
   // 0x00: pointer
-  get ntmTm(): Uint8Array | Deno.PointerValue | null {
+  get ntmTm(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get ntmFontSig(): Uint8Array | Deno.PointerValue | null {
+  get ntmFontSig(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ntmTm(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ntmTm(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set ntmFontSig(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ntmFontSig(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3857,13 +3857,13 @@ export interface NEWTEXTMETRICW {
   /** i32 */
   tmDigitizedAspectY: number;
   /** char */
-  tmFirstChar: Uint8Array | Deno.PointerValue | null;
+  tmFirstChar: Uint8Array | Deno.PointerValue;
   /** char */
-  tmLastChar: Uint8Array | Deno.PointerValue | null;
+  tmLastChar: Uint8Array | Deno.PointerValue;
   /** char */
-  tmDefaultChar: Uint8Array | Deno.PointerValue | null;
+  tmDefaultChar: Uint8Array | Deno.PointerValue;
   /** char */
-  tmBreakChar: Uint8Array | Deno.PointerValue | null;
+  tmBreakChar: Uint8Array | Deno.PointerValue;
   /** u8 */
   tmItalic: number;
   /** u8 */
@@ -3913,13 +3913,13 @@ export function allocNEWTEXTMETRICW(data?: Partial<NEWTEXTMETRICW>): Uint8Array 
   if (data?.tmDigitizedAspectY !== undefined) view.setInt32(40, Number(data.tmDigitizedAspectY), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.tmFirstChar !== undefined) view.setBigUint64(48, data.tmFirstChar === null ? 0n : BigInt(util.toPointer(data.tmFirstChar)), true);
+  if (data?.tmFirstChar !== undefined) view.setBigUint64(48, data.tmFirstChar === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.tmFirstChar))), true);
   // 0x38: pointer
-  if (data?.tmLastChar !== undefined) view.setBigUint64(56, data.tmLastChar === null ? 0n : BigInt(util.toPointer(data.tmLastChar)), true);
+  if (data?.tmLastChar !== undefined) view.setBigUint64(56, data.tmLastChar === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.tmLastChar))), true);
   // 0x40: pointer
-  if (data?.tmDefaultChar !== undefined) view.setBigUint64(64, data.tmDefaultChar === null ? 0n : BigInt(util.toPointer(data.tmDefaultChar)), true);
+  if (data?.tmDefaultChar !== undefined) view.setBigUint64(64, data.tmDefaultChar === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.tmDefaultChar))), true);
   // 0x48: pointer
-  if (data?.tmBreakChar !== undefined) view.setBigUint64(72, data.tmBreakChar === null ? 0n : BigInt(util.toPointer(data.tmBreakChar)), true);
+  if (data?.tmBreakChar !== undefined) view.setBigUint64(72, data.tmBreakChar === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.tmBreakChar))), true);
   // 0x50: u8
   if (data?.tmItalic !== undefined) view.setUint8(80, Number(data.tmItalic));
   // 0x51: u8
@@ -4010,27 +4010,27 @@ export class NEWTEXTMETRICWView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  get tmFirstChar(): Uint8Array | Deno.PointerValue | null {
+  get tmFirstChar(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get tmLastChar(): Uint8Array | Deno.PointerValue | null {
+  get tmLastChar(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get tmDefaultChar(): Uint8Array | Deno.PointerValue | null {
+  get tmDefaultChar(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: pointer
-  get tmBreakChar(): Uint8Array | Deno.PointerValue | null {
+  get tmBreakChar(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: u8
@@ -4138,23 +4138,23 @@ export class NEWTEXTMETRICWView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  set tmFirstChar(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set tmFirstChar(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set tmLastChar(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set tmLastChar(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set tmDefaultChar(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set tmDefaultChar(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: pointer
-  set tmBreakChar(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set tmBreakChar(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x50: u8
@@ -4210,9 +4210,9 @@ export class NEWTEXTMETRICWView {
  */
 export interface NEWTEXTMETRICEXW {
   /** Windows.Win32.Graphics.Gdi.NEWTEXTMETRICW */
-  ntmTm: Uint8Array | Deno.PointerValue | null;
+  ntmTm: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Globalization.FONTSIGNATURE */
-  ntmFontSig: Uint8Array | Deno.PointerValue | null;
+  ntmFontSig: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofNEWTEXTMETRICEXW = 16;
@@ -4221,9 +4221,9 @@ export function allocNEWTEXTMETRICEXW(data?: Partial<NEWTEXTMETRICEXW>): Uint8Ar
   const buf = new Uint8Array(sizeofNEWTEXTMETRICEXW);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ntmTm !== undefined) view.setBigUint64(0, data.ntmTm === null ? 0n : BigInt(util.toPointer(data.ntmTm)), true);
+  if (data?.ntmTm !== undefined) view.setBigUint64(0, data.ntmTm === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ntmTm))), true);
   // 0x08: pointer
-  if (data?.ntmFontSig !== undefined) view.setBigUint64(8, data.ntmFontSig === null ? 0n : BigInt(util.toPointer(data.ntmFontSig)), true);
+  if (data?.ntmFontSig !== undefined) view.setBigUint64(8, data.ntmFontSig === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ntmFontSig))), true);
   return buf;
 }
 
@@ -4238,25 +4238,25 @@ export class NEWTEXTMETRICEXWView {
   }
 
   // 0x00: pointer
-  get ntmTm(): Uint8Array | Deno.PointerValue | null {
+  get ntmTm(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get ntmFontSig(): Uint8Array | Deno.PointerValue | null {
+  get ntmFontSig(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ntmTm(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ntmTm(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set ntmFontSig(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ntmFontSig(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4269,7 +4269,7 @@ export interface AXESLISTA {
   /** u32 */
   axlNumAxes: number;
   /** array */
-  axlAxisInfo: Deno.PointerValue | null;
+  axlAxisInfo: Deno.PointerValue;
 }
 
 export const sizeofAXESLISTA = 16;
@@ -4282,7 +4282,7 @@ export function allocAXESLISTA(data?: Partial<AXESLISTA>): Uint8Array {
   // 0x04: u32
   if (data?.axlNumAxes !== undefined) view.setUint32(4, Number(data.axlNumAxes), true);
   // 0x08: pointer
-  if (data?.axlAxisInfo !== undefined) view.setBigUint64(8, data.axlAxisInfo === null ? 0n : BigInt(util.toPointer(data.axlAxisInfo)), true);
+  if (data?.axlAxisInfo !== undefined) view.setBigUint64(8, data.axlAxisInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.axlAxisInfo))), true);
   return buf;
 }
 
@@ -4307,9 +4307,9 @@ export class AXESLISTAView {
   }
 
   // 0x08: pointer
-  get axlAxisInfo(): Uint8Array | Deno.PointerValue | null {
+  get axlAxisInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -4323,8 +4323,8 @@ export class AXESLISTAView {
   }
 
   // 0x08: pointer
-  set axlAxisInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set axlAxisInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4333,9 +4333,9 @@ export class AXESLISTAView {
  */
 export interface ENUMTEXTMETRICA {
   /** Windows.Win32.Globalization.NEWTEXTMETRICEXA */
-  etmNewTextMetricEx: Uint8Array | Deno.PointerValue | null;
+  etmNewTextMetricEx: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Gdi.AXESLISTA */
-  etmAxesList: Uint8Array | Deno.PointerValue | null;
+  etmAxesList: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofENUMTEXTMETRICA = 16;
@@ -4344,9 +4344,9 @@ export function allocENUMTEXTMETRICA(data?: Partial<ENUMTEXTMETRICA>): Uint8Arra
   const buf = new Uint8Array(sizeofENUMTEXTMETRICA);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.etmNewTextMetricEx !== undefined) view.setBigUint64(0, data.etmNewTextMetricEx === null ? 0n : BigInt(util.toPointer(data.etmNewTextMetricEx)), true);
+  if (data?.etmNewTextMetricEx !== undefined) view.setBigUint64(0, data.etmNewTextMetricEx === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.etmNewTextMetricEx))), true);
   // 0x08: pointer
-  if (data?.etmAxesList !== undefined) view.setBigUint64(8, data.etmAxesList === null ? 0n : BigInt(util.toPointer(data.etmAxesList)), true);
+  if (data?.etmAxesList !== undefined) view.setBigUint64(8, data.etmAxesList === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.etmAxesList))), true);
   return buf;
 }
 
@@ -4361,25 +4361,25 @@ export class ENUMTEXTMETRICAView {
   }
 
   // 0x00: pointer
-  get etmNewTextMetricEx(): Uint8Array | Deno.PointerValue | null {
+  get etmNewTextMetricEx(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get etmAxesList(): Uint8Array | Deno.PointerValue | null {
+  get etmAxesList(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set etmNewTextMetricEx(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set etmNewTextMetricEx(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set etmAxesList(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set etmAxesList(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4392,7 +4392,7 @@ export interface AXESLISTW {
   /** u32 */
   axlNumAxes: number;
   /** array */
-  axlAxisInfo: Deno.PointerValue | null;
+  axlAxisInfo: Deno.PointerValue;
 }
 
 export const sizeofAXESLISTW = 16;
@@ -4405,7 +4405,7 @@ export function allocAXESLISTW(data?: Partial<AXESLISTW>): Uint8Array {
   // 0x04: u32
   if (data?.axlNumAxes !== undefined) view.setUint32(4, Number(data.axlNumAxes), true);
   // 0x08: pointer
-  if (data?.axlAxisInfo !== undefined) view.setBigUint64(8, data.axlAxisInfo === null ? 0n : BigInt(util.toPointer(data.axlAxisInfo)), true);
+  if (data?.axlAxisInfo !== undefined) view.setBigUint64(8, data.axlAxisInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.axlAxisInfo))), true);
   return buf;
 }
 
@@ -4430,9 +4430,9 @@ export class AXESLISTWView {
   }
 
   // 0x08: pointer
-  get axlAxisInfo(): Uint8Array | Deno.PointerValue | null {
+  get axlAxisInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -4446,8 +4446,8 @@ export class AXESLISTWView {
   }
 
   // 0x08: pointer
-  set axlAxisInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set axlAxisInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4456,9 +4456,9 @@ export class AXESLISTWView {
  */
 export interface ENUMTEXTMETRICW {
   /** Windows.Win32.Globalization.NEWTEXTMETRICEXW */
-  etmNewTextMetricEx: Uint8Array | Deno.PointerValue | null;
+  etmNewTextMetricEx: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Gdi.AXESLISTW */
-  etmAxesList: Uint8Array | Deno.PointerValue | null;
+  etmAxesList: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofENUMTEXTMETRICW = 16;
@@ -4467,9 +4467,9 @@ export function allocENUMTEXTMETRICW(data?: Partial<ENUMTEXTMETRICW>): Uint8Arra
   const buf = new Uint8Array(sizeofENUMTEXTMETRICW);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.etmNewTextMetricEx !== undefined) view.setBigUint64(0, data.etmNewTextMetricEx === null ? 0n : BigInt(util.toPointer(data.etmNewTextMetricEx)), true);
+  if (data?.etmNewTextMetricEx !== undefined) view.setBigUint64(0, data.etmNewTextMetricEx === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.etmNewTextMetricEx))), true);
   // 0x08: pointer
-  if (data?.etmAxesList !== undefined) view.setBigUint64(8, data.etmAxesList === null ? 0n : BigInt(util.toPointer(data.etmAxesList)), true);
+  if (data?.etmAxesList !== undefined) view.setBigUint64(8, data.etmAxesList === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.etmAxesList))), true);
   return buf;
 }
 
@@ -4484,25 +4484,25 @@ export class ENUMTEXTMETRICWView {
   }
 
   // 0x00: pointer
-  get etmNewTextMetricEx(): Uint8Array | Deno.PointerValue | null {
+  get etmNewTextMetricEx(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get etmAxesList(): Uint8Array | Deno.PointerValue | null {
+  get etmAxesList(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set etmNewTextMetricEx(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set etmNewTextMetricEx(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set etmAxesList(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set etmAxesList(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4513,9 +4513,9 @@ export interface CPINFO {
   /** u32 */
   MaxCharSize: number;
   /** array */
-  DefaultChar: Deno.PointerValue | null;
+  DefaultChar: Deno.PointerValue;
   /** array */
-  LeadByte: Deno.PointerValue | null;
+  LeadByte: Deno.PointerValue;
 }
 
 export const sizeofCPINFO = 24;
@@ -4527,9 +4527,9 @@ export function allocCPINFO(data?: Partial<CPINFO>): Uint8Array {
   if (data?.MaxCharSize !== undefined) view.setUint32(0, Number(data.MaxCharSize), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.DefaultChar !== undefined) view.setBigUint64(8, data.DefaultChar === null ? 0n : BigInt(util.toPointer(data.DefaultChar)), true);
+  if (data?.DefaultChar !== undefined) view.setBigUint64(8, data.DefaultChar === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DefaultChar))), true);
   // 0x10: pointer
-  if (data?.LeadByte !== undefined) view.setBigUint64(16, data.LeadByte === null ? 0n : BigInt(util.toPointer(data.LeadByte)), true);
+  if (data?.LeadByte !== undefined) view.setBigUint64(16, data.LeadByte === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.LeadByte))), true);
   return buf;
 }
 
@@ -4551,15 +4551,15 @@ export class CPINFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get DefaultChar(): Uint8Array | Deno.PointerValue | null {
+  get DefaultChar(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get LeadByte(): Uint8Array | Deno.PointerValue | null {
+  get LeadByte(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -4570,13 +4570,13 @@ export class CPINFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set DefaultChar(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set DefaultChar(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set LeadByte(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set LeadByte(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4587,15 +4587,15 @@ export interface CPINFOEXA {
   /** u32 */
   MaxCharSize: number;
   /** array */
-  DefaultChar: Deno.PointerValue | null;
+  DefaultChar: Deno.PointerValue;
   /** array */
-  LeadByte: Deno.PointerValue | null;
+  LeadByte: Deno.PointerValue;
   /** char */
-  UnicodeDefaultChar: Uint8Array | Deno.PointerValue | null;
+  UnicodeDefaultChar: Uint8Array | Deno.PointerValue;
   /** u32 */
   CodePage: number;
   /** array */
-  CodePageName: Deno.PointerValue | null;
+  CodePageName: Deno.PointerValue;
 }
 
 export const sizeofCPINFOEXA = 48;
@@ -4607,16 +4607,16 @@ export function allocCPINFOEXA(data?: Partial<CPINFOEXA>): Uint8Array {
   if (data?.MaxCharSize !== undefined) view.setUint32(0, Number(data.MaxCharSize), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.DefaultChar !== undefined) view.setBigUint64(8, data.DefaultChar === null ? 0n : BigInt(util.toPointer(data.DefaultChar)), true);
+  if (data?.DefaultChar !== undefined) view.setBigUint64(8, data.DefaultChar === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DefaultChar))), true);
   // 0x10: pointer
-  if (data?.LeadByte !== undefined) view.setBigUint64(16, data.LeadByte === null ? 0n : BigInt(util.toPointer(data.LeadByte)), true);
+  if (data?.LeadByte !== undefined) view.setBigUint64(16, data.LeadByte === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.LeadByte))), true);
   // 0x18: pointer
-  if (data?.UnicodeDefaultChar !== undefined) view.setBigUint64(24, data.UnicodeDefaultChar === null ? 0n : BigInt(util.toPointer(data.UnicodeDefaultChar)), true);
+  if (data?.UnicodeDefaultChar !== undefined) view.setBigUint64(24, data.UnicodeDefaultChar === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.UnicodeDefaultChar))), true);
   // 0x20: u32
   if (data?.CodePage !== undefined) view.setUint32(32, Number(data.CodePage), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.CodePageName !== undefined) view.setBigUint64(40, data.CodePageName === null ? 0n : BigInt(util.toPointer(data.CodePageName)), true);
+  if (data?.CodePageName !== undefined) view.setBigUint64(40, data.CodePageName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.CodePageName))), true);
   return buf;
 }
 
@@ -4638,21 +4638,21 @@ export class CPINFOEXAView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get DefaultChar(): Uint8Array | Deno.PointerValue | null {
+  get DefaultChar(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get LeadByte(): Uint8Array | Deno.PointerValue | null {
+  get LeadByte(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get UnicodeDefaultChar(): Uint8Array | Deno.PointerValue | null {
+  get UnicodeDefaultChar(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -4663,9 +4663,9 @@ export class CPINFOEXAView {
   // 0x24: pad4
 
   // 0x28: pointer
-  get CodePageName(): Uint8Array | Deno.PointerValue | null {
+  get CodePageName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -4676,18 +4676,18 @@ export class CPINFOEXAView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set DefaultChar(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set DefaultChar(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set LeadByte(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set LeadByte(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set UnicodeDefaultChar(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set UnicodeDefaultChar(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -4698,8 +4698,8 @@ export class CPINFOEXAView {
   // 0x24: pad4
 
   // 0x28: pointer
-  set CodePageName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set CodePageName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4710,15 +4710,15 @@ export interface CPINFOEXW {
   /** u32 */
   MaxCharSize: number;
   /** array */
-  DefaultChar: Deno.PointerValue | null;
+  DefaultChar: Deno.PointerValue;
   /** array */
-  LeadByte: Deno.PointerValue | null;
+  LeadByte: Deno.PointerValue;
   /** char */
-  UnicodeDefaultChar: Uint8Array | Deno.PointerValue | null;
+  UnicodeDefaultChar: Uint8Array | Deno.PointerValue;
   /** u32 */
   CodePage: number;
   /** array */
-  CodePageName: Deno.PointerValue | null;
+  CodePageName: Deno.PointerValue;
 }
 
 export const sizeofCPINFOEXW = 48;
@@ -4730,16 +4730,16 @@ export function allocCPINFOEXW(data?: Partial<CPINFOEXW>): Uint8Array {
   if (data?.MaxCharSize !== undefined) view.setUint32(0, Number(data.MaxCharSize), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.DefaultChar !== undefined) view.setBigUint64(8, data.DefaultChar === null ? 0n : BigInt(util.toPointer(data.DefaultChar)), true);
+  if (data?.DefaultChar !== undefined) view.setBigUint64(8, data.DefaultChar === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DefaultChar))), true);
   // 0x10: pointer
-  if (data?.LeadByte !== undefined) view.setBigUint64(16, data.LeadByte === null ? 0n : BigInt(util.toPointer(data.LeadByte)), true);
+  if (data?.LeadByte !== undefined) view.setBigUint64(16, data.LeadByte === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.LeadByte))), true);
   // 0x18: pointer
-  if (data?.UnicodeDefaultChar !== undefined) view.setBigUint64(24, data.UnicodeDefaultChar === null ? 0n : BigInt(util.toPointer(data.UnicodeDefaultChar)), true);
+  if (data?.UnicodeDefaultChar !== undefined) view.setBigUint64(24, data.UnicodeDefaultChar === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.UnicodeDefaultChar))), true);
   // 0x20: u32
   if (data?.CodePage !== undefined) view.setUint32(32, Number(data.CodePage), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.CodePageName !== undefined) view.setBigUint64(40, data.CodePageName === null ? 0n : BigInt(util.toPointer(data.CodePageName)), true);
+  if (data?.CodePageName !== undefined) view.setBigUint64(40, data.CodePageName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.CodePageName))), true);
   return buf;
 }
 
@@ -4761,21 +4761,21 @@ export class CPINFOEXWView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get DefaultChar(): Uint8Array | Deno.PointerValue | null {
+  get DefaultChar(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get LeadByte(): Uint8Array | Deno.PointerValue | null {
+  get LeadByte(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get UnicodeDefaultChar(): Uint8Array | Deno.PointerValue | null {
+  get UnicodeDefaultChar(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -4786,9 +4786,9 @@ export class CPINFOEXWView {
   // 0x24: pad4
 
   // 0x28: pointer
-  get CodePageName(): Uint8Array | Deno.PointerValue | null {
+  get CodePageName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -4799,18 +4799,18 @@ export class CPINFOEXWView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set DefaultChar(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set DefaultChar(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set LeadByte(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set LeadByte(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set UnicodeDefaultChar(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set UnicodeDefaultChar(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -4821,12 +4821,12 @@ export class CPINFOEXWView {
   // 0x24: pad4
 
   // 0x28: pointer
-  set CodePageName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set CodePageName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
-export type PSTR = Deno.PointerValue | Uint8Array | null;
+export type PSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.Globalization.NUMBERFMTA (size: 40)
@@ -4861,12 +4861,12 @@ export function allocNUMBERFMTA(data?: Partial<NUMBERFMTA>): Uint8Array {
   // 0x10: buffer
   if (data?.lpDecimalSep !== undefined) {
     (buf as any)._f16 = util.pstrToFfi(data.lpDecimalSep);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.lpThousandSep !== undefined) {
     (buf as any)._f24 = util.pstrToFfi(data.lpThousandSep);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: u32
   if (data?.NegativeOrder !== undefined) view.setUint32(32, Number(data.NegativeOrder), true);
@@ -4902,15 +4902,15 @@ export class NUMBERFMTAView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  get lpDecimalSep(): Uint8Array | Deno.PointerValue | null {
+  get lpDecimalSep(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get lpThousandSep(): Uint8Array | Deno.PointerValue | null {
+  get lpThousandSep(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -4938,15 +4938,15 @@ export class NUMBERFMTAView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  set lpDecimalSep(value: Uint8Array | Deno.PointerValue | null) {
+  set lpDecimalSep(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set lpThousandSep(value: Uint8Array | Deno.PointerValue | null) {
+  set lpThousandSep(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: u32
@@ -4957,7 +4957,7 @@ export class NUMBERFMTAView {
   // 0x24: pad4
 }
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.Globalization.NUMBERFMTW (size: 40)
@@ -4992,12 +4992,12 @@ export function allocNUMBERFMTW(data?: Partial<NUMBERFMTW>): Uint8Array {
   // 0x10: buffer
   if (data?.lpDecimalSep !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.lpDecimalSep);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.lpThousandSep !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.lpThousandSep);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: u32
   if (data?.NegativeOrder !== undefined) view.setUint32(32, Number(data.NegativeOrder), true);
@@ -5033,15 +5033,15 @@ export class NUMBERFMTWView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  get lpDecimalSep(): Uint8Array | Deno.PointerValue | null {
+  get lpDecimalSep(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get lpThousandSep(): Uint8Array | Deno.PointerValue | null {
+  get lpThousandSep(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -5069,15 +5069,15 @@ export class NUMBERFMTWView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  set lpDecimalSep(value: Uint8Array | Deno.PointerValue | null) {
+  set lpDecimalSep(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set lpThousandSep(value: Uint8Array | Deno.PointerValue | null) {
+  set lpThousandSep(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: u32
@@ -5125,12 +5125,12 @@ export function allocCURRENCYFMTA(data?: Partial<CURRENCYFMTA>): Uint8Array {
   // 0x10: buffer
   if (data?.lpDecimalSep !== undefined) {
     (buf as any)._f16 = util.pstrToFfi(data.lpDecimalSep);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.lpThousandSep !== undefined) {
     (buf as any)._f24 = util.pstrToFfi(data.lpThousandSep);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: u32
   if (data?.NegativeOrder !== undefined) view.setUint32(32, Number(data.NegativeOrder), true);
@@ -5139,7 +5139,7 @@ export function allocCURRENCYFMTA(data?: Partial<CURRENCYFMTA>): Uint8Array {
   // 0x28: buffer
   if (data?.lpCurrencySymbol !== undefined) {
     (buf as any)._f40 = util.pstrToFfi(data.lpCurrencySymbol);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f40))), true);
   }
   return buf;
 }
@@ -5172,15 +5172,15 @@ export class CURRENCYFMTAView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  get lpDecimalSep(): Uint8Array | Deno.PointerValue | null {
+  get lpDecimalSep(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get lpThousandSep(): Uint8Array | Deno.PointerValue | null {
+  get lpThousandSep(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -5194,9 +5194,9 @@ export class CURRENCYFMTAView {
   }
 
   // 0x28: buffer
-  get lpCurrencySymbol(): Uint8Array | Deno.PointerValue | null {
+  get lpCurrencySymbol(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -5217,15 +5217,15 @@ export class CURRENCYFMTAView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  set lpDecimalSep(value: Uint8Array | Deno.PointerValue | null) {
+  set lpDecimalSep(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set lpThousandSep(value: Uint8Array | Deno.PointerValue | null) {
+  set lpThousandSep(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: u32
@@ -5239,9 +5239,9 @@ export class CURRENCYFMTAView {
   }
 
   // 0x28: buffer
-  set lpCurrencySymbol(value: Uint8Array | Deno.PointerValue | null) {
+  set lpCurrencySymbol(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f40))), true);
   }
 }
 
@@ -5282,12 +5282,12 @@ export function allocCURRENCYFMTW(data?: Partial<CURRENCYFMTW>): Uint8Array {
   // 0x10: buffer
   if (data?.lpDecimalSep !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.lpDecimalSep);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.lpThousandSep !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.lpThousandSep);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: u32
   if (data?.NegativeOrder !== undefined) view.setUint32(32, Number(data.NegativeOrder), true);
@@ -5296,7 +5296,7 @@ export function allocCURRENCYFMTW(data?: Partial<CURRENCYFMTW>): Uint8Array {
   // 0x28: buffer
   if (data?.lpCurrencySymbol !== undefined) {
     (buf as any)._f40 = util.pwstrToFfi(data.lpCurrencySymbol);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f40))), true);
   }
   return buf;
 }
@@ -5329,15 +5329,15 @@ export class CURRENCYFMTWView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  get lpDecimalSep(): Uint8Array | Deno.PointerValue | null {
+  get lpDecimalSep(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get lpThousandSep(): Uint8Array | Deno.PointerValue | null {
+  get lpThousandSep(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -5351,9 +5351,9 @@ export class CURRENCYFMTWView {
   }
 
   // 0x28: buffer
-  get lpCurrencySymbol(): Uint8Array | Deno.PointerValue | null {
+  get lpCurrencySymbol(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -5374,15 +5374,15 @@ export class CURRENCYFMTWView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  set lpDecimalSep(value: Uint8Array | Deno.PointerValue | null) {
+  set lpDecimalSep(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set lpThousandSep(value: Uint8Array | Deno.PointerValue | null) {
+  set lpThousandSep(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: u32
@@ -5396,9 +5396,9 @@ export class CURRENCYFMTWView {
   }
 
   // 0x28: buffer
-  set lpCurrencySymbol(value: Uint8Array | Deno.PointerValue | null) {
+  set lpCurrencySymbol(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f40))), true);
   }
 }
 
@@ -5415,7 +5415,7 @@ export interface NLSVERSIONINFO {
   /** u32 */
   dwEffectiveId: number;
   /** System.Guid */
-  guidCustomVersion: Uint8Array | Deno.PointerValue | null;
+  guidCustomVersion: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofNLSVERSIONINFO = 24;
@@ -5432,7 +5432,7 @@ export function allocNLSVERSIONINFO(data?: Partial<NLSVERSIONINFO>): Uint8Array 
   // 0x0c: u32
   if (data?.dwEffectiveId !== undefined) view.setUint32(12, Number(data.dwEffectiveId), true);
   // 0x10: pointer
-  if (data?.guidCustomVersion !== undefined) view.setBigUint64(16, data.guidCustomVersion === null ? 0n : BigInt(util.toPointer(data.guidCustomVersion)), true);
+  if (data?.guidCustomVersion !== undefined) view.setBigUint64(16, data.guidCustomVersion === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.guidCustomVersion))), true);
   return buf;
 }
 
@@ -5467,9 +5467,9 @@ export class NLSVERSIONINFOView {
   }
 
   // 0x10: pointer
-  get guidCustomVersion(): Uint8Array | Deno.PointerValue | null {
+  get guidCustomVersion(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -5493,8 +5493,8 @@ export class NLSVERSIONINFOView {
   }
 
   // 0x10: pointer
-  set guidCustomVersion(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set guidCustomVersion(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -5511,7 +5511,7 @@ export interface NLSVERSIONINFOEX {
   /** u32 */
   dwEffectiveId: number;
   /** System.Guid */
-  guidCustomVersion: Uint8Array | Deno.PointerValue | null;
+  guidCustomVersion: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofNLSVERSIONINFOEX = 24;
@@ -5528,7 +5528,7 @@ export function allocNLSVERSIONINFOEX(data?: Partial<NLSVERSIONINFOEX>): Uint8Ar
   // 0x0c: u32
   if (data?.dwEffectiveId !== undefined) view.setUint32(12, Number(data.dwEffectiveId), true);
   // 0x10: pointer
-  if (data?.guidCustomVersion !== undefined) view.setBigUint64(16, data.guidCustomVersion === null ? 0n : BigInt(util.toPointer(data.guidCustomVersion)), true);
+  if (data?.guidCustomVersion !== undefined) view.setBigUint64(16, data.guidCustomVersion === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.guidCustomVersion))), true);
   return buf;
 }
 
@@ -5563,9 +5563,9 @@ export class NLSVERSIONINFOEXView {
   }
 
   // 0x10: pointer
-  get guidCustomVersion(): Uint8Array | Deno.PointerValue | null {
+  get guidCustomVersion(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -5589,8 +5589,8 @@ export class NLSVERSIONINFOEXView {
   }
 
   // 0x10: pointer
-  set guidCustomVersion(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set guidCustomVersion(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -5605,9 +5605,9 @@ export interface FILEMUIINFO {
   /** u32 */
   dwFileType: number;
   /** array */
-  pChecksum: Deno.PointerValue | null;
+  pChecksum: Deno.PointerValue;
   /** array */
-  pServiceChecksum: Deno.PointerValue | null;
+  pServiceChecksum: Deno.PointerValue;
   /** u32 */
   dwLanguageNameOffset: number;
   /** u32 */
@@ -5623,7 +5623,7 @@ export interface FILEMUIINFO {
   /** u32 */
   dwTypeNameMUIOffset: number;
   /** array */
-  abBuffer: Deno.PointerValue | null;
+  abBuffer: Deno.PointerValue;
 }
 
 export const sizeofFILEMUIINFO = 72;
@@ -5639,9 +5639,9 @@ export function allocFILEMUIINFO(data?: Partial<FILEMUIINFO>): Uint8Array {
   if (data?.dwFileType !== undefined) view.setUint32(8, Number(data.dwFileType), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.pChecksum !== undefined) view.setBigUint64(16, data.pChecksum === null ? 0n : BigInt(util.toPointer(data.pChecksum)), true);
+  if (data?.pChecksum !== undefined) view.setBigUint64(16, data.pChecksum === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pChecksum))), true);
   // 0x18: pointer
-  if (data?.pServiceChecksum !== undefined) view.setBigUint64(24, data.pServiceChecksum === null ? 0n : BigInt(util.toPointer(data.pServiceChecksum)), true);
+  if (data?.pServiceChecksum !== undefined) view.setBigUint64(24, data.pServiceChecksum === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pServiceChecksum))), true);
   // 0x20: u32
   if (data?.dwLanguageNameOffset !== undefined) view.setUint32(32, Number(data.dwLanguageNameOffset), true);
   // 0x24: u32
@@ -5658,7 +5658,7 @@ export function allocFILEMUIINFO(data?: Partial<FILEMUIINFO>): Uint8Array {
   if (data?.dwTypeNameMUIOffset !== undefined) view.setUint32(56, Number(data.dwTypeNameMUIOffset), true);
   // 0x3c: pad4
   // 0x40: pointer
-  if (data?.abBuffer !== undefined) view.setBigUint64(64, data.abBuffer === null ? 0n : BigInt(util.toPointer(data.abBuffer)), true);
+  if (data?.abBuffer !== undefined) view.setBigUint64(64, data.abBuffer === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.abBuffer))), true);
   return buf;
 }
 
@@ -5690,15 +5690,15 @@ export class FILEMUIINFOView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get pChecksum(): Uint8Array | Deno.PointerValue | null {
+  get pChecksum(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get pServiceChecksum(): Uint8Array | Deno.PointerValue | null {
+  get pServiceChecksum(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -5739,9 +5739,9 @@ export class FILEMUIINFOView {
   // 0x3c: pad4
 
   // 0x40: pointer
-  get abBuffer(): Uint8Array | Deno.PointerValue | null {
+  get abBuffer(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -5762,13 +5762,13 @@ export class FILEMUIINFOView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set pChecksum(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pChecksum(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set pServiceChecksum(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set pServiceChecksum(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -5809,8 +5809,8 @@ export class FILEMUIINFOView {
   // 0x3c: pad4
 
   // 0x40: pointer
-  set abBuffer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set abBuffer(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -5833,29 +5833,29 @@ export interface MAPPING_SERVICE_INFO {
   /** u32 */
   dwInputContentTypesCount: number;
   /** ptr */
-  prgInputContentTypes: Deno.PointerValue | Uint8Array | null;
+  prgInputContentTypes: Deno.PointerValue | Uint8Array;
   /** u32 */
   dwOutputContentTypesCount: number;
   /** ptr */
-  prgOutputContentTypes: Deno.PointerValue | Uint8Array | null;
+  prgOutputContentTypes: Deno.PointerValue | Uint8Array;
   /** u32 */
   dwInputLanguagesCount: number;
   /** ptr */
-  prgInputLanguages: Deno.PointerValue | Uint8Array | null;
+  prgInputLanguages: Deno.PointerValue | Uint8Array;
   /** u32 */
   dwOutputLanguagesCount: number;
   /** ptr */
-  prgOutputLanguages: Deno.PointerValue | Uint8Array | null;
+  prgOutputLanguages: Deno.PointerValue | Uint8Array;
   /** u32 */
   dwInputScriptsCount: number;
   /** ptr */
-  prgInputScripts: Deno.PointerValue | Uint8Array | null;
+  prgInputScripts: Deno.PointerValue | Uint8Array;
   /** u32 */
   dwOutputScriptsCount: number;
   /** ptr */
-  prgOutputScripts: Deno.PointerValue | Uint8Array | null;
+  prgOutputScripts: Deno.PointerValue | Uint8Array;
   /** System.Guid */
-  guid: Uint8Array | Deno.PointerValue | null;
+  guid: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   pszCategory: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
@@ -5863,9 +5863,9 @@ export interface MAPPING_SERVICE_INFO {
   /** u32 */
   dwPrivateDataSize: number;
   /** ptr */
-  pPrivateData: Deno.PointerValue | Uint8Array | null;
+  pPrivateData: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pContext: Deno.PointerValue | Uint8Array | null;
+  pContext: Deno.PointerValue | Uint8Array;
   /** u32 */
   _bitfield: number;
 }
@@ -5880,7 +5880,7 @@ export function allocMAPPING_SERVICE_INFO(data?: Partial<MAPPING_SERVICE_INFO>):
   // 0x08: buffer
   if (data?.pszCopyright !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pszCopyright);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: u16
   if (data?.wMajorVersion !== undefined) view.setUint16(16, Number(data.wMajorVersion), true);
@@ -5894,51 +5894,51 @@ export function allocMAPPING_SERVICE_INFO(data?: Partial<MAPPING_SERVICE_INFO>):
   if (data?.dwInputContentTypesCount !== undefined) view.setUint32(24, Number(data.dwInputContentTypesCount), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.prgInputContentTypes !== undefined) view.setBigUint64(32, data.prgInputContentTypes === null ? 0n : BigInt(util.toPointer(data.prgInputContentTypes)), true);
+  if (data?.prgInputContentTypes !== undefined) view.setBigUint64(32, data.prgInputContentTypes === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.prgInputContentTypes))), true);
   // 0x28: u32
   if (data?.dwOutputContentTypesCount !== undefined) view.setUint32(40, Number(data.dwOutputContentTypesCount), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.prgOutputContentTypes !== undefined) view.setBigUint64(48, data.prgOutputContentTypes === null ? 0n : BigInt(util.toPointer(data.prgOutputContentTypes)), true);
+  if (data?.prgOutputContentTypes !== undefined) view.setBigUint64(48, data.prgOutputContentTypes === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.prgOutputContentTypes))), true);
   // 0x38: u32
   if (data?.dwInputLanguagesCount !== undefined) view.setUint32(56, Number(data.dwInputLanguagesCount), true);
   // 0x3c: pad4
   // 0x40: pointer
-  if (data?.prgInputLanguages !== undefined) view.setBigUint64(64, data.prgInputLanguages === null ? 0n : BigInt(util.toPointer(data.prgInputLanguages)), true);
+  if (data?.prgInputLanguages !== undefined) view.setBigUint64(64, data.prgInputLanguages === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.prgInputLanguages))), true);
   // 0x48: u32
   if (data?.dwOutputLanguagesCount !== undefined) view.setUint32(72, Number(data.dwOutputLanguagesCount), true);
   // 0x4c: pad4
   // 0x50: pointer
-  if (data?.prgOutputLanguages !== undefined) view.setBigUint64(80, data.prgOutputLanguages === null ? 0n : BigInt(util.toPointer(data.prgOutputLanguages)), true);
+  if (data?.prgOutputLanguages !== undefined) view.setBigUint64(80, data.prgOutputLanguages === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.prgOutputLanguages))), true);
   // 0x58: u32
   if (data?.dwInputScriptsCount !== undefined) view.setUint32(88, Number(data.dwInputScriptsCount), true);
   // 0x5c: pad4
   // 0x60: pointer
-  if (data?.prgInputScripts !== undefined) view.setBigUint64(96, data.prgInputScripts === null ? 0n : BigInt(util.toPointer(data.prgInputScripts)), true);
+  if (data?.prgInputScripts !== undefined) view.setBigUint64(96, data.prgInputScripts === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.prgInputScripts))), true);
   // 0x68: u32
   if (data?.dwOutputScriptsCount !== undefined) view.setUint32(104, Number(data.dwOutputScriptsCount), true);
   // 0x6c: pad4
   // 0x70: pointer
-  if (data?.prgOutputScripts !== undefined) view.setBigUint64(112, data.prgOutputScripts === null ? 0n : BigInt(util.toPointer(data.prgOutputScripts)), true);
+  if (data?.prgOutputScripts !== undefined) view.setBigUint64(112, data.prgOutputScripts === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.prgOutputScripts))), true);
   // 0x78: pointer
-  if (data?.guid !== undefined) view.setBigUint64(120, data.guid === null ? 0n : BigInt(util.toPointer(data.guid)), true);
+  if (data?.guid !== undefined) view.setBigUint64(120, data.guid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.guid))), true);
   // 0x80: buffer
   if (data?.pszCategory !== undefined) {
     (buf as any)._f128 = util.pwstrToFfi(data.pszCategory);
-    view.setBigUint64(128, (buf as any)._f128 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f128)), true);
+    view.setBigUint64(128, (buf as any)._f128 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f128))), true);
   }
   // 0x88: buffer
   if (data?.pszDescription !== undefined) {
     (buf as any)._f136 = util.pwstrToFfi(data.pszDescription);
-    view.setBigUint64(136, (buf as any)._f136 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f136)), true);
+    view.setBigUint64(136, (buf as any)._f136 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f136))), true);
   }
   // 0x90: u32
   if (data?.dwPrivateDataSize !== undefined) view.setUint32(144, Number(data.dwPrivateDataSize), true);
   // 0x94: pad4
   // 0x98: pointer
-  if (data?.pPrivateData !== undefined) view.setBigUint64(152, data.pPrivateData === null ? 0n : BigInt(util.toPointer(data.pPrivateData)), true);
+  if (data?.pPrivateData !== undefined) view.setBigUint64(152, data.pPrivateData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pPrivateData))), true);
   // 0xa0: pointer
-  if (data?.pContext !== undefined) view.setBigUint64(160, data.pContext === null ? 0n : BigInt(util.toPointer(data.pContext)), true);
+  if (data?.pContext !== undefined) view.setBigUint64(160, data.pContext === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pContext))), true);
   // 0xa8: u32
   if (data?._bitfield !== undefined) view.setUint32(168, Number(data._bitfield), true);
   // 0xac: pad4
@@ -5961,9 +5961,9 @@ export class MAPPING_SERVICE_INFOView {
   }
 
   // 0x08: buffer
-  get pszCopyright(): Uint8Array | Deno.PointerValue | null {
+  get pszCopyright(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u16
@@ -5994,9 +5994,9 @@ export class MAPPING_SERVICE_INFOView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get prgInputContentTypes(): Uint8Array | Deno.PointerValue | null {
+  get prgInputContentTypes(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -6007,9 +6007,9 @@ export class MAPPING_SERVICE_INFOView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  get prgOutputContentTypes(): Uint8Array | Deno.PointerValue | null {
+  get prgOutputContentTypes(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: u32
@@ -6020,9 +6020,9 @@ export class MAPPING_SERVICE_INFOView {
   // 0x3c: pad4
 
   // 0x40: pointer
-  get prgInputLanguages(): Uint8Array | Deno.PointerValue | null {
+  get prgInputLanguages(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: u32
@@ -6033,9 +6033,9 @@ export class MAPPING_SERVICE_INFOView {
   // 0x4c: pad4
 
   // 0x50: pointer
-  get prgOutputLanguages(): Uint8Array | Deno.PointerValue | null {
+  get prgOutputLanguages(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x58: u32
@@ -6046,9 +6046,9 @@ export class MAPPING_SERVICE_INFOView {
   // 0x5c: pad4
 
   // 0x60: pointer
-  get prgInputScripts(): Uint8Array | Deno.PointerValue | null {
+  get prgInputScripts(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(96, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x68: u32
@@ -6059,27 +6059,27 @@ export class MAPPING_SERVICE_INFOView {
   // 0x6c: pad4
 
   // 0x70: pointer
-  get prgOutputScripts(): Uint8Array | Deno.PointerValue | null {
+  get prgOutputScripts(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(112, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x78: pointer
-  get guid(): Uint8Array | Deno.PointerValue | null {
+  get guid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(120, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x80: buffer
-  get pszCategory(): Uint8Array | Deno.PointerValue | null {
+  get pszCategory(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(128, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x88: buffer
-  get pszDescription(): Uint8Array | Deno.PointerValue | null {
+  get pszDescription(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(136, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x90: u32
@@ -6090,15 +6090,15 @@ export class MAPPING_SERVICE_INFOView {
   // 0x94: pad4
 
   // 0x98: pointer
-  get pPrivateData(): Uint8Array | Deno.PointerValue | null {
+  get pPrivateData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(152, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0xa0: pointer
-  get pContext(): Uint8Array | Deno.PointerValue | null {
+  get pContext(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(160, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0xa8: u32
@@ -6114,9 +6114,9 @@ export class MAPPING_SERVICE_INFOView {
   }
 
   // 0x08: buffer
-  set pszCopyright(value: Uint8Array | Deno.PointerValue | null) {
+  set pszCopyright(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: u16
@@ -6147,8 +6147,8 @@ export class MAPPING_SERVICE_INFOView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set prgInputContentTypes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set prgInputContentTypes(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u32
@@ -6159,8 +6159,8 @@ export class MAPPING_SERVICE_INFOView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  set prgOutputContentTypes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set prgOutputContentTypes(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: u32
@@ -6171,8 +6171,8 @@ export class MAPPING_SERVICE_INFOView {
   // 0x3c: pad4
 
   // 0x40: pointer
-  set prgInputLanguages(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set prgInputLanguages(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: u32
@@ -6183,8 +6183,8 @@ export class MAPPING_SERVICE_INFOView {
   // 0x4c: pad4
 
   // 0x50: pointer
-  set prgOutputLanguages(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set prgOutputLanguages(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x58: u32
@@ -6195,8 +6195,8 @@ export class MAPPING_SERVICE_INFOView {
   // 0x5c: pad4
 
   // 0x60: pointer
-  set prgInputScripts(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(96, BigInt(util.toPointer(value)), true);
+  set prgInputScripts(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(96, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x68: u32
@@ -6207,25 +6207,25 @@ export class MAPPING_SERVICE_INFOView {
   // 0x6c: pad4
 
   // 0x70: pointer
-  set prgOutputScripts(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(112, BigInt(util.toPointer(value)), true);
+  set prgOutputScripts(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(112, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x78: pointer
-  set guid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(120, BigInt(util.toPointer(value)), true);
+  set guid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(120, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x80: buffer
-  set pszCategory(value: Uint8Array | Deno.PointerValue | null) {
+  set pszCategory(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f128 = value;
-    this.view.setBigUint64(128, BigInt(util.toPointer((this.buf as any)._f128)), true);
+    this.view.setBigUint64(128, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f128))), true);
   }
 
   // 0x88: buffer
-  set pszDescription(value: Uint8Array | Deno.PointerValue | null) {
+  set pszDescription(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f136 = value;
-    this.view.setBigUint64(136, BigInt(util.toPointer((this.buf as any)._f136)), true);
+    this.view.setBigUint64(136, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f136))), true);
   }
 
   // 0x90: u32
@@ -6236,13 +6236,13 @@ export class MAPPING_SERVICE_INFOView {
   // 0x94: pad4
 
   // 0x98: pointer
-  set pPrivateData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(152, BigInt(util.toPointer(value)), true);
+  set pPrivateData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(152, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0xa0: pointer
-  set pContext(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(160, BigInt(util.toPointer(value)), true);
+  set pContext(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(160, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0xa8: u32
@@ -6274,7 +6274,7 @@ export interface MAPPING_ENUM_OPTIONS {
   /** Windows.Win32.Foundation.PWSTR */
   pszOutputContentType: string | null | Uint8Array | Uint16Array;
   /** ptr */
-  pGuid: Deno.PointerValue | Uint8Array | null;
+  pGuid: Deno.PointerValue | Uint8Array;
   /** u32 */
   _bitfield: number;
 }
@@ -6289,40 +6289,40 @@ export function allocMAPPING_ENUM_OPTIONS(data?: Partial<MAPPING_ENUM_OPTIONS>):
   // 0x08: buffer
   if (data?.pszCategory !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pszCategory);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.pszInputLanguage !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pszInputLanguage);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.pszOutputLanguage !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.pszOutputLanguage);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: buffer
   if (data?.pszInputScript !== undefined) {
     (buf as any)._f32 = util.pwstrToFfi(data.pszInputScript);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f32))), true);
   }
   // 0x28: buffer
   if (data?.pszOutputScript !== undefined) {
     (buf as any)._f40 = util.pwstrToFfi(data.pszOutputScript);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f40))), true);
   }
   // 0x30: buffer
   if (data?.pszInputContentType !== undefined) {
     (buf as any)._f48 = util.pwstrToFfi(data.pszInputContentType);
-    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
+    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f48))), true);
   }
   // 0x38: buffer
   if (data?.pszOutputContentType !== undefined) {
     (buf as any)._f56 = util.pwstrToFfi(data.pszOutputContentType);
-    view.setBigUint64(56, (buf as any)._f56 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f56)), true);
+    view.setBigUint64(56, (buf as any)._f56 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f56))), true);
   }
   // 0x40: pointer
-  if (data?.pGuid !== undefined) view.setBigUint64(64, data.pGuid === null ? 0n : BigInt(util.toPointer(data.pGuid)), true);
+  if (data?.pGuid !== undefined) view.setBigUint64(64, data.pGuid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pGuid))), true);
   // 0x48: u32
   if (data?._bitfield !== undefined) view.setUint32(72, Number(data._bitfield), true);
   // 0x4c: pad4
@@ -6345,51 +6345,51 @@ export class MAPPING_ENUM_OPTIONSView {
   }
 
   // 0x08: buffer
-  get pszCategory(): Uint8Array | Deno.PointerValue | null {
+  get pszCategory(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get pszInputLanguage(): Uint8Array | Deno.PointerValue | null {
+  get pszInputLanguage(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get pszOutputLanguage(): Uint8Array | Deno.PointerValue | null {
+  get pszOutputLanguage(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: buffer
-  get pszInputScript(): Uint8Array | Deno.PointerValue | null {
+  get pszInputScript(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: buffer
-  get pszOutputScript(): Uint8Array | Deno.PointerValue | null {
+  get pszOutputScript(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: buffer
-  get pszInputContentType(): Uint8Array | Deno.PointerValue | null {
+  get pszInputContentType(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: buffer
-  get pszOutputContentType(): Uint8Array | Deno.PointerValue | null {
+  get pszOutputContentType(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get pGuid(): Uint8Array | Deno.PointerValue | null {
+  get pGuid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: u32
@@ -6405,50 +6405,50 @@ export class MAPPING_ENUM_OPTIONSView {
   }
 
   // 0x08: buffer
-  set pszCategory(value: Uint8Array | Deno.PointerValue | null) {
+  set pszCategory(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set pszInputLanguage(value: Uint8Array | Deno.PointerValue | null) {
+  set pszInputLanguage(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set pszOutputLanguage(value: Uint8Array | Deno.PointerValue | null) {
+  set pszOutputLanguage(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: buffer
-  set pszInputScript(value: Uint8Array | Deno.PointerValue | null) {
+  set pszInputScript(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f32))), true);
   }
 
   // 0x28: buffer
-  set pszOutputScript(value: Uint8Array | Deno.PointerValue | null) {
+  set pszOutputScript(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f40))), true);
   }
 
   // 0x30: buffer
-  set pszInputContentType(value: Uint8Array | Deno.PointerValue | null) {
+  set pszInputContentType(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f48 = value;
-    this.view.setBigUint64(48, BigInt(util.toPointer((this.buf as any)._f48)), true);
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f48))), true);
   }
 
   // 0x38: buffer
-  set pszOutputContentType(value: Uint8Array | Deno.PointerValue | null) {
+  set pszOutputContentType(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f56 = value;
-    this.view.setBigUint64(56, BigInt(util.toPointer((this.buf as any)._f56)), true);
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f56))), true);
   }
 
   // 0x40: pointer
-  set pGuid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set pGuid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: u32
@@ -6480,15 +6480,15 @@ export interface MAPPING_OPTIONS {
   /** Windows.Win32.Foundation.PWSTR */
   pszUILanguage: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Globalization.PFN_MAPPINGCALLBACKPROC */
-  pfnRecognizeCallback: Uint8Array | Deno.PointerValue | null;
+  pfnRecognizeCallback: Uint8Array | Deno.PointerValue;
   /** ptr */
-  pRecognizeCallerData: Deno.PointerValue | Uint8Array | null;
+  pRecognizeCallerData: Deno.PointerValue | Uint8Array;
   /** u32 */
   dwRecognizeCallerDataSize: number;
   /** Windows.Win32.Globalization.PFN_MAPPINGCALLBACKPROC */
-  pfnActionCallback: Uint8Array | Deno.PointerValue | null;
+  pfnActionCallback: Uint8Array | Deno.PointerValue;
   /** ptr */
-  pActionCallerData: Deno.PointerValue | Uint8Array | null;
+  pActionCallerData: Deno.PointerValue | Uint8Array;
   /** u32 */
   dwActionCallerDataSize: number;
   /** u32 */
@@ -6507,49 +6507,49 @@ export function allocMAPPING_OPTIONS(data?: Partial<MAPPING_OPTIONS>): Uint8Arra
   // 0x08: buffer
   if (data?.pszInputLanguage !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pszInputLanguage);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.pszOutputLanguage !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pszOutputLanguage);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.pszInputScript !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.pszInputScript);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: buffer
   if (data?.pszOutputScript !== undefined) {
     (buf as any)._f32 = util.pwstrToFfi(data.pszOutputScript);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f32))), true);
   }
   // 0x28: buffer
   if (data?.pszInputContentType !== undefined) {
     (buf as any)._f40 = util.pwstrToFfi(data.pszInputContentType);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f40))), true);
   }
   // 0x30: buffer
   if (data?.pszOutputContentType !== undefined) {
     (buf as any)._f48 = util.pwstrToFfi(data.pszOutputContentType);
-    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
+    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f48))), true);
   }
   // 0x38: buffer
   if (data?.pszUILanguage !== undefined) {
     (buf as any)._f56 = util.pwstrToFfi(data.pszUILanguage);
-    view.setBigUint64(56, (buf as any)._f56 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f56)), true);
+    view.setBigUint64(56, (buf as any)._f56 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f56))), true);
   }
   // 0x40: pointer
-  if (data?.pfnRecognizeCallback !== undefined) view.setBigUint64(64, data.pfnRecognizeCallback === null ? 0n : BigInt(util.toPointer(data.pfnRecognizeCallback)), true);
+  if (data?.pfnRecognizeCallback !== undefined) view.setBigUint64(64, data.pfnRecognizeCallback === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pfnRecognizeCallback))), true);
   // 0x48: pointer
-  if (data?.pRecognizeCallerData !== undefined) view.setBigUint64(72, data.pRecognizeCallerData === null ? 0n : BigInt(util.toPointer(data.pRecognizeCallerData)), true);
+  if (data?.pRecognizeCallerData !== undefined) view.setBigUint64(72, data.pRecognizeCallerData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pRecognizeCallerData))), true);
   // 0x50: u32
   if (data?.dwRecognizeCallerDataSize !== undefined) view.setUint32(80, Number(data.dwRecognizeCallerDataSize), true);
   // 0x54: pad4
   // 0x58: pointer
-  if (data?.pfnActionCallback !== undefined) view.setBigUint64(88, data.pfnActionCallback === null ? 0n : BigInt(util.toPointer(data.pfnActionCallback)), true);
+  if (data?.pfnActionCallback !== undefined) view.setBigUint64(88, data.pfnActionCallback === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pfnActionCallback))), true);
   // 0x60: pointer
-  if (data?.pActionCallerData !== undefined) view.setBigUint64(96, data.pActionCallerData === null ? 0n : BigInt(util.toPointer(data.pActionCallerData)), true);
+  if (data?.pActionCallerData !== undefined) view.setBigUint64(96, data.pActionCallerData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pActionCallerData))), true);
   // 0x68: u32
   if (data?.dwActionCallerDataSize !== undefined) view.setUint32(104, Number(data.dwActionCallerDataSize), true);
   // 0x6c: u32
@@ -6576,57 +6576,57 @@ export class MAPPING_OPTIONSView {
   }
 
   // 0x08: buffer
-  get pszInputLanguage(): Uint8Array | Deno.PointerValue | null {
+  get pszInputLanguage(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get pszOutputLanguage(): Uint8Array | Deno.PointerValue | null {
+  get pszOutputLanguage(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get pszInputScript(): Uint8Array | Deno.PointerValue | null {
+  get pszInputScript(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: buffer
-  get pszOutputScript(): Uint8Array | Deno.PointerValue | null {
+  get pszOutputScript(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: buffer
-  get pszInputContentType(): Uint8Array | Deno.PointerValue | null {
+  get pszInputContentType(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: buffer
-  get pszOutputContentType(): Uint8Array | Deno.PointerValue | null {
+  get pszOutputContentType(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: buffer
-  get pszUILanguage(): Uint8Array | Deno.PointerValue | null {
+  get pszUILanguage(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get pfnRecognizeCallback(): Uint8Array | Deno.PointerValue | null {
+  get pfnRecognizeCallback(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: pointer
-  get pRecognizeCallerData(): Uint8Array | Deno.PointerValue | null {
+  get pRecognizeCallerData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: u32
@@ -6637,15 +6637,15 @@ export class MAPPING_OPTIONSView {
   // 0x54: pad4
 
   // 0x58: pointer
-  get pfnActionCallback(): Uint8Array | Deno.PointerValue | null {
+  get pfnActionCallback(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x60: pointer
-  get pActionCallerData(): Uint8Array | Deno.PointerValue | null {
+  get pActionCallerData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(96, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x68: u32
@@ -6671,55 +6671,55 @@ export class MAPPING_OPTIONSView {
   }
 
   // 0x08: buffer
-  set pszInputLanguage(value: Uint8Array | Deno.PointerValue | null) {
+  set pszInputLanguage(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set pszOutputLanguage(value: Uint8Array | Deno.PointerValue | null) {
+  set pszOutputLanguage(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set pszInputScript(value: Uint8Array | Deno.PointerValue | null) {
+  set pszInputScript(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: buffer
-  set pszOutputScript(value: Uint8Array | Deno.PointerValue | null) {
+  set pszOutputScript(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f32))), true);
   }
 
   // 0x28: buffer
-  set pszInputContentType(value: Uint8Array | Deno.PointerValue | null) {
+  set pszInputContentType(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f40))), true);
   }
 
   // 0x30: buffer
-  set pszOutputContentType(value: Uint8Array | Deno.PointerValue | null) {
+  set pszOutputContentType(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f48 = value;
-    this.view.setBigUint64(48, BigInt(util.toPointer((this.buf as any)._f48)), true);
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f48))), true);
   }
 
   // 0x38: buffer
-  set pszUILanguage(value: Uint8Array | Deno.PointerValue | null) {
+  set pszUILanguage(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f56 = value;
-    this.view.setBigUint64(56, BigInt(util.toPointer((this.buf as any)._f56)), true);
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f56))), true);
   }
 
   // 0x40: pointer
-  set pfnRecognizeCallback(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set pfnRecognizeCallback(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: pointer
-  set pRecognizeCallerData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set pRecognizeCallerData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x50: u32
@@ -6730,13 +6730,13 @@ export class MAPPING_OPTIONSView {
   // 0x54: pad4
 
   // 0x58: pointer
-  set pfnActionCallback(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  set pfnActionCallback(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x60: pointer
-  set pActionCallerData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(96, BigInt(util.toPointer(value)), true);
+  set pActionCallerData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(96, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x68: u32
@@ -6770,17 +6770,17 @@ export interface MAPPING_DATA_RANGE {
   /** u32 */
   dwDescriptionLength: number;
   /** ptr */
-  pData: Deno.PointerValue | Uint8Array | null;
+  pData: Deno.PointerValue | Uint8Array;
   /** u32 */
   dwDataSize: number;
   /** Windows.Win32.Foundation.PWSTR */
   pszContentType: string | null | Uint8Array | Uint16Array;
   /** ptr */
-  prgActionIds: Deno.PointerValue | Uint8Array | null;
+  prgActionIds: Deno.PointerValue | Uint8Array;
   /** u32 */
   dwActionsCount: number;
   /** ptr */
-  prgActionDisplayNames: Deno.PointerValue | Uint8Array | null;
+  prgActionDisplayNames: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofMAPPING_DATA_RANGE = 72;
@@ -6795,28 +6795,28 @@ export function allocMAPPING_DATA_RANGE(data?: Partial<MAPPING_DATA_RANGE>): Uin
   // 0x08: buffer
   if (data?.pszDescription !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pszDescription);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: u32
   if (data?.dwDescriptionLength !== undefined) view.setUint32(16, Number(data.dwDescriptionLength), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.pData !== undefined) view.setBigUint64(24, data.pData === null ? 0n : BigInt(util.toPointer(data.pData)), true);
+  if (data?.pData !== undefined) view.setBigUint64(24, data.pData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pData))), true);
   // 0x20: u32
   if (data?.dwDataSize !== undefined) view.setUint32(32, Number(data.dwDataSize), true);
   // 0x24: pad4
   // 0x28: buffer
   if (data?.pszContentType !== undefined) {
     (buf as any)._f40 = util.pwstrToFfi(data.pszContentType);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f40))), true);
   }
   // 0x30: pointer
-  if (data?.prgActionIds !== undefined) view.setBigUint64(48, data.prgActionIds === null ? 0n : BigInt(util.toPointer(data.prgActionIds)), true);
+  if (data?.prgActionIds !== undefined) view.setBigUint64(48, data.prgActionIds === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.prgActionIds))), true);
   // 0x38: u32
   if (data?.dwActionsCount !== undefined) view.setUint32(56, Number(data.dwActionsCount), true);
   // 0x3c: pad4
   // 0x40: pointer
-  if (data?.prgActionDisplayNames !== undefined) view.setBigUint64(64, data.prgActionDisplayNames === null ? 0n : BigInt(util.toPointer(data.prgActionDisplayNames)), true);
+  if (data?.prgActionDisplayNames !== undefined) view.setBigUint64(64, data.prgActionDisplayNames === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.prgActionDisplayNames))), true);
   return buf;
 }
 
@@ -6841,9 +6841,9 @@ export class MAPPING_DATA_RANGEView {
   }
 
   // 0x08: buffer
-  get pszDescription(): Uint8Array | Deno.PointerValue | null {
+  get pszDescription(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -6854,9 +6854,9 @@ export class MAPPING_DATA_RANGEView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get pData(): Uint8Array | Deno.PointerValue | null {
+  get pData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -6867,15 +6867,15 @@ export class MAPPING_DATA_RANGEView {
   // 0x24: pad4
 
   // 0x28: buffer
-  get pszContentType(): Uint8Array | Deno.PointerValue | null {
+  get pszContentType(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get prgActionIds(): Uint8Array | Deno.PointerValue | null {
+  get prgActionIds(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: u32
@@ -6886,9 +6886,9 @@ export class MAPPING_DATA_RANGEView {
   // 0x3c: pad4
 
   // 0x40: pointer
-  get prgActionDisplayNames(): Uint8Array | Deno.PointerValue | null {
+  get prgActionDisplayNames(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -6902,9 +6902,9 @@ export class MAPPING_DATA_RANGEView {
   }
 
   // 0x08: buffer
-  set pszDescription(value: Uint8Array | Deno.PointerValue | null) {
+  set pszDescription(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: u32
@@ -6915,8 +6915,8 @@ export class MAPPING_DATA_RANGEView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set pData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set pData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -6927,14 +6927,14 @@ export class MAPPING_DATA_RANGEView {
   // 0x24: pad4
 
   // 0x28: buffer
-  set pszContentType(value: Uint8Array | Deno.PointerValue | null) {
+  set pszContentType(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f40))), true);
   }
 
   // 0x30: pointer
-  set prgActionIds(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set prgActionIds(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: u32
@@ -6945,8 +6945,8 @@ export class MAPPING_DATA_RANGEView {
   // 0x3c: pad4
 
   // 0x40: pointer
-  set prgActionDisplayNames(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set prgActionDisplayNames(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -6957,19 +6957,19 @@ export interface MAPPING_PROPERTY_BAG {
   /** usize */
   Size: Deno.PointerValue;
   /** ptr */
-  prgResultRanges: Deno.PointerValue | Uint8Array | null;
+  prgResultRanges: Deno.PointerValue | Uint8Array;
   /** u32 */
   dwRangesCount: number;
   /** ptr */
-  pServiceData: Deno.PointerValue | Uint8Array | null;
+  pServiceData: Deno.PointerValue | Uint8Array;
   /** u32 */
   dwServiceDataSize: number;
   /** ptr */
-  pCallerData: Deno.PointerValue | Uint8Array | null;
+  pCallerData: Deno.PointerValue | Uint8Array;
   /** u32 */
   dwCallerDataSize: number;
   /** ptr */
-  pContext: Deno.PointerValue | Uint8Array | null;
+  pContext: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofMAPPING_PROPERTY_BAG = 64;
@@ -6980,22 +6980,22 @@ export function allocMAPPING_PROPERTY_BAG(data?: Partial<MAPPING_PROPERTY_BAG>):
   // 0x00: usize
   if (data?.Size !== undefined) view.setBigUint64(0, BigInt(data.Size), true);
   // 0x08: pointer
-  if (data?.prgResultRanges !== undefined) view.setBigUint64(8, data.prgResultRanges === null ? 0n : BigInt(util.toPointer(data.prgResultRanges)), true);
+  if (data?.prgResultRanges !== undefined) view.setBigUint64(8, data.prgResultRanges === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.prgResultRanges))), true);
   // 0x10: u32
   if (data?.dwRangesCount !== undefined) view.setUint32(16, Number(data.dwRangesCount), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.pServiceData !== undefined) view.setBigUint64(24, data.pServiceData === null ? 0n : BigInt(util.toPointer(data.pServiceData)), true);
+  if (data?.pServiceData !== undefined) view.setBigUint64(24, data.pServiceData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pServiceData))), true);
   // 0x20: u32
   if (data?.dwServiceDataSize !== undefined) view.setUint32(32, Number(data.dwServiceDataSize), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.pCallerData !== undefined) view.setBigUint64(40, data.pCallerData === null ? 0n : BigInt(util.toPointer(data.pCallerData)), true);
+  if (data?.pCallerData !== undefined) view.setBigUint64(40, data.pCallerData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pCallerData))), true);
   // 0x30: u32
   if (data?.dwCallerDataSize !== undefined) view.setUint32(48, Number(data.dwCallerDataSize), true);
   // 0x34: pad4
   // 0x38: pointer
-  if (data?.pContext !== undefined) view.setBigUint64(56, data.pContext === null ? 0n : BigInt(util.toPointer(data.pContext)), true);
+  if (data?.pContext !== undefined) view.setBigUint64(56, data.pContext === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pContext))), true);
   return buf;
 }
 
@@ -7015,9 +7015,9 @@ export class MAPPING_PROPERTY_BAGView {
   }
 
   // 0x08: pointer
-  get prgResultRanges(): Uint8Array | Deno.PointerValue | null {
+  get prgResultRanges(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -7028,9 +7028,9 @@ export class MAPPING_PROPERTY_BAGView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get pServiceData(): Uint8Array | Deno.PointerValue | null {
+  get pServiceData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -7041,9 +7041,9 @@ export class MAPPING_PROPERTY_BAGView {
   // 0x24: pad4
 
   // 0x28: pointer
-  get pCallerData(): Uint8Array | Deno.PointerValue | null {
+  get pCallerData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: u32
@@ -7054,9 +7054,9 @@ export class MAPPING_PROPERTY_BAGView {
   // 0x34: pad4
 
   // 0x38: pointer
-  get pContext(): Uint8Array | Deno.PointerValue | null {
+  get pContext(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: usize
@@ -7065,8 +7065,8 @@ export class MAPPING_PROPERTY_BAGView {
   }
 
   // 0x08: pointer
-  set prgResultRanges(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set prgResultRanges(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -7077,8 +7077,8 @@ export class MAPPING_PROPERTY_BAGView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set pServiceData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set pServiceData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -7089,8 +7089,8 @@ export class MAPPING_PROPERTY_BAGView {
   // 0x24: pad4
 
   // 0x28: pointer
-  set pCallerData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set pCallerData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: u32
@@ -7101,8 +7101,8 @@ export class MAPPING_PROPERTY_BAGView {
   // 0x34: pad4
 
   // 0x38: pointer
-  set pContext(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set pContext(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -7201,7 +7201,7 @@ export interface SCRIPT_ANALYSIS {
   /** u16 */
   _bitfield: number;
   /** Windows.Win32.Globalization.SCRIPT_STATE */
-  s: Uint8Array | Deno.PointerValue | null;
+  s: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofSCRIPT_ANALYSIS = 16;
@@ -7213,7 +7213,7 @@ export function allocSCRIPT_ANALYSIS(data?: Partial<SCRIPT_ANALYSIS>): Uint8Arra
   if (data?._bitfield !== undefined) view.setUint16(0, Number(data._bitfield), true);
   // 0x02: pad6
   // 0x08: pointer
-  if (data?.s !== undefined) view.setBigUint64(8, data.s === null ? 0n : BigInt(util.toPointer(data.s)), true);
+  if (data?.s !== undefined) view.setBigUint64(8, data.s === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.s))), true);
   return buf;
 }
 
@@ -7235,9 +7235,9 @@ export class SCRIPT_ANALYSISView {
   // 0x02: pad6
 
   // 0x08: pointer
-  get s(): Uint8Array | Deno.PointerValue | null {
+  get s(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u16
@@ -7248,8 +7248,8 @@ export class SCRIPT_ANALYSISView {
   // 0x02: pad6
 
   // 0x08: pointer
-  set s(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set s(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -7260,7 +7260,7 @@ export interface SCRIPT_ITEM {
   /** i32 */
   iCharPos: number;
   /** Windows.Win32.Globalization.SCRIPT_ANALYSIS */
-  a: Uint8Array | Deno.PointerValue | null;
+  a: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofSCRIPT_ITEM = 16;
@@ -7272,7 +7272,7 @@ export function allocSCRIPT_ITEM(data?: Partial<SCRIPT_ITEM>): Uint8Array {
   if (data?.iCharPos !== undefined) view.setInt32(0, Number(data.iCharPos), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.a !== undefined) view.setBigUint64(8, data.a === null ? 0n : BigInt(util.toPointer(data.a)), true);
+  if (data?.a !== undefined) view.setBigUint64(8, data.a === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.a))), true);
   return buf;
 }
 
@@ -7294,9 +7294,9 @@ export class SCRIPT_ITEMView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get a(): Uint8Array | Deno.PointerValue | null {
+  get a(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -7307,8 +7307,8 @@ export class SCRIPT_ITEMView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set a(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set a(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -7624,7 +7624,7 @@ export interface SCRIPT_TABDEF {
   /** i32 */
   iScale: number;
   /** ptr */
-  pTabStops: Deno.PointerValue | Uint8Array | null;
+  pTabStops: Deno.PointerValue | Uint8Array;
   /** i32 */
   iTabOrigin: number;
 }
@@ -7639,7 +7639,7 @@ export function allocSCRIPT_TABDEF(data?: Partial<SCRIPT_TABDEF>): Uint8Array {
   // 0x04: i32
   if (data?.iScale !== undefined) view.setInt32(4, Number(data.iScale), true);
   // 0x08: pointer
-  if (data?.pTabStops !== undefined) view.setBigUint64(8, data.pTabStops === null ? 0n : BigInt(util.toPointer(data.pTabStops)), true);
+  if (data?.pTabStops !== undefined) view.setBigUint64(8, data.pTabStops === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pTabStops))), true);
   // 0x10: i32
   if (data?.iTabOrigin !== undefined) view.setInt32(16, Number(data.iTabOrigin), true);
   // 0x14: pad4
@@ -7667,9 +7667,9 @@ export class SCRIPT_TABDEFView {
   }
 
   // 0x08: pointer
-  get pTabStops(): Uint8Array | Deno.PointerValue | null {
+  get pTabStops(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i32
@@ -7690,8 +7690,8 @@ export class SCRIPT_TABDEFView {
   }
 
   // 0x08: pointer
-  set pTabStops(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pTabStops(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: i32
@@ -7832,7 +7832,7 @@ export class OPENTYPE_FEATURE_RECORDView {
  */
 export interface TEXTRANGE_PROPERTIES {
   /** ptr */
-  potfRecords: Deno.PointerValue | Uint8Array | null;
+  potfRecords: Deno.PointerValue | Uint8Array;
   /** i32 */
   cotfRecords: number;
 }
@@ -7843,7 +7843,7 @@ export function allocTEXTRANGE_PROPERTIES(data?: Partial<TEXTRANGE_PROPERTIES>):
   const buf = new Uint8Array(sizeofTEXTRANGE_PROPERTIES);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.potfRecords !== undefined) view.setBigUint64(0, data.potfRecords === null ? 0n : BigInt(util.toPointer(data.potfRecords)), true);
+  if (data?.potfRecords !== undefined) view.setBigUint64(0, data.potfRecords === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.potfRecords))), true);
   // 0x08: i32
   if (data?.cotfRecords !== undefined) view.setInt32(8, Number(data.cotfRecords), true);
   // 0x0c: pad4
@@ -7861,9 +7861,9 @@ export class TEXTRANGE_PROPERTIESView {
   }
 
   // 0x00: pointer
-  get potfRecords(): Uint8Array | Deno.PointerValue | null {
+  get potfRecords(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: i32
@@ -7874,8 +7874,8 @@ export class TEXTRANGE_PROPERTIESView {
   // 0x0c: pad4
 
   // 0x00: pointer
-  set potfRecords(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set potfRecords(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: i32
@@ -7935,7 +7935,7 @@ export class SCRIPT_CHARPROPView {
  */
 export interface SCRIPT_GLYPHPROP {
   /** Windows.Win32.Globalization.SCRIPT_VISATTR */
-  sva: Uint8Array | Deno.PointerValue | null;
+  sva: Uint8Array | Deno.PointerValue;
   /** u16 */
   reserved: number;
 }
@@ -7946,7 +7946,7 @@ export function allocSCRIPT_GLYPHPROP(data?: Partial<SCRIPT_GLYPHPROP>): Uint8Ar
   const buf = new Uint8Array(sizeofSCRIPT_GLYPHPROP);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.sva !== undefined) view.setBigUint64(0, data.sva === null ? 0n : BigInt(util.toPointer(data.sva)), true);
+  if (data?.sva !== undefined) view.setBigUint64(0, data.sva === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.sva))), true);
   // 0x08: u16
   if (data?.reserved !== undefined) view.setUint16(8, Number(data.reserved), true);
   // 0x0a: pad6
@@ -7964,9 +7964,9 @@ export class SCRIPT_GLYPHPROPView {
   }
 
   // 0x00: pointer
-  get sva(): Uint8Array | Deno.PointerValue | null {
+  get sva(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u16
@@ -7977,8 +7977,8 @@ export class SCRIPT_GLYPHPROPView {
   // 0x0a: pad6
 
   // 0x00: pointer
-  set sva(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set sva(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u16
@@ -8175,7 +8175,7 @@ export class UFieldPositionView {
  */
 export interface UCharIterator {
   /** ptr */
-  context: Deno.PointerValue | Uint8Array | null;
+  context: Deno.PointerValue | Uint8Array;
   /** i32 */
   length: number;
   /** i32 */
@@ -8187,25 +8187,25 @@ export interface UCharIterator {
   /** i32 */
   reservedField: number;
   /** Windows.Win32.Globalization.UCharIteratorGetIndex */
-  getIndex: Uint8Array | Deno.PointerValue | null;
+  getIndex: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Globalization.UCharIteratorMove */
-  move: Uint8Array | Deno.PointerValue | null;
+  move: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Globalization.UCharIteratorHasNext */
-  hasNext: Uint8Array | Deno.PointerValue | null;
+  hasNext: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Globalization.UCharIteratorHasPrevious */
-  hasPrevious: Uint8Array | Deno.PointerValue | null;
+  hasPrevious: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Globalization.UCharIteratorCurrent */
-  current: Uint8Array | Deno.PointerValue | null;
+  current: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Globalization.UCharIteratorNext */
-  next: Uint8Array | Deno.PointerValue | null;
+  next: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Globalization.UCharIteratorPrevious */
-  previous: Uint8Array | Deno.PointerValue | null;
+  previous: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Globalization.UCharIteratorReserved */
-  reservedFn: Uint8Array | Deno.PointerValue | null;
+  reservedFn: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Globalization.UCharIteratorGetState */
-  getState: Uint8Array | Deno.PointerValue | null;
+  getState: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Globalization.UCharIteratorSetState */
-  setState: Uint8Array | Deno.PointerValue | null;
+  setState: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofUCharIterator = 112;
@@ -8214,7 +8214,7 @@ export function allocUCharIterator(data?: Partial<UCharIterator>): Uint8Array {
   const buf = new Uint8Array(sizeofUCharIterator);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.context !== undefined) view.setBigUint64(0, data.context === null ? 0n : BigInt(util.toPointer(data.context)), true);
+  if (data?.context !== undefined) view.setBigUint64(0, data.context === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.context))), true);
   // 0x08: i32
   if (data?.length !== undefined) view.setInt32(8, Number(data.length), true);
   // 0x0c: i32
@@ -8227,25 +8227,25 @@ export function allocUCharIterator(data?: Partial<UCharIterator>): Uint8Array {
   if (data?.reservedField !== undefined) view.setInt32(24, Number(data.reservedField), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.getIndex !== undefined) view.setBigUint64(32, data.getIndex === null ? 0n : BigInt(util.toPointer(data.getIndex)), true);
+  if (data?.getIndex !== undefined) view.setBigUint64(32, data.getIndex === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.getIndex))), true);
   // 0x28: pointer
-  if (data?.move !== undefined) view.setBigUint64(40, data.move === null ? 0n : BigInt(util.toPointer(data.move)), true);
+  if (data?.move !== undefined) view.setBigUint64(40, data.move === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.move))), true);
   // 0x30: pointer
-  if (data?.hasNext !== undefined) view.setBigUint64(48, data.hasNext === null ? 0n : BigInt(util.toPointer(data.hasNext)), true);
+  if (data?.hasNext !== undefined) view.setBigUint64(48, data.hasNext === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hasNext))), true);
   // 0x38: pointer
-  if (data?.hasPrevious !== undefined) view.setBigUint64(56, data.hasPrevious === null ? 0n : BigInt(util.toPointer(data.hasPrevious)), true);
+  if (data?.hasPrevious !== undefined) view.setBigUint64(56, data.hasPrevious === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hasPrevious))), true);
   // 0x40: pointer
-  if (data?.current !== undefined) view.setBigUint64(64, data.current === null ? 0n : BigInt(util.toPointer(data.current)), true);
+  if (data?.current !== undefined) view.setBigUint64(64, data.current === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.current))), true);
   // 0x48: pointer
-  if (data?.next !== undefined) view.setBigUint64(72, data.next === null ? 0n : BigInt(util.toPointer(data.next)), true);
+  if (data?.next !== undefined) view.setBigUint64(72, data.next === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.next))), true);
   // 0x50: pointer
-  if (data?.previous !== undefined) view.setBigUint64(80, data.previous === null ? 0n : BigInt(util.toPointer(data.previous)), true);
+  if (data?.previous !== undefined) view.setBigUint64(80, data.previous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.previous))), true);
   // 0x58: pointer
-  if (data?.reservedFn !== undefined) view.setBigUint64(88, data.reservedFn === null ? 0n : BigInt(util.toPointer(data.reservedFn)), true);
+  if (data?.reservedFn !== undefined) view.setBigUint64(88, data.reservedFn === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.reservedFn))), true);
   // 0x60: pointer
-  if (data?.getState !== undefined) view.setBigUint64(96, data.getState === null ? 0n : BigInt(util.toPointer(data.getState)), true);
+  if (data?.getState !== undefined) view.setBigUint64(96, data.getState === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.getState))), true);
   // 0x68: pointer
-  if (data?.setState !== undefined) view.setBigUint64(104, data.setState === null ? 0n : BigInt(util.toPointer(data.setState)), true);
+  if (data?.setState !== undefined) view.setBigUint64(104, data.setState === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.setState))), true);
   return buf;
 }
 
@@ -8260,9 +8260,9 @@ export class UCharIteratorView {
   }
 
   // 0x00: pointer
-  get context(): Uint8Array | Deno.PointerValue | null {
+  get context(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: i32
@@ -8293,68 +8293,68 @@ export class UCharIteratorView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get getIndex(): Uint8Array | Deno.PointerValue | null {
+  get getIndex(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get move(): Uint8Array | Deno.PointerValue | null {
+  get move(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get hasNext(): Uint8Array | Deno.PointerValue | null {
+  get hasNext(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get hasPrevious(): Uint8Array | Deno.PointerValue | null {
+  get hasPrevious(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get current(): Uint8Array | Deno.PointerValue | null {
+  get current(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: pointer
-  get next(): Uint8Array | Deno.PointerValue | null {
+  get next(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: pointer
-  get previous(): Uint8Array | Deno.PointerValue | null {
+  get previous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x58: pointer
-  get reservedFn(): Uint8Array | Deno.PointerValue | null {
+  get reservedFn(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x60: pointer
-  get getState(): Uint8Array | Deno.PointerValue | null {
+  get getState(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(96, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x68: pointer
-  get setState(): Uint8Array | Deno.PointerValue | null {
+  get setState(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(104, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set context(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set context(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: i32
@@ -8385,53 +8385,53 @@ export class UCharIteratorView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set getIndex(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set getIndex(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set move(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set move(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set hasNext(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set hasNext(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set hasPrevious(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set hasPrevious(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set current(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set current(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: pointer
-  set next(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set next(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x50: pointer
-  set previous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set previous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x58: pointer
-  set reservedFn(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  set reservedFn(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x60: pointer
-  set getState(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(96, BigInt(util.toPointer(value)), true);
+  set getState(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(96, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x68: pointer
-  set setState(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(104, BigInt(util.toPointer(value)), true);
+  set setState(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(104, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -8440,13 +8440,13 @@ export class UCharIteratorView {
  */
 export interface UCPTrieData {
   /** ptr */
-  ptr0: Deno.PointerValue | Uint8Array | null;
+  ptr0: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ptr16: Deno.PointerValue | Uint8Array | null;
+  ptr16: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ptr32: Deno.PointerValue | Uint8Array | null;
+  ptr32: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ptr8: Deno.PointerValue | Uint8Array | null;
+  ptr8: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofUCPTrieData = 32;
@@ -8455,13 +8455,13 @@ export function allocUCPTrieData(data?: Partial<UCPTrieData>): Uint8Array {
   const buf = new Uint8Array(sizeofUCPTrieData);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ptr0 !== undefined) view.setBigUint64(0, data.ptr0 === null ? 0n : BigInt(util.toPointer(data.ptr0)), true);
+  if (data?.ptr0 !== undefined) view.setBigUint64(0, data.ptr0 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ptr0))), true);
   // 0x08: pointer
-  if (data?.ptr16 !== undefined) view.setBigUint64(8, data.ptr16 === null ? 0n : BigInt(util.toPointer(data.ptr16)), true);
+  if (data?.ptr16 !== undefined) view.setBigUint64(8, data.ptr16 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ptr16))), true);
   // 0x10: pointer
-  if (data?.ptr32 !== undefined) view.setBigUint64(16, data.ptr32 === null ? 0n : BigInt(util.toPointer(data.ptr32)), true);
+  if (data?.ptr32 !== undefined) view.setBigUint64(16, data.ptr32 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ptr32))), true);
   // 0x18: pointer
-  if (data?.ptr8 !== undefined) view.setBigUint64(24, data.ptr8 === null ? 0n : BigInt(util.toPointer(data.ptr8)), true);
+  if (data?.ptr8 !== undefined) view.setBigUint64(24, data.ptr8 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ptr8))), true);
   return buf;
 }
 
@@ -8476,47 +8476,47 @@ export class UCPTrieDataView {
   }
 
   // 0x00: pointer
-  get ptr0(): Uint8Array | Deno.PointerValue | null {
+  get ptr0(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get ptr16(): Uint8Array | Deno.PointerValue | null {
+  get ptr16(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ptr32(): Uint8Array | Deno.PointerValue | null {
+  get ptr32(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get ptr8(): Uint8Array | Deno.PointerValue | null {
+  get ptr8(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ptr0(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ptr0(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set ptr16(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ptr16(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ptr32(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ptr32(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set ptr8(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set ptr8(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -8525,9 +8525,9 @@ export class UCPTrieDataView {
  */
 export interface UCPTrie {
   /** ptr */
-  index: Deno.PointerValue | Uint8Array | null;
+  index: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Globalization.UCPTrieData */
-  data: Uint8Array | Deno.PointerValue | null;
+  data: Uint8Array | Deno.PointerValue;
   /** i32 */
   indexLength: number;
   /** i32 */
@@ -8558,9 +8558,9 @@ export function allocUCPTrie(data?: Partial<UCPTrie>): Uint8Array {
   const buf = new Uint8Array(sizeofUCPTrie);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.index !== undefined) view.setBigUint64(0, data.index === null ? 0n : BigInt(util.toPointer(data.index)), true);
+  if (data?.index !== undefined) view.setBigUint64(0, data.index === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.index))), true);
   // 0x08: pointer
-  if (data?.data !== undefined) view.setBigUint64(8, data.data === null ? 0n : BigInt(util.toPointer(data.data)), true);
+  if (data?.data !== undefined) view.setBigUint64(8, data.data === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.data))), true);
   // 0x10: i32
   if (data?.indexLength !== undefined) view.setInt32(16, Number(data.indexLength), true);
   // 0x14: i32
@@ -8597,15 +8597,15 @@ export class UCPTrieView {
   }
 
   // 0x00: pointer
-  get index(): Uint8Array | Deno.PointerValue | null {
+  get index(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get data(): Uint8Array | Deno.PointerValue | null {
+  get data(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i32
@@ -8664,13 +8664,13 @@ export class UCPTrieView {
   }
 
   // 0x00: pointer
-  set index(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set index(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set data(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set data(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: i32
@@ -8738,17 +8738,17 @@ export interface UConverterFromUnicodeArgs {
   /** i8 */
   flush: number;
   /** ptr */
-  converter: Deno.PointerValue | Uint8Array | null;
+  converter: Deno.PointerValue | Uint8Array;
   /** ptr */
-  source: Deno.PointerValue | Uint8Array | null;
+  source: Deno.PointerValue | Uint8Array;
   /** ptr */
-  sourceLimit: Deno.PointerValue | Uint8Array | null;
+  sourceLimit: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
   target: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
   targetLimit: string | null | Uint8Array;
   /** ptr */
-  offsets: Deno.PointerValue | Uint8Array | null;
+  offsets: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofUConverterFromUnicodeArgs = 56;
@@ -8762,23 +8762,23 @@ export function allocUConverterFromUnicodeArgs(data?: Partial<UConverterFromUnic
   if (data?.flush !== undefined) view.setInt8(2, Number(data.flush));
   // 0x03: pad5
   // 0x08: pointer
-  if (data?.converter !== undefined) view.setBigUint64(8, data.converter === null ? 0n : BigInt(util.toPointer(data.converter)), true);
+  if (data?.converter !== undefined) view.setBigUint64(8, data.converter === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.converter))), true);
   // 0x10: pointer
-  if (data?.source !== undefined) view.setBigUint64(16, data.source === null ? 0n : BigInt(util.toPointer(data.source)), true);
+  if (data?.source !== undefined) view.setBigUint64(16, data.source === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.source))), true);
   // 0x18: pointer
-  if (data?.sourceLimit !== undefined) view.setBigUint64(24, data.sourceLimit === null ? 0n : BigInt(util.toPointer(data.sourceLimit)), true);
+  if (data?.sourceLimit !== undefined) view.setBigUint64(24, data.sourceLimit === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.sourceLimit))), true);
   // 0x20: buffer
   if (data?.target !== undefined) {
     (buf as any)._f32 = util.pstrToFfi(data.target);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f32))), true);
   }
   // 0x28: buffer
   if (data?.targetLimit !== undefined) {
     (buf as any)._f40 = util.pstrToFfi(data.targetLimit);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f40))), true);
   }
   // 0x30: pointer
-  if (data?.offsets !== undefined) view.setBigUint64(48, data.offsets === null ? 0n : BigInt(util.toPointer(data.offsets)), true);
+  if (data?.offsets !== undefined) view.setBigUint64(48, data.offsets === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.offsets))), true);
   return buf;
 }
 
@@ -8805,39 +8805,39 @@ export class UConverterFromUnicodeArgsView {
   // 0x03: pad5
 
   // 0x08: pointer
-  get converter(): Uint8Array | Deno.PointerValue | null {
+  get converter(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get source(): Uint8Array | Deno.PointerValue | null {
+  get source(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get sourceLimit(): Uint8Array | Deno.PointerValue | null {
+  get sourceLimit(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: buffer
-  get target(): Uint8Array | Deno.PointerValue | null {
+  get target(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: buffer
-  get targetLimit(): Uint8Array | Deno.PointerValue | null {
+  get targetLimit(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get offsets(): Uint8Array | Deno.PointerValue | null {
+  get offsets(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u16
@@ -8853,35 +8853,35 @@ export class UConverterFromUnicodeArgsView {
   // 0x03: pad5
 
   // 0x08: pointer
-  set converter(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set converter(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set source(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set source(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set sourceLimit(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set sourceLimit(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: buffer
-  set target(value: Uint8Array | Deno.PointerValue | null) {
+  set target(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f32))), true);
   }
 
   // 0x28: buffer
-  set targetLimit(value: Uint8Array | Deno.PointerValue | null) {
+  set targetLimit(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f40))), true);
   }
 
   // 0x30: pointer
-  set offsets(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set offsets(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -8894,17 +8894,17 @@ export interface UConverterToUnicodeArgs {
   /** i8 */
   flush: number;
   /** ptr */
-  converter: Deno.PointerValue | Uint8Array | null;
+  converter: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
   source: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
   sourceLimit: string | null | Uint8Array;
   /** ptr */
-  target: Deno.PointerValue | Uint8Array | null;
+  target: Deno.PointerValue | Uint8Array;
   /** ptr */
-  targetLimit: Deno.PointerValue | Uint8Array | null;
+  targetLimit: Deno.PointerValue | Uint8Array;
   /** ptr */
-  offsets: Deno.PointerValue | Uint8Array | null;
+  offsets: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofUConverterToUnicodeArgs = 56;
@@ -8918,23 +8918,23 @@ export function allocUConverterToUnicodeArgs(data?: Partial<UConverterToUnicodeA
   if (data?.flush !== undefined) view.setInt8(2, Number(data.flush));
   // 0x03: pad5
   // 0x08: pointer
-  if (data?.converter !== undefined) view.setBigUint64(8, data.converter === null ? 0n : BigInt(util.toPointer(data.converter)), true);
+  if (data?.converter !== undefined) view.setBigUint64(8, data.converter === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.converter))), true);
   // 0x10: buffer
   if (data?.source !== undefined) {
     (buf as any)._f16 = util.pstrToFfi(data.source);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.sourceLimit !== undefined) {
     (buf as any)._f24 = util.pstrToFfi(data.sourceLimit);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: pointer
-  if (data?.target !== undefined) view.setBigUint64(32, data.target === null ? 0n : BigInt(util.toPointer(data.target)), true);
+  if (data?.target !== undefined) view.setBigUint64(32, data.target === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.target))), true);
   // 0x28: pointer
-  if (data?.targetLimit !== undefined) view.setBigUint64(40, data.targetLimit === null ? 0n : BigInt(util.toPointer(data.targetLimit)), true);
+  if (data?.targetLimit !== undefined) view.setBigUint64(40, data.targetLimit === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.targetLimit))), true);
   // 0x30: pointer
-  if (data?.offsets !== undefined) view.setBigUint64(48, data.offsets === null ? 0n : BigInt(util.toPointer(data.offsets)), true);
+  if (data?.offsets !== undefined) view.setBigUint64(48, data.offsets === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.offsets))), true);
   return buf;
 }
 
@@ -8961,39 +8961,39 @@ export class UConverterToUnicodeArgsView {
   // 0x03: pad5
 
   // 0x08: pointer
-  get converter(): Uint8Array | Deno.PointerValue | null {
+  get converter(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get source(): Uint8Array | Deno.PointerValue | null {
+  get source(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get sourceLimit(): Uint8Array | Deno.PointerValue | null {
+  get sourceLimit(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get target(): Uint8Array | Deno.PointerValue | null {
+  get target(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get targetLimit(): Uint8Array | Deno.PointerValue | null {
+  get targetLimit(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get offsets(): Uint8Array | Deno.PointerValue | null {
+  get offsets(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u16
@@ -9009,35 +9009,35 @@ export class UConverterToUnicodeArgsView {
   // 0x03: pad5
 
   // 0x08: pointer
-  set converter(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set converter(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: buffer
-  set source(value: Uint8Array | Deno.PointerValue | null) {
+  set source(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set sourceLimit(value: Uint8Array | Deno.PointerValue | null) {
+  set sourceLimit(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: pointer
-  set target(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set target(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set targetLimit(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set targetLimit(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set offsets(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set offsets(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -9054,29 +9054,29 @@ export interface UTextFuncs {
   /** i32 */
   reserved3: number;
   /** Windows.Win32.Globalization.UTextClone */
-  clone: Uint8Array | Deno.PointerValue | null;
+  clone: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Globalization.UTextNativeLength */
-  nativeLength: Uint8Array | Deno.PointerValue | null;
+  nativeLength: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Globalization.UTextAccess */
-  access: Uint8Array | Deno.PointerValue | null;
+  access: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Globalization.UTextExtract */
-  extract: Uint8Array | Deno.PointerValue | null;
+  extract: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Globalization.UTextReplace */
-  replace: Uint8Array | Deno.PointerValue | null;
+  replace: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Globalization.UTextCopy */
-  copy: Uint8Array | Deno.PointerValue | null;
+  copy: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Globalization.UTextMapOffsetToNative */
-  mapOffsetToNative: Uint8Array | Deno.PointerValue | null;
+  mapOffsetToNative: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Globalization.UTextMapNativeIndexToUTF16 */
-  mapNativeIndexToUTF16: Uint8Array | Deno.PointerValue | null;
+  mapNativeIndexToUTF16: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Globalization.UTextClose */
-  close: Uint8Array | Deno.PointerValue | null;
+  close: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Globalization.UTextClose */
-  spare1: Uint8Array | Deno.PointerValue | null;
+  spare1: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Globalization.UTextClose */
-  spare2: Uint8Array | Deno.PointerValue | null;
+  spare2: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Globalization.UTextClose */
-  spare3: Uint8Array | Deno.PointerValue | null;
+  spare3: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofUTextFuncs = 112;
@@ -9093,29 +9093,29 @@ export function allocUTextFuncs(data?: Partial<UTextFuncs>): Uint8Array {
   // 0x0c: i32
   if (data?.reserved3 !== undefined) view.setInt32(12, Number(data.reserved3), true);
   // 0x10: pointer
-  if (data?.clone !== undefined) view.setBigUint64(16, data.clone === null ? 0n : BigInt(util.toPointer(data.clone)), true);
+  if (data?.clone !== undefined) view.setBigUint64(16, data.clone === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.clone))), true);
   // 0x18: pointer
-  if (data?.nativeLength !== undefined) view.setBigUint64(24, data.nativeLength === null ? 0n : BigInt(util.toPointer(data.nativeLength)), true);
+  if (data?.nativeLength !== undefined) view.setBigUint64(24, data.nativeLength === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.nativeLength))), true);
   // 0x20: pointer
-  if (data?.access !== undefined) view.setBigUint64(32, data.access === null ? 0n : BigInt(util.toPointer(data.access)), true);
+  if (data?.access !== undefined) view.setBigUint64(32, data.access === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.access))), true);
   // 0x28: pointer
-  if (data?.extract !== undefined) view.setBigUint64(40, data.extract === null ? 0n : BigInt(util.toPointer(data.extract)), true);
+  if (data?.extract !== undefined) view.setBigUint64(40, data.extract === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.extract))), true);
   // 0x30: pointer
-  if (data?.replace !== undefined) view.setBigUint64(48, data.replace === null ? 0n : BigInt(util.toPointer(data.replace)), true);
+  if (data?.replace !== undefined) view.setBigUint64(48, data.replace === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.replace))), true);
   // 0x38: pointer
-  if (data?.copy !== undefined) view.setBigUint64(56, data.copy === null ? 0n : BigInt(util.toPointer(data.copy)), true);
+  if (data?.copy !== undefined) view.setBigUint64(56, data.copy === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.copy))), true);
   // 0x40: pointer
-  if (data?.mapOffsetToNative !== undefined) view.setBigUint64(64, data.mapOffsetToNative === null ? 0n : BigInt(util.toPointer(data.mapOffsetToNative)), true);
+  if (data?.mapOffsetToNative !== undefined) view.setBigUint64(64, data.mapOffsetToNative === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.mapOffsetToNative))), true);
   // 0x48: pointer
-  if (data?.mapNativeIndexToUTF16 !== undefined) view.setBigUint64(72, data.mapNativeIndexToUTF16 === null ? 0n : BigInt(util.toPointer(data.mapNativeIndexToUTF16)), true);
+  if (data?.mapNativeIndexToUTF16 !== undefined) view.setBigUint64(72, data.mapNativeIndexToUTF16 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.mapNativeIndexToUTF16))), true);
   // 0x50: pointer
-  if (data?.close !== undefined) view.setBigUint64(80, data.close === null ? 0n : BigInt(util.toPointer(data.close)), true);
+  if (data?.close !== undefined) view.setBigUint64(80, data.close === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.close))), true);
   // 0x58: pointer
-  if (data?.spare1 !== undefined) view.setBigUint64(88, data.spare1 === null ? 0n : BigInt(util.toPointer(data.spare1)), true);
+  if (data?.spare1 !== undefined) view.setBigUint64(88, data.spare1 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.spare1))), true);
   // 0x60: pointer
-  if (data?.spare2 !== undefined) view.setBigUint64(96, data.spare2 === null ? 0n : BigInt(util.toPointer(data.spare2)), true);
+  if (data?.spare2 !== undefined) view.setBigUint64(96, data.spare2 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.spare2))), true);
   // 0x68: pointer
-  if (data?.spare3 !== undefined) view.setBigUint64(104, data.spare3 === null ? 0n : BigInt(util.toPointer(data.spare3)), true);
+  if (data?.spare3 !== undefined) view.setBigUint64(104, data.spare3 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.spare3))), true);
   return buf;
 }
 
@@ -9150,75 +9150,75 @@ export class UTextFuncsView {
   }
 
   // 0x10: pointer
-  get clone(): Uint8Array | Deno.PointerValue | null {
+  get clone(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get nativeLength(): Uint8Array | Deno.PointerValue | null {
+  get nativeLength(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get access(): Uint8Array | Deno.PointerValue | null {
+  get access(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get extract(): Uint8Array | Deno.PointerValue | null {
+  get extract(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get replace(): Uint8Array | Deno.PointerValue | null {
+  get replace(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get copy(): Uint8Array | Deno.PointerValue | null {
+  get copy(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get mapOffsetToNative(): Uint8Array | Deno.PointerValue | null {
+  get mapOffsetToNative(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: pointer
-  get mapNativeIndexToUTF16(): Uint8Array | Deno.PointerValue | null {
+  get mapNativeIndexToUTF16(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: pointer
-  get close(): Uint8Array | Deno.PointerValue | null {
+  get close(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x58: pointer
-  get spare1(): Uint8Array | Deno.PointerValue | null {
+  get spare1(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x60: pointer
-  get spare2(): Uint8Array | Deno.PointerValue | null {
+  get spare2(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(96, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x68: pointer
-  get spare3(): Uint8Array | Deno.PointerValue | null {
+  get spare3(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(104, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -9242,63 +9242,63 @@ export class UTextFuncsView {
   }
 
   // 0x10: pointer
-  set clone(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set clone(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set nativeLength(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set nativeLength(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set access(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set access(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set extract(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set extract(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set replace(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set replace(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set copy(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set copy(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set mapOffsetToNative(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set mapOffsetToNative(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: pointer
-  set mapNativeIndexToUTF16(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set mapNativeIndexToUTF16(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x50: pointer
-  set close(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set close(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x58: pointer
-  set spare1(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  set spare1(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x60: pointer
-  set spare2(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(96, BigInt(util.toPointer(value)), true);
+  set spare2(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(96, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x68: pointer
-  set spare3(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(104, BigInt(util.toPointer(value)), true);
+  set spare3(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(104, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -9327,21 +9327,21 @@ export interface UText {
   /** i32 */
   chunkLength: number;
   /** ptr */
-  chunkContents: Deno.PointerValue | Uint8Array | null;
+  chunkContents: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pFuncs: Deno.PointerValue | Uint8Array | null;
+  pFuncs: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pExtra: Deno.PointerValue | Uint8Array | null;
+  pExtra: Deno.PointerValue | Uint8Array;
   /** ptr */
-  context: Deno.PointerValue | Uint8Array | null;
+  context: Deno.PointerValue | Uint8Array;
   /** ptr */
-  p: Deno.PointerValue | Uint8Array | null;
+  p: Deno.PointerValue | Uint8Array;
   /** ptr */
-  q: Deno.PointerValue | Uint8Array | null;
+  q: Deno.PointerValue | Uint8Array;
   /** ptr */
-  r: Deno.PointerValue | Uint8Array | null;
+  r: Deno.PointerValue | Uint8Array;
   /** ptr */
-  privP: Deno.PointerValue | Uint8Array | null;
+  privP: Deno.PointerValue | Uint8Array;
   /** i64 */
   a: Deno.PointerValue;
   /** i32 */
@@ -9382,21 +9382,21 @@ export function allocUText(data?: Partial<UText>): Uint8Array {
   // 0x2c: i32
   if (data?.chunkLength !== undefined) view.setInt32(44, Number(data.chunkLength), true);
   // 0x30: pointer
-  if (data?.chunkContents !== undefined) view.setBigUint64(48, data.chunkContents === null ? 0n : BigInt(util.toPointer(data.chunkContents)), true);
+  if (data?.chunkContents !== undefined) view.setBigUint64(48, data.chunkContents === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.chunkContents))), true);
   // 0x38: pointer
-  if (data?.pFuncs !== undefined) view.setBigUint64(56, data.pFuncs === null ? 0n : BigInt(util.toPointer(data.pFuncs)), true);
+  if (data?.pFuncs !== undefined) view.setBigUint64(56, data.pFuncs === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pFuncs))), true);
   // 0x40: pointer
-  if (data?.pExtra !== undefined) view.setBigUint64(64, data.pExtra === null ? 0n : BigInt(util.toPointer(data.pExtra)), true);
+  if (data?.pExtra !== undefined) view.setBigUint64(64, data.pExtra === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pExtra))), true);
   // 0x48: pointer
-  if (data?.context !== undefined) view.setBigUint64(72, data.context === null ? 0n : BigInt(util.toPointer(data.context)), true);
+  if (data?.context !== undefined) view.setBigUint64(72, data.context === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.context))), true);
   // 0x50: pointer
-  if (data?.p !== undefined) view.setBigUint64(80, data.p === null ? 0n : BigInt(util.toPointer(data.p)), true);
+  if (data?.p !== undefined) view.setBigUint64(80, data.p === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.p))), true);
   // 0x58: pointer
-  if (data?.q !== undefined) view.setBigUint64(88, data.q === null ? 0n : BigInt(util.toPointer(data.q)), true);
+  if (data?.q !== undefined) view.setBigUint64(88, data.q === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.q))), true);
   // 0x60: pointer
-  if (data?.r !== undefined) view.setBigUint64(96, data.r === null ? 0n : BigInt(util.toPointer(data.r)), true);
+  if (data?.r !== undefined) view.setBigUint64(96, data.r === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.r))), true);
   // 0x68: pointer
-  if (data?.privP !== undefined) view.setBigUint64(104, data.privP === null ? 0n : BigInt(util.toPointer(data.privP)), true);
+  if (data?.privP !== undefined) view.setBigUint64(104, data.privP === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.privP))), true);
   // 0x70: i64
   if (data?.a !== undefined) view.setBigInt64(112, BigInt(data.a), true);
   // 0x78: i32
@@ -9473,51 +9473,51 @@ export class UTextView {
   }
 
   // 0x30: pointer
-  get chunkContents(): Uint8Array | Deno.PointerValue | null {
+  get chunkContents(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get pFuncs(): Uint8Array | Deno.PointerValue | null {
+  get pFuncs(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get pExtra(): Uint8Array | Deno.PointerValue | null {
+  get pExtra(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: pointer
-  get context(): Uint8Array | Deno.PointerValue | null {
+  get context(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: pointer
-  get p(): Uint8Array | Deno.PointerValue | null {
+  get p(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x58: pointer
-  get q(): Uint8Array | Deno.PointerValue | null {
+  get q(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x60: pointer
-  get r(): Uint8Array | Deno.PointerValue | null {
+  get r(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(96, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x68: pointer
-  get privP(): Uint8Array | Deno.PointerValue | null {
+  get privP(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(104, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x70: i64
@@ -9601,43 +9601,43 @@ export class UTextView {
   }
 
   // 0x30: pointer
-  set chunkContents(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set chunkContents(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set pFuncs(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set pFuncs(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set pExtra(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set pExtra(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: pointer
-  set context(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set context(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x50: pointer
-  set p(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set p(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x58: pointer
-  set q(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  set q(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x60: pointer
-  set r(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(96, BigInt(util.toPointer(value)), true);
+  set r(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(96, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x68: pointer
-  set privP(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(104, BigInt(util.toPointer(value)), true);
+  set privP(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(104, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x70: i64
@@ -9676,13 +9676,13 @@ export class UTextView {
  */
 export interface USerializedSet {
   /** ptr */
-  array: Deno.PointerValue | Uint8Array | null;
+  array: Deno.PointerValue | Uint8Array;
   /** i32 */
   bmpLength: number;
   /** i32 */
   length: number;
   /** array */
-  staticArray: Deno.PointerValue | null;
+  staticArray: Deno.PointerValue;
 }
 
 export const sizeofUSerializedSet = 24;
@@ -9691,13 +9691,13 @@ export function allocUSerializedSet(data?: Partial<USerializedSet>): Uint8Array 
   const buf = new Uint8Array(sizeofUSerializedSet);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.array !== undefined) view.setBigUint64(0, data.array === null ? 0n : BigInt(util.toPointer(data.array)), true);
+  if (data?.array !== undefined) view.setBigUint64(0, data.array === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.array))), true);
   // 0x08: i32
   if (data?.bmpLength !== undefined) view.setInt32(8, Number(data.bmpLength), true);
   // 0x0c: i32
   if (data?.length !== undefined) view.setInt32(12, Number(data.length), true);
   // 0x10: pointer
-  if (data?.staticArray !== undefined) view.setBigUint64(16, data.staticArray === null ? 0n : BigInt(util.toPointer(data.staticArray)), true);
+  if (data?.staticArray !== undefined) view.setBigUint64(16, data.staticArray === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.staticArray))), true);
   return buf;
 }
 
@@ -9712,9 +9712,9 @@ export class USerializedSetView {
   }
 
   // 0x00: pointer
-  get array(): Uint8Array | Deno.PointerValue | null {
+  get array(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: i32
@@ -9728,14 +9728,14 @@ export class USerializedSetView {
   }
 
   // 0x10: pointer
-  get staticArray(): Uint8Array | Deno.PointerValue | null {
+  get staticArray(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set array(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set array(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: i32
@@ -9749,8 +9749,8 @@ export class USerializedSetView {
   }
 
   // 0x10: pointer
-  set staticArray(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set staticArray(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -9763,9 +9763,9 @@ export interface UParseError {
   /** i32 */
   offset: number;
   /** array */
-  preContext: Deno.PointerValue | null;
+  preContext: Deno.PointerValue;
   /** array */
-  postContext: Deno.PointerValue | null;
+  postContext: Deno.PointerValue;
 }
 
 export const sizeofUParseError = 24;
@@ -9778,9 +9778,9 @@ export function allocUParseError(data?: Partial<UParseError>): Uint8Array {
   // 0x04: i32
   if (data?.offset !== undefined) view.setInt32(4, Number(data.offset), true);
   // 0x08: pointer
-  if (data?.preContext !== undefined) view.setBigUint64(8, data.preContext === null ? 0n : BigInt(util.toPointer(data.preContext)), true);
+  if (data?.preContext !== undefined) view.setBigUint64(8, data.preContext === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.preContext))), true);
   // 0x10: pointer
-  if (data?.postContext !== undefined) view.setBigUint64(16, data.postContext === null ? 0n : BigInt(util.toPointer(data.postContext)), true);
+  if (data?.postContext !== undefined) view.setBigUint64(16, data.postContext === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.postContext))), true);
   return buf;
 }
 
@@ -9805,15 +9805,15 @@ export class UParseErrorView {
   }
 
   // 0x08: pointer
-  get preContext(): Uint8Array | Deno.PointerValue | null {
+  get preContext(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get postContext(): Uint8Array | Deno.PointerValue | null {
+  get postContext(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -9827,13 +9827,13 @@ export class UParseErrorView {
   }
 
   // 0x08: pointer
-  set preContext(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set preContext(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set postContext(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set postContext(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -10038,17 +10038,17 @@ export interface MIMECPINFO {
   /** u32 */
   uiFamilyCodePage: number;
   /** array */
-  wszDescription: Deno.PointerValue | null;
+  wszDescription: Deno.PointerValue;
   /** array */
-  wszWebCharset: Deno.PointerValue | null;
+  wszWebCharset: Deno.PointerValue;
   /** array */
-  wszHeaderCharset: Deno.PointerValue | null;
+  wszHeaderCharset: Deno.PointerValue;
   /** array */
-  wszBodyCharset: Deno.PointerValue | null;
+  wszBodyCharset: Deno.PointerValue;
   /** array */
-  wszFixedWidthFont: Deno.PointerValue | null;
+  wszFixedWidthFont: Deno.PointerValue;
   /** array */
-  wszProportionalFont: Deno.PointerValue | null;
+  wszProportionalFont: Deno.PointerValue;
   /** u8 */
   bGDICharset: number;
 }
@@ -10066,17 +10066,17 @@ export function allocMIMECPINFO(data?: Partial<MIMECPINFO>): Uint8Array {
   if (data?.uiFamilyCodePage !== undefined) view.setUint32(8, Number(data.uiFamilyCodePage), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.wszDescription !== undefined) view.setBigUint64(16, data.wszDescription === null ? 0n : BigInt(util.toPointer(data.wszDescription)), true);
+  if (data?.wszDescription !== undefined) view.setBigUint64(16, data.wszDescription === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.wszDescription))), true);
   // 0x18: pointer
-  if (data?.wszWebCharset !== undefined) view.setBigUint64(24, data.wszWebCharset === null ? 0n : BigInt(util.toPointer(data.wszWebCharset)), true);
+  if (data?.wszWebCharset !== undefined) view.setBigUint64(24, data.wszWebCharset === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.wszWebCharset))), true);
   // 0x20: pointer
-  if (data?.wszHeaderCharset !== undefined) view.setBigUint64(32, data.wszHeaderCharset === null ? 0n : BigInt(util.toPointer(data.wszHeaderCharset)), true);
+  if (data?.wszHeaderCharset !== undefined) view.setBigUint64(32, data.wszHeaderCharset === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.wszHeaderCharset))), true);
   // 0x28: pointer
-  if (data?.wszBodyCharset !== undefined) view.setBigUint64(40, data.wszBodyCharset === null ? 0n : BigInt(util.toPointer(data.wszBodyCharset)), true);
+  if (data?.wszBodyCharset !== undefined) view.setBigUint64(40, data.wszBodyCharset === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.wszBodyCharset))), true);
   // 0x30: pointer
-  if (data?.wszFixedWidthFont !== undefined) view.setBigUint64(48, data.wszFixedWidthFont === null ? 0n : BigInt(util.toPointer(data.wszFixedWidthFont)), true);
+  if (data?.wszFixedWidthFont !== undefined) view.setBigUint64(48, data.wszFixedWidthFont === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.wszFixedWidthFont))), true);
   // 0x38: pointer
-  if (data?.wszProportionalFont !== undefined) view.setBigUint64(56, data.wszProportionalFont === null ? 0n : BigInt(util.toPointer(data.wszProportionalFont)), true);
+  if (data?.wszProportionalFont !== undefined) view.setBigUint64(56, data.wszProportionalFont === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.wszProportionalFont))), true);
   // 0x40: u8
   if (data?.bGDICharset !== undefined) view.setUint8(64, Number(data.bGDICharset));
   // 0x41: pad7
@@ -10111,39 +10111,39 @@ export class MIMECPINFOView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get wszDescription(): Uint8Array | Deno.PointerValue | null {
+  get wszDescription(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get wszWebCharset(): Uint8Array | Deno.PointerValue | null {
+  get wszWebCharset(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get wszHeaderCharset(): Uint8Array | Deno.PointerValue | null {
+  get wszHeaderCharset(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get wszBodyCharset(): Uint8Array | Deno.PointerValue | null {
+  get wszBodyCharset(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get wszFixedWidthFont(): Uint8Array | Deno.PointerValue | null {
+  get wszFixedWidthFont(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get wszProportionalFont(): Uint8Array | Deno.PointerValue | null {
+  get wszProportionalFont(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: u8
@@ -10171,33 +10171,33 @@ export class MIMECPINFOView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set wszDescription(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set wszDescription(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set wszWebCharset(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set wszWebCharset(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set wszHeaderCharset(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set wszHeaderCharset(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set wszBodyCharset(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set wszBodyCharset(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set wszFixedWidthFont(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set wszFixedWidthFont(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set wszProportionalFont(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set wszProportionalFont(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: u8
@@ -10217,7 +10217,7 @@ export interface MIMECSETINFO {
   /** u32 */
   uiInternetEncoding: number;
   /** array */
-  wszCharset: Deno.PointerValue | null;
+  wszCharset: Deno.PointerValue;
 }
 
 export const sizeofMIMECSETINFO = 16;
@@ -10230,7 +10230,7 @@ export function allocMIMECSETINFO(data?: Partial<MIMECSETINFO>): Uint8Array {
   // 0x04: u32
   if (data?.uiInternetEncoding !== undefined) view.setUint32(4, Number(data.uiInternetEncoding), true);
   // 0x08: pointer
-  if (data?.wszCharset !== undefined) view.setBigUint64(8, data.wszCharset === null ? 0n : BigInt(util.toPointer(data.wszCharset)), true);
+  if (data?.wszCharset !== undefined) view.setBigUint64(8, data.wszCharset === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.wszCharset))), true);
   return buf;
 }
 
@@ -10255,9 +10255,9 @@ export class MIMECSETINFOView {
   }
 
   // 0x08: pointer
-  get wszCharset(): Uint8Array | Deno.PointerValue | null {
+  get wszCharset(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -10271,8 +10271,8 @@ export class MIMECSETINFOView {
   }
 
   // 0x08: pointer
-  set wszCharset(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set wszCharset(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -10283,9 +10283,9 @@ export interface RFC1766INFO {
   /** u32 */
   lcid: number;
   /** array */
-  wszRfc1766: Deno.PointerValue | null;
+  wszRfc1766: Deno.PointerValue;
   /** array */
-  wszLocaleName: Deno.PointerValue | null;
+  wszLocaleName: Deno.PointerValue;
 }
 
 export const sizeofRFC1766INFO = 24;
@@ -10297,9 +10297,9 @@ export function allocRFC1766INFO(data?: Partial<RFC1766INFO>): Uint8Array {
   if (data?.lcid !== undefined) view.setUint32(0, Number(data.lcid), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.wszRfc1766 !== undefined) view.setBigUint64(8, data.wszRfc1766 === null ? 0n : BigInt(util.toPointer(data.wszRfc1766)), true);
+  if (data?.wszRfc1766 !== undefined) view.setBigUint64(8, data.wszRfc1766 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.wszRfc1766))), true);
   // 0x10: pointer
-  if (data?.wszLocaleName !== undefined) view.setBigUint64(16, data.wszLocaleName === null ? 0n : BigInt(util.toPointer(data.wszLocaleName)), true);
+  if (data?.wszLocaleName !== undefined) view.setBigUint64(16, data.wszLocaleName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.wszLocaleName))), true);
   return buf;
 }
 
@@ -10321,15 +10321,15 @@ export class RFC1766INFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get wszRfc1766(): Uint8Array | Deno.PointerValue | null {
+  get wszRfc1766(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get wszLocaleName(): Uint8Array | Deno.PointerValue | null {
+  get wszLocaleName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -10340,13 +10340,13 @@ export class RFC1766INFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set wszRfc1766(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set wszRfc1766(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set wszLocaleName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set wszLocaleName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -10359,11 +10359,11 @@ export interface SCRIPTINFO {
   /** u32 */
   uiCodePage: number;
   /** array */
-  wszDescription: Deno.PointerValue | null;
+  wszDescription: Deno.PointerValue;
   /** array */
-  wszFixedWidthFont: Deno.PointerValue | null;
+  wszFixedWidthFont: Deno.PointerValue;
   /** array */
-  wszProportionalFont: Deno.PointerValue | null;
+  wszProportionalFont: Deno.PointerValue;
 }
 
 export const sizeofSCRIPTINFO = 32;
@@ -10377,11 +10377,11 @@ export function allocSCRIPTINFO(data?: Partial<SCRIPTINFO>): Uint8Array {
   if (data?.uiCodePage !== undefined) view.setUint32(1, Number(data.uiCodePage), true);
   // 0x05: pad3
   // 0x08: pointer
-  if (data?.wszDescription !== undefined) view.setBigUint64(8, data.wszDescription === null ? 0n : BigInt(util.toPointer(data.wszDescription)), true);
+  if (data?.wszDescription !== undefined) view.setBigUint64(8, data.wszDescription === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.wszDescription))), true);
   // 0x10: pointer
-  if (data?.wszFixedWidthFont !== undefined) view.setBigUint64(16, data.wszFixedWidthFont === null ? 0n : BigInt(util.toPointer(data.wszFixedWidthFont)), true);
+  if (data?.wszFixedWidthFont !== undefined) view.setBigUint64(16, data.wszFixedWidthFont === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.wszFixedWidthFont))), true);
   // 0x18: pointer
-  if (data?.wszProportionalFont !== undefined) view.setBigUint64(24, data.wszProportionalFont === null ? 0n : BigInt(util.toPointer(data.wszProportionalFont)), true);
+  if (data?.wszProportionalFont !== undefined) view.setBigUint64(24, data.wszProportionalFont === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.wszProportionalFont))), true);
   return buf;
 }
 
@@ -10408,21 +10408,21 @@ export class SCRIPTINFOView {
   // 0x05: pad3
 
   // 0x08: pointer
-  get wszDescription(): Uint8Array | Deno.PointerValue | null {
+  get wszDescription(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get wszFixedWidthFont(): Uint8Array | Deno.PointerValue | null {
+  get wszFixedWidthFont(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get wszProportionalFont(): Uint8Array | Deno.PointerValue | null {
+  get wszProportionalFont(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u8
@@ -10438,18 +10438,18 @@ export class SCRIPTINFOView {
   // 0x05: pad3
 
   // 0x08: pointer
-  set wszDescription(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set wszDescription(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set wszFixedWidthFont(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set wszFixedWidthFont(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set wszProportionalFont(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set wszProportionalFont(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -10541,7 +10541,7 @@ export interface SCRIPTFONTINFO {
   /** i64 */
   scripts: Deno.PointerValue;
   /** array */
-  wszFont: Deno.PointerValue | null;
+  wszFont: Deno.PointerValue;
 }
 
 export const sizeofSCRIPTFONTINFO = 16;
@@ -10552,7 +10552,7 @@ export function allocSCRIPTFONTINFO(data?: Partial<SCRIPTFONTINFO>): Uint8Array 
   // 0x00: i64
   if (data?.scripts !== undefined) view.setBigInt64(0, BigInt(data.scripts), true);
   // 0x08: pointer
-  if (data?.wszFont !== undefined) view.setBigUint64(8, data.wszFont === null ? 0n : BigInt(util.toPointer(data.wszFont)), true);
+  if (data?.wszFont !== undefined) view.setBigUint64(8, data.wszFont === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.wszFont))), true);
   return buf;
 }
 
@@ -10572,9 +10572,9 @@ export class SCRIPTFONTINFOView {
   }
 
   // 0x08: pointer
-  get wszFont(): Uint8Array | Deno.PointerValue | null {
+  get wszFont(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i64
@@ -10583,8 +10583,8 @@ export class SCRIPTFONTINFOView {
   }
 
   // 0x08: pointer
-  set wszFont(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set wszFont(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -10593,9 +10593,9 @@ export class SCRIPTFONTINFOView {
  */
 export interface UNICODERANGE {
   /** char */
-  wcFrom: Uint8Array | Deno.PointerValue | null;
+  wcFrom: Uint8Array | Deno.PointerValue;
   /** char */
-  wcTo: Uint8Array | Deno.PointerValue | null;
+  wcTo: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofUNICODERANGE = 16;
@@ -10604,9 +10604,9 @@ export function allocUNICODERANGE(data?: Partial<UNICODERANGE>): Uint8Array {
   const buf = new Uint8Array(sizeofUNICODERANGE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.wcFrom !== undefined) view.setBigUint64(0, data.wcFrom === null ? 0n : BigInt(util.toPointer(data.wcFrom)), true);
+  if (data?.wcFrom !== undefined) view.setBigUint64(0, data.wcFrom === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.wcFrom))), true);
   // 0x08: pointer
-  if (data?.wcTo !== undefined) view.setBigUint64(8, data.wcTo === null ? 0n : BigInt(util.toPointer(data.wcTo)), true);
+  if (data?.wcTo !== undefined) view.setBigUint64(8, data.wcTo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.wcTo))), true);
   return buf;
 }
 
@@ -10621,25 +10621,25 @@ export class UNICODERANGEView {
   }
 
   // 0x00: pointer
-  get wcFrom(): Uint8Array | Deno.PointerValue | null {
+  get wcFrom(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get wcTo(): Uint8Array | Deno.PointerValue | null {
+  get wcTo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set wcFrom(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set wcFrom(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set wcTo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set wcTo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -15548,22 +15548,22 @@ try {
 // Symbols
 
 export function GetTextCharset(
-  hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
+  hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
 ): number /* i32 */ {
   return libGDI32_dll.GetTextCharset(util.toPointer(hdc));
 }
 
 export function GetTextCharsetInfo(
-  hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  lpSig: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
+  lpSig: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): number /* i32 */ {
   return libGDI32_dll.GetTextCharsetInfo(util.toPointer(hdc), util.toPointer(lpSig), dwFlags);
 }
 
 export function TranslateCharsetInfo(
-  lpSrc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpCs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpSrc: Deno.PointerValue | Uint8Array /* ptr */,
+  lpCs: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: TRANSLATE_CHARSET_INFO_FLAGS /* Windows.Win32.Globalization.TRANSLATE_CHARSET_INFO_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libGDI32_dll.TranslateCharsetInfo(util.toPointer(lpSrc), util.toPointer(lpCs), dwFlags));
@@ -15572,7 +15572,7 @@ export function TranslateCharsetInfo(
 export function GetDateFormatA(
   Locale: number /* u32 */,
   dwFlags: number /* u32 */,
-  lpDate: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpDate: Deno.PointerValue | Uint8Array /* ptr */,
   lpFormat: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpDateStr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchDate: number /* i32 */,
@@ -15583,7 +15583,7 @@ export function GetDateFormatA(
 export function GetDateFormatW(
   Locale: number /* u32 */,
   dwFlags: number /* u32 */,
-  lpDate: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpDate: Deno.PointerValue | Uint8Array /* ptr */,
   lpFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpDateStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchDate: number /* i32 */,
@@ -15594,7 +15594,7 @@ export function GetDateFormatW(
 export function GetTimeFormatA(
   Locale: number /* u32 */,
   dwFlags: number /* u32 */,
-  lpTime: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpTime: Deno.PointerValue | Uint8Array /* ptr */,
   lpFormat: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpTimeStr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchTime: number /* i32 */,
@@ -15605,7 +15605,7 @@ export function GetTimeFormatA(
 export function GetTimeFormatW(
   Locale: number /* u32 */,
   dwFlags: number /* u32 */,
-  lpTime: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpTime: Deno.PointerValue | Uint8Array /* ptr */,
   lpFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpTimeStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchTime: number /* i32 */,
@@ -15616,7 +15616,7 @@ export function GetTimeFormatW(
 export function GetTimeFormatEx(
   lpLocaleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: TIME_FORMAT_FLAGS /* Windows.Win32.Globalization.TIME_FORMAT_FLAGS */,
-  lpTime: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpTime: Deno.PointerValue | Uint8Array /* ptr */,
   lpFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpTimeStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchTime: number /* i32 */,
@@ -15627,7 +15627,7 @@ export function GetTimeFormatEx(
 export function GetDateFormatEx(
   lpLocaleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: ENUM_DATE_FORMATS_FLAGS /* Windows.Win32.Globalization.ENUM_DATE_FORMATS_FLAGS */,
-  lpDate: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpDate: Deno.PointerValue | Uint8Array /* ptr */,
   lpFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpDateStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchDate: number /* i32 */,
@@ -15639,7 +15639,7 @@ export function GetDateFormatEx(
 export function GetDurationFormatEx(
   lpLocaleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
-  lpDuration: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpDuration: Deno.PointerValue | Uint8Array /* ptr */,
   ullDuration: Deno.PointerValue /* u64 */,
   lpFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpDurationStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
@@ -15655,9 +15655,9 @@ export function CompareStringEx(
   cchCount1: number /* i32 */,
   lpString2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchCount2: number /* i32 */,
-  lpVersionInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
+  lpVersionInformation: Deno.PointerValue | Uint8Array /* ptr */,
+  lpReserved: Deno.PointerValue | Uint8Array /* ptr */,
+  lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): number /* i32 */ {
   return libKERNEL32_dll.CompareStringEx(util.pwstrToFfi(lpLocaleName), dwCmpFlags, util.pwstrToFfi(lpString1), cchCount1, util.pwstrToFfi(lpString2), cchCount2, util.toPointer(lpVersionInformation), util.toPointer(lpReserved), util.toPointer(lParam));
 }
@@ -15698,7 +15698,7 @@ export function GetStringTypeExW(
   dwInfoType: number /* u32 */,
   lpSrcStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchSrc: number /* i32 */,
-  lpCharType: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpCharType: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetStringTypeExW(Locale, dwInfoType, util.pwstrToFfi(lpSrcStr), cchSrc, util.toPointer(lpCharType)));
 }
@@ -15707,7 +15707,7 @@ export function GetStringTypeW(
   dwInfoType: number /* u32 */,
   lpSrcStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchSrc: number /* i32 */,
-  lpCharType: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpCharType: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetStringTypeW(dwInfoType, util.pwstrToFfi(lpSrcStr), cchSrc, util.toPointer(lpCharType)));
 }
@@ -15731,7 +15731,7 @@ export function WideCharToMultiByte(
   lpMultiByteStr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cbMultiByte: number /* i32 */,
   lpDefaultChar: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  lpUsedDefaultChar: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpUsedDefaultChar: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libKERNEL32_dll.WideCharToMultiByte(CodePage, dwFlags, util.pwstrToFfi(lpWideCharStr), cchWideChar, util.pstrToFfi(lpMultiByteStr), cbMultiByte, util.pstrToFfi(lpDefaultChar), util.toPointer(lpUsedDefaultChar));
 }
@@ -15752,7 +15752,7 @@ export function GetOEMCP(): number /* u32 */ {
 
 export function GetCPInfo(
   CodePage: number /* u32 */,
-  lpCPInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpCPInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetCPInfo(CodePage, util.toPointer(lpCPInfo)));
 }
@@ -15760,7 +15760,7 @@ export function GetCPInfo(
 export function GetCPInfoExA(
   CodePage: number /* u32 */,
   dwFlags: number /* u32 */,
-  lpCPInfoEx: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpCPInfoEx: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetCPInfoExA(CodePage, dwFlags, util.toPointer(lpCPInfoEx)));
 }
@@ -15768,7 +15768,7 @@ export function GetCPInfoExA(
 export function GetCPInfoExW(
   CodePage: number /* u32 */,
   dwFlags: number /* u32 */,
-  lpCPInfoEx: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpCPInfoEx: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetCPInfoExW(CodePage, dwFlags, util.toPointer(lpCPInfoEx)));
 }
@@ -15776,9 +15776,9 @@ export function GetCPInfoExW(
 export function CompareStringA(
   Locale: number /* u32 */,
   dwCmpFlags: number /* u32 */,
-  lpString1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpString1: Deno.PointerValue | Uint8Array /* ptr */,
   cchCount1: number /* i32 */,
-  lpString2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpString2: Deno.PointerValue | Uint8Array /* ptr */,
   cchCount2: number /* i32 */,
 ): number /* i32 */ {
   return libKERNEL32_dll.CompareStringA(Locale, dwCmpFlags, util.toPointer(lpString1), cchCount1, util.toPointer(lpString2), cchCount2);
@@ -15791,7 +15791,7 @@ export function FindNLSString(
   cchSource: number /* i32 */,
   lpStringValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchValue: number /* i32 */,
-  pcchFound: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchFound: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libKERNEL32_dll.FindNLSString(Locale, dwFindNLSStringFlags, util.pwstrToFfi(lpStringSource), cchSource, util.pwstrToFfi(lpStringValue), cchValue, util.toPointer(pcchFound));
 }
@@ -15858,7 +15858,7 @@ export function GetCalendarInfoA(
   CalType: number /* u32 */,
   lpCalData: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchData: number /* i32 */,
-  lpValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libKERNEL32_dll.GetCalendarInfoA(Locale, Calendar, CalType, util.pstrToFfi(lpCalData), cchData, util.toPointer(lpValue));
 }
@@ -15869,7 +15869,7 @@ export function GetCalendarInfoW(
   CalType: number /* u32 */,
   lpCalData: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchData: number /* i32 */,
-  lpValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libKERNEL32_dll.GetCalendarInfoW(Locale, Calendar, CalType, util.pwstrToFfi(lpCalData), cchData, util.toPointer(lpValue));
 }
@@ -15924,7 +15924,7 @@ export function LCIDToLocaleName(
 export function GetDurationFormat(
   Locale: number /* u32 */,
   dwFlags: number /* u32 */,
-  lpDuration: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpDuration: Deno.PointerValue | Uint8Array /* ptr */,
   ullDuration: Deno.PointerValue /* u64 */,
   lpFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpDurationStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
@@ -15937,7 +15937,7 @@ export function GetNumberFormatA(
   Locale: number /* u32 */,
   dwFlags: number /* u32 */,
   lpValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  lpFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpFormat: Deno.PointerValue | Uint8Array /* ptr */,
   lpNumberStr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchNumber: number /* i32 */,
 ): number /* i32 */ {
@@ -15948,7 +15948,7 @@ export function GetNumberFormatW(
   Locale: number /* u32 */,
   dwFlags: number /* u32 */,
   lpValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  lpFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpFormat: Deno.PointerValue | Uint8Array /* ptr */,
   lpNumberStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchNumber: number /* i32 */,
 ): number /* i32 */ {
@@ -15959,7 +15959,7 @@ export function GetCurrencyFormatA(
   Locale: number /* u32 */,
   dwFlags: number /* u32 */,
   lpValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  lpFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpFormat: Deno.PointerValue | Uint8Array /* ptr */,
   lpCurrencyStr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchCurrency: number /* i32 */,
 ): number /* i32 */ {
@@ -15970,7 +15970,7 @@ export function GetCurrencyFormatW(
   Locale: number /* u32 */,
   dwFlags: number /* u32 */,
   lpValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  lpFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpFormat: Deno.PointerValue | Uint8Array /* ptr */,
   lpCurrencyStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchCurrency: number /* i32 */,
 ): number /* i32 */ {
@@ -15978,7 +15978,7 @@ export function GetCurrencyFormatW(
 }
 
 export function EnumCalendarInfoA(
-  lpCalInfoEnumProc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.CALINFO_ENUMPROCA */,
+  lpCalInfoEnumProc: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.CALINFO_ENUMPROCA */,
   Locale: number /* u32 */,
   Calendar: number /* u32 */,
   CalType: number /* u32 */,
@@ -15987,7 +15987,7 @@ export function EnumCalendarInfoA(
 }
 
 export function EnumCalendarInfoW(
-  lpCalInfoEnumProc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.CALINFO_ENUMPROCW */,
+  lpCalInfoEnumProc: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.CALINFO_ENUMPROCW */,
   Locale: number /* u32 */,
   Calendar: number /* u32 */,
   CalType: number /* u32 */,
@@ -15996,7 +15996,7 @@ export function EnumCalendarInfoW(
 }
 
 export function EnumCalendarInfoExA(
-  lpCalInfoEnumProcEx: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.CALINFO_ENUMPROCEXA */,
+  lpCalInfoEnumProcEx: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.CALINFO_ENUMPROCEXA */,
   Locale: number /* u32 */,
   Calendar: number /* u32 */,
   CalType: number /* u32 */,
@@ -16005,7 +16005,7 @@ export function EnumCalendarInfoExA(
 }
 
 export function EnumCalendarInfoExW(
-  lpCalInfoEnumProcEx: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.CALINFO_ENUMPROCEXW */,
+  lpCalInfoEnumProcEx: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.CALINFO_ENUMPROCEXW */,
   Locale: number /* u32 */,
   Calendar: number /* u32 */,
   CalType: number /* u32 */,
@@ -16014,7 +16014,7 @@ export function EnumCalendarInfoExW(
 }
 
 export function EnumTimeFormatsA(
-  lpTimeFmtEnumProc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.TIMEFMT_ENUMPROCA */,
+  lpTimeFmtEnumProc: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.TIMEFMT_ENUMPROCA */,
   Locale: number /* u32 */,
   dwFlags: TIME_FORMAT_FLAGS /* Windows.Win32.Globalization.TIME_FORMAT_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -16022,7 +16022,7 @@ export function EnumTimeFormatsA(
 }
 
 export function EnumTimeFormatsW(
-  lpTimeFmtEnumProc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.TIMEFMT_ENUMPROCW */,
+  lpTimeFmtEnumProc: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.TIMEFMT_ENUMPROCW */,
   Locale: number /* u32 */,
   dwFlags: TIME_FORMAT_FLAGS /* Windows.Win32.Globalization.TIME_FORMAT_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -16030,7 +16030,7 @@ export function EnumTimeFormatsW(
 }
 
 export function EnumDateFormatsA(
-  lpDateFmtEnumProc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.DATEFMT_ENUMPROCA */,
+  lpDateFmtEnumProc: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.DATEFMT_ENUMPROCA */,
   Locale: number /* u32 */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -16038,7 +16038,7 @@ export function EnumDateFormatsA(
 }
 
 export function EnumDateFormatsW(
-  lpDateFmtEnumProc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.DATEFMT_ENUMPROCW */,
+  lpDateFmtEnumProc: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.DATEFMT_ENUMPROCW */,
   Locale: number /* u32 */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -16046,7 +16046,7 @@ export function EnumDateFormatsW(
 }
 
 export function EnumDateFormatsExA(
-  lpDateFmtEnumProcEx: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.DATEFMT_ENUMPROCEXA */,
+  lpDateFmtEnumProcEx: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.DATEFMT_ENUMPROCEXA */,
   Locale: number /* u32 */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -16054,7 +16054,7 @@ export function EnumDateFormatsExA(
 }
 
 export function EnumDateFormatsExW(
-  lpDateFmtEnumProcEx: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.DATEFMT_ENUMPROCEXW */,
+  lpDateFmtEnumProcEx: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.DATEFMT_ENUMPROCEXW */,
   Locale: number /* u32 */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -16071,7 +16071,7 @@ export function IsValidLanguageGroup(
 export function GetNLSVersion(
   Function: number /* u32 */,
   Locale: number /* u32 */,
-  lpVersionInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpVersionInformation: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetNLSVersion(Function, Locale, util.toPointer(lpVersionInformation)));
 }
@@ -16115,15 +16115,15 @@ export function GetGeoInfoEx(
 export function EnumSystemGeoID(
   GeoClass: number /* u32 */,
   ParentGeoId: number /* i32 */,
-  lpGeoEnumProc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.GEO_ENUMPROC */,
+  lpGeoEnumProc: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.GEO_ENUMPROC */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.EnumSystemGeoID(GeoClass, ParentGeoId, util.toPointer(lpGeoEnumProc)));
 }
 
 export function EnumSystemGeoNames(
   geoClass: number /* u32 */,
-  geoEnumProc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.GEO_ENUMNAMEPROC */,
-  data: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
+  geoEnumProc: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.GEO_ENUMNAMEPROC */,
+  data: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.EnumSystemGeoNames(geoClass, util.toPointer(geoEnumProc), util.toPointer(data)));
 }
@@ -16205,9 +16205,9 @@ export function GetThreadUILanguage(): number /* u16 */ {
 
 export function GetProcessPreferredUILanguages(
   dwFlags: number /* u32 */,
-  pulNumLanguages: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pulNumLanguages: Deno.PointerValue | Uint8Array /* ptr */,
   pwszLanguagesBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchLanguagesBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchLanguagesBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetProcessPreferredUILanguages(dwFlags, util.toPointer(pulNumLanguages), util.pwstrToFfi(pwszLanguagesBuffer), util.toPointer(pcchLanguagesBuffer)));
 }
@@ -16215,34 +16215,34 @@ export function GetProcessPreferredUILanguages(
 export function SetProcessPreferredUILanguages(
   dwFlags: number /* u32 */,
   pwszLanguagesBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pulNumLanguages: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pulNumLanguages: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetProcessPreferredUILanguages(dwFlags, util.pwstrToFfi(pwszLanguagesBuffer), util.toPointer(pulNumLanguages)));
 }
 
 export function GetUserPreferredUILanguages(
   dwFlags: number /* u32 */,
-  pulNumLanguages: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pulNumLanguages: Deno.PointerValue | Uint8Array /* ptr */,
   pwszLanguagesBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchLanguagesBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchLanguagesBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetUserPreferredUILanguages(dwFlags, util.toPointer(pulNumLanguages), util.pwstrToFfi(pwszLanguagesBuffer), util.toPointer(pcchLanguagesBuffer)));
 }
 
 export function GetSystemPreferredUILanguages(
   dwFlags: number /* u32 */,
-  pulNumLanguages: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pulNumLanguages: Deno.PointerValue | Uint8Array /* ptr */,
   pwszLanguagesBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchLanguagesBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchLanguagesBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetSystemPreferredUILanguages(dwFlags, util.toPointer(pulNumLanguages), util.pwstrToFfi(pwszLanguagesBuffer), util.toPointer(pcchLanguagesBuffer)));
 }
 
 export function GetThreadPreferredUILanguages(
   dwFlags: number /* u32 */,
-  pulNumLanguages: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pulNumLanguages: Deno.PointerValue | Uint8Array /* ptr */,
   pwszLanguagesBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchLanguagesBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchLanguagesBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetThreadPreferredUILanguages(dwFlags, util.toPointer(pulNumLanguages), util.pwstrToFfi(pwszLanguagesBuffer), util.toPointer(pcchLanguagesBuffer)));
 }
@@ -16250,7 +16250,7 @@ export function GetThreadPreferredUILanguages(
 export function SetThreadPreferredUILanguages(
   dwFlags: number /* u32 */,
   pwszLanguagesBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pulNumLanguages: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pulNumLanguages: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetThreadPreferredUILanguages(dwFlags, util.pwstrToFfi(pwszLanguagesBuffer), util.toPointer(pulNumLanguages)));
 }
@@ -16258,8 +16258,8 @@ export function SetThreadPreferredUILanguages(
 export function GetFileMUIInfo(
   dwFlags: number /* u32 */,
   pcwszFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pFileMUIInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcbFileMUIInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pFileMUIInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  pcbFileMUIInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetFileMUIInfo(dwFlags, util.pwstrToFfi(pcwszFilePath), util.toPointer(pFileMUIInfo), util.toPointer(pcbFileMUIInfo)));
 }
@@ -16268,10 +16268,10 @@ export function GetFileMUIPath(
   dwFlags: number /* u32 */,
   pcwszFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pwszLanguage: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchLanguage: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchLanguage: Deno.PointerValue | Uint8Array /* ptr */,
   pwszFileMUIPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchFileMUIPath: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pululEnumerator: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchFileMUIPath: Deno.PointerValue | Uint8Array /* ptr */,
+  pululEnumerator: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetFileMUIPath(dwFlags, util.pwstrToFfi(pcwszFilePath), util.pwstrToFfi(pwszLanguage), util.toPointer(pcchLanguage), util.pwstrToFfi(pwszFileMUIPath), util.toPointer(pcchFileMUIPath), util.toPointer(pululEnumerator)));
 }
@@ -16280,8 +16280,8 @@ export function GetUILanguageInfo(
   dwFlags: number /* u32 */,
   pwmszLanguage: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pwszFallbackLanguages: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchFallbackLanguages: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchFallbackLanguages: Deno.PointerValue | Uint8Array /* ptr */,
+  pAttributes: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetUILanguageInfo(dwFlags, util.pwstrToFfi(pwmszLanguage), util.pwstrToFfi(pwszFallbackLanguages), util.toPointer(pcchFallbackLanguages), util.toPointer(pAttributes)));
 }
@@ -16289,14 +16289,14 @@ export function GetUILanguageInfo(
 export function SetThreadPreferredUILanguages2(
   flags: number /* u32 */,
   languages: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  numLanguagesSet: Deno.PointerValue | Uint8Array | null /* ptr */,
-  snapshot: Deno.PointerValue | Uint8Array | null /* ptr */,
+  numLanguagesSet: Deno.PointerValue | Uint8Array /* ptr */,
+  snapshot: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetThreadPreferredUILanguages2(flags, util.pwstrToFfi(languages), util.toPointer(numLanguagesSet), util.toPointer(snapshot)));
 }
 
 export function RestoreThreadPreferredUILanguages(
-  snapshot: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.HSAVEDUILANGUAGES */,
+  snapshot: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.HSAVEDUILANGUAGES */,
 ): void /* void */ {
   return libKERNEL32_dll.RestoreThreadPreferredUILanguages(util.toPointer(snapshot));
 }
@@ -16306,7 +16306,7 @@ export function NotifyUILanguageChange(
   pcwstrNewLanguage: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcwstrPreviousLanguage: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwReserved: number /* u32 */,
-  pdwStatusRtrn: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pdwStatusRtrn: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.NotifyUILanguageChange(dwFlags, util.pwstrToFfi(pcwstrNewLanguage), util.pwstrToFfi(pcwstrPreviousLanguage), dwReserved, util.toPointer(pdwStatusRtrn)));
 }
@@ -16316,7 +16316,7 @@ export function GetStringTypeExA(
   dwInfoType: number /* u32 */,
   lpSrcStr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchSrc: number /* i32 */,
-  lpCharType: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpCharType: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetStringTypeExA(Locale, dwInfoType, util.pstrToFfi(lpSrcStr), cchSrc, util.toPointer(lpCharType)));
 }
@@ -16326,7 +16326,7 @@ export function GetStringTypeA(
   dwInfoType: number /* u32 */,
   lpSrcStr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchSrc: number /* i32 */,
-  lpCharType: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpCharType: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetStringTypeA(Locale, dwInfoType, util.pstrToFfi(lpSrcStr), cchSrc, util.toPointer(lpCharType)));
 }
@@ -16342,21 +16342,21 @@ export function FoldStringA(
 }
 
 export function EnumSystemLocalesA(
-  lpLocaleEnumProc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.LOCALE_ENUMPROCA */,
+  lpLocaleEnumProc: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.LOCALE_ENUMPROCA */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.EnumSystemLocalesA(util.toPointer(lpLocaleEnumProc), dwFlags));
 }
 
 export function EnumSystemLocalesW(
-  lpLocaleEnumProc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.LOCALE_ENUMPROCW */,
+  lpLocaleEnumProc: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.LOCALE_ENUMPROCW */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.EnumSystemLocalesW(util.toPointer(lpLocaleEnumProc), dwFlags));
 }
 
 export function EnumSystemLanguageGroupsA(
-  lpLanguageGroupEnumProc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.LANGUAGEGROUP_ENUMPROCA */,
+  lpLanguageGroupEnumProc: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.LANGUAGEGROUP_ENUMPROCA */,
   dwFlags: ENUM_SYSTEM_LANGUAGE_GROUPS_FLAGS /* Windows.Win32.Globalization.ENUM_SYSTEM_LANGUAGE_GROUPS_FLAGS */,
   lParam: Deno.PointerValue /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -16364,7 +16364,7 @@ export function EnumSystemLanguageGroupsA(
 }
 
 export function EnumSystemLanguageGroupsW(
-  lpLanguageGroupEnumProc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.LANGUAGEGROUP_ENUMPROCW */,
+  lpLanguageGroupEnumProc: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.LANGUAGEGROUP_ENUMPROCW */,
   dwFlags: ENUM_SYSTEM_LANGUAGE_GROUPS_FLAGS /* Windows.Win32.Globalization.ENUM_SYSTEM_LANGUAGE_GROUPS_FLAGS */,
   lParam: Deno.PointerValue /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -16372,7 +16372,7 @@ export function EnumSystemLanguageGroupsW(
 }
 
 export function EnumLanguageGroupLocalesA(
-  lpLangGroupLocaleEnumProc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.LANGGROUPLOCALE_ENUMPROCA */,
+  lpLangGroupLocaleEnumProc: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.LANGGROUPLOCALE_ENUMPROCA */,
   LanguageGroup: number /* u32 */,
   dwFlags: number /* u32 */,
   lParam: Deno.PointerValue /* isize */,
@@ -16381,7 +16381,7 @@ export function EnumLanguageGroupLocalesA(
 }
 
 export function EnumLanguageGroupLocalesW(
-  lpLangGroupLocaleEnumProc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.LANGGROUPLOCALE_ENUMPROCW */,
+  lpLangGroupLocaleEnumProc: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.LANGGROUPLOCALE_ENUMPROCW */,
   LanguageGroup: number /* u32 */,
   dwFlags: number /* u32 */,
   lParam: Deno.PointerValue /* isize */,
@@ -16390,7 +16390,7 @@ export function EnumLanguageGroupLocalesW(
 }
 
 export function EnumUILanguagesA(
-  lpUILanguageEnumProc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.UILANGUAGE_ENUMPROCA */,
+  lpUILanguageEnumProc: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.UILANGUAGE_ENUMPROCA */,
   dwFlags: number /* u32 */,
   lParam: Deno.PointerValue /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -16398,7 +16398,7 @@ export function EnumUILanguagesA(
 }
 
 export function EnumUILanguagesW(
-  lpUILanguageEnumProc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.UILANGUAGE_ENUMPROCW */,
+  lpUILanguageEnumProc: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.UILANGUAGE_ENUMPROCW */,
   dwFlags: number /* u32 */,
   lParam: Deno.PointerValue /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -16406,14 +16406,14 @@ export function EnumUILanguagesW(
 }
 
 export function EnumSystemCodePagesA(
-  lpCodePageEnumProc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.CODEPAGE_ENUMPROCA */,
+  lpCodePageEnumProc: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.CODEPAGE_ENUMPROCA */,
   dwFlags: ENUM_SYSTEM_CODE_PAGES_FLAGS /* Windows.Win32.Globalization.ENUM_SYSTEM_CODE_PAGES_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.EnumSystemCodePagesA(util.toPointer(lpCodePageEnumProc), dwFlags));
 }
 
 export function EnumSystemCodePagesW(
-  lpCodePageEnumProc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.CODEPAGE_ENUMPROCW */,
+  lpCodePageEnumProc: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.CODEPAGE_ENUMPROCW */,
   dwFlags: ENUM_SYSTEM_CODE_PAGES_FLAGS /* Windows.Win32.Globalization.ENUM_SYSTEM_CODE_PAGES_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.EnumSystemCodePagesW(util.toPointer(lpCodePageEnumProc), dwFlags));
@@ -16503,7 +16503,7 @@ export function GetCalendarInfoEx(
   CalType: number /* u32 */,
   lpCalData: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchData: number /* i32 */,
-  lpValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libKERNEL32_dll.GetCalendarInfoEx(util.pwstrToFfi(lpLocaleName), Calendar, util.pwstrToFfi(lpReserved), CalType, util.pwstrToFfi(lpCalData), cchData, util.toPointer(lpValue));
 }
@@ -16512,7 +16512,7 @@ export function GetNumberFormatEx(
   lpLocaleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   lpValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  lpFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpFormat: Deno.PointerValue | Uint8Array /* ptr */,
   lpNumberStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchNumber: number /* i32 */,
 ): number /* i32 */ {
@@ -16523,7 +16523,7 @@ export function GetCurrencyFormatEx(
   lpLocaleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   lpValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  lpFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpFormat: Deno.PointerValue | Uint8Array /* ptr */,
   lpCurrencyStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchCurrency: number /* i32 */,
 ): number /* i32 */ {
@@ -16547,7 +16547,7 @@ export function GetSystemDefaultLocaleName(
 export function IsNLSDefinedString(
   Function: number /* u32 */,
   dwFlags: number /* u32 */,
-  lpVersionInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpVersionInformation: Deno.PointerValue | Uint8Array /* ptr */,
   lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchStr: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -16557,7 +16557,7 @@ export function IsNLSDefinedString(
 export function GetNLSVersionEx(
   function__: number /* u32 */,
   lpLocaleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  lpVersionInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpVersionInformation: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetNLSVersionEx(function__, util.pwstrToFfi(lpLocaleName), util.toPointer(lpVersionInformation)));
 }
@@ -16565,7 +16565,7 @@ export function GetNLSVersionEx(
 export function IsValidNLSVersion(
   function__: number /* u32 */,
   lpLocaleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  lpVersionInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpVersionInformation: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libKERNEL32_dll.IsValidNLSVersion(function__, util.pwstrToFfi(lpLocaleName), util.toPointer(lpVersionInformation));
 }
@@ -16577,10 +16577,10 @@ export function FindNLSStringEx(
   cchSource: number /* i32 */,
   lpStringValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchValue: number /* i32 */,
-  pcchFound: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpVersionInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
-  sortHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
+  pcchFound: Deno.PointerValue | Uint8Array /* ptr */,
+  lpVersionInformation: Deno.PointerValue | Uint8Array /* ptr */,
+  lpReserved: Deno.PointerValue | Uint8Array /* ptr */,
+  sortHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): number /* i32 */ {
   return libKERNEL32_dll.FindNLSStringEx(util.pwstrToFfi(lpLocaleName), dwFindNLSStringFlags, util.pwstrToFfi(lpStringSource), cchSource, util.pwstrToFfi(lpStringValue), cchValue, util.toPointer(pcchFound), util.toPointer(lpVersionInformation), util.toPointer(lpReserved), util.toPointer(sortHandle));
 }
@@ -16592,9 +16592,9 @@ export function LCMapStringEx(
   cchSrc: number /* i32 */,
   lpDestStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchDest: number /* i32 */,
-  lpVersionInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
-  sortHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
+  lpVersionInformation: Deno.PointerValue | Uint8Array /* ptr */,
+  lpReserved: Deno.PointerValue | Uint8Array /* ptr */,
+  sortHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): number /* i32 */ {
   return libKERNEL32_dll.LCMapStringEx(util.pwstrToFfi(lpLocaleName), dwMapFlags, util.pwstrToFfi(lpSrcStr), cchSrc, util.pwstrToFfi(lpDestStr), cchDest, util.toPointer(lpVersionInformation), util.toPointer(lpReserved), util.toPointer(sortHandle));
 }
@@ -16606,39 +16606,39 @@ export function IsValidLocaleName(
 }
 
 export function EnumCalendarInfoExEx(
-  pCalInfoEnumProcExEx: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.CALINFO_ENUMPROCEXEX */,
+  pCalInfoEnumProcExEx: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.CALINFO_ENUMPROCEXEX */,
   lpLocaleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Calendar: number /* u32 */,
   lpReserved: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   CalType: number /* u32 */,
-  lParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
+  lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.EnumCalendarInfoExEx(util.toPointer(pCalInfoEnumProcExEx), util.pwstrToFfi(lpLocaleName), Calendar, util.pwstrToFfi(lpReserved), CalType, util.toPointer(lParam)));
 }
 
 export function EnumDateFormatsExEx(
-  lpDateFmtEnumProcExEx: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.DATEFMT_ENUMPROCEXEX */,
+  lpDateFmtEnumProcExEx: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.DATEFMT_ENUMPROCEXEX */,
   lpLocaleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: ENUM_DATE_FORMATS_FLAGS /* Windows.Win32.Globalization.ENUM_DATE_FORMATS_FLAGS */,
-  lParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
+  lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.EnumDateFormatsExEx(util.toPointer(lpDateFmtEnumProcExEx), util.pwstrToFfi(lpLocaleName), dwFlags, util.toPointer(lParam)));
 }
 
 export function EnumTimeFormatsEx(
-  lpTimeFmtEnumProcEx: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.TIMEFMT_ENUMPROCEX */,
+  lpTimeFmtEnumProcEx: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.TIMEFMT_ENUMPROCEX */,
   lpLocaleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
-  lParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
+  lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.EnumTimeFormatsEx(util.toPointer(lpTimeFmtEnumProcEx), util.pwstrToFfi(lpLocaleName), dwFlags, util.toPointer(lParam)));
 }
 
 export function EnumSystemLocalesEx(
-  lpLocaleEnumProcEx: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.LOCALE_ENUMPROCEX */,
+  lpLocaleEnumProcEx: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.LOCALE_ENUMPROCEX */,
   dwFlags: number /* u32 */,
-  lParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
-  lpReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
+  lpReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.EnumSystemLocalesEx(util.toPointer(lpLocaleEnumProcEx), dwFlags, util.toPointer(lParam), util.toPointer(lpReserved)));
 }
@@ -16652,137 +16652,137 @@ export function ResolveLocaleName(
 }
 
 export function MappingGetServices(
-  pOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
-  prgServices: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pdwServicesCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libelscore_dll.MappingGetServices(util.toPointer(pOptions), util.toPointer(prgServices), util.toPointer(pdwServicesCount)));
+  pOptions: Deno.PointerValue | Uint8Array /* ptr */,
+  prgServices: Deno.PointerValue | Uint8Array /* ptr */,
+  pdwServicesCount: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libelscore_dll.MappingGetServices(util.toPointer(pOptions), util.toPointer(prgServices), util.toPointer(pdwServicesCount));
 }
 
 export function MappingFreeServices(
-  pServiceInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libelscore_dll.MappingFreeServices(util.toPointer(pServiceInfo)));
+  pServiceInfo: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libelscore_dll.MappingFreeServices(util.toPointer(pServiceInfo));
 }
 
 export function MappingRecognizeText(
-  pServiceInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pServiceInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pszText: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwLength: number /* u32 */,
   dwIndex: number /* u32 */,
-  pOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pbag: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libelscore_dll.MappingRecognizeText(util.toPointer(pServiceInfo), util.pwstrToFfi(pszText), dwLength, dwIndex, util.toPointer(pOptions), util.toPointer(pbag)));
+  pOptions: Deno.PointerValue | Uint8Array /* ptr */,
+  pbag: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libelscore_dll.MappingRecognizeText(util.toPointer(pServiceInfo), util.pwstrToFfi(pszText), dwLength, dwIndex, util.toPointer(pOptions), util.toPointer(pbag));
 }
 
 export function MappingDoAction(
-  pBag: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBag: Deno.PointerValue | Uint8Array /* ptr */,
   dwRangeIndex: number /* u32 */,
   pszActionId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libelscore_dll.MappingDoAction(util.toPointer(pBag), dwRangeIndex, util.pwstrToFfi(pszActionId)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libelscore_dll.MappingDoAction(util.toPointer(pBag), dwRangeIndex, util.pwstrToFfi(pszActionId));
 }
 
 export function MappingFreePropertyBag(
-  pBag: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libelscore_dll.MappingFreePropertyBag(util.toPointer(pBag)));
+  pBag: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libelscore_dll.MappingFreePropertyBag(util.toPointer(pBag));
 }
 
 export function ScriptFreeCache(
-  psc: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptFreeCache(util.toPointer(psc)));
+  psc: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptFreeCache(util.toPointer(psc));
 }
 
 export function ScriptItemize(
   pwcInChars: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cInChars: number /* i32 */,
   cMaxItems: number /* i32 */,
-  psControl: Deno.PointerValue | Uint8Array | null /* ptr */,
-  psState: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pItems: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcItems: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptItemize(util.pwstrToFfi(pwcInChars), cInChars, cMaxItems, util.toPointer(psControl), util.toPointer(psState), util.toPointer(pItems), util.toPointer(pcItems)));
+  psControl: Deno.PointerValue | Uint8Array /* ptr */,
+  psState: Deno.PointerValue | Uint8Array /* ptr */,
+  pItems: Deno.PointerValue | Uint8Array /* ptr */,
+  pcItems: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptItemize(util.pwstrToFfi(pwcInChars), cInChars, cMaxItems, util.toPointer(psControl), util.toPointer(psState), util.toPointer(pItems), util.toPointer(pcItems));
 }
 
 export function ScriptLayout(
   cRuns: number /* i32 */,
-  pbLevel: Deno.PointerValue | Uint8Array | null /* ptr */,
-  piVisualToLogical: Deno.PointerValue | Uint8Array | null /* ptr */,
-  piLogicalToVisual: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptLayout(cRuns, util.toPointer(pbLevel), util.toPointer(piVisualToLogical), util.toPointer(piLogicalToVisual)));
+  pbLevel: Deno.PointerValue | Uint8Array /* ptr */,
+  piVisualToLogical: Deno.PointerValue | Uint8Array /* ptr */,
+  piLogicalToVisual: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptLayout(cRuns, util.toPointer(pbLevel), util.toPointer(piVisualToLogical), util.toPointer(piLogicalToVisual));
 }
 
 export function ScriptShape(
-  hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  psc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
+  psc: Deno.PointerValue | Uint8Array /* ptr */,
   pwcChars: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cChars: number /* i32 */,
   cMaxGlyphs: number /* i32 */,
-  psa: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwOutGlyphs: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwLogClust: Deno.PointerValue | Uint8Array | null /* ptr */,
-  psva: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcGlyphs: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptShape(util.toPointer(hdc), util.toPointer(psc), util.pwstrToFfi(pwcChars), cChars, cMaxGlyphs, util.toPointer(psa), util.toPointer(pwOutGlyphs), util.toPointer(pwLogClust), util.toPointer(psva), util.toPointer(pcGlyphs)));
+  psa: Deno.PointerValue | Uint8Array /* ptr */,
+  pwOutGlyphs: Deno.PointerValue | Uint8Array /* ptr */,
+  pwLogClust: Deno.PointerValue | Uint8Array /* ptr */,
+  psva: Deno.PointerValue | Uint8Array /* ptr */,
+  pcGlyphs: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptShape(util.toPointer(hdc), util.toPointer(psc), util.pwstrToFfi(pwcChars), cChars, cMaxGlyphs, util.toPointer(psa), util.toPointer(pwOutGlyphs), util.toPointer(pwLogClust), util.toPointer(psva), util.toPointer(pcGlyphs));
 }
 
 export function ScriptPlace(
-  hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  psc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwGlyphs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
+  psc: Deno.PointerValue | Uint8Array /* ptr */,
+  pwGlyphs: Deno.PointerValue | Uint8Array /* ptr */,
   cGlyphs: number /* i32 */,
-  psva: Deno.PointerValue | Uint8Array | null /* ptr */,
-  psa: Deno.PointerValue | Uint8Array | null /* ptr */,
-  piAdvance: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pGoffset: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pABC: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptPlace(util.toPointer(hdc), util.toPointer(psc), util.toPointer(pwGlyphs), cGlyphs, util.toPointer(psva), util.toPointer(psa), util.toPointer(piAdvance), util.toPointer(pGoffset), util.toPointer(pABC)));
+  psva: Deno.PointerValue | Uint8Array /* ptr */,
+  psa: Deno.PointerValue | Uint8Array /* ptr */,
+  piAdvance: Deno.PointerValue | Uint8Array /* ptr */,
+  pGoffset: Deno.PointerValue | Uint8Array /* ptr */,
+  pABC: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptPlace(util.toPointer(hdc), util.toPointer(psc), util.toPointer(pwGlyphs), cGlyphs, util.toPointer(psva), util.toPointer(psa), util.toPointer(piAdvance), util.toPointer(pGoffset), util.toPointer(pABC));
 }
 
 export function ScriptTextOut(
-  hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  psc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
+  psc: Deno.PointerValue | Uint8Array /* ptr */,
   x: number /* i32 */,
   y: number /* i32 */,
   fuOptions: number /* u32 */,
-  lprc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  psa: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lprc: Deno.PointerValue | Uint8Array /* ptr */,
+  psa: Deno.PointerValue | Uint8Array /* ptr */,
   pwcReserved: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   iReserved: number /* i32 */,
-  pwGlyphs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pwGlyphs: Deno.PointerValue | Uint8Array /* ptr */,
   cGlyphs: number /* i32 */,
-  piAdvance: Deno.PointerValue | Uint8Array | null /* ptr */,
-  piJustify: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pGoffset: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptTextOut(util.toPointer(hdc), util.toPointer(psc), x, y, fuOptions, util.toPointer(lprc), util.toPointer(psa), util.pwstrToFfi(pwcReserved), iReserved, util.toPointer(pwGlyphs), cGlyphs, util.toPointer(piAdvance), util.toPointer(piJustify), util.toPointer(pGoffset)));
+  piAdvance: Deno.PointerValue | Uint8Array /* ptr */,
+  piJustify: Deno.PointerValue | Uint8Array /* ptr */,
+  pGoffset: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptTextOut(util.toPointer(hdc), util.toPointer(psc), x, y, fuOptions, util.toPointer(lprc), util.toPointer(psa), util.pwstrToFfi(pwcReserved), iReserved, util.toPointer(pwGlyphs), cGlyphs, util.toPointer(piAdvance), util.toPointer(piJustify), util.toPointer(pGoffset));
 }
 
 export function ScriptJustify(
-  psva: Deno.PointerValue | Uint8Array | null /* ptr */,
-  piAdvance: Deno.PointerValue | Uint8Array | null /* ptr */,
+  psva: Deno.PointerValue | Uint8Array /* ptr */,
+  piAdvance: Deno.PointerValue | Uint8Array /* ptr */,
   cGlyphs: number /* i32 */,
   iDx: number /* i32 */,
   iMinKashida: number /* i32 */,
-  piJustify: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptJustify(util.toPointer(psva), util.toPointer(piAdvance), cGlyphs, iDx, iMinKashida, util.toPointer(piJustify)));
+  piJustify: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptJustify(util.toPointer(psva), util.toPointer(piAdvance), cGlyphs, iDx, iMinKashida, util.toPointer(piJustify));
 }
 
 export function ScriptBreak(
   pwcChars: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cChars: number /* i32 */,
-  psa: Deno.PointerValue | Uint8Array | null /* ptr */,
-  psla: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptBreak(util.pwstrToFfi(pwcChars), cChars, util.toPointer(psa), util.toPointer(psla)));
+  psa: Deno.PointerValue | Uint8Array /* ptr */,
+  psla: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptBreak(util.pwstrToFfi(pwcChars), cChars, util.toPointer(psa), util.toPointer(psla));
 }
 
 export function ScriptCPtoX(
@@ -16790,356 +16790,356 @@ export function ScriptCPtoX(
   fTrailing: boolean /* Windows.Win32.Foundation.BOOL */,
   cChars: number /* i32 */,
   cGlyphs: number /* i32 */,
-  pwLogClust: Deno.PointerValue | Uint8Array | null /* ptr */,
-  psva: Deno.PointerValue | Uint8Array | null /* ptr */,
-  piAdvance: Deno.PointerValue | Uint8Array | null /* ptr */,
-  psa: Deno.PointerValue | Uint8Array | null /* ptr */,
-  piX: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptCPtoX(iCP, util.boolToFfi(fTrailing), cChars, cGlyphs, util.toPointer(pwLogClust), util.toPointer(psva), util.toPointer(piAdvance), util.toPointer(psa), util.toPointer(piX)));
+  pwLogClust: Deno.PointerValue | Uint8Array /* ptr */,
+  psva: Deno.PointerValue | Uint8Array /* ptr */,
+  piAdvance: Deno.PointerValue | Uint8Array /* ptr */,
+  psa: Deno.PointerValue | Uint8Array /* ptr */,
+  piX: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptCPtoX(iCP, util.boolToFfi(fTrailing), cChars, cGlyphs, util.toPointer(pwLogClust), util.toPointer(psva), util.toPointer(piAdvance), util.toPointer(psa), util.toPointer(piX));
 }
 
 export function ScriptXtoCP(
   iX: number /* i32 */,
   cChars: number /* i32 */,
   cGlyphs: number /* i32 */,
-  pwLogClust: Deno.PointerValue | Uint8Array | null /* ptr */,
-  psva: Deno.PointerValue | Uint8Array | null /* ptr */,
-  piAdvance: Deno.PointerValue | Uint8Array | null /* ptr */,
-  psa: Deno.PointerValue | Uint8Array | null /* ptr */,
-  piCP: Deno.PointerValue | Uint8Array | null /* ptr */,
-  piTrailing: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptXtoCP(iX, cChars, cGlyphs, util.toPointer(pwLogClust), util.toPointer(psva), util.toPointer(piAdvance), util.toPointer(psa), util.toPointer(piCP), util.toPointer(piTrailing)));
+  pwLogClust: Deno.PointerValue | Uint8Array /* ptr */,
+  psva: Deno.PointerValue | Uint8Array /* ptr */,
+  piAdvance: Deno.PointerValue | Uint8Array /* ptr */,
+  psa: Deno.PointerValue | Uint8Array /* ptr */,
+  piCP: Deno.PointerValue | Uint8Array /* ptr */,
+  piTrailing: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptXtoCP(iX, cChars, cGlyphs, util.toPointer(pwLogClust), util.toPointer(psva), util.toPointer(piAdvance), util.toPointer(psa), util.toPointer(piCP), util.toPointer(piTrailing));
 }
 
 export function ScriptGetLogicalWidths(
-  psa: Deno.PointerValue | Uint8Array | null /* ptr */,
+  psa: Deno.PointerValue | Uint8Array /* ptr */,
   cChars: number /* i32 */,
   cGlyphs: number /* i32 */,
-  piGlyphWidth: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwLogClust: Deno.PointerValue | Uint8Array | null /* ptr */,
-  psva: Deno.PointerValue | Uint8Array | null /* ptr */,
-  piDx: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptGetLogicalWidths(util.toPointer(psa), cChars, cGlyphs, util.toPointer(piGlyphWidth), util.toPointer(pwLogClust), util.toPointer(psva), util.toPointer(piDx)));
+  piGlyphWidth: Deno.PointerValue | Uint8Array /* ptr */,
+  pwLogClust: Deno.PointerValue | Uint8Array /* ptr */,
+  psva: Deno.PointerValue | Uint8Array /* ptr */,
+  piDx: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptGetLogicalWidths(util.toPointer(psa), cChars, cGlyphs, util.toPointer(piGlyphWidth), util.toPointer(pwLogClust), util.toPointer(psva), util.toPointer(piDx));
 }
 
 export function ScriptApplyLogicalWidth(
-  piDx: Deno.PointerValue | Uint8Array | null /* ptr */,
+  piDx: Deno.PointerValue | Uint8Array /* ptr */,
   cChars: number /* i32 */,
   cGlyphs: number /* i32 */,
-  pwLogClust: Deno.PointerValue | Uint8Array | null /* ptr */,
-  psva: Deno.PointerValue | Uint8Array | null /* ptr */,
-  piAdvance: Deno.PointerValue | Uint8Array | null /* ptr */,
-  psa: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pABC: Deno.PointerValue | Uint8Array | null /* ptr */,
-  piJustify: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptApplyLogicalWidth(util.toPointer(piDx), cChars, cGlyphs, util.toPointer(pwLogClust), util.toPointer(psva), util.toPointer(piAdvance), util.toPointer(psa), util.toPointer(pABC), util.toPointer(piJustify)));
+  pwLogClust: Deno.PointerValue | Uint8Array /* ptr */,
+  psva: Deno.PointerValue | Uint8Array /* ptr */,
+  piAdvance: Deno.PointerValue | Uint8Array /* ptr */,
+  psa: Deno.PointerValue | Uint8Array /* ptr */,
+  pABC: Deno.PointerValue | Uint8Array /* ptr */,
+  piJustify: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptApplyLogicalWidth(util.toPointer(piDx), cChars, cGlyphs, util.toPointer(pwLogClust), util.toPointer(psva), util.toPointer(piAdvance), util.toPointer(psa), util.toPointer(pABC), util.toPointer(piJustify));
 }
 
 export function ScriptGetCMap(
-  hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  psc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
+  psc: Deno.PointerValue | Uint8Array /* ptr */,
   pwcInChars: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cChars: number /* i32 */,
   dwFlags: number /* u32 */,
-  pwOutGlyphs: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptGetCMap(util.toPointer(hdc), util.toPointer(psc), util.pwstrToFfi(pwcInChars), cChars, dwFlags, util.toPointer(pwOutGlyphs)));
+  pwOutGlyphs: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptGetCMap(util.toPointer(hdc), util.toPointer(psc), util.pwstrToFfi(pwcInChars), cChars, dwFlags, util.toPointer(pwOutGlyphs));
 }
 
 export function ScriptGetGlyphABCWidth(
-  hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  psc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
+  psc: Deno.PointerValue | Uint8Array /* ptr */,
   wGlyph: number /* u16 */,
-  pABC: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptGetGlyphABCWidth(util.toPointer(hdc), util.toPointer(psc), wGlyph, util.toPointer(pABC)));
+  pABC: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptGetGlyphABCWidth(util.toPointer(hdc), util.toPointer(psc), wGlyph, util.toPointer(pABC));
 }
 
 export function ScriptGetProperties(
-  ppSp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  piNumScripts: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptGetProperties(util.toPointer(ppSp), util.toPointer(piNumScripts)));
+  ppSp: Deno.PointerValue | Uint8Array /* ptr */,
+  piNumScripts: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptGetProperties(util.toPointer(ppSp), util.toPointer(piNumScripts));
 }
 
 export function ScriptGetFontProperties(
-  hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  psc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  sfp: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptGetFontProperties(util.toPointer(hdc), util.toPointer(psc), util.toPointer(sfp)));
+  hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
+  psc: Deno.PointerValue | Uint8Array /* ptr */,
+  sfp: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptGetFontProperties(util.toPointer(hdc), util.toPointer(psc), util.toPointer(sfp));
 }
 
 export function ScriptCacheGetHeight(
-  hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  psc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  tmHeight: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptCacheGetHeight(util.toPointer(hdc), util.toPointer(psc), util.toPointer(tmHeight)));
+  hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
+  psc: Deno.PointerValue | Uint8Array /* ptr */,
+  tmHeight: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptCacheGetHeight(util.toPointer(hdc), util.toPointer(psc), util.toPointer(tmHeight));
 }
 
 export function ScriptStringAnalyse(
-  hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  pString: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
+  pString: Deno.PointerValue | Uint8Array /* ptr */,
   cString: number /* i32 */,
   cGlyphs: number /* i32 */,
   iCharset: number /* i32 */,
   dwFlags: number /* u32 */,
   iReqWidth: number /* i32 */,
-  psControl: Deno.PointerValue | Uint8Array | null /* ptr */,
-  psState: Deno.PointerValue | Uint8Array | null /* ptr */,
-  piDx: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pTabdef: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pbInClass: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pssa: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptStringAnalyse(util.toPointer(hdc), util.toPointer(pString), cString, cGlyphs, iCharset, dwFlags, iReqWidth, util.toPointer(psControl), util.toPointer(psState), util.toPointer(piDx), util.toPointer(pTabdef), util.toPointer(pbInClass), util.toPointer(pssa)));
+  psControl: Deno.PointerValue | Uint8Array /* ptr */,
+  psState: Deno.PointerValue | Uint8Array /* ptr */,
+  piDx: Deno.PointerValue | Uint8Array /* ptr */,
+  pTabdef: Deno.PointerValue | Uint8Array /* ptr */,
+  pbInClass: Deno.PointerValue | Uint8Array /* ptr */,
+  pssa: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptStringAnalyse(util.toPointer(hdc), util.toPointer(pString), cString, cGlyphs, iCharset, dwFlags, iReqWidth, util.toPointer(psControl), util.toPointer(psState), util.toPointer(piDx), util.toPointer(pTabdef), util.toPointer(pbInClass), util.toPointer(pssa));
 }
 
 export function ScriptStringFree(
-  pssa: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptStringFree(util.toPointer(pssa)));
+  pssa: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptStringFree(util.toPointer(pssa));
 }
 
 export function ScriptString_pSize(
-  ssa: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptString_pSize(util.toPointer(ssa)));
+  ssa: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libUSP10_dll.ScriptString_pSize(util.toPointer(ssa));
 }
 
 export function ScriptString_pcOutChars(
-  ssa: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptString_pcOutChars(util.toPointer(ssa)));
+  ssa: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libUSP10_dll.ScriptString_pcOutChars(util.toPointer(ssa));
 }
 
 export function ScriptString_pLogAttr(
-  ssa: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptString_pLogAttr(util.toPointer(ssa)));
+  ssa: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libUSP10_dll.ScriptString_pLogAttr(util.toPointer(ssa));
 }
 
 export function ScriptStringGetOrder(
-  ssa: Deno.PointerValue | Uint8Array | null /* ptr */,
-  puOrder: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptStringGetOrder(util.toPointer(ssa), util.toPointer(puOrder)));
+  ssa: Deno.PointerValue | Uint8Array /* ptr */,
+  puOrder: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptStringGetOrder(util.toPointer(ssa), util.toPointer(puOrder));
 }
 
 export function ScriptStringCPtoX(
-  ssa: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ssa: Deno.PointerValue | Uint8Array /* ptr */,
   icp: number /* i32 */,
   fTrailing: boolean /* Windows.Win32.Foundation.BOOL */,
-  pX: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptStringCPtoX(util.toPointer(ssa), icp, util.boolToFfi(fTrailing), util.toPointer(pX)));
+  pX: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptStringCPtoX(util.toPointer(ssa), icp, util.boolToFfi(fTrailing), util.toPointer(pX));
 }
 
 export function ScriptStringXtoCP(
-  ssa: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ssa: Deno.PointerValue | Uint8Array /* ptr */,
   iX: number /* i32 */,
-  piCh: Deno.PointerValue | Uint8Array | null /* ptr */,
-  piTrailing: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptStringXtoCP(util.toPointer(ssa), iX, util.toPointer(piCh), util.toPointer(piTrailing)));
+  piCh: Deno.PointerValue | Uint8Array /* ptr */,
+  piTrailing: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptStringXtoCP(util.toPointer(ssa), iX, util.toPointer(piCh), util.toPointer(piTrailing));
 }
 
 export function ScriptStringGetLogicalWidths(
-  ssa: Deno.PointerValue | Uint8Array | null /* ptr */,
-  piDx: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptStringGetLogicalWidths(util.toPointer(ssa), util.toPointer(piDx)));
+  ssa: Deno.PointerValue | Uint8Array /* ptr */,
+  piDx: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptStringGetLogicalWidths(util.toPointer(ssa), util.toPointer(piDx));
 }
 
 export function ScriptStringValidate(
-  ssa: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptStringValidate(util.toPointer(ssa)));
+  ssa: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptStringValidate(util.toPointer(ssa));
 }
 
 export function ScriptStringOut(
-  ssa: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ssa: Deno.PointerValue | Uint8Array /* ptr */,
   iX: number /* i32 */,
   iY: number /* i32 */,
   uOptions: ETO_OPTIONS /* Windows.Win32.Graphics.Gdi.ETO_OPTIONS */,
-  prc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  prc: Deno.PointerValue | Uint8Array /* ptr */,
   iMinSel: number /* i32 */,
   iMaxSel: number /* i32 */,
   fDisabled: boolean /* Windows.Win32.Foundation.BOOL */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptStringOut(util.toPointer(ssa), iX, iY, uOptions, util.toPointer(prc), iMinSel, iMaxSel, util.boolToFfi(fDisabled)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptStringOut(util.toPointer(ssa), iX, iY, uOptions, util.toPointer(prc), iMinSel, iMaxSel, util.boolToFfi(fDisabled));
 }
 
 export function ScriptIsComplex(
   pwcInChars: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cInChars: number /* i32 */,
   dwFlags: SCRIPT_IS_COMPLEX_FLAGS /* Windows.Win32.Globalization.SCRIPT_IS_COMPLEX_FLAGS */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptIsComplex(util.pwstrToFfi(pwcInChars), cInChars, dwFlags));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptIsComplex(util.pwstrToFfi(pwcInChars), cInChars, dwFlags);
 }
 
 export function ScriptRecordDigitSubstitution(
   Locale: number /* u32 */,
-  psds: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptRecordDigitSubstitution(Locale, util.toPointer(psds)));
+  psds: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptRecordDigitSubstitution(Locale, util.toPointer(psds));
 }
 
 export function ScriptApplyDigitSubstitution(
-  psds: Deno.PointerValue | Uint8Array | null /* ptr */,
-  psc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pss: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptApplyDigitSubstitution(util.toPointer(psds), util.toPointer(psc), util.toPointer(pss)));
+  psds: Deno.PointerValue | Uint8Array /* ptr */,
+  psc: Deno.PointerValue | Uint8Array /* ptr */,
+  pss: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptApplyDigitSubstitution(util.toPointer(psds), util.toPointer(psc), util.toPointer(pss));
 }
 
 export function ScriptShapeOpenType(
-  hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  psc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  psa: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
+  psc: Deno.PointerValue | Uint8Array /* ptr */,
+  psa: Deno.PointerValue | Uint8Array /* ptr */,
   tagScript: number /* u32 */,
   tagLangSys: number /* u32 */,
-  rcRangeChars: Deno.PointerValue | Uint8Array | null /* ptr */,
-  rpRangeProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
+  rcRangeChars: Deno.PointerValue | Uint8Array /* ptr */,
+  rpRangeProperties: Deno.PointerValue | Uint8Array /* ptr */,
   cRanges: number /* i32 */,
   pwcChars: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cChars: number /* i32 */,
   cMaxGlyphs: number /* i32 */,
-  pwLogClust: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pCharProps: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwOutGlyphs: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pOutGlyphProps: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcGlyphs: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptShapeOpenType(util.toPointer(hdc), util.toPointer(psc), util.toPointer(psa), tagScript, tagLangSys, util.toPointer(rcRangeChars), util.toPointer(rpRangeProperties), cRanges, util.pwstrToFfi(pwcChars), cChars, cMaxGlyphs, util.toPointer(pwLogClust), util.toPointer(pCharProps), util.toPointer(pwOutGlyphs), util.toPointer(pOutGlyphProps), util.toPointer(pcGlyphs)));
+  pwLogClust: Deno.PointerValue | Uint8Array /* ptr */,
+  pCharProps: Deno.PointerValue | Uint8Array /* ptr */,
+  pwOutGlyphs: Deno.PointerValue | Uint8Array /* ptr */,
+  pOutGlyphProps: Deno.PointerValue | Uint8Array /* ptr */,
+  pcGlyphs: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptShapeOpenType(util.toPointer(hdc), util.toPointer(psc), util.toPointer(psa), tagScript, tagLangSys, util.toPointer(rcRangeChars), util.toPointer(rpRangeProperties), cRanges, util.pwstrToFfi(pwcChars), cChars, cMaxGlyphs, util.toPointer(pwLogClust), util.toPointer(pCharProps), util.toPointer(pwOutGlyphs), util.toPointer(pOutGlyphProps), util.toPointer(pcGlyphs));
 }
 
 export function ScriptPlaceOpenType(
-  hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  psc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  psa: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
+  psc: Deno.PointerValue | Uint8Array /* ptr */,
+  psa: Deno.PointerValue | Uint8Array /* ptr */,
   tagScript: number /* u32 */,
   tagLangSys: number /* u32 */,
-  rcRangeChars: Deno.PointerValue | Uint8Array | null /* ptr */,
-  rpRangeProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
+  rcRangeChars: Deno.PointerValue | Uint8Array /* ptr */,
+  rpRangeProperties: Deno.PointerValue | Uint8Array /* ptr */,
   cRanges: number /* i32 */,
   pwcChars: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pwLogClust: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pCharProps: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pwLogClust: Deno.PointerValue | Uint8Array /* ptr */,
+  pCharProps: Deno.PointerValue | Uint8Array /* ptr */,
   cChars: number /* i32 */,
-  pwGlyphs: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pGlyphProps: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pwGlyphs: Deno.PointerValue | Uint8Array /* ptr */,
+  pGlyphProps: Deno.PointerValue | Uint8Array /* ptr */,
   cGlyphs: number /* i32 */,
-  piAdvance: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pGoffset: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pABC: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptPlaceOpenType(util.toPointer(hdc), util.toPointer(psc), util.toPointer(psa), tagScript, tagLangSys, util.toPointer(rcRangeChars), util.toPointer(rpRangeProperties), cRanges, util.pwstrToFfi(pwcChars), util.toPointer(pwLogClust), util.toPointer(pCharProps), cChars, util.toPointer(pwGlyphs), util.toPointer(pGlyphProps), cGlyphs, util.toPointer(piAdvance), util.toPointer(pGoffset), util.toPointer(pABC)));
+  piAdvance: Deno.PointerValue | Uint8Array /* ptr */,
+  pGoffset: Deno.PointerValue | Uint8Array /* ptr */,
+  pABC: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptPlaceOpenType(util.toPointer(hdc), util.toPointer(psc), util.toPointer(psa), tagScript, tagLangSys, util.toPointer(rcRangeChars), util.toPointer(rpRangeProperties), cRanges, util.pwstrToFfi(pwcChars), util.toPointer(pwLogClust), util.toPointer(pCharProps), cChars, util.toPointer(pwGlyphs), util.toPointer(pGlyphProps), cGlyphs, util.toPointer(piAdvance), util.toPointer(pGoffset), util.toPointer(pABC));
 }
 
 export function ScriptItemizeOpenType(
   pwcInChars: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cInChars: number /* i32 */,
   cMaxItems: number /* i32 */,
-  psControl: Deno.PointerValue | Uint8Array | null /* ptr */,
-  psState: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pItems: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pScriptTags: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcItems: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptItemizeOpenType(util.pwstrToFfi(pwcInChars), cInChars, cMaxItems, util.toPointer(psControl), util.toPointer(psState), util.toPointer(pItems), util.toPointer(pScriptTags), util.toPointer(pcItems)));
+  psControl: Deno.PointerValue | Uint8Array /* ptr */,
+  psState: Deno.PointerValue | Uint8Array /* ptr */,
+  pItems: Deno.PointerValue | Uint8Array /* ptr */,
+  pScriptTags: Deno.PointerValue | Uint8Array /* ptr */,
+  pcItems: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptItemizeOpenType(util.pwstrToFfi(pwcInChars), cInChars, cMaxItems, util.toPointer(psControl), util.toPointer(psState), util.toPointer(pItems), util.toPointer(pScriptTags), util.toPointer(pcItems));
 }
 
 export function ScriptGetFontScriptTags(
-  hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  psc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  psa: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
+  psc: Deno.PointerValue | Uint8Array /* ptr */,
+  psa: Deno.PointerValue | Uint8Array /* ptr */,
   cMaxTags: number /* i32 */,
-  pScriptTags: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcTags: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptGetFontScriptTags(util.toPointer(hdc), util.toPointer(psc), util.toPointer(psa), cMaxTags, util.toPointer(pScriptTags), util.toPointer(pcTags)));
+  pScriptTags: Deno.PointerValue | Uint8Array /* ptr */,
+  pcTags: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptGetFontScriptTags(util.toPointer(hdc), util.toPointer(psc), util.toPointer(psa), cMaxTags, util.toPointer(pScriptTags), util.toPointer(pcTags));
 }
 
 export function ScriptGetFontLanguageTags(
-  hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  psc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  psa: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
+  psc: Deno.PointerValue | Uint8Array /* ptr */,
+  psa: Deno.PointerValue | Uint8Array /* ptr */,
   tagScript: number /* u32 */,
   cMaxTags: number /* i32 */,
-  pLangsysTags: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcTags: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptGetFontLanguageTags(util.toPointer(hdc), util.toPointer(psc), util.toPointer(psa), tagScript, cMaxTags, util.toPointer(pLangsysTags), util.toPointer(pcTags)));
+  pLangsysTags: Deno.PointerValue | Uint8Array /* ptr */,
+  pcTags: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptGetFontLanguageTags(util.toPointer(hdc), util.toPointer(psc), util.toPointer(psa), tagScript, cMaxTags, util.toPointer(pLangsysTags), util.toPointer(pcTags));
 }
 
 export function ScriptGetFontFeatureTags(
-  hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  psc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  psa: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
+  psc: Deno.PointerValue | Uint8Array /* ptr */,
+  psa: Deno.PointerValue | Uint8Array /* ptr */,
   tagScript: number /* u32 */,
   tagLangSys: number /* u32 */,
   cMaxTags: number /* i32 */,
-  pFeatureTags: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcTags: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptGetFontFeatureTags(util.toPointer(hdc), util.toPointer(psc), util.toPointer(psa), tagScript, tagLangSys, cMaxTags, util.toPointer(pFeatureTags), util.toPointer(pcTags)));
+  pFeatureTags: Deno.PointerValue | Uint8Array /* ptr */,
+  pcTags: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptGetFontFeatureTags(util.toPointer(hdc), util.toPointer(psc), util.toPointer(psa), tagScript, tagLangSys, cMaxTags, util.toPointer(pFeatureTags), util.toPointer(pcTags));
 }
 
 export function ScriptGetFontAlternateGlyphs(
-  hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  psc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  psa: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
+  psc: Deno.PointerValue | Uint8Array /* ptr */,
+  psa: Deno.PointerValue | Uint8Array /* ptr */,
   tagScript: number /* u32 */,
   tagLangSys: number /* u32 */,
   tagFeature: number /* u32 */,
   wGlyphId: number /* u16 */,
   cMaxAlternates: number /* i32 */,
-  pAlternateGlyphs: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcAlternates: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptGetFontAlternateGlyphs(util.toPointer(hdc), util.toPointer(psc), util.toPointer(psa), tagScript, tagLangSys, tagFeature, wGlyphId, cMaxAlternates, util.toPointer(pAlternateGlyphs), util.toPointer(pcAlternates)));
+  pAlternateGlyphs: Deno.PointerValue | Uint8Array /* ptr */,
+  pcAlternates: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptGetFontAlternateGlyphs(util.toPointer(hdc), util.toPointer(psc), util.toPointer(psa), tagScript, tagLangSys, tagFeature, wGlyphId, cMaxAlternates, util.toPointer(pAlternateGlyphs), util.toPointer(pcAlternates));
 }
 
 export function ScriptSubstituteSingleGlyph(
-  hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  psc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  psa: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
+  psc: Deno.PointerValue | Uint8Array /* ptr */,
+  psa: Deno.PointerValue | Uint8Array /* ptr */,
   tagScript: number /* u32 */,
   tagLangSys: number /* u32 */,
   tagFeature: number /* u32 */,
   lParameter: number /* i32 */,
   wGlyphId: number /* u16 */,
-  pwOutGlyphId: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptSubstituteSingleGlyph(util.toPointer(hdc), util.toPointer(psc), util.toPointer(psa), tagScript, tagLangSys, tagFeature, lParameter, wGlyphId, util.toPointer(pwOutGlyphId)));
+  pwOutGlyphId: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptSubstituteSingleGlyph(util.toPointer(hdc), util.toPointer(psc), util.toPointer(psa), tagScript, tagLangSys, tagFeature, lParameter, wGlyphId, util.toPointer(pwOutGlyphId));
 }
 
 export function ScriptPositionSingleGlyph(
-  hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  psc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  psa: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
+  psc: Deno.PointerValue | Uint8Array /* ptr */,
+  psa: Deno.PointerValue | Uint8Array /* ptr */,
   tagScript: number /* u32 */,
   tagLangSys: number /* u32 */,
   tagFeature: number /* u32 */,
   lParameter: number /* i32 */,
   wGlyphId: number /* u16 */,
   iAdvance: number /* i32 */,
-  GOffset: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.GOFFSET */,
-  piOutAdvance: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pOutGoffset: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libUSP10_dll.ScriptPositionSingleGlyph(util.toPointer(hdc), util.toPointer(psc), util.toPointer(psa), tagScript, tagLangSys, tagFeature, lParameter, wGlyphId, iAdvance, util.toPointer(GOffset), util.toPointer(piOutAdvance), util.toPointer(pOutGoffset)));
+  GOffset: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.GOFFSET */,
+  piOutAdvance: Deno.PointerValue | Uint8Array /* ptr */,
+  pOutGoffset: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libUSP10_dll.ScriptPositionSingleGlyph(util.toPointer(hdc), util.toPointer(psc), util.toPointer(psa), tagScript, tagLangSys, tagFeature, lParameter, wGlyphId, iAdvance, util.toPointer(GOffset), util.toPointer(piOutAdvance), util.toPointer(pOutGoffset));
 }
 
 export function utf8_nextCharSafeBody(
-  s: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  s: Deno.PointerValue | Uint8Array /* ptr */,
+  pi: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
   c: number /* i32 */,
   strict: number /* i8 */,
@@ -17148,19 +17148,19 @@ export function utf8_nextCharSafeBody(
 }
 
 export function utf8_appendCharSafeBody(
-  s: Deno.PointerValue | Uint8Array | null /* ptr */,
+  s: Deno.PointerValue | Uint8Array /* ptr */,
   i: number /* i32 */,
   length: number /* i32 */,
   c: number /* i32 */,
-  pIsError: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pIsError: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.utf8_appendCharSafeBody(util.toPointer(s), i, length, c, util.toPointer(pIsError));
 }
 
 export function utf8_prevCharSafeBody(
-  s: Deno.PointerValue | Uint8Array | null /* ptr */,
+  s: Deno.PointerValue | Uint8Array /* ptr */,
   start: number /* i32 */,
-  pi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pi: Deno.PointerValue | Uint8Array /* ptr */,
   c: number /* i32 */,
   strict: number /* i8 */,
 ): number /* i32 */ {
@@ -17168,7 +17168,7 @@ export function utf8_prevCharSafeBody(
 }
 
 export function utf8_back1SafeBody(
-  s: Deno.PointerValue | Uint8Array | null /* ptr */,
+  s: Deno.PointerValue | Uint8Array /* ptr */,
   start: number /* i32 */,
   i: number /* i32 */,
 ): number /* i32 */ {
@@ -17176,28 +17176,28 @@ export function utf8_back1SafeBody(
 }
 
 export function u_versionFromString(
-  versionArray: Deno.PointerValue | Uint8Array | null /* ptr */,
+  versionArray: Deno.PointerValue | Uint8Array /* ptr */,
   versionString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
   return libicu_dll.u_versionFromString(util.toPointer(versionArray), util.pstrToFfi(versionString));
 }
 
 export function u_versionFromUString(
-  versionArray: Deno.PointerValue | Uint8Array | null /* ptr */,
-  versionString: Deno.PointerValue | Uint8Array | null /* ptr */,
+  versionArray: Deno.PointerValue | Uint8Array /* ptr */,
+  versionString: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.u_versionFromUString(util.toPointer(versionArray), util.toPointer(versionString));
 }
 
 export function u_versionToString(
-  versionArray: Deno.PointerValue | Uint8Array | null /* ptr */,
+  versionArray: Deno.PointerValue | Uint8Array /* ptr */,
   versionString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
   return libicu_dll.u_versionToString(util.toPointer(versionArray), util.pstrToFfi(versionString));
 }
 
 export function u_getVersion(
-  versionArray: Deno.PointerValue | Uint8Array | null /* ptr */,
+  versionArray: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.u_getVersion(util.toPointer(versionArray));
 }
@@ -17219,19 +17219,19 @@ export function utrace_getLevel(): number /* i32 */ {
 }
 
 export function utrace_setFunctions(
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-  e: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.UTraceEntry */,
-  x: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.UTraceExit */,
-  d: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.UTraceData */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+  e: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.UTraceEntry */,
+  x: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.UTraceExit */,
+  d: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.UTraceData */,
 ): void /* void */ {
   return libicu_dll.utrace_setFunctions(util.toPointer(context), util.toPointer(e), util.toPointer(x), util.toPointer(d));
 }
 
 export function utrace_getFunctions(
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-  e: Deno.PointerValue | Uint8Array | null /* ptr */,
-  x: Deno.PointerValue | Uint8Array | null /* ptr */,
-  d: Deno.PointerValue | Uint8Array | null /* ptr */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+  e: Deno.PointerValue | Uint8Array /* ptr */,
+  x: Deno.PointerValue | Uint8Array /* ptr */,
+  d: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.utrace_getFunctions(util.toPointer(context), util.toPointer(e), util.toPointer(x), util.toPointer(d));
 }
@@ -17241,7 +17241,7 @@ export function utrace_vformat(
   capacity: number /* i32 */,
   indent: number /* i32 */,
   fmt: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  args: Deno.PointerValue | Uint8Array | null /* ptr */,
+  args: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.utrace_vformat(util.pstrToFfi(outBuf), capacity, indent, util.pstrToFfi(fmt), util.toPointer(args));
 }
@@ -17262,21 +17262,21 @@ export function utrace_functionName(
 }
 
 export function u_shapeArabic(
-  source: Deno.PointerValue | Uint8Array | null /* ptr */,
+  source: Deno.PointerValue | Uint8Array /* ptr */,
   sourceLength: number /* i32 */,
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   destSize: number /* i32 */,
   options: number /* u32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.u_shapeArabic(util.toPointer(source), sourceLength, util.toPointer(dest), destSize, options, util.toPointer(pErrorCode));
 }
 
 export function uscript_getCode(
   nameOrAbbrOrLocale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  fillIn: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fillIn: Deno.PointerValue | Uint8Array /* ptr */,
   capacity: number /* i32 */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uscript_getCode(util.pstrToFfi(nameOrAbbrOrLocale), util.toPointer(fillIn), capacity, util.toPointer(err));
 }
@@ -17295,7 +17295,7 @@ export function uscript_getShortName(
 
 export function uscript_getScript(
   codepoint: number /* i32 */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): UScriptCode /* Windows.Win32.Globalization.UScriptCode */ {
   return libicu_dll.uscript_getScript(codepoint, util.toPointer(err));
 }
@@ -17309,18 +17309,18 @@ export function uscript_hasScript(
 
 export function uscript_getScriptExtensions(
   c: number /* i32 */,
-  scripts: Deno.PointerValue | Uint8Array | null /* ptr */,
+  scripts: Deno.PointerValue | Uint8Array /* ptr */,
   capacity: number /* i32 */,
-  errorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  errorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uscript_getScriptExtensions(c, util.toPointer(scripts), capacity, util.toPointer(errorCode));
 }
 
 export function uscript_getSampleString(
   script: UScriptCode /* Windows.Win32.Globalization.UScriptCode */,
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   capacity: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uscript_getSampleString(script, util.toPointer(dest), capacity, util.toPointer(pErrorCode));
 }
@@ -17350,47 +17350,47 @@ export function uscript_isCased(
 }
 
 export function uiter_current32(
-  iter: Deno.PointerValue | Uint8Array | null /* ptr */,
+  iter: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uiter_current32(util.toPointer(iter));
 }
 
 export function uiter_next32(
-  iter: Deno.PointerValue | Uint8Array | null /* ptr */,
+  iter: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uiter_next32(util.toPointer(iter));
 }
 
 export function uiter_previous32(
-  iter: Deno.PointerValue | Uint8Array | null /* ptr */,
+  iter: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uiter_previous32(util.toPointer(iter));
 }
 
 export function uiter_getState(
-  iter: Deno.PointerValue | Uint8Array | null /* ptr */,
+  iter: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libicu_dll.uiter_getState(util.toPointer(iter));
 }
 
 export function uiter_setState(
-  iter: Deno.PointerValue | Uint8Array | null /* ptr */,
+  iter: Deno.PointerValue | Uint8Array /* ptr */,
   state: number /* u32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uiter_setState(util.toPointer(iter), state, util.toPointer(pErrorCode));
 }
 
 export function uiter_setString(
-  iter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  s: Deno.PointerValue | Uint8Array | null /* ptr */,
+  iter: Deno.PointerValue | Uint8Array /* ptr */,
+  s: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
 ): void /* void */ {
   return libicu_dll.uiter_setString(util.toPointer(iter), util.toPointer(s), length);
 }
 
 export function uiter_setUTF16BE(
-  iter: Deno.PointerValue | Uint8Array | null /* ptr */,
+  iter: Deno.PointerValue | Uint8Array /* ptr */,
   s: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
 ): void /* void */ {
@@ -17398,7 +17398,7 @@ export function uiter_setUTF16BE(
 }
 
 export function uiter_setUTF8(
-  iter: Deno.PointerValue | Uint8Array | null /* ptr */,
+  iter: Deno.PointerValue | Uint8Array /* ptr */,
   s: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
 ): void /* void */ {
@@ -17406,55 +17406,55 @@ export function uiter_setUTF8(
 }
 
 export function uenum_close(
-  en: Deno.PointerValue | Uint8Array | null /* ptr */,
+  en: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uenum_close(util.toPointer(en));
 }
 
 export function uenum_count(
-  en: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  en: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uenum_count(util.toPointer(en), util.toPointer(status));
 }
 
 export function uenum_unext(
-  en: Deno.PointerValue | Uint8Array | null /* ptr */,
-  resultLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uenum_unext(util.toPointer(en), util.toPointer(resultLength), util.toPointer(status)));
+  en: Deno.PointerValue | Uint8Array /* ptr */,
+  resultLength: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uenum_unext(util.toPointer(en), util.toPointer(resultLength), util.toPointer(status));
 }
 
 export function uenum_next(
-  en: Deno.PointerValue | Uint8Array | null /* ptr */,
-  resultLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  en: Deno.PointerValue | Uint8Array /* ptr */,
+  resultLength: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.uenum_next(util.toPointer(en), util.toPointer(resultLength), util.toPointer(status)));
 }
 
 export function uenum_reset(
-  en: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  en: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uenum_reset(util.toPointer(en), util.toPointer(status));
 }
 
 export function uenum_openUCharStringsEnumeration(
-  strings: Deno.PointerValue | Uint8Array | null /* ptr */,
+  strings: Deno.PointerValue | Uint8Array /* ptr */,
   count: number /* i32 */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uenum_openUCharStringsEnumeration(util.toPointer(strings), count, util.toPointer(ec)));
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uenum_openUCharStringsEnumeration(util.toPointer(strings), count, util.toPointer(ec));
 }
 
 export function uenum_openCharStringsEnumeration(
-  strings: Deno.PointerValue | Uint8Array | null /* ptr */,
+  strings: Deno.PointerValue | Uint8Array /* ptr */,
   count: number /* i32 */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uenum_openCharStringsEnumeration(util.toPointer(strings), count, util.toPointer(ec)));
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uenum_openCharStringsEnumeration(util.toPointer(strings), count, util.toPointer(ec));
 }
 
 export function uloc_getDefault(): string | null /* Windows.Win32.Foundation.PSTR */ {
@@ -17463,7 +17463,7 @@ export function uloc_getDefault(): string | null /* Windows.Win32.Foundation.PST
 
 export function uloc_setDefault(
   localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uloc_setDefault(util.pstrToFfi(localeID), util.toPointer(status));
 }
@@ -17472,7 +17472,7 @@ export function uloc_getLanguage(
   localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   language: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   languageCapacity: number /* i32 */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uloc_getLanguage(util.pstrToFfi(localeID), util.pstrToFfi(language), languageCapacity, util.toPointer(err));
 }
@@ -17481,7 +17481,7 @@ export function uloc_getScript(
   localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   script: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   scriptCapacity: number /* i32 */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uloc_getScript(util.pstrToFfi(localeID), util.pstrToFfi(script), scriptCapacity, util.toPointer(err));
 }
@@ -17490,7 +17490,7 @@ export function uloc_getCountry(
   localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   country: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   countryCapacity: number /* i32 */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uloc_getCountry(util.pstrToFfi(localeID), util.pstrToFfi(country), countryCapacity, util.toPointer(err));
 }
@@ -17499,7 +17499,7 @@ export function uloc_getVariant(
   localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   variant: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   variantCapacity: number /* i32 */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uloc_getVariant(util.pstrToFfi(localeID), util.pstrToFfi(variant), variantCapacity, util.toPointer(err));
 }
@@ -17508,7 +17508,7 @@ export function uloc_getName(
   localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nameCapacity: number /* i32 */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uloc_getName(util.pstrToFfi(localeID), util.pstrToFfi(name), nameCapacity, util.toPointer(err));
 }
@@ -17517,7 +17517,7 @@ export function uloc_canonicalize(
   localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nameCapacity: number /* i32 */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uloc_canonicalize(util.pstrToFfi(localeID), util.pstrToFfi(name), nameCapacity, util.toPointer(err));
 }
@@ -17543,9 +17543,9 @@ export function uloc_getLCID(
 export function uloc_getDisplayLanguage(
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   displayLocale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  language: Deno.PointerValue | Uint8Array | null /* ptr */,
+  language: Deno.PointerValue | Uint8Array /* ptr */,
   languageCapacity: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uloc_getDisplayLanguage(util.pstrToFfi(locale), util.pstrToFfi(displayLocale), util.toPointer(language), languageCapacity, util.toPointer(status));
 }
@@ -17553,9 +17553,9 @@ export function uloc_getDisplayLanguage(
 export function uloc_getDisplayScript(
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   displayLocale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  script: Deno.PointerValue | Uint8Array | null /* ptr */,
+  script: Deno.PointerValue | Uint8Array /* ptr */,
   scriptCapacity: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uloc_getDisplayScript(util.pstrToFfi(locale), util.pstrToFfi(displayLocale), util.toPointer(script), scriptCapacity, util.toPointer(status));
 }
@@ -17563,9 +17563,9 @@ export function uloc_getDisplayScript(
 export function uloc_getDisplayCountry(
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   displayLocale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  country: Deno.PointerValue | Uint8Array | null /* ptr */,
+  country: Deno.PointerValue | Uint8Array /* ptr */,
   countryCapacity: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uloc_getDisplayCountry(util.pstrToFfi(locale), util.pstrToFfi(displayLocale), util.toPointer(country), countryCapacity, util.toPointer(status));
 }
@@ -17573,9 +17573,9 @@ export function uloc_getDisplayCountry(
 export function uloc_getDisplayVariant(
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   displayLocale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  variant: Deno.PointerValue | Uint8Array | null /* ptr */,
+  variant: Deno.PointerValue | Uint8Array /* ptr */,
   variantCapacity: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uloc_getDisplayVariant(util.pstrToFfi(locale), util.pstrToFfi(displayLocale), util.toPointer(variant), variantCapacity, util.toPointer(status));
 }
@@ -17583,9 +17583,9 @@ export function uloc_getDisplayVariant(
 export function uloc_getDisplayKeyword(
   keyword: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   displayLocale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   destCapacity: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uloc_getDisplayKeyword(util.pstrToFfi(keyword), util.pstrToFfi(displayLocale), util.toPointer(dest), destCapacity, util.toPointer(status));
 }
@@ -17594,9 +17594,9 @@ export function uloc_getDisplayKeywordValue(
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   keyword: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   displayLocale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   destCapacity: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uloc_getDisplayKeywordValue(util.pstrToFfi(locale), util.pstrToFfi(keyword), util.pstrToFfi(displayLocale), util.toPointer(dest), destCapacity, util.toPointer(status));
 }
@@ -17604,9 +17604,9 @@ export function uloc_getDisplayKeywordValue(
 export function uloc_getDisplayName(
   localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   inLocaleID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   maxResultSize: number /* i32 */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uloc_getDisplayName(util.pstrToFfi(localeID), util.pstrToFfi(inLocaleID), util.toPointer(result), maxResultSize, util.toPointer(err));
 }
@@ -17623,24 +17623,24 @@ export function uloc_countAvailable(): number /* i32 */ {
 
 export function uloc_openAvailableByType(
   type: ULocAvailableType /* Windows.Win32.Globalization.ULocAvailableType */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uloc_openAvailableByType(type, util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uloc_openAvailableByType(type, util.toPointer(status));
 }
 
-export function uloc_getISOLanguages(): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uloc_getISOLanguages());
+export function uloc_getISOLanguages(): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uloc_getISOLanguages();
 }
 
-export function uloc_getISOCountries(): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uloc_getISOCountries());
+export function uloc_getISOCountries(): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uloc_getISOCountries();
 }
 
 export function uloc_getParent(
   localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   parent: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   parentCapacity: number /* i32 */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uloc_getParent(util.pstrToFfi(localeID), util.pstrToFfi(parent), parentCapacity, util.toPointer(err));
 }
@@ -17649,16 +17649,16 @@ export function uloc_getBaseName(
   localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nameCapacity: number /* i32 */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uloc_getBaseName(util.pstrToFfi(localeID), util.pstrToFfi(name), nameCapacity, util.toPointer(err));
 }
 
 export function uloc_openKeywords(
   localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uloc_openKeywords(util.pstrToFfi(localeID), util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uloc_openKeywords(util.pstrToFfi(localeID), util.toPointer(status));
 }
 
 export function uloc_getKeywordValue(
@@ -17666,7 +17666,7 @@ export function uloc_getKeywordValue(
   keywordName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   buffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   bufferCapacity: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uloc_getKeywordValue(util.pstrToFfi(localeID), util.pstrToFfi(keywordName), util.pstrToFfi(buffer), bufferCapacity, util.toPointer(status));
 }
@@ -17676,7 +17676,7 @@ export function uloc_setKeywordValue(
   keywordValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   buffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   bufferCapacity: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uloc_setKeywordValue(util.pstrToFfi(keywordName), util.pstrToFfi(keywordValue), util.pstrToFfi(buffer), bufferCapacity, util.toPointer(status));
 }
@@ -17689,14 +17689,14 @@ export function uloc_isRightToLeft(
 
 export function uloc_getCharacterOrientation(
   localeId: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): ULayoutType /* Windows.Win32.Globalization.ULayoutType */ {
   return libicu_dll.uloc_getCharacterOrientation(util.pstrToFfi(localeId), util.toPointer(status));
 }
 
 export function uloc_getLineOrientation(
   localeId: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): ULayoutType /* Windows.Win32.Globalization.ULayoutType */ {
   return libicu_dll.uloc_getLineOrientation(util.pstrToFfi(localeId), util.toPointer(status));
 }
@@ -17704,10 +17704,10 @@ export function uloc_getLineOrientation(
 export function uloc_acceptLanguageFromHTTP(
   result: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   resultAvailable: number /* i32 */,
-  outResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  outResult: Deno.PointerValue | Uint8Array /* ptr */,
   httpAcceptLanguage: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  availableLocales: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  availableLocales: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uloc_acceptLanguageFromHTTP(util.pstrToFfi(result), resultAvailable, util.toPointer(outResult), util.pstrToFfi(httpAcceptLanguage), util.toPointer(availableLocales), util.toPointer(status));
 }
@@ -17715,11 +17715,11 @@ export function uloc_acceptLanguageFromHTTP(
 export function uloc_acceptLanguage(
   result: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   resultAvailable: number /* i32 */,
-  outResult: Deno.PointerValue | Uint8Array | null /* ptr */,
-  acceptList: Deno.PointerValue | Uint8Array | null /* ptr */,
+  outResult: Deno.PointerValue | Uint8Array /* ptr */,
+  acceptList: Deno.PointerValue | Uint8Array /* ptr */,
   acceptListCount: number /* i32 */,
-  availableLocales: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  availableLocales: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uloc_acceptLanguage(util.pstrToFfi(result), resultAvailable, util.toPointer(outResult), util.toPointer(acceptList), acceptListCount, util.toPointer(availableLocales), util.toPointer(status));
 }
@@ -17728,7 +17728,7 @@ export function uloc_getLocaleForLCID(
   hostID: number /* u32 */,
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   localeCapacity: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uloc_getLocaleForLCID(hostID, util.pstrToFfi(locale), localeCapacity, util.toPointer(status));
 }
@@ -17737,7 +17737,7 @@ export function uloc_addLikelySubtags(
   localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   maximizedLocaleID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   maximizedLocaleIDCapacity: number /* i32 */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uloc_addLikelySubtags(util.pstrToFfi(localeID), util.pstrToFfi(maximizedLocaleID), maximizedLocaleIDCapacity, util.toPointer(err));
 }
@@ -17746,7 +17746,7 @@ export function uloc_minimizeSubtags(
   localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   minimizedLocaleID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   minimizedLocaleIDCapacity: number /* i32 */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uloc_minimizeSubtags(util.pstrToFfi(localeID), util.pstrToFfi(minimizedLocaleID), minimizedLocaleIDCapacity, util.toPointer(err));
 }
@@ -17755,8 +17755,8 @@ export function uloc_forLanguageTag(
   langtag: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   localeIDCapacity: number /* i32 */,
-  parsedLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  parsedLength: Deno.PointerValue | Uint8Array /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uloc_forLanguageTag(util.pstrToFfi(langtag), util.pstrToFfi(localeID), localeIDCapacity, util.toPointer(parsedLength), util.toPointer(err));
 }
@@ -17766,7 +17766,7 @@ export function uloc_toLanguageTag(
   langtag: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   langtagCapacity: number /* i32 */,
   strict: number /* i8 */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uloc_toLanguageTag(util.pstrToFfi(localeID), util.pstrToFfi(langtag), langtagCapacity, strict, util.toPointer(err));
 }
@@ -17800,420 +17800,420 @@ export function uloc_toLegacyType(
 export function ures_open(
   packageName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ures_open(util.pstrToFfi(packageName), util.pstrToFfi(locale), util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ures_open(util.pstrToFfi(packageName), util.pstrToFfi(locale), util.toPointer(status));
 }
 
 export function ures_openDirect(
   packageName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ures_openDirect(util.pstrToFfi(packageName), util.pstrToFfi(locale), util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ures_openDirect(util.pstrToFfi(packageName), util.pstrToFfi(locale), util.toPointer(status));
 }
 
 export function ures_openU(
-  packageName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  packageName: Deno.PointerValue | Uint8Array /* ptr */,
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ures_openU(util.toPointer(packageName), util.pstrToFfi(locale), util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ures_openU(util.toPointer(packageName), util.pstrToFfi(locale), util.toPointer(status));
 }
 
 export function ures_close(
-  resourceBundle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  resourceBundle: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ures_close(util.toPointer(resourceBundle));
 }
 
 export function ures_getVersion(
-  resB: Deno.PointerValue | Uint8Array | null /* ptr */,
-  versionInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  resB: Deno.PointerValue | Uint8Array /* ptr */,
+  versionInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ures_getVersion(util.toPointer(resB), util.toPointer(versionInfo));
 }
 
 export function ures_getLocaleByType(
-  resourceBundle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  resourceBundle: Deno.PointerValue | Uint8Array /* ptr */,
   type: ULocDataLocaleType /* Windows.Win32.Globalization.ULocDataLocaleType */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.ures_getLocaleByType(util.toPointer(resourceBundle), type, util.toPointer(status)));
 }
 
 export function ures_getString(
-  resourceBundle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  len: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ures_getString(util.toPointer(resourceBundle), util.toPointer(len), util.toPointer(status)));
+  resourceBundle: Deno.PointerValue | Uint8Array /* ptr */,
+  len: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ures_getString(util.toPointer(resourceBundle), util.toPointer(len), util.toPointer(status));
 }
 
 export function ures_getUTF8String(
-  resB: Deno.PointerValue | Uint8Array | null /* ptr */,
+  resB: Deno.PointerValue | Uint8Array /* ptr */,
   dest: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  length: Deno.PointerValue | Uint8Array | null /* ptr */,
+  length: Deno.PointerValue | Uint8Array /* ptr */,
   forceCopy: number /* i8 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.ures_getUTF8String(util.toPointer(resB), util.pstrToFfi(dest), util.toPointer(length), forceCopy, util.toPointer(status)));
 }
 
 export function ures_getBinary(
-  resourceBundle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  len: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ures_getBinary(util.toPointer(resourceBundle), util.toPointer(len), util.toPointer(status)));
+  resourceBundle: Deno.PointerValue | Uint8Array /* ptr */,
+  len: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ures_getBinary(util.toPointer(resourceBundle), util.toPointer(len), util.toPointer(status));
 }
 
 export function ures_getIntVector(
-  resourceBundle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  len: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ures_getIntVector(util.toPointer(resourceBundle), util.toPointer(len), util.toPointer(status)));
+  resourceBundle: Deno.PointerValue | Uint8Array /* ptr */,
+  len: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ures_getIntVector(util.toPointer(resourceBundle), util.toPointer(len), util.toPointer(status));
 }
 
 export function ures_getUInt(
-  resourceBundle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  resourceBundle: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libicu_dll.ures_getUInt(util.toPointer(resourceBundle), util.toPointer(status));
 }
 
 export function ures_getInt(
-  resourceBundle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  resourceBundle: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ures_getInt(util.toPointer(resourceBundle), util.toPointer(status));
 }
 
 export function ures_getSize(
-  resourceBundle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  resourceBundle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ures_getSize(util.toPointer(resourceBundle));
 }
 
 export function ures_getType(
-  resourceBundle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  resourceBundle: Deno.PointerValue | Uint8Array /* ptr */,
 ): UResType /* Windows.Win32.Globalization.UResType */ {
   return libicu_dll.ures_getType(util.toPointer(resourceBundle));
 }
 
 export function ures_getKey(
-  resourceBundle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  resourceBundle: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.ures_getKey(util.toPointer(resourceBundle)));
 }
 
 export function ures_resetIterator(
-  resourceBundle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  resourceBundle: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ures_resetIterator(util.toPointer(resourceBundle));
 }
 
 export function ures_hasNext(
-  resourceBundle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  resourceBundle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.ures_hasNext(util.toPointer(resourceBundle));
 }
 
 export function ures_getNextResource(
-  resourceBundle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  fillIn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ures_getNextResource(util.toPointer(resourceBundle), util.toPointer(fillIn), util.toPointer(status)));
+  resourceBundle: Deno.PointerValue | Uint8Array /* ptr */,
+  fillIn: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ures_getNextResource(util.toPointer(resourceBundle), util.toPointer(fillIn), util.toPointer(status));
 }
 
 export function ures_getNextString(
-  resourceBundle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  len: Deno.PointerValue | Uint8Array | null /* ptr */,
-  key: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ures_getNextString(util.toPointer(resourceBundle), util.toPointer(len), util.toPointer(key), util.toPointer(status)));
+  resourceBundle: Deno.PointerValue | Uint8Array /* ptr */,
+  len: Deno.PointerValue | Uint8Array /* ptr */,
+  key: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ures_getNextString(util.toPointer(resourceBundle), util.toPointer(len), util.toPointer(key), util.toPointer(status));
 }
 
 export function ures_getByIndex(
-  resourceBundle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  resourceBundle: Deno.PointerValue | Uint8Array /* ptr */,
   indexR: number /* i32 */,
-  fillIn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ures_getByIndex(util.toPointer(resourceBundle), indexR, util.toPointer(fillIn), util.toPointer(status)));
+  fillIn: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ures_getByIndex(util.toPointer(resourceBundle), indexR, util.toPointer(fillIn), util.toPointer(status));
 }
 
 export function ures_getStringByIndex(
-  resourceBundle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  resourceBundle: Deno.PointerValue | Uint8Array /* ptr */,
   indexS: number /* i32 */,
-  len: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ures_getStringByIndex(util.toPointer(resourceBundle), indexS, util.toPointer(len), util.toPointer(status)));
+  len: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ures_getStringByIndex(util.toPointer(resourceBundle), indexS, util.toPointer(len), util.toPointer(status));
 }
 
 export function ures_getUTF8StringByIndex(
-  resB: Deno.PointerValue | Uint8Array | null /* ptr */,
+  resB: Deno.PointerValue | Uint8Array /* ptr */,
   stringIndex: number /* i32 */,
   dest: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pLength: Deno.PointerValue | Uint8Array /* ptr */,
   forceCopy: number /* i8 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.ures_getUTF8StringByIndex(util.toPointer(resB), stringIndex, util.pstrToFfi(dest), util.toPointer(pLength), forceCopy, util.toPointer(status)));
 }
 
 export function ures_getByKey(
-  resourceBundle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  resourceBundle: Deno.PointerValue | Uint8Array /* ptr */,
   key: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  fillIn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ures_getByKey(util.toPointer(resourceBundle), util.pstrToFfi(key), util.toPointer(fillIn), util.toPointer(status)));
+  fillIn: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ures_getByKey(util.toPointer(resourceBundle), util.pstrToFfi(key), util.toPointer(fillIn), util.toPointer(status));
 }
 
 export function ures_getStringByKey(
-  resB: Deno.PointerValue | Uint8Array | null /* ptr */,
+  resB: Deno.PointerValue | Uint8Array /* ptr */,
   key: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  len: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ures_getStringByKey(util.toPointer(resB), util.pstrToFfi(key), util.toPointer(len), util.toPointer(status)));
+  len: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ures_getStringByKey(util.toPointer(resB), util.pstrToFfi(key), util.toPointer(len), util.toPointer(status));
 }
 
 export function ures_getUTF8StringByKey(
-  resB: Deno.PointerValue | Uint8Array | null /* ptr */,
+  resB: Deno.PointerValue | Uint8Array /* ptr */,
   key: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dest: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pLength: Deno.PointerValue | Uint8Array /* ptr */,
   forceCopy: number /* i8 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.ures_getUTF8StringByKey(util.toPointer(resB), util.pstrToFfi(key), util.pstrToFfi(dest), util.toPointer(pLength), forceCopy, util.toPointer(status)));
 }
 
 export function ures_openAvailableLocales(
   packageName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ures_openAvailableLocales(util.pstrToFfi(packageName), util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ures_openAvailableLocales(util.pstrToFfi(packageName), util.toPointer(status));
 }
 
 export function uldn_open(
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dialectHandling: UDialectHandling /* Windows.Win32.Globalization.UDialectHandling */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uldn_open(util.pstrToFfi(locale), dialectHandling, util.toPointer(pErrorCode)));
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uldn_open(util.pstrToFfi(locale), dialectHandling, util.toPointer(pErrorCode));
 }
 
 export function uldn_close(
-  ldn: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ldn: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uldn_close(util.toPointer(ldn));
 }
 
 export function uldn_getLocale(
-  ldn: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ldn: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.uldn_getLocale(util.toPointer(ldn)));
 }
 
 export function uldn_getDialectHandling(
-  ldn: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ldn: Deno.PointerValue | Uint8Array /* ptr */,
 ): UDialectHandling /* Windows.Win32.Globalization.UDialectHandling */ {
   return libicu_dll.uldn_getDialectHandling(util.toPointer(ldn));
 }
 
 export function uldn_localeDisplayName(
-  ldn: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ldn: Deno.PointerValue | Uint8Array /* ptr */,
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   maxResultSize: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uldn_localeDisplayName(util.toPointer(ldn), util.pstrToFfi(locale), util.toPointer(result), maxResultSize, util.toPointer(pErrorCode));
 }
 
 export function uldn_languageDisplayName(
-  ldn: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ldn: Deno.PointerValue | Uint8Array /* ptr */,
   lang: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   maxResultSize: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uldn_languageDisplayName(util.toPointer(ldn), util.pstrToFfi(lang), util.toPointer(result), maxResultSize, util.toPointer(pErrorCode));
 }
 
 export function uldn_scriptDisplayName(
-  ldn: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ldn: Deno.PointerValue | Uint8Array /* ptr */,
   script: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   maxResultSize: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uldn_scriptDisplayName(util.toPointer(ldn), util.pstrToFfi(script), util.toPointer(result), maxResultSize, util.toPointer(pErrorCode));
 }
 
 export function uldn_scriptCodeDisplayName(
-  ldn: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ldn: Deno.PointerValue | Uint8Array /* ptr */,
   scriptCode: UScriptCode /* Windows.Win32.Globalization.UScriptCode */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   maxResultSize: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uldn_scriptCodeDisplayName(util.toPointer(ldn), scriptCode, util.toPointer(result), maxResultSize, util.toPointer(pErrorCode));
 }
 
 export function uldn_regionDisplayName(
-  ldn: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ldn: Deno.PointerValue | Uint8Array /* ptr */,
   region: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   maxResultSize: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uldn_regionDisplayName(util.toPointer(ldn), util.pstrToFfi(region), util.toPointer(result), maxResultSize, util.toPointer(pErrorCode));
 }
 
 export function uldn_variantDisplayName(
-  ldn: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ldn: Deno.PointerValue | Uint8Array /* ptr */,
   variant: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   maxResultSize: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uldn_variantDisplayName(util.toPointer(ldn), util.pstrToFfi(variant), util.toPointer(result), maxResultSize, util.toPointer(pErrorCode));
 }
 
 export function uldn_keyDisplayName(
-  ldn: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ldn: Deno.PointerValue | Uint8Array /* ptr */,
   key: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   maxResultSize: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uldn_keyDisplayName(util.toPointer(ldn), util.pstrToFfi(key), util.toPointer(result), maxResultSize, util.toPointer(pErrorCode));
 }
 
 export function uldn_keyValueDisplayName(
-  ldn: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ldn: Deno.PointerValue | Uint8Array /* ptr */,
   key: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   value: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   maxResultSize: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uldn_keyValueDisplayName(util.toPointer(ldn), util.pstrToFfi(key), util.pstrToFfi(value), util.toPointer(result), maxResultSize, util.toPointer(pErrorCode));
 }
 
 export function uldn_openForContext(
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  contexts: Deno.PointerValue | Uint8Array | null /* ptr */,
+  contexts: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uldn_openForContext(util.pstrToFfi(locale), util.toPointer(contexts), length, util.toPointer(pErrorCode)));
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uldn_openForContext(util.pstrToFfi(locale), util.toPointer(contexts), length, util.toPointer(pErrorCode));
 }
 
 export function uldn_getContext(
-  ldn: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ldn: Deno.PointerValue | Uint8Array /* ptr */,
   type: UDisplayContextType /* Windows.Win32.Globalization.UDisplayContextType */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): UDisplayContext /* Windows.Win32.Globalization.UDisplayContext */ {
   return libicu_dll.uldn_getContext(util.toPointer(ldn), type, util.toPointer(pErrorCode));
 }
 
 export function ucurr_forLocale(
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  buff: Deno.PointerValue | Uint8Array | null /* ptr */,
+  buff: Deno.PointerValue | Uint8Array /* ptr */,
   buffCapacity: number /* i32 */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucurr_forLocale(util.pstrToFfi(locale), util.toPointer(buff), buffCapacity, util.toPointer(ec));
 }
 
 export function ucurr_register(
-  isoCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  isoCode: Deno.PointerValue | Uint8Array /* ptr */,
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucurr_register(util.toPointer(isoCode), util.pstrToFfi(locale), util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucurr_register(util.toPointer(isoCode), util.pstrToFfi(locale), util.toPointer(status));
 }
 
 export function ucurr_unregister(
-  key: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  key: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.ucurr_unregister(util.toPointer(key), util.toPointer(status));
 }
 
 export function ucurr_getName(
-  currency: Deno.PointerValue | Uint8Array | null /* ptr */,
+  currency: Deno.PointerValue | Uint8Array /* ptr */,
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nameStyle: UCurrNameStyle /* Windows.Win32.Globalization.UCurrNameStyle */,
-  isChoiceFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
-  len: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucurr_getName(util.toPointer(currency), util.pstrToFfi(locale), nameStyle, util.toPointer(isChoiceFormat), util.toPointer(len), util.toPointer(ec)));
+  isChoiceFormat: Deno.PointerValue | Uint8Array /* ptr */,
+  len: Deno.PointerValue | Uint8Array /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucurr_getName(util.toPointer(currency), util.pstrToFfi(locale), nameStyle, util.toPointer(isChoiceFormat), util.toPointer(len), util.toPointer(ec));
 }
 
 export function ucurr_getPluralName(
-  currency: Deno.PointerValue | Uint8Array | null /* ptr */,
+  currency: Deno.PointerValue | Uint8Array /* ptr */,
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  isChoiceFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
+  isChoiceFormat: Deno.PointerValue | Uint8Array /* ptr */,
   pluralCount: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  len: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucurr_getPluralName(util.toPointer(currency), util.pstrToFfi(locale), util.toPointer(isChoiceFormat), util.pstrToFfi(pluralCount), util.toPointer(len), util.toPointer(ec)));
+  len: Deno.PointerValue | Uint8Array /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucurr_getPluralName(util.toPointer(currency), util.pstrToFfi(locale), util.toPointer(isChoiceFormat), util.pstrToFfi(pluralCount), util.toPointer(len), util.toPointer(ec));
 }
 
 export function ucurr_getDefaultFractionDigits(
-  currency: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  currency: Deno.PointerValue | Uint8Array /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucurr_getDefaultFractionDigits(util.toPointer(currency), util.toPointer(ec));
 }
 
 export function ucurr_getDefaultFractionDigitsForUsage(
-  currency: Deno.PointerValue | Uint8Array | null /* ptr */,
+  currency: Deno.PointerValue | Uint8Array /* ptr */,
   usage: UCurrencyUsage /* Windows.Win32.Globalization.UCurrencyUsage */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucurr_getDefaultFractionDigitsForUsage(util.toPointer(currency), usage, util.toPointer(ec));
 }
 
 export function ucurr_getRoundingIncrement(
-  currency: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  currency: Deno.PointerValue | Uint8Array /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* f64 */ {
   return libicu_dll.ucurr_getRoundingIncrement(util.toPointer(currency), util.toPointer(ec));
 }
 
 export function ucurr_getRoundingIncrementForUsage(
-  currency: Deno.PointerValue | Uint8Array | null /* ptr */,
+  currency: Deno.PointerValue | Uint8Array /* ptr */,
   usage: UCurrencyUsage /* Windows.Win32.Globalization.UCurrencyUsage */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* f64 */ {
   return libicu_dll.ucurr_getRoundingIncrementForUsage(util.toPointer(currency), usage, util.toPointer(ec));
 }
 
 export function ucurr_openISOCurrencies(
   currType: number /* u32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucurr_openISOCurrencies(currType, util.toPointer(pErrorCode)));
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucurr_openISOCurrencies(currType, util.toPointer(pErrorCode));
 }
 
 export function ucurr_isAvailable(
-  isoCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  isoCode: Deno.PointerValue | Uint8Array /* ptr */,
   from: number /* f64 */,
   to: number /* f64 */,
-  errorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  errorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.ucurr_isAvailable(util.toPointer(isoCode), from, to, util.toPointer(errorCode));
 }
@@ -18221,7 +18221,7 @@ export function ucurr_isAvailable(
 export function ucurr_countCurrencies(
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   date: number /* f64 */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucurr_countCurrencies(util.pstrToFfi(locale), date, util.toPointer(ec));
 }
@@ -18230,9 +18230,9 @@ export function ucurr_forLocaleAndDate(
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   date: number /* f64 */,
   index: number /* i32 */,
-  buff: Deno.PointerValue | Uint8Array | null /* ptr */,
+  buff: Deno.PointerValue | Uint8Array /* ptr */,
   buffCapacity: number /* i32 */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucurr_forLocaleAndDate(util.pstrToFfi(locale), date, index, util.toPointer(buff), buffCapacity, util.toPointer(ec));
 }
@@ -18241,32 +18241,32 @@ export function ucurr_getKeywordValuesForLocale(
   key: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   commonlyUsed: number /* i8 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucurr_getKeywordValuesForLocale(util.pstrToFfi(key), util.pstrToFfi(locale), commonlyUsed, util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucurr_getKeywordValuesForLocale(util.pstrToFfi(key), util.pstrToFfi(locale), commonlyUsed, util.toPointer(status));
 }
 
 export function ucurr_getNumericCode(
-  currency: Deno.PointerValue | Uint8Array | null /* ptr */,
+  currency: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucurr_getNumericCode(util.toPointer(currency));
 }
 
 export function ucpmap_get(
-  map: Deno.PointerValue | Uint8Array | null /* ptr */,
+  map: Deno.PointerValue | Uint8Array /* ptr */,
   c: number /* i32 */,
 ): number /* u32 */ {
   return libicu_dll.ucpmap_get(util.toPointer(map), c);
 }
 
 export function ucpmap_getRange(
-  map: Deno.PointerValue | Uint8Array | null /* ptr */,
+  map: Deno.PointerValue | Uint8Array /* ptr */,
   start: number /* i32 */,
   option: UCPMapRangeOption /* Windows.Win32.Globalization.UCPMapRangeOption */,
   surrogateValue: number /* u32 */,
-  filter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  filter: Deno.PointerValue | Uint8Array /* ptr */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+  pValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucpmap_getRange(util.toPointer(map), start, option, surrogateValue, util.toPointer(filter), util.toPointer(context), util.toPointer(pValue));
 }
@@ -18274,69 +18274,69 @@ export function ucpmap_getRange(
 export function ucptrie_openFromBinary(
   type: UCPTrieType /* Windows.Win32.Globalization.UCPTrieType */,
   valueWidth: UCPTrieValueWidth /* Windows.Win32.Globalization.UCPTrieValueWidth */,
-  data: Deno.PointerValue | Uint8Array | null /* ptr */,
+  data: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
-  pActualLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucptrie_openFromBinary(type, valueWidth, util.toPointer(data), length, util.toPointer(pActualLength), util.toPointer(pErrorCode)));
+  pActualLength: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucptrie_openFromBinary(type, valueWidth, util.toPointer(data), length, util.toPointer(pActualLength), util.toPointer(pErrorCode));
 }
 
 export function ucptrie_close(
-  trie: Deno.PointerValue | Uint8Array | null /* ptr */,
+  trie: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucptrie_close(util.toPointer(trie));
 }
 
 export function ucptrie_getType(
-  trie: Deno.PointerValue | Uint8Array | null /* ptr */,
+  trie: Deno.PointerValue | Uint8Array /* ptr */,
 ): UCPTrieType /* Windows.Win32.Globalization.UCPTrieType */ {
   return libicu_dll.ucptrie_getType(util.toPointer(trie));
 }
 
 export function ucptrie_getValueWidth(
-  trie: Deno.PointerValue | Uint8Array | null /* ptr */,
+  trie: Deno.PointerValue | Uint8Array /* ptr */,
 ): UCPTrieValueWidth /* Windows.Win32.Globalization.UCPTrieValueWidth */ {
   return libicu_dll.ucptrie_getValueWidth(util.toPointer(trie));
 }
 
 export function ucptrie_get(
-  trie: Deno.PointerValue | Uint8Array | null /* ptr */,
+  trie: Deno.PointerValue | Uint8Array /* ptr */,
   c: number /* i32 */,
 ): number /* u32 */ {
   return libicu_dll.ucptrie_get(util.toPointer(trie), c);
 }
 
 export function ucptrie_getRange(
-  trie: Deno.PointerValue | Uint8Array | null /* ptr */,
+  trie: Deno.PointerValue | Uint8Array /* ptr */,
   start: number /* i32 */,
   option: UCPMapRangeOption /* Windows.Win32.Globalization.UCPMapRangeOption */,
   surrogateValue: number /* u32 */,
-  filter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  filter: Deno.PointerValue | Uint8Array /* ptr */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+  pValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucptrie_getRange(util.toPointer(trie), start, option, surrogateValue, util.toPointer(filter), util.toPointer(context), util.toPointer(pValue));
 }
 
 export function ucptrie_toBinary(
-  trie: Deno.PointerValue | Uint8Array | null /* ptr */,
-  data: Deno.PointerValue | Uint8Array | null /* ptr */,
+  trie: Deno.PointerValue | Uint8Array /* ptr */,
+  data: Deno.PointerValue | Uint8Array /* ptr */,
   capacity: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucptrie_toBinary(util.toPointer(trie), util.toPointer(data), capacity, util.toPointer(pErrorCode));
 }
 
 export function ucptrie_internalSmallIndex(
-  trie: Deno.PointerValue | Uint8Array | null /* ptr */,
+  trie: Deno.PointerValue | Uint8Array /* ptr */,
   c: number /* i32 */,
 ): number /* i32 */ {
   return libicu_dll.ucptrie_internalSmallIndex(util.toPointer(trie), c);
 }
 
 export function ucptrie_internalSmallU8Index(
-  trie: Deno.PointerValue | Uint8Array | null /* ptr */,
+  trie: Deno.PointerValue | Uint8Array /* ptr */,
   lt1: number /* i32 */,
   t2: number /* u8 */,
   t3: number /* u8 */,
@@ -18345,10 +18345,10 @@ export function ucptrie_internalSmallU8Index(
 }
 
 export function ucptrie_internalU8PrevIndex(
-  trie: Deno.PointerValue | Uint8Array | null /* ptr */,
+  trie: Deno.PointerValue | Uint8Array /* ptr */,
   c: number /* i32 */,
-  start: Deno.PointerValue | Uint8Array | null /* ptr */,
-  src: Deno.PointerValue | Uint8Array | null /* ptr */,
+  start: Deno.PointerValue | Uint8Array /* ptr */,
+  src: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucptrie_internalU8PrevIndex(util.toPointer(trie), c, util.toPointer(start), util.toPointer(src));
 }
@@ -18356,173 +18356,173 @@ export function ucptrie_internalU8PrevIndex(
 export function umutablecptrie_open(
   initialValue: number /* u32 */,
   errorValue: number /* u32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.umutablecptrie_open(initialValue, errorValue, util.toPointer(pErrorCode)));
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.umutablecptrie_open(initialValue, errorValue, util.toPointer(pErrorCode));
 }
 
 export function umutablecptrie_clone(
-  other: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.umutablecptrie_clone(util.toPointer(other), util.toPointer(pErrorCode)));
+  other: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.umutablecptrie_clone(util.toPointer(other), util.toPointer(pErrorCode));
 }
 
 export function umutablecptrie_close(
-  trie: Deno.PointerValue | Uint8Array | null /* ptr */,
+  trie: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.umutablecptrie_close(util.toPointer(trie));
 }
 
 export function umutablecptrie_fromUCPMap(
-  map: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.umutablecptrie_fromUCPMap(util.toPointer(map), util.toPointer(pErrorCode)));
+  map: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.umutablecptrie_fromUCPMap(util.toPointer(map), util.toPointer(pErrorCode));
 }
 
 export function umutablecptrie_fromUCPTrie(
-  trie: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.umutablecptrie_fromUCPTrie(util.toPointer(trie), util.toPointer(pErrorCode)));
+  trie: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.umutablecptrie_fromUCPTrie(util.toPointer(trie), util.toPointer(pErrorCode));
 }
 
 export function umutablecptrie_get(
-  trie: Deno.PointerValue | Uint8Array | null /* ptr */,
+  trie: Deno.PointerValue | Uint8Array /* ptr */,
   c: number /* i32 */,
 ): number /* u32 */ {
   return libicu_dll.umutablecptrie_get(util.toPointer(trie), c);
 }
 
 export function umutablecptrie_getRange(
-  trie: Deno.PointerValue | Uint8Array | null /* ptr */,
+  trie: Deno.PointerValue | Uint8Array /* ptr */,
   start: number /* i32 */,
   option: UCPMapRangeOption /* Windows.Win32.Globalization.UCPMapRangeOption */,
   surrogateValue: number /* u32 */,
-  filter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  filter: Deno.PointerValue | Uint8Array /* ptr */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+  pValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.umutablecptrie_getRange(util.toPointer(trie), start, option, surrogateValue, util.toPointer(filter), util.toPointer(context), util.toPointer(pValue));
 }
 
 export function umutablecptrie_set(
-  trie: Deno.PointerValue | Uint8Array | null /* ptr */,
+  trie: Deno.PointerValue | Uint8Array /* ptr */,
   c: number /* i32 */,
   value: number /* u32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.umutablecptrie_set(util.toPointer(trie), c, value, util.toPointer(pErrorCode));
 }
 
 export function umutablecptrie_setRange(
-  trie: Deno.PointerValue | Uint8Array | null /* ptr */,
+  trie: Deno.PointerValue | Uint8Array /* ptr */,
   start: number /* i32 */,
   end: number /* i32 */,
   value: number /* u32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.umutablecptrie_setRange(util.toPointer(trie), start, end, value, util.toPointer(pErrorCode));
 }
 
 export function umutablecptrie_buildImmutable(
-  trie: Deno.PointerValue | Uint8Array | null /* ptr */,
+  trie: Deno.PointerValue | Uint8Array /* ptr */,
   type: UCPTrieType /* Windows.Win32.Globalization.UCPTrieType */,
   valueWidth: UCPTrieValueWidth /* Windows.Win32.Globalization.UCPTrieValueWidth */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.umutablecptrie_buildImmutable(util.toPointer(trie), type, valueWidth, util.toPointer(pErrorCode)));
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.umutablecptrie_buildImmutable(util.toPointer(trie), type, valueWidth, util.toPointer(pErrorCode));
 }
 
 export function UCNV_FROM_U_CALLBACK_STOP(
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-  fromUArgs: Deno.PointerValue | Uint8Array | null /* ptr */,
-  codeUnits: Deno.PointerValue | Uint8Array | null /* ptr */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+  fromUArgs: Deno.PointerValue | Uint8Array /* ptr */,
+  codeUnits: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
   codePoint: number /* i32 */,
   reason: UConverterCallbackReason /* Windows.Win32.Globalization.UConverterCallbackReason */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.UCNV_FROM_U_CALLBACK_STOP(util.toPointer(context), util.toPointer(fromUArgs), util.toPointer(codeUnits), length, codePoint, reason, util.toPointer(err));
 }
 
 export function UCNV_TO_U_CALLBACK_STOP(
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-  toUArgs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+  toUArgs: Deno.PointerValue | Uint8Array /* ptr */,
   codeUnits: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
   reason: UConverterCallbackReason /* Windows.Win32.Globalization.UConverterCallbackReason */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.UCNV_TO_U_CALLBACK_STOP(util.toPointer(context), util.toPointer(toUArgs), util.pstrToFfi(codeUnits), length, reason, util.toPointer(err));
 }
 
 export function UCNV_FROM_U_CALLBACK_SKIP(
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-  fromUArgs: Deno.PointerValue | Uint8Array | null /* ptr */,
-  codeUnits: Deno.PointerValue | Uint8Array | null /* ptr */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+  fromUArgs: Deno.PointerValue | Uint8Array /* ptr */,
+  codeUnits: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
   codePoint: number /* i32 */,
   reason: UConverterCallbackReason /* Windows.Win32.Globalization.UConverterCallbackReason */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.UCNV_FROM_U_CALLBACK_SKIP(util.toPointer(context), util.toPointer(fromUArgs), util.toPointer(codeUnits), length, codePoint, reason, util.toPointer(err));
 }
 
 export function UCNV_FROM_U_CALLBACK_SUBSTITUTE(
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-  fromUArgs: Deno.PointerValue | Uint8Array | null /* ptr */,
-  codeUnits: Deno.PointerValue | Uint8Array | null /* ptr */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+  fromUArgs: Deno.PointerValue | Uint8Array /* ptr */,
+  codeUnits: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
   codePoint: number /* i32 */,
   reason: UConverterCallbackReason /* Windows.Win32.Globalization.UConverterCallbackReason */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.UCNV_FROM_U_CALLBACK_SUBSTITUTE(util.toPointer(context), util.toPointer(fromUArgs), util.toPointer(codeUnits), length, codePoint, reason, util.toPointer(err));
 }
 
 export function UCNV_FROM_U_CALLBACK_ESCAPE(
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-  fromUArgs: Deno.PointerValue | Uint8Array | null /* ptr */,
-  codeUnits: Deno.PointerValue | Uint8Array | null /* ptr */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+  fromUArgs: Deno.PointerValue | Uint8Array /* ptr */,
+  codeUnits: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
   codePoint: number /* i32 */,
   reason: UConverterCallbackReason /* Windows.Win32.Globalization.UConverterCallbackReason */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.UCNV_FROM_U_CALLBACK_ESCAPE(util.toPointer(context), util.toPointer(fromUArgs), util.toPointer(codeUnits), length, codePoint, reason, util.toPointer(err));
 }
 
 export function UCNV_TO_U_CALLBACK_SKIP(
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-  toUArgs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+  toUArgs: Deno.PointerValue | Uint8Array /* ptr */,
   codeUnits: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
   reason: UConverterCallbackReason /* Windows.Win32.Globalization.UConverterCallbackReason */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.UCNV_TO_U_CALLBACK_SKIP(util.toPointer(context), util.toPointer(toUArgs), util.pstrToFfi(codeUnits), length, reason, util.toPointer(err));
 }
 
 export function UCNV_TO_U_CALLBACK_SUBSTITUTE(
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-  toUArgs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+  toUArgs: Deno.PointerValue | Uint8Array /* ptr */,
   codeUnits: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
   reason: UConverterCallbackReason /* Windows.Win32.Globalization.UConverterCallbackReason */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.UCNV_TO_U_CALLBACK_SUBSTITUTE(util.toPointer(context), util.toPointer(toUArgs), util.pstrToFfi(codeUnits), length, reason, util.toPointer(err));
 }
 
 export function UCNV_TO_U_CALLBACK_ESCAPE(
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-  toUArgs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+  toUArgs: Deno.PointerValue | Uint8Array /* ptr */,
   codeUnits: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
   reason: UConverterCallbackReason /* Windows.Win32.Globalization.UConverterCallbackReason */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.UCNV_TO_U_CALLBACK_ESCAPE(util.toPointer(context), util.toPointer(toUArgs), util.pstrToFfi(codeUnits), length, reason, util.toPointer(err));
 }
@@ -18536,287 +18536,287 @@ export function ucnv_compareNames(
 
 export function ucnv_open(
   converterName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucnv_open(util.pstrToFfi(converterName), util.toPointer(err)));
+  err: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucnv_open(util.pstrToFfi(converterName), util.toPointer(err));
 }
 
 export function ucnv_openU(
-  name: Deno.PointerValue | Uint8Array | null /* ptr */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucnv_openU(util.toPointer(name), util.toPointer(err)));
+  name: Deno.PointerValue | Uint8Array /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucnv_openU(util.toPointer(name), util.toPointer(err));
 }
 
 export function ucnv_openCCSID(
   codepage: number /* i32 */,
   platform: UConverterPlatform /* Windows.Win32.Globalization.UConverterPlatform */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucnv_openCCSID(codepage, platform, util.toPointer(err)));
+  err: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucnv_openCCSID(codepage, platform, util.toPointer(err));
 }
 
 export function ucnv_openPackage(
   packageName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   converterName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucnv_openPackage(util.pstrToFfi(packageName), util.pstrToFfi(converterName), util.toPointer(err)));
+  err: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucnv_openPackage(util.pstrToFfi(packageName), util.pstrToFfi(converterName), util.toPointer(err));
 }
 
 export function ucnv_safeClone(
-  cnv: Deno.PointerValue | Uint8Array | null /* ptr */,
-  stackBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucnv_safeClone(util.toPointer(cnv), util.toPointer(stackBuffer), util.toPointer(pBufferSize), util.toPointer(status)));
+  cnv: Deno.PointerValue | Uint8Array /* ptr */,
+  stackBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  pBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucnv_safeClone(util.toPointer(cnv), util.toPointer(stackBuffer), util.toPointer(pBufferSize), util.toPointer(status));
 }
 
 export function ucnv_close(
-  converter: Deno.PointerValue | Uint8Array | null /* ptr */,
+  converter: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucnv_close(util.toPointer(converter));
 }
 
 export function ucnv_getSubstChars(
-  converter: Deno.PointerValue | Uint8Array | null /* ptr */,
+  converter: Deno.PointerValue | Uint8Array /* ptr */,
   subChars: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  len: Deno.PointerValue | Uint8Array | null /* ptr */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  len: Deno.PointerValue | Uint8Array /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucnv_getSubstChars(util.toPointer(converter), util.pstrToFfi(subChars), util.toPointer(len), util.toPointer(err));
 }
 
 export function ucnv_setSubstChars(
-  converter: Deno.PointerValue | Uint8Array | null /* ptr */,
+  converter: Deno.PointerValue | Uint8Array /* ptr */,
   subChars: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   len: number /* i8 */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucnv_setSubstChars(util.toPointer(converter), util.pstrToFfi(subChars), len, util.toPointer(err));
 }
 
 export function ucnv_setSubstString(
-  cnv: Deno.PointerValue | Uint8Array | null /* ptr */,
-  s: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cnv: Deno.PointerValue | Uint8Array /* ptr */,
+  s: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucnv_setSubstString(util.toPointer(cnv), util.toPointer(s), length, util.toPointer(err));
 }
 
 export function ucnv_getInvalidChars(
-  converter: Deno.PointerValue | Uint8Array | null /* ptr */,
+  converter: Deno.PointerValue | Uint8Array /* ptr */,
   errBytes: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  len: Deno.PointerValue | Uint8Array | null /* ptr */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  len: Deno.PointerValue | Uint8Array /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucnv_getInvalidChars(util.toPointer(converter), util.pstrToFfi(errBytes), util.toPointer(len), util.toPointer(err));
 }
 
 export function ucnv_getInvalidUChars(
-  converter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  errUChars: Deno.PointerValue | Uint8Array | null /* ptr */,
-  len: Deno.PointerValue | Uint8Array | null /* ptr */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  converter: Deno.PointerValue | Uint8Array /* ptr */,
+  errUChars: Deno.PointerValue | Uint8Array /* ptr */,
+  len: Deno.PointerValue | Uint8Array /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucnv_getInvalidUChars(util.toPointer(converter), util.toPointer(errUChars), util.toPointer(len), util.toPointer(err));
 }
 
 export function ucnv_reset(
-  converter: Deno.PointerValue | Uint8Array | null /* ptr */,
+  converter: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucnv_reset(util.toPointer(converter));
 }
 
 export function ucnv_resetToUnicode(
-  converter: Deno.PointerValue | Uint8Array | null /* ptr */,
+  converter: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucnv_resetToUnicode(util.toPointer(converter));
 }
 
 export function ucnv_resetFromUnicode(
-  converter: Deno.PointerValue | Uint8Array | null /* ptr */,
+  converter: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucnv_resetFromUnicode(util.toPointer(converter));
 }
 
 export function ucnv_getMaxCharSize(
-  converter: Deno.PointerValue | Uint8Array | null /* ptr */,
+  converter: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.ucnv_getMaxCharSize(util.toPointer(converter));
 }
 
 export function ucnv_getMinCharSize(
-  converter: Deno.PointerValue | Uint8Array | null /* ptr */,
+  converter: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.ucnv_getMinCharSize(util.toPointer(converter));
 }
 
 export function ucnv_getDisplayName(
-  converter: Deno.PointerValue | Uint8Array | null /* ptr */,
+  converter: Deno.PointerValue | Uint8Array /* ptr */,
   displayLocale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  displayName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  displayName: Deno.PointerValue | Uint8Array /* ptr */,
   displayNameCapacity: number /* i32 */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucnv_getDisplayName(util.toPointer(converter), util.pstrToFfi(displayLocale), util.toPointer(displayName), displayNameCapacity, util.toPointer(err));
 }
 
 export function ucnv_getName(
-  converter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  converter: Deno.PointerValue | Uint8Array /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.ucnv_getName(util.toPointer(converter), util.toPointer(err)));
 }
 
 export function ucnv_getCCSID(
-  converter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  converter: Deno.PointerValue | Uint8Array /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucnv_getCCSID(util.toPointer(converter), util.toPointer(err));
 }
 
 export function ucnv_getPlatform(
-  converter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  converter: Deno.PointerValue | Uint8Array /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): UConverterPlatform /* Windows.Win32.Globalization.UConverterPlatform */ {
   return libicu_dll.ucnv_getPlatform(util.toPointer(converter), util.toPointer(err));
 }
 
 export function ucnv_getType(
-  converter: Deno.PointerValue | Uint8Array | null /* ptr */,
+  converter: Deno.PointerValue | Uint8Array /* ptr */,
 ): UConverterType /* Windows.Win32.Globalization.UConverterType */ {
   return libicu_dll.ucnv_getType(util.toPointer(converter));
 }
 
 export function ucnv_getStarters(
-  converter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  starters: Deno.PointerValue | Uint8Array | null /* ptr */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  converter: Deno.PointerValue | Uint8Array /* ptr */,
+  starters: Deno.PointerValue | Uint8Array /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucnv_getStarters(util.toPointer(converter), util.toPointer(starters), util.toPointer(err));
 }
 
 export function ucnv_getUnicodeSet(
-  cnv: Deno.PointerValue | Uint8Array | null /* ptr */,
-  setFillIn: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cnv: Deno.PointerValue | Uint8Array /* ptr */,
+  setFillIn: Deno.PointerValue | Uint8Array /* ptr */,
   whichSet: UConverterUnicodeSet /* Windows.Win32.Globalization.UConverterUnicodeSet */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucnv_getUnicodeSet(util.toPointer(cnv), util.toPointer(setFillIn), whichSet, util.toPointer(pErrorCode));
 }
 
 export function ucnv_getToUCallBack(
-  converter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  action: Deno.PointerValue | Uint8Array | null /* ptr */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
+  converter: Deno.PointerValue | Uint8Array /* ptr */,
+  action: Deno.PointerValue | Uint8Array /* ptr */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucnv_getToUCallBack(util.toPointer(converter), util.toPointer(action), util.toPointer(context));
 }
 
 export function ucnv_getFromUCallBack(
-  converter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  action: Deno.PointerValue | Uint8Array | null /* ptr */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
+  converter: Deno.PointerValue | Uint8Array /* ptr */,
+  action: Deno.PointerValue | Uint8Array /* ptr */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucnv_getFromUCallBack(util.toPointer(converter), util.toPointer(action), util.toPointer(context));
 }
 
 export function ucnv_setToUCallBack(
-  converter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  newAction: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.UConverterToUCallback */,
-  newContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  oldAction: Deno.PointerValue | Uint8Array | null /* ptr */,
-  oldContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  converter: Deno.PointerValue | Uint8Array /* ptr */,
+  newAction: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.UConverterToUCallback */,
+  newContext: Deno.PointerValue | Uint8Array /* ptr */,
+  oldAction: Deno.PointerValue | Uint8Array /* ptr */,
+  oldContext: Deno.PointerValue | Uint8Array /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucnv_setToUCallBack(util.toPointer(converter), util.toPointer(newAction), util.toPointer(newContext), util.toPointer(oldAction), util.toPointer(oldContext), util.toPointer(err));
 }
 
 export function ucnv_setFromUCallBack(
-  converter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  newAction: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.UConverterFromUCallback */,
-  newContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  oldAction: Deno.PointerValue | Uint8Array | null /* ptr */,
-  oldContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  converter: Deno.PointerValue | Uint8Array /* ptr */,
+  newAction: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.UConverterFromUCallback */,
+  newContext: Deno.PointerValue | Uint8Array /* ptr */,
+  oldAction: Deno.PointerValue | Uint8Array /* ptr */,
+  oldContext: Deno.PointerValue | Uint8Array /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucnv_setFromUCallBack(util.toPointer(converter), util.toPointer(newAction), util.toPointer(newContext), util.toPointer(oldAction), util.toPointer(oldContext), util.toPointer(err));
 }
 
 export function ucnv_fromUnicode(
-  converter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  target: Deno.PointerValue | Uint8Array | null /* ptr */,
+  converter: Deno.PointerValue | Uint8Array /* ptr */,
+  target: Deno.PointerValue | Uint8Array /* ptr */,
   targetLimit: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  source: Deno.PointerValue | Uint8Array | null /* ptr */,
-  sourceLimit: Deno.PointerValue | Uint8Array | null /* ptr */,
-  offsets: Deno.PointerValue | Uint8Array | null /* ptr */,
+  source: Deno.PointerValue | Uint8Array /* ptr */,
+  sourceLimit: Deno.PointerValue | Uint8Array /* ptr */,
+  offsets: Deno.PointerValue | Uint8Array /* ptr */,
   flush: number /* i8 */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucnv_fromUnicode(util.toPointer(converter), util.toPointer(target), util.pstrToFfi(targetLimit), util.toPointer(source), util.toPointer(sourceLimit), util.toPointer(offsets), flush, util.toPointer(err));
 }
 
 export function ucnv_toUnicode(
-  converter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  target: Deno.PointerValue | Uint8Array | null /* ptr */,
-  targetLimit: Deno.PointerValue | Uint8Array | null /* ptr */,
-  source: Deno.PointerValue | Uint8Array | null /* ptr */,
+  converter: Deno.PointerValue | Uint8Array /* ptr */,
+  target: Deno.PointerValue | Uint8Array /* ptr */,
+  targetLimit: Deno.PointerValue | Uint8Array /* ptr */,
+  source: Deno.PointerValue | Uint8Array /* ptr */,
   sourceLimit: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  offsets: Deno.PointerValue | Uint8Array | null /* ptr */,
+  offsets: Deno.PointerValue | Uint8Array /* ptr */,
   flush: number /* i8 */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucnv_toUnicode(util.toPointer(converter), util.toPointer(target), util.toPointer(targetLimit), util.toPointer(source), util.pstrToFfi(sourceLimit), util.toPointer(offsets), flush, util.toPointer(err));
 }
 
 export function ucnv_fromUChars(
-  cnv: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cnv: Deno.PointerValue | Uint8Array /* ptr */,
   dest: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   destCapacity: number /* i32 */,
-  src: Deno.PointerValue | Uint8Array | null /* ptr */,
+  src: Deno.PointerValue | Uint8Array /* ptr */,
   srcLength: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucnv_fromUChars(util.toPointer(cnv), util.pstrToFfi(dest), destCapacity, util.toPointer(src), srcLength, util.toPointer(pErrorCode));
 }
 
 export function ucnv_toUChars(
-  cnv: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cnv: Deno.PointerValue | Uint8Array /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   destCapacity: number /* i32 */,
   src: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   srcLength: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucnv_toUChars(util.toPointer(cnv), util.toPointer(dest), destCapacity, util.pstrToFfi(src), srcLength, util.toPointer(pErrorCode));
 }
 
 export function ucnv_getNextUChar(
-  converter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  source: Deno.PointerValue | Uint8Array | null /* ptr */,
+  converter: Deno.PointerValue | Uint8Array /* ptr */,
+  source: Deno.PointerValue | Uint8Array /* ptr */,
   sourceLimit: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucnv_getNextUChar(util.toPointer(converter), util.toPointer(source), util.pstrToFfi(sourceLimit), util.toPointer(err));
 }
 
 export function ucnv_convertEx(
-  targetCnv: Deno.PointerValue | Uint8Array | null /* ptr */,
-  sourceCnv: Deno.PointerValue | Uint8Array | null /* ptr */,
-  target: Deno.PointerValue | Uint8Array | null /* ptr */,
+  targetCnv: Deno.PointerValue | Uint8Array /* ptr */,
+  sourceCnv: Deno.PointerValue | Uint8Array /* ptr */,
+  target: Deno.PointerValue | Uint8Array /* ptr */,
   targetLimit: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  source: Deno.PointerValue | Uint8Array | null /* ptr */,
+  source: Deno.PointerValue | Uint8Array /* ptr */,
   sourceLimit: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pivotStart: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pivotSource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pivotTarget: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pivotLimit: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pivotStart: Deno.PointerValue | Uint8Array /* ptr */,
+  pivotSource: Deno.PointerValue | Uint8Array /* ptr */,
+  pivotTarget: Deno.PointerValue | Uint8Array /* ptr */,
+  pivotLimit: Deno.PointerValue | Uint8Array /* ptr */,
   reset: number /* i8 */,
   flush: number /* i8 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucnv_convertEx(util.toPointer(targetCnv), util.toPointer(sourceCnv), util.toPointer(target), util.pstrToFfi(targetLimit), util.toPointer(source), util.pstrToFfi(sourceLimit), util.toPointer(pivotStart), util.toPointer(pivotSource), util.toPointer(pivotTarget), util.toPointer(pivotLimit), reset, flush, util.toPointer(pErrorCode));
 }
@@ -18828,31 +18828,31 @@ export function ucnv_convert(
   targetCapacity: number /* i32 */,
   source: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   sourceLength: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucnv_convert(util.pstrToFfi(toConverterName), util.pstrToFfi(fromConverterName), util.pstrToFfi(target), targetCapacity, util.pstrToFfi(source), sourceLength, util.toPointer(pErrorCode));
 }
 
 export function ucnv_toAlgorithmic(
   algorithmicType: UConverterType /* Windows.Win32.Globalization.UConverterType */,
-  cnv: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cnv: Deno.PointerValue | Uint8Array /* ptr */,
   target: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   targetCapacity: number /* i32 */,
   source: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   sourceLength: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucnv_toAlgorithmic(algorithmicType, util.toPointer(cnv), util.pstrToFfi(target), targetCapacity, util.pstrToFfi(source), sourceLength, util.toPointer(pErrorCode));
 }
 
 export function ucnv_fromAlgorithmic(
-  cnv: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cnv: Deno.PointerValue | Uint8Array /* ptr */,
   algorithmicType: UConverterType /* Windows.Win32.Globalization.UConverterType */,
   target: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   targetCapacity: number /* i32 */,
   source: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   sourceLength: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucnv_fromAlgorithmic(util.toPointer(cnv), algorithmicType, util.pstrToFfi(target), targetCapacity, util.pstrToFfi(source), sourceLength, util.toPointer(pErrorCode));
 }
@@ -18872,14 +18872,14 @@ export function ucnv_getAvailableName(
 }
 
 export function ucnv_openAllNames(
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucnv_openAllNames(util.toPointer(pErrorCode)));
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucnv_openAllNames(util.toPointer(pErrorCode));
 }
 
 export function ucnv_countAliases(
   alias: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u16 */ {
   return libicu_dll.ucnv_countAliases(util.pstrToFfi(alias), util.toPointer(pErrorCode));
 }
@@ -18887,15 +18887,15 @@ export function ucnv_countAliases(
 export function ucnv_getAlias(
   alias: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   n: number /* u16 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.ucnv_getAlias(util.pstrToFfi(alias), n, util.toPointer(pErrorCode)));
 }
 
 export function ucnv_getAliases(
   alias: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  aliases: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  aliases: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucnv_getAliases(util.pstrToFfi(alias), util.toPointer(aliases), util.toPointer(pErrorCode));
 }
@@ -18903,9 +18903,9 @@ export function ucnv_getAliases(
 export function ucnv_openStandardNames(
   convName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   standard: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucnv_openStandardNames(util.pstrToFfi(convName), util.pstrToFfi(standard), util.toPointer(pErrorCode)));
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucnv_openStandardNames(util.pstrToFfi(convName), util.pstrToFfi(standard), util.toPointer(pErrorCode));
 }
 
 export function ucnv_countStandards(): number /* u16 */ {
@@ -18914,7 +18914,7 @@ export function ucnv_countStandards(): number /* u16 */ {
 
 export function ucnv_getStandard(
   n: number /* u16 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.ucnv_getStandard(n, util.toPointer(pErrorCode)));
 }
@@ -18922,7 +18922,7 @@ export function ucnv_getStandard(
 export function ucnv_getStandardName(
   name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   standard: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.ucnv_getStandardName(util.pstrToFfi(name), util.pstrToFfi(standard), util.toPointer(pErrorCode)));
 }
@@ -18930,7 +18930,7 @@ export function ucnv_getStandardName(
 export function ucnv_getCanonicalName(
   alias: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   standard: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.ucnv_getCanonicalName(util.pstrToFfi(alias), util.pstrToFfi(standard), util.toPointer(pErrorCode)));
 }
@@ -18946,28 +18946,28 @@ export function ucnv_setDefaultName(
 }
 
 export function ucnv_fixFileSeparator(
-  cnv: Deno.PointerValue | Uint8Array | null /* ptr */,
-  source: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cnv: Deno.PointerValue | Uint8Array /* ptr */,
+  source: Deno.PointerValue | Uint8Array /* ptr */,
   sourceLen: number /* i32 */,
 ): void /* void */ {
   return libicu_dll.ucnv_fixFileSeparator(util.toPointer(cnv), util.toPointer(source), sourceLen);
 }
 
 export function ucnv_isAmbiguous(
-  cnv: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cnv: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.ucnv_isAmbiguous(util.toPointer(cnv));
 }
 
 export function ucnv_setFallback(
-  cnv: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cnv: Deno.PointerValue | Uint8Array /* ptr */,
   usesFallback: number /* i8 */,
 ): void /* void */ {
   return libicu_dll.ucnv_setFallback(util.toPointer(cnv), usesFallback);
 }
 
 export function ucnv_usesFallback(
-  cnv: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cnv: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.ucnv_usesFallback(util.toPointer(cnv));
 }
@@ -18975,81 +18975,81 @@ export function ucnv_usesFallback(
 export function ucnv_detectUnicodeSignature(
   source: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   sourceLength: number /* i32 */,
-  signatureLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  signatureLength: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.ucnv_detectUnicodeSignature(util.pstrToFfi(source), sourceLength, util.toPointer(signatureLength), util.toPointer(pErrorCode)));
 }
 
 export function ucnv_fromUCountPending(
-  cnv: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cnv: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucnv_fromUCountPending(util.toPointer(cnv), util.toPointer(status));
 }
 
 export function ucnv_toUCountPending(
-  cnv: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cnv: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucnv_toUCountPending(util.toPointer(cnv), util.toPointer(status));
 }
 
 export function ucnv_isFixedWidth(
-  cnv: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cnv: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.ucnv_isFixedWidth(util.toPointer(cnv), util.toPointer(status));
 }
 
 export function ucnv_cbFromUWriteBytes(
-  args: Deno.PointerValue | Uint8Array | null /* ptr */,
+  args: Deno.PointerValue | Uint8Array /* ptr */,
   source: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
   offsetIndex: number /* i32 */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucnv_cbFromUWriteBytes(util.toPointer(args), util.pstrToFfi(source), length, offsetIndex, util.toPointer(err));
 }
 
 export function ucnv_cbFromUWriteSub(
-  args: Deno.PointerValue | Uint8Array | null /* ptr */,
+  args: Deno.PointerValue | Uint8Array /* ptr */,
   offsetIndex: number /* i32 */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucnv_cbFromUWriteSub(util.toPointer(args), offsetIndex, util.toPointer(err));
 }
 
 export function ucnv_cbFromUWriteUChars(
-  args: Deno.PointerValue | Uint8Array | null /* ptr */,
-  source: Deno.PointerValue | Uint8Array | null /* ptr */,
-  sourceLimit: Deno.PointerValue | Uint8Array | null /* ptr */,
+  args: Deno.PointerValue | Uint8Array /* ptr */,
+  source: Deno.PointerValue | Uint8Array /* ptr */,
+  sourceLimit: Deno.PointerValue | Uint8Array /* ptr */,
   offsetIndex: number /* i32 */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucnv_cbFromUWriteUChars(util.toPointer(args), util.toPointer(source), util.toPointer(sourceLimit), offsetIndex, util.toPointer(err));
 }
 
 export function ucnv_cbToUWriteUChars(
-  args: Deno.PointerValue | Uint8Array | null /* ptr */,
-  source: Deno.PointerValue | Uint8Array | null /* ptr */,
+  args: Deno.PointerValue | Uint8Array /* ptr */,
+  source: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
   offsetIndex: number /* i32 */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucnv_cbToUWriteUChars(util.toPointer(args), util.toPointer(source), length, offsetIndex, util.toPointer(err));
 }
 
 export function ucnv_cbToUWriteSub(
-  args: Deno.PointerValue | Uint8Array | null /* ptr */,
+  args: Deno.PointerValue | Uint8Array /* ptr */,
   offsetIndex: number /* i32 */,
-  err: Deno.PointerValue | Uint8Array | null /* ptr */,
+  err: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucnv_cbToUWriteSub(util.toPointer(args), offsetIndex, util.toPointer(err));
 }
 
 export function u_init(
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.u_init(util.toPointer(status));
 }
@@ -19059,11 +19059,11 @@ export function u_cleanup(): void /* void */ {
 }
 
 export function u_setMemoryFunctions(
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-  a: Deno.PointerValue | Uint8Array | null /* ptr */,
-  r: Deno.PointerValue | Uint8Array | null /* ptr */,
-  f: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+  a: Deno.PointerValue | Uint8Array /* ptr */,
+  r: Deno.PointerValue | Uint8Array /* ptr */,
+  f: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.u_setMemoryFunctions(util.toPointer(context), util.toPointer(a), util.toPointer(r), util.toPointer(f), util.toPointer(status));
 }
@@ -19071,26 +19071,26 @@ export function u_setMemoryFunctions(
 export function u_catopen(
   name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_catopen(util.pstrToFfi(name), util.pstrToFfi(locale), util.toPointer(ec)));
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_catopen(util.pstrToFfi(name), util.pstrToFfi(locale), util.toPointer(ec));
 }
 
 export function u_catclose(
-  catd: Deno.PointerValue | Uint8Array | null /* ptr */,
+  catd: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.u_catclose(util.toPointer(catd));
 }
 
 export function u_catgets(
-  catd: Deno.PointerValue | Uint8Array | null /* ptr */,
+  catd: Deno.PointerValue | Uint8Array /* ptr */,
   set_num: number /* i32 */,
   msg_num: number /* i32 */,
-  s: Deno.PointerValue | Uint8Array | null /* ptr */,
-  len: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_catgets(util.toPointer(catd), set_num, msg_num, util.toPointer(s), util.toPointer(len), util.toPointer(ec)));
+  s: Deno.PointerValue | Uint8Array /* ptr */,
+  len: Deno.PointerValue | Uint8Array /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_catgets(util.toPointer(catd), set_num, msg_num, util.toPointer(s), util.toPointer(len), util.toPointer(ec));
 }
 
 export function u_hasBinaryProperty(
@@ -19102,9 +19102,9 @@ export function u_hasBinaryProperty(
 
 export function u_getBinaryPropertySet(
   property: UProperty /* Windows.Win32.Globalization.UProperty */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_getBinaryPropertySet(property, util.toPointer(pErrorCode)));
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_getBinaryPropertySet(property, util.toPointer(pErrorCode));
 }
 
 export function u_isUAlphabetic(
@@ -19152,9 +19152,9 @@ export function u_getIntPropertyMaxValue(
 
 export function u_getIntPropertyMap(
   property: UProperty /* Windows.Win32.Globalization.UProperty */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_getIntPropertyMap(property, util.toPointer(pErrorCode)));
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_getIntPropertyMap(property, util.toPointer(pErrorCode));
 }
 
 export function u_getNumericValue(
@@ -19302,8 +19302,8 @@ export function u_charType(
 }
 
 export function u_enumCharTypes(
-  enumRange: Deno.PointerValue | Uint8Array | null /* ptr */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
+  enumRange: Deno.PointerValue | Uint8Array /* ptr */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.u_enumCharTypes(util.toPointer(enumRange), util.toPointer(context));
 }
@@ -19331,7 +19331,7 @@ export function u_charName(
   nameChoice: UCharNameChoice /* Windows.Win32.Globalization.UCharNameChoice */,
   buffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   bufferLength: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.u_charName(code, nameChoice, util.pstrToFfi(buffer), bufferLength, util.toPointer(pErrorCode));
 }
@@ -19339,7 +19339,7 @@ export function u_charName(
 export function u_charFromName(
   nameChoice: UCharNameChoice /* Windows.Win32.Globalization.UCharNameChoice */,
   name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.u_charFromName(nameChoice, util.pstrToFfi(name), util.toPointer(pErrorCode));
 }
@@ -19347,10 +19347,10 @@ export function u_charFromName(
 export function u_enumCharNames(
   start: number /* i32 */,
   limit: number /* i32 */,
-  fn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fn: Deno.PointerValue | Uint8Array /* ptr */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
   nameChoice: UCharNameChoice /* Windows.Win32.Globalization.UCharNameChoice */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.u_enumCharNames(start, limit, util.toPointer(fn), util.toPointer(context), nameChoice, util.toPointer(pErrorCode));
 }
@@ -19454,346 +19454,346 @@ export function u_forDigit(
 
 export function u_charAge(
   c: number /* i32 */,
-  versionArray: Deno.PointerValue | Uint8Array | null /* ptr */,
+  versionArray: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.u_charAge(c, util.toPointer(versionArray));
 }
 
 export function u_getUnicodeVersion(
-  versionArray: Deno.PointerValue | Uint8Array | null /* ptr */,
+  versionArray: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.u_getUnicodeVersion(util.toPointer(versionArray));
 }
 
 export function u_getFC_NFKC_Closure(
   c: number /* i32 */,
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   destCapacity: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.u_getFC_NFKC_Closure(c, util.toPointer(dest), destCapacity, util.toPointer(pErrorCode));
 }
 
-export function ubidi_open(): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ubidi_open());
+export function ubidi_open(): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ubidi_open();
 }
 
 export function ubidi_openSized(
   maxLength: number /* i32 */,
   maxRunCount: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ubidi_openSized(maxLength, maxRunCount, util.toPointer(pErrorCode)));
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ubidi_openSized(maxLength, maxRunCount, util.toPointer(pErrorCode));
 }
 
 export function ubidi_close(
-  pBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBiDi: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ubidi_close(util.toPointer(pBiDi));
 }
 
 export function ubidi_setInverse(
-  pBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBiDi: Deno.PointerValue | Uint8Array /* ptr */,
   isInverse: number /* i8 */,
 ): void /* void */ {
   return libicu_dll.ubidi_setInverse(util.toPointer(pBiDi), isInverse);
 }
 
 export function ubidi_isInverse(
-  pBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBiDi: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.ubidi_isInverse(util.toPointer(pBiDi));
 }
 
 export function ubidi_orderParagraphsLTR(
-  pBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBiDi: Deno.PointerValue | Uint8Array /* ptr */,
   orderParagraphsLTR: number /* i8 */,
 ): void /* void */ {
   return libicu_dll.ubidi_orderParagraphsLTR(util.toPointer(pBiDi), orderParagraphsLTR);
 }
 
 export function ubidi_isOrderParagraphsLTR(
-  pBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBiDi: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.ubidi_isOrderParagraphsLTR(util.toPointer(pBiDi));
 }
 
 export function ubidi_setReorderingMode(
-  pBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBiDi: Deno.PointerValue | Uint8Array /* ptr */,
   reorderingMode: UBiDiReorderingMode /* Windows.Win32.Globalization.UBiDiReorderingMode */,
 ): void /* void */ {
   return libicu_dll.ubidi_setReorderingMode(util.toPointer(pBiDi), reorderingMode);
 }
 
 export function ubidi_getReorderingMode(
-  pBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBiDi: Deno.PointerValue | Uint8Array /* ptr */,
 ): UBiDiReorderingMode /* Windows.Win32.Globalization.UBiDiReorderingMode */ {
   return libicu_dll.ubidi_getReorderingMode(util.toPointer(pBiDi));
 }
 
 export function ubidi_setReorderingOptions(
-  pBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBiDi: Deno.PointerValue | Uint8Array /* ptr */,
   reorderingOptions: number /* u32 */,
 ): void /* void */ {
   return libicu_dll.ubidi_setReorderingOptions(util.toPointer(pBiDi), reorderingOptions);
 }
 
 export function ubidi_getReorderingOptions(
-  pBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBiDi: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libicu_dll.ubidi_getReorderingOptions(util.toPointer(pBiDi));
 }
 
 export function ubidi_setContext(
-  pBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
-  prologue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBiDi: Deno.PointerValue | Uint8Array /* ptr */,
+  prologue: Deno.PointerValue | Uint8Array /* ptr */,
   proLength: number /* i32 */,
-  epilogue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  epilogue: Deno.PointerValue | Uint8Array /* ptr */,
   epiLength: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ubidi_setContext(util.toPointer(pBiDi), util.toPointer(prologue), proLength, util.toPointer(epilogue), epiLength, util.toPointer(pErrorCode));
 }
 
 export function ubidi_setPara(
-  pBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
-  text: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBiDi: Deno.PointerValue | Uint8Array /* ptr */,
+  text: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
   paraLevel: number /* u8 */,
-  embeddingLevels: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  embeddingLevels: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ubidi_setPara(util.toPointer(pBiDi), util.toPointer(text), length, paraLevel, util.toPointer(embeddingLevels), util.toPointer(pErrorCode));
 }
 
 export function ubidi_setLine(
-  pParaBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pParaBiDi: Deno.PointerValue | Uint8Array /* ptr */,
   start: number /* i32 */,
   limit: number /* i32 */,
-  pLineBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pLineBiDi: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ubidi_setLine(util.toPointer(pParaBiDi), start, limit, util.toPointer(pLineBiDi), util.toPointer(pErrorCode));
 }
 
 export function ubidi_getDirection(
-  pBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBiDi: Deno.PointerValue | Uint8Array /* ptr */,
 ): UBiDiDirection /* Windows.Win32.Globalization.UBiDiDirection */ {
   return libicu_dll.ubidi_getDirection(util.toPointer(pBiDi));
 }
 
 export function ubidi_getBaseDirection(
-  text: Deno.PointerValue | Uint8Array | null /* ptr */,
+  text: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
 ): UBiDiDirection /* Windows.Win32.Globalization.UBiDiDirection */ {
   return libicu_dll.ubidi_getBaseDirection(util.toPointer(text), length);
 }
 
 export function ubidi_getText(
-  pBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ubidi_getText(util.toPointer(pBiDi)));
+  pBiDi: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ubidi_getText(util.toPointer(pBiDi));
 }
 
 export function ubidi_getLength(
-  pBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBiDi: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ubidi_getLength(util.toPointer(pBiDi));
 }
 
 export function ubidi_getParaLevel(
-  pBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBiDi: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u8 */ {
   return libicu_dll.ubidi_getParaLevel(util.toPointer(pBiDi));
 }
 
 export function ubidi_countParagraphs(
-  pBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBiDi: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ubidi_countParagraphs(util.toPointer(pBiDi));
 }
 
 export function ubidi_getParagraph(
-  pBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBiDi: Deno.PointerValue | Uint8Array /* ptr */,
   charIndex: number /* i32 */,
-  pParaStart: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pParaLimit: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pParaLevel: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pParaStart: Deno.PointerValue | Uint8Array /* ptr */,
+  pParaLimit: Deno.PointerValue | Uint8Array /* ptr */,
+  pParaLevel: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ubidi_getParagraph(util.toPointer(pBiDi), charIndex, util.toPointer(pParaStart), util.toPointer(pParaLimit), util.toPointer(pParaLevel), util.toPointer(pErrorCode));
 }
 
 export function ubidi_getParagraphByIndex(
-  pBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBiDi: Deno.PointerValue | Uint8Array /* ptr */,
   paraIndex: number /* i32 */,
-  pParaStart: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pParaLimit: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pParaLevel: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pParaStart: Deno.PointerValue | Uint8Array /* ptr */,
+  pParaLimit: Deno.PointerValue | Uint8Array /* ptr */,
+  pParaLevel: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ubidi_getParagraphByIndex(util.toPointer(pBiDi), paraIndex, util.toPointer(pParaStart), util.toPointer(pParaLimit), util.toPointer(pParaLevel), util.toPointer(pErrorCode));
 }
 
 export function ubidi_getLevelAt(
-  pBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBiDi: Deno.PointerValue | Uint8Array /* ptr */,
   charIndex: number /* i32 */,
 ): number /* u8 */ {
   return libicu_dll.ubidi_getLevelAt(util.toPointer(pBiDi), charIndex);
 }
 
 export function ubidi_getLevels(
-  pBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ubidi_getLevels(util.toPointer(pBiDi), util.toPointer(pErrorCode)));
+  pBiDi: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ubidi_getLevels(util.toPointer(pBiDi), util.toPointer(pErrorCode));
 }
 
 export function ubidi_getLogicalRun(
-  pBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBiDi: Deno.PointerValue | Uint8Array /* ptr */,
   logicalPosition: number /* i32 */,
-  pLogicalLimit: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pLevel: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pLogicalLimit: Deno.PointerValue | Uint8Array /* ptr */,
+  pLevel: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ubidi_getLogicalRun(util.toPointer(pBiDi), logicalPosition, util.toPointer(pLogicalLimit), util.toPointer(pLevel));
 }
 
 export function ubidi_countRuns(
-  pBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBiDi: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ubidi_countRuns(util.toPointer(pBiDi), util.toPointer(pErrorCode));
 }
 
 export function ubidi_getVisualRun(
-  pBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBiDi: Deno.PointerValue | Uint8Array /* ptr */,
   runIndex: number /* i32 */,
-  pLogicalStart: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pLogicalStart: Deno.PointerValue | Uint8Array /* ptr */,
+  pLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): UBiDiDirection /* Windows.Win32.Globalization.UBiDiDirection */ {
   return libicu_dll.ubidi_getVisualRun(util.toPointer(pBiDi), runIndex, util.toPointer(pLogicalStart), util.toPointer(pLength));
 }
 
 export function ubidi_getVisualIndex(
-  pBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBiDi: Deno.PointerValue | Uint8Array /* ptr */,
   logicalIndex: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ubidi_getVisualIndex(util.toPointer(pBiDi), logicalIndex, util.toPointer(pErrorCode));
 }
 
 export function ubidi_getLogicalIndex(
-  pBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBiDi: Deno.PointerValue | Uint8Array /* ptr */,
   visualIndex: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ubidi_getLogicalIndex(util.toPointer(pBiDi), visualIndex, util.toPointer(pErrorCode));
 }
 
 export function ubidi_getLogicalMap(
-  pBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
-  indexMap: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBiDi: Deno.PointerValue | Uint8Array /* ptr */,
+  indexMap: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ubidi_getLogicalMap(util.toPointer(pBiDi), util.toPointer(indexMap), util.toPointer(pErrorCode));
 }
 
 export function ubidi_getVisualMap(
-  pBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
-  indexMap: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBiDi: Deno.PointerValue | Uint8Array /* ptr */,
+  indexMap: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ubidi_getVisualMap(util.toPointer(pBiDi), util.toPointer(indexMap), util.toPointer(pErrorCode));
 }
 
 export function ubidi_reorderLogical(
-  levels: Deno.PointerValue | Uint8Array | null /* ptr */,
+  levels: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
-  indexMap: Deno.PointerValue | Uint8Array | null /* ptr */,
+  indexMap: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ubidi_reorderLogical(util.toPointer(levels), length, util.toPointer(indexMap));
 }
 
 export function ubidi_reorderVisual(
-  levels: Deno.PointerValue | Uint8Array | null /* ptr */,
+  levels: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
-  indexMap: Deno.PointerValue | Uint8Array | null /* ptr */,
+  indexMap: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ubidi_reorderVisual(util.toPointer(levels), length, util.toPointer(indexMap));
 }
 
 export function ubidi_invertMap(
-  srcMap: Deno.PointerValue | Uint8Array | null /* ptr */,
-  destMap: Deno.PointerValue | Uint8Array | null /* ptr */,
+  srcMap: Deno.PointerValue | Uint8Array /* ptr */,
+  destMap: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
 ): void /* void */ {
   return libicu_dll.ubidi_invertMap(util.toPointer(srcMap), util.toPointer(destMap), length);
 }
 
 export function ubidi_getProcessedLength(
-  pBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBiDi: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ubidi_getProcessedLength(util.toPointer(pBiDi));
 }
 
 export function ubidi_getResultLength(
-  pBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBiDi: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ubidi_getResultLength(util.toPointer(pBiDi));
 }
 
 export function ubidi_getCustomizedClass(
-  pBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBiDi: Deno.PointerValue | Uint8Array /* ptr */,
   c: number /* i32 */,
 ): UCharDirection /* Windows.Win32.Globalization.UCharDirection */ {
   return libicu_dll.ubidi_getCustomizedClass(util.toPointer(pBiDi), c);
 }
 
 export function ubidi_setClassCallback(
-  pBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
-  newFn: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.UBiDiClassCallback */,
-  newContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  oldFn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  oldContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBiDi: Deno.PointerValue | Uint8Array /* ptr */,
+  newFn: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.UBiDiClassCallback */,
+  newContext: Deno.PointerValue | Uint8Array /* ptr */,
+  oldFn: Deno.PointerValue | Uint8Array /* ptr */,
+  oldContext: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ubidi_setClassCallback(util.toPointer(pBiDi), util.toPointer(newFn), util.toPointer(newContext), util.toPointer(oldFn), util.toPointer(oldContext), util.toPointer(pErrorCode));
 }
 
 export function ubidi_getClassCallback(
-  pBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
-  fn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBiDi: Deno.PointerValue | Uint8Array /* ptr */,
+  fn: Deno.PointerValue | Uint8Array /* ptr */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ubidi_getClassCallback(util.toPointer(pBiDi), util.toPointer(fn), util.toPointer(context));
 }
 
 export function ubidi_writeReordered(
-  pBiDi: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBiDi: Deno.PointerValue | Uint8Array /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   destSize: number /* i32 */,
   options: number /* u16 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ubidi_writeReordered(util.toPointer(pBiDi), util.toPointer(dest), destSize, options, util.toPointer(pErrorCode));
 }
 
 export function ubidi_writeReverse(
-  src: Deno.PointerValue | Uint8Array | null /* ptr */,
+  src: Deno.PointerValue | Uint8Array /* ptr */,
   srcLength: number /* i32 */,
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   destSize: number /* i32 */,
   options: number /* u16 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ubidi_writeReverse(util.toPointer(src), srcLength, util.toPointer(dest), destSize, options, util.toPointer(pErrorCode));
 }
 
 export function ubiditransform_transform(
-  pBiDiTransform: Deno.PointerValue | Uint8Array | null /* ptr */,
-  src: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBiDiTransform: Deno.PointerValue | Uint8Array /* ptr */,
+  src: Deno.PointerValue | Uint8Array /* ptr */,
   srcLength: number /* i32 */,
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   destSize: number /* i32 */,
   inParaLevel: number /* u8 */,
   inOrder: UBiDiOrder /* Windows.Win32.Globalization.UBiDiOrder */,
@@ -19801,260 +19801,260 @@ export function ubiditransform_transform(
   outOrder: UBiDiOrder /* Windows.Win32.Globalization.UBiDiOrder */,
   doMirroring: UBiDiMirroring /* Windows.Win32.Globalization.UBiDiMirroring */,
   shapingOptions: number /* u32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libicu_dll.ubiditransform_transform(util.toPointer(pBiDiTransform), util.toPointer(src), srcLength, util.toPointer(dest), destSize, inParaLevel, inOrder, outParaLevel, outOrder, doMirroring, shapingOptions, util.toPointer(pErrorCode));
 }
 
 export function ubiditransform_open(
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ubiditransform_open(util.toPointer(pErrorCode)));
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ubiditransform_open(util.toPointer(pErrorCode));
 }
 
 export function ubiditransform_close(
-  pBidiTransform: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBidiTransform: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ubiditransform_close(util.toPointer(pBidiTransform));
 }
 
 export function utext_close(
-  ut: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.utext_close(util.toPointer(ut)));
+  ut: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.utext_close(util.toPointer(ut));
 }
 
 export function utext_openUTF8(
-  ut: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ut: Deno.PointerValue | Uint8Array /* ptr */,
   s: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: Deno.PointerValue /* i64 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.utext_openUTF8(util.toPointer(ut), util.pstrToFfi(s), length, util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.utext_openUTF8(util.toPointer(ut), util.pstrToFfi(s), length, util.toPointer(status));
 }
 
 export function utext_openUChars(
-  ut: Deno.PointerValue | Uint8Array | null /* ptr */,
-  s: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ut: Deno.PointerValue | Uint8Array /* ptr */,
+  s: Deno.PointerValue | Uint8Array /* ptr */,
   length: Deno.PointerValue /* i64 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.utext_openUChars(util.toPointer(ut), util.toPointer(s), length, util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.utext_openUChars(util.toPointer(ut), util.toPointer(s), length, util.toPointer(status));
 }
 
 export function utext_clone(
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
-  src: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
+  src: Deno.PointerValue | Uint8Array /* ptr */,
   deep: number /* i8 */,
   readOnly: number /* i8 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.utext_clone(util.toPointer(dest), util.toPointer(src), deep, readOnly, util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.utext_clone(util.toPointer(dest), util.toPointer(src), deep, readOnly, util.toPointer(status));
 }
 
 export function utext_equals(
-  a: Deno.PointerValue | Uint8Array | null /* ptr */,
-  b: Deno.PointerValue | Uint8Array | null /* ptr */,
+  a: Deno.PointerValue | Uint8Array /* ptr */,
+  b: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.utext_equals(util.toPointer(a), util.toPointer(b));
 }
 
 export function utext_nativeLength(
-  ut: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* i64 */ {
   return libicu_dll.utext_nativeLength(util.toPointer(ut));
 }
 
 export function utext_isLengthExpensive(
-  ut: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ut: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.utext_isLengthExpensive(util.toPointer(ut));
 }
 
 export function utext_char32At(
-  ut: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ut: Deno.PointerValue | Uint8Array /* ptr */,
   nativeIndex: Deno.PointerValue /* i64 */,
 ): number /* i32 */ {
   return libicu_dll.utext_char32At(util.toPointer(ut), nativeIndex);
 }
 
 export function utext_current32(
-  ut: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ut: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.utext_current32(util.toPointer(ut));
 }
 
 export function utext_next32(
-  ut: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ut: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.utext_next32(util.toPointer(ut));
 }
 
 export function utext_previous32(
-  ut: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ut: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.utext_previous32(util.toPointer(ut));
 }
 
 export function utext_next32From(
-  ut: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ut: Deno.PointerValue | Uint8Array /* ptr */,
   nativeIndex: Deno.PointerValue /* i64 */,
 ): number /* i32 */ {
   return libicu_dll.utext_next32From(util.toPointer(ut), nativeIndex);
 }
 
 export function utext_previous32From(
-  ut: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ut: Deno.PointerValue | Uint8Array /* ptr */,
   nativeIndex: Deno.PointerValue /* i64 */,
 ): number /* i32 */ {
   return libicu_dll.utext_previous32From(util.toPointer(ut), nativeIndex);
 }
 
 export function utext_getNativeIndex(
-  ut: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* i64 */ {
   return libicu_dll.utext_getNativeIndex(util.toPointer(ut));
 }
 
 export function utext_setNativeIndex(
-  ut: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ut: Deno.PointerValue | Uint8Array /* ptr */,
   nativeIndex: Deno.PointerValue /* i64 */,
 ): void /* void */ {
   return libicu_dll.utext_setNativeIndex(util.toPointer(ut), nativeIndex);
 }
 
 export function utext_moveIndex32(
-  ut: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ut: Deno.PointerValue | Uint8Array /* ptr */,
   delta: number /* i32 */,
 ): number /* i8 */ {
   return libicu_dll.utext_moveIndex32(util.toPointer(ut), delta);
 }
 
 export function utext_getPreviousNativeIndex(
-  ut: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* i64 */ {
   return libicu_dll.utext_getPreviousNativeIndex(util.toPointer(ut));
 }
 
 export function utext_extract(
-  ut: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ut: Deno.PointerValue | Uint8Array /* ptr */,
   nativeStart: Deno.PointerValue /* i64 */,
   nativeLimit: Deno.PointerValue /* i64 */,
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   destCapacity: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.utext_extract(util.toPointer(ut), nativeStart, nativeLimit, util.toPointer(dest), destCapacity, util.toPointer(status));
 }
 
 export function utext_isWritable(
-  ut: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ut: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.utext_isWritable(util.toPointer(ut));
 }
 
 export function utext_hasMetaData(
-  ut: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ut: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.utext_hasMetaData(util.toPointer(ut));
 }
 
 export function utext_replace(
-  ut: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ut: Deno.PointerValue | Uint8Array /* ptr */,
   nativeStart: Deno.PointerValue /* i64 */,
   nativeLimit: Deno.PointerValue /* i64 */,
-  replacementText: Deno.PointerValue | Uint8Array | null /* ptr */,
+  replacementText: Deno.PointerValue | Uint8Array /* ptr */,
   replacementLength: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.utext_replace(util.toPointer(ut), nativeStart, nativeLimit, util.toPointer(replacementText), replacementLength, util.toPointer(status));
 }
 
 export function utext_copy(
-  ut: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ut: Deno.PointerValue | Uint8Array /* ptr */,
   nativeStart: Deno.PointerValue /* i64 */,
   nativeLimit: Deno.PointerValue /* i64 */,
   destIndex: Deno.PointerValue /* i64 */,
   move: number /* i8 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.utext_copy(util.toPointer(ut), nativeStart, nativeLimit, destIndex, move, util.toPointer(status));
 }
 
 export function utext_freeze(
-  ut: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ut: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.utext_freeze(util.toPointer(ut));
 }
 
 export function utext_setup(
-  ut: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ut: Deno.PointerValue | Uint8Array /* ptr */,
   extraSpace: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.utext_setup(util.toPointer(ut), extraSpace, util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.utext_setup(util.toPointer(ut), extraSpace, util.toPointer(status));
 }
 
-export function uset_openEmpty(): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uset_openEmpty());
+export function uset_openEmpty(): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uset_openEmpty();
 }
 
 export function uset_open(
   start: number /* i32 */,
   end: number /* i32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uset_open(start, end));
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uset_open(start, end);
 }
 
 export function uset_openPattern(
-  pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pattern: Deno.PointerValue | Uint8Array /* ptr */,
   patternLength: number /* i32 */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uset_openPattern(util.toPointer(pattern), patternLength, util.toPointer(ec)));
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uset_openPattern(util.toPointer(pattern), patternLength, util.toPointer(ec));
 }
 
 export function uset_openPatternOptions(
-  pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pattern: Deno.PointerValue | Uint8Array /* ptr */,
   patternLength: number /* i32 */,
   options: number /* u32 */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uset_openPatternOptions(util.toPointer(pattern), patternLength, options, util.toPointer(ec)));
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uset_openPatternOptions(util.toPointer(pattern), patternLength, options, util.toPointer(ec));
 }
 
 export function uset_close(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uset_close(util.toPointer(set));
 }
 
 export function uset_clone(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uset_clone(util.toPointer(set)));
+  set: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uset_clone(util.toPointer(set));
 }
 
 export function uset_isFrozen(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.uset_isFrozen(util.toPointer(set));
 }
 
 export function uset_freeze(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uset_freeze(util.toPointer(set));
 }
 
 export function uset_cloneAsThawed(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uset_cloneAsThawed(util.toPointer(set)));
+  set: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uset_cloneAsThawed(util.toPointer(set));
 }
 
 export function uset_set(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
   start: number /* i32 */,
   end: number /* i32 */,
 ): void /* void */ {
@@ -20062,37 +20062,37 @@ export function uset_set(
 }
 
 export function uset_applyPattern(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
+  pattern: Deno.PointerValue | Uint8Array /* ptr */,
   patternLength: number /* i32 */,
   options: number /* u32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uset_applyPattern(util.toPointer(set), util.toPointer(pattern), patternLength, options, util.toPointer(status));
 }
 
 export function uset_applyIntPropertyValue(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
   prop: UProperty /* Windows.Win32.Globalization.UProperty */,
   value: number /* i32 */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uset_applyIntPropertyValue(util.toPointer(set), prop, value, util.toPointer(ec));
 }
 
 export function uset_applyPropertyAlias(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
-  prop: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
+  prop: Deno.PointerValue | Uint8Array /* ptr */,
   propLength: number /* i32 */,
-  value: Deno.PointerValue | Uint8Array | null /* ptr */,
+  value: Deno.PointerValue | Uint8Array /* ptr */,
   valueLength: number /* i32 */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uset_applyPropertyAlias(util.toPointer(set), util.toPointer(prop), propLength, util.toPointer(value), valueLength, util.toPointer(ec));
 }
 
 export function uset_resemblesPattern(
-  pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pattern: Deno.PointerValue | Uint8Array /* ptr */,
   patternLength: number /* i32 */,
   pos: number /* i32 */,
 ): number /* i8 */ {
@@ -20100,31 +20100,31 @@ export function uset_resemblesPattern(
 }
 
 export function uset_toPattern(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultCapacity: number /* i32 */,
   escapeUnprintable: number /* i8 */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uset_toPattern(util.toPointer(set), util.toPointer(result), resultCapacity, escapeUnprintable, util.toPointer(ec));
 }
 
 export function uset_add(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
   c: number /* i32 */,
 ): void /* void */ {
   return libicu_dll.uset_add(util.toPointer(set), c);
 }
 
 export function uset_addAll(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
-  additionalSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
+  additionalSet: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uset_addAll(util.toPointer(set), util.toPointer(additionalSet));
 }
 
 export function uset_addRange(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
   start: number /* i32 */,
   end: number /* i32 */,
 ): void /* void */ {
@@ -20132,30 +20132,30 @@ export function uset_addRange(
 }
 
 export function uset_addString(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
-  str: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
+  str: Deno.PointerValue | Uint8Array /* ptr */,
   strLen: number /* i32 */,
 ): void /* void */ {
   return libicu_dll.uset_addString(util.toPointer(set), util.toPointer(str), strLen);
 }
 
 export function uset_addAllCodePoints(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
-  str: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
+  str: Deno.PointerValue | Uint8Array /* ptr */,
   strLen: number /* i32 */,
 ): void /* void */ {
   return libicu_dll.uset_addAllCodePoints(util.toPointer(set), util.toPointer(str), strLen);
 }
 
 export function uset_remove(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
   c: number /* i32 */,
 ): void /* void */ {
   return libicu_dll.uset_remove(util.toPointer(set), c);
 }
 
 export function uset_removeRange(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
   start: number /* i32 */,
   end: number /* i32 */,
 ): void /* void */ {
@@ -20163,22 +20163,22 @@ export function uset_removeRange(
 }
 
 export function uset_removeString(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
-  str: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
+  str: Deno.PointerValue | Uint8Array /* ptr */,
   strLen: number /* i32 */,
 ): void /* void */ {
   return libicu_dll.uset_removeString(util.toPointer(set), util.toPointer(str), strLen);
 }
 
 export function uset_removeAll(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
-  removeSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
+  removeSet: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uset_removeAll(util.toPointer(set), util.toPointer(removeSet));
 }
 
 export function uset_retain(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
   start: number /* i32 */,
   end: number /* i32 */,
 ): void /* void */ {
@@ -20186,65 +20186,65 @@ export function uset_retain(
 }
 
 export function uset_retainAll(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
-  retain: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
+  retain: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uset_retainAll(util.toPointer(set), util.toPointer(retain));
 }
 
 export function uset_compact(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uset_compact(util.toPointer(set));
 }
 
 export function uset_complement(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uset_complement(util.toPointer(set));
 }
 
 export function uset_complementAll(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
-  complement: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
+  complement: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uset_complementAll(util.toPointer(set), util.toPointer(complement));
 }
 
 export function uset_clear(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uset_clear(util.toPointer(set));
 }
 
 export function uset_closeOver(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
   attributes: number /* i32 */,
 ): void /* void */ {
   return libicu_dll.uset_closeOver(util.toPointer(set), attributes);
 }
 
 export function uset_removeAllStrings(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uset_removeAllStrings(util.toPointer(set));
 }
 
 export function uset_isEmpty(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.uset_isEmpty(util.toPointer(set));
 }
 
 export function uset_contains(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
   c: number /* i32 */,
 ): number /* i8 */ {
   return libicu_dll.uset_contains(util.toPointer(set), c);
 }
 
 export function uset_containsRange(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
   start: number /* i32 */,
   end: number /* i32 */,
 ): number /* i8 */ {
@@ -20252,83 +20252,83 @@ export function uset_containsRange(
 }
 
 export function uset_containsString(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
-  str: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
+  str: Deno.PointerValue | Uint8Array /* ptr */,
   strLen: number /* i32 */,
 ): number /* i8 */ {
   return libicu_dll.uset_containsString(util.toPointer(set), util.toPointer(str), strLen);
 }
 
 export function uset_indexOf(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
   c: number /* i32 */,
 ): number /* i32 */ {
   return libicu_dll.uset_indexOf(util.toPointer(set), c);
 }
 
 export function uset_charAt(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
   charIndex: number /* i32 */,
 ): number /* i32 */ {
   return libicu_dll.uset_charAt(util.toPointer(set), charIndex);
 }
 
 export function uset_size(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uset_size(util.toPointer(set));
 }
 
 export function uset_getItemCount(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uset_getItemCount(util.toPointer(set));
 }
 
 export function uset_getItem(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
   itemIndex: number /* i32 */,
-  start: Deno.PointerValue | Uint8Array | null /* ptr */,
-  end: Deno.PointerValue | Uint8Array | null /* ptr */,
-  str: Deno.PointerValue | Uint8Array | null /* ptr */,
+  start: Deno.PointerValue | Uint8Array /* ptr */,
+  end: Deno.PointerValue | Uint8Array /* ptr */,
+  str: Deno.PointerValue | Uint8Array /* ptr */,
   strCapacity: number /* i32 */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uset_getItem(util.toPointer(set), itemIndex, util.toPointer(start), util.toPointer(end), util.toPointer(str), strCapacity, util.toPointer(ec));
 }
 
 export function uset_containsAll(
-  set1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  set2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set1: Deno.PointerValue | Uint8Array /* ptr */,
+  set2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.uset_containsAll(util.toPointer(set1), util.toPointer(set2));
 }
 
 export function uset_containsAllCodePoints(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
-  str: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
+  str: Deno.PointerValue | Uint8Array /* ptr */,
   strLen: number /* i32 */,
 ): number /* i8 */ {
   return libicu_dll.uset_containsAllCodePoints(util.toPointer(set), util.toPointer(str), strLen);
 }
 
 export function uset_containsNone(
-  set1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  set2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set1: Deno.PointerValue | Uint8Array /* ptr */,
+  set2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.uset_containsNone(util.toPointer(set1), util.toPointer(set2));
 }
 
 export function uset_containsSome(
-  set1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  set2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set1: Deno.PointerValue | Uint8Array /* ptr */,
+  set2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.uset_containsSome(util.toPointer(set1), util.toPointer(set2));
 }
 
 export function uset_span(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
-  s: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
+  s: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
   spanCondition: USetSpanCondition /* Windows.Win32.Globalization.USetSpanCondition */,
 ): number /* i32 */ {
@@ -20336,8 +20336,8 @@ export function uset_span(
 }
 
 export function uset_spanBack(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
-  s: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
+  s: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
   spanCondition: USetSpanCondition /* Windows.Win32.Globalization.USetSpanCondition */,
 ): number /* i32 */ {
@@ -20345,7 +20345,7 @@ export function uset_spanBack(
 }
 
 export function uset_spanUTF8(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
   s: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
   spanCondition: USetSpanCondition /* Windows.Win32.Globalization.USetSpanCondition */,
@@ -20354,7 +20354,7 @@ export function uset_spanUTF8(
 }
 
 export function uset_spanBackUTF8(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
   s: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
   spanCondition: USetSpanCondition /* Windows.Win32.Globalization.USetSpanCondition */,
@@ -20363,168 +20363,168 @@ export function uset_spanBackUTF8(
 }
 
 export function uset_equals(
-  set1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  set2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set1: Deno.PointerValue | Uint8Array /* ptr */,
+  set2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.uset_equals(util.toPointer(set1), util.toPointer(set2));
 }
 
 export function uset_serialize(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   destCapacity: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uset_serialize(util.toPointer(set), util.toPointer(dest), destCapacity, util.toPointer(pErrorCode));
 }
 
 export function uset_getSerializedSet(
-  fillSet: Deno.PointerValue | Uint8Array | null /* ptr */,
-  src: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fillSet: Deno.PointerValue | Uint8Array /* ptr */,
+  src: Deno.PointerValue | Uint8Array /* ptr */,
   srcLength: number /* i32 */,
 ): number /* i8 */ {
   return libicu_dll.uset_getSerializedSet(util.toPointer(fillSet), util.toPointer(src), srcLength);
 }
 
 export function uset_setSerializedToOne(
-  fillSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fillSet: Deno.PointerValue | Uint8Array /* ptr */,
   c: number /* i32 */,
 ): void /* void */ {
   return libicu_dll.uset_setSerializedToOne(util.toPointer(fillSet), c);
 }
 
 export function uset_serializedContains(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
   c: number /* i32 */,
 ): number /* i8 */ {
   return libicu_dll.uset_serializedContains(util.toPointer(set), c);
 }
 
 export function uset_getSerializedRangeCount(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uset_getSerializedRangeCount(util.toPointer(set));
 }
 
 export function uset_getSerializedRange(
-  set: Deno.PointerValue | Uint8Array | null /* ptr */,
+  set: Deno.PointerValue | Uint8Array /* ptr */,
   rangeIndex: number /* i32 */,
-  pStart: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pEnd: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pStart: Deno.PointerValue | Uint8Array /* ptr */,
+  pEnd: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.uset_getSerializedRange(util.toPointer(set), rangeIndex, util.toPointer(pStart), util.toPointer(pEnd));
 }
 
 export function unorm2_getNFCInstance(
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.unorm2_getNFCInstance(util.toPointer(pErrorCode)));
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.unorm2_getNFCInstance(util.toPointer(pErrorCode));
 }
 
 export function unorm2_getNFDInstance(
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.unorm2_getNFDInstance(util.toPointer(pErrorCode)));
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.unorm2_getNFDInstance(util.toPointer(pErrorCode));
 }
 
 export function unorm2_getNFKCInstance(
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.unorm2_getNFKCInstance(util.toPointer(pErrorCode)));
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.unorm2_getNFKCInstance(util.toPointer(pErrorCode));
 }
 
 export function unorm2_getNFKDInstance(
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.unorm2_getNFKDInstance(util.toPointer(pErrorCode)));
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.unorm2_getNFKDInstance(util.toPointer(pErrorCode));
 }
 
 export function unorm2_getNFKCCasefoldInstance(
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.unorm2_getNFKCCasefoldInstance(util.toPointer(pErrorCode)));
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.unorm2_getNFKCCasefoldInstance(util.toPointer(pErrorCode));
 }
 
 export function unorm2_getInstance(
   packageName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   mode: UNormalization2Mode /* Windows.Win32.Globalization.UNormalization2Mode */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.unorm2_getInstance(util.pstrToFfi(packageName), util.pstrToFfi(name), mode, util.toPointer(pErrorCode)));
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.unorm2_getInstance(util.pstrToFfi(packageName), util.pstrToFfi(name), mode, util.toPointer(pErrorCode));
 }
 
 export function unorm2_openFiltered(
-  norm2: Deno.PointerValue | Uint8Array | null /* ptr */,
-  filterSet: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.unorm2_openFiltered(util.toPointer(norm2), util.toPointer(filterSet), util.toPointer(pErrorCode)));
+  norm2: Deno.PointerValue | Uint8Array /* ptr */,
+  filterSet: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.unorm2_openFiltered(util.toPointer(norm2), util.toPointer(filterSet), util.toPointer(pErrorCode));
 }
 
 export function unorm2_close(
-  norm2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  norm2: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.unorm2_close(util.toPointer(norm2));
 }
 
 export function unorm2_normalize(
-  norm2: Deno.PointerValue | Uint8Array | null /* ptr */,
-  src: Deno.PointerValue | Uint8Array | null /* ptr */,
+  norm2: Deno.PointerValue | Uint8Array /* ptr */,
+  src: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   capacity: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.unorm2_normalize(util.toPointer(norm2), util.toPointer(src), length, util.toPointer(dest), capacity, util.toPointer(pErrorCode));
 }
 
 export function unorm2_normalizeSecondAndAppend(
-  norm2: Deno.PointerValue | Uint8Array | null /* ptr */,
-  first: Deno.PointerValue | Uint8Array | null /* ptr */,
+  norm2: Deno.PointerValue | Uint8Array /* ptr */,
+  first: Deno.PointerValue | Uint8Array /* ptr */,
   firstLength: number /* i32 */,
   firstCapacity: number /* i32 */,
-  second: Deno.PointerValue | Uint8Array | null /* ptr */,
+  second: Deno.PointerValue | Uint8Array /* ptr */,
   secondLength: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.unorm2_normalizeSecondAndAppend(util.toPointer(norm2), util.toPointer(first), firstLength, firstCapacity, util.toPointer(second), secondLength, util.toPointer(pErrorCode));
 }
 
 export function unorm2_append(
-  norm2: Deno.PointerValue | Uint8Array | null /* ptr */,
-  first: Deno.PointerValue | Uint8Array | null /* ptr */,
+  norm2: Deno.PointerValue | Uint8Array /* ptr */,
+  first: Deno.PointerValue | Uint8Array /* ptr */,
   firstLength: number /* i32 */,
   firstCapacity: number /* i32 */,
-  second: Deno.PointerValue | Uint8Array | null /* ptr */,
+  second: Deno.PointerValue | Uint8Array /* ptr */,
   secondLength: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.unorm2_append(util.toPointer(norm2), util.toPointer(first), firstLength, firstCapacity, util.toPointer(second), secondLength, util.toPointer(pErrorCode));
 }
 
 export function unorm2_getDecomposition(
-  norm2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  norm2: Deno.PointerValue | Uint8Array /* ptr */,
   c: number /* i32 */,
-  decomposition: Deno.PointerValue | Uint8Array | null /* ptr */,
+  decomposition: Deno.PointerValue | Uint8Array /* ptr */,
   capacity: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.unorm2_getDecomposition(util.toPointer(norm2), c, util.toPointer(decomposition), capacity, util.toPointer(pErrorCode));
 }
 
 export function unorm2_getRawDecomposition(
-  norm2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  norm2: Deno.PointerValue | Uint8Array /* ptr */,
   c: number /* i32 */,
-  decomposition: Deno.PointerValue | Uint8Array | null /* ptr */,
+  decomposition: Deno.PointerValue | Uint8Array /* ptr */,
   capacity: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.unorm2_getRawDecomposition(util.toPointer(norm2), c, util.toPointer(decomposition), capacity, util.toPointer(pErrorCode));
 }
 
 export function unorm2_composePair(
-  norm2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  norm2: Deno.PointerValue | Uint8Array /* ptr */,
   a: number /* i32 */,
   b: number /* i32 */,
 ): number /* i32 */ {
@@ -20532,132 +20532,132 @@ export function unorm2_composePair(
 }
 
 export function unorm2_getCombiningClass(
-  norm2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  norm2: Deno.PointerValue | Uint8Array /* ptr */,
   c: number /* i32 */,
 ): number /* u8 */ {
   return libicu_dll.unorm2_getCombiningClass(util.toPointer(norm2), c);
 }
 
 export function unorm2_isNormalized(
-  norm2: Deno.PointerValue | Uint8Array | null /* ptr */,
-  s: Deno.PointerValue | Uint8Array | null /* ptr */,
+  norm2: Deno.PointerValue | Uint8Array /* ptr */,
+  s: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.unorm2_isNormalized(util.toPointer(norm2), util.toPointer(s), length, util.toPointer(pErrorCode));
 }
 
 export function unorm2_quickCheck(
-  norm2: Deno.PointerValue | Uint8Array | null /* ptr */,
-  s: Deno.PointerValue | Uint8Array | null /* ptr */,
+  norm2: Deno.PointerValue | Uint8Array /* ptr */,
+  s: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): UNormalizationCheckResult /* Windows.Win32.Globalization.UNormalizationCheckResult */ {
   return libicu_dll.unorm2_quickCheck(util.toPointer(norm2), util.toPointer(s), length, util.toPointer(pErrorCode));
 }
 
 export function unorm2_spanQuickCheckYes(
-  norm2: Deno.PointerValue | Uint8Array | null /* ptr */,
-  s: Deno.PointerValue | Uint8Array | null /* ptr */,
+  norm2: Deno.PointerValue | Uint8Array /* ptr */,
+  s: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.unorm2_spanQuickCheckYes(util.toPointer(norm2), util.toPointer(s), length, util.toPointer(pErrorCode));
 }
 
 export function unorm2_hasBoundaryBefore(
-  norm2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  norm2: Deno.PointerValue | Uint8Array /* ptr */,
   c: number /* i32 */,
 ): number /* i8 */ {
   return libicu_dll.unorm2_hasBoundaryBefore(util.toPointer(norm2), c);
 }
 
 export function unorm2_hasBoundaryAfter(
-  norm2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  norm2: Deno.PointerValue | Uint8Array /* ptr */,
   c: number /* i32 */,
 ): number /* i8 */ {
   return libicu_dll.unorm2_hasBoundaryAfter(util.toPointer(norm2), c);
 }
 
 export function unorm2_isInert(
-  norm2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  norm2: Deno.PointerValue | Uint8Array /* ptr */,
   c: number /* i32 */,
 ): number /* i8 */ {
   return libicu_dll.unorm2_isInert(util.toPointer(norm2), c);
 }
 
 export function unorm_compare(
-  s1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  s1: Deno.PointerValue | Uint8Array /* ptr */,
   length1: number /* i32 */,
-  s2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  s2: Deno.PointerValue | Uint8Array /* ptr */,
   length2: number /* i32 */,
   options: number /* u32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.unorm_compare(util.toPointer(s1), length1, util.toPointer(s2), length2, options, util.toPointer(pErrorCode));
 }
 
 export function ucnvsel_open(
-  converterList: Deno.PointerValue | Uint8Array | null /* ptr */,
+  converterList: Deno.PointerValue | Uint8Array /* ptr */,
   converterListSize: number /* i32 */,
-  excludedCodePoints: Deno.PointerValue | Uint8Array | null /* ptr */,
+  excludedCodePoints: Deno.PointerValue | Uint8Array /* ptr */,
   whichSet: UConverterUnicodeSet /* Windows.Win32.Globalization.UConverterUnicodeSet */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucnvsel_open(util.toPointer(converterList), converterListSize, util.toPointer(excludedCodePoints), whichSet, util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucnvsel_open(util.toPointer(converterList), converterListSize, util.toPointer(excludedCodePoints), whichSet, util.toPointer(status));
 }
 
 export function ucnvsel_close(
-  sel: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sel: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucnvsel_close(util.toPointer(sel));
 }
 
 export function ucnvsel_openFromSerialized(
-  buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  buffer: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucnvsel_openFromSerialized(util.toPointer(buffer), length, util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucnvsel_openFromSerialized(util.toPointer(buffer), length, util.toPointer(status));
 }
 
 export function ucnvsel_serialize(
-  sel: Deno.PointerValue | Uint8Array | null /* ptr */,
-  buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sel: Deno.PointerValue | Uint8Array /* ptr */,
+  buffer: Deno.PointerValue | Uint8Array /* ptr */,
   bufferCapacity: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucnvsel_serialize(util.toPointer(sel), util.toPointer(buffer), bufferCapacity, util.toPointer(status));
 }
 
 export function ucnvsel_selectForString(
-  sel: Deno.PointerValue | Uint8Array | null /* ptr */,
-  s: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sel: Deno.PointerValue | Uint8Array /* ptr */,
+  s: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucnvsel_selectForString(util.toPointer(sel), util.toPointer(s), length, util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucnvsel_selectForString(util.toPointer(sel), util.toPointer(s), length, util.toPointer(status));
 }
 
 export function ucnvsel_selectForUTF8(
-  sel: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sel: Deno.PointerValue | Uint8Array /* ptr */,
   s: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucnvsel_selectForUTF8(util.toPointer(sel), util.pstrToFfi(s), length, util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucnvsel_selectForUTF8(util.toPointer(sel), util.pstrToFfi(s), length, util.toPointer(status));
 }
 
 export function u_charsToUChars(
   cs: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  us: Deno.PointerValue | Uint8Array | null /* ptr */,
+  us: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
 ): void /* void */ {
   return libicu_dll.u_charsToUChars(util.pstrToFfi(cs), util.toPointer(us), length);
 }
 
 export function u_UCharsToChars(
-  us: Deno.PointerValue | Uint8Array | null /* ptr */,
+  us: Deno.PointerValue | Uint8Array /* ptr */,
   cs: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
 ): void /* void */ {
@@ -20665,20 +20665,20 @@ export function u_UCharsToChars(
 }
 
 export function u_strlen(
-  s: Deno.PointerValue | Uint8Array | null /* ptr */,
+  s: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.u_strlen(util.toPointer(s));
 }
 
 export function u_countChar32(
-  s: Deno.PointerValue | Uint8Array | null /* ptr */,
+  s: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
 ): number /* i32 */ {
   return libicu_dll.u_countChar32(util.toPointer(s), length);
 }
 
 export function u_strHasMoreChar32Than(
-  s: Deno.PointerValue | Uint8Array | null /* ptr */,
+  s: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
   number: number /* i32 */,
 ): number /* i8 */ {
@@ -20686,127 +20686,127 @@ export function u_strHasMoreChar32Than(
 }
 
 export function u_strcat(
-  dst: Deno.PointerValue | Uint8Array | null /* ptr */,
-  src: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_strcat(util.toPointer(dst), util.toPointer(src)));
+  dst: Deno.PointerValue | Uint8Array /* ptr */,
+  src: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_strcat(util.toPointer(dst), util.toPointer(src));
 }
 
 export function u_strncat(
-  dst: Deno.PointerValue | Uint8Array | null /* ptr */,
-  src: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dst: Deno.PointerValue | Uint8Array /* ptr */,
+  src: Deno.PointerValue | Uint8Array /* ptr */,
   n: number /* i32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_strncat(util.toPointer(dst), util.toPointer(src), n));
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_strncat(util.toPointer(dst), util.toPointer(src), n);
 }
 
 export function u_strstr(
-  s: Deno.PointerValue | Uint8Array | null /* ptr */,
-  substring: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_strstr(util.toPointer(s), util.toPointer(substring)));
+  s: Deno.PointerValue | Uint8Array /* ptr */,
+  substring: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_strstr(util.toPointer(s), util.toPointer(substring));
 }
 
 export function u_strFindFirst(
-  s: Deno.PointerValue | Uint8Array | null /* ptr */,
+  s: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
-  substring: Deno.PointerValue | Uint8Array | null /* ptr */,
+  substring: Deno.PointerValue | Uint8Array /* ptr */,
   subLength: number /* i32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_strFindFirst(util.toPointer(s), length, util.toPointer(substring), subLength));
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_strFindFirst(util.toPointer(s), length, util.toPointer(substring), subLength);
 }
 
 export function u_strchr(
-  s: Deno.PointerValue | Uint8Array | null /* ptr */,
+  s: Deno.PointerValue | Uint8Array /* ptr */,
   c: number /* u16 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_strchr(util.toPointer(s), c));
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_strchr(util.toPointer(s), c);
 }
 
 export function u_strchr32(
-  s: Deno.PointerValue | Uint8Array | null /* ptr */,
+  s: Deno.PointerValue | Uint8Array /* ptr */,
   c: number /* i32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_strchr32(util.toPointer(s), c));
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_strchr32(util.toPointer(s), c);
 }
 
 export function u_strrstr(
-  s: Deno.PointerValue | Uint8Array | null /* ptr */,
-  substring: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_strrstr(util.toPointer(s), util.toPointer(substring)));
+  s: Deno.PointerValue | Uint8Array /* ptr */,
+  substring: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_strrstr(util.toPointer(s), util.toPointer(substring));
 }
 
 export function u_strFindLast(
-  s: Deno.PointerValue | Uint8Array | null /* ptr */,
+  s: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
-  substring: Deno.PointerValue | Uint8Array | null /* ptr */,
+  substring: Deno.PointerValue | Uint8Array /* ptr */,
   subLength: number /* i32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_strFindLast(util.toPointer(s), length, util.toPointer(substring), subLength));
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_strFindLast(util.toPointer(s), length, util.toPointer(substring), subLength);
 }
 
 export function u_strrchr(
-  s: Deno.PointerValue | Uint8Array | null /* ptr */,
+  s: Deno.PointerValue | Uint8Array /* ptr */,
   c: number /* u16 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_strrchr(util.toPointer(s), c));
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_strrchr(util.toPointer(s), c);
 }
 
 export function u_strrchr32(
-  s: Deno.PointerValue | Uint8Array | null /* ptr */,
+  s: Deno.PointerValue | Uint8Array /* ptr */,
   c: number /* i32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_strrchr32(util.toPointer(s), c));
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_strrchr32(util.toPointer(s), c);
 }
 
 export function u_strpbrk(
-  string: Deno.PointerValue | Uint8Array | null /* ptr */,
-  matchSet: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_strpbrk(util.toPointer(string), util.toPointer(matchSet)));
+  string: Deno.PointerValue | Uint8Array /* ptr */,
+  matchSet: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_strpbrk(util.toPointer(string), util.toPointer(matchSet));
 }
 
 export function u_strcspn(
-  string: Deno.PointerValue | Uint8Array | null /* ptr */,
-  matchSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  string: Deno.PointerValue | Uint8Array /* ptr */,
+  matchSet: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.u_strcspn(util.toPointer(string), util.toPointer(matchSet));
 }
 
 export function u_strspn(
-  string: Deno.PointerValue | Uint8Array | null /* ptr */,
-  matchSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  string: Deno.PointerValue | Uint8Array /* ptr */,
+  matchSet: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.u_strspn(util.toPointer(string), util.toPointer(matchSet));
 }
 
 export function u_strtok_r(
-  src: Deno.PointerValue | Uint8Array | null /* ptr */,
-  delim: Deno.PointerValue | Uint8Array | null /* ptr */,
-  saveState: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_strtok_r(util.toPointer(src), util.toPointer(delim), util.toPointer(saveState)));
+  src: Deno.PointerValue | Uint8Array /* ptr */,
+  delim: Deno.PointerValue | Uint8Array /* ptr */,
+  saveState: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_strtok_r(util.toPointer(src), util.toPointer(delim), util.toPointer(saveState));
 }
 
 export function u_strcmp(
-  s1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  s2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  s1: Deno.PointerValue | Uint8Array /* ptr */,
+  s2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.u_strcmp(util.toPointer(s1), util.toPointer(s2));
 }
 
 export function u_strcmpCodePointOrder(
-  s1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  s2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  s1: Deno.PointerValue | Uint8Array /* ptr */,
+  s2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.u_strcmpCodePointOrder(util.toPointer(s1), util.toPointer(s2));
 }
 
 export function u_strCompare(
-  s1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  s1: Deno.PointerValue | Uint8Array /* ptr */,
   length1: number /* i32 */,
-  s2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  s2: Deno.PointerValue | Uint8Array /* ptr */,
   length2: number /* i32 */,
   codePointOrder: number /* i8 */,
 ): number /* i32 */ {
@@ -20814,51 +20814,51 @@ export function u_strCompare(
 }
 
 export function u_strCompareIter(
-  iter1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  iter2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  iter1: Deno.PointerValue | Uint8Array /* ptr */,
+  iter2: Deno.PointerValue | Uint8Array /* ptr */,
   codePointOrder: number /* i8 */,
 ): number /* i32 */ {
   return libicu_dll.u_strCompareIter(util.toPointer(iter1), util.toPointer(iter2), codePointOrder);
 }
 
 export function u_strCaseCompare(
-  s1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  s1: Deno.PointerValue | Uint8Array /* ptr */,
   length1: number /* i32 */,
-  s2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  s2: Deno.PointerValue | Uint8Array /* ptr */,
   length2: number /* i32 */,
   options: number /* u32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.u_strCaseCompare(util.toPointer(s1), length1, util.toPointer(s2), length2, options, util.toPointer(pErrorCode));
 }
 
 export function u_strncmp(
-  ucs1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ucs2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ucs1: Deno.PointerValue | Uint8Array /* ptr */,
+  ucs2: Deno.PointerValue | Uint8Array /* ptr */,
   n: number /* i32 */,
 ): number /* i32 */ {
   return libicu_dll.u_strncmp(util.toPointer(ucs1), util.toPointer(ucs2), n);
 }
 
 export function u_strncmpCodePointOrder(
-  s1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  s2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  s1: Deno.PointerValue | Uint8Array /* ptr */,
+  s2: Deno.PointerValue | Uint8Array /* ptr */,
   n: number /* i32 */,
 ): number /* i32 */ {
   return libicu_dll.u_strncmpCodePointOrder(util.toPointer(s1), util.toPointer(s2), n);
 }
 
 export function u_strcasecmp(
-  s1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  s2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  s1: Deno.PointerValue | Uint8Array /* ptr */,
+  s2: Deno.PointerValue | Uint8Array /* ptr */,
   options: number /* u32 */,
 ): number /* i32 */ {
   return libicu_dll.u_strcasecmp(util.toPointer(s1), util.toPointer(s2), options);
 }
 
 export function u_strncasecmp(
-  s1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  s2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  s1: Deno.PointerValue | Uint8Array /* ptr */,
+  s2: Deno.PointerValue | Uint8Array /* ptr */,
   n: number /* i32 */,
   options: number /* u32 */,
 ): number /* i32 */ {
@@ -20866,8 +20866,8 @@ export function u_strncasecmp(
 }
 
 export function u_memcasecmp(
-  s1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  s2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  s1: Deno.PointerValue | Uint8Array /* ptr */,
+  s2: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
   options: number /* u32 */,
 ): number /* i32 */ {
@@ -20875,180 +20875,180 @@ export function u_memcasecmp(
 }
 
 export function u_strcpy(
-  dst: Deno.PointerValue | Uint8Array | null /* ptr */,
-  src: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_strcpy(util.toPointer(dst), util.toPointer(src)));
+  dst: Deno.PointerValue | Uint8Array /* ptr */,
+  src: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_strcpy(util.toPointer(dst), util.toPointer(src));
 }
 
 export function u_strncpy(
-  dst: Deno.PointerValue | Uint8Array | null /* ptr */,
-  src: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dst: Deno.PointerValue | Uint8Array /* ptr */,
+  src: Deno.PointerValue | Uint8Array /* ptr */,
   n: number /* i32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_strncpy(util.toPointer(dst), util.toPointer(src), n));
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_strncpy(util.toPointer(dst), util.toPointer(src), n);
 }
 
 export function u_uastrcpy(
-  dst: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dst: Deno.PointerValue | Uint8Array /* ptr */,
   src: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_uastrcpy(util.toPointer(dst), util.pstrToFfi(src)));
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_uastrcpy(util.toPointer(dst), util.pstrToFfi(src));
 }
 
 export function u_uastrncpy(
-  dst: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dst: Deno.PointerValue | Uint8Array /* ptr */,
   src: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   n: number /* i32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_uastrncpy(util.toPointer(dst), util.pstrToFfi(src), n));
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_uastrncpy(util.toPointer(dst), util.pstrToFfi(src), n);
 }
 
 export function u_austrcpy(
   dst: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  src: Deno.PointerValue | Uint8Array | null /* ptr */,
+  src: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.u_austrcpy(util.pstrToFfi(dst), util.toPointer(src)));
 }
 
 export function u_austrncpy(
   dst: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  src: Deno.PointerValue | Uint8Array | null /* ptr */,
+  src: Deno.PointerValue | Uint8Array /* ptr */,
   n: number /* i32 */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.u_austrncpy(util.pstrToFfi(dst), util.toPointer(src), n));
 }
 
 export function u_memcpy(
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
-  src: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
+  src: Deno.PointerValue | Uint8Array /* ptr */,
   count: number /* i32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_memcpy(util.toPointer(dest), util.toPointer(src), count));
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_memcpy(util.toPointer(dest), util.toPointer(src), count);
 }
 
 export function u_memmove(
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
-  src: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
+  src: Deno.PointerValue | Uint8Array /* ptr */,
   count: number /* i32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_memmove(util.toPointer(dest), util.toPointer(src), count));
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_memmove(util.toPointer(dest), util.toPointer(src), count);
 }
 
 export function u_memset(
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   c: number /* u16 */,
   count: number /* i32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_memset(util.toPointer(dest), c, count));
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_memset(util.toPointer(dest), c, count);
 }
 
 export function u_memcmp(
-  buf1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  buf2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  buf1: Deno.PointerValue | Uint8Array /* ptr */,
+  buf2: Deno.PointerValue | Uint8Array /* ptr */,
   count: number /* i32 */,
 ): number /* i32 */ {
   return libicu_dll.u_memcmp(util.toPointer(buf1), util.toPointer(buf2), count);
 }
 
 export function u_memcmpCodePointOrder(
-  s1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  s2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  s1: Deno.PointerValue | Uint8Array /* ptr */,
+  s2: Deno.PointerValue | Uint8Array /* ptr */,
   count: number /* i32 */,
 ): number /* i32 */ {
   return libicu_dll.u_memcmpCodePointOrder(util.toPointer(s1), util.toPointer(s2), count);
 }
 
 export function u_memchr(
-  s: Deno.PointerValue | Uint8Array | null /* ptr */,
+  s: Deno.PointerValue | Uint8Array /* ptr */,
   c: number /* u16 */,
   count: number /* i32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_memchr(util.toPointer(s), c, count));
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_memchr(util.toPointer(s), c, count);
 }
 
 export function u_memchr32(
-  s: Deno.PointerValue | Uint8Array | null /* ptr */,
+  s: Deno.PointerValue | Uint8Array /* ptr */,
   c: number /* i32 */,
   count: number /* i32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_memchr32(util.toPointer(s), c, count));
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_memchr32(util.toPointer(s), c, count);
 }
 
 export function u_memrchr(
-  s: Deno.PointerValue | Uint8Array | null /* ptr */,
+  s: Deno.PointerValue | Uint8Array /* ptr */,
   c: number /* u16 */,
   count: number /* i32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_memrchr(util.toPointer(s), c, count));
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_memrchr(util.toPointer(s), c, count);
 }
 
 export function u_memrchr32(
-  s: Deno.PointerValue | Uint8Array | null /* ptr */,
+  s: Deno.PointerValue | Uint8Array /* ptr */,
   c: number /* i32 */,
   count: number /* i32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_memrchr32(util.toPointer(s), c, count));
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_memrchr32(util.toPointer(s), c, count);
 }
 
 export function u_unescape(
   src: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   destCapacity: number /* i32 */,
 ): number /* i32 */ {
   return libicu_dll.u_unescape(util.pstrToFfi(src), util.toPointer(dest), destCapacity);
 }
 
 export function u_unescapeAt(
-  charAt: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.UNESCAPE_CHAR_AT */,
-  offset: Deno.PointerValue | Uint8Array | null /* ptr */,
+  charAt: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.UNESCAPE_CHAR_AT */,
+  offset: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.u_unescapeAt(util.toPointer(charAt), util.toPointer(offset), length, util.toPointer(context));
 }
 
 export function u_strToUpper(
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   destCapacity: number /* i32 */,
-  src: Deno.PointerValue | Uint8Array | null /* ptr */,
+  src: Deno.PointerValue | Uint8Array /* ptr */,
   srcLength: number /* i32 */,
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.u_strToUpper(util.toPointer(dest), destCapacity, util.toPointer(src), srcLength, util.pstrToFfi(locale), util.toPointer(pErrorCode));
 }
 
 export function u_strToLower(
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   destCapacity: number /* i32 */,
-  src: Deno.PointerValue | Uint8Array | null /* ptr */,
+  src: Deno.PointerValue | Uint8Array /* ptr */,
   srcLength: number /* i32 */,
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.u_strToLower(util.toPointer(dest), destCapacity, util.toPointer(src), srcLength, util.pstrToFfi(locale), util.toPointer(pErrorCode));
 }
 
 export function u_strToTitle(
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   destCapacity: number /* i32 */,
-  src: Deno.PointerValue | Uint8Array | null /* ptr */,
+  src: Deno.PointerValue | Uint8Array /* ptr */,
   srcLength: number /* i32 */,
-  titleIter: Deno.PointerValue | Uint8Array | null /* ptr */,
+  titleIter: Deno.PointerValue | Uint8Array /* ptr */,
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.u_strToTitle(util.toPointer(dest), destCapacity, util.toPointer(src), srcLength, util.toPointer(titleIter), util.pstrToFfi(locale), util.toPointer(pErrorCode));
 }
 
 export function u_strFoldCase(
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   destCapacity: number /* i32 */,
-  src: Deno.PointerValue | Uint8Array | null /* ptr */,
+  src: Deno.PointerValue | Uint8Array /* ptr */,
   srcLength: number /* i32 */,
   options: number /* u32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.u_strFoldCase(util.toPointer(dest), destCapacity, util.toPointer(src), srcLength, options, util.toPointer(pErrorCode));
 }
@@ -21056,263 +21056,263 @@ export function u_strFoldCase(
 export function u_strToWCS(
   dest: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   destCapacity: number /* i32 */,
-  pDestLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  src: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDestLength: Deno.PointerValue | Uint8Array /* ptr */,
+  src: Deno.PointerValue | Uint8Array /* ptr */,
   srcLength: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
   return util.pwstrFromFfi(libicu_dll.u_strToWCS(util.pwstrToFfi(dest), destCapacity, util.toPointer(pDestLength), util.toPointer(src), srcLength, util.toPointer(pErrorCode)));
 }
 
 export function u_strFromWCS(
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   destCapacity: number /* i32 */,
-  pDestLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDestLength: Deno.PointerValue | Uint8Array /* ptr */,
   src: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   srcLength: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_strFromWCS(util.toPointer(dest), destCapacity, util.toPointer(pDestLength), util.pwstrToFfi(src), srcLength, util.toPointer(pErrorCode)));
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_strFromWCS(util.toPointer(dest), destCapacity, util.toPointer(pDestLength), util.pwstrToFfi(src), srcLength, util.toPointer(pErrorCode));
 }
 
 export function u_strToUTF8(
   dest: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   destCapacity: number /* i32 */,
-  pDestLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  src: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDestLength: Deno.PointerValue | Uint8Array /* ptr */,
+  src: Deno.PointerValue | Uint8Array /* ptr */,
   srcLength: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.u_strToUTF8(util.pstrToFfi(dest), destCapacity, util.toPointer(pDestLength), util.toPointer(src), srcLength, util.toPointer(pErrorCode)));
 }
 
 export function u_strFromUTF8(
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   destCapacity: number /* i32 */,
-  pDestLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDestLength: Deno.PointerValue | Uint8Array /* ptr */,
   src: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   srcLength: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_strFromUTF8(util.toPointer(dest), destCapacity, util.toPointer(pDestLength), util.pstrToFfi(src), srcLength, util.toPointer(pErrorCode)));
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_strFromUTF8(util.toPointer(dest), destCapacity, util.toPointer(pDestLength), util.pstrToFfi(src), srcLength, util.toPointer(pErrorCode));
 }
 
 export function u_strToUTF8WithSub(
   dest: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   destCapacity: number /* i32 */,
-  pDestLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  src: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDestLength: Deno.PointerValue | Uint8Array /* ptr */,
+  src: Deno.PointerValue | Uint8Array /* ptr */,
   srcLength: number /* i32 */,
   subchar: number /* i32 */,
-  pNumSubstitutions: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pNumSubstitutions: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.u_strToUTF8WithSub(util.pstrToFfi(dest), destCapacity, util.toPointer(pDestLength), util.toPointer(src), srcLength, subchar, util.toPointer(pNumSubstitutions), util.toPointer(pErrorCode)));
 }
 
 export function u_strFromUTF8WithSub(
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   destCapacity: number /* i32 */,
-  pDestLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDestLength: Deno.PointerValue | Uint8Array /* ptr */,
   src: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   srcLength: number /* i32 */,
   subchar: number /* i32 */,
-  pNumSubstitutions: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_strFromUTF8WithSub(util.toPointer(dest), destCapacity, util.toPointer(pDestLength), util.pstrToFfi(src), srcLength, subchar, util.toPointer(pNumSubstitutions), util.toPointer(pErrorCode)));
+  pNumSubstitutions: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_strFromUTF8WithSub(util.toPointer(dest), destCapacity, util.toPointer(pDestLength), util.pstrToFfi(src), srcLength, subchar, util.toPointer(pNumSubstitutions), util.toPointer(pErrorCode));
 }
 
 export function u_strFromUTF8Lenient(
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   destCapacity: number /* i32 */,
-  pDestLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDestLength: Deno.PointerValue | Uint8Array /* ptr */,
   src: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   srcLength: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_strFromUTF8Lenient(util.toPointer(dest), destCapacity, util.toPointer(pDestLength), util.pstrToFfi(src), srcLength, util.toPointer(pErrorCode)));
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_strFromUTF8Lenient(util.toPointer(dest), destCapacity, util.toPointer(pDestLength), util.pstrToFfi(src), srcLength, util.toPointer(pErrorCode));
 }
 
 export function u_strToUTF32(
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   destCapacity: number /* i32 */,
-  pDestLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  src: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDestLength: Deno.PointerValue | Uint8Array /* ptr */,
+  src: Deno.PointerValue | Uint8Array /* ptr */,
   srcLength: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_strToUTF32(util.toPointer(dest), destCapacity, util.toPointer(pDestLength), util.toPointer(src), srcLength, util.toPointer(pErrorCode)));
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_strToUTF32(util.toPointer(dest), destCapacity, util.toPointer(pDestLength), util.toPointer(src), srcLength, util.toPointer(pErrorCode));
 }
 
 export function u_strFromUTF32(
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   destCapacity: number /* i32 */,
-  pDestLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  src: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDestLength: Deno.PointerValue | Uint8Array /* ptr */,
+  src: Deno.PointerValue | Uint8Array /* ptr */,
   srcLength: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_strFromUTF32(util.toPointer(dest), destCapacity, util.toPointer(pDestLength), util.toPointer(src), srcLength, util.toPointer(pErrorCode)));
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_strFromUTF32(util.toPointer(dest), destCapacity, util.toPointer(pDestLength), util.toPointer(src), srcLength, util.toPointer(pErrorCode));
 }
 
 export function u_strToUTF32WithSub(
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   destCapacity: number /* i32 */,
-  pDestLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  src: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDestLength: Deno.PointerValue | Uint8Array /* ptr */,
+  src: Deno.PointerValue | Uint8Array /* ptr */,
   srcLength: number /* i32 */,
   subchar: number /* i32 */,
-  pNumSubstitutions: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_strToUTF32WithSub(util.toPointer(dest), destCapacity, util.toPointer(pDestLength), util.toPointer(src), srcLength, subchar, util.toPointer(pNumSubstitutions), util.toPointer(pErrorCode)));
+  pNumSubstitutions: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_strToUTF32WithSub(util.toPointer(dest), destCapacity, util.toPointer(pDestLength), util.toPointer(src), srcLength, subchar, util.toPointer(pNumSubstitutions), util.toPointer(pErrorCode));
 }
 
 export function u_strFromUTF32WithSub(
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   destCapacity: number /* i32 */,
-  pDestLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  src: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDestLength: Deno.PointerValue | Uint8Array /* ptr */,
+  src: Deno.PointerValue | Uint8Array /* ptr */,
   srcLength: number /* i32 */,
   subchar: number /* i32 */,
-  pNumSubstitutions: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_strFromUTF32WithSub(util.toPointer(dest), destCapacity, util.toPointer(pDestLength), util.toPointer(src), srcLength, subchar, util.toPointer(pNumSubstitutions), util.toPointer(pErrorCode)));
+  pNumSubstitutions: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_strFromUTF32WithSub(util.toPointer(dest), destCapacity, util.toPointer(pDestLength), util.toPointer(src), srcLength, subchar, util.toPointer(pNumSubstitutions), util.toPointer(pErrorCode));
 }
 
 export function u_strToJavaModifiedUTF8(
   dest: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   destCapacity: number /* i32 */,
-  pDestLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  src: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDestLength: Deno.PointerValue | Uint8Array /* ptr */,
+  src: Deno.PointerValue | Uint8Array /* ptr */,
   srcLength: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.u_strToJavaModifiedUTF8(util.pstrToFfi(dest), destCapacity, util.toPointer(pDestLength), util.toPointer(src), srcLength, util.toPointer(pErrorCode)));
 }
 
 export function u_strFromJavaModifiedUTF8WithSub(
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   destCapacity: number /* i32 */,
-  pDestLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDestLength: Deno.PointerValue | Uint8Array /* ptr */,
   src: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   srcLength: number /* i32 */,
   subchar: number /* i32 */,
-  pNumSubstitutions: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.u_strFromJavaModifiedUTF8WithSub(util.toPointer(dest), destCapacity, util.toPointer(pDestLength), util.pstrToFfi(src), srcLength, subchar, util.toPointer(pNumSubstitutions), util.toPointer(pErrorCode)));
+  pNumSubstitutions: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.u_strFromJavaModifiedUTF8WithSub(util.toPointer(dest), destCapacity, util.toPointer(pDestLength), util.pstrToFfi(src), srcLength, subchar, util.toPointer(pNumSubstitutions), util.toPointer(pErrorCode));
 }
 
 export function ucasemap_open(
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   options: number /* u32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucasemap_open(util.pstrToFfi(locale), options, util.toPointer(pErrorCode)));
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucasemap_open(util.pstrToFfi(locale), options, util.toPointer(pErrorCode));
 }
 
 export function ucasemap_close(
-  csm: Deno.PointerValue | Uint8Array | null /* ptr */,
+  csm: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucasemap_close(util.toPointer(csm));
 }
 
 export function ucasemap_getLocale(
-  csm: Deno.PointerValue | Uint8Array | null /* ptr */,
+  csm: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.ucasemap_getLocale(util.toPointer(csm)));
 }
 
 export function ucasemap_getOptions(
-  csm: Deno.PointerValue | Uint8Array | null /* ptr */,
+  csm: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libicu_dll.ucasemap_getOptions(util.toPointer(csm));
 }
 
 export function ucasemap_setLocale(
-  csm: Deno.PointerValue | Uint8Array | null /* ptr */,
+  csm: Deno.PointerValue | Uint8Array /* ptr */,
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucasemap_setLocale(util.toPointer(csm), util.pstrToFfi(locale), util.toPointer(pErrorCode));
 }
 
 export function ucasemap_setOptions(
-  csm: Deno.PointerValue | Uint8Array | null /* ptr */,
+  csm: Deno.PointerValue | Uint8Array /* ptr */,
   options: number /* u32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucasemap_setOptions(util.toPointer(csm), options, util.toPointer(pErrorCode));
 }
 
 export function ucasemap_getBreakIterator(
-  csm: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucasemap_getBreakIterator(util.toPointer(csm)));
+  csm: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucasemap_getBreakIterator(util.toPointer(csm));
 }
 
 export function ucasemap_setBreakIterator(
-  csm: Deno.PointerValue | Uint8Array | null /* ptr */,
-  iterToAdopt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  csm: Deno.PointerValue | Uint8Array /* ptr */,
+  iterToAdopt: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucasemap_setBreakIterator(util.toPointer(csm), util.toPointer(iterToAdopt), util.toPointer(pErrorCode));
 }
 
 export function ucasemap_toTitle(
-  csm: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  csm: Deno.PointerValue | Uint8Array /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   destCapacity: number /* i32 */,
-  src: Deno.PointerValue | Uint8Array | null /* ptr */,
+  src: Deno.PointerValue | Uint8Array /* ptr */,
   srcLength: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucasemap_toTitle(util.toPointer(csm), util.toPointer(dest), destCapacity, util.toPointer(src), srcLength, util.toPointer(pErrorCode));
 }
 
 export function ucasemap_utf8ToLower(
-  csm: Deno.PointerValue | Uint8Array | null /* ptr */,
+  csm: Deno.PointerValue | Uint8Array /* ptr */,
   dest: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   destCapacity: number /* i32 */,
   src: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   srcLength: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucasemap_utf8ToLower(util.toPointer(csm), util.pstrToFfi(dest), destCapacity, util.pstrToFfi(src), srcLength, util.toPointer(pErrorCode));
 }
 
 export function ucasemap_utf8ToUpper(
-  csm: Deno.PointerValue | Uint8Array | null /* ptr */,
+  csm: Deno.PointerValue | Uint8Array /* ptr */,
   dest: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   destCapacity: number /* i32 */,
   src: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   srcLength: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucasemap_utf8ToUpper(util.toPointer(csm), util.pstrToFfi(dest), destCapacity, util.pstrToFfi(src), srcLength, util.toPointer(pErrorCode));
 }
 
 export function ucasemap_utf8ToTitle(
-  csm: Deno.PointerValue | Uint8Array | null /* ptr */,
+  csm: Deno.PointerValue | Uint8Array /* ptr */,
   dest: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   destCapacity: number /* i32 */,
   src: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   srcLength: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucasemap_utf8ToTitle(util.toPointer(csm), util.pstrToFfi(dest), destCapacity, util.pstrToFfi(src), srcLength, util.toPointer(pErrorCode));
 }
 
 export function ucasemap_utf8FoldCase(
-  csm: Deno.PointerValue | Uint8Array | null /* ptr */,
+  csm: Deno.PointerValue | Uint8Array /* ptr */,
   dest: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   destCapacity: number /* i32 */,
   src: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   srcLength: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucasemap_utf8FoldCase(util.toPointer(csm), util.pstrToFfi(dest), destCapacity, util.pstrToFfi(src), srcLength, util.toPointer(pErrorCode));
 }
@@ -21320,142 +21320,142 @@ export function ucasemap_utf8FoldCase(
 export function usprep_open(
   path: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.usprep_open(util.pstrToFfi(path), util.pstrToFfi(fileName), util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.usprep_open(util.pstrToFfi(path), util.pstrToFfi(fileName), util.toPointer(status));
 }
 
 export function usprep_openByType(
   type: UStringPrepProfileType /* Windows.Win32.Globalization.UStringPrepProfileType */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.usprep_openByType(type, util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.usprep_openByType(type, util.toPointer(status));
 }
 
 export function usprep_close(
-  profile: Deno.PointerValue | Uint8Array | null /* ptr */,
+  profile: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.usprep_close(util.toPointer(profile));
 }
 
 export function usprep_prepare(
-  prep: Deno.PointerValue | Uint8Array | null /* ptr */,
-  src: Deno.PointerValue | Uint8Array | null /* ptr */,
+  prep: Deno.PointerValue | Uint8Array /* ptr */,
+  src: Deno.PointerValue | Uint8Array /* ptr */,
   srcLength: number /* i32 */,
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   destCapacity: number /* i32 */,
   options: number /* i32 */,
-  parseError: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  parseError: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.usprep_prepare(util.toPointer(prep), util.toPointer(src), srcLength, util.toPointer(dest), destCapacity, options, util.toPointer(parseError), util.toPointer(status));
 }
 
 export function uidna_openUTS46(
   options: number /* u32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uidna_openUTS46(options, util.toPointer(pErrorCode)));
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uidna_openUTS46(options, util.toPointer(pErrorCode));
 }
 
 export function uidna_close(
-  idna: Deno.PointerValue | Uint8Array | null /* ptr */,
+  idna: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uidna_close(util.toPointer(idna));
 }
 
 export function uidna_labelToASCII(
-  idna: Deno.PointerValue | Uint8Array | null /* ptr */,
-  label: Deno.PointerValue | Uint8Array | null /* ptr */,
+  idna: Deno.PointerValue | Uint8Array /* ptr */,
+  label: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   capacity: number /* i32 */,
-  pInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uidna_labelToASCII(util.toPointer(idna), util.toPointer(label), length, util.toPointer(dest), capacity, util.toPointer(pInfo), util.toPointer(pErrorCode));
 }
 
 export function uidna_labelToUnicode(
-  idna: Deno.PointerValue | Uint8Array | null /* ptr */,
-  label: Deno.PointerValue | Uint8Array | null /* ptr */,
+  idna: Deno.PointerValue | Uint8Array /* ptr */,
+  label: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   capacity: number /* i32 */,
-  pInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uidna_labelToUnicode(util.toPointer(idna), util.toPointer(label), length, util.toPointer(dest), capacity, util.toPointer(pInfo), util.toPointer(pErrorCode));
 }
 
 export function uidna_nameToASCII(
-  idna: Deno.PointerValue | Uint8Array | null /* ptr */,
-  name: Deno.PointerValue | Uint8Array | null /* ptr */,
+  idna: Deno.PointerValue | Uint8Array /* ptr */,
+  name: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   capacity: number /* i32 */,
-  pInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uidna_nameToASCII(util.toPointer(idna), util.toPointer(name), length, util.toPointer(dest), capacity, util.toPointer(pInfo), util.toPointer(pErrorCode));
 }
 
 export function uidna_nameToUnicode(
-  idna: Deno.PointerValue | Uint8Array | null /* ptr */,
-  name: Deno.PointerValue | Uint8Array | null /* ptr */,
+  idna: Deno.PointerValue | Uint8Array /* ptr */,
+  name: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   capacity: number /* i32 */,
-  pInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uidna_nameToUnicode(util.toPointer(idna), util.toPointer(name), length, util.toPointer(dest), capacity, util.toPointer(pInfo), util.toPointer(pErrorCode));
 }
 
 export function uidna_labelToASCII_UTF8(
-  idna: Deno.PointerValue | Uint8Array | null /* ptr */,
+  idna: Deno.PointerValue | Uint8Array /* ptr */,
   label: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
   dest: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   capacity: number /* i32 */,
-  pInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uidna_labelToASCII_UTF8(util.toPointer(idna), util.pstrToFfi(label), length, util.pstrToFfi(dest), capacity, util.toPointer(pInfo), util.toPointer(pErrorCode));
 }
 
 export function uidna_labelToUnicodeUTF8(
-  idna: Deno.PointerValue | Uint8Array | null /* ptr */,
+  idna: Deno.PointerValue | Uint8Array /* ptr */,
   label: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
   dest: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   capacity: number /* i32 */,
-  pInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uidna_labelToUnicodeUTF8(util.toPointer(idna), util.pstrToFfi(label), length, util.pstrToFfi(dest), capacity, util.toPointer(pInfo), util.toPointer(pErrorCode));
 }
 
 export function uidna_nameToASCII_UTF8(
-  idna: Deno.PointerValue | Uint8Array | null /* ptr */,
+  idna: Deno.PointerValue | Uint8Array /* ptr */,
   name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
   dest: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   capacity: number /* i32 */,
-  pInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uidna_nameToASCII_UTF8(util.toPointer(idna), util.pstrToFfi(name), length, util.pstrToFfi(dest), capacity, util.toPointer(pInfo), util.toPointer(pErrorCode));
 }
 
 export function uidna_nameToUnicodeUTF8(
-  idna: Deno.PointerValue | Uint8Array | null /* ptr */,
+  idna: Deno.PointerValue | Uint8Array /* ptr */,
   name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
   dest: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   capacity: number /* i32 */,
-  pInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uidna_nameToUnicodeUTF8(util.toPointer(idna), util.pstrToFfi(name), length, util.pstrToFfi(dest), capacity, util.toPointer(pInfo), util.toPointer(pErrorCode));
 }
@@ -21463,105 +21463,105 @@ export function uidna_nameToUnicodeUTF8(
 export function ubrk_open(
   type: UBreakIteratorType /* Windows.Win32.Globalization.UBreakIteratorType */,
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  text: Deno.PointerValue | Uint8Array | null /* ptr */,
+  text: Deno.PointerValue | Uint8Array /* ptr */,
   textLength: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ubrk_open(type, util.pstrToFfi(locale), util.toPointer(text), textLength, util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ubrk_open(type, util.pstrToFfi(locale), util.toPointer(text), textLength, util.toPointer(status));
 }
 
 export function ubrk_openRules(
-  rules: Deno.PointerValue | Uint8Array | null /* ptr */,
+  rules: Deno.PointerValue | Uint8Array /* ptr */,
   rulesLength: number /* i32 */,
-  text: Deno.PointerValue | Uint8Array | null /* ptr */,
+  text: Deno.PointerValue | Uint8Array /* ptr */,
   textLength: number /* i32 */,
-  parseErr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ubrk_openRules(util.toPointer(rules), rulesLength, util.toPointer(text), textLength, util.toPointer(parseErr), util.toPointer(status)));
+  parseErr: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ubrk_openRules(util.toPointer(rules), rulesLength, util.toPointer(text), textLength, util.toPointer(parseErr), util.toPointer(status));
 }
 
 export function ubrk_openBinaryRules(
-  binaryRules: Deno.PointerValue | Uint8Array | null /* ptr */,
+  binaryRules: Deno.PointerValue | Uint8Array /* ptr */,
   rulesLength: number /* i32 */,
-  text: Deno.PointerValue | Uint8Array | null /* ptr */,
+  text: Deno.PointerValue | Uint8Array /* ptr */,
   textLength: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ubrk_openBinaryRules(util.toPointer(binaryRules), rulesLength, util.toPointer(text), textLength, util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ubrk_openBinaryRules(util.toPointer(binaryRules), rulesLength, util.toPointer(text), textLength, util.toPointer(status));
 }
 
 export function ubrk_safeClone(
-  bi: Deno.PointerValue | Uint8Array | null /* ptr */,
-  stackBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ubrk_safeClone(util.toPointer(bi), util.toPointer(stackBuffer), util.toPointer(pBufferSize), util.toPointer(status)));
+  bi: Deno.PointerValue | Uint8Array /* ptr */,
+  stackBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  pBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ubrk_safeClone(util.toPointer(bi), util.toPointer(stackBuffer), util.toPointer(pBufferSize), util.toPointer(status));
 }
 
 export function ubrk_close(
-  bi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  bi: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ubrk_close(util.toPointer(bi));
 }
 
 export function ubrk_setText(
-  bi: Deno.PointerValue | Uint8Array | null /* ptr */,
-  text: Deno.PointerValue | Uint8Array | null /* ptr */,
+  bi: Deno.PointerValue | Uint8Array /* ptr */,
+  text: Deno.PointerValue | Uint8Array /* ptr */,
   textLength: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ubrk_setText(util.toPointer(bi), util.toPointer(text), textLength, util.toPointer(status));
 }
 
 export function ubrk_setUText(
-  bi: Deno.PointerValue | Uint8Array | null /* ptr */,
-  text: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  bi: Deno.PointerValue | Uint8Array /* ptr */,
+  text: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ubrk_setUText(util.toPointer(bi), util.toPointer(text), util.toPointer(status));
 }
 
 export function ubrk_current(
-  bi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  bi: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ubrk_current(util.toPointer(bi));
 }
 
 export function ubrk_next(
-  bi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  bi: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ubrk_next(util.toPointer(bi));
 }
 
 export function ubrk_previous(
-  bi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  bi: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ubrk_previous(util.toPointer(bi));
 }
 
 export function ubrk_first(
-  bi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  bi: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ubrk_first(util.toPointer(bi));
 }
 
 export function ubrk_last(
-  bi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  bi: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ubrk_last(util.toPointer(bi));
 }
 
 export function ubrk_preceding(
-  bi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  bi: Deno.PointerValue | Uint8Array /* ptr */,
   offset: number /* i32 */,
 ): number /* i32 */ {
   return libicu_dll.ubrk_preceding(util.toPointer(bi), offset);
 }
 
 export function ubrk_following(
-  bi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  bi: Deno.PointerValue | Uint8Array /* ptr */,
   offset: number /* i32 */,
 ): number /* i32 */ {
   return libicu_dll.ubrk_following(util.toPointer(bi), offset);
@@ -21578,55 +21578,55 @@ export function ubrk_countAvailable(): number /* i32 */ {
 }
 
 export function ubrk_isBoundary(
-  bi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  bi: Deno.PointerValue | Uint8Array /* ptr */,
   offset: number /* i32 */,
 ): number /* i8 */ {
   return libicu_dll.ubrk_isBoundary(util.toPointer(bi), offset);
 }
 
 export function ubrk_getRuleStatus(
-  bi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  bi: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ubrk_getRuleStatus(util.toPointer(bi));
 }
 
 export function ubrk_getRuleStatusVec(
-  bi: Deno.PointerValue | Uint8Array | null /* ptr */,
-  fillInVec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  bi: Deno.PointerValue | Uint8Array /* ptr */,
+  fillInVec: Deno.PointerValue | Uint8Array /* ptr */,
   capacity: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ubrk_getRuleStatusVec(util.toPointer(bi), util.toPointer(fillInVec), capacity, util.toPointer(status));
 }
 
 export function ubrk_getLocaleByType(
-  bi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  bi: Deno.PointerValue | Uint8Array /* ptr */,
   type: ULocDataLocaleType /* Windows.Win32.Globalization.ULocDataLocaleType */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.ubrk_getLocaleByType(util.toPointer(bi), type, util.toPointer(status)));
 }
 
 export function ubrk_refreshUText(
-  bi: Deno.PointerValue | Uint8Array | null /* ptr */,
-  text: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  bi: Deno.PointerValue | Uint8Array /* ptr */,
+  text: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ubrk_refreshUText(util.toPointer(bi), util.toPointer(text), util.toPointer(status));
 }
 
 export function ubrk_getBinaryRules(
-  bi: Deno.PointerValue | Uint8Array | null /* ptr */,
-  binaryRules: Deno.PointerValue | Uint8Array | null /* ptr */,
+  bi: Deno.PointerValue | Uint8Array /* ptr */,
+  binaryRules: Deno.PointerValue | Uint8Array /* ptr */,
   rulesCapacity: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ubrk_getBinaryRules(util.toPointer(bi), util.toPointer(binaryRules), rulesCapacity, util.toPointer(status));
 }
 
 export function u_getDataVersion(
-  dataVersionFillin: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dataVersionFillin: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.u_getDataVersion(util.toPointer(dataVersionFillin), util.toPointer(status));
 }
@@ -21634,51 +21634,51 @@ export function u_getDataVersion(
 export function ucal_openTimeZoneIDEnumeration(
   zoneType: USystemTimeZoneType /* Windows.Win32.Globalization.USystemTimeZoneType */,
   region: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  rawOffset: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucal_openTimeZoneIDEnumeration(zoneType, util.pstrToFfi(region), util.toPointer(rawOffset), util.toPointer(ec)));
+  rawOffset: Deno.PointerValue | Uint8Array /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucal_openTimeZoneIDEnumeration(zoneType, util.pstrToFfi(region), util.toPointer(rawOffset), util.toPointer(ec));
 }
 
 export function ucal_openTimeZones(
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucal_openTimeZones(util.toPointer(ec)));
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucal_openTimeZones(util.toPointer(ec));
 }
 
 export function ucal_openCountryTimeZones(
   country: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucal_openCountryTimeZones(util.pstrToFfi(country), util.toPointer(ec)));
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucal_openCountryTimeZones(util.pstrToFfi(country), util.toPointer(ec));
 }
 
 export function ucal_getDefaultTimeZone(
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultCapacity: number /* i32 */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucal_getDefaultTimeZone(util.toPointer(result), resultCapacity, util.toPointer(ec));
 }
 
 export function ucal_setDefaultTimeZone(
-  zoneID: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  zoneID: Deno.PointerValue | Uint8Array /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucal_setDefaultTimeZone(util.toPointer(zoneID), util.toPointer(ec));
 }
 
 export function ucal_getHostTimeZone(
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultCapacity: number /* i32 */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucal_getHostTimeZone(util.toPointer(result), resultCapacity, util.toPointer(ec));
 }
 
 export function ucal_getDSTSavings(
-  zoneID: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  zoneID: Deno.PointerValue | Uint8Array /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucal_getDSTSavings(util.toPointer(zoneID), util.toPointer(ec));
 }
@@ -21688,88 +21688,88 @@ export function ucal_getNow(): number /* f64 */ {
 }
 
 export function ucal_open(
-  zoneID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  zoneID: Deno.PointerValue | Uint8Array /* ptr */,
   len: number /* i32 */,
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   type: UCalendarType /* Windows.Win32.Globalization.UCalendarType */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucal_open(util.toPointer(zoneID), len, util.pstrToFfi(locale), type, util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucal_open(util.toPointer(zoneID), len, util.pstrToFfi(locale), type, util.toPointer(status));
 }
 
 export function ucal_close(
-  cal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cal: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucal_close(util.toPointer(cal));
 }
 
 export function ucal_clone(
-  cal: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucal_clone(util.toPointer(cal), util.toPointer(status)));
+  cal: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucal_clone(util.toPointer(cal), util.toPointer(status));
 }
 
 export function ucal_setTimeZone(
-  cal: Deno.PointerValue | Uint8Array | null /* ptr */,
-  zoneID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cal: Deno.PointerValue | Uint8Array /* ptr */,
+  zoneID: Deno.PointerValue | Uint8Array /* ptr */,
   len: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucal_setTimeZone(util.toPointer(cal), util.toPointer(zoneID), len, util.toPointer(status));
 }
 
 export function ucal_getTimeZoneID(
-  cal: Deno.PointerValue | Uint8Array | null /* ptr */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cal: Deno.PointerValue | Uint8Array /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultLength: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucal_getTimeZoneID(util.toPointer(cal), util.toPointer(result), resultLength, util.toPointer(status));
 }
 
 export function ucal_getTimeZoneDisplayName(
-  cal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cal: Deno.PointerValue | Uint8Array /* ptr */,
   type: UCalendarDisplayNameType /* Windows.Win32.Globalization.UCalendarDisplayNameType */,
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultLength: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucal_getTimeZoneDisplayName(util.toPointer(cal), type, util.pstrToFfi(locale), util.toPointer(result), resultLength, util.toPointer(status));
 }
 
 export function ucal_inDaylightTime(
-  cal: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cal: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.ucal_inDaylightTime(util.toPointer(cal), util.toPointer(status));
 }
 
 export function ucal_setGregorianChange(
-  cal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cal: Deno.PointerValue | Uint8Array /* ptr */,
   date: number /* f64 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucal_setGregorianChange(util.toPointer(cal), date, util.toPointer(pErrorCode));
 }
 
 export function ucal_getGregorianChange(
-  cal: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cal: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* f64 */ {
   return libicu_dll.ucal_getGregorianChange(util.toPointer(cal), util.toPointer(pErrorCode));
 }
 
 export function ucal_getAttribute(
-  cal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cal: Deno.PointerValue | Uint8Array /* ptr */,
   attr: UCalendarAttribute /* Windows.Win32.Globalization.UCalendarAttribute */,
 ): number /* i32 */ {
   return libicu_dll.ucal_getAttribute(util.toPointer(cal), attr);
 }
 
 export function ucal_setAttribute(
-  cal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cal: Deno.PointerValue | Uint8Array /* ptr */,
   attr: UCalendarAttribute /* Windows.Win32.Globalization.UCalendarAttribute */,
   newValue: number /* i32 */,
 ): void /* void */ {
@@ -21787,78 +21787,78 @@ export function ucal_countAvailable(): number /* i32 */ {
 }
 
 export function ucal_getMillis(
-  cal: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cal: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* f64 */ {
   return libicu_dll.ucal_getMillis(util.toPointer(cal), util.toPointer(status));
 }
 
 export function ucal_setMillis(
-  cal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cal: Deno.PointerValue | Uint8Array /* ptr */,
   dateTime: number /* f64 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucal_setMillis(util.toPointer(cal), dateTime, util.toPointer(status));
 }
 
 export function ucal_setDate(
-  cal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cal: Deno.PointerValue | Uint8Array /* ptr */,
   year: number /* i32 */,
   month: number /* i32 */,
   date: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucal_setDate(util.toPointer(cal), year, month, date, util.toPointer(status));
 }
 
 export function ucal_setDateTime(
-  cal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cal: Deno.PointerValue | Uint8Array /* ptr */,
   year: number /* i32 */,
   month: number /* i32 */,
   date: number /* i32 */,
   hour: number /* i32 */,
   minute: number /* i32 */,
   second: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucal_setDateTime(util.toPointer(cal), year, month, date, hour, minute, second, util.toPointer(status));
 }
 
 export function ucal_equivalentTo(
-  cal1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  cal2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cal1: Deno.PointerValue | Uint8Array /* ptr */,
+  cal2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.ucal_equivalentTo(util.toPointer(cal1), util.toPointer(cal2));
 }
 
 export function ucal_add(
-  cal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cal: Deno.PointerValue | Uint8Array /* ptr */,
   field: UCalendarDateFields /* Windows.Win32.Globalization.UCalendarDateFields */,
   amount: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucal_add(util.toPointer(cal), field, amount, util.toPointer(status));
 }
 
 export function ucal_roll(
-  cal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cal: Deno.PointerValue | Uint8Array /* ptr */,
   field: UCalendarDateFields /* Windows.Win32.Globalization.UCalendarDateFields */,
   amount: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucal_roll(util.toPointer(cal), field, amount, util.toPointer(status));
 }
 
 export function ucal_get(
-  cal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cal: Deno.PointerValue | Uint8Array /* ptr */,
   field: UCalendarDateFields /* Windows.Win32.Globalization.UCalendarDateFields */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucal_get(util.toPointer(cal), field, util.toPointer(status));
 }
 
 export function ucal_set(
-  cal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cal: Deno.PointerValue | Uint8Array /* ptr */,
   field: UCalendarDateFields /* Windows.Win32.Globalization.UCalendarDateFields */,
   value: number /* i32 */,
 ): void /* void */ {
@@ -21866,62 +21866,62 @@ export function ucal_set(
 }
 
 export function ucal_isSet(
-  cal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cal: Deno.PointerValue | Uint8Array /* ptr */,
   field: UCalendarDateFields /* Windows.Win32.Globalization.UCalendarDateFields */,
 ): number /* i8 */ {
   return libicu_dll.ucal_isSet(util.toPointer(cal), field);
 }
 
 export function ucal_clearField(
-  cal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cal: Deno.PointerValue | Uint8Array /* ptr */,
   field: UCalendarDateFields /* Windows.Win32.Globalization.UCalendarDateFields */,
 ): void /* void */ {
   return libicu_dll.ucal_clearField(util.toPointer(cal), field);
 }
 
 export function ucal_clear(
-  calendar: Deno.PointerValue | Uint8Array | null /* ptr */,
+  calendar: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucal_clear(util.toPointer(calendar));
 }
 
 export function ucal_getLimit(
-  cal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cal: Deno.PointerValue | Uint8Array /* ptr */,
   field: UCalendarDateFields /* Windows.Win32.Globalization.UCalendarDateFields */,
   type: UCalendarLimitType /* Windows.Win32.Globalization.UCalendarLimitType */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucal_getLimit(util.toPointer(cal), field, type, util.toPointer(status));
 }
 
 export function ucal_getLocaleByType(
-  cal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cal: Deno.PointerValue | Uint8Array /* ptr */,
   type: ULocDataLocaleType /* Windows.Win32.Globalization.ULocDataLocaleType */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.ucal_getLocaleByType(util.toPointer(cal), type, util.toPointer(status)));
 }
 
 export function ucal_getTZDataVersion(
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.ucal_getTZDataVersion(util.toPointer(status)));
 }
 
 export function ucal_getCanonicalTimeZoneID(
-  id: Deno.PointerValue | Uint8Array | null /* ptr */,
+  id: Deno.PointerValue | Uint8Array /* ptr */,
   len: number /* i32 */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultCapacity: number /* i32 */,
-  isSystemID: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  isSystemID: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucal_getCanonicalTimeZoneID(util.toPointer(id), len, util.toPointer(result), resultCapacity, util.toPointer(isSystemID), util.toPointer(status));
 }
 
 export function ucal_getType(
-  cal: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cal: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.ucal_getType(util.toPointer(cal), util.toPointer(status)));
 }
@@ -21930,204 +21930,204 @@ export function ucal_getKeywordValuesForLocale(
   key: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   commonlyUsed: number /* i8 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucal_getKeywordValuesForLocale(util.pstrToFfi(key), util.pstrToFfi(locale), commonlyUsed, util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucal_getKeywordValuesForLocale(util.pstrToFfi(key), util.pstrToFfi(locale), commonlyUsed, util.toPointer(status));
 }
 
 export function ucal_getDayOfWeekType(
-  cal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cal: Deno.PointerValue | Uint8Array /* ptr */,
   dayOfWeek: UCalendarDaysOfWeek /* Windows.Win32.Globalization.UCalendarDaysOfWeek */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): UCalendarWeekdayType /* Windows.Win32.Globalization.UCalendarWeekdayType */ {
   return libicu_dll.ucal_getDayOfWeekType(util.toPointer(cal), dayOfWeek, util.toPointer(status));
 }
 
 export function ucal_getWeekendTransition(
-  cal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cal: Deno.PointerValue | Uint8Array /* ptr */,
   dayOfWeek: UCalendarDaysOfWeek /* Windows.Win32.Globalization.UCalendarDaysOfWeek */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucal_getWeekendTransition(util.toPointer(cal), dayOfWeek, util.toPointer(status));
 }
 
 export function ucal_isWeekend(
-  cal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cal: Deno.PointerValue | Uint8Array /* ptr */,
   date: number /* f64 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.ucal_isWeekend(util.toPointer(cal), date, util.toPointer(status));
 }
 
 export function ucal_getFieldDifference(
-  cal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cal: Deno.PointerValue | Uint8Array /* ptr */,
   target: number /* f64 */,
   field: UCalendarDateFields /* Windows.Win32.Globalization.UCalendarDateFields */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucal_getFieldDifference(util.toPointer(cal), target, field, util.toPointer(status));
 }
 
 export function ucal_getTimeZoneTransitionDate(
-  cal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cal: Deno.PointerValue | Uint8Array /* ptr */,
   type: UTimeZoneTransitionType /* Windows.Win32.Globalization.UTimeZoneTransitionType */,
-  transition: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  transition: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.ucal_getTimeZoneTransitionDate(util.toPointer(cal), type, util.toPointer(transition), util.toPointer(status));
 }
 
 export function ucal_getWindowsTimeZoneID(
-  id: Deno.PointerValue | Uint8Array | null /* ptr */,
+  id: Deno.PointerValue | Uint8Array /* ptr */,
   len: number /* i32 */,
-  winid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  winid: Deno.PointerValue | Uint8Array /* ptr */,
   winidCapacity: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucal_getWindowsTimeZoneID(util.toPointer(id), len, util.toPointer(winid), winidCapacity, util.toPointer(status));
 }
 
 export function ucal_getTimeZoneIDForWindowsID(
-  winid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  winid: Deno.PointerValue | Uint8Array /* ptr */,
   len: number /* i32 */,
   region: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  id: Deno.PointerValue | Uint8Array | null /* ptr */,
+  id: Deno.PointerValue | Uint8Array /* ptr */,
   idCapacity: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucal_getTimeZoneIDForWindowsID(util.toPointer(winid), len, util.pstrToFfi(region), util.toPointer(id), idCapacity, util.toPointer(status));
 }
 
 export function ucol_open(
   loc: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucol_open(util.pstrToFfi(loc), util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucol_open(util.pstrToFfi(loc), util.toPointer(status));
 }
 
 export function ucol_openRules(
-  rules: Deno.PointerValue | Uint8Array | null /* ptr */,
+  rules: Deno.PointerValue | Uint8Array /* ptr */,
   rulesLength: number /* i32 */,
   normalizationMode: UColAttributeValue /* Windows.Win32.Globalization.UColAttributeValue */,
   strength: UColAttributeValue /* Windows.Win32.Globalization.UColAttributeValue */,
-  parseError: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucol_openRules(util.toPointer(rules), rulesLength, normalizationMode, strength, util.toPointer(parseError), util.toPointer(status)));
+  parseError: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucol_openRules(util.toPointer(rules), rulesLength, normalizationMode, strength, util.toPointer(parseError), util.toPointer(status));
 }
 
 export function ucol_getContractionsAndExpansions(
-  coll: Deno.PointerValue | Uint8Array | null /* ptr */,
-  contractions: Deno.PointerValue | Uint8Array | null /* ptr */,
-  expansions: Deno.PointerValue | Uint8Array | null /* ptr */,
+  coll: Deno.PointerValue | Uint8Array /* ptr */,
+  contractions: Deno.PointerValue | Uint8Array /* ptr */,
+  expansions: Deno.PointerValue | Uint8Array /* ptr */,
   addPrefixes: number /* i8 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucol_getContractionsAndExpansions(util.toPointer(coll), util.toPointer(contractions), util.toPointer(expansions), addPrefixes, util.toPointer(status));
 }
 
 export function ucol_close(
-  coll: Deno.PointerValue | Uint8Array | null /* ptr */,
+  coll: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucol_close(util.toPointer(coll));
 }
 
 export function ucol_strcoll(
-  coll: Deno.PointerValue | Uint8Array | null /* ptr */,
-  source: Deno.PointerValue | Uint8Array | null /* ptr */,
+  coll: Deno.PointerValue | Uint8Array /* ptr */,
+  source: Deno.PointerValue | Uint8Array /* ptr */,
   sourceLength: number /* i32 */,
-  target: Deno.PointerValue | Uint8Array | null /* ptr */,
+  target: Deno.PointerValue | Uint8Array /* ptr */,
   targetLength: number /* i32 */,
 ): UCollationResult /* Windows.Win32.Globalization.UCollationResult */ {
   return libicu_dll.ucol_strcoll(util.toPointer(coll), util.toPointer(source), sourceLength, util.toPointer(target), targetLength);
 }
 
 export function ucol_strcollUTF8(
-  coll: Deno.PointerValue | Uint8Array | null /* ptr */,
+  coll: Deno.PointerValue | Uint8Array /* ptr */,
   source: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   sourceLength: number /* i32 */,
   target: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   targetLength: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): UCollationResult /* Windows.Win32.Globalization.UCollationResult */ {
   return libicu_dll.ucol_strcollUTF8(util.toPointer(coll), util.pstrToFfi(source), sourceLength, util.pstrToFfi(target), targetLength, util.toPointer(status));
 }
 
 export function ucol_greater(
-  coll: Deno.PointerValue | Uint8Array | null /* ptr */,
-  source: Deno.PointerValue | Uint8Array | null /* ptr */,
+  coll: Deno.PointerValue | Uint8Array /* ptr */,
+  source: Deno.PointerValue | Uint8Array /* ptr */,
   sourceLength: number /* i32 */,
-  target: Deno.PointerValue | Uint8Array | null /* ptr */,
+  target: Deno.PointerValue | Uint8Array /* ptr */,
   targetLength: number /* i32 */,
 ): number /* i8 */ {
   return libicu_dll.ucol_greater(util.toPointer(coll), util.toPointer(source), sourceLength, util.toPointer(target), targetLength);
 }
 
 export function ucol_greaterOrEqual(
-  coll: Deno.PointerValue | Uint8Array | null /* ptr */,
-  source: Deno.PointerValue | Uint8Array | null /* ptr */,
+  coll: Deno.PointerValue | Uint8Array /* ptr */,
+  source: Deno.PointerValue | Uint8Array /* ptr */,
   sourceLength: number /* i32 */,
-  target: Deno.PointerValue | Uint8Array | null /* ptr */,
+  target: Deno.PointerValue | Uint8Array /* ptr */,
   targetLength: number /* i32 */,
 ): number /* i8 */ {
   return libicu_dll.ucol_greaterOrEqual(util.toPointer(coll), util.toPointer(source), sourceLength, util.toPointer(target), targetLength);
 }
 
 export function ucol_equal(
-  coll: Deno.PointerValue | Uint8Array | null /* ptr */,
-  source: Deno.PointerValue | Uint8Array | null /* ptr */,
+  coll: Deno.PointerValue | Uint8Array /* ptr */,
+  source: Deno.PointerValue | Uint8Array /* ptr */,
   sourceLength: number /* i32 */,
-  target: Deno.PointerValue | Uint8Array | null /* ptr */,
+  target: Deno.PointerValue | Uint8Array /* ptr */,
   targetLength: number /* i32 */,
 ): number /* i8 */ {
   return libicu_dll.ucol_equal(util.toPointer(coll), util.toPointer(source), sourceLength, util.toPointer(target), targetLength);
 }
 
 export function ucol_strcollIter(
-  coll: Deno.PointerValue | Uint8Array | null /* ptr */,
-  sIter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  tIter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  coll: Deno.PointerValue | Uint8Array /* ptr */,
+  sIter: Deno.PointerValue | Uint8Array /* ptr */,
+  tIter: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): UCollationResult /* Windows.Win32.Globalization.UCollationResult */ {
   return libicu_dll.ucol_strcollIter(util.toPointer(coll), util.toPointer(sIter), util.toPointer(tIter), util.toPointer(status));
 }
 
 export function ucol_getStrength(
-  coll: Deno.PointerValue | Uint8Array | null /* ptr */,
+  coll: Deno.PointerValue | Uint8Array /* ptr */,
 ): UColAttributeValue /* Windows.Win32.Globalization.UColAttributeValue */ {
   return libicu_dll.ucol_getStrength(util.toPointer(coll));
 }
 
 export function ucol_setStrength(
-  coll: Deno.PointerValue | Uint8Array | null /* ptr */,
+  coll: Deno.PointerValue | Uint8Array /* ptr */,
   strength: UColAttributeValue /* Windows.Win32.Globalization.UColAttributeValue */,
 ): void /* void */ {
   return libicu_dll.ucol_setStrength(util.toPointer(coll), strength);
 }
 
 export function ucol_getReorderCodes(
-  coll: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  coll: Deno.PointerValue | Uint8Array /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   destCapacity: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucol_getReorderCodes(util.toPointer(coll), util.toPointer(dest), destCapacity, util.toPointer(pErrorCode));
 }
 
 export function ucol_setReorderCodes(
-  coll: Deno.PointerValue | Uint8Array | null /* ptr */,
-  reorderCodes: Deno.PointerValue | Uint8Array | null /* ptr */,
+  coll: Deno.PointerValue | Uint8Array /* ptr */,
+  reorderCodes: Deno.PointerValue | Uint8Array /* ptr */,
   reorderCodesLength: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucol_setReorderCodes(util.toPointer(coll), util.toPointer(reorderCodes), reorderCodesLength, util.toPointer(pErrorCode));
 }
 
 export function ucol_getEquivalentReorderCodes(
   reorderCode: number /* i32 */,
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   destCapacity: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucol_getEquivalentReorderCodes(reorderCode, util.toPointer(dest), destCapacity, util.toPointer(pErrorCode));
 }
@@ -22135,9 +22135,9 @@ export function ucol_getEquivalentReorderCodes(
 export function ucol_getDisplayName(
   objLoc: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dispLoc: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultLength: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucol_getDisplayName(util.pstrToFfi(objLoc), util.pstrToFfi(dispLoc), util.toPointer(result), resultLength, util.toPointer(status));
 }
@@ -22153,31 +22153,31 @@ export function ucol_countAvailable(): number /* i32 */ {
 }
 
 export function ucol_openAvailableLocales(
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucol_openAvailableLocales(util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucol_openAvailableLocales(util.toPointer(status));
 }
 
 export function ucol_getKeywords(
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucol_getKeywords(util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucol_getKeywords(util.toPointer(status));
 }
 
 export function ucol_getKeywordValues(
   keyword: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucol_getKeywordValues(util.pstrToFfi(keyword), util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucol_getKeywordValues(util.pstrToFfi(keyword), util.toPointer(status));
 }
 
 export function ucol_getKeywordValuesForLocale(
   key: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   commonlyUsed: number /* i8 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucol_getKeywordValuesForLocale(util.pstrToFfi(key), util.pstrToFfi(locale), commonlyUsed, util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucol_getKeywordValuesForLocale(util.pstrToFfi(key), util.pstrToFfi(locale), commonlyUsed, util.toPointer(status));
 }
 
 export function ucol_getFunctionalEquivalent(
@@ -22185,234 +22185,234 @@ export function ucol_getFunctionalEquivalent(
   resultCapacity: number /* i32 */,
   keyword: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  isAvailable: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  isAvailable: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucol_getFunctionalEquivalent(util.pstrToFfi(result), resultCapacity, util.pstrToFfi(keyword), util.pstrToFfi(locale), util.toPointer(isAvailable), util.toPointer(status));
 }
 
 export function ucol_getRules(
-  coll: Deno.PointerValue | Uint8Array | null /* ptr */,
-  length: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucol_getRules(util.toPointer(coll), util.toPointer(length)));
+  coll: Deno.PointerValue | Uint8Array /* ptr */,
+  length: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucol_getRules(util.toPointer(coll), util.toPointer(length));
 }
 
 export function ucol_getSortKey(
-  coll: Deno.PointerValue | Uint8Array | null /* ptr */,
-  source: Deno.PointerValue | Uint8Array | null /* ptr */,
+  coll: Deno.PointerValue | Uint8Array /* ptr */,
+  source: Deno.PointerValue | Uint8Array /* ptr */,
   sourceLength: number /* i32 */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultLength: number /* i32 */,
 ): number /* i32 */ {
   return libicu_dll.ucol_getSortKey(util.toPointer(coll), util.toPointer(source), sourceLength, util.toPointer(result), resultLength);
 }
 
 export function ucol_nextSortKeyPart(
-  coll: Deno.PointerValue | Uint8Array | null /* ptr */,
-  iter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  state: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  coll: Deno.PointerValue | Uint8Array /* ptr */,
+  iter: Deno.PointerValue | Uint8Array /* ptr */,
+  state: Deno.PointerValue | Uint8Array /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   count: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucol_nextSortKeyPart(util.toPointer(coll), util.toPointer(iter), util.toPointer(state), util.toPointer(dest), count, util.toPointer(status));
 }
 
 export function ucol_getBound(
-  source: Deno.PointerValue | Uint8Array | null /* ptr */,
+  source: Deno.PointerValue | Uint8Array /* ptr */,
   sourceLength: number /* i32 */,
   boundType: UColBoundMode /* Windows.Win32.Globalization.UColBoundMode */,
   noOfLevels: number /* u32 */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultLength: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucol_getBound(util.toPointer(source), sourceLength, boundType, noOfLevels, util.toPointer(result), resultLength, util.toPointer(status));
 }
 
 export function ucol_getVersion(
-  coll: Deno.PointerValue | Uint8Array | null /* ptr */,
-  info: Deno.PointerValue | Uint8Array | null /* ptr */,
+  coll: Deno.PointerValue | Uint8Array /* ptr */,
+  info: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucol_getVersion(util.toPointer(coll), util.toPointer(info));
 }
 
 export function ucol_getUCAVersion(
-  coll: Deno.PointerValue | Uint8Array | null /* ptr */,
-  info: Deno.PointerValue | Uint8Array | null /* ptr */,
+  coll: Deno.PointerValue | Uint8Array /* ptr */,
+  info: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucol_getUCAVersion(util.toPointer(coll), util.toPointer(info));
 }
 
 export function ucol_mergeSortkeys(
-  src1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  src1: Deno.PointerValue | Uint8Array /* ptr */,
   src1Length: number /* i32 */,
-  src2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  src2: Deno.PointerValue | Uint8Array /* ptr */,
   src2Length: number /* i32 */,
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   destCapacity: number /* i32 */,
 ): number /* i32 */ {
   return libicu_dll.ucol_mergeSortkeys(util.toPointer(src1), src1Length, util.toPointer(src2), src2Length, util.toPointer(dest), destCapacity);
 }
 
 export function ucol_setAttribute(
-  coll: Deno.PointerValue | Uint8Array | null /* ptr */,
+  coll: Deno.PointerValue | Uint8Array /* ptr */,
   attr: UColAttribute /* Windows.Win32.Globalization.UColAttribute */,
   value: UColAttributeValue /* Windows.Win32.Globalization.UColAttributeValue */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucol_setAttribute(util.toPointer(coll), attr, value, util.toPointer(status));
 }
 
 export function ucol_getAttribute(
-  coll: Deno.PointerValue | Uint8Array | null /* ptr */,
+  coll: Deno.PointerValue | Uint8Array /* ptr */,
   attr: UColAttribute /* Windows.Win32.Globalization.UColAttribute */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): UColAttributeValue /* Windows.Win32.Globalization.UColAttributeValue */ {
   return libicu_dll.ucol_getAttribute(util.toPointer(coll), attr, util.toPointer(status));
 }
 
 export function ucol_setMaxVariable(
-  coll: Deno.PointerValue | Uint8Array | null /* ptr */,
+  coll: Deno.PointerValue | Uint8Array /* ptr */,
   group: UColReorderCode /* Windows.Win32.Globalization.UColReorderCode */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucol_setMaxVariable(util.toPointer(coll), group, util.toPointer(pErrorCode));
 }
 
 export function ucol_getMaxVariable(
-  coll: Deno.PointerValue | Uint8Array | null /* ptr */,
+  coll: Deno.PointerValue | Uint8Array /* ptr */,
 ): UColReorderCode /* Windows.Win32.Globalization.UColReorderCode */ {
   return libicu_dll.ucol_getMaxVariable(util.toPointer(coll));
 }
 
 export function ucol_getVariableTop(
-  coll: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  coll: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libicu_dll.ucol_getVariableTop(util.toPointer(coll), util.toPointer(status));
 }
 
 export function ucol_safeClone(
-  coll: Deno.PointerValue | Uint8Array | null /* ptr */,
-  stackBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucol_safeClone(util.toPointer(coll), util.toPointer(stackBuffer), util.toPointer(pBufferSize), util.toPointer(status)));
+  coll: Deno.PointerValue | Uint8Array /* ptr */,
+  stackBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  pBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucol_safeClone(util.toPointer(coll), util.toPointer(stackBuffer), util.toPointer(pBufferSize), util.toPointer(status));
 }
 
 export function ucol_getRulesEx(
-  coll: Deno.PointerValue | Uint8Array | null /* ptr */,
+  coll: Deno.PointerValue | Uint8Array /* ptr */,
   delta: UColRuleOption /* Windows.Win32.Globalization.UColRuleOption */,
-  buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  buffer: Deno.PointerValue | Uint8Array /* ptr */,
   bufferLen: number /* i32 */,
 ): number /* i32 */ {
   return libicu_dll.ucol_getRulesEx(util.toPointer(coll), delta, util.toPointer(buffer), bufferLen);
 }
 
 export function ucol_getLocaleByType(
-  coll: Deno.PointerValue | Uint8Array | null /* ptr */,
+  coll: Deno.PointerValue | Uint8Array /* ptr */,
   type: ULocDataLocaleType /* Windows.Win32.Globalization.ULocDataLocaleType */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.ucol_getLocaleByType(util.toPointer(coll), type, util.toPointer(status)));
 }
 
 export function ucol_getTailoredSet(
-  coll: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucol_getTailoredSet(util.toPointer(coll), util.toPointer(status)));
+  coll: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucol_getTailoredSet(util.toPointer(coll), util.toPointer(status));
 }
 
 export function ucol_cloneBinary(
-  coll: Deno.PointerValue | Uint8Array | null /* ptr */,
-  buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  coll: Deno.PointerValue | Uint8Array /* ptr */,
+  buffer: Deno.PointerValue | Uint8Array /* ptr */,
   capacity: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucol_cloneBinary(util.toPointer(coll), util.toPointer(buffer), capacity, util.toPointer(status));
 }
 
 export function ucol_openBinary(
-  bin: Deno.PointerValue | Uint8Array | null /* ptr */,
+  bin: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
-  base: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucol_openBinary(util.toPointer(bin), length, util.toPointer(base), util.toPointer(status)));
+  base: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucol_openBinary(util.toPointer(bin), length, util.toPointer(base), util.toPointer(status));
 }
 
 export function ucol_openElements(
-  coll: Deno.PointerValue | Uint8Array | null /* ptr */,
-  text: Deno.PointerValue | Uint8Array | null /* ptr */,
+  coll: Deno.PointerValue | Uint8Array /* ptr */,
+  text: Deno.PointerValue | Uint8Array /* ptr */,
   textLength: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucol_openElements(util.toPointer(coll), util.toPointer(text), textLength, util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucol_openElements(util.toPointer(coll), util.toPointer(text), textLength, util.toPointer(status));
 }
 
 export function ucol_keyHashCode(
-  key: Deno.PointerValue | Uint8Array | null /* ptr */,
+  key: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
 ): number /* i32 */ {
   return libicu_dll.ucol_keyHashCode(util.toPointer(key), length);
 }
 
 export function ucol_closeElements(
-  elems: Deno.PointerValue | Uint8Array | null /* ptr */,
+  elems: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucol_closeElements(util.toPointer(elems));
 }
 
 export function ucol_reset(
-  elems: Deno.PointerValue | Uint8Array | null /* ptr */,
+  elems: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucol_reset(util.toPointer(elems));
 }
 
 export function ucol_next(
-  elems: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  elems: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucol_next(util.toPointer(elems), util.toPointer(status));
 }
 
 export function ucol_previous(
-  elems: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  elems: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucol_previous(util.toPointer(elems), util.toPointer(status));
 }
 
 export function ucol_getMaxExpansion(
-  elems: Deno.PointerValue | Uint8Array | null /* ptr */,
+  elems: Deno.PointerValue | Uint8Array /* ptr */,
   order: number /* i32 */,
 ): number /* i32 */ {
   return libicu_dll.ucol_getMaxExpansion(util.toPointer(elems), order);
 }
 
 export function ucol_setText(
-  elems: Deno.PointerValue | Uint8Array | null /* ptr */,
-  text: Deno.PointerValue | Uint8Array | null /* ptr */,
+  elems: Deno.PointerValue | Uint8Array /* ptr */,
+  text: Deno.PointerValue | Uint8Array /* ptr */,
   textLength: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucol_setText(util.toPointer(elems), util.toPointer(text), textLength, util.toPointer(status));
 }
 
 export function ucol_getOffset(
-  elems: Deno.PointerValue | Uint8Array | null /* ptr */,
+  elems: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucol_getOffset(util.toPointer(elems));
 }
 
 export function ucol_setOffset(
-  elems: Deno.PointerValue | Uint8Array | null /* ptr */,
+  elems: Deno.PointerValue | Uint8Array /* ptr */,
   offset: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucol_setOffset(util.toPointer(elems), offset, util.toPointer(status));
 }
@@ -22436,911 +22436,911 @@ export function ucol_tertiaryOrder(
 }
 
 export function ucsdet_open(
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucsdet_open(util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucsdet_open(util.toPointer(status));
 }
 
 export function ucsdet_close(
-  ucsd: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ucsd: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucsdet_close(util.toPointer(ucsd));
 }
 
 export function ucsdet_setText(
-  ucsd: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ucsd: Deno.PointerValue | Uint8Array /* ptr */,
   textIn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   len: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucsdet_setText(util.toPointer(ucsd), util.pstrToFfi(textIn), len, util.toPointer(status));
 }
 
 export function ucsdet_setDeclaredEncoding(
-  ucsd: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ucsd: Deno.PointerValue | Uint8Array /* ptr */,
   encoding: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucsdet_setDeclaredEncoding(util.toPointer(ucsd), util.pstrToFfi(encoding), length, util.toPointer(status));
 }
 
 export function ucsdet_detect(
-  ucsd: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucsdet_detect(util.toPointer(ucsd), util.toPointer(status)));
+  ucsd: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucsdet_detect(util.toPointer(ucsd), util.toPointer(status));
 }
 
 export function ucsdet_detectAll(
-  ucsd: Deno.PointerValue | Uint8Array | null /* ptr */,
-  matchesFound: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucsdet_detectAll(util.toPointer(ucsd), util.toPointer(matchesFound), util.toPointer(status)));
+  ucsd: Deno.PointerValue | Uint8Array /* ptr */,
+  matchesFound: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucsdet_detectAll(util.toPointer(ucsd), util.toPointer(matchesFound), util.toPointer(status));
 }
 
 export function ucsdet_getName(
-  ucsm: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ucsm: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.ucsdet_getName(util.toPointer(ucsm), util.toPointer(status)));
 }
 
 export function ucsdet_getConfidence(
-  ucsm: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ucsm: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucsdet_getConfidence(util.toPointer(ucsm), util.toPointer(status));
 }
 
 export function ucsdet_getLanguage(
-  ucsm: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ucsm: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.ucsdet_getLanguage(util.toPointer(ucsm), util.toPointer(status)));
 }
 
 export function ucsdet_getUChars(
-  ucsm: Deno.PointerValue | Uint8Array | null /* ptr */,
-  buf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ucsm: Deno.PointerValue | Uint8Array /* ptr */,
+  buf: Deno.PointerValue | Uint8Array /* ptr */,
   cap: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucsdet_getUChars(util.toPointer(ucsm), util.toPointer(buf), cap, util.toPointer(status));
 }
 
 export function ucsdet_getAllDetectableCharsets(
-  ucsd: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucsdet_getAllDetectableCharsets(util.toPointer(ucsd), util.toPointer(status)));
+  ucsd: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucsdet_getAllDetectableCharsets(util.toPointer(ucsd), util.toPointer(status));
 }
 
 export function ucsdet_isInputFilterEnabled(
-  ucsd: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ucsd: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.ucsdet_isInputFilterEnabled(util.toPointer(ucsd));
 }
 
 export function ucsdet_enableInputFilter(
-  ucsd: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ucsd: Deno.PointerValue | Uint8Array /* ptr */,
   filter: number /* i8 */,
 ): number /* i8 */ {
   return libicu_dll.ucsdet_enableInputFilter(util.toPointer(ucsd), filter);
 }
 
 export function ufieldpositer_open(
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ufieldpositer_open(util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ufieldpositer_open(util.toPointer(status));
 }
 
 export function ufieldpositer_close(
-  fpositer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fpositer: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ufieldpositer_close(util.toPointer(fpositer));
 }
 
 export function ufieldpositer_next(
-  fpositer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  beginIndex: Deno.PointerValue | Uint8Array | null /* ptr */,
-  endIndex: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fpositer: Deno.PointerValue | Uint8Array /* ptr */,
+  beginIndex: Deno.PointerValue | Uint8Array /* ptr */,
+  endIndex: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ufieldpositer_next(util.toPointer(fpositer), util.toPointer(beginIndex), util.toPointer(endIndex));
 }
 
 export function ufmt_open(
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ufmt_open(util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ufmt_open(util.toPointer(status));
 }
 
 export function ufmt_close(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ufmt_close(util.toPointer(fmt));
 }
 
 export function ufmt_getType(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): UFormattableType /* Windows.Win32.Globalization.UFormattableType */ {
   return libicu_dll.ufmt_getType(util.toPointer(fmt), util.toPointer(status));
 }
 
 export function ufmt_isNumeric(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.ufmt_isNumeric(util.toPointer(fmt));
 }
 
 export function ufmt_getDate(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* f64 */ {
   return libicu_dll.ufmt_getDate(util.toPointer(fmt), util.toPointer(status));
 }
 
 export function ufmt_getDouble(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* f64 */ {
   return libicu_dll.ufmt_getDouble(util.toPointer(fmt), util.toPointer(status));
 }
 
 export function ufmt_getLong(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ufmt_getLong(util.toPointer(fmt), util.toPointer(status));
 }
 
 export function ufmt_getInt64(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* i64 */ {
   return libicu_dll.ufmt_getInt64(util.toPointer(fmt), util.toPointer(status));
 }
 
 export function ufmt_getObject(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ufmt_getObject(util.toPointer(fmt), util.toPointer(status)));
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ufmt_getObject(util.toPointer(fmt), util.toPointer(status));
 }
 
 export function ufmt_getUChars(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  len: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ufmt_getUChars(util.toPointer(fmt), util.toPointer(len), util.toPointer(status)));
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
+  len: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ufmt_getUChars(util.toPointer(fmt), util.toPointer(len), util.toPointer(status));
 }
 
 export function ufmt_getArrayLength(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ufmt_getArrayLength(util.toPointer(fmt), util.toPointer(status));
 }
 
 export function ufmt_getArrayItemByIndex(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
   n: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ufmt_getArrayItemByIndex(util.toPointer(fmt), n, util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ufmt_getArrayItemByIndex(util.toPointer(fmt), n, util.toPointer(status));
 }
 
 export function ufmt_getDecNumChars(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  len: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
+  len: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.ufmt_getDecNumChars(util.toPointer(fmt), util.toPointer(len), util.toPointer(status)));
 }
 
 export function ucfpos_open(
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ucfpos_open(util.toPointer(ec)));
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ucfpos_open(util.toPointer(ec));
 }
 
 export function ucfpos_reset(
-  ucfpos: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ucfpos: Deno.PointerValue | Uint8Array /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucfpos_reset(util.toPointer(ucfpos), util.toPointer(ec));
 }
 
 export function ucfpos_close(
-  ucfpos: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ucfpos: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucfpos_close(util.toPointer(ucfpos));
 }
 
 export function ucfpos_constrainCategory(
-  ucfpos: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ucfpos: Deno.PointerValue | Uint8Array /* ptr */,
   category: number /* i32 */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucfpos_constrainCategory(util.toPointer(ucfpos), category, util.toPointer(ec));
 }
 
 export function ucfpos_constrainField(
-  ucfpos: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ucfpos: Deno.PointerValue | Uint8Array /* ptr */,
   category: number /* i32 */,
   field: number /* i32 */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucfpos_constrainField(util.toPointer(ucfpos), category, field, util.toPointer(ec));
 }
 
 export function ucfpos_getCategory(
-  ucfpos: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ucfpos: Deno.PointerValue | Uint8Array /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucfpos_getCategory(util.toPointer(ucfpos), util.toPointer(ec));
 }
 
 export function ucfpos_getField(
-  ucfpos: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ucfpos: Deno.PointerValue | Uint8Array /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ucfpos_getField(util.toPointer(ucfpos), util.toPointer(ec));
 }
 
 export function ucfpos_getIndexes(
-  ucfpos: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pStart: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pLimit: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ucfpos: Deno.PointerValue | Uint8Array /* ptr */,
+  pStart: Deno.PointerValue | Uint8Array /* ptr */,
+  pLimit: Deno.PointerValue | Uint8Array /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucfpos_getIndexes(util.toPointer(ucfpos), util.toPointer(pStart), util.toPointer(pLimit), util.toPointer(ec));
 }
 
 export function ucfpos_getInt64IterationContext(
-  ucfpos: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ucfpos: Deno.PointerValue | Uint8Array /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* i64 */ {
   return libicu_dll.ucfpos_getInt64IterationContext(util.toPointer(ucfpos), util.toPointer(ec));
 }
 
 export function ucfpos_setInt64IterationContext(
-  ucfpos: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ucfpos: Deno.PointerValue | Uint8Array /* ptr */,
   context: Deno.PointerValue /* i64 */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucfpos_setInt64IterationContext(util.toPointer(ucfpos), context, util.toPointer(ec));
 }
 
 export function ucfpos_matchesField(
-  ucfpos: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ucfpos: Deno.PointerValue | Uint8Array /* ptr */,
   category: number /* i32 */,
   field: number /* i32 */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.ucfpos_matchesField(util.toPointer(ucfpos), category, field, util.toPointer(ec));
 }
 
 export function ucfpos_setState(
-  ucfpos: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ucfpos: Deno.PointerValue | Uint8Array /* ptr */,
   category: number /* i32 */,
   field: number /* i32 */,
   start: number /* i32 */,
   limit: number /* i32 */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ucfpos_setState(util.toPointer(ucfpos), category, field, start, limit, util.toPointer(ec));
 }
 
 export function ufmtval_getString(
-  ufmtval: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ufmtval_getString(util.toPointer(ufmtval), util.toPointer(pLength), util.toPointer(ec)));
+  ufmtval: Deno.PointerValue | Uint8Array /* ptr */,
+  pLength: Deno.PointerValue | Uint8Array /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ufmtval_getString(util.toPointer(ufmtval), util.toPointer(pLength), util.toPointer(ec));
 }
 
 export function ufmtval_nextPosition(
-  ufmtval: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ucfpos: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ufmtval: Deno.PointerValue | Uint8Array /* ptr */,
+  ucfpos: Deno.PointerValue | Uint8Array /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.ufmtval_nextPosition(util.toPointer(ufmtval), util.toPointer(ucfpos), util.toPointer(ec));
 }
 
 export function udtitvfmt_open(
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  skeleton: Deno.PointerValue | Uint8Array | null /* ptr */,
+  skeleton: Deno.PointerValue | Uint8Array /* ptr */,
   skeletonLength: number /* i32 */,
-  tzID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  tzID: Deno.PointerValue | Uint8Array /* ptr */,
   tzIDLength: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.udtitvfmt_open(util.pstrToFfi(locale), util.toPointer(skeleton), skeletonLength, util.toPointer(tzID), tzIDLength, util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.udtitvfmt_open(util.pstrToFfi(locale), util.toPointer(skeleton), skeletonLength, util.toPointer(tzID), tzIDLength, util.toPointer(status));
 }
 
 export function udtitvfmt_close(
-  formatter: Deno.PointerValue | Uint8Array | null /* ptr */,
+  formatter: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.udtitvfmt_close(util.toPointer(formatter));
 }
 
 export function udtitvfmt_openResult(
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.udtitvfmt_openResult(util.toPointer(ec)));
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.udtitvfmt_openResult(util.toPointer(ec));
 }
 
 export function udtitvfmt_resultAsValue(
-  uresult: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.udtitvfmt_resultAsValue(util.toPointer(uresult), util.toPointer(ec)));
+  uresult: Deno.PointerValue | Uint8Array /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.udtitvfmt_resultAsValue(util.toPointer(uresult), util.toPointer(ec));
 }
 
 export function udtitvfmt_closeResult(
-  uresult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  uresult: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.udtitvfmt_closeResult(util.toPointer(uresult));
 }
 
 export function udtitvfmt_format(
-  formatter: Deno.PointerValue | Uint8Array | null /* ptr */,
+  formatter: Deno.PointerValue | Uint8Array /* ptr */,
   fromDate: number /* f64 */,
   toDate: number /* f64 */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultCapacity: number /* i32 */,
-  position: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  position: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.udtitvfmt_format(util.toPointer(formatter), fromDate, toDate, util.toPointer(result), resultCapacity, util.toPointer(position), util.toPointer(status));
 }
 
 export function ugender_getInstance(
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ugender_getInstance(util.pstrToFfi(locale), util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ugender_getInstance(util.pstrToFfi(locale), util.toPointer(status));
 }
 
 export function ugender_getListGender(
-  genderInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  genders: Deno.PointerValue | Uint8Array | null /* ptr */,
+  genderInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  genders: Deno.PointerValue | Uint8Array /* ptr */,
   size: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): UGender /* Windows.Win32.Globalization.UGender */ {
   return libicu_dll.ugender_getListGender(util.toPointer(genderInfo), util.toPointer(genders), size, util.toPointer(status));
 }
 
 export function ulistfmt_open(
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ulistfmt_open(util.pstrToFfi(locale), util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ulistfmt_open(util.pstrToFfi(locale), util.toPointer(status));
 }
 
 export function ulistfmt_openForType(
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   type: UListFormatterType /* Windows.Win32.Globalization.UListFormatterType */,
   width: UListFormatterWidth /* Windows.Win32.Globalization.UListFormatterWidth */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ulistfmt_openForType(util.pstrToFfi(locale), type, width, util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ulistfmt_openForType(util.pstrToFfi(locale), type, width, util.toPointer(status));
 }
 
 export function ulistfmt_close(
-  listfmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  listfmt: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ulistfmt_close(util.toPointer(listfmt));
 }
 
 export function ulistfmt_openResult(
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ulistfmt_openResult(util.toPointer(ec)));
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ulistfmt_openResult(util.toPointer(ec));
 }
 
 export function ulistfmt_resultAsValue(
-  uresult: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ulistfmt_resultAsValue(util.toPointer(uresult), util.toPointer(ec)));
+  uresult: Deno.PointerValue | Uint8Array /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ulistfmt_resultAsValue(util.toPointer(uresult), util.toPointer(ec));
 }
 
 export function ulistfmt_closeResult(
-  uresult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  uresult: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ulistfmt_closeResult(util.toPointer(uresult));
 }
 
 export function ulistfmt_format(
-  listfmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  strings: Deno.PointerValue | Uint8Array | null /* ptr */,
-  stringLengths: Deno.PointerValue | Uint8Array | null /* ptr */,
+  listfmt: Deno.PointerValue | Uint8Array /* ptr */,
+  strings: Deno.PointerValue | Uint8Array /* ptr */,
+  stringLengths: Deno.PointerValue | Uint8Array /* ptr */,
   stringCount: number /* i32 */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultCapacity: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ulistfmt_format(util.toPointer(listfmt), util.toPointer(strings), util.toPointer(stringLengths), stringCount, util.toPointer(result), resultCapacity, util.toPointer(status));
 }
 
 export function ulistfmt_formatStringsToResult(
-  listfmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  strings: Deno.PointerValue | Uint8Array | null /* ptr */,
-  stringLengths: Deno.PointerValue | Uint8Array | null /* ptr */,
+  listfmt: Deno.PointerValue | Uint8Array /* ptr */,
+  strings: Deno.PointerValue | Uint8Array /* ptr */,
+  stringLengths: Deno.PointerValue | Uint8Array /* ptr */,
   stringCount: number /* i32 */,
-  uresult: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  uresult: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ulistfmt_formatStringsToResult(util.toPointer(listfmt), util.toPointer(strings), util.toPointer(stringLengths), stringCount, util.toPointer(uresult), util.toPointer(status));
 }
 
 export function ulocdata_open(
   localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ulocdata_open(util.pstrToFfi(localeID), util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ulocdata_open(util.pstrToFfi(localeID), util.toPointer(status));
 }
 
 export function ulocdata_close(
-  uld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  uld: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ulocdata_close(util.toPointer(uld));
 }
 
 export function ulocdata_setNoSubstitute(
-  uld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  uld: Deno.PointerValue | Uint8Array /* ptr */,
   setting: number /* i8 */,
 ): void /* void */ {
   return libicu_dll.ulocdata_setNoSubstitute(util.toPointer(uld), setting);
 }
 
 export function ulocdata_getNoSubstitute(
-  uld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  uld: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.ulocdata_getNoSubstitute(util.toPointer(uld));
 }
 
 export function ulocdata_getExemplarSet(
-  uld: Deno.PointerValue | Uint8Array | null /* ptr */,
-  fillIn: Deno.PointerValue | Uint8Array | null /* ptr */,
+  uld: Deno.PointerValue | Uint8Array /* ptr */,
+  fillIn: Deno.PointerValue | Uint8Array /* ptr */,
   options: number /* u32 */,
   extype: ULocaleDataExemplarSetType /* Windows.Win32.Globalization.ULocaleDataExemplarSetType */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ulocdata_getExemplarSet(util.toPointer(uld), util.toPointer(fillIn), options, extype, util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ulocdata_getExemplarSet(util.toPointer(uld), util.toPointer(fillIn), options, extype, util.toPointer(status));
 }
 
 export function ulocdata_getDelimiter(
-  uld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  uld: Deno.PointerValue | Uint8Array /* ptr */,
   type: ULocaleDataDelimiterType /* Windows.Win32.Globalization.ULocaleDataDelimiterType */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultLength: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ulocdata_getDelimiter(util.toPointer(uld), type, util.toPointer(result), resultLength, util.toPointer(status));
 }
 
 export function ulocdata_getMeasurementSystem(
   localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): UMeasurementSystem /* Windows.Win32.Globalization.UMeasurementSystem */ {
   return libicu_dll.ulocdata_getMeasurementSystem(util.pstrToFfi(localeID), util.toPointer(status));
 }
 
 export function ulocdata_getPaperSize(
   localeID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  height: Deno.PointerValue | Uint8Array | null /* ptr */,
-  width: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  height: Deno.PointerValue | Uint8Array /* ptr */,
+  width: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ulocdata_getPaperSize(util.pstrToFfi(localeID), util.toPointer(height), util.toPointer(width), util.toPointer(status));
 }
 
 export function ulocdata_getCLDRVersion(
-  versionArray: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  versionArray: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ulocdata_getCLDRVersion(util.toPointer(versionArray), util.toPointer(status));
 }
 
 export function ulocdata_getLocaleDisplayPattern(
-  uld: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
+  uld: Deno.PointerValue | Uint8Array /* ptr */,
+  pattern: Deno.PointerValue | Uint8Array /* ptr */,
   patternCapacity: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ulocdata_getLocaleDisplayPattern(util.toPointer(uld), util.toPointer(pattern), patternCapacity, util.toPointer(status));
 }
 
 export function ulocdata_getLocaleSeparator(
-  uld: Deno.PointerValue | Uint8Array | null /* ptr */,
-  separator: Deno.PointerValue | Uint8Array | null /* ptr */,
+  uld: Deno.PointerValue | Uint8Array /* ptr */,
+  separator: Deno.PointerValue | Uint8Array /* ptr */,
   separatorCapacity: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ulocdata_getLocaleSeparator(util.toPointer(uld), util.toPointer(separator), separatorCapacity, util.toPointer(status));
 }
 
 export function u_formatMessage(
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pattern: Deno.PointerValue | Uint8Array /* ptr */,
   patternLength: number /* i32 */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultLength: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.u_formatMessage(util.pstrToFfi(locale), util.toPointer(pattern), patternLength, util.toPointer(result), resultLength, util.toPointer(status));
 }
 
 export function u_vformatMessage(
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pattern: Deno.PointerValue | Uint8Array /* ptr */,
   patternLength: number /* i32 */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultLength: number /* i32 */,
-  ap: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ap: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.u_vformatMessage(util.pstrToFfi(locale), util.toPointer(pattern), patternLength, util.toPointer(result), resultLength, util.toPointer(ap), util.toPointer(status));
 }
 
 export function u_parseMessage(
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pattern: Deno.PointerValue | Uint8Array /* ptr */,
   patternLength: number /* i32 */,
-  source: Deno.PointerValue | Uint8Array | null /* ptr */,
+  source: Deno.PointerValue | Uint8Array /* ptr */,
   sourceLength: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.u_parseMessage(util.pstrToFfi(locale), util.toPointer(pattern), patternLength, util.toPointer(source), sourceLength, util.toPointer(status));
 }
 
 export function u_vparseMessage(
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pattern: Deno.PointerValue | Uint8Array /* ptr */,
   patternLength: number /* i32 */,
-  source: Deno.PointerValue | Uint8Array | null /* ptr */,
+  source: Deno.PointerValue | Uint8Array /* ptr */,
   sourceLength: number /* i32 */,
-  ap: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ap: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.u_vparseMessage(util.pstrToFfi(locale), util.toPointer(pattern), patternLength, util.toPointer(source), sourceLength, util.toPointer(ap), util.toPointer(status));
 }
 
 export function u_formatMessageWithError(
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pattern: Deno.PointerValue | Uint8Array /* ptr */,
   patternLength: number /* i32 */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultLength: number /* i32 */,
-  parseError: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  parseError: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.u_formatMessageWithError(util.pstrToFfi(locale), util.toPointer(pattern), patternLength, util.toPointer(result), resultLength, util.toPointer(parseError), util.toPointer(status));
 }
 
 export function u_vformatMessageWithError(
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pattern: Deno.PointerValue | Uint8Array /* ptr */,
   patternLength: number /* i32 */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultLength: number /* i32 */,
-  parseError: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ap: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  parseError: Deno.PointerValue | Uint8Array /* ptr */,
+  ap: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.u_vformatMessageWithError(util.pstrToFfi(locale), util.toPointer(pattern), patternLength, util.toPointer(result), resultLength, util.toPointer(parseError), util.toPointer(ap), util.toPointer(status));
 }
 
 export function u_parseMessageWithError(
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pattern: Deno.PointerValue | Uint8Array /* ptr */,
   patternLength: number /* i32 */,
-  source: Deno.PointerValue | Uint8Array | null /* ptr */,
+  source: Deno.PointerValue | Uint8Array /* ptr */,
   sourceLength: number /* i32 */,
-  parseError: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  parseError: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.u_parseMessageWithError(util.pstrToFfi(locale), util.toPointer(pattern), patternLength, util.toPointer(source), sourceLength, util.toPointer(parseError), util.toPointer(status));
 }
 
 export function u_vparseMessageWithError(
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pattern: Deno.PointerValue | Uint8Array /* ptr */,
   patternLength: number /* i32 */,
-  source: Deno.PointerValue | Uint8Array | null /* ptr */,
+  source: Deno.PointerValue | Uint8Array /* ptr */,
   sourceLength: number /* i32 */,
-  ap: Deno.PointerValue | Uint8Array | null /* ptr */,
-  parseError: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ap: Deno.PointerValue | Uint8Array /* ptr */,
+  parseError: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.u_vparseMessageWithError(util.pstrToFfi(locale), util.toPointer(pattern), patternLength, util.toPointer(source), sourceLength, util.toPointer(ap), util.toPointer(parseError), util.toPointer(status));
 }
 
 export function umsg_open(
-  pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pattern: Deno.PointerValue | Uint8Array /* ptr */,
   patternLength: number /* i32 */,
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  parseError: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.umsg_open(util.toPointer(pattern), patternLength, util.pstrToFfi(locale), util.toPointer(parseError), util.toPointer(status)));
+  parseError: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.umsg_open(util.toPointer(pattern), patternLength, util.pstrToFfi(locale), util.toPointer(parseError), util.toPointer(status));
 }
 
 export function umsg_close(
-  format: Deno.PointerValue | Uint8Array | null /* ptr */,
+  format: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.umsg_close(util.toPointer(format));
 }
 
 export function umsg_clone(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.umsg_clone(util.toPointer(fmt), util.toPointer(status)));
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.umsg_clone(util.toPointer(fmt), util.toPointer(status));
 }
 
 export function umsg_setLocale(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
   return libicu_dll.umsg_setLocale(util.toPointer(fmt), util.pstrToFfi(locale));
 }
 
 export function umsg_getLocale(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.umsg_getLocale(util.toPointer(fmt)));
 }
 
 export function umsg_applyPattern(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
+  pattern: Deno.PointerValue | Uint8Array /* ptr */,
   patternLength: number /* i32 */,
-  parseError: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  parseError: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.umsg_applyPattern(util.toPointer(fmt), util.toPointer(pattern), patternLength, util.toPointer(parseError), util.toPointer(status));
 }
 
 export function umsg_toPattern(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultLength: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.umsg_toPattern(util.toPointer(fmt), util.toPointer(result), resultLength, util.toPointer(status));
 }
 
 export function umsg_format(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultLength: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.umsg_format(util.toPointer(fmt), util.toPointer(result), resultLength, util.toPointer(status));
 }
 
 export function umsg_vformat(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultLength: number /* i32 */,
-  ap: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ap: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.umsg_vformat(util.toPointer(fmt), util.toPointer(result), resultLength, util.toPointer(ap), util.toPointer(status));
 }
 
 export function umsg_parse(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  source: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
+  source: Deno.PointerValue | Uint8Array /* ptr */,
   sourceLength: number /* i32 */,
-  count: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  count: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.umsg_parse(util.toPointer(fmt), util.toPointer(source), sourceLength, util.toPointer(count), util.toPointer(status));
 }
 
 export function umsg_vparse(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  source: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
+  source: Deno.PointerValue | Uint8Array /* ptr */,
   sourceLength: number /* i32 */,
-  count: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ap: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  count: Deno.PointerValue | Uint8Array /* ptr */,
+  ap: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.umsg_vparse(util.toPointer(fmt), util.toPointer(source), sourceLength, util.toPointer(count), util.toPointer(ap), util.toPointer(status));
 }
 
 export function umsg_autoQuoteApostrophe(
-  pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pattern: Deno.PointerValue | Uint8Array /* ptr */,
   patternLength: number /* i32 */,
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   destCapacity: number /* i32 */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.umsg_autoQuoteApostrophe(util.toPointer(pattern), patternLength, util.toPointer(dest), destCapacity, util.toPointer(ec));
 }
 
 export function unum_open(
   style: UNumberFormatStyle /* Windows.Win32.Globalization.UNumberFormatStyle */,
-  pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pattern: Deno.PointerValue | Uint8Array /* ptr */,
   patternLength: number /* i32 */,
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  parseErr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.unum_open(style, util.toPointer(pattern), patternLength, util.pstrToFfi(locale), util.toPointer(parseErr), util.toPointer(status)));
+  parseErr: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.unum_open(style, util.toPointer(pattern), patternLength, util.pstrToFfi(locale), util.toPointer(parseErr), util.toPointer(status));
 }
 
 export function unum_close(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.unum_close(util.toPointer(fmt));
 }
 
 export function unum_clone(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.unum_clone(util.toPointer(fmt), util.toPointer(status)));
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.unum_clone(util.toPointer(fmt), util.toPointer(status));
 }
 
 export function unum_format(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
   number: number /* i32 */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultLength: number /* i32 */,
-  pos: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pos: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.unum_format(util.toPointer(fmt), number, util.toPointer(result), resultLength, util.toPointer(pos), util.toPointer(status));
 }
 
 export function unum_formatInt64(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
   number: Deno.PointerValue /* i64 */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultLength: number /* i32 */,
-  pos: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pos: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.unum_formatInt64(util.toPointer(fmt), number, util.toPointer(result), resultLength, util.toPointer(pos), util.toPointer(status));
 }
 
 export function unum_formatDouble(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
   number: number /* f64 */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultLength: number /* i32 */,
-  pos: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pos: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.unum_formatDouble(util.toPointer(fmt), number, util.toPointer(result), resultLength, util.toPointer(pos), util.toPointer(status));
 }
 
 export function unum_formatDoubleForFields(
-  format: Deno.PointerValue | Uint8Array | null /* ptr */,
+  format: Deno.PointerValue | Uint8Array /* ptr */,
   number: number /* f64 */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultLength: number /* i32 */,
-  fpositer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fpositer: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.unum_formatDoubleForFields(util.toPointer(format), number, util.toPointer(result), resultLength, util.toPointer(fpositer), util.toPointer(status));
 }
 
 export function unum_formatDecimal(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
   number: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultLength: number /* i32 */,
-  pos: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pos: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.unum_formatDecimal(util.toPointer(fmt), util.pstrToFfi(number), length, util.toPointer(result), resultLength, util.toPointer(pos), util.toPointer(status));
 }
 
 export function unum_formatDoubleCurrency(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
   number: number /* f64 */,
-  currency: Deno.PointerValue | Uint8Array | null /* ptr */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  currency: Deno.PointerValue | Uint8Array /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultLength: number /* i32 */,
-  pos: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pos: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.unum_formatDoubleCurrency(util.toPointer(fmt), number, util.toPointer(currency), util.toPointer(result), resultLength, util.toPointer(pos), util.toPointer(status));
 }
 
 export function unum_formatUFormattable(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  number: Deno.PointerValue | Uint8Array | null /* ptr */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
+  number: Deno.PointerValue | Uint8Array /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultLength: number /* i32 */,
-  pos: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pos: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.unum_formatUFormattable(util.toPointer(fmt), util.toPointer(number), util.toPointer(result), resultLength, util.toPointer(pos), util.toPointer(status));
 }
 
 export function unum_parse(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  text: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
+  text: Deno.PointerValue | Uint8Array /* ptr */,
   textLength: number /* i32 */,
-  parsePos: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  parsePos: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.unum_parse(util.toPointer(fmt), util.toPointer(text), textLength, util.toPointer(parsePos), util.toPointer(status));
 }
 
 export function unum_parseInt64(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  text: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
+  text: Deno.PointerValue | Uint8Array /* ptr */,
   textLength: number /* i32 */,
-  parsePos: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  parsePos: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* i64 */ {
   return libicu_dll.unum_parseInt64(util.toPointer(fmt), util.toPointer(text), textLength, util.toPointer(parsePos), util.toPointer(status));
 }
 
 export function unum_parseDouble(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  text: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
+  text: Deno.PointerValue | Uint8Array /* ptr */,
   textLength: number /* i32 */,
-  parsePos: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  parsePos: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* f64 */ {
   return libicu_dll.unum_parseDouble(util.toPointer(fmt), util.toPointer(text), textLength, util.toPointer(parsePos), util.toPointer(status));
 }
 
 export function unum_parseDecimal(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  text: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
+  text: Deno.PointerValue | Uint8Array /* ptr */,
   textLength: number /* i32 */,
-  parsePos: Deno.PointerValue | Uint8Array | null /* ptr */,
+  parsePos: Deno.PointerValue | Uint8Array /* ptr */,
   outBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   outBufLength: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.unum_parseDecimal(util.toPointer(fmt), util.toPointer(text), textLength, util.toPointer(parsePos), util.pstrToFfi(outBuf), outBufLength, util.toPointer(status));
 }
 
 export function unum_parseDoubleCurrency(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  text: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
+  text: Deno.PointerValue | Uint8Array /* ptr */,
   textLength: number /* i32 */,
-  parsePos: Deno.PointerValue | Uint8Array | null /* ptr */,
-  currency: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  parsePos: Deno.PointerValue | Uint8Array /* ptr */,
+  currency: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* f64 */ {
   return libicu_dll.unum_parseDoubleCurrency(util.toPointer(fmt), util.toPointer(text), textLength, util.toPointer(parsePos), util.toPointer(currency), util.toPointer(status));
 }
 
 export function unum_parseToUFormattable(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
-  text: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
+  text: Deno.PointerValue | Uint8Array /* ptr */,
   textLength: number /* i32 */,
-  parsePos: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.unum_parseToUFormattable(util.toPointer(fmt), util.toPointer(result), util.toPointer(text), textLength, util.toPointer(parsePos), util.toPointer(status)));
+  parsePos: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.unum_parseToUFormattable(util.toPointer(fmt), util.toPointer(result), util.toPointer(text), textLength, util.toPointer(parsePos), util.toPointer(status));
 }
 
 export function unum_applyPattern(
-  format: Deno.PointerValue | Uint8Array | null /* ptr */,
+  format: Deno.PointerValue | Uint8Array /* ptr */,
   localized: number /* i8 */,
-  pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pattern: Deno.PointerValue | Uint8Array /* ptr */,
   patternLength: number /* i32 */,
-  parseError: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  parseError: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.unum_applyPattern(util.toPointer(format), localized, util.toPointer(pattern), patternLength, util.toPointer(parseError), util.toPointer(status));
 }
@@ -23356,14 +23356,14 @@ export function unum_countAvailable(): number /* i32 */ {
 }
 
 export function unum_getAttribute(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
   attr: UNumberFormatAttribute /* Windows.Win32.Globalization.UNumberFormatAttribute */,
 ): number /* i32 */ {
   return libicu_dll.unum_getAttribute(util.toPointer(fmt), attr);
 }
 
 export function unum_setAttribute(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
   attr: UNumberFormatAttribute /* Windows.Win32.Globalization.UNumberFormatAttribute */,
   newValue: number /* i32 */,
 ): void /* void */ {
@@ -23371,14 +23371,14 @@ export function unum_setAttribute(
 }
 
 export function unum_getDoubleAttribute(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
   attr: UNumberFormatAttribute /* Windows.Win32.Globalization.UNumberFormatAttribute */,
 ): number /* f64 */ {
   return libicu_dll.unum_getDoubleAttribute(util.toPointer(fmt), attr);
 }
 
 export function unum_setDoubleAttribute(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
   attr: UNumberFormatAttribute /* Windows.Win32.Globalization.UNumberFormatAttribute */,
   newValue: number /* f64 */,
 ): void /* void */ {
@@ -23386,75 +23386,75 @@ export function unum_setDoubleAttribute(
 }
 
 export function unum_getTextAttribute(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
   tag: UNumberFormatTextAttribute /* Windows.Win32.Globalization.UNumberFormatTextAttribute */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultLength: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.unum_getTextAttribute(util.toPointer(fmt), tag, util.toPointer(result), resultLength, util.toPointer(status));
 }
 
 export function unum_setTextAttribute(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
   tag: UNumberFormatTextAttribute /* Windows.Win32.Globalization.UNumberFormatTextAttribute */,
-  newValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  newValue: Deno.PointerValue | Uint8Array /* ptr */,
   newValueLength: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.unum_setTextAttribute(util.toPointer(fmt), tag, util.toPointer(newValue), newValueLength, util.toPointer(status));
 }
 
 export function unum_toPattern(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
   isPatternLocalized: number /* i8 */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultLength: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.unum_toPattern(util.toPointer(fmt), isPatternLocalized, util.toPointer(result), resultLength, util.toPointer(status));
 }
 
 export function unum_getSymbol(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
   symbol: UNumberFormatSymbol /* Windows.Win32.Globalization.UNumberFormatSymbol */,
-  buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  buffer: Deno.PointerValue | Uint8Array /* ptr */,
   size: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.unum_getSymbol(util.toPointer(fmt), symbol, util.toPointer(buffer), size, util.toPointer(status));
 }
 
 export function unum_setSymbol(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
   symbol: UNumberFormatSymbol /* Windows.Win32.Globalization.UNumberFormatSymbol */,
-  value: Deno.PointerValue | Uint8Array | null /* ptr */,
+  value: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.unum_setSymbol(util.toPointer(fmt), symbol, util.toPointer(value), length, util.toPointer(status));
 }
 
 export function unum_getLocaleByType(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
   type: ULocDataLocaleType /* Windows.Win32.Globalization.ULocDataLocaleType */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.unum_getLocaleByType(util.toPointer(fmt), type, util.toPointer(status)));
 }
 
 export function unum_setContext(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
   value: UDisplayContext /* Windows.Win32.Globalization.UDisplayContext */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.unum_setContext(util.toPointer(fmt), value, util.toPointer(status));
 }
 
 export function unum_getContext(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
   type: UDisplayContextType /* Windows.Win32.Globalization.UDisplayContextType */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): UDisplayContext /* Windows.Win32.Globalization.UDisplayContext */ {
   return libicu_dll.unum_getContext(util.toPointer(fmt), type, util.toPointer(status));
 }
@@ -23469,168 +23469,168 @@ export function udat_open(
   timeStyle: UDateFormatStyle /* Windows.Win32.Globalization.UDateFormatStyle */,
   dateStyle: UDateFormatStyle /* Windows.Win32.Globalization.UDateFormatStyle */,
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  tzID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  tzID: Deno.PointerValue | Uint8Array /* ptr */,
   tzIDLength: number /* i32 */,
-  pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pattern: Deno.PointerValue | Uint8Array /* ptr */,
   patternLength: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.udat_open(timeStyle, dateStyle, util.pstrToFfi(locale), util.toPointer(tzID), tzIDLength, util.toPointer(pattern), patternLength, util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.udat_open(timeStyle, dateStyle, util.pstrToFfi(locale), util.toPointer(tzID), tzIDLength, util.toPointer(pattern), patternLength, util.toPointer(status));
 }
 
 export function udat_close(
-  format: Deno.PointerValue | Uint8Array | null /* ptr */,
+  format: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.udat_close(util.toPointer(format));
 }
 
 export function udat_getBooleanAttribute(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
   attr: UDateFormatBooleanAttribute /* Windows.Win32.Globalization.UDateFormatBooleanAttribute */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.udat_getBooleanAttribute(util.toPointer(fmt), attr, util.toPointer(status));
 }
 
 export function udat_setBooleanAttribute(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
   attr: UDateFormatBooleanAttribute /* Windows.Win32.Globalization.UDateFormatBooleanAttribute */,
   newValue: number /* i8 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.udat_setBooleanAttribute(util.toPointer(fmt), attr, newValue, util.toPointer(status));
 }
 
 export function udat_clone(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.udat_clone(util.toPointer(fmt), util.toPointer(status)));
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.udat_clone(util.toPointer(fmt), util.toPointer(status));
 }
 
 export function udat_format(
-  format: Deno.PointerValue | Uint8Array | null /* ptr */,
+  format: Deno.PointerValue | Uint8Array /* ptr */,
   dateToFormat: number /* f64 */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultLength: number /* i32 */,
-  position: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  position: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.udat_format(util.toPointer(format), dateToFormat, util.toPointer(result), resultLength, util.toPointer(position), util.toPointer(status));
 }
 
 export function udat_formatCalendar(
-  format: Deno.PointerValue | Uint8Array | null /* ptr */,
-  calendar: Deno.PointerValue | Uint8Array | null /* ptr */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  format: Deno.PointerValue | Uint8Array /* ptr */,
+  calendar: Deno.PointerValue | Uint8Array /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   capacity: number /* i32 */,
-  position: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  position: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.udat_formatCalendar(util.toPointer(format), util.toPointer(calendar), util.toPointer(result), capacity, util.toPointer(position), util.toPointer(status));
 }
 
 export function udat_formatForFields(
-  format: Deno.PointerValue | Uint8Array | null /* ptr */,
+  format: Deno.PointerValue | Uint8Array /* ptr */,
   dateToFormat: number /* f64 */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultLength: number /* i32 */,
-  fpositer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fpositer: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.udat_formatForFields(util.toPointer(format), dateToFormat, util.toPointer(result), resultLength, util.toPointer(fpositer), util.toPointer(status));
 }
 
 export function udat_formatCalendarForFields(
-  format: Deno.PointerValue | Uint8Array | null /* ptr */,
-  calendar: Deno.PointerValue | Uint8Array | null /* ptr */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  format: Deno.PointerValue | Uint8Array /* ptr */,
+  calendar: Deno.PointerValue | Uint8Array /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   capacity: number /* i32 */,
-  fpositer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fpositer: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.udat_formatCalendarForFields(util.toPointer(format), util.toPointer(calendar), util.toPointer(result), capacity, util.toPointer(fpositer), util.toPointer(status));
 }
 
 export function udat_parse(
-  format: Deno.PointerValue | Uint8Array | null /* ptr */,
-  text: Deno.PointerValue | Uint8Array | null /* ptr */,
+  format: Deno.PointerValue | Uint8Array /* ptr */,
+  text: Deno.PointerValue | Uint8Array /* ptr */,
   textLength: number /* i32 */,
-  parsePos: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  parsePos: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* f64 */ {
   return libicu_dll.udat_parse(util.toPointer(format), util.toPointer(text), textLength, util.toPointer(parsePos), util.toPointer(status));
 }
 
 export function udat_parseCalendar(
-  format: Deno.PointerValue | Uint8Array | null /* ptr */,
-  calendar: Deno.PointerValue | Uint8Array | null /* ptr */,
-  text: Deno.PointerValue | Uint8Array | null /* ptr */,
+  format: Deno.PointerValue | Uint8Array /* ptr */,
+  calendar: Deno.PointerValue | Uint8Array /* ptr */,
+  text: Deno.PointerValue | Uint8Array /* ptr */,
   textLength: number /* i32 */,
-  parsePos: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  parsePos: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.udat_parseCalendar(util.toPointer(format), util.toPointer(calendar), util.toPointer(text), textLength, util.toPointer(parsePos), util.toPointer(status));
 }
 
 export function udat_isLenient(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.udat_isLenient(util.toPointer(fmt));
 }
 
 export function udat_setLenient(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
   isLenient: number /* i8 */,
 ): void /* void */ {
   return libicu_dll.udat_setLenient(util.toPointer(fmt), isLenient);
 }
 
 export function udat_getCalendar(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.udat_getCalendar(util.toPointer(fmt)));
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.udat_getCalendar(util.toPointer(fmt));
 }
 
 export function udat_setCalendar(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  calendarToSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
+  calendarToSet: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.udat_setCalendar(util.toPointer(fmt), util.toPointer(calendarToSet));
 }
 
 export function udat_getNumberFormat(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.udat_getNumberFormat(util.toPointer(fmt)));
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.udat_getNumberFormat(util.toPointer(fmt));
 }
 
 export function udat_getNumberFormatForField(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
   field: number /* u16 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.udat_getNumberFormatForField(util.toPointer(fmt), field));
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.udat_getNumberFormatForField(util.toPointer(fmt), field);
 }
 
 export function udat_adoptNumberFormatForFields(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  fields: Deno.PointerValue | Uint8Array | null /* ptr */,
-  numberFormatToSet: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
+  fields: Deno.PointerValue | Uint8Array /* ptr */,
+  numberFormatToSet: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.udat_adoptNumberFormatForFields(util.toPointer(fmt), util.toPointer(fields), util.toPointer(numberFormatToSet), util.toPointer(status));
 }
 
 export function udat_setNumberFormat(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  numberFormatToSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
+  numberFormatToSet: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.udat_setNumberFormat(util.toPointer(fmt), util.toPointer(numberFormatToSet));
 }
 
 export function udat_adoptNumberFormat(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  numberFormatToAdopt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
+  numberFormatToAdopt: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.udat_adoptNumberFormat(util.toPointer(fmt), util.toPointer(numberFormatToAdopt));
 }
@@ -23646,1397 +23646,1397 @@ export function udat_countAvailable(): number /* i32 */ {
 }
 
 export function udat_get2DigitYearStart(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* f64 */ {
   return libicu_dll.udat_get2DigitYearStart(util.toPointer(fmt), util.toPointer(status));
 }
 
 export function udat_set2DigitYearStart(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
   d: number /* f64 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.udat_set2DigitYearStart(util.toPointer(fmt), d, util.toPointer(status));
 }
 
 export function udat_toPattern(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
   localized: number /* i8 */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultLength: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.udat_toPattern(util.toPointer(fmt), localized, util.toPointer(result), resultLength, util.toPointer(status));
 }
 
 export function udat_applyPattern(
-  format: Deno.PointerValue | Uint8Array | null /* ptr */,
+  format: Deno.PointerValue | Uint8Array /* ptr */,
   localized: number /* i8 */,
-  pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pattern: Deno.PointerValue | Uint8Array /* ptr */,
   patternLength: number /* i32 */,
 ): void /* void */ {
   return libicu_dll.udat_applyPattern(util.toPointer(format), localized, util.toPointer(pattern), patternLength);
 }
 
 export function udat_getSymbols(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
   type: UDateFormatSymbolType /* Windows.Win32.Globalization.UDateFormatSymbolType */,
   symbolIndex: number /* i32 */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultLength: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.udat_getSymbols(util.toPointer(fmt), type, symbolIndex, util.toPointer(result), resultLength, util.toPointer(status));
 }
 
 export function udat_countSymbols(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
   type: UDateFormatSymbolType /* Windows.Win32.Globalization.UDateFormatSymbolType */,
 ): number /* i32 */ {
   return libicu_dll.udat_countSymbols(util.toPointer(fmt), type);
 }
 
 export function udat_setSymbols(
-  format: Deno.PointerValue | Uint8Array | null /* ptr */,
+  format: Deno.PointerValue | Uint8Array /* ptr */,
   type: UDateFormatSymbolType /* Windows.Win32.Globalization.UDateFormatSymbolType */,
   symbolIndex: number /* i32 */,
-  value: Deno.PointerValue | Uint8Array | null /* ptr */,
+  value: Deno.PointerValue | Uint8Array /* ptr */,
   valueLength: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.udat_setSymbols(util.toPointer(format), type, symbolIndex, util.toPointer(value), valueLength, util.toPointer(status));
 }
 
 export function udat_getLocaleByType(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
   type: ULocDataLocaleType /* Windows.Win32.Globalization.ULocDataLocaleType */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.udat_getLocaleByType(util.toPointer(fmt), type, util.toPointer(status)));
 }
 
 export function udat_setContext(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
   value: UDisplayContext /* Windows.Win32.Globalization.UDisplayContext */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.udat_setContext(util.toPointer(fmt), value, util.toPointer(status));
 }
 
 export function udat_getContext(
-  fmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fmt: Deno.PointerValue | Uint8Array /* ptr */,
   type: UDisplayContextType /* Windows.Win32.Globalization.UDisplayContextType */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): UDisplayContext /* Windows.Win32.Globalization.UDisplayContext */ {
   return libicu_dll.udat_getContext(util.toPointer(fmt), type, util.toPointer(status));
 }
 
 export function udatpg_open(
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.udatpg_open(util.pstrToFfi(locale), util.toPointer(pErrorCode)));
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.udatpg_open(util.pstrToFfi(locale), util.toPointer(pErrorCode));
 }
 
 export function udatpg_openEmpty(
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.udatpg_openEmpty(util.toPointer(pErrorCode)));
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.udatpg_openEmpty(util.toPointer(pErrorCode));
 }
 
 export function udatpg_close(
-  dtpg: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dtpg: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.udatpg_close(util.toPointer(dtpg));
 }
 
 export function udatpg_clone(
-  dtpg: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.udatpg_clone(util.toPointer(dtpg), util.toPointer(pErrorCode)));
+  dtpg: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.udatpg_clone(util.toPointer(dtpg), util.toPointer(pErrorCode));
 }
 
 export function udatpg_getBestPattern(
-  dtpg: Deno.PointerValue | Uint8Array | null /* ptr */,
-  skeleton: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dtpg: Deno.PointerValue | Uint8Array /* ptr */,
+  skeleton: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
-  bestPattern: Deno.PointerValue | Uint8Array | null /* ptr */,
+  bestPattern: Deno.PointerValue | Uint8Array /* ptr */,
   capacity: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.udatpg_getBestPattern(util.toPointer(dtpg), util.toPointer(skeleton), length, util.toPointer(bestPattern), capacity, util.toPointer(pErrorCode));
 }
 
 export function udatpg_getBestPatternWithOptions(
-  dtpg: Deno.PointerValue | Uint8Array | null /* ptr */,
-  skeleton: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dtpg: Deno.PointerValue | Uint8Array /* ptr */,
+  skeleton: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
   options: UDateTimePatternMatchOptions /* Windows.Win32.Globalization.UDateTimePatternMatchOptions */,
-  bestPattern: Deno.PointerValue | Uint8Array | null /* ptr */,
+  bestPattern: Deno.PointerValue | Uint8Array /* ptr */,
   capacity: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.udatpg_getBestPatternWithOptions(util.toPointer(dtpg), util.toPointer(skeleton), length, options, util.toPointer(bestPattern), capacity, util.toPointer(pErrorCode));
 }
 
 export function udatpg_getSkeleton(
-  unusedDtpg: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
+  unusedDtpg: Deno.PointerValue | Uint8Array /* ptr */,
+  pattern: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
-  skeleton: Deno.PointerValue | Uint8Array | null /* ptr */,
+  skeleton: Deno.PointerValue | Uint8Array /* ptr */,
   capacity: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.udatpg_getSkeleton(util.toPointer(unusedDtpg), util.toPointer(pattern), length, util.toPointer(skeleton), capacity, util.toPointer(pErrorCode));
 }
 
 export function udatpg_getBaseSkeleton(
-  unusedDtpg: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
+  unusedDtpg: Deno.PointerValue | Uint8Array /* ptr */,
+  pattern: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
-  baseSkeleton: Deno.PointerValue | Uint8Array | null /* ptr */,
+  baseSkeleton: Deno.PointerValue | Uint8Array /* ptr */,
   capacity: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.udatpg_getBaseSkeleton(util.toPointer(unusedDtpg), util.toPointer(pattern), length, util.toPointer(baseSkeleton), capacity, util.toPointer(pErrorCode));
 }
 
 export function udatpg_addPattern(
-  dtpg: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dtpg: Deno.PointerValue | Uint8Array /* ptr */,
+  pattern: Deno.PointerValue | Uint8Array /* ptr */,
   patternLength: number /* i32 */,
   override: number /* i8 */,
-  conflictingPattern: Deno.PointerValue | Uint8Array | null /* ptr */,
+  conflictingPattern: Deno.PointerValue | Uint8Array /* ptr */,
   capacity: number /* i32 */,
-  pLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pLength: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): UDateTimePatternConflict /* Windows.Win32.Globalization.UDateTimePatternConflict */ {
   return libicu_dll.udatpg_addPattern(util.toPointer(dtpg), util.toPointer(pattern), patternLength, override, util.toPointer(conflictingPattern), capacity, util.toPointer(pLength), util.toPointer(pErrorCode));
 }
 
 export function udatpg_setAppendItemFormat(
-  dtpg: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dtpg: Deno.PointerValue | Uint8Array /* ptr */,
   field: UDateTimePatternField /* Windows.Win32.Globalization.UDateTimePatternField */,
-  value: Deno.PointerValue | Uint8Array | null /* ptr */,
+  value: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
 ): void /* void */ {
   return libicu_dll.udatpg_setAppendItemFormat(util.toPointer(dtpg), field, util.toPointer(value), length);
 }
 
 export function udatpg_getAppendItemFormat(
-  dtpg: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dtpg: Deno.PointerValue | Uint8Array /* ptr */,
   field: UDateTimePatternField /* Windows.Win32.Globalization.UDateTimePatternField */,
-  pLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.udatpg_getAppendItemFormat(util.toPointer(dtpg), field, util.toPointer(pLength)));
+  pLength: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.udatpg_getAppendItemFormat(util.toPointer(dtpg), field, util.toPointer(pLength));
 }
 
 export function udatpg_setAppendItemName(
-  dtpg: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dtpg: Deno.PointerValue | Uint8Array /* ptr */,
   field: UDateTimePatternField /* Windows.Win32.Globalization.UDateTimePatternField */,
-  value: Deno.PointerValue | Uint8Array | null /* ptr */,
+  value: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
 ): void /* void */ {
   return libicu_dll.udatpg_setAppendItemName(util.toPointer(dtpg), field, util.toPointer(value), length);
 }
 
 export function udatpg_getAppendItemName(
-  dtpg: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dtpg: Deno.PointerValue | Uint8Array /* ptr */,
   field: UDateTimePatternField /* Windows.Win32.Globalization.UDateTimePatternField */,
-  pLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.udatpg_getAppendItemName(util.toPointer(dtpg), field, util.toPointer(pLength)));
+  pLength: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.udatpg_getAppendItemName(util.toPointer(dtpg), field, util.toPointer(pLength));
 }
 
 export function udatpg_getFieldDisplayName(
-  dtpg: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dtpg: Deno.PointerValue | Uint8Array /* ptr */,
   field: UDateTimePatternField /* Windows.Win32.Globalization.UDateTimePatternField */,
   width: UDateTimePGDisplayWidth /* Windows.Win32.Globalization.UDateTimePGDisplayWidth */,
-  fieldName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  fieldName: Deno.PointerValue | Uint8Array /* ptr */,
   capacity: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.udatpg_getFieldDisplayName(util.toPointer(dtpg), field, width, util.toPointer(fieldName), capacity, util.toPointer(pErrorCode));
 }
 
 export function udatpg_setDateTimeFormat(
-  dtpg: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dtFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dtpg: Deno.PointerValue | Uint8Array /* ptr */,
+  dtFormat: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
 ): void /* void */ {
   return libicu_dll.udatpg_setDateTimeFormat(util.toPointer(dtpg), util.toPointer(dtFormat), length);
 }
 
 export function udatpg_getDateTimeFormat(
-  dtpg: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.udatpg_getDateTimeFormat(util.toPointer(dtpg), util.toPointer(pLength)));
+  dtpg: Deno.PointerValue | Uint8Array /* ptr */,
+  pLength: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.udatpg_getDateTimeFormat(util.toPointer(dtpg), util.toPointer(pLength));
 }
 
 export function udatpg_setDecimal(
-  dtpg: Deno.PointerValue | Uint8Array | null /* ptr */,
-  decimal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dtpg: Deno.PointerValue | Uint8Array /* ptr */,
+  decimal: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
 ): void /* void */ {
   return libicu_dll.udatpg_setDecimal(util.toPointer(dtpg), util.toPointer(decimal), length);
 }
 
 export function udatpg_getDecimal(
-  dtpg: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.udatpg_getDecimal(util.toPointer(dtpg), util.toPointer(pLength)));
+  dtpg: Deno.PointerValue | Uint8Array /* ptr */,
+  pLength: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.udatpg_getDecimal(util.toPointer(dtpg), util.toPointer(pLength));
 }
 
 export function udatpg_replaceFieldTypes(
-  dtpg: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dtpg: Deno.PointerValue | Uint8Array /* ptr */,
+  pattern: Deno.PointerValue | Uint8Array /* ptr */,
   patternLength: number /* i32 */,
-  skeleton: Deno.PointerValue | Uint8Array | null /* ptr */,
+  skeleton: Deno.PointerValue | Uint8Array /* ptr */,
   skeletonLength: number /* i32 */,
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   destCapacity: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.udatpg_replaceFieldTypes(util.toPointer(dtpg), util.toPointer(pattern), patternLength, util.toPointer(skeleton), skeletonLength, util.toPointer(dest), destCapacity, util.toPointer(pErrorCode));
 }
 
 export function udatpg_replaceFieldTypesWithOptions(
-  dtpg: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dtpg: Deno.PointerValue | Uint8Array /* ptr */,
+  pattern: Deno.PointerValue | Uint8Array /* ptr */,
   patternLength: number /* i32 */,
-  skeleton: Deno.PointerValue | Uint8Array | null /* ptr */,
+  skeleton: Deno.PointerValue | Uint8Array /* ptr */,
   skeletonLength: number /* i32 */,
   options: UDateTimePatternMatchOptions /* Windows.Win32.Globalization.UDateTimePatternMatchOptions */,
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   destCapacity: number /* i32 */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.udatpg_replaceFieldTypesWithOptions(util.toPointer(dtpg), util.toPointer(pattern), patternLength, util.toPointer(skeleton), skeletonLength, options, util.toPointer(dest), destCapacity, util.toPointer(pErrorCode));
 }
 
 export function udatpg_openSkeletons(
-  dtpg: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.udatpg_openSkeletons(util.toPointer(dtpg), util.toPointer(pErrorCode)));
+  dtpg: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.udatpg_openSkeletons(util.toPointer(dtpg), util.toPointer(pErrorCode));
 }
 
 export function udatpg_openBaseSkeletons(
-  dtpg: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.udatpg_openBaseSkeletons(util.toPointer(dtpg), util.toPointer(pErrorCode)));
+  dtpg: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.udatpg_openBaseSkeletons(util.toPointer(dtpg), util.toPointer(pErrorCode));
 }
 
 export function udatpg_getPatternForSkeleton(
-  dtpg: Deno.PointerValue | Uint8Array | null /* ptr */,
-  skeleton: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dtpg: Deno.PointerValue | Uint8Array /* ptr */,
+  skeleton: Deno.PointerValue | Uint8Array /* ptr */,
   skeletonLength: number /* i32 */,
-  pLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.udatpg_getPatternForSkeleton(util.toPointer(dtpg), util.toPointer(skeleton), skeletonLength, util.toPointer(pLength)));
+  pLength: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.udatpg_getPatternForSkeleton(util.toPointer(dtpg), util.toPointer(skeleton), skeletonLength, util.toPointer(pLength));
 }
 
 export function unumf_openForSkeletonAndLocale(
-  skeleton: Deno.PointerValue | Uint8Array | null /* ptr */,
+  skeleton: Deno.PointerValue | Uint8Array /* ptr */,
   skeletonLen: number /* i32 */,
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.unumf_openForSkeletonAndLocale(util.toPointer(skeleton), skeletonLen, util.pstrToFfi(locale), util.toPointer(ec)));
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.unumf_openForSkeletonAndLocale(util.toPointer(skeleton), skeletonLen, util.pstrToFfi(locale), util.toPointer(ec));
 }
 
 export function unumf_openForSkeletonAndLocaleWithError(
-  skeleton: Deno.PointerValue | Uint8Array | null /* ptr */,
+  skeleton: Deno.PointerValue | Uint8Array /* ptr */,
   skeletonLen: number /* i32 */,
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  perror: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.unumf_openForSkeletonAndLocaleWithError(util.toPointer(skeleton), skeletonLen, util.pstrToFfi(locale), util.toPointer(perror), util.toPointer(ec)));
+  perror: Deno.PointerValue | Uint8Array /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.unumf_openForSkeletonAndLocaleWithError(util.toPointer(skeleton), skeletonLen, util.pstrToFfi(locale), util.toPointer(perror), util.toPointer(ec));
 }
 
 export function unumf_openResult(
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.unumf_openResult(util.toPointer(ec)));
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.unumf_openResult(util.toPointer(ec));
 }
 
 export function unumf_formatInt(
-  uformatter: Deno.PointerValue | Uint8Array | null /* ptr */,
+  uformatter: Deno.PointerValue | Uint8Array /* ptr */,
   value: Deno.PointerValue /* i64 */,
-  uresult: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  uresult: Deno.PointerValue | Uint8Array /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.unumf_formatInt(util.toPointer(uformatter), value, util.toPointer(uresult), util.toPointer(ec));
 }
 
 export function unumf_formatDouble(
-  uformatter: Deno.PointerValue | Uint8Array | null /* ptr */,
+  uformatter: Deno.PointerValue | Uint8Array /* ptr */,
   value: number /* f64 */,
-  uresult: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  uresult: Deno.PointerValue | Uint8Array /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.unumf_formatDouble(util.toPointer(uformatter), value, util.toPointer(uresult), util.toPointer(ec));
 }
 
 export function unumf_formatDecimal(
-  uformatter: Deno.PointerValue | Uint8Array | null /* ptr */,
+  uformatter: Deno.PointerValue | Uint8Array /* ptr */,
   value: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   valueLen: number /* i32 */,
-  uresult: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  uresult: Deno.PointerValue | Uint8Array /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.unumf_formatDecimal(util.toPointer(uformatter), util.pstrToFfi(value), valueLen, util.toPointer(uresult), util.toPointer(ec));
 }
 
 export function unumf_resultAsValue(
-  uresult: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.unumf_resultAsValue(util.toPointer(uresult), util.toPointer(ec)));
+  uresult: Deno.PointerValue | Uint8Array /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.unumf_resultAsValue(util.toPointer(uresult), util.toPointer(ec));
 }
 
 export function unumf_resultToString(
-  uresult: Deno.PointerValue | Uint8Array | null /* ptr */,
-  buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  uresult: Deno.PointerValue | Uint8Array /* ptr */,
+  buffer: Deno.PointerValue | Uint8Array /* ptr */,
   bufferCapacity: number /* i32 */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.unumf_resultToString(util.toPointer(uresult), util.toPointer(buffer), bufferCapacity, util.toPointer(ec));
 }
 
 export function unumf_resultNextFieldPosition(
-  uresult: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ufpos: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  uresult: Deno.PointerValue | Uint8Array /* ptr */,
+  ufpos: Deno.PointerValue | Uint8Array /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.unumf_resultNextFieldPosition(util.toPointer(uresult), util.toPointer(ufpos), util.toPointer(ec));
 }
 
 export function unumf_resultGetAllFieldPositions(
-  uresult: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ufpositer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  uresult: Deno.PointerValue | Uint8Array /* ptr */,
+  ufpositer: Deno.PointerValue | Uint8Array /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.unumf_resultGetAllFieldPositions(util.toPointer(uresult), util.toPointer(ufpositer), util.toPointer(ec));
 }
 
 export function unumf_close(
-  uformatter: Deno.PointerValue | Uint8Array | null /* ptr */,
+  uformatter: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.unumf_close(util.toPointer(uformatter));
 }
 
 export function unumf_closeResult(
-  uresult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  uresult: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.unumf_closeResult(util.toPointer(uresult));
 }
 
 export function unumsys_open(
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.unumsys_open(util.pstrToFfi(locale), util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.unumsys_open(util.pstrToFfi(locale), util.toPointer(status));
 }
 
 export function unumsys_openByName(
   name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.unumsys_openByName(util.pstrToFfi(name), util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.unumsys_openByName(util.pstrToFfi(name), util.toPointer(status));
 }
 
 export function unumsys_close(
-  unumsys: Deno.PointerValue | Uint8Array | null /* ptr */,
+  unumsys: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.unumsys_close(util.toPointer(unumsys));
 }
 
 export function unumsys_openAvailableNames(
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.unumsys_openAvailableNames(util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.unumsys_openAvailableNames(util.toPointer(status));
 }
 
 export function unumsys_getName(
-  unumsys: Deno.PointerValue | Uint8Array | null /* ptr */,
+  unumsys: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.unumsys_getName(util.toPointer(unumsys)));
 }
 
 export function unumsys_isAlgorithmic(
-  unumsys: Deno.PointerValue | Uint8Array | null /* ptr */,
+  unumsys: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.unumsys_isAlgorithmic(util.toPointer(unumsys));
 }
 
 export function unumsys_getRadix(
-  unumsys: Deno.PointerValue | Uint8Array | null /* ptr */,
+  unumsys: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.unumsys_getRadix(util.toPointer(unumsys));
 }
 
 export function unumsys_getDescription(
-  unumsys: Deno.PointerValue | Uint8Array | null /* ptr */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  unumsys: Deno.PointerValue | Uint8Array /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultLength: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.unumsys_getDescription(util.toPointer(unumsys), util.toPointer(result), resultLength, util.toPointer(status));
 }
 
 export function uplrules_open(
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uplrules_open(util.pstrToFfi(locale), util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uplrules_open(util.pstrToFfi(locale), util.toPointer(status));
 }
 
 export function uplrules_openForType(
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   type: UPluralType /* Windows.Win32.Globalization.UPluralType */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uplrules_openForType(util.pstrToFfi(locale), type, util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uplrules_openForType(util.pstrToFfi(locale), type, util.toPointer(status));
 }
 
 export function uplrules_close(
-  uplrules: Deno.PointerValue | Uint8Array | null /* ptr */,
+  uplrules: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uplrules_close(util.toPointer(uplrules));
 }
 
 export function uplrules_select(
-  uplrules: Deno.PointerValue | Uint8Array | null /* ptr */,
+  uplrules: Deno.PointerValue | Uint8Array /* ptr */,
   number: number /* f64 */,
-  keyword: Deno.PointerValue | Uint8Array | null /* ptr */,
+  keyword: Deno.PointerValue | Uint8Array /* ptr */,
   capacity: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uplrules_select(util.toPointer(uplrules), number, util.toPointer(keyword), capacity, util.toPointer(status));
 }
 
 export function uplrules_selectFormatted(
-  uplrules: Deno.PointerValue | Uint8Array | null /* ptr */,
-  number: Deno.PointerValue | Uint8Array | null /* ptr */,
-  keyword: Deno.PointerValue | Uint8Array | null /* ptr */,
+  uplrules: Deno.PointerValue | Uint8Array /* ptr */,
+  number: Deno.PointerValue | Uint8Array /* ptr */,
+  keyword: Deno.PointerValue | Uint8Array /* ptr */,
   capacity: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uplrules_selectFormatted(util.toPointer(uplrules), util.toPointer(number), util.toPointer(keyword), capacity, util.toPointer(status));
 }
 
 export function uplrules_getKeywords(
-  uplrules: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uplrules_getKeywords(util.toPointer(uplrules), util.toPointer(status)));
+  uplrules: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uplrules_getKeywords(util.toPointer(uplrules), util.toPointer(status));
 }
 
 export function uregex_open(
-  pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pattern: Deno.PointerValue | Uint8Array /* ptr */,
   patternLength: number /* i32 */,
   flags: number /* u32 */,
-  pe: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uregex_open(util.toPointer(pattern), patternLength, flags, util.toPointer(pe), util.toPointer(status)));
+  pe: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uregex_open(util.toPointer(pattern), patternLength, flags, util.toPointer(pe), util.toPointer(status));
 }
 
 export function uregex_openUText(
-  pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pattern: Deno.PointerValue | Uint8Array /* ptr */,
   flags: number /* u32 */,
-  pe: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uregex_openUText(util.toPointer(pattern), flags, util.toPointer(pe), util.toPointer(status)));
+  pe: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uregex_openUText(util.toPointer(pattern), flags, util.toPointer(pe), util.toPointer(status));
 }
 
 export function uregex_openC(
   pattern: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   flags: number /* u32 */,
-  pe: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uregex_openC(util.pstrToFfi(pattern), flags, util.toPointer(pe), util.toPointer(status)));
+  pe: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uregex_openC(util.pstrToFfi(pattern), flags, util.toPointer(pe), util.toPointer(status));
 }
 
 export function uregex_close(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uregex_close(util.toPointer(regexp));
 }
 
 export function uregex_clone(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uregex_clone(util.toPointer(regexp), util.toPointer(status)));
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uregex_clone(util.toPointer(regexp), util.toPointer(status));
 }
 
 export function uregex_pattern(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  patLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uregex_pattern(util.toPointer(regexp), util.toPointer(patLength), util.toPointer(status)));
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  patLength: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uregex_pattern(util.toPointer(regexp), util.toPointer(patLength), util.toPointer(status));
 }
 
 export function uregex_patternUText(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uregex_patternUText(util.toPointer(regexp), util.toPointer(status)));
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uregex_patternUText(util.toPointer(regexp), util.toPointer(status));
 }
 
 export function uregex_flags(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uregex_flags(util.toPointer(regexp), util.toPointer(status));
 }
 
 export function uregex_setText(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  text: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  text: Deno.PointerValue | Uint8Array /* ptr */,
   textLength: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uregex_setText(util.toPointer(regexp), util.toPointer(text), textLength, util.toPointer(status));
 }
 
 export function uregex_setUText(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  text: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  text: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uregex_setUText(util.toPointer(regexp), util.toPointer(text), util.toPointer(status));
 }
 
 export function uregex_getText(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  textLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uregex_getText(util.toPointer(regexp), util.toPointer(textLength), util.toPointer(status)));
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  textLength: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uregex_getText(util.toPointer(regexp), util.toPointer(textLength), util.toPointer(status));
 }
 
 export function uregex_getUText(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uregex_getUText(util.toPointer(regexp), util.toPointer(dest), util.toPointer(status)));
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uregex_getUText(util.toPointer(regexp), util.toPointer(dest), util.toPointer(status));
 }
 
 export function uregex_refreshUText(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  text: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  text: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uregex_refreshUText(util.toPointer(regexp), util.toPointer(text), util.toPointer(status));
 }
 
 export function uregex_matches(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
   startIndex: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.uregex_matches(util.toPointer(regexp), startIndex, util.toPointer(status));
 }
 
 export function uregex_matches64(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
   startIndex: Deno.PointerValue /* i64 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.uregex_matches64(util.toPointer(regexp), startIndex, util.toPointer(status));
 }
 
 export function uregex_lookingAt(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
   startIndex: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.uregex_lookingAt(util.toPointer(regexp), startIndex, util.toPointer(status));
 }
 
 export function uregex_lookingAt64(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
   startIndex: Deno.PointerValue /* i64 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.uregex_lookingAt64(util.toPointer(regexp), startIndex, util.toPointer(status));
 }
 
 export function uregex_find(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
   startIndex: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.uregex_find(util.toPointer(regexp), startIndex, util.toPointer(status));
 }
 
 export function uregex_find64(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
   startIndex: Deno.PointerValue /* i64 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.uregex_find64(util.toPointer(regexp), startIndex, util.toPointer(status));
 }
 
 export function uregex_findNext(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.uregex_findNext(util.toPointer(regexp), util.toPointer(status));
 }
 
 export function uregex_groupCount(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uregex_groupCount(util.toPointer(regexp), util.toPointer(status));
 }
 
 export function uregex_groupNumberFromName(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  groupName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  groupName: Deno.PointerValue | Uint8Array /* ptr */,
   nameLength: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uregex_groupNumberFromName(util.toPointer(regexp), util.toPointer(groupName), nameLength, util.toPointer(status));
 }
 
 export function uregex_groupNumberFromCName(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
   groupName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nameLength: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uregex_groupNumberFromCName(util.toPointer(regexp), util.pstrToFfi(groupName), nameLength, util.toPointer(status));
 }
 
 export function uregex_group(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
   groupNum: number /* i32 */,
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   destCapacity: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uregex_group(util.toPointer(regexp), groupNum, util.toPointer(dest), destCapacity, util.toPointer(status));
 }
 
 export function uregex_groupUText(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
   groupNum: number /* i32 */,
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
-  groupLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uregex_groupUText(util.toPointer(regexp), groupNum, util.toPointer(dest), util.toPointer(groupLength), util.toPointer(status)));
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
+  groupLength: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uregex_groupUText(util.toPointer(regexp), groupNum, util.toPointer(dest), util.toPointer(groupLength), util.toPointer(status));
 }
 
 export function uregex_start(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
   groupNum: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uregex_start(util.toPointer(regexp), groupNum, util.toPointer(status));
 }
 
 export function uregex_start64(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
   groupNum: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* i64 */ {
   return libicu_dll.uregex_start64(util.toPointer(regexp), groupNum, util.toPointer(status));
 }
 
 export function uregex_end(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
   groupNum: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uregex_end(util.toPointer(regexp), groupNum, util.toPointer(status));
 }
 
 export function uregex_end64(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
   groupNum: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* i64 */ {
   return libicu_dll.uregex_end64(util.toPointer(regexp), groupNum, util.toPointer(status));
 }
 
 export function uregex_reset(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
   index: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uregex_reset(util.toPointer(regexp), index, util.toPointer(status));
 }
 
 export function uregex_reset64(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
   index: Deno.PointerValue /* i64 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uregex_reset64(util.toPointer(regexp), index, util.toPointer(status));
 }
 
 export function uregex_setRegion(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
   regionStart: number /* i32 */,
   regionLimit: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uregex_setRegion(util.toPointer(regexp), regionStart, regionLimit, util.toPointer(status));
 }
 
 export function uregex_setRegion64(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
   regionStart: Deno.PointerValue /* i64 */,
   regionLimit: Deno.PointerValue /* i64 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uregex_setRegion64(util.toPointer(regexp), regionStart, regionLimit, util.toPointer(status));
 }
 
 export function uregex_setRegionAndStart(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
   regionStart: Deno.PointerValue /* i64 */,
   regionLimit: Deno.PointerValue /* i64 */,
   startIndex: Deno.PointerValue /* i64 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uregex_setRegionAndStart(util.toPointer(regexp), regionStart, regionLimit, startIndex, util.toPointer(status));
 }
 
 export function uregex_regionStart(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uregex_regionStart(util.toPointer(regexp), util.toPointer(status));
 }
 
 export function uregex_regionStart64(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* i64 */ {
   return libicu_dll.uregex_regionStart64(util.toPointer(regexp), util.toPointer(status));
 }
 
 export function uregex_regionEnd(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uregex_regionEnd(util.toPointer(regexp), util.toPointer(status));
 }
 
 export function uregex_regionEnd64(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* i64 */ {
   return libicu_dll.uregex_regionEnd64(util.toPointer(regexp), util.toPointer(status));
 }
 
 export function uregex_hasTransparentBounds(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.uregex_hasTransparentBounds(util.toPointer(regexp), util.toPointer(status));
 }
 
 export function uregex_useTransparentBounds(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
   b: number /* i8 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uregex_useTransparentBounds(util.toPointer(regexp), b, util.toPointer(status));
 }
 
 export function uregex_hasAnchoringBounds(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.uregex_hasAnchoringBounds(util.toPointer(regexp), util.toPointer(status));
 }
 
 export function uregex_useAnchoringBounds(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
   b: number /* i8 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uregex_useAnchoringBounds(util.toPointer(regexp), b, util.toPointer(status));
 }
 
 export function uregex_hitEnd(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.uregex_hitEnd(util.toPointer(regexp), util.toPointer(status));
 }
 
 export function uregex_requireEnd(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.uregex_requireEnd(util.toPointer(regexp), util.toPointer(status));
 }
 
 export function uregex_replaceAll(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  replacementText: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  replacementText: Deno.PointerValue | Uint8Array /* ptr */,
   replacementLength: number /* i32 */,
-  destBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  destBuf: Deno.PointerValue | Uint8Array /* ptr */,
   destCapacity: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uregex_replaceAll(util.toPointer(regexp), util.toPointer(replacementText), replacementLength, util.toPointer(destBuf), destCapacity, util.toPointer(status));
 }
 
 export function uregex_replaceAllUText(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  replacement: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uregex_replaceAllUText(util.toPointer(regexp), util.toPointer(replacement), util.toPointer(dest), util.toPointer(status)));
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  replacement: Deno.PointerValue | Uint8Array /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uregex_replaceAllUText(util.toPointer(regexp), util.toPointer(replacement), util.toPointer(dest), util.toPointer(status));
 }
 
 export function uregex_replaceFirst(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  replacementText: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  replacementText: Deno.PointerValue | Uint8Array /* ptr */,
   replacementLength: number /* i32 */,
-  destBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  destBuf: Deno.PointerValue | Uint8Array /* ptr */,
   destCapacity: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uregex_replaceFirst(util.toPointer(regexp), util.toPointer(replacementText), replacementLength, util.toPointer(destBuf), destCapacity, util.toPointer(status));
 }
 
 export function uregex_replaceFirstUText(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  replacement: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uregex_replaceFirstUText(util.toPointer(regexp), util.toPointer(replacement), util.toPointer(dest), util.toPointer(status)));
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  replacement: Deno.PointerValue | Uint8Array /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uregex_replaceFirstUText(util.toPointer(regexp), util.toPointer(replacement), util.toPointer(dest), util.toPointer(status));
 }
 
 export function uregex_appendReplacement(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  replacementText: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  replacementText: Deno.PointerValue | Uint8Array /* ptr */,
   replacementLength: number /* i32 */,
-  destBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
-  destCapacity: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  destBuf: Deno.PointerValue | Uint8Array /* ptr */,
+  destCapacity: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uregex_appendReplacement(util.toPointer(regexp), util.toPointer(replacementText), replacementLength, util.toPointer(destBuf), util.toPointer(destCapacity), util.toPointer(status));
 }
 
 export function uregex_appendReplacementUText(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  replacementText: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  replacementText: Deno.PointerValue | Uint8Array /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uregex_appendReplacementUText(util.toPointer(regexp), util.toPointer(replacementText), util.toPointer(dest), util.toPointer(status));
 }
 
 export function uregex_appendTail(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  destBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
-  destCapacity: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  destBuf: Deno.PointerValue | Uint8Array /* ptr */,
+  destCapacity: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uregex_appendTail(util.toPointer(regexp), util.toPointer(destBuf), util.toPointer(destCapacity), util.toPointer(status));
 }
 
 export function uregex_appendTailUText(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uregex_appendTailUText(util.toPointer(regexp), util.toPointer(dest), util.toPointer(status)));
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uregex_appendTailUText(util.toPointer(regexp), util.toPointer(dest), util.toPointer(status));
 }
 
 export function uregex_split(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  destBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  destBuf: Deno.PointerValue | Uint8Array /* ptr */,
   destCapacity: number /* i32 */,
-  requiredCapacity: Deno.PointerValue | Uint8Array | null /* ptr */,
-  destFields: Deno.PointerValue | Uint8Array | null /* ptr */,
+  requiredCapacity: Deno.PointerValue | Uint8Array /* ptr */,
+  destFields: Deno.PointerValue | Uint8Array /* ptr */,
   destFieldsCapacity: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uregex_split(util.toPointer(regexp), util.toPointer(destBuf), destCapacity, util.toPointer(requiredCapacity), util.toPointer(destFields), destFieldsCapacity, util.toPointer(status));
 }
 
 export function uregex_splitUText(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  destFields: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  destFields: Deno.PointerValue | Uint8Array /* ptr */,
   destFieldsCapacity: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uregex_splitUText(util.toPointer(regexp), util.toPointer(destFields), destFieldsCapacity, util.toPointer(status));
 }
 
 export function uregex_setTimeLimit(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
   limit: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uregex_setTimeLimit(util.toPointer(regexp), limit, util.toPointer(status));
 }
 
 export function uregex_getTimeLimit(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uregex_getTimeLimit(util.toPointer(regexp), util.toPointer(status));
 }
 
 export function uregex_setStackLimit(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
   limit: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uregex_setStackLimit(util.toPointer(regexp), limit, util.toPointer(status));
 }
 
 export function uregex_getStackLimit(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uregex_getStackLimit(util.toPointer(regexp), util.toPointer(status));
 }
 
 export function uregex_setMatchCallback(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.URegexMatchCallback */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  callback: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.URegexMatchCallback */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uregex_setMatchCallback(util.toPointer(regexp), util.toPointer(callback), util.toPointer(context), util.toPointer(status));
 }
 
 export function uregex_getMatchCallback(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  callback: Deno.PointerValue | Uint8Array | null /* ptr */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  callback: Deno.PointerValue | Uint8Array /* ptr */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uregex_getMatchCallback(util.toPointer(regexp), util.toPointer(callback), util.toPointer(context), util.toPointer(status));
 }
 
 export function uregex_setFindProgressCallback(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Globalization.URegexFindProgressCallback */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  callback: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.URegexFindProgressCallback */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uregex_setFindProgressCallback(util.toPointer(regexp), util.toPointer(callback), util.toPointer(context), util.toPointer(status));
 }
 
 export function uregex_getFindProgressCallback(
-  regexp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  callback: Deno.PointerValue | Uint8Array | null /* ptr */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  regexp: Deno.PointerValue | Uint8Array /* ptr */,
+  callback: Deno.PointerValue | Uint8Array /* ptr */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uregex_getFindProgressCallback(util.toPointer(regexp), util.toPointer(callback), util.toPointer(context), util.toPointer(status));
 }
 
 export function uregion_getRegionFromCode(
   regionCode: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uregion_getRegionFromCode(util.pstrToFfi(regionCode), util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uregion_getRegionFromCode(util.pstrToFfi(regionCode), util.toPointer(status));
 }
 
 export function uregion_getRegionFromNumericCode(
   code: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uregion_getRegionFromNumericCode(code, util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uregion_getRegionFromNumericCode(code, util.toPointer(status));
 }
 
 export function uregion_getAvailable(
   type: URegionType /* Windows.Win32.Globalization.URegionType */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uregion_getAvailable(type, util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uregion_getAvailable(type, util.toPointer(status));
 }
 
 export function uregion_areEqual(
-  uregion: Deno.PointerValue | Uint8Array | null /* ptr */,
-  otherRegion: Deno.PointerValue | Uint8Array | null /* ptr */,
+  uregion: Deno.PointerValue | Uint8Array /* ptr */,
+  otherRegion: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.uregion_areEqual(util.toPointer(uregion), util.toPointer(otherRegion));
 }
 
 export function uregion_getContainingRegion(
-  uregion: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uregion_getContainingRegion(util.toPointer(uregion)));
+  uregion: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uregion_getContainingRegion(util.toPointer(uregion));
 }
 
 export function uregion_getContainingRegionOfType(
-  uregion: Deno.PointerValue | Uint8Array | null /* ptr */,
+  uregion: Deno.PointerValue | Uint8Array /* ptr */,
   type: URegionType /* Windows.Win32.Globalization.URegionType */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uregion_getContainingRegionOfType(util.toPointer(uregion), type));
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uregion_getContainingRegionOfType(util.toPointer(uregion), type);
 }
 
 export function uregion_getContainedRegions(
-  uregion: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uregion_getContainedRegions(util.toPointer(uregion), util.toPointer(status)));
+  uregion: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uregion_getContainedRegions(util.toPointer(uregion), util.toPointer(status));
 }
 
 export function uregion_getContainedRegionsOfType(
-  uregion: Deno.PointerValue | Uint8Array | null /* ptr */,
+  uregion: Deno.PointerValue | Uint8Array /* ptr */,
   type: URegionType /* Windows.Win32.Globalization.URegionType */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uregion_getContainedRegionsOfType(util.toPointer(uregion), type, util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uregion_getContainedRegionsOfType(util.toPointer(uregion), type, util.toPointer(status));
 }
 
 export function uregion_contains(
-  uregion: Deno.PointerValue | Uint8Array | null /* ptr */,
-  otherRegion: Deno.PointerValue | Uint8Array | null /* ptr */,
+  uregion: Deno.PointerValue | Uint8Array /* ptr */,
+  otherRegion: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i8 */ {
   return libicu_dll.uregion_contains(util.toPointer(uregion), util.toPointer(otherRegion));
 }
 
 export function uregion_getPreferredValues(
-  uregion: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uregion_getPreferredValues(util.toPointer(uregion), util.toPointer(status)));
+  uregion: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uregion_getPreferredValues(util.toPointer(uregion), util.toPointer(status));
 }
 
 export function uregion_getRegionCode(
-  uregion: Deno.PointerValue | Uint8Array | null /* ptr */,
+  uregion: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.uregion_getRegionCode(util.toPointer(uregion)));
 }
 
 export function uregion_getNumericCode(
-  uregion: Deno.PointerValue | Uint8Array | null /* ptr */,
+  uregion: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uregion_getNumericCode(util.toPointer(uregion));
 }
 
 export function uregion_getType(
-  uregion: Deno.PointerValue | Uint8Array | null /* ptr */,
+  uregion: Deno.PointerValue | Uint8Array /* ptr */,
 ): URegionType /* Windows.Win32.Globalization.URegionType */ {
   return libicu_dll.uregion_getType(util.toPointer(uregion));
 }
 
 export function ureldatefmt_open(
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  nfToAdopt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  nfToAdopt: Deno.PointerValue | Uint8Array /* ptr */,
   width: UDateRelativeDateTimeFormatterStyle /* Windows.Win32.Globalization.UDateRelativeDateTimeFormatterStyle */,
   capitalizationContext: UDisplayContext /* Windows.Win32.Globalization.UDisplayContext */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ureldatefmt_open(util.pstrToFfi(locale), util.toPointer(nfToAdopt), width, capitalizationContext, util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ureldatefmt_open(util.pstrToFfi(locale), util.toPointer(nfToAdopt), width, capitalizationContext, util.toPointer(status));
 }
 
 export function ureldatefmt_close(
-  reldatefmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  reldatefmt: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ureldatefmt_close(util.toPointer(reldatefmt));
 }
 
 export function ureldatefmt_openResult(
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ureldatefmt_openResult(util.toPointer(ec)));
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ureldatefmt_openResult(util.toPointer(ec));
 }
 
 export function ureldatefmt_resultAsValue(
-  ufrdt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ec: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.ureldatefmt_resultAsValue(util.toPointer(ufrdt), util.toPointer(ec)));
+  ufrdt: Deno.PointerValue | Uint8Array /* ptr */,
+  ec: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.ureldatefmt_resultAsValue(util.toPointer(ufrdt), util.toPointer(ec));
 }
 
 export function ureldatefmt_closeResult(
-  ufrdt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ufrdt: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ureldatefmt_closeResult(util.toPointer(ufrdt));
 }
 
 export function ureldatefmt_formatNumeric(
-  reldatefmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  reldatefmt: Deno.PointerValue | Uint8Array /* ptr */,
   offset: number /* f64 */,
   unit: URelativeDateTimeUnit /* Windows.Win32.Globalization.URelativeDateTimeUnit */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultCapacity: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ureldatefmt_formatNumeric(util.toPointer(reldatefmt), offset, unit, util.toPointer(result), resultCapacity, util.toPointer(status));
 }
 
 export function ureldatefmt_formatNumericToResult(
-  reldatefmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  reldatefmt: Deno.PointerValue | Uint8Array /* ptr */,
   offset: number /* f64 */,
   unit: URelativeDateTimeUnit /* Windows.Win32.Globalization.URelativeDateTimeUnit */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ureldatefmt_formatNumericToResult(util.toPointer(reldatefmt), offset, unit, util.toPointer(result), util.toPointer(status));
 }
 
 export function ureldatefmt_format(
-  reldatefmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  reldatefmt: Deno.PointerValue | Uint8Array /* ptr */,
   offset: number /* f64 */,
   unit: URelativeDateTimeUnit /* Windows.Win32.Globalization.URelativeDateTimeUnit */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultCapacity: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ureldatefmt_format(util.toPointer(reldatefmt), offset, unit, util.toPointer(result), resultCapacity, util.toPointer(status));
 }
 
 export function ureldatefmt_formatToResult(
-  reldatefmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  reldatefmt: Deno.PointerValue | Uint8Array /* ptr */,
   offset: number /* f64 */,
   unit: URelativeDateTimeUnit /* Windows.Win32.Globalization.URelativeDateTimeUnit */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.ureldatefmt_formatToResult(util.toPointer(reldatefmt), offset, unit, util.toPointer(result), util.toPointer(status));
 }
 
 export function ureldatefmt_combineDateAndTime(
-  reldatefmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  relativeDateString: Deno.PointerValue | Uint8Array | null /* ptr */,
+  reldatefmt: Deno.PointerValue | Uint8Array /* ptr */,
+  relativeDateString: Deno.PointerValue | Uint8Array /* ptr */,
   relativeDateStringLen: number /* i32 */,
-  timeString: Deno.PointerValue | Uint8Array | null /* ptr */,
+  timeString: Deno.PointerValue | Uint8Array /* ptr */,
   timeStringLen: number /* i32 */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultCapacity: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.ureldatefmt_combineDateAndTime(util.toPointer(reldatefmt), util.toPointer(relativeDateString), relativeDateStringLen, util.toPointer(timeString), timeStringLen, util.toPointer(result), resultCapacity, util.toPointer(status));
 }
 
 export function usearch_open(
-  pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pattern: Deno.PointerValue | Uint8Array /* ptr */,
   patternlength: number /* i32 */,
-  text: Deno.PointerValue | Uint8Array | null /* ptr */,
+  text: Deno.PointerValue | Uint8Array /* ptr */,
   textlength: number /* i32 */,
   locale: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  breakiter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.usearch_open(util.toPointer(pattern), patternlength, util.toPointer(text), textlength, util.pstrToFfi(locale), util.toPointer(breakiter), util.toPointer(status)));
+  breakiter: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.usearch_open(util.toPointer(pattern), patternlength, util.toPointer(text), textlength, util.pstrToFfi(locale), util.toPointer(breakiter), util.toPointer(status));
 }
 
 export function usearch_openFromCollator(
-  pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pattern: Deno.PointerValue | Uint8Array /* ptr */,
   patternlength: number /* i32 */,
-  text: Deno.PointerValue | Uint8Array | null /* ptr */,
+  text: Deno.PointerValue | Uint8Array /* ptr */,
   textlength: number /* i32 */,
-  collator: Deno.PointerValue | Uint8Array | null /* ptr */,
-  breakiter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.usearch_openFromCollator(util.toPointer(pattern), patternlength, util.toPointer(text), textlength, util.toPointer(collator), util.toPointer(breakiter), util.toPointer(status)));
+  collator: Deno.PointerValue | Uint8Array /* ptr */,
+  breakiter: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.usearch_openFromCollator(util.toPointer(pattern), patternlength, util.toPointer(text), textlength, util.toPointer(collator), util.toPointer(breakiter), util.toPointer(status));
 }
 
 export function usearch_close(
-  searchiter: Deno.PointerValue | Uint8Array | null /* ptr */,
+  searchiter: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.usearch_close(util.toPointer(searchiter));
 }
 
 export function usearch_setOffset(
-  strsrch: Deno.PointerValue | Uint8Array | null /* ptr */,
+  strsrch: Deno.PointerValue | Uint8Array /* ptr */,
   position: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.usearch_setOffset(util.toPointer(strsrch), position, util.toPointer(status));
 }
 
 export function usearch_getOffset(
-  strsrch: Deno.PointerValue | Uint8Array | null /* ptr */,
+  strsrch: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.usearch_getOffset(util.toPointer(strsrch));
 }
 
 export function usearch_setAttribute(
-  strsrch: Deno.PointerValue | Uint8Array | null /* ptr */,
+  strsrch: Deno.PointerValue | Uint8Array /* ptr */,
   attribute: USearchAttribute /* Windows.Win32.Globalization.USearchAttribute */,
   value: USearchAttributeValue /* Windows.Win32.Globalization.USearchAttributeValue */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.usearch_setAttribute(util.toPointer(strsrch), attribute, value, util.toPointer(status));
 }
 
 export function usearch_getAttribute(
-  strsrch: Deno.PointerValue | Uint8Array | null /* ptr */,
+  strsrch: Deno.PointerValue | Uint8Array /* ptr */,
   attribute: USearchAttribute /* Windows.Win32.Globalization.USearchAttribute */,
 ): USearchAttributeValue /* Windows.Win32.Globalization.USearchAttributeValue */ {
   return libicu_dll.usearch_getAttribute(util.toPointer(strsrch), attribute);
 }
 
 export function usearch_getMatchedStart(
-  strsrch: Deno.PointerValue | Uint8Array | null /* ptr */,
+  strsrch: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.usearch_getMatchedStart(util.toPointer(strsrch));
 }
 
 export function usearch_getMatchedLength(
-  strsrch: Deno.PointerValue | Uint8Array | null /* ptr */,
+  strsrch: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.usearch_getMatchedLength(util.toPointer(strsrch));
 }
 
 export function usearch_getMatchedText(
-  strsrch: Deno.PointerValue | Uint8Array | null /* ptr */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  strsrch: Deno.PointerValue | Uint8Array /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultCapacity: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.usearch_getMatchedText(util.toPointer(strsrch), util.toPointer(result), resultCapacity, util.toPointer(status));
 }
 
 export function usearch_setBreakIterator(
-  strsrch: Deno.PointerValue | Uint8Array | null /* ptr */,
-  breakiter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  strsrch: Deno.PointerValue | Uint8Array /* ptr */,
+  breakiter: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.usearch_setBreakIterator(util.toPointer(strsrch), util.toPointer(breakiter), util.toPointer(status));
 }
 
 export function usearch_getBreakIterator(
-  strsrch: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.usearch_getBreakIterator(util.toPointer(strsrch)));
+  strsrch: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.usearch_getBreakIterator(util.toPointer(strsrch));
 }
 
 export function usearch_setText(
-  strsrch: Deno.PointerValue | Uint8Array | null /* ptr */,
-  text: Deno.PointerValue | Uint8Array | null /* ptr */,
+  strsrch: Deno.PointerValue | Uint8Array /* ptr */,
+  text: Deno.PointerValue | Uint8Array /* ptr */,
   textlength: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.usearch_setText(util.toPointer(strsrch), util.toPointer(text), textlength, util.toPointer(status));
 }
 
 export function usearch_getText(
-  strsrch: Deno.PointerValue | Uint8Array | null /* ptr */,
-  length: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.usearch_getText(util.toPointer(strsrch), util.toPointer(length)));
+  strsrch: Deno.PointerValue | Uint8Array /* ptr */,
+  length: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.usearch_getText(util.toPointer(strsrch), util.toPointer(length));
 }
 
 export function usearch_getCollator(
-  strsrch: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.usearch_getCollator(util.toPointer(strsrch)));
+  strsrch: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.usearch_getCollator(util.toPointer(strsrch));
 }
 
 export function usearch_setCollator(
-  strsrch: Deno.PointerValue | Uint8Array | null /* ptr */,
-  collator: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  strsrch: Deno.PointerValue | Uint8Array /* ptr */,
+  collator: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.usearch_setCollator(util.toPointer(strsrch), util.toPointer(collator), util.toPointer(status));
 }
 
 export function usearch_setPattern(
-  strsrch: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pattern: Deno.PointerValue | Uint8Array | null /* ptr */,
+  strsrch: Deno.PointerValue | Uint8Array /* ptr */,
+  pattern: Deno.PointerValue | Uint8Array /* ptr */,
   patternlength: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.usearch_setPattern(util.toPointer(strsrch), util.toPointer(pattern), patternlength, util.toPointer(status));
 }
 
 export function usearch_getPattern(
-  strsrch: Deno.PointerValue | Uint8Array | null /* ptr */,
-  length: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.usearch_getPattern(util.toPointer(strsrch), util.toPointer(length)));
+  strsrch: Deno.PointerValue | Uint8Array /* ptr */,
+  length: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.usearch_getPattern(util.toPointer(strsrch), util.toPointer(length));
 }
 
 export function usearch_first(
-  strsrch: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  strsrch: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.usearch_first(util.toPointer(strsrch), util.toPointer(status));
 }
 
 export function usearch_following(
-  strsrch: Deno.PointerValue | Uint8Array | null /* ptr */,
+  strsrch: Deno.PointerValue | Uint8Array /* ptr */,
   position: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.usearch_following(util.toPointer(strsrch), position, util.toPointer(status));
 }
 
 export function usearch_last(
-  strsrch: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  strsrch: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.usearch_last(util.toPointer(strsrch), util.toPointer(status));
 }
 
 export function usearch_preceding(
-  strsrch: Deno.PointerValue | Uint8Array | null /* ptr */,
+  strsrch: Deno.PointerValue | Uint8Array /* ptr */,
   position: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.usearch_preceding(util.toPointer(strsrch), position, util.toPointer(status));
 }
 
 export function usearch_next(
-  strsrch: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  strsrch: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.usearch_next(util.toPointer(strsrch), util.toPointer(status));
 }
 
 export function usearch_previous(
-  strsrch: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  strsrch: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.usearch_previous(util.toPointer(strsrch), util.toPointer(status));
 }
 
 export function usearch_reset(
-  strsrch: Deno.PointerValue | Uint8Array | null /* ptr */,
+  strsrch: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.usearch_reset(util.toPointer(strsrch));
 }
 
 export function uspoof_open(
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uspoof_open(util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uspoof_open(util.toPointer(status));
 }
 
 export function uspoof_openFromSerialized(
-  data: Deno.PointerValue | Uint8Array | null /* ptr */,
+  data: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
-  pActualLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uspoof_openFromSerialized(util.toPointer(data), length, util.toPointer(pActualLength), util.toPointer(pErrorCode)));
+  pActualLength: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uspoof_openFromSerialized(util.toPointer(data), length, util.toPointer(pActualLength), util.toPointer(pErrorCode));
 }
 
 export function uspoof_openFromSource(
@@ -25044,220 +25044,220 @@ export function uspoof_openFromSource(
   confusablesLen: number /* i32 */,
   confusablesWholeScript: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   confusablesWholeScriptLen: number /* i32 */,
-  errType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pe: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uspoof_openFromSource(util.pstrToFfi(confusables), confusablesLen, util.pstrToFfi(confusablesWholeScript), confusablesWholeScriptLen, util.toPointer(errType), util.toPointer(pe), util.toPointer(status)));
+  errType: Deno.PointerValue | Uint8Array /* ptr */,
+  pe: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uspoof_openFromSource(util.pstrToFfi(confusables), confusablesLen, util.pstrToFfi(confusablesWholeScript), confusablesWholeScriptLen, util.toPointer(errType), util.toPointer(pe), util.toPointer(status));
 }
 
 export function uspoof_close(
-  sc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sc: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uspoof_close(util.toPointer(sc));
 }
 
 export function uspoof_clone(
-  sc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uspoof_clone(util.toPointer(sc), util.toPointer(status)));
+  sc: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uspoof_clone(util.toPointer(sc), util.toPointer(status));
 }
 
 export function uspoof_setChecks(
-  sc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sc: Deno.PointerValue | Uint8Array /* ptr */,
   checks: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uspoof_setChecks(util.toPointer(sc), checks, util.toPointer(status));
 }
 
 export function uspoof_getChecks(
-  sc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sc: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uspoof_getChecks(util.toPointer(sc), util.toPointer(status));
 }
 
 export function uspoof_setRestrictionLevel(
-  sc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sc: Deno.PointerValue | Uint8Array /* ptr */,
   restrictionLevel: URestrictionLevel /* Windows.Win32.Globalization.URestrictionLevel */,
 ): void /* void */ {
   return libicu_dll.uspoof_setRestrictionLevel(util.toPointer(sc), restrictionLevel);
 }
 
 export function uspoof_getRestrictionLevel(
-  sc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sc: Deno.PointerValue | Uint8Array /* ptr */,
 ): URestrictionLevel /* Windows.Win32.Globalization.URestrictionLevel */ {
   return libicu_dll.uspoof_getRestrictionLevel(util.toPointer(sc));
 }
 
 export function uspoof_setAllowedLocales(
-  sc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sc: Deno.PointerValue | Uint8Array /* ptr */,
   localesList: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uspoof_setAllowedLocales(util.toPointer(sc), util.pstrToFfi(localesList), util.toPointer(status));
 }
 
 export function uspoof_getAllowedLocales(
-  sc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sc: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libicu_dll.uspoof_getAllowedLocales(util.toPointer(sc), util.toPointer(status)));
 }
 
 export function uspoof_setAllowedChars(
-  sc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  chars: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sc: Deno.PointerValue | Uint8Array /* ptr */,
+  chars: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uspoof_setAllowedChars(util.toPointer(sc), util.toPointer(chars), util.toPointer(status));
 }
 
 export function uspoof_getAllowedChars(
-  sc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uspoof_getAllowedChars(util.toPointer(sc), util.toPointer(status)));
+  sc: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uspoof_getAllowedChars(util.toPointer(sc), util.toPointer(status));
 }
 
 export function uspoof_check(
-  sc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  id: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sc: Deno.PointerValue | Uint8Array /* ptr */,
+  id: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
-  position: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  position: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uspoof_check(util.toPointer(sc), util.toPointer(id), length, util.toPointer(position), util.toPointer(status));
 }
 
 export function uspoof_checkUTF8(
-  sc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sc: Deno.PointerValue | Uint8Array /* ptr */,
   id: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
-  position: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  position: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uspoof_checkUTF8(util.toPointer(sc), util.pstrToFfi(id), length, util.toPointer(position), util.toPointer(status));
 }
 
 export function uspoof_check2(
-  sc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  id: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sc: Deno.PointerValue | Uint8Array /* ptr */,
+  id: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
-  checkResult: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  checkResult: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uspoof_check2(util.toPointer(sc), util.toPointer(id), length, util.toPointer(checkResult), util.toPointer(status));
 }
 
 export function uspoof_check2UTF8(
-  sc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sc: Deno.PointerValue | Uint8Array /* ptr */,
   id: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
-  checkResult: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  checkResult: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uspoof_check2UTF8(util.toPointer(sc), util.pstrToFfi(id), length, util.toPointer(checkResult), util.toPointer(status));
 }
 
 export function uspoof_openCheckResult(
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uspoof_openCheckResult(util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uspoof_openCheckResult(util.toPointer(status));
 }
 
 export function uspoof_closeCheckResult(
-  checkResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  checkResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.uspoof_closeCheckResult(util.toPointer(checkResult));
 }
 
 export function uspoof_getCheckResultChecks(
-  checkResult: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  checkResult: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uspoof_getCheckResultChecks(util.toPointer(checkResult), util.toPointer(status));
 }
 
 export function uspoof_getCheckResultRestrictionLevel(
-  checkResult: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  checkResult: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): URestrictionLevel /* Windows.Win32.Globalization.URestrictionLevel */ {
   return libicu_dll.uspoof_getCheckResultRestrictionLevel(util.toPointer(checkResult), util.toPointer(status));
 }
 
 export function uspoof_getCheckResultNumerics(
-  checkResult: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uspoof_getCheckResultNumerics(util.toPointer(checkResult), util.toPointer(status)));
+  checkResult: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uspoof_getCheckResultNumerics(util.toPointer(checkResult), util.toPointer(status));
 }
 
 export function uspoof_areConfusable(
-  sc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  id1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sc: Deno.PointerValue | Uint8Array /* ptr */,
+  id1: Deno.PointerValue | Uint8Array /* ptr */,
   length1: number /* i32 */,
-  id2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  id2: Deno.PointerValue | Uint8Array /* ptr */,
   length2: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uspoof_areConfusable(util.toPointer(sc), util.toPointer(id1), length1, util.toPointer(id2), length2, util.toPointer(status));
 }
 
 export function uspoof_areConfusableUTF8(
-  sc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sc: Deno.PointerValue | Uint8Array /* ptr */,
   id1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length1: number /* i32 */,
   id2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length2: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uspoof_areConfusableUTF8(util.toPointer(sc), util.pstrToFfi(id1), length1, util.pstrToFfi(id2), length2, util.toPointer(status));
 }
 
 export function uspoof_getSkeleton(
-  sc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sc: Deno.PointerValue | Uint8Array /* ptr */,
   type: number /* u32 */,
-  id: Deno.PointerValue | Uint8Array | null /* ptr */,
+  id: Deno.PointerValue | Uint8Array /* ptr */,
   length: number /* i32 */,
-  dest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dest: Deno.PointerValue | Uint8Array /* ptr */,
   destCapacity: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uspoof_getSkeleton(util.toPointer(sc), type, util.toPointer(id), length, util.toPointer(dest), destCapacity, util.toPointer(status));
 }
 
 export function uspoof_getSkeletonUTF8(
-  sc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sc: Deno.PointerValue | Uint8Array /* ptr */,
   type: number /* u32 */,
   id: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   length: number /* i32 */,
   dest: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   destCapacity: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uspoof_getSkeletonUTF8(util.toPointer(sc), type, util.pstrToFfi(id), length, util.pstrToFfi(dest), destCapacity, util.toPointer(status));
 }
 
 export function uspoof_getInclusionSet(
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uspoof_getInclusionSet(util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uspoof_getInclusionSet(util.toPointer(status));
 }
 
 export function uspoof_getRecommendedSet(
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.uspoof_getRecommendedSet(util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.uspoof_getRecommendedSet(util.toPointer(status));
 }
 
 export function uspoof_serialize(
-  sc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  data: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sc: Deno.PointerValue | Uint8Array /* ptr */,
+  data: Deno.PointerValue | Uint8Array /* ptr */,
   capacity: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.uspoof_serialize(util.toPointer(sc), util.toPointer(data), capacity, util.toPointer(status));
 }
@@ -25265,7 +25265,7 @@ export function uspoof_serialize(
 export function utmscale_getTimeScaleValue(
   timeScale: UDateTimeScale /* Windows.Win32.Globalization.UDateTimeScale */,
   value: UTimeScaleValue /* Windows.Win32.Globalization.UTimeScaleValue */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* i64 */ {
   return libicu_dll.utmscale_getTimeScaleValue(timeScale, value, util.toPointer(status));
 }
@@ -25273,7 +25273,7 @@ export function utmscale_getTimeScaleValue(
 export function utmscale_fromInt64(
   otherTime: Deno.PointerValue /* i64 */,
   timeScale: UDateTimeScale /* Windows.Win32.Globalization.UDateTimeScale */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* i64 */ {
   return libicu_dll.utmscale_fromInt64(otherTime, timeScale, util.toPointer(status));
 }
@@ -25281,69 +25281,69 @@ export function utmscale_fromInt64(
 export function utmscale_toInt64(
   universalTime: Deno.PointerValue /* i64 */,
   timeScale: UDateTimeScale /* Windows.Win32.Globalization.UDateTimeScale */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* i64 */ {
   return libicu_dll.utmscale_toInt64(universalTime, timeScale, util.toPointer(status));
 }
 
 export function utrans_openU(
-  id: Deno.PointerValue | Uint8Array | null /* ptr */,
+  id: Deno.PointerValue | Uint8Array /* ptr */,
   idLength: number /* i32 */,
   dir: UTransDirection /* Windows.Win32.Globalization.UTransDirection */,
-  rules: Deno.PointerValue | Uint8Array | null /* ptr */,
+  rules: Deno.PointerValue | Uint8Array /* ptr */,
   rulesLength: number /* i32 */,
-  parseError: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.utrans_openU(util.toPointer(id), idLength, dir, util.toPointer(rules), rulesLength, util.toPointer(parseError), util.toPointer(pErrorCode)));
+  parseError: Deno.PointerValue | Uint8Array /* ptr */,
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.utrans_openU(util.toPointer(id), idLength, dir, util.toPointer(rules), rulesLength, util.toPointer(parseError), util.toPointer(pErrorCode));
 }
 
 export function utrans_openInverse(
-  trans: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.utrans_openInverse(util.toPointer(trans), util.toPointer(status)));
+  trans: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.utrans_openInverse(util.toPointer(trans), util.toPointer(status));
 }
 
 export function utrans_clone(
-  trans: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.utrans_clone(util.toPointer(trans), util.toPointer(status)));
+  trans: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.utrans_clone(util.toPointer(trans), util.toPointer(status));
 }
 
 export function utrans_close(
-  trans: Deno.PointerValue | Uint8Array | null /* ptr */,
+  trans: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.utrans_close(util.toPointer(trans));
 }
 
 export function utrans_getUnicodeID(
-  trans: Deno.PointerValue | Uint8Array | null /* ptr */,
-  resultLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.utrans_getUnicodeID(util.toPointer(trans), util.toPointer(resultLength)));
+  trans: Deno.PointerValue | Uint8Array /* ptr */,
+  resultLength: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.utrans_getUnicodeID(util.toPointer(trans), util.toPointer(resultLength));
 }
 
 export function utrans_register(
-  adoptedTrans: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  adoptedTrans: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.utrans_register(util.toPointer(adoptedTrans), util.toPointer(status));
 }
 
 export function utrans_unregisterID(
-  id: Deno.PointerValue | Uint8Array | null /* ptr */,
+  id: Deno.PointerValue | Uint8Array /* ptr */,
   idLength: number /* i32 */,
 ): void /* void */ {
   return libicu_dll.utrans_unregisterID(util.toPointer(id), idLength);
 }
 
 export function utrans_setFilter(
-  trans: Deno.PointerValue | Uint8Array | null /* ptr */,
-  filterPattern: Deno.PointerValue | Uint8Array | null /* ptr */,
+  trans: Deno.PointerValue | Uint8Array /* ptr */,
+  filterPattern: Deno.PointerValue | Uint8Array /* ptr */,
   filterPatternLen: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.utrans_setFilter(util.toPointer(trans), util.toPointer(filterPattern), filterPatternLen, util.toPointer(status));
 }
@@ -25353,81 +25353,81 @@ export function utrans_countAvailableIDs(): number /* i32 */ {
 }
 
 export function utrans_openIDs(
-  pErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.utrans_openIDs(util.toPointer(pErrorCode)));
+  pErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.utrans_openIDs(util.toPointer(pErrorCode));
 }
 
 export function utrans_trans(
-  trans: Deno.PointerValue | Uint8Array | null /* ptr */,
-  rep: Deno.PointerValue | Uint8Array | null /* ptr */,
-  repFunc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  trans: Deno.PointerValue | Uint8Array /* ptr */,
+  rep: Deno.PointerValue | Uint8Array /* ptr */,
+  repFunc: Deno.PointerValue | Uint8Array /* ptr */,
   start: number /* i32 */,
-  limit: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  limit: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.utrans_trans(util.toPointer(trans), util.toPointer(rep), util.toPointer(repFunc), start, util.toPointer(limit), util.toPointer(status));
 }
 
 export function utrans_transIncremental(
-  trans: Deno.PointerValue | Uint8Array | null /* ptr */,
-  rep: Deno.PointerValue | Uint8Array | null /* ptr */,
-  repFunc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pos: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  trans: Deno.PointerValue | Uint8Array /* ptr */,
+  rep: Deno.PointerValue | Uint8Array /* ptr */,
+  repFunc: Deno.PointerValue | Uint8Array /* ptr */,
+  pos: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.utrans_transIncremental(util.toPointer(trans), util.toPointer(rep), util.toPointer(repFunc), util.toPointer(pos), util.toPointer(status));
 }
 
 export function utrans_transUChars(
-  trans: Deno.PointerValue | Uint8Array | null /* ptr */,
-  text: Deno.PointerValue | Uint8Array | null /* ptr */,
-  textLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  trans: Deno.PointerValue | Uint8Array /* ptr */,
+  text: Deno.PointerValue | Uint8Array /* ptr */,
+  textLength: Deno.PointerValue | Uint8Array /* ptr */,
   textCapacity: number /* i32 */,
   start: number /* i32 */,
-  limit: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  limit: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.utrans_transUChars(util.toPointer(trans), util.toPointer(text), util.toPointer(textLength), textCapacity, start, util.toPointer(limit), util.toPointer(status));
 }
 
 export function utrans_transIncrementalUChars(
-  trans: Deno.PointerValue | Uint8Array | null /* ptr */,
-  text: Deno.PointerValue | Uint8Array | null /* ptr */,
-  textLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  trans: Deno.PointerValue | Uint8Array /* ptr */,
+  text: Deno.PointerValue | Uint8Array /* ptr */,
+  textLength: Deno.PointerValue | Uint8Array /* ptr */,
   textCapacity: number /* i32 */,
-  pos: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pos: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libicu_dll.utrans_transIncrementalUChars(util.toPointer(trans), util.toPointer(text), util.toPointer(textLength), textCapacity, util.toPointer(pos), util.toPointer(status));
 }
 
 export function utrans_toRules(
-  trans: Deno.PointerValue | Uint8Array | null /* ptr */,
+  trans: Deno.PointerValue | Uint8Array /* ptr */,
   escapeUnprintable: number /* i8 */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
   resultLength: number /* i32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libicu_dll.utrans_toRules(util.toPointer(trans), escapeUnprintable, util.toPointer(result), resultLength, util.toPointer(status));
 }
 
 export function utrans_getSourceSet(
-  trans: Deno.PointerValue | Uint8Array | null /* ptr */,
+  trans: Deno.PointerValue | Uint8Array /* ptr */,
   ignoreFilter: number /* i8 */,
-  fillIn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libicu_dll.utrans_getSourceSet(util.toPointer(trans), ignoreFilter, util.toPointer(fillIn), util.toPointer(status)));
+  fillIn: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libicu_dll.utrans_getSourceSet(util.toPointer(trans), ignoreFilter, util.toPointer(fillIn), util.toPointer(status));
 }
 
 export function GetDistanceOfClosestLanguageInList(
   pszLanguage: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszLanguagesList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  wchListDelimiter: Uint8Array | Deno.PointerValue | null /* char */,
-  pClosestDistance: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libbcp47mrm_dll.GetDistanceOfClosestLanguageInList(util.pwstrToFfi(pszLanguage), util.pwstrToFfi(pszLanguagesList), util.toPointer(wchListDelimiter), util.toPointer(pClosestDistance)));
+  wchListDelimiter: Uint8Array | Deno.PointerValue /* char */,
+  pClosestDistance: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libbcp47mrm_dll.GetDistanceOfClosestLanguageInList(util.pwstrToFfi(pszLanguage), util.pwstrToFfi(pszLanguagesList), util.toPointer(wchListDelimiter), util.toPointer(pClosestDistance));
 }
 
 export function IsWellFormedTag(
@@ -25532,9 +25532,9 @@ export function lstrlenW(
 }
 
 export function IsTextUnicode(
-  lpv: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpv: Deno.PointerValue | Uint8Array /* ptr */,
   iSize: number /* i32 */,
-  lpiResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpiResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libADVAPI32_dll.IsTextUnicode(util.toPointer(lpv), iSize, util.toPointer(lpiResult)));
 }

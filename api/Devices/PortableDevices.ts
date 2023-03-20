@@ -651,7 +651,7 @@ export const SRS_RADIO_DISABLED = 1;
  */
 export interface DEVPROPKEY {
   /** System.Guid */
-  fmtid: Uint8Array | Deno.PointerValue | null;
+  fmtid: Uint8Array | Deno.PointerValue;
   /** u32 */
   pid: number;
 }
@@ -662,7 +662,7 @@ export function allocDEVPROPKEY(data?: Partial<DEVPROPKEY>): Uint8Array {
   const buf = new Uint8Array(sizeofDEVPROPKEY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.fmtid !== undefined) view.setBigUint64(0, data.fmtid === null ? 0n : BigInt(util.toPointer(data.fmtid)), true);
+  if (data?.fmtid !== undefined) view.setBigUint64(0, data.fmtid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fmtid))), true);
   // 0x08: u32
   if (data?.pid !== undefined) view.setUint32(8, Number(data.pid), true);
   // 0x0c: pad4
@@ -680,9 +680,9 @@ export class DEVPROPKEYView {
   }
 
   // 0x00: pointer
-  get fmtid(): Uint8Array | Deno.PointerValue | null {
+  get fmtid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -693,8 +693,8 @@ export class DEVPROPKEYView {
   // 0x0c: pad4
 
   // 0x00: pointer
-  set fmtid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set fmtid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -710,7 +710,7 @@ export class DEVPROPKEYView {
  */
 export interface PROPERTYKEY {
   /** System.Guid */
-  fmtid: Uint8Array | Deno.PointerValue | null;
+  fmtid: Uint8Array | Deno.PointerValue;
   /** u32 */
   pid: number;
 }
@@ -721,7 +721,7 @@ export function allocPROPERTYKEY(data?: Partial<PROPERTYKEY>): Uint8Array {
   const buf = new Uint8Array(sizeofPROPERTYKEY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.fmtid !== undefined) view.setBigUint64(0, data.fmtid === null ? 0n : BigInt(util.toPointer(data.fmtid)), true);
+  if (data?.fmtid !== undefined) view.setBigUint64(0, data.fmtid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fmtid))), true);
   // 0x08: u32
   if (data?.pid !== undefined) view.setUint32(8, Number(data.pid), true);
   // 0x0c: pad4
@@ -739,9 +739,9 @@ export class PROPERTYKEYView {
   }
 
   // 0x00: pointer
-  get fmtid(): Uint8Array | Deno.PointerValue | null {
+  get fmtid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -752,8 +752,8 @@ export class PROPERTYKEYView {
   // 0x0c: pad4
 
   // 0x00: pointer
-  set fmtid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set fmtid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -769,11 +769,11 @@ export class PROPERTYKEYView {
  */
 export interface WPD_COMMAND_ACCESS_LOOKUP_ENTRY {
   /** Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY */
-  Command: Uint8Array | Deno.PointerValue | null;
+  Command: Uint8Array | Deno.PointerValue;
   /** u32 */
   AccessType: number;
   /** Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY */
-  AccessProperty: Uint8Array | Deno.PointerValue | null;
+  AccessProperty: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofWPD_COMMAND_ACCESS_LOOKUP_ENTRY = 24;
@@ -782,12 +782,12 @@ export function allocWPD_COMMAND_ACCESS_LOOKUP_ENTRY(data?: Partial<WPD_COMMAND_
   const buf = new Uint8Array(sizeofWPD_COMMAND_ACCESS_LOOKUP_ENTRY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Command !== undefined) view.setBigUint64(0, data.Command === null ? 0n : BigInt(util.toPointer(data.Command)), true);
+  if (data?.Command !== undefined) view.setBigUint64(0, data.Command === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Command))), true);
   // 0x08: u32
   if (data?.AccessType !== undefined) view.setUint32(8, Number(data.AccessType), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.AccessProperty !== undefined) view.setBigUint64(16, data.AccessProperty === null ? 0n : BigInt(util.toPointer(data.AccessProperty)), true);
+  if (data?.AccessProperty !== undefined) view.setBigUint64(16, data.AccessProperty === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.AccessProperty))), true);
   return buf;
 }
 
@@ -802,9 +802,9 @@ export class WPD_COMMAND_ACCESS_LOOKUP_ENTRYView {
   }
 
   // 0x00: pointer
-  get Command(): Uint8Array | Deno.PointerValue | null {
+  get Command(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -815,14 +815,14 @@ export class WPD_COMMAND_ACCESS_LOOKUP_ENTRYView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get AccessProperty(): Uint8Array | Deno.PointerValue | null {
+  get AccessProperty(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Command(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Command(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -833,12 +833,12 @@ export class WPD_COMMAND_ACCESS_LOOKUP_ENTRYView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set AccessProperty(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set AccessProperty(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 export type HRESULT = number;
 
@@ -857,10 +857,10 @@ try {
 
 export function DMProcessConfigXMLFiltered(
   pszXmlIn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  rgszAllowedCspNodes: Deno.PointerValue | Uint8Array | null /* ptr */,
+  rgszAllowedCspNodes: Deno.PointerValue | Uint8Array /* ptr */,
   dwNumAllowedCspNodes: number /* u32 */,
-  pbstrXmlOut: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDMProcessXMLFiltered_dll.DMProcessConfigXMLFiltered(util.pwstrToFfi(pszXmlIn), util.toPointer(rgszAllowedCspNodes), dwNumAllowedCspNodes, util.toPointer(pbstrXmlOut)));
+  pbstrXmlOut: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDMProcessXMLFiltered_dll.DMProcessConfigXMLFiltered(util.pwstrToFfi(pszXmlIn), util.toPointer(rgszAllowedCspNodes), dwNumAllowedCspNodes, util.toPointer(pbstrXmlOut));
 }
 

@@ -62,7 +62,7 @@ export interface DxcShaderHash {
   /** u32 */
   Flags: number;
   /** array */
-  HashDigest: Deno.PointerValue | null;
+  HashDigest: Deno.PointerValue;
 }
 
 export const sizeofDxcShaderHash = 16;
@@ -74,7 +74,7 @@ export function allocDxcShaderHash(data?: Partial<DxcShaderHash>): Uint8Array {
   if (data?.Flags !== undefined) view.setUint32(0, Number(data.Flags), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.HashDigest !== undefined) view.setBigUint64(8, data.HashDigest === null ? 0n : BigInt(util.toPointer(data.HashDigest)), true);
+  if (data?.HashDigest !== undefined) view.setBigUint64(8, data.HashDigest === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.HashDigest))), true);
   return buf;
 }
 
@@ -96,9 +96,9 @@ export class DxcShaderHashView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get HashDigest(): Uint8Array | Deno.PointerValue | null {
+  get HashDigest(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -109,8 +109,8 @@ export class DxcShaderHashView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set HashDigest(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set HashDigest(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -119,7 +119,7 @@ export class DxcShaderHashView {
  */
 export interface DxcBuffer {
   /** ptr */
-  Ptr: Deno.PointerValue | Uint8Array | null;
+  Ptr: Deno.PointerValue | Uint8Array;
   /** usize */
   Size: Deno.PointerValue;
   /** u32 */
@@ -132,7 +132,7 @@ export function allocDxcBuffer(data?: Partial<DxcBuffer>): Uint8Array {
   const buf = new Uint8Array(sizeofDxcBuffer);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Ptr !== undefined) view.setBigUint64(0, data.Ptr === null ? 0n : BigInt(util.toPointer(data.Ptr)), true);
+  if (data?.Ptr !== undefined) view.setBigUint64(0, data.Ptr === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Ptr))), true);
   // 0x08: usize
   if (data?.Size !== undefined) view.setBigUint64(8, BigInt(data.Size), true);
   // 0x10: u32
@@ -152,9 +152,9 @@ export class DxcBufferView {
   }
 
   // 0x00: pointer
-  get Ptr(): Uint8Array | Deno.PointerValue | null {
+  get Ptr(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: usize
@@ -170,8 +170,8 @@ export class DxcBufferView {
   // 0x14: pad4
 
   // 0x00: pointer
-  set Ptr(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Ptr(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: usize
@@ -187,7 +187,7 @@ export class DxcBufferView {
   // 0x14: pad4
 }
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.Graphics.Direct3D.Dxc.DxcDefine (size: 16)
@@ -207,12 +207,12 @@ export function allocDxcDefine(data?: Partial<DxcDefine>): Uint8Array {
   // 0x00: buffer
   if (data?.Name !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.Name);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: buffer
   if (data?.Value !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.Value);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   return buf;
 }
@@ -228,27 +228,27 @@ export class DxcDefineView {
   }
 
   // 0x00: buffer
-  get Name(): Uint8Array | Deno.PointerValue | null {
+  get Name(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get Value(): Uint8Array | Deno.PointerValue | null {
+  get Value(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set Name(value: Uint8Array | Deno.PointerValue | null) {
+  set Name(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: buffer
-  set Value(value: Uint8Array | Deno.PointerValue | null) {
+  set Value(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 }
 
@@ -270,12 +270,12 @@ export function allocDxcArgPair(data?: Partial<DxcArgPair>): Uint8Array {
   // 0x00: buffer
   if (data?.pName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: buffer
   if (data?.pValue !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pValue);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   return buf;
 }
@@ -291,27 +291,27 @@ export class DxcArgPairView {
   }
 
   // 0x00: buffer
-  get pName(): Uint8Array | Deno.PointerValue | null {
+  get pName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get pValue(): Uint8Array | Deno.PointerValue | null {
+  get pValue(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set pName(value: Uint8Array | Deno.PointerValue | null) {
+  set pName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: buffer
-  set pValue(value: Uint8Array | Deno.PointerValue | null) {
+  set pValue(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 }
 
@@ -335,19 +335,19 @@ try {
 // Symbols
 
 export function DxcCreateInstance(
-  rclsid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  riid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdxcompiler_dll.DxcCreateInstance(util.toPointer(rclsid), util.toPointer(riid), util.toPointer(ppv)));
+  rclsid: Deno.PointerValue | Uint8Array /* ptr */,
+  riid: Deno.PointerValue | Uint8Array /* ptr */,
+  ppv: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libdxcompiler_dll.DxcCreateInstance(util.toPointer(rclsid), util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function DxcCreateInstance2(
-  pMalloc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IMalloc */,
-  rclsid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  riid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdxcompiler_dll.DxcCreateInstance2(util.toPointer(pMalloc), util.toPointer(rclsid), util.toPointer(riid), util.toPointer(ppv)));
+  pMalloc: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IMalloc */,
+  rclsid: Deno.PointerValue | Uint8Array /* ptr */,
+  riid: Deno.PointerValue | Uint8Array /* ptr */,
+  ppv: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libdxcompiler_dll.DxcCreateInstance2(util.toPointer(pMalloc), util.toPointer(rclsid), util.toPointer(riid), util.toPointer(ppv));
 }
 

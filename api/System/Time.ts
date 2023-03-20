@@ -160,15 +160,15 @@ export interface TIME_ZONE_INFORMATION {
   /** i32 */
   Bias: number;
   /** array */
-  StandardName: Deno.PointerValue | null;
+  StandardName: Deno.PointerValue;
   /** Windows.Win32.Foundation.SYSTEMTIME */
-  StandardDate: Uint8Array | Deno.PointerValue | null;
+  StandardDate: Uint8Array | Deno.PointerValue;
   /** i32 */
   StandardBias: number;
   /** array */
-  DaylightName: Deno.PointerValue | null;
+  DaylightName: Deno.PointerValue;
   /** Windows.Win32.Foundation.SYSTEMTIME */
-  DaylightDate: Uint8Array | Deno.PointerValue | null;
+  DaylightDate: Uint8Array | Deno.PointerValue;
   /** i32 */
   DaylightBias: number;
 }
@@ -182,16 +182,16 @@ export function allocTIME_ZONE_INFORMATION(data?: Partial<TIME_ZONE_INFORMATION>
   if (data?.Bias !== undefined) view.setInt32(0, Number(data.Bias), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.StandardName !== undefined) view.setBigUint64(8, data.StandardName === null ? 0n : BigInt(util.toPointer(data.StandardName)), true);
+  if (data?.StandardName !== undefined) view.setBigUint64(8, data.StandardName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.StandardName))), true);
   // 0x10: pointer
-  if (data?.StandardDate !== undefined) view.setBigUint64(16, data.StandardDate === null ? 0n : BigInt(util.toPointer(data.StandardDate)), true);
+  if (data?.StandardDate !== undefined) view.setBigUint64(16, data.StandardDate === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.StandardDate))), true);
   // 0x18: i32
   if (data?.StandardBias !== undefined) view.setInt32(24, Number(data.StandardBias), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.DaylightName !== undefined) view.setBigUint64(32, data.DaylightName === null ? 0n : BigInt(util.toPointer(data.DaylightName)), true);
+  if (data?.DaylightName !== undefined) view.setBigUint64(32, data.DaylightName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DaylightName))), true);
   // 0x28: pointer
-  if (data?.DaylightDate !== undefined) view.setBigUint64(40, data.DaylightDate === null ? 0n : BigInt(util.toPointer(data.DaylightDate)), true);
+  if (data?.DaylightDate !== undefined) view.setBigUint64(40, data.DaylightDate === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DaylightDate))), true);
   // 0x30: i32
   if (data?.DaylightBias !== undefined) view.setInt32(48, Number(data.DaylightBias), true);
   // 0x34: pad4
@@ -216,15 +216,15 @@ export class TIME_ZONE_INFORMATIONView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get StandardName(): Uint8Array | Deno.PointerValue | null {
+  get StandardName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get StandardDate(): Uint8Array | Deno.PointerValue | null {
+  get StandardDate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: i32
@@ -235,15 +235,15 @@ export class TIME_ZONE_INFORMATIONView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get DaylightName(): Uint8Array | Deno.PointerValue | null {
+  get DaylightName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get DaylightDate(): Uint8Array | Deno.PointerValue | null {
+  get DaylightDate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: i32
@@ -261,13 +261,13 @@ export class TIME_ZONE_INFORMATIONView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set StandardName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set StandardName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set StandardDate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set StandardDate(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: i32
@@ -278,13 +278,13 @@ export class TIME_ZONE_INFORMATIONView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set DaylightName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set DaylightName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set DaylightDate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set DaylightDate(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: i32
@@ -304,21 +304,21 @@ export interface DYNAMIC_TIME_ZONE_INFORMATION {
   /** i32 */
   Bias: number;
   /** array */
-  StandardName: Deno.PointerValue | null;
+  StandardName: Deno.PointerValue;
   /** Windows.Win32.Foundation.SYSTEMTIME */
-  StandardDate: Uint8Array | Deno.PointerValue | null;
+  StandardDate: Uint8Array | Deno.PointerValue;
   /** i32 */
   StandardBias: number;
   /** array */
-  DaylightName: Deno.PointerValue | null;
+  DaylightName: Deno.PointerValue;
   /** Windows.Win32.Foundation.SYSTEMTIME */
-  DaylightDate: Uint8Array | Deno.PointerValue | null;
+  DaylightDate: Uint8Array | Deno.PointerValue;
   /** i32 */
   DaylightBias: number;
   /** array */
-  TimeZoneKeyName: Deno.PointerValue | null;
+  TimeZoneKeyName: Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  DynamicDaylightTimeDisabled: Uint8Array | Deno.PointerValue | null;
+  DynamicDaylightTimeDisabled: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDYNAMIC_TIME_ZONE_INFORMATION = 72;
@@ -330,23 +330,23 @@ export function allocDYNAMIC_TIME_ZONE_INFORMATION(data?: Partial<DYNAMIC_TIME_Z
   if (data?.Bias !== undefined) view.setInt32(0, Number(data.Bias), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.StandardName !== undefined) view.setBigUint64(8, data.StandardName === null ? 0n : BigInt(util.toPointer(data.StandardName)), true);
+  if (data?.StandardName !== undefined) view.setBigUint64(8, data.StandardName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.StandardName))), true);
   // 0x10: pointer
-  if (data?.StandardDate !== undefined) view.setBigUint64(16, data.StandardDate === null ? 0n : BigInt(util.toPointer(data.StandardDate)), true);
+  if (data?.StandardDate !== undefined) view.setBigUint64(16, data.StandardDate === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.StandardDate))), true);
   // 0x18: i32
   if (data?.StandardBias !== undefined) view.setInt32(24, Number(data.StandardBias), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.DaylightName !== undefined) view.setBigUint64(32, data.DaylightName === null ? 0n : BigInt(util.toPointer(data.DaylightName)), true);
+  if (data?.DaylightName !== undefined) view.setBigUint64(32, data.DaylightName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DaylightName))), true);
   // 0x28: pointer
-  if (data?.DaylightDate !== undefined) view.setBigUint64(40, data.DaylightDate === null ? 0n : BigInt(util.toPointer(data.DaylightDate)), true);
+  if (data?.DaylightDate !== undefined) view.setBigUint64(40, data.DaylightDate === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DaylightDate))), true);
   // 0x30: i32
   if (data?.DaylightBias !== undefined) view.setInt32(48, Number(data.DaylightBias), true);
   // 0x34: pad4
   // 0x38: pointer
-  if (data?.TimeZoneKeyName !== undefined) view.setBigUint64(56, data.TimeZoneKeyName === null ? 0n : BigInt(util.toPointer(data.TimeZoneKeyName)), true);
+  if (data?.TimeZoneKeyName !== undefined) view.setBigUint64(56, data.TimeZoneKeyName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.TimeZoneKeyName))), true);
   // 0x40: pointer
-  if (data?.DynamicDaylightTimeDisabled !== undefined) view.setBigUint64(64, data.DynamicDaylightTimeDisabled === null ? 0n : BigInt(util.toPointer(data.DynamicDaylightTimeDisabled)), true);
+  if (data?.DynamicDaylightTimeDisabled !== undefined) view.setBigUint64(64, data.DynamicDaylightTimeDisabled === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DynamicDaylightTimeDisabled))), true);
   return buf;
 }
 
@@ -368,15 +368,15 @@ export class DYNAMIC_TIME_ZONE_INFORMATIONView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get StandardName(): Uint8Array | Deno.PointerValue | null {
+  get StandardName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get StandardDate(): Uint8Array | Deno.PointerValue | null {
+  get StandardDate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: i32
@@ -387,15 +387,15 @@ export class DYNAMIC_TIME_ZONE_INFORMATIONView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get DaylightName(): Uint8Array | Deno.PointerValue | null {
+  get DaylightName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get DaylightDate(): Uint8Array | Deno.PointerValue | null {
+  get DaylightDate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: i32
@@ -406,15 +406,15 @@ export class DYNAMIC_TIME_ZONE_INFORMATIONView {
   // 0x34: pad4
 
   // 0x38: pointer
-  get TimeZoneKeyName(): Uint8Array | Deno.PointerValue | null {
+  get TimeZoneKeyName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get DynamicDaylightTimeDisabled(): Uint8Array | Deno.PointerValue | null {
+  get DynamicDaylightTimeDisabled(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -425,13 +425,13 @@ export class DYNAMIC_TIME_ZONE_INFORMATIONView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set StandardName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set StandardName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set StandardDate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set StandardDate(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: i32
@@ -442,13 +442,13 @@ export class DYNAMIC_TIME_ZONE_INFORMATIONView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set DaylightName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set DaylightName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set DaylightDate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set DaylightDate(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: i32
@@ -459,13 +459,13 @@ export class DYNAMIC_TIME_ZONE_INFORMATIONView {
   // 0x34: pad4
 
   // 0x38: pointer
-  set TimeZoneKeyName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set TimeZoneKeyName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set DynamicDaylightTimeDisabled(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set DynamicDaylightTimeDisabled(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -546,110 +546,110 @@ try {
 // Symbols
 
 export function SystemTimeToTzSpecificLocalTime(
-  lpTimeZoneInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpUniversalTime: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpLocalTime: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpTimeZoneInformation: Deno.PointerValue | Uint8Array /* ptr */,
+  lpUniversalTime: Deno.PointerValue | Uint8Array /* ptr */,
+  lpLocalTime: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SystemTimeToTzSpecificLocalTime(util.toPointer(lpTimeZoneInformation), util.toPointer(lpUniversalTime), util.toPointer(lpLocalTime)));
 }
 
 export function TzSpecificLocalTimeToSystemTime(
-  lpTimeZoneInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpLocalTime: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpUniversalTime: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpTimeZoneInformation: Deno.PointerValue | Uint8Array /* ptr */,
+  lpLocalTime: Deno.PointerValue | Uint8Array /* ptr */,
+  lpUniversalTime: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.TzSpecificLocalTimeToSystemTime(util.toPointer(lpTimeZoneInformation), util.toPointer(lpLocalTime), util.toPointer(lpUniversalTime)));
 }
 
 export function FileTimeToSystemTime(
-  lpFileTime: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpSystemTime: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpFileTime: Deno.PointerValue | Uint8Array /* ptr */,
+  lpSystemTime: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.FileTimeToSystemTime(util.toPointer(lpFileTime), util.toPointer(lpSystemTime)));
 }
 
 export function SystemTimeToFileTime(
-  lpSystemTime: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpFileTime: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpSystemTime: Deno.PointerValue | Uint8Array /* ptr */,
+  lpFileTime: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SystemTimeToFileTime(util.toPointer(lpSystemTime), util.toPointer(lpFileTime)));
 }
 
 export function GetTimeZoneInformation(
-  lpTimeZoneInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpTimeZoneInformation: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetTimeZoneInformation(util.toPointer(lpTimeZoneInformation));
 }
 
 export function SetTimeZoneInformation(
-  lpTimeZoneInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpTimeZoneInformation: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetTimeZoneInformation(util.toPointer(lpTimeZoneInformation)));
 }
 
 export function SetDynamicTimeZoneInformation(
-  lpTimeZoneInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpTimeZoneInformation: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetDynamicTimeZoneInformation(util.toPointer(lpTimeZoneInformation)));
 }
 
 export function GetDynamicTimeZoneInformation(
-  pTimeZoneInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pTimeZoneInformation: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetDynamicTimeZoneInformation(util.toPointer(pTimeZoneInformation));
 }
 
 export function GetTimeZoneInformationForYear(
   wYear: number /* u16 */,
-  pdtzi: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ptzi: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pdtzi: Deno.PointerValue | Uint8Array /* ptr */,
+  ptzi: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetTimeZoneInformationForYear(wYear, util.toPointer(pdtzi), util.toPointer(ptzi)));
 }
 
 export function EnumDynamicTimeZoneInformation(
   dwIndex: number /* u32 */,
-  lpTimeZoneInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpTimeZoneInformation: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libADVAPI32_dll.EnumDynamicTimeZoneInformation(dwIndex, util.toPointer(lpTimeZoneInformation));
 }
 
 export function GetDynamicTimeZoneInformationEffectiveYears(
-  lpTimeZoneInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
-  FirstYear: Deno.PointerValue | Uint8Array | null /* ptr */,
-  LastYear: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpTimeZoneInformation: Deno.PointerValue | Uint8Array /* ptr */,
+  FirstYear: Deno.PointerValue | Uint8Array /* ptr */,
+  LastYear: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libADVAPI32_dll.GetDynamicTimeZoneInformationEffectiveYears(util.toPointer(lpTimeZoneInformation), util.toPointer(FirstYear), util.toPointer(LastYear));
 }
 
 export function SystemTimeToTzSpecificLocalTimeEx(
-  lpTimeZoneInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpUniversalTime: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpLocalTime: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpTimeZoneInformation: Deno.PointerValue | Uint8Array /* ptr */,
+  lpUniversalTime: Deno.PointerValue | Uint8Array /* ptr */,
+  lpLocalTime: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SystemTimeToTzSpecificLocalTimeEx(util.toPointer(lpTimeZoneInformation), util.toPointer(lpUniversalTime), util.toPointer(lpLocalTime)));
 }
 
 export function TzSpecificLocalTimeToSystemTimeEx(
-  lpTimeZoneInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpLocalTime: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpUniversalTime: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpTimeZoneInformation: Deno.PointerValue | Uint8Array /* ptr */,
+  lpLocalTime: Deno.PointerValue | Uint8Array /* ptr */,
+  lpUniversalTime: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.TzSpecificLocalTimeToSystemTimeEx(util.toPointer(lpTimeZoneInformation), util.toPointer(lpLocalTime), util.toPointer(lpUniversalTime)));
 }
 
 export function LocalFileTimeToLocalSystemTime(
-  timeZoneInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
-  localFileTime: Deno.PointerValue | Uint8Array | null /* ptr */,
-  localSystemTime: Deno.PointerValue | Uint8Array | null /* ptr */,
+  timeZoneInformation: Deno.PointerValue | Uint8Array /* ptr */,
+  localFileTime: Deno.PointerValue | Uint8Array /* ptr */,
+  localSystemTime: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.LocalFileTimeToLocalSystemTime(util.toPointer(timeZoneInformation), util.toPointer(localFileTime), util.toPointer(localSystemTime)));
 }
 
 export function LocalSystemTimeToLocalFileTime(
-  timeZoneInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
-  localSystemTime: Deno.PointerValue | Uint8Array | null /* ptr */,
-  localFileTime: Deno.PointerValue | Uint8Array | null /* ptr */,
+  timeZoneInformation: Deno.PointerValue | Uint8Array /* ptr */,
+  localSystemTime: Deno.PointerValue | Uint8Array /* ptr */,
+  localFileTime: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.LocalSystemTimeToLocalFileTime(util.toPointer(timeZoneInformation), util.toPointer(localSystemTime), util.toPointer(localFileTime)));
 }

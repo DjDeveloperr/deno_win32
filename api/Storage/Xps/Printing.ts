@@ -35,7 +35,7 @@ export interface XPS_JOB_STATUS {
   /** Windows.Win32.Storage.Xps.Printing.XPS_JOB_COMPLETION */
   completion: XPS_JOB_COMPLETION;
   /** Windows.Win32.Foundation.HRESULT */
-  jobStatus: Uint8Array | Deno.PointerValue | null;
+  jobStatus: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofXPS_JOB_STATUS = 32;
@@ -55,7 +55,7 @@ export function allocXPS_JOB_STATUS(data?: Partial<XPS_JOB_STATUS>): Uint8Array 
   if (data?.completion !== undefined) view.setInt32(16, Number(data.completion), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.jobStatus !== undefined) view.setBigUint64(24, data.jobStatus === null ? 0n : BigInt(util.toPointer(data.jobStatus)), true);
+  if (data?.jobStatus !== undefined) view.setBigUint64(24, data.jobStatus === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.jobStatus))), true);
   return buf;
 }
 
@@ -97,9 +97,9 @@ export class XPS_JOB_STATUSView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get jobStatus(): Uint8Array | Deno.PointerValue | null {
+  get jobStatus(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -130,8 +130,8 @@ export class XPS_JOB_STATUSView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set jobStatus(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set jobStatus(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -150,7 +150,7 @@ export interface PrintDocumentPackageStatus {
   /** Windows.Win32.Storage.Xps.Printing.PrintDocumentPackageCompletion */
   Completion: PrintDocumentPackageCompletion;
   /** Windows.Win32.Foundation.HRESULT */
-  PackageStatus: Uint8Array | Deno.PointerValue | null;
+  PackageStatus: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofPrintDocumentPackageStatus = 32;
@@ -170,7 +170,7 @@ export function allocPrintDocumentPackageStatus(data?: Partial<PrintDocumentPack
   if (data?.Completion !== undefined) view.setInt32(16, Number(data.Completion), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.PackageStatus !== undefined) view.setBigUint64(24, data.PackageStatus === null ? 0n : BigInt(util.toPointer(data.PackageStatus)), true);
+  if (data?.PackageStatus !== undefined) view.setBigUint64(24, data.PackageStatus === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.PackageStatus))), true);
   return buf;
 }
 
@@ -212,9 +212,9 @@ export class PrintDocumentPackageStatusView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get PackageStatus(): Uint8Array | Deno.PointerValue | null {
+  get PackageStatus(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -245,12 +245,12 @@ export class PrintDocumentPackageStatusView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set PackageStatus(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set PackageStatus(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 export type HANDLE = Deno.PointerValue;
 
@@ -275,26 +275,26 @@ export function StartXpsPrintJob(
   printerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   jobName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   outputFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  progressEvent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  completionEvent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  printablePagesOn: Deno.PointerValue | Uint8Array | null /* ptr */,
+  progressEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  completionEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  printablePagesOn: Deno.PointerValue | Uint8Array /* ptr */,
   printablePagesOnCount: number /* u32 */,
-  xpsPrintJob: Deno.PointerValue | Uint8Array | null /* ptr */,
-  documentStream: Deno.PointerValue | Uint8Array | null /* ptr */,
-  printTicketStream: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libXPSPRINT_dll.StartXpsPrintJob(util.pwstrToFfi(printerName), util.pwstrToFfi(jobName), util.pwstrToFfi(outputFileName), util.toPointer(progressEvent), util.toPointer(completionEvent), util.toPointer(printablePagesOn), printablePagesOnCount, util.toPointer(xpsPrintJob), util.toPointer(documentStream), util.toPointer(printTicketStream)));
+  xpsPrintJob: Deno.PointerValue | Uint8Array /* ptr */,
+  documentStream: Deno.PointerValue | Uint8Array /* ptr */,
+  printTicketStream: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libXPSPRINT_dll.StartXpsPrintJob(util.pwstrToFfi(printerName), util.pwstrToFfi(jobName), util.pwstrToFfi(outputFileName), util.toPointer(progressEvent), util.toPointer(completionEvent), util.toPointer(printablePagesOn), printablePagesOnCount, util.toPointer(xpsPrintJob), util.toPointer(documentStream), util.toPointer(printTicketStream));
 }
 
 export function StartXpsPrintJob1(
   printerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   jobName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   outputFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  progressEvent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  completionEvent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  xpsPrintJob: Deno.PointerValue | Uint8Array | null /* ptr */,
-  printContentReceiver: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libXPSPRINT_dll.StartXpsPrintJob1(util.pwstrToFfi(printerName), util.pwstrToFfi(jobName), util.pwstrToFfi(outputFileName), util.toPointer(progressEvent), util.toPointer(completionEvent), util.toPointer(xpsPrintJob), util.toPointer(printContentReceiver)));
+  progressEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  completionEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  xpsPrintJob: Deno.PointerValue | Uint8Array /* ptr */,
+  printContentReceiver: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libXPSPRINT_dll.StartXpsPrintJob1(util.pwstrToFfi(printerName), util.pwstrToFfi(jobName), util.pwstrToFfi(outputFileName), util.toPointer(progressEvent), util.toPointer(completionEvent), util.toPointer(xpsPrintJob), util.toPointer(printContentReceiver));
 }
 

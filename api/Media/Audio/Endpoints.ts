@@ -19,7 +19,7 @@ export const eConnectorCount = 4;
  */
 export interface PROPERTYKEY {
   /** System.Guid */
-  fmtid: Uint8Array | Deno.PointerValue | null;
+  fmtid: Uint8Array | Deno.PointerValue;
   /** u32 */
   pid: number;
 }
@@ -30,7 +30,7 @@ export function allocPROPERTYKEY(data?: Partial<PROPERTYKEY>): Uint8Array {
   const buf = new Uint8Array(sizeofPROPERTYKEY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.fmtid !== undefined) view.setBigUint64(0, data.fmtid === null ? 0n : BigInt(util.toPointer(data.fmtid)), true);
+  if (data?.fmtid !== undefined) view.setBigUint64(0, data.fmtid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fmtid))), true);
   // 0x08: u32
   if (data?.pid !== undefined) view.setUint32(8, Number(data.pid), true);
   // 0x0c: pad4
@@ -48,9 +48,9 @@ export class PROPERTYKEYView {
   }
 
   // 0x00: pointer
-  get fmtid(): Uint8Array | Deno.PointerValue | null {
+  get fmtid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -61,8 +61,8 @@ export class PROPERTYKEYView {
   // 0x0c: pad4
 
   // 0x00: pointer
-  set fmtid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set fmtid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -212,7 +212,7 @@ export interface AUDIO_ENDPOINT_SHARED_CREATE_PARAMS {
   /** Windows.Win32.Media.Audio.Endpoints.EndpointConnectorType */
   targetEndpointConnectorType: EndpointConnectorType;
   /** Windows.Win32.Media.Audio.WAVEFORMATEX */
-  wfxDeviceFormat: Uint8Array | Deno.PointerValue | null;
+  wfxDeviceFormat: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofAUDIO_ENDPOINT_SHARED_CREATE_PARAMS = 24;
@@ -228,7 +228,7 @@ export function allocAUDIO_ENDPOINT_SHARED_CREATE_PARAMS(data?: Partial<AUDIO_EN
   if (data?.targetEndpointConnectorType !== undefined) view.setInt32(8, Number(data.targetEndpointConnectorType), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.wfxDeviceFormat !== undefined) view.setBigUint64(16, data.wfxDeviceFormat === null ? 0n : BigInt(util.toPointer(data.wfxDeviceFormat)), true);
+  if (data?.wfxDeviceFormat !== undefined) view.setBigUint64(16, data.wfxDeviceFormat === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.wfxDeviceFormat))), true);
   return buf;
 }
 
@@ -260,9 +260,9 @@ export class AUDIO_ENDPOINT_SHARED_CREATE_PARAMSView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get wfxDeviceFormat(): Uint8Array | Deno.PointerValue | null {
+  get wfxDeviceFormat(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -283,8 +283,8 @@ export class AUDIO_ENDPOINT_SHARED_CREATE_PARAMSView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set wfxDeviceFormat(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set wfxDeviceFormat(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 

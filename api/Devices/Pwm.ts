@@ -408,7 +408,7 @@ export type BOOLEAN = number;
  */
 export interface PWM_PIN_IS_STARTED_OUTPUT {
   /** Windows.Win32.Foundation.BOOLEAN */
-  IsStarted: Uint8Array | Deno.PointerValue | null;
+  IsStarted: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofPWM_PIN_IS_STARTED_OUTPUT = 8;
@@ -417,7 +417,7 @@ export function allocPWM_PIN_IS_STARTED_OUTPUT(data?: Partial<PWM_PIN_IS_STARTED
   const buf = new Uint8Array(sizeofPWM_PIN_IS_STARTED_OUTPUT);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.IsStarted !== undefined) view.setBigUint64(0, data.IsStarted === null ? 0n : BigInt(util.toPointer(data.IsStarted)), true);
+  if (data?.IsStarted !== undefined) view.setBigUint64(0, data.IsStarted === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.IsStarted))), true);
   return buf;
 }
 
@@ -432,14 +432,14 @@ export class PWM_PIN_IS_STARTED_OUTPUTView {
   }
 
   // 0x00: pointer
-  get IsStarted(): Uint8Array | Deno.PointerValue | null {
+  get IsStarted(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set IsStarted(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set IsStarted(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 

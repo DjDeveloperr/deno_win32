@@ -173,11 +173,11 @@ export interface BSMINFO {
   /** u32 */
   cbSize: number;
   /** Windows.Win32.System.StationsAndDesktops.HDESK */
-  hdesk: Uint8Array | Deno.PointerValue | null;
+  hdesk: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.HWND */
-  hwnd: Deno.PointerValue | null;
+  hwnd: Deno.PointerValue;
   /** Windows.Win32.Foundation.LUID */
-  luid: Uint8Array | Deno.PointerValue | null;
+  luid: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofBSMINFO = 32;
@@ -189,11 +189,11 @@ export function allocBSMINFO(data?: Partial<BSMINFO>): Uint8Array {
   if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.hdesk !== undefined) view.setBigUint64(8, data.hdesk === null ? 0n : BigInt(util.toPointer(data.hdesk)), true);
+  if (data?.hdesk !== undefined) view.setBigUint64(8, data.hdesk === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hdesk))), true);
   // 0x10: pointer
-  if (data?.hwnd !== undefined) view.setBigUint64(16, data.hwnd === null ? 0n : BigInt(util.toPointer(data.hwnd)), true);
+  if (data?.hwnd !== undefined) view.setBigUint64(16, data.hwnd === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hwnd))), true);
   // 0x18: pointer
-  if (data?.luid !== undefined) view.setBigUint64(24, data.luid === null ? 0n : BigInt(util.toPointer(data.luid)), true);
+  if (data?.luid !== undefined) view.setBigUint64(24, data.luid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.luid))), true);
   return buf;
 }
 
@@ -215,21 +215,21 @@ export class BSMINFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get hdesk(): Uint8Array | Deno.PointerValue | null {
+  get hdesk(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get hwnd(): Uint8Array | Deno.PointerValue | null {
+  get hwnd(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get luid(): Uint8Array | Deno.PointerValue | null {
+  get luid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -240,24 +240,24 @@ export class BSMINFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set hdesk(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set hdesk(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set hwnd(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set hwnd(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set luid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set luid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
-export type PSTR = Deno.PointerValue | Uint8Array | null;
+export type PSTR = Deno.PointerValue | Uint8Array;
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 export type LPARAM = Deno.PointerValue;
 
@@ -401,49 +401,49 @@ try {
 export function CreateDesktopA(
   lpszDesktop: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpszDevice: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pDevmode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDevmode: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: DESKTOP_CONTROL_FLAGS /* Windows.Win32.System.StationsAndDesktops.DESKTOP_CONTROL_FLAGS */,
   dwDesiredAccess: number /* u32 */,
-  lpsa: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.System.StationsAndDesktops.HDESK */ {
-  return util.pointerFromFfi(libUSER32_dll.CreateDesktopA(util.pstrToFfi(lpszDesktop), util.pstrToFfi(lpszDevice), util.toPointer(pDevmode), dwFlags, dwDesiredAccess, util.toPointer(lpsa)));
+  lpsa: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.System.StationsAndDesktops.HDESK */ {
+  return libUSER32_dll.CreateDesktopA(util.pstrToFfi(lpszDesktop), util.pstrToFfi(lpszDevice), util.toPointer(pDevmode), dwFlags, dwDesiredAccess, util.toPointer(lpsa));
 }
 
 export function CreateDesktopW(
   lpszDesktop: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpszDevice: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pDevmode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDevmode: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: DESKTOP_CONTROL_FLAGS /* Windows.Win32.System.StationsAndDesktops.DESKTOP_CONTROL_FLAGS */,
   dwDesiredAccess: number /* u32 */,
-  lpsa: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.System.StationsAndDesktops.HDESK */ {
-  return util.pointerFromFfi(libUSER32_dll.CreateDesktopW(util.pwstrToFfi(lpszDesktop), util.pwstrToFfi(lpszDevice), util.toPointer(pDevmode), dwFlags, dwDesiredAccess, util.toPointer(lpsa)));
+  lpsa: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.System.StationsAndDesktops.HDESK */ {
+  return libUSER32_dll.CreateDesktopW(util.pwstrToFfi(lpszDesktop), util.pwstrToFfi(lpszDevice), util.toPointer(pDevmode), dwFlags, dwDesiredAccess, util.toPointer(lpsa));
 }
 
 export function CreateDesktopExA(
   lpszDesktop: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpszDevice: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pDevmode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDevmode: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: DESKTOP_CONTROL_FLAGS /* Windows.Win32.System.StationsAndDesktops.DESKTOP_CONTROL_FLAGS */,
   dwDesiredAccess: number /* u32 */,
-  lpsa: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpsa: Deno.PointerValue | Uint8Array /* ptr */,
   ulHeapSize: number /* u32 */,
-  pvoid: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.System.StationsAndDesktops.HDESK */ {
-  return util.pointerFromFfi(libUSER32_dll.CreateDesktopExA(util.pstrToFfi(lpszDesktop), util.pstrToFfi(lpszDevice), util.toPointer(pDevmode), dwFlags, dwDesiredAccess, util.toPointer(lpsa), ulHeapSize, util.toPointer(pvoid)));
+  pvoid: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.System.StationsAndDesktops.HDESK */ {
+  return libUSER32_dll.CreateDesktopExA(util.pstrToFfi(lpszDesktop), util.pstrToFfi(lpszDevice), util.toPointer(pDevmode), dwFlags, dwDesiredAccess, util.toPointer(lpsa), ulHeapSize, util.toPointer(pvoid));
 }
 
 export function CreateDesktopExW(
   lpszDesktop: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpszDevice: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pDevmode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDevmode: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: DESKTOP_CONTROL_FLAGS /* Windows.Win32.System.StationsAndDesktops.DESKTOP_CONTROL_FLAGS */,
   dwDesiredAccess: number /* u32 */,
-  lpsa: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpsa: Deno.PointerValue | Uint8Array /* ptr */,
   ulHeapSize: number /* u32 */,
-  pvoid: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.System.StationsAndDesktops.HDESK */ {
-  return util.pointerFromFfi(libUSER32_dll.CreateDesktopExW(util.pwstrToFfi(lpszDesktop), util.pwstrToFfi(lpszDevice), util.toPointer(pDevmode), dwFlags, dwDesiredAccess, util.toPointer(lpsa), ulHeapSize, util.toPointer(pvoid)));
+  pvoid: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.System.StationsAndDesktops.HDESK */ {
+  return libUSER32_dll.CreateDesktopExW(util.pwstrToFfi(lpszDesktop), util.pwstrToFfi(lpszDevice), util.toPointer(pDevmode), dwFlags, dwDesiredAccess, util.toPointer(lpsa), ulHeapSize, util.toPointer(pvoid));
 }
 
 export function OpenDesktopA(
@@ -451,8 +451,8 @@ export function OpenDesktopA(
   dwFlags: DESKTOP_CONTROL_FLAGS /* Windows.Win32.System.StationsAndDesktops.DESKTOP_CONTROL_FLAGS */,
   fInherit: boolean /* Windows.Win32.Foundation.BOOL */,
   dwDesiredAccess: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.System.StationsAndDesktops.HDESK */ {
-  return util.pointerFromFfi(libUSER32_dll.OpenDesktopA(util.pstrToFfi(lpszDesktop), dwFlags, util.boolToFfi(fInherit), dwDesiredAccess));
+): Deno.PointerValue /* Windows.Win32.System.StationsAndDesktops.HDESK */ {
+  return libUSER32_dll.OpenDesktopA(util.pstrToFfi(lpszDesktop), dwFlags, util.boolToFfi(fInherit), dwDesiredAccess);
 }
 
 export function OpenDesktopW(
@@ -460,163 +460,163 @@ export function OpenDesktopW(
   dwFlags: DESKTOP_CONTROL_FLAGS /* Windows.Win32.System.StationsAndDesktops.DESKTOP_CONTROL_FLAGS */,
   fInherit: boolean /* Windows.Win32.Foundation.BOOL */,
   dwDesiredAccess: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.System.StationsAndDesktops.HDESK */ {
-  return util.pointerFromFfi(libUSER32_dll.OpenDesktopW(util.pwstrToFfi(lpszDesktop), dwFlags, util.boolToFfi(fInherit), dwDesiredAccess));
+): Deno.PointerValue /* Windows.Win32.System.StationsAndDesktops.HDESK */ {
+  return libUSER32_dll.OpenDesktopW(util.pwstrToFfi(lpszDesktop), dwFlags, util.boolToFfi(fInherit), dwDesiredAccess);
 }
 
 export function OpenInputDesktop(
   dwFlags: DESKTOP_CONTROL_FLAGS /* Windows.Win32.System.StationsAndDesktops.DESKTOP_CONTROL_FLAGS */,
   fInherit: boolean /* Windows.Win32.Foundation.BOOL */,
   dwDesiredAccess: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.System.StationsAndDesktops.HDESK */ {
-  return util.pointerFromFfi(libUSER32_dll.OpenInputDesktop(dwFlags, util.boolToFfi(fInherit), dwDesiredAccess));
+): Deno.PointerValue /* Windows.Win32.System.StationsAndDesktops.HDESK */ {
+  return libUSER32_dll.OpenInputDesktop(dwFlags, util.boolToFfi(fInherit), dwDesiredAccess);
 }
 
 export function EnumDesktopsA(
-  hwinsta: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.StationsAndDesktops.HWINSTA */,
-  lpEnumFunc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.StationsAndDesktops.DESKTOPENUMPROCA */,
-  lParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
+  hwinsta: Uint8Array | Deno.PointerValue /* Windows.Win32.System.StationsAndDesktops.HWINSTA */,
+  lpEnumFunc: Uint8Array | Deno.PointerValue /* Windows.Win32.System.StationsAndDesktops.DESKTOPENUMPROCA */,
+  lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.EnumDesktopsA(util.toPointer(hwinsta), util.toPointer(lpEnumFunc), util.toPointer(lParam)));
 }
 
 export function EnumDesktopsW(
-  hwinsta: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.StationsAndDesktops.HWINSTA */,
-  lpEnumFunc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.StationsAndDesktops.DESKTOPENUMPROCW */,
-  lParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
+  hwinsta: Uint8Array | Deno.PointerValue /* Windows.Win32.System.StationsAndDesktops.HWINSTA */,
+  lpEnumFunc: Uint8Array | Deno.PointerValue /* Windows.Win32.System.StationsAndDesktops.DESKTOPENUMPROCW */,
+  lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.EnumDesktopsW(util.toPointer(hwinsta), util.toPointer(lpEnumFunc), util.toPointer(lParam)));
 }
 
 export function EnumDesktopWindows(
-  hDesktop: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.StationsAndDesktops.HDESK */,
-  lpfn: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.WindowsAndMessaging.WNDENUMPROC */,
-  lParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
+  hDesktop: Uint8Array | Deno.PointerValue /* Windows.Win32.System.StationsAndDesktops.HDESK */,
+  lpfn: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.WNDENUMPROC */,
+  lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.EnumDesktopWindows(util.toPointer(hDesktop), util.toPointer(lpfn), util.toPointer(lParam)));
 }
 
 export function SwitchDesktop(
-  hDesktop: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.StationsAndDesktops.HDESK */,
+  hDesktop: Uint8Array | Deno.PointerValue /* Windows.Win32.System.StationsAndDesktops.HDESK */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.SwitchDesktop(util.toPointer(hDesktop)));
 }
 
 export function SetThreadDesktop(
-  hDesktop: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.StationsAndDesktops.HDESK */,
+  hDesktop: Uint8Array | Deno.PointerValue /* Windows.Win32.System.StationsAndDesktops.HDESK */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.SetThreadDesktop(util.toPointer(hDesktop)));
 }
 
 export function CloseDesktop(
-  hDesktop: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.StationsAndDesktops.HDESK */,
+  hDesktop: Uint8Array | Deno.PointerValue /* Windows.Win32.System.StationsAndDesktops.HDESK */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.CloseDesktop(util.toPointer(hDesktop)));
 }
 
 export function GetThreadDesktop(
   dwThreadId: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.System.StationsAndDesktops.HDESK */ {
-  return util.pointerFromFfi(libUSER32_dll.GetThreadDesktop(dwThreadId));
+): Deno.PointerValue /* Windows.Win32.System.StationsAndDesktops.HDESK */ {
+  return libUSER32_dll.GetThreadDesktop(dwThreadId);
 }
 
 export function CreateWindowStationA(
   lpwinsta: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
   dwDesiredAccess: number /* u32 */,
-  lpsa: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.System.StationsAndDesktops.HWINSTA */ {
-  return util.pointerFromFfi(libUSER32_dll.CreateWindowStationA(util.pstrToFfi(lpwinsta), dwFlags, dwDesiredAccess, util.toPointer(lpsa)));
+  lpsa: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.System.StationsAndDesktops.HWINSTA */ {
+  return libUSER32_dll.CreateWindowStationA(util.pstrToFfi(lpwinsta), dwFlags, dwDesiredAccess, util.toPointer(lpsa));
 }
 
 export function CreateWindowStationW(
   lpwinsta: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   dwDesiredAccess: number /* u32 */,
-  lpsa: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.System.StationsAndDesktops.HWINSTA */ {
-  return util.pointerFromFfi(libUSER32_dll.CreateWindowStationW(util.pwstrToFfi(lpwinsta), dwFlags, dwDesiredAccess, util.toPointer(lpsa)));
+  lpsa: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.System.StationsAndDesktops.HWINSTA */ {
+  return libUSER32_dll.CreateWindowStationW(util.pwstrToFfi(lpwinsta), dwFlags, dwDesiredAccess, util.toPointer(lpsa));
 }
 
 export function OpenWindowStationA(
   lpszWinSta: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fInherit: boolean /* Windows.Win32.Foundation.BOOL */,
   dwDesiredAccess: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.System.StationsAndDesktops.HWINSTA */ {
-  return util.pointerFromFfi(libUSER32_dll.OpenWindowStationA(util.pstrToFfi(lpszWinSta), util.boolToFfi(fInherit), dwDesiredAccess));
+): Deno.PointerValue /* Windows.Win32.System.StationsAndDesktops.HWINSTA */ {
+  return libUSER32_dll.OpenWindowStationA(util.pstrToFfi(lpszWinSta), util.boolToFfi(fInherit), dwDesiredAccess);
 }
 
 export function OpenWindowStationW(
   lpszWinSta: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fInherit: boolean /* Windows.Win32.Foundation.BOOL */,
   dwDesiredAccess: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.System.StationsAndDesktops.HWINSTA */ {
-  return util.pointerFromFfi(libUSER32_dll.OpenWindowStationW(util.pwstrToFfi(lpszWinSta), util.boolToFfi(fInherit), dwDesiredAccess));
+): Deno.PointerValue /* Windows.Win32.System.StationsAndDesktops.HWINSTA */ {
+  return libUSER32_dll.OpenWindowStationW(util.pwstrToFfi(lpszWinSta), util.boolToFfi(fInherit), dwDesiredAccess);
 }
 
 export function EnumWindowStationsA(
-  lpEnumFunc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.StationsAndDesktops.WINSTAENUMPROCA */,
-  lParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
+  lpEnumFunc: Uint8Array | Deno.PointerValue /* Windows.Win32.System.StationsAndDesktops.WINSTAENUMPROCA */,
+  lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.EnumWindowStationsA(util.toPointer(lpEnumFunc), util.toPointer(lParam)));
 }
 
 export function EnumWindowStationsW(
-  lpEnumFunc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.StationsAndDesktops.WINSTAENUMPROCW */,
-  lParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
+  lpEnumFunc: Uint8Array | Deno.PointerValue /* Windows.Win32.System.StationsAndDesktops.WINSTAENUMPROCW */,
+  lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.EnumWindowStationsW(util.toPointer(lpEnumFunc), util.toPointer(lParam)));
 }
 
 export function CloseWindowStation(
-  hWinSta: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.StationsAndDesktops.HWINSTA */,
+  hWinSta: Uint8Array | Deno.PointerValue /* Windows.Win32.System.StationsAndDesktops.HWINSTA */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.CloseWindowStation(util.toPointer(hWinSta)));
 }
 
 export function SetProcessWindowStation(
-  hWinSta: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.StationsAndDesktops.HWINSTA */,
+  hWinSta: Uint8Array | Deno.PointerValue /* Windows.Win32.System.StationsAndDesktops.HWINSTA */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.SetProcessWindowStation(util.toPointer(hWinSta)));
 }
 
-export function GetProcessWindowStation(): Deno.PointerValue | null /* Windows.Win32.System.StationsAndDesktops.HWINSTA */ {
-  return util.pointerFromFfi(libUSER32_dll.GetProcessWindowStation());
+export function GetProcessWindowStation(): Deno.PointerValue /* Windows.Win32.System.StationsAndDesktops.HWINSTA */ {
+  return libUSER32_dll.GetProcessWindowStation();
 }
 
 export function GetUserObjectInformationA(
-  hObj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hObj: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   nIndex: USER_OBJECT_INFORMATION_INDEX /* Windows.Win32.System.StationsAndDesktops.USER_OBJECT_INFORMATION_INDEX */,
-  pvInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pvInfo: Deno.PointerValue | Uint8Array /* ptr */,
   nLength: number /* u32 */,
-  lpnLengthNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpnLengthNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.GetUserObjectInformationA(util.toPointer(hObj), nIndex, util.toPointer(pvInfo), nLength, util.toPointer(lpnLengthNeeded)));
 }
 
 export function GetUserObjectInformationW(
-  hObj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hObj: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   nIndex: USER_OBJECT_INFORMATION_INDEX /* Windows.Win32.System.StationsAndDesktops.USER_OBJECT_INFORMATION_INDEX */,
-  pvInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pvInfo: Deno.PointerValue | Uint8Array /* ptr */,
   nLength: number /* u32 */,
-  lpnLengthNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpnLengthNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.GetUserObjectInformationW(util.toPointer(hObj), nIndex, util.toPointer(pvInfo), nLength, util.toPointer(lpnLengthNeeded)));
 }
 
 export function SetUserObjectInformationA(
-  hObj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hObj: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   nIndex: number /* i32 */,
-  pvInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pvInfo: Deno.PointerValue | Uint8Array /* ptr */,
   nLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.SetUserObjectInformationA(util.toPointer(hObj), nIndex, util.toPointer(pvInfo), nLength));
 }
 
 export function SetUserObjectInformationW(
-  hObj: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hObj: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   nIndex: number /* i32 */,
-  pvInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pvInfo: Deno.PointerValue | Uint8Array /* ptr */,
   nLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.SetUserObjectInformationW(util.toPointer(hObj), nIndex, util.toPointer(pvInfo), nLength));
@@ -624,42 +624,42 @@ export function SetUserObjectInformationW(
 
 export function BroadcastSystemMessageExA(
   flags: BROADCAST_SYSTEM_MESSAGE_FLAGS /* Windows.Win32.System.StationsAndDesktops.BROADCAST_SYSTEM_MESSAGE_FLAGS */,
-  lpInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpInfo: Deno.PointerValue | Uint8Array /* ptr */,
   Msg: number /* u32 */,
-  wParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.WPARAM */,
-  lParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
-  pbsmInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  wParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.WPARAM */,
+  lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
+  pbsmInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libUSER32_dll.BroadcastSystemMessageExA(flags, util.toPointer(lpInfo), Msg, util.toPointer(wParam), util.toPointer(lParam), util.toPointer(pbsmInfo));
 }
 
 export function BroadcastSystemMessageExW(
   flags: BROADCAST_SYSTEM_MESSAGE_FLAGS /* Windows.Win32.System.StationsAndDesktops.BROADCAST_SYSTEM_MESSAGE_FLAGS */,
-  lpInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpInfo: Deno.PointerValue | Uint8Array /* ptr */,
   Msg: number /* u32 */,
-  wParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.WPARAM */,
-  lParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
-  pbsmInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  wParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.WPARAM */,
+  lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
+  pbsmInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libUSER32_dll.BroadcastSystemMessageExW(flags, util.toPointer(lpInfo), Msg, util.toPointer(wParam), util.toPointer(lParam), util.toPointer(pbsmInfo));
 }
 
 export function BroadcastSystemMessageA(
   flags: number /* u32 */,
-  lpInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpInfo: Deno.PointerValue | Uint8Array /* ptr */,
   Msg: number /* u32 */,
-  wParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.WPARAM */,
-  lParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
+  wParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.WPARAM */,
+  lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): number /* i32 */ {
   return libUSER32_dll.BroadcastSystemMessageA(flags, util.toPointer(lpInfo), Msg, util.toPointer(wParam), util.toPointer(lParam));
 }
 
 export function BroadcastSystemMessageW(
   flags: BROADCAST_SYSTEM_MESSAGE_FLAGS /* Windows.Win32.System.StationsAndDesktops.BROADCAST_SYSTEM_MESSAGE_FLAGS */,
-  lpInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpInfo: Deno.PointerValue | Uint8Array /* ptr */,
   Msg: number /* u32 */,
-  wParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.WPARAM */,
-  lParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
+  wParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.WPARAM */,
+  lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): number /* i32 */ {
   return libUSER32_dll.BroadcastSystemMessageW(flags, util.toPointer(lpInfo), Msg, util.toPointer(wParam), util.toPointer(lParam));
 }

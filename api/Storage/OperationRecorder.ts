@@ -176,13 +176,13 @@ try {
 // Symbols
 
 export function OperationStart(
-  OperationStartParams: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OperationStartParams: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libADVAPI32_dll.OperationStart(util.toPointer(OperationStartParams)));
 }
 
 export function OperationEnd(
-  OperationEndParams: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OperationEndParams: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libADVAPI32_dll.OperationEnd(util.toPointer(OperationEndParams)));
 }

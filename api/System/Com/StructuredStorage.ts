@@ -208,7 +208,7 @@ export interface BSTRBLOB {
   /** u32 */
   cbSize: number;
   /** ptr */
-  pData: Deno.PointerValue | Uint8Array | null;
+  pData: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofBSTRBLOB = 16;
@@ -220,7 +220,7 @@ export function allocBSTRBLOB(data?: Partial<BSTRBLOB>): Uint8Array {
   if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pData !== undefined) view.setBigUint64(8, data.pData === null ? 0n : BigInt(util.toPointer(data.pData)), true);
+  if (data?.pData !== undefined) view.setBigUint64(8, data.pData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pData))), true);
   return buf;
 }
 
@@ -242,9 +242,9 @@ export class BSTRBLOBView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pData(): Uint8Array | Deno.PointerValue | null {
+  get pData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -255,8 +255,8 @@ export class BSTRBLOBView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -269,7 +269,7 @@ export interface CLIPDATA {
   /** i32 */
   ulClipFmt: number;
   /** ptr */
-  pClipData: Deno.PointerValue | Uint8Array | null;
+  pClipData: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofCLIPDATA = 16;
@@ -282,7 +282,7 @@ export function allocCLIPDATA(data?: Partial<CLIPDATA>): Uint8Array {
   // 0x04: i32
   if (data?.ulClipFmt !== undefined) view.setInt32(4, Number(data.ulClipFmt), true);
   // 0x08: pointer
-  if (data?.pClipData !== undefined) view.setBigUint64(8, data.pClipData === null ? 0n : BigInt(util.toPointer(data.pClipData)), true);
+  if (data?.pClipData !== undefined) view.setBigUint64(8, data.pClipData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pClipData))), true);
   return buf;
 }
 
@@ -307,9 +307,9 @@ export class CLIPDATAView {
   }
 
   // 0x08: pointer
-  get pClipData(): Uint8Array | Deno.PointerValue | null {
+  get pClipData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -323,8 +323,8 @@ export class CLIPDATAView {
   }
 
   // 0x08: pointer
-  set pClipData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pClipData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -337,7 +337,7 @@ export interface RemSNB {
   /** u32 */
   ulCntChar: number;
   /** array */
-  rgString: Deno.PointerValue | null;
+  rgString: Deno.PointerValue;
 }
 
 export const sizeofRemSNB = 16;
@@ -350,7 +350,7 @@ export function allocRemSNB(data?: Partial<RemSNB>): Uint8Array {
   // 0x04: u32
   if (data?.ulCntChar !== undefined) view.setUint32(4, Number(data.ulCntChar), true);
   // 0x08: pointer
-  if (data?.rgString !== undefined) view.setBigUint64(8, data.rgString === null ? 0n : BigInt(util.toPointer(data.rgString)), true);
+  if (data?.rgString !== undefined) view.setBigUint64(8, data.rgString === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgString))), true);
   return buf;
 }
 
@@ -375,9 +375,9 @@ export class RemSNBView {
   }
 
   // 0x08: pointer
-  get rgString(): Uint8Array | Deno.PointerValue | null {
+  get rgString(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -391,8 +391,8 @@ export class RemSNBView {
   }
 
   // 0x08: pointer
-  set rgString(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set rgString(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -401,9 +401,9 @@ export class RemSNBView {
  */
 export interface VERSIONEDSTREAM {
   /** System.Guid */
-  guidVersion: Uint8Array | Deno.PointerValue | null;
+  guidVersion: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Com.IStream */
-  pStream: Uint8Array | Deno.PointerValue | null;
+  pStream: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofVERSIONEDSTREAM = 16;
@@ -412,9 +412,9 @@ export function allocVERSIONEDSTREAM(data?: Partial<VERSIONEDSTREAM>): Uint8Arra
   const buf = new Uint8Array(sizeofVERSIONEDSTREAM);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.guidVersion !== undefined) view.setBigUint64(0, data.guidVersion === null ? 0n : BigInt(util.toPointer(data.guidVersion)), true);
+  if (data?.guidVersion !== undefined) view.setBigUint64(0, data.guidVersion === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.guidVersion))), true);
   // 0x08: pointer
-  if (data?.pStream !== undefined) view.setBigUint64(8, data.pStream === null ? 0n : BigInt(util.toPointer(data.pStream)), true);
+  if (data?.pStream !== undefined) view.setBigUint64(8, data.pStream === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pStream))), true);
   return buf;
 }
 
@@ -429,29 +429,29 @@ export class VERSIONEDSTREAMView {
   }
 
   // 0x00: pointer
-  get guidVersion(): Uint8Array | Deno.PointerValue | null {
+  get guidVersion(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get pStream(): Uint8Array | Deno.PointerValue | null {
+  get pStream(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set guidVersion(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set guidVersion(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set pStream(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pStream(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
-export type PSTR = Deno.PointerValue | Uint8Array | null;
+export type PSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.System.Com.StructuredStorage.CAC (size: 16)
@@ -474,7 +474,7 @@ export function allocCAC(data?: Partial<CAC>): Uint8Array {
   // 0x08: buffer
   if (data?.pElems !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.pElems);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   return buf;
 }
@@ -497,9 +497,9 @@ export class CACView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get pElems(): Uint8Array | Deno.PointerValue | null {
+  get pElems(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -510,9 +510,9 @@ export class CACView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set pElems(value: Uint8Array | Deno.PointerValue | null) {
+  set pElems(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 }
 
@@ -523,7 +523,7 @@ export interface CAUB {
   /** u32 */
   cElems: number;
   /** ptr */
-  pElems: Deno.PointerValue | Uint8Array | null;
+  pElems: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofCAUB = 16;
@@ -535,7 +535,7 @@ export function allocCAUB(data?: Partial<CAUB>): Uint8Array {
   if (data?.cElems !== undefined) view.setUint32(0, Number(data.cElems), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(util.toPointer(data.pElems)), true);
+  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pElems))), true);
   return buf;
 }
 
@@ -557,9 +557,9 @@ export class CAUBView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pElems(): Uint8Array | Deno.PointerValue | null {
+  get pElems(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -570,8 +570,8 @@ export class CAUBView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pElems(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pElems(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -582,7 +582,7 @@ export interface CAI {
   /** u32 */
   cElems: number;
   /** ptr */
-  pElems: Deno.PointerValue | Uint8Array | null;
+  pElems: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofCAI = 16;
@@ -594,7 +594,7 @@ export function allocCAI(data?: Partial<CAI>): Uint8Array {
   if (data?.cElems !== undefined) view.setUint32(0, Number(data.cElems), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(util.toPointer(data.pElems)), true);
+  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pElems))), true);
   return buf;
 }
 
@@ -616,9 +616,9 @@ export class CAIView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pElems(): Uint8Array | Deno.PointerValue | null {
+  get pElems(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -629,8 +629,8 @@ export class CAIView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pElems(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pElems(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -641,7 +641,7 @@ export interface CAUI {
   /** u32 */
   cElems: number;
   /** ptr */
-  pElems: Deno.PointerValue | Uint8Array | null;
+  pElems: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofCAUI = 16;
@@ -653,7 +653,7 @@ export function allocCAUI(data?: Partial<CAUI>): Uint8Array {
   if (data?.cElems !== undefined) view.setUint32(0, Number(data.cElems), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(util.toPointer(data.pElems)), true);
+  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pElems))), true);
   return buf;
 }
 
@@ -675,9 +675,9 @@ export class CAUIView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pElems(): Uint8Array | Deno.PointerValue | null {
+  get pElems(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -688,8 +688,8 @@ export class CAUIView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pElems(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pElems(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -700,7 +700,7 @@ export interface CAL {
   /** u32 */
   cElems: number;
   /** ptr */
-  pElems: Deno.PointerValue | Uint8Array | null;
+  pElems: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofCAL = 16;
@@ -712,7 +712,7 @@ export function allocCAL(data?: Partial<CAL>): Uint8Array {
   if (data?.cElems !== undefined) view.setUint32(0, Number(data.cElems), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(util.toPointer(data.pElems)), true);
+  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pElems))), true);
   return buf;
 }
 
@@ -734,9 +734,9 @@ export class CALView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pElems(): Uint8Array | Deno.PointerValue | null {
+  get pElems(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -747,8 +747,8 @@ export class CALView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pElems(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pElems(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -759,7 +759,7 @@ export interface CAUL {
   /** u32 */
   cElems: number;
   /** ptr */
-  pElems: Deno.PointerValue | Uint8Array | null;
+  pElems: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofCAUL = 16;
@@ -771,7 +771,7 @@ export function allocCAUL(data?: Partial<CAUL>): Uint8Array {
   if (data?.cElems !== undefined) view.setUint32(0, Number(data.cElems), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(util.toPointer(data.pElems)), true);
+  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pElems))), true);
   return buf;
 }
 
@@ -793,9 +793,9 @@ export class CAULView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pElems(): Uint8Array | Deno.PointerValue | null {
+  get pElems(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -806,8 +806,8 @@ export class CAULView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pElems(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pElems(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -818,7 +818,7 @@ export interface CAFLT {
   /** u32 */
   cElems: number;
   /** ptr */
-  pElems: Deno.PointerValue | Uint8Array | null;
+  pElems: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofCAFLT = 16;
@@ -830,7 +830,7 @@ export function allocCAFLT(data?: Partial<CAFLT>): Uint8Array {
   if (data?.cElems !== undefined) view.setUint32(0, Number(data.cElems), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(util.toPointer(data.pElems)), true);
+  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pElems))), true);
   return buf;
 }
 
@@ -852,9 +852,9 @@ export class CAFLTView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pElems(): Uint8Array | Deno.PointerValue | null {
+  get pElems(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -865,8 +865,8 @@ export class CAFLTView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pElems(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pElems(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -877,7 +877,7 @@ export interface CADBL {
   /** u32 */
   cElems: number;
   /** ptr */
-  pElems: Deno.PointerValue | Uint8Array | null;
+  pElems: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofCADBL = 16;
@@ -889,7 +889,7 @@ export function allocCADBL(data?: Partial<CADBL>): Uint8Array {
   if (data?.cElems !== undefined) view.setUint32(0, Number(data.cElems), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(util.toPointer(data.pElems)), true);
+  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pElems))), true);
   return buf;
 }
 
@@ -911,9 +911,9 @@ export class CADBLView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pElems(): Uint8Array | Deno.PointerValue | null {
+  get pElems(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -924,8 +924,8 @@ export class CADBLView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pElems(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pElems(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -936,7 +936,7 @@ export interface CACY {
   /** u32 */
   cElems: number;
   /** ptr */
-  pElems: Deno.PointerValue | Uint8Array | null;
+  pElems: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofCACY = 16;
@@ -948,7 +948,7 @@ export function allocCACY(data?: Partial<CACY>): Uint8Array {
   if (data?.cElems !== undefined) view.setUint32(0, Number(data.cElems), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(util.toPointer(data.pElems)), true);
+  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pElems))), true);
   return buf;
 }
 
@@ -970,9 +970,9 @@ export class CACYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pElems(): Uint8Array | Deno.PointerValue | null {
+  get pElems(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -983,8 +983,8 @@ export class CACYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pElems(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pElems(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -995,7 +995,7 @@ export interface CADATE {
   /** u32 */
   cElems: number;
   /** ptr */
-  pElems: Deno.PointerValue | Uint8Array | null;
+  pElems: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofCADATE = 16;
@@ -1007,7 +1007,7 @@ export function allocCADATE(data?: Partial<CADATE>): Uint8Array {
   if (data?.cElems !== undefined) view.setUint32(0, Number(data.cElems), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(util.toPointer(data.pElems)), true);
+  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pElems))), true);
   return buf;
 }
 
@@ -1029,9 +1029,9 @@ export class CADATEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pElems(): Uint8Array | Deno.PointerValue | null {
+  get pElems(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1042,8 +1042,8 @@ export class CADATEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pElems(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pElems(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1054,7 +1054,7 @@ export interface CABSTR {
   /** u32 */
   cElems: number;
   /** ptr */
-  pElems: Deno.PointerValue | Uint8Array | null;
+  pElems: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofCABSTR = 16;
@@ -1066,7 +1066,7 @@ export function allocCABSTR(data?: Partial<CABSTR>): Uint8Array {
   if (data?.cElems !== undefined) view.setUint32(0, Number(data.cElems), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(util.toPointer(data.pElems)), true);
+  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pElems))), true);
   return buf;
 }
 
@@ -1088,9 +1088,9 @@ export class CABSTRView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pElems(): Uint8Array | Deno.PointerValue | null {
+  get pElems(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1101,8 +1101,8 @@ export class CABSTRView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pElems(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pElems(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1113,7 +1113,7 @@ export interface CABSTRBLOB {
   /** u32 */
   cElems: number;
   /** ptr */
-  pElems: Deno.PointerValue | Uint8Array | null;
+  pElems: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofCABSTRBLOB = 16;
@@ -1125,7 +1125,7 @@ export function allocCABSTRBLOB(data?: Partial<CABSTRBLOB>): Uint8Array {
   if (data?.cElems !== undefined) view.setUint32(0, Number(data.cElems), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(util.toPointer(data.pElems)), true);
+  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pElems))), true);
   return buf;
 }
 
@@ -1147,9 +1147,9 @@ export class CABSTRBLOBView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pElems(): Uint8Array | Deno.PointerValue | null {
+  get pElems(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1160,8 +1160,8 @@ export class CABSTRBLOBView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pElems(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pElems(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1172,7 +1172,7 @@ export interface CABOOL {
   /** u32 */
   cElems: number;
   /** ptr */
-  pElems: Deno.PointerValue | Uint8Array | null;
+  pElems: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofCABOOL = 16;
@@ -1184,7 +1184,7 @@ export function allocCABOOL(data?: Partial<CABOOL>): Uint8Array {
   if (data?.cElems !== undefined) view.setUint32(0, Number(data.cElems), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(util.toPointer(data.pElems)), true);
+  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pElems))), true);
   return buf;
 }
 
@@ -1206,9 +1206,9 @@ export class CABOOLView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pElems(): Uint8Array | Deno.PointerValue | null {
+  get pElems(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1219,8 +1219,8 @@ export class CABOOLView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pElems(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pElems(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1231,7 +1231,7 @@ export interface CASCODE {
   /** u32 */
   cElems: number;
   /** ptr */
-  pElems: Deno.PointerValue | Uint8Array | null;
+  pElems: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofCASCODE = 16;
@@ -1243,7 +1243,7 @@ export function allocCASCODE(data?: Partial<CASCODE>): Uint8Array {
   if (data?.cElems !== undefined) view.setUint32(0, Number(data.cElems), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(util.toPointer(data.pElems)), true);
+  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pElems))), true);
   return buf;
 }
 
@@ -1265,9 +1265,9 @@ export class CASCODEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pElems(): Uint8Array | Deno.PointerValue | null {
+  get pElems(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1278,8 +1278,8 @@ export class CASCODEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pElems(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pElems(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1290,7 +1290,7 @@ export interface CAPROPVARIANT {
   /** u32 */
   cElems: number;
   /** ptr */
-  pElems: Deno.PointerValue | Uint8Array | null;
+  pElems: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofCAPROPVARIANT = 16;
@@ -1302,7 +1302,7 @@ export function allocCAPROPVARIANT(data?: Partial<CAPROPVARIANT>): Uint8Array {
   if (data?.cElems !== undefined) view.setUint32(0, Number(data.cElems), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(util.toPointer(data.pElems)), true);
+  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pElems))), true);
   return buf;
 }
 
@@ -1324,9 +1324,9 @@ export class CAPROPVARIANTView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pElems(): Uint8Array | Deno.PointerValue | null {
+  get pElems(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1337,8 +1337,8 @@ export class CAPROPVARIANTView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pElems(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pElems(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1349,7 +1349,7 @@ export interface CAH {
   /** u32 */
   cElems: number;
   /** ptr */
-  pElems: Deno.PointerValue | Uint8Array | null;
+  pElems: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofCAH = 16;
@@ -1361,7 +1361,7 @@ export function allocCAH(data?: Partial<CAH>): Uint8Array {
   if (data?.cElems !== undefined) view.setUint32(0, Number(data.cElems), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(util.toPointer(data.pElems)), true);
+  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pElems))), true);
   return buf;
 }
 
@@ -1383,9 +1383,9 @@ export class CAHView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pElems(): Uint8Array | Deno.PointerValue | null {
+  get pElems(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1396,8 +1396,8 @@ export class CAHView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pElems(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pElems(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1408,7 +1408,7 @@ export interface CAUH {
   /** u32 */
   cElems: number;
   /** ptr */
-  pElems: Deno.PointerValue | Uint8Array | null;
+  pElems: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofCAUH = 16;
@@ -1420,7 +1420,7 @@ export function allocCAUH(data?: Partial<CAUH>): Uint8Array {
   if (data?.cElems !== undefined) view.setUint32(0, Number(data.cElems), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(util.toPointer(data.pElems)), true);
+  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pElems))), true);
   return buf;
 }
 
@@ -1442,9 +1442,9 @@ export class CAUHView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pElems(): Uint8Array | Deno.PointerValue | null {
+  get pElems(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1455,8 +1455,8 @@ export class CAUHView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pElems(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pElems(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1467,7 +1467,7 @@ export interface CALPSTR {
   /** u32 */
   cElems: number;
   /** ptr */
-  pElems: Deno.PointerValue | Uint8Array | null;
+  pElems: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofCALPSTR = 16;
@@ -1479,7 +1479,7 @@ export function allocCALPSTR(data?: Partial<CALPSTR>): Uint8Array {
   if (data?.cElems !== undefined) view.setUint32(0, Number(data.cElems), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(util.toPointer(data.pElems)), true);
+  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pElems))), true);
   return buf;
 }
 
@@ -1501,9 +1501,9 @@ export class CALPSTRView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pElems(): Uint8Array | Deno.PointerValue | null {
+  get pElems(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1514,8 +1514,8 @@ export class CALPSTRView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pElems(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pElems(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1526,7 +1526,7 @@ export interface CALPWSTR {
   /** u32 */
   cElems: number;
   /** ptr */
-  pElems: Deno.PointerValue | Uint8Array | null;
+  pElems: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofCALPWSTR = 16;
@@ -1538,7 +1538,7 @@ export function allocCALPWSTR(data?: Partial<CALPWSTR>): Uint8Array {
   if (data?.cElems !== undefined) view.setUint32(0, Number(data.cElems), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(util.toPointer(data.pElems)), true);
+  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pElems))), true);
   return buf;
 }
 
@@ -1560,9 +1560,9 @@ export class CALPWSTRView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pElems(): Uint8Array | Deno.PointerValue | null {
+  get pElems(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1573,8 +1573,8 @@ export class CALPWSTRView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pElems(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pElems(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1585,7 +1585,7 @@ export interface CAFILETIME {
   /** u32 */
   cElems: number;
   /** ptr */
-  pElems: Deno.PointerValue | Uint8Array | null;
+  pElems: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofCAFILETIME = 16;
@@ -1597,7 +1597,7 @@ export function allocCAFILETIME(data?: Partial<CAFILETIME>): Uint8Array {
   if (data?.cElems !== undefined) view.setUint32(0, Number(data.cElems), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(util.toPointer(data.pElems)), true);
+  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pElems))), true);
   return buf;
 }
 
@@ -1619,9 +1619,9 @@ export class CAFILETIMEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pElems(): Uint8Array | Deno.PointerValue | null {
+  get pElems(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1632,8 +1632,8 @@ export class CAFILETIMEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pElems(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pElems(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1644,7 +1644,7 @@ export interface CACLIPDATA {
   /** u32 */
   cElems: number;
   /** ptr */
-  pElems: Deno.PointerValue | Uint8Array | null;
+  pElems: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofCACLIPDATA = 16;
@@ -1656,7 +1656,7 @@ export function allocCACLIPDATA(data?: Partial<CACLIPDATA>): Uint8Array {
   if (data?.cElems !== undefined) view.setUint32(0, Number(data.cElems), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(util.toPointer(data.pElems)), true);
+  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pElems))), true);
   return buf;
 }
 
@@ -1678,9 +1678,9 @@ export class CACLIPDATAView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pElems(): Uint8Array | Deno.PointerValue | null {
+  get pElems(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1691,8 +1691,8 @@ export class CACLIPDATAView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pElems(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pElems(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1703,7 +1703,7 @@ export interface CACLSID {
   /** u32 */
   cElems: number;
   /** ptr */
-  pElems: Deno.PointerValue | Uint8Array | null;
+  pElems: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofCACLSID = 16;
@@ -1715,7 +1715,7 @@ export function allocCACLSID(data?: Partial<CACLSID>): Uint8Array {
   if (data?.cElems !== undefined) view.setUint32(0, Number(data.cElems), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(util.toPointer(data.pElems)), true);
+  if (data?.pElems !== undefined) view.setBigUint64(8, data.pElems === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pElems))), true);
   return buf;
 }
 
@@ -1737,9 +1737,9 @@ export class CACLSIDView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pElems(): Uint8Array | Deno.PointerValue | null {
+  get pElems(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1750,8 +1750,8 @@ export class CACLSIDView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pElems(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pElems(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1813,9 +1813,9 @@ export class _Anonymous_e__StructView {
  */
 export interface _Anonymous_e__Union {
   /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** array */
-  X: Deno.PointerValue | null;
+  X: Deno.PointerValue;
 }
 
 export const sizeof_Anonymous_e__Union = 16;
@@ -1824,9 +1824,9 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   const buf = new Uint8Array(sizeof_Anonymous_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x08: pointer
-  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.X))), true);
   return buf;
 }
 
@@ -1841,25 +1841,25 @@ export class _Anonymous_e__UnionView {
   }
 
   // 0x00: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get X(): Uint8Array | Deno.PointerValue | null {
+  get X(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set X(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set X(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1868,7 +1868,7 @@ export class _Anonymous_e__UnionView {
  */
 export interface PROPVARIANT {
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofPROPVARIANT = 8;
@@ -1877,7 +1877,7 @@ export function allocPROPVARIANT(data?: Partial<PROPVARIANT>): Uint8Array {
   const buf = new Uint8Array(sizeofPROPVARIANT);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -1892,14 +1892,14 @@ export class PROPVARIANTView {
   }
 
   // 0x00: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1910,7 +1910,7 @@ export interface PROPSPEC {
   /** Windows.Win32.System.Com.StructuredStorage.PROPSPEC_KIND */
   ulKind: PROPSPEC_KIND;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofPROPSPEC = 16;
@@ -1922,7 +1922,7 @@ export function allocPROPSPEC(data?: Partial<PROPSPEC>): Uint8Array {
   if (data?.ulKind !== undefined) view.setUint32(0, Number(data.ulKind), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -1944,9 +1944,9 @@ export class PROPSPECView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1957,12 +1957,12 @@ export class PROPSPECView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.System.Com.StructuredStorage.STATPROPSTG (size: 16)
@@ -1984,7 +1984,7 @@ export function allocSTATPROPSTG(data?: Partial<STATPROPSTG>): Uint8Array {
   // 0x00: buffer
   if (data?.lpwstrName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.lpwstrName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: u32
   if (data?.propid !== undefined) view.setUint32(8, Number(data.propid), true);
@@ -2005,9 +2005,9 @@ export class STATPROPSTGView {
   }
 
   // 0x00: buffer
-  get lpwstrName(): Uint8Array | Deno.PointerValue | null {
+  get lpwstrName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -2023,9 +2023,9 @@ export class STATPROPSTGView {
   // 0x0e: pad2
 
   // 0x00: buffer
-  set lpwstrName(value: Uint8Array | Deno.PointerValue | null) {
+  set lpwstrName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: u32
@@ -2099,17 +2099,17 @@ export class FILETIMEView {
  */
 export interface STATPROPSETSTG {
   /** System.Guid */
-  fmtid: Uint8Array | Deno.PointerValue | null;
+  fmtid: Uint8Array | Deno.PointerValue;
   /** System.Guid */
-  clsid: Uint8Array | Deno.PointerValue | null;
+  clsid: Uint8Array | Deno.PointerValue;
   /** u32 */
   grfFlags: number;
   /** Windows.Win32.Foundation.FILETIME */
-  mtime: Uint8Array | Deno.PointerValue | null;
+  mtime: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.FILETIME */
-  ctime: Uint8Array | Deno.PointerValue | null;
+  ctime: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.FILETIME */
-  atime: Uint8Array | Deno.PointerValue | null;
+  atime: Uint8Array | Deno.PointerValue;
   /** u32 */
   dwOSVersion: number;
 }
@@ -2120,18 +2120,18 @@ export function allocSTATPROPSETSTG(data?: Partial<STATPROPSETSTG>): Uint8Array 
   const buf = new Uint8Array(sizeofSTATPROPSETSTG);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.fmtid !== undefined) view.setBigUint64(0, data.fmtid === null ? 0n : BigInt(util.toPointer(data.fmtid)), true);
+  if (data?.fmtid !== undefined) view.setBigUint64(0, data.fmtid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fmtid))), true);
   // 0x08: pointer
-  if (data?.clsid !== undefined) view.setBigUint64(8, data.clsid === null ? 0n : BigInt(util.toPointer(data.clsid)), true);
+  if (data?.clsid !== undefined) view.setBigUint64(8, data.clsid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.clsid))), true);
   // 0x10: u32
   if (data?.grfFlags !== undefined) view.setUint32(16, Number(data.grfFlags), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.mtime !== undefined) view.setBigUint64(24, data.mtime === null ? 0n : BigInt(util.toPointer(data.mtime)), true);
+  if (data?.mtime !== undefined) view.setBigUint64(24, data.mtime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.mtime))), true);
   // 0x20: pointer
-  if (data?.ctime !== undefined) view.setBigUint64(32, data.ctime === null ? 0n : BigInt(util.toPointer(data.ctime)), true);
+  if (data?.ctime !== undefined) view.setBigUint64(32, data.ctime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ctime))), true);
   // 0x28: pointer
-  if (data?.atime !== undefined) view.setBigUint64(40, data.atime === null ? 0n : BigInt(util.toPointer(data.atime)), true);
+  if (data?.atime !== undefined) view.setBigUint64(40, data.atime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.atime))), true);
   // 0x30: u32
   if (data?.dwOSVersion !== undefined) view.setUint32(48, Number(data.dwOSVersion), true);
   // 0x34: pad4
@@ -2149,15 +2149,15 @@ export class STATPROPSETSTGView {
   }
 
   // 0x00: pointer
-  get fmtid(): Uint8Array | Deno.PointerValue | null {
+  get fmtid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get clsid(): Uint8Array | Deno.PointerValue | null {
+  get clsid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -2168,21 +2168,21 @@ export class STATPROPSETSTGView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get mtime(): Uint8Array | Deno.PointerValue | null {
+  get mtime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get ctime(): Uint8Array | Deno.PointerValue | null {
+  get ctime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get atime(): Uint8Array | Deno.PointerValue | null {
+  get atime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: u32
@@ -2193,13 +2193,13 @@ export class STATPROPSETSTGView {
   // 0x34: pad4
 
   // 0x00: pointer
-  set fmtid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set fmtid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set clsid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set clsid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -2210,18 +2210,18 @@ export class STATPROPSETSTGView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set mtime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set mtime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set ctime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set ctime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set atime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set atime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: u32
@@ -2260,7 +2260,7 @@ export function allocSTGOPTIONS(data?: Partial<STGOPTIONS>): Uint8Array {
   // 0x08: buffer
   if (data?.pwcsTemplateFile !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pwcsTemplateFile);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   return buf;
 }
@@ -2291,9 +2291,9 @@ export class STGOPTIONSView {
   }
 
   // 0x08: buffer
-  get pwcsTemplateFile(): Uint8Array | Deno.PointerValue | null {
+  get pwcsTemplateFile(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u16
@@ -2312,9 +2312,9 @@ export class STGOPTIONSView {
   }
 
   // 0x08: buffer
-  set pwcsTemplateFile(value: Uint8Array | Deno.PointerValue | null) {
+  set pwcsTemplateFile(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 }
 
@@ -2325,7 +2325,7 @@ export interface SERIALIZEDPROPERTYVALUE {
   /** u32 */
   dwType: number;
   /** array */
-  rgb: Deno.PointerValue | null;
+  rgb: Deno.PointerValue;
 }
 
 export const sizeofSERIALIZEDPROPERTYVALUE = 16;
@@ -2337,7 +2337,7 @@ export function allocSERIALIZEDPROPERTYVALUE(data?: Partial<SERIALIZEDPROPERTYVA
   if (data?.dwType !== undefined) view.setUint32(0, Number(data.dwType), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.rgb !== undefined) view.setBigUint64(8, data.rgb === null ? 0n : BigInt(util.toPointer(data.rgb)), true);
+  if (data?.rgb !== undefined) view.setBigUint64(8, data.rgb === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgb))), true);
   return buf;
 }
 
@@ -2359,9 +2359,9 @@ export class SERIALIZEDPROPERTYVALUEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get rgb(): Uint8Array | Deno.PointerValue | null {
+  get rgb(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -2372,8 +2372,8 @@ export class SERIALIZEDPROPERTYVALUEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set rgb(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set rgb(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2435,7 +2435,7 @@ export class OLESTREAMVTBLView {
  */
 export interface OLESTREAM {
   /** ptr */
-  lpstbl: Deno.PointerValue | Uint8Array | null;
+  lpstbl: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofOLESTREAM = 8;
@@ -2444,7 +2444,7 @@ export function allocOLESTREAM(data?: Partial<OLESTREAM>): Uint8Array {
   const buf = new Uint8Array(sizeofOLESTREAM);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.lpstbl !== undefined) view.setBigUint64(0, data.lpstbl === null ? 0n : BigInt(util.toPointer(data.lpstbl)), true);
+  if (data?.lpstbl !== undefined) view.setBigUint64(0, data.lpstbl === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpstbl))), true);
   return buf;
 }
 
@@ -2459,14 +2459,14 @@ export class OLESTREAMView {
   }
 
   // 0x00: pointer
-  get lpstbl(): Uint8Array | Deno.PointerValue | null {
+  get lpstbl(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set lpstbl(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set lpstbl(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2485,7 +2485,7 @@ export interface PROPBAG2 {
   /** Windows.Win32.Foundation.PWSTR */
   pstrName: string | null | Uint8Array | Uint16Array;
   /** System.Guid */
-  clsid: Uint8Array | Deno.PointerValue | null;
+  clsid: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofPROPBAG2 = 32;
@@ -2505,10 +2505,10 @@ export function allocPROPBAG2(data?: Partial<PROPBAG2>): Uint8Array {
   // 0x10: buffer
   if (data?.pstrName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pstrName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: pointer
-  if (data?.clsid !== undefined) view.setBigUint64(24, data.clsid === null ? 0n : BigInt(util.toPointer(data.clsid)), true);
+  if (data?.clsid !== undefined) view.setBigUint64(24, data.clsid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.clsid))), true);
   return buf;
 }
 
@@ -2545,15 +2545,15 @@ export class PROPBAG2View {
   // 0x0c: pad4
 
   // 0x10: buffer
-  get pstrName(): Uint8Array | Deno.PointerValue | null {
+  get pstrName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get clsid(): Uint8Array | Deno.PointerValue | null {
+  get clsid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -2579,14 +2579,14 @@ export class PROPBAG2View {
   // 0x0c: pad4
 
   // 0x10: buffer
-  set pstrName(value: Uint8Array | Deno.PointerValue | null) {
+  set pstrName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: pointer
-  set clsid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set clsid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2594,7 +2594,7 @@ export type HRESULT = number;
 
 export type BOOL = number;
 
-export type PSECURITY_DESCRIPTOR = Deno.PointerValue | Uint8Array | null;
+export type PSECURITY_DESCRIPTOR = Deno.PointerValue | Uint8Array;
 
 export type BOOLEAN = number;
 
@@ -2803,164 +2803,164 @@ try {
 // Symbols
 
 export function CoGetInstanceFromFile(
-  pServerInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pClsid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  punkOuter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
+  pServerInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  pClsid: Deno.PointerValue | Uint8Array /* ptr */,
+  punkOuter: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
   dwClsCtx: CLSCTX /* Windows.Win32.System.Com.CLSCTX */,
   grfMode: number /* u32 */,
   pwszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwCount: number /* u32 */,
-  pResults: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.CoGetInstanceFromFile(util.toPointer(pServerInfo), util.toPointer(pClsid), util.toPointer(punkOuter), dwClsCtx, grfMode, util.pwstrToFfi(pwszName), dwCount, util.toPointer(pResults)));
+  pResults: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.CoGetInstanceFromFile(util.toPointer(pServerInfo), util.toPointer(pClsid), util.toPointer(punkOuter), dwClsCtx, grfMode, util.pwstrToFfi(pwszName), dwCount, util.toPointer(pResults));
 }
 
 export function CoGetInstanceFromIStorage(
-  pServerInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pClsid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  punkOuter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
+  pServerInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  pClsid: Deno.PointerValue | Uint8Array /* ptr */,
+  punkOuter: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
   dwClsCtx: CLSCTX /* Windows.Win32.System.Com.CLSCTX */,
-  pstg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
+  pstg: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
   dwCount: number /* u32 */,
-  pResults: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.CoGetInstanceFromIStorage(util.toPointer(pServerInfo), util.toPointer(pClsid), util.toPointer(punkOuter), dwClsCtx, util.toPointer(pstg), dwCount, util.toPointer(pResults)));
+  pResults: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.CoGetInstanceFromIStorage(util.toPointer(pServerInfo), util.toPointer(pClsid), util.toPointer(punkOuter), dwClsCtx, util.toPointer(pstg), dwCount, util.toPointer(pResults));
 }
 
 export function StgOpenAsyncDocfileOnIFillLockBytes(
-  pflb: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IFillLockBytes */,
+  pflb: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IFillLockBytes */,
   grfMode: number /* u32 */,
   asyncFlags: number /* u32 */,
-  ppstgOpen: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libole32_dll.StgOpenAsyncDocfileOnIFillLockBytes(util.toPointer(pflb), grfMode, asyncFlags, util.toPointer(ppstgOpen)));
+  ppstgOpen: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libole32_dll.StgOpenAsyncDocfileOnIFillLockBytes(util.toPointer(pflb), grfMode, asyncFlags, util.toPointer(ppstgOpen));
 }
 
 export function StgGetIFillLockBytesOnILockBytes(
-  pilb: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.ILockBytes */,
-  ppflb: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libole32_dll.StgGetIFillLockBytesOnILockBytes(util.toPointer(pilb), util.toPointer(ppflb)));
+  pilb: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.ILockBytes */,
+  ppflb: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libole32_dll.StgGetIFillLockBytesOnILockBytes(util.toPointer(pilb), util.toPointer(ppflb));
 }
 
 export function StgGetIFillLockBytesOnFile(
   pwcsName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ppflb: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libole32_dll.StgGetIFillLockBytesOnFile(util.pwstrToFfi(pwcsName), util.toPointer(ppflb)));
+  ppflb: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libole32_dll.StgGetIFillLockBytesOnFile(util.pwstrToFfi(pwcsName), util.toPointer(ppflb));
 }
 
 export function StgOpenLayoutDocfile(
   pwcsDfName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   grfMode: number /* u32 */,
   reserved: number /* u32 */,
-  ppstgOpen: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdflayout_dll.StgOpenLayoutDocfile(util.pwstrToFfi(pwcsDfName), grfMode, reserved, util.toPointer(ppstgOpen)));
+  ppstgOpen: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libdflayout_dll.StgOpenLayoutDocfile(util.pwstrToFfi(pwcsDfName), grfMode, reserved, util.toPointer(ppstgOpen));
 }
 
 export function CreateStreamOnHGlobal(
   hGlobal: Deno.PointerValue /* isize */,
   fDeleteOnRelease: boolean /* Windows.Win32.Foundation.BOOL */,
-  ppstm: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.CreateStreamOnHGlobal(hGlobal, util.boolToFfi(fDeleteOnRelease), util.toPointer(ppstm)));
+  ppstm: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.CreateStreamOnHGlobal(hGlobal, util.boolToFfi(fDeleteOnRelease), util.toPointer(ppstm));
 }
 
 export function GetHGlobalFromStream(
-  pstm: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IStream */,
-  phglobal: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.GetHGlobalFromStream(util.toPointer(pstm), util.toPointer(phglobal)));
+  pstm: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IStream */,
+  phglobal: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.GetHGlobalFromStream(util.toPointer(pstm), util.toPointer(phglobal));
 }
 
 export function CoGetInterfaceAndReleaseStream(
-  pStm: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IStream */,
-  iid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.CoGetInterfaceAndReleaseStream(util.toPointer(pStm), util.toPointer(iid), util.toPointer(ppv)));
+  pStm: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IStream */,
+  iid: Deno.PointerValue | Uint8Array /* ptr */,
+  ppv: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.CoGetInterfaceAndReleaseStream(util.toPointer(pStm), util.toPointer(iid), util.toPointer(ppv));
 }
 
 export function PropVariantCopy(
-  pvarDest: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pvarSrc: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.PropVariantCopy(util.toPointer(pvarDest), util.toPointer(pvarSrc)));
+  pvarDest: Deno.PointerValue | Uint8Array /* ptr */,
+  pvarSrc: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.PropVariantCopy(util.toPointer(pvarDest), util.toPointer(pvarSrc));
 }
 
 export function PropVariantClear(
-  pvar: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.PropVariantClear(util.toPointer(pvar)));
+  pvar: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.PropVariantClear(util.toPointer(pvar));
 }
 
 export function FreePropVariantArray(
   cVariants: number /* u32 */,
-  rgvars: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.FreePropVariantArray(cVariants, util.toPointer(rgvars)));
+  rgvars: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.FreePropVariantArray(cVariants, util.toPointer(rgvars));
 }
 
 export function StgCreateDocfile(
   pwcsName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   grfMode: STGM /* Windows.Win32.System.Com.STGM */,
   reserved: number /* u32 */,
-  ppstgOpen: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.StgCreateDocfile(util.pwstrToFfi(pwcsName), grfMode, reserved, util.toPointer(ppstgOpen)));
+  ppstgOpen: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.StgCreateDocfile(util.pwstrToFfi(pwcsName), grfMode, reserved, util.toPointer(ppstgOpen));
 }
 
 export function StgCreateDocfileOnILockBytes(
-  plkbyt: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.ILockBytes */,
+  plkbyt: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.ILockBytes */,
   grfMode: STGM /* Windows.Win32.System.Com.STGM */,
   reserved: number /* u32 */,
-  ppstgOpen: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.StgCreateDocfileOnILockBytes(util.toPointer(plkbyt), grfMode, reserved, util.toPointer(ppstgOpen)));
+  ppstgOpen: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.StgCreateDocfileOnILockBytes(util.toPointer(plkbyt), grfMode, reserved, util.toPointer(ppstgOpen));
 }
 
 export function StgOpenStorage(
   pwcsName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pstgPriority: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
+  pstgPriority: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
   grfMode: STGM /* Windows.Win32.System.Com.STGM */,
-  snbExclude: Deno.PointerValue | Uint8Array | null /* ptr */,
+  snbExclude: Deno.PointerValue | Uint8Array /* ptr */,
   reserved: number /* u32 */,
-  ppstgOpen: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.StgOpenStorage(util.pwstrToFfi(pwcsName), util.toPointer(pstgPriority), grfMode, util.toPointer(snbExclude), reserved, util.toPointer(ppstgOpen)));
+  ppstgOpen: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.StgOpenStorage(util.pwstrToFfi(pwcsName), util.toPointer(pstgPriority), grfMode, util.toPointer(snbExclude), reserved, util.toPointer(ppstgOpen));
 }
 
 export function StgOpenStorageOnILockBytes(
-  plkbyt: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.ILockBytes */,
-  pstgPriority: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
+  plkbyt: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.ILockBytes */,
+  pstgPriority: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
   grfMode: STGM /* Windows.Win32.System.Com.STGM */,
-  snbExclude: Deno.PointerValue | Uint8Array | null /* ptr */,
+  snbExclude: Deno.PointerValue | Uint8Array /* ptr */,
   reserved: number /* u32 */,
-  ppstgOpen: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.StgOpenStorageOnILockBytes(util.toPointer(plkbyt), util.toPointer(pstgPriority), grfMode, util.toPointer(snbExclude), reserved, util.toPointer(ppstgOpen)));
+  ppstgOpen: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.StgOpenStorageOnILockBytes(util.toPointer(plkbyt), util.toPointer(pstgPriority), grfMode, util.toPointer(snbExclude), reserved, util.toPointer(ppstgOpen));
 }
 
 export function StgIsStorageFile(
   pwcsName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.StgIsStorageFile(util.pwstrToFfi(pwcsName)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.StgIsStorageFile(util.pwstrToFfi(pwcsName));
 }
 
 export function StgIsStorageILockBytes(
-  plkbyt: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.ILockBytes */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.StgIsStorageILockBytes(util.toPointer(plkbyt)));
+  plkbyt: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.ILockBytes */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.StgIsStorageILockBytes(util.toPointer(plkbyt));
 }
 
 export function StgSetTimes(
   lpszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pctime: Deno.PointerValue | Uint8Array | null /* ptr */,
-  patime: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pmtime: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.StgSetTimes(util.pwstrToFfi(lpszName), util.toPointer(pctime), util.toPointer(patime), util.toPointer(pmtime)));
+  pctime: Deno.PointerValue | Uint8Array /* ptr */,
+  patime: Deno.PointerValue | Uint8Array /* ptr */,
+  pmtime: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.StgSetTimes(util.pwstrToFfi(lpszName), util.toPointer(pctime), util.toPointer(patime), util.toPointer(pmtime));
 }
 
 export function StgCreateStorageEx(
@@ -2968,12 +2968,12 @@ export function StgCreateStorageEx(
   grfMode: STGM /* Windows.Win32.System.Com.STGM */,
   stgfmt: STGFMT /* Windows.Win32.System.Com.StructuredStorage.STGFMT */,
   grfAttrs: number /* u32 */,
-  pStgOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
-  riid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppObjectOpen: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.StgCreateStorageEx(util.pwstrToFfi(pwcsName), grfMode, stgfmt, grfAttrs, util.toPointer(pStgOptions), util.toPointer(pSecurityDescriptor), util.toPointer(riid), util.toPointer(ppObjectOpen)));
+  pStgOptions: Deno.PointerValue | Uint8Array /* ptr */,
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
+  riid: Deno.PointerValue | Uint8Array /* ptr */,
+  ppObjectOpen: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.StgCreateStorageEx(util.pwstrToFfi(pwcsName), grfMode, stgfmt, grfAttrs, util.toPointer(pStgOptions), util.toPointer(pSecurityDescriptor), util.toPointer(riid), util.toPointer(ppObjectOpen));
 }
 
 export function StgOpenStorageEx(
@@ -2981,129 +2981,129 @@ export function StgOpenStorageEx(
   grfMode: STGM /* Windows.Win32.System.Com.STGM */,
   stgfmt: STGFMT /* Windows.Win32.System.Com.StructuredStorage.STGFMT */,
   grfAttrs: number /* u32 */,
-  pStgOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
-  riid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppObjectOpen: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.StgOpenStorageEx(util.pwstrToFfi(pwcsName), grfMode, stgfmt, grfAttrs, util.toPointer(pStgOptions), util.toPointer(pSecurityDescriptor), util.toPointer(riid), util.toPointer(ppObjectOpen)));
+  pStgOptions: Deno.PointerValue | Uint8Array /* ptr */,
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
+  riid: Deno.PointerValue | Uint8Array /* ptr */,
+  ppObjectOpen: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.StgOpenStorageEx(util.pwstrToFfi(pwcsName), grfMode, stgfmt, grfAttrs, util.toPointer(pStgOptions), util.toPointer(pSecurityDescriptor), util.toPointer(riid), util.toPointer(ppObjectOpen));
 }
 
 export function StgCreatePropStg(
-  pUnk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
-  fmtid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pclsid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pUnk: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
+  fmtid: Deno.PointerValue | Uint8Array /* ptr */,
+  pclsid: Deno.PointerValue | Uint8Array /* ptr */,
   grfFlags: number /* u32 */,
   dwReserved: number /* u32 */,
-  ppPropStg: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.StgCreatePropStg(util.toPointer(pUnk), util.toPointer(fmtid), util.toPointer(pclsid), grfFlags, dwReserved, util.toPointer(ppPropStg)));
+  ppPropStg: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.StgCreatePropStg(util.toPointer(pUnk), util.toPointer(fmtid), util.toPointer(pclsid), grfFlags, dwReserved, util.toPointer(ppPropStg));
 }
 
 export function StgOpenPropStg(
-  pUnk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
-  fmtid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pUnk: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
+  fmtid: Deno.PointerValue | Uint8Array /* ptr */,
   grfFlags: number /* u32 */,
   dwReserved: number /* u32 */,
-  ppPropStg: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.StgOpenPropStg(util.toPointer(pUnk), util.toPointer(fmtid), grfFlags, dwReserved, util.toPointer(ppPropStg)));
+  ppPropStg: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.StgOpenPropStg(util.toPointer(pUnk), util.toPointer(fmtid), grfFlags, dwReserved, util.toPointer(ppPropStg));
 }
 
 export function StgCreatePropSetStg(
-  pStorage: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
+  pStorage: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
   dwReserved: number /* u32 */,
-  ppPropSetStg: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.StgCreatePropSetStg(util.toPointer(pStorage), dwReserved, util.toPointer(ppPropSetStg)));
+  ppPropSetStg: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.StgCreatePropSetStg(util.toPointer(pStorage), dwReserved, util.toPointer(ppPropSetStg));
 }
 
 export function FmtIdToPropStgName(
-  pfmtid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pfmtid: Deno.PointerValue | Uint8Array /* ptr */,
   oszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.FmtIdToPropStgName(util.toPointer(pfmtid), util.pwstrToFfi(oszName)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.FmtIdToPropStgName(util.toPointer(pfmtid), util.pwstrToFfi(oszName));
 }
 
 export function PropStgNameToFmtId(
   oszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pfmtid: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.PropStgNameToFmtId(util.pwstrToFfi(oszName), util.toPointer(pfmtid)));
+  pfmtid: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.PropStgNameToFmtId(util.pwstrToFfi(oszName), util.toPointer(pfmtid));
 }
 
 export function ReadClassStg(
-  pStg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
-  pclsid: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.ReadClassStg(util.toPointer(pStg), util.toPointer(pclsid)));
+  pStg: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
+  pclsid: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.ReadClassStg(util.toPointer(pStg), util.toPointer(pclsid));
 }
 
 export function WriteClassStg(
-  pStg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
-  rclsid: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.WriteClassStg(util.toPointer(pStg), util.toPointer(rclsid)));
+  pStg: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
+  rclsid: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.WriteClassStg(util.toPointer(pStg), util.toPointer(rclsid));
 }
 
 export function ReadClassStm(
-  pStm: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IStream */,
-  pclsid: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.ReadClassStm(util.toPointer(pStm), util.toPointer(pclsid)));
+  pStm: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IStream */,
+  pclsid: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.ReadClassStm(util.toPointer(pStm), util.toPointer(pclsid));
 }
 
 export function WriteClassStm(
-  pStm: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IStream */,
-  rclsid: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.WriteClassStm(util.toPointer(pStm), util.toPointer(rclsid)));
+  pStm: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IStream */,
+  rclsid: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.WriteClassStm(util.toPointer(pStm), util.toPointer(rclsid));
 }
 
 export function GetHGlobalFromILockBytes(
-  plkbyt: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.ILockBytes */,
-  phglobal: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.GetHGlobalFromILockBytes(util.toPointer(plkbyt), util.toPointer(phglobal)));
+  plkbyt: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.ILockBytes */,
+  phglobal: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.GetHGlobalFromILockBytes(util.toPointer(plkbyt), util.toPointer(phglobal));
 }
 
 export function CreateILockBytesOnHGlobal(
   hGlobal: Deno.PointerValue /* isize */,
   fDeleteOnRelease: boolean /* Windows.Win32.Foundation.BOOL */,
-  pplkbyt: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.CreateILockBytesOnHGlobal(hGlobal, util.boolToFfi(fDeleteOnRelease), util.toPointer(pplkbyt)));
+  pplkbyt: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.CreateILockBytesOnHGlobal(hGlobal, util.boolToFfi(fDeleteOnRelease), util.toPointer(pplkbyt));
 }
 
 export function GetConvertStg(
-  pStg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.GetConvertStg(util.toPointer(pStg)));
+  pStg: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.GetConvertStg(util.toPointer(pStg));
 }
 
 export function StgConvertVariantToProperty(
-  pvar: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pvar: Deno.PointerValue | Uint8Array /* ptr */,
   CodePage: number /* u16 */,
-  pprop: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcb: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pprop: Deno.PointerValue | Uint8Array /* ptr */,
+  pcb: Deno.PointerValue | Uint8Array /* ptr */,
   pid: number /* u32 */,
-  fReserved: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
-  pcIndirect: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libole32_dll.StgConvertVariantToProperty(util.toPointer(pvar), CodePage, util.toPointer(pprop), util.toPointer(pcb), pid, util.toPointer(fReserved), util.toPointer(pcIndirect)));
+  fReserved: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
+  pcIndirect: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libole32_dll.StgConvertVariantToProperty(util.toPointer(pvar), CodePage, util.toPointer(pprop), util.toPointer(pcb), pid, util.toPointer(fReserved), util.toPointer(pcIndirect));
 }
 
 export function StgConvertPropertyToVariant(
-  pprop: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pprop: Deno.PointerValue | Uint8Array /* ptr */,
   CodePage: number /* u16 */,
-  pvar: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pma: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */ {
-  return util.pointerFromFfi(libole32_dll.StgConvertPropertyToVariant(util.toPointer(pprop), CodePage, util.toPointer(pvar), util.toPointer(pma)));
+  pvar: Deno.PointerValue | Uint8Array /* ptr */,
+  pma: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
+  return libole32_dll.StgConvertPropertyToVariant(util.toPointer(pprop), CodePage, util.toPointer(pvar), util.toPointer(pma));
 }
 
 export function StgPropertyLengthAsVariant(
-  pProp: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pProp: Deno.PointerValue | Uint8Array /* ptr */,
   cbProp: number /* u32 */,
   CodePage: number /* u16 */,
   bReserved: number /* u8 */,
@@ -3112,80 +3112,80 @@ export function StgPropertyLengthAsVariant(
 }
 
 export function WriteFmtUserTypeStg(
-  pstg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
+  pstg: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
   cf: number /* u16 */,
   lpszUserType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.WriteFmtUserTypeStg(util.toPointer(pstg), cf, util.pwstrToFfi(lpszUserType)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.WriteFmtUserTypeStg(util.toPointer(pstg), cf, util.pwstrToFfi(lpszUserType));
 }
 
 export function ReadFmtUserTypeStg(
-  pstg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
-  pcf: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lplpszUserType: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.ReadFmtUserTypeStg(util.toPointer(pstg), util.toPointer(pcf), util.toPointer(lplpszUserType)));
+  pstg: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
+  pcf: Deno.PointerValue | Uint8Array /* ptr */,
+  lplpszUserType: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.ReadFmtUserTypeStg(util.toPointer(pstg), util.toPointer(pcf), util.toPointer(lplpszUserType));
 }
 
 export function OleConvertOLESTREAMToIStorage(
-  lpolestream: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pstg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
-  ptd: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libole32_dll.OleConvertOLESTREAMToIStorage(util.toPointer(lpolestream), util.toPointer(pstg), util.toPointer(ptd)));
+  lpolestream: Deno.PointerValue | Uint8Array /* ptr */,
+  pstg: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
+  ptd: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libole32_dll.OleConvertOLESTREAMToIStorage(util.toPointer(lpolestream), util.toPointer(pstg), util.toPointer(ptd));
 }
 
 export function OleConvertIStorageToOLESTREAM(
-  pstg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
-  lpolestream: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libole32_dll.OleConvertIStorageToOLESTREAM(util.toPointer(pstg), util.toPointer(lpolestream)));
+  pstg: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
+  lpolestream: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libole32_dll.OleConvertIStorageToOLESTREAM(util.toPointer(pstg), util.toPointer(lpolestream));
 }
 
 export function SetConvertStg(
-  pStg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
+  pStg: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
   fConvert: boolean /* Windows.Win32.Foundation.BOOL */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.SetConvertStg(util.toPointer(pStg), util.boolToFfi(fConvert)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.SetConvertStg(util.toPointer(pStg), util.boolToFfi(fConvert));
 }
 
 export function OleConvertIStorageToOLESTREAMEx(
-  pstg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
+  pstg: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
   cfFormat: number /* u16 */,
   lWidth: number /* i32 */,
   lHeight: number /* i32 */,
   dwSize: number /* u32 */,
-  pmedium: Deno.PointerValue | Uint8Array | null /* ptr */,
-  polestm: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libole32_dll.OleConvertIStorageToOLESTREAMEx(util.toPointer(pstg), cfFormat, lWidth, lHeight, dwSize, util.toPointer(pmedium), util.toPointer(polestm)));
+  pmedium: Deno.PointerValue | Uint8Array /* ptr */,
+  polestm: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libole32_dll.OleConvertIStorageToOLESTREAMEx(util.toPointer(pstg), cfFormat, lWidth, lHeight, dwSize, util.toPointer(pmedium), util.toPointer(polestm));
 }
 
 export function OleConvertOLESTREAMToIStorageEx(
-  polestm: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pstg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
-  pcfFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
-  plwWidth: Deno.PointerValue | Uint8Array | null /* ptr */,
-  plHeight: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pdwSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pmedium: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libole32_dll.OleConvertOLESTREAMToIStorageEx(util.toPointer(polestm), util.toPointer(pstg), util.toPointer(pcfFormat), util.toPointer(plwWidth), util.toPointer(plHeight), util.toPointer(pdwSize), util.toPointer(pmedium)));
+  polestm: Deno.PointerValue | Uint8Array /* ptr */,
+  pstg: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
+  pcfFormat: Deno.PointerValue | Uint8Array /* ptr */,
+  plwWidth: Deno.PointerValue | Uint8Array /* ptr */,
+  plHeight: Deno.PointerValue | Uint8Array /* ptr */,
+  pdwSize: Deno.PointerValue | Uint8Array /* ptr */,
+  pmedium: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libole32_dll.OleConvertOLESTREAMToIStorageEx(util.toPointer(polestm), util.toPointer(pstg), util.toPointer(pcfFormat), util.toPointer(plwWidth), util.toPointer(plHeight), util.toPointer(pdwSize), util.toPointer(pmedium));
 }
 
 export function StgSerializePropVariant(
-  ppropvar: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppProp: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcb: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS_dll.StgSerializePropVariant(util.toPointer(ppropvar), util.toPointer(ppProp), util.toPointer(pcb)));
+  ppropvar: Deno.PointerValue | Uint8Array /* ptr */,
+  ppProp: Deno.PointerValue | Uint8Array /* ptr */,
+  pcb: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libPROPSYS_dll.StgSerializePropVariant(util.toPointer(ppropvar), util.toPointer(ppProp), util.toPointer(pcb));
 }
 
 export function StgDeserializePropVariant(
-  pprop: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pprop: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
-  ppropvar: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libPROPSYS_dll.StgDeserializePropVariant(util.toPointer(pprop), cbMax, util.toPointer(ppropvar)));
+  ppropvar: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libPROPSYS_dll.StgDeserializePropVariant(util.toPointer(pprop), cbMax, util.toPointer(ppropvar));
 }
 

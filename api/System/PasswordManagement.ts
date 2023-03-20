@@ -9,7 +9,7 @@ import * as util from "../../util.ts";
  */
 export interface CYPHER_BLOCK {
   /** array */
-  data: Deno.PointerValue | null;
+  data: Deno.PointerValue;
 }
 
 export const sizeofCYPHER_BLOCK = 8;
@@ -18,7 +18,7 @@ export function allocCYPHER_BLOCK(data?: Partial<CYPHER_BLOCK>): Uint8Array {
   const buf = new Uint8Array(sizeofCYPHER_BLOCK);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.data !== undefined) view.setBigUint64(0, data.data === null ? 0n : BigInt(util.toPointer(data.data)), true);
+  if (data?.data !== undefined) view.setBigUint64(0, data.data === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.data))), true);
   return buf;
 }
 
@@ -33,14 +33,14 @@ export class CYPHER_BLOCKView {
   }
 
   // 0x00: pointer
-  get data(): Uint8Array | Deno.PointerValue | null {
+  get data(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set data(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set data(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -49,7 +49,7 @@ export class CYPHER_BLOCKView {
  */
 export interface LM_OWF_PASSWORD {
   /** array */
-  data: Deno.PointerValue | null;
+  data: Deno.PointerValue;
 }
 
 export const sizeofLM_OWF_PASSWORD = 8;
@@ -58,7 +58,7 @@ export function allocLM_OWF_PASSWORD(data?: Partial<LM_OWF_PASSWORD>): Uint8Arra
   const buf = new Uint8Array(sizeofLM_OWF_PASSWORD);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.data !== undefined) view.setBigUint64(0, data.data === null ? 0n : BigInt(util.toPointer(data.data)), true);
+  if (data?.data !== undefined) view.setBigUint64(0, data.data === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.data))), true);
   return buf;
 }
 
@@ -73,14 +73,14 @@ export class LM_OWF_PASSWORDView {
   }
 
   // 0x00: pointer
-  get data(): Uint8Array | Deno.PointerValue | null {
+  get data(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set data(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set data(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -89,7 +89,7 @@ export class LM_OWF_PASSWORDView {
  */
 export interface SAMPR_ENCRYPTED_USER_PASSWORD {
   /** array */
-  Buffer: Deno.PointerValue | null;
+  Buffer: Deno.PointerValue;
 }
 
 export const sizeofSAMPR_ENCRYPTED_USER_PASSWORD = 8;
@@ -98,7 +98,7 @@ export function allocSAMPR_ENCRYPTED_USER_PASSWORD(data?: Partial<SAMPR_ENCRYPTE
   const buf = new Uint8Array(sizeofSAMPR_ENCRYPTED_USER_PASSWORD);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Buffer !== undefined) view.setBigUint64(0, data.Buffer === null ? 0n : BigInt(util.toPointer(data.Buffer)), true);
+  if (data?.Buffer !== undefined) view.setBigUint64(0, data.Buffer === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Buffer))), true);
   return buf;
 }
 
@@ -113,14 +113,14 @@ export class SAMPR_ENCRYPTED_USER_PASSWORDView {
   }
 
   // 0x00: pointer
-  get Buffer(): Uint8Array | Deno.PointerValue | null {
+  get Buffer(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Buffer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Buffer(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -129,7 +129,7 @@ export class SAMPR_ENCRYPTED_USER_PASSWORDView {
  */
 export interface ENCRYPTED_LM_OWF_PASSWORD {
   /** array */
-  data: Deno.PointerValue | null;
+  data: Deno.PointerValue;
 }
 
 export const sizeofENCRYPTED_LM_OWF_PASSWORD = 8;
@@ -138,7 +138,7 @@ export function allocENCRYPTED_LM_OWF_PASSWORD(data?: Partial<ENCRYPTED_LM_OWF_P
   const buf = new Uint8Array(sizeofENCRYPTED_LM_OWF_PASSWORD);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.data !== undefined) view.setBigUint64(0, data.data === null ? 0n : BigInt(util.toPointer(data.data)), true);
+  if (data?.data !== undefined) view.setBigUint64(0, data.data === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.data))), true);
   return buf;
 }
 
@@ -153,18 +153,18 @@ export class ENCRYPTED_LM_OWF_PASSWORDView {
   }
 
   // 0x00: pointer
-  get data(): Uint8Array | Deno.PointerValue | null {
+  get data(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set data(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set data(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 export type BOOLEAN = number;
 
@@ -188,11 +188,11 @@ try {
 export function MSChapSrvChangePassword(
   ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   UserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  LmOldPresent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
-  LmOldOwfPassword: Deno.PointerValue | Uint8Array | null /* ptr */,
-  LmNewOwfPassword: Deno.PointerValue | Uint8Array | null /* ptr */,
-  NtOldOwfPassword: Deno.PointerValue | Uint8Array | null /* ptr */,
-  NtNewOwfPassword: Deno.PointerValue | Uint8Array | null /* ptr */,
+  LmOldPresent: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
+  LmOldOwfPassword: Deno.PointerValue | Uint8Array /* ptr */,
+  LmNewOwfPassword: Deno.PointerValue | Uint8Array /* ptr */,
+  NtOldOwfPassword: Deno.PointerValue | Uint8Array /* ptr */,
+  NtNewOwfPassword: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libADVAPI32_dll.MSChapSrvChangePassword(util.pwstrToFfi(ServerName), util.pwstrToFfi(UserName), util.toPointer(LmOldPresent), util.toPointer(LmOldOwfPassword), util.toPointer(LmNewOwfPassword), util.toPointer(NtOldOwfPassword), util.toPointer(NtNewOwfPassword));
 }
@@ -200,11 +200,11 @@ export function MSChapSrvChangePassword(
 export function MSChapSrvChangePassword2(
   ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   UserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  NewPasswordEncryptedWithOldNt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  OldNtOwfPasswordEncryptedWithNewNt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  LmPresent: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
-  NewPasswordEncryptedWithOldLm: Deno.PointerValue | Uint8Array | null /* ptr */,
-  OldLmOwfPasswordEncryptedWithNewLmOrNt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  NewPasswordEncryptedWithOldNt: Deno.PointerValue | Uint8Array /* ptr */,
+  OldNtOwfPasswordEncryptedWithNewNt: Deno.PointerValue | Uint8Array /* ptr */,
+  LmPresent: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
+  NewPasswordEncryptedWithOldLm: Deno.PointerValue | Uint8Array /* ptr */,
+  OldLmOwfPasswordEncryptedWithNewLmOrNt: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libADVAPI32_dll.MSChapSrvChangePassword2(util.pwstrToFfi(ServerName), util.pwstrToFfi(UserName), util.toPointer(NewPasswordEncryptedWithOldNt), util.toPointer(OldNtOwfPasswordEncryptedWithNewNt), util.toPointer(LmPresent), util.toPointer(NewPasswordEncryptedWithOldLm), util.toPointer(OldLmOwfPasswordEncryptedWithNewLmOrNt));
 }

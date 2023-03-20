@@ -57,7 +57,7 @@ export interface WEB_SOCKET_PROPERTY {
   /** Windows.Win32.Networking.WebSocket.WEB_SOCKET_PROPERTY_TYPE */
   Type: WEB_SOCKET_PROPERTY_TYPE;
   /** ptr */
-  pvValue: Deno.PointerValue | Uint8Array | null;
+  pvValue: Deno.PointerValue | Uint8Array;
   /** u32 */
   ulValueSize: number;
 }
@@ -71,7 +71,7 @@ export function allocWEB_SOCKET_PROPERTY(data?: Partial<WEB_SOCKET_PROPERTY>): U
   if (data?.Type !== undefined) view.setInt32(0, Number(data.Type), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pvValue !== undefined) view.setBigUint64(8, data.pvValue === null ? 0n : BigInt(util.toPointer(data.pvValue)), true);
+  if (data?.pvValue !== undefined) view.setBigUint64(8, data.pvValue === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pvValue))), true);
   // 0x10: u32
   if (data?.ulValueSize !== undefined) view.setUint32(16, Number(data.ulValueSize), true);
   // 0x14: pad4
@@ -96,9 +96,9 @@ export class WEB_SOCKET_PROPERTYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pvValue(): Uint8Array | Deno.PointerValue | null {
+  get pvValue(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -116,8 +116,8 @@ export class WEB_SOCKET_PROPERTYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pvValue(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pvValue(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -128,7 +128,7 @@ export class WEB_SOCKET_PROPERTYView {
   // 0x14: pad4
 }
 
-export type PSTR = Deno.PointerValue | Uint8Array | null;
+export type PSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.Networking.WebSocket.WEB_SOCKET_HTTP_HEADER (size: 32)
@@ -152,7 +152,7 @@ export function allocWEB_SOCKET_HTTP_HEADER(data?: Partial<WEB_SOCKET_HTTP_HEADE
   // 0x00: buffer
   if (data?.pcName !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.pcName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: u32
   if (data?.ulNameLength !== undefined) view.setUint32(8, Number(data.ulNameLength), true);
@@ -160,7 +160,7 @@ export function allocWEB_SOCKET_HTTP_HEADER(data?: Partial<WEB_SOCKET_HTTP_HEADE
   // 0x10: buffer
   if (data?.pcValue !== undefined) {
     (buf as any)._f16 = util.pstrToFfi(data.pcValue);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: u32
   if (data?.ulValueLength !== undefined) view.setUint32(24, Number(data.ulValueLength), true);
@@ -179,9 +179,9 @@ export class WEB_SOCKET_HTTP_HEADERView {
   }
 
   // 0x00: buffer
-  get pcName(): Uint8Array | Deno.PointerValue | null {
+  get pcName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -192,9 +192,9 @@ export class WEB_SOCKET_HTTP_HEADERView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  get pcValue(): Uint8Array | Deno.PointerValue | null {
+  get pcValue(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -205,9 +205,9 @@ export class WEB_SOCKET_HTTP_HEADERView {
   // 0x1c: pad4
 
   // 0x00: buffer
-  set pcName(value: Uint8Array | Deno.PointerValue | null) {
+  set pcName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: u32
@@ -218,9 +218,9 @@ export class WEB_SOCKET_HTTP_HEADERView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  set pcValue(value: Uint8Array | Deno.PointerValue | null) {
+  set pcValue(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: u32
@@ -236,7 +236,7 @@ export class WEB_SOCKET_HTTP_HEADERView {
  */
 export interface _Data_e__Struct {
   /** ptr */
-  pbBuffer: Deno.PointerValue | Uint8Array | null;
+  pbBuffer: Deno.PointerValue | Uint8Array;
   /** u32 */
   ulBufferLength: number;
 }
@@ -247,7 +247,7 @@ export function alloc_Data_e__Struct(data?: Partial<_Data_e__Struct>): Uint8Arra
   const buf = new Uint8Array(sizeof_Data_e__Struct);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pbBuffer !== undefined) view.setBigUint64(0, data.pbBuffer === null ? 0n : BigInt(util.toPointer(data.pbBuffer)), true);
+  if (data?.pbBuffer !== undefined) view.setBigUint64(0, data.pbBuffer === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pbBuffer))), true);
   // 0x08: u32
   if (data?.ulBufferLength !== undefined) view.setUint32(8, Number(data.ulBufferLength), true);
   // 0x0c: pad4
@@ -265,9 +265,9 @@ export class _Data_e__StructView {
   }
 
   // 0x00: pointer
-  get pbBuffer(): Uint8Array | Deno.PointerValue | null {
+  get pbBuffer(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -278,8 +278,8 @@ export class _Data_e__StructView {
   // 0x0c: pad4
 
   // 0x00: pointer
-  set pbBuffer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pbBuffer(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -295,7 +295,7 @@ export class _Data_e__StructView {
  */
 export interface _CloseStatus_e__Struct {
   /** ptr */
-  pbReason: Deno.PointerValue | Uint8Array | null;
+  pbReason: Deno.PointerValue | Uint8Array;
   /** u32 */
   ulReasonLength: number;
   /** u16 */
@@ -308,7 +308,7 @@ export function alloc_CloseStatus_e__Struct(data?: Partial<_CloseStatus_e__Struc
   const buf = new Uint8Array(sizeof_CloseStatus_e__Struct);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pbReason !== undefined) view.setBigUint64(0, data.pbReason === null ? 0n : BigInt(util.toPointer(data.pbReason)), true);
+  if (data?.pbReason !== undefined) view.setBigUint64(0, data.pbReason === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pbReason))), true);
   // 0x08: u32
   if (data?.ulReasonLength !== undefined) view.setUint32(8, Number(data.ulReasonLength), true);
   // 0x0c: u16
@@ -328,9 +328,9 @@ export class _CloseStatus_e__StructView {
   }
 
   // 0x00: pointer
-  get pbReason(): Uint8Array | Deno.PointerValue | null {
+  get pbReason(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -346,8 +346,8 @@ export class _CloseStatus_e__StructView {
   // 0x0e: pad2
 
   // 0x00: pointer
-  set pbReason(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pbReason(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -368,9 +368,9 @@ export class _CloseStatus_e__StructView {
  */
 export interface WEB_SOCKET_BUFFER {
   /** _Data_e__Struct */
-  Data: Uint8Array | Deno.PointerValue | null;
+  Data: Uint8Array | Deno.PointerValue;
   /** _CloseStatus_e__Struct */
-  CloseStatus: Uint8Array | Deno.PointerValue | null;
+  CloseStatus: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofWEB_SOCKET_BUFFER = 16;
@@ -379,9 +379,9 @@ export function allocWEB_SOCKET_BUFFER(data?: Partial<WEB_SOCKET_BUFFER>): Uint8
   const buf = new Uint8Array(sizeofWEB_SOCKET_BUFFER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Data !== undefined) view.setBigUint64(0, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
+  if (data?.Data !== undefined) view.setBigUint64(0, data.Data === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Data))), true);
   // 0x08: pointer
-  if (data?.CloseStatus !== undefined) view.setBigUint64(8, data.CloseStatus === null ? 0n : BigInt(util.toPointer(data.CloseStatus)), true);
+  if (data?.CloseStatus !== undefined) view.setBigUint64(8, data.CloseStatus === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.CloseStatus))), true);
   return buf;
 }
 
@@ -396,25 +396,25 @@ export class WEB_SOCKET_BUFFERView {
   }
 
   // 0x00: pointer
-  get Data(): Uint8Array | Deno.PointerValue | null {
+  get Data(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get CloseStatus(): Uint8Array | Deno.PointerValue | null {
+  get CloseStatus(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Data(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Data(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set CloseStatus(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set CloseStatus(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -482,120 +482,120 @@ try {
 // Symbols
 
 export function WebSocketCreateClientHandle(
-  pProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pProperties: Deno.PointerValue | Uint8Array /* ptr */,
   ulPropertyCount: number /* u32 */,
-  phWebSocket: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebsocket_dll.WebSocketCreateClientHandle(util.toPointer(pProperties), ulPropertyCount, util.toPointer(phWebSocket)));
+  phWebSocket: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libwebsocket_dll.WebSocketCreateClientHandle(util.toPointer(pProperties), ulPropertyCount, util.toPointer(phWebSocket));
 }
 
 export function WebSocketBeginClientHandshake(
-  hWebSocket: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WebSocket.WEB_SOCKET_HANDLE */,
-  pszSubprotocols: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hWebSocket: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.WebSocket.WEB_SOCKET_HANDLE */,
+  pszSubprotocols: Deno.PointerValue | Uint8Array /* ptr */,
   ulSubprotocolCount: number /* u32 */,
-  pszExtensions: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pszExtensions: Deno.PointerValue | Uint8Array /* ptr */,
   ulExtensionCount: number /* u32 */,
-  pInitialHeaders: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pInitialHeaders: Deno.PointerValue | Uint8Array /* ptr */,
   ulInitialHeaderCount: number /* u32 */,
-  pAdditionalHeaders: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pulAdditionalHeaderCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebsocket_dll.WebSocketBeginClientHandshake(util.toPointer(hWebSocket), util.toPointer(pszSubprotocols), ulSubprotocolCount, util.toPointer(pszExtensions), ulExtensionCount, util.toPointer(pInitialHeaders), ulInitialHeaderCount, util.toPointer(pAdditionalHeaders), util.toPointer(pulAdditionalHeaderCount)));
+  pAdditionalHeaders: Deno.PointerValue | Uint8Array /* ptr */,
+  pulAdditionalHeaderCount: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libwebsocket_dll.WebSocketBeginClientHandshake(util.toPointer(hWebSocket), util.toPointer(pszSubprotocols), ulSubprotocolCount, util.toPointer(pszExtensions), ulExtensionCount, util.toPointer(pInitialHeaders), ulInitialHeaderCount, util.toPointer(pAdditionalHeaders), util.toPointer(pulAdditionalHeaderCount));
 }
 
 export function WebSocketEndClientHandshake(
-  hWebSocket: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WebSocket.WEB_SOCKET_HANDLE */,
-  pResponseHeaders: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hWebSocket: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.WebSocket.WEB_SOCKET_HANDLE */,
+  pResponseHeaders: Deno.PointerValue | Uint8Array /* ptr */,
   ulReponseHeaderCount: number /* u32 */,
-  pulSelectedExtensions: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pulSelectedExtensionCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pulSelectedSubprotocol: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebsocket_dll.WebSocketEndClientHandshake(util.toPointer(hWebSocket), util.toPointer(pResponseHeaders), ulReponseHeaderCount, util.toPointer(pulSelectedExtensions), util.toPointer(pulSelectedExtensionCount), util.toPointer(pulSelectedSubprotocol)));
+  pulSelectedExtensions: Deno.PointerValue | Uint8Array /* ptr */,
+  pulSelectedExtensionCount: Deno.PointerValue | Uint8Array /* ptr */,
+  pulSelectedSubprotocol: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libwebsocket_dll.WebSocketEndClientHandshake(util.toPointer(hWebSocket), util.toPointer(pResponseHeaders), ulReponseHeaderCount, util.toPointer(pulSelectedExtensions), util.toPointer(pulSelectedExtensionCount), util.toPointer(pulSelectedSubprotocol));
 }
 
 export function WebSocketCreateServerHandle(
-  pProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pProperties: Deno.PointerValue | Uint8Array /* ptr */,
   ulPropertyCount: number /* u32 */,
-  phWebSocket: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebsocket_dll.WebSocketCreateServerHandle(util.toPointer(pProperties), ulPropertyCount, util.toPointer(phWebSocket)));
+  phWebSocket: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libwebsocket_dll.WebSocketCreateServerHandle(util.toPointer(pProperties), ulPropertyCount, util.toPointer(phWebSocket));
 }
 
 export function WebSocketBeginServerHandshake(
-  hWebSocket: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WebSocket.WEB_SOCKET_HANDLE */,
+  hWebSocket: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.WebSocket.WEB_SOCKET_HANDLE */,
   pszSubprotocolSelected: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pszExtensionSelected: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pszExtensionSelected: Deno.PointerValue | Uint8Array /* ptr */,
   ulExtensionSelectedCount: number /* u32 */,
-  pRequestHeaders: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pRequestHeaders: Deno.PointerValue | Uint8Array /* ptr */,
   ulRequestHeaderCount: number /* u32 */,
-  pResponseHeaders: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pulResponseHeaderCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebsocket_dll.WebSocketBeginServerHandshake(util.toPointer(hWebSocket), util.pstrToFfi(pszSubprotocolSelected), util.toPointer(pszExtensionSelected), ulExtensionSelectedCount, util.toPointer(pRequestHeaders), ulRequestHeaderCount, util.toPointer(pResponseHeaders), util.toPointer(pulResponseHeaderCount)));
+  pResponseHeaders: Deno.PointerValue | Uint8Array /* ptr */,
+  pulResponseHeaderCount: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libwebsocket_dll.WebSocketBeginServerHandshake(util.toPointer(hWebSocket), util.pstrToFfi(pszSubprotocolSelected), util.toPointer(pszExtensionSelected), ulExtensionSelectedCount, util.toPointer(pRequestHeaders), ulRequestHeaderCount, util.toPointer(pResponseHeaders), util.toPointer(pulResponseHeaderCount));
 }
 
 export function WebSocketEndServerHandshake(
-  hWebSocket: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WebSocket.WEB_SOCKET_HANDLE */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebsocket_dll.WebSocketEndServerHandshake(util.toPointer(hWebSocket)));
+  hWebSocket: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.WebSocket.WEB_SOCKET_HANDLE */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libwebsocket_dll.WebSocketEndServerHandshake(util.toPointer(hWebSocket));
 }
 
 export function WebSocketSend(
-  hWebSocket: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WebSocket.WEB_SOCKET_HANDLE */,
+  hWebSocket: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.WebSocket.WEB_SOCKET_HANDLE */,
   BufferType: WEB_SOCKET_BUFFER_TYPE /* Windows.Win32.Networking.WebSocket.WEB_SOCKET_BUFFER_TYPE */,
-  pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Context: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebsocket_dll.WebSocketSend(util.toPointer(hWebSocket), BufferType, util.toPointer(pBuffer), util.toPointer(Context)));
+  pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  Context: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libwebsocket_dll.WebSocketSend(util.toPointer(hWebSocket), BufferType, util.toPointer(pBuffer), util.toPointer(Context));
 }
 
 export function WebSocketReceive(
-  hWebSocket: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WebSocket.WEB_SOCKET_HANDLE */,
-  pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pvContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebsocket_dll.WebSocketReceive(util.toPointer(hWebSocket), util.toPointer(pBuffer), util.toPointer(pvContext)));
+  hWebSocket: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.WebSocket.WEB_SOCKET_HANDLE */,
+  pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  pvContext: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libwebsocket_dll.WebSocketReceive(util.toPointer(hWebSocket), util.toPointer(pBuffer), util.toPointer(pvContext));
 }
 
 export function WebSocketGetAction(
-  hWebSocket: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WebSocket.WEB_SOCKET_HANDLE */,
+  hWebSocket: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.WebSocket.WEB_SOCKET_HANDLE */,
   eActionQueue: WEB_SOCKET_ACTION_QUEUE /* Windows.Win32.Networking.WebSocket.WEB_SOCKET_ACTION_QUEUE */,
-  pDataBuffers: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pulDataBufferCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pAction: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pBufferType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pvApplicationContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pvActionContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebsocket_dll.WebSocketGetAction(util.toPointer(hWebSocket), eActionQueue, util.toPointer(pDataBuffers), util.toPointer(pulDataBufferCount), util.toPointer(pAction), util.toPointer(pBufferType), util.toPointer(pvApplicationContext), util.toPointer(pvActionContext)));
+  pDataBuffers: Deno.PointerValue | Uint8Array /* ptr */,
+  pulDataBufferCount: Deno.PointerValue | Uint8Array /* ptr */,
+  pAction: Deno.PointerValue | Uint8Array /* ptr */,
+  pBufferType: Deno.PointerValue | Uint8Array /* ptr */,
+  pvApplicationContext: Deno.PointerValue | Uint8Array /* ptr */,
+  pvActionContext: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libwebsocket_dll.WebSocketGetAction(util.toPointer(hWebSocket), eActionQueue, util.toPointer(pDataBuffers), util.toPointer(pulDataBufferCount), util.toPointer(pAction), util.toPointer(pBufferType), util.toPointer(pvApplicationContext), util.toPointer(pvActionContext));
 }
 
 export function WebSocketCompleteAction(
-  hWebSocket: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WebSocket.WEB_SOCKET_HANDLE */,
-  pvActionContext: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hWebSocket: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.WebSocket.WEB_SOCKET_HANDLE */,
+  pvActionContext: Deno.PointerValue | Uint8Array /* ptr */,
   ulBytesTransferred: number /* u32 */,
 ): void /* void */ {
   return libwebsocket_dll.WebSocketCompleteAction(util.toPointer(hWebSocket), util.toPointer(pvActionContext), ulBytesTransferred);
 }
 
 export function WebSocketAbortHandle(
-  hWebSocket: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WebSocket.WEB_SOCKET_HANDLE */,
+  hWebSocket: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.WebSocket.WEB_SOCKET_HANDLE */,
 ): void /* void */ {
   return libwebsocket_dll.WebSocketAbortHandle(util.toPointer(hWebSocket));
 }
 
 export function WebSocketDeleteHandle(
-  hWebSocket: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.WebSocket.WEB_SOCKET_HANDLE */,
+  hWebSocket: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.WebSocket.WEB_SOCKET_HANDLE */,
 ): void /* void */ {
   return libwebsocket_dll.WebSocketDeleteHandle(util.toPointer(hWebSocket));
 }
 
 export function WebSocketGetGlobalProperty(
   eType: WEB_SOCKET_PROPERTY_TYPE /* Windows.Win32.Networking.WebSocket.WEB_SOCKET_PROPERTY_TYPE */,
-  pvValue: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ulSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libwebsocket_dll.WebSocketGetGlobalProperty(eType, util.toPointer(pvValue), util.toPointer(ulSize)));
+  pvValue: Deno.PointerValue | Uint8Array /* ptr */,
+  ulSize: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libwebsocket_dll.WebSocketGetGlobalProperty(eType, util.toPointer(pvValue), util.toPointer(ulSize));
 }
 

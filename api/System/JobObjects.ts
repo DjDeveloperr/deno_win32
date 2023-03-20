@@ -134,7 +134,7 @@ export const MaxJobObjectInfoClass = 48;
 
 // Structs
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.System.JobObjects.JOBOBJECT_IO_RATE_CONTROL_INFORMATION (size: 40)
@@ -168,7 +168,7 @@ export function allocJOBOBJECT_IO_RATE_CONTROL_INFORMATION(data?: Partial<JOBOBJ
   // 0x18: buffer
   if (data?.VolumeName !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.VolumeName);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: u32
   if (data?.BaseIoSize !== undefined) view.setUint32(32, Number(data.BaseIoSize), true);
@@ -203,9 +203,9 @@ export class JOBOBJECT_IO_RATE_CONTROL_INFORMATIONView {
   }
 
   // 0x18: buffer
-  get VolumeName(): Uint8Array | Deno.PointerValue | null {
+  get VolumeName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -234,9 +234,9 @@ export class JOBOBJECT_IO_RATE_CONTROL_INFORMATIONView {
   }
 
   // 0x18: buffer
-  set VolumeName(value: Uint8Array | Deno.PointerValue | null) {
+  set VolumeName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: u32
@@ -257,7 +257,7 @@ export type HANDLE = Deno.PointerValue;
  */
 export interface JOB_SET_ARRAY {
   /** Windows.Win32.Foundation.HANDLE */
-  JobHandle: Uint8Array | Deno.PointerValue | null;
+  JobHandle: Uint8Array | Deno.PointerValue;
   /** u32 */
   MemberLevel: number;
   /** u32 */
@@ -270,7 +270,7 @@ export function allocJOB_SET_ARRAY(data?: Partial<JOB_SET_ARRAY>): Uint8Array {
   const buf = new Uint8Array(sizeofJOB_SET_ARRAY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.JobHandle !== undefined) view.setBigUint64(0, data.JobHandle === null ? 0n : BigInt(util.toPointer(data.JobHandle)), true);
+  if (data?.JobHandle !== undefined) view.setBigUint64(0, data.JobHandle === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.JobHandle))), true);
   // 0x08: u32
   if (data?.MemberLevel !== undefined) view.setUint32(8, Number(data.MemberLevel), true);
   // 0x0c: u32
@@ -289,9 +289,9 @@ export class JOB_SET_ARRAYView {
   }
 
   // 0x00: pointer
-  get JobHandle(): Uint8Array | Deno.PointerValue | null {
+  get JobHandle(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -305,8 +305,8 @@ export class JOB_SET_ARRAYView {
   }
 
   // 0x00: pointer
-  set JobHandle(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set JobHandle(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -394,7 +394,7 @@ export function alloc_u_e__Struct(data?: Partial<_u_e__Struct>): Uint8Array {
   // 0x08: buffer
   if (data?.pwszName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pwszName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   return buf;
 }
@@ -417,9 +417,9 @@ export class _u_e__StructView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get pwszName(): Uint8Array | Deno.PointerValue | null {
+  get pwszName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -430,9 +430,9 @@ export class _u_e__StructView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set pwszName(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 }
 
@@ -441,9 +441,9 @@ export class _u_e__StructView {
  */
 export interface LARGE_INTEGER {
   /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** _u_e__Struct */
-  u: Uint8Array | Deno.PointerValue | null;
+  u: Uint8Array | Deno.PointerValue;
   /** i64 */
   QuadPart: Deno.PointerValue;
 }
@@ -454,9 +454,9 @@ export function allocLARGE_INTEGER(data?: Partial<LARGE_INTEGER>): Uint8Array {
   const buf = new Uint8Array(sizeofLARGE_INTEGER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x08: pointer
-  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : BigInt(util.toPointer(data.u)), true);
+  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.u))), true);
   // 0x10: i64
   if (data?.QuadPart !== undefined) view.setBigInt64(16, BigInt(data.QuadPart), true);
   return buf;
@@ -473,15 +473,15 @@ export class LARGE_INTEGERView {
   }
 
   // 0x00: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get u(): Uint8Array | Deno.PointerValue | null {
+  get u(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i64
@@ -490,13 +490,13 @@ export class LARGE_INTEGERView {
   }
 
   // 0x00: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set u(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set u(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: i64
@@ -510,13 +510,13 @@ export class LARGE_INTEGERView {
  */
 export interface JOBOBJECT_BASIC_ACCOUNTING_INFORMATION {
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  TotalUserTime: Uint8Array | Deno.PointerValue | null;
+  TotalUserTime: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  TotalKernelTime: Uint8Array | Deno.PointerValue | null;
+  TotalKernelTime: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  ThisPeriodTotalUserTime: Uint8Array | Deno.PointerValue | null;
+  ThisPeriodTotalUserTime: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  ThisPeriodTotalKernelTime: Uint8Array | Deno.PointerValue | null;
+  ThisPeriodTotalKernelTime: Uint8Array | Deno.PointerValue;
   /** u32 */
   TotalPageFaultCount: number;
   /** u32 */
@@ -533,13 +533,13 @@ export function allocJOBOBJECT_BASIC_ACCOUNTING_INFORMATION(data?: Partial<JOBOB
   const buf = new Uint8Array(sizeofJOBOBJECT_BASIC_ACCOUNTING_INFORMATION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.TotalUserTime !== undefined) view.setBigUint64(0, data.TotalUserTime === null ? 0n : BigInt(util.toPointer(data.TotalUserTime)), true);
+  if (data?.TotalUserTime !== undefined) view.setBigUint64(0, data.TotalUserTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.TotalUserTime))), true);
   // 0x08: pointer
-  if (data?.TotalKernelTime !== undefined) view.setBigUint64(8, data.TotalKernelTime === null ? 0n : BigInt(util.toPointer(data.TotalKernelTime)), true);
+  if (data?.TotalKernelTime !== undefined) view.setBigUint64(8, data.TotalKernelTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.TotalKernelTime))), true);
   // 0x10: pointer
-  if (data?.ThisPeriodTotalUserTime !== undefined) view.setBigUint64(16, data.ThisPeriodTotalUserTime === null ? 0n : BigInt(util.toPointer(data.ThisPeriodTotalUserTime)), true);
+  if (data?.ThisPeriodTotalUserTime !== undefined) view.setBigUint64(16, data.ThisPeriodTotalUserTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ThisPeriodTotalUserTime))), true);
   // 0x18: pointer
-  if (data?.ThisPeriodTotalKernelTime !== undefined) view.setBigUint64(24, data.ThisPeriodTotalKernelTime === null ? 0n : BigInt(util.toPointer(data.ThisPeriodTotalKernelTime)), true);
+  if (data?.ThisPeriodTotalKernelTime !== undefined) view.setBigUint64(24, data.ThisPeriodTotalKernelTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ThisPeriodTotalKernelTime))), true);
   // 0x20: u32
   if (data?.TotalPageFaultCount !== undefined) view.setUint32(32, Number(data.TotalPageFaultCount), true);
   // 0x24: u32
@@ -562,27 +562,27 @@ export class JOBOBJECT_BASIC_ACCOUNTING_INFORMATIONView {
   }
 
   // 0x00: pointer
-  get TotalUserTime(): Uint8Array | Deno.PointerValue | null {
+  get TotalUserTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get TotalKernelTime(): Uint8Array | Deno.PointerValue | null {
+  get TotalKernelTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ThisPeriodTotalUserTime(): Uint8Array | Deno.PointerValue | null {
+  get ThisPeriodTotalUserTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get ThisPeriodTotalKernelTime(): Uint8Array | Deno.PointerValue | null {
+  get ThisPeriodTotalKernelTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -606,23 +606,23 @@ export class JOBOBJECT_BASIC_ACCOUNTING_INFORMATIONView {
   }
 
   // 0x00: pointer
-  set TotalUserTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set TotalUserTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set TotalKernelTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set TotalKernelTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ThisPeriodTotalUserTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ThisPeriodTotalUserTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set ThisPeriodTotalKernelTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set ThisPeriodTotalKernelTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -651,9 +651,9 @@ export class JOBOBJECT_BASIC_ACCOUNTING_INFORMATIONView {
  */
 export interface JOBOBJECT_BASIC_LIMIT_INFORMATION {
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  PerProcessUserTimeLimit: Uint8Array | Deno.PointerValue | null;
+  PerProcessUserTimeLimit: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  PerJobUserTimeLimit: Uint8Array | Deno.PointerValue | null;
+  PerJobUserTimeLimit: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.JobObjects.JOB_OBJECT_LIMIT */
   LimitFlags: JOB_OBJECT_LIMIT;
   /** usize */
@@ -676,9 +676,9 @@ export function allocJOBOBJECT_BASIC_LIMIT_INFORMATION(data?: Partial<JOBOBJECT_
   const buf = new Uint8Array(sizeofJOBOBJECT_BASIC_LIMIT_INFORMATION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.PerProcessUserTimeLimit !== undefined) view.setBigUint64(0, data.PerProcessUserTimeLimit === null ? 0n : BigInt(util.toPointer(data.PerProcessUserTimeLimit)), true);
+  if (data?.PerProcessUserTimeLimit !== undefined) view.setBigUint64(0, data.PerProcessUserTimeLimit === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.PerProcessUserTimeLimit))), true);
   // 0x08: pointer
-  if (data?.PerJobUserTimeLimit !== undefined) view.setBigUint64(8, data.PerJobUserTimeLimit === null ? 0n : BigInt(util.toPointer(data.PerJobUserTimeLimit)), true);
+  if (data?.PerJobUserTimeLimit !== undefined) view.setBigUint64(8, data.PerJobUserTimeLimit === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.PerJobUserTimeLimit))), true);
   // 0x10: u32
   if (data?.LimitFlags !== undefined) view.setUint32(16, Number(data.LimitFlags), true);
   // 0x14: pad4
@@ -709,15 +709,15 @@ export class JOBOBJECT_BASIC_LIMIT_INFORMATIONView {
   }
 
   // 0x00: pointer
-  get PerProcessUserTimeLimit(): Uint8Array | Deno.PointerValue | null {
+  get PerProcessUserTimeLimit(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get PerJobUserTimeLimit(): Uint8Array | Deno.PointerValue | null {
+  get PerJobUserTimeLimit(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -760,13 +760,13 @@ export class JOBOBJECT_BASIC_LIMIT_INFORMATIONView {
   }
 
   // 0x00: pointer
-  set PerProcessUserTimeLimit(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set PerProcessUserTimeLimit(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set PerJobUserTimeLimit(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set PerJobUserTimeLimit(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -923,9 +923,9 @@ export class IO_COUNTERSView {
  */
 export interface JOBOBJECT_EXTENDED_LIMIT_INFORMATION {
   /** Windows.Win32.System.JobObjects.JOBOBJECT_BASIC_LIMIT_INFORMATION */
-  BasicLimitInformation: Uint8Array | Deno.PointerValue | null;
+  BasicLimitInformation: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Threading.IO_COUNTERS */
-  IoInfo: Uint8Array | Deno.PointerValue | null;
+  IoInfo: Uint8Array | Deno.PointerValue;
   /** usize */
   ProcessMemoryLimit: Deno.PointerValue;
   /** usize */
@@ -942,9 +942,9 @@ export function allocJOBOBJECT_EXTENDED_LIMIT_INFORMATION(data?: Partial<JOBOBJE
   const buf = new Uint8Array(sizeofJOBOBJECT_EXTENDED_LIMIT_INFORMATION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.BasicLimitInformation !== undefined) view.setBigUint64(0, data.BasicLimitInformation === null ? 0n : BigInt(util.toPointer(data.BasicLimitInformation)), true);
+  if (data?.BasicLimitInformation !== undefined) view.setBigUint64(0, data.BasicLimitInformation === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BasicLimitInformation))), true);
   // 0x08: pointer
-  if (data?.IoInfo !== undefined) view.setBigUint64(8, data.IoInfo === null ? 0n : BigInt(util.toPointer(data.IoInfo)), true);
+  if (data?.IoInfo !== undefined) view.setBigUint64(8, data.IoInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.IoInfo))), true);
   // 0x10: usize
   if (data?.ProcessMemoryLimit !== undefined) view.setBigUint64(16, BigInt(data.ProcessMemoryLimit), true);
   // 0x18: usize
@@ -967,15 +967,15 @@ export class JOBOBJECT_EXTENDED_LIMIT_INFORMATIONView {
   }
 
   // 0x00: pointer
-  get BasicLimitInformation(): Uint8Array | Deno.PointerValue | null {
+  get BasicLimitInformation(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get IoInfo(): Uint8Array | Deno.PointerValue | null {
+  get IoInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: usize
@@ -999,13 +999,13 @@ export class JOBOBJECT_EXTENDED_LIMIT_INFORMATIONView {
   }
 
   // 0x00: pointer
-  set BasicLimitInformation(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set BasicLimitInformation(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set IoInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set IoInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: usize
@@ -1038,7 +1038,7 @@ export interface JOBOBJECT_BASIC_PROCESS_ID_LIST {
   /** u32 */
   NumberOfProcessIdsInList: number;
   /** array */
-  ProcessIdList: Deno.PointerValue | null;
+  ProcessIdList: Deno.PointerValue;
 }
 
 export const sizeofJOBOBJECT_BASIC_PROCESS_ID_LIST = 16;
@@ -1051,7 +1051,7 @@ export function allocJOBOBJECT_BASIC_PROCESS_ID_LIST(data?: Partial<JOBOBJECT_BA
   // 0x04: u32
   if (data?.NumberOfProcessIdsInList !== undefined) view.setUint32(4, Number(data.NumberOfProcessIdsInList), true);
   // 0x08: pointer
-  if (data?.ProcessIdList !== undefined) view.setBigUint64(8, data.ProcessIdList === null ? 0n : BigInt(util.toPointer(data.ProcessIdList)), true);
+  if (data?.ProcessIdList !== undefined) view.setBigUint64(8, data.ProcessIdList === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ProcessIdList))), true);
   return buf;
 }
 
@@ -1076,9 +1076,9 @@ export class JOBOBJECT_BASIC_PROCESS_ID_LISTView {
   }
 
   // 0x08: pointer
-  get ProcessIdList(): Uint8Array | Deno.PointerValue | null {
+  get ProcessIdList(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1092,8 +1092,8 @@ export class JOBOBJECT_BASIC_PROCESS_ID_LISTView {
   }
 
   // 0x08: pointer
-  set ProcessIdList(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ProcessIdList(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1148,13 +1148,13 @@ export interface JOBOBJECT_SECURITY_LIMIT_INFORMATION {
   /** Windows.Win32.System.JobObjects.JOB_OBJECT_SECURITY */
   SecurityLimitFlags: JOB_OBJECT_SECURITY;
   /** Windows.Win32.Foundation.HANDLE */
-  JobToken: Uint8Array | Deno.PointerValue | null;
+  JobToken: Uint8Array | Deno.PointerValue;
   /** ptr */
-  SidsToDisable: Deno.PointerValue | Uint8Array | null;
+  SidsToDisable: Deno.PointerValue | Uint8Array;
   /** ptr */
-  PrivilegesToDelete: Deno.PointerValue | Uint8Array | null;
+  PrivilegesToDelete: Deno.PointerValue | Uint8Array;
   /** ptr */
-  RestrictedSids: Deno.PointerValue | Uint8Array | null;
+  RestrictedSids: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofJOBOBJECT_SECURITY_LIMIT_INFORMATION = 40;
@@ -1166,13 +1166,13 @@ export function allocJOBOBJECT_SECURITY_LIMIT_INFORMATION(data?: Partial<JOBOBJE
   if (data?.SecurityLimitFlags !== undefined) view.setUint32(0, Number(data.SecurityLimitFlags), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.JobToken !== undefined) view.setBigUint64(8, data.JobToken === null ? 0n : BigInt(util.toPointer(data.JobToken)), true);
+  if (data?.JobToken !== undefined) view.setBigUint64(8, data.JobToken === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.JobToken))), true);
   // 0x10: pointer
-  if (data?.SidsToDisable !== undefined) view.setBigUint64(16, data.SidsToDisable === null ? 0n : BigInt(util.toPointer(data.SidsToDisable)), true);
+  if (data?.SidsToDisable !== undefined) view.setBigUint64(16, data.SidsToDisable === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.SidsToDisable))), true);
   // 0x18: pointer
-  if (data?.PrivilegesToDelete !== undefined) view.setBigUint64(24, data.PrivilegesToDelete === null ? 0n : BigInt(util.toPointer(data.PrivilegesToDelete)), true);
+  if (data?.PrivilegesToDelete !== undefined) view.setBigUint64(24, data.PrivilegesToDelete === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.PrivilegesToDelete))), true);
   // 0x20: pointer
-  if (data?.RestrictedSids !== undefined) view.setBigUint64(32, data.RestrictedSids === null ? 0n : BigInt(util.toPointer(data.RestrictedSids)), true);
+  if (data?.RestrictedSids !== undefined) view.setBigUint64(32, data.RestrictedSids === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.RestrictedSids))), true);
   return buf;
 }
 
@@ -1194,27 +1194,27 @@ export class JOBOBJECT_SECURITY_LIMIT_INFORMATIONView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get JobToken(): Uint8Array | Deno.PointerValue | null {
+  get JobToken(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get SidsToDisable(): Uint8Array | Deno.PointerValue | null {
+  get SidsToDisable(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get PrivilegesToDelete(): Uint8Array | Deno.PointerValue | null {
+  get PrivilegesToDelete(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get RestrictedSids(): Uint8Array | Deno.PointerValue | null {
+  get RestrictedSids(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1225,23 +1225,23 @@ export class JOBOBJECT_SECURITY_LIMIT_INFORMATIONView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set JobToken(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set JobToken(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set SidsToDisable(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set SidsToDisable(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set PrivilegesToDelete(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set PrivilegesToDelete(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set RestrictedSids(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set RestrictedSids(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1294,9 +1294,9 @@ export class JOBOBJECT_END_OF_JOB_TIME_INFORMATIONView {
  */
 export interface JOBOBJECT_ASSOCIATE_COMPLETION_PORT {
   /** ptr */
-  CompletionKey: Deno.PointerValue | Uint8Array | null;
+  CompletionKey: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.HANDLE */
-  CompletionPort: Uint8Array | Deno.PointerValue | null;
+  CompletionPort: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofJOBOBJECT_ASSOCIATE_COMPLETION_PORT = 16;
@@ -1305,9 +1305,9 @@ export function allocJOBOBJECT_ASSOCIATE_COMPLETION_PORT(data?: Partial<JOBOBJEC
   const buf = new Uint8Array(sizeofJOBOBJECT_ASSOCIATE_COMPLETION_PORT);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.CompletionKey !== undefined) view.setBigUint64(0, data.CompletionKey === null ? 0n : BigInt(util.toPointer(data.CompletionKey)), true);
+  if (data?.CompletionKey !== undefined) view.setBigUint64(0, data.CompletionKey === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.CompletionKey))), true);
   // 0x08: pointer
-  if (data?.CompletionPort !== undefined) view.setBigUint64(8, data.CompletionPort === null ? 0n : BigInt(util.toPointer(data.CompletionPort)), true);
+  if (data?.CompletionPort !== undefined) view.setBigUint64(8, data.CompletionPort === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.CompletionPort))), true);
   return buf;
 }
 
@@ -1322,25 +1322,25 @@ export class JOBOBJECT_ASSOCIATE_COMPLETION_PORTView {
   }
 
   // 0x00: pointer
-  get CompletionKey(): Uint8Array | Deno.PointerValue | null {
+  get CompletionKey(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get CompletionPort(): Uint8Array | Deno.PointerValue | null {
+  get CompletionPort(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set CompletionKey(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set CompletionKey(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set CompletionPort(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set CompletionPort(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1349,9 +1349,9 @@ export class JOBOBJECT_ASSOCIATE_COMPLETION_PORTView {
  */
 export interface JOBOBJECT_BASIC_AND_IO_ACCOUNTING_INFORMATION {
   /** Windows.Win32.System.JobObjects.JOBOBJECT_BASIC_ACCOUNTING_INFORMATION */
-  BasicInfo: Uint8Array | Deno.PointerValue | null;
+  BasicInfo: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Threading.IO_COUNTERS */
-  IoInfo: Uint8Array | Deno.PointerValue | null;
+  IoInfo: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofJOBOBJECT_BASIC_AND_IO_ACCOUNTING_INFORMATION = 16;
@@ -1360,9 +1360,9 @@ export function allocJOBOBJECT_BASIC_AND_IO_ACCOUNTING_INFORMATION(data?: Partia
   const buf = new Uint8Array(sizeofJOBOBJECT_BASIC_AND_IO_ACCOUNTING_INFORMATION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.BasicInfo !== undefined) view.setBigUint64(0, data.BasicInfo === null ? 0n : BigInt(util.toPointer(data.BasicInfo)), true);
+  if (data?.BasicInfo !== undefined) view.setBigUint64(0, data.BasicInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BasicInfo))), true);
   // 0x08: pointer
-  if (data?.IoInfo !== undefined) view.setBigUint64(8, data.IoInfo === null ? 0n : BigInt(util.toPointer(data.IoInfo)), true);
+  if (data?.IoInfo !== undefined) view.setBigUint64(8, data.IoInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.IoInfo))), true);
   return buf;
 }
 
@@ -1377,25 +1377,25 @@ export class JOBOBJECT_BASIC_AND_IO_ACCOUNTING_INFORMATIONView {
   }
 
   // 0x00: pointer
-  get BasicInfo(): Uint8Array | Deno.PointerValue | null {
+  get BasicInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get IoInfo(): Uint8Array | Deno.PointerValue | null {
+  get IoInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set BasicInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set BasicInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set IoInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set IoInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1452,7 +1452,7 @@ export interface JOBOBJECT_NOTIFICATION_LIMIT_INFORMATION {
   /** u64 */
   IoWriteBytesLimit: Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  PerJobUserTimeLimit: Uint8Array | Deno.PointerValue | null;
+  PerJobUserTimeLimit: Uint8Array | Deno.PointerValue;
   /** u64 */
   JobMemoryLimit: Deno.PointerValue;
   /** Windows.Win32.System.JobObjects.JOBOBJECT_RATE_CONTROL_TOLERANCE */
@@ -1473,7 +1473,7 @@ export function allocJOBOBJECT_NOTIFICATION_LIMIT_INFORMATION(data?: Partial<JOB
   // 0x08: u64
   if (data?.IoWriteBytesLimit !== undefined) view.setBigUint64(8, BigInt(data.IoWriteBytesLimit), true);
   // 0x10: pointer
-  if (data?.PerJobUserTimeLimit !== undefined) view.setBigUint64(16, data.PerJobUserTimeLimit === null ? 0n : BigInt(util.toPointer(data.PerJobUserTimeLimit)), true);
+  if (data?.PerJobUserTimeLimit !== undefined) view.setBigUint64(16, data.PerJobUserTimeLimit === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.PerJobUserTimeLimit))), true);
   // 0x18: u64
   if (data?.JobMemoryLimit !== undefined) view.setBigUint64(24, BigInt(data.JobMemoryLimit), true);
   // 0x20: i32
@@ -1507,9 +1507,9 @@ export class JOBOBJECT_NOTIFICATION_LIMIT_INFORMATIONView {
   }
 
   // 0x10: pointer
-  get PerJobUserTimeLimit(): Uint8Array | Deno.PointerValue | null {
+  get PerJobUserTimeLimit(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u64
@@ -1545,8 +1545,8 @@ export class JOBOBJECT_NOTIFICATION_LIMIT_INFORMATIONView {
   }
 
   // 0x10: pointer
-  set PerJobUserTimeLimit(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set PerJobUserTimeLimit(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u64
@@ -1583,15 +1583,15 @@ export interface _Anonymous1_e__Union {
   /** usize */
   u: Deno.PointerValue;
   /** ptr */
-  psid: Deno.PointerValue | Uint8Array | null;
+  psid: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pguid: Deno.PointerValue | Uint8Array | null;
+  pguid: Deno.PointerValue | Uint8Array;
   /** u32 */
   LogonId_LowPart: number;
   /** ptr */
-  pObjectTypes: Deno.PointerValue | Uint8Array | null;
+  pObjectTypes: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pIpAddress: Deno.PointerValue | Uint8Array | null;
+  pIpAddress: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeof_Anonymous1_e__Union = 64;
@@ -1604,21 +1604,21 @@ export function alloc_Anonymous1_e__Union(data?: Partial<_Anonymous1_e__Union>):
   // 0x08: buffer
   if (data?.String !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.String);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: usize
   if (data?.u !== undefined) view.setBigUint64(16, BigInt(data.u), true);
   // 0x18: pointer
-  if (data?.psid !== undefined) view.setBigUint64(24, data.psid === null ? 0n : BigInt(util.toPointer(data.psid)), true);
+  if (data?.psid !== undefined) view.setBigUint64(24, data.psid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.psid))), true);
   // 0x20: pointer
-  if (data?.pguid !== undefined) view.setBigUint64(32, data.pguid === null ? 0n : BigInt(util.toPointer(data.pguid)), true);
+  if (data?.pguid !== undefined) view.setBigUint64(32, data.pguid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pguid))), true);
   // 0x28: u32
   if (data?.LogonId_LowPart !== undefined) view.setUint32(40, Number(data.LogonId_LowPart), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.pObjectTypes !== undefined) view.setBigUint64(48, data.pObjectTypes === null ? 0n : BigInt(util.toPointer(data.pObjectTypes)), true);
+  if (data?.pObjectTypes !== undefined) view.setBigUint64(48, data.pObjectTypes === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pObjectTypes))), true);
   // 0x38: pointer
-  if (data?.pIpAddress !== undefined) view.setBigUint64(56, data.pIpAddress === null ? 0n : BigInt(util.toPointer(data.pIpAddress)), true);
+  if (data?.pIpAddress !== undefined) view.setBigUint64(56, data.pIpAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pIpAddress))), true);
   return buf;
 }
 
@@ -1638,9 +1638,9 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x08: buffer
-  get String(): Uint8Array | Deno.PointerValue | null {
+  get String(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: usize
@@ -1649,15 +1649,15 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x18: pointer
-  get psid(): Uint8Array | Deno.PointerValue | null {
+  get psid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get pguid(): Uint8Array | Deno.PointerValue | null {
+  get pguid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -1668,15 +1668,15 @@ export class _Anonymous1_e__UnionView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  get pObjectTypes(): Uint8Array | Deno.PointerValue | null {
+  get pObjectTypes(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get pIpAddress(): Uint8Array | Deno.PointerValue | null {
+  get pIpAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: usize
@@ -1685,9 +1685,9 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x08: buffer
-  set String(value: Uint8Array | Deno.PointerValue | null) {
+  set String(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: usize
@@ -1696,13 +1696,13 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x18: pointer
-  set psid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set psid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set pguid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set pguid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u32
@@ -1713,13 +1713,13 @@ export class _Anonymous1_e__UnionView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  set pObjectTypes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set pObjectTypes(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set pIpAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set pIpAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1788,7 +1788,7 @@ export interface _Anonymous3_e__Union {
   /** u32 */
   dwAlphaDestConst: number;
   /** Windows.Win32.Graphics.DirectDraw.IDirectDrawSurface */
-  lpDDSAlphaDest: Uint8Array | Deno.PointerValue | null;
+  lpDDSAlphaDest: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeof_Anonymous3_e__Union = 16;
@@ -1800,7 +1800,7 @@ export function alloc_Anonymous3_e__Union(data?: Partial<_Anonymous3_e__Union>):
   if (data?.dwAlphaDestConst !== undefined) view.setUint32(0, Number(data.dwAlphaDestConst), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.lpDDSAlphaDest !== undefined) view.setBigUint64(8, data.lpDDSAlphaDest === null ? 0n : BigInt(util.toPointer(data.lpDDSAlphaDest)), true);
+  if (data?.lpDDSAlphaDest !== undefined) view.setBigUint64(8, data.lpDDSAlphaDest === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpDDSAlphaDest))), true);
   return buf;
 }
 
@@ -1822,9 +1822,9 @@ export class _Anonymous3_e__UnionView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get lpDDSAlphaDest(): Uint8Array | Deno.PointerValue | null {
+  get lpDDSAlphaDest(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1835,8 +1835,8 @@ export class _Anonymous3_e__UnionView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set lpDDSAlphaDest(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set lpDDSAlphaDest(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1849,13 +1849,13 @@ export interface JOBOBJECT_NOTIFICATION_LIMIT_INFORMATION_2 {
   /** u64 */
   IoWriteBytesLimit: Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  PerJobUserTimeLimit: Uint8Array | Deno.PointerValue | null;
+  PerJobUserTimeLimit: Uint8Array | Deno.PointerValue;
   /** _Anonymous1_e__Union */
-  Anonymous1: Uint8Array | Deno.PointerValue | null;
+  Anonymous1: Uint8Array | Deno.PointerValue;
   /** _Anonymous2_e__Union */
-  Anonymous2: Uint8Array | Deno.PointerValue | null;
+  Anonymous2: Uint8Array | Deno.PointerValue;
   /** _Anonymous3_e__Union */
-  Anonymous3: Uint8Array | Deno.PointerValue | null;
+  Anonymous3: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.JobObjects.JOB_OBJECT_LIMIT */
   LimitFlags: JOB_OBJECT_LIMIT;
   /** Windows.Win32.System.JobObjects.JOBOBJECT_RATE_CONTROL_TOLERANCE */
@@ -1880,13 +1880,13 @@ export function allocJOBOBJECT_NOTIFICATION_LIMIT_INFORMATION_2(data?: Partial<J
   // 0x08: u64
   if (data?.IoWriteBytesLimit !== undefined) view.setBigUint64(8, BigInt(data.IoWriteBytesLimit), true);
   // 0x10: pointer
-  if (data?.PerJobUserTimeLimit !== undefined) view.setBigUint64(16, data.PerJobUserTimeLimit === null ? 0n : BigInt(util.toPointer(data.PerJobUserTimeLimit)), true);
+  if (data?.PerJobUserTimeLimit !== undefined) view.setBigUint64(16, data.PerJobUserTimeLimit === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.PerJobUserTimeLimit))), true);
   // 0x18: pointer
-  if (data?.Anonymous1 !== undefined) view.setBigUint64(24, data.Anonymous1 === null ? 0n : BigInt(util.toPointer(data.Anonymous1)), true);
+  if (data?.Anonymous1 !== undefined) view.setBigUint64(24, data.Anonymous1 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous1))), true);
   // 0x20: pointer
-  if (data?.Anonymous2 !== undefined) view.setBigUint64(32, data.Anonymous2 === null ? 0n : BigInt(util.toPointer(data.Anonymous2)), true);
+  if (data?.Anonymous2 !== undefined) view.setBigUint64(32, data.Anonymous2 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous2))), true);
   // 0x28: pointer
-  if (data?.Anonymous3 !== undefined) view.setBigUint64(40, data.Anonymous3 === null ? 0n : BigInt(util.toPointer(data.Anonymous3)), true);
+  if (data?.Anonymous3 !== undefined) view.setBigUint64(40, data.Anonymous3 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous3))), true);
   // 0x30: u32
   if (data?.LimitFlags !== undefined) view.setUint32(48, Number(data.LimitFlags), true);
   // 0x34: i32
@@ -1924,27 +1924,27 @@ export class JOBOBJECT_NOTIFICATION_LIMIT_INFORMATION_2View {
   }
 
   // 0x10: pointer
-  get PerJobUserTimeLimit(): Uint8Array | Deno.PointerValue | null {
+  get PerJobUserTimeLimit(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get Anonymous1(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous1(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get Anonymous2(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous2(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get Anonymous3(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous3(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: u32
@@ -1990,23 +1990,23 @@ export class JOBOBJECT_NOTIFICATION_LIMIT_INFORMATION_2View {
   }
 
   // 0x10: pointer
-  set PerJobUserTimeLimit(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set PerJobUserTimeLimit(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set Anonymous1(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set Anonymous1(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set Anonymous2(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set Anonymous2(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set Anonymous3(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set Anonymous3(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: u32
@@ -2059,9 +2059,9 @@ export interface JOBOBJECT_LIMIT_VIOLATION_INFORMATION {
   /** u64 */
   IoWriteBytesLimit: Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  PerJobUserTime: Uint8Array | Deno.PointerValue | null;
+  PerJobUserTime: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  PerJobUserTimeLimit: Uint8Array | Deno.PointerValue | null;
+  PerJobUserTimeLimit: Uint8Array | Deno.PointerValue;
   /** u64 */
   JobMemory: Deno.PointerValue;
   /** u64 */
@@ -2090,9 +2090,9 @@ export function allocJOBOBJECT_LIMIT_VIOLATION_INFORMATION(data?: Partial<JOBOBJ
   // 0x20: u64
   if (data?.IoWriteBytesLimit !== undefined) view.setBigUint64(32, BigInt(data.IoWriteBytesLimit), true);
   // 0x28: pointer
-  if (data?.PerJobUserTime !== undefined) view.setBigUint64(40, data.PerJobUserTime === null ? 0n : BigInt(util.toPointer(data.PerJobUserTime)), true);
+  if (data?.PerJobUserTime !== undefined) view.setBigUint64(40, data.PerJobUserTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.PerJobUserTime))), true);
   // 0x30: pointer
-  if (data?.PerJobUserTimeLimit !== undefined) view.setBigUint64(48, data.PerJobUserTimeLimit === null ? 0n : BigInt(util.toPointer(data.PerJobUserTimeLimit)), true);
+  if (data?.PerJobUserTimeLimit !== undefined) view.setBigUint64(48, data.PerJobUserTimeLimit === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.PerJobUserTimeLimit))), true);
   // 0x38: u64
   if (data?.JobMemory !== undefined) view.setBigUint64(56, BigInt(data.JobMemory), true);
   // 0x40: u64
@@ -2145,15 +2145,15 @@ export class JOBOBJECT_LIMIT_VIOLATION_INFORMATIONView {
   }
 
   // 0x28: pointer
-  get PerJobUserTime(): Uint8Array | Deno.PointerValue | null {
+  get PerJobUserTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get PerJobUserTimeLimit(): Uint8Array | Deno.PointerValue | null {
+  get PerJobUserTimeLimit(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: u64
@@ -2207,13 +2207,13 @@ export class JOBOBJECT_LIMIT_VIOLATION_INFORMATIONView {
   }
 
   // 0x28: pointer
-  set PerJobUserTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set PerJobUserTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set PerJobUserTimeLimit(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set PerJobUserTimeLimit(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: u64
@@ -2254,17 +2254,17 @@ export interface JOBOBJECT_LIMIT_VIOLATION_INFORMATION_2 {
   /** u64 */
   IoWriteBytesLimit: Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  PerJobUserTime: Uint8Array | Deno.PointerValue | null;
+  PerJobUserTime: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  PerJobUserTimeLimit: Uint8Array | Deno.PointerValue | null;
+  PerJobUserTimeLimit: Uint8Array | Deno.PointerValue;
   /** u64 */
   JobMemory: Deno.PointerValue;
   /** _Anonymous1_e__Union */
-  Anonymous1: Uint8Array | Deno.PointerValue | null;
+  Anonymous1: Uint8Array | Deno.PointerValue;
   /** _Anonymous2_e__Union */
-  Anonymous2: Uint8Array | Deno.PointerValue | null;
+  Anonymous2: Uint8Array | Deno.PointerValue;
   /** _Anonymous3_e__Union */
-  Anonymous3: Uint8Array | Deno.PointerValue | null;
+  Anonymous3: Uint8Array | Deno.PointerValue;
   /** u64 */
   JobLowMemoryLimit: Deno.PointerValue;
   /** Windows.Win32.System.JobObjects.JOBOBJECT_RATE_CONTROL_TOLERANCE */
@@ -2295,17 +2295,17 @@ export function allocJOBOBJECT_LIMIT_VIOLATION_INFORMATION_2(data?: Partial<JOBO
   // 0x20: u64
   if (data?.IoWriteBytesLimit !== undefined) view.setBigUint64(32, BigInt(data.IoWriteBytesLimit), true);
   // 0x28: pointer
-  if (data?.PerJobUserTime !== undefined) view.setBigUint64(40, data.PerJobUserTime === null ? 0n : BigInt(util.toPointer(data.PerJobUserTime)), true);
+  if (data?.PerJobUserTime !== undefined) view.setBigUint64(40, data.PerJobUserTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.PerJobUserTime))), true);
   // 0x30: pointer
-  if (data?.PerJobUserTimeLimit !== undefined) view.setBigUint64(48, data.PerJobUserTimeLimit === null ? 0n : BigInt(util.toPointer(data.PerJobUserTimeLimit)), true);
+  if (data?.PerJobUserTimeLimit !== undefined) view.setBigUint64(48, data.PerJobUserTimeLimit === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.PerJobUserTimeLimit))), true);
   // 0x38: u64
   if (data?.JobMemory !== undefined) view.setBigUint64(56, BigInt(data.JobMemory), true);
   // 0x40: pointer
-  if (data?.Anonymous1 !== undefined) view.setBigUint64(64, data.Anonymous1 === null ? 0n : BigInt(util.toPointer(data.Anonymous1)), true);
+  if (data?.Anonymous1 !== undefined) view.setBigUint64(64, data.Anonymous1 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous1))), true);
   // 0x48: pointer
-  if (data?.Anonymous2 !== undefined) view.setBigUint64(72, data.Anonymous2 === null ? 0n : BigInt(util.toPointer(data.Anonymous2)), true);
+  if (data?.Anonymous2 !== undefined) view.setBigUint64(72, data.Anonymous2 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous2))), true);
   // 0x50: pointer
-  if (data?.Anonymous3 !== undefined) view.setBigUint64(80, data.Anonymous3 === null ? 0n : BigInt(util.toPointer(data.Anonymous3)), true);
+  if (data?.Anonymous3 !== undefined) view.setBigUint64(80, data.Anonymous3 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous3))), true);
   // 0x58: u64
   if (data?.JobLowMemoryLimit !== undefined) view.setBigUint64(88, BigInt(data.JobLowMemoryLimit), true);
   // 0x60: i32
@@ -2360,15 +2360,15 @@ export class JOBOBJECT_LIMIT_VIOLATION_INFORMATION_2View {
   }
 
   // 0x28: pointer
-  get PerJobUserTime(): Uint8Array | Deno.PointerValue | null {
+  get PerJobUserTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get PerJobUserTimeLimit(): Uint8Array | Deno.PointerValue | null {
+  get PerJobUserTimeLimit(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: u64
@@ -2377,21 +2377,21 @@ export class JOBOBJECT_LIMIT_VIOLATION_INFORMATION_2View {
   }
 
   // 0x40: pointer
-  get Anonymous1(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous1(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: pointer
-  get Anonymous2(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous2(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: pointer
-  get Anonymous3(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous3(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x58: u64
@@ -2450,13 +2450,13 @@ export class JOBOBJECT_LIMIT_VIOLATION_INFORMATION_2View {
   }
 
   // 0x28: pointer
-  set PerJobUserTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set PerJobUserTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set PerJobUserTimeLimit(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set PerJobUserTimeLimit(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: u64
@@ -2465,18 +2465,18 @@ export class JOBOBJECT_LIMIT_VIOLATION_INFORMATION_2View {
   }
 
   // 0x40: pointer
-  set Anonymous1(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set Anonymous1(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: pointer
-  set Anonymous2(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set Anonymous2(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x50: pointer
-  set Anonymous3(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set Anonymous3(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x58: u64
@@ -2510,9 +2510,9 @@ export class JOBOBJECT_LIMIT_VIOLATION_INFORMATION_2View {
  */
 export interface _Anonymous_e__Union {
   /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** array */
-  X: Deno.PointerValue | null;
+  X: Deno.PointerValue;
 }
 
 export const sizeof_Anonymous_e__Union = 16;
@@ -2521,9 +2521,9 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   const buf = new Uint8Array(sizeof_Anonymous_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x08: pointer
-  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.X))), true);
   return buf;
 }
 
@@ -2538,25 +2538,25 @@ export class _Anonymous_e__UnionView {
   }
 
   // 0x00: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get X(): Uint8Array | Deno.PointerValue | null {
+  get X(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set X(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set X(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2567,7 +2567,7 @@ export interface JOBOBJECT_CPU_RATE_CONTROL_INFORMATION {
   /** Windows.Win32.System.JobObjects.JOB_OBJECT_CPU_RATE_CONTROL */
   ControlFlags: JOB_OBJECT_CPU_RATE_CONTROL;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofJOBOBJECT_CPU_RATE_CONTROL_INFORMATION = 16;
@@ -2579,7 +2579,7 @@ export function allocJOBOBJECT_CPU_RATE_CONTROL_INFORMATION(data?: Partial<JOBOB
   if (data?.ControlFlags !== undefined) view.setUint32(0, Number(data.ControlFlags), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -2601,9 +2601,9 @@ export class JOBOBJECT_CPU_RATE_CONTROL_INFORMATIONView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -2614,8 +2614,8 @@ export class JOBOBJECT_CPU_RATE_CONTROL_INFORMATIONView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2737,7 +2737,7 @@ export function allocJOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V2(data?: Part
   // 0x18: buffer
   if (data?.VolumeName !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.VolumeName);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: u32
   if (data?.BaseIoSize !== undefined) view.setUint32(32, Number(data.BaseIoSize), true);
@@ -2787,9 +2787,9 @@ export class JOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V2View {
   }
 
   // 0x18: buffer
-  get VolumeName(): Uint8Array | Deno.PointerValue | null {
+  get VolumeName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -2855,9 +2855,9 @@ export class JOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V2View {
   }
 
   // 0x18: buffer
-  set VolumeName(value: Uint8Array | Deno.PointerValue | null) {
+  set VolumeName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: u32
@@ -2966,7 +2966,7 @@ export function allocJOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V3(data?: Part
   // 0x18: buffer
   if (data?.VolumeName !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.VolumeName);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: u32
   if (data?.BaseIoSize !== undefined) view.setUint32(32, Number(data.BaseIoSize), true);
@@ -3028,9 +3028,9 @@ export class JOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V3View {
   }
 
   // 0x18: buffer
-  get VolumeName(): Uint8Array | Deno.PointerValue | null {
+  get VolumeName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -3126,9 +3126,9 @@ export class JOBOBJECT_IO_RATE_CONTROL_INFORMATION_NATIVE_V3View {
   }
 
   // 0x18: buffer
-  set VolumeName(value: Uint8Array | Deno.PointerValue | null) {
+  set VolumeName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: u32
@@ -3297,9 +3297,9 @@ export interface JOBOBJECT_IO_ATTRIBUTION_INFORMATION {
   /** u32 */
   ControlFlags: number;
   /** Windows.Win32.System.JobObjects.JOBOBJECT_IO_ATTRIBUTION_STATS */
-  ReadStats: Uint8Array | Deno.PointerValue | null;
+  ReadStats: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.JobObjects.JOBOBJECT_IO_ATTRIBUTION_STATS */
-  WriteStats: Uint8Array | Deno.PointerValue | null;
+  WriteStats: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofJOBOBJECT_IO_ATTRIBUTION_INFORMATION = 24;
@@ -3311,9 +3311,9 @@ export function allocJOBOBJECT_IO_ATTRIBUTION_INFORMATION(data?: Partial<JOBOBJE
   if (data?.ControlFlags !== undefined) view.setUint32(0, Number(data.ControlFlags), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.ReadStats !== undefined) view.setBigUint64(8, data.ReadStats === null ? 0n : BigInt(util.toPointer(data.ReadStats)), true);
+  if (data?.ReadStats !== undefined) view.setBigUint64(8, data.ReadStats === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ReadStats))), true);
   // 0x10: pointer
-  if (data?.WriteStats !== undefined) view.setBigUint64(16, data.WriteStats === null ? 0n : BigInt(util.toPointer(data.WriteStats)), true);
+  if (data?.WriteStats !== undefined) view.setBigUint64(16, data.WriteStats === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WriteStats))), true);
   return buf;
 }
 
@@ -3335,15 +3335,15 @@ export class JOBOBJECT_IO_ATTRIBUTION_INFORMATIONView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get ReadStats(): Uint8Array | Deno.PointerValue | null {
+  get ReadStats(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get WriteStats(): Uint8Array | Deno.PointerValue | null {
+  get WriteStats(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -3354,19 +3354,19 @@ export class JOBOBJECT_IO_ATTRIBUTION_INFORMATIONView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set ReadStats(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ReadStats(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set WriteStats(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set WriteStats(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
 export type BOOL = number;
 
-export type PSTR = Deno.PointerValue | Uint8Array | null;
+export type PSTR = Deno.PointerValue | Uint8Array;
 
 // Native Libraries
 
@@ -3439,22 +3439,22 @@ try {
 // Symbols
 
 export function IsProcessInJob(
-  ProcessHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  JobHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  Result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ProcessHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  JobHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  Result: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.IsProcessInJob(util.toPointer(ProcessHandle), util.toPointer(JobHandle), util.toPointer(Result)));
 }
 
 export function CreateJobObjectW(
-  lpJobAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpJobAttributes: Deno.PointerValue | Uint8Array /* ptr */,
   lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libKERNEL32_dll.CreateJobObjectW(util.toPointer(lpJobAttributes), util.pwstrToFfi(lpName)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
+  return libKERNEL32_dll.CreateJobObjectW(util.toPointer(lpJobAttributes), util.pwstrToFfi(lpName));
 }
 
 export function FreeMemoryJobObject(
-  Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libKERNEL32_dll.FreeMemoryJobObject(util.toPointer(Buffer));
 }
@@ -3463,85 +3463,85 @@ export function OpenJobObjectW(
   dwDesiredAccess: number /* u32 */,
   bInheritHandle: boolean /* Windows.Win32.Foundation.BOOL */,
   lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libKERNEL32_dll.OpenJobObjectW(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pwstrToFfi(lpName)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
+  return libKERNEL32_dll.OpenJobObjectW(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pwstrToFfi(lpName));
 }
 
 export function AssignProcessToJobObject(
-  hJob: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hJob: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.AssignProcessToJobObject(util.toPointer(hJob), util.toPointer(hProcess)));
 }
 
 export function TerminateJobObject(
-  hJob: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hJob: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   uExitCode: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.TerminateJobObject(util.toPointer(hJob), uExitCode));
 }
 
 export function SetInformationJobObject(
-  hJob: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hJob: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   JobObjectInformationClass: JOBOBJECTINFOCLASS /* Windows.Win32.System.JobObjects.JOBOBJECTINFOCLASS */,
-  lpJobObjectInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpJobObjectInformation: Deno.PointerValue | Uint8Array /* ptr */,
   cbJobObjectInformationLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetInformationJobObject(util.toPointer(hJob), JobObjectInformationClass, util.toPointer(lpJobObjectInformation), cbJobObjectInformationLength));
 }
 
 export function SetIoRateControlInformationJobObject(
-  hJob: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  IoRateControlInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hJob: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  IoRateControlInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libKERNEL32_dll.SetIoRateControlInformationJobObject(util.toPointer(hJob), util.toPointer(IoRateControlInfo));
 }
 
 export function QueryInformationJobObject(
-  hJob: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hJob: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   JobObjectInformationClass: JOBOBJECTINFOCLASS /* Windows.Win32.System.JobObjects.JOBOBJECTINFOCLASS */,
-  lpJobObjectInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpJobObjectInformation: Deno.PointerValue | Uint8Array /* ptr */,
   cbJobObjectInformationLength: number /* u32 */,
-  lpReturnLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpReturnLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.QueryInformationJobObject(util.toPointer(hJob), JobObjectInformationClass, util.toPointer(lpJobObjectInformation), cbJobObjectInformationLength, util.toPointer(lpReturnLength)));
 }
 
 export function QueryIoRateControlInformationJobObject(
-  hJob: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hJob: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   VolumeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  InfoBlocks: Deno.PointerValue | Uint8Array | null /* ptr */,
-  InfoBlockCount: Deno.PointerValue | Uint8Array | null /* ptr */,
+  InfoBlocks: Deno.PointerValue | Uint8Array /* ptr */,
+  InfoBlockCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libKERNEL32_dll.QueryIoRateControlInformationJobObject(util.toPointer(hJob), util.pwstrToFfi(VolumeName), util.toPointer(InfoBlocks), util.toPointer(InfoBlockCount));
 }
 
 export function UserHandleGrantAccess(
-  hUserHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  hJob: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hUserHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  hJob: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   bGrant: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.UserHandleGrantAccess(util.toPointer(hUserHandle), util.toPointer(hJob), util.boolToFfi(bGrant)));
 }
 
 export function CreateJobObjectA(
-  lpJobAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpJobAttributes: Deno.PointerValue | Uint8Array /* ptr */,
   lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libKERNEL32_dll.CreateJobObjectA(util.toPointer(lpJobAttributes), util.pstrToFfi(lpName)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
+  return libKERNEL32_dll.CreateJobObjectA(util.toPointer(lpJobAttributes), util.pstrToFfi(lpName));
 }
 
 export function OpenJobObjectA(
   dwDesiredAccess: number /* u32 */,
   bInheritHandle: boolean /* Windows.Win32.Foundation.BOOL */,
   lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libKERNEL32_dll.OpenJobObjectA(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pstrToFfi(lpName)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
+  return libKERNEL32_dll.OpenJobObjectA(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pstrToFfi(lpName));
 }
 
 export function CreateJobSet(
   NumJob: number /* u32 */,
-  UserJobSet: Deno.PointerValue | Uint8Array | null /* ptr */,
+  UserJobSet: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.CreateJobSet(NumJob, util.toPointer(UserJobSet), Flags));

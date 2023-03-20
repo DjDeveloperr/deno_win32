@@ -201,9 +201,9 @@ export class _Anonymous_e__StructView {
  */
 export interface _Anonymous_e__Union {
   /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** array */
-  X: Deno.PointerValue | null;
+  X: Deno.PointerValue;
 }
 
 export const sizeof_Anonymous_e__Union = 16;
@@ -212,9 +212,9 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   const buf = new Uint8Array(sizeof_Anonymous_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x08: pointer
-  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.X))), true);
   return buf;
 }
 
@@ -229,25 +229,25 @@ export class _Anonymous_e__UnionView {
   }
 
   // 0x00: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get X(): Uint8Array | Deno.PointerValue | null {
+  get X(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set X(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set X(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -256,7 +256,7 @@ export class _Anonymous_e__UnionView {
  */
 export interface PROCESS_HEAP_ENTRY {
   /** ptr */
-  lpData: Deno.PointerValue | Uint8Array | null;
+  lpData: Deno.PointerValue | Uint8Array;
   /** u32 */
   cbData: number;
   /** u8 */
@@ -266,7 +266,7 @@ export interface PROCESS_HEAP_ENTRY {
   /** u16 */
   wFlags: number;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofPROCESS_HEAP_ENTRY = 24;
@@ -275,7 +275,7 @@ export function allocPROCESS_HEAP_ENTRY(data?: Partial<PROCESS_HEAP_ENTRY>): Uin
   const buf = new Uint8Array(sizeofPROCESS_HEAP_ENTRY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.lpData !== undefined) view.setBigUint64(0, data.lpData === null ? 0n : BigInt(util.toPointer(data.lpData)), true);
+  if (data?.lpData !== undefined) view.setBigUint64(0, data.lpData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpData))), true);
   // 0x08: u32
   if (data?.cbData !== undefined) view.setUint32(8, Number(data.cbData), true);
   // 0x0c: u8
@@ -285,7 +285,7 @@ export function allocPROCESS_HEAP_ENTRY(data?: Partial<PROCESS_HEAP_ENTRY>): Uin
   // 0x0e: u16
   if (data?.wFlags !== undefined) view.setUint16(14, Number(data.wFlags), true);
   // 0x10: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -300,9 +300,9 @@ export class PROCESS_HEAP_ENTRYView {
   }
 
   // 0x00: pointer
-  get lpData(): Uint8Array | Deno.PointerValue | null {
+  get lpData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -326,14 +326,14 @@ export class PROCESS_HEAP_ENTRYView {
   }
 
   // 0x10: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set lpData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set lpData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -357,8 +357,8 @@ export class PROCESS_HEAP_ENTRYView {
   }
 
   // 0x10: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -467,7 +467,7 @@ export class HEAP_SUMMARYView {
  */
 export interface WIN32_MEMORY_RANGE_ENTRY {
   /** ptr */
-  VirtualAddress: Deno.PointerValue | Uint8Array | null;
+  VirtualAddress: Deno.PointerValue | Uint8Array;
   /** usize */
   NumberOfBytes: Deno.PointerValue;
 }
@@ -478,7 +478,7 @@ export function allocWIN32_MEMORY_RANGE_ENTRY(data?: Partial<WIN32_MEMORY_RANGE_
   const buf = new Uint8Array(sizeofWIN32_MEMORY_RANGE_ENTRY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.VirtualAddress !== undefined) view.setBigUint64(0, data.VirtualAddress === null ? 0n : BigInt(util.toPointer(data.VirtualAddress)), true);
+  if (data?.VirtualAddress !== undefined) view.setBigUint64(0, data.VirtualAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.VirtualAddress))), true);
   // 0x08: usize
   if (data?.NumberOfBytes !== undefined) view.setBigUint64(8, BigInt(data.NumberOfBytes), true);
   return buf;
@@ -495,9 +495,9 @@ export class WIN32_MEMORY_RANGE_ENTRYView {
   }
 
   // 0x00: pointer
-  get VirtualAddress(): Uint8Array | Deno.PointerValue | null {
+  get VirtualAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: usize
@@ -506,8 +506,8 @@ export class WIN32_MEMORY_RANGE_ENTRYView {
   }
 
   // 0x00: pointer
-  set VirtualAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set VirtualAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: usize
@@ -521,11 +521,11 @@ export class WIN32_MEMORY_RANGE_ENTRYView {
  */
 export interface WIN32_MEMORY_REGION_INFORMATION {
   /** ptr */
-  AllocationBase: Deno.PointerValue | Uint8Array | null;
+  AllocationBase: Deno.PointerValue | Uint8Array;
   /** u32 */
   AllocationProtect: number;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** usize */
   RegionSize: Deno.PointerValue;
   /** usize */
@@ -538,12 +538,12 @@ export function allocWIN32_MEMORY_REGION_INFORMATION(data?: Partial<WIN32_MEMORY
   const buf = new Uint8Array(sizeofWIN32_MEMORY_REGION_INFORMATION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.AllocationBase !== undefined) view.setBigUint64(0, data.AllocationBase === null ? 0n : BigInt(util.toPointer(data.AllocationBase)), true);
+  if (data?.AllocationBase !== undefined) view.setBigUint64(0, data.AllocationBase === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.AllocationBase))), true);
   // 0x08: u32
   if (data?.AllocationProtect !== undefined) view.setUint32(8, Number(data.AllocationProtect), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x18: usize
   if (data?.RegionSize !== undefined) view.setBigUint64(24, BigInt(data.RegionSize), true);
   // 0x20: usize
@@ -562,9 +562,9 @@ export class WIN32_MEMORY_REGION_INFORMATIONView {
   }
 
   // 0x00: pointer
-  get AllocationBase(): Uint8Array | Deno.PointerValue | null {
+  get AllocationBase(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -575,9 +575,9 @@ export class WIN32_MEMORY_REGION_INFORMATIONView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: usize
@@ -591,8 +591,8 @@ export class WIN32_MEMORY_REGION_INFORMATIONView {
   }
 
   // 0x00: pointer
-  set AllocationBase(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set AllocationBase(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -603,8 +603,8 @@ export class WIN32_MEMORY_REGION_INFORMATIONView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: usize
@@ -649,7 +649,7 @@ export interface WIN32_MEMORY_PARTITION_INFORMATION {
   /** u64 */
   StandbyPages: Deno.PointerValue;
   /** array */
-  Reserved: Deno.PointerValue | null;
+  Reserved: Deno.PointerValue;
   /** u64 */
   MaximumCommitLimit: Deno.PointerValue;
   /** u64 */
@@ -690,7 +690,7 @@ export function allocWIN32_MEMORY_PARTITION_INFORMATION(data?: Partial<WIN32_MEM
   // 0x50: u64
   if (data?.StandbyPages !== undefined) view.setBigUint64(80, BigInt(data.StandbyPages), true);
   // 0x58: pointer
-  if (data?.Reserved !== undefined) view.setBigUint64(88, data.Reserved === null ? 0n : BigInt(util.toPointer(data.Reserved)), true);
+  if (data?.Reserved !== undefined) view.setBigUint64(88, data.Reserved === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Reserved))), true);
   // 0x60: u64
   if (data?.MaximumCommitLimit !== undefined) view.setBigUint64(96, BigInt(data.MaximumCommitLimit), true);
   // 0x68: u64
@@ -777,9 +777,9 @@ export class WIN32_MEMORY_PARTITION_INFORMATIONView {
   }
 
   // 0x58: pointer
-  get Reserved(): Uint8Array | Deno.PointerValue | null {
+  get Reserved(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x60: u64
@@ -865,8 +865,8 @@ export class WIN32_MEMORY_PARTITION_INFORMATIONView {
   }
 
   // 0x58: pointer
-  set Reserved(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  set Reserved(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x60: u64
@@ -892,9 +892,9 @@ export class WIN32_MEMORY_PARTITION_INFORMATIONView {
  */
 export interface MEMORY_BASIC_INFORMATION {
   /** ptr */
-  BaseAddress: Deno.PointerValue | Uint8Array | null;
+  BaseAddress: Deno.PointerValue | Uint8Array;
   /** ptr */
-  AllocationBase: Deno.PointerValue | Uint8Array | null;
+  AllocationBase: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.System.Memory.PAGE_PROTECTION_FLAGS */
   AllocationProtect: PAGE_PROTECTION_FLAGS;
   /** u16 */
@@ -915,9 +915,9 @@ export function allocMEMORY_BASIC_INFORMATION(data?: Partial<MEMORY_BASIC_INFORM
   const buf = new Uint8Array(sizeofMEMORY_BASIC_INFORMATION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.BaseAddress !== undefined) view.setBigUint64(0, data.BaseAddress === null ? 0n : BigInt(util.toPointer(data.BaseAddress)), true);
+  if (data?.BaseAddress !== undefined) view.setBigUint64(0, data.BaseAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BaseAddress))), true);
   // 0x08: pointer
-  if (data?.AllocationBase !== undefined) view.setBigUint64(8, data.AllocationBase === null ? 0n : BigInt(util.toPointer(data.AllocationBase)), true);
+  if (data?.AllocationBase !== undefined) view.setBigUint64(8, data.AllocationBase === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.AllocationBase))), true);
   // 0x10: u32
   if (data?.AllocationProtect !== undefined) view.setUint32(16, Number(data.AllocationProtect), true);
   // 0x14: u16
@@ -946,15 +946,15 @@ export class MEMORY_BASIC_INFORMATIONView {
   }
 
   // 0x00: pointer
-  get BaseAddress(): Uint8Array | Deno.PointerValue | null {
+  get BaseAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get AllocationBase(): Uint8Array | Deno.PointerValue | null {
+  get AllocationBase(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -992,13 +992,13 @@ export class MEMORY_BASIC_INFORMATIONView {
   // 0x2c: pad4
 
   // 0x00: pointer
-  set BaseAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set BaseAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set AllocationBase(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set AllocationBase(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -1373,9 +1373,9 @@ export class CFG_CALL_TARGET_INFOView {
  */
 export interface MEM_ADDRESS_REQUIREMENTS {
   /** ptr */
-  LowestStartingAddress: Deno.PointerValue | Uint8Array | null;
+  LowestStartingAddress: Deno.PointerValue | Uint8Array;
   /** ptr */
-  HighestEndingAddress: Deno.PointerValue | Uint8Array | null;
+  HighestEndingAddress: Deno.PointerValue | Uint8Array;
   /** usize */
   Alignment: Deno.PointerValue;
 }
@@ -1386,9 +1386,9 @@ export function allocMEM_ADDRESS_REQUIREMENTS(data?: Partial<MEM_ADDRESS_REQUIRE
   const buf = new Uint8Array(sizeofMEM_ADDRESS_REQUIREMENTS);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.LowestStartingAddress !== undefined) view.setBigUint64(0, data.LowestStartingAddress === null ? 0n : BigInt(util.toPointer(data.LowestStartingAddress)), true);
+  if (data?.LowestStartingAddress !== undefined) view.setBigUint64(0, data.LowestStartingAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.LowestStartingAddress))), true);
   // 0x08: pointer
-  if (data?.HighestEndingAddress !== undefined) view.setBigUint64(8, data.HighestEndingAddress === null ? 0n : BigInt(util.toPointer(data.HighestEndingAddress)), true);
+  if (data?.HighestEndingAddress !== undefined) view.setBigUint64(8, data.HighestEndingAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.HighestEndingAddress))), true);
   // 0x10: usize
   if (data?.Alignment !== undefined) view.setBigUint64(16, BigInt(data.Alignment), true);
   return buf;
@@ -1405,15 +1405,15 @@ export class MEM_ADDRESS_REQUIREMENTSView {
   }
 
   // 0x00: pointer
-  get LowestStartingAddress(): Uint8Array | Deno.PointerValue | null {
+  get LowestStartingAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get HighestEndingAddress(): Uint8Array | Deno.PointerValue | null {
+  get HighestEndingAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: usize
@@ -1422,13 +1422,13 @@ export class MEM_ADDRESS_REQUIREMENTSView {
   }
 
   // 0x00: pointer
-  set LowestStartingAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set LowestStartingAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set HighestEndingAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set HighestEndingAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: usize
@@ -1609,9 +1609,9 @@ export class _Anonymous2_e__UnionView {
  */
 export interface MEM_EXTENDED_PARAMETER {
   /** _Anonymous1_e__Struct */
-  Anonymous1: Uint8Array | Deno.PointerValue | null;
+  Anonymous1: Uint8Array | Deno.PointerValue;
   /** _Anonymous2_e__Union */
-  Anonymous2: Uint8Array | Deno.PointerValue | null;
+  Anonymous2: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofMEM_EXTENDED_PARAMETER = 16;
@@ -1620,9 +1620,9 @@ export function allocMEM_EXTENDED_PARAMETER(data?: Partial<MEM_EXTENDED_PARAMETE
   const buf = new Uint8Array(sizeofMEM_EXTENDED_PARAMETER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous1 !== undefined) view.setBigUint64(0, data.Anonymous1 === null ? 0n : BigInt(util.toPointer(data.Anonymous1)), true);
+  if (data?.Anonymous1 !== undefined) view.setBigUint64(0, data.Anonymous1 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous1))), true);
   // 0x08: pointer
-  if (data?.Anonymous2 !== undefined) view.setBigUint64(8, data.Anonymous2 === null ? 0n : BigInt(util.toPointer(data.Anonymous2)), true);
+  if (data?.Anonymous2 !== undefined) view.setBigUint64(8, data.Anonymous2 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous2))), true);
   return buf;
 }
 
@@ -1637,25 +1637,25 @@ export class MEM_EXTENDED_PARAMETERView {
   }
 
   // 0x00: pointer
-  get Anonymous1(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous1(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get Anonymous2(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous2(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Anonymous1(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Anonymous1(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set Anonymous2(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous2(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1664,7 +1664,7 @@ export class MEM_EXTENDED_PARAMETERView {
  */
 export interface NV_MEMORY_RANGE {
   /** ptr */
-  BaseAddress: Deno.PointerValue | Uint8Array | null;
+  BaseAddress: Deno.PointerValue | Uint8Array;
   /** usize */
   Length: Deno.PointerValue;
 }
@@ -1675,7 +1675,7 @@ export function allocNV_MEMORY_RANGE(data?: Partial<NV_MEMORY_RANGE>): Uint8Arra
   const buf = new Uint8Array(sizeofNV_MEMORY_RANGE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.BaseAddress !== undefined) view.setBigUint64(0, data.BaseAddress === null ? 0n : BigInt(util.toPointer(data.BaseAddress)), true);
+  if (data?.BaseAddress !== undefined) view.setBigUint64(0, data.BaseAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BaseAddress))), true);
   // 0x08: usize
   if (data?.Length !== undefined) view.setBigUint64(8, BigInt(data.Length), true);
   return buf;
@@ -1692,9 +1692,9 @@ export class NV_MEMORY_RANGEView {
   }
 
   // 0x00: pointer
-  get BaseAddress(): Uint8Array | Deno.PointerValue | null {
+  get BaseAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: usize
@@ -1703,8 +1703,8 @@ export class NV_MEMORY_RANGEView {
   }
 
   // 0x00: pointer
-  set BaseAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set BaseAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: usize
@@ -1717,11 +1717,11 @@ export type BOOL = number;
 
 export type HANDLE = Deno.PointerValue;
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 export type BOOLEAN = number;
 
-export type PSTR = Deno.PointerValue | Uint8Array | null;
+export type PSTR = Deno.PointerValue | Uint8Array;
 
 // Native Libraries
 
@@ -2195,141 +2195,141 @@ export function HeapCreate(
   flOptions: HEAP_FLAGS /* Windows.Win32.System.Memory.HEAP_FLAGS */,
   dwInitialSize: Deno.PointerValue /* usize */,
   dwMaximumSize: Deno.PointerValue /* usize */,
-): Deno.PointerValue | null /* Windows.Win32.System.Memory.HeapHandle */ {
-  return util.pointerFromFfi(libKERNEL32_dll.HeapCreate(flOptions, dwInitialSize, dwMaximumSize));
+): Deno.PointerValue /* Windows.Win32.System.Memory.HeapHandle */ {
+  return libKERNEL32_dll.HeapCreate(flOptions, dwInitialSize, dwMaximumSize);
 }
 
 export function HeapDestroy(
-  hHeap: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Memory.HeapHandle */,
+  hHeap: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Memory.HeapHandle */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.HeapDestroy(util.toPointer(hHeap)));
 }
 
 export function HeapAlloc(
-  hHeap: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Memory.HeapHandle */,
+  hHeap: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Memory.HeapHandle */,
   dwFlags: HEAP_FLAGS /* Windows.Win32.System.Memory.HEAP_FLAGS */,
   dwBytes: Deno.PointerValue /* usize */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libKERNEL32_dll.HeapAlloc(util.toPointer(hHeap), dwFlags, dwBytes));
+): Deno.PointerValue /* ptr */ {
+  return libKERNEL32_dll.HeapAlloc(util.toPointer(hHeap), dwFlags, dwBytes);
 }
 
 export function HeapReAlloc(
-  hHeap: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Memory.HeapHandle */,
+  hHeap: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Memory.HeapHandle */,
   dwFlags: HEAP_FLAGS /* Windows.Win32.System.Memory.HEAP_FLAGS */,
-  lpMem: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpMem: Deno.PointerValue | Uint8Array /* ptr */,
   dwBytes: Deno.PointerValue /* usize */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libKERNEL32_dll.HeapReAlloc(util.toPointer(hHeap), dwFlags, util.toPointer(lpMem), dwBytes));
+): Deno.PointerValue /* ptr */ {
+  return libKERNEL32_dll.HeapReAlloc(util.toPointer(hHeap), dwFlags, util.toPointer(lpMem), dwBytes);
 }
 
 export function HeapFree(
-  hHeap: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Memory.HeapHandle */,
+  hHeap: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Memory.HeapHandle */,
   dwFlags: HEAP_FLAGS /* Windows.Win32.System.Memory.HEAP_FLAGS */,
-  lpMem: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpMem: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.HeapFree(util.toPointer(hHeap), dwFlags, util.toPointer(lpMem)));
 }
 
 export function HeapSize(
-  hHeap: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Memory.HeapHandle */,
+  hHeap: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Memory.HeapHandle */,
   dwFlags: HEAP_FLAGS /* Windows.Win32.System.Memory.HEAP_FLAGS */,
-  lpMem: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpMem: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* usize */ {
   return libKERNEL32_dll.HeapSize(util.toPointer(hHeap), dwFlags, util.toPointer(lpMem));
 }
 
-export function GetProcessHeap(): Deno.PointerValue | null /* Windows.Win32.System.Memory.HeapHandle */ {
-  return util.pointerFromFfi(libKERNEL32_dll.GetProcessHeap());
+export function GetProcessHeap(): Deno.PointerValue /* Windows.Win32.System.Memory.HeapHandle */ {
+  return libKERNEL32_dll.GetProcessHeap();
 }
 
 export function HeapCompact(
-  hHeap: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Memory.HeapHandle */,
+  hHeap: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Memory.HeapHandle */,
   dwFlags: HEAP_FLAGS /* Windows.Win32.System.Memory.HEAP_FLAGS */,
 ): Deno.PointerValue /* usize */ {
   return libKERNEL32_dll.HeapCompact(util.toPointer(hHeap), dwFlags);
 }
 
 export function HeapSetInformation(
-  HeapHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Memory.HeapHandle */,
+  HeapHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Memory.HeapHandle */,
   HeapInformationClass: HEAP_INFORMATION_CLASS /* Windows.Win32.System.Memory.HEAP_INFORMATION_CLASS */,
-  HeapInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
+  HeapInformation: Deno.PointerValue | Uint8Array /* ptr */,
   HeapInformationLength: Deno.PointerValue /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.HeapSetInformation(util.toPointer(HeapHandle), HeapInformationClass, util.toPointer(HeapInformation), HeapInformationLength));
 }
 
 export function HeapValidate(
-  hHeap: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Memory.HeapHandle */,
+  hHeap: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Memory.HeapHandle */,
   dwFlags: HEAP_FLAGS /* Windows.Win32.System.Memory.HEAP_FLAGS */,
-  lpMem: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpMem: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.HeapValidate(util.toPointer(hHeap), dwFlags, util.toPointer(lpMem)));
 }
 
 export function HeapSummary(
-  hHeap: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hHeap: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwFlags: number /* u32 */,
-  lpSummary: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpSummary: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.HeapSummary(util.toPointer(hHeap), dwFlags, util.toPointer(lpSummary)));
 }
 
 export function GetProcessHeaps(
   NumberOfHeaps: number /* u32 */,
-  ProcessHeaps: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ProcessHeaps: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetProcessHeaps(NumberOfHeaps, util.toPointer(ProcessHeaps));
 }
 
 export function HeapLock(
-  hHeap: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Memory.HeapHandle */,
+  hHeap: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Memory.HeapHandle */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.HeapLock(util.toPointer(hHeap)));
 }
 
 export function HeapUnlock(
-  hHeap: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Memory.HeapHandle */,
+  hHeap: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Memory.HeapHandle */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.HeapUnlock(util.toPointer(hHeap)));
 }
 
 export function HeapWalk(
-  hHeap: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Memory.HeapHandle */,
-  lpEntry: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hHeap: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Memory.HeapHandle */,
+  lpEntry: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.HeapWalk(util.toPointer(hHeap), util.toPointer(lpEntry)));
 }
 
 export function HeapQueryInformation(
-  HeapHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Memory.HeapHandle */,
+  HeapHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Memory.HeapHandle */,
   HeapInformationClass: HEAP_INFORMATION_CLASS /* Windows.Win32.System.Memory.HEAP_INFORMATION_CLASS */,
-  HeapInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
+  HeapInformation: Deno.PointerValue | Uint8Array /* ptr */,
   HeapInformationLength: Deno.PointerValue /* usize */,
-  ReturnLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ReturnLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.HeapQueryInformation(util.toPointer(HeapHandle), HeapInformationClass, util.toPointer(HeapInformation), HeapInformationLength, util.toPointer(ReturnLength)));
 }
 
 export function VirtualAlloc(
-  lpAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpAddress: Deno.PointerValue | Uint8Array /* ptr */,
   dwSize: Deno.PointerValue /* usize */,
   flAllocationType: VIRTUAL_ALLOCATION_TYPE /* Windows.Win32.System.Memory.VIRTUAL_ALLOCATION_TYPE */,
   flProtect: PAGE_PROTECTION_FLAGS /* Windows.Win32.System.Memory.PAGE_PROTECTION_FLAGS */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libKERNEL32_dll.VirtualAlloc(util.toPointer(lpAddress), dwSize, flAllocationType, flProtect));
+): Deno.PointerValue /* ptr */ {
+  return libKERNEL32_dll.VirtualAlloc(util.toPointer(lpAddress), dwSize, flAllocationType, flProtect);
 }
 
 export function VirtualProtect(
-  lpAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpAddress: Deno.PointerValue | Uint8Array /* ptr */,
   dwSize: Deno.PointerValue /* usize */,
   flNewProtect: PAGE_PROTECTION_FLAGS /* Windows.Win32.System.Memory.PAGE_PROTECTION_FLAGS */,
-  lpflOldProtect: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpflOldProtect: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.VirtualProtect(util.toPointer(lpAddress), dwSize, flNewProtect, util.toPointer(lpflOldProtect)));
 }
 
 export function VirtualFree(
-  lpAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpAddress: Deno.PointerValue | Uint8Array /* ptr */,
   dwSize: Deno.PointerValue /* usize */,
   dwFreeType: VIRTUAL_FREE_TYPE /* Windows.Win32.System.Memory.VIRTUAL_FREE_TYPE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -2337,85 +2337,85 @@ export function VirtualFree(
 }
 
 export function VirtualQuery(
-  lpAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpAddress: Deno.PointerValue | Uint8Array /* ptr */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   dwLength: Deno.PointerValue /* usize */,
 ): Deno.PointerValue /* usize */ {
   return libKERNEL32_dll.VirtualQuery(util.toPointer(lpAddress), util.toPointer(lpBuffer), dwLength);
 }
 
 export function VirtualAllocEx(
-  hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpAddress: Deno.PointerValue | Uint8Array /* ptr */,
   dwSize: Deno.PointerValue /* usize */,
   flAllocationType: VIRTUAL_ALLOCATION_TYPE /* Windows.Win32.System.Memory.VIRTUAL_ALLOCATION_TYPE */,
   flProtect: PAGE_PROTECTION_FLAGS /* Windows.Win32.System.Memory.PAGE_PROTECTION_FLAGS */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libKERNEL32_dll.VirtualAllocEx(util.toPointer(hProcess), util.toPointer(lpAddress), dwSize, flAllocationType, flProtect));
+): Deno.PointerValue /* ptr */ {
+  return libKERNEL32_dll.VirtualAllocEx(util.toPointer(hProcess), util.toPointer(lpAddress), dwSize, flAllocationType, flProtect);
 }
 
 export function VirtualProtectEx(
-  hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpAddress: Deno.PointerValue | Uint8Array /* ptr */,
   dwSize: Deno.PointerValue /* usize */,
   flNewProtect: PAGE_PROTECTION_FLAGS /* Windows.Win32.System.Memory.PAGE_PROTECTION_FLAGS */,
-  lpflOldProtect: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpflOldProtect: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.VirtualProtectEx(util.toPointer(hProcess), util.toPointer(lpAddress), dwSize, flNewProtect, util.toPointer(lpflOldProtect)));
 }
 
 export function VirtualQueryEx(
-  hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpAddress: Deno.PointerValue | Uint8Array /* ptr */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   dwLength: Deno.PointerValue /* usize */,
 ): Deno.PointerValue /* usize */ {
   return libKERNEL32_dll.VirtualQueryEx(util.toPointer(hProcess), util.toPointer(lpAddress), util.toPointer(lpBuffer), dwLength);
 }
 
 export function CreateFileMappingW(
-  hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpFileMappingAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpFileMappingAttributes: Deno.PointerValue | Uint8Array /* ptr */,
   flProtect: PAGE_PROTECTION_FLAGS /* Windows.Win32.System.Memory.PAGE_PROTECTION_FLAGS */,
   dwMaximumSizeHigh: number /* u32 */,
   dwMaximumSizeLow: number /* u32 */,
   lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libKERNEL32_dll.CreateFileMappingW(util.toPointer(hFile), util.toPointer(lpFileMappingAttributes), flProtect, dwMaximumSizeHigh, dwMaximumSizeLow, util.pwstrToFfi(lpName)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
+  return libKERNEL32_dll.CreateFileMappingW(util.toPointer(hFile), util.toPointer(lpFileMappingAttributes), flProtect, dwMaximumSizeHigh, dwMaximumSizeLow, util.pwstrToFfi(lpName));
 }
 
 export function OpenFileMappingW(
   dwDesiredAccess: number /* u32 */,
   bInheritHandle: boolean /* Windows.Win32.Foundation.BOOL */,
   lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libKERNEL32_dll.OpenFileMappingW(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pwstrToFfi(lpName)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
+  return libKERNEL32_dll.OpenFileMappingW(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pwstrToFfi(lpName));
 }
 
 export function MapViewOfFile(
-  hFileMappingObject: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hFileMappingObject: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwDesiredAccess: FILE_MAP /* Windows.Win32.System.Memory.FILE_MAP */,
   dwFileOffsetHigh: number /* u32 */,
   dwFileOffsetLow: number /* u32 */,
   dwNumberOfBytesToMap: Deno.PointerValue /* usize */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libKERNEL32_dll.MapViewOfFile(util.toPointer(hFileMappingObject), dwDesiredAccess, dwFileOffsetHigh, dwFileOffsetLow, dwNumberOfBytesToMap));
+): Deno.PointerValue /* ptr */ {
+  return libKERNEL32_dll.MapViewOfFile(util.toPointer(hFileMappingObject), dwDesiredAccess, dwFileOffsetHigh, dwFileOffsetLow, dwNumberOfBytesToMap);
 }
 
 export function MapViewOfFileEx(
-  hFileMappingObject: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hFileMappingObject: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwDesiredAccess: FILE_MAP /* Windows.Win32.System.Memory.FILE_MAP */,
   dwFileOffsetHigh: number /* u32 */,
   dwFileOffsetLow: number /* u32 */,
   dwNumberOfBytesToMap: Deno.PointerValue /* usize */,
-  lpBaseAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libKERNEL32_dll.MapViewOfFileEx(util.toPointer(hFileMappingObject), dwDesiredAccess, dwFileOffsetHigh, dwFileOffsetLow, dwNumberOfBytesToMap, util.toPointer(lpBaseAddress)));
+  lpBaseAddress: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libKERNEL32_dll.MapViewOfFileEx(util.toPointer(hFileMappingObject), dwDesiredAccess, dwFileOffsetHigh, dwFileOffsetLow, dwNumberOfBytesToMap, util.toPointer(lpBaseAddress));
 }
 
 export function VirtualFreeEx(
-  hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpAddress: Deno.PointerValue | Uint8Array /* ptr */,
   dwSize: Deno.PointerValue /* usize */,
   dwFreeType: VIRTUAL_FREE_TYPE /* Windows.Win32.System.Memory.VIRTUAL_FREE_TYPE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -2423,14 +2423,14 @@ export function VirtualFreeEx(
 }
 
 export function FlushViewOfFile(
-  lpBaseAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpBaseAddress: Deno.PointerValue | Uint8Array /* ptr */,
   dwNumberOfBytesToFlush: Deno.PointerValue /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.FlushViewOfFile(util.toPointer(lpBaseAddress), dwNumberOfBytesToFlush));
 }
 
 export function UnmapViewOfFile(
-  lpBaseAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpBaseAddress: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.UnmapViewOfFile(util.toPointer(lpBaseAddress)));
 }
@@ -2440,16 +2440,16 @@ export function GetLargePageMinimum(): Deno.PointerValue /* usize */ {
 }
 
 export function GetProcessWorkingSetSizeEx(
-  hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpMinimumWorkingSetSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpMaximumWorkingSetSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Flags: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpMinimumWorkingSetSize: Deno.PointerValue | Uint8Array /* ptr */,
+  lpMaximumWorkingSetSize: Deno.PointerValue | Uint8Array /* ptr */,
+  Flags: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetProcessWorkingSetSizeEx(util.toPointer(hProcess), util.toPointer(lpMinimumWorkingSetSize), util.toPointer(lpMaximumWorkingSetSize), util.toPointer(Flags)));
 }
 
 export function SetProcessWorkingSetSizeEx(
-  hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwMinimumWorkingSetSize: Deno.PointerValue /* usize */,
   dwMaximumWorkingSetSize: Deno.PointerValue /* usize */,
   Flags: number /* u32 */,
@@ -2458,14 +2458,14 @@ export function SetProcessWorkingSetSizeEx(
 }
 
 export function VirtualLock(
-  lpAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpAddress: Deno.PointerValue | Uint8Array /* ptr */,
   dwSize: Deno.PointerValue /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.VirtualLock(util.toPointer(lpAddress), dwSize));
 }
 
 export function VirtualUnlock(
-  lpAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpAddress: Deno.PointerValue | Uint8Array /* ptr */,
   dwSize: Deno.PointerValue /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.VirtualUnlock(util.toPointer(lpAddress), dwSize));
@@ -2473,17 +2473,17 @@ export function VirtualUnlock(
 
 export function GetWriteWatch(
   dwFlags: number /* u32 */,
-  lpBaseAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpBaseAddress: Deno.PointerValue | Uint8Array /* ptr */,
   dwRegionSize: Deno.PointerValue /* usize */,
-  lpAddresses: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpdwCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpdwGranularity: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpAddresses: Deno.PointerValue | Uint8Array /* ptr */,
+  lpdwCount: Deno.PointerValue | Uint8Array /* ptr */,
+  lpdwGranularity: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetWriteWatch(dwFlags, util.toPointer(lpBaseAddress), dwRegionSize, util.toPointer(lpAddresses), util.toPointer(lpdwCount), util.toPointer(lpdwGranularity));
 }
 
 export function ResetWriteWatch(
-  lpBaseAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpBaseAddress: Deno.PointerValue | Uint8Array /* ptr */,
   dwRegionSize: Deno.PointerValue /* usize */,
 ): number /* u32 */ {
   return libKERNEL32_dll.ResetWriteWatch(util.toPointer(lpBaseAddress), dwRegionSize);
@@ -2491,21 +2491,21 @@ export function ResetWriteWatch(
 
 export function CreateMemoryResourceNotification(
   NotificationType: MEMORY_RESOURCE_NOTIFICATION_TYPE /* Windows.Win32.System.Memory.MEMORY_RESOURCE_NOTIFICATION_TYPE */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libKERNEL32_dll.CreateMemoryResourceNotification(NotificationType));
+): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
+  return libKERNEL32_dll.CreateMemoryResourceNotification(NotificationType);
 }
 
 export function QueryMemoryResourceNotification(
-  ResourceNotificationHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  ResourceState: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ResourceNotificationHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  ResourceState: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.QueryMemoryResourceNotification(util.toPointer(ResourceNotificationHandle), util.toPointer(ResourceState)));
 }
 
 export function GetSystemFileCacheSize(
-  lpMinimumFileCacheSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpMaximumFileCacheSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpMinimumFileCacheSize: Deno.PointerValue | Uint8Array /* ptr */,
+  lpMaximumFileCacheSize: Deno.PointerValue | Uint8Array /* ptr */,
+  lpFlags: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetSystemFileCacheSize(util.toPointer(lpMinimumFileCacheSize), util.toPointer(lpMaximumFileCacheSize), util.toPointer(lpFlags)));
 }
@@ -2519,116 +2519,116 @@ export function SetSystemFileCacheSize(
 }
 
 export function CreateFileMappingNumaW(
-  hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpFileMappingAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpFileMappingAttributes: Deno.PointerValue | Uint8Array /* ptr */,
   flProtect: PAGE_PROTECTION_FLAGS /* Windows.Win32.System.Memory.PAGE_PROTECTION_FLAGS */,
   dwMaximumSizeHigh: number /* u32 */,
   dwMaximumSizeLow: number /* u32 */,
   lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nndPreferred: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libKERNEL32_dll.CreateFileMappingNumaW(util.toPointer(hFile), util.toPointer(lpFileMappingAttributes), flProtect, dwMaximumSizeHigh, dwMaximumSizeLow, util.pwstrToFfi(lpName), nndPreferred));
+): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
+  return libKERNEL32_dll.CreateFileMappingNumaW(util.toPointer(hFile), util.toPointer(lpFileMappingAttributes), flProtect, dwMaximumSizeHigh, dwMaximumSizeLow, util.pwstrToFfi(lpName), nndPreferred);
 }
 
 export function PrefetchVirtualMemory(
-  hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   NumberOfEntries: Deno.PointerValue /* usize */,
-  VirtualAddresses: Deno.PointerValue | Uint8Array | null /* ptr */,
+  VirtualAddresses: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.PrefetchVirtualMemory(util.toPointer(hProcess), NumberOfEntries, util.toPointer(VirtualAddresses), Flags));
 }
 
 export function CreateFileMappingFromApp(
-  hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  SecurityAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  SecurityAttributes: Deno.PointerValue | Uint8Array /* ptr */,
   PageProtection: PAGE_PROTECTION_FLAGS /* Windows.Win32.System.Memory.PAGE_PROTECTION_FLAGS */,
   MaximumSize: Deno.PointerValue /* u64 */,
   Name: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libKERNEL32_dll.CreateFileMappingFromApp(util.toPointer(hFile), util.toPointer(SecurityAttributes), PageProtection, MaximumSize, util.pwstrToFfi(Name)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
+  return libKERNEL32_dll.CreateFileMappingFromApp(util.toPointer(hFile), util.toPointer(SecurityAttributes), PageProtection, MaximumSize, util.pwstrToFfi(Name));
 }
 
 export function MapViewOfFileFromApp(
-  hFileMappingObject: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hFileMappingObject: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   DesiredAccess: FILE_MAP /* Windows.Win32.System.Memory.FILE_MAP */,
   FileOffset: Deno.PointerValue /* u64 */,
   NumberOfBytesToMap: Deno.PointerValue /* usize */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libKERNEL32_dll.MapViewOfFileFromApp(util.toPointer(hFileMappingObject), DesiredAccess, FileOffset, NumberOfBytesToMap));
+): Deno.PointerValue /* ptr */ {
+  return libKERNEL32_dll.MapViewOfFileFromApp(util.toPointer(hFileMappingObject), DesiredAccess, FileOffset, NumberOfBytesToMap);
 }
 
 export function UnmapViewOfFileEx(
-  BaseAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  BaseAddress: Deno.PointerValue | Uint8Array /* ptr */,
   UnmapFlags: UNMAP_VIEW_OF_FILE_FLAGS /* Windows.Win32.System.Memory.UNMAP_VIEW_OF_FILE_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.UnmapViewOfFileEx(util.toPointer(BaseAddress), UnmapFlags));
 }
 
 export function AllocateUserPhysicalPages(
-  hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  NumberOfPages: Deno.PointerValue | Uint8Array | null /* ptr */,
-  PageArray: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  NumberOfPages: Deno.PointerValue | Uint8Array /* ptr */,
+  PageArray: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.AllocateUserPhysicalPages(util.toPointer(hProcess), util.toPointer(NumberOfPages), util.toPointer(PageArray)));
 }
 
 export function FreeUserPhysicalPages(
-  hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  NumberOfPages: Deno.PointerValue | Uint8Array | null /* ptr */,
-  PageArray: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  NumberOfPages: Deno.PointerValue | Uint8Array /* ptr */,
+  PageArray: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.FreeUserPhysicalPages(util.toPointer(hProcess), util.toPointer(NumberOfPages), util.toPointer(PageArray)));
 }
 
 export function MapUserPhysicalPages(
-  VirtualAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  VirtualAddress: Deno.PointerValue | Uint8Array /* ptr */,
   NumberOfPages: Deno.PointerValue /* usize */,
-  PageArray: Deno.PointerValue | Uint8Array | null /* ptr */,
+  PageArray: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.MapUserPhysicalPages(util.toPointer(VirtualAddress), NumberOfPages, util.toPointer(PageArray)));
 }
 
 export function AllocateUserPhysicalPagesNuma(
-  hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  NumberOfPages: Deno.PointerValue | Uint8Array | null /* ptr */,
-  PageArray: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  NumberOfPages: Deno.PointerValue | Uint8Array /* ptr */,
+  PageArray: Deno.PointerValue | Uint8Array /* ptr */,
   nndPreferred: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.AllocateUserPhysicalPagesNuma(util.toPointer(hProcess), util.toPointer(NumberOfPages), util.toPointer(PageArray), nndPreferred));
 }
 
 export function VirtualAllocExNuma(
-  hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpAddress: Deno.PointerValue | Uint8Array /* ptr */,
   dwSize: Deno.PointerValue /* usize */,
   flAllocationType: VIRTUAL_ALLOCATION_TYPE /* Windows.Win32.System.Memory.VIRTUAL_ALLOCATION_TYPE */,
   flProtect: number /* u32 */,
   nndPreferred: number /* u32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libKERNEL32_dll.VirtualAllocExNuma(util.toPointer(hProcess), util.toPointer(lpAddress), dwSize, flAllocationType, flProtect, nndPreferred));
+): Deno.PointerValue /* ptr */ {
+  return libKERNEL32_dll.VirtualAllocExNuma(util.toPointer(hProcess), util.toPointer(lpAddress), dwSize, flAllocationType, flProtect, nndPreferred);
 }
 
 export function GetMemoryErrorHandlingCapabilities(
-  Capabilities: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Capabilities: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetMemoryErrorHandlingCapabilities(util.toPointer(Capabilities)));
 }
 
 export function RegisterBadMemoryNotification(
-  Callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Memory.PBAD_MEMORY_CALLBACK_ROUTINE */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libKERNEL32_dll.RegisterBadMemoryNotification(util.toPointer(Callback)));
+  Callback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Memory.PBAD_MEMORY_CALLBACK_ROUTINE */,
+): Deno.PointerValue /* ptr */ {
+  return libKERNEL32_dll.RegisterBadMemoryNotification(util.toPointer(Callback));
 }
 
 export function UnregisterBadMemoryNotification(
-  RegistrationHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  RegistrationHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.UnregisterBadMemoryNotification(util.toPointer(RegistrationHandle)));
 }
 
 export function OfferVirtualMemory(
-  VirtualAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  VirtualAddress: Deno.PointerValue | Uint8Array /* ptr */,
   Size: Deno.PointerValue /* usize */,
   Priority: OFFER_PRIORITY /* Windows.Win32.System.Memory.OFFER_PRIORITY */,
 ): number /* u32 */ {
@@ -2636,55 +2636,55 @@ export function OfferVirtualMemory(
 }
 
 export function ReclaimVirtualMemory(
-  VirtualAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  VirtualAddress: Deno.PointerValue | Uint8Array /* ptr */,
   Size: Deno.PointerValue /* usize */,
 ): number /* u32 */ {
   return libKERNEL32_dll.ReclaimVirtualMemory(util.toPointer(VirtualAddress), Size);
 }
 
 export function DiscardVirtualMemory(
-  VirtualAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  VirtualAddress: Deno.PointerValue | Uint8Array /* ptr */,
   Size: Deno.PointerValue /* usize */,
 ): number /* u32 */ {
   return libKERNEL32_dll.DiscardVirtualMemory(util.toPointer(VirtualAddress), Size);
 }
 
 export function SetProcessValidCallTargets(
-  hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  VirtualAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  VirtualAddress: Deno.PointerValue | Uint8Array /* ptr */,
   RegionSize: Deno.PointerValue /* usize */,
   NumberOfOffsets: number /* u32 */,
-  OffsetInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OffsetInformation: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libapi_ms_win_core_memory_l1_1_3_dll.SetProcessValidCallTargets(util.toPointer(hProcess), util.toPointer(VirtualAddress), RegionSize, NumberOfOffsets, util.toPointer(OffsetInformation)));
 }
 
 export function SetProcessValidCallTargetsForMappedView(
-  Process: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  VirtualAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Process: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  VirtualAddress: Deno.PointerValue | Uint8Array /* ptr */,
   RegionSize: Deno.PointerValue /* usize */,
   NumberOfOffsets: number /* u32 */,
-  OffsetInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Section: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  OffsetInformation: Deno.PointerValue | Uint8Array /* ptr */,
+  Section: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ExpectedFileOffset: Deno.PointerValue /* u64 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libapi_ms_win_core_memory_l1_1_7_dll.SetProcessValidCallTargetsForMappedView(util.toPointer(Process), util.toPointer(VirtualAddress), RegionSize, NumberOfOffsets, util.toPointer(OffsetInformation), util.toPointer(Section), ExpectedFileOffset));
 }
 
 export function VirtualAllocFromApp(
-  BaseAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  BaseAddress: Deno.PointerValue | Uint8Array /* ptr */,
   Size: Deno.PointerValue /* usize */,
   AllocationType: VIRTUAL_ALLOCATION_TYPE /* Windows.Win32.System.Memory.VIRTUAL_ALLOCATION_TYPE */,
   Protection: number /* u32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libapi_ms_win_core_memory_l1_1_3_dll.VirtualAllocFromApp(util.toPointer(BaseAddress), Size, AllocationType, Protection));
+): Deno.PointerValue /* ptr */ {
+  return libapi_ms_win_core_memory_l1_1_3_dll.VirtualAllocFromApp(util.toPointer(BaseAddress), Size, AllocationType, Protection);
 }
 
 export function VirtualProtectFromApp(
-  Address: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Address: Deno.PointerValue | Uint8Array /* ptr */,
   Size: Deno.PointerValue /* usize */,
   NewProtection: number /* u32 */,
-  OldProtection: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OldProtection: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libapi_ms_win_core_memory_l1_1_3_dll.VirtualProtectFromApp(util.toPointer(Address), Size, NewProtection, util.toPointer(OldProtection)));
 }
@@ -2693,154 +2693,154 @@ export function OpenFileMappingFromApp(
   DesiredAccess: number /* u32 */,
   InheritHandle: boolean /* Windows.Win32.Foundation.BOOL */,
   Name: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libapi_ms_win_core_memory_l1_1_3_dll.OpenFileMappingFromApp(DesiredAccess, util.boolToFfi(InheritHandle), util.pwstrToFfi(Name)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
+  return libapi_ms_win_core_memory_l1_1_3_dll.OpenFileMappingFromApp(DesiredAccess, util.boolToFfi(InheritHandle), util.pwstrToFfi(Name));
 }
 
 export function QueryVirtualMemoryInformation(
-  Process: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  VirtualAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Process: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  VirtualAddress: Deno.PointerValue | Uint8Array /* ptr */,
   MemoryInformationClass: WIN32_MEMORY_INFORMATION_CLASS /* Windows.Win32.System.Memory.WIN32_MEMORY_INFORMATION_CLASS */,
-  MemoryInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
+  MemoryInformation: Deno.PointerValue | Uint8Array /* ptr */,
   MemoryInformationSize: Deno.PointerValue /* usize */,
-  ReturnSize: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ReturnSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libapi_ms_win_core_memory_l1_1_4_dll.QueryVirtualMemoryInformation(util.toPointer(Process), util.toPointer(VirtualAddress), MemoryInformationClass, util.toPointer(MemoryInformation), MemoryInformationSize, util.toPointer(ReturnSize)));
 }
 
 export function MapViewOfFileNuma2(
-  FileMappingHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  ProcessHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  FileMappingHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  ProcessHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Offset: Deno.PointerValue /* u64 */,
-  BaseAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  BaseAddress: Deno.PointerValue | Uint8Array /* ptr */,
   ViewSize: Deno.PointerValue /* usize */,
   AllocationType: number /* u32 */,
   PageProtection: number /* u32 */,
   PreferredNode: number /* u32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libapi_ms_win_core_memory_l1_1_5_dll.MapViewOfFileNuma2(util.toPointer(FileMappingHandle), util.toPointer(ProcessHandle), Offset, util.toPointer(BaseAddress), ViewSize, AllocationType, PageProtection, PreferredNode));
+): Deno.PointerValue /* ptr */ {
+  return libapi_ms_win_core_memory_l1_1_5_dll.MapViewOfFileNuma2(util.toPointer(FileMappingHandle), util.toPointer(ProcessHandle), Offset, util.toPointer(BaseAddress), ViewSize, AllocationType, PageProtection, PreferredNode);
 }
 
 export function UnmapViewOfFile2(
-  Process: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  BaseAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Process: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  BaseAddress: Deno.PointerValue | Uint8Array /* ptr */,
   UnmapFlags: UNMAP_VIEW_OF_FILE_FLAGS /* Windows.Win32.System.Memory.UNMAP_VIEW_OF_FILE_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libapi_ms_win_core_memory_l1_1_5_dll.UnmapViewOfFile2(util.toPointer(Process), util.toPointer(BaseAddress), UnmapFlags));
 }
 
 export function VirtualUnlockEx(
-  Process: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  Address: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Process: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  Address: Deno.PointerValue | Uint8Array /* ptr */,
   Size: Deno.PointerValue /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libapi_ms_win_core_memory_l1_1_5_dll.VirtualUnlockEx(util.toPointer(Process), util.toPointer(Address), Size));
 }
 
 export function VirtualAlloc2(
-  Process: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  BaseAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Process: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  BaseAddress: Deno.PointerValue | Uint8Array /* ptr */,
   Size: Deno.PointerValue /* usize */,
   AllocationType: VIRTUAL_ALLOCATION_TYPE /* Windows.Win32.System.Memory.VIRTUAL_ALLOCATION_TYPE */,
   PageProtection: number /* u32 */,
-  ExtendedParameters: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExtendedParameters: Deno.PointerValue | Uint8Array /* ptr */,
   ParameterCount: number /* u32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libapi_ms_win_core_memory_l1_1_6_dll.VirtualAlloc2(util.toPointer(Process), util.toPointer(BaseAddress), Size, AllocationType, PageProtection, util.toPointer(ExtendedParameters), ParameterCount));
+): Deno.PointerValue /* ptr */ {
+  return libapi_ms_win_core_memory_l1_1_6_dll.VirtualAlloc2(util.toPointer(Process), util.toPointer(BaseAddress), Size, AllocationType, PageProtection, util.toPointer(ExtendedParameters), ParameterCount);
 }
 
 export function MapViewOfFile3(
-  FileMapping: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  Process: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  BaseAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  FileMapping: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  Process: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  BaseAddress: Deno.PointerValue | Uint8Array /* ptr */,
   Offset: Deno.PointerValue /* u64 */,
   ViewSize: Deno.PointerValue /* usize */,
   AllocationType: VIRTUAL_ALLOCATION_TYPE /* Windows.Win32.System.Memory.VIRTUAL_ALLOCATION_TYPE */,
   PageProtection: number /* u32 */,
-  ExtendedParameters: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExtendedParameters: Deno.PointerValue | Uint8Array /* ptr */,
   ParameterCount: number /* u32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libapi_ms_win_core_memory_l1_1_6_dll.MapViewOfFile3(util.toPointer(FileMapping), util.toPointer(Process), util.toPointer(BaseAddress), Offset, ViewSize, AllocationType, PageProtection, util.toPointer(ExtendedParameters), ParameterCount));
+): Deno.PointerValue /* ptr */ {
+  return libapi_ms_win_core_memory_l1_1_6_dll.MapViewOfFile3(util.toPointer(FileMapping), util.toPointer(Process), util.toPointer(BaseAddress), Offset, ViewSize, AllocationType, PageProtection, util.toPointer(ExtendedParameters), ParameterCount);
 }
 
 export function VirtualAlloc2FromApp(
-  Process: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  BaseAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Process: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  BaseAddress: Deno.PointerValue | Uint8Array /* ptr */,
   Size: Deno.PointerValue /* usize */,
   AllocationType: VIRTUAL_ALLOCATION_TYPE /* Windows.Win32.System.Memory.VIRTUAL_ALLOCATION_TYPE */,
   PageProtection: number /* u32 */,
-  ExtendedParameters: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExtendedParameters: Deno.PointerValue | Uint8Array /* ptr */,
   ParameterCount: number /* u32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libapi_ms_win_core_memory_l1_1_6_dll.VirtualAlloc2FromApp(util.toPointer(Process), util.toPointer(BaseAddress), Size, AllocationType, PageProtection, util.toPointer(ExtendedParameters), ParameterCount));
+): Deno.PointerValue /* ptr */ {
+  return libapi_ms_win_core_memory_l1_1_6_dll.VirtualAlloc2FromApp(util.toPointer(Process), util.toPointer(BaseAddress), Size, AllocationType, PageProtection, util.toPointer(ExtendedParameters), ParameterCount);
 }
 
 export function MapViewOfFile3FromApp(
-  FileMapping: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  Process: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  BaseAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  FileMapping: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  Process: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  BaseAddress: Deno.PointerValue | Uint8Array /* ptr */,
   Offset: Deno.PointerValue /* u64 */,
   ViewSize: Deno.PointerValue /* usize */,
   AllocationType: VIRTUAL_ALLOCATION_TYPE /* Windows.Win32.System.Memory.VIRTUAL_ALLOCATION_TYPE */,
   PageProtection: number /* u32 */,
-  ExtendedParameters: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExtendedParameters: Deno.PointerValue | Uint8Array /* ptr */,
   ParameterCount: number /* u32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libapi_ms_win_core_memory_l1_1_6_dll.MapViewOfFile3FromApp(util.toPointer(FileMapping), util.toPointer(Process), util.toPointer(BaseAddress), Offset, ViewSize, AllocationType, PageProtection, util.toPointer(ExtendedParameters), ParameterCount));
+): Deno.PointerValue /* ptr */ {
+  return libapi_ms_win_core_memory_l1_1_6_dll.MapViewOfFile3FromApp(util.toPointer(FileMapping), util.toPointer(Process), util.toPointer(BaseAddress), Offset, ViewSize, AllocationType, PageProtection, util.toPointer(ExtendedParameters), ParameterCount);
 }
 
 export function CreateFileMapping2(
-  File: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  SecurityAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
+  File: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  SecurityAttributes: Deno.PointerValue | Uint8Array /* ptr */,
   DesiredAccess: number /* u32 */,
   PageProtection: PAGE_PROTECTION_FLAGS /* Windows.Win32.System.Memory.PAGE_PROTECTION_FLAGS */,
   AllocationAttributes: number /* u32 */,
   MaximumSize: Deno.PointerValue /* u64 */,
   Name: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ExtendedParameters: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExtendedParameters: Deno.PointerValue | Uint8Array /* ptr */,
   ParameterCount: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libapi_ms_win_core_memory_l1_1_7_dll.CreateFileMapping2(util.toPointer(File), util.toPointer(SecurityAttributes), DesiredAccess, PageProtection, AllocationAttributes, MaximumSize, util.pwstrToFfi(Name), util.toPointer(ExtendedParameters), ParameterCount));
+): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
+  return libapi_ms_win_core_memory_l1_1_7_dll.CreateFileMapping2(util.toPointer(File), util.toPointer(SecurityAttributes), DesiredAccess, PageProtection, AllocationAttributes, MaximumSize, util.pwstrToFfi(Name), util.toPointer(ExtendedParameters), ParameterCount);
 }
 
 export function AllocateUserPhysicalPages2(
-  ObjectHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  NumberOfPages: Deno.PointerValue | Uint8Array | null /* ptr */,
-  PageArray: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ExtendedParameters: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ObjectHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  NumberOfPages: Deno.PointerValue | Uint8Array /* ptr */,
+  PageArray: Deno.PointerValue | Uint8Array /* ptr */,
+  ExtendedParameters: Deno.PointerValue | Uint8Array /* ptr */,
   ExtendedParameterCount: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libapi_ms_win_core_memory_l1_1_8_dll.AllocateUserPhysicalPages2(util.toPointer(ObjectHandle), util.toPointer(NumberOfPages), util.toPointer(PageArray), util.toPointer(ExtendedParameters), ExtendedParameterCount));
 }
 
 export function OpenDedicatedMemoryPartition(
-  Partition: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   DedicatedMemoryTypeId: Deno.PointerValue /* u64 */,
   DesiredAccess: number /* u32 */,
   InheritHandle: boolean /* Windows.Win32.Foundation.BOOL */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libapi_ms_win_core_memory_l1_1_8_dll.OpenDedicatedMemoryPartition(util.toPointer(Partition), DedicatedMemoryTypeId, DesiredAccess, util.boolToFfi(InheritHandle)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
+  return libapi_ms_win_core_memory_l1_1_8_dll.OpenDedicatedMemoryPartition(util.toPointer(Partition), DedicatedMemoryTypeId, DesiredAccess, util.boolToFfi(InheritHandle));
 }
 
 export function QueryPartitionInformation(
-  Partition: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   PartitionInformationClass: WIN32_MEMORY_PARTITION_INFORMATION_CLASS /* Windows.Win32.System.Memory.WIN32_MEMORY_PARTITION_INFORMATION_CLASS */,
-  PartitionInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
+  PartitionInformation: Deno.PointerValue | Uint8Array /* ptr */,
   PartitionInformationLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libapi_ms_win_core_memory_l1_1_8_dll.QueryPartitionInformation(util.toPointer(Partition), PartitionInformationClass, util.toPointer(PartitionInformation), PartitionInformationLength));
 }
 
 export function RtlCompareMemory(
-  Source1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Source2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Source1: Deno.PointerValue | Uint8Array /* ptr */,
+  Source2: Deno.PointerValue | Uint8Array /* ptr */,
   Length: Deno.PointerValue /* usize */,
 ): Deno.PointerValue /* usize */ {
   return libKERNEL32_dll.RtlCompareMemory(util.toPointer(Source1), util.toPointer(Source2), Length);
 }
 
 export function RtlCrc32(
-  Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   Size: Deno.PointerValue /* usize */,
   InitialCrc: number /* u32 */,
 ): number /* u32 */ {
@@ -2848,7 +2848,7 @@ export function RtlCrc32(
 }
 
 export function RtlCrc64(
-  Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   Size: Deno.PointerValue /* usize */,
   InitialCrc: Deno.PointerValue /* u64 */,
 ): Deno.PointerValue /* u64 */ {
@@ -2856,10 +2856,10 @@ export function RtlCrc64(
 }
 
 export function RtlIsZeroMemory(
-  Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   Length: Deno.PointerValue /* usize */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */ {
-  return util.pointerFromFfi(libntdll_dll.RtlIsZeroMemory(util.toPointer(Buffer), Length));
+): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
+  return libntdll_dll.RtlIsZeroMemory(util.toPointer(Buffer), Length);
 }
 
 export function GlobalAlloc(
@@ -2891,8 +2891,8 @@ export function GlobalUnlock(
 
 export function GlobalLock(
   hMem: Deno.PointerValue /* isize */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libKERNEL32_dll.GlobalLock(hMem));
+): Deno.PointerValue /* ptr */ {
+  return libKERNEL32_dll.GlobalLock(hMem);
 }
 
 export function GlobalFlags(
@@ -2902,7 +2902,7 @@ export function GlobalFlags(
 }
 
 export function GlobalHandle(
-  pMem: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pMem: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* isize */ {
   return libKERNEL32_dll.GlobalHandle(util.toPointer(pMem));
 }
@@ -2930,12 +2930,12 @@ export function LocalReAlloc(
 
 export function LocalLock(
   hMem: Deno.PointerValue /* isize */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libKERNEL32_dll.LocalLock(hMem));
+): Deno.PointerValue /* ptr */ {
+  return libKERNEL32_dll.LocalLock(hMem);
 }
 
 export function LocalHandle(
-  pMem: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pMem: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* isize */ {
   return libKERNEL32_dll.LocalHandle(util.toPointer(pMem));
 }
@@ -2965,64 +2965,64 @@ export function LocalFree(
 }
 
 export function CreateFileMappingA(
-  hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpFileMappingAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpFileMappingAttributes: Deno.PointerValue | Uint8Array /* ptr */,
   flProtect: PAGE_PROTECTION_FLAGS /* Windows.Win32.System.Memory.PAGE_PROTECTION_FLAGS */,
   dwMaximumSizeHigh: number /* u32 */,
   dwMaximumSizeLow: number /* u32 */,
   lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libKERNEL32_dll.CreateFileMappingA(util.toPointer(hFile), util.toPointer(lpFileMappingAttributes), flProtect, dwMaximumSizeHigh, dwMaximumSizeLow, util.pstrToFfi(lpName)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
+  return libKERNEL32_dll.CreateFileMappingA(util.toPointer(hFile), util.toPointer(lpFileMappingAttributes), flProtect, dwMaximumSizeHigh, dwMaximumSizeLow, util.pstrToFfi(lpName));
 }
 
 export function CreateFileMappingNumaA(
-  hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpFileMappingAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpFileMappingAttributes: Deno.PointerValue | Uint8Array /* ptr */,
   flProtect: PAGE_PROTECTION_FLAGS /* Windows.Win32.System.Memory.PAGE_PROTECTION_FLAGS */,
   dwMaximumSizeHigh: number /* u32 */,
   dwMaximumSizeLow: number /* u32 */,
   lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nndPreferred: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libKERNEL32_dll.CreateFileMappingNumaA(util.toPointer(hFile), util.toPointer(lpFileMappingAttributes), flProtect, dwMaximumSizeHigh, dwMaximumSizeLow, util.pstrToFfi(lpName), nndPreferred));
+): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
+  return libKERNEL32_dll.CreateFileMappingNumaA(util.toPointer(hFile), util.toPointer(lpFileMappingAttributes), flProtect, dwMaximumSizeHigh, dwMaximumSizeLow, util.pstrToFfi(lpName), nndPreferred);
 }
 
 export function OpenFileMappingA(
   dwDesiredAccess: number /* u32 */,
   bInheritHandle: boolean /* Windows.Win32.Foundation.BOOL */,
   lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libKERNEL32_dll.OpenFileMappingA(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pstrToFfi(lpName)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
+  return libKERNEL32_dll.OpenFileMappingA(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pstrToFfi(lpName));
 }
 
 export function MapViewOfFileExNuma(
-  hFileMappingObject: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hFileMappingObject: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwDesiredAccess: FILE_MAP /* Windows.Win32.System.Memory.FILE_MAP */,
   dwFileOffsetHigh: number /* u32 */,
   dwFileOffsetLow: number /* u32 */,
   dwNumberOfBytesToMap: Deno.PointerValue /* usize */,
-  lpBaseAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpBaseAddress: Deno.PointerValue | Uint8Array /* ptr */,
   nndPreferred: number /* u32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libKERNEL32_dll.MapViewOfFileExNuma(util.toPointer(hFileMappingObject), dwDesiredAccess, dwFileOffsetHigh, dwFileOffsetLow, dwNumberOfBytesToMap, util.toPointer(lpBaseAddress), nndPreferred));
+): Deno.PointerValue /* ptr */ {
+  return libKERNEL32_dll.MapViewOfFileExNuma(util.toPointer(hFileMappingObject), dwDesiredAccess, dwFileOffsetHigh, dwFileOffsetLow, dwNumberOfBytesToMap, util.toPointer(lpBaseAddress), nndPreferred);
 }
 
 export function IsBadReadPtr(
-  lp: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lp: Deno.PointerValue | Uint8Array /* ptr */,
   ucb: Deno.PointerValue /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.IsBadReadPtr(util.toPointer(lp), ucb));
 }
 
 export function IsBadWritePtr(
-  lp: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lp: Deno.PointerValue | Uint8Array /* ptr */,
   ucb: Deno.PointerValue /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.IsBadWritePtr(util.toPointer(lp), ucb));
 }
 
 export function IsBadCodePtr(
-  lpfn: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.FARPROC */,
+  lpfn: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.FARPROC */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.IsBadCodePtr(util.toPointer(lpfn)));
 }
@@ -3042,21 +3042,21 @@ export function IsBadStringPtrW(
 }
 
 export function MapUserPhysicalPagesScatter(
-  VirtualAddresses: Deno.PointerValue | Uint8Array | null /* ptr */,
+  VirtualAddresses: Deno.PointerValue | Uint8Array /* ptr */,
   NumberOfPages: Deno.PointerValue /* usize */,
-  PageArray: Deno.PointerValue | Uint8Array | null /* ptr */,
+  PageArray: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.MapUserPhysicalPagesScatter(util.toPointer(VirtualAddresses), NumberOfPages, util.toPointer(PageArray)));
 }
 
 export function AddSecureMemoryCacheCallback(
-  pfnCallBack: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Memory.PSECURE_MEMORY_CACHE_CALLBACK */,
+  pfnCallBack: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Memory.PSECURE_MEMORY_CACHE_CALLBACK */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.AddSecureMemoryCacheCallback(util.toPointer(pfnCallBack)));
 }
 
 export function RemoveSecureMemoryCacheCallback(
-  pfnCallBack: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Memory.PSECURE_MEMORY_CACHE_CALLBACK */,
+  pfnCallBack: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Memory.PSECURE_MEMORY_CACHE_CALLBACK */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.RemoveSecureMemoryCacheCallback(util.toPointer(pfnCallBack)));
 }

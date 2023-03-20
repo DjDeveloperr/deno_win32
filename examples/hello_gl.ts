@@ -22,32 +22,34 @@ let clicks1 = 0, clicks2 = 0;
 const cb = new Deno.UnsafeCallback(
   {
     parameters: ["pointer", "u32", "pointer", "pointer"],
-    result: "i32",
+    result: "pointer",
   } as const,
   (hWnd, msg, wParam, lParam) => {
     switch (msg) {
       case Wm.WM_PAINT: {
         Gdi.BeginPaint(hWnd, ps);
         Gdi.EndPaint(hWnd, ps);
-        return 0;
+        return null;
       }
 
       case Wm.WM_SIZE: {
-        Gfx.glViewport(0, 0, Number(lParam) & 0xffff, Number(lParam) >> 16);
+        const lParamInt = Number(Deno.UnsafePointer.value(lParam));
+        Gfx.glViewport(0, 0, lParamInt & 0xffff, lParamInt >> 16);
         Wm.PostMessageA(hWnd, Wm.WM_PAINT, null, null);
-        return 0;
+        return null;
       }
 
       case Wm.WM_COMMAND: {
-        if ((Number(wParam) & 0xffff) === Wm.BN_CLICKED) {
-          if (lParam === button1) {
+        const wParamInt = Number(Deno.UnsafePointer.value(wParam));
+        if ((wParamInt & 0xffff) === Wm.BN_CLICKED) {
+          if (Deno.UnsafePointer.equals(lParam, button1)) {
             Wm.SendMessageA(
               staticText1,
               Wm.WM_SETTEXT,
               null,
               new TextEncoder().encode(`Clicks: ${++clicks1}\0`),
             );
-          } else if (lParam === button2) {
+          } else if (Deno.UnsafePointer.equals(lParam, button2)) {
             Wm.SendMessageA(
               staticText2,
               Wm.WM_SETTEXT,
@@ -56,20 +58,18 @@ const cb = new Deno.UnsafeCallback(
             );
           }
         }
-        return 0;
+        return null;
       }
 
       case Wm.WM_CLOSE: {
         Deno.exit(0);
       }
     }
-    return Number(
-      Wm.DefWindowProcA(
-        hWnd,
-        msg,
-        wParam,
-        lParam,
-      ),
+    return Wm.DefWindowProcA(
+      hWnd,
+      msg,
+      wParam,
+      lParam,
     );
   },
 );

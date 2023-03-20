@@ -3120,7 +3120,7 @@ export class D3D12_COMMAND_QUEUE_DESCView {
   }
 }
 
-export type PSTR = Deno.PointerValue | Uint8Array | null;
+export type PSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.Graphics.Direct3D12.D3D12_INPUT_ELEMENT_DESC (size: 32)
@@ -3150,7 +3150,7 @@ export function allocD3D12_INPUT_ELEMENT_DESC(data?: Partial<D3D12_INPUT_ELEMENT
   // 0x00: buffer
   if (data?.SemanticName !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.SemanticName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: u32
   if (data?.SemanticIndex !== undefined) view.setUint32(8, Number(data.SemanticIndex), true);
@@ -3178,9 +3178,9 @@ export class D3D12_INPUT_ELEMENT_DESCView {
   }
 
   // 0x00: buffer
-  get SemanticName(): Uint8Array | Deno.PointerValue | null {
+  get SemanticName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -3214,9 +3214,9 @@ export class D3D12_INPUT_ELEMENT_DESCView {
   }
 
   // 0x00: buffer
-  set SemanticName(value: Uint8Array | Deno.PointerValue | null) {
+  set SemanticName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: u32
@@ -3279,7 +3279,7 @@ export function allocD3D12_SO_DECLARATION_ENTRY(data?: Partial<D3D12_SO_DECLARAT
   // 0x08: buffer
   if (data?.SemanticName !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.SemanticName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: u32
   if (data?.SemanticIndex !== undefined) view.setUint32(16, Number(data.SemanticIndex), true);
@@ -3311,9 +3311,9 @@ export class D3D12_SO_DECLARATION_ENTRYView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get SemanticName(): Uint8Array | Deno.PointerValue | null {
+  get SemanticName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -3346,9 +3346,9 @@ export class D3D12_SO_DECLARATION_ENTRYView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set SemanticName(value: Uint8Array | Deno.PointerValue | null) {
+  set SemanticName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: u32
@@ -3692,9 +3692,9 @@ export interface D3D12_DEPTH_STENCIL_DESC {
   /** u8 */
   StencilWriteMask: number;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_DEPTH_STENCILOP_DESC */
-  FrontFace: Uint8Array | Deno.PointerValue | null;
+  FrontFace: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_DEPTH_STENCILOP_DESC */
-  BackFace: Uint8Array | Deno.PointerValue | null;
+  BackFace: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofD3D12_DEPTH_STENCIL_DESC = 40;
@@ -3716,9 +3716,9 @@ export function allocD3D12_DEPTH_STENCIL_DESC(data?: Partial<D3D12_DEPTH_STENCIL
   if (data?.StencilWriteMask !== undefined) view.setUint8(17, Number(data.StencilWriteMask));
   // 0x12: pad6
   // 0x18: pointer
-  if (data?.FrontFace !== undefined) view.setBigUint64(24, data.FrontFace === null ? 0n : BigInt(util.toPointer(data.FrontFace)), true);
+  if (data?.FrontFace !== undefined) view.setBigUint64(24, data.FrontFace === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.FrontFace))), true);
   // 0x20: pointer
-  if (data?.BackFace !== undefined) view.setBigUint64(32, data.BackFace === null ? 0n : BigInt(util.toPointer(data.BackFace)), true);
+  if (data?.BackFace !== undefined) view.setBigUint64(32, data.BackFace === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BackFace))), true);
   return buf;
 }
 
@@ -3765,15 +3765,15 @@ export class D3D12_DEPTH_STENCIL_DESCView {
   // 0x12: pad6
 
   // 0x18: pointer
-  get FrontFace(): Uint8Array | Deno.PointerValue | null {
+  get FrontFace(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get BackFace(): Uint8Array | Deno.PointerValue | null {
+  get BackFace(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -3809,13 +3809,13 @@ export class D3D12_DEPTH_STENCIL_DESCView {
   // 0x12: pad6
 
   // 0x18: pointer
-  set FrontFace(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set FrontFace(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set BackFace(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set BackFace(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3836,9 +3836,9 @@ export interface D3D12_DEPTH_STENCIL_DESC1 {
   /** u8 */
   StencilWriteMask: number;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_DEPTH_STENCILOP_DESC */
-  FrontFace: Uint8Array | Deno.PointerValue | null;
+  FrontFace: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_DEPTH_STENCILOP_DESC */
-  BackFace: Uint8Array | Deno.PointerValue | null;
+  BackFace: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOL */
   DepthBoundsTestEnable: boolean;
 }
@@ -3862,9 +3862,9 @@ export function allocD3D12_DEPTH_STENCIL_DESC1(data?: Partial<D3D12_DEPTH_STENCI
   if (data?.StencilWriteMask !== undefined) view.setUint8(17, Number(data.StencilWriteMask));
   // 0x12: pad6
   // 0x18: pointer
-  if (data?.FrontFace !== undefined) view.setBigUint64(24, data.FrontFace === null ? 0n : BigInt(util.toPointer(data.FrontFace)), true);
+  if (data?.FrontFace !== undefined) view.setBigUint64(24, data.FrontFace === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.FrontFace))), true);
   // 0x20: pointer
-  if (data?.BackFace !== undefined) view.setBigUint64(32, data.BackFace === null ? 0n : BigInt(util.toPointer(data.BackFace)), true);
+  if (data?.BackFace !== undefined) view.setBigUint64(32, data.BackFace === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BackFace))), true);
   // 0x28: i32
   if (data?.DepthBoundsTestEnable !== undefined) view.setInt32(40, Number(data.DepthBoundsTestEnable), true);
   // 0x2c: pad4
@@ -3914,15 +3914,15 @@ export class D3D12_DEPTH_STENCIL_DESC1View {
   // 0x12: pad6
 
   // 0x18: pointer
-  get FrontFace(): Uint8Array | Deno.PointerValue | null {
+  get FrontFace(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get BackFace(): Uint8Array | Deno.PointerValue | null {
+  get BackFace(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: i32
@@ -3965,13 +3965,13 @@ export class D3D12_DEPTH_STENCIL_DESC1View {
   // 0x12: pad6
 
   // 0x18: pointer
-  set FrontFace(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set FrontFace(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set BackFace(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set BackFace(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: i32
@@ -4161,7 +4161,7 @@ export interface D3D12_BLEND_DESC {
   /** Windows.Win32.Foundation.BOOL */
   IndependentBlendEnable: boolean;
   /** array */
-  RenderTarget: Deno.PointerValue | null;
+  RenderTarget: Deno.PointerValue;
 }
 
 export const sizeofD3D12_BLEND_DESC = 16;
@@ -4174,7 +4174,7 @@ export function allocD3D12_BLEND_DESC(data?: Partial<D3D12_BLEND_DESC>): Uint8Ar
   // 0x04: i32
   if (data?.IndependentBlendEnable !== undefined) view.setInt32(4, Number(data.IndependentBlendEnable), true);
   // 0x08: pointer
-  if (data?.RenderTarget !== undefined) view.setBigUint64(8, data.RenderTarget === null ? 0n : BigInt(util.toPointer(data.RenderTarget)), true);
+  if (data?.RenderTarget !== undefined) view.setBigUint64(8, data.RenderTarget === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.RenderTarget))), true);
   return buf;
 }
 
@@ -4199,9 +4199,9 @@ export class D3D12_BLEND_DESCView {
   }
 
   // 0x08: pointer
-  get RenderTarget(): Uint8Array | Deno.PointerValue | null {
+  get RenderTarget(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -4215,8 +4215,8 @@ export class D3D12_BLEND_DESCView {
   }
 
   // 0x08: pointer
-  set RenderTarget(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set RenderTarget(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4409,7 +4409,7 @@ export class D3D12_RASTERIZER_DESCView {
  */
 export interface D3D12_SHADER_BYTECODE {
   /** ptr */
-  pShaderBytecode: Deno.PointerValue | Uint8Array | null;
+  pShaderBytecode: Deno.PointerValue | Uint8Array;
   /** usize */
   BytecodeLength: Deno.PointerValue;
 }
@@ -4420,7 +4420,7 @@ export function allocD3D12_SHADER_BYTECODE(data?: Partial<D3D12_SHADER_BYTECODE>
   const buf = new Uint8Array(sizeofD3D12_SHADER_BYTECODE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pShaderBytecode !== undefined) view.setBigUint64(0, data.pShaderBytecode === null ? 0n : BigInt(util.toPointer(data.pShaderBytecode)), true);
+  if (data?.pShaderBytecode !== undefined) view.setBigUint64(0, data.pShaderBytecode === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pShaderBytecode))), true);
   // 0x08: usize
   if (data?.BytecodeLength !== undefined) view.setBigUint64(8, BigInt(data.BytecodeLength), true);
   return buf;
@@ -4437,9 +4437,9 @@ export class D3D12_SHADER_BYTECODEView {
   }
 
   // 0x00: pointer
-  get pShaderBytecode(): Uint8Array | Deno.PointerValue | null {
+  get pShaderBytecode(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: usize
@@ -4448,8 +4448,8 @@ export class D3D12_SHADER_BYTECODEView {
   }
 
   // 0x00: pointer
-  set pShaderBytecode(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pShaderBytecode(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: usize
@@ -4463,11 +4463,11 @@ export class D3D12_SHADER_BYTECODEView {
  */
 export interface D3D12_STREAM_OUTPUT_DESC {
   /** ptr */
-  pSODeclaration: Deno.PointerValue | Uint8Array | null;
+  pSODeclaration: Deno.PointerValue | Uint8Array;
   /** u32 */
   NumEntries: number;
   /** ptr */
-  pBufferStrides: Deno.PointerValue | Uint8Array | null;
+  pBufferStrides: Deno.PointerValue | Uint8Array;
   /** u32 */
   NumStrides: number;
   /** u32 */
@@ -4480,12 +4480,12 @@ export function allocD3D12_STREAM_OUTPUT_DESC(data?: Partial<D3D12_STREAM_OUTPUT
   const buf = new Uint8Array(sizeofD3D12_STREAM_OUTPUT_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pSODeclaration !== undefined) view.setBigUint64(0, data.pSODeclaration === null ? 0n : BigInt(util.toPointer(data.pSODeclaration)), true);
+  if (data?.pSODeclaration !== undefined) view.setBigUint64(0, data.pSODeclaration === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pSODeclaration))), true);
   // 0x08: u32
   if (data?.NumEntries !== undefined) view.setUint32(8, Number(data.NumEntries), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.pBufferStrides !== undefined) view.setBigUint64(16, data.pBufferStrides === null ? 0n : BigInt(util.toPointer(data.pBufferStrides)), true);
+  if (data?.pBufferStrides !== undefined) view.setBigUint64(16, data.pBufferStrides === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pBufferStrides))), true);
   // 0x18: u32
   if (data?.NumStrides !== undefined) view.setUint32(24, Number(data.NumStrides), true);
   // 0x1c: u32
@@ -4504,9 +4504,9 @@ export class D3D12_STREAM_OUTPUT_DESCView {
   }
 
   // 0x00: pointer
-  get pSODeclaration(): Uint8Array | Deno.PointerValue | null {
+  get pSODeclaration(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -4517,9 +4517,9 @@ export class D3D12_STREAM_OUTPUT_DESCView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get pBufferStrides(): Uint8Array | Deno.PointerValue | null {
+  get pBufferStrides(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -4533,8 +4533,8 @@ export class D3D12_STREAM_OUTPUT_DESCView {
   }
 
   // 0x00: pointer
-  set pSODeclaration(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pSODeclaration(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -4545,8 +4545,8 @@ export class D3D12_STREAM_OUTPUT_DESCView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set pBufferStrides(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pBufferStrides(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -4565,7 +4565,7 @@ export class D3D12_STREAM_OUTPUT_DESCView {
  */
 export interface D3D12_INPUT_LAYOUT_DESC {
   /** ptr */
-  pInputElementDescs: Deno.PointerValue | Uint8Array | null;
+  pInputElementDescs: Deno.PointerValue | Uint8Array;
   /** u32 */
   NumElements: number;
 }
@@ -4576,7 +4576,7 @@ export function allocD3D12_INPUT_LAYOUT_DESC(data?: Partial<D3D12_INPUT_LAYOUT_D
   const buf = new Uint8Array(sizeofD3D12_INPUT_LAYOUT_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pInputElementDescs !== undefined) view.setBigUint64(0, data.pInputElementDescs === null ? 0n : BigInt(util.toPointer(data.pInputElementDescs)), true);
+  if (data?.pInputElementDescs !== undefined) view.setBigUint64(0, data.pInputElementDescs === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pInputElementDescs))), true);
   // 0x08: u32
   if (data?.NumElements !== undefined) view.setUint32(8, Number(data.NumElements), true);
   // 0x0c: pad4
@@ -4594,9 +4594,9 @@ export class D3D12_INPUT_LAYOUT_DESCView {
   }
 
   // 0x00: pointer
-  get pInputElementDescs(): Uint8Array | Deno.PointerValue | null {
+  get pInputElementDescs(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -4607,8 +4607,8 @@ export class D3D12_INPUT_LAYOUT_DESCView {
   // 0x0c: pad4
 
   // 0x00: pointer
-  set pInputElementDescs(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pInputElementDescs(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -4624,7 +4624,7 @@ export class D3D12_INPUT_LAYOUT_DESCView {
  */
 export interface D3D12_CACHED_PIPELINE_STATE {
   /** ptr */
-  pCachedBlob: Deno.PointerValue | Uint8Array | null;
+  pCachedBlob: Deno.PointerValue | Uint8Array;
   /** usize */
   CachedBlobSizeInBytes: Deno.PointerValue;
 }
@@ -4635,7 +4635,7 @@ export function allocD3D12_CACHED_PIPELINE_STATE(data?: Partial<D3D12_CACHED_PIP
   const buf = new Uint8Array(sizeofD3D12_CACHED_PIPELINE_STATE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pCachedBlob !== undefined) view.setBigUint64(0, data.pCachedBlob === null ? 0n : BigInt(util.toPointer(data.pCachedBlob)), true);
+  if (data?.pCachedBlob !== undefined) view.setBigUint64(0, data.pCachedBlob === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pCachedBlob))), true);
   // 0x08: usize
   if (data?.CachedBlobSizeInBytes !== undefined) view.setBigUint64(8, BigInt(data.CachedBlobSizeInBytes), true);
   return buf;
@@ -4652,9 +4652,9 @@ export class D3D12_CACHED_PIPELINE_STATEView {
   }
 
   // 0x00: pointer
-  get pCachedBlob(): Uint8Array | Deno.PointerValue | null {
+  get pCachedBlob(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: usize
@@ -4663,8 +4663,8 @@ export class D3D12_CACHED_PIPELINE_STATEView {
   }
 
   // 0x00: pointer
-  set pCachedBlob(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pCachedBlob(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: usize
@@ -4731,29 +4731,29 @@ export class DXGI_SAMPLE_DESCView {
  */
 export interface D3D12_GRAPHICS_PIPELINE_STATE_DESC {
   /** Windows.Win32.Graphics.Direct3D12.ID3D12RootSignature */
-  pRootSignature: Uint8Array | Deno.PointerValue | null;
+  pRootSignature: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_SHADER_BYTECODE */
-  VS: Uint8Array | Deno.PointerValue | null;
+  VS: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_SHADER_BYTECODE */
-  PS: Uint8Array | Deno.PointerValue | null;
+  PS: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_SHADER_BYTECODE */
-  DS: Uint8Array | Deno.PointerValue | null;
+  DS: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_SHADER_BYTECODE */
-  HS: Uint8Array | Deno.PointerValue | null;
+  HS: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_SHADER_BYTECODE */
-  GS: Uint8Array | Deno.PointerValue | null;
+  GS: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_STREAM_OUTPUT_DESC */
-  StreamOutput: Uint8Array | Deno.PointerValue | null;
+  StreamOutput: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_BLEND_DESC */
-  BlendState: Uint8Array | Deno.PointerValue | null;
+  BlendState: Uint8Array | Deno.PointerValue;
   /** u32 */
   SampleMask: number;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_RASTERIZER_DESC */
-  RasterizerState: Uint8Array | Deno.PointerValue | null;
+  RasterizerState: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_DEPTH_STENCIL_DESC */
-  DepthStencilState: Uint8Array | Deno.PointerValue | null;
+  DepthStencilState: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_INPUT_LAYOUT_DESC */
-  InputLayout: Uint8Array | Deno.PointerValue | null;
+  InputLayout: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_INDEX_BUFFER_STRIP_CUT_VALUE */
   IBStripCutValue: D3D12_INDEX_BUFFER_STRIP_CUT_VALUE;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_PRIMITIVE_TOPOLOGY_TYPE */
@@ -4761,15 +4761,15 @@ export interface D3D12_GRAPHICS_PIPELINE_STATE_DESC {
   /** u32 */
   NumRenderTargets: number;
   /** array */
-  RTVFormats: Deno.PointerValue | null;
+  RTVFormats: Deno.PointerValue;
   /** Windows.Win32.Graphics.Dxgi.Common.DXGI_FORMAT */
   DSVFormat: DXGI_FORMAT;
   /** Windows.Win32.Graphics.Dxgi.Common.DXGI_SAMPLE_DESC */
-  SampleDesc: Uint8Array | Deno.PointerValue | null;
+  SampleDesc: Uint8Array | Deno.PointerValue;
   /** u32 */
   NodeMask: number;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_CACHED_PIPELINE_STATE */
-  CachedPSO: Uint8Array | Deno.PointerValue | null;
+  CachedPSO: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_PIPELINE_STATE_FLAGS */
   Flags: D3D12_PIPELINE_STATE_FLAGS;
 }
@@ -4780,30 +4780,30 @@ export function allocD3D12_GRAPHICS_PIPELINE_STATE_DESC(data?: Partial<D3D12_GRA
   const buf = new Uint8Array(sizeofD3D12_GRAPHICS_PIPELINE_STATE_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pRootSignature !== undefined) view.setBigUint64(0, data.pRootSignature === null ? 0n : BigInt(util.toPointer(data.pRootSignature)), true);
+  if (data?.pRootSignature !== undefined) view.setBigUint64(0, data.pRootSignature === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pRootSignature))), true);
   // 0x08: pointer
-  if (data?.VS !== undefined) view.setBigUint64(8, data.VS === null ? 0n : BigInt(util.toPointer(data.VS)), true);
+  if (data?.VS !== undefined) view.setBigUint64(8, data.VS === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.VS))), true);
   // 0x10: pointer
-  if (data?.PS !== undefined) view.setBigUint64(16, data.PS === null ? 0n : BigInt(util.toPointer(data.PS)), true);
+  if (data?.PS !== undefined) view.setBigUint64(16, data.PS === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.PS))), true);
   // 0x18: pointer
-  if (data?.DS !== undefined) view.setBigUint64(24, data.DS === null ? 0n : BigInt(util.toPointer(data.DS)), true);
+  if (data?.DS !== undefined) view.setBigUint64(24, data.DS === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DS))), true);
   // 0x20: pointer
-  if (data?.HS !== undefined) view.setBigUint64(32, data.HS === null ? 0n : BigInt(util.toPointer(data.HS)), true);
+  if (data?.HS !== undefined) view.setBigUint64(32, data.HS === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.HS))), true);
   // 0x28: pointer
-  if (data?.GS !== undefined) view.setBigUint64(40, data.GS === null ? 0n : BigInt(util.toPointer(data.GS)), true);
+  if (data?.GS !== undefined) view.setBigUint64(40, data.GS === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.GS))), true);
   // 0x30: pointer
-  if (data?.StreamOutput !== undefined) view.setBigUint64(48, data.StreamOutput === null ? 0n : BigInt(util.toPointer(data.StreamOutput)), true);
+  if (data?.StreamOutput !== undefined) view.setBigUint64(48, data.StreamOutput === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.StreamOutput))), true);
   // 0x38: pointer
-  if (data?.BlendState !== undefined) view.setBigUint64(56, data.BlendState === null ? 0n : BigInt(util.toPointer(data.BlendState)), true);
+  if (data?.BlendState !== undefined) view.setBigUint64(56, data.BlendState === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BlendState))), true);
   // 0x40: u32
   if (data?.SampleMask !== undefined) view.setUint32(64, Number(data.SampleMask), true);
   // 0x44: pad4
   // 0x48: pointer
-  if (data?.RasterizerState !== undefined) view.setBigUint64(72, data.RasterizerState === null ? 0n : BigInt(util.toPointer(data.RasterizerState)), true);
+  if (data?.RasterizerState !== undefined) view.setBigUint64(72, data.RasterizerState === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.RasterizerState))), true);
   // 0x50: pointer
-  if (data?.DepthStencilState !== undefined) view.setBigUint64(80, data.DepthStencilState === null ? 0n : BigInt(util.toPointer(data.DepthStencilState)), true);
+  if (data?.DepthStencilState !== undefined) view.setBigUint64(80, data.DepthStencilState === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DepthStencilState))), true);
   // 0x58: pointer
-  if (data?.InputLayout !== undefined) view.setBigUint64(88, data.InputLayout === null ? 0n : BigInt(util.toPointer(data.InputLayout)), true);
+  if (data?.InputLayout !== undefined) view.setBigUint64(88, data.InputLayout === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputLayout))), true);
   // 0x60: i32
   if (data?.IBStripCutValue !== undefined) view.setInt32(96, Number(data.IBStripCutValue), true);
   // 0x64: i32
@@ -4812,17 +4812,17 @@ export function allocD3D12_GRAPHICS_PIPELINE_STATE_DESC(data?: Partial<D3D12_GRA
   if (data?.NumRenderTargets !== undefined) view.setUint32(104, Number(data.NumRenderTargets), true);
   // 0x6c: pad4
   // 0x70: pointer
-  if (data?.RTVFormats !== undefined) view.setBigUint64(112, data.RTVFormats === null ? 0n : BigInt(util.toPointer(data.RTVFormats)), true);
+  if (data?.RTVFormats !== undefined) view.setBigUint64(112, data.RTVFormats === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.RTVFormats))), true);
   // 0x78: u32
   if (data?.DSVFormat !== undefined) view.setUint32(120, Number(data.DSVFormat), true);
   // 0x7c: pad4
   // 0x80: pointer
-  if (data?.SampleDesc !== undefined) view.setBigUint64(128, data.SampleDesc === null ? 0n : BigInt(util.toPointer(data.SampleDesc)), true);
+  if (data?.SampleDesc !== undefined) view.setBigUint64(128, data.SampleDesc === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.SampleDesc))), true);
   // 0x88: u32
   if (data?.NodeMask !== undefined) view.setUint32(136, Number(data.NodeMask), true);
   // 0x8c: pad4
   // 0x90: pointer
-  if (data?.CachedPSO !== undefined) view.setBigUint64(144, data.CachedPSO === null ? 0n : BigInt(util.toPointer(data.CachedPSO)), true);
+  if (data?.CachedPSO !== undefined) view.setBigUint64(144, data.CachedPSO === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.CachedPSO))), true);
   // 0x98: u32
   if (data?.Flags !== undefined) view.setUint32(152, Number(data.Flags), true);
   // 0x9c: pad4
@@ -4840,51 +4840,51 @@ export class D3D12_GRAPHICS_PIPELINE_STATE_DESCView {
   }
 
   // 0x00: pointer
-  get pRootSignature(): Uint8Array | Deno.PointerValue | null {
+  get pRootSignature(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get VS(): Uint8Array | Deno.PointerValue | null {
+  get VS(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get PS(): Uint8Array | Deno.PointerValue | null {
+  get PS(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get DS(): Uint8Array | Deno.PointerValue | null {
+  get DS(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get HS(): Uint8Array | Deno.PointerValue | null {
+  get HS(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get GS(): Uint8Array | Deno.PointerValue | null {
+  get GS(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get StreamOutput(): Uint8Array | Deno.PointerValue | null {
+  get StreamOutput(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get BlendState(): Uint8Array | Deno.PointerValue | null {
+  get BlendState(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: u32
@@ -4895,21 +4895,21 @@ export class D3D12_GRAPHICS_PIPELINE_STATE_DESCView {
   // 0x44: pad4
 
   // 0x48: pointer
-  get RasterizerState(): Uint8Array | Deno.PointerValue | null {
+  get RasterizerState(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: pointer
-  get DepthStencilState(): Uint8Array | Deno.PointerValue | null {
+  get DepthStencilState(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x58: pointer
-  get InputLayout(): Uint8Array | Deno.PointerValue | null {
+  get InputLayout(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x60: i32
@@ -4930,9 +4930,9 @@ export class D3D12_GRAPHICS_PIPELINE_STATE_DESCView {
   // 0x6c: pad4
 
   // 0x70: pointer
-  get RTVFormats(): Uint8Array | Deno.PointerValue | null {
+  get RTVFormats(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(112, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x78: u32
@@ -4943,9 +4943,9 @@ export class D3D12_GRAPHICS_PIPELINE_STATE_DESCView {
   // 0x7c: pad4
 
   // 0x80: pointer
-  get SampleDesc(): Uint8Array | Deno.PointerValue | null {
+  get SampleDesc(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(128, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x88: u32
@@ -4956,9 +4956,9 @@ export class D3D12_GRAPHICS_PIPELINE_STATE_DESCView {
   // 0x8c: pad4
 
   // 0x90: pointer
-  get CachedPSO(): Uint8Array | Deno.PointerValue | null {
+  get CachedPSO(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(144, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x98: u32
@@ -4969,43 +4969,43 @@ export class D3D12_GRAPHICS_PIPELINE_STATE_DESCView {
   // 0x9c: pad4
 
   // 0x00: pointer
-  set pRootSignature(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pRootSignature(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set VS(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set VS(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set PS(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set PS(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set DS(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set DS(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set HS(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set HS(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set GS(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set GS(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set StreamOutput(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set StreamOutput(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set BlendState(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set BlendState(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: u32
@@ -5016,18 +5016,18 @@ export class D3D12_GRAPHICS_PIPELINE_STATE_DESCView {
   // 0x44: pad4
 
   // 0x48: pointer
-  set RasterizerState(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set RasterizerState(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x50: pointer
-  set DepthStencilState(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set DepthStencilState(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x58: pointer
-  set InputLayout(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  set InputLayout(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x60: i32
@@ -5048,8 +5048,8 @@ export class D3D12_GRAPHICS_PIPELINE_STATE_DESCView {
   // 0x6c: pad4
 
   // 0x70: pointer
-  set RTVFormats(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(112, BigInt(util.toPointer(value)), true);
+  set RTVFormats(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(112, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x78: u32
@@ -5060,8 +5060,8 @@ export class D3D12_GRAPHICS_PIPELINE_STATE_DESCView {
   // 0x7c: pad4
 
   // 0x80: pointer
-  set SampleDesc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(128, BigInt(util.toPointer(value)), true);
+  set SampleDesc(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(128, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x88: u32
@@ -5072,8 +5072,8 @@ export class D3D12_GRAPHICS_PIPELINE_STATE_DESCView {
   // 0x8c: pad4
 
   // 0x90: pointer
-  set CachedPSO(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(144, BigInt(util.toPointer(value)), true);
+  set CachedPSO(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(144, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x98: u32
@@ -5089,13 +5089,13 @@ export class D3D12_GRAPHICS_PIPELINE_STATE_DESCView {
  */
 export interface D3D12_COMPUTE_PIPELINE_STATE_DESC {
   /** Windows.Win32.Graphics.Direct3D12.ID3D12RootSignature */
-  pRootSignature: Uint8Array | Deno.PointerValue | null;
+  pRootSignature: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_SHADER_BYTECODE */
-  CS: Uint8Array | Deno.PointerValue | null;
+  CS: Uint8Array | Deno.PointerValue;
   /** u32 */
   NodeMask: number;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_CACHED_PIPELINE_STATE */
-  CachedPSO: Uint8Array | Deno.PointerValue | null;
+  CachedPSO: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_PIPELINE_STATE_FLAGS */
   Flags: D3D12_PIPELINE_STATE_FLAGS;
 }
@@ -5106,14 +5106,14 @@ export function allocD3D12_COMPUTE_PIPELINE_STATE_DESC(data?: Partial<D3D12_COMP
   const buf = new Uint8Array(sizeofD3D12_COMPUTE_PIPELINE_STATE_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pRootSignature !== undefined) view.setBigUint64(0, data.pRootSignature === null ? 0n : BigInt(util.toPointer(data.pRootSignature)), true);
+  if (data?.pRootSignature !== undefined) view.setBigUint64(0, data.pRootSignature === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pRootSignature))), true);
   // 0x08: pointer
-  if (data?.CS !== undefined) view.setBigUint64(8, data.CS === null ? 0n : BigInt(util.toPointer(data.CS)), true);
+  if (data?.CS !== undefined) view.setBigUint64(8, data.CS === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.CS))), true);
   // 0x10: u32
   if (data?.NodeMask !== undefined) view.setUint32(16, Number(data.NodeMask), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.CachedPSO !== undefined) view.setBigUint64(24, data.CachedPSO === null ? 0n : BigInt(util.toPointer(data.CachedPSO)), true);
+  if (data?.CachedPSO !== undefined) view.setBigUint64(24, data.CachedPSO === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.CachedPSO))), true);
   // 0x20: u32
   if (data?.Flags !== undefined) view.setUint32(32, Number(data.Flags), true);
   // 0x24: pad4
@@ -5131,15 +5131,15 @@ export class D3D12_COMPUTE_PIPELINE_STATE_DESCView {
   }
 
   // 0x00: pointer
-  get pRootSignature(): Uint8Array | Deno.PointerValue | null {
+  get pRootSignature(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get CS(): Uint8Array | Deno.PointerValue | null {
+  get CS(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -5150,9 +5150,9 @@ export class D3D12_COMPUTE_PIPELINE_STATE_DESCView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get CachedPSO(): Uint8Array | Deno.PointerValue | null {
+  get CachedPSO(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -5163,13 +5163,13 @@ export class D3D12_COMPUTE_PIPELINE_STATE_DESCView {
   // 0x24: pad4
 
   // 0x00: pointer
-  set pRootSignature(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pRootSignature(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set CS(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set CS(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -5180,8 +5180,8 @@ export class D3D12_COMPUTE_PIPELINE_STATE_DESCView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set CachedPSO(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set CachedPSO(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -5197,7 +5197,7 @@ export class D3D12_COMPUTE_PIPELINE_STATE_DESCView {
  */
 export interface D3D12_RT_FORMAT_ARRAY {
   /** array */
-  RTFormats: Deno.PointerValue | null;
+  RTFormats: Deno.PointerValue;
   /** u32 */
   NumRenderTargets: number;
 }
@@ -5208,7 +5208,7 @@ export function allocD3D12_RT_FORMAT_ARRAY(data?: Partial<D3D12_RT_FORMAT_ARRAY>
   const buf = new Uint8Array(sizeofD3D12_RT_FORMAT_ARRAY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.RTFormats !== undefined) view.setBigUint64(0, data.RTFormats === null ? 0n : BigInt(util.toPointer(data.RTFormats)), true);
+  if (data?.RTFormats !== undefined) view.setBigUint64(0, data.RTFormats === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.RTFormats))), true);
   // 0x08: u32
   if (data?.NumRenderTargets !== undefined) view.setUint32(8, Number(data.NumRenderTargets), true);
   // 0x0c: pad4
@@ -5226,9 +5226,9 @@ export class D3D12_RT_FORMAT_ARRAYView {
   }
 
   // 0x00: pointer
-  get RTFormats(): Uint8Array | Deno.PointerValue | null {
+  get RTFormats(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -5239,8 +5239,8 @@ export class D3D12_RT_FORMAT_ARRAYView {
   // 0x0c: pad4
 
   // 0x00: pointer
-  set RTFormats(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set RTFormats(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -5258,7 +5258,7 @@ export interface D3D12_PIPELINE_STATE_STREAM_DESC {
   /** usize */
   SizeInBytes: Deno.PointerValue;
   /** ptr */
-  pPipelineStateSubobjectStream: Deno.PointerValue | Uint8Array | null;
+  pPipelineStateSubobjectStream: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofD3D12_PIPELINE_STATE_STREAM_DESC = 16;
@@ -5269,7 +5269,7 @@ export function allocD3D12_PIPELINE_STATE_STREAM_DESC(data?: Partial<D3D12_PIPEL
   // 0x00: usize
   if (data?.SizeInBytes !== undefined) view.setBigUint64(0, BigInt(data.SizeInBytes), true);
   // 0x08: pointer
-  if (data?.pPipelineStateSubobjectStream !== undefined) view.setBigUint64(8, data.pPipelineStateSubobjectStream === null ? 0n : BigInt(util.toPointer(data.pPipelineStateSubobjectStream)), true);
+  if (data?.pPipelineStateSubobjectStream !== undefined) view.setBigUint64(8, data.pPipelineStateSubobjectStream === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pPipelineStateSubobjectStream))), true);
   return buf;
 }
 
@@ -5289,9 +5289,9 @@ export class D3D12_PIPELINE_STATE_STREAM_DESCView {
   }
 
   // 0x08: pointer
-  get pPipelineStateSubobjectStream(): Uint8Array | Deno.PointerValue | null {
+  get pPipelineStateSubobjectStream(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: usize
@@ -5300,8 +5300,8 @@ export class D3D12_PIPELINE_STATE_STREAM_DESCView {
   }
 
   // 0x08: pointer
-  set pPipelineStateSubobjectStream(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pPipelineStateSubobjectStream(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -5939,7 +5939,7 @@ export interface D3D12_FEATURE_DATA_FEATURE_LEVELS {
   /** u32 */
   NumFeatureLevels: number;
   /** ptr */
-  pFeatureLevelsRequested: Deno.PointerValue | Uint8Array | null;
+  pFeatureLevelsRequested: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Graphics.Direct3D.D3D_FEATURE_LEVEL */
   MaxSupportedFeatureLevel: D3D_FEATURE_LEVEL;
 }
@@ -5953,7 +5953,7 @@ export function allocD3D12_FEATURE_DATA_FEATURE_LEVELS(data?: Partial<D3D12_FEAT
   if (data?.NumFeatureLevels !== undefined) view.setUint32(0, Number(data.NumFeatureLevels), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pFeatureLevelsRequested !== undefined) view.setBigUint64(8, data.pFeatureLevelsRequested === null ? 0n : BigInt(util.toPointer(data.pFeatureLevelsRequested)), true);
+  if (data?.pFeatureLevelsRequested !== undefined) view.setBigUint64(8, data.pFeatureLevelsRequested === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pFeatureLevelsRequested))), true);
   // 0x10: i32
   if (data?.MaxSupportedFeatureLevel !== undefined) view.setInt32(16, Number(data.MaxSupportedFeatureLevel), true);
   // 0x14: pad4
@@ -5978,9 +5978,9 @@ export class D3D12_FEATURE_DATA_FEATURE_LEVELSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pFeatureLevelsRequested(): Uint8Array | Deno.PointerValue | null {
+  get pFeatureLevelsRequested(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i32
@@ -5998,8 +5998,8 @@ export class D3D12_FEATURE_DATA_FEATURE_LEVELSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pFeatureLevelsRequested(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pFeatureLevelsRequested(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: i32
@@ -7039,15 +7039,15 @@ export class D3D12_FEATURE_DATA_D3D12_OPTIONS7View {
  */
 export interface D3D12_FEATURE_DATA_QUERY_META_COMMAND {
   /** System.Guid */
-  CommandId: Uint8Array | Deno.PointerValue | null;
+  CommandId: Uint8Array | Deno.PointerValue;
   /** u32 */
   NodeMask: number;
   /** ptr */
-  pQueryInputData: Deno.PointerValue | Uint8Array | null;
+  pQueryInputData: Deno.PointerValue | Uint8Array;
   /** usize */
   QueryInputDataSizeInBytes: Deno.PointerValue;
   /** ptr */
-  pQueryOutputData: Deno.PointerValue | Uint8Array | null;
+  pQueryOutputData: Deno.PointerValue | Uint8Array;
   /** usize */
   QueryOutputDataSizeInBytes: Deno.PointerValue;
 }
@@ -7058,16 +7058,16 @@ export function allocD3D12_FEATURE_DATA_QUERY_META_COMMAND(data?: Partial<D3D12_
   const buf = new Uint8Array(sizeofD3D12_FEATURE_DATA_QUERY_META_COMMAND);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.CommandId !== undefined) view.setBigUint64(0, data.CommandId === null ? 0n : BigInt(util.toPointer(data.CommandId)), true);
+  if (data?.CommandId !== undefined) view.setBigUint64(0, data.CommandId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.CommandId))), true);
   // 0x08: u32
   if (data?.NodeMask !== undefined) view.setUint32(8, Number(data.NodeMask), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.pQueryInputData !== undefined) view.setBigUint64(16, data.pQueryInputData === null ? 0n : BigInt(util.toPointer(data.pQueryInputData)), true);
+  if (data?.pQueryInputData !== undefined) view.setBigUint64(16, data.pQueryInputData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pQueryInputData))), true);
   // 0x18: usize
   if (data?.QueryInputDataSizeInBytes !== undefined) view.setBigUint64(24, BigInt(data.QueryInputDataSizeInBytes), true);
   // 0x20: pointer
-  if (data?.pQueryOutputData !== undefined) view.setBigUint64(32, data.pQueryOutputData === null ? 0n : BigInt(util.toPointer(data.pQueryOutputData)), true);
+  if (data?.pQueryOutputData !== undefined) view.setBigUint64(32, data.pQueryOutputData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pQueryOutputData))), true);
   // 0x28: usize
   if (data?.QueryOutputDataSizeInBytes !== undefined) view.setBigUint64(40, BigInt(data.QueryOutputDataSizeInBytes), true);
   return buf;
@@ -7084,9 +7084,9 @@ export class D3D12_FEATURE_DATA_QUERY_META_COMMANDView {
   }
 
   // 0x00: pointer
-  get CommandId(): Uint8Array | Deno.PointerValue | null {
+  get CommandId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -7097,9 +7097,9 @@ export class D3D12_FEATURE_DATA_QUERY_META_COMMANDView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get pQueryInputData(): Uint8Array | Deno.PointerValue | null {
+  get pQueryInputData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: usize
@@ -7108,9 +7108,9 @@ export class D3D12_FEATURE_DATA_QUERY_META_COMMANDView {
   }
 
   // 0x20: pointer
-  get pQueryOutputData(): Uint8Array | Deno.PointerValue | null {
+  get pQueryOutputData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: usize
@@ -7119,8 +7119,8 @@ export class D3D12_FEATURE_DATA_QUERY_META_COMMANDView {
   }
 
   // 0x00: pointer
-  set CommandId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set CommandId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -7131,8 +7131,8 @@ export class D3D12_FEATURE_DATA_QUERY_META_COMMANDView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set pQueryInputData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pQueryInputData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: usize
@@ -7141,8 +7141,8 @@ export class D3D12_FEATURE_DATA_QUERY_META_COMMANDView {
   }
 
   // 0x20: pointer
-  set pQueryOutputData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set pQueryOutputData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: usize
@@ -7628,7 +7628,7 @@ export interface D3D12_HEAP_DESC {
   /** u64 */
   SizeInBytes: Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_HEAP_PROPERTIES */
-  Properties: Uint8Array | Deno.PointerValue | null;
+  Properties: Uint8Array | Deno.PointerValue;
   /** u64 */
   Alignment: Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_HEAP_FLAGS */
@@ -7643,7 +7643,7 @@ export function allocD3D12_HEAP_DESC(data?: Partial<D3D12_HEAP_DESC>): Uint8Arra
   // 0x00: u64
   if (data?.SizeInBytes !== undefined) view.setBigUint64(0, BigInt(data.SizeInBytes), true);
   // 0x08: pointer
-  if (data?.Properties !== undefined) view.setBigUint64(8, data.Properties === null ? 0n : BigInt(util.toPointer(data.Properties)), true);
+  if (data?.Properties !== undefined) view.setBigUint64(8, data.Properties === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Properties))), true);
   // 0x10: u64
   if (data?.Alignment !== undefined) view.setBigUint64(16, BigInt(data.Alignment), true);
   // 0x18: u32
@@ -7668,9 +7668,9 @@ export class D3D12_HEAP_DESCView {
   }
 
   // 0x08: pointer
-  get Properties(): Uint8Array | Deno.PointerValue | null {
+  get Properties(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u64
@@ -7691,8 +7691,8 @@ export class D3D12_HEAP_DESCView {
   }
 
   // 0x08: pointer
-  set Properties(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Properties(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u64
@@ -7799,7 +7799,7 @@ export interface D3D12_RESOURCE_DESC {
   /** Windows.Win32.Graphics.Dxgi.Common.DXGI_FORMAT */
   Format: DXGI_FORMAT;
   /** Windows.Win32.Graphics.Dxgi.Common.DXGI_SAMPLE_DESC */
-  SampleDesc: Uint8Array | Deno.PointerValue | null;
+  SampleDesc: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_TEXTURE_LAYOUT */
   Layout: D3D12_TEXTURE_LAYOUT;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_RESOURCE_FLAGS */
@@ -7828,7 +7828,7 @@ export function allocD3D12_RESOURCE_DESC(data?: Partial<D3D12_RESOURCE_DESC>): U
   if (data?.Format !== undefined) view.setUint32(32, Number(data.Format), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.SampleDesc !== undefined) view.setBigUint64(40, data.SampleDesc === null ? 0n : BigInt(util.toPointer(data.SampleDesc)), true);
+  if (data?.SampleDesc !== undefined) view.setBigUint64(40, data.SampleDesc === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.SampleDesc))), true);
   // 0x30: i32
   if (data?.Layout !== undefined) view.setInt32(48, Number(data.Layout), true);
   // 0x34: u32
@@ -7886,9 +7886,9 @@ export class D3D12_RESOURCE_DESCView {
   // 0x24: pad4
 
   // 0x28: pointer
-  get SampleDesc(): Uint8Array | Deno.PointerValue | null {
+  get SampleDesc(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: i32
@@ -7941,8 +7941,8 @@ export class D3D12_RESOURCE_DESCView {
   // 0x24: pad4
 
   // 0x28: pointer
-  set SampleDesc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set SampleDesc(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: i32
@@ -7975,13 +7975,13 @@ export interface D3D12_RESOURCE_DESC1 {
   /** Windows.Win32.Graphics.Dxgi.Common.DXGI_FORMAT */
   Format: DXGI_FORMAT;
   /** Windows.Win32.Graphics.Dxgi.Common.DXGI_SAMPLE_DESC */
-  SampleDesc: Uint8Array | Deno.PointerValue | null;
+  SampleDesc: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_TEXTURE_LAYOUT */
   Layout: D3D12_TEXTURE_LAYOUT;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_RESOURCE_FLAGS */
   Flags: D3D12_RESOURCE_FLAGS;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_MIP_REGION */
-  SamplerFeedbackMipRegion: Uint8Array | Deno.PointerValue | null;
+  SamplerFeedbackMipRegion: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofD3D12_RESOURCE_DESC1 = 64;
@@ -8006,13 +8006,13 @@ export function allocD3D12_RESOURCE_DESC1(data?: Partial<D3D12_RESOURCE_DESC1>):
   if (data?.Format !== undefined) view.setUint32(32, Number(data.Format), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.SampleDesc !== undefined) view.setBigUint64(40, data.SampleDesc === null ? 0n : BigInt(util.toPointer(data.SampleDesc)), true);
+  if (data?.SampleDesc !== undefined) view.setBigUint64(40, data.SampleDesc === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.SampleDesc))), true);
   // 0x30: i32
   if (data?.Layout !== undefined) view.setInt32(48, Number(data.Layout), true);
   // 0x34: u32
   if (data?.Flags !== undefined) view.setUint32(52, Number(data.Flags), true);
   // 0x38: pointer
-  if (data?.SamplerFeedbackMipRegion !== undefined) view.setBigUint64(56, data.SamplerFeedbackMipRegion === null ? 0n : BigInt(util.toPointer(data.SamplerFeedbackMipRegion)), true);
+  if (data?.SamplerFeedbackMipRegion !== undefined) view.setBigUint64(56, data.SamplerFeedbackMipRegion === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.SamplerFeedbackMipRegion))), true);
   return buf;
 }
 
@@ -8066,9 +8066,9 @@ export class D3D12_RESOURCE_DESC1View {
   // 0x24: pad4
 
   // 0x28: pointer
-  get SampleDesc(): Uint8Array | Deno.PointerValue | null {
+  get SampleDesc(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: i32
@@ -8082,9 +8082,9 @@ export class D3D12_RESOURCE_DESC1View {
   }
 
   // 0x38: pointer
-  get SamplerFeedbackMipRegion(): Uint8Array | Deno.PointerValue | null {
+  get SamplerFeedbackMipRegion(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -8127,8 +8127,8 @@ export class D3D12_RESOURCE_DESC1View {
   // 0x24: pad4
 
   // 0x28: pointer
-  set SampleDesc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set SampleDesc(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: i32
@@ -8142,8 +8142,8 @@ export class D3D12_RESOURCE_DESC1View {
   }
 
   // 0x38: pointer
-  set SamplerFeedbackMipRegion(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set SamplerFeedbackMipRegion(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -8263,9 +8263,9 @@ export class _Anonymous_e__StructView {
  */
 export interface _Anonymous_e__Union {
   /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** array */
-  X: Deno.PointerValue | null;
+  X: Deno.PointerValue;
 }
 
 export const sizeof_Anonymous_e__Union = 16;
@@ -8274,9 +8274,9 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   const buf = new Uint8Array(sizeof_Anonymous_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x08: pointer
-  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.X))), true);
   return buf;
 }
 
@@ -8291,25 +8291,25 @@ export class _Anonymous_e__UnionView {
   }
 
   // 0x00: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get X(): Uint8Array | Deno.PointerValue | null {
+  get X(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set X(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set X(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -8320,7 +8320,7 @@ export interface D3D12_CLEAR_VALUE {
   /** Windows.Win32.Graphics.Dxgi.Common.DXGI_FORMAT */
   Format: DXGI_FORMAT;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofD3D12_CLEAR_VALUE = 16;
@@ -8332,7 +8332,7 @@ export function allocD3D12_CLEAR_VALUE(data?: Partial<D3D12_CLEAR_VALUE>): Uint8
   if (data?.Format !== undefined) view.setUint32(0, Number(data.Format), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -8354,9 +8354,9 @@ export class D3D12_CLEAR_VALUEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -8367,8 +8367,8 @@ export class D3D12_CLEAR_VALUEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -8485,7 +8485,7 @@ export interface D3D12_SUBRESOURCE_RANGE_UINT64 {
   /** u32 */
   Subresource: number;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_RANGE_UINT64 */
-  Range: Uint8Array | Deno.PointerValue | null;
+  Range: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofD3D12_SUBRESOURCE_RANGE_UINT64 = 16;
@@ -8497,7 +8497,7 @@ export function allocD3D12_SUBRESOURCE_RANGE_UINT64(data?: Partial<D3D12_SUBRESO
   if (data?.Subresource !== undefined) view.setUint32(0, Number(data.Subresource), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Range !== undefined) view.setBigUint64(8, data.Range === null ? 0n : BigInt(util.toPointer(data.Range)), true);
+  if (data?.Range !== undefined) view.setBigUint64(8, data.Range === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Range))), true);
   return buf;
 }
 
@@ -8519,9 +8519,9 @@ export class D3D12_SUBRESOURCE_RANGE_UINT64View {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Range(): Uint8Array | Deno.PointerValue | null {
+  get Range(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -8532,8 +8532,8 @@ export class D3D12_SUBRESOURCE_RANGE_UINT64View {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Range(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Range(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -9029,7 +9029,7 @@ export class D3D12_PACKED_MIP_INFOView {
  */
 export interface D3D12_RESOURCE_TRANSITION_BARRIER {
   /** Windows.Win32.Graphics.Direct3D12.ID3D12Resource */
-  pResource: Uint8Array | Deno.PointerValue | null;
+  pResource: Uint8Array | Deno.PointerValue;
   /** u32 */
   Subresource: number;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_RESOURCE_STATES */
@@ -9044,7 +9044,7 @@ export function allocD3D12_RESOURCE_TRANSITION_BARRIER(data?: Partial<D3D12_RESO
   const buf = new Uint8Array(sizeofD3D12_RESOURCE_TRANSITION_BARRIER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pResource !== undefined) view.setBigUint64(0, data.pResource === null ? 0n : BigInt(util.toPointer(data.pResource)), true);
+  if (data?.pResource !== undefined) view.setBigUint64(0, data.pResource === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pResource))), true);
   // 0x08: u32
   if (data?.Subresource !== undefined) view.setUint32(8, Number(data.Subresource), true);
   // 0x0c: u32
@@ -9066,9 +9066,9 @@ export class D3D12_RESOURCE_TRANSITION_BARRIERView {
   }
 
   // 0x00: pointer
-  get pResource(): Uint8Array | Deno.PointerValue | null {
+  get pResource(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -9089,8 +9089,8 @@ export class D3D12_RESOURCE_TRANSITION_BARRIERView {
   // 0x14: pad4
 
   // 0x00: pointer
-  set pResource(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pResource(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -9116,9 +9116,9 @@ export class D3D12_RESOURCE_TRANSITION_BARRIERView {
  */
 export interface D3D12_RESOURCE_ALIASING_BARRIER {
   /** Windows.Win32.Graphics.Direct3D12.ID3D12Resource */
-  pResourceBefore: Uint8Array | Deno.PointerValue | null;
+  pResourceBefore: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.ID3D12Resource */
-  pResourceAfter: Uint8Array | Deno.PointerValue | null;
+  pResourceAfter: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofD3D12_RESOURCE_ALIASING_BARRIER = 16;
@@ -9127,9 +9127,9 @@ export function allocD3D12_RESOURCE_ALIASING_BARRIER(data?: Partial<D3D12_RESOUR
   const buf = new Uint8Array(sizeofD3D12_RESOURCE_ALIASING_BARRIER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pResourceBefore !== undefined) view.setBigUint64(0, data.pResourceBefore === null ? 0n : BigInt(util.toPointer(data.pResourceBefore)), true);
+  if (data?.pResourceBefore !== undefined) view.setBigUint64(0, data.pResourceBefore === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pResourceBefore))), true);
   // 0x08: pointer
-  if (data?.pResourceAfter !== undefined) view.setBigUint64(8, data.pResourceAfter === null ? 0n : BigInt(util.toPointer(data.pResourceAfter)), true);
+  if (data?.pResourceAfter !== undefined) view.setBigUint64(8, data.pResourceAfter === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pResourceAfter))), true);
   return buf;
 }
 
@@ -9144,25 +9144,25 @@ export class D3D12_RESOURCE_ALIASING_BARRIERView {
   }
 
   // 0x00: pointer
-  get pResourceBefore(): Uint8Array | Deno.PointerValue | null {
+  get pResourceBefore(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get pResourceAfter(): Uint8Array | Deno.PointerValue | null {
+  get pResourceAfter(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set pResourceBefore(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pResourceBefore(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set pResourceAfter(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pResourceAfter(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -9171,7 +9171,7 @@ export class D3D12_RESOURCE_ALIASING_BARRIERView {
  */
 export interface D3D12_RESOURCE_UAV_BARRIER {
   /** Windows.Win32.Graphics.Direct3D12.ID3D12Resource */
-  pResource: Uint8Array | Deno.PointerValue | null;
+  pResource: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofD3D12_RESOURCE_UAV_BARRIER = 8;
@@ -9180,7 +9180,7 @@ export function allocD3D12_RESOURCE_UAV_BARRIER(data?: Partial<D3D12_RESOURCE_UA
   const buf = new Uint8Array(sizeofD3D12_RESOURCE_UAV_BARRIER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pResource !== undefined) view.setBigUint64(0, data.pResource === null ? 0n : BigInt(util.toPointer(data.pResource)), true);
+  if (data?.pResource !== undefined) view.setBigUint64(0, data.pResource === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pResource))), true);
   return buf;
 }
 
@@ -9195,14 +9195,14 @@ export class D3D12_RESOURCE_UAV_BARRIERView {
   }
 
   // 0x00: pointer
-  get pResource(): Uint8Array | Deno.PointerValue | null {
+  get pResource(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set pResource(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pResource(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -9215,7 +9215,7 @@ export interface D3D12_RESOURCE_BARRIER {
   /** Windows.Win32.Graphics.Direct3D12.D3D12_RESOURCE_BARRIER_FLAGS */
   Flags: D3D12_RESOURCE_BARRIER_FLAGS;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofD3D12_RESOURCE_BARRIER = 16;
@@ -9228,7 +9228,7 @@ export function allocD3D12_RESOURCE_BARRIER(data?: Partial<D3D12_RESOURCE_BARRIE
   // 0x04: u32
   if (data?.Flags !== undefined) view.setUint32(4, Number(data.Flags), true);
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -9253,9 +9253,9 @@ export class D3D12_RESOURCE_BARRIERView {
   }
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -9269,8 +9269,8 @@ export class D3D12_RESOURCE_BARRIERView {
   }
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -9381,7 +9381,7 @@ export interface D3D12_PLACED_SUBRESOURCE_FOOTPRINT {
   /** u64 */
   Offset: Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_SUBRESOURCE_FOOTPRINT */
-  Footprint: Uint8Array | Deno.PointerValue | null;
+  Footprint: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofD3D12_PLACED_SUBRESOURCE_FOOTPRINT = 16;
@@ -9392,7 +9392,7 @@ export function allocD3D12_PLACED_SUBRESOURCE_FOOTPRINT(data?: Partial<D3D12_PLA
   // 0x00: u64
   if (data?.Offset !== undefined) view.setBigUint64(0, BigInt(data.Offset), true);
   // 0x08: pointer
-  if (data?.Footprint !== undefined) view.setBigUint64(8, data.Footprint === null ? 0n : BigInt(util.toPointer(data.Footprint)), true);
+  if (data?.Footprint !== undefined) view.setBigUint64(8, data.Footprint === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Footprint))), true);
   return buf;
 }
 
@@ -9412,9 +9412,9 @@ export class D3D12_PLACED_SUBRESOURCE_FOOTPRINTView {
   }
 
   // 0x08: pointer
-  get Footprint(): Uint8Array | Deno.PointerValue | null {
+  get Footprint(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u64
@@ -9423,8 +9423,8 @@ export class D3D12_PLACED_SUBRESOURCE_FOOTPRINTView {
   }
 
   // 0x08: pointer
-  set Footprint(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Footprint(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -9433,11 +9433,11 @@ export class D3D12_PLACED_SUBRESOURCE_FOOTPRINTView {
  */
 export interface D3D12_TEXTURE_COPY_LOCATION {
   /** Windows.Win32.Graphics.Direct3D12.ID3D12Resource */
-  pResource: Uint8Array | Deno.PointerValue | null;
+  pResource: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_TEXTURE_COPY_TYPE */
   Type: D3D12_TEXTURE_COPY_TYPE;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofD3D12_TEXTURE_COPY_LOCATION = 24;
@@ -9446,12 +9446,12 @@ export function allocD3D12_TEXTURE_COPY_LOCATION(data?: Partial<D3D12_TEXTURE_CO
   const buf = new Uint8Array(sizeofD3D12_TEXTURE_COPY_LOCATION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pResource !== undefined) view.setBigUint64(0, data.pResource === null ? 0n : BigInt(util.toPointer(data.pResource)), true);
+  if (data?.pResource !== undefined) view.setBigUint64(0, data.pResource === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pResource))), true);
   // 0x08: i32
   if (data?.Type !== undefined) view.setInt32(8, Number(data.Type), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -9466,9 +9466,9 @@ export class D3D12_TEXTURE_COPY_LOCATIONView {
   }
 
   // 0x00: pointer
-  get pResource(): Uint8Array | Deno.PointerValue | null {
+  get pResource(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: i32
@@ -9479,14 +9479,14 @@ export class D3D12_TEXTURE_COPY_LOCATIONView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set pResource(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pResource(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: i32
@@ -9497,8 +9497,8 @@ export class D3D12_TEXTURE_COPY_LOCATIONView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -9620,7 +9620,7 @@ export interface D3D12_VIEW_INSTANCING_DESC {
   /** u32 */
   ViewInstanceCount: number;
   /** ptr */
-  pViewInstanceLocations: Deno.PointerValue | Uint8Array | null;
+  pViewInstanceLocations: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_VIEW_INSTANCING_FLAGS */
   Flags: D3D12_VIEW_INSTANCING_FLAGS;
 }
@@ -9634,7 +9634,7 @@ export function allocD3D12_VIEW_INSTANCING_DESC(data?: Partial<D3D12_VIEW_INSTAN
   if (data?.ViewInstanceCount !== undefined) view.setUint32(0, Number(data.ViewInstanceCount), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pViewInstanceLocations !== undefined) view.setBigUint64(8, data.pViewInstanceLocations === null ? 0n : BigInt(util.toPointer(data.pViewInstanceLocations)), true);
+  if (data?.pViewInstanceLocations !== undefined) view.setBigUint64(8, data.pViewInstanceLocations === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pViewInstanceLocations))), true);
   // 0x10: u32
   if (data?.Flags !== undefined) view.setUint32(16, Number(data.Flags), true);
   // 0x14: pad4
@@ -9659,9 +9659,9 @@ export class D3D12_VIEW_INSTANCING_DESCView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pViewInstanceLocations(): Uint8Array | Deno.PointerValue | null {
+  get pViewInstanceLocations(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -9679,8 +9679,8 @@ export class D3D12_VIEW_INSTANCING_DESCView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pViewInstanceLocations(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pViewInstanceLocations(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -10530,7 +10530,7 @@ export interface D3D12_SHADER_RESOURCE_VIEW_DESC {
   /** u32 */
   Shader4ComponentMapping: number;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofD3D12_SHADER_RESOURCE_VIEW_DESC = 24;
@@ -10546,7 +10546,7 @@ export function allocD3D12_SHADER_RESOURCE_VIEW_DESC(data?: Partial<D3D12_SHADER
   if (data?.Shader4ComponentMapping !== undefined) view.setUint32(8, Number(data.Shader4ComponentMapping), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -10578,9 +10578,9 @@ export class D3D12_SHADER_RESOURCE_VIEW_DESCView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -10601,8 +10601,8 @@ export class D3D12_SHADER_RESOURCE_VIEW_DESCView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -10683,7 +10683,7 @@ export interface D3D12_SAMPLER_DESC {
   /** Windows.Win32.Graphics.Direct3D12.D3D12_COMPARISON_FUNC */
   ComparisonFunc: D3D12_COMPARISON_FUNC;
   /** array */
-  BorderColor: Deno.PointerValue | null;
+  BorderColor: Deno.PointerValue;
   /** f32 */
   MinLOD: number;
   /** f32 */
@@ -10711,7 +10711,7 @@ export function allocD3D12_SAMPLER_DESC(data?: Partial<D3D12_SAMPLER_DESC>): Uin
   if (data?.ComparisonFunc !== undefined) view.setInt32(24, Number(data.ComparisonFunc), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.BorderColor !== undefined) view.setBigUint64(32, data.BorderColor === null ? 0n : BigInt(util.toPointer(data.BorderColor)), true);
+  if (data?.BorderColor !== undefined) view.setBigUint64(32, data.BorderColor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BorderColor))), true);
   // 0x28: f32
   if (data?.MinLOD !== undefined) view.setFloat32(40, Number(data.MinLOD), true);
   // 0x2c: f32
@@ -10767,9 +10767,9 @@ export class D3D12_SAMPLER_DESCView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get BorderColor(): Uint8Array | Deno.PointerValue | null {
+  get BorderColor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: f32
@@ -10820,8 +10820,8 @@ export class D3D12_SAMPLER_DESCView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set BorderColor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set BorderColor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: f32
@@ -11266,7 +11266,7 @@ export interface D3D12_UNORDERED_ACCESS_VIEW_DESC {
   /** Windows.Win32.Graphics.Direct3D12.D3D12_UAV_DIMENSION */
   ViewDimension: D3D12_UAV_DIMENSION;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofD3D12_UNORDERED_ACCESS_VIEW_DESC = 16;
@@ -11279,7 +11279,7 @@ export function allocD3D12_UNORDERED_ACCESS_VIEW_DESC(data?: Partial<D3D12_UNORD
   // 0x04: i32
   if (data?.ViewDimension !== undefined) view.setInt32(4, Number(data.ViewDimension), true);
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -11304,9 +11304,9 @@ export class D3D12_UNORDERED_ACCESS_VIEW_DESCView {
   }
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -11320,8 +11320,8 @@ export class D3D12_UNORDERED_ACCESS_VIEW_DESCView {
   }
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -11811,7 +11811,7 @@ export interface D3D12_RENDER_TARGET_VIEW_DESC {
   /** Windows.Win32.Graphics.Direct3D12.D3D12_RTV_DIMENSION */
   ViewDimension: D3D12_RTV_DIMENSION;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofD3D12_RENDER_TARGET_VIEW_DESC = 16;
@@ -11824,7 +11824,7 @@ export function allocD3D12_RENDER_TARGET_VIEW_DESC(data?: Partial<D3D12_RENDER_T
   // 0x04: i32
   if (data?.ViewDimension !== undefined) view.setInt32(4, Number(data.ViewDimension), true);
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -11849,9 +11849,9 @@ export class D3D12_RENDER_TARGET_VIEW_DESCView {
   }
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -11865,8 +11865,8 @@ export class D3D12_RENDER_TARGET_VIEW_DESCView {
   }
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12210,7 +12210,7 @@ export interface D3D12_DEPTH_STENCIL_VIEW_DESC {
   /** Windows.Win32.Graphics.Direct3D12.D3D12_DSV_FLAGS */
   Flags: D3D12_DSV_FLAGS;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofD3D12_DEPTH_STENCIL_VIEW_DESC = 24;
@@ -12226,7 +12226,7 @@ export function allocD3D12_DEPTH_STENCIL_VIEW_DESC(data?: Partial<D3D12_DEPTH_ST
   if (data?.Flags !== undefined) view.setUint32(8, Number(data.Flags), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -12258,9 +12258,9 @@ export class D3D12_DEPTH_STENCIL_VIEW_DESCView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -12281,8 +12281,8 @@ export class D3D12_DEPTH_STENCIL_VIEW_DESCView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12474,7 +12474,7 @@ export interface D3D12_ROOT_DESCRIPTOR_TABLE {
   /** u32 */
   NumDescriptorRanges: number;
   /** ptr */
-  pDescriptorRanges: Deno.PointerValue | Uint8Array | null;
+  pDescriptorRanges: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofD3D12_ROOT_DESCRIPTOR_TABLE = 16;
@@ -12486,7 +12486,7 @@ export function allocD3D12_ROOT_DESCRIPTOR_TABLE(data?: Partial<D3D12_ROOT_DESCR
   if (data?.NumDescriptorRanges !== undefined) view.setUint32(0, Number(data.NumDescriptorRanges), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pDescriptorRanges !== undefined) view.setBigUint64(8, data.pDescriptorRanges === null ? 0n : BigInt(util.toPointer(data.pDescriptorRanges)), true);
+  if (data?.pDescriptorRanges !== undefined) view.setBigUint64(8, data.pDescriptorRanges === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pDescriptorRanges))), true);
   return buf;
 }
 
@@ -12508,9 +12508,9 @@ export class D3D12_ROOT_DESCRIPTOR_TABLEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pDescriptorRanges(): Uint8Array | Deno.PointerValue | null {
+  get pDescriptorRanges(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -12521,8 +12521,8 @@ export class D3D12_ROOT_DESCRIPTOR_TABLEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pDescriptorRanges(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pDescriptorRanges(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12658,7 +12658,7 @@ export interface D3D12_ROOT_PARAMETER {
   /** Windows.Win32.Graphics.Direct3D12.D3D12_ROOT_PARAMETER_TYPE */
   ParameterType: D3D12_ROOT_PARAMETER_TYPE;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_SHADER_VISIBILITY */
   ShaderVisibility: D3D12_SHADER_VISIBILITY;
 }
@@ -12672,7 +12672,7 @@ export function allocD3D12_ROOT_PARAMETER(data?: Partial<D3D12_ROOT_PARAMETER>):
   if (data?.ParameterType !== undefined) view.setInt32(0, Number(data.ParameterType), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x10: i32
   if (data?.ShaderVisibility !== undefined) view.setInt32(16, Number(data.ShaderVisibility), true);
   // 0x14: pad4
@@ -12697,9 +12697,9 @@ export class D3D12_ROOT_PARAMETERView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i32
@@ -12717,8 +12717,8 @@ export class D3D12_ROOT_PARAMETERView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: i32
@@ -12948,11 +12948,11 @@ export interface D3D12_ROOT_SIGNATURE_DESC {
   /** u32 */
   NumParameters: number;
   /** ptr */
-  pParameters: Deno.PointerValue | Uint8Array | null;
+  pParameters: Deno.PointerValue | Uint8Array;
   /** u32 */
   NumStaticSamplers: number;
   /** ptr */
-  pStaticSamplers: Deno.PointerValue | Uint8Array | null;
+  pStaticSamplers: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_ROOT_SIGNATURE_FLAGS */
   Flags: D3D12_ROOT_SIGNATURE_FLAGS;
 }
@@ -12966,12 +12966,12 @@ export function allocD3D12_ROOT_SIGNATURE_DESC(data?: Partial<D3D12_ROOT_SIGNATU
   if (data?.NumParameters !== undefined) view.setUint32(0, Number(data.NumParameters), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pParameters !== undefined) view.setBigUint64(8, data.pParameters === null ? 0n : BigInt(util.toPointer(data.pParameters)), true);
+  if (data?.pParameters !== undefined) view.setBigUint64(8, data.pParameters === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pParameters))), true);
   // 0x10: u32
   if (data?.NumStaticSamplers !== undefined) view.setUint32(16, Number(data.NumStaticSamplers), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.pStaticSamplers !== undefined) view.setBigUint64(24, data.pStaticSamplers === null ? 0n : BigInt(util.toPointer(data.pStaticSamplers)), true);
+  if (data?.pStaticSamplers !== undefined) view.setBigUint64(24, data.pStaticSamplers === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pStaticSamplers))), true);
   // 0x20: u32
   if (data?.Flags !== undefined) view.setUint32(32, Number(data.Flags), true);
   // 0x24: pad4
@@ -12996,9 +12996,9 @@ export class D3D12_ROOT_SIGNATURE_DESCView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pParameters(): Uint8Array | Deno.PointerValue | null {
+  get pParameters(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -13009,9 +13009,9 @@ export class D3D12_ROOT_SIGNATURE_DESCView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get pStaticSamplers(): Uint8Array | Deno.PointerValue | null {
+  get pStaticSamplers(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -13029,8 +13029,8 @@ export class D3D12_ROOT_SIGNATURE_DESCView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pParameters(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pParameters(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -13041,8 +13041,8 @@ export class D3D12_ROOT_SIGNATURE_DESCView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set pStaticSamplers(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set pStaticSamplers(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -13169,7 +13169,7 @@ export interface D3D12_ROOT_DESCRIPTOR_TABLE1 {
   /** u32 */
   NumDescriptorRanges: number;
   /** ptr */
-  pDescriptorRanges: Deno.PointerValue | Uint8Array | null;
+  pDescriptorRanges: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofD3D12_ROOT_DESCRIPTOR_TABLE1 = 16;
@@ -13181,7 +13181,7 @@ export function allocD3D12_ROOT_DESCRIPTOR_TABLE1(data?: Partial<D3D12_ROOT_DESC
   if (data?.NumDescriptorRanges !== undefined) view.setUint32(0, Number(data.NumDescriptorRanges), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pDescriptorRanges !== undefined) view.setBigUint64(8, data.pDescriptorRanges === null ? 0n : BigInt(util.toPointer(data.pDescriptorRanges)), true);
+  if (data?.pDescriptorRanges !== undefined) view.setBigUint64(8, data.pDescriptorRanges === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pDescriptorRanges))), true);
   return buf;
 }
 
@@ -13203,9 +13203,9 @@ export class D3D12_ROOT_DESCRIPTOR_TABLE1View {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pDescriptorRanges(): Uint8Array | Deno.PointerValue | null {
+  get pDescriptorRanges(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -13216,8 +13216,8 @@ export class D3D12_ROOT_DESCRIPTOR_TABLE1View {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pDescriptorRanges(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pDescriptorRanges(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -13300,7 +13300,7 @@ export interface D3D12_ROOT_PARAMETER1 {
   /** Windows.Win32.Graphics.Direct3D12.D3D12_ROOT_PARAMETER_TYPE */
   ParameterType: D3D12_ROOT_PARAMETER_TYPE;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_SHADER_VISIBILITY */
   ShaderVisibility: D3D12_SHADER_VISIBILITY;
 }
@@ -13314,7 +13314,7 @@ export function allocD3D12_ROOT_PARAMETER1(data?: Partial<D3D12_ROOT_PARAMETER1>
   if (data?.ParameterType !== undefined) view.setInt32(0, Number(data.ParameterType), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x10: i32
   if (data?.ShaderVisibility !== undefined) view.setInt32(16, Number(data.ShaderVisibility), true);
   // 0x14: pad4
@@ -13339,9 +13339,9 @@ export class D3D12_ROOT_PARAMETER1View {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i32
@@ -13359,8 +13359,8 @@ export class D3D12_ROOT_PARAMETER1View {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: i32
@@ -13378,11 +13378,11 @@ export interface D3D12_ROOT_SIGNATURE_DESC1 {
   /** u32 */
   NumParameters: number;
   /** ptr */
-  pParameters: Deno.PointerValue | Uint8Array | null;
+  pParameters: Deno.PointerValue | Uint8Array;
   /** u32 */
   NumStaticSamplers: number;
   /** ptr */
-  pStaticSamplers: Deno.PointerValue | Uint8Array | null;
+  pStaticSamplers: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_ROOT_SIGNATURE_FLAGS */
   Flags: D3D12_ROOT_SIGNATURE_FLAGS;
 }
@@ -13396,12 +13396,12 @@ export function allocD3D12_ROOT_SIGNATURE_DESC1(data?: Partial<D3D12_ROOT_SIGNAT
   if (data?.NumParameters !== undefined) view.setUint32(0, Number(data.NumParameters), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pParameters !== undefined) view.setBigUint64(8, data.pParameters === null ? 0n : BigInt(util.toPointer(data.pParameters)), true);
+  if (data?.pParameters !== undefined) view.setBigUint64(8, data.pParameters === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pParameters))), true);
   // 0x10: u32
   if (data?.NumStaticSamplers !== undefined) view.setUint32(16, Number(data.NumStaticSamplers), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.pStaticSamplers !== undefined) view.setBigUint64(24, data.pStaticSamplers === null ? 0n : BigInt(util.toPointer(data.pStaticSamplers)), true);
+  if (data?.pStaticSamplers !== undefined) view.setBigUint64(24, data.pStaticSamplers === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pStaticSamplers))), true);
   // 0x20: u32
   if (data?.Flags !== undefined) view.setUint32(32, Number(data.Flags), true);
   // 0x24: pad4
@@ -13426,9 +13426,9 @@ export class D3D12_ROOT_SIGNATURE_DESC1View {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pParameters(): Uint8Array | Deno.PointerValue | null {
+  get pParameters(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -13439,9 +13439,9 @@ export class D3D12_ROOT_SIGNATURE_DESC1View {
   // 0x14: pad4
 
   // 0x18: pointer
-  get pStaticSamplers(): Uint8Array | Deno.PointerValue | null {
+  get pStaticSamplers(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -13459,8 +13459,8 @@ export class D3D12_ROOT_SIGNATURE_DESC1View {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pParameters(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pParameters(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -13471,8 +13471,8 @@ export class D3D12_ROOT_SIGNATURE_DESC1View {
   // 0x14: pad4
 
   // 0x18: pointer
-  set pStaticSamplers(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set pStaticSamplers(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -13490,7 +13490,7 @@ export interface D3D12_VERSIONED_ROOT_SIGNATURE_DESC {
   /** Windows.Win32.Graphics.Direct3D12.D3D_ROOT_SIGNATURE_VERSION */
   Version: D3D_ROOT_SIGNATURE_VERSION;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofD3D12_VERSIONED_ROOT_SIGNATURE_DESC = 16;
@@ -13502,7 +13502,7 @@ export function allocD3D12_VERSIONED_ROOT_SIGNATURE_DESC(data?: Partial<D3D12_VE
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -13524,9 +13524,9 @@ export class D3D12_VERSIONED_ROOT_SIGNATURE_DESCView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -13537,8 +13537,8 @@ export class D3D12_VERSIONED_ROOT_SIGNATURE_DESCView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -13627,7 +13627,7 @@ export interface D3D12_DISCARD_REGION {
   /** u32 */
   NumRects: number;
   /** ptr */
-  pRects: Deno.PointerValue | Uint8Array | null;
+  pRects: Deno.PointerValue | Uint8Array;
   /** u32 */
   FirstSubresource: number;
   /** u32 */
@@ -13643,7 +13643,7 @@ export function allocD3D12_DISCARD_REGION(data?: Partial<D3D12_DISCARD_REGION>):
   if (data?.NumRects !== undefined) view.setUint32(0, Number(data.NumRects), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pRects !== undefined) view.setBigUint64(8, data.pRects === null ? 0n : BigInt(util.toPointer(data.pRects)), true);
+  if (data?.pRects !== undefined) view.setBigUint64(8, data.pRects === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pRects))), true);
   // 0x10: u32
   if (data?.FirstSubresource !== undefined) view.setUint32(16, Number(data.FirstSubresource), true);
   // 0x14: u32
@@ -13669,9 +13669,9 @@ export class D3D12_DISCARD_REGIONView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pRects(): Uint8Array | Deno.PointerValue | null {
+  get pRects(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -13692,8 +13692,8 @@ export class D3D12_DISCARD_REGIONView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pRects(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pRects(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -14693,7 +14693,7 @@ export interface D3D12_INDIRECT_ARGUMENT_DESC {
   /** Windows.Win32.Graphics.Direct3D12.D3D12_INDIRECT_ARGUMENT_TYPE */
   Type: D3D12_INDIRECT_ARGUMENT_TYPE;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofD3D12_INDIRECT_ARGUMENT_DESC = 16;
@@ -14705,7 +14705,7 @@ export function allocD3D12_INDIRECT_ARGUMENT_DESC(data?: Partial<D3D12_INDIRECT_
   if (data?.Type !== undefined) view.setInt32(0, Number(data.Type), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -14727,9 +14727,9 @@ export class D3D12_INDIRECT_ARGUMENT_DESCView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -14740,8 +14740,8 @@ export class D3D12_INDIRECT_ARGUMENT_DESCView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -14754,7 +14754,7 @@ export interface D3D12_COMMAND_SIGNATURE_DESC {
   /** u32 */
   NumArgumentDescs: number;
   /** ptr */
-  pArgumentDescs: Deno.PointerValue | Uint8Array | null;
+  pArgumentDescs: Deno.PointerValue | Uint8Array;
   /** u32 */
   NodeMask: number;
 }
@@ -14769,7 +14769,7 @@ export function allocD3D12_COMMAND_SIGNATURE_DESC(data?: Partial<D3D12_COMMAND_S
   // 0x04: u32
   if (data?.NumArgumentDescs !== undefined) view.setUint32(4, Number(data.NumArgumentDescs), true);
   // 0x08: pointer
-  if (data?.pArgumentDescs !== undefined) view.setBigUint64(8, data.pArgumentDescs === null ? 0n : BigInt(util.toPointer(data.pArgumentDescs)), true);
+  if (data?.pArgumentDescs !== undefined) view.setBigUint64(8, data.pArgumentDescs === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pArgumentDescs))), true);
   // 0x10: u32
   if (data?.NodeMask !== undefined) view.setUint32(16, Number(data.NodeMask), true);
   // 0x14: pad4
@@ -14797,9 +14797,9 @@ export class D3D12_COMMAND_SIGNATURE_DESCView {
   }
 
   // 0x08: pointer
-  get pArgumentDescs(): Uint8Array | Deno.PointerValue | null {
+  get pArgumentDescs(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -14820,8 +14820,8 @@ export class D3D12_COMMAND_SIGNATURE_DESCView {
   }
 
   // 0x08: pointer
-  set pArgumentDescs(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pArgumentDescs(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -14996,7 +14996,7 @@ export class D3D12_PROTECTED_RESOURCE_SESSION_DESCView {
   }
 }
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.Graphics.Direct3D12.D3D12_META_COMMAND_PARAMETER_DESC (size: 24)
@@ -15022,7 +15022,7 @@ export function allocD3D12_META_COMMAND_PARAMETER_DESC(data?: Partial<D3D12_META
   // 0x00: buffer
   if (data?.Name !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.Name);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: i32
   if (data?.Type !== undefined) view.setInt32(8, Number(data.Type), true);
@@ -15046,9 +15046,9 @@ export class D3D12_META_COMMAND_PARAMETER_DESCView {
   }
 
   // 0x00: buffer
-  get Name(): Uint8Array | Deno.PointerValue | null {
+  get Name(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: i32
@@ -15072,9 +15072,9 @@ export class D3D12_META_COMMAND_PARAMETER_DESCView {
   }
 
   // 0x00: buffer
-  set Name(value: Uint8Array | Deno.PointerValue | null) {
+  set Name(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: i32
@@ -15103,7 +15103,7 @@ export class D3D12_META_COMMAND_PARAMETER_DESCView {
  */
 export interface D3D12_META_COMMAND_DESC {
   /** System.Guid */
-  Id: Uint8Array | Deno.PointerValue | null;
+  Id: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   Name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_GRAPHICS_STATES */
@@ -15118,11 +15118,11 @@ export function allocD3D12_META_COMMAND_DESC(data?: Partial<D3D12_META_COMMAND_D
   const buf = new Uint8Array(sizeofD3D12_META_COMMAND_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Id !== undefined) view.setBigUint64(0, data.Id === null ? 0n : BigInt(util.toPointer(data.Id)), true);
+  if (data?.Id !== undefined) view.setBigUint64(0, data.Id === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Id))), true);
   // 0x08: buffer
   if (data?.Name !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.Name);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: u32
   if (data?.InitializationDirtyState !== undefined) view.setUint32(16, Number(data.InitializationDirtyState), true);
@@ -15142,15 +15142,15 @@ export class D3D12_META_COMMAND_DESCView {
   }
 
   // 0x00: pointer
-  get Id(): Uint8Array | Deno.PointerValue | null {
+  get Id(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get Name(): Uint8Array | Deno.PointerValue | null {
+  get Name(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -15164,14 +15164,14 @@ export class D3D12_META_COMMAND_DESCView {
   }
 
   // 0x00: pointer
-  set Id(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Id(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: buffer
-  set Name(value: Uint8Array | Deno.PointerValue | null) {
+  set Name(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: u32
@@ -15192,7 +15192,7 @@ export interface D3D12_STATE_SUBOBJECT {
   /** Windows.Win32.Graphics.Direct3D12.D3D12_STATE_SUBOBJECT_TYPE */
   Type: D3D12_STATE_SUBOBJECT_TYPE;
   /** ptr */
-  pDesc: Deno.PointerValue | Uint8Array | null;
+  pDesc: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofD3D12_STATE_SUBOBJECT = 16;
@@ -15204,7 +15204,7 @@ export function allocD3D12_STATE_SUBOBJECT(data?: Partial<D3D12_STATE_SUBOBJECT>
   if (data?.Type !== undefined) view.setInt32(0, Number(data.Type), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pDesc !== undefined) view.setBigUint64(8, data.pDesc === null ? 0n : BigInt(util.toPointer(data.pDesc)), true);
+  if (data?.pDesc !== undefined) view.setBigUint64(8, data.pDesc === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pDesc))), true);
   return buf;
 }
 
@@ -15226,9 +15226,9 @@ export class D3D12_STATE_SUBOBJECTView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pDesc(): Uint8Array | Deno.PointerValue | null {
+  get pDesc(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -15239,8 +15239,8 @@ export class D3D12_STATE_SUBOBJECTView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pDesc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pDesc(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -15293,7 +15293,7 @@ export class D3D12_STATE_OBJECT_CONFIGView {
  */
 export interface D3D12_GLOBAL_ROOT_SIGNATURE {
   /** Windows.Win32.Graphics.Direct3D12.ID3D12RootSignature */
-  pGlobalRootSignature: Uint8Array | Deno.PointerValue | null;
+  pGlobalRootSignature: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofD3D12_GLOBAL_ROOT_SIGNATURE = 8;
@@ -15302,7 +15302,7 @@ export function allocD3D12_GLOBAL_ROOT_SIGNATURE(data?: Partial<D3D12_GLOBAL_ROO
   const buf = new Uint8Array(sizeofD3D12_GLOBAL_ROOT_SIGNATURE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pGlobalRootSignature !== undefined) view.setBigUint64(0, data.pGlobalRootSignature === null ? 0n : BigInt(util.toPointer(data.pGlobalRootSignature)), true);
+  if (data?.pGlobalRootSignature !== undefined) view.setBigUint64(0, data.pGlobalRootSignature === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pGlobalRootSignature))), true);
   return buf;
 }
 
@@ -15317,14 +15317,14 @@ export class D3D12_GLOBAL_ROOT_SIGNATUREView {
   }
 
   // 0x00: pointer
-  get pGlobalRootSignature(): Uint8Array | Deno.PointerValue | null {
+  get pGlobalRootSignature(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set pGlobalRootSignature(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pGlobalRootSignature(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -15333,7 +15333,7 @@ export class D3D12_GLOBAL_ROOT_SIGNATUREView {
  */
 export interface D3D12_LOCAL_ROOT_SIGNATURE {
   /** Windows.Win32.Graphics.Direct3D12.ID3D12RootSignature */
-  pLocalRootSignature: Uint8Array | Deno.PointerValue | null;
+  pLocalRootSignature: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofD3D12_LOCAL_ROOT_SIGNATURE = 8;
@@ -15342,7 +15342,7 @@ export function allocD3D12_LOCAL_ROOT_SIGNATURE(data?: Partial<D3D12_LOCAL_ROOT_
   const buf = new Uint8Array(sizeofD3D12_LOCAL_ROOT_SIGNATURE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pLocalRootSignature !== undefined) view.setBigUint64(0, data.pLocalRootSignature === null ? 0n : BigInt(util.toPointer(data.pLocalRootSignature)), true);
+  if (data?.pLocalRootSignature !== undefined) view.setBigUint64(0, data.pLocalRootSignature === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pLocalRootSignature))), true);
   return buf;
 }
 
@@ -15357,14 +15357,14 @@ export class D3D12_LOCAL_ROOT_SIGNATUREView {
   }
 
   // 0x00: pointer
-  get pLocalRootSignature(): Uint8Array | Deno.PointerValue | null {
+  get pLocalRootSignature(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set pLocalRootSignature(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pLocalRootSignature(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -15432,12 +15432,12 @@ export function allocD3D12_EXPORT_DESC(data?: Partial<D3D12_EXPORT_DESC>): Uint8
   // 0x00: buffer
   if (data?.Name !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.Name);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: buffer
   if (data?.ExportToRename !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.ExportToRename);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: u32
   if (data?.Flags !== undefined) view.setUint32(16, Number(data.Flags), true);
@@ -15456,15 +15456,15 @@ export class D3D12_EXPORT_DESCView {
   }
 
   // 0x00: buffer
-  get Name(): Uint8Array | Deno.PointerValue | null {
+  get Name(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get ExportToRename(): Uint8Array | Deno.PointerValue | null {
+  get ExportToRename(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -15475,15 +15475,15 @@ export class D3D12_EXPORT_DESCView {
   // 0x14: pad4
 
   // 0x00: buffer
-  set Name(value: Uint8Array | Deno.PointerValue | null) {
+  set Name(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: buffer
-  set ExportToRename(value: Uint8Array | Deno.PointerValue | null) {
+  set ExportToRename(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: u32
@@ -15499,11 +15499,11 @@ export class D3D12_EXPORT_DESCView {
  */
 export interface D3D12_DXIL_LIBRARY_DESC {
   /** Windows.Win32.Graphics.Direct3D12.D3D12_SHADER_BYTECODE */
-  DXILLibrary: Uint8Array | Deno.PointerValue | null;
+  DXILLibrary: Uint8Array | Deno.PointerValue;
   /** u32 */
   NumExports: number;
   /** ptr */
-  pExports: Deno.PointerValue | Uint8Array | null;
+  pExports: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofD3D12_DXIL_LIBRARY_DESC = 24;
@@ -15512,12 +15512,12 @@ export function allocD3D12_DXIL_LIBRARY_DESC(data?: Partial<D3D12_DXIL_LIBRARY_D
   const buf = new Uint8Array(sizeofD3D12_DXIL_LIBRARY_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.DXILLibrary !== undefined) view.setBigUint64(0, data.DXILLibrary === null ? 0n : BigInt(util.toPointer(data.DXILLibrary)), true);
+  if (data?.DXILLibrary !== undefined) view.setBigUint64(0, data.DXILLibrary === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DXILLibrary))), true);
   // 0x08: u32
   if (data?.NumExports !== undefined) view.setUint32(8, Number(data.NumExports), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.pExports !== undefined) view.setBigUint64(16, data.pExports === null ? 0n : BigInt(util.toPointer(data.pExports)), true);
+  if (data?.pExports !== undefined) view.setBigUint64(16, data.pExports === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pExports))), true);
   return buf;
 }
 
@@ -15532,9 +15532,9 @@ export class D3D12_DXIL_LIBRARY_DESCView {
   }
 
   // 0x00: pointer
-  get DXILLibrary(): Uint8Array | Deno.PointerValue | null {
+  get DXILLibrary(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -15545,14 +15545,14 @@ export class D3D12_DXIL_LIBRARY_DESCView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get pExports(): Uint8Array | Deno.PointerValue | null {
+  get pExports(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set DXILLibrary(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set DXILLibrary(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -15563,8 +15563,8 @@ export class D3D12_DXIL_LIBRARY_DESCView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set pExports(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pExports(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -15573,11 +15573,11 @@ export class D3D12_DXIL_LIBRARY_DESCView {
  */
 export interface D3D12_EXISTING_COLLECTION_DESC {
   /** Windows.Win32.Graphics.Direct3D12.ID3D12StateObject */
-  pExistingCollection: Uint8Array | Deno.PointerValue | null;
+  pExistingCollection: Uint8Array | Deno.PointerValue;
   /** u32 */
   NumExports: number;
   /** ptr */
-  pExports: Deno.PointerValue | Uint8Array | null;
+  pExports: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofD3D12_EXISTING_COLLECTION_DESC = 24;
@@ -15586,12 +15586,12 @@ export function allocD3D12_EXISTING_COLLECTION_DESC(data?: Partial<D3D12_EXISTIN
   const buf = new Uint8Array(sizeofD3D12_EXISTING_COLLECTION_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pExistingCollection !== undefined) view.setBigUint64(0, data.pExistingCollection === null ? 0n : BigInt(util.toPointer(data.pExistingCollection)), true);
+  if (data?.pExistingCollection !== undefined) view.setBigUint64(0, data.pExistingCollection === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pExistingCollection))), true);
   // 0x08: u32
   if (data?.NumExports !== undefined) view.setUint32(8, Number(data.NumExports), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.pExports !== undefined) view.setBigUint64(16, data.pExports === null ? 0n : BigInt(util.toPointer(data.pExports)), true);
+  if (data?.pExports !== undefined) view.setBigUint64(16, data.pExports === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pExports))), true);
   return buf;
 }
 
@@ -15606,9 +15606,9 @@ export class D3D12_EXISTING_COLLECTION_DESCView {
   }
 
   // 0x00: pointer
-  get pExistingCollection(): Uint8Array | Deno.PointerValue | null {
+  get pExistingCollection(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -15619,14 +15619,14 @@ export class D3D12_EXISTING_COLLECTION_DESCView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get pExports(): Uint8Array | Deno.PointerValue | null {
+  get pExports(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set pExistingCollection(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pExistingCollection(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -15637,8 +15637,8 @@ export class D3D12_EXISTING_COLLECTION_DESCView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set pExports(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pExports(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -15647,11 +15647,11 @@ export class D3D12_EXISTING_COLLECTION_DESCView {
  */
 export interface D3D12_SUBOBJECT_TO_EXPORTS_ASSOCIATION {
   /** ptr */
-  pSubobjectToAssociate: Deno.PointerValue | Uint8Array | null;
+  pSubobjectToAssociate: Deno.PointerValue | Uint8Array;
   /** u32 */
   NumExports: number;
   /** ptr */
-  pExports: Deno.PointerValue | Uint8Array | null;
+  pExports: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofD3D12_SUBOBJECT_TO_EXPORTS_ASSOCIATION = 24;
@@ -15660,12 +15660,12 @@ export function allocD3D12_SUBOBJECT_TO_EXPORTS_ASSOCIATION(data?: Partial<D3D12
   const buf = new Uint8Array(sizeofD3D12_SUBOBJECT_TO_EXPORTS_ASSOCIATION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pSubobjectToAssociate !== undefined) view.setBigUint64(0, data.pSubobjectToAssociate === null ? 0n : BigInt(util.toPointer(data.pSubobjectToAssociate)), true);
+  if (data?.pSubobjectToAssociate !== undefined) view.setBigUint64(0, data.pSubobjectToAssociate === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pSubobjectToAssociate))), true);
   // 0x08: u32
   if (data?.NumExports !== undefined) view.setUint32(8, Number(data.NumExports), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.pExports !== undefined) view.setBigUint64(16, data.pExports === null ? 0n : BigInt(util.toPointer(data.pExports)), true);
+  if (data?.pExports !== undefined) view.setBigUint64(16, data.pExports === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pExports))), true);
   return buf;
 }
 
@@ -15680,9 +15680,9 @@ export class D3D12_SUBOBJECT_TO_EXPORTS_ASSOCIATIONView {
   }
 
   // 0x00: pointer
-  get pSubobjectToAssociate(): Uint8Array | Deno.PointerValue | null {
+  get pSubobjectToAssociate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -15693,14 +15693,14 @@ export class D3D12_SUBOBJECT_TO_EXPORTS_ASSOCIATIONView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get pExports(): Uint8Array | Deno.PointerValue | null {
+  get pExports(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set pSubobjectToAssociate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pSubobjectToAssociate(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -15711,8 +15711,8 @@ export class D3D12_SUBOBJECT_TO_EXPORTS_ASSOCIATIONView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set pExports(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pExports(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -15725,7 +15725,7 @@ export interface D3D12_DXIL_SUBOBJECT_TO_EXPORTS_ASSOCIATION {
   /** u32 */
   NumExports: number;
   /** ptr */
-  pExports: Deno.PointerValue | Uint8Array | null;
+  pExports: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofD3D12_DXIL_SUBOBJECT_TO_EXPORTS_ASSOCIATION = 24;
@@ -15736,13 +15736,13 @@ export function allocD3D12_DXIL_SUBOBJECT_TO_EXPORTS_ASSOCIATION(data?: Partial<
   // 0x00: buffer
   if (data?.SubobjectToAssociate !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.SubobjectToAssociate);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: u32
   if (data?.NumExports !== undefined) view.setUint32(8, Number(data.NumExports), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.pExports !== undefined) view.setBigUint64(16, data.pExports === null ? 0n : BigInt(util.toPointer(data.pExports)), true);
+  if (data?.pExports !== undefined) view.setBigUint64(16, data.pExports === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pExports))), true);
   return buf;
 }
 
@@ -15757,9 +15757,9 @@ export class D3D12_DXIL_SUBOBJECT_TO_EXPORTS_ASSOCIATIONView {
   }
 
   // 0x00: buffer
-  get SubobjectToAssociate(): Uint8Array | Deno.PointerValue | null {
+  get SubobjectToAssociate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -15770,15 +15770,15 @@ export class D3D12_DXIL_SUBOBJECT_TO_EXPORTS_ASSOCIATIONView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get pExports(): Uint8Array | Deno.PointerValue | null {
+  get pExports(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set SubobjectToAssociate(value: Uint8Array | Deno.PointerValue | null) {
+  set SubobjectToAssociate(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: u32
@@ -15789,8 +15789,8 @@ export class D3D12_DXIL_SUBOBJECT_TO_EXPORTS_ASSOCIATIONView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set pExports(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pExports(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -15818,7 +15818,7 @@ export function allocD3D12_HIT_GROUP_DESC(data?: Partial<D3D12_HIT_GROUP_DESC>):
   // 0x00: buffer
   if (data?.HitGroupExport !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.HitGroupExport);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: i32
   if (data?.Type !== undefined) view.setInt32(8, Number(data.Type), true);
@@ -15826,17 +15826,17 @@ export function allocD3D12_HIT_GROUP_DESC(data?: Partial<D3D12_HIT_GROUP_DESC>):
   // 0x10: buffer
   if (data?.AnyHitShaderImport !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.AnyHitShaderImport);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.ClosestHitShaderImport !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.ClosestHitShaderImport);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: buffer
   if (data?.IntersectionShaderImport !== undefined) {
     (buf as any)._f32 = util.pwstrToFfi(data.IntersectionShaderImport);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f32))), true);
   }
   return buf;
 }
@@ -15852,9 +15852,9 @@ export class D3D12_HIT_GROUP_DESCView {
   }
 
   // 0x00: buffer
-  get HitGroupExport(): Uint8Array | Deno.PointerValue | null {
+  get HitGroupExport(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: i32
@@ -15865,27 +15865,27 @@ export class D3D12_HIT_GROUP_DESCView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  get AnyHitShaderImport(): Uint8Array | Deno.PointerValue | null {
+  get AnyHitShaderImport(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get ClosestHitShaderImport(): Uint8Array | Deno.PointerValue | null {
+  get ClosestHitShaderImport(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: buffer
-  get IntersectionShaderImport(): Uint8Array | Deno.PointerValue | null {
+  get IntersectionShaderImport(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set HitGroupExport(value: Uint8Array | Deno.PointerValue | null) {
+  set HitGroupExport(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: i32
@@ -15896,21 +15896,21 @@ export class D3D12_HIT_GROUP_DESCView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  set AnyHitShaderImport(value: Uint8Array | Deno.PointerValue | null) {
+  set AnyHitShaderImport(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set ClosestHitShaderImport(value: Uint8Array | Deno.PointerValue | null) {
+  set ClosestHitShaderImport(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: buffer
-  set IntersectionShaderImport(value: Uint8Array | Deno.PointerValue | null) {
+  set IntersectionShaderImport(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f32))), true);
   }
 }
 
@@ -16073,7 +16073,7 @@ export interface D3D12_STATE_OBJECT_DESC {
   /** u32 */
   NumSubobjects: number;
   /** ptr */
-  pSubobjects: Deno.PointerValue | Uint8Array | null;
+  pSubobjects: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofD3D12_STATE_OBJECT_DESC = 16;
@@ -16086,7 +16086,7 @@ export function allocD3D12_STATE_OBJECT_DESC(data?: Partial<D3D12_STATE_OBJECT_D
   // 0x04: u32
   if (data?.NumSubobjects !== undefined) view.setUint32(4, Number(data.NumSubobjects), true);
   // 0x08: pointer
-  if (data?.pSubobjects !== undefined) view.setBigUint64(8, data.pSubobjects === null ? 0n : BigInt(util.toPointer(data.pSubobjects)), true);
+  if (data?.pSubobjects !== undefined) view.setBigUint64(8, data.pSubobjects === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pSubobjects))), true);
   return buf;
 }
 
@@ -16111,9 +16111,9 @@ export class D3D12_STATE_OBJECT_DESCView {
   }
 
   // 0x08: pointer
-  get pSubobjects(): Uint8Array | Deno.PointerValue | null {
+  get pSubobjects(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -16127,8 +16127,8 @@ export class D3D12_STATE_OBJECT_DESCView {
   }
 
   // 0x08: pointer
-  set pSubobjects(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pSubobjects(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -16322,7 +16322,7 @@ export interface D3D12_RAYTRACING_GEOMETRY_TRIANGLES_DESC {
   /** u64 */
   IndexBuffer: Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_GPU_VIRTUAL_ADDRESS_AND_STRIDE */
-  VertexBuffer: Uint8Array | Deno.PointerValue | null;
+  VertexBuffer: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofD3D12_RAYTRACING_GEOMETRY_TRIANGLES_DESC = 40;
@@ -16343,7 +16343,7 @@ export function allocD3D12_RAYTRACING_GEOMETRY_TRIANGLES_DESC(data?: Partial<D3D
   // 0x18: u64
   if (data?.IndexBuffer !== undefined) view.setBigUint64(24, BigInt(data.IndexBuffer), true);
   // 0x20: pointer
-  if (data?.VertexBuffer !== undefined) view.setBigUint64(32, data.VertexBuffer === null ? 0n : BigInt(util.toPointer(data.VertexBuffer)), true);
+  if (data?.VertexBuffer !== undefined) view.setBigUint64(32, data.VertexBuffer === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.VertexBuffer))), true);
   return buf;
 }
 
@@ -16388,9 +16388,9 @@ export class D3D12_RAYTRACING_GEOMETRY_TRIANGLES_DESCView {
   }
 
   // 0x20: pointer
-  get VertexBuffer(): Uint8Array | Deno.PointerValue | null {
+  get VertexBuffer(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u64
@@ -16424,8 +16424,8 @@ export class D3D12_RAYTRACING_GEOMETRY_TRIANGLES_DESCView {
   }
 
   // 0x20: pointer
-  set VertexBuffer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set VertexBuffer(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -16545,7 +16545,7 @@ export interface D3D12_RAYTRACING_GEOMETRY_AABBS_DESC {
   /** u64 */
   AABBCount: Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_GPU_VIRTUAL_ADDRESS_AND_STRIDE */
-  AABBs: Uint8Array | Deno.PointerValue | null;
+  AABBs: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofD3D12_RAYTRACING_GEOMETRY_AABBS_DESC = 16;
@@ -16556,7 +16556,7 @@ export function allocD3D12_RAYTRACING_GEOMETRY_AABBS_DESC(data?: Partial<D3D12_R
   // 0x00: u64
   if (data?.AABBCount !== undefined) view.setBigUint64(0, BigInt(data.AABBCount), true);
   // 0x08: pointer
-  if (data?.AABBs !== undefined) view.setBigUint64(8, data.AABBs === null ? 0n : BigInt(util.toPointer(data.AABBs)), true);
+  if (data?.AABBs !== undefined) view.setBigUint64(8, data.AABBs === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.AABBs))), true);
   return buf;
 }
 
@@ -16576,9 +16576,9 @@ export class D3D12_RAYTRACING_GEOMETRY_AABBS_DESCView {
   }
 
   // 0x08: pointer
-  get AABBs(): Uint8Array | Deno.PointerValue | null {
+  get AABBs(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u64
@@ -16587,8 +16587,8 @@ export class D3D12_RAYTRACING_GEOMETRY_AABBS_DESCView {
   }
 
   // 0x08: pointer
-  set AABBs(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set AABBs(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -16839,9 +16839,9 @@ export class D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_SERIALIZATIO
  */
 export interface D3D12_SERIALIZED_DATA_DRIVER_MATCHING_IDENTIFIER {
   /** System.Guid */
-  DriverOpaqueGUID: Uint8Array | Deno.PointerValue | null;
+  DriverOpaqueGUID: Uint8Array | Deno.PointerValue;
   /** array */
-  DriverOpaqueVersioningData: Deno.PointerValue | null;
+  DriverOpaqueVersioningData: Deno.PointerValue;
 }
 
 export const sizeofD3D12_SERIALIZED_DATA_DRIVER_MATCHING_IDENTIFIER = 16;
@@ -16850,9 +16850,9 @@ export function allocD3D12_SERIALIZED_DATA_DRIVER_MATCHING_IDENTIFIER(data?: Par
   const buf = new Uint8Array(sizeofD3D12_SERIALIZED_DATA_DRIVER_MATCHING_IDENTIFIER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.DriverOpaqueGUID !== undefined) view.setBigUint64(0, data.DriverOpaqueGUID === null ? 0n : BigInt(util.toPointer(data.DriverOpaqueGUID)), true);
+  if (data?.DriverOpaqueGUID !== undefined) view.setBigUint64(0, data.DriverOpaqueGUID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DriverOpaqueGUID))), true);
   // 0x08: pointer
-  if (data?.DriverOpaqueVersioningData !== undefined) view.setBigUint64(8, data.DriverOpaqueVersioningData === null ? 0n : BigInt(util.toPointer(data.DriverOpaqueVersioningData)), true);
+  if (data?.DriverOpaqueVersioningData !== undefined) view.setBigUint64(8, data.DriverOpaqueVersioningData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DriverOpaqueVersioningData))), true);
   return buf;
 }
 
@@ -16867,25 +16867,25 @@ export class D3D12_SERIALIZED_DATA_DRIVER_MATCHING_IDENTIFIERView {
   }
 
   // 0x00: pointer
-  get DriverOpaqueGUID(): Uint8Array | Deno.PointerValue | null {
+  get DriverOpaqueGUID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get DriverOpaqueVersioningData(): Uint8Array | Deno.PointerValue | null {
+  get DriverOpaqueVersioningData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set DriverOpaqueGUID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set DriverOpaqueGUID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set DriverOpaqueVersioningData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set DriverOpaqueVersioningData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -16894,7 +16894,7 @@ export class D3D12_SERIALIZED_DATA_DRIVER_MATCHING_IDENTIFIERView {
  */
 export interface D3D12_SERIALIZED_RAYTRACING_ACCELERATION_STRUCTURE_HEADER {
   /** Windows.Win32.Graphics.Direct3D12.D3D12_SERIALIZED_DATA_DRIVER_MATCHING_IDENTIFIER */
-  DriverMatchingIdentifier: Uint8Array | Deno.PointerValue | null;
+  DriverMatchingIdentifier: Uint8Array | Deno.PointerValue;
   /** u64 */
   SerializedSizeInBytesIncludingHeader: Deno.PointerValue;
   /** u64 */
@@ -16909,7 +16909,7 @@ export function allocD3D12_SERIALIZED_RAYTRACING_ACCELERATION_STRUCTURE_HEADER(d
   const buf = new Uint8Array(sizeofD3D12_SERIALIZED_RAYTRACING_ACCELERATION_STRUCTURE_HEADER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.DriverMatchingIdentifier !== undefined) view.setBigUint64(0, data.DriverMatchingIdentifier === null ? 0n : BigInt(util.toPointer(data.DriverMatchingIdentifier)), true);
+  if (data?.DriverMatchingIdentifier !== undefined) view.setBigUint64(0, data.DriverMatchingIdentifier === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DriverMatchingIdentifier))), true);
   // 0x08: u64
   if (data?.SerializedSizeInBytesIncludingHeader !== undefined) view.setBigUint64(8, BigInt(data.SerializedSizeInBytesIncludingHeader), true);
   // 0x10: u64
@@ -16930,9 +16930,9 @@ export class D3D12_SERIALIZED_RAYTRACING_ACCELERATION_STRUCTURE_HEADERView {
   }
 
   // 0x00: pointer
-  get DriverMatchingIdentifier(): Uint8Array | Deno.PointerValue | null {
+  get DriverMatchingIdentifier(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u64
@@ -16951,8 +16951,8 @@ export class D3D12_SERIALIZED_RAYTRACING_ACCELERATION_STRUCTURE_HEADERView {
   }
 
   // 0x00: pointer
-  set DriverMatchingIdentifier(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set DriverMatchingIdentifier(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u64
@@ -17015,7 +17015,7 @@ export class D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_CURRENT_SIZE
  */
 export interface D3D12_RAYTRACING_INSTANCE_DESC {
   /** array */
-  Transform: Deno.PointerValue | null;
+  Transform: Deno.PointerValue;
   /** u32 */
   _bitfield1: number;
   /** u32 */
@@ -17030,7 +17030,7 @@ export function allocD3D12_RAYTRACING_INSTANCE_DESC(data?: Partial<D3D12_RAYTRAC
   const buf = new Uint8Array(sizeofD3D12_RAYTRACING_INSTANCE_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Transform !== undefined) view.setBigUint64(0, data.Transform === null ? 0n : BigInt(util.toPointer(data.Transform)), true);
+  if (data?.Transform !== undefined) view.setBigUint64(0, data.Transform === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Transform))), true);
   // 0x08: u32
   if (data?._bitfield1 !== undefined) view.setUint32(8, Number(data._bitfield1), true);
   // 0x0c: u32
@@ -17051,9 +17051,9 @@ export class D3D12_RAYTRACING_INSTANCE_DESCView {
   }
 
   // 0x00: pointer
-  get Transform(): Uint8Array | Deno.PointerValue | null {
+  get Transform(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -17072,8 +17072,8 @@ export class D3D12_RAYTRACING_INSTANCE_DESCView {
   }
 
   // 0x00: pointer
-  set Transform(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Transform(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -17101,7 +17101,7 @@ export interface D3D12_RAYTRACING_GEOMETRY_DESC {
   /** Windows.Win32.Graphics.Direct3D12.D3D12_RAYTRACING_GEOMETRY_FLAGS */
   Flags: D3D12_RAYTRACING_GEOMETRY_FLAGS;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofD3D12_RAYTRACING_GEOMETRY_DESC = 16;
@@ -17114,7 +17114,7 @@ export function allocD3D12_RAYTRACING_GEOMETRY_DESC(data?: Partial<D3D12_RAYTRAC
   // 0x04: u32
   if (data?.Flags !== undefined) view.setUint32(4, Number(data.Flags), true);
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -17139,9 +17139,9 @@ export class D3D12_RAYTRACING_GEOMETRY_DESCView {
   }
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -17155,8 +17155,8 @@ export class D3D12_RAYTRACING_GEOMETRY_DESCView {
   }
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -17173,7 +17173,7 @@ export interface D3D12_BUILD_RAYTRACING_ACCELERATION_STRUCTURE_INPUTS {
   /** Windows.Win32.Graphics.Direct3D12.D3D12_ELEMENTS_LAYOUT */
   DescsLayout: D3D12_ELEMENTS_LAYOUT;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofD3D12_BUILD_RAYTRACING_ACCELERATION_STRUCTURE_INPUTS = 24;
@@ -17190,7 +17190,7 @@ export function allocD3D12_BUILD_RAYTRACING_ACCELERATION_STRUCTURE_INPUTS(data?:
   // 0x0c: i32
   if (data?.DescsLayout !== undefined) view.setInt32(12, Number(data.DescsLayout), true);
   // 0x10: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -17225,9 +17225,9 @@ export class D3D12_BUILD_RAYTRACING_ACCELERATION_STRUCTURE_INPUTSView {
   }
 
   // 0x10: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -17251,8 +17251,8 @@ export class D3D12_BUILD_RAYTRACING_ACCELERATION_STRUCTURE_INPUTSView {
   }
 
   // 0x10: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -17263,7 +17263,7 @@ export interface D3D12_BUILD_RAYTRACING_ACCELERATION_STRUCTURE_DESC {
   /** u64 */
   DestAccelerationStructureData: Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_BUILD_RAYTRACING_ACCELERATION_STRUCTURE_INPUTS */
-  Inputs: Uint8Array | Deno.PointerValue | null;
+  Inputs: Uint8Array | Deno.PointerValue;
   /** u64 */
   SourceAccelerationStructureData: Deno.PointerValue;
   /** u64 */
@@ -17278,7 +17278,7 @@ export function allocD3D12_BUILD_RAYTRACING_ACCELERATION_STRUCTURE_DESC(data?: P
   // 0x00: u64
   if (data?.DestAccelerationStructureData !== undefined) view.setBigUint64(0, BigInt(data.DestAccelerationStructureData), true);
   // 0x08: pointer
-  if (data?.Inputs !== undefined) view.setBigUint64(8, data.Inputs === null ? 0n : BigInt(util.toPointer(data.Inputs)), true);
+  if (data?.Inputs !== undefined) view.setBigUint64(8, data.Inputs === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Inputs))), true);
   // 0x10: u64
   if (data?.SourceAccelerationStructureData !== undefined) view.setBigUint64(16, BigInt(data.SourceAccelerationStructureData), true);
   // 0x18: u64
@@ -17302,9 +17302,9 @@ export class D3D12_BUILD_RAYTRACING_ACCELERATION_STRUCTURE_DESCView {
   }
 
   // 0x08: pointer
-  get Inputs(): Uint8Array | Deno.PointerValue | null {
+  get Inputs(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u64
@@ -17323,8 +17323,8 @@ export class D3D12_BUILD_RAYTRACING_ACCELERATION_STRUCTURE_DESCView {
   }
 
   // 0x08: pointer
-  set Inputs(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Inputs(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u64
@@ -17410,25 +17410,25 @@ export class D3D12_RAYTRACING_ACCELERATION_STRUCTURE_PREBUILD_INFOView {
  */
 export interface D3D12_AUTO_BREADCRUMB_NODE {
   /** ptr */
-  pCommandListDebugNameA: Deno.PointerValue | Uint8Array | null;
+  pCommandListDebugNameA: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.PWSTR */
   pCommandListDebugNameW: string | null | Uint8Array | Uint16Array;
   /** ptr */
-  pCommandQueueDebugNameA: Deno.PointerValue | Uint8Array | null;
+  pCommandQueueDebugNameA: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.PWSTR */
   pCommandQueueDebugNameW: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Graphics.Direct3D12.ID3D12GraphicsCommandList */
-  pCommandList: Uint8Array | Deno.PointerValue | null;
+  pCommandList: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.ID3D12CommandQueue */
-  pCommandQueue: Uint8Array | Deno.PointerValue | null;
+  pCommandQueue: Uint8Array | Deno.PointerValue;
   /** u32 */
   BreadcrumbCount: number;
   /** ptr */
-  pLastBreadcrumbValue: Deno.PointerValue | Uint8Array | null;
+  pLastBreadcrumbValue: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pCommandHistory: Deno.PointerValue | Uint8Array | null;
+  pCommandHistory: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pNext: Deno.PointerValue | Uint8Array | null;
+  pNext: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofD3D12_AUTO_BREADCRUMB_NODE = 80;
@@ -17437,32 +17437,32 @@ export function allocD3D12_AUTO_BREADCRUMB_NODE(data?: Partial<D3D12_AUTO_BREADC
   const buf = new Uint8Array(sizeofD3D12_AUTO_BREADCRUMB_NODE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pCommandListDebugNameA !== undefined) view.setBigUint64(0, data.pCommandListDebugNameA === null ? 0n : BigInt(util.toPointer(data.pCommandListDebugNameA)), true);
+  if (data?.pCommandListDebugNameA !== undefined) view.setBigUint64(0, data.pCommandListDebugNameA === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pCommandListDebugNameA))), true);
   // 0x08: buffer
   if (data?.pCommandListDebugNameW !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pCommandListDebugNameW);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: pointer
-  if (data?.pCommandQueueDebugNameA !== undefined) view.setBigUint64(16, data.pCommandQueueDebugNameA === null ? 0n : BigInt(util.toPointer(data.pCommandQueueDebugNameA)), true);
+  if (data?.pCommandQueueDebugNameA !== undefined) view.setBigUint64(16, data.pCommandQueueDebugNameA === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pCommandQueueDebugNameA))), true);
   // 0x18: buffer
   if (data?.pCommandQueueDebugNameW !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.pCommandQueueDebugNameW);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: pointer
-  if (data?.pCommandList !== undefined) view.setBigUint64(32, data.pCommandList === null ? 0n : BigInt(util.toPointer(data.pCommandList)), true);
+  if (data?.pCommandList !== undefined) view.setBigUint64(32, data.pCommandList === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pCommandList))), true);
   // 0x28: pointer
-  if (data?.pCommandQueue !== undefined) view.setBigUint64(40, data.pCommandQueue === null ? 0n : BigInt(util.toPointer(data.pCommandQueue)), true);
+  if (data?.pCommandQueue !== undefined) view.setBigUint64(40, data.pCommandQueue === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pCommandQueue))), true);
   // 0x30: u32
   if (data?.BreadcrumbCount !== undefined) view.setUint32(48, Number(data.BreadcrumbCount), true);
   // 0x34: pad4
   // 0x38: pointer
-  if (data?.pLastBreadcrumbValue !== undefined) view.setBigUint64(56, data.pLastBreadcrumbValue === null ? 0n : BigInt(util.toPointer(data.pLastBreadcrumbValue)), true);
+  if (data?.pLastBreadcrumbValue !== undefined) view.setBigUint64(56, data.pLastBreadcrumbValue === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pLastBreadcrumbValue))), true);
   // 0x40: pointer
-  if (data?.pCommandHistory !== undefined) view.setBigUint64(64, data.pCommandHistory === null ? 0n : BigInt(util.toPointer(data.pCommandHistory)), true);
+  if (data?.pCommandHistory !== undefined) view.setBigUint64(64, data.pCommandHistory === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pCommandHistory))), true);
   // 0x48: pointer
-  if (data?.pNext !== undefined) view.setBigUint64(72, data.pNext === null ? 0n : BigInt(util.toPointer(data.pNext)), true);
+  if (data?.pNext !== undefined) view.setBigUint64(72, data.pNext === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pNext))), true);
   return buf;
 }
 
@@ -17477,39 +17477,39 @@ export class D3D12_AUTO_BREADCRUMB_NODEView {
   }
 
   // 0x00: pointer
-  get pCommandListDebugNameA(): Uint8Array | Deno.PointerValue | null {
+  get pCommandListDebugNameA(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get pCommandListDebugNameW(): Uint8Array | Deno.PointerValue | null {
+  get pCommandListDebugNameW(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get pCommandQueueDebugNameA(): Uint8Array | Deno.PointerValue | null {
+  get pCommandQueueDebugNameA(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get pCommandQueueDebugNameW(): Uint8Array | Deno.PointerValue | null {
+  get pCommandQueueDebugNameW(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get pCommandList(): Uint8Array | Deno.PointerValue | null {
+  get pCommandList(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get pCommandQueue(): Uint8Array | Deno.PointerValue | null {
+  get pCommandQueue(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: u32
@@ -17520,53 +17520,53 @@ export class D3D12_AUTO_BREADCRUMB_NODEView {
   // 0x34: pad4
 
   // 0x38: pointer
-  get pLastBreadcrumbValue(): Uint8Array | Deno.PointerValue | null {
+  get pLastBreadcrumbValue(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get pCommandHistory(): Uint8Array | Deno.PointerValue | null {
+  get pCommandHistory(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: pointer
-  get pNext(): Uint8Array | Deno.PointerValue | null {
+  get pNext(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set pCommandListDebugNameA(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pCommandListDebugNameA(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: buffer
-  set pCommandListDebugNameW(value: Uint8Array | Deno.PointerValue | null) {
+  set pCommandListDebugNameW(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: pointer
-  set pCommandQueueDebugNameA(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pCommandQueueDebugNameA(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: buffer
-  set pCommandQueueDebugNameW(value: Uint8Array | Deno.PointerValue | null) {
+  set pCommandQueueDebugNameW(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: pointer
-  set pCommandList(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set pCommandList(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set pCommandQueue(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set pCommandQueue(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: u32
@@ -17577,18 +17577,18 @@ export class D3D12_AUTO_BREADCRUMB_NODEView {
   // 0x34: pad4
 
   // 0x38: pointer
-  set pLastBreadcrumbValue(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set pLastBreadcrumbValue(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set pCommandHistory(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set pCommandHistory(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: pointer
-  set pNext(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set pNext(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -17613,7 +17613,7 @@ export function allocD3D12_DRED_BREADCRUMB_CONTEXT(data?: Partial<D3D12_DRED_BRE
   // 0x08: buffer
   if (data?.pContextString !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pContextString);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   return buf;
 }
@@ -17636,9 +17636,9 @@ export class D3D12_DRED_BREADCRUMB_CONTEXTView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get pContextString(): Uint8Array | Deno.PointerValue | null {
+  get pContextString(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -17649,9 +17649,9 @@ export class D3D12_DRED_BREADCRUMB_CONTEXTView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set pContextString(value: Uint8Array | Deno.PointerValue | null) {
+  set pContextString(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 }
 
@@ -17660,29 +17660,29 @@ export class D3D12_DRED_BREADCRUMB_CONTEXTView {
  */
 export interface D3D12_AUTO_BREADCRUMB_NODE1 {
   /** ptr */
-  pCommandListDebugNameA: Deno.PointerValue | Uint8Array | null;
+  pCommandListDebugNameA: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.PWSTR */
   pCommandListDebugNameW: string | null | Uint8Array | Uint16Array;
   /** ptr */
-  pCommandQueueDebugNameA: Deno.PointerValue | Uint8Array | null;
+  pCommandQueueDebugNameA: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.PWSTR */
   pCommandQueueDebugNameW: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Graphics.Direct3D12.ID3D12GraphicsCommandList */
-  pCommandList: Uint8Array | Deno.PointerValue | null;
+  pCommandList: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.ID3D12CommandQueue */
-  pCommandQueue: Uint8Array | Deno.PointerValue | null;
+  pCommandQueue: Uint8Array | Deno.PointerValue;
   /** u32 */
   BreadcrumbCount: number;
   /** ptr */
-  pLastBreadcrumbValue: Deno.PointerValue | Uint8Array | null;
+  pLastBreadcrumbValue: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pCommandHistory: Deno.PointerValue | Uint8Array | null;
+  pCommandHistory: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pNext: Deno.PointerValue | Uint8Array | null;
+  pNext: Deno.PointerValue | Uint8Array;
   /** u32 */
   BreadcrumbContextsCount: number;
   /** ptr */
-  pBreadcrumbContexts: Deno.PointerValue | Uint8Array | null;
+  pBreadcrumbContexts: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofD3D12_AUTO_BREADCRUMB_NODE1 = 96;
@@ -17691,37 +17691,37 @@ export function allocD3D12_AUTO_BREADCRUMB_NODE1(data?: Partial<D3D12_AUTO_BREAD
   const buf = new Uint8Array(sizeofD3D12_AUTO_BREADCRUMB_NODE1);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pCommandListDebugNameA !== undefined) view.setBigUint64(0, data.pCommandListDebugNameA === null ? 0n : BigInt(util.toPointer(data.pCommandListDebugNameA)), true);
+  if (data?.pCommandListDebugNameA !== undefined) view.setBigUint64(0, data.pCommandListDebugNameA === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pCommandListDebugNameA))), true);
   // 0x08: buffer
   if (data?.pCommandListDebugNameW !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pCommandListDebugNameW);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: pointer
-  if (data?.pCommandQueueDebugNameA !== undefined) view.setBigUint64(16, data.pCommandQueueDebugNameA === null ? 0n : BigInt(util.toPointer(data.pCommandQueueDebugNameA)), true);
+  if (data?.pCommandQueueDebugNameA !== undefined) view.setBigUint64(16, data.pCommandQueueDebugNameA === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pCommandQueueDebugNameA))), true);
   // 0x18: buffer
   if (data?.pCommandQueueDebugNameW !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.pCommandQueueDebugNameW);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: pointer
-  if (data?.pCommandList !== undefined) view.setBigUint64(32, data.pCommandList === null ? 0n : BigInt(util.toPointer(data.pCommandList)), true);
+  if (data?.pCommandList !== undefined) view.setBigUint64(32, data.pCommandList === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pCommandList))), true);
   // 0x28: pointer
-  if (data?.pCommandQueue !== undefined) view.setBigUint64(40, data.pCommandQueue === null ? 0n : BigInt(util.toPointer(data.pCommandQueue)), true);
+  if (data?.pCommandQueue !== undefined) view.setBigUint64(40, data.pCommandQueue === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pCommandQueue))), true);
   // 0x30: u32
   if (data?.BreadcrumbCount !== undefined) view.setUint32(48, Number(data.BreadcrumbCount), true);
   // 0x34: pad4
   // 0x38: pointer
-  if (data?.pLastBreadcrumbValue !== undefined) view.setBigUint64(56, data.pLastBreadcrumbValue === null ? 0n : BigInt(util.toPointer(data.pLastBreadcrumbValue)), true);
+  if (data?.pLastBreadcrumbValue !== undefined) view.setBigUint64(56, data.pLastBreadcrumbValue === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pLastBreadcrumbValue))), true);
   // 0x40: pointer
-  if (data?.pCommandHistory !== undefined) view.setBigUint64(64, data.pCommandHistory === null ? 0n : BigInt(util.toPointer(data.pCommandHistory)), true);
+  if (data?.pCommandHistory !== undefined) view.setBigUint64(64, data.pCommandHistory === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pCommandHistory))), true);
   // 0x48: pointer
-  if (data?.pNext !== undefined) view.setBigUint64(72, data.pNext === null ? 0n : BigInt(util.toPointer(data.pNext)), true);
+  if (data?.pNext !== undefined) view.setBigUint64(72, data.pNext === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pNext))), true);
   // 0x50: u32
   if (data?.BreadcrumbContextsCount !== undefined) view.setUint32(80, Number(data.BreadcrumbContextsCount), true);
   // 0x54: pad4
   // 0x58: pointer
-  if (data?.pBreadcrumbContexts !== undefined) view.setBigUint64(88, data.pBreadcrumbContexts === null ? 0n : BigInt(util.toPointer(data.pBreadcrumbContexts)), true);
+  if (data?.pBreadcrumbContexts !== undefined) view.setBigUint64(88, data.pBreadcrumbContexts === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pBreadcrumbContexts))), true);
   return buf;
 }
 
@@ -17736,39 +17736,39 @@ export class D3D12_AUTO_BREADCRUMB_NODE1View {
   }
 
   // 0x00: pointer
-  get pCommandListDebugNameA(): Uint8Array | Deno.PointerValue | null {
+  get pCommandListDebugNameA(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get pCommandListDebugNameW(): Uint8Array | Deno.PointerValue | null {
+  get pCommandListDebugNameW(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get pCommandQueueDebugNameA(): Uint8Array | Deno.PointerValue | null {
+  get pCommandQueueDebugNameA(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get pCommandQueueDebugNameW(): Uint8Array | Deno.PointerValue | null {
+  get pCommandQueueDebugNameW(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get pCommandList(): Uint8Array | Deno.PointerValue | null {
+  get pCommandList(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get pCommandQueue(): Uint8Array | Deno.PointerValue | null {
+  get pCommandQueue(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: u32
@@ -17779,21 +17779,21 @@ export class D3D12_AUTO_BREADCRUMB_NODE1View {
   // 0x34: pad4
 
   // 0x38: pointer
-  get pLastBreadcrumbValue(): Uint8Array | Deno.PointerValue | null {
+  get pLastBreadcrumbValue(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get pCommandHistory(): Uint8Array | Deno.PointerValue | null {
+  get pCommandHistory(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: pointer
-  get pNext(): Uint8Array | Deno.PointerValue | null {
+  get pNext(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: u32
@@ -17804,41 +17804,41 @@ export class D3D12_AUTO_BREADCRUMB_NODE1View {
   // 0x54: pad4
 
   // 0x58: pointer
-  get pBreadcrumbContexts(): Uint8Array | Deno.PointerValue | null {
+  get pBreadcrumbContexts(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set pCommandListDebugNameA(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pCommandListDebugNameA(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: buffer
-  set pCommandListDebugNameW(value: Uint8Array | Deno.PointerValue | null) {
+  set pCommandListDebugNameW(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: pointer
-  set pCommandQueueDebugNameA(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pCommandQueueDebugNameA(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: buffer
-  set pCommandQueueDebugNameW(value: Uint8Array | Deno.PointerValue | null) {
+  set pCommandQueueDebugNameW(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: pointer
-  set pCommandList(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set pCommandList(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set pCommandQueue(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set pCommandQueue(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: u32
@@ -17849,18 +17849,18 @@ export class D3D12_AUTO_BREADCRUMB_NODE1View {
   // 0x34: pad4
 
   // 0x38: pointer
-  set pLastBreadcrumbValue(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set pLastBreadcrumbValue(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set pCommandHistory(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set pCommandHistory(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: pointer
-  set pNext(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set pNext(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x50: u32
@@ -17871,8 +17871,8 @@ export class D3D12_AUTO_BREADCRUMB_NODE1View {
   // 0x54: pad4
 
   // 0x58: pointer
-  set pBreadcrumbContexts(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  set pBreadcrumbContexts(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -17883,7 +17883,7 @@ export interface D3D12_DEVICE_REMOVED_EXTENDED_DATA {
   /** Windows.Win32.Graphics.Direct3D12.D3D12_DRED_FLAGS */
   Flags: D3D12_DRED_FLAGS;
   /** ptr */
-  pHeadAutoBreadcrumbNode: Deno.PointerValue | Uint8Array | null;
+  pHeadAutoBreadcrumbNode: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofD3D12_DEVICE_REMOVED_EXTENDED_DATA = 16;
@@ -17895,7 +17895,7 @@ export function allocD3D12_DEVICE_REMOVED_EXTENDED_DATA(data?: Partial<D3D12_DEV
   if (data?.Flags !== undefined) view.setUint32(0, Number(data.Flags), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pHeadAutoBreadcrumbNode !== undefined) view.setBigUint64(8, data.pHeadAutoBreadcrumbNode === null ? 0n : BigInt(util.toPointer(data.pHeadAutoBreadcrumbNode)), true);
+  if (data?.pHeadAutoBreadcrumbNode !== undefined) view.setBigUint64(8, data.pHeadAutoBreadcrumbNode === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pHeadAutoBreadcrumbNode))), true);
   return buf;
 }
 
@@ -17917,9 +17917,9 @@ export class D3D12_DEVICE_REMOVED_EXTENDED_DATAView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pHeadAutoBreadcrumbNode(): Uint8Array | Deno.PointerValue | null {
+  get pHeadAutoBreadcrumbNode(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -17930,8 +17930,8 @@ export class D3D12_DEVICE_REMOVED_EXTENDED_DATAView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pHeadAutoBreadcrumbNode(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pHeadAutoBreadcrumbNode(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -17940,13 +17940,13 @@ export class D3D12_DEVICE_REMOVED_EXTENDED_DATAView {
  */
 export interface D3D12_DRED_ALLOCATION_NODE {
   /** ptr */
-  ObjectNameA: Deno.PointerValue | Uint8Array | null;
+  ObjectNameA: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.PWSTR */
   ObjectNameW: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_DRED_ALLOCATION_TYPE */
   AllocationType: D3D12_DRED_ALLOCATION_TYPE;
   /** ptr */
-  pNext: Deno.PointerValue | Uint8Array | null;
+  pNext: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofD3D12_DRED_ALLOCATION_NODE = 32;
@@ -17955,17 +17955,17 @@ export function allocD3D12_DRED_ALLOCATION_NODE(data?: Partial<D3D12_DRED_ALLOCA
   const buf = new Uint8Array(sizeofD3D12_DRED_ALLOCATION_NODE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ObjectNameA !== undefined) view.setBigUint64(0, data.ObjectNameA === null ? 0n : BigInt(util.toPointer(data.ObjectNameA)), true);
+  if (data?.ObjectNameA !== undefined) view.setBigUint64(0, data.ObjectNameA === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ObjectNameA))), true);
   // 0x08: buffer
   if (data?.ObjectNameW !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.ObjectNameW);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: i32
   if (data?.AllocationType !== undefined) view.setInt32(16, Number(data.AllocationType), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.pNext !== undefined) view.setBigUint64(24, data.pNext === null ? 0n : BigInt(util.toPointer(data.pNext)), true);
+  if (data?.pNext !== undefined) view.setBigUint64(24, data.pNext === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pNext))), true);
   return buf;
 }
 
@@ -17980,15 +17980,15 @@ export class D3D12_DRED_ALLOCATION_NODEView {
   }
 
   // 0x00: pointer
-  get ObjectNameA(): Uint8Array | Deno.PointerValue | null {
+  get ObjectNameA(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get ObjectNameW(): Uint8Array | Deno.PointerValue | null {
+  get ObjectNameW(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i32
@@ -17999,20 +17999,20 @@ export class D3D12_DRED_ALLOCATION_NODEView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get pNext(): Uint8Array | Deno.PointerValue | null {
+  get pNext(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ObjectNameA(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ObjectNameA(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: buffer
-  set ObjectNameW(value: Uint8Array | Deno.PointerValue | null) {
+  set ObjectNameW(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: i32
@@ -18023,8 +18023,8 @@ export class D3D12_DRED_ALLOCATION_NODEView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set pNext(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set pNext(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -18033,15 +18033,15 @@ export class D3D12_DRED_ALLOCATION_NODEView {
  */
 export interface D3D12_DRED_ALLOCATION_NODE1 {
   /** ptr */
-  ObjectNameA: Deno.PointerValue | Uint8Array | null;
+  ObjectNameA: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.PWSTR */
   ObjectNameW: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_DRED_ALLOCATION_TYPE */
   AllocationType: D3D12_DRED_ALLOCATION_TYPE;
   /** ptr */
-  pNext: Deno.PointerValue | Uint8Array | null;
+  pNext: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.System.Com.IUnknown */
-  pObject: Uint8Array | Deno.PointerValue | null;
+  pObject: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofD3D12_DRED_ALLOCATION_NODE1 = 40;
@@ -18050,19 +18050,19 @@ export function allocD3D12_DRED_ALLOCATION_NODE1(data?: Partial<D3D12_DRED_ALLOC
   const buf = new Uint8Array(sizeofD3D12_DRED_ALLOCATION_NODE1);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ObjectNameA !== undefined) view.setBigUint64(0, data.ObjectNameA === null ? 0n : BigInt(util.toPointer(data.ObjectNameA)), true);
+  if (data?.ObjectNameA !== undefined) view.setBigUint64(0, data.ObjectNameA === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ObjectNameA))), true);
   // 0x08: buffer
   if (data?.ObjectNameW !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.ObjectNameW);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: i32
   if (data?.AllocationType !== undefined) view.setInt32(16, Number(data.AllocationType), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.pNext !== undefined) view.setBigUint64(24, data.pNext === null ? 0n : BigInt(util.toPointer(data.pNext)), true);
+  if (data?.pNext !== undefined) view.setBigUint64(24, data.pNext === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pNext))), true);
   // 0x20: pointer
-  if (data?.pObject !== undefined) view.setBigUint64(32, data.pObject === null ? 0n : BigInt(util.toPointer(data.pObject)), true);
+  if (data?.pObject !== undefined) view.setBigUint64(32, data.pObject === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pObject))), true);
   return buf;
 }
 
@@ -18077,15 +18077,15 @@ export class D3D12_DRED_ALLOCATION_NODE1View {
   }
 
   // 0x00: pointer
-  get ObjectNameA(): Uint8Array | Deno.PointerValue | null {
+  get ObjectNameA(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get ObjectNameW(): Uint8Array | Deno.PointerValue | null {
+  get ObjectNameW(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i32
@@ -18096,26 +18096,26 @@ export class D3D12_DRED_ALLOCATION_NODE1View {
   // 0x14: pad4
 
   // 0x18: pointer
-  get pNext(): Uint8Array | Deno.PointerValue | null {
+  get pNext(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get pObject(): Uint8Array | Deno.PointerValue | null {
+  get pObject(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ObjectNameA(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ObjectNameA(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: buffer
-  set ObjectNameW(value: Uint8Array | Deno.PointerValue | null) {
+  set ObjectNameW(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: i32
@@ -18126,13 +18126,13 @@ export class D3D12_DRED_ALLOCATION_NODE1View {
   // 0x14: pad4
 
   // 0x18: pointer
-  set pNext(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set pNext(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set pObject(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set pObject(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -18141,7 +18141,7 @@ export class D3D12_DRED_ALLOCATION_NODE1View {
  */
 export interface D3D12_DRED_AUTO_BREADCRUMBS_OUTPUT {
   /** ptr */
-  pHeadAutoBreadcrumbNode: Deno.PointerValue | Uint8Array | null;
+  pHeadAutoBreadcrumbNode: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofD3D12_DRED_AUTO_BREADCRUMBS_OUTPUT = 8;
@@ -18150,7 +18150,7 @@ export function allocD3D12_DRED_AUTO_BREADCRUMBS_OUTPUT(data?: Partial<D3D12_DRE
   const buf = new Uint8Array(sizeofD3D12_DRED_AUTO_BREADCRUMBS_OUTPUT);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pHeadAutoBreadcrumbNode !== undefined) view.setBigUint64(0, data.pHeadAutoBreadcrumbNode === null ? 0n : BigInt(util.toPointer(data.pHeadAutoBreadcrumbNode)), true);
+  if (data?.pHeadAutoBreadcrumbNode !== undefined) view.setBigUint64(0, data.pHeadAutoBreadcrumbNode === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pHeadAutoBreadcrumbNode))), true);
   return buf;
 }
 
@@ -18165,14 +18165,14 @@ export class D3D12_DRED_AUTO_BREADCRUMBS_OUTPUTView {
   }
 
   // 0x00: pointer
-  get pHeadAutoBreadcrumbNode(): Uint8Array | Deno.PointerValue | null {
+  get pHeadAutoBreadcrumbNode(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set pHeadAutoBreadcrumbNode(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pHeadAutoBreadcrumbNode(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -18181,7 +18181,7 @@ export class D3D12_DRED_AUTO_BREADCRUMBS_OUTPUTView {
  */
 export interface D3D12_DRED_AUTO_BREADCRUMBS_OUTPUT1 {
   /** ptr */
-  pHeadAutoBreadcrumbNode: Deno.PointerValue | Uint8Array | null;
+  pHeadAutoBreadcrumbNode: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofD3D12_DRED_AUTO_BREADCRUMBS_OUTPUT1 = 8;
@@ -18190,7 +18190,7 @@ export function allocD3D12_DRED_AUTO_BREADCRUMBS_OUTPUT1(data?: Partial<D3D12_DR
   const buf = new Uint8Array(sizeofD3D12_DRED_AUTO_BREADCRUMBS_OUTPUT1);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pHeadAutoBreadcrumbNode !== undefined) view.setBigUint64(0, data.pHeadAutoBreadcrumbNode === null ? 0n : BigInt(util.toPointer(data.pHeadAutoBreadcrumbNode)), true);
+  if (data?.pHeadAutoBreadcrumbNode !== undefined) view.setBigUint64(0, data.pHeadAutoBreadcrumbNode === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pHeadAutoBreadcrumbNode))), true);
   return buf;
 }
 
@@ -18205,14 +18205,14 @@ export class D3D12_DRED_AUTO_BREADCRUMBS_OUTPUT1View {
   }
 
   // 0x00: pointer
-  get pHeadAutoBreadcrumbNode(): Uint8Array | Deno.PointerValue | null {
+  get pHeadAutoBreadcrumbNode(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set pHeadAutoBreadcrumbNode(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pHeadAutoBreadcrumbNode(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -18223,9 +18223,9 @@ export interface D3D12_DRED_PAGE_FAULT_OUTPUT {
   /** u64 */
   PageFaultVA: Deno.PointerValue;
   /** ptr */
-  pHeadExistingAllocationNode: Deno.PointerValue | Uint8Array | null;
+  pHeadExistingAllocationNode: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pHeadRecentFreedAllocationNode: Deno.PointerValue | Uint8Array | null;
+  pHeadRecentFreedAllocationNode: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofD3D12_DRED_PAGE_FAULT_OUTPUT = 24;
@@ -18236,9 +18236,9 @@ export function allocD3D12_DRED_PAGE_FAULT_OUTPUT(data?: Partial<D3D12_DRED_PAGE
   // 0x00: u64
   if (data?.PageFaultVA !== undefined) view.setBigUint64(0, BigInt(data.PageFaultVA), true);
   // 0x08: pointer
-  if (data?.pHeadExistingAllocationNode !== undefined) view.setBigUint64(8, data.pHeadExistingAllocationNode === null ? 0n : BigInt(util.toPointer(data.pHeadExistingAllocationNode)), true);
+  if (data?.pHeadExistingAllocationNode !== undefined) view.setBigUint64(8, data.pHeadExistingAllocationNode === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pHeadExistingAllocationNode))), true);
   // 0x10: pointer
-  if (data?.pHeadRecentFreedAllocationNode !== undefined) view.setBigUint64(16, data.pHeadRecentFreedAllocationNode === null ? 0n : BigInt(util.toPointer(data.pHeadRecentFreedAllocationNode)), true);
+  if (data?.pHeadRecentFreedAllocationNode !== undefined) view.setBigUint64(16, data.pHeadRecentFreedAllocationNode === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pHeadRecentFreedAllocationNode))), true);
   return buf;
 }
 
@@ -18258,15 +18258,15 @@ export class D3D12_DRED_PAGE_FAULT_OUTPUTView {
   }
 
   // 0x08: pointer
-  get pHeadExistingAllocationNode(): Uint8Array | Deno.PointerValue | null {
+  get pHeadExistingAllocationNode(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get pHeadRecentFreedAllocationNode(): Uint8Array | Deno.PointerValue | null {
+  get pHeadRecentFreedAllocationNode(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u64
@@ -18275,13 +18275,13 @@ export class D3D12_DRED_PAGE_FAULT_OUTPUTView {
   }
 
   // 0x08: pointer
-  set pHeadExistingAllocationNode(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pHeadExistingAllocationNode(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set pHeadRecentFreedAllocationNode(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pHeadRecentFreedAllocationNode(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -18292,9 +18292,9 @@ export interface D3D12_DRED_PAGE_FAULT_OUTPUT1 {
   /** u64 */
   PageFaultVA: Deno.PointerValue;
   /** ptr */
-  pHeadExistingAllocationNode: Deno.PointerValue | Uint8Array | null;
+  pHeadExistingAllocationNode: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pHeadRecentFreedAllocationNode: Deno.PointerValue | Uint8Array | null;
+  pHeadRecentFreedAllocationNode: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofD3D12_DRED_PAGE_FAULT_OUTPUT1 = 24;
@@ -18305,9 +18305,9 @@ export function allocD3D12_DRED_PAGE_FAULT_OUTPUT1(data?: Partial<D3D12_DRED_PAG
   // 0x00: u64
   if (data?.PageFaultVA !== undefined) view.setBigUint64(0, BigInt(data.PageFaultVA), true);
   // 0x08: pointer
-  if (data?.pHeadExistingAllocationNode !== undefined) view.setBigUint64(8, data.pHeadExistingAllocationNode === null ? 0n : BigInt(util.toPointer(data.pHeadExistingAllocationNode)), true);
+  if (data?.pHeadExistingAllocationNode !== undefined) view.setBigUint64(8, data.pHeadExistingAllocationNode === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pHeadExistingAllocationNode))), true);
   // 0x10: pointer
-  if (data?.pHeadRecentFreedAllocationNode !== undefined) view.setBigUint64(16, data.pHeadRecentFreedAllocationNode === null ? 0n : BigInt(util.toPointer(data.pHeadRecentFreedAllocationNode)), true);
+  if (data?.pHeadRecentFreedAllocationNode !== undefined) view.setBigUint64(16, data.pHeadRecentFreedAllocationNode === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pHeadRecentFreedAllocationNode))), true);
   return buf;
 }
 
@@ -18327,15 +18327,15 @@ export class D3D12_DRED_PAGE_FAULT_OUTPUT1View {
   }
 
   // 0x08: pointer
-  get pHeadExistingAllocationNode(): Uint8Array | Deno.PointerValue | null {
+  get pHeadExistingAllocationNode(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get pHeadRecentFreedAllocationNode(): Uint8Array | Deno.PointerValue | null {
+  get pHeadRecentFreedAllocationNode(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u64
@@ -18344,13 +18344,13 @@ export class D3D12_DRED_PAGE_FAULT_OUTPUT1View {
   }
 
   // 0x08: pointer
-  set pHeadExistingAllocationNode(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pHeadExistingAllocationNode(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set pHeadRecentFreedAllocationNode(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pHeadRecentFreedAllocationNode(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -18361,9 +18361,9 @@ export interface D3D12_DRED_PAGE_FAULT_OUTPUT2 {
   /** u64 */
   PageFaultVA: Deno.PointerValue;
   /** ptr */
-  pHeadExistingAllocationNode: Deno.PointerValue | Uint8Array | null;
+  pHeadExistingAllocationNode: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pHeadRecentFreedAllocationNode: Deno.PointerValue | Uint8Array | null;
+  pHeadRecentFreedAllocationNode: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_DRED_PAGE_FAULT_FLAGS */
   PageFaultFlags: D3D12_DRED_PAGE_FAULT_FLAGS;
 }
@@ -18376,9 +18376,9 @@ export function allocD3D12_DRED_PAGE_FAULT_OUTPUT2(data?: Partial<D3D12_DRED_PAG
   // 0x00: u64
   if (data?.PageFaultVA !== undefined) view.setBigUint64(0, BigInt(data.PageFaultVA), true);
   // 0x08: pointer
-  if (data?.pHeadExistingAllocationNode !== undefined) view.setBigUint64(8, data.pHeadExistingAllocationNode === null ? 0n : BigInt(util.toPointer(data.pHeadExistingAllocationNode)), true);
+  if (data?.pHeadExistingAllocationNode !== undefined) view.setBigUint64(8, data.pHeadExistingAllocationNode === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pHeadExistingAllocationNode))), true);
   // 0x10: pointer
-  if (data?.pHeadRecentFreedAllocationNode !== undefined) view.setBigUint64(16, data.pHeadRecentFreedAllocationNode === null ? 0n : BigInt(util.toPointer(data.pHeadRecentFreedAllocationNode)), true);
+  if (data?.pHeadRecentFreedAllocationNode !== undefined) view.setBigUint64(16, data.pHeadRecentFreedAllocationNode === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pHeadRecentFreedAllocationNode))), true);
   // 0x18: u32
   if (data?.PageFaultFlags !== undefined) view.setUint32(24, Number(data.PageFaultFlags), true);
   // 0x1c: pad4
@@ -18401,15 +18401,15 @@ export class D3D12_DRED_PAGE_FAULT_OUTPUT2View {
   }
 
   // 0x08: pointer
-  get pHeadExistingAllocationNode(): Uint8Array | Deno.PointerValue | null {
+  get pHeadExistingAllocationNode(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get pHeadRecentFreedAllocationNode(): Uint8Array | Deno.PointerValue | null {
+  get pHeadRecentFreedAllocationNode(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -18425,13 +18425,13 @@ export class D3D12_DRED_PAGE_FAULT_OUTPUT2View {
   }
 
   // 0x08: pointer
-  set pHeadExistingAllocationNode(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pHeadExistingAllocationNode(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set pHeadRecentFreedAllocationNode(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pHeadRecentFreedAllocationNode(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -18449,11 +18449,11 @@ export type HRESULT = number;
  */
 export interface D3D12_DEVICE_REMOVED_EXTENDED_DATA1 {
   /** Windows.Win32.Foundation.HRESULT */
-  DeviceRemovedReason: Uint8Array | Deno.PointerValue | null;
+  DeviceRemovedReason: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_DRED_AUTO_BREADCRUMBS_OUTPUT */
-  AutoBreadcrumbsOutput: Uint8Array | Deno.PointerValue | null;
+  AutoBreadcrumbsOutput: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_DRED_PAGE_FAULT_OUTPUT */
-  PageFaultOutput: Uint8Array | Deno.PointerValue | null;
+  PageFaultOutput: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofD3D12_DEVICE_REMOVED_EXTENDED_DATA1 = 24;
@@ -18462,11 +18462,11 @@ export function allocD3D12_DEVICE_REMOVED_EXTENDED_DATA1(data?: Partial<D3D12_DE
   const buf = new Uint8Array(sizeofD3D12_DEVICE_REMOVED_EXTENDED_DATA1);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.DeviceRemovedReason !== undefined) view.setBigUint64(0, data.DeviceRemovedReason === null ? 0n : BigInt(util.toPointer(data.DeviceRemovedReason)), true);
+  if (data?.DeviceRemovedReason !== undefined) view.setBigUint64(0, data.DeviceRemovedReason === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DeviceRemovedReason))), true);
   // 0x08: pointer
-  if (data?.AutoBreadcrumbsOutput !== undefined) view.setBigUint64(8, data.AutoBreadcrumbsOutput === null ? 0n : BigInt(util.toPointer(data.AutoBreadcrumbsOutput)), true);
+  if (data?.AutoBreadcrumbsOutput !== undefined) view.setBigUint64(8, data.AutoBreadcrumbsOutput === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.AutoBreadcrumbsOutput))), true);
   // 0x10: pointer
-  if (data?.PageFaultOutput !== undefined) view.setBigUint64(16, data.PageFaultOutput === null ? 0n : BigInt(util.toPointer(data.PageFaultOutput)), true);
+  if (data?.PageFaultOutput !== undefined) view.setBigUint64(16, data.PageFaultOutput === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.PageFaultOutput))), true);
   return buf;
 }
 
@@ -18481,36 +18481,36 @@ export class D3D12_DEVICE_REMOVED_EXTENDED_DATA1View {
   }
 
   // 0x00: pointer
-  get DeviceRemovedReason(): Uint8Array | Deno.PointerValue | null {
+  get DeviceRemovedReason(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get AutoBreadcrumbsOutput(): Uint8Array | Deno.PointerValue | null {
+  get AutoBreadcrumbsOutput(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get PageFaultOutput(): Uint8Array | Deno.PointerValue | null {
+  get PageFaultOutput(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set DeviceRemovedReason(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set DeviceRemovedReason(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set AutoBreadcrumbsOutput(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set AutoBreadcrumbsOutput(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set PageFaultOutput(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set PageFaultOutput(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -18519,11 +18519,11 @@ export class D3D12_DEVICE_REMOVED_EXTENDED_DATA1View {
  */
 export interface D3D12_DEVICE_REMOVED_EXTENDED_DATA2 {
   /** Windows.Win32.Foundation.HRESULT */
-  DeviceRemovedReason: Uint8Array | Deno.PointerValue | null;
+  DeviceRemovedReason: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_DRED_AUTO_BREADCRUMBS_OUTPUT1 */
-  AutoBreadcrumbsOutput: Uint8Array | Deno.PointerValue | null;
+  AutoBreadcrumbsOutput: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_DRED_PAGE_FAULT_OUTPUT1 */
-  PageFaultOutput: Uint8Array | Deno.PointerValue | null;
+  PageFaultOutput: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofD3D12_DEVICE_REMOVED_EXTENDED_DATA2 = 24;
@@ -18532,11 +18532,11 @@ export function allocD3D12_DEVICE_REMOVED_EXTENDED_DATA2(data?: Partial<D3D12_DE
   const buf = new Uint8Array(sizeofD3D12_DEVICE_REMOVED_EXTENDED_DATA2);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.DeviceRemovedReason !== undefined) view.setBigUint64(0, data.DeviceRemovedReason === null ? 0n : BigInt(util.toPointer(data.DeviceRemovedReason)), true);
+  if (data?.DeviceRemovedReason !== undefined) view.setBigUint64(0, data.DeviceRemovedReason === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DeviceRemovedReason))), true);
   // 0x08: pointer
-  if (data?.AutoBreadcrumbsOutput !== undefined) view.setBigUint64(8, data.AutoBreadcrumbsOutput === null ? 0n : BigInt(util.toPointer(data.AutoBreadcrumbsOutput)), true);
+  if (data?.AutoBreadcrumbsOutput !== undefined) view.setBigUint64(8, data.AutoBreadcrumbsOutput === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.AutoBreadcrumbsOutput))), true);
   // 0x10: pointer
-  if (data?.PageFaultOutput !== undefined) view.setBigUint64(16, data.PageFaultOutput === null ? 0n : BigInt(util.toPointer(data.PageFaultOutput)), true);
+  if (data?.PageFaultOutput !== undefined) view.setBigUint64(16, data.PageFaultOutput === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.PageFaultOutput))), true);
   return buf;
 }
 
@@ -18551,36 +18551,36 @@ export class D3D12_DEVICE_REMOVED_EXTENDED_DATA2View {
   }
 
   // 0x00: pointer
-  get DeviceRemovedReason(): Uint8Array | Deno.PointerValue | null {
+  get DeviceRemovedReason(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get AutoBreadcrumbsOutput(): Uint8Array | Deno.PointerValue | null {
+  get AutoBreadcrumbsOutput(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get PageFaultOutput(): Uint8Array | Deno.PointerValue | null {
+  get PageFaultOutput(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set DeviceRemovedReason(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set DeviceRemovedReason(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set AutoBreadcrumbsOutput(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set AutoBreadcrumbsOutput(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set PageFaultOutput(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set PageFaultOutput(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -18589,11 +18589,11 @@ export class D3D12_DEVICE_REMOVED_EXTENDED_DATA2View {
  */
 export interface D3D12_DEVICE_REMOVED_EXTENDED_DATA3 {
   /** Windows.Win32.Foundation.HRESULT */
-  DeviceRemovedReason: Uint8Array | Deno.PointerValue | null;
+  DeviceRemovedReason: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_DRED_AUTO_BREADCRUMBS_OUTPUT1 */
-  AutoBreadcrumbsOutput: Uint8Array | Deno.PointerValue | null;
+  AutoBreadcrumbsOutput: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_DRED_PAGE_FAULT_OUTPUT2 */
-  PageFaultOutput: Uint8Array | Deno.PointerValue | null;
+  PageFaultOutput: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_DRED_DEVICE_STATE */
   DeviceState: D3D12_DRED_DEVICE_STATE;
 }
@@ -18604,11 +18604,11 @@ export function allocD3D12_DEVICE_REMOVED_EXTENDED_DATA3(data?: Partial<D3D12_DE
   const buf = new Uint8Array(sizeofD3D12_DEVICE_REMOVED_EXTENDED_DATA3);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.DeviceRemovedReason !== undefined) view.setBigUint64(0, data.DeviceRemovedReason === null ? 0n : BigInt(util.toPointer(data.DeviceRemovedReason)), true);
+  if (data?.DeviceRemovedReason !== undefined) view.setBigUint64(0, data.DeviceRemovedReason === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DeviceRemovedReason))), true);
   // 0x08: pointer
-  if (data?.AutoBreadcrumbsOutput !== undefined) view.setBigUint64(8, data.AutoBreadcrumbsOutput === null ? 0n : BigInt(util.toPointer(data.AutoBreadcrumbsOutput)), true);
+  if (data?.AutoBreadcrumbsOutput !== undefined) view.setBigUint64(8, data.AutoBreadcrumbsOutput === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.AutoBreadcrumbsOutput))), true);
   // 0x10: pointer
-  if (data?.PageFaultOutput !== undefined) view.setBigUint64(16, data.PageFaultOutput === null ? 0n : BigInt(util.toPointer(data.PageFaultOutput)), true);
+  if (data?.PageFaultOutput !== undefined) view.setBigUint64(16, data.PageFaultOutput === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.PageFaultOutput))), true);
   // 0x18: i32
   if (data?.DeviceState !== undefined) view.setInt32(24, Number(data.DeviceState), true);
   // 0x1c: pad4
@@ -18626,21 +18626,21 @@ export class D3D12_DEVICE_REMOVED_EXTENDED_DATA3View {
   }
 
   // 0x00: pointer
-  get DeviceRemovedReason(): Uint8Array | Deno.PointerValue | null {
+  get DeviceRemovedReason(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get AutoBreadcrumbsOutput(): Uint8Array | Deno.PointerValue | null {
+  get AutoBreadcrumbsOutput(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get PageFaultOutput(): Uint8Array | Deno.PointerValue | null {
+  get PageFaultOutput(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: i32
@@ -18651,18 +18651,18 @@ export class D3D12_DEVICE_REMOVED_EXTENDED_DATA3View {
   // 0x1c: pad4
 
   // 0x00: pointer
-  set DeviceRemovedReason(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set DeviceRemovedReason(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set AutoBreadcrumbsOutput(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set AutoBreadcrumbsOutput(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set PageFaultOutput(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set PageFaultOutput(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: i32
@@ -18680,7 +18680,7 @@ export interface D3D12_VERSIONED_DEVICE_REMOVED_EXTENDED_DATA {
   /** Windows.Win32.Graphics.Direct3D12.D3D12_DRED_VERSION */
   Version: D3D12_DRED_VERSION;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofD3D12_VERSIONED_DEVICE_REMOVED_EXTENDED_DATA = 16;
@@ -18692,7 +18692,7 @@ export function allocD3D12_VERSIONED_DEVICE_REMOVED_EXTENDED_DATA(data?: Partial
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -18714,9 +18714,9 @@ export class D3D12_VERSIONED_DEVICE_REMOVED_EXTENDED_DATAView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -18727,8 +18727,8 @@ export class D3D12_VERSIONED_DEVICE_REMOVED_EXTENDED_DATAView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -18794,7 +18794,7 @@ export interface D3D12_FEATURE_DATA_PROTECTED_RESOURCE_SESSION_TYPES {
   /** u32 */
   Count: number;
   /** ptr */
-  pTypes: Deno.PointerValue | Uint8Array | null;
+  pTypes: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofD3D12_FEATURE_DATA_PROTECTED_RESOURCE_SESSION_TYPES = 16;
@@ -18807,7 +18807,7 @@ export function allocD3D12_FEATURE_DATA_PROTECTED_RESOURCE_SESSION_TYPES(data?: 
   // 0x04: u32
   if (data?.Count !== undefined) view.setUint32(4, Number(data.Count), true);
   // 0x08: pointer
-  if (data?.pTypes !== undefined) view.setBigUint64(8, data.pTypes === null ? 0n : BigInt(util.toPointer(data.pTypes)), true);
+  if (data?.pTypes !== undefined) view.setBigUint64(8, data.pTypes === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pTypes))), true);
   return buf;
 }
 
@@ -18832,9 +18832,9 @@ export class D3D12_FEATURE_DATA_PROTECTED_RESOURCE_SESSION_TYPESView {
   }
 
   // 0x08: pointer
-  get pTypes(): Uint8Array | Deno.PointerValue | null {
+  get pTypes(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -18848,8 +18848,8 @@ export class D3D12_FEATURE_DATA_PROTECTED_RESOURCE_SESSION_TYPESView {
   }
 
   // 0x08: pointer
-  set pTypes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pTypes(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -18862,7 +18862,7 @@ export interface D3D12_PROTECTED_RESOURCE_SESSION_DESC1 {
   /** Windows.Win32.Graphics.Direct3D12.D3D12_PROTECTED_RESOURCE_SESSION_FLAGS */
   Flags: D3D12_PROTECTED_RESOURCE_SESSION_FLAGS;
   /** System.Guid */
-  ProtectionType: Uint8Array | Deno.PointerValue | null;
+  ProtectionType: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofD3D12_PROTECTED_RESOURCE_SESSION_DESC1 = 16;
@@ -18875,7 +18875,7 @@ export function allocD3D12_PROTECTED_RESOURCE_SESSION_DESC1(data?: Partial<D3D12
   // 0x04: u32
   if (data?.Flags !== undefined) view.setUint32(4, Number(data.Flags), true);
   // 0x08: pointer
-  if (data?.ProtectionType !== undefined) view.setBigUint64(8, data.ProtectionType === null ? 0n : BigInt(util.toPointer(data.ProtectionType)), true);
+  if (data?.ProtectionType !== undefined) view.setBigUint64(8, data.ProtectionType === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ProtectionType))), true);
   return buf;
 }
 
@@ -18900,9 +18900,9 @@ export class D3D12_PROTECTED_RESOURCE_SESSION_DESC1View {
   }
 
   // 0x08: pointer
-  get ProtectionType(): Uint8Array | Deno.PointerValue | null {
+  get ProtectionType(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -18916,8 +18916,8 @@ export class D3D12_PROTECTED_RESOURCE_SESSION_DESC1View {
   }
 
   // 0x08: pointer
-  set ProtectionType(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ProtectionType(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -18926,7 +18926,7 @@ export class D3D12_PROTECTED_RESOURCE_SESSION_DESC1View {
  */
 export interface D3D12_RENDER_PASS_BEGINNING_ACCESS_CLEAR_PARAMETERS {
   /** Windows.Win32.Graphics.Direct3D12.D3D12_CLEAR_VALUE */
-  ClearValue: Uint8Array | Deno.PointerValue | null;
+  ClearValue: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofD3D12_RENDER_PASS_BEGINNING_ACCESS_CLEAR_PARAMETERS = 8;
@@ -18935,7 +18935,7 @@ export function allocD3D12_RENDER_PASS_BEGINNING_ACCESS_CLEAR_PARAMETERS(data?: 
   const buf = new Uint8Array(sizeofD3D12_RENDER_PASS_BEGINNING_ACCESS_CLEAR_PARAMETERS);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ClearValue !== undefined) view.setBigUint64(0, data.ClearValue === null ? 0n : BigInt(util.toPointer(data.ClearValue)), true);
+  if (data?.ClearValue !== undefined) view.setBigUint64(0, data.ClearValue === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClearValue))), true);
   return buf;
 }
 
@@ -18950,14 +18950,14 @@ export class D3D12_RENDER_PASS_BEGINNING_ACCESS_CLEAR_PARAMETERSView {
   }
 
   // 0x00: pointer
-  get ClearValue(): Uint8Array | Deno.PointerValue | null {
+  get ClearValue(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ClearValue(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ClearValue(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -18968,7 +18968,7 @@ export interface D3D12_RENDER_PASS_BEGINNING_ACCESS {
   /** Windows.Win32.Graphics.Direct3D12.D3D12_RENDER_PASS_BEGINNING_ACCESS_TYPE */
   Type: D3D12_RENDER_PASS_BEGINNING_ACCESS_TYPE;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofD3D12_RENDER_PASS_BEGINNING_ACCESS = 16;
@@ -18980,7 +18980,7 @@ export function allocD3D12_RENDER_PASS_BEGINNING_ACCESS(data?: Partial<D3D12_REN
   if (data?.Type !== undefined) view.setInt32(0, Number(data.Type), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -19002,9 +19002,9 @@ export class D3D12_RENDER_PASS_BEGINNING_ACCESSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -19015,8 +19015,8 @@ export class D3D12_RENDER_PASS_BEGINNING_ACCESSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -19114,7 +19114,7 @@ export interface D3D12_RENDER_PASS_ENDING_ACCESS_RESOLVE_SUBRESOURCE_PARAMETERS 
   /** u32 */
   DstY: number;
   /** Windows.Win32.Foundation.RECT */
-  SrcRect: Uint8Array | Deno.PointerValue | null;
+  SrcRect: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofD3D12_RENDER_PASS_ENDING_ACCESS_RESOLVE_SUBRESOURCE_PARAMETERS = 24;
@@ -19131,7 +19131,7 @@ export function allocD3D12_RENDER_PASS_ENDING_ACCESS_RESOLVE_SUBRESOURCE_PARAMET
   // 0x0c: u32
   if (data?.DstY !== undefined) view.setUint32(12, Number(data.DstY), true);
   // 0x10: pointer
-  if (data?.SrcRect !== undefined) view.setBigUint64(16, data.SrcRect === null ? 0n : BigInt(util.toPointer(data.SrcRect)), true);
+  if (data?.SrcRect !== undefined) view.setBigUint64(16, data.SrcRect === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.SrcRect))), true);
   return buf;
 }
 
@@ -19166,9 +19166,9 @@ export class D3D12_RENDER_PASS_ENDING_ACCESS_RESOLVE_SUBRESOURCE_PARAMETERSView 
   }
 
   // 0x10: pointer
-  get SrcRect(): Uint8Array | Deno.PointerValue | null {
+  get SrcRect(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -19192,8 +19192,8 @@ export class D3D12_RENDER_PASS_ENDING_ACCESS_RESOLVE_SUBRESOURCE_PARAMETERSView 
   }
 
   // 0x10: pointer
-  set SrcRect(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set SrcRect(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -19202,13 +19202,13 @@ export class D3D12_RENDER_PASS_ENDING_ACCESS_RESOLVE_SUBRESOURCE_PARAMETERSView 
  */
 export interface D3D12_RENDER_PASS_ENDING_ACCESS_RESOLVE_PARAMETERS {
   /** Windows.Win32.Graphics.Direct3D12.ID3D12Resource */
-  pSrcResource: Uint8Array | Deno.PointerValue | null;
+  pSrcResource: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.ID3D12Resource */
-  pDstResource: Uint8Array | Deno.PointerValue | null;
+  pDstResource: Uint8Array | Deno.PointerValue;
   /** u32 */
   SubresourceCount: number;
   /** ptr */
-  pSubresourceParameters: Deno.PointerValue | Uint8Array | null;
+  pSubresourceParameters: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Graphics.Dxgi.Common.DXGI_FORMAT */
   Format: DXGI_FORMAT;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_RESOLVE_MODE */
@@ -19223,14 +19223,14 @@ export function allocD3D12_RENDER_PASS_ENDING_ACCESS_RESOLVE_PARAMETERS(data?: P
   const buf = new Uint8Array(sizeofD3D12_RENDER_PASS_ENDING_ACCESS_RESOLVE_PARAMETERS);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pSrcResource !== undefined) view.setBigUint64(0, data.pSrcResource === null ? 0n : BigInt(util.toPointer(data.pSrcResource)), true);
+  if (data?.pSrcResource !== undefined) view.setBigUint64(0, data.pSrcResource === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pSrcResource))), true);
   // 0x08: pointer
-  if (data?.pDstResource !== undefined) view.setBigUint64(8, data.pDstResource === null ? 0n : BigInt(util.toPointer(data.pDstResource)), true);
+  if (data?.pDstResource !== undefined) view.setBigUint64(8, data.pDstResource === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pDstResource))), true);
   // 0x10: u32
   if (data?.SubresourceCount !== undefined) view.setUint32(16, Number(data.SubresourceCount), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.pSubresourceParameters !== undefined) view.setBigUint64(24, data.pSubresourceParameters === null ? 0n : BigInt(util.toPointer(data.pSubresourceParameters)), true);
+  if (data?.pSubresourceParameters !== undefined) view.setBigUint64(24, data.pSubresourceParameters === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pSubresourceParameters))), true);
   // 0x20: u32
   if (data?.Format !== undefined) view.setUint32(32, Number(data.Format), true);
   // 0x24: i32
@@ -19252,15 +19252,15 @@ export class D3D12_RENDER_PASS_ENDING_ACCESS_RESOLVE_PARAMETERSView {
   }
 
   // 0x00: pointer
-  get pSrcResource(): Uint8Array | Deno.PointerValue | null {
+  get pSrcResource(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get pDstResource(): Uint8Array | Deno.PointerValue | null {
+  get pDstResource(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -19271,9 +19271,9 @@ export class D3D12_RENDER_PASS_ENDING_ACCESS_RESOLVE_PARAMETERSView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get pSubresourceParameters(): Uint8Array | Deno.PointerValue | null {
+  get pSubresourceParameters(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -19294,13 +19294,13 @@ export class D3D12_RENDER_PASS_ENDING_ACCESS_RESOLVE_PARAMETERSView {
   // 0x2c: pad4
 
   // 0x00: pointer
-  set pSrcResource(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pSrcResource(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set pDstResource(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pDstResource(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -19311,8 +19311,8 @@ export class D3D12_RENDER_PASS_ENDING_ACCESS_RESOLVE_PARAMETERSView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set pSubresourceParameters(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set pSubresourceParameters(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -19340,7 +19340,7 @@ export interface D3D12_RENDER_PASS_ENDING_ACCESS {
   /** Windows.Win32.Graphics.Direct3D12.D3D12_RENDER_PASS_ENDING_ACCESS_TYPE */
   Type: D3D12_RENDER_PASS_ENDING_ACCESS_TYPE;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofD3D12_RENDER_PASS_ENDING_ACCESS = 16;
@@ -19352,7 +19352,7 @@ export function allocD3D12_RENDER_PASS_ENDING_ACCESS(data?: Partial<D3D12_RENDER
   if (data?.Type !== undefined) view.setInt32(0, Number(data.Type), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -19374,9 +19374,9 @@ export class D3D12_RENDER_PASS_ENDING_ACCESSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -19387,8 +19387,8 @@ export class D3D12_RENDER_PASS_ENDING_ACCESSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -19397,11 +19397,11 @@ export class D3D12_RENDER_PASS_ENDING_ACCESSView {
  */
 export interface D3D12_RENDER_PASS_RENDER_TARGET_DESC {
   /** Windows.Win32.Graphics.Direct3D12.D3D12_CPU_DESCRIPTOR_HANDLE */
-  cpuDescriptor: Uint8Array | Deno.PointerValue | null;
+  cpuDescriptor: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_RENDER_PASS_BEGINNING_ACCESS */
-  BeginningAccess: Uint8Array | Deno.PointerValue | null;
+  BeginningAccess: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_RENDER_PASS_ENDING_ACCESS */
-  EndingAccess: Uint8Array | Deno.PointerValue | null;
+  EndingAccess: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofD3D12_RENDER_PASS_RENDER_TARGET_DESC = 24;
@@ -19410,11 +19410,11 @@ export function allocD3D12_RENDER_PASS_RENDER_TARGET_DESC(data?: Partial<D3D12_R
   const buf = new Uint8Array(sizeofD3D12_RENDER_PASS_RENDER_TARGET_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.cpuDescriptor !== undefined) view.setBigUint64(0, data.cpuDescriptor === null ? 0n : BigInt(util.toPointer(data.cpuDescriptor)), true);
+  if (data?.cpuDescriptor !== undefined) view.setBigUint64(0, data.cpuDescriptor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.cpuDescriptor))), true);
   // 0x08: pointer
-  if (data?.BeginningAccess !== undefined) view.setBigUint64(8, data.BeginningAccess === null ? 0n : BigInt(util.toPointer(data.BeginningAccess)), true);
+  if (data?.BeginningAccess !== undefined) view.setBigUint64(8, data.BeginningAccess === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BeginningAccess))), true);
   // 0x10: pointer
-  if (data?.EndingAccess !== undefined) view.setBigUint64(16, data.EndingAccess === null ? 0n : BigInt(util.toPointer(data.EndingAccess)), true);
+  if (data?.EndingAccess !== undefined) view.setBigUint64(16, data.EndingAccess === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.EndingAccess))), true);
   return buf;
 }
 
@@ -19429,36 +19429,36 @@ export class D3D12_RENDER_PASS_RENDER_TARGET_DESCView {
   }
 
   // 0x00: pointer
-  get cpuDescriptor(): Uint8Array | Deno.PointerValue | null {
+  get cpuDescriptor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get BeginningAccess(): Uint8Array | Deno.PointerValue | null {
+  get BeginningAccess(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get EndingAccess(): Uint8Array | Deno.PointerValue | null {
+  get EndingAccess(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set cpuDescriptor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set cpuDescriptor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set BeginningAccess(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set BeginningAccess(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set EndingAccess(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set EndingAccess(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -19467,15 +19467,15 @@ export class D3D12_RENDER_PASS_RENDER_TARGET_DESCView {
  */
 export interface D3D12_RENDER_PASS_DEPTH_STENCIL_DESC {
   /** Windows.Win32.Graphics.Direct3D12.D3D12_CPU_DESCRIPTOR_HANDLE */
-  cpuDescriptor: Uint8Array | Deno.PointerValue | null;
+  cpuDescriptor: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_RENDER_PASS_BEGINNING_ACCESS */
-  DepthBeginningAccess: Uint8Array | Deno.PointerValue | null;
+  DepthBeginningAccess: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_RENDER_PASS_BEGINNING_ACCESS */
-  StencilBeginningAccess: Uint8Array | Deno.PointerValue | null;
+  StencilBeginningAccess: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_RENDER_PASS_ENDING_ACCESS */
-  DepthEndingAccess: Uint8Array | Deno.PointerValue | null;
+  DepthEndingAccess: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_RENDER_PASS_ENDING_ACCESS */
-  StencilEndingAccess: Uint8Array | Deno.PointerValue | null;
+  StencilEndingAccess: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofD3D12_RENDER_PASS_DEPTH_STENCIL_DESC = 40;
@@ -19484,15 +19484,15 @@ export function allocD3D12_RENDER_PASS_DEPTH_STENCIL_DESC(data?: Partial<D3D12_R
   const buf = new Uint8Array(sizeofD3D12_RENDER_PASS_DEPTH_STENCIL_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.cpuDescriptor !== undefined) view.setBigUint64(0, data.cpuDescriptor === null ? 0n : BigInt(util.toPointer(data.cpuDescriptor)), true);
+  if (data?.cpuDescriptor !== undefined) view.setBigUint64(0, data.cpuDescriptor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.cpuDescriptor))), true);
   // 0x08: pointer
-  if (data?.DepthBeginningAccess !== undefined) view.setBigUint64(8, data.DepthBeginningAccess === null ? 0n : BigInt(util.toPointer(data.DepthBeginningAccess)), true);
+  if (data?.DepthBeginningAccess !== undefined) view.setBigUint64(8, data.DepthBeginningAccess === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DepthBeginningAccess))), true);
   // 0x10: pointer
-  if (data?.StencilBeginningAccess !== undefined) view.setBigUint64(16, data.StencilBeginningAccess === null ? 0n : BigInt(util.toPointer(data.StencilBeginningAccess)), true);
+  if (data?.StencilBeginningAccess !== undefined) view.setBigUint64(16, data.StencilBeginningAccess === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.StencilBeginningAccess))), true);
   // 0x18: pointer
-  if (data?.DepthEndingAccess !== undefined) view.setBigUint64(24, data.DepthEndingAccess === null ? 0n : BigInt(util.toPointer(data.DepthEndingAccess)), true);
+  if (data?.DepthEndingAccess !== undefined) view.setBigUint64(24, data.DepthEndingAccess === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DepthEndingAccess))), true);
   // 0x20: pointer
-  if (data?.StencilEndingAccess !== undefined) view.setBigUint64(32, data.StencilEndingAccess === null ? 0n : BigInt(util.toPointer(data.StencilEndingAccess)), true);
+  if (data?.StencilEndingAccess !== undefined) view.setBigUint64(32, data.StencilEndingAccess === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.StencilEndingAccess))), true);
   return buf;
 }
 
@@ -19507,58 +19507,58 @@ export class D3D12_RENDER_PASS_DEPTH_STENCIL_DESCView {
   }
 
   // 0x00: pointer
-  get cpuDescriptor(): Uint8Array | Deno.PointerValue | null {
+  get cpuDescriptor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get DepthBeginningAccess(): Uint8Array | Deno.PointerValue | null {
+  get DepthBeginningAccess(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get StencilBeginningAccess(): Uint8Array | Deno.PointerValue | null {
+  get StencilBeginningAccess(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get DepthEndingAccess(): Uint8Array | Deno.PointerValue | null {
+  get DepthEndingAccess(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get StencilEndingAccess(): Uint8Array | Deno.PointerValue | null {
+  get StencilEndingAccess(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set cpuDescriptor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set cpuDescriptor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set DepthBeginningAccess(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set DepthBeginningAccess(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set StencilBeginningAccess(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set StencilBeginningAccess(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set DepthEndingAccess(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set DepthEndingAccess(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set StencilEndingAccess(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set StencilEndingAccess(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -19567,13 +19567,13 @@ export class D3D12_RENDER_PASS_DEPTH_STENCIL_DESCView {
  */
 export interface D3D12_DISPATCH_RAYS_DESC {
   /** Windows.Win32.Graphics.Direct3D12.D3D12_GPU_VIRTUAL_ADDRESS_RANGE */
-  RayGenerationShaderRecord: Uint8Array | Deno.PointerValue | null;
+  RayGenerationShaderRecord: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_GPU_VIRTUAL_ADDRESS_RANGE_AND_STRIDE */
-  MissShaderTable: Uint8Array | Deno.PointerValue | null;
+  MissShaderTable: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_GPU_VIRTUAL_ADDRESS_RANGE_AND_STRIDE */
-  HitGroupTable: Uint8Array | Deno.PointerValue | null;
+  HitGroupTable: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_GPU_VIRTUAL_ADDRESS_RANGE_AND_STRIDE */
-  CallableShaderTable: Uint8Array | Deno.PointerValue | null;
+  CallableShaderTable: Uint8Array | Deno.PointerValue;
   /** u32 */
   Width: number;
   /** u32 */
@@ -19588,13 +19588,13 @@ export function allocD3D12_DISPATCH_RAYS_DESC(data?: Partial<D3D12_DISPATCH_RAYS
   const buf = new Uint8Array(sizeofD3D12_DISPATCH_RAYS_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.RayGenerationShaderRecord !== undefined) view.setBigUint64(0, data.RayGenerationShaderRecord === null ? 0n : BigInt(util.toPointer(data.RayGenerationShaderRecord)), true);
+  if (data?.RayGenerationShaderRecord !== undefined) view.setBigUint64(0, data.RayGenerationShaderRecord === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.RayGenerationShaderRecord))), true);
   // 0x08: pointer
-  if (data?.MissShaderTable !== undefined) view.setBigUint64(8, data.MissShaderTable === null ? 0n : BigInt(util.toPointer(data.MissShaderTable)), true);
+  if (data?.MissShaderTable !== undefined) view.setBigUint64(8, data.MissShaderTable === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.MissShaderTable))), true);
   // 0x10: pointer
-  if (data?.HitGroupTable !== undefined) view.setBigUint64(16, data.HitGroupTable === null ? 0n : BigInt(util.toPointer(data.HitGroupTable)), true);
+  if (data?.HitGroupTable !== undefined) view.setBigUint64(16, data.HitGroupTable === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.HitGroupTable))), true);
   // 0x18: pointer
-  if (data?.CallableShaderTable !== undefined) view.setBigUint64(24, data.CallableShaderTable === null ? 0n : BigInt(util.toPointer(data.CallableShaderTable)), true);
+  if (data?.CallableShaderTable !== undefined) view.setBigUint64(24, data.CallableShaderTable === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.CallableShaderTable))), true);
   // 0x20: u32
   if (data?.Width !== undefined) view.setUint32(32, Number(data.Width), true);
   // 0x24: u32
@@ -19616,27 +19616,27 @@ export class D3D12_DISPATCH_RAYS_DESCView {
   }
 
   // 0x00: pointer
-  get RayGenerationShaderRecord(): Uint8Array | Deno.PointerValue | null {
+  get RayGenerationShaderRecord(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get MissShaderTable(): Uint8Array | Deno.PointerValue | null {
+  get MissShaderTable(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get HitGroupTable(): Uint8Array | Deno.PointerValue | null {
+  get HitGroupTable(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get CallableShaderTable(): Uint8Array | Deno.PointerValue | null {
+  get CallableShaderTable(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -19657,23 +19657,23 @@ export class D3D12_DISPATCH_RAYS_DESCView {
   // 0x2c: pad4
 
   // 0x00: pointer
-  set RayGenerationShaderRecord(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set RayGenerationShaderRecord(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set MissShaderTable(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set MissShaderTable(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set HitGroupTable(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set HitGroupTable(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set CallableShaderTable(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set CallableShaderTable(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -19699,7 +19699,7 @@ export class D3D12_DISPATCH_RAYS_DESCView {
  */
 export interface D3D12_SHADER_CACHE_SESSION_DESC {
   /** System.Guid */
-  Identifier: Uint8Array | Deno.PointerValue | null;
+  Identifier: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_SHADER_CACHE_MODE */
   Mode: D3D12_SHADER_CACHE_MODE;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_SHADER_CACHE_FLAGS */
@@ -19720,7 +19720,7 @@ export function allocD3D12_SHADER_CACHE_SESSION_DESC(data?: Partial<D3D12_SHADER
   const buf = new Uint8Array(sizeofD3D12_SHADER_CACHE_SESSION_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Identifier !== undefined) view.setBigUint64(0, data.Identifier === null ? 0n : BigInt(util.toPointer(data.Identifier)), true);
+  if (data?.Identifier !== undefined) view.setBigUint64(0, data.Identifier === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Identifier))), true);
   // 0x08: i32
   if (data?.Mode !== undefined) view.setInt32(8, Number(data.Mode), true);
   // 0x0c: u32
@@ -19748,9 +19748,9 @@ export class D3D12_SHADER_CACHE_SESSION_DESCView {
   }
 
   // 0x00: pointer
-  get Identifier(): Uint8Array | Deno.PointerValue | null {
+  get Identifier(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: i32
@@ -19786,8 +19786,8 @@ export class D3D12_SHADER_CACHE_SESSION_DESCView {
   }
 
   // 0x00: pointer
-  set Identifier(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Identifier(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: i32
@@ -19828,7 +19828,7 @@ export class D3D12_SHADER_CACHE_SESSION_DESCView {
  */
 export interface D3D12_SUBRESOURCE_DATA {
   /** ptr */
-  pData: Deno.PointerValue | Uint8Array | null;
+  pData: Deno.PointerValue | Uint8Array;
   /** isize */
   RowPitch: Deno.PointerValue;
   /** isize */
@@ -19841,7 +19841,7 @@ export function allocD3D12_SUBRESOURCE_DATA(data?: Partial<D3D12_SUBRESOURCE_DAT
   const buf = new Uint8Array(sizeofD3D12_SUBRESOURCE_DATA);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pData !== undefined) view.setBigUint64(0, data.pData === null ? 0n : BigInt(util.toPointer(data.pData)), true);
+  if (data?.pData !== undefined) view.setBigUint64(0, data.pData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pData))), true);
   // 0x08: isize
   if (data?.RowPitch !== undefined) view.setBigInt64(8, BigInt(data.RowPitch), true);
   // 0x10: isize
@@ -19860,9 +19860,9 @@ export class D3D12_SUBRESOURCE_DATAView {
   }
 
   // 0x00: pointer
-  get pData(): Uint8Array | Deno.PointerValue | null {
+  get pData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: isize
@@ -19876,8 +19876,8 @@ export class D3D12_SUBRESOURCE_DATAView {
   }
 
   // 0x00: pointer
-  set pData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: isize
@@ -19896,7 +19896,7 @@ export class D3D12_SUBRESOURCE_DATAView {
  */
 export interface D3D12_MEMCPY_DEST {
   /** ptr */
-  pData: Deno.PointerValue | Uint8Array | null;
+  pData: Deno.PointerValue | Uint8Array;
   /** usize */
   RowPitch: Deno.PointerValue;
   /** usize */
@@ -19909,7 +19909,7 @@ export function allocD3D12_MEMCPY_DEST(data?: Partial<D3D12_MEMCPY_DEST>): Uint8
   const buf = new Uint8Array(sizeofD3D12_MEMCPY_DEST);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pData !== undefined) view.setBigUint64(0, data.pData === null ? 0n : BigInt(util.toPointer(data.pData)), true);
+  if (data?.pData !== undefined) view.setBigUint64(0, data.pData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pData))), true);
   // 0x08: usize
   if (data?.RowPitch !== undefined) view.setBigUint64(8, BigInt(data.RowPitch), true);
   // 0x10: usize
@@ -19928,9 +19928,9 @@ export class D3D12_MEMCPY_DESTView {
   }
 
   // 0x00: pointer
-  get pData(): Uint8Array | Deno.PointerValue | null {
+  get pData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: usize
@@ -19944,8 +19944,8 @@ export class D3D12_MEMCPY_DESTView {
   }
 
   // 0x00: pointer
-  set pData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: usize
@@ -20130,7 +20130,7 @@ export interface D3D12_MESSAGE {
   /** Windows.Win32.Graphics.Direct3D12.D3D12_MESSAGE_ID */
   ID: D3D12_MESSAGE_ID;
   /** ptr */
-  pDescription: Deno.PointerValue | Uint8Array | null;
+  pDescription: Deno.PointerValue | Uint8Array;
   /** usize */
   DescriptionByteLength: Deno.PointerValue;
 }
@@ -20148,7 +20148,7 @@ export function allocD3D12_MESSAGE(data?: Partial<D3D12_MESSAGE>): Uint8Array {
   if (data?.ID !== undefined) view.setInt32(8, Number(data.ID), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.pDescription !== undefined) view.setBigUint64(16, data.pDescription === null ? 0n : BigInt(util.toPointer(data.pDescription)), true);
+  if (data?.pDescription !== undefined) view.setBigUint64(16, data.pDescription === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pDescription))), true);
   // 0x18: usize
   if (data?.DescriptionByteLength !== undefined) view.setBigUint64(24, BigInt(data.DescriptionByteLength), true);
   return buf;
@@ -20182,9 +20182,9 @@ export class D3D12_MESSAGEView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get pDescription(): Uint8Array | Deno.PointerValue | null {
+  get pDescription(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: usize
@@ -20210,8 +20210,8 @@ export class D3D12_MESSAGEView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set pDescription(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pDescription(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: usize
@@ -20227,15 +20227,15 @@ export interface D3D12_INFO_QUEUE_FILTER_DESC {
   /** u32 */
   NumCategories: number;
   /** ptr */
-  pCategoryList: Deno.PointerValue | Uint8Array | null;
+  pCategoryList: Deno.PointerValue | Uint8Array;
   /** u32 */
   NumSeverities: number;
   /** ptr */
-  pSeverityList: Deno.PointerValue | Uint8Array | null;
+  pSeverityList: Deno.PointerValue | Uint8Array;
   /** u32 */
   NumIDs: number;
   /** ptr */
-  pIDList: Deno.PointerValue | Uint8Array | null;
+  pIDList: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofD3D12_INFO_QUEUE_FILTER_DESC = 48;
@@ -20247,17 +20247,17 @@ export function allocD3D12_INFO_QUEUE_FILTER_DESC(data?: Partial<D3D12_INFO_QUEU
   if (data?.NumCategories !== undefined) view.setUint32(0, Number(data.NumCategories), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pCategoryList !== undefined) view.setBigUint64(8, data.pCategoryList === null ? 0n : BigInt(util.toPointer(data.pCategoryList)), true);
+  if (data?.pCategoryList !== undefined) view.setBigUint64(8, data.pCategoryList === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pCategoryList))), true);
   // 0x10: u32
   if (data?.NumSeverities !== undefined) view.setUint32(16, Number(data.NumSeverities), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.pSeverityList !== undefined) view.setBigUint64(24, data.pSeverityList === null ? 0n : BigInt(util.toPointer(data.pSeverityList)), true);
+  if (data?.pSeverityList !== undefined) view.setBigUint64(24, data.pSeverityList === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pSeverityList))), true);
   // 0x20: u32
   if (data?.NumIDs !== undefined) view.setUint32(32, Number(data.NumIDs), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.pIDList !== undefined) view.setBigUint64(40, data.pIDList === null ? 0n : BigInt(util.toPointer(data.pIDList)), true);
+  if (data?.pIDList !== undefined) view.setBigUint64(40, data.pIDList === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pIDList))), true);
   return buf;
 }
 
@@ -20279,9 +20279,9 @@ export class D3D12_INFO_QUEUE_FILTER_DESCView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pCategoryList(): Uint8Array | Deno.PointerValue | null {
+  get pCategoryList(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -20292,9 +20292,9 @@ export class D3D12_INFO_QUEUE_FILTER_DESCView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get pSeverityList(): Uint8Array | Deno.PointerValue | null {
+  get pSeverityList(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -20305,9 +20305,9 @@ export class D3D12_INFO_QUEUE_FILTER_DESCView {
   // 0x24: pad4
 
   // 0x28: pointer
-  get pIDList(): Uint8Array | Deno.PointerValue | null {
+  get pIDList(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -20318,8 +20318,8 @@ export class D3D12_INFO_QUEUE_FILTER_DESCView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pCategoryList(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pCategoryList(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -20330,8 +20330,8 @@ export class D3D12_INFO_QUEUE_FILTER_DESCView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set pSeverityList(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set pSeverityList(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -20342,8 +20342,8 @@ export class D3D12_INFO_QUEUE_FILTER_DESCView {
   // 0x24: pad4
 
   // 0x28: pointer
-  set pIDList(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set pIDList(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -20352,9 +20352,9 @@ export class D3D12_INFO_QUEUE_FILTER_DESCView {
  */
 export interface D3D12_INFO_QUEUE_FILTER {
   /** Windows.Win32.Graphics.Direct3D12.D3D12_INFO_QUEUE_FILTER_DESC */
-  AllowList: Uint8Array | Deno.PointerValue | null;
+  AllowList: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_INFO_QUEUE_FILTER_DESC */
-  DenyList: Uint8Array | Deno.PointerValue | null;
+  DenyList: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofD3D12_INFO_QUEUE_FILTER = 16;
@@ -20363,9 +20363,9 @@ export function allocD3D12_INFO_QUEUE_FILTER(data?: Partial<D3D12_INFO_QUEUE_FIL
   const buf = new Uint8Array(sizeofD3D12_INFO_QUEUE_FILTER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.AllowList !== undefined) view.setBigUint64(0, data.AllowList === null ? 0n : BigInt(util.toPointer(data.AllowList)), true);
+  if (data?.AllowList !== undefined) view.setBigUint64(0, data.AllowList === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.AllowList))), true);
   // 0x08: pointer
-  if (data?.DenyList !== undefined) view.setBigUint64(8, data.DenyList === null ? 0n : BigInt(util.toPointer(data.DenyList)), true);
+  if (data?.DenyList !== undefined) view.setBigUint64(8, data.DenyList === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DenyList))), true);
   return buf;
 }
 
@@ -20380,25 +20380,25 @@ export class D3D12_INFO_QUEUE_FILTERView {
   }
 
   // 0x00: pointer
-  get AllowList(): Uint8Array | Deno.PointerValue | null {
+  get AllowList(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get DenyList(): Uint8Array | Deno.PointerValue | null {
+  get DenyList(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set AllowList(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set AllowList(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set DenyList(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set DenyList(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -20506,7 +20506,7 @@ export function allocD3D12_SIGNATURE_PARAMETER_DESC(data?: Partial<D3D12_SIGNATU
   // 0x00: buffer
   if (data?.SemanticName !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.SemanticName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: u32
   if (data?.SemanticIndex !== undefined) view.setUint32(8, Number(data.SemanticIndex), true);
@@ -20539,9 +20539,9 @@ export class D3D12_SIGNATURE_PARAMETER_DESCView {
   }
 
   // 0x00: buffer
-  get SemanticName(): Uint8Array | Deno.PointerValue | null {
+  get SemanticName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -20587,9 +20587,9 @@ export class D3D12_SIGNATURE_PARAMETER_DESCView {
   // 0x22: pad6
 
   // 0x00: buffer
-  set SemanticName(value: Uint8Array | Deno.PointerValue | null) {
+  set SemanticName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: u32
@@ -20659,7 +20659,7 @@ export function allocD3D12_SHADER_BUFFER_DESC(data?: Partial<D3D12_SHADER_BUFFER
   // 0x00: buffer
   if (data?.Name !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.Name);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: i32
   if (data?.Type !== undefined) view.setInt32(8, Number(data.Type), true);
@@ -20683,9 +20683,9 @@ export class D3D12_SHADER_BUFFER_DESCView {
   }
 
   // 0x00: buffer
-  get Name(): Uint8Array | Deno.PointerValue | null {
+  get Name(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: i32
@@ -20709,9 +20709,9 @@ export class D3D12_SHADER_BUFFER_DESCView {
   }
 
   // 0x00: buffer
-  set Name(value: Uint8Array | Deno.PointerValue | null) {
+  set Name(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: i32
@@ -20748,7 +20748,7 @@ export interface D3D12_SHADER_VARIABLE_DESC {
   /** u32 */
   uFlags: number;
   /** ptr */
-  DefaultValue: Deno.PointerValue | Uint8Array | null;
+  DefaultValue: Deno.PointerValue | Uint8Array;
   /** u32 */
   StartTexture: number;
   /** u32 */
@@ -20767,7 +20767,7 @@ export function allocD3D12_SHADER_VARIABLE_DESC(data?: Partial<D3D12_SHADER_VARI
   // 0x00: buffer
   if (data?.Name !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.Name);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: u32
   if (data?.StartOffset !== undefined) view.setUint32(8, Number(data.StartOffset), true);
@@ -20777,7 +20777,7 @@ export function allocD3D12_SHADER_VARIABLE_DESC(data?: Partial<D3D12_SHADER_VARI
   if (data?.uFlags !== undefined) view.setUint32(16, Number(data.uFlags), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.DefaultValue !== undefined) view.setBigUint64(24, data.DefaultValue === null ? 0n : BigInt(util.toPointer(data.DefaultValue)), true);
+  if (data?.DefaultValue !== undefined) view.setBigUint64(24, data.DefaultValue === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DefaultValue))), true);
   // 0x20: u32
   if (data?.StartTexture !== undefined) view.setUint32(32, Number(data.StartTexture), true);
   // 0x24: u32
@@ -20800,9 +20800,9 @@ export class D3D12_SHADER_VARIABLE_DESCView {
   }
 
   // 0x00: buffer
-  get Name(): Uint8Array | Deno.PointerValue | null {
+  get Name(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -20823,9 +20823,9 @@ export class D3D12_SHADER_VARIABLE_DESCView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get DefaultValue(): Uint8Array | Deno.PointerValue | null {
+  get DefaultValue(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -20849,9 +20849,9 @@ export class D3D12_SHADER_VARIABLE_DESCView {
   }
 
   // 0x00: buffer
-  set Name(value: Uint8Array | Deno.PointerValue | null) {
+  set Name(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: u32
@@ -20872,8 +20872,8 @@ export class D3D12_SHADER_VARIABLE_DESCView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set DefaultValue(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set DefaultValue(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -20942,7 +20942,7 @@ export function allocD3D12_SHADER_TYPE_DESC(data?: Partial<D3D12_SHADER_TYPE_DES
   // 0x20: buffer
   if (data?.Name !== undefined) {
     (buf as any)._f32 = util.pstrToFfi(data.Name);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f32))), true);
   }
   return buf;
 }
@@ -20995,9 +20995,9 @@ export class D3D12_SHADER_TYPE_DESCView {
   // 0x1c: pad4
 
   // 0x20: buffer
-  get Name(): Uint8Array | Deno.PointerValue | null {
+  get Name(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -21038,9 +21038,9 @@ export class D3D12_SHADER_TYPE_DESCView {
   // 0x1c: pad4
 
   // 0x20: buffer
-  set Name(value: Uint8Array | Deno.PointerValue | null) {
+  set Name(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f32))), true);
   }
 }
 
@@ -21137,7 +21137,7 @@ export function allocD3D12_SHADER_DESC(data?: Partial<D3D12_SHADER_DESC>): Uint8
   // 0x08: buffer
   if (data?.Creator !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.Creator);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: u32
   if (data?.Flags !== undefined) view.setUint32(16, Number(data.Flags), true);
@@ -21232,9 +21232,9 @@ export class D3D12_SHADER_DESCView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get Creator(): Uint8Array | Deno.PointerValue | null {
+  get Creator(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -21425,9 +21425,9 @@ export class D3D12_SHADER_DESCView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set Creator(value: Uint8Array | Deno.PointerValue | null) {
+  set Creator(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: u32
@@ -21645,7 +21645,7 @@ export function allocD3D12_SHADER_INPUT_BIND_DESC(data?: Partial<D3D12_SHADER_IN
   // 0x00: buffer
   if (data?.Name !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.Name);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: i32
   if (data?.Type !== undefined) view.setInt32(8, Number(data.Type), true);
@@ -21680,9 +21680,9 @@ export class D3D12_SHADER_INPUT_BIND_DESCView {
   }
 
   // 0x00: buffer
-  get Name(): Uint8Array | Deno.PointerValue | null {
+  get Name(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: i32
@@ -21733,9 +21733,9 @@ export class D3D12_SHADER_INPUT_BIND_DESCView {
   // 0x2c: pad4
 
   // 0x00: buffer
-  set Name(value: Uint8Array | Deno.PointerValue | null) {
+  set Name(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: i32
@@ -21806,7 +21806,7 @@ export function allocD3D12_LIBRARY_DESC(data?: Partial<D3D12_LIBRARY_DESC>): Uin
   // 0x00: buffer
   if (data?.Creator !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.Creator);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: u32
   if (data?.Flags !== undefined) view.setUint32(8, Number(data.Flags), true);
@@ -21826,9 +21826,9 @@ export class D3D12_LIBRARY_DESCView {
   }
 
   // 0x00: buffer
-  get Creator(): Uint8Array | Deno.PointerValue | null {
+  get Creator(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -21842,9 +21842,9 @@ export class D3D12_LIBRARY_DESCView {
   }
 
   // 0x00: buffer
-  set Creator(value: Uint8Array | Deno.PointerValue | null) {
+  set Creator(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: u32
@@ -21941,7 +21941,7 @@ export function allocD3D12_FUNCTION_DESC(data?: Partial<D3D12_FUNCTION_DESC>): U
   // 0x08: buffer
   if (data?.Creator !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.Creator);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: u32
   if (data?.Flags !== undefined) view.setUint32(16, Number(data.Flags), true);
@@ -21999,7 +21999,7 @@ export function allocD3D12_FUNCTION_DESC(data?: Partial<D3D12_FUNCTION_DESC>): U
   // 0x80: buffer
   if (data?.Name !== undefined) {
     (buf as any)._f128 = util.pstrToFfi(data.Name);
-    view.setBigUint64(128, (buf as any)._f128 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f128)), true);
+    view.setBigUint64(128, (buf as any)._f128 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f128))), true);
   }
   // 0x88: i32
   if (data?.FunctionParameterCount !== undefined) view.setInt32(136, Number(data.FunctionParameterCount), true);
@@ -22030,9 +22030,9 @@ export class D3D12_FUNCTION_DESCView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get Creator(): Uint8Array | Deno.PointerValue | null {
+  get Creator(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -22168,9 +22168,9 @@ export class D3D12_FUNCTION_DESCView {
   }
 
   // 0x80: buffer
-  get Name(): Uint8Array | Deno.PointerValue | null {
+  get Name(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(128, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x88: i32
@@ -22201,9 +22201,9 @@ export class D3D12_FUNCTION_DESCView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set Creator(value: Uint8Array | Deno.PointerValue | null) {
+  set Creator(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: u32
@@ -22339,9 +22339,9 @@ export class D3D12_FUNCTION_DESCView {
   }
 
   // 0x80: buffer
-  set Name(value: Uint8Array | Deno.PointerValue | null) {
+  set Name(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f128 = value;
-    this.view.setBigUint64(128, BigInt(util.toPointer((this.buf as any)._f128)), true);
+    this.view.setBigUint64(128, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f128))), true);
   }
 
   // 0x88: i32
@@ -22403,12 +22403,12 @@ export function allocD3D12_PARAMETER_DESC(data?: Partial<D3D12_PARAMETER_DESC>):
   // 0x00: buffer
   if (data?.Name !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.Name);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: buffer
   if (data?.SemanticName !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.SemanticName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: i32
   if (data?.Type !== undefined) view.setInt32(16, Number(data.Type), true);
@@ -22444,15 +22444,15 @@ export class D3D12_PARAMETER_DESCView {
   }
 
   // 0x00: buffer
-  get Name(): Uint8Array | Deno.PointerValue | null {
+  get Name(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get SemanticName(): Uint8Array | Deno.PointerValue | null {
+  get SemanticName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i32
@@ -22506,15 +22506,15 @@ export class D3D12_PARAMETER_DESCView {
   }
 
   // 0x00: buffer
-  set Name(value: Uint8Array | Deno.PointerValue | null) {
+  set Name(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: buffer
-  set SemanticName(value: Uint8Array | Deno.PointerValue | null) {
+  set SemanticName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: i32
@@ -22610,70 +22610,70 @@ try {
 // Symbols
 
 export function D3D12SerializeRootSignature(
-  pRootSignature: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pRootSignature: Deno.PointerValue | Uint8Array /* ptr */,
   Version: D3D_ROOT_SIGNATURE_VERSION /* Windows.Win32.Graphics.Direct3D12.D3D_ROOT_SIGNATURE_VERSION */,
-  ppBlob: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppErrorBlob: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d12_dll.D3D12SerializeRootSignature(util.toPointer(pRootSignature), Version, util.toPointer(ppBlob), util.toPointer(ppErrorBlob)));
+  ppBlob: Deno.PointerValue | Uint8Array /* ptr */,
+  ppErrorBlob: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libd3d12_dll.D3D12SerializeRootSignature(util.toPointer(pRootSignature), Version, util.toPointer(ppBlob), util.toPointer(ppErrorBlob));
 }
 
 export function D3D12CreateRootSignatureDeserializer(
-  pSrcData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSrcData: Deno.PointerValue | Uint8Array /* ptr */,
   SrcDataSizeInBytes: Deno.PointerValue /* usize */,
-  pRootSignatureDeserializerInterface: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppRootSignatureDeserializer: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d12_dll.D3D12CreateRootSignatureDeserializer(util.toPointer(pSrcData), SrcDataSizeInBytes, util.toPointer(pRootSignatureDeserializerInterface), util.toPointer(ppRootSignatureDeserializer)));
+  pRootSignatureDeserializerInterface: Deno.PointerValue | Uint8Array /* ptr */,
+  ppRootSignatureDeserializer: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libd3d12_dll.D3D12CreateRootSignatureDeserializer(util.toPointer(pSrcData), SrcDataSizeInBytes, util.toPointer(pRootSignatureDeserializerInterface), util.toPointer(ppRootSignatureDeserializer));
 }
 
 export function D3D12SerializeVersionedRootSignature(
-  pRootSignature: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppBlob: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppErrorBlob: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d12_dll.D3D12SerializeVersionedRootSignature(util.toPointer(pRootSignature), util.toPointer(ppBlob), util.toPointer(ppErrorBlob)));
+  pRootSignature: Deno.PointerValue | Uint8Array /* ptr */,
+  ppBlob: Deno.PointerValue | Uint8Array /* ptr */,
+  ppErrorBlob: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libd3d12_dll.D3D12SerializeVersionedRootSignature(util.toPointer(pRootSignature), util.toPointer(ppBlob), util.toPointer(ppErrorBlob));
 }
 
 export function D3D12CreateVersionedRootSignatureDeserializer(
-  pSrcData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSrcData: Deno.PointerValue | Uint8Array /* ptr */,
   SrcDataSizeInBytes: Deno.PointerValue /* usize */,
-  pRootSignatureDeserializerInterface: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppRootSignatureDeserializer: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d12_dll.D3D12CreateVersionedRootSignatureDeserializer(util.toPointer(pSrcData), SrcDataSizeInBytes, util.toPointer(pRootSignatureDeserializerInterface), util.toPointer(ppRootSignatureDeserializer)));
+  pRootSignatureDeserializerInterface: Deno.PointerValue | Uint8Array /* ptr */,
+  ppRootSignatureDeserializer: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libd3d12_dll.D3D12CreateVersionedRootSignatureDeserializer(util.toPointer(pSrcData), SrcDataSizeInBytes, util.toPointer(pRootSignatureDeserializerInterface), util.toPointer(ppRootSignatureDeserializer));
 }
 
 export function D3D12CreateDevice(
-  pAdapter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
+  pAdapter: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
   MinimumFeatureLevel: D3D_FEATURE_LEVEL /* Windows.Win32.Graphics.Direct3D.D3D_FEATURE_LEVEL */,
-  riid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppDevice: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d12_dll.D3D12CreateDevice(util.toPointer(pAdapter), MinimumFeatureLevel, util.toPointer(riid), util.toPointer(ppDevice)));
+  riid: Deno.PointerValue | Uint8Array /* ptr */,
+  ppDevice: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libd3d12_dll.D3D12CreateDevice(util.toPointer(pAdapter), MinimumFeatureLevel, util.toPointer(riid), util.toPointer(ppDevice));
 }
 
 export function D3D12GetDebugInterface(
-  riid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppvDebug: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d12_dll.D3D12GetDebugInterface(util.toPointer(riid), util.toPointer(ppvDebug)));
+  riid: Deno.PointerValue | Uint8Array /* ptr */,
+  ppvDebug: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libd3d12_dll.D3D12GetDebugInterface(util.toPointer(riid), util.toPointer(ppvDebug));
 }
 
 export function D3D12EnableExperimentalFeatures(
   NumFeatures: number /* u32 */,
-  pIIDs: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pConfigurationStructs: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pConfigurationStructSizes: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d12_dll.D3D12EnableExperimentalFeatures(NumFeatures, util.toPointer(pIIDs), util.toPointer(pConfigurationStructs), util.toPointer(pConfigurationStructSizes)));
+  pIIDs: Deno.PointerValue | Uint8Array /* ptr */,
+  pConfigurationStructs: Deno.PointerValue | Uint8Array /* ptr */,
+  pConfigurationStructSizes: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libd3d12_dll.D3D12EnableExperimentalFeatures(NumFeatures, util.toPointer(pIIDs), util.toPointer(pConfigurationStructs), util.toPointer(pConfigurationStructSizes));
 }
 
 export function D3D12GetInterface(
-  rclsid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  riid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppvDebug: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d12_dll.D3D12GetInterface(util.toPointer(rclsid), util.toPointer(riid), util.toPointer(ppvDebug)));
+  rclsid: Deno.PointerValue | Uint8Array /* ptr */,
+  riid: Deno.PointerValue | Uint8Array /* ptr */,
+  ppvDebug: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libd3d12_dll.D3D12GetInterface(util.toPointer(rclsid), util.toPointer(riid), util.toPointer(ppvDebug));
 }
 

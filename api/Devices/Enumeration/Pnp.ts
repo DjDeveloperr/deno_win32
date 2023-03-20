@@ -67,7 +67,7 @@ export const SWDeviceLifetimeMax = 2;
 
 export type HSWDEVICE = Deno.PointerValue;
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.Devices.Enumeration.Pnp.SW_DEVICE_CREATE_INFO (size: 72)
@@ -82,7 +82,7 @@ export interface SW_DEVICE_CREATE_INFO {
   /** Windows.Win32.Foundation.PWSTR */
   pszzCompatibleIds: string | null | Uint8Array | Uint16Array;
   /** ptr */
-  pContainerId: Deno.PointerValue | Uint8Array | null;
+  pContainerId: Deno.PointerValue | Uint8Array;
   /** u32 */
   CapabilityFlags: number;
   /** Windows.Win32.Foundation.PWSTR */
@@ -90,7 +90,7 @@ export interface SW_DEVICE_CREATE_INFO {
   /** Windows.Win32.Foundation.PWSTR */
   pszDeviceLocation: string | null | Uint8Array | Uint16Array;
   /** ptr */
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null;
+  pSecurityDescriptor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofSW_DEVICE_CREATE_INFO = 72;
@@ -104,35 +104,35 @@ export function allocSW_DEVICE_CREATE_INFO(data?: Partial<SW_DEVICE_CREATE_INFO>
   // 0x08: buffer
   if (data?.pszInstanceId !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pszInstanceId);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.pszzHardwareIds !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pszzHardwareIds);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.pszzCompatibleIds !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.pszzCompatibleIds);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: pointer
-  if (data?.pContainerId !== undefined) view.setBigUint64(32, data.pContainerId === null ? 0n : BigInt(util.toPointer(data.pContainerId)), true);
+  if (data?.pContainerId !== undefined) view.setBigUint64(32, data.pContainerId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pContainerId))), true);
   // 0x28: u32
   if (data?.CapabilityFlags !== undefined) view.setUint32(40, Number(data.CapabilityFlags), true);
   // 0x2c: pad4
   // 0x30: buffer
   if (data?.pszDeviceDescription !== undefined) {
     (buf as any)._f48 = util.pwstrToFfi(data.pszDeviceDescription);
-    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
+    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f48))), true);
   }
   // 0x38: buffer
   if (data?.pszDeviceLocation !== undefined) {
     (buf as any)._f56 = util.pwstrToFfi(data.pszDeviceLocation);
-    view.setBigUint64(56, (buf as any)._f56 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f56)), true);
+    view.setBigUint64(56, (buf as any)._f56 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f56))), true);
   }
   // 0x40: pointer
-  if (data?.pSecurityDescriptor !== undefined) view.setBigUint64(64, data.pSecurityDescriptor === null ? 0n : BigInt(util.toPointer(data.pSecurityDescriptor)), true);
+  if (data?.pSecurityDescriptor !== undefined) view.setBigUint64(64, data.pSecurityDescriptor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pSecurityDescriptor))), true);
   return buf;
 }
 
@@ -154,27 +154,27 @@ export class SW_DEVICE_CREATE_INFOView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get pszInstanceId(): Uint8Array | Deno.PointerValue | null {
+  get pszInstanceId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get pszzHardwareIds(): Uint8Array | Deno.PointerValue | null {
+  get pszzHardwareIds(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get pszzCompatibleIds(): Uint8Array | Deno.PointerValue | null {
+  get pszzCompatibleIds(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get pContainerId(): Uint8Array | Deno.PointerValue | null {
+  get pContainerId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -185,21 +185,21 @@ export class SW_DEVICE_CREATE_INFOView {
   // 0x2c: pad4
 
   // 0x30: buffer
-  get pszDeviceDescription(): Uint8Array | Deno.PointerValue | null {
+  get pszDeviceDescription(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: buffer
-  get pszDeviceLocation(): Uint8Array | Deno.PointerValue | null {
+  get pszDeviceLocation(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get pSecurityDescriptor(): Uint8Array | Deno.PointerValue | null {
+  get pSecurityDescriptor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -210,26 +210,26 @@ export class SW_DEVICE_CREATE_INFOView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set pszInstanceId(value: Uint8Array | Deno.PointerValue | null) {
+  set pszInstanceId(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set pszzHardwareIds(value: Uint8Array | Deno.PointerValue | null) {
+  set pszzHardwareIds(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set pszzCompatibleIds(value: Uint8Array | Deno.PointerValue | null) {
+  set pszzCompatibleIds(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: pointer
-  set pContainerId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set pContainerId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u32
@@ -240,20 +240,20 @@ export class SW_DEVICE_CREATE_INFOView {
   // 0x2c: pad4
 
   // 0x30: buffer
-  set pszDeviceDescription(value: Uint8Array | Deno.PointerValue | null) {
+  set pszDeviceDescription(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f48 = value;
-    this.view.setBigUint64(48, BigInt(util.toPointer((this.buf as any)._f48)), true);
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f48))), true);
   }
 
   // 0x38: buffer
-  set pszDeviceLocation(value: Uint8Array | Deno.PointerValue | null) {
+  set pszDeviceLocation(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f56 = value;
-    this.view.setBigUint64(56, BigInt(util.toPointer((this.buf as any)._f56)), true);
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f56))), true);
   }
 
   // 0x40: pointer
-  set pSecurityDescriptor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set pSecurityDescriptor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -309,76 +309,76 @@ try {
 export function SwDeviceCreate(
   pszEnumeratorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszParentDeviceInstance: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pCreateInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pCreateInfo: Deno.PointerValue | Uint8Array /* ptr */,
   cPropertyCount: number /* u32 */,
-  pProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.Enumeration.Pnp.SW_DEVICE_CREATE_CALLBACK */,
-  pContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  phSwDevice: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libCFGMGR32_dll.SwDeviceCreate(util.pwstrToFfi(pszEnumeratorName), util.pwstrToFfi(pszParentDeviceInstance), util.toPointer(pCreateInfo), cPropertyCount, util.toPointer(pProperties), util.toPointer(pCallback), util.toPointer(pContext), util.toPointer(phSwDevice)));
+  pProperties: Deno.PointerValue | Uint8Array /* ptr */,
+  pCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.Enumeration.Pnp.SW_DEVICE_CREATE_CALLBACK */,
+  pContext: Deno.PointerValue | Uint8Array /* ptr */,
+  phSwDevice: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libCFGMGR32_dll.SwDeviceCreate(util.pwstrToFfi(pszEnumeratorName), util.pwstrToFfi(pszParentDeviceInstance), util.toPointer(pCreateInfo), cPropertyCount, util.toPointer(pProperties), util.toPointer(pCallback), util.toPointer(pContext), util.toPointer(phSwDevice));
 }
 
 export function SwDeviceClose(
-  hSwDevice: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.Enumeration.Pnp.HSWDEVICE */,
+  hSwDevice: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.Enumeration.Pnp.HSWDEVICE */,
 ): void /* void */ {
   return libCFGMGR32_dll.SwDeviceClose(util.toPointer(hSwDevice));
 }
 
 export function SwDeviceSetLifetime(
-  hSwDevice: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.Enumeration.Pnp.HSWDEVICE */,
+  hSwDevice: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.Enumeration.Pnp.HSWDEVICE */,
   Lifetime: SW_DEVICE_LIFETIME /* Windows.Win32.Devices.Enumeration.Pnp.SW_DEVICE_LIFETIME */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libCFGMGR32_dll.SwDeviceSetLifetime(util.toPointer(hSwDevice), Lifetime));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libCFGMGR32_dll.SwDeviceSetLifetime(util.toPointer(hSwDevice), Lifetime);
 }
 
 export function SwDeviceGetLifetime(
-  hSwDevice: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.Enumeration.Pnp.HSWDEVICE */,
-  pLifetime: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libCFGMGR32_dll.SwDeviceGetLifetime(util.toPointer(hSwDevice), util.toPointer(pLifetime)));
+  hSwDevice: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.Enumeration.Pnp.HSWDEVICE */,
+  pLifetime: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libCFGMGR32_dll.SwDeviceGetLifetime(util.toPointer(hSwDevice), util.toPointer(pLifetime));
 }
 
 export function SwDevicePropertySet(
-  hSwDevice: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.Enumeration.Pnp.HSWDEVICE */,
+  hSwDevice: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.Enumeration.Pnp.HSWDEVICE */,
   cPropertyCount: number /* u32 */,
-  pProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libCFGMGR32_dll.SwDevicePropertySet(util.toPointer(hSwDevice), cPropertyCount, util.toPointer(pProperties)));
+  pProperties: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libCFGMGR32_dll.SwDevicePropertySet(util.toPointer(hSwDevice), cPropertyCount, util.toPointer(pProperties));
 }
 
 export function SwDeviceInterfaceRegister(
-  hSwDevice: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.Enumeration.Pnp.HSWDEVICE */,
-  pInterfaceClassGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hSwDevice: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.Enumeration.Pnp.HSWDEVICE */,
+  pInterfaceClassGuid: Deno.PointerValue | Uint8Array /* ptr */,
   pszReferenceString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cPropertyCount: number /* u32 */,
-  pProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pProperties: Deno.PointerValue | Uint8Array /* ptr */,
   fEnabled: boolean /* Windows.Win32.Foundation.BOOL */,
-  ppszDeviceInterfaceId: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libCFGMGR32_dll.SwDeviceInterfaceRegister(util.toPointer(hSwDevice), util.toPointer(pInterfaceClassGuid), util.pwstrToFfi(pszReferenceString), cPropertyCount, util.toPointer(pProperties), util.boolToFfi(fEnabled), util.toPointer(ppszDeviceInterfaceId)));
+  ppszDeviceInterfaceId: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libCFGMGR32_dll.SwDeviceInterfaceRegister(util.toPointer(hSwDevice), util.toPointer(pInterfaceClassGuid), util.pwstrToFfi(pszReferenceString), cPropertyCount, util.toPointer(pProperties), util.boolToFfi(fEnabled), util.toPointer(ppszDeviceInterfaceId));
 }
 
 export function SwMemFree(
-  pMem: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pMem: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libCFGMGR32_dll.SwMemFree(util.toPointer(pMem));
 }
 
 export function SwDeviceInterfaceSetState(
-  hSwDevice: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.Enumeration.Pnp.HSWDEVICE */,
+  hSwDevice: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.Enumeration.Pnp.HSWDEVICE */,
   pszDeviceInterfaceId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fEnabled: boolean /* Windows.Win32.Foundation.BOOL */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libCFGMGR32_dll.SwDeviceInterfaceSetState(util.toPointer(hSwDevice), util.pwstrToFfi(pszDeviceInterfaceId), util.boolToFfi(fEnabled)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libCFGMGR32_dll.SwDeviceInterfaceSetState(util.toPointer(hSwDevice), util.pwstrToFfi(pszDeviceInterfaceId), util.boolToFfi(fEnabled));
 }
 
 export function SwDeviceInterfacePropertySet(
-  hSwDevice: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.Enumeration.Pnp.HSWDEVICE */,
+  hSwDevice: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.Enumeration.Pnp.HSWDEVICE */,
   pszDeviceInterfaceId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cPropertyCount: number /* u32 */,
-  pProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libCFGMGR32_dll.SwDeviceInterfacePropertySet(util.toPointer(hSwDevice), util.pwstrToFfi(pszDeviceInterfaceId), cPropertyCount, util.toPointer(pProperties)));
+  pProperties: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libCFGMGR32_dll.SwDeviceInterfacePropertySet(util.toPointer(hSwDevice), util.pwstrToFfi(pszDeviceInterfaceId), cPropertyCount, util.toPointer(pProperties));
 }
 

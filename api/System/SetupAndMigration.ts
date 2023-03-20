@@ -28,21 +28,21 @@ try {
 // Symbols
 
 export function OOBEComplete(
-  isOOBEComplete: Deno.PointerValue | Uint8Array | null /* ptr */,
+  isOOBEComplete: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.OOBEComplete(util.toPointer(isOOBEComplete)));
 }
 
 export function RegisterWaitUntilOOBECompleted(
-  OOBECompletedCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.SetupAndMigration.OOBE_COMPLETED_CALLBACK */,
-  CallbackContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  WaitHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OOBECompletedCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.SetupAndMigration.OOBE_COMPLETED_CALLBACK */,
+  CallbackContext: Deno.PointerValue | Uint8Array /* ptr */,
+  WaitHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.RegisterWaitUntilOOBECompleted(util.toPointer(OOBECompletedCallback), util.toPointer(CallbackContext), util.toPointer(WaitHandle)));
 }
 
 export function UnregisterWaitUntilOOBECompleted(
-  WaitHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  WaitHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.UnregisterWaitUntilOOBECompleted(util.toPointer(WaitHandle)));
 }

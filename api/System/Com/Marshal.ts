@@ -517,946 +517,946 @@ try {
 // Symbols
 
 export function BSTR_UserSize(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* u32 */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libOLEAUT32_dll.BSTR_UserSize(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function BSTR_UserMarshal(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLEAUT32_dll.BSTR_UserMarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLEAUT32_dll.BSTR_UserMarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function BSTR_UserUnmarshal(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLEAUT32_dll.BSTR_UserUnmarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLEAUT32_dll.BSTR_UserUnmarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function BSTR_UserFree(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libOLEAUT32_dll.BSTR_UserFree(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function HWND_UserSize(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* u32 */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libOLE32_dll.HWND_UserSize(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function HWND_UserMarshal(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.HWND_UserMarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.HWND_UserMarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HWND_UserUnmarshal(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.HWND_UserUnmarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.HWND_UserUnmarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HWND_UserFree(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libOLE32_dll.HWND_UserFree(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function VARIANT_UserSize(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* u32 */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libOLEAUT32_dll.VARIANT_UserSize(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function VARIANT_UserMarshal(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLEAUT32_dll.VARIANT_UserMarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLEAUT32_dll.VARIANT_UserMarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function VARIANT_UserUnmarshal(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLEAUT32_dll.VARIANT_UserUnmarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLEAUT32_dll.VARIANT_UserUnmarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function VARIANT_UserFree(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libOLEAUT32_dll.VARIANT_UserFree(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function BSTR_UserSize64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* u32 */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libOLEAUT32_dll.BSTR_UserSize64(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function BSTR_UserMarshal64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLEAUT32_dll.BSTR_UserMarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLEAUT32_dll.BSTR_UserMarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function BSTR_UserUnmarshal64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLEAUT32_dll.BSTR_UserUnmarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLEAUT32_dll.BSTR_UserUnmarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function BSTR_UserFree64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libOLEAUT32_dll.BSTR_UserFree64(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function HWND_UserSize64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* u32 */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libOLE32_dll.HWND_UserSize64(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function HWND_UserMarshal64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.HWND_UserMarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.HWND_UserMarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HWND_UserUnmarshal64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.HWND_UserUnmarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.HWND_UserUnmarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HWND_UserFree64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libOLE32_dll.HWND_UserFree64(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function VARIANT_UserSize64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* u32 */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libOLEAUT32_dll.VARIANT_UserSize64(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function VARIANT_UserMarshal64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLEAUT32_dll.VARIANT_UserMarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLEAUT32_dll.VARIANT_UserMarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function VARIANT_UserUnmarshal64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLEAUT32_dll.VARIANT_UserUnmarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLEAUT32_dll.VARIANT_UserUnmarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function VARIANT_UserFree64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libOLEAUT32_dll.VARIANT_UserFree64(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function CLIPFORMAT_UserSize(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* u32 */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libOLE32_dll.CLIPFORMAT_UserSize(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function CLIPFORMAT_UserMarshal(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.CLIPFORMAT_UserMarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.CLIPFORMAT_UserMarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function CLIPFORMAT_UserUnmarshal(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.CLIPFORMAT_UserUnmarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.CLIPFORMAT_UserUnmarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function CLIPFORMAT_UserFree(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libOLE32_dll.CLIPFORMAT_UserFree(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function HBITMAP_UserSize(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* u32 */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libOLE32_dll.HBITMAP_UserSize(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function HBITMAP_UserMarshal(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.HBITMAP_UserMarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.HBITMAP_UserMarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HBITMAP_UserUnmarshal(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.HBITMAP_UserUnmarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.HBITMAP_UserUnmarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HBITMAP_UserFree(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libOLE32_dll.HBITMAP_UserFree(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function HDC_UserSize(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* u32 */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libOLE32_dll.HDC_UserSize(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function HDC_UserMarshal(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.HDC_UserMarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.HDC_UserMarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HDC_UserUnmarshal(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.HDC_UserUnmarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.HDC_UserUnmarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HDC_UserFree(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libOLE32_dll.HDC_UserFree(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function HICON_UserSize(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* u32 */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libOLE32_dll.HICON_UserSize(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function HICON_UserMarshal(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.HICON_UserMarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.HICON_UserMarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HICON_UserUnmarshal(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.HICON_UserUnmarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.HICON_UserUnmarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HICON_UserFree(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libOLE32_dll.HICON_UserFree(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function SNB_UserSize(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* u32 */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libole32_dll.SNB_UserSize(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function SNB_UserMarshal(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libole32_dll.SNB_UserMarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libole32_dll.SNB_UserMarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function SNB_UserUnmarshal(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libole32_dll.SNB_UserUnmarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libole32_dll.SNB_UserUnmarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function SNB_UserFree(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libole32_dll.SNB_UserFree(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function STGMEDIUM_UserSize(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* u32 */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libOLE32_dll.STGMEDIUM_UserSize(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function STGMEDIUM_UserMarshal(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.STGMEDIUM_UserMarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.STGMEDIUM_UserMarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function STGMEDIUM_UserUnmarshal(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.STGMEDIUM_UserUnmarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.STGMEDIUM_UserUnmarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function STGMEDIUM_UserFree(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libOLE32_dll.STGMEDIUM_UserFree(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function CLIPFORMAT_UserSize64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* u32 */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libOLE32_dll.CLIPFORMAT_UserSize64(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function CLIPFORMAT_UserMarshal64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.CLIPFORMAT_UserMarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.CLIPFORMAT_UserMarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function CLIPFORMAT_UserUnmarshal64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.CLIPFORMAT_UserUnmarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.CLIPFORMAT_UserUnmarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function CLIPFORMAT_UserFree64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libOLE32_dll.CLIPFORMAT_UserFree64(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function HBITMAP_UserSize64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* u32 */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libOLE32_dll.HBITMAP_UserSize64(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function HBITMAP_UserMarshal64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.HBITMAP_UserMarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.HBITMAP_UserMarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HBITMAP_UserUnmarshal64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.HBITMAP_UserUnmarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.HBITMAP_UserUnmarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HBITMAP_UserFree64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libOLE32_dll.HBITMAP_UserFree64(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function HDC_UserSize64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* u32 */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libOLE32_dll.HDC_UserSize64(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function HDC_UserMarshal64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.HDC_UserMarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.HDC_UserMarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HDC_UserUnmarshal64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.HDC_UserUnmarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.HDC_UserUnmarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HDC_UserFree64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libOLE32_dll.HDC_UserFree64(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function HICON_UserSize64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* u32 */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libOLE32_dll.HICON_UserSize64(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function HICON_UserMarshal64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.HICON_UserMarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.HICON_UserMarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HICON_UserUnmarshal64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.HICON_UserUnmarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.HICON_UserUnmarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HICON_UserFree64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libOLE32_dll.HICON_UserFree64(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function SNB_UserSize64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* u32 */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libole32_dll.SNB_UserSize64(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function SNB_UserMarshal64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libole32_dll.SNB_UserMarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libole32_dll.SNB_UserMarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function SNB_UserUnmarshal64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libole32_dll.SNB_UserUnmarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libole32_dll.SNB_UserUnmarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function SNB_UserFree64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libole32_dll.SNB_UserFree64(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function STGMEDIUM_UserSize64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* u32 */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libOLE32_dll.STGMEDIUM_UserSize64(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function STGMEDIUM_UserMarshal64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.STGMEDIUM_UserMarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.STGMEDIUM_UserMarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function STGMEDIUM_UserUnmarshal64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.STGMEDIUM_UserUnmarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.STGMEDIUM_UserUnmarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function STGMEDIUM_UserFree64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libOLE32_dll.STGMEDIUM_UserFree64(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function CoGetMarshalSizeMax(
-  pulSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  riid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pUnk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
+  pulSize: Deno.PointerValue | Uint8Array /* ptr */,
+  riid: Deno.PointerValue | Uint8Array /* ptr */,
+  pUnk: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
   dwDestContext: number /* u32 */,
-  pvDestContext: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pvDestContext: Deno.PointerValue | Uint8Array /* ptr */,
   mshlflags: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.CoGetMarshalSizeMax(util.toPointer(pulSize), util.toPointer(riid), util.toPointer(pUnk), dwDestContext, util.toPointer(pvDestContext), mshlflags));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.CoGetMarshalSizeMax(util.toPointer(pulSize), util.toPointer(riid), util.toPointer(pUnk), dwDestContext, util.toPointer(pvDestContext), mshlflags);
 }
 
 export function CoMarshalInterface(
-  pStm: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IStream */,
-  riid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pUnk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
+  pStm: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IStream */,
+  riid: Deno.PointerValue | Uint8Array /* ptr */,
+  pUnk: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
   dwDestContext: number /* u32 */,
-  pvDestContext: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pvDestContext: Deno.PointerValue | Uint8Array /* ptr */,
   mshlflags: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.CoMarshalInterface(util.toPointer(pStm), util.toPointer(riid), util.toPointer(pUnk), dwDestContext, util.toPointer(pvDestContext), mshlflags));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.CoMarshalInterface(util.toPointer(pStm), util.toPointer(riid), util.toPointer(pUnk), dwDestContext, util.toPointer(pvDestContext), mshlflags);
 }
 
 export function CoUnmarshalInterface(
-  pStm: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IStream */,
-  riid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.CoUnmarshalInterface(util.toPointer(pStm), util.toPointer(riid), util.toPointer(ppv)));
+  pStm: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IStream */,
+  riid: Deno.PointerValue | Uint8Array /* ptr */,
+  ppv: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.CoUnmarshalInterface(util.toPointer(pStm), util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function CoMarshalHresult(
-  pstm: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IStream */,
-  hresult: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.CoMarshalHresult(util.toPointer(pstm), util.toPointer(hresult)));
+  pstm: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IStream */,
+  hresult: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.CoMarshalHresult(util.toPointer(pstm), util.toPointer(hresult));
 }
 
 export function CoUnmarshalHresult(
-  pstm: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IStream */,
-  phresult: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.CoUnmarshalHresult(util.toPointer(pstm), util.toPointer(phresult)));
+  pstm: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IStream */,
+  phresult: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.CoUnmarshalHresult(util.toPointer(pstm), util.toPointer(phresult));
 }
 
 export function CoReleaseMarshalData(
-  pStm: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IStream */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.CoReleaseMarshalData(util.toPointer(pStm)));
+  pStm: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IStream */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.CoReleaseMarshalData(util.toPointer(pStm));
 }
 
 export function CoGetStandardMarshal(
-  riid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pUnk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
+  riid: Deno.PointerValue | Uint8Array /* ptr */,
+  pUnk: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
   dwDestContext: number /* u32 */,
-  pvDestContext: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pvDestContext: Deno.PointerValue | Uint8Array /* ptr */,
   mshlflags: number /* u32 */,
-  ppMarshal: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.CoGetStandardMarshal(util.toPointer(riid), util.toPointer(pUnk), dwDestContext, util.toPointer(pvDestContext), mshlflags, util.toPointer(ppMarshal)));
+  ppMarshal: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.CoGetStandardMarshal(util.toPointer(riid), util.toPointer(pUnk), dwDestContext, util.toPointer(pvDestContext), mshlflags, util.toPointer(ppMarshal));
 }
 
 export function CoGetStdMarshalEx(
-  pUnkOuter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
+  pUnkOuter: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
   smexflags: number /* u32 */,
-  ppUnkInner: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.CoGetStdMarshalEx(util.toPointer(pUnkOuter), smexflags, util.toPointer(ppUnkInner)));
+  ppUnkInner: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.CoGetStdMarshalEx(util.toPointer(pUnkOuter), smexflags, util.toPointer(ppUnkInner));
 }
 
 export function CoMarshalInterThreadInterfaceInStream(
-  riid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pUnk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
-  ppStm: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.CoMarshalInterThreadInterfaceInStream(util.toPointer(riid), util.toPointer(pUnk), util.toPointer(ppStm)));
+  riid: Deno.PointerValue | Uint8Array /* ptr */,
+  pUnk: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
+  ppStm: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.CoMarshalInterThreadInterfaceInStream(util.toPointer(riid), util.toPointer(pUnk), util.toPointer(ppStm));
 }
 
 export function LPSAFEARRAY_UserSize(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* u32 */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libOLEAUT32_dll.LPSAFEARRAY_UserSize(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function LPSAFEARRAY_UserMarshal(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLEAUT32_dll.LPSAFEARRAY_UserMarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLEAUT32_dll.LPSAFEARRAY_UserMarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function LPSAFEARRAY_UserUnmarshal(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLEAUT32_dll.LPSAFEARRAY_UserUnmarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLEAUT32_dll.LPSAFEARRAY_UserUnmarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function LPSAFEARRAY_UserFree(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libOLEAUT32_dll.LPSAFEARRAY_UserFree(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function LPSAFEARRAY_UserSize64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* u32 */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libOLEAUT32_dll.LPSAFEARRAY_UserSize64(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function LPSAFEARRAY_UserMarshal64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLEAUT32_dll.LPSAFEARRAY_UserMarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLEAUT32_dll.LPSAFEARRAY_UserMarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function LPSAFEARRAY_UserUnmarshal64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLEAUT32_dll.LPSAFEARRAY_UserUnmarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLEAUT32_dll.LPSAFEARRAY_UserUnmarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function LPSAFEARRAY_UserFree64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libOLEAUT32_dll.LPSAFEARRAY_UserFree64(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function HACCEL_UserSize(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* u32 */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libOLE32_dll.HACCEL_UserSize(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function HACCEL_UserMarshal(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.HACCEL_UserMarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.HACCEL_UserMarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HACCEL_UserUnmarshal(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.HACCEL_UserUnmarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.HACCEL_UserUnmarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HACCEL_UserFree(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libOLE32_dll.HACCEL_UserFree(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function HGLOBAL_UserSize(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* u32 */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libOLE32_dll.HGLOBAL_UserSize(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function HGLOBAL_UserMarshal(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.HGLOBAL_UserMarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.HGLOBAL_UserMarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HGLOBAL_UserUnmarshal(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.HGLOBAL_UserUnmarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.HGLOBAL_UserUnmarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HGLOBAL_UserFree(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libOLE32_dll.HGLOBAL_UserFree(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function HMENU_UserSize(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* u32 */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libOLE32_dll.HMENU_UserSize(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function HMENU_UserMarshal(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.HMENU_UserMarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.HMENU_UserMarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HMENU_UserUnmarshal(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.HMENU_UserUnmarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.HMENU_UserUnmarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HMENU_UserFree(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libOLE32_dll.HMENU_UserFree(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function HACCEL_UserSize64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* u32 */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libOLE32_dll.HACCEL_UserSize64(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function HACCEL_UserMarshal64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.HACCEL_UserMarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.HACCEL_UserMarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HACCEL_UserUnmarshal64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.HACCEL_UserUnmarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.HACCEL_UserUnmarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HACCEL_UserFree64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libOLE32_dll.HACCEL_UserFree64(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function HGLOBAL_UserSize64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* u32 */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libOLE32_dll.HGLOBAL_UserSize64(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function HGLOBAL_UserMarshal64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.HGLOBAL_UserMarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.HGLOBAL_UserMarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HGLOBAL_UserUnmarshal64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.HGLOBAL_UserUnmarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.HGLOBAL_UserUnmarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HGLOBAL_UserFree64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libOLE32_dll.HGLOBAL_UserFree64(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function HMENU_UserSize64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* u32 */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libOLE32_dll.HMENU_UserSize64(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function HMENU_UserMarshal64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.HMENU_UserMarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.HMENU_UserMarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HMENU_UserUnmarshal64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.HMENU_UserUnmarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.HMENU_UserUnmarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HMENU_UserFree64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libOLE32_dll.HMENU_UserFree64(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function HPALETTE_UserSize(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* u32 */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libOLE32_dll.HPALETTE_UserSize(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function HPALETTE_UserMarshal(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.HPALETTE_UserMarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.HPALETTE_UserMarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HPALETTE_UserUnmarshal(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.HPALETTE_UserUnmarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.HPALETTE_UserUnmarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HPALETTE_UserFree(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libOLE32_dll.HPALETTE_UserFree(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function HPALETTE_UserSize64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* u32 */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libOLE32_dll.HPALETTE_UserSize64(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function HPALETTE_UserMarshal64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.HPALETTE_UserMarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.HPALETTE_UserMarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HPALETTE_UserUnmarshal64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libOLE32_dll.HPALETTE_UserUnmarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libOLE32_dll.HPALETTE_UserUnmarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HPALETTE_UserFree64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libOLE32_dll.HPALETTE_UserFree64(util.toPointer(param0), util.toPointer(param1));
 }

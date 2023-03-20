@@ -126,7 +126,7 @@ export interface CONTACT_AGGREGATION_BLOB {
   /** u32 */
   dwCount: number;
   /** ptr */
-  lpb: Deno.PointerValue | Uint8Array | null;
+  lpb: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofCONTACT_AGGREGATION_BLOB = 16;
@@ -138,7 +138,7 @@ export function allocCONTACT_AGGREGATION_BLOB(data?: Partial<CONTACT_AGGREGATION
   if (data?.dwCount !== undefined) view.setUint32(0, Number(data.dwCount), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.lpb !== undefined) view.setBigUint64(8, data.lpb === null ? 0n : BigInt(util.toPointer(data.lpb)), true);
+  if (data?.lpb !== undefined) view.setBigUint64(8, data.lpb === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpb))), true);
   return buf;
 }
 
@@ -160,9 +160,9 @@ export class CONTACT_AGGREGATION_BLOBView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get lpb(): Uint8Array | Deno.PointerValue | null {
+  get lpb(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -173,8 +173,8 @@ export class CONTACT_AGGREGATION_BLOBView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set lpb(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set lpb(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 

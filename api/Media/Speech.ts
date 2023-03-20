@@ -1181,9 +1181,9 @@ export interface SPEVENT {
   /** u64 */
   ullAudioStreamOffset: Deno.PointerValue;
   /** Windows.Win32.Foundation.WPARAM */
-  wParam: Uint8Array | Deno.PointerValue | null;
+  wParam: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LPARAM */
-  lParam: Uint8Array | Deno.PointerValue | null;
+  lParam: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofSPEVENT = 32;
@@ -1198,9 +1198,9 @@ export function allocSPEVENT(data?: Partial<SPEVENT>): Uint8Array {
   // 0x08: u64
   if (data?.ullAudioStreamOffset !== undefined) view.setBigUint64(8, BigInt(data.ullAudioStreamOffset), true);
   // 0x10: pointer
-  if (data?.wParam !== undefined) view.setBigUint64(16, data.wParam === null ? 0n : BigInt(util.toPointer(data.wParam)), true);
+  if (data?.wParam !== undefined) view.setBigUint64(16, data.wParam === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.wParam))), true);
   // 0x18: pointer
-  if (data?.lParam !== undefined) view.setBigUint64(24, data.lParam === null ? 0n : BigInt(util.toPointer(data.lParam)), true);
+  if (data?.lParam !== undefined) view.setBigUint64(24, data.lParam === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lParam))), true);
   return buf;
 }
 
@@ -1230,15 +1230,15 @@ export class SPEVENTView {
   }
 
   // 0x10: pointer
-  get wParam(): Uint8Array | Deno.PointerValue | null {
+  get wParam(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get lParam(): Uint8Array | Deno.PointerValue | null {
+  get lParam(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -1257,13 +1257,13 @@ export class SPEVENTView {
   }
 
   // 0x10: pointer
-  set wParam(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set wParam(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set lParam(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set lParam(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1468,9 +1468,9 @@ export interface SPEVENTEX {
   /** u64 */
   ullAudioStreamOffset: Deno.PointerValue;
   /** Windows.Win32.Foundation.WPARAM */
-  wParam: Uint8Array | Deno.PointerValue | null;
+  wParam: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LPARAM */
-  lParam: Uint8Array | Deno.PointerValue | null;
+  lParam: Uint8Array | Deno.PointerValue;
   /** u64 */
   ullAudioTimeOffset: Deno.PointerValue;
 }
@@ -1487,9 +1487,9 @@ export function allocSPEVENTEX(data?: Partial<SPEVENTEX>): Uint8Array {
   // 0x08: u64
   if (data?.ullAudioStreamOffset !== undefined) view.setBigUint64(8, BigInt(data.ullAudioStreamOffset), true);
   // 0x10: pointer
-  if (data?.wParam !== undefined) view.setBigUint64(16, data.wParam === null ? 0n : BigInt(util.toPointer(data.wParam)), true);
+  if (data?.wParam !== undefined) view.setBigUint64(16, data.wParam === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.wParam))), true);
   // 0x18: pointer
-  if (data?.lParam !== undefined) view.setBigUint64(24, data.lParam === null ? 0n : BigInt(util.toPointer(data.lParam)), true);
+  if (data?.lParam !== undefined) view.setBigUint64(24, data.lParam === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lParam))), true);
   // 0x20: u64
   if (data?.ullAudioTimeOffset !== undefined) view.setBigUint64(32, BigInt(data.ullAudioTimeOffset), true);
   return buf;
@@ -1521,15 +1521,15 @@ export class SPEVENTEXView {
   }
 
   // 0x10: pointer
-  get wParam(): Uint8Array | Deno.PointerValue | null {
+  get wParam(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get lParam(): Uint8Array | Deno.PointerValue | null {
+  get lParam(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u64
@@ -1553,13 +1553,13 @@ export class SPEVENTEXView {
   }
 
   // 0x10: pointer
-  set wParam(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set wParam(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set lParam(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set lParam(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u64
@@ -1840,7 +1840,7 @@ export class SPAUDIOBUFFERINFOView {
   // 0x0c: pad4
 }
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.Media.Speech.SPPHRASEELEMENT (size: 56)
@@ -1863,7 +1863,7 @@ export interface SPPHRASEELEMENT {
   /** Windows.Win32.Foundation.PWSTR */
   pszLexicalForm: string | null | Uint8Array | Uint16Array;
   /** ptr */
-  pszPronunciation: Deno.PointerValue | Uint8Array | null;
+  pszPronunciation: Deno.PointerValue | Uint8Array;
   /** u8 */
   bDisplayAttributes: number;
   /** i8 */
@@ -1896,15 +1896,15 @@ export function allocSPPHRASEELEMENT(data?: Partial<SPPHRASEELEMENT>): Uint8Arra
   // 0x18: buffer
   if (data?.pszDisplayText !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.pszDisplayText);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: buffer
   if (data?.pszLexicalForm !== undefined) {
     (buf as any)._f32 = util.pwstrToFfi(data.pszLexicalForm);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f32))), true);
   }
   // 0x28: pointer
-  if (data?.pszPronunciation !== undefined) view.setBigUint64(40, data.pszPronunciation === null ? 0n : BigInt(util.toPointer(data.pszPronunciation)), true);
+  if (data?.pszPronunciation !== undefined) view.setBigUint64(40, data.pszPronunciation === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pszPronunciation))), true);
   // 0x30: u8
   if (data?.bDisplayAttributes !== undefined) view.setUint8(48, Number(data.bDisplayAttributes));
   // 0x31: i8
@@ -1959,21 +1959,21 @@ export class SPPHRASEELEMENTView {
   }
 
   // 0x18: buffer
-  get pszDisplayText(): Uint8Array | Deno.PointerValue | null {
+  get pszDisplayText(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: buffer
-  get pszLexicalForm(): Uint8Array | Deno.PointerValue | null {
+  get pszLexicalForm(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get pszPronunciation(): Uint8Array | Deno.PointerValue | null {
+  get pszPronunciation(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: u8
@@ -2032,20 +2032,20 @@ export class SPPHRASEELEMENTView {
   }
 
   // 0x18: buffer
-  set pszDisplayText(value: Uint8Array | Deno.PointerValue | null) {
+  set pszDisplayText(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: buffer
-  set pszLexicalForm(value: Uint8Array | Deno.PointerValue | null) {
+  set pszLexicalForm(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f32))), true);
   }
 
   // 0x28: pointer
-  set pszPronunciation(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set pszPronunciation(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: u8
@@ -2087,9 +2087,9 @@ export interface SPPHRASERULE {
   /** u32 */
   ulCountOfElements: number;
   /** ptr */
-  pNextSibling: Deno.PointerValue | Uint8Array | null;
+  pNextSibling: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pFirstChild: Deno.PointerValue | Uint8Array | null;
+  pFirstChild: Deno.PointerValue | Uint8Array;
   /** f32 */
   SREngineConfidence: number;
   /** i8 */
@@ -2104,7 +2104,7 @@ export function allocSPPHRASERULE(data?: Partial<SPPHRASERULE>): Uint8Array {
   // 0x00: buffer
   if (data?.pszName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pszName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: u32
   if (data?.ulId !== undefined) view.setUint32(8, Number(data.ulId), true);
@@ -2114,9 +2114,9 @@ export function allocSPPHRASERULE(data?: Partial<SPPHRASERULE>): Uint8Array {
   if (data?.ulCountOfElements !== undefined) view.setUint32(16, Number(data.ulCountOfElements), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.pNextSibling !== undefined) view.setBigUint64(24, data.pNextSibling === null ? 0n : BigInt(util.toPointer(data.pNextSibling)), true);
+  if (data?.pNextSibling !== undefined) view.setBigUint64(24, data.pNextSibling === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pNextSibling))), true);
   // 0x20: pointer
-  if (data?.pFirstChild !== undefined) view.setBigUint64(32, data.pFirstChild === null ? 0n : BigInt(util.toPointer(data.pFirstChild)), true);
+  if (data?.pFirstChild !== undefined) view.setBigUint64(32, data.pFirstChild === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pFirstChild))), true);
   // 0x28: f32
   if (data?.SREngineConfidence !== undefined) view.setFloat32(40, Number(data.SREngineConfidence), true);
   // 0x2c: i8
@@ -2136,9 +2136,9 @@ export class SPPHRASERULEView {
   }
 
   // 0x00: buffer
-  get pszName(): Uint8Array | Deno.PointerValue | null {
+  get pszName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -2159,15 +2159,15 @@ export class SPPHRASERULEView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get pNextSibling(): Uint8Array | Deno.PointerValue | null {
+  get pNextSibling(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get pFirstChild(): Uint8Array | Deno.PointerValue | null {
+  get pFirstChild(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: f32
@@ -2183,9 +2183,9 @@ export class SPPHRASERULEView {
   // 0x2d: pad3
 
   // 0x00: buffer
-  set pszName(value: Uint8Array | Deno.PointerValue | null) {
+  set pszName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: u32
@@ -2206,13 +2206,13 @@ export class SPPHRASERULEView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set pNextSibling(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set pNextSibling(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set pFirstChild(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set pFirstChild(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: f32
@@ -2286,9 +2286,9 @@ export class _Anonymous_e__StructView {
  */
 export interface _Anonymous_e__Union {
   /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** array */
-  X: Deno.PointerValue | null;
+  X: Deno.PointerValue;
 }
 
 export const sizeof_Anonymous_e__Union = 16;
@@ -2297,9 +2297,9 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   const buf = new Uint8Array(sizeof_Anonymous_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x08: pointer
-  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.X))), true);
   return buf;
 }
 
@@ -2314,25 +2314,25 @@ export class _Anonymous_e__UnionView {
   }
 
   // 0x00: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get X(): Uint8Array | Deno.PointerValue | null {
+  get X(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set X(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set X(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2341,7 +2341,7 @@ export class _Anonymous_e__UnionView {
  */
 export interface VARIANT {
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofVARIANT = 8;
@@ -2350,7 +2350,7 @@ export function allocVARIANT(data?: Partial<VARIANT>): Uint8Array {
   const buf = new Uint8Array(sizeofVARIANT);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -2365,14 +2365,14 @@ export class VARIANTView {
   }
 
   // 0x00: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2383,19 +2383,19 @@ export interface SPPHRASEPROPERTY {
   /** Windows.Win32.Foundation.PWSTR */
   pszName: string | null | Uint8Array | Uint16Array;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   pszValue: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Com.VARIANT */
-  vValue: Uint8Array | Deno.PointerValue | null;
+  vValue: Uint8Array | Deno.PointerValue;
   /** u32 */
   ulFirstElement: number;
   /** u32 */
   ulCountOfElements: number;
   /** ptr */
-  pNextSibling: Deno.PointerValue | Uint8Array | null;
+  pNextSibling: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pFirstChild: Deno.PointerValue | Uint8Array | null;
+  pFirstChild: Deno.PointerValue | Uint8Array;
   /** f32 */
   SREngineConfidence: number;
   /** i8 */
@@ -2410,25 +2410,25 @@ export function allocSPPHRASEPROPERTY(data?: Partial<SPPHRASEPROPERTY>): Uint8Ar
   // 0x00: buffer
   if (data?.pszName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pszName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x10: buffer
   if (data?.pszValue !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pszValue);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: pointer
-  if (data?.vValue !== undefined) view.setBigUint64(24, data.vValue === null ? 0n : BigInt(util.toPointer(data.vValue)), true);
+  if (data?.vValue !== undefined) view.setBigUint64(24, data.vValue === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.vValue))), true);
   // 0x20: u32
   if (data?.ulFirstElement !== undefined) view.setUint32(32, Number(data.ulFirstElement), true);
   // 0x24: u32
   if (data?.ulCountOfElements !== undefined) view.setUint32(36, Number(data.ulCountOfElements), true);
   // 0x28: pointer
-  if (data?.pNextSibling !== undefined) view.setBigUint64(40, data.pNextSibling === null ? 0n : BigInt(util.toPointer(data.pNextSibling)), true);
+  if (data?.pNextSibling !== undefined) view.setBigUint64(40, data.pNextSibling === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pNextSibling))), true);
   // 0x30: pointer
-  if (data?.pFirstChild !== undefined) view.setBigUint64(48, data.pFirstChild === null ? 0n : BigInt(util.toPointer(data.pFirstChild)), true);
+  if (data?.pFirstChild !== undefined) view.setBigUint64(48, data.pFirstChild === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pFirstChild))), true);
   // 0x38: f32
   if (data?.SREngineConfidence !== undefined) view.setFloat32(56, Number(data.SREngineConfidence), true);
   // 0x3c: i8
@@ -2448,27 +2448,27 @@ export class SPPHRASEPROPERTYView {
   }
 
   // 0x00: buffer
-  get pszName(): Uint8Array | Deno.PointerValue | null {
+  get pszName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get pszValue(): Uint8Array | Deno.PointerValue | null {
+  get pszValue(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get vValue(): Uint8Array | Deno.PointerValue | null {
+  get vValue(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -2482,15 +2482,15 @@ export class SPPHRASEPROPERTYView {
   }
 
   // 0x28: pointer
-  get pNextSibling(): Uint8Array | Deno.PointerValue | null {
+  get pNextSibling(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get pFirstChild(): Uint8Array | Deno.PointerValue | null {
+  get pFirstChild(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: f32
@@ -2506,25 +2506,25 @@ export class SPPHRASEPROPERTYView {
   // 0x3d: pad3
 
   // 0x00: buffer
-  set pszName(value: Uint8Array | Deno.PointerValue | null) {
+  set pszName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: buffer
-  set pszValue(value: Uint8Array | Deno.PointerValue | null) {
+  set pszValue(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: pointer
-  set vValue(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set vValue(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -2538,13 +2538,13 @@ export class SPPHRASEPROPERTYView {
   }
 
   // 0x28: pointer
-  set pNextSibling(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set pNextSibling(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set pFirstChild(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set pFirstChild(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: f32
@@ -2585,7 +2585,7 @@ export function allocSPPHRASEREPLACEMENT(data?: Partial<SPPHRASEREPLACEMENT>): U
   // 0x08: buffer
   if (data?.pszReplacementText !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pszReplacementText);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: u32
   if (data?.ulFirstElement !== undefined) view.setUint32(16, Number(data.ulFirstElement), true);
@@ -2612,9 +2612,9 @@ export class SPPHRASEREPLACEMENTView {
   // 0x01: pad7
 
   // 0x08: buffer
-  get pszReplacementText(): Uint8Array | Deno.PointerValue | null {
+  get pszReplacementText(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -2635,9 +2635,9 @@ export class SPPHRASEREPLACEMENTView {
   // 0x01: pad7
 
   // 0x08: buffer
-  set pszReplacementText(value: Uint8Array | Deno.PointerValue | null) {
+  set pszReplacementText(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: u32
@@ -2666,7 +2666,7 @@ export interface SPSEMANTICERRORINFO {
   /** Windows.Win32.Foundation.PWSTR */
   pszDescription: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.HRESULT */
-  hrResultCode: Uint8Array | Deno.PointerValue | null;
+  hrResultCode: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofSPSEMANTICERRORINFO = 40;
@@ -2680,20 +2680,20 @@ export function allocSPSEMANTICERRORINFO(data?: Partial<SPSEMANTICERRORINFO>): U
   // 0x08: buffer
   if (data?.pszScriptLine !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pszScriptLine);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.pszSource !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pszSource);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.pszDescription !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.pszDescription);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: pointer
-  if (data?.hrResultCode !== undefined) view.setBigUint64(32, data.hrResultCode === null ? 0n : BigInt(util.toPointer(data.hrResultCode)), true);
+  if (data?.hrResultCode !== undefined) view.setBigUint64(32, data.hrResultCode === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hrResultCode))), true);
   return buf;
 }
 
@@ -2715,27 +2715,27 @@ export class SPSEMANTICERRORINFOView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get pszScriptLine(): Uint8Array | Deno.PointerValue | null {
+  get pszScriptLine(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get pszSource(): Uint8Array | Deno.PointerValue | null {
+  get pszSource(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get pszDescription(): Uint8Array | Deno.PointerValue | null {
+  get pszDescription(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get hrResultCode(): Uint8Array | Deno.PointerValue | null {
+  get hrResultCode(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -2746,26 +2746,26 @@ export class SPSEMANTICERRORINFOView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set pszScriptLine(value: Uint8Array | Deno.PointerValue | null) {
+  set pszScriptLine(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set pszSource(value: Uint8Array | Deno.PointerValue | null) {
+  set pszSource(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set pszDescription(value: Uint8Array | Deno.PointerValue | null) {
+  set pszDescription(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: pointer
-  set hrResultCode(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set hrResultCode(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2792,21 +2792,21 @@ export interface SPPHRASE_50 {
   /** u32 */
   ulAudioSizeTime: number;
   /** Windows.Win32.Media.Speech.SPPHRASERULE */
-  Rule: Uint8Array | Deno.PointerValue | null;
+  Rule: Uint8Array | Deno.PointerValue;
   /** ptr */
-  pProperties: Deno.PointerValue | Uint8Array | null;
+  pProperties: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pElements: Deno.PointerValue | Uint8Array | null;
+  pElements: Deno.PointerValue | Uint8Array;
   /** u32 */
   cReplacements: number;
   /** ptr */
-  pReplacements: Deno.PointerValue | Uint8Array | null;
+  pReplacements: Deno.PointerValue | Uint8Array;
   /** System.Guid */
-  SREngineID: Uint8Array | Deno.PointerValue | null;
+  SREngineID: Uint8Array | Deno.PointerValue;
   /** u32 */
   ulSREnginePrivateDataSize: number;
   /** ptr */
-  pSREnginePrivateData: Deno.PointerValue | Uint8Array | null;
+  pSREnginePrivateData: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofSPPHRASE_50 = 112;
@@ -2834,23 +2834,23 @@ export function allocSPPHRASE_50(data?: Partial<SPPHRASE_50>): Uint8Array {
   if (data?.ulAudioSizeTime !== undefined) view.setUint32(40, Number(data.ulAudioSizeTime), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.Rule !== undefined) view.setBigUint64(48, data.Rule === null ? 0n : BigInt(util.toPointer(data.Rule)), true);
+  if (data?.Rule !== undefined) view.setBigUint64(48, data.Rule === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Rule))), true);
   // 0x38: pointer
-  if (data?.pProperties !== undefined) view.setBigUint64(56, data.pProperties === null ? 0n : BigInt(util.toPointer(data.pProperties)), true);
+  if (data?.pProperties !== undefined) view.setBigUint64(56, data.pProperties === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pProperties))), true);
   // 0x40: pointer
-  if (data?.pElements !== undefined) view.setBigUint64(64, data.pElements === null ? 0n : BigInt(util.toPointer(data.pElements)), true);
+  if (data?.pElements !== undefined) view.setBigUint64(64, data.pElements === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pElements))), true);
   // 0x48: u32
   if (data?.cReplacements !== undefined) view.setUint32(72, Number(data.cReplacements), true);
   // 0x4c: pad4
   // 0x50: pointer
-  if (data?.pReplacements !== undefined) view.setBigUint64(80, data.pReplacements === null ? 0n : BigInt(util.toPointer(data.pReplacements)), true);
+  if (data?.pReplacements !== undefined) view.setBigUint64(80, data.pReplacements === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pReplacements))), true);
   // 0x58: pointer
-  if (data?.SREngineID !== undefined) view.setBigUint64(88, data.SREngineID === null ? 0n : BigInt(util.toPointer(data.SREngineID)), true);
+  if (data?.SREngineID !== undefined) view.setBigUint64(88, data.SREngineID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.SREngineID))), true);
   // 0x60: u32
   if (data?.ulSREnginePrivateDataSize !== undefined) view.setUint32(96, Number(data.ulSREnginePrivateDataSize), true);
   // 0x64: pad4
   // 0x68: pointer
-  if (data?.pSREnginePrivateData !== undefined) view.setBigUint64(104, data.pSREnginePrivateData === null ? 0n : BigInt(util.toPointer(data.pSREnginePrivateData)), true);
+  if (data?.pSREnginePrivateData !== undefined) view.setBigUint64(104, data.pSREnginePrivateData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pSREnginePrivateData))), true);
   return buf;
 }
 
@@ -2912,21 +2912,21 @@ export class SPPHRASE_50View {
   // 0x2c: pad4
 
   // 0x30: pointer
-  get Rule(): Uint8Array | Deno.PointerValue | null {
+  get Rule(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get pProperties(): Uint8Array | Deno.PointerValue | null {
+  get pProperties(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get pElements(): Uint8Array | Deno.PointerValue | null {
+  get pElements(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: u32
@@ -2937,15 +2937,15 @@ export class SPPHRASE_50View {
   // 0x4c: pad4
 
   // 0x50: pointer
-  get pReplacements(): Uint8Array | Deno.PointerValue | null {
+  get pReplacements(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x58: pointer
-  get SREngineID(): Uint8Array | Deno.PointerValue | null {
+  get SREngineID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x60: u32
@@ -2956,9 +2956,9 @@ export class SPPHRASE_50View {
   // 0x64: pad4
 
   // 0x68: pointer
-  get pSREnginePrivateData(): Uint8Array | Deno.PointerValue | null {
+  get pSREnginePrivateData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(104, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -3009,18 +3009,18 @@ export class SPPHRASE_50View {
   // 0x2c: pad4
 
   // 0x30: pointer
-  set Rule(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set Rule(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set pProperties(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set pProperties(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set pElements(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set pElements(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: u32
@@ -3031,13 +3031,13 @@ export class SPPHRASE_50View {
   // 0x4c: pad4
 
   // 0x50: pointer
-  set pReplacements(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set pReplacements(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x58: pointer
-  set SREngineID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  set SREngineID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x60: u32
@@ -3048,8 +3048,8 @@ export class SPPHRASE_50View {
   // 0x64: pad4
 
   // 0x68: pointer
-  set pSREnginePrivateData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(104, BigInt(util.toPointer(value)), true);
+  set pSREnginePrivateData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(104, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3058,11 +3058,11 @@ export class SPPHRASE_50View {
  */
 export interface SPPHRASE {
   /** Windows.Win32.Media.Speech.SPPHRASE_50 */
-  Base: Uint8Array | Deno.PointerValue | null;
+  Base: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   pSML: string | null | Uint8Array | Uint16Array;
   /** ptr */
-  pSemanticErrorInfo: Deno.PointerValue | Uint8Array | null;
+  pSemanticErrorInfo: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofSPPHRASE = 24;
@@ -3071,14 +3071,14 @@ export function allocSPPHRASE(data?: Partial<SPPHRASE>): Uint8Array {
   const buf = new Uint8Array(sizeofSPPHRASE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Base))), true);
   // 0x08: buffer
   if (data?.pSML !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pSML);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: pointer
-  if (data?.pSemanticErrorInfo !== undefined) view.setBigUint64(16, data.pSemanticErrorInfo === null ? 0n : BigInt(util.toPointer(data.pSemanticErrorInfo)), true);
+  if (data?.pSemanticErrorInfo !== undefined) view.setBigUint64(16, data.pSemanticErrorInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pSemanticErrorInfo))), true);
   return buf;
 }
 
@@ -3093,37 +3093,37 @@ export class SPPHRASEView {
   }
 
   // 0x00: pointer
-  get Base(): Uint8Array | Deno.PointerValue | null {
+  get Base(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get pSML(): Uint8Array | Deno.PointerValue | null {
+  get pSML(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get pSemanticErrorInfo(): Uint8Array | Deno.PointerValue | null {
+  get pSemanticErrorInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Base(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Base(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: buffer
-  set pSML(value: Uint8Array | Deno.PointerValue | null) {
+  set pSML(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: pointer
-  set pSemanticErrorInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pSemanticErrorInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3191,7 +3191,7 @@ export function allocSPRULE(data?: Partial<SPRULE>): Uint8Array {
   // 0x00: buffer
   if (data?.pszRuleName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pszRuleName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: u32
   if (data?.ulRuleId !== undefined) view.setUint32(8, Number(data.ulRuleId), true);
@@ -3211,9 +3211,9 @@ export class SPRULEView {
   }
 
   // 0x00: buffer
-  get pszRuleName(): Uint8Array | Deno.PointerValue | null {
+  get pszRuleName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -3227,9 +3227,9 @@ export class SPRULEView {
   }
 
   // 0x00: buffer
-  set pszRuleName(value: Uint8Array | Deno.PointerValue | null) {
+  set pszRuleName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: u32
@@ -3336,7 +3336,7 @@ export class SPSTATEHANDLE__View {
  */
 export interface SPWORDPRONUNCIATION {
   /** ptr */
-  pNextWordPronunciation: Deno.PointerValue | Uint8Array | null;
+  pNextWordPronunciation: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Media.Speech.SPLEXICONTYPE */
   eLexiconType: SPLEXICONTYPE;
   /** u16 */
@@ -3346,7 +3346,7 @@ export interface SPWORDPRONUNCIATION {
   /** Windows.Win32.Media.Speech.SPPARTOFSPEECH */
   ePartOfSpeech: SPPARTOFSPEECH;
   /** array */
-  szPronunciation: Deno.PointerValue | null;
+  szPronunciation: Deno.PointerValue;
 }
 
 export const sizeofSPWORDPRONUNCIATION = 32;
@@ -3355,7 +3355,7 @@ export function allocSPWORDPRONUNCIATION(data?: Partial<SPWORDPRONUNCIATION>): U
   const buf = new Uint8Array(sizeofSPWORDPRONUNCIATION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pNextWordPronunciation !== undefined) view.setBigUint64(0, data.pNextWordPronunciation === null ? 0n : BigInt(util.toPointer(data.pNextWordPronunciation)), true);
+  if (data?.pNextWordPronunciation !== undefined) view.setBigUint64(0, data.pNextWordPronunciation === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pNextWordPronunciation))), true);
   // 0x08: i32
   if (data?.eLexiconType !== undefined) view.setInt32(8, Number(data.eLexiconType), true);
   // 0x0c: u16
@@ -3366,7 +3366,7 @@ export function allocSPWORDPRONUNCIATION(data?: Partial<SPWORDPRONUNCIATION>): U
   if (data?.ePartOfSpeech !== undefined) view.setInt32(16, Number(data.ePartOfSpeech), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.szPronunciation !== undefined) view.setBigUint64(24, data.szPronunciation === null ? 0n : BigInt(util.toPointer(data.szPronunciation)), true);
+  if (data?.szPronunciation !== undefined) view.setBigUint64(24, data.szPronunciation === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.szPronunciation))), true);
   return buf;
 }
 
@@ -3381,9 +3381,9 @@ export class SPWORDPRONUNCIATIONView {
   }
 
   // 0x00: pointer
-  get pNextWordPronunciation(): Uint8Array | Deno.PointerValue | null {
+  get pNextWordPronunciation(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: i32
@@ -3409,14 +3409,14 @@ export class SPWORDPRONUNCIATIONView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get szPronunciation(): Uint8Array | Deno.PointerValue | null {
+  get szPronunciation(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set pNextWordPronunciation(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pNextWordPronunciation(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: i32
@@ -3442,8 +3442,8 @@ export class SPWORDPRONUNCIATIONView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set szPronunciation(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set szPronunciation(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3454,9 +3454,9 @@ export interface SPWORDPRONUNCIATIONLIST {
   /** u32 */
   ulSize: number;
   /** ptr */
-  pvBuffer: Deno.PointerValue | Uint8Array | null;
+  pvBuffer: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pFirstWordPronunciation: Deno.PointerValue | Uint8Array | null;
+  pFirstWordPronunciation: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofSPWORDPRONUNCIATIONLIST = 24;
@@ -3468,9 +3468,9 @@ export function allocSPWORDPRONUNCIATIONLIST(data?: Partial<SPWORDPRONUNCIATIONL
   if (data?.ulSize !== undefined) view.setUint32(0, Number(data.ulSize), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pvBuffer !== undefined) view.setBigUint64(8, data.pvBuffer === null ? 0n : BigInt(util.toPointer(data.pvBuffer)), true);
+  if (data?.pvBuffer !== undefined) view.setBigUint64(8, data.pvBuffer === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pvBuffer))), true);
   // 0x10: pointer
-  if (data?.pFirstWordPronunciation !== undefined) view.setBigUint64(16, data.pFirstWordPronunciation === null ? 0n : BigInt(util.toPointer(data.pFirstWordPronunciation)), true);
+  if (data?.pFirstWordPronunciation !== undefined) view.setBigUint64(16, data.pFirstWordPronunciation === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pFirstWordPronunciation))), true);
   return buf;
 }
 
@@ -3492,15 +3492,15 @@ export class SPWORDPRONUNCIATIONLISTView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pvBuffer(): Uint8Array | Deno.PointerValue | null {
+  get pvBuffer(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get pFirstWordPronunciation(): Uint8Array | Deno.PointerValue | null {
+  get pFirstWordPronunciation(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -3511,13 +3511,13 @@ export class SPWORDPRONUNCIATIONLISTView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pvBuffer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pvBuffer(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set pFirstWordPronunciation(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pFirstWordPronunciation(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3526,7 +3526,7 @@ export class SPWORDPRONUNCIATIONLISTView {
  */
 export interface SPWORD {
   /** ptr */
-  pNextWord: Deno.PointerValue | Uint8Array | null;
+  pNextWord: Deno.PointerValue | Uint8Array;
   /** u16 */
   LangID: number;
   /** u16 */
@@ -3536,7 +3536,7 @@ export interface SPWORD {
   /** Windows.Win32.Foundation.PWSTR */
   pszWord: string | null | Uint8Array | Uint16Array;
   /** ptr */
-  pFirstWordPronunciation: Deno.PointerValue | Uint8Array | null;
+  pFirstWordPronunciation: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofSPWORD = 32;
@@ -3545,7 +3545,7 @@ export function allocSPWORD(data?: Partial<SPWORD>): Uint8Array {
   const buf = new Uint8Array(sizeofSPWORD);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pNextWord !== undefined) view.setBigUint64(0, data.pNextWord === null ? 0n : BigInt(util.toPointer(data.pNextWord)), true);
+  if (data?.pNextWord !== undefined) view.setBigUint64(0, data.pNextWord === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pNextWord))), true);
   // 0x08: u16
   if (data?.LangID !== undefined) view.setUint16(8, Number(data.LangID), true);
   // 0x0a: u16
@@ -3555,10 +3555,10 @@ export function allocSPWORD(data?: Partial<SPWORD>): Uint8Array {
   // 0x10: buffer
   if (data?.pszWord !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pszWord);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: pointer
-  if (data?.pFirstWordPronunciation !== undefined) view.setBigUint64(24, data.pFirstWordPronunciation === null ? 0n : BigInt(util.toPointer(data.pFirstWordPronunciation)), true);
+  if (data?.pFirstWordPronunciation !== undefined) view.setBigUint64(24, data.pFirstWordPronunciation === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pFirstWordPronunciation))), true);
   return buf;
 }
 
@@ -3573,9 +3573,9 @@ export class SPWORDView {
   }
 
   // 0x00: pointer
-  get pNextWord(): Uint8Array | Deno.PointerValue | null {
+  get pNextWord(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u16
@@ -3594,20 +3594,20 @@ export class SPWORDView {
   }
 
   // 0x10: buffer
-  get pszWord(): Uint8Array | Deno.PointerValue | null {
+  get pszWord(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get pFirstWordPronunciation(): Uint8Array | Deno.PointerValue | null {
+  get pFirstWordPronunciation(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set pNextWord(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pNextWord(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u16
@@ -3626,14 +3626,14 @@ export class SPWORDView {
   }
 
   // 0x10: buffer
-  set pszWord(value: Uint8Array | Deno.PointerValue | null) {
+  set pszWord(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: pointer
-  set pFirstWordPronunciation(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set pFirstWordPronunciation(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3644,9 +3644,9 @@ export interface SPWORDLIST {
   /** u32 */
   ulSize: number;
   /** ptr */
-  pvBuffer: Deno.PointerValue | Uint8Array | null;
+  pvBuffer: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pFirstWord: Deno.PointerValue | Uint8Array | null;
+  pFirstWord: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofSPWORDLIST = 24;
@@ -3658,9 +3658,9 @@ export function allocSPWORDLIST(data?: Partial<SPWORDLIST>): Uint8Array {
   if (data?.ulSize !== undefined) view.setUint32(0, Number(data.ulSize), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pvBuffer !== undefined) view.setBigUint64(8, data.pvBuffer === null ? 0n : BigInt(util.toPointer(data.pvBuffer)), true);
+  if (data?.pvBuffer !== undefined) view.setBigUint64(8, data.pvBuffer === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pvBuffer))), true);
   // 0x10: pointer
-  if (data?.pFirstWord !== undefined) view.setBigUint64(16, data.pFirstWord === null ? 0n : BigInt(util.toPointer(data.pFirstWord)), true);
+  if (data?.pFirstWord !== undefined) view.setBigUint64(16, data.pFirstWord === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pFirstWord))), true);
   return buf;
 }
 
@@ -3682,15 +3682,15 @@ export class SPWORDLISTView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pvBuffer(): Uint8Array | Deno.PointerValue | null {
+  get pvBuffer(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get pFirstWord(): Uint8Array | Deno.PointerValue | null {
+  get pFirstWord(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -3701,13 +3701,13 @@ export class SPWORDLISTView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pvBuffer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pvBuffer(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set pFirstWord(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pFirstWord(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3716,7 +3716,7 @@ export class SPWORDLISTView {
  */
 export interface SPSHORTCUTPAIR {
   /** ptr */
-  pNextSHORTCUTPAIR: Deno.PointerValue | Uint8Array | null;
+  pNextSHORTCUTPAIR: Deno.PointerValue | Uint8Array;
   /** u16 */
   LangID: number;
   /** Windows.Win32.Media.Speech.SPSHORTCUTTYPE */
@@ -3733,7 +3733,7 @@ export function allocSPSHORTCUTPAIR(data?: Partial<SPSHORTCUTPAIR>): Uint8Array 
   const buf = new Uint8Array(sizeofSPSHORTCUTPAIR);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pNextSHORTCUTPAIR !== undefined) view.setBigUint64(0, data.pNextSHORTCUTPAIR === null ? 0n : BigInt(util.toPointer(data.pNextSHORTCUTPAIR)), true);
+  if (data?.pNextSHORTCUTPAIR !== undefined) view.setBigUint64(0, data.pNextSHORTCUTPAIR === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pNextSHORTCUTPAIR))), true);
   // 0x08: u16
   if (data?.LangID !== undefined) view.setUint16(8, Number(data.LangID), true);
   // 0x0a: i32
@@ -3742,12 +3742,12 @@ export function allocSPSHORTCUTPAIR(data?: Partial<SPSHORTCUTPAIR>): Uint8Array 
   // 0x10: buffer
   if (data?.pszDisplay !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pszDisplay);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.pszSpoken !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.pszSpoken);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   return buf;
 }
@@ -3763,9 +3763,9 @@ export class SPSHORTCUTPAIRView {
   }
 
   // 0x00: pointer
-  get pNextSHORTCUTPAIR(): Uint8Array | Deno.PointerValue | null {
+  get pNextSHORTCUTPAIR(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u16
@@ -3781,20 +3781,20 @@ export class SPSHORTCUTPAIRView {
   // 0x0e: pad2
 
   // 0x10: buffer
-  get pszDisplay(): Uint8Array | Deno.PointerValue | null {
+  get pszDisplay(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get pszSpoken(): Uint8Array | Deno.PointerValue | null {
+  get pszSpoken(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set pNextSHORTCUTPAIR(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pNextSHORTCUTPAIR(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u16
@@ -3810,15 +3810,15 @@ export class SPSHORTCUTPAIRView {
   // 0x0e: pad2
 
   // 0x10: buffer
-  set pszDisplay(value: Uint8Array | Deno.PointerValue | null) {
+  set pszDisplay(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set pszSpoken(value: Uint8Array | Deno.PointerValue | null) {
+  set pszSpoken(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 }
 
@@ -3829,9 +3829,9 @@ export interface SPSHORTCUTPAIRLIST {
   /** u32 */
   ulSize: number;
   /** ptr */
-  pvBuffer: Deno.PointerValue | Uint8Array | null;
+  pvBuffer: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pFirstShortcutPair: Deno.PointerValue | Uint8Array | null;
+  pFirstShortcutPair: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofSPSHORTCUTPAIRLIST = 24;
@@ -3843,9 +3843,9 @@ export function allocSPSHORTCUTPAIRLIST(data?: Partial<SPSHORTCUTPAIRLIST>): Uin
   if (data?.ulSize !== undefined) view.setUint32(0, Number(data.ulSize), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pvBuffer !== undefined) view.setBigUint64(8, data.pvBuffer === null ? 0n : BigInt(util.toPointer(data.pvBuffer)), true);
+  if (data?.pvBuffer !== undefined) view.setBigUint64(8, data.pvBuffer === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pvBuffer))), true);
   // 0x10: pointer
-  if (data?.pFirstShortcutPair !== undefined) view.setBigUint64(16, data.pFirstShortcutPair === null ? 0n : BigInt(util.toPointer(data.pFirstShortcutPair)), true);
+  if (data?.pFirstShortcutPair !== undefined) view.setBigUint64(16, data.pFirstShortcutPair === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pFirstShortcutPair))), true);
   return buf;
 }
 
@@ -3867,15 +3867,15 @@ export class SPSHORTCUTPAIRLISTView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pvBuffer(): Uint8Array | Deno.PointerValue | null {
+  get pvBuffer(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get pFirstShortcutPair(): Uint8Array | Deno.PointerValue | null {
+  get pFirstShortcutPair(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -3886,13 +3886,13 @@ export class SPSHORTCUTPAIRLISTView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pvBuffer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pvBuffer(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set pFirstShortcutPair(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pFirstShortcutPair(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3969,17 +3969,17 @@ export function allocSPVCONTEXT(data?: Partial<SPVCONTEXT>): Uint8Array {
   // 0x00: buffer
   if (data?.pCategory !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pCategory);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: buffer
   if (data?.pBefore !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pBefore);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.pAfter !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pAfter);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   return buf;
 }
@@ -3995,39 +3995,39 @@ export class SPVCONTEXTView {
   }
 
   // 0x00: buffer
-  get pCategory(): Uint8Array | Deno.PointerValue | null {
+  get pCategory(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get pBefore(): Uint8Array | Deno.PointerValue | null {
+  get pBefore(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get pAfter(): Uint8Array | Deno.PointerValue | null {
+  get pAfter(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set pCategory(value: Uint8Array | Deno.PointerValue | null) {
+  set pCategory(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: buffer
-  set pBefore(value: Uint8Array | Deno.PointerValue | null) {
+  set pBefore(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set pAfter(value: Uint8Array | Deno.PointerValue | null) {
+  set pAfter(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 }
 
@@ -4048,15 +4048,15 @@ export interface SPVSTATE {
   /** u32 */
   Volume: number;
   /** Windows.Win32.Media.Speech.SPVPITCH */
-  PitchAdj: Uint8Array | Deno.PointerValue | null;
+  PitchAdj: Uint8Array | Deno.PointerValue;
   /** u32 */
   SilenceMSecs: number;
   /** ptr */
-  pPhoneIds: Deno.PointerValue | Uint8Array | null;
+  pPhoneIds: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Media.Speech.SPPARTOFSPEECH */
   ePartOfSpeech: SPPARTOFSPEECH;
   /** Windows.Win32.Media.Speech.SPVCONTEXT */
-  Context: Uint8Array | Deno.PointerValue | null;
+  Context: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofSPVSTATE = 64;
@@ -4078,17 +4078,17 @@ export function allocSPVSTATE(data?: Partial<SPVSTATE>): Uint8Array {
   if (data?.Volume !== undefined) view.setUint32(16, Number(data.Volume), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.PitchAdj !== undefined) view.setBigUint64(24, data.PitchAdj === null ? 0n : BigInt(util.toPointer(data.PitchAdj)), true);
+  if (data?.PitchAdj !== undefined) view.setBigUint64(24, data.PitchAdj === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.PitchAdj))), true);
   // 0x20: u32
   if (data?.SilenceMSecs !== undefined) view.setUint32(32, Number(data.SilenceMSecs), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.pPhoneIds !== undefined) view.setBigUint64(40, data.pPhoneIds === null ? 0n : BigInt(util.toPointer(data.pPhoneIds)), true);
+  if (data?.pPhoneIds !== undefined) view.setBigUint64(40, data.pPhoneIds === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pPhoneIds))), true);
   // 0x30: i32
   if (data?.ePartOfSpeech !== undefined) view.setInt32(48, Number(data.ePartOfSpeech), true);
   // 0x34: pad4
   // 0x38: pointer
-  if (data?.Context !== undefined) view.setBigUint64(56, data.Context === null ? 0n : BigInt(util.toPointer(data.Context)), true);
+  if (data?.Context !== undefined) view.setBigUint64(56, data.Context === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Context))), true);
   return buf;
 }
 
@@ -4135,9 +4135,9 @@ export class SPVSTATEView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get PitchAdj(): Uint8Array | Deno.PointerValue | null {
+  get PitchAdj(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -4148,9 +4148,9 @@ export class SPVSTATEView {
   // 0x24: pad4
 
   // 0x28: pointer
-  get pPhoneIds(): Uint8Array | Deno.PointerValue | null {
+  get pPhoneIds(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: i32
@@ -4161,9 +4161,9 @@ export class SPVSTATEView {
   // 0x34: pad4
 
   // 0x38: pointer
-  get Context(): Uint8Array | Deno.PointerValue | null {
+  get Context(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -4199,8 +4199,8 @@ export class SPVSTATEView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set PitchAdj(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set PitchAdj(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -4211,8 +4211,8 @@ export class SPVSTATEView {
   // 0x24: pad4
 
   // 0x28: pointer
-  set pPhoneIds(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set pPhoneIds(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: i32
@@ -4223,8 +4223,8 @@ export class SPVSTATEView {
   // 0x34: pad4
 
   // 0x38: pointer
-  set Context(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set Context(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4237,7 +4237,7 @@ export interface SPVOICESTATUS {
   /** u32 */
   ulLastStreamQueued: number;
   /** Windows.Win32.Foundation.HRESULT */
-  hrLastResult: Uint8Array | Deno.PointerValue | null;
+  hrLastResult: Uint8Array | Deno.PointerValue;
   /** u32 */
   dwRunningState: number;
   /** u32 */
@@ -4270,7 +4270,7 @@ export function allocSPVOICESTATUS(data?: Partial<SPVOICESTATUS>): Uint8Array {
   // 0x04: u32
   if (data?.ulLastStreamQueued !== undefined) view.setUint32(4, Number(data.ulLastStreamQueued), true);
   // 0x08: pointer
-  if (data?.hrLastResult !== undefined) view.setBigUint64(8, data.hrLastResult === null ? 0n : BigInt(util.toPointer(data.hrLastResult)), true);
+  if (data?.hrLastResult !== undefined) view.setBigUint64(8, data.hrLastResult === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hrLastResult))), true);
   // 0x10: u32
   if (data?.dwRunningState !== undefined) view.setUint32(16, Number(data.dwRunningState), true);
   // 0x14: u32
@@ -4316,9 +4316,9 @@ export class SPVOICESTATUSView {
   }
 
   // 0x08: pointer
-  get hrLastResult(): Uint8Array | Deno.PointerValue | null {
+  get hrLastResult(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -4384,8 +4384,8 @@ export class SPVOICESTATUSView {
   }
 
   // 0x08: pointer
-  set hrLastResult(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set hrLastResult(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -4499,7 +4499,7 @@ export class FILETIMEView {
  */
 export interface SPRECORESULTTIMES {
   /** Windows.Win32.Foundation.FILETIME */
-  ftStreamTime: Uint8Array | Deno.PointerValue | null;
+  ftStreamTime: Uint8Array | Deno.PointerValue;
   /** u64 */
   ullLength: Deno.PointerValue;
   /** u32 */
@@ -4514,7 +4514,7 @@ export function allocSPRECORESULTTIMES(data?: Partial<SPRECORESULTTIMES>): Uint8
   const buf = new Uint8Array(sizeofSPRECORESULTTIMES);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ftStreamTime !== undefined) view.setBigUint64(0, data.ftStreamTime === null ? 0n : BigInt(util.toPointer(data.ftStreamTime)), true);
+  if (data?.ftStreamTime !== undefined) view.setBigUint64(0, data.ftStreamTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ftStreamTime))), true);
   // 0x08: u64
   if (data?.ullLength !== undefined) view.setBigUint64(8, BigInt(data.ullLength), true);
   // 0x10: u32
@@ -4536,9 +4536,9 @@ export class SPRECORESULTTIMESView {
   }
 
   // 0x00: pointer
-  get ftStreamTime(): Uint8Array | Deno.PointerValue | null {
+  get ftStreamTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u64
@@ -4559,8 +4559,8 @@ export class SPRECORESULTTIMESView {
   }
 
   // 0x00: pointer
-  set ftStreamTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ftStreamTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u64
@@ -4717,7 +4717,7 @@ export interface SPPROPERTYINFO {
   /** Windows.Win32.Foundation.PWSTR */
   pszValue: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Com.VARIANT */
-  vValue: Uint8Array | Deno.PointerValue | null;
+  vValue: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofSPPROPERTYINFO = 32;
@@ -4728,7 +4728,7 @@ export function allocSPPROPERTYINFO(data?: Partial<SPPROPERTYINFO>): Uint8Array 
   // 0x00: buffer
   if (data?.pszName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pszName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: u32
   if (data?.ulId !== undefined) view.setUint32(8, Number(data.ulId), true);
@@ -4736,10 +4736,10 @@ export function allocSPPROPERTYINFO(data?: Partial<SPPROPERTYINFO>): Uint8Array 
   // 0x10: buffer
   if (data?.pszValue !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pszValue);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: pointer
-  if (data?.vValue !== undefined) view.setBigUint64(24, data.vValue === null ? 0n : BigInt(util.toPointer(data.vValue)), true);
+  if (data?.vValue !== undefined) view.setBigUint64(24, data.vValue === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.vValue))), true);
   return buf;
 }
 
@@ -4754,9 +4754,9 @@ export class SPPROPERTYINFOView {
   }
 
   // 0x00: buffer
-  get pszName(): Uint8Array | Deno.PointerValue | null {
+  get pszName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -4767,21 +4767,21 @@ export class SPPROPERTYINFOView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  get pszValue(): Uint8Array | Deno.PointerValue | null {
+  get pszValue(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get vValue(): Uint8Array | Deno.PointerValue | null {
+  get vValue(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set pszName(value: Uint8Array | Deno.PointerValue | null) {
+  set pszName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: u32
@@ -4792,14 +4792,14 @@ export class SPPROPERTYINFOView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  set pszValue(value: Uint8Array | Deno.PointerValue | null) {
+  set pszValue(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: pointer
-  set vValue(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set vValue(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4810,7 +4810,7 @@ export interface SPRECOCONTEXTSTATUS {
   /** Windows.Win32.Media.Speech.SPINTERFERENCE */
   eInterference: SPINTERFERENCE;
   /** array */
-  szRequestTypeOfUI: Deno.PointerValue | null;
+  szRequestTypeOfUI: Deno.PointerValue;
   /** u32 */
   dwReserved1: number;
   /** u32 */
@@ -4826,7 +4826,7 @@ export function allocSPRECOCONTEXTSTATUS(data?: Partial<SPRECOCONTEXTSTATUS>): U
   if (data?.eInterference !== undefined) view.setInt32(0, Number(data.eInterference), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.szRequestTypeOfUI !== undefined) view.setBigUint64(8, data.szRequestTypeOfUI === null ? 0n : BigInt(util.toPointer(data.szRequestTypeOfUI)), true);
+  if (data?.szRequestTypeOfUI !== undefined) view.setBigUint64(8, data.szRequestTypeOfUI === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.szRequestTypeOfUI))), true);
   // 0x10: u32
   if (data?.dwReserved1 !== undefined) view.setUint32(16, Number(data.dwReserved1), true);
   // 0x14: u32
@@ -4852,9 +4852,9 @@ export class SPRECOCONTEXTSTATUSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get szRequestTypeOfUI(): Uint8Array | Deno.PointerValue | null {
+  get szRequestTypeOfUI(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -4875,8 +4875,8 @@ export class SPRECOCONTEXTSTATUSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set szRequestTypeOfUI(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set szRequestTypeOfUI(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -4895,7 +4895,7 @@ export class SPRECOCONTEXTSTATUSView {
  */
 export interface SPRECOGNIZERSTATUS {
   /** Windows.Win32.Media.Speech.SPAUDIOSTATUS */
-  AudioStatus: Uint8Array | Deno.PointerValue | null;
+  AudioStatus: Uint8Array | Deno.PointerValue;
   /** u64 */
   ullRecognitionStreamPos: Deno.PointerValue;
   /** u32 */
@@ -4903,11 +4903,11 @@ export interface SPRECOGNIZERSTATUS {
   /** u32 */
   ulNumActive: number;
   /** System.Guid */
-  clsidEngine: Uint8Array | Deno.PointerValue | null;
+  clsidEngine: Uint8Array | Deno.PointerValue;
   /** u32 */
   cLangIDs: number;
   /** array */
-  aLangID: Deno.PointerValue | null;
+  aLangID: Deno.PointerValue;
   /** u64 */
   ullRecognitionStreamTime: Deno.PointerValue;
 }
@@ -4918,7 +4918,7 @@ export function allocSPRECOGNIZERSTATUS(data?: Partial<SPRECOGNIZERSTATUS>): Uin
   const buf = new Uint8Array(sizeofSPRECOGNIZERSTATUS);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.AudioStatus !== undefined) view.setBigUint64(0, data.AudioStatus === null ? 0n : BigInt(util.toPointer(data.AudioStatus)), true);
+  if (data?.AudioStatus !== undefined) view.setBigUint64(0, data.AudioStatus === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.AudioStatus))), true);
   // 0x08: u64
   if (data?.ullRecognitionStreamPos !== undefined) view.setBigUint64(8, BigInt(data.ullRecognitionStreamPos), true);
   // 0x10: u32
@@ -4926,12 +4926,12 @@ export function allocSPRECOGNIZERSTATUS(data?: Partial<SPRECOGNIZERSTATUS>): Uin
   // 0x14: u32
   if (data?.ulNumActive !== undefined) view.setUint32(20, Number(data.ulNumActive), true);
   // 0x18: pointer
-  if (data?.clsidEngine !== undefined) view.setBigUint64(24, data.clsidEngine === null ? 0n : BigInt(util.toPointer(data.clsidEngine)), true);
+  if (data?.clsidEngine !== undefined) view.setBigUint64(24, data.clsidEngine === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.clsidEngine))), true);
   // 0x20: u32
   if (data?.cLangIDs !== undefined) view.setUint32(32, Number(data.cLangIDs), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.aLangID !== undefined) view.setBigUint64(40, data.aLangID === null ? 0n : BigInt(util.toPointer(data.aLangID)), true);
+  if (data?.aLangID !== undefined) view.setBigUint64(40, data.aLangID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.aLangID))), true);
   // 0x30: u64
   if (data?.ullRecognitionStreamTime !== undefined) view.setBigUint64(48, BigInt(data.ullRecognitionStreamTime), true);
   return buf;
@@ -4948,9 +4948,9 @@ export class SPRECOGNIZERSTATUSView {
   }
 
   // 0x00: pointer
-  get AudioStatus(): Uint8Array | Deno.PointerValue | null {
+  get AudioStatus(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u64
@@ -4969,9 +4969,9 @@ export class SPRECOGNIZERSTATUSView {
   }
 
   // 0x18: pointer
-  get clsidEngine(): Uint8Array | Deno.PointerValue | null {
+  get clsidEngine(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -4982,9 +4982,9 @@ export class SPRECOGNIZERSTATUSView {
   // 0x24: pad4
 
   // 0x28: pointer
-  get aLangID(): Uint8Array | Deno.PointerValue | null {
+  get aLangID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: u64
@@ -4993,8 +4993,8 @@ export class SPRECOGNIZERSTATUSView {
   }
 
   // 0x00: pointer
-  set AudioStatus(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set AudioStatus(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u64
@@ -5013,8 +5013,8 @@ export class SPRECOGNIZERSTATUSView {
   }
 
   // 0x18: pointer
-  set clsidEngine(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set clsidEngine(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -5025,8 +5025,8 @@ export class SPRECOGNIZERSTATUSView {
   // 0x24: pad4
 
   // 0x28: pointer
-  set aLangID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set aLangID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: u64
@@ -5042,7 +5042,7 @@ export interface SPNORMALIZATIONLIST {
   /** u32 */
   ulSize: number;
   /** ptr */
-  ppszzNormalizedList: Deno.PointerValue | Uint8Array | null;
+  ppszzNormalizedList: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofSPNORMALIZATIONLIST = 16;
@@ -5054,7 +5054,7 @@ export function allocSPNORMALIZATIONLIST(data?: Partial<SPNORMALIZATIONLIST>): U
   if (data?.ulSize !== undefined) view.setUint32(0, Number(data.ulSize), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.ppszzNormalizedList !== undefined) view.setBigUint64(8, data.ppszzNormalizedList === null ? 0n : BigInt(util.toPointer(data.ppszzNormalizedList)), true);
+  if (data?.ppszzNormalizedList !== undefined) view.setBigUint64(8, data.ppszzNormalizedList === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ppszzNormalizedList))), true);
   return buf;
 }
 
@@ -5076,9 +5076,9 @@ export class SPNORMALIZATIONLISTView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get ppszzNormalizedList(): Uint8Array | Deno.PointerValue | null {
+  get ppszzNormalizedList(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -5089,8 +5089,8 @@ export class SPNORMALIZATIONLISTView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set ppszzNormalizedList(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ppszzNormalizedList(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -5114,12 +5114,12 @@ export function allocSPDISPLAYTOKEN(data?: Partial<SPDISPLAYTOKEN>): Uint8Array 
   // 0x00: buffer
   if (data?.pszLexical !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pszLexical);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: buffer
   if (data?.pszDisplay !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pszDisplay);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: u8
   if (data?.bDisplayAttributes !== undefined) view.setUint8(16, Number(data.bDisplayAttributes));
@@ -5138,15 +5138,15 @@ export class SPDISPLAYTOKENView {
   }
 
   // 0x00: buffer
-  get pszLexical(): Uint8Array | Deno.PointerValue | null {
+  get pszLexical(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get pszDisplay(): Uint8Array | Deno.PointerValue | null {
+  get pszDisplay(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u8
@@ -5157,15 +5157,15 @@ export class SPDISPLAYTOKENView {
   // 0x11: pad7
 
   // 0x00: buffer
-  set pszLexical(value: Uint8Array | Deno.PointerValue | null) {
+  set pszLexical(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: buffer
-  set pszDisplay(value: Uint8Array | Deno.PointerValue | null) {
+  set pszDisplay(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: u8
@@ -5183,7 +5183,7 @@ export interface SPDISPLAYPHRASE {
   /** u32 */
   ulNumTokens: number;
   /** ptr */
-  pTokens: Deno.PointerValue | Uint8Array | null;
+  pTokens: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofSPDISPLAYPHRASE = 16;
@@ -5195,7 +5195,7 @@ export function allocSPDISPLAYPHRASE(data?: Partial<SPDISPLAYPHRASE>): Uint8Arra
   if (data?.ulNumTokens !== undefined) view.setUint32(0, Number(data.ulNumTokens), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pTokens !== undefined) view.setBigUint64(8, data.pTokens === null ? 0n : BigInt(util.toPointer(data.pTokens)), true);
+  if (data?.pTokens !== undefined) view.setBigUint64(8, data.pTokens === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pTokens))), true);
   return buf;
 }
 
@@ -5217,9 +5217,9 @@ export class SPDISPLAYPHRASEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pTokens(): Uint8Array | Deno.PointerValue | null {
+  get pTokens(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -5230,8 +5230,8 @@ export class SPDISPLAYPHRASEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pTokens(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pTokens(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 

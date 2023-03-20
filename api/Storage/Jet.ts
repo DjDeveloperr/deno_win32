@@ -1002,7 +1002,7 @@ export interface JET_INDEXID {
   /** u32 */
   cbStruct: number;
   /** array */
-  rgbIndexId: Deno.PointerValue | null;
+  rgbIndexId: Deno.PointerValue;
 }
 
 export const sizeofJET_INDEXID = 16;
@@ -1014,7 +1014,7 @@ export function allocJET_INDEXID(data?: Partial<JET_INDEXID>): Uint8Array {
   if (data?.cbStruct !== undefined) view.setUint32(0, Number(data.cbStruct), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.rgbIndexId !== undefined) view.setBigUint64(8, data.rgbIndexId === null ? 0n : BigInt(util.toPointer(data.rgbIndexId)), true);
+  if (data?.rgbIndexId !== undefined) view.setBigUint64(8, data.rgbIndexId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgbIndexId))), true);
   return buf;
 }
 
@@ -1036,9 +1036,9 @@ export class JET_INDEXIDView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get rgbIndexId(): Uint8Array | Deno.PointerValue | null {
+  get rgbIndexId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1049,8 +1049,8 @@ export class JET_INDEXIDView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set rgbIndexId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set rgbIndexId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1363,7 +1363,7 @@ export class JET_THREADSTATS2View {
 
 export type CHAR = number;
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * _Anonymous1_e__Union (size: 64)
@@ -1376,15 +1376,15 @@ export interface _Anonymous1_e__Union {
   /** usize */
   u: Deno.PointerValue;
   /** ptr */
-  psid: Deno.PointerValue | Uint8Array | null;
+  psid: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pguid: Deno.PointerValue | Uint8Array | null;
+  pguid: Deno.PointerValue | Uint8Array;
   /** u32 */
   LogonId_LowPart: number;
   /** ptr */
-  pObjectTypes: Deno.PointerValue | Uint8Array | null;
+  pObjectTypes: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pIpAddress: Deno.PointerValue | Uint8Array | null;
+  pIpAddress: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeof_Anonymous1_e__Union = 64;
@@ -1397,21 +1397,21 @@ export function alloc_Anonymous1_e__Union(data?: Partial<_Anonymous1_e__Union>):
   // 0x08: buffer
   if (data?.String !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.String);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: usize
   if (data?.u !== undefined) view.setBigUint64(16, BigInt(data.u), true);
   // 0x18: pointer
-  if (data?.psid !== undefined) view.setBigUint64(24, data.psid === null ? 0n : BigInt(util.toPointer(data.psid)), true);
+  if (data?.psid !== undefined) view.setBigUint64(24, data.psid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.psid))), true);
   // 0x20: pointer
-  if (data?.pguid !== undefined) view.setBigUint64(32, data.pguid === null ? 0n : BigInt(util.toPointer(data.pguid)), true);
+  if (data?.pguid !== undefined) view.setBigUint64(32, data.pguid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pguid))), true);
   // 0x28: u32
   if (data?.LogonId_LowPart !== undefined) view.setUint32(40, Number(data.LogonId_LowPart), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.pObjectTypes !== undefined) view.setBigUint64(48, data.pObjectTypes === null ? 0n : BigInt(util.toPointer(data.pObjectTypes)), true);
+  if (data?.pObjectTypes !== undefined) view.setBigUint64(48, data.pObjectTypes === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pObjectTypes))), true);
   // 0x38: pointer
-  if (data?.pIpAddress !== undefined) view.setBigUint64(56, data.pIpAddress === null ? 0n : BigInt(util.toPointer(data.pIpAddress)), true);
+  if (data?.pIpAddress !== undefined) view.setBigUint64(56, data.pIpAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pIpAddress))), true);
   return buf;
 }
 
@@ -1431,9 +1431,9 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x08: buffer
-  get String(): Uint8Array | Deno.PointerValue | null {
+  get String(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: usize
@@ -1442,15 +1442,15 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x18: pointer
-  get psid(): Uint8Array | Deno.PointerValue | null {
+  get psid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get pguid(): Uint8Array | Deno.PointerValue | null {
+  get pguid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -1461,15 +1461,15 @@ export class _Anonymous1_e__UnionView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  get pObjectTypes(): Uint8Array | Deno.PointerValue | null {
+  get pObjectTypes(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get pIpAddress(): Uint8Array | Deno.PointerValue | null {
+  get pIpAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: usize
@@ -1478,9 +1478,9 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x08: buffer
-  set String(value: Uint8Array | Deno.PointerValue | null) {
+  set String(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: usize
@@ -1489,13 +1489,13 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x18: pointer
-  set psid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set psid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set pguid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set pguid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u32
@@ -1506,13 +1506,13 @@ export class _Anonymous1_e__UnionView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  set pObjectTypes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set pObjectTypes(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set pIpAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set pIpAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1591,9 +1591,9 @@ export interface JET_LOGTIME {
   /** Windows.Win32.Foundation.CHAR */
   bYear: string | number;
   /** _Anonymous1_e__Union */
-  Anonymous1: Uint8Array | Deno.PointerValue | null;
+  Anonymous1: Uint8Array | Deno.PointerValue;
   /** _Anonymous2_e__Union */
-  Anonymous2: Uint8Array | Deno.PointerValue | null;
+  Anonymous2: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofJET_LOGTIME = 24;
@@ -1615,9 +1615,9 @@ export function allocJET_LOGTIME(data?: Partial<JET_LOGTIME>): Uint8Array {
   if (data?.bYear !== undefined) view.setUint8(5, Number(data.bYear));
   // 0x06: pad2
   // 0x08: pointer
-  if (data?.Anonymous1 !== undefined) view.setBigUint64(8, data.Anonymous1 === null ? 0n : BigInt(util.toPointer(data.Anonymous1)), true);
+  if (data?.Anonymous1 !== undefined) view.setBigUint64(8, data.Anonymous1 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous1))), true);
   // 0x10: pointer
-  if (data?.Anonymous2 !== undefined) view.setBigUint64(16, data.Anonymous2 === null ? 0n : BigInt(util.toPointer(data.Anonymous2)), true);
+  if (data?.Anonymous2 !== undefined) view.setBigUint64(16, data.Anonymous2 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous2))), true);
   return buf;
 }
 
@@ -1664,15 +1664,15 @@ export class JET_LOGTIMEView {
   // 0x06: pad2
 
   // 0x08: pointer
-  get Anonymous1(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous1(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get Anonymous2(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous2(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u8
@@ -1708,13 +1708,13 @@ export class JET_LOGTIMEView {
   // 0x06: pad2
 
   // 0x08: pointer
-  set Anonymous1(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous1(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set Anonymous2(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set Anonymous2(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1725,9 +1725,9 @@ export interface JET_SIGNATURE {
   /** u32 */
   ulRandom: number;
   /** Windows.Win32.Storage.Jet.JET_LOGTIME */
-  logtimeCreate: Uint8Array | Deno.PointerValue | null;
+  logtimeCreate: Uint8Array | Deno.PointerValue;
   /** array */
-  szComputerName: Deno.PointerValue | null;
+  szComputerName: Deno.PointerValue;
 }
 
 export const sizeofJET_SIGNATURE = 24;
@@ -1739,9 +1739,9 @@ export function allocJET_SIGNATURE(data?: Partial<JET_SIGNATURE>): Uint8Array {
   if (data?.ulRandom !== undefined) view.setUint32(0, Number(data.ulRandom), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.logtimeCreate !== undefined) view.setBigUint64(8, data.logtimeCreate === null ? 0n : BigInt(util.toPointer(data.logtimeCreate)), true);
+  if (data?.logtimeCreate !== undefined) view.setBigUint64(8, data.logtimeCreate === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.logtimeCreate))), true);
   // 0x10: pointer
-  if (data?.szComputerName !== undefined) view.setBigUint64(16, data.szComputerName === null ? 0n : BigInt(util.toPointer(data.szComputerName)), true);
+  if (data?.szComputerName !== undefined) view.setBigUint64(16, data.szComputerName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.szComputerName))), true);
   return buf;
 }
 
@@ -1763,15 +1763,15 @@ export class JET_SIGNATUREView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get logtimeCreate(): Uint8Array | Deno.PointerValue | null {
+  get logtimeCreate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get szComputerName(): Uint8Array | Deno.PointerValue | null {
+  get szComputerName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1782,13 +1782,13 @@ export class JET_SIGNATUREView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set logtimeCreate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set logtimeCreate(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set szComputerName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set szComputerName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1797,7 +1797,7 @@ export class JET_SIGNATUREView {
  */
 export interface JET_COMMIT_ID {
   /** Windows.Win32.Storage.Jet.JET_SIGNATURE */
-  signLog: Uint8Array | Deno.PointerValue | null;
+  signLog: Uint8Array | Deno.PointerValue;
   /** i32 */
   reserved: number;
   /** i64 */
@@ -1810,7 +1810,7 @@ export function allocJET_COMMIT_ID(data?: Partial<JET_COMMIT_ID>): Uint8Array {
   const buf = new Uint8Array(sizeofJET_COMMIT_ID);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.signLog !== undefined) view.setBigUint64(0, data.signLog === null ? 0n : BigInt(util.toPointer(data.signLog)), true);
+  if (data?.signLog !== undefined) view.setBigUint64(0, data.signLog === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.signLog))), true);
   // 0x08: i32
   if (data?.reserved !== undefined) view.setInt32(8, Number(data.reserved), true);
   // 0x0c: pad4
@@ -1830,9 +1830,9 @@ export class JET_COMMIT_IDView {
   }
 
   // 0x00: pointer
-  get signLog(): Uint8Array | Deno.PointerValue | null {
+  get signLog(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: i32
@@ -1848,8 +1848,8 @@ export class JET_COMMIT_IDView {
   }
 
   // 0x00: pointer
-  set signLog(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set signLog(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: i32
@@ -1872,9 +1872,9 @@ export interface JET_RBSINFOMISC {
   /** i32 */
   lRBSGeneration: number;
   /** Windows.Win32.Storage.Jet.JET_LOGTIME */
-  logtimeCreate: Uint8Array | Deno.PointerValue | null;
+  logtimeCreate: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_LOGTIME */
-  logtimeCreatePrevRBS: Uint8Array | Deno.PointerValue | null;
+  logtimeCreatePrevRBS: Uint8Array | Deno.PointerValue;
   /** u32 */
   ulMajor: number;
   /** u32 */
@@ -1892,9 +1892,9 @@ export function allocJET_RBSINFOMISC(data?: Partial<JET_RBSINFOMISC>): Uint8Arra
   if (data?.lRBSGeneration !== undefined) view.setInt32(0, Number(data.lRBSGeneration), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.logtimeCreate !== undefined) view.setBigUint64(8, data.logtimeCreate === null ? 0n : BigInt(util.toPointer(data.logtimeCreate)), true);
+  if (data?.logtimeCreate !== undefined) view.setBigUint64(8, data.logtimeCreate === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.logtimeCreate))), true);
   // 0x10: pointer
-  if (data?.logtimeCreatePrevRBS !== undefined) view.setBigUint64(16, data.logtimeCreatePrevRBS === null ? 0n : BigInt(util.toPointer(data.logtimeCreatePrevRBS)), true);
+  if (data?.logtimeCreatePrevRBS !== undefined) view.setBigUint64(16, data.logtimeCreatePrevRBS === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.logtimeCreatePrevRBS))), true);
   // 0x18: u32
   if (data?.ulMajor !== undefined) view.setUint32(24, Number(data.ulMajor), true);
   // 0x1c: u32
@@ -1922,15 +1922,15 @@ export class JET_RBSINFOMISCView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get logtimeCreate(): Uint8Array | Deno.PointerValue | null {
+  get logtimeCreate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get logtimeCreatePrevRBS(): Uint8Array | Deno.PointerValue | null {
+  get logtimeCreatePrevRBS(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -1956,13 +1956,13 @@ export class JET_RBSINFOMISCView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set logtimeCreate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set logtimeCreate(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set logtimeCreatePrevRBS(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set logtimeCreatePrevRBS(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -1994,7 +1994,7 @@ export interface JET_RBSREVERTINFOMISC {
   /** i32 */
   lGenMaxRevertEnd: number;
   /** Windows.Win32.Storage.Jet.JET_LOGTIME */
-  logtimeRevertFrom: Uint8Array | Deno.PointerValue | null;
+  logtimeRevertFrom: Uint8Array | Deno.PointerValue;
   /** u64 */
   cSecRevert: Deno.PointerValue;
   /** u64 */
@@ -2015,7 +2015,7 @@ export function allocJET_RBSREVERTINFOMISC(data?: Partial<JET_RBSREVERTINFOMISC>
   // 0x0c: i32
   if (data?.lGenMaxRevertEnd !== undefined) view.setInt32(12, Number(data.lGenMaxRevertEnd), true);
   // 0x10: pointer
-  if (data?.logtimeRevertFrom !== undefined) view.setBigUint64(16, data.logtimeRevertFrom === null ? 0n : BigInt(util.toPointer(data.logtimeRevertFrom)), true);
+  if (data?.logtimeRevertFrom !== undefined) view.setBigUint64(16, data.logtimeRevertFrom === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.logtimeRevertFrom))), true);
   // 0x18: u64
   if (data?.cSecRevert !== undefined) view.setBigUint64(24, BigInt(data.cSecRevert), true);
   // 0x20: u64
@@ -2054,9 +2054,9 @@ export class JET_RBSREVERTINFOMISCView {
   }
 
   // 0x10: pointer
-  get logtimeRevertFrom(): Uint8Array | Deno.PointerValue | null {
+  get logtimeRevertFrom(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u64
@@ -2090,8 +2090,8 @@ export class JET_RBSREVERTINFOMISCView {
   }
 
   // 0x10: pointer
-  set logtimeRevertFrom(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set logtimeRevertFrom(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u64
@@ -2421,7 +2421,7 @@ export class JET_RECSIZE2View {
   }
 }
 
-export type PSTR = Deno.PointerValue | Uint8Array | null;
+export type PSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.Storage.Jet.JET_RSTMAP_A (size: 16)
@@ -2441,12 +2441,12 @@ export function allocJET_RSTMAP_A(data?: Partial<JET_RSTMAP_A>): Uint8Array {
   // 0x00: buffer
   if (data?.szDatabaseName !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.szDatabaseName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: buffer
   if (data?.szNewDatabaseName !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.szNewDatabaseName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   return buf;
 }
@@ -2462,27 +2462,27 @@ export class JET_RSTMAP_AView {
   }
 
   // 0x00: buffer
-  get szDatabaseName(): Uint8Array | Deno.PointerValue | null {
+  get szDatabaseName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get szNewDatabaseName(): Uint8Array | Deno.PointerValue | null {
+  get szNewDatabaseName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set szDatabaseName(value: Uint8Array | Deno.PointerValue | null) {
+  set szDatabaseName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: buffer
-  set szNewDatabaseName(value: Uint8Array | Deno.PointerValue | null) {
+  set szNewDatabaseName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 }
 
@@ -2504,12 +2504,12 @@ export function allocJET_RSTMAP_W(data?: Partial<JET_RSTMAP_W>): Uint8Array {
   // 0x00: buffer
   if (data?.szDatabaseName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.szDatabaseName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: buffer
   if (data?.szNewDatabaseName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.szNewDatabaseName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   return buf;
 }
@@ -2525,27 +2525,27 @@ export class JET_RSTMAP_WView {
   }
 
   // 0x00: buffer
-  get szDatabaseName(): Uint8Array | Deno.PointerValue | null {
+  get szDatabaseName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get szNewDatabaseName(): Uint8Array | Deno.PointerValue | null {
+  get szNewDatabaseName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set szDatabaseName(value: Uint8Array | Deno.PointerValue | null) {
+  set szDatabaseName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: buffer
-  set szNewDatabaseName(value: Uint8Array | Deno.PointerValue | null) {
+  set szNewDatabaseName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 }
 
@@ -2607,9 +2607,9 @@ export class _Anonymous_e__StructView {
  */
 export interface _Anonymous_e__Union {
   /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** array */
-  X: Deno.PointerValue | null;
+  X: Deno.PointerValue;
 }
 
 export const sizeof_Anonymous_e__Union = 16;
@@ -2618,9 +2618,9 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   const buf = new Uint8Array(sizeof_Anonymous_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x08: pointer
-  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.X))), true);
   return buf;
 }
 
@@ -2635,25 +2635,25 @@ export class _Anonymous_e__UnionView {
   }
 
   // 0x00: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get X(): Uint8Array | Deno.PointerValue | null {
+  get X(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set X(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set X(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2664,7 +2664,7 @@ export interface JET_CONVERT_A {
   /** Windows.Win32.Foundation.PSTR */
   szOldDll: string | null | Uint8Array;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofJET_CONVERT_A = 16;
@@ -2675,10 +2675,10 @@ export function allocJET_CONVERT_A(data?: Partial<JET_CONVERT_A>): Uint8Array {
   // 0x00: buffer
   if (data?.szOldDll !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.szOldDll);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -2693,26 +2693,26 @@ export class JET_CONVERT_AView {
   }
 
   // 0x00: buffer
-  get szOldDll(): Uint8Array | Deno.PointerValue | null {
+  get szOldDll(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set szOldDll(value: Uint8Array | Deno.PointerValue | null) {
+  set szOldDll(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2723,7 +2723,7 @@ export interface JET_CONVERT_W {
   /** Windows.Win32.Foundation.PWSTR */
   szOldDll: string | null | Uint8Array | Uint16Array;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofJET_CONVERT_W = 16;
@@ -2734,10 +2734,10 @@ export function allocJET_CONVERT_W(data?: Partial<JET_CONVERT_W>): Uint8Array {
   // 0x00: buffer
   if (data?.szOldDll !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.szOldDll);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -2752,26 +2752,26 @@ export class JET_CONVERT_WView {
   }
 
   // 0x00: buffer
-  get szOldDll(): Uint8Array | Deno.PointerValue | null {
+  get szOldDll(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set szOldDll(value: Uint8Array | Deno.PointerValue | null) {
+  set szOldDll(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2864,7 +2864,7 @@ export interface JET_DBINFOUPGRADE {
   /** u32 */
   csecToUpgrade: number;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofJET_DBINFOUPGRADE = 32;
@@ -2885,7 +2885,7 @@ export function allocJET_DBINFOUPGRADE(data?: Partial<JET_DBINFOUPGRADE>): Uint8
   // 0x14: u32
   if (data?.csecToUpgrade !== undefined) view.setUint32(20, Number(data.csecToUpgrade), true);
   // 0x18: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(24, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(24, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -2930,9 +2930,9 @@ export class JET_DBINFOUPGRADEView {
   }
 
   // 0x18: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -2966,8 +2966,8 @@ export class JET_DBINFOUPGRADEView {
   }
 
   // 0x18: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2980,7 +2980,7 @@ export interface JET_OBJECTLIST {
   /** u32 */
   cbStruct: number;
   /** Windows.Win32.Storage.StructuredStorage.JET_TABLEID */
-  tableid: Uint8Array | Deno.PointerValue | null;
+  tableid: Uint8Array | Deno.PointerValue;
   /** u32 */
   cRecord: number;
   /** u32 */
@@ -3012,7 +3012,7 @@ export function allocJET_OBJECTLIST(data?: Partial<JET_OBJECTLIST>): Uint8Array 
   if (data?.cbStruct !== undefined) view.setUint32(0, Number(data.cbStruct), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.tableid !== undefined) view.setBigUint64(8, data.tableid === null ? 0n : BigInt(util.toPointer(data.tableid)), true);
+  if (data?.tableid !== undefined) view.setBigUint64(8, data.tableid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.tableid))), true);
   // 0x10: u32
   if (data?.cRecord !== undefined) view.setUint32(16, Number(data.cRecord), true);
   // 0x14: u32
@@ -3054,9 +3054,9 @@ export class JET_OBJECTLISTView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get tableid(): Uint8Array | Deno.PointerValue | null {
+  get tableid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -3117,8 +3117,8 @@ export class JET_OBJECTLISTView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set tableid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set tableid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -3179,7 +3179,7 @@ export interface JET_COLUMNLIST {
   /** u32 */
   cbStruct: number;
   /** Windows.Win32.Storage.StructuredStorage.JET_TABLEID */
-  tableid: Uint8Array | Deno.PointerValue | null;
+  tableid: Uint8Array | Deno.PointerValue;
   /** u32 */
   cRecord: number;
   /** u32 */
@@ -3221,7 +3221,7 @@ export function allocJET_COLUMNLIST(data?: Partial<JET_COLUMNLIST>): Uint8Array 
   if (data?.cbStruct !== undefined) view.setUint32(0, Number(data.cbStruct), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.tableid !== undefined) view.setBigUint64(8, data.tableid === null ? 0n : BigInt(util.toPointer(data.tableid)), true);
+  if (data?.tableid !== undefined) view.setBigUint64(8, data.tableid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.tableid))), true);
   // 0x10: u32
   if (data?.cRecord !== undefined) view.setUint32(16, Number(data.cRecord), true);
   // 0x14: u32
@@ -3274,9 +3274,9 @@ export class JET_COLUMNLISTView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get tableid(): Uint8Array | Deno.PointerValue | null {
+  get tableid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -3364,8 +3364,8 @@ export class JET_COLUMNLISTView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set tableid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set tableid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -3625,9 +3625,9 @@ export interface JET_COLUMNBASE_A {
   /** u32 */
   grbit: number;
   /** array */
-  szBaseTableName: Deno.PointerValue | null;
+  szBaseTableName: Deno.PointerValue;
   /** array */
-  szBaseColumnName: Deno.PointerValue | null;
+  szBaseColumnName: Deno.PointerValue;
 }
 
 export const sizeofJET_COLUMNBASE_A = 48;
@@ -3655,9 +3655,9 @@ export function allocJET_COLUMNBASE_A(data?: Partial<JET_COLUMNBASE_A>): Uint8Ar
   if (data?.grbit !== undefined) view.setUint32(24, Number(data.grbit), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.szBaseTableName !== undefined) view.setBigUint64(32, data.szBaseTableName === null ? 0n : BigInt(util.toPointer(data.szBaseTableName)), true);
+  if (data?.szBaseTableName !== undefined) view.setBigUint64(32, data.szBaseTableName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.szBaseTableName))), true);
   // 0x28: pointer
-  if (data?.szBaseColumnName !== undefined) view.setBigUint64(40, data.szBaseColumnName === null ? 0n : BigInt(util.toPointer(data.szBaseColumnName)), true);
+  if (data?.szBaseColumnName !== undefined) view.setBigUint64(40, data.szBaseColumnName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.szBaseColumnName))), true);
   return buf;
 }
 
@@ -3719,15 +3719,15 @@ export class JET_COLUMNBASE_AView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get szBaseTableName(): Uint8Array | Deno.PointerValue | null {
+  get szBaseTableName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get szBaseColumnName(): Uint8Array | Deno.PointerValue | null {
+  get szBaseColumnName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -3778,13 +3778,13 @@ export class JET_COLUMNBASE_AView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set szBaseTableName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set szBaseTableName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set szBaseColumnName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set szBaseColumnName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3811,9 +3811,9 @@ export interface JET_COLUMNBASE_W {
   /** u32 */
   grbit: number;
   /** array */
-  szBaseTableName: Deno.PointerValue | null;
+  szBaseTableName: Deno.PointerValue;
   /** array */
-  szBaseColumnName: Deno.PointerValue | null;
+  szBaseColumnName: Deno.PointerValue;
 }
 
 export const sizeofJET_COLUMNBASE_W = 48;
@@ -3841,9 +3841,9 @@ export function allocJET_COLUMNBASE_W(data?: Partial<JET_COLUMNBASE_W>): Uint8Ar
   if (data?.grbit !== undefined) view.setUint32(24, Number(data.grbit), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.szBaseTableName !== undefined) view.setBigUint64(32, data.szBaseTableName === null ? 0n : BigInt(util.toPointer(data.szBaseTableName)), true);
+  if (data?.szBaseTableName !== undefined) view.setBigUint64(32, data.szBaseTableName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.szBaseTableName))), true);
   // 0x28: pointer
-  if (data?.szBaseColumnName !== undefined) view.setBigUint64(40, data.szBaseColumnName === null ? 0n : BigInt(util.toPointer(data.szBaseColumnName)), true);
+  if (data?.szBaseColumnName !== undefined) view.setBigUint64(40, data.szBaseColumnName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.szBaseColumnName))), true);
   return buf;
 }
 
@@ -3905,15 +3905,15 @@ export class JET_COLUMNBASE_WView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get szBaseTableName(): Uint8Array | Deno.PointerValue | null {
+  get szBaseTableName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get szBaseColumnName(): Uint8Array | Deno.PointerValue | null {
+  get szBaseColumnName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -3964,13 +3964,13 @@ export class JET_COLUMNBASE_WView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set szBaseTableName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set szBaseTableName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set szBaseColumnName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set szBaseColumnName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3981,7 +3981,7 @@ export interface JET_INDEXLIST {
   /** u32 */
   cbStruct: number;
   /** Windows.Win32.Storage.StructuredStorage.JET_TABLEID */
-  tableid: Uint8Array | Deno.PointerValue | null;
+  tableid: Uint8Array | Deno.PointerValue;
   /** u32 */
   cRecord: number;
   /** u32 */
@@ -4027,7 +4027,7 @@ export function allocJET_INDEXLIST(data?: Partial<JET_INDEXLIST>): Uint8Array {
   if (data?.cbStruct !== undefined) view.setUint32(0, Number(data.cbStruct), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.tableid !== undefined) view.setBigUint64(8, data.tableid === null ? 0n : BigInt(util.toPointer(data.tableid)), true);
+  if (data?.tableid !== undefined) view.setBigUint64(8, data.tableid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.tableid))), true);
   // 0x10: u32
   if (data?.cRecord !== undefined) view.setUint32(16, Number(data.cRecord), true);
   // 0x14: u32
@@ -4084,9 +4084,9 @@ export class JET_INDEXLISTView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get tableid(): Uint8Array | Deno.PointerValue | null {
+  get tableid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -4184,8 +4184,8 @@ export class JET_INDEXLISTView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set tableid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set tableid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -4291,7 +4291,7 @@ export interface JET_COLUMNCREATE_A {
   /** u32 */
   grbit: number;
   /** ptr */
-  pvDefault: Deno.PointerValue | Uint8Array | null;
+  pvDefault: Deno.PointerValue | Uint8Array;
   /** u32 */
   cbDefault: number;
   /** u32 */
@@ -4313,7 +4313,7 @@ export function allocJET_COLUMNCREATE_A(data?: Partial<JET_COLUMNCREATE_A>): Uin
   // 0x08: buffer
   if (data?.szColumnName !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.szColumnName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: u32
   if (data?.coltyp !== undefined) view.setUint32(16, Number(data.coltyp), true);
@@ -4323,7 +4323,7 @@ export function allocJET_COLUMNCREATE_A(data?: Partial<JET_COLUMNCREATE_A>): Uin
   if (data?.grbit !== undefined) view.setUint32(24, Number(data.grbit), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.pvDefault !== undefined) view.setBigUint64(32, data.pvDefault === null ? 0n : BigInt(util.toPointer(data.pvDefault)), true);
+  if (data?.pvDefault !== undefined) view.setBigUint64(32, data.pvDefault === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pvDefault))), true);
   // 0x28: u32
   if (data?.cbDefault !== undefined) view.setUint32(40, Number(data.cbDefault), true);
   // 0x2c: u32
@@ -4353,9 +4353,9 @@ export class JET_COLUMNCREATE_AView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get szColumnName(): Uint8Array | Deno.PointerValue | null {
+  get szColumnName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -4376,9 +4376,9 @@ export class JET_COLUMNCREATE_AView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get pvDefault(): Uint8Array | Deno.PointerValue | null {
+  get pvDefault(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -4409,9 +4409,9 @@ export class JET_COLUMNCREATE_AView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set szColumnName(value: Uint8Array | Deno.PointerValue | null) {
+  set szColumnName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: u32
@@ -4432,8 +4432,8 @@ export class JET_COLUMNCREATE_AView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set pvDefault(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set pvDefault(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u32
@@ -4472,7 +4472,7 @@ export interface JET_COLUMNCREATE_W {
   /** u32 */
   grbit: number;
   /** ptr */
-  pvDefault: Deno.PointerValue | Uint8Array | null;
+  pvDefault: Deno.PointerValue | Uint8Array;
   /** u32 */
   cbDefault: number;
   /** u32 */
@@ -4494,7 +4494,7 @@ export function allocJET_COLUMNCREATE_W(data?: Partial<JET_COLUMNCREATE_W>): Uin
   // 0x08: buffer
   if (data?.szColumnName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.szColumnName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: u32
   if (data?.coltyp !== undefined) view.setUint32(16, Number(data.coltyp), true);
@@ -4504,7 +4504,7 @@ export function allocJET_COLUMNCREATE_W(data?: Partial<JET_COLUMNCREATE_W>): Uin
   if (data?.grbit !== undefined) view.setUint32(24, Number(data.grbit), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.pvDefault !== undefined) view.setBigUint64(32, data.pvDefault === null ? 0n : BigInt(util.toPointer(data.pvDefault)), true);
+  if (data?.pvDefault !== undefined) view.setBigUint64(32, data.pvDefault === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pvDefault))), true);
   // 0x28: u32
   if (data?.cbDefault !== undefined) view.setUint32(40, Number(data.cbDefault), true);
   // 0x2c: u32
@@ -4534,9 +4534,9 @@ export class JET_COLUMNCREATE_WView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get szColumnName(): Uint8Array | Deno.PointerValue | null {
+  get szColumnName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -4557,9 +4557,9 @@ export class JET_COLUMNCREATE_WView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get pvDefault(): Uint8Array | Deno.PointerValue | null {
+  get pvDefault(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -4590,9 +4590,9 @@ export class JET_COLUMNCREATE_WView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set szColumnName(value: Uint8Array | Deno.PointerValue | null) {
+  set szColumnName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: u32
@@ -4613,8 +4613,8 @@ export class JET_COLUMNCREATE_WView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set pvDefault(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set pvDefault(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u32
@@ -4645,7 +4645,7 @@ export interface JET_USERDEFINEDDEFAULT_A {
   /** Windows.Win32.Foundation.PSTR */
   szCallback: string | null | Uint8Array;
   /** ptr */
-  pbUserData: Deno.PointerValue | Uint8Array | null;
+  pbUserData: Deno.PointerValue | Uint8Array;
   /** u32 */
   cbUserData: number;
   /** Windows.Win32.Foundation.PSTR */
@@ -4660,17 +4660,17 @@ export function allocJET_USERDEFINEDDEFAULT_A(data?: Partial<JET_USERDEFINEDDEFA
   // 0x00: buffer
   if (data?.szCallback !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.szCallback);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: pointer
-  if (data?.pbUserData !== undefined) view.setBigUint64(8, data.pbUserData === null ? 0n : BigInt(util.toPointer(data.pbUserData)), true);
+  if (data?.pbUserData !== undefined) view.setBigUint64(8, data.pbUserData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pbUserData))), true);
   // 0x10: u32
   if (data?.cbUserData !== undefined) view.setUint32(16, Number(data.cbUserData), true);
   // 0x14: pad4
   // 0x18: buffer
   if (data?.szDependantColumns !== undefined) {
     (buf as any)._f24 = util.pstrToFfi(data.szDependantColumns);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   return buf;
 }
@@ -4686,15 +4686,15 @@ export class JET_USERDEFINEDDEFAULT_AView {
   }
 
   // 0x00: buffer
-  get szCallback(): Uint8Array | Deno.PointerValue | null {
+  get szCallback(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get pbUserData(): Uint8Array | Deno.PointerValue | null {
+  get pbUserData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -4705,20 +4705,20 @@ export class JET_USERDEFINEDDEFAULT_AView {
   // 0x14: pad4
 
   // 0x18: buffer
-  get szDependantColumns(): Uint8Array | Deno.PointerValue | null {
+  get szDependantColumns(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set szCallback(value: Uint8Array | Deno.PointerValue | null) {
+  set szCallback(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: pointer
-  set pbUserData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pbUserData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -4729,9 +4729,9 @@ export class JET_USERDEFINEDDEFAULT_AView {
   // 0x14: pad4
 
   // 0x18: buffer
-  set szDependantColumns(value: Uint8Array | Deno.PointerValue | null) {
+  set szDependantColumns(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 }
 
@@ -4742,7 +4742,7 @@ export interface JET_USERDEFINEDDEFAULT_W {
   /** Windows.Win32.Foundation.PWSTR */
   szCallback: string | null | Uint8Array | Uint16Array;
   /** ptr */
-  pbUserData: Deno.PointerValue | Uint8Array | null;
+  pbUserData: Deno.PointerValue | Uint8Array;
   /** u32 */
   cbUserData: number;
   /** Windows.Win32.Foundation.PWSTR */
@@ -4757,17 +4757,17 @@ export function allocJET_USERDEFINEDDEFAULT_W(data?: Partial<JET_USERDEFINEDDEFA
   // 0x00: buffer
   if (data?.szCallback !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.szCallback);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: pointer
-  if (data?.pbUserData !== undefined) view.setBigUint64(8, data.pbUserData === null ? 0n : BigInt(util.toPointer(data.pbUserData)), true);
+  if (data?.pbUserData !== undefined) view.setBigUint64(8, data.pbUserData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pbUserData))), true);
   // 0x10: u32
   if (data?.cbUserData !== undefined) view.setUint32(16, Number(data.cbUserData), true);
   // 0x14: pad4
   // 0x18: buffer
   if (data?.szDependantColumns !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.szDependantColumns);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   return buf;
 }
@@ -4783,15 +4783,15 @@ export class JET_USERDEFINEDDEFAULT_WView {
   }
 
   // 0x00: buffer
-  get szCallback(): Uint8Array | Deno.PointerValue | null {
+  get szCallback(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get pbUserData(): Uint8Array | Deno.PointerValue | null {
+  get pbUserData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -4802,20 +4802,20 @@ export class JET_USERDEFINEDDEFAULT_WView {
   // 0x14: pad4
 
   // 0x18: buffer
-  get szDependantColumns(): Uint8Array | Deno.PointerValue | null {
+  get szDependantColumns(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set szCallback(value: Uint8Array | Deno.PointerValue | null) {
+  set szCallback(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: pointer
-  set pbUserData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pbUserData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -4826,9 +4826,9 @@ export class JET_USERDEFINEDDEFAULT_WView {
   // 0x14: pad4
 
   // 0x18: buffer
-  set szDependantColumns(value: Uint8Array | Deno.PointerValue | null) {
+  set szDependantColumns(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 }
 
@@ -4855,7 +4855,7 @@ export function allocJET_CONDITIONALCOLUMN_A(data?: Partial<JET_CONDITIONALCOLUM
   // 0x08: buffer
   if (data?.szColumnName !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.szColumnName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: u32
   if (data?.grbit !== undefined) view.setUint32(16, Number(data.grbit), true);
@@ -4881,9 +4881,9 @@ export class JET_CONDITIONALCOLUMN_AView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get szColumnName(): Uint8Array | Deno.PointerValue | null {
+  get szColumnName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -4901,9 +4901,9 @@ export class JET_CONDITIONALCOLUMN_AView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set szColumnName(value: Uint8Array | Deno.PointerValue | null) {
+  set szColumnName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: u32
@@ -4937,7 +4937,7 @@ export function allocJET_CONDITIONALCOLUMN_W(data?: Partial<JET_CONDITIONALCOLUM
   // 0x08: buffer
   if (data?.szColumnName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.szColumnName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: u32
   if (data?.grbit !== undefined) view.setUint32(16, Number(data.grbit), true);
@@ -4963,9 +4963,9 @@ export class JET_CONDITIONALCOLUMN_WView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get szColumnName(): Uint8Array | Deno.PointerValue | null {
+  get szColumnName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -4983,9 +4983,9 @@ export class JET_CONDITIONALCOLUMN_WView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set szColumnName(value: Uint8Array | Deno.PointerValue | null) {
+  set szColumnName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: u32
@@ -5067,7 +5067,7 @@ export function allocJET_UNICODEINDEX2(data?: Partial<JET_UNICODEINDEX2>): Uint8
   // 0x00: buffer
   if (data?.szLocaleName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.szLocaleName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: u32
   if (data?.dwMapFlags !== undefined) view.setUint32(8, Number(data.dwMapFlags), true);
@@ -5086,9 +5086,9 @@ export class JET_UNICODEINDEX2View {
   }
 
   // 0x00: buffer
-  get szLocaleName(): Uint8Array | Deno.PointerValue | null {
+  get szLocaleName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -5099,9 +5099,9 @@ export class JET_UNICODEINDEX2View {
   // 0x0c: pad4
 
   // 0x00: buffer
-  set szLocaleName(value: Uint8Array | Deno.PointerValue | null) {
+  set szLocaleName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: u32
@@ -5366,11 +5366,11 @@ export interface JET_INDEXCREATE_A {
   /** u32 */
   ulDensity: number;
   /** _Anonymous1_e__Union */
-  Anonymous1: Uint8Array | Deno.PointerValue | null;
+  Anonymous1: Uint8Array | Deno.PointerValue;
   /** _Anonymous2_e__Union */
-  Anonymous2: Uint8Array | Deno.PointerValue | null;
+  Anonymous2: Uint8Array | Deno.PointerValue;
   /** ptr */
-  rgconditionalcolumn: Deno.PointerValue | Uint8Array | null;
+  rgconditionalcolumn: Deno.PointerValue | Uint8Array;
   /** u32 */
   cConditionalColumn: number;
   /** i32 */
@@ -5390,12 +5390,12 @@ export function allocJET_INDEXCREATE_A(data?: Partial<JET_INDEXCREATE_A>): Uint8
   // 0x08: buffer
   if (data?.szIndexName !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.szIndexName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.szKey !== undefined) {
     (buf as any)._f16 = util.pstrToFfi(data.szKey);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: u32
   if (data?.cbKey !== undefined) view.setUint32(24, Number(data.cbKey), true);
@@ -5405,11 +5405,11 @@ export function allocJET_INDEXCREATE_A(data?: Partial<JET_INDEXCREATE_A>): Uint8
   if (data?.ulDensity !== undefined) view.setUint32(32, Number(data.ulDensity), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.Anonymous1 !== undefined) view.setBigUint64(40, data.Anonymous1 === null ? 0n : BigInt(util.toPointer(data.Anonymous1)), true);
+  if (data?.Anonymous1 !== undefined) view.setBigUint64(40, data.Anonymous1 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous1))), true);
   // 0x30: pointer
-  if (data?.Anonymous2 !== undefined) view.setBigUint64(48, data.Anonymous2 === null ? 0n : BigInt(util.toPointer(data.Anonymous2)), true);
+  if (data?.Anonymous2 !== undefined) view.setBigUint64(48, data.Anonymous2 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous2))), true);
   // 0x38: pointer
-  if (data?.rgconditionalcolumn !== undefined) view.setBigUint64(56, data.rgconditionalcolumn === null ? 0n : BigInt(util.toPointer(data.rgconditionalcolumn)), true);
+  if (data?.rgconditionalcolumn !== undefined) view.setBigUint64(56, data.rgconditionalcolumn === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgconditionalcolumn))), true);
   // 0x40: u32
   if (data?.cConditionalColumn !== undefined) view.setUint32(64, Number(data.cConditionalColumn), true);
   // 0x44: i32
@@ -5438,15 +5438,15 @@ export class JET_INDEXCREATE_AView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get szIndexName(): Uint8Array | Deno.PointerValue | null {
+  get szIndexName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get szKey(): Uint8Array | Deno.PointerValue | null {
+  get szKey(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -5467,21 +5467,21 @@ export class JET_INDEXCREATE_AView {
   // 0x24: pad4
 
   // 0x28: pointer
-  get Anonymous1(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous1(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get Anonymous2(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous2(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get rgconditionalcolumn(): Uint8Array | Deno.PointerValue | null {
+  get rgconditionalcolumn(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: u32
@@ -5509,15 +5509,15 @@ export class JET_INDEXCREATE_AView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set szIndexName(value: Uint8Array | Deno.PointerValue | null) {
+  set szIndexName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set szKey(value: Uint8Array | Deno.PointerValue | null) {
+  set szKey(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: u32
@@ -5538,18 +5538,18 @@ export class JET_INDEXCREATE_AView {
   // 0x24: pad4
 
   // 0x28: pointer
-  set Anonymous1(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set Anonymous1(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set Anonymous2(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set Anonymous2(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set rgconditionalcolumn(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set rgconditionalcolumn(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: u32
@@ -5587,11 +5587,11 @@ export interface JET_INDEXCREATE_W {
   /** u32 */
   ulDensity: number;
   /** _Anonymous1_e__Union */
-  Anonymous1: Uint8Array | Deno.PointerValue | null;
+  Anonymous1: Uint8Array | Deno.PointerValue;
   /** _Anonymous2_e__Union */
-  Anonymous2: Uint8Array | Deno.PointerValue | null;
+  Anonymous2: Uint8Array | Deno.PointerValue;
   /** ptr */
-  rgconditionalcolumn: Deno.PointerValue | Uint8Array | null;
+  rgconditionalcolumn: Deno.PointerValue | Uint8Array;
   /** u32 */
   cConditionalColumn: number;
   /** i32 */
@@ -5611,12 +5611,12 @@ export function allocJET_INDEXCREATE_W(data?: Partial<JET_INDEXCREATE_W>): Uint8
   // 0x08: buffer
   if (data?.szIndexName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.szIndexName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.szKey !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.szKey);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: u32
   if (data?.cbKey !== undefined) view.setUint32(24, Number(data.cbKey), true);
@@ -5626,11 +5626,11 @@ export function allocJET_INDEXCREATE_W(data?: Partial<JET_INDEXCREATE_W>): Uint8
   if (data?.ulDensity !== undefined) view.setUint32(32, Number(data.ulDensity), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.Anonymous1 !== undefined) view.setBigUint64(40, data.Anonymous1 === null ? 0n : BigInt(util.toPointer(data.Anonymous1)), true);
+  if (data?.Anonymous1 !== undefined) view.setBigUint64(40, data.Anonymous1 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous1))), true);
   // 0x30: pointer
-  if (data?.Anonymous2 !== undefined) view.setBigUint64(48, data.Anonymous2 === null ? 0n : BigInt(util.toPointer(data.Anonymous2)), true);
+  if (data?.Anonymous2 !== undefined) view.setBigUint64(48, data.Anonymous2 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous2))), true);
   // 0x38: pointer
-  if (data?.rgconditionalcolumn !== undefined) view.setBigUint64(56, data.rgconditionalcolumn === null ? 0n : BigInt(util.toPointer(data.rgconditionalcolumn)), true);
+  if (data?.rgconditionalcolumn !== undefined) view.setBigUint64(56, data.rgconditionalcolumn === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgconditionalcolumn))), true);
   // 0x40: u32
   if (data?.cConditionalColumn !== undefined) view.setUint32(64, Number(data.cConditionalColumn), true);
   // 0x44: i32
@@ -5659,15 +5659,15 @@ export class JET_INDEXCREATE_WView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get szIndexName(): Uint8Array | Deno.PointerValue | null {
+  get szIndexName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get szKey(): Uint8Array | Deno.PointerValue | null {
+  get szKey(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -5688,21 +5688,21 @@ export class JET_INDEXCREATE_WView {
   // 0x24: pad4
 
   // 0x28: pointer
-  get Anonymous1(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous1(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get Anonymous2(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous2(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get rgconditionalcolumn(): Uint8Array | Deno.PointerValue | null {
+  get rgconditionalcolumn(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: u32
@@ -5730,15 +5730,15 @@ export class JET_INDEXCREATE_WView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set szIndexName(value: Uint8Array | Deno.PointerValue | null) {
+  set szIndexName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set szKey(value: Uint8Array | Deno.PointerValue | null) {
+  set szKey(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: u32
@@ -5759,18 +5759,18 @@ export class JET_INDEXCREATE_WView {
   // 0x24: pad4
 
   // 0x28: pointer
-  set Anonymous1(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set Anonymous1(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set Anonymous2(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set Anonymous2(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set rgconditionalcolumn(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set rgconditionalcolumn(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: u32
@@ -5808,11 +5808,11 @@ export interface JET_INDEXCREATE2_A {
   /** u32 */
   ulDensity: number;
   /** _Anonymous1_e__Union */
-  Anonymous1: Uint8Array | Deno.PointerValue | null;
+  Anonymous1: Uint8Array | Deno.PointerValue;
   /** _Anonymous2_e__Union */
-  Anonymous2: Uint8Array | Deno.PointerValue | null;
+  Anonymous2: Uint8Array | Deno.PointerValue;
   /** ptr */
-  rgconditionalcolumn: Deno.PointerValue | Uint8Array | null;
+  rgconditionalcolumn: Deno.PointerValue | Uint8Array;
   /** u32 */
   cConditionalColumn: number;
   /** i32 */
@@ -5820,7 +5820,7 @@ export interface JET_INDEXCREATE2_A {
   /** u32 */
   cbKeyMost: number;
   /** ptr */
-  pSpacehints: Deno.PointerValue | Uint8Array | null;
+  pSpacehints: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofJET_INDEXCREATE2_A = 88;
@@ -5834,12 +5834,12 @@ export function allocJET_INDEXCREATE2_A(data?: Partial<JET_INDEXCREATE2_A>): Uin
   // 0x08: buffer
   if (data?.szIndexName !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.szIndexName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.szKey !== undefined) {
     (buf as any)._f16 = util.pstrToFfi(data.szKey);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: u32
   if (data?.cbKey !== undefined) view.setUint32(24, Number(data.cbKey), true);
@@ -5849,11 +5849,11 @@ export function allocJET_INDEXCREATE2_A(data?: Partial<JET_INDEXCREATE2_A>): Uin
   if (data?.ulDensity !== undefined) view.setUint32(32, Number(data.ulDensity), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.Anonymous1 !== undefined) view.setBigUint64(40, data.Anonymous1 === null ? 0n : BigInt(util.toPointer(data.Anonymous1)), true);
+  if (data?.Anonymous1 !== undefined) view.setBigUint64(40, data.Anonymous1 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous1))), true);
   // 0x30: pointer
-  if (data?.Anonymous2 !== undefined) view.setBigUint64(48, data.Anonymous2 === null ? 0n : BigInt(util.toPointer(data.Anonymous2)), true);
+  if (data?.Anonymous2 !== undefined) view.setBigUint64(48, data.Anonymous2 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous2))), true);
   // 0x38: pointer
-  if (data?.rgconditionalcolumn !== undefined) view.setBigUint64(56, data.rgconditionalcolumn === null ? 0n : BigInt(util.toPointer(data.rgconditionalcolumn)), true);
+  if (data?.rgconditionalcolumn !== undefined) view.setBigUint64(56, data.rgconditionalcolumn === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgconditionalcolumn))), true);
   // 0x40: u32
   if (data?.cConditionalColumn !== undefined) view.setUint32(64, Number(data.cConditionalColumn), true);
   // 0x44: i32
@@ -5862,7 +5862,7 @@ export function allocJET_INDEXCREATE2_A(data?: Partial<JET_INDEXCREATE2_A>): Uin
   if (data?.cbKeyMost !== undefined) view.setUint32(72, Number(data.cbKeyMost), true);
   // 0x4c: pad4
   // 0x50: pointer
-  if (data?.pSpacehints !== undefined) view.setBigUint64(80, data.pSpacehints === null ? 0n : BigInt(util.toPointer(data.pSpacehints)), true);
+  if (data?.pSpacehints !== undefined) view.setBigUint64(80, data.pSpacehints === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pSpacehints))), true);
   return buf;
 }
 
@@ -5884,15 +5884,15 @@ export class JET_INDEXCREATE2_AView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get szIndexName(): Uint8Array | Deno.PointerValue | null {
+  get szIndexName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get szKey(): Uint8Array | Deno.PointerValue | null {
+  get szKey(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -5913,21 +5913,21 @@ export class JET_INDEXCREATE2_AView {
   // 0x24: pad4
 
   // 0x28: pointer
-  get Anonymous1(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous1(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get Anonymous2(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous2(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get rgconditionalcolumn(): Uint8Array | Deno.PointerValue | null {
+  get rgconditionalcolumn(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: u32
@@ -5948,9 +5948,9 @@ export class JET_INDEXCREATE2_AView {
   // 0x4c: pad4
 
   // 0x50: pointer
-  get pSpacehints(): Uint8Array | Deno.PointerValue | null {
+  get pSpacehints(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -5961,15 +5961,15 @@ export class JET_INDEXCREATE2_AView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set szIndexName(value: Uint8Array | Deno.PointerValue | null) {
+  set szIndexName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set szKey(value: Uint8Array | Deno.PointerValue | null) {
+  set szKey(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: u32
@@ -5990,18 +5990,18 @@ export class JET_INDEXCREATE2_AView {
   // 0x24: pad4
 
   // 0x28: pointer
-  set Anonymous1(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set Anonymous1(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set Anonymous2(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set Anonymous2(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set rgconditionalcolumn(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set rgconditionalcolumn(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: u32
@@ -6022,8 +6022,8 @@ export class JET_INDEXCREATE2_AView {
   // 0x4c: pad4
 
   // 0x50: pointer
-  set pSpacehints(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set pSpacehints(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -6044,11 +6044,11 @@ export interface JET_INDEXCREATE2_W {
   /** u32 */
   ulDensity: number;
   /** _Anonymous1_e__Union */
-  Anonymous1: Uint8Array | Deno.PointerValue | null;
+  Anonymous1: Uint8Array | Deno.PointerValue;
   /** _Anonymous2_e__Union */
-  Anonymous2: Uint8Array | Deno.PointerValue | null;
+  Anonymous2: Uint8Array | Deno.PointerValue;
   /** ptr */
-  rgconditionalcolumn: Deno.PointerValue | Uint8Array | null;
+  rgconditionalcolumn: Deno.PointerValue | Uint8Array;
   /** u32 */
   cConditionalColumn: number;
   /** i32 */
@@ -6056,7 +6056,7 @@ export interface JET_INDEXCREATE2_W {
   /** u32 */
   cbKeyMost: number;
   /** ptr */
-  pSpacehints: Deno.PointerValue | Uint8Array | null;
+  pSpacehints: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofJET_INDEXCREATE2_W = 88;
@@ -6070,12 +6070,12 @@ export function allocJET_INDEXCREATE2_W(data?: Partial<JET_INDEXCREATE2_W>): Uin
   // 0x08: buffer
   if (data?.szIndexName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.szIndexName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.szKey !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.szKey);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: u32
   if (data?.cbKey !== undefined) view.setUint32(24, Number(data.cbKey), true);
@@ -6085,11 +6085,11 @@ export function allocJET_INDEXCREATE2_W(data?: Partial<JET_INDEXCREATE2_W>): Uin
   if (data?.ulDensity !== undefined) view.setUint32(32, Number(data.ulDensity), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.Anonymous1 !== undefined) view.setBigUint64(40, data.Anonymous1 === null ? 0n : BigInt(util.toPointer(data.Anonymous1)), true);
+  if (data?.Anonymous1 !== undefined) view.setBigUint64(40, data.Anonymous1 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous1))), true);
   // 0x30: pointer
-  if (data?.Anonymous2 !== undefined) view.setBigUint64(48, data.Anonymous2 === null ? 0n : BigInt(util.toPointer(data.Anonymous2)), true);
+  if (data?.Anonymous2 !== undefined) view.setBigUint64(48, data.Anonymous2 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous2))), true);
   // 0x38: pointer
-  if (data?.rgconditionalcolumn !== undefined) view.setBigUint64(56, data.rgconditionalcolumn === null ? 0n : BigInt(util.toPointer(data.rgconditionalcolumn)), true);
+  if (data?.rgconditionalcolumn !== undefined) view.setBigUint64(56, data.rgconditionalcolumn === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgconditionalcolumn))), true);
   // 0x40: u32
   if (data?.cConditionalColumn !== undefined) view.setUint32(64, Number(data.cConditionalColumn), true);
   // 0x44: i32
@@ -6098,7 +6098,7 @@ export function allocJET_INDEXCREATE2_W(data?: Partial<JET_INDEXCREATE2_W>): Uin
   if (data?.cbKeyMost !== undefined) view.setUint32(72, Number(data.cbKeyMost), true);
   // 0x4c: pad4
   // 0x50: pointer
-  if (data?.pSpacehints !== undefined) view.setBigUint64(80, data.pSpacehints === null ? 0n : BigInt(util.toPointer(data.pSpacehints)), true);
+  if (data?.pSpacehints !== undefined) view.setBigUint64(80, data.pSpacehints === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pSpacehints))), true);
   return buf;
 }
 
@@ -6120,15 +6120,15 @@ export class JET_INDEXCREATE2_WView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get szIndexName(): Uint8Array | Deno.PointerValue | null {
+  get szIndexName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get szKey(): Uint8Array | Deno.PointerValue | null {
+  get szKey(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -6149,21 +6149,21 @@ export class JET_INDEXCREATE2_WView {
   // 0x24: pad4
 
   // 0x28: pointer
-  get Anonymous1(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous1(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get Anonymous2(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous2(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get rgconditionalcolumn(): Uint8Array | Deno.PointerValue | null {
+  get rgconditionalcolumn(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: u32
@@ -6184,9 +6184,9 @@ export class JET_INDEXCREATE2_WView {
   // 0x4c: pad4
 
   // 0x50: pointer
-  get pSpacehints(): Uint8Array | Deno.PointerValue | null {
+  get pSpacehints(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -6197,15 +6197,15 @@ export class JET_INDEXCREATE2_WView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set szIndexName(value: Uint8Array | Deno.PointerValue | null) {
+  set szIndexName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set szKey(value: Uint8Array | Deno.PointerValue | null) {
+  set szKey(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: u32
@@ -6226,18 +6226,18 @@ export class JET_INDEXCREATE2_WView {
   // 0x24: pad4
 
   // 0x28: pointer
-  set Anonymous1(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set Anonymous1(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set Anonymous2(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set Anonymous2(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set rgconditionalcolumn(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set rgconditionalcolumn(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: u32
@@ -6258,8 +6258,8 @@ export class JET_INDEXCREATE2_WView {
   // 0x4c: pad4
 
   // 0x50: pointer
-  set pSpacehints(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set pSpacehints(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -6280,11 +6280,11 @@ export interface JET_INDEXCREATE3_A {
   /** u32 */
   ulDensity: number;
   /** ptr */
-  pidxunicode: Deno.PointerValue | Uint8Array | null;
+  pidxunicode: Deno.PointerValue | Uint8Array;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** ptr */
-  rgconditionalcolumn: Deno.PointerValue | Uint8Array | null;
+  rgconditionalcolumn: Deno.PointerValue | Uint8Array;
   /** u32 */
   cConditionalColumn: number;
   /** i32 */
@@ -6292,7 +6292,7 @@ export interface JET_INDEXCREATE3_A {
   /** u32 */
   cbKeyMost: number;
   /** ptr */
-  pSpacehints: Deno.PointerValue | Uint8Array | null;
+  pSpacehints: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofJET_INDEXCREATE3_A = 88;
@@ -6306,12 +6306,12 @@ export function allocJET_INDEXCREATE3_A(data?: Partial<JET_INDEXCREATE3_A>): Uin
   // 0x08: buffer
   if (data?.szIndexName !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.szIndexName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.szKey !== undefined) {
     (buf as any)._f16 = util.pstrToFfi(data.szKey);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: u32
   if (data?.cbKey !== undefined) view.setUint32(24, Number(data.cbKey), true);
@@ -6321,11 +6321,11 @@ export function allocJET_INDEXCREATE3_A(data?: Partial<JET_INDEXCREATE3_A>): Uin
   if (data?.ulDensity !== undefined) view.setUint32(32, Number(data.ulDensity), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.pidxunicode !== undefined) view.setBigUint64(40, data.pidxunicode === null ? 0n : BigInt(util.toPointer(data.pidxunicode)), true);
+  if (data?.pidxunicode !== undefined) view.setBigUint64(40, data.pidxunicode === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pidxunicode))), true);
   // 0x30: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(48, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(48, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x38: pointer
-  if (data?.rgconditionalcolumn !== undefined) view.setBigUint64(56, data.rgconditionalcolumn === null ? 0n : BigInt(util.toPointer(data.rgconditionalcolumn)), true);
+  if (data?.rgconditionalcolumn !== undefined) view.setBigUint64(56, data.rgconditionalcolumn === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgconditionalcolumn))), true);
   // 0x40: u32
   if (data?.cConditionalColumn !== undefined) view.setUint32(64, Number(data.cConditionalColumn), true);
   // 0x44: i32
@@ -6334,7 +6334,7 @@ export function allocJET_INDEXCREATE3_A(data?: Partial<JET_INDEXCREATE3_A>): Uin
   if (data?.cbKeyMost !== undefined) view.setUint32(72, Number(data.cbKeyMost), true);
   // 0x4c: pad4
   // 0x50: pointer
-  if (data?.pSpacehints !== undefined) view.setBigUint64(80, data.pSpacehints === null ? 0n : BigInt(util.toPointer(data.pSpacehints)), true);
+  if (data?.pSpacehints !== undefined) view.setBigUint64(80, data.pSpacehints === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pSpacehints))), true);
   return buf;
 }
 
@@ -6356,15 +6356,15 @@ export class JET_INDEXCREATE3_AView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get szIndexName(): Uint8Array | Deno.PointerValue | null {
+  get szIndexName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get szKey(): Uint8Array | Deno.PointerValue | null {
+  get szKey(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -6385,21 +6385,21 @@ export class JET_INDEXCREATE3_AView {
   // 0x24: pad4
 
   // 0x28: pointer
-  get pidxunicode(): Uint8Array | Deno.PointerValue | null {
+  get pidxunicode(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get rgconditionalcolumn(): Uint8Array | Deno.PointerValue | null {
+  get rgconditionalcolumn(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: u32
@@ -6420,9 +6420,9 @@ export class JET_INDEXCREATE3_AView {
   // 0x4c: pad4
 
   // 0x50: pointer
-  get pSpacehints(): Uint8Array | Deno.PointerValue | null {
+  get pSpacehints(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -6433,15 +6433,15 @@ export class JET_INDEXCREATE3_AView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set szIndexName(value: Uint8Array | Deno.PointerValue | null) {
+  set szIndexName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set szKey(value: Uint8Array | Deno.PointerValue | null) {
+  set szKey(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: u32
@@ -6462,18 +6462,18 @@ export class JET_INDEXCREATE3_AView {
   // 0x24: pad4
 
   // 0x28: pointer
-  set pidxunicode(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set pidxunicode(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set rgconditionalcolumn(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set rgconditionalcolumn(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: u32
@@ -6494,8 +6494,8 @@ export class JET_INDEXCREATE3_AView {
   // 0x4c: pad4
 
   // 0x50: pointer
-  set pSpacehints(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set pSpacehints(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -6516,11 +6516,11 @@ export interface JET_INDEXCREATE3_W {
   /** u32 */
   ulDensity: number;
   /** ptr */
-  pidxunicode: Deno.PointerValue | Uint8Array | null;
+  pidxunicode: Deno.PointerValue | Uint8Array;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** ptr */
-  rgconditionalcolumn: Deno.PointerValue | Uint8Array | null;
+  rgconditionalcolumn: Deno.PointerValue | Uint8Array;
   /** u32 */
   cConditionalColumn: number;
   /** i32 */
@@ -6528,7 +6528,7 @@ export interface JET_INDEXCREATE3_W {
   /** u32 */
   cbKeyMost: number;
   /** ptr */
-  pSpacehints: Deno.PointerValue | Uint8Array | null;
+  pSpacehints: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofJET_INDEXCREATE3_W = 88;
@@ -6542,12 +6542,12 @@ export function allocJET_INDEXCREATE3_W(data?: Partial<JET_INDEXCREATE3_W>): Uin
   // 0x08: buffer
   if (data?.szIndexName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.szIndexName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.szKey !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.szKey);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: u32
   if (data?.cbKey !== undefined) view.setUint32(24, Number(data.cbKey), true);
@@ -6557,11 +6557,11 @@ export function allocJET_INDEXCREATE3_W(data?: Partial<JET_INDEXCREATE3_W>): Uin
   if (data?.ulDensity !== undefined) view.setUint32(32, Number(data.ulDensity), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.pidxunicode !== undefined) view.setBigUint64(40, data.pidxunicode === null ? 0n : BigInt(util.toPointer(data.pidxunicode)), true);
+  if (data?.pidxunicode !== undefined) view.setBigUint64(40, data.pidxunicode === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pidxunicode))), true);
   // 0x30: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(48, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(48, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x38: pointer
-  if (data?.rgconditionalcolumn !== undefined) view.setBigUint64(56, data.rgconditionalcolumn === null ? 0n : BigInt(util.toPointer(data.rgconditionalcolumn)), true);
+  if (data?.rgconditionalcolumn !== undefined) view.setBigUint64(56, data.rgconditionalcolumn === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgconditionalcolumn))), true);
   // 0x40: u32
   if (data?.cConditionalColumn !== undefined) view.setUint32(64, Number(data.cConditionalColumn), true);
   // 0x44: i32
@@ -6570,7 +6570,7 @@ export function allocJET_INDEXCREATE3_W(data?: Partial<JET_INDEXCREATE3_W>): Uin
   if (data?.cbKeyMost !== undefined) view.setUint32(72, Number(data.cbKeyMost), true);
   // 0x4c: pad4
   // 0x50: pointer
-  if (data?.pSpacehints !== undefined) view.setBigUint64(80, data.pSpacehints === null ? 0n : BigInt(util.toPointer(data.pSpacehints)), true);
+  if (data?.pSpacehints !== undefined) view.setBigUint64(80, data.pSpacehints === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pSpacehints))), true);
   return buf;
 }
 
@@ -6592,15 +6592,15 @@ export class JET_INDEXCREATE3_WView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get szIndexName(): Uint8Array | Deno.PointerValue | null {
+  get szIndexName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get szKey(): Uint8Array | Deno.PointerValue | null {
+  get szKey(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -6621,21 +6621,21 @@ export class JET_INDEXCREATE3_WView {
   // 0x24: pad4
 
   // 0x28: pointer
-  get pidxunicode(): Uint8Array | Deno.PointerValue | null {
+  get pidxunicode(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get rgconditionalcolumn(): Uint8Array | Deno.PointerValue | null {
+  get rgconditionalcolumn(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: u32
@@ -6656,9 +6656,9 @@ export class JET_INDEXCREATE3_WView {
   // 0x4c: pad4
 
   // 0x50: pointer
-  get pSpacehints(): Uint8Array | Deno.PointerValue | null {
+  get pSpacehints(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -6669,15 +6669,15 @@ export class JET_INDEXCREATE3_WView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set szIndexName(value: Uint8Array | Deno.PointerValue | null) {
+  set szIndexName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set szKey(value: Uint8Array | Deno.PointerValue | null) {
+  set szKey(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: u32
@@ -6698,18 +6698,18 @@ export class JET_INDEXCREATE3_WView {
   // 0x24: pad4
 
   // 0x28: pointer
-  set pidxunicode(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set pidxunicode(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set rgconditionalcolumn(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set rgconditionalcolumn(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: u32
@@ -6730,8 +6730,8 @@ export class JET_INDEXCREATE3_WView {
   // 0x4c: pad4
 
   // 0x50: pointer
-  set pSpacehints(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set pSpacehints(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -6750,17 +6750,17 @@ export interface JET_TABLECREATE_A {
   /** u32 */
   ulDensity: number;
   /** ptr */
-  rgcolumncreate: Deno.PointerValue | Uint8Array | null;
+  rgcolumncreate: Deno.PointerValue | Uint8Array;
   /** u32 */
   cColumns: number;
   /** ptr */
-  rgindexcreate: Deno.PointerValue | Uint8Array | null;
+  rgindexcreate: Deno.PointerValue | Uint8Array;
   /** u32 */
   cIndexes: number;
   /** u32 */
   grbit: number;
   /** Windows.Win32.Storage.StructuredStorage.JET_TABLEID */
-  tableid: Uint8Array | Deno.PointerValue | null;
+  tableid: Uint8Array | Deno.PointerValue;
   /** u32 */
   cCreated: number;
 }
@@ -6776,30 +6776,30 @@ export function allocJET_TABLECREATE_A(data?: Partial<JET_TABLECREATE_A>): Uint8
   // 0x08: buffer
   if (data?.szTableName !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.szTableName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.szTemplateTableName !== undefined) {
     (buf as any)._f16 = util.pstrToFfi(data.szTemplateTableName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: u32
   if (data?.ulPages !== undefined) view.setUint32(24, Number(data.ulPages), true);
   // 0x1c: u32
   if (data?.ulDensity !== undefined) view.setUint32(28, Number(data.ulDensity), true);
   // 0x20: pointer
-  if (data?.rgcolumncreate !== undefined) view.setBigUint64(32, data.rgcolumncreate === null ? 0n : BigInt(util.toPointer(data.rgcolumncreate)), true);
+  if (data?.rgcolumncreate !== undefined) view.setBigUint64(32, data.rgcolumncreate === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgcolumncreate))), true);
   // 0x28: u32
   if (data?.cColumns !== undefined) view.setUint32(40, Number(data.cColumns), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.rgindexcreate !== undefined) view.setBigUint64(48, data.rgindexcreate === null ? 0n : BigInt(util.toPointer(data.rgindexcreate)), true);
+  if (data?.rgindexcreate !== undefined) view.setBigUint64(48, data.rgindexcreate === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgindexcreate))), true);
   // 0x38: u32
   if (data?.cIndexes !== undefined) view.setUint32(56, Number(data.cIndexes), true);
   // 0x3c: u32
   if (data?.grbit !== undefined) view.setUint32(60, Number(data.grbit), true);
   // 0x40: pointer
-  if (data?.tableid !== undefined) view.setBigUint64(64, data.tableid === null ? 0n : BigInt(util.toPointer(data.tableid)), true);
+  if (data?.tableid !== undefined) view.setBigUint64(64, data.tableid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.tableid))), true);
   // 0x48: u32
   if (data?.cCreated !== undefined) view.setUint32(72, Number(data.cCreated), true);
   // 0x4c: pad4
@@ -6824,15 +6824,15 @@ export class JET_TABLECREATE_AView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get szTableName(): Uint8Array | Deno.PointerValue | null {
+  get szTableName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get szTemplateTableName(): Uint8Array | Deno.PointerValue | null {
+  get szTemplateTableName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -6846,9 +6846,9 @@ export class JET_TABLECREATE_AView {
   }
 
   // 0x20: pointer
-  get rgcolumncreate(): Uint8Array | Deno.PointerValue | null {
+  get rgcolumncreate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -6859,9 +6859,9 @@ export class JET_TABLECREATE_AView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  get rgindexcreate(): Uint8Array | Deno.PointerValue | null {
+  get rgindexcreate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: u32
@@ -6875,9 +6875,9 @@ export class JET_TABLECREATE_AView {
   }
 
   // 0x40: pointer
-  get tableid(): Uint8Array | Deno.PointerValue | null {
+  get tableid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: u32
@@ -6895,15 +6895,15 @@ export class JET_TABLECREATE_AView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set szTableName(value: Uint8Array | Deno.PointerValue | null) {
+  set szTableName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set szTemplateTableName(value: Uint8Array | Deno.PointerValue | null) {
+  set szTemplateTableName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: u32
@@ -6917,8 +6917,8 @@ export class JET_TABLECREATE_AView {
   }
 
   // 0x20: pointer
-  set rgcolumncreate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set rgcolumncreate(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u32
@@ -6929,8 +6929,8 @@ export class JET_TABLECREATE_AView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  set rgindexcreate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set rgindexcreate(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: u32
@@ -6944,8 +6944,8 @@ export class JET_TABLECREATE_AView {
   }
 
   // 0x40: pointer
-  set tableid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set tableid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: u32
@@ -6971,17 +6971,17 @@ export interface JET_TABLECREATE_W {
   /** u32 */
   ulDensity: number;
   /** ptr */
-  rgcolumncreate: Deno.PointerValue | Uint8Array | null;
+  rgcolumncreate: Deno.PointerValue | Uint8Array;
   /** u32 */
   cColumns: number;
   /** ptr */
-  rgindexcreate: Deno.PointerValue | Uint8Array | null;
+  rgindexcreate: Deno.PointerValue | Uint8Array;
   /** u32 */
   cIndexes: number;
   /** u32 */
   grbit: number;
   /** Windows.Win32.Storage.StructuredStorage.JET_TABLEID */
-  tableid: Uint8Array | Deno.PointerValue | null;
+  tableid: Uint8Array | Deno.PointerValue;
   /** u32 */
   cCreated: number;
 }
@@ -6997,30 +6997,30 @@ export function allocJET_TABLECREATE_W(data?: Partial<JET_TABLECREATE_W>): Uint8
   // 0x08: buffer
   if (data?.szTableName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.szTableName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.szTemplateTableName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.szTemplateTableName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: u32
   if (data?.ulPages !== undefined) view.setUint32(24, Number(data.ulPages), true);
   // 0x1c: u32
   if (data?.ulDensity !== undefined) view.setUint32(28, Number(data.ulDensity), true);
   // 0x20: pointer
-  if (data?.rgcolumncreate !== undefined) view.setBigUint64(32, data.rgcolumncreate === null ? 0n : BigInt(util.toPointer(data.rgcolumncreate)), true);
+  if (data?.rgcolumncreate !== undefined) view.setBigUint64(32, data.rgcolumncreate === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgcolumncreate))), true);
   // 0x28: u32
   if (data?.cColumns !== undefined) view.setUint32(40, Number(data.cColumns), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.rgindexcreate !== undefined) view.setBigUint64(48, data.rgindexcreate === null ? 0n : BigInt(util.toPointer(data.rgindexcreate)), true);
+  if (data?.rgindexcreate !== undefined) view.setBigUint64(48, data.rgindexcreate === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgindexcreate))), true);
   // 0x38: u32
   if (data?.cIndexes !== undefined) view.setUint32(56, Number(data.cIndexes), true);
   // 0x3c: u32
   if (data?.grbit !== undefined) view.setUint32(60, Number(data.grbit), true);
   // 0x40: pointer
-  if (data?.tableid !== undefined) view.setBigUint64(64, data.tableid === null ? 0n : BigInt(util.toPointer(data.tableid)), true);
+  if (data?.tableid !== undefined) view.setBigUint64(64, data.tableid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.tableid))), true);
   // 0x48: u32
   if (data?.cCreated !== undefined) view.setUint32(72, Number(data.cCreated), true);
   // 0x4c: pad4
@@ -7045,15 +7045,15 @@ export class JET_TABLECREATE_WView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get szTableName(): Uint8Array | Deno.PointerValue | null {
+  get szTableName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get szTemplateTableName(): Uint8Array | Deno.PointerValue | null {
+  get szTemplateTableName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -7067,9 +7067,9 @@ export class JET_TABLECREATE_WView {
   }
 
   // 0x20: pointer
-  get rgcolumncreate(): Uint8Array | Deno.PointerValue | null {
+  get rgcolumncreate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -7080,9 +7080,9 @@ export class JET_TABLECREATE_WView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  get rgindexcreate(): Uint8Array | Deno.PointerValue | null {
+  get rgindexcreate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: u32
@@ -7096,9 +7096,9 @@ export class JET_TABLECREATE_WView {
   }
 
   // 0x40: pointer
-  get tableid(): Uint8Array | Deno.PointerValue | null {
+  get tableid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: u32
@@ -7116,15 +7116,15 @@ export class JET_TABLECREATE_WView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set szTableName(value: Uint8Array | Deno.PointerValue | null) {
+  set szTableName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set szTemplateTableName(value: Uint8Array | Deno.PointerValue | null) {
+  set szTemplateTableName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: u32
@@ -7138,8 +7138,8 @@ export class JET_TABLECREATE_WView {
   }
 
   // 0x20: pointer
-  set rgcolumncreate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set rgcolumncreate(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u32
@@ -7150,8 +7150,8 @@ export class JET_TABLECREATE_WView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  set rgindexcreate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set rgindexcreate(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: u32
@@ -7165,8 +7165,8 @@ export class JET_TABLECREATE_WView {
   }
 
   // 0x40: pointer
-  set tableid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set tableid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: u32
@@ -7192,11 +7192,11 @@ export interface JET_TABLECREATE2_A {
   /** u32 */
   ulDensity: number;
   /** ptr */
-  rgcolumncreate: Deno.PointerValue | Uint8Array | null;
+  rgcolumncreate: Deno.PointerValue | Uint8Array;
   /** u32 */
   cColumns: number;
   /** ptr */
-  rgindexcreate: Deno.PointerValue | Uint8Array | null;
+  rgindexcreate: Deno.PointerValue | Uint8Array;
   /** u32 */
   cIndexes: number;
   /** Windows.Win32.Foundation.PSTR */
@@ -7206,7 +7206,7 @@ export interface JET_TABLECREATE2_A {
   /** u32 */
   grbit: number;
   /** Windows.Win32.Storage.StructuredStorage.JET_TABLEID */
-  tableid: Uint8Array | Deno.PointerValue | null;
+  tableid: Uint8Array | Deno.PointerValue;
   /** u32 */
   cCreated: number;
 }
@@ -7222,38 +7222,38 @@ export function allocJET_TABLECREATE2_A(data?: Partial<JET_TABLECREATE2_A>): Uin
   // 0x08: buffer
   if (data?.szTableName !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.szTableName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.szTemplateTableName !== undefined) {
     (buf as any)._f16 = util.pstrToFfi(data.szTemplateTableName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: u32
   if (data?.ulPages !== undefined) view.setUint32(24, Number(data.ulPages), true);
   // 0x1c: u32
   if (data?.ulDensity !== undefined) view.setUint32(28, Number(data.ulDensity), true);
   // 0x20: pointer
-  if (data?.rgcolumncreate !== undefined) view.setBigUint64(32, data.rgcolumncreate === null ? 0n : BigInt(util.toPointer(data.rgcolumncreate)), true);
+  if (data?.rgcolumncreate !== undefined) view.setBigUint64(32, data.rgcolumncreate === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgcolumncreate))), true);
   // 0x28: u32
   if (data?.cColumns !== undefined) view.setUint32(40, Number(data.cColumns), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.rgindexcreate !== undefined) view.setBigUint64(48, data.rgindexcreate === null ? 0n : BigInt(util.toPointer(data.rgindexcreate)), true);
+  if (data?.rgindexcreate !== undefined) view.setBigUint64(48, data.rgindexcreate === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgindexcreate))), true);
   // 0x38: u32
   if (data?.cIndexes !== undefined) view.setUint32(56, Number(data.cIndexes), true);
   // 0x3c: pad4
   // 0x40: buffer
   if (data?.szCallback !== undefined) {
     (buf as any)._f64 = util.pstrToFfi(data.szCallback);
-    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
+    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f64))), true);
   }
   // 0x48: u32
   if (data?.cbtyp !== undefined) view.setUint32(72, Number(data.cbtyp), true);
   // 0x4c: u32
   if (data?.grbit !== undefined) view.setUint32(76, Number(data.grbit), true);
   // 0x50: pointer
-  if (data?.tableid !== undefined) view.setBigUint64(80, data.tableid === null ? 0n : BigInt(util.toPointer(data.tableid)), true);
+  if (data?.tableid !== undefined) view.setBigUint64(80, data.tableid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.tableid))), true);
   // 0x58: u32
   if (data?.cCreated !== undefined) view.setUint32(88, Number(data.cCreated), true);
   // 0x5c: pad4
@@ -7278,15 +7278,15 @@ export class JET_TABLECREATE2_AView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get szTableName(): Uint8Array | Deno.PointerValue | null {
+  get szTableName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get szTemplateTableName(): Uint8Array | Deno.PointerValue | null {
+  get szTemplateTableName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -7300,9 +7300,9 @@ export class JET_TABLECREATE2_AView {
   }
 
   // 0x20: pointer
-  get rgcolumncreate(): Uint8Array | Deno.PointerValue | null {
+  get rgcolumncreate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -7313,9 +7313,9 @@ export class JET_TABLECREATE2_AView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  get rgindexcreate(): Uint8Array | Deno.PointerValue | null {
+  get rgindexcreate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: u32
@@ -7326,9 +7326,9 @@ export class JET_TABLECREATE2_AView {
   // 0x3c: pad4
 
   // 0x40: buffer
-  get szCallback(): Uint8Array | Deno.PointerValue | null {
+  get szCallback(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: u32
@@ -7342,9 +7342,9 @@ export class JET_TABLECREATE2_AView {
   }
 
   // 0x50: pointer
-  get tableid(): Uint8Array | Deno.PointerValue | null {
+  get tableid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x58: u32
@@ -7362,15 +7362,15 @@ export class JET_TABLECREATE2_AView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set szTableName(value: Uint8Array | Deno.PointerValue | null) {
+  set szTableName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set szTemplateTableName(value: Uint8Array | Deno.PointerValue | null) {
+  set szTemplateTableName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: u32
@@ -7384,8 +7384,8 @@ export class JET_TABLECREATE2_AView {
   }
 
   // 0x20: pointer
-  set rgcolumncreate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set rgcolumncreate(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u32
@@ -7396,8 +7396,8 @@ export class JET_TABLECREATE2_AView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  set rgindexcreate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set rgindexcreate(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: u32
@@ -7408,9 +7408,9 @@ export class JET_TABLECREATE2_AView {
   // 0x3c: pad4
 
   // 0x40: buffer
-  set szCallback(value: Uint8Array | Deno.PointerValue | null) {
+  set szCallback(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f64 = value;
-    this.view.setBigUint64(64, BigInt(util.toPointer((this.buf as any)._f64)), true);
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f64))), true);
   }
 
   // 0x48: u32
@@ -7424,8 +7424,8 @@ export class JET_TABLECREATE2_AView {
   }
 
   // 0x50: pointer
-  set tableid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set tableid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x58: u32
@@ -7451,11 +7451,11 @@ export interface JET_TABLECREATE2_W {
   /** u32 */
   ulDensity: number;
   /** ptr */
-  rgcolumncreate: Deno.PointerValue | Uint8Array | null;
+  rgcolumncreate: Deno.PointerValue | Uint8Array;
   /** u32 */
   cColumns: number;
   /** ptr */
-  rgindexcreate: Deno.PointerValue | Uint8Array | null;
+  rgindexcreate: Deno.PointerValue | Uint8Array;
   /** u32 */
   cIndexes: number;
   /** Windows.Win32.Foundation.PWSTR */
@@ -7465,7 +7465,7 @@ export interface JET_TABLECREATE2_W {
   /** u32 */
   grbit: number;
   /** Windows.Win32.Storage.StructuredStorage.JET_TABLEID */
-  tableid: Uint8Array | Deno.PointerValue | null;
+  tableid: Uint8Array | Deno.PointerValue;
   /** u32 */
   cCreated: number;
 }
@@ -7481,38 +7481,38 @@ export function allocJET_TABLECREATE2_W(data?: Partial<JET_TABLECREATE2_W>): Uin
   // 0x08: buffer
   if (data?.szTableName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.szTableName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.szTemplateTableName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.szTemplateTableName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: u32
   if (data?.ulPages !== undefined) view.setUint32(24, Number(data.ulPages), true);
   // 0x1c: u32
   if (data?.ulDensity !== undefined) view.setUint32(28, Number(data.ulDensity), true);
   // 0x20: pointer
-  if (data?.rgcolumncreate !== undefined) view.setBigUint64(32, data.rgcolumncreate === null ? 0n : BigInt(util.toPointer(data.rgcolumncreate)), true);
+  if (data?.rgcolumncreate !== undefined) view.setBigUint64(32, data.rgcolumncreate === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgcolumncreate))), true);
   // 0x28: u32
   if (data?.cColumns !== undefined) view.setUint32(40, Number(data.cColumns), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.rgindexcreate !== undefined) view.setBigUint64(48, data.rgindexcreate === null ? 0n : BigInt(util.toPointer(data.rgindexcreate)), true);
+  if (data?.rgindexcreate !== undefined) view.setBigUint64(48, data.rgindexcreate === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgindexcreate))), true);
   // 0x38: u32
   if (data?.cIndexes !== undefined) view.setUint32(56, Number(data.cIndexes), true);
   // 0x3c: pad4
   // 0x40: buffer
   if (data?.szCallback !== undefined) {
     (buf as any)._f64 = util.pwstrToFfi(data.szCallback);
-    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
+    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f64))), true);
   }
   // 0x48: u32
   if (data?.cbtyp !== undefined) view.setUint32(72, Number(data.cbtyp), true);
   // 0x4c: u32
   if (data?.grbit !== undefined) view.setUint32(76, Number(data.grbit), true);
   // 0x50: pointer
-  if (data?.tableid !== undefined) view.setBigUint64(80, data.tableid === null ? 0n : BigInt(util.toPointer(data.tableid)), true);
+  if (data?.tableid !== undefined) view.setBigUint64(80, data.tableid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.tableid))), true);
   // 0x58: u32
   if (data?.cCreated !== undefined) view.setUint32(88, Number(data.cCreated), true);
   // 0x5c: pad4
@@ -7537,15 +7537,15 @@ export class JET_TABLECREATE2_WView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get szTableName(): Uint8Array | Deno.PointerValue | null {
+  get szTableName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get szTemplateTableName(): Uint8Array | Deno.PointerValue | null {
+  get szTemplateTableName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -7559,9 +7559,9 @@ export class JET_TABLECREATE2_WView {
   }
 
   // 0x20: pointer
-  get rgcolumncreate(): Uint8Array | Deno.PointerValue | null {
+  get rgcolumncreate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -7572,9 +7572,9 @@ export class JET_TABLECREATE2_WView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  get rgindexcreate(): Uint8Array | Deno.PointerValue | null {
+  get rgindexcreate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: u32
@@ -7585,9 +7585,9 @@ export class JET_TABLECREATE2_WView {
   // 0x3c: pad4
 
   // 0x40: buffer
-  get szCallback(): Uint8Array | Deno.PointerValue | null {
+  get szCallback(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: u32
@@ -7601,9 +7601,9 @@ export class JET_TABLECREATE2_WView {
   }
 
   // 0x50: pointer
-  get tableid(): Uint8Array | Deno.PointerValue | null {
+  get tableid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x58: u32
@@ -7621,15 +7621,15 @@ export class JET_TABLECREATE2_WView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set szTableName(value: Uint8Array | Deno.PointerValue | null) {
+  set szTableName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set szTemplateTableName(value: Uint8Array | Deno.PointerValue | null) {
+  set szTemplateTableName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: u32
@@ -7643,8 +7643,8 @@ export class JET_TABLECREATE2_WView {
   }
 
   // 0x20: pointer
-  set rgcolumncreate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set rgcolumncreate(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u32
@@ -7655,8 +7655,8 @@ export class JET_TABLECREATE2_WView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  set rgindexcreate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set rgindexcreate(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: u32
@@ -7667,9 +7667,9 @@ export class JET_TABLECREATE2_WView {
   // 0x3c: pad4
 
   // 0x40: buffer
-  set szCallback(value: Uint8Array | Deno.PointerValue | null) {
+  set szCallback(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f64 = value;
-    this.view.setBigUint64(64, BigInt(util.toPointer((this.buf as any)._f64)), true);
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f64))), true);
   }
 
   // 0x48: u32
@@ -7683,8 +7683,8 @@ export class JET_TABLECREATE2_WView {
   }
 
   // 0x50: pointer
-  set tableid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set tableid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x58: u32
@@ -7710,11 +7710,11 @@ export interface JET_TABLECREATE3_A {
   /** u32 */
   ulDensity: number;
   /** ptr */
-  rgcolumncreate: Deno.PointerValue | Uint8Array | null;
+  rgcolumncreate: Deno.PointerValue | Uint8Array;
   /** u32 */
   cColumns: number;
   /** ptr */
-  rgindexcreate: Deno.PointerValue | Uint8Array | null;
+  rgindexcreate: Deno.PointerValue | Uint8Array;
   /** u32 */
   cIndexes: number;
   /** Windows.Win32.Foundation.PSTR */
@@ -7724,13 +7724,13 @@ export interface JET_TABLECREATE3_A {
   /** u32 */
   grbit: number;
   /** ptr */
-  pSeqSpacehints: Deno.PointerValue | Uint8Array | null;
+  pSeqSpacehints: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pLVSpacehints: Deno.PointerValue | Uint8Array | null;
+  pLVSpacehints: Deno.PointerValue | Uint8Array;
   /** u32 */
   cbSeparateLV: number;
   /** Windows.Win32.Storage.StructuredStorage.JET_TABLEID */
-  tableid: Uint8Array | Deno.PointerValue | null;
+  tableid: Uint8Array | Deno.PointerValue;
   /** u32 */
   cCreated: number;
 }
@@ -7746,45 +7746,45 @@ export function allocJET_TABLECREATE3_A(data?: Partial<JET_TABLECREATE3_A>): Uin
   // 0x08: buffer
   if (data?.szTableName !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.szTableName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.szTemplateTableName !== undefined) {
     (buf as any)._f16 = util.pstrToFfi(data.szTemplateTableName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: u32
   if (data?.ulPages !== undefined) view.setUint32(24, Number(data.ulPages), true);
   // 0x1c: u32
   if (data?.ulDensity !== undefined) view.setUint32(28, Number(data.ulDensity), true);
   // 0x20: pointer
-  if (data?.rgcolumncreate !== undefined) view.setBigUint64(32, data.rgcolumncreate === null ? 0n : BigInt(util.toPointer(data.rgcolumncreate)), true);
+  if (data?.rgcolumncreate !== undefined) view.setBigUint64(32, data.rgcolumncreate === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgcolumncreate))), true);
   // 0x28: u32
   if (data?.cColumns !== undefined) view.setUint32(40, Number(data.cColumns), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.rgindexcreate !== undefined) view.setBigUint64(48, data.rgindexcreate === null ? 0n : BigInt(util.toPointer(data.rgindexcreate)), true);
+  if (data?.rgindexcreate !== undefined) view.setBigUint64(48, data.rgindexcreate === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgindexcreate))), true);
   // 0x38: u32
   if (data?.cIndexes !== undefined) view.setUint32(56, Number(data.cIndexes), true);
   // 0x3c: pad4
   // 0x40: buffer
   if (data?.szCallback !== undefined) {
     (buf as any)._f64 = util.pstrToFfi(data.szCallback);
-    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
+    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f64))), true);
   }
   // 0x48: u32
   if (data?.cbtyp !== undefined) view.setUint32(72, Number(data.cbtyp), true);
   // 0x4c: u32
   if (data?.grbit !== undefined) view.setUint32(76, Number(data.grbit), true);
   // 0x50: pointer
-  if (data?.pSeqSpacehints !== undefined) view.setBigUint64(80, data.pSeqSpacehints === null ? 0n : BigInt(util.toPointer(data.pSeqSpacehints)), true);
+  if (data?.pSeqSpacehints !== undefined) view.setBigUint64(80, data.pSeqSpacehints === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pSeqSpacehints))), true);
   // 0x58: pointer
-  if (data?.pLVSpacehints !== undefined) view.setBigUint64(88, data.pLVSpacehints === null ? 0n : BigInt(util.toPointer(data.pLVSpacehints)), true);
+  if (data?.pLVSpacehints !== undefined) view.setBigUint64(88, data.pLVSpacehints === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pLVSpacehints))), true);
   // 0x60: u32
   if (data?.cbSeparateLV !== undefined) view.setUint32(96, Number(data.cbSeparateLV), true);
   // 0x64: pad4
   // 0x68: pointer
-  if (data?.tableid !== undefined) view.setBigUint64(104, data.tableid === null ? 0n : BigInt(util.toPointer(data.tableid)), true);
+  if (data?.tableid !== undefined) view.setBigUint64(104, data.tableid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.tableid))), true);
   // 0x70: u32
   if (data?.cCreated !== undefined) view.setUint32(112, Number(data.cCreated), true);
   // 0x74: pad4
@@ -7809,15 +7809,15 @@ export class JET_TABLECREATE3_AView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get szTableName(): Uint8Array | Deno.PointerValue | null {
+  get szTableName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get szTemplateTableName(): Uint8Array | Deno.PointerValue | null {
+  get szTemplateTableName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -7831,9 +7831,9 @@ export class JET_TABLECREATE3_AView {
   }
 
   // 0x20: pointer
-  get rgcolumncreate(): Uint8Array | Deno.PointerValue | null {
+  get rgcolumncreate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -7844,9 +7844,9 @@ export class JET_TABLECREATE3_AView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  get rgindexcreate(): Uint8Array | Deno.PointerValue | null {
+  get rgindexcreate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: u32
@@ -7857,9 +7857,9 @@ export class JET_TABLECREATE3_AView {
   // 0x3c: pad4
 
   // 0x40: buffer
-  get szCallback(): Uint8Array | Deno.PointerValue | null {
+  get szCallback(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: u32
@@ -7873,15 +7873,15 @@ export class JET_TABLECREATE3_AView {
   }
 
   // 0x50: pointer
-  get pSeqSpacehints(): Uint8Array | Deno.PointerValue | null {
+  get pSeqSpacehints(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x58: pointer
-  get pLVSpacehints(): Uint8Array | Deno.PointerValue | null {
+  get pLVSpacehints(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x60: u32
@@ -7892,9 +7892,9 @@ export class JET_TABLECREATE3_AView {
   // 0x64: pad4
 
   // 0x68: pointer
-  get tableid(): Uint8Array | Deno.PointerValue | null {
+  get tableid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(104, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x70: u32
@@ -7912,15 +7912,15 @@ export class JET_TABLECREATE3_AView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set szTableName(value: Uint8Array | Deno.PointerValue | null) {
+  set szTableName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set szTemplateTableName(value: Uint8Array | Deno.PointerValue | null) {
+  set szTemplateTableName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: u32
@@ -7934,8 +7934,8 @@ export class JET_TABLECREATE3_AView {
   }
 
   // 0x20: pointer
-  set rgcolumncreate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set rgcolumncreate(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u32
@@ -7946,8 +7946,8 @@ export class JET_TABLECREATE3_AView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  set rgindexcreate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set rgindexcreate(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: u32
@@ -7958,9 +7958,9 @@ export class JET_TABLECREATE3_AView {
   // 0x3c: pad4
 
   // 0x40: buffer
-  set szCallback(value: Uint8Array | Deno.PointerValue | null) {
+  set szCallback(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f64 = value;
-    this.view.setBigUint64(64, BigInt(util.toPointer((this.buf as any)._f64)), true);
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f64))), true);
   }
 
   // 0x48: u32
@@ -7974,13 +7974,13 @@ export class JET_TABLECREATE3_AView {
   }
 
   // 0x50: pointer
-  set pSeqSpacehints(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set pSeqSpacehints(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x58: pointer
-  set pLVSpacehints(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  set pLVSpacehints(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x60: u32
@@ -7991,8 +7991,8 @@ export class JET_TABLECREATE3_AView {
   // 0x64: pad4
 
   // 0x68: pointer
-  set tableid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(104, BigInt(util.toPointer(value)), true);
+  set tableid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(104, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x70: u32
@@ -8018,11 +8018,11 @@ export interface JET_TABLECREATE3_W {
   /** u32 */
   ulDensity: number;
   /** ptr */
-  rgcolumncreate: Deno.PointerValue | Uint8Array | null;
+  rgcolumncreate: Deno.PointerValue | Uint8Array;
   /** u32 */
   cColumns: number;
   /** ptr */
-  rgindexcreate: Deno.PointerValue | Uint8Array | null;
+  rgindexcreate: Deno.PointerValue | Uint8Array;
   /** u32 */
   cIndexes: number;
   /** Windows.Win32.Foundation.PWSTR */
@@ -8032,13 +8032,13 @@ export interface JET_TABLECREATE3_W {
   /** u32 */
   grbit: number;
   /** ptr */
-  pSeqSpacehints: Deno.PointerValue | Uint8Array | null;
+  pSeqSpacehints: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pLVSpacehints: Deno.PointerValue | Uint8Array | null;
+  pLVSpacehints: Deno.PointerValue | Uint8Array;
   /** u32 */
   cbSeparateLV: number;
   /** Windows.Win32.Storage.StructuredStorage.JET_TABLEID */
-  tableid: Uint8Array | Deno.PointerValue | null;
+  tableid: Uint8Array | Deno.PointerValue;
   /** u32 */
   cCreated: number;
 }
@@ -8054,45 +8054,45 @@ export function allocJET_TABLECREATE3_W(data?: Partial<JET_TABLECREATE3_W>): Uin
   // 0x08: buffer
   if (data?.szTableName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.szTableName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.szTemplateTableName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.szTemplateTableName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: u32
   if (data?.ulPages !== undefined) view.setUint32(24, Number(data.ulPages), true);
   // 0x1c: u32
   if (data?.ulDensity !== undefined) view.setUint32(28, Number(data.ulDensity), true);
   // 0x20: pointer
-  if (data?.rgcolumncreate !== undefined) view.setBigUint64(32, data.rgcolumncreate === null ? 0n : BigInt(util.toPointer(data.rgcolumncreate)), true);
+  if (data?.rgcolumncreate !== undefined) view.setBigUint64(32, data.rgcolumncreate === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgcolumncreate))), true);
   // 0x28: u32
   if (data?.cColumns !== undefined) view.setUint32(40, Number(data.cColumns), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.rgindexcreate !== undefined) view.setBigUint64(48, data.rgindexcreate === null ? 0n : BigInt(util.toPointer(data.rgindexcreate)), true);
+  if (data?.rgindexcreate !== undefined) view.setBigUint64(48, data.rgindexcreate === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgindexcreate))), true);
   // 0x38: u32
   if (data?.cIndexes !== undefined) view.setUint32(56, Number(data.cIndexes), true);
   // 0x3c: pad4
   // 0x40: buffer
   if (data?.szCallback !== undefined) {
     (buf as any)._f64 = util.pwstrToFfi(data.szCallback);
-    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
+    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f64))), true);
   }
   // 0x48: u32
   if (data?.cbtyp !== undefined) view.setUint32(72, Number(data.cbtyp), true);
   // 0x4c: u32
   if (data?.grbit !== undefined) view.setUint32(76, Number(data.grbit), true);
   // 0x50: pointer
-  if (data?.pSeqSpacehints !== undefined) view.setBigUint64(80, data.pSeqSpacehints === null ? 0n : BigInt(util.toPointer(data.pSeqSpacehints)), true);
+  if (data?.pSeqSpacehints !== undefined) view.setBigUint64(80, data.pSeqSpacehints === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pSeqSpacehints))), true);
   // 0x58: pointer
-  if (data?.pLVSpacehints !== undefined) view.setBigUint64(88, data.pLVSpacehints === null ? 0n : BigInt(util.toPointer(data.pLVSpacehints)), true);
+  if (data?.pLVSpacehints !== undefined) view.setBigUint64(88, data.pLVSpacehints === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pLVSpacehints))), true);
   // 0x60: u32
   if (data?.cbSeparateLV !== undefined) view.setUint32(96, Number(data.cbSeparateLV), true);
   // 0x64: pad4
   // 0x68: pointer
-  if (data?.tableid !== undefined) view.setBigUint64(104, data.tableid === null ? 0n : BigInt(util.toPointer(data.tableid)), true);
+  if (data?.tableid !== undefined) view.setBigUint64(104, data.tableid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.tableid))), true);
   // 0x70: u32
   if (data?.cCreated !== undefined) view.setUint32(112, Number(data.cCreated), true);
   // 0x74: pad4
@@ -8117,15 +8117,15 @@ export class JET_TABLECREATE3_WView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get szTableName(): Uint8Array | Deno.PointerValue | null {
+  get szTableName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get szTemplateTableName(): Uint8Array | Deno.PointerValue | null {
+  get szTemplateTableName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -8139,9 +8139,9 @@ export class JET_TABLECREATE3_WView {
   }
 
   // 0x20: pointer
-  get rgcolumncreate(): Uint8Array | Deno.PointerValue | null {
+  get rgcolumncreate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -8152,9 +8152,9 @@ export class JET_TABLECREATE3_WView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  get rgindexcreate(): Uint8Array | Deno.PointerValue | null {
+  get rgindexcreate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: u32
@@ -8165,9 +8165,9 @@ export class JET_TABLECREATE3_WView {
   // 0x3c: pad4
 
   // 0x40: buffer
-  get szCallback(): Uint8Array | Deno.PointerValue | null {
+  get szCallback(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: u32
@@ -8181,15 +8181,15 @@ export class JET_TABLECREATE3_WView {
   }
 
   // 0x50: pointer
-  get pSeqSpacehints(): Uint8Array | Deno.PointerValue | null {
+  get pSeqSpacehints(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x58: pointer
-  get pLVSpacehints(): Uint8Array | Deno.PointerValue | null {
+  get pLVSpacehints(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x60: u32
@@ -8200,9 +8200,9 @@ export class JET_TABLECREATE3_WView {
   // 0x64: pad4
 
   // 0x68: pointer
-  get tableid(): Uint8Array | Deno.PointerValue | null {
+  get tableid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(104, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x70: u32
@@ -8220,15 +8220,15 @@ export class JET_TABLECREATE3_WView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set szTableName(value: Uint8Array | Deno.PointerValue | null) {
+  set szTableName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set szTemplateTableName(value: Uint8Array | Deno.PointerValue | null) {
+  set szTemplateTableName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: u32
@@ -8242,8 +8242,8 @@ export class JET_TABLECREATE3_WView {
   }
 
   // 0x20: pointer
-  set rgcolumncreate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set rgcolumncreate(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u32
@@ -8254,8 +8254,8 @@ export class JET_TABLECREATE3_WView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  set rgindexcreate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set rgindexcreate(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: u32
@@ -8266,9 +8266,9 @@ export class JET_TABLECREATE3_WView {
   // 0x3c: pad4
 
   // 0x40: buffer
-  set szCallback(value: Uint8Array | Deno.PointerValue | null) {
+  set szCallback(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f64 = value;
-    this.view.setBigUint64(64, BigInt(util.toPointer((this.buf as any)._f64)), true);
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f64))), true);
   }
 
   // 0x48: u32
@@ -8282,13 +8282,13 @@ export class JET_TABLECREATE3_WView {
   }
 
   // 0x50: pointer
-  set pSeqSpacehints(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set pSeqSpacehints(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x58: pointer
-  set pLVSpacehints(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  set pLVSpacehints(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x60: u32
@@ -8299,8 +8299,8 @@ export class JET_TABLECREATE3_WView {
   // 0x64: pad4
 
   // 0x68: pointer
-  set tableid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(104, BigInt(util.toPointer(value)), true);
+  set tableid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(104, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x70: u32
@@ -8326,11 +8326,11 @@ export interface JET_TABLECREATE4_A {
   /** u32 */
   ulDensity: number;
   /** ptr */
-  rgcolumncreate: Deno.PointerValue | Uint8Array | null;
+  rgcolumncreate: Deno.PointerValue | Uint8Array;
   /** u32 */
   cColumns: number;
   /** ptr */
-  rgindexcreate: Deno.PointerValue | Uint8Array | null;
+  rgindexcreate: Deno.PointerValue | Uint8Array;
   /** u32 */
   cIndexes: number;
   /** Windows.Win32.Foundation.PSTR */
@@ -8340,13 +8340,13 @@ export interface JET_TABLECREATE4_A {
   /** u32 */
   grbit: number;
   /** ptr */
-  pSeqSpacehints: Deno.PointerValue | Uint8Array | null;
+  pSeqSpacehints: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pLVSpacehints: Deno.PointerValue | Uint8Array | null;
+  pLVSpacehints: Deno.PointerValue | Uint8Array;
   /** u32 */
   cbSeparateLV: number;
   /** Windows.Win32.Storage.StructuredStorage.JET_TABLEID */
-  tableid: Uint8Array | Deno.PointerValue | null;
+  tableid: Uint8Array | Deno.PointerValue;
   /** u32 */
   cCreated: number;
 }
@@ -8362,45 +8362,45 @@ export function allocJET_TABLECREATE4_A(data?: Partial<JET_TABLECREATE4_A>): Uin
   // 0x08: buffer
   if (data?.szTableName !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.szTableName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.szTemplateTableName !== undefined) {
     (buf as any)._f16 = util.pstrToFfi(data.szTemplateTableName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: u32
   if (data?.ulPages !== undefined) view.setUint32(24, Number(data.ulPages), true);
   // 0x1c: u32
   if (data?.ulDensity !== undefined) view.setUint32(28, Number(data.ulDensity), true);
   // 0x20: pointer
-  if (data?.rgcolumncreate !== undefined) view.setBigUint64(32, data.rgcolumncreate === null ? 0n : BigInt(util.toPointer(data.rgcolumncreate)), true);
+  if (data?.rgcolumncreate !== undefined) view.setBigUint64(32, data.rgcolumncreate === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgcolumncreate))), true);
   // 0x28: u32
   if (data?.cColumns !== undefined) view.setUint32(40, Number(data.cColumns), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.rgindexcreate !== undefined) view.setBigUint64(48, data.rgindexcreate === null ? 0n : BigInt(util.toPointer(data.rgindexcreate)), true);
+  if (data?.rgindexcreate !== undefined) view.setBigUint64(48, data.rgindexcreate === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgindexcreate))), true);
   // 0x38: u32
   if (data?.cIndexes !== undefined) view.setUint32(56, Number(data.cIndexes), true);
   // 0x3c: pad4
   // 0x40: buffer
   if (data?.szCallback !== undefined) {
     (buf as any)._f64 = util.pstrToFfi(data.szCallback);
-    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
+    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f64))), true);
   }
   // 0x48: u32
   if (data?.cbtyp !== undefined) view.setUint32(72, Number(data.cbtyp), true);
   // 0x4c: u32
   if (data?.grbit !== undefined) view.setUint32(76, Number(data.grbit), true);
   // 0x50: pointer
-  if (data?.pSeqSpacehints !== undefined) view.setBigUint64(80, data.pSeqSpacehints === null ? 0n : BigInt(util.toPointer(data.pSeqSpacehints)), true);
+  if (data?.pSeqSpacehints !== undefined) view.setBigUint64(80, data.pSeqSpacehints === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pSeqSpacehints))), true);
   // 0x58: pointer
-  if (data?.pLVSpacehints !== undefined) view.setBigUint64(88, data.pLVSpacehints === null ? 0n : BigInt(util.toPointer(data.pLVSpacehints)), true);
+  if (data?.pLVSpacehints !== undefined) view.setBigUint64(88, data.pLVSpacehints === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pLVSpacehints))), true);
   // 0x60: u32
   if (data?.cbSeparateLV !== undefined) view.setUint32(96, Number(data.cbSeparateLV), true);
   // 0x64: pad4
   // 0x68: pointer
-  if (data?.tableid !== undefined) view.setBigUint64(104, data.tableid === null ? 0n : BigInt(util.toPointer(data.tableid)), true);
+  if (data?.tableid !== undefined) view.setBigUint64(104, data.tableid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.tableid))), true);
   // 0x70: u32
   if (data?.cCreated !== undefined) view.setUint32(112, Number(data.cCreated), true);
   // 0x74: pad4
@@ -8425,15 +8425,15 @@ export class JET_TABLECREATE4_AView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get szTableName(): Uint8Array | Deno.PointerValue | null {
+  get szTableName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get szTemplateTableName(): Uint8Array | Deno.PointerValue | null {
+  get szTemplateTableName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -8447,9 +8447,9 @@ export class JET_TABLECREATE4_AView {
   }
 
   // 0x20: pointer
-  get rgcolumncreate(): Uint8Array | Deno.PointerValue | null {
+  get rgcolumncreate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -8460,9 +8460,9 @@ export class JET_TABLECREATE4_AView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  get rgindexcreate(): Uint8Array | Deno.PointerValue | null {
+  get rgindexcreate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: u32
@@ -8473,9 +8473,9 @@ export class JET_TABLECREATE4_AView {
   // 0x3c: pad4
 
   // 0x40: buffer
-  get szCallback(): Uint8Array | Deno.PointerValue | null {
+  get szCallback(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: u32
@@ -8489,15 +8489,15 @@ export class JET_TABLECREATE4_AView {
   }
 
   // 0x50: pointer
-  get pSeqSpacehints(): Uint8Array | Deno.PointerValue | null {
+  get pSeqSpacehints(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x58: pointer
-  get pLVSpacehints(): Uint8Array | Deno.PointerValue | null {
+  get pLVSpacehints(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x60: u32
@@ -8508,9 +8508,9 @@ export class JET_TABLECREATE4_AView {
   // 0x64: pad4
 
   // 0x68: pointer
-  get tableid(): Uint8Array | Deno.PointerValue | null {
+  get tableid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(104, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x70: u32
@@ -8528,15 +8528,15 @@ export class JET_TABLECREATE4_AView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set szTableName(value: Uint8Array | Deno.PointerValue | null) {
+  set szTableName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set szTemplateTableName(value: Uint8Array | Deno.PointerValue | null) {
+  set szTemplateTableName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: u32
@@ -8550,8 +8550,8 @@ export class JET_TABLECREATE4_AView {
   }
 
   // 0x20: pointer
-  set rgcolumncreate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set rgcolumncreate(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u32
@@ -8562,8 +8562,8 @@ export class JET_TABLECREATE4_AView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  set rgindexcreate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set rgindexcreate(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: u32
@@ -8574,9 +8574,9 @@ export class JET_TABLECREATE4_AView {
   // 0x3c: pad4
 
   // 0x40: buffer
-  set szCallback(value: Uint8Array | Deno.PointerValue | null) {
+  set szCallback(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f64 = value;
-    this.view.setBigUint64(64, BigInt(util.toPointer((this.buf as any)._f64)), true);
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f64))), true);
   }
 
   // 0x48: u32
@@ -8590,13 +8590,13 @@ export class JET_TABLECREATE4_AView {
   }
 
   // 0x50: pointer
-  set pSeqSpacehints(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set pSeqSpacehints(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x58: pointer
-  set pLVSpacehints(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  set pLVSpacehints(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x60: u32
@@ -8607,8 +8607,8 @@ export class JET_TABLECREATE4_AView {
   // 0x64: pad4
 
   // 0x68: pointer
-  set tableid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(104, BigInt(util.toPointer(value)), true);
+  set tableid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(104, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x70: u32
@@ -8634,11 +8634,11 @@ export interface JET_TABLECREATE4_W {
   /** u32 */
   ulDensity: number;
   /** ptr */
-  rgcolumncreate: Deno.PointerValue | Uint8Array | null;
+  rgcolumncreate: Deno.PointerValue | Uint8Array;
   /** u32 */
   cColumns: number;
   /** ptr */
-  rgindexcreate: Deno.PointerValue | Uint8Array | null;
+  rgindexcreate: Deno.PointerValue | Uint8Array;
   /** u32 */
   cIndexes: number;
   /** Windows.Win32.Foundation.PWSTR */
@@ -8648,13 +8648,13 @@ export interface JET_TABLECREATE4_W {
   /** u32 */
   grbit: number;
   /** ptr */
-  pSeqSpacehints: Deno.PointerValue | Uint8Array | null;
+  pSeqSpacehints: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pLVSpacehints: Deno.PointerValue | Uint8Array | null;
+  pLVSpacehints: Deno.PointerValue | Uint8Array;
   /** u32 */
   cbSeparateLV: number;
   /** Windows.Win32.Storage.StructuredStorage.JET_TABLEID */
-  tableid: Uint8Array | Deno.PointerValue | null;
+  tableid: Uint8Array | Deno.PointerValue;
   /** u32 */
   cCreated: number;
 }
@@ -8670,45 +8670,45 @@ export function allocJET_TABLECREATE4_W(data?: Partial<JET_TABLECREATE4_W>): Uin
   // 0x08: buffer
   if (data?.szTableName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.szTableName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.szTemplateTableName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.szTemplateTableName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: u32
   if (data?.ulPages !== undefined) view.setUint32(24, Number(data.ulPages), true);
   // 0x1c: u32
   if (data?.ulDensity !== undefined) view.setUint32(28, Number(data.ulDensity), true);
   // 0x20: pointer
-  if (data?.rgcolumncreate !== undefined) view.setBigUint64(32, data.rgcolumncreate === null ? 0n : BigInt(util.toPointer(data.rgcolumncreate)), true);
+  if (data?.rgcolumncreate !== undefined) view.setBigUint64(32, data.rgcolumncreate === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgcolumncreate))), true);
   // 0x28: u32
   if (data?.cColumns !== undefined) view.setUint32(40, Number(data.cColumns), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.rgindexcreate !== undefined) view.setBigUint64(48, data.rgindexcreate === null ? 0n : BigInt(util.toPointer(data.rgindexcreate)), true);
+  if (data?.rgindexcreate !== undefined) view.setBigUint64(48, data.rgindexcreate === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgindexcreate))), true);
   // 0x38: u32
   if (data?.cIndexes !== undefined) view.setUint32(56, Number(data.cIndexes), true);
   // 0x3c: pad4
   // 0x40: buffer
   if (data?.szCallback !== undefined) {
     (buf as any)._f64 = util.pwstrToFfi(data.szCallback);
-    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
+    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f64))), true);
   }
   // 0x48: u32
   if (data?.cbtyp !== undefined) view.setUint32(72, Number(data.cbtyp), true);
   // 0x4c: u32
   if (data?.grbit !== undefined) view.setUint32(76, Number(data.grbit), true);
   // 0x50: pointer
-  if (data?.pSeqSpacehints !== undefined) view.setBigUint64(80, data.pSeqSpacehints === null ? 0n : BigInt(util.toPointer(data.pSeqSpacehints)), true);
+  if (data?.pSeqSpacehints !== undefined) view.setBigUint64(80, data.pSeqSpacehints === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pSeqSpacehints))), true);
   // 0x58: pointer
-  if (data?.pLVSpacehints !== undefined) view.setBigUint64(88, data.pLVSpacehints === null ? 0n : BigInt(util.toPointer(data.pLVSpacehints)), true);
+  if (data?.pLVSpacehints !== undefined) view.setBigUint64(88, data.pLVSpacehints === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pLVSpacehints))), true);
   // 0x60: u32
   if (data?.cbSeparateLV !== undefined) view.setUint32(96, Number(data.cbSeparateLV), true);
   // 0x64: pad4
   // 0x68: pointer
-  if (data?.tableid !== undefined) view.setBigUint64(104, data.tableid === null ? 0n : BigInt(util.toPointer(data.tableid)), true);
+  if (data?.tableid !== undefined) view.setBigUint64(104, data.tableid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.tableid))), true);
   // 0x70: u32
   if (data?.cCreated !== undefined) view.setUint32(112, Number(data.cCreated), true);
   // 0x74: pad4
@@ -8733,15 +8733,15 @@ export class JET_TABLECREATE4_WView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get szTableName(): Uint8Array | Deno.PointerValue | null {
+  get szTableName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get szTemplateTableName(): Uint8Array | Deno.PointerValue | null {
+  get szTemplateTableName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -8755,9 +8755,9 @@ export class JET_TABLECREATE4_WView {
   }
 
   // 0x20: pointer
-  get rgcolumncreate(): Uint8Array | Deno.PointerValue | null {
+  get rgcolumncreate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -8768,9 +8768,9 @@ export class JET_TABLECREATE4_WView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  get rgindexcreate(): Uint8Array | Deno.PointerValue | null {
+  get rgindexcreate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: u32
@@ -8781,9 +8781,9 @@ export class JET_TABLECREATE4_WView {
   // 0x3c: pad4
 
   // 0x40: buffer
-  get szCallback(): Uint8Array | Deno.PointerValue | null {
+  get szCallback(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: u32
@@ -8797,15 +8797,15 @@ export class JET_TABLECREATE4_WView {
   }
 
   // 0x50: pointer
-  get pSeqSpacehints(): Uint8Array | Deno.PointerValue | null {
+  get pSeqSpacehints(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x58: pointer
-  get pLVSpacehints(): Uint8Array | Deno.PointerValue | null {
+  get pLVSpacehints(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x60: u32
@@ -8816,9 +8816,9 @@ export class JET_TABLECREATE4_WView {
   // 0x64: pad4
 
   // 0x68: pointer
-  get tableid(): Uint8Array | Deno.PointerValue | null {
+  get tableid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(104, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x70: u32
@@ -8836,15 +8836,15 @@ export class JET_TABLECREATE4_WView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set szTableName(value: Uint8Array | Deno.PointerValue | null) {
+  set szTableName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set szTemplateTableName(value: Uint8Array | Deno.PointerValue | null) {
+  set szTemplateTableName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: u32
@@ -8858,8 +8858,8 @@ export class JET_TABLECREATE4_WView {
   }
 
   // 0x20: pointer
-  set rgcolumncreate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set rgcolumncreate(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u32
@@ -8870,8 +8870,8 @@ export class JET_TABLECREATE4_WView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  set rgindexcreate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set rgindexcreate(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: u32
@@ -8882,9 +8882,9 @@ export class JET_TABLECREATE4_WView {
   // 0x3c: pad4
 
   // 0x40: buffer
-  set szCallback(value: Uint8Array | Deno.PointerValue | null) {
+  set szCallback(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f64 = value;
-    this.view.setBigUint64(64, BigInt(util.toPointer((this.buf as any)._f64)), true);
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f64))), true);
   }
 
   // 0x48: u32
@@ -8898,13 +8898,13 @@ export class JET_TABLECREATE4_WView {
   }
 
   // 0x50: pointer
-  set pSeqSpacehints(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set pSeqSpacehints(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x58: pointer
-  set pLVSpacehints(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  set pLVSpacehints(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x60: u32
@@ -8915,8 +8915,8 @@ export class JET_TABLECREATE4_WView {
   // 0x64: pad4
 
   // 0x68: pointer
-  set tableid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(104, BigInt(util.toPointer(value)), true);
+  set tableid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(104, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x70: u32
@@ -8934,21 +8934,21 @@ export interface JET_OPENTEMPORARYTABLE {
   /** u32 */
   cbStruct: number;
   /** ptr */
-  prgcolumndef: Deno.PointerValue | Uint8Array | null;
+  prgcolumndef: Deno.PointerValue | Uint8Array;
   /** u32 */
   ccolumn: number;
   /** ptr */
-  pidxunicode: Deno.PointerValue | Uint8Array | null;
+  pidxunicode: Deno.PointerValue | Uint8Array;
   /** u32 */
   grbit: number;
   /** ptr */
-  prgcolumnid: Deno.PointerValue | Uint8Array | null;
+  prgcolumnid: Deno.PointerValue | Uint8Array;
   /** u32 */
   cbKeyMost: number;
   /** u32 */
   cbVarSegMac: number;
   /** Windows.Win32.Storage.StructuredStorage.JET_TABLEID */
-  tableid: Uint8Array | Deno.PointerValue | null;
+  tableid: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofJET_OPENTEMPORARYTABLE = 64;
@@ -8960,23 +8960,23 @@ export function allocJET_OPENTEMPORARYTABLE(data?: Partial<JET_OPENTEMPORARYTABL
   if (data?.cbStruct !== undefined) view.setUint32(0, Number(data.cbStruct), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.prgcolumndef !== undefined) view.setBigUint64(8, data.prgcolumndef === null ? 0n : BigInt(util.toPointer(data.prgcolumndef)), true);
+  if (data?.prgcolumndef !== undefined) view.setBigUint64(8, data.prgcolumndef === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.prgcolumndef))), true);
   // 0x10: u32
   if (data?.ccolumn !== undefined) view.setUint32(16, Number(data.ccolumn), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.pidxunicode !== undefined) view.setBigUint64(24, data.pidxunicode === null ? 0n : BigInt(util.toPointer(data.pidxunicode)), true);
+  if (data?.pidxunicode !== undefined) view.setBigUint64(24, data.pidxunicode === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pidxunicode))), true);
   // 0x20: u32
   if (data?.grbit !== undefined) view.setUint32(32, Number(data.grbit), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.prgcolumnid !== undefined) view.setBigUint64(40, data.prgcolumnid === null ? 0n : BigInt(util.toPointer(data.prgcolumnid)), true);
+  if (data?.prgcolumnid !== undefined) view.setBigUint64(40, data.prgcolumnid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.prgcolumnid))), true);
   // 0x30: u32
   if (data?.cbKeyMost !== undefined) view.setUint32(48, Number(data.cbKeyMost), true);
   // 0x34: u32
   if (data?.cbVarSegMac !== undefined) view.setUint32(52, Number(data.cbVarSegMac), true);
   // 0x38: pointer
-  if (data?.tableid !== undefined) view.setBigUint64(56, data.tableid === null ? 0n : BigInt(util.toPointer(data.tableid)), true);
+  if (data?.tableid !== undefined) view.setBigUint64(56, data.tableid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.tableid))), true);
   return buf;
 }
 
@@ -8998,9 +8998,9 @@ export class JET_OPENTEMPORARYTABLEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get prgcolumndef(): Uint8Array | Deno.PointerValue | null {
+  get prgcolumndef(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -9011,9 +9011,9 @@ export class JET_OPENTEMPORARYTABLEView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get pidxunicode(): Uint8Array | Deno.PointerValue | null {
+  get pidxunicode(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -9024,9 +9024,9 @@ export class JET_OPENTEMPORARYTABLEView {
   // 0x24: pad4
 
   // 0x28: pointer
-  get prgcolumnid(): Uint8Array | Deno.PointerValue | null {
+  get prgcolumnid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: u32
@@ -9040,9 +9040,9 @@ export class JET_OPENTEMPORARYTABLEView {
   }
 
   // 0x38: pointer
-  get tableid(): Uint8Array | Deno.PointerValue | null {
+  get tableid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -9053,8 +9053,8 @@ export class JET_OPENTEMPORARYTABLEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set prgcolumndef(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set prgcolumndef(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -9065,8 +9065,8 @@ export class JET_OPENTEMPORARYTABLEView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set pidxunicode(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set pidxunicode(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -9077,8 +9077,8 @@ export class JET_OPENTEMPORARYTABLEView {
   // 0x24: pad4
 
   // 0x28: pointer
-  set prgcolumnid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set prgcolumnid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: u32
@@ -9092,8 +9092,8 @@ export class JET_OPENTEMPORARYTABLEView {
   }
 
   // 0x38: pointer
-  set tableid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set tableid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -9104,21 +9104,21 @@ export interface JET_OPENTEMPORARYTABLE2 {
   /** u32 */
   cbStruct: number;
   /** ptr */
-  prgcolumndef: Deno.PointerValue | Uint8Array | null;
+  prgcolumndef: Deno.PointerValue | Uint8Array;
   /** u32 */
   ccolumn: number;
   /** ptr */
-  pidxunicode: Deno.PointerValue | Uint8Array | null;
+  pidxunicode: Deno.PointerValue | Uint8Array;
   /** u32 */
   grbit: number;
   /** ptr */
-  prgcolumnid: Deno.PointerValue | Uint8Array | null;
+  prgcolumnid: Deno.PointerValue | Uint8Array;
   /** u32 */
   cbKeyMost: number;
   /** u32 */
   cbVarSegMac: number;
   /** Windows.Win32.Storage.StructuredStorage.JET_TABLEID */
-  tableid: Uint8Array | Deno.PointerValue | null;
+  tableid: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofJET_OPENTEMPORARYTABLE2 = 64;
@@ -9130,23 +9130,23 @@ export function allocJET_OPENTEMPORARYTABLE2(data?: Partial<JET_OPENTEMPORARYTAB
   if (data?.cbStruct !== undefined) view.setUint32(0, Number(data.cbStruct), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.prgcolumndef !== undefined) view.setBigUint64(8, data.prgcolumndef === null ? 0n : BigInt(util.toPointer(data.prgcolumndef)), true);
+  if (data?.prgcolumndef !== undefined) view.setBigUint64(8, data.prgcolumndef === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.prgcolumndef))), true);
   // 0x10: u32
   if (data?.ccolumn !== undefined) view.setUint32(16, Number(data.ccolumn), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.pidxunicode !== undefined) view.setBigUint64(24, data.pidxunicode === null ? 0n : BigInt(util.toPointer(data.pidxunicode)), true);
+  if (data?.pidxunicode !== undefined) view.setBigUint64(24, data.pidxunicode === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pidxunicode))), true);
   // 0x20: u32
   if (data?.grbit !== undefined) view.setUint32(32, Number(data.grbit), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.prgcolumnid !== undefined) view.setBigUint64(40, data.prgcolumnid === null ? 0n : BigInt(util.toPointer(data.prgcolumnid)), true);
+  if (data?.prgcolumnid !== undefined) view.setBigUint64(40, data.prgcolumnid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.prgcolumnid))), true);
   // 0x30: u32
   if (data?.cbKeyMost !== undefined) view.setUint32(48, Number(data.cbKeyMost), true);
   // 0x34: u32
   if (data?.cbVarSegMac !== undefined) view.setUint32(52, Number(data.cbVarSegMac), true);
   // 0x38: pointer
-  if (data?.tableid !== undefined) view.setBigUint64(56, data.tableid === null ? 0n : BigInt(util.toPointer(data.tableid)), true);
+  if (data?.tableid !== undefined) view.setBigUint64(56, data.tableid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.tableid))), true);
   return buf;
 }
 
@@ -9168,9 +9168,9 @@ export class JET_OPENTEMPORARYTABLE2View {
   // 0x04: pad4
 
   // 0x08: pointer
-  get prgcolumndef(): Uint8Array | Deno.PointerValue | null {
+  get prgcolumndef(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -9181,9 +9181,9 @@ export class JET_OPENTEMPORARYTABLE2View {
   // 0x14: pad4
 
   // 0x18: pointer
-  get pidxunicode(): Uint8Array | Deno.PointerValue | null {
+  get pidxunicode(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -9194,9 +9194,9 @@ export class JET_OPENTEMPORARYTABLE2View {
   // 0x24: pad4
 
   // 0x28: pointer
-  get prgcolumnid(): Uint8Array | Deno.PointerValue | null {
+  get prgcolumnid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: u32
@@ -9210,9 +9210,9 @@ export class JET_OPENTEMPORARYTABLE2View {
   }
 
   // 0x38: pointer
-  get tableid(): Uint8Array | Deno.PointerValue | null {
+  get tableid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -9223,8 +9223,8 @@ export class JET_OPENTEMPORARYTABLE2View {
   // 0x04: pad4
 
   // 0x08: pointer
-  set prgcolumndef(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set prgcolumndef(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -9235,8 +9235,8 @@ export class JET_OPENTEMPORARYTABLE2View {
   // 0x14: pad4
 
   // 0x18: pointer
-  set pidxunicode(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set pidxunicode(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -9247,8 +9247,8 @@ export class JET_OPENTEMPORARYTABLE2View {
   // 0x24: pad4
 
   // 0x28: pointer
-  set prgcolumnid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set prgcolumnid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: u32
@@ -9262,8 +9262,8 @@ export class JET_OPENTEMPORARYTABLE2View {
   }
 
   // 0x38: pointer
-  set tableid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set tableid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -9508,7 +9508,7 @@ export interface JET_RECORDLIST {
   /** u32 */
   cbStruct: number;
   /** Windows.Win32.Storage.StructuredStorage.JET_TABLEID */
-  tableid: Uint8Array | Deno.PointerValue | null;
+  tableid: Uint8Array | Deno.PointerValue;
   /** u32 */
   cRecord: number;
   /** u32 */
@@ -9524,7 +9524,7 @@ export function allocJET_RECORDLIST(data?: Partial<JET_RECORDLIST>): Uint8Array 
   if (data?.cbStruct !== undefined) view.setUint32(0, Number(data.cbStruct), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.tableid !== undefined) view.setBigUint64(8, data.tableid === null ? 0n : BigInt(util.toPointer(data.tableid)), true);
+  if (data?.tableid !== undefined) view.setBigUint64(8, data.tableid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.tableid))), true);
   // 0x10: u32
   if (data?.cRecord !== undefined) view.setUint32(16, Number(data.cRecord), true);
   // 0x14: u32
@@ -9550,9 +9550,9 @@ export class JET_RECORDLISTView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get tableid(): Uint8Array | Deno.PointerValue | null {
+  get tableid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -9573,8 +9573,8 @@ export class JET_RECORDLISTView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set tableid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set tableid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -9595,7 +9595,7 @@ export interface JET_INDEXRANGE {
   /** u32 */
   cbStruct: number;
   /** Windows.Win32.Storage.StructuredStorage.JET_TABLEID */
-  tableid: Uint8Array | Deno.PointerValue | null;
+  tableid: Uint8Array | Deno.PointerValue;
   /** u32 */
   grbit: number;
 }
@@ -9609,7 +9609,7 @@ export function allocJET_INDEXRANGE(data?: Partial<JET_INDEXRANGE>): Uint8Array 
   if (data?.cbStruct !== undefined) view.setUint32(0, Number(data.cbStruct), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.tableid !== undefined) view.setBigUint64(8, data.tableid === null ? 0n : BigInt(util.toPointer(data.tableid)), true);
+  if (data?.tableid !== undefined) view.setBigUint64(8, data.tableid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.tableid))), true);
   // 0x10: u32
   if (data?.grbit !== undefined) view.setUint32(16, Number(data.grbit), true);
   // 0x14: pad4
@@ -9634,9 +9634,9 @@ export class JET_INDEXRANGEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get tableid(): Uint8Array | Deno.PointerValue | null {
+  get tableid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -9654,8 +9654,8 @@ export class JET_INDEXRANGEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set tableid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set tableid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -9675,7 +9675,7 @@ export interface JET_INDEX_COLUMN {
   /** Windows.Win32.Storage.Jet.JET_RELOP */
   relop: JET_RELOP;
   /** ptr */
-  pv: Deno.PointerValue | Uint8Array | null;
+  pv: Deno.PointerValue | Uint8Array;
   /** u32 */
   cb: number;
   /** u32 */
@@ -9692,7 +9692,7 @@ export function allocJET_INDEX_COLUMN(data?: Partial<JET_INDEX_COLUMN>): Uint8Ar
   // 0x04: i32
   if (data?.relop !== undefined) view.setInt32(4, Number(data.relop), true);
   // 0x08: pointer
-  if (data?.pv !== undefined) view.setBigUint64(8, data.pv === null ? 0n : BigInt(util.toPointer(data.pv)), true);
+  if (data?.pv !== undefined) view.setBigUint64(8, data.pv === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pv))), true);
   // 0x10: u32
   if (data?.cb !== undefined) view.setUint32(16, Number(data.cb), true);
   // 0x14: u32
@@ -9721,9 +9721,9 @@ export class JET_INDEX_COLUMNView {
   }
 
   // 0x08: pointer
-  get pv(): Uint8Array | Deno.PointerValue | null {
+  get pv(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -9747,8 +9747,8 @@ export class JET_INDEX_COLUMNView {
   }
 
   // 0x08: pointer
-  set pv(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pv(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -9767,11 +9767,11 @@ export class JET_INDEX_COLUMNView {
  */
 export interface JET_INDEX_RANGE {
   /** ptr */
-  rgStartColumns: Deno.PointerValue | Uint8Array | null;
+  rgStartColumns: Deno.PointerValue | Uint8Array;
   /** u32 */
   cStartColumns: number;
   /** ptr */
-  rgEndColumns: Deno.PointerValue | Uint8Array | null;
+  rgEndColumns: Deno.PointerValue | Uint8Array;
   /** u32 */
   cEndColumns: number;
 }
@@ -9782,12 +9782,12 @@ export function allocJET_INDEX_RANGE(data?: Partial<JET_INDEX_RANGE>): Uint8Arra
   const buf = new Uint8Array(sizeofJET_INDEX_RANGE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.rgStartColumns !== undefined) view.setBigUint64(0, data.rgStartColumns === null ? 0n : BigInt(util.toPointer(data.rgStartColumns)), true);
+  if (data?.rgStartColumns !== undefined) view.setBigUint64(0, data.rgStartColumns === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgStartColumns))), true);
   // 0x08: u32
   if (data?.cStartColumns !== undefined) view.setUint32(8, Number(data.cStartColumns), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.rgEndColumns !== undefined) view.setBigUint64(16, data.rgEndColumns === null ? 0n : BigInt(util.toPointer(data.rgEndColumns)), true);
+  if (data?.rgEndColumns !== undefined) view.setBigUint64(16, data.rgEndColumns === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgEndColumns))), true);
   // 0x18: u32
   if (data?.cEndColumns !== undefined) view.setUint32(24, Number(data.cEndColumns), true);
   // 0x1c: pad4
@@ -9805,9 +9805,9 @@ export class JET_INDEX_RANGEView {
   }
 
   // 0x00: pointer
-  get rgStartColumns(): Uint8Array | Deno.PointerValue | null {
+  get rgStartColumns(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -9818,9 +9818,9 @@ export class JET_INDEX_RANGEView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get rgEndColumns(): Uint8Array | Deno.PointerValue | null {
+  get rgEndColumns(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -9831,8 +9831,8 @@ export class JET_INDEX_RANGEView {
   // 0x1c: pad4
 
   // 0x00: pointer
-  set rgStartColumns(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set rgStartColumns(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -9843,8 +9843,8 @@ export class JET_INDEX_RANGEView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set rgEndColumns(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set rgEndColumns(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -9872,9 +9872,9 @@ export interface JET_BKLOGTIME {
   /** Windows.Win32.Foundation.CHAR */
   bYear: string | number;
   /** _Anonymous1_e__Union */
-  Anonymous1: Uint8Array | Deno.PointerValue | null;
+  Anonymous1: Uint8Array | Deno.PointerValue;
   /** _Anonymous2_e__Union */
-  Anonymous2: Uint8Array | Deno.PointerValue | null;
+  Anonymous2: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofJET_BKLOGTIME = 24;
@@ -9896,9 +9896,9 @@ export function allocJET_BKLOGTIME(data?: Partial<JET_BKLOGTIME>): Uint8Array {
   if (data?.bYear !== undefined) view.setUint8(5, Number(data.bYear));
   // 0x06: pad2
   // 0x08: pointer
-  if (data?.Anonymous1 !== undefined) view.setBigUint64(8, data.Anonymous1 === null ? 0n : BigInt(util.toPointer(data.Anonymous1)), true);
+  if (data?.Anonymous1 !== undefined) view.setBigUint64(8, data.Anonymous1 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous1))), true);
   // 0x10: pointer
-  if (data?.Anonymous2 !== undefined) view.setBigUint64(16, data.Anonymous2 === null ? 0n : BigInt(util.toPointer(data.Anonymous2)), true);
+  if (data?.Anonymous2 !== undefined) view.setBigUint64(16, data.Anonymous2 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous2))), true);
   return buf;
 }
 
@@ -9945,15 +9945,15 @@ export class JET_BKLOGTIMEView {
   // 0x06: pad2
 
   // 0x08: pointer
-  get Anonymous1(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous1(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get Anonymous2(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous2(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u8
@@ -9989,13 +9989,13 @@ export class JET_BKLOGTIMEView {
   // 0x06: pad2
 
   // 0x08: pointer
-  set Anonymous1(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous1(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set Anonymous2(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set Anonymous2(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -10071,9 +10071,9 @@ export class JET_LGPOSView {
  */
 export interface JET_BKINFO {
   /** Windows.Win32.Storage.Jet.JET_LGPOS */
-  lgposMark: Uint8Array | Deno.PointerValue | null;
+  lgposMark: Uint8Array | Deno.PointerValue;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** u32 */
   genLow: number;
   /** u32 */
@@ -10086,9 +10086,9 @@ export function allocJET_BKINFO(data?: Partial<JET_BKINFO>): Uint8Array {
   const buf = new Uint8Array(sizeofJET_BKINFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.lgposMark !== undefined) view.setBigUint64(0, data.lgposMark === null ? 0n : BigInt(util.toPointer(data.lgposMark)), true);
+  if (data?.lgposMark !== undefined) view.setBigUint64(0, data.lgposMark === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lgposMark))), true);
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x10: u32
   if (data?.genLow !== undefined) view.setUint32(16, Number(data.genLow), true);
   // 0x14: u32
@@ -10107,15 +10107,15 @@ export class JET_BKINFOView {
   }
 
   // 0x00: pointer
-  get lgposMark(): Uint8Array | Deno.PointerValue | null {
+  get lgposMark(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -10129,13 +10129,13 @@ export class JET_BKINFOView {
   }
 
   // 0x00: pointer
-  set lgposMark(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set lgposMark(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -10158,29 +10158,29 @@ export interface JET_DBINFOMISC {
   /** u32 */
   ulUpdate: number;
   /** Windows.Win32.Storage.Jet.JET_SIGNATURE */
-  signDb: Uint8Array | Deno.PointerValue | null;
+  signDb: Uint8Array | Deno.PointerValue;
   /** u32 */
   dbstate: number;
   /** Windows.Win32.Storage.Jet.JET_LGPOS */
-  lgposConsistent: Uint8Array | Deno.PointerValue | null;
+  lgposConsistent: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_LOGTIME */
-  logtimeConsistent: Uint8Array | Deno.PointerValue | null;
+  logtimeConsistent: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_LOGTIME */
-  logtimeAttach: Uint8Array | Deno.PointerValue | null;
+  logtimeAttach: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_LGPOS */
-  lgposAttach: Uint8Array | Deno.PointerValue | null;
+  lgposAttach: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_LOGTIME */
-  logtimeDetach: Uint8Array | Deno.PointerValue | null;
+  logtimeDetach: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_LGPOS */
-  lgposDetach: Uint8Array | Deno.PointerValue | null;
+  lgposDetach: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_SIGNATURE */
-  signLog: Uint8Array | Deno.PointerValue | null;
+  signLog: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_BKINFO */
-  bkinfoFullPrev: Uint8Array | Deno.PointerValue | null;
+  bkinfoFullPrev: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_BKINFO */
-  bkinfoIncPrev: Uint8Array | Deno.PointerValue | null;
+  bkinfoIncPrev: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_BKINFO */
-  bkinfoFullCur: Uint8Array | Deno.PointerValue | null;
+  bkinfoFullCur: Uint8Array | Deno.PointerValue;
   /** u32 */
   fShadowingDisabled: number;
   /** u32 */
@@ -10207,30 +10207,30 @@ export function allocJET_DBINFOMISC(data?: Partial<JET_DBINFOMISC>): Uint8Array 
   // 0x04: u32
   if (data?.ulUpdate !== undefined) view.setUint32(4, Number(data.ulUpdate), true);
   // 0x08: pointer
-  if (data?.signDb !== undefined) view.setBigUint64(8, data.signDb === null ? 0n : BigInt(util.toPointer(data.signDb)), true);
+  if (data?.signDb !== undefined) view.setBigUint64(8, data.signDb === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.signDb))), true);
   // 0x10: u32
   if (data?.dbstate !== undefined) view.setUint32(16, Number(data.dbstate), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.lgposConsistent !== undefined) view.setBigUint64(24, data.lgposConsistent === null ? 0n : BigInt(util.toPointer(data.lgposConsistent)), true);
+  if (data?.lgposConsistent !== undefined) view.setBigUint64(24, data.lgposConsistent === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lgposConsistent))), true);
   // 0x20: pointer
-  if (data?.logtimeConsistent !== undefined) view.setBigUint64(32, data.logtimeConsistent === null ? 0n : BigInt(util.toPointer(data.logtimeConsistent)), true);
+  if (data?.logtimeConsistent !== undefined) view.setBigUint64(32, data.logtimeConsistent === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.logtimeConsistent))), true);
   // 0x28: pointer
-  if (data?.logtimeAttach !== undefined) view.setBigUint64(40, data.logtimeAttach === null ? 0n : BigInt(util.toPointer(data.logtimeAttach)), true);
+  if (data?.logtimeAttach !== undefined) view.setBigUint64(40, data.logtimeAttach === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.logtimeAttach))), true);
   // 0x30: pointer
-  if (data?.lgposAttach !== undefined) view.setBigUint64(48, data.lgposAttach === null ? 0n : BigInt(util.toPointer(data.lgposAttach)), true);
+  if (data?.lgposAttach !== undefined) view.setBigUint64(48, data.lgposAttach === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lgposAttach))), true);
   // 0x38: pointer
-  if (data?.logtimeDetach !== undefined) view.setBigUint64(56, data.logtimeDetach === null ? 0n : BigInt(util.toPointer(data.logtimeDetach)), true);
+  if (data?.logtimeDetach !== undefined) view.setBigUint64(56, data.logtimeDetach === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.logtimeDetach))), true);
   // 0x40: pointer
-  if (data?.lgposDetach !== undefined) view.setBigUint64(64, data.lgposDetach === null ? 0n : BigInt(util.toPointer(data.lgposDetach)), true);
+  if (data?.lgposDetach !== undefined) view.setBigUint64(64, data.lgposDetach === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lgposDetach))), true);
   // 0x48: pointer
-  if (data?.signLog !== undefined) view.setBigUint64(72, data.signLog === null ? 0n : BigInt(util.toPointer(data.signLog)), true);
+  if (data?.signLog !== undefined) view.setBigUint64(72, data.signLog === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.signLog))), true);
   // 0x50: pointer
-  if (data?.bkinfoFullPrev !== undefined) view.setBigUint64(80, data.bkinfoFullPrev === null ? 0n : BigInt(util.toPointer(data.bkinfoFullPrev)), true);
+  if (data?.bkinfoFullPrev !== undefined) view.setBigUint64(80, data.bkinfoFullPrev === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.bkinfoFullPrev))), true);
   // 0x58: pointer
-  if (data?.bkinfoIncPrev !== undefined) view.setBigUint64(88, data.bkinfoIncPrev === null ? 0n : BigInt(util.toPointer(data.bkinfoIncPrev)), true);
+  if (data?.bkinfoIncPrev !== undefined) view.setBigUint64(88, data.bkinfoIncPrev === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.bkinfoIncPrev))), true);
   // 0x60: pointer
-  if (data?.bkinfoFullCur !== undefined) view.setBigUint64(96, data.bkinfoFullCur === null ? 0n : BigInt(util.toPointer(data.bkinfoFullCur)), true);
+  if (data?.bkinfoFullCur !== undefined) view.setBigUint64(96, data.bkinfoFullCur === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.bkinfoFullCur))), true);
   // 0x68: u32
   if (data?.fShadowingDisabled !== undefined) view.setUint32(104, Number(data.fShadowingDisabled), true);
   // 0x6c: u32
@@ -10270,9 +10270,9 @@ export class JET_DBINFOMISCView {
   }
 
   // 0x08: pointer
-  get signDb(): Uint8Array | Deno.PointerValue | null {
+  get signDb(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -10283,63 +10283,63 @@ export class JET_DBINFOMISCView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get lgposConsistent(): Uint8Array | Deno.PointerValue | null {
+  get lgposConsistent(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get logtimeConsistent(): Uint8Array | Deno.PointerValue | null {
+  get logtimeConsistent(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get logtimeAttach(): Uint8Array | Deno.PointerValue | null {
+  get logtimeAttach(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get lgposAttach(): Uint8Array | Deno.PointerValue | null {
+  get lgposAttach(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get logtimeDetach(): Uint8Array | Deno.PointerValue | null {
+  get logtimeDetach(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get lgposDetach(): Uint8Array | Deno.PointerValue | null {
+  get lgposDetach(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: pointer
-  get signLog(): Uint8Array | Deno.PointerValue | null {
+  get signLog(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: pointer
-  get bkinfoFullPrev(): Uint8Array | Deno.PointerValue | null {
+  get bkinfoFullPrev(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x58: pointer
-  get bkinfoIncPrev(): Uint8Array | Deno.PointerValue | null {
+  get bkinfoIncPrev(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x60: pointer
-  get bkinfoFullCur(): Uint8Array | Deno.PointerValue | null {
+  get bkinfoFullCur(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(96, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x68: u32
@@ -10390,8 +10390,8 @@ export class JET_DBINFOMISCView {
   }
 
   // 0x08: pointer
-  set signDb(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set signDb(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -10402,53 +10402,53 @@ export class JET_DBINFOMISCView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set lgposConsistent(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set lgposConsistent(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set logtimeConsistent(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set logtimeConsistent(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set logtimeAttach(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set logtimeAttach(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set lgposAttach(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set lgposAttach(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set logtimeDetach(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set logtimeDetach(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set lgposDetach(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set lgposDetach(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: pointer
-  set signLog(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set signLog(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x50: pointer
-  set bkinfoFullPrev(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set bkinfoFullPrev(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x58: pointer
-  set bkinfoIncPrev(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  set bkinfoIncPrev(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x60: pointer
-  set bkinfoFullCur(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(96, BigInt(util.toPointer(value)), true);
+  set bkinfoFullCur(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(96, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x68: u32
@@ -10498,29 +10498,29 @@ export interface JET_DBINFOMISC2 {
   /** u32 */
   ulUpdate: number;
   /** Windows.Win32.Storage.Jet.JET_SIGNATURE */
-  signDb: Uint8Array | Deno.PointerValue | null;
+  signDb: Uint8Array | Deno.PointerValue;
   /** u32 */
   dbstate: number;
   /** Windows.Win32.Storage.Jet.JET_LGPOS */
-  lgposConsistent: Uint8Array | Deno.PointerValue | null;
+  lgposConsistent: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_LOGTIME */
-  logtimeConsistent: Uint8Array | Deno.PointerValue | null;
+  logtimeConsistent: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_LOGTIME */
-  logtimeAttach: Uint8Array | Deno.PointerValue | null;
+  logtimeAttach: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_LGPOS */
-  lgposAttach: Uint8Array | Deno.PointerValue | null;
+  lgposAttach: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_LOGTIME */
-  logtimeDetach: Uint8Array | Deno.PointerValue | null;
+  logtimeDetach: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_LGPOS */
-  lgposDetach: Uint8Array | Deno.PointerValue | null;
+  lgposDetach: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_SIGNATURE */
-  signLog: Uint8Array | Deno.PointerValue | null;
+  signLog: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_BKINFO */
-  bkinfoFullPrev: Uint8Array | Deno.PointerValue | null;
+  bkinfoFullPrev: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_BKINFO */
-  bkinfoIncPrev: Uint8Array | Deno.PointerValue | null;
+  bkinfoIncPrev: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_BKINFO */
-  bkinfoFullCur: Uint8Array | Deno.PointerValue | null;
+  bkinfoFullCur: Uint8Array | Deno.PointerValue;
   /** u32 */
   fShadowingDisabled: number;
   /** u32 */
@@ -10540,29 +10540,29 @@ export interface JET_DBINFOMISC2 {
   /** u32 */
   genMaxRequired: number;
   /** Windows.Win32.Storage.Jet.JET_LOGTIME */
-  logtimeGenMaxCreate: Uint8Array | Deno.PointerValue | null;
+  logtimeGenMaxCreate: Uint8Array | Deno.PointerValue;
   /** u32 */
   ulRepairCount: number;
   /** Windows.Win32.Storage.Jet.JET_LOGTIME */
-  logtimeRepair: Uint8Array | Deno.PointerValue | null;
+  logtimeRepair: Uint8Array | Deno.PointerValue;
   /** u32 */
   ulRepairCountOld: number;
   /** u32 */
   ulECCFixSuccess: number;
   /** Windows.Win32.Storage.Jet.JET_LOGTIME */
-  logtimeECCFixSuccess: Uint8Array | Deno.PointerValue | null;
+  logtimeECCFixSuccess: Uint8Array | Deno.PointerValue;
   /** u32 */
   ulECCFixSuccessOld: number;
   /** u32 */
   ulECCFixFail: number;
   /** Windows.Win32.Storage.Jet.JET_LOGTIME */
-  logtimeECCFixFail: Uint8Array | Deno.PointerValue | null;
+  logtimeECCFixFail: Uint8Array | Deno.PointerValue;
   /** u32 */
   ulECCFixFailOld: number;
   /** u32 */
   ulBadChecksum: number;
   /** Windows.Win32.Storage.Jet.JET_LOGTIME */
-  logtimeBadChecksum: Uint8Array | Deno.PointerValue | null;
+  logtimeBadChecksum: Uint8Array | Deno.PointerValue;
   /** u32 */
   ulBadChecksumOld: number;
 }
@@ -10577,30 +10577,30 @@ export function allocJET_DBINFOMISC2(data?: Partial<JET_DBINFOMISC2>): Uint8Arra
   // 0x04: u32
   if (data?.ulUpdate !== undefined) view.setUint32(4, Number(data.ulUpdate), true);
   // 0x08: pointer
-  if (data?.signDb !== undefined) view.setBigUint64(8, data.signDb === null ? 0n : BigInt(util.toPointer(data.signDb)), true);
+  if (data?.signDb !== undefined) view.setBigUint64(8, data.signDb === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.signDb))), true);
   // 0x10: u32
   if (data?.dbstate !== undefined) view.setUint32(16, Number(data.dbstate), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.lgposConsistent !== undefined) view.setBigUint64(24, data.lgposConsistent === null ? 0n : BigInt(util.toPointer(data.lgposConsistent)), true);
+  if (data?.lgposConsistent !== undefined) view.setBigUint64(24, data.lgposConsistent === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lgposConsistent))), true);
   // 0x20: pointer
-  if (data?.logtimeConsistent !== undefined) view.setBigUint64(32, data.logtimeConsistent === null ? 0n : BigInt(util.toPointer(data.logtimeConsistent)), true);
+  if (data?.logtimeConsistent !== undefined) view.setBigUint64(32, data.logtimeConsistent === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.logtimeConsistent))), true);
   // 0x28: pointer
-  if (data?.logtimeAttach !== undefined) view.setBigUint64(40, data.logtimeAttach === null ? 0n : BigInt(util.toPointer(data.logtimeAttach)), true);
+  if (data?.logtimeAttach !== undefined) view.setBigUint64(40, data.logtimeAttach === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.logtimeAttach))), true);
   // 0x30: pointer
-  if (data?.lgposAttach !== undefined) view.setBigUint64(48, data.lgposAttach === null ? 0n : BigInt(util.toPointer(data.lgposAttach)), true);
+  if (data?.lgposAttach !== undefined) view.setBigUint64(48, data.lgposAttach === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lgposAttach))), true);
   // 0x38: pointer
-  if (data?.logtimeDetach !== undefined) view.setBigUint64(56, data.logtimeDetach === null ? 0n : BigInt(util.toPointer(data.logtimeDetach)), true);
+  if (data?.logtimeDetach !== undefined) view.setBigUint64(56, data.logtimeDetach === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.logtimeDetach))), true);
   // 0x40: pointer
-  if (data?.lgposDetach !== undefined) view.setBigUint64(64, data.lgposDetach === null ? 0n : BigInt(util.toPointer(data.lgposDetach)), true);
+  if (data?.lgposDetach !== undefined) view.setBigUint64(64, data.lgposDetach === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lgposDetach))), true);
   // 0x48: pointer
-  if (data?.signLog !== undefined) view.setBigUint64(72, data.signLog === null ? 0n : BigInt(util.toPointer(data.signLog)), true);
+  if (data?.signLog !== undefined) view.setBigUint64(72, data.signLog === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.signLog))), true);
   // 0x50: pointer
-  if (data?.bkinfoFullPrev !== undefined) view.setBigUint64(80, data.bkinfoFullPrev === null ? 0n : BigInt(util.toPointer(data.bkinfoFullPrev)), true);
+  if (data?.bkinfoFullPrev !== undefined) view.setBigUint64(80, data.bkinfoFullPrev === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.bkinfoFullPrev))), true);
   // 0x58: pointer
-  if (data?.bkinfoIncPrev !== undefined) view.setBigUint64(88, data.bkinfoIncPrev === null ? 0n : BigInt(util.toPointer(data.bkinfoIncPrev)), true);
+  if (data?.bkinfoIncPrev !== undefined) view.setBigUint64(88, data.bkinfoIncPrev === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.bkinfoIncPrev))), true);
   // 0x60: pointer
-  if (data?.bkinfoFullCur !== undefined) view.setBigUint64(96, data.bkinfoFullCur === null ? 0n : BigInt(util.toPointer(data.bkinfoFullCur)), true);
+  if (data?.bkinfoFullCur !== undefined) view.setBigUint64(96, data.bkinfoFullCur === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.bkinfoFullCur))), true);
   // 0x68: u32
   if (data?.fShadowingDisabled !== undefined) view.setUint32(104, Number(data.fShadowingDisabled), true);
   // 0x6c: u32
@@ -10621,30 +10621,30 @@ export function allocJET_DBINFOMISC2(data?: Partial<JET_DBINFOMISC2>): Uint8Arra
   if (data?.genMaxRequired !== undefined) view.setUint32(136, Number(data.genMaxRequired), true);
   // 0x8c: pad4
   // 0x90: pointer
-  if (data?.logtimeGenMaxCreate !== undefined) view.setBigUint64(144, data.logtimeGenMaxCreate === null ? 0n : BigInt(util.toPointer(data.logtimeGenMaxCreate)), true);
+  if (data?.logtimeGenMaxCreate !== undefined) view.setBigUint64(144, data.logtimeGenMaxCreate === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.logtimeGenMaxCreate))), true);
   // 0x98: u32
   if (data?.ulRepairCount !== undefined) view.setUint32(152, Number(data.ulRepairCount), true);
   // 0x9c: pad4
   // 0xa0: pointer
-  if (data?.logtimeRepair !== undefined) view.setBigUint64(160, data.logtimeRepair === null ? 0n : BigInt(util.toPointer(data.logtimeRepair)), true);
+  if (data?.logtimeRepair !== undefined) view.setBigUint64(160, data.logtimeRepair === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.logtimeRepair))), true);
   // 0xa8: u32
   if (data?.ulRepairCountOld !== undefined) view.setUint32(168, Number(data.ulRepairCountOld), true);
   // 0xac: u32
   if (data?.ulECCFixSuccess !== undefined) view.setUint32(172, Number(data.ulECCFixSuccess), true);
   // 0xb0: pointer
-  if (data?.logtimeECCFixSuccess !== undefined) view.setBigUint64(176, data.logtimeECCFixSuccess === null ? 0n : BigInt(util.toPointer(data.logtimeECCFixSuccess)), true);
+  if (data?.logtimeECCFixSuccess !== undefined) view.setBigUint64(176, data.logtimeECCFixSuccess === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.logtimeECCFixSuccess))), true);
   // 0xb8: u32
   if (data?.ulECCFixSuccessOld !== undefined) view.setUint32(184, Number(data.ulECCFixSuccessOld), true);
   // 0xbc: u32
   if (data?.ulECCFixFail !== undefined) view.setUint32(188, Number(data.ulECCFixFail), true);
   // 0xc0: pointer
-  if (data?.logtimeECCFixFail !== undefined) view.setBigUint64(192, data.logtimeECCFixFail === null ? 0n : BigInt(util.toPointer(data.logtimeECCFixFail)), true);
+  if (data?.logtimeECCFixFail !== undefined) view.setBigUint64(192, data.logtimeECCFixFail === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.logtimeECCFixFail))), true);
   // 0xc8: u32
   if (data?.ulECCFixFailOld !== undefined) view.setUint32(200, Number(data.ulECCFixFailOld), true);
   // 0xcc: u32
   if (data?.ulBadChecksum !== undefined) view.setUint32(204, Number(data.ulBadChecksum), true);
   // 0xd0: pointer
-  if (data?.logtimeBadChecksum !== undefined) view.setBigUint64(208, data.logtimeBadChecksum === null ? 0n : BigInt(util.toPointer(data.logtimeBadChecksum)), true);
+  if (data?.logtimeBadChecksum !== undefined) view.setBigUint64(208, data.logtimeBadChecksum === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.logtimeBadChecksum))), true);
   // 0xd8: u32
   if (data?.ulBadChecksumOld !== undefined) view.setUint32(216, Number(data.ulBadChecksumOld), true);
   // 0xdc: pad4
@@ -10672,9 +10672,9 @@ export class JET_DBINFOMISC2View {
   }
 
   // 0x08: pointer
-  get signDb(): Uint8Array | Deno.PointerValue | null {
+  get signDb(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -10685,63 +10685,63 @@ export class JET_DBINFOMISC2View {
   // 0x14: pad4
 
   // 0x18: pointer
-  get lgposConsistent(): Uint8Array | Deno.PointerValue | null {
+  get lgposConsistent(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get logtimeConsistent(): Uint8Array | Deno.PointerValue | null {
+  get logtimeConsistent(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get logtimeAttach(): Uint8Array | Deno.PointerValue | null {
+  get logtimeAttach(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get lgposAttach(): Uint8Array | Deno.PointerValue | null {
+  get lgposAttach(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get logtimeDetach(): Uint8Array | Deno.PointerValue | null {
+  get logtimeDetach(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get lgposDetach(): Uint8Array | Deno.PointerValue | null {
+  get lgposDetach(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: pointer
-  get signLog(): Uint8Array | Deno.PointerValue | null {
+  get signLog(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: pointer
-  get bkinfoFullPrev(): Uint8Array | Deno.PointerValue | null {
+  get bkinfoFullPrev(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x58: pointer
-  get bkinfoIncPrev(): Uint8Array | Deno.PointerValue | null {
+  get bkinfoIncPrev(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x60: pointer
-  get bkinfoFullCur(): Uint8Array | Deno.PointerValue | null {
+  get bkinfoFullCur(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(96, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x68: u32
@@ -10792,9 +10792,9 @@ export class JET_DBINFOMISC2View {
   // 0x8c: pad4
 
   // 0x90: pointer
-  get logtimeGenMaxCreate(): Uint8Array | Deno.PointerValue | null {
+  get logtimeGenMaxCreate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(144, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x98: u32
@@ -10805,9 +10805,9 @@ export class JET_DBINFOMISC2View {
   // 0x9c: pad4
 
   // 0xa0: pointer
-  get logtimeRepair(): Uint8Array | Deno.PointerValue | null {
+  get logtimeRepair(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(160, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0xa8: u32
@@ -10821,9 +10821,9 @@ export class JET_DBINFOMISC2View {
   }
 
   // 0xb0: pointer
-  get logtimeECCFixSuccess(): Uint8Array | Deno.PointerValue | null {
+  get logtimeECCFixSuccess(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(176, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0xb8: u32
@@ -10837,9 +10837,9 @@ export class JET_DBINFOMISC2View {
   }
 
   // 0xc0: pointer
-  get logtimeECCFixFail(): Uint8Array | Deno.PointerValue | null {
+  get logtimeECCFixFail(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(192, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0xc8: u32
@@ -10853,9 +10853,9 @@ export class JET_DBINFOMISC2View {
   }
 
   // 0xd0: pointer
-  get logtimeBadChecksum(): Uint8Array | Deno.PointerValue | null {
+  get logtimeBadChecksum(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(208, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0xd8: u32
@@ -10876,8 +10876,8 @@ export class JET_DBINFOMISC2View {
   }
 
   // 0x08: pointer
-  set signDb(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set signDb(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -10888,53 +10888,53 @@ export class JET_DBINFOMISC2View {
   // 0x14: pad4
 
   // 0x18: pointer
-  set lgposConsistent(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set lgposConsistent(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set logtimeConsistent(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set logtimeConsistent(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set logtimeAttach(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set logtimeAttach(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set lgposAttach(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set lgposAttach(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set logtimeDetach(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set logtimeDetach(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set lgposDetach(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set lgposDetach(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: pointer
-  set signLog(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set signLog(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x50: pointer
-  set bkinfoFullPrev(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set bkinfoFullPrev(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x58: pointer
-  set bkinfoIncPrev(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  set bkinfoIncPrev(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x60: pointer
-  set bkinfoFullCur(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(96, BigInt(util.toPointer(value)), true);
+  set bkinfoFullCur(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(96, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x68: u32
@@ -10985,8 +10985,8 @@ export class JET_DBINFOMISC2View {
   // 0x8c: pad4
 
   // 0x90: pointer
-  set logtimeGenMaxCreate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(144, BigInt(util.toPointer(value)), true);
+  set logtimeGenMaxCreate(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(144, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x98: u32
@@ -10997,8 +10997,8 @@ export class JET_DBINFOMISC2View {
   // 0x9c: pad4
 
   // 0xa0: pointer
-  set logtimeRepair(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(160, BigInt(util.toPointer(value)), true);
+  set logtimeRepair(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(160, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0xa8: u32
@@ -11012,8 +11012,8 @@ export class JET_DBINFOMISC2View {
   }
 
   // 0xb0: pointer
-  set logtimeECCFixSuccess(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(176, BigInt(util.toPointer(value)), true);
+  set logtimeECCFixSuccess(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(176, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0xb8: u32
@@ -11027,8 +11027,8 @@ export class JET_DBINFOMISC2View {
   }
 
   // 0xc0: pointer
-  set logtimeECCFixFail(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(192, BigInt(util.toPointer(value)), true);
+  set logtimeECCFixFail(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(192, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0xc8: u32
@@ -11042,8 +11042,8 @@ export class JET_DBINFOMISC2View {
   }
 
   // 0xd0: pointer
-  set logtimeBadChecksum(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(208, BigInt(util.toPointer(value)), true);
+  set logtimeBadChecksum(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(208, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0xd8: u32
@@ -11063,29 +11063,29 @@ export interface JET_DBINFOMISC3 {
   /** u32 */
   ulUpdate: number;
   /** Windows.Win32.Storage.Jet.JET_SIGNATURE */
-  signDb: Uint8Array | Deno.PointerValue | null;
+  signDb: Uint8Array | Deno.PointerValue;
   /** u32 */
   dbstate: number;
   /** Windows.Win32.Storage.Jet.JET_LGPOS */
-  lgposConsistent: Uint8Array | Deno.PointerValue | null;
+  lgposConsistent: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_LOGTIME */
-  logtimeConsistent: Uint8Array | Deno.PointerValue | null;
+  logtimeConsistent: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_LOGTIME */
-  logtimeAttach: Uint8Array | Deno.PointerValue | null;
+  logtimeAttach: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_LGPOS */
-  lgposAttach: Uint8Array | Deno.PointerValue | null;
+  lgposAttach: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_LOGTIME */
-  logtimeDetach: Uint8Array | Deno.PointerValue | null;
+  logtimeDetach: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_LGPOS */
-  lgposDetach: Uint8Array | Deno.PointerValue | null;
+  lgposDetach: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_SIGNATURE */
-  signLog: Uint8Array | Deno.PointerValue | null;
+  signLog: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_BKINFO */
-  bkinfoFullPrev: Uint8Array | Deno.PointerValue | null;
+  bkinfoFullPrev: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_BKINFO */
-  bkinfoIncPrev: Uint8Array | Deno.PointerValue | null;
+  bkinfoIncPrev: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_BKINFO */
-  bkinfoFullCur: Uint8Array | Deno.PointerValue | null;
+  bkinfoFullCur: Uint8Array | Deno.PointerValue;
   /** u32 */
   fShadowingDisabled: number;
   /** u32 */
@@ -11105,29 +11105,29 @@ export interface JET_DBINFOMISC3 {
   /** u32 */
   genMaxRequired: number;
   /** Windows.Win32.Storage.Jet.JET_LOGTIME */
-  logtimeGenMaxCreate: Uint8Array | Deno.PointerValue | null;
+  logtimeGenMaxCreate: Uint8Array | Deno.PointerValue;
   /** u32 */
   ulRepairCount: number;
   /** Windows.Win32.Storage.Jet.JET_LOGTIME */
-  logtimeRepair: Uint8Array | Deno.PointerValue | null;
+  logtimeRepair: Uint8Array | Deno.PointerValue;
   /** u32 */
   ulRepairCountOld: number;
   /** u32 */
   ulECCFixSuccess: number;
   /** Windows.Win32.Storage.Jet.JET_LOGTIME */
-  logtimeECCFixSuccess: Uint8Array | Deno.PointerValue | null;
+  logtimeECCFixSuccess: Uint8Array | Deno.PointerValue;
   /** u32 */
   ulECCFixSuccessOld: number;
   /** u32 */
   ulECCFixFail: number;
   /** Windows.Win32.Storage.Jet.JET_LOGTIME */
-  logtimeECCFixFail: Uint8Array | Deno.PointerValue | null;
+  logtimeECCFixFail: Uint8Array | Deno.PointerValue;
   /** u32 */
   ulECCFixFailOld: number;
   /** u32 */
   ulBadChecksum: number;
   /** Windows.Win32.Storage.Jet.JET_LOGTIME */
-  logtimeBadChecksum: Uint8Array | Deno.PointerValue | null;
+  logtimeBadChecksum: Uint8Array | Deno.PointerValue;
   /** u32 */
   ulBadChecksumOld: number;
   /** u32 */
@@ -11144,30 +11144,30 @@ export function allocJET_DBINFOMISC3(data?: Partial<JET_DBINFOMISC3>): Uint8Arra
   // 0x04: u32
   if (data?.ulUpdate !== undefined) view.setUint32(4, Number(data.ulUpdate), true);
   // 0x08: pointer
-  if (data?.signDb !== undefined) view.setBigUint64(8, data.signDb === null ? 0n : BigInt(util.toPointer(data.signDb)), true);
+  if (data?.signDb !== undefined) view.setBigUint64(8, data.signDb === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.signDb))), true);
   // 0x10: u32
   if (data?.dbstate !== undefined) view.setUint32(16, Number(data.dbstate), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.lgposConsistent !== undefined) view.setBigUint64(24, data.lgposConsistent === null ? 0n : BigInt(util.toPointer(data.lgposConsistent)), true);
+  if (data?.lgposConsistent !== undefined) view.setBigUint64(24, data.lgposConsistent === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lgposConsistent))), true);
   // 0x20: pointer
-  if (data?.logtimeConsistent !== undefined) view.setBigUint64(32, data.logtimeConsistent === null ? 0n : BigInt(util.toPointer(data.logtimeConsistent)), true);
+  if (data?.logtimeConsistent !== undefined) view.setBigUint64(32, data.logtimeConsistent === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.logtimeConsistent))), true);
   // 0x28: pointer
-  if (data?.logtimeAttach !== undefined) view.setBigUint64(40, data.logtimeAttach === null ? 0n : BigInt(util.toPointer(data.logtimeAttach)), true);
+  if (data?.logtimeAttach !== undefined) view.setBigUint64(40, data.logtimeAttach === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.logtimeAttach))), true);
   // 0x30: pointer
-  if (data?.lgposAttach !== undefined) view.setBigUint64(48, data.lgposAttach === null ? 0n : BigInt(util.toPointer(data.lgposAttach)), true);
+  if (data?.lgposAttach !== undefined) view.setBigUint64(48, data.lgposAttach === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lgposAttach))), true);
   // 0x38: pointer
-  if (data?.logtimeDetach !== undefined) view.setBigUint64(56, data.logtimeDetach === null ? 0n : BigInt(util.toPointer(data.logtimeDetach)), true);
+  if (data?.logtimeDetach !== undefined) view.setBigUint64(56, data.logtimeDetach === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.logtimeDetach))), true);
   // 0x40: pointer
-  if (data?.lgposDetach !== undefined) view.setBigUint64(64, data.lgposDetach === null ? 0n : BigInt(util.toPointer(data.lgposDetach)), true);
+  if (data?.lgposDetach !== undefined) view.setBigUint64(64, data.lgposDetach === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lgposDetach))), true);
   // 0x48: pointer
-  if (data?.signLog !== undefined) view.setBigUint64(72, data.signLog === null ? 0n : BigInt(util.toPointer(data.signLog)), true);
+  if (data?.signLog !== undefined) view.setBigUint64(72, data.signLog === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.signLog))), true);
   // 0x50: pointer
-  if (data?.bkinfoFullPrev !== undefined) view.setBigUint64(80, data.bkinfoFullPrev === null ? 0n : BigInt(util.toPointer(data.bkinfoFullPrev)), true);
+  if (data?.bkinfoFullPrev !== undefined) view.setBigUint64(80, data.bkinfoFullPrev === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.bkinfoFullPrev))), true);
   // 0x58: pointer
-  if (data?.bkinfoIncPrev !== undefined) view.setBigUint64(88, data.bkinfoIncPrev === null ? 0n : BigInt(util.toPointer(data.bkinfoIncPrev)), true);
+  if (data?.bkinfoIncPrev !== undefined) view.setBigUint64(88, data.bkinfoIncPrev === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.bkinfoIncPrev))), true);
   // 0x60: pointer
-  if (data?.bkinfoFullCur !== undefined) view.setBigUint64(96, data.bkinfoFullCur === null ? 0n : BigInt(util.toPointer(data.bkinfoFullCur)), true);
+  if (data?.bkinfoFullCur !== undefined) view.setBigUint64(96, data.bkinfoFullCur === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.bkinfoFullCur))), true);
   // 0x68: u32
   if (data?.fShadowingDisabled !== undefined) view.setUint32(104, Number(data.fShadowingDisabled), true);
   // 0x6c: u32
@@ -11188,30 +11188,30 @@ export function allocJET_DBINFOMISC3(data?: Partial<JET_DBINFOMISC3>): Uint8Arra
   if (data?.genMaxRequired !== undefined) view.setUint32(136, Number(data.genMaxRequired), true);
   // 0x8c: pad4
   // 0x90: pointer
-  if (data?.logtimeGenMaxCreate !== undefined) view.setBigUint64(144, data.logtimeGenMaxCreate === null ? 0n : BigInt(util.toPointer(data.logtimeGenMaxCreate)), true);
+  if (data?.logtimeGenMaxCreate !== undefined) view.setBigUint64(144, data.logtimeGenMaxCreate === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.logtimeGenMaxCreate))), true);
   // 0x98: u32
   if (data?.ulRepairCount !== undefined) view.setUint32(152, Number(data.ulRepairCount), true);
   // 0x9c: pad4
   // 0xa0: pointer
-  if (data?.logtimeRepair !== undefined) view.setBigUint64(160, data.logtimeRepair === null ? 0n : BigInt(util.toPointer(data.logtimeRepair)), true);
+  if (data?.logtimeRepair !== undefined) view.setBigUint64(160, data.logtimeRepair === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.logtimeRepair))), true);
   // 0xa8: u32
   if (data?.ulRepairCountOld !== undefined) view.setUint32(168, Number(data.ulRepairCountOld), true);
   // 0xac: u32
   if (data?.ulECCFixSuccess !== undefined) view.setUint32(172, Number(data.ulECCFixSuccess), true);
   // 0xb0: pointer
-  if (data?.logtimeECCFixSuccess !== undefined) view.setBigUint64(176, data.logtimeECCFixSuccess === null ? 0n : BigInt(util.toPointer(data.logtimeECCFixSuccess)), true);
+  if (data?.logtimeECCFixSuccess !== undefined) view.setBigUint64(176, data.logtimeECCFixSuccess === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.logtimeECCFixSuccess))), true);
   // 0xb8: u32
   if (data?.ulECCFixSuccessOld !== undefined) view.setUint32(184, Number(data.ulECCFixSuccessOld), true);
   // 0xbc: u32
   if (data?.ulECCFixFail !== undefined) view.setUint32(188, Number(data.ulECCFixFail), true);
   // 0xc0: pointer
-  if (data?.logtimeECCFixFail !== undefined) view.setBigUint64(192, data.logtimeECCFixFail === null ? 0n : BigInt(util.toPointer(data.logtimeECCFixFail)), true);
+  if (data?.logtimeECCFixFail !== undefined) view.setBigUint64(192, data.logtimeECCFixFail === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.logtimeECCFixFail))), true);
   // 0xc8: u32
   if (data?.ulECCFixFailOld !== undefined) view.setUint32(200, Number(data.ulECCFixFailOld), true);
   // 0xcc: u32
   if (data?.ulBadChecksum !== undefined) view.setUint32(204, Number(data.ulBadChecksum), true);
   // 0xd0: pointer
-  if (data?.logtimeBadChecksum !== undefined) view.setBigUint64(208, data.logtimeBadChecksum === null ? 0n : BigInt(util.toPointer(data.logtimeBadChecksum)), true);
+  if (data?.logtimeBadChecksum !== undefined) view.setBigUint64(208, data.logtimeBadChecksum === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.logtimeBadChecksum))), true);
   // 0xd8: u32
   if (data?.ulBadChecksumOld !== undefined) view.setUint32(216, Number(data.ulBadChecksumOld), true);
   // 0xdc: u32
@@ -11240,9 +11240,9 @@ export class JET_DBINFOMISC3View {
   }
 
   // 0x08: pointer
-  get signDb(): Uint8Array | Deno.PointerValue | null {
+  get signDb(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -11253,63 +11253,63 @@ export class JET_DBINFOMISC3View {
   // 0x14: pad4
 
   // 0x18: pointer
-  get lgposConsistent(): Uint8Array | Deno.PointerValue | null {
+  get lgposConsistent(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get logtimeConsistent(): Uint8Array | Deno.PointerValue | null {
+  get logtimeConsistent(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get logtimeAttach(): Uint8Array | Deno.PointerValue | null {
+  get logtimeAttach(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get lgposAttach(): Uint8Array | Deno.PointerValue | null {
+  get lgposAttach(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get logtimeDetach(): Uint8Array | Deno.PointerValue | null {
+  get logtimeDetach(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get lgposDetach(): Uint8Array | Deno.PointerValue | null {
+  get lgposDetach(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: pointer
-  get signLog(): Uint8Array | Deno.PointerValue | null {
+  get signLog(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: pointer
-  get bkinfoFullPrev(): Uint8Array | Deno.PointerValue | null {
+  get bkinfoFullPrev(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x58: pointer
-  get bkinfoIncPrev(): Uint8Array | Deno.PointerValue | null {
+  get bkinfoIncPrev(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x60: pointer
-  get bkinfoFullCur(): Uint8Array | Deno.PointerValue | null {
+  get bkinfoFullCur(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(96, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x68: u32
@@ -11360,9 +11360,9 @@ export class JET_DBINFOMISC3View {
   // 0x8c: pad4
 
   // 0x90: pointer
-  get logtimeGenMaxCreate(): Uint8Array | Deno.PointerValue | null {
+  get logtimeGenMaxCreate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(144, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x98: u32
@@ -11373,9 +11373,9 @@ export class JET_DBINFOMISC3View {
   // 0x9c: pad4
 
   // 0xa0: pointer
-  get logtimeRepair(): Uint8Array | Deno.PointerValue | null {
+  get logtimeRepair(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(160, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0xa8: u32
@@ -11389,9 +11389,9 @@ export class JET_DBINFOMISC3View {
   }
 
   // 0xb0: pointer
-  get logtimeECCFixSuccess(): Uint8Array | Deno.PointerValue | null {
+  get logtimeECCFixSuccess(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(176, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0xb8: u32
@@ -11405,9 +11405,9 @@ export class JET_DBINFOMISC3View {
   }
 
   // 0xc0: pointer
-  get logtimeECCFixFail(): Uint8Array | Deno.PointerValue | null {
+  get logtimeECCFixFail(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(192, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0xc8: u32
@@ -11421,9 +11421,9 @@ export class JET_DBINFOMISC3View {
   }
 
   // 0xd0: pointer
-  get logtimeBadChecksum(): Uint8Array | Deno.PointerValue | null {
+  get logtimeBadChecksum(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(208, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0xd8: u32
@@ -11447,8 +11447,8 @@ export class JET_DBINFOMISC3View {
   }
 
   // 0x08: pointer
-  set signDb(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set signDb(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -11459,53 +11459,53 @@ export class JET_DBINFOMISC3View {
   // 0x14: pad4
 
   // 0x18: pointer
-  set lgposConsistent(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set lgposConsistent(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set logtimeConsistent(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set logtimeConsistent(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set logtimeAttach(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set logtimeAttach(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set lgposAttach(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set lgposAttach(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set logtimeDetach(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set logtimeDetach(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set lgposDetach(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set lgposDetach(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: pointer
-  set signLog(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set signLog(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x50: pointer
-  set bkinfoFullPrev(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set bkinfoFullPrev(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x58: pointer
-  set bkinfoIncPrev(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  set bkinfoIncPrev(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x60: pointer
-  set bkinfoFullCur(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(96, BigInt(util.toPointer(value)), true);
+  set bkinfoFullCur(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(96, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x68: u32
@@ -11556,8 +11556,8 @@ export class JET_DBINFOMISC3View {
   // 0x8c: pad4
 
   // 0x90: pointer
-  set logtimeGenMaxCreate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(144, BigInt(util.toPointer(value)), true);
+  set logtimeGenMaxCreate(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(144, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x98: u32
@@ -11568,8 +11568,8 @@ export class JET_DBINFOMISC3View {
   // 0x9c: pad4
 
   // 0xa0: pointer
-  set logtimeRepair(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(160, BigInt(util.toPointer(value)), true);
+  set logtimeRepair(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(160, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0xa8: u32
@@ -11583,8 +11583,8 @@ export class JET_DBINFOMISC3View {
   }
 
   // 0xb0: pointer
-  set logtimeECCFixSuccess(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(176, BigInt(util.toPointer(value)), true);
+  set logtimeECCFixSuccess(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(176, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0xb8: u32
@@ -11598,8 +11598,8 @@ export class JET_DBINFOMISC3View {
   }
 
   // 0xc0: pointer
-  set logtimeECCFixFail(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(192, BigInt(util.toPointer(value)), true);
+  set logtimeECCFixFail(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(192, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0xc8: u32
@@ -11613,8 +11613,8 @@ export class JET_DBINFOMISC3View {
   }
 
   // 0xd0: pointer
-  set logtimeBadChecksum(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(208, BigInt(util.toPointer(value)), true);
+  set logtimeBadChecksum(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(208, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0xd8: u32
@@ -11637,29 +11637,29 @@ export interface JET_DBINFOMISC4 {
   /** u32 */
   ulUpdate: number;
   /** Windows.Win32.Storage.Jet.JET_SIGNATURE */
-  signDb: Uint8Array | Deno.PointerValue | null;
+  signDb: Uint8Array | Deno.PointerValue;
   /** u32 */
   dbstate: number;
   /** Windows.Win32.Storage.Jet.JET_LGPOS */
-  lgposConsistent: Uint8Array | Deno.PointerValue | null;
+  lgposConsistent: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_LOGTIME */
-  logtimeConsistent: Uint8Array | Deno.PointerValue | null;
+  logtimeConsistent: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_LOGTIME */
-  logtimeAttach: Uint8Array | Deno.PointerValue | null;
+  logtimeAttach: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_LGPOS */
-  lgposAttach: Uint8Array | Deno.PointerValue | null;
+  lgposAttach: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_LOGTIME */
-  logtimeDetach: Uint8Array | Deno.PointerValue | null;
+  logtimeDetach: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_LGPOS */
-  lgposDetach: Uint8Array | Deno.PointerValue | null;
+  lgposDetach: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_SIGNATURE */
-  signLog: Uint8Array | Deno.PointerValue | null;
+  signLog: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_BKINFO */
-  bkinfoFullPrev: Uint8Array | Deno.PointerValue | null;
+  bkinfoFullPrev: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_BKINFO */
-  bkinfoIncPrev: Uint8Array | Deno.PointerValue | null;
+  bkinfoIncPrev: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_BKINFO */
-  bkinfoFullCur: Uint8Array | Deno.PointerValue | null;
+  bkinfoFullCur: Uint8Array | Deno.PointerValue;
   /** u32 */
   fShadowingDisabled: number;
   /** u32 */
@@ -11679,37 +11679,37 @@ export interface JET_DBINFOMISC4 {
   /** u32 */
   genMaxRequired: number;
   /** Windows.Win32.Storage.Jet.JET_LOGTIME */
-  logtimeGenMaxCreate: Uint8Array | Deno.PointerValue | null;
+  logtimeGenMaxCreate: Uint8Array | Deno.PointerValue;
   /** u32 */
   ulRepairCount: number;
   /** Windows.Win32.Storage.Jet.JET_LOGTIME */
-  logtimeRepair: Uint8Array | Deno.PointerValue | null;
+  logtimeRepair: Uint8Array | Deno.PointerValue;
   /** u32 */
   ulRepairCountOld: number;
   /** u32 */
   ulECCFixSuccess: number;
   /** Windows.Win32.Storage.Jet.JET_LOGTIME */
-  logtimeECCFixSuccess: Uint8Array | Deno.PointerValue | null;
+  logtimeECCFixSuccess: Uint8Array | Deno.PointerValue;
   /** u32 */
   ulECCFixSuccessOld: number;
   /** u32 */
   ulECCFixFail: number;
   /** Windows.Win32.Storage.Jet.JET_LOGTIME */
-  logtimeECCFixFail: Uint8Array | Deno.PointerValue | null;
+  logtimeECCFixFail: Uint8Array | Deno.PointerValue;
   /** u32 */
   ulECCFixFailOld: number;
   /** u32 */
   ulBadChecksum: number;
   /** Windows.Win32.Storage.Jet.JET_LOGTIME */
-  logtimeBadChecksum: Uint8Array | Deno.PointerValue | null;
+  logtimeBadChecksum: Uint8Array | Deno.PointerValue;
   /** u32 */
   ulBadChecksumOld: number;
   /** u32 */
   genCommitted: number;
   /** Windows.Win32.Storage.Jet.JET_BKINFO */
-  bkinfoCopyPrev: Uint8Array | Deno.PointerValue | null;
+  bkinfoCopyPrev: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_BKINFO */
-  bkinfoDiffPrev: Uint8Array | Deno.PointerValue | null;
+  bkinfoDiffPrev: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofJET_DBINFOMISC4 = 240;
@@ -11722,30 +11722,30 @@ export function allocJET_DBINFOMISC4(data?: Partial<JET_DBINFOMISC4>): Uint8Arra
   // 0x04: u32
   if (data?.ulUpdate !== undefined) view.setUint32(4, Number(data.ulUpdate), true);
   // 0x08: pointer
-  if (data?.signDb !== undefined) view.setBigUint64(8, data.signDb === null ? 0n : BigInt(util.toPointer(data.signDb)), true);
+  if (data?.signDb !== undefined) view.setBigUint64(8, data.signDb === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.signDb))), true);
   // 0x10: u32
   if (data?.dbstate !== undefined) view.setUint32(16, Number(data.dbstate), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.lgposConsistent !== undefined) view.setBigUint64(24, data.lgposConsistent === null ? 0n : BigInt(util.toPointer(data.lgposConsistent)), true);
+  if (data?.lgposConsistent !== undefined) view.setBigUint64(24, data.lgposConsistent === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lgposConsistent))), true);
   // 0x20: pointer
-  if (data?.logtimeConsistent !== undefined) view.setBigUint64(32, data.logtimeConsistent === null ? 0n : BigInt(util.toPointer(data.logtimeConsistent)), true);
+  if (data?.logtimeConsistent !== undefined) view.setBigUint64(32, data.logtimeConsistent === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.logtimeConsistent))), true);
   // 0x28: pointer
-  if (data?.logtimeAttach !== undefined) view.setBigUint64(40, data.logtimeAttach === null ? 0n : BigInt(util.toPointer(data.logtimeAttach)), true);
+  if (data?.logtimeAttach !== undefined) view.setBigUint64(40, data.logtimeAttach === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.logtimeAttach))), true);
   // 0x30: pointer
-  if (data?.lgposAttach !== undefined) view.setBigUint64(48, data.lgposAttach === null ? 0n : BigInt(util.toPointer(data.lgposAttach)), true);
+  if (data?.lgposAttach !== undefined) view.setBigUint64(48, data.lgposAttach === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lgposAttach))), true);
   // 0x38: pointer
-  if (data?.logtimeDetach !== undefined) view.setBigUint64(56, data.logtimeDetach === null ? 0n : BigInt(util.toPointer(data.logtimeDetach)), true);
+  if (data?.logtimeDetach !== undefined) view.setBigUint64(56, data.logtimeDetach === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.logtimeDetach))), true);
   // 0x40: pointer
-  if (data?.lgposDetach !== undefined) view.setBigUint64(64, data.lgposDetach === null ? 0n : BigInt(util.toPointer(data.lgposDetach)), true);
+  if (data?.lgposDetach !== undefined) view.setBigUint64(64, data.lgposDetach === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lgposDetach))), true);
   // 0x48: pointer
-  if (data?.signLog !== undefined) view.setBigUint64(72, data.signLog === null ? 0n : BigInt(util.toPointer(data.signLog)), true);
+  if (data?.signLog !== undefined) view.setBigUint64(72, data.signLog === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.signLog))), true);
   // 0x50: pointer
-  if (data?.bkinfoFullPrev !== undefined) view.setBigUint64(80, data.bkinfoFullPrev === null ? 0n : BigInt(util.toPointer(data.bkinfoFullPrev)), true);
+  if (data?.bkinfoFullPrev !== undefined) view.setBigUint64(80, data.bkinfoFullPrev === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.bkinfoFullPrev))), true);
   // 0x58: pointer
-  if (data?.bkinfoIncPrev !== undefined) view.setBigUint64(88, data.bkinfoIncPrev === null ? 0n : BigInt(util.toPointer(data.bkinfoIncPrev)), true);
+  if (data?.bkinfoIncPrev !== undefined) view.setBigUint64(88, data.bkinfoIncPrev === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.bkinfoIncPrev))), true);
   // 0x60: pointer
-  if (data?.bkinfoFullCur !== undefined) view.setBigUint64(96, data.bkinfoFullCur === null ? 0n : BigInt(util.toPointer(data.bkinfoFullCur)), true);
+  if (data?.bkinfoFullCur !== undefined) view.setBigUint64(96, data.bkinfoFullCur === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.bkinfoFullCur))), true);
   // 0x68: u32
   if (data?.fShadowingDisabled !== undefined) view.setUint32(104, Number(data.fShadowingDisabled), true);
   // 0x6c: u32
@@ -11766,38 +11766,38 @@ export function allocJET_DBINFOMISC4(data?: Partial<JET_DBINFOMISC4>): Uint8Arra
   if (data?.genMaxRequired !== undefined) view.setUint32(136, Number(data.genMaxRequired), true);
   // 0x8c: pad4
   // 0x90: pointer
-  if (data?.logtimeGenMaxCreate !== undefined) view.setBigUint64(144, data.logtimeGenMaxCreate === null ? 0n : BigInt(util.toPointer(data.logtimeGenMaxCreate)), true);
+  if (data?.logtimeGenMaxCreate !== undefined) view.setBigUint64(144, data.logtimeGenMaxCreate === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.logtimeGenMaxCreate))), true);
   // 0x98: u32
   if (data?.ulRepairCount !== undefined) view.setUint32(152, Number(data.ulRepairCount), true);
   // 0x9c: pad4
   // 0xa0: pointer
-  if (data?.logtimeRepair !== undefined) view.setBigUint64(160, data.logtimeRepair === null ? 0n : BigInt(util.toPointer(data.logtimeRepair)), true);
+  if (data?.logtimeRepair !== undefined) view.setBigUint64(160, data.logtimeRepair === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.logtimeRepair))), true);
   // 0xa8: u32
   if (data?.ulRepairCountOld !== undefined) view.setUint32(168, Number(data.ulRepairCountOld), true);
   // 0xac: u32
   if (data?.ulECCFixSuccess !== undefined) view.setUint32(172, Number(data.ulECCFixSuccess), true);
   // 0xb0: pointer
-  if (data?.logtimeECCFixSuccess !== undefined) view.setBigUint64(176, data.logtimeECCFixSuccess === null ? 0n : BigInt(util.toPointer(data.logtimeECCFixSuccess)), true);
+  if (data?.logtimeECCFixSuccess !== undefined) view.setBigUint64(176, data.logtimeECCFixSuccess === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.logtimeECCFixSuccess))), true);
   // 0xb8: u32
   if (data?.ulECCFixSuccessOld !== undefined) view.setUint32(184, Number(data.ulECCFixSuccessOld), true);
   // 0xbc: u32
   if (data?.ulECCFixFail !== undefined) view.setUint32(188, Number(data.ulECCFixFail), true);
   // 0xc0: pointer
-  if (data?.logtimeECCFixFail !== undefined) view.setBigUint64(192, data.logtimeECCFixFail === null ? 0n : BigInt(util.toPointer(data.logtimeECCFixFail)), true);
+  if (data?.logtimeECCFixFail !== undefined) view.setBigUint64(192, data.logtimeECCFixFail === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.logtimeECCFixFail))), true);
   // 0xc8: u32
   if (data?.ulECCFixFailOld !== undefined) view.setUint32(200, Number(data.ulECCFixFailOld), true);
   // 0xcc: u32
   if (data?.ulBadChecksum !== undefined) view.setUint32(204, Number(data.ulBadChecksum), true);
   // 0xd0: pointer
-  if (data?.logtimeBadChecksum !== undefined) view.setBigUint64(208, data.logtimeBadChecksum === null ? 0n : BigInt(util.toPointer(data.logtimeBadChecksum)), true);
+  if (data?.logtimeBadChecksum !== undefined) view.setBigUint64(208, data.logtimeBadChecksum === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.logtimeBadChecksum))), true);
   // 0xd8: u32
   if (data?.ulBadChecksumOld !== undefined) view.setUint32(216, Number(data.ulBadChecksumOld), true);
   // 0xdc: u32
   if (data?.genCommitted !== undefined) view.setUint32(220, Number(data.genCommitted), true);
   // 0xe0: pointer
-  if (data?.bkinfoCopyPrev !== undefined) view.setBigUint64(224, data.bkinfoCopyPrev === null ? 0n : BigInt(util.toPointer(data.bkinfoCopyPrev)), true);
+  if (data?.bkinfoCopyPrev !== undefined) view.setBigUint64(224, data.bkinfoCopyPrev === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.bkinfoCopyPrev))), true);
   // 0xe8: pointer
-  if (data?.bkinfoDiffPrev !== undefined) view.setBigUint64(232, data.bkinfoDiffPrev === null ? 0n : BigInt(util.toPointer(data.bkinfoDiffPrev)), true);
+  if (data?.bkinfoDiffPrev !== undefined) view.setBigUint64(232, data.bkinfoDiffPrev === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.bkinfoDiffPrev))), true);
   return buf;
 }
 
@@ -11822,9 +11822,9 @@ export class JET_DBINFOMISC4View {
   }
 
   // 0x08: pointer
-  get signDb(): Uint8Array | Deno.PointerValue | null {
+  get signDb(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -11835,63 +11835,63 @@ export class JET_DBINFOMISC4View {
   // 0x14: pad4
 
   // 0x18: pointer
-  get lgposConsistent(): Uint8Array | Deno.PointerValue | null {
+  get lgposConsistent(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get logtimeConsistent(): Uint8Array | Deno.PointerValue | null {
+  get logtimeConsistent(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get logtimeAttach(): Uint8Array | Deno.PointerValue | null {
+  get logtimeAttach(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get lgposAttach(): Uint8Array | Deno.PointerValue | null {
+  get lgposAttach(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get logtimeDetach(): Uint8Array | Deno.PointerValue | null {
+  get logtimeDetach(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get lgposDetach(): Uint8Array | Deno.PointerValue | null {
+  get lgposDetach(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: pointer
-  get signLog(): Uint8Array | Deno.PointerValue | null {
+  get signLog(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: pointer
-  get bkinfoFullPrev(): Uint8Array | Deno.PointerValue | null {
+  get bkinfoFullPrev(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x58: pointer
-  get bkinfoIncPrev(): Uint8Array | Deno.PointerValue | null {
+  get bkinfoIncPrev(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x60: pointer
-  get bkinfoFullCur(): Uint8Array | Deno.PointerValue | null {
+  get bkinfoFullCur(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(96, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x68: u32
@@ -11942,9 +11942,9 @@ export class JET_DBINFOMISC4View {
   // 0x8c: pad4
 
   // 0x90: pointer
-  get logtimeGenMaxCreate(): Uint8Array | Deno.PointerValue | null {
+  get logtimeGenMaxCreate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(144, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x98: u32
@@ -11955,9 +11955,9 @@ export class JET_DBINFOMISC4View {
   // 0x9c: pad4
 
   // 0xa0: pointer
-  get logtimeRepair(): Uint8Array | Deno.PointerValue | null {
+  get logtimeRepair(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(160, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0xa8: u32
@@ -11971,9 +11971,9 @@ export class JET_DBINFOMISC4View {
   }
 
   // 0xb0: pointer
-  get logtimeECCFixSuccess(): Uint8Array | Deno.PointerValue | null {
+  get logtimeECCFixSuccess(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(176, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0xb8: u32
@@ -11987,9 +11987,9 @@ export class JET_DBINFOMISC4View {
   }
 
   // 0xc0: pointer
-  get logtimeECCFixFail(): Uint8Array | Deno.PointerValue | null {
+  get logtimeECCFixFail(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(192, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0xc8: u32
@@ -12003,9 +12003,9 @@ export class JET_DBINFOMISC4View {
   }
 
   // 0xd0: pointer
-  get logtimeBadChecksum(): Uint8Array | Deno.PointerValue | null {
+  get logtimeBadChecksum(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(208, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0xd8: u32
@@ -12019,15 +12019,15 @@ export class JET_DBINFOMISC4View {
   }
 
   // 0xe0: pointer
-  get bkinfoCopyPrev(): Uint8Array | Deno.PointerValue | null {
+  get bkinfoCopyPrev(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(224, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0xe8: pointer
-  get bkinfoDiffPrev(): Uint8Array | Deno.PointerValue | null {
+  get bkinfoDiffPrev(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(232, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -12041,8 +12041,8 @@ export class JET_DBINFOMISC4View {
   }
 
   // 0x08: pointer
-  set signDb(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set signDb(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -12053,53 +12053,53 @@ export class JET_DBINFOMISC4View {
   // 0x14: pad4
 
   // 0x18: pointer
-  set lgposConsistent(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set lgposConsistent(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set logtimeConsistent(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set logtimeConsistent(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set logtimeAttach(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set logtimeAttach(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set lgposAttach(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set lgposAttach(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set logtimeDetach(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set logtimeDetach(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set lgposDetach(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set lgposDetach(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: pointer
-  set signLog(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set signLog(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x50: pointer
-  set bkinfoFullPrev(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set bkinfoFullPrev(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x58: pointer
-  set bkinfoIncPrev(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  set bkinfoIncPrev(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x60: pointer
-  set bkinfoFullCur(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(96, BigInt(util.toPointer(value)), true);
+  set bkinfoFullCur(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(96, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x68: u32
@@ -12150,8 +12150,8 @@ export class JET_DBINFOMISC4View {
   // 0x8c: pad4
 
   // 0x90: pointer
-  set logtimeGenMaxCreate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(144, BigInt(util.toPointer(value)), true);
+  set logtimeGenMaxCreate(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(144, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x98: u32
@@ -12162,8 +12162,8 @@ export class JET_DBINFOMISC4View {
   // 0x9c: pad4
 
   // 0xa0: pointer
-  set logtimeRepair(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(160, BigInt(util.toPointer(value)), true);
+  set logtimeRepair(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(160, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0xa8: u32
@@ -12177,8 +12177,8 @@ export class JET_DBINFOMISC4View {
   }
 
   // 0xb0: pointer
-  set logtimeECCFixSuccess(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(176, BigInt(util.toPointer(value)), true);
+  set logtimeECCFixSuccess(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(176, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0xb8: u32
@@ -12192,8 +12192,8 @@ export class JET_DBINFOMISC4View {
   }
 
   // 0xc0: pointer
-  set logtimeECCFixFail(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(192, BigInt(util.toPointer(value)), true);
+  set logtimeECCFixFail(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(192, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0xc8: u32
@@ -12207,8 +12207,8 @@ export class JET_DBINFOMISC4View {
   }
 
   // 0xd0: pointer
-  set logtimeBadChecksum(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(208, BigInt(util.toPointer(value)), true);
+  set logtimeBadChecksum(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(208, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0xd8: u32
@@ -12222,13 +12222,13 @@ export class JET_DBINFOMISC4View {
   }
 
   // 0xe0: pointer
-  set bkinfoCopyPrev(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(224, BigInt(util.toPointer(value)), true);
+  set bkinfoCopyPrev(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(224, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0xe8: pointer
-  set bkinfoDiffPrev(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(232, BigInt(util.toPointer(value)), true);
+  set bkinfoDiffPrev(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(232, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12376,15 +12376,15 @@ export interface JET_RSTINFO_A {
   /** u32 */
   cbStruct: number;
   /** ptr */
-  rgrstmap: Deno.PointerValue | Uint8Array | null;
+  rgrstmap: Deno.PointerValue | Uint8Array;
   /** i32 */
   crstmap: number;
   /** Windows.Win32.Storage.Jet.JET_LGPOS */
-  lgposStop: Uint8Array | Deno.PointerValue | null;
+  lgposStop: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_LOGTIME */
-  logtimeStop: Uint8Array | Deno.PointerValue | null;
+  logtimeStop: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_PFNSTATUS */
-  pfnStatus: Uint8Array | Deno.PointerValue | null;
+  pfnStatus: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofJET_RSTINFO_A = 48;
@@ -12396,16 +12396,16 @@ export function allocJET_RSTINFO_A(data?: Partial<JET_RSTINFO_A>): Uint8Array {
   if (data?.cbStruct !== undefined) view.setUint32(0, Number(data.cbStruct), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.rgrstmap !== undefined) view.setBigUint64(8, data.rgrstmap === null ? 0n : BigInt(util.toPointer(data.rgrstmap)), true);
+  if (data?.rgrstmap !== undefined) view.setBigUint64(8, data.rgrstmap === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgrstmap))), true);
   // 0x10: i32
   if (data?.crstmap !== undefined) view.setInt32(16, Number(data.crstmap), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.lgposStop !== undefined) view.setBigUint64(24, data.lgposStop === null ? 0n : BigInt(util.toPointer(data.lgposStop)), true);
+  if (data?.lgposStop !== undefined) view.setBigUint64(24, data.lgposStop === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lgposStop))), true);
   // 0x20: pointer
-  if (data?.logtimeStop !== undefined) view.setBigUint64(32, data.logtimeStop === null ? 0n : BigInt(util.toPointer(data.logtimeStop)), true);
+  if (data?.logtimeStop !== undefined) view.setBigUint64(32, data.logtimeStop === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.logtimeStop))), true);
   // 0x28: pointer
-  if (data?.pfnStatus !== undefined) view.setBigUint64(40, data.pfnStatus === null ? 0n : BigInt(util.toPointer(data.pfnStatus)), true);
+  if (data?.pfnStatus !== undefined) view.setBigUint64(40, data.pfnStatus === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pfnStatus))), true);
   return buf;
 }
 
@@ -12427,9 +12427,9 @@ export class JET_RSTINFO_AView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get rgrstmap(): Uint8Array | Deno.PointerValue | null {
+  get rgrstmap(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i32
@@ -12440,21 +12440,21 @@ export class JET_RSTINFO_AView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get lgposStop(): Uint8Array | Deno.PointerValue | null {
+  get lgposStop(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get logtimeStop(): Uint8Array | Deno.PointerValue | null {
+  get logtimeStop(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get pfnStatus(): Uint8Array | Deno.PointerValue | null {
+  get pfnStatus(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -12465,8 +12465,8 @@ export class JET_RSTINFO_AView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set rgrstmap(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set rgrstmap(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: i32
@@ -12477,18 +12477,18 @@ export class JET_RSTINFO_AView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set lgposStop(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set lgposStop(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set logtimeStop(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set logtimeStop(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set pfnStatus(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set pfnStatus(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12499,15 +12499,15 @@ export interface JET_RSTINFO_W {
   /** u32 */
   cbStruct: number;
   /** ptr */
-  rgrstmap: Deno.PointerValue | Uint8Array | null;
+  rgrstmap: Deno.PointerValue | Uint8Array;
   /** i32 */
   crstmap: number;
   /** Windows.Win32.Storage.Jet.JET_LGPOS */
-  lgposStop: Uint8Array | Deno.PointerValue | null;
+  lgposStop: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_LOGTIME */
-  logtimeStop: Uint8Array | Deno.PointerValue | null;
+  logtimeStop: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Jet.JET_PFNSTATUS */
-  pfnStatus: Uint8Array | Deno.PointerValue | null;
+  pfnStatus: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofJET_RSTINFO_W = 48;
@@ -12519,16 +12519,16 @@ export function allocJET_RSTINFO_W(data?: Partial<JET_RSTINFO_W>): Uint8Array {
   if (data?.cbStruct !== undefined) view.setUint32(0, Number(data.cbStruct), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.rgrstmap !== undefined) view.setBigUint64(8, data.rgrstmap === null ? 0n : BigInt(util.toPointer(data.rgrstmap)), true);
+  if (data?.rgrstmap !== undefined) view.setBigUint64(8, data.rgrstmap === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgrstmap))), true);
   // 0x10: i32
   if (data?.crstmap !== undefined) view.setInt32(16, Number(data.crstmap), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.lgposStop !== undefined) view.setBigUint64(24, data.lgposStop === null ? 0n : BigInt(util.toPointer(data.lgposStop)), true);
+  if (data?.lgposStop !== undefined) view.setBigUint64(24, data.lgposStop === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lgposStop))), true);
   // 0x20: pointer
-  if (data?.logtimeStop !== undefined) view.setBigUint64(32, data.logtimeStop === null ? 0n : BigInt(util.toPointer(data.logtimeStop)), true);
+  if (data?.logtimeStop !== undefined) view.setBigUint64(32, data.logtimeStop === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.logtimeStop))), true);
   // 0x28: pointer
-  if (data?.pfnStatus !== undefined) view.setBigUint64(40, data.pfnStatus === null ? 0n : BigInt(util.toPointer(data.pfnStatus)), true);
+  if (data?.pfnStatus !== undefined) view.setBigUint64(40, data.pfnStatus === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pfnStatus))), true);
   return buf;
 }
 
@@ -12550,9 +12550,9 @@ export class JET_RSTINFO_WView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get rgrstmap(): Uint8Array | Deno.PointerValue | null {
+  get rgrstmap(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i32
@@ -12563,21 +12563,21 @@ export class JET_RSTINFO_WView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get lgposStop(): Uint8Array | Deno.PointerValue | null {
+  get lgposStop(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get logtimeStop(): Uint8Array | Deno.PointerValue | null {
+  get logtimeStop(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get pfnStatus(): Uint8Array | Deno.PointerValue | null {
+  get pfnStatus(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -12588,8 +12588,8 @@ export class JET_RSTINFO_WView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set rgrstmap(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set rgrstmap(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: i32
@@ -12600,18 +12600,18 @@ export class JET_RSTINFO_WView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set lgposStop(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set lgposStop(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set logtimeStop(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set logtimeStop(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set pfnStatus(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set pfnStatus(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12626,11 +12626,11 @@ export interface JET_ERRINFOBASIC_W {
   /** Windows.Win32.Storage.Jet.JET_ERRCAT */
   errcatMostSpecific: JET_ERRCAT;
   /** array */
-  rgCategoricalHierarchy: Deno.PointerValue | null;
+  rgCategoricalHierarchy: Deno.PointerValue;
   /** u32 */
   lSourceLine: number;
   /** array */
-  rgszSourceFile: Deno.PointerValue | null;
+  rgszSourceFile: Deno.PointerValue;
 }
 
 export const sizeofJET_ERRINFOBASIC_W = 40;
@@ -12646,12 +12646,12 @@ export function allocJET_ERRINFOBASIC_W(data?: Partial<JET_ERRINFOBASIC_W>): Uin
   if (data?.errcatMostSpecific !== undefined) view.setInt32(8, Number(data.errcatMostSpecific), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.rgCategoricalHierarchy !== undefined) view.setBigUint64(16, data.rgCategoricalHierarchy === null ? 0n : BigInt(util.toPointer(data.rgCategoricalHierarchy)), true);
+  if (data?.rgCategoricalHierarchy !== undefined) view.setBigUint64(16, data.rgCategoricalHierarchy === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgCategoricalHierarchy))), true);
   // 0x18: u32
   if (data?.lSourceLine !== undefined) view.setUint32(24, Number(data.lSourceLine), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.rgszSourceFile !== undefined) view.setBigUint64(32, data.rgszSourceFile === null ? 0n : BigInt(util.toPointer(data.rgszSourceFile)), true);
+  if (data?.rgszSourceFile !== undefined) view.setBigUint64(32, data.rgszSourceFile === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgszSourceFile))), true);
   return buf;
 }
 
@@ -12683,9 +12683,9 @@ export class JET_ERRINFOBASIC_WView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get rgCategoricalHierarchy(): Uint8Array | Deno.PointerValue | null {
+  get rgCategoricalHierarchy(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -12696,9 +12696,9 @@ export class JET_ERRINFOBASIC_WView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get rgszSourceFile(): Uint8Array | Deno.PointerValue | null {
+  get rgszSourceFile(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -12719,8 +12719,8 @@ export class JET_ERRINFOBASIC_WView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set rgCategoricalHierarchy(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set rgCategoricalHierarchy(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -12731,8 +12731,8 @@ export class JET_ERRINFOBASIC_WView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set rgszSourceFile(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set rgszSourceFile(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12838,7 +12838,7 @@ export interface JET_SETCOLUMN {
   /** u32 */
   columnid: number;
   /** ptr */
-  pvData: Deno.PointerValue | Uint8Array | null;
+  pvData: Deno.PointerValue | Uint8Array;
   /** u32 */
   cbData: number;
   /** u32 */
@@ -12860,7 +12860,7 @@ export function allocJET_SETCOLUMN(data?: Partial<JET_SETCOLUMN>): Uint8Array {
   if (data?.columnid !== undefined) view.setUint32(0, Number(data.columnid), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pvData !== undefined) view.setBigUint64(8, data.pvData === null ? 0n : BigInt(util.toPointer(data.pvData)), true);
+  if (data?.pvData !== undefined) view.setBigUint64(8, data.pvData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pvData))), true);
   // 0x10: u32
   if (data?.cbData !== undefined) view.setUint32(16, Number(data.cbData), true);
   // 0x14: u32
@@ -12893,9 +12893,9 @@ export class JET_SETCOLUMNView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pvData(): Uint8Array | Deno.PointerValue | null {
+  get pvData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -12933,8 +12933,8 @@ export class JET_SETCOLUMNView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pvData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pvData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -12974,7 +12974,7 @@ export interface JET_SETSYSPARAM_A {
   /** u32 */
   paramid: number;
   /** Windows.Win32.Storage.StructuredStorage.JET_API_PTR */
-  lParam: Uint8Array | Deno.PointerValue | null;
+  lParam: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
   sz: string | null | Uint8Array;
   /** i32 */
@@ -12990,11 +12990,11 @@ export function allocJET_SETSYSPARAM_A(data?: Partial<JET_SETSYSPARAM_A>): Uint8
   if (data?.paramid !== undefined) view.setUint32(0, Number(data.paramid), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.lParam !== undefined) view.setBigUint64(8, data.lParam === null ? 0n : BigInt(util.toPointer(data.lParam)), true);
+  if (data?.lParam !== undefined) view.setBigUint64(8, data.lParam === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lParam))), true);
   // 0x10: buffer
   if (data?.sz !== undefined) {
     (buf as any)._f16 = util.pstrToFfi(data.sz);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: i32
   if (data?.err !== undefined) view.setInt32(24, Number(data.err), true);
@@ -13020,15 +13020,15 @@ export class JET_SETSYSPARAM_AView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get lParam(): Uint8Array | Deno.PointerValue | null {
+  get lParam(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get sz(): Uint8Array | Deno.PointerValue | null {
+  get sz(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: i32
@@ -13046,14 +13046,14 @@ export class JET_SETSYSPARAM_AView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set lParam(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set lParam(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: buffer
-  set sz(value: Uint8Array | Deno.PointerValue | null) {
+  set sz(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: i32
@@ -13071,7 +13071,7 @@ export interface JET_SETSYSPARAM_W {
   /** u32 */
   paramid: number;
   /** Windows.Win32.Storage.StructuredStorage.JET_API_PTR */
-  lParam: Uint8Array | Deno.PointerValue | null;
+  lParam: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   sz: string | null | Uint8Array | Uint16Array;
   /** i32 */
@@ -13087,11 +13087,11 @@ export function allocJET_SETSYSPARAM_W(data?: Partial<JET_SETSYSPARAM_W>): Uint8
   if (data?.paramid !== undefined) view.setUint32(0, Number(data.paramid), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.lParam !== undefined) view.setBigUint64(8, data.lParam === null ? 0n : BigInt(util.toPointer(data.lParam)), true);
+  if (data?.lParam !== undefined) view.setBigUint64(8, data.lParam === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lParam))), true);
   // 0x10: buffer
   if (data?.sz !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.sz);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: i32
   if (data?.err !== undefined) view.setInt32(24, Number(data.err), true);
@@ -13117,15 +13117,15 @@ export class JET_SETSYSPARAM_WView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get lParam(): Uint8Array | Deno.PointerValue | null {
+  get lParam(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get sz(): Uint8Array | Deno.PointerValue | null {
+  get sz(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: i32
@@ -13143,14 +13143,14 @@ export class JET_SETSYSPARAM_WView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set lParam(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set lParam(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: buffer
-  set sz(value: Uint8Array | Deno.PointerValue | null) {
+  set sz(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: i32
@@ -13168,7 +13168,7 @@ export interface JET_RETRIEVECOLUMN {
   /** u32 */
   columnid: number;
   /** ptr */
-  pvData: Deno.PointerValue | Uint8Array | null;
+  pvData: Deno.PointerValue | Uint8Array;
   /** u32 */
   cbData: number;
   /** u32 */
@@ -13194,7 +13194,7 @@ export function allocJET_RETRIEVECOLUMN(data?: Partial<JET_RETRIEVECOLUMN>): Uin
   if (data?.columnid !== undefined) view.setUint32(0, Number(data.columnid), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pvData !== undefined) view.setBigUint64(8, data.pvData === null ? 0n : BigInt(util.toPointer(data.pvData)), true);
+  if (data?.pvData !== undefined) view.setBigUint64(8, data.pvData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pvData))), true);
   // 0x10: u32
   if (data?.cbData !== undefined) view.setUint32(16, Number(data.cbData), true);
   // 0x14: u32
@@ -13231,9 +13231,9 @@ export class JET_RETRIEVECOLUMNView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pvData(): Uint8Array | Deno.PointerValue | null {
+  get pvData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -13281,8 +13281,8 @@ export class JET_RETRIEVECOLUMNView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pvData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pvData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -13332,7 +13332,7 @@ export interface JET_ENUMCOLUMNID {
   /** u32 */
   ctagSequence: number;
   /** ptr */
-  rgtagSequence: Deno.PointerValue | Uint8Array | null;
+  rgtagSequence: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofJET_ENUMCOLUMNID = 16;
@@ -13345,7 +13345,7 @@ export function allocJET_ENUMCOLUMNID(data?: Partial<JET_ENUMCOLUMNID>): Uint8Ar
   // 0x04: u32
   if (data?.ctagSequence !== undefined) view.setUint32(4, Number(data.ctagSequence), true);
   // 0x08: pointer
-  if (data?.rgtagSequence !== undefined) view.setBigUint64(8, data.rgtagSequence === null ? 0n : BigInt(util.toPointer(data.rgtagSequence)), true);
+  if (data?.rgtagSequence !== undefined) view.setBigUint64(8, data.rgtagSequence === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgtagSequence))), true);
   return buf;
 }
 
@@ -13370,9 +13370,9 @@ export class JET_ENUMCOLUMNIDView {
   }
 
   // 0x08: pointer
-  get rgtagSequence(): Uint8Array | Deno.PointerValue | null {
+  get rgtagSequence(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -13386,8 +13386,8 @@ export class JET_ENUMCOLUMNIDView {
   }
 
   // 0x08: pointer
-  set rgtagSequence(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set rgtagSequence(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -13402,7 +13402,7 @@ export interface JET_ENUMCOLUMNVALUE {
   /** u32 */
   cbData: number;
   /** ptr */
-  pvData: Deno.PointerValue | Uint8Array | null;
+  pvData: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofJET_ENUMCOLUMNVALUE = 24;
@@ -13418,7 +13418,7 @@ export function allocJET_ENUMCOLUMNVALUE(data?: Partial<JET_ENUMCOLUMNVALUE>): U
   if (data?.cbData !== undefined) view.setUint32(8, Number(data.cbData), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.pvData !== undefined) view.setBigUint64(16, data.pvData === null ? 0n : BigInt(util.toPointer(data.pvData)), true);
+  if (data?.pvData !== undefined) view.setBigUint64(16, data.pvData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pvData))), true);
   return buf;
 }
 
@@ -13450,9 +13450,9 @@ export class JET_ENUMCOLUMNVALUEView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get pvData(): Uint8Array | Deno.PointerValue | null {
+  get pvData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -13473,8 +13473,8 @@ export class JET_ENUMCOLUMNVALUEView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set pvData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pvData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -13487,7 +13487,7 @@ export interface JET_ENUMCOLUMN {
   /** i32 */
   err: number;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofJET_ENUMCOLUMN = 16;
@@ -13500,7 +13500,7 @@ export function allocJET_ENUMCOLUMN(data?: Partial<JET_ENUMCOLUMN>): Uint8Array 
   // 0x04: i32
   if (data?.err !== undefined) view.setInt32(4, Number(data.err), true);
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -13525,9 +13525,9 @@ export class JET_ENUMCOLUMNView {
   }
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -13541,8 +13541,8 @@ export class JET_ENUMCOLUMNView {
   }
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -13557,7 +13557,7 @@ export interface JET_LOGINFO_A {
   /** u32 */
   ulGenHigh: number;
   /** array */
-  szBaseName: Deno.PointerValue | null;
+  szBaseName: Deno.PointerValue;
 }
 
 export const sizeofJET_LOGINFO_A = 24;
@@ -13573,7 +13573,7 @@ export function allocJET_LOGINFO_A(data?: Partial<JET_LOGINFO_A>): Uint8Array {
   if (data?.ulGenHigh !== undefined) view.setUint32(8, Number(data.ulGenHigh), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.szBaseName !== undefined) view.setBigUint64(16, data.szBaseName === null ? 0n : BigInt(util.toPointer(data.szBaseName)), true);
+  if (data?.szBaseName !== undefined) view.setBigUint64(16, data.szBaseName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.szBaseName))), true);
   return buf;
 }
 
@@ -13605,9 +13605,9 @@ export class JET_LOGINFO_AView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get szBaseName(): Uint8Array | Deno.PointerValue | null {
+  get szBaseName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -13628,8 +13628,8 @@ export class JET_LOGINFO_AView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set szBaseName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set szBaseName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -13644,7 +13644,7 @@ export interface JET_LOGINFO_W {
   /** u32 */
   ulGenHigh: number;
   /** array */
-  szBaseName: Deno.PointerValue | null;
+  szBaseName: Deno.PointerValue;
 }
 
 export const sizeofJET_LOGINFO_W = 24;
@@ -13660,7 +13660,7 @@ export function allocJET_LOGINFO_W(data?: Partial<JET_LOGINFO_W>): Uint8Array {
   if (data?.ulGenHigh !== undefined) view.setUint32(8, Number(data.ulGenHigh), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.szBaseName !== undefined) view.setBigUint64(16, data.szBaseName === null ? 0n : BigInt(util.toPointer(data.szBaseName)), true);
+  if (data?.szBaseName !== undefined) view.setBigUint64(16, data.szBaseName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.szBaseName))), true);
   return buf;
 }
 
@@ -13692,9 +13692,9 @@ export class JET_LOGINFO_WView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get szBaseName(): Uint8Array | Deno.PointerValue | null {
+  get szBaseName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -13715,8 +13715,8 @@ export class JET_LOGINFO_WView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set szBaseName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set szBaseName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -13727,17 +13727,17 @@ export type JET_INSTANCE = Deno.PointerValue;
  */
 export interface JET_INSTANCE_INFO_A {
   /** Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */
-  hInstanceId: Uint8Array | Deno.PointerValue | null;
+  hInstanceId: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
   szInstanceName: string | null | Uint8Array;
   /** Windows.Win32.Storage.StructuredStorage.JET_API_PTR */
-  cDatabases: Uint8Array | Deno.PointerValue | null;
+  cDatabases: Uint8Array | Deno.PointerValue;
   /** ptr */
-  szDatabaseFileName: Deno.PointerValue | Uint8Array | null;
+  szDatabaseFileName: Deno.PointerValue | Uint8Array;
   /** ptr */
-  szDatabaseDisplayName: Deno.PointerValue | Uint8Array | null;
+  szDatabaseDisplayName: Deno.PointerValue | Uint8Array;
   /** ptr */
-  szDatabaseSLVFileName_Obsolete: Deno.PointerValue | Uint8Array | null;
+  szDatabaseSLVFileName_Obsolete: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofJET_INSTANCE_INFO_A = 48;
@@ -13746,20 +13746,20 @@ export function allocJET_INSTANCE_INFO_A(data?: Partial<JET_INSTANCE_INFO_A>): U
   const buf = new Uint8Array(sizeofJET_INSTANCE_INFO_A);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.hInstanceId !== undefined) view.setBigUint64(0, data.hInstanceId === null ? 0n : BigInt(util.toPointer(data.hInstanceId)), true);
+  if (data?.hInstanceId !== undefined) view.setBigUint64(0, data.hInstanceId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hInstanceId))), true);
   // 0x08: buffer
   if (data?.szInstanceName !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.szInstanceName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: pointer
-  if (data?.cDatabases !== undefined) view.setBigUint64(16, data.cDatabases === null ? 0n : BigInt(util.toPointer(data.cDatabases)), true);
+  if (data?.cDatabases !== undefined) view.setBigUint64(16, data.cDatabases === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.cDatabases))), true);
   // 0x18: pointer
-  if (data?.szDatabaseFileName !== undefined) view.setBigUint64(24, data.szDatabaseFileName === null ? 0n : BigInt(util.toPointer(data.szDatabaseFileName)), true);
+  if (data?.szDatabaseFileName !== undefined) view.setBigUint64(24, data.szDatabaseFileName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.szDatabaseFileName))), true);
   // 0x20: pointer
-  if (data?.szDatabaseDisplayName !== undefined) view.setBigUint64(32, data.szDatabaseDisplayName === null ? 0n : BigInt(util.toPointer(data.szDatabaseDisplayName)), true);
+  if (data?.szDatabaseDisplayName !== undefined) view.setBigUint64(32, data.szDatabaseDisplayName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.szDatabaseDisplayName))), true);
   // 0x28: pointer
-  if (data?.szDatabaseSLVFileName_Obsolete !== undefined) view.setBigUint64(40, data.szDatabaseSLVFileName_Obsolete === null ? 0n : BigInt(util.toPointer(data.szDatabaseSLVFileName_Obsolete)), true);
+  if (data?.szDatabaseSLVFileName_Obsolete !== undefined) view.setBigUint64(40, data.szDatabaseSLVFileName_Obsolete === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.szDatabaseSLVFileName_Obsolete))), true);
   return buf;
 }
 
@@ -13774,70 +13774,70 @@ export class JET_INSTANCE_INFO_AView {
   }
 
   // 0x00: pointer
-  get hInstanceId(): Uint8Array | Deno.PointerValue | null {
+  get hInstanceId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get szInstanceName(): Uint8Array | Deno.PointerValue | null {
+  get szInstanceName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get cDatabases(): Uint8Array | Deno.PointerValue | null {
+  get cDatabases(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get szDatabaseFileName(): Uint8Array | Deno.PointerValue | null {
+  get szDatabaseFileName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get szDatabaseDisplayName(): Uint8Array | Deno.PointerValue | null {
+  get szDatabaseDisplayName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get szDatabaseSLVFileName_Obsolete(): Uint8Array | Deno.PointerValue | null {
+  get szDatabaseSLVFileName_Obsolete(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set hInstanceId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set hInstanceId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: buffer
-  set szInstanceName(value: Uint8Array | Deno.PointerValue | null) {
+  set szInstanceName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: pointer
-  set cDatabases(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set cDatabases(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set szDatabaseFileName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set szDatabaseFileName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set szDatabaseDisplayName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set szDatabaseDisplayName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set szDatabaseSLVFileName_Obsolete(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set szDatabaseSLVFileName_Obsolete(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -13846,17 +13846,17 @@ export class JET_INSTANCE_INFO_AView {
  */
 export interface JET_INSTANCE_INFO_W {
   /** Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */
-  hInstanceId: Uint8Array | Deno.PointerValue | null;
+  hInstanceId: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   szInstanceName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Storage.StructuredStorage.JET_API_PTR */
-  cDatabases: Uint8Array | Deno.PointerValue | null;
+  cDatabases: Uint8Array | Deno.PointerValue;
   /** ptr */
-  szDatabaseFileName: Deno.PointerValue | Uint8Array | null;
+  szDatabaseFileName: Deno.PointerValue | Uint8Array;
   /** ptr */
-  szDatabaseDisplayName: Deno.PointerValue | Uint8Array | null;
+  szDatabaseDisplayName: Deno.PointerValue | Uint8Array;
   /** ptr */
-  szDatabaseSLVFileName_Obsolete: Deno.PointerValue | Uint8Array | null;
+  szDatabaseSLVFileName_Obsolete: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofJET_INSTANCE_INFO_W = 48;
@@ -13865,20 +13865,20 @@ export function allocJET_INSTANCE_INFO_W(data?: Partial<JET_INSTANCE_INFO_W>): U
   const buf = new Uint8Array(sizeofJET_INSTANCE_INFO_W);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.hInstanceId !== undefined) view.setBigUint64(0, data.hInstanceId === null ? 0n : BigInt(util.toPointer(data.hInstanceId)), true);
+  if (data?.hInstanceId !== undefined) view.setBigUint64(0, data.hInstanceId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hInstanceId))), true);
   // 0x08: buffer
   if (data?.szInstanceName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.szInstanceName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: pointer
-  if (data?.cDatabases !== undefined) view.setBigUint64(16, data.cDatabases === null ? 0n : BigInt(util.toPointer(data.cDatabases)), true);
+  if (data?.cDatabases !== undefined) view.setBigUint64(16, data.cDatabases === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.cDatabases))), true);
   // 0x18: pointer
-  if (data?.szDatabaseFileName !== undefined) view.setBigUint64(24, data.szDatabaseFileName === null ? 0n : BigInt(util.toPointer(data.szDatabaseFileName)), true);
+  if (data?.szDatabaseFileName !== undefined) view.setBigUint64(24, data.szDatabaseFileName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.szDatabaseFileName))), true);
   // 0x20: pointer
-  if (data?.szDatabaseDisplayName !== undefined) view.setBigUint64(32, data.szDatabaseDisplayName === null ? 0n : BigInt(util.toPointer(data.szDatabaseDisplayName)), true);
+  if (data?.szDatabaseDisplayName !== undefined) view.setBigUint64(32, data.szDatabaseDisplayName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.szDatabaseDisplayName))), true);
   // 0x28: pointer
-  if (data?.szDatabaseSLVFileName_Obsolete !== undefined) view.setBigUint64(40, data.szDatabaseSLVFileName_Obsolete === null ? 0n : BigInt(util.toPointer(data.szDatabaseSLVFileName_Obsolete)), true);
+  if (data?.szDatabaseSLVFileName_Obsolete !== undefined) view.setBigUint64(40, data.szDatabaseSLVFileName_Obsolete === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.szDatabaseSLVFileName_Obsolete))), true);
   return buf;
 }
 
@@ -13893,70 +13893,70 @@ export class JET_INSTANCE_INFO_WView {
   }
 
   // 0x00: pointer
-  get hInstanceId(): Uint8Array | Deno.PointerValue | null {
+  get hInstanceId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get szInstanceName(): Uint8Array | Deno.PointerValue | null {
+  get szInstanceName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get cDatabases(): Uint8Array | Deno.PointerValue | null {
+  get cDatabases(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get szDatabaseFileName(): Uint8Array | Deno.PointerValue | null {
+  get szDatabaseFileName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get szDatabaseDisplayName(): Uint8Array | Deno.PointerValue | null {
+  get szDatabaseDisplayName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get szDatabaseSLVFileName_Obsolete(): Uint8Array | Deno.PointerValue | null {
+  get szDatabaseSLVFileName_Obsolete(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set hInstanceId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set hInstanceId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: buffer
-  set szInstanceName(value: Uint8Array | Deno.PointerValue | null) {
+  set szInstanceName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: pointer
-  set cDatabases(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set cDatabases(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set szDatabaseFileName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set szDatabaseFileName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set szDatabaseDisplayName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set szDatabaseDisplayName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set szDatabaseSLVFileName_Obsolete(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set szDatabaseSLVFileName_Obsolete(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -14890,69 +14890,69 @@ try {
 // Symbols
 
 export function JetInit(
-  pinstance: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pinstance: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetInit(util.toPointer(pinstance));
 }
 
 export function JetInit2(
-  pinstance: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pinstance: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetInit2(util.toPointer(pinstance), grbit);
 }
 
 export function JetInit3A(
-  pinstance: Deno.PointerValue | Uint8Array | null /* ptr */,
-  prstInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pinstance: Deno.PointerValue | Uint8Array /* ptr */,
+  prstInfo: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetInit3A(util.toPointer(pinstance), util.toPointer(prstInfo), grbit);
 }
 
 export function JetInit3W(
-  pinstance: Deno.PointerValue | Uint8Array | null /* ptr */,
-  prstInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pinstance: Deno.PointerValue | Uint8Array /* ptr */,
+  prstInfo: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetInit3W(util.toPointer(pinstance), util.toPointer(prstInfo), grbit);
 }
 
 export function JetCreateInstanceA(
-  pinstance: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szInstanceName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pinstance: Deno.PointerValue | Uint8Array /* ptr */,
+  szInstanceName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetCreateInstanceA(util.toPointer(pinstance), util.toPointer(szInstanceName));
 }
 
 export function JetCreateInstanceW(
-  pinstance: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szInstanceName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pinstance: Deno.PointerValue | Uint8Array /* ptr */,
+  szInstanceName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetCreateInstanceW(util.toPointer(pinstance), util.toPointer(szInstanceName));
 }
 
 export function JetCreateInstance2A(
-  pinstance: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szInstanceName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szDisplayName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pinstance: Deno.PointerValue | Uint8Array /* ptr */,
+  szInstanceName: Deno.PointerValue | Uint8Array /* ptr */,
+  szDisplayName: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetCreateInstance2A(util.toPointer(pinstance), util.toPointer(szInstanceName), util.toPointer(szDisplayName), grbit);
 }
 
 export function JetCreateInstance2W(
-  pinstance: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szInstanceName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szDisplayName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pinstance: Deno.PointerValue | Uint8Array /* ptr */,
+  szInstanceName: Deno.PointerValue | Uint8Array /* ptr */,
+  szDisplayName: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetCreateInstance2W(util.toPointer(pinstance), util.toPointer(szInstanceName), util.toPointer(szDisplayName), grbit);
 }
 
 export function JetGetInstanceMiscInfo(
-  instance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
-  pvResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
+  pvResult: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
@@ -14960,13 +14960,13 @@ export function JetGetInstanceMiscInfo(
 }
 
 export function JetTerm(
-  instance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
+  instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
 ): number /* i32 */ {
   return libESENT_dll.JetTerm(util.toPointer(instance));
 }
 
 export function JetTerm2(
-  instance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
+  instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetTerm2(util.toPointer(instance), grbit);
@@ -14977,13 +14977,13 @@ export function JetStopService(): number /* i32 */ {
 }
 
 export function JetStopServiceInstance(
-  instance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
+  instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
 ): number /* i32 */ {
   return libESENT_dll.JetStopServiceInstance(util.toPointer(instance));
 }
 
 export function JetStopServiceInstance2(
-  instance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
+  instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetStopServiceInstance2(util.toPointer(instance), grbit);
@@ -14994,181 +14994,181 @@ export function JetStopBackup(): number /* i32 */ {
 }
 
 export function JetStopBackupInstance(
-  instance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
+  instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
 ): number /* i32 */ {
   return libESENT_dll.JetStopBackupInstance(util.toPointer(instance));
 }
 
 export function JetSetSystemParameterA(
-  pinstance: Deno.PointerValue | Uint8Array | null /* ptr */,
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  pinstance: Deno.PointerValue | Uint8Array /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   paramid: number /* u32 */,
-  lParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_API_PTR */,
-  szParam: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_API_PTR */,
+  szParam: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetSetSystemParameterA(util.toPointer(pinstance), util.toPointer(sesid), paramid, util.toPointer(lParam), util.toPointer(szParam));
 }
 
 export function JetSetSystemParameterW(
-  pinstance: Deno.PointerValue | Uint8Array | null /* ptr */,
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  pinstance: Deno.PointerValue | Uint8Array /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   paramid: number /* u32 */,
-  lParam: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_API_PTR */,
-  szParam: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_API_PTR */,
+  szParam: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetSetSystemParameterW(util.toPointer(pinstance), util.toPointer(sesid), paramid, util.toPointer(lParam), util.toPointer(szParam));
 }
 
 export function JetGetSystemParameterA(
-  instance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   paramid: number /* u32 */,
-  plParam: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szParam: Deno.PointerValue | Uint8Array | null /* ptr */,
+  plParam: Deno.PointerValue | Uint8Array /* ptr */,
+  szParam: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetGetSystemParameterA(util.toPointer(instance), util.toPointer(sesid), paramid, util.toPointer(plParam), util.toPointer(szParam), cbMax);
 }
 
 export function JetGetSystemParameterW(
-  instance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   paramid: number /* u32 */,
-  plParam: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szParam: Deno.PointerValue | Uint8Array | null /* ptr */,
+  plParam: Deno.PointerValue | Uint8Array /* ptr */,
+  szParam: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetGetSystemParameterW(util.toPointer(instance), util.toPointer(sesid), paramid, util.toPointer(plParam), util.toPointer(szParam), cbMax);
 }
 
 export function JetEnableMultiInstanceA(
-  psetsysparam: Deno.PointerValue | Uint8Array | null /* ptr */,
+  psetsysparam: Deno.PointerValue | Uint8Array /* ptr */,
   csetsysparam: number /* u32 */,
-  pcsetsucceed: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcsetsucceed: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetEnableMultiInstanceA(util.toPointer(psetsysparam), csetsysparam, util.toPointer(pcsetsucceed));
 }
 
 export function JetEnableMultiInstanceW(
-  psetsysparam: Deno.PointerValue | Uint8Array | null /* ptr */,
+  psetsysparam: Deno.PointerValue | Uint8Array /* ptr */,
   csetsysparam: number /* u32 */,
-  pcsetsucceed: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcsetsucceed: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetEnableMultiInstanceW(util.toPointer(psetsysparam), csetsysparam, util.toPointer(pcsetsucceed));
 }
 
 export function JetGetThreadStats(
-  pvResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pvResult: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetGetThreadStats(util.toPointer(pvResult), cbMax);
 }
 
 export function JetBeginSessionA(
-  instance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
-  psesid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szUserName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szPassword: Deno.PointerValue | Uint8Array | null /* ptr */,
+  instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
+  psesid: Deno.PointerValue | Uint8Array /* ptr */,
+  szUserName: Deno.PointerValue | Uint8Array /* ptr */,
+  szPassword: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetBeginSessionA(util.toPointer(instance), util.toPointer(psesid), util.toPointer(szUserName), util.toPointer(szPassword));
 }
 
 export function JetBeginSessionW(
-  instance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
-  psesid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szUserName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szPassword: Deno.PointerValue | Uint8Array | null /* ptr */,
+  instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
+  psesid: Deno.PointerValue | Uint8Array /* ptr */,
+  szUserName: Deno.PointerValue | Uint8Array /* ptr */,
+  szPassword: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetBeginSessionW(util.toPointer(instance), util.toPointer(psesid), util.toPointer(szUserName), util.toPointer(szPassword));
 }
 
 export function JetDupSession(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  psesid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  psesid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetDupSession(util.toPointer(sesid), util.toPointer(psesid));
 }
 
 export function JetEndSession(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetEndSession(util.toPointer(sesid), grbit);
 }
 
 export function JetGetVersion(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  pwVersion: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  pwVersion: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetGetVersion(util.toPointer(sesid), util.toPointer(pwVersion));
 }
 
 export function JetIdle(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetIdle(util.toPointer(sesid), grbit);
 }
 
 export function JetCreateDatabaseA(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  szFilename: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pdbid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  szFilename: Deno.PointerValue | Uint8Array /* ptr */,
+  szConnect: Deno.PointerValue | Uint8Array /* ptr */,
+  pdbid: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetCreateDatabaseA(util.toPointer(sesid), util.toPointer(szFilename), util.toPointer(szConnect), util.toPointer(pdbid), grbit);
 }
 
 export function JetCreateDatabaseW(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  szFilename: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pdbid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  szFilename: Deno.PointerValue | Uint8Array /* ptr */,
+  szConnect: Deno.PointerValue | Uint8Array /* ptr */,
+  pdbid: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetCreateDatabaseW(util.toPointer(sesid), util.toPointer(szFilename), util.toPointer(szConnect), util.toPointer(pdbid), grbit);
 }
 
 export function JetCreateDatabase2A(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  szFilename: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  szFilename: Deno.PointerValue | Uint8Array /* ptr */,
   cpgDatabaseSizeMax: number /* u32 */,
-  pdbid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pdbid: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetCreateDatabase2A(util.toPointer(sesid), util.toPointer(szFilename), cpgDatabaseSizeMax, util.toPointer(pdbid), grbit);
 }
 
 export function JetCreateDatabase2W(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  szFilename: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  szFilename: Deno.PointerValue | Uint8Array /* ptr */,
   cpgDatabaseSizeMax: number /* u32 */,
-  pdbid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pdbid: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetCreateDatabase2W(util.toPointer(sesid), util.toPointer(szFilename), cpgDatabaseSizeMax, util.toPointer(pdbid), grbit);
 }
 
 export function JetAttachDatabaseA(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  szFilename: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  szFilename: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetAttachDatabaseA(util.toPointer(sesid), util.toPointer(szFilename), grbit);
 }
 
 export function JetAttachDatabaseW(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  szFilename: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  szFilename: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetAttachDatabaseW(util.toPointer(sesid), util.toPointer(szFilename), grbit);
 }
 
 export function JetAttachDatabase2A(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  szFilename: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  szFilename: Deno.PointerValue | Uint8Array /* ptr */,
   cpgDatabaseSizeMax: number /* u32 */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
@@ -15176,8 +15176,8 @@ export function JetAttachDatabase2A(
 }
 
 export function JetAttachDatabase2W(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  szFilename: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  szFilename: Deno.PointerValue | Uint8Array /* ptr */,
   cpgDatabaseSizeMax: number /* u32 */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
@@ -15185,42 +15185,42 @@ export function JetAttachDatabase2W(
 }
 
 export function JetDetachDatabaseA(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  szFilename: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  szFilename: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetDetachDatabaseA(util.toPointer(sesid), util.toPointer(szFilename));
 }
 
 export function JetDetachDatabaseW(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  szFilename: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  szFilename: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetDetachDatabaseW(util.toPointer(sesid), util.toPointer(szFilename));
 }
 
 export function JetDetachDatabase2A(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  szFilename: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  szFilename: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetDetachDatabase2A(util.toPointer(sesid), util.toPointer(szFilename), grbit);
 }
 
 export function JetDetachDatabase2W(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  szFilename: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  szFilename: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetDetachDatabase2W(util.toPointer(sesid), util.toPointer(szFilename), grbit);
 }
 
 export function JetGetObjectInfoA(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   dbid: number /* u32 */,
   objtyp: number /* u32 */,
-  szContainerName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szObjectName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pvResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szContainerName: Deno.PointerValue | Uint8Array /* ptr */,
+  szObjectName: Deno.PointerValue | Uint8Array /* ptr */,
+  pvResult: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
@@ -15228,12 +15228,12 @@ export function JetGetObjectInfoA(
 }
 
 export function JetGetObjectInfoW(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   dbid: number /* u32 */,
   objtyp: number /* u32 */,
-  szContainerName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szObjectName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pvResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szContainerName: Deno.PointerValue | Uint8Array /* ptr */,
+  szObjectName: Deno.PointerValue | Uint8Array /* ptr */,
+  pvResult: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
@@ -15241,9 +15241,9 @@ export function JetGetObjectInfoW(
 }
 
 export function JetGetTableInfoA(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  pvResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  pvResult: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
@@ -15251,9 +15251,9 @@ export function JetGetTableInfoA(
 }
 
 export function JetGetTableInfoW(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  pvResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  pvResult: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
@@ -15261,130 +15261,130 @@ export function JetGetTableInfoW(
 }
 
 export function JetCreateTableA(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   dbid: number /* u32 */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
   lPages: number /* u32 */,
   lDensity: number /* u32 */,
-  ptableid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ptableid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetCreateTableA(util.toPointer(sesid), dbid, util.toPointer(szTableName), lPages, lDensity, util.toPointer(ptableid));
 }
 
 export function JetCreateTableW(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   dbid: number /* u32 */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
   lPages: number /* u32 */,
   lDensity: number /* u32 */,
-  ptableid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ptableid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetCreateTableW(util.toPointer(sesid), dbid, util.toPointer(szTableName), lPages, lDensity, util.toPointer(ptableid));
 }
 
 export function JetCreateTableColumnIndexA(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   dbid: number /* u32 */,
-  ptablecreate: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ptablecreate: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetCreateTableColumnIndexA(util.toPointer(sesid), dbid, util.toPointer(ptablecreate));
 }
 
 export function JetCreateTableColumnIndexW(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   dbid: number /* u32 */,
-  ptablecreate: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ptablecreate: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetCreateTableColumnIndexW(util.toPointer(sesid), dbid, util.toPointer(ptablecreate));
 }
 
 export function JetCreateTableColumnIndex2A(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   dbid: number /* u32 */,
-  ptablecreate: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ptablecreate: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetCreateTableColumnIndex2A(util.toPointer(sesid), dbid, util.toPointer(ptablecreate));
 }
 
 export function JetCreateTableColumnIndex2W(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   dbid: number /* u32 */,
-  ptablecreate: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ptablecreate: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetCreateTableColumnIndex2W(util.toPointer(sesid), dbid, util.toPointer(ptablecreate));
 }
 
 export function JetCreateTableColumnIndex3A(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   dbid: number /* u32 */,
-  ptablecreate: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ptablecreate: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetCreateTableColumnIndex3A(util.toPointer(sesid), dbid, util.toPointer(ptablecreate));
 }
 
 export function JetCreateTableColumnIndex3W(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   dbid: number /* u32 */,
-  ptablecreate: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ptablecreate: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetCreateTableColumnIndex3W(util.toPointer(sesid), dbid, util.toPointer(ptablecreate));
 }
 
 export function JetCreateTableColumnIndex4A(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   dbid: number /* u32 */,
-  ptablecreate: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ptablecreate: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetCreateTableColumnIndex4A(util.toPointer(sesid), dbid, util.toPointer(ptablecreate));
 }
 
 export function JetCreateTableColumnIndex4W(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   dbid: number /* u32 */,
-  ptablecreate: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ptablecreate: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetCreateTableColumnIndex4W(util.toPointer(sesid), dbid, util.toPointer(ptablecreate));
 }
 
 export function JetDeleteTableA(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   dbid: number /* u32 */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetDeleteTableA(util.toPointer(sesid), dbid, util.toPointer(szTableName));
 }
 
 export function JetDeleteTableW(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   dbid: number /* u32 */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetDeleteTableW(util.toPointer(sesid), dbid, util.toPointer(szTableName));
 }
 
 export function JetRenameTableA(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   dbid: number /* u32 */,
-  szName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szNameNew: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szName: Deno.PointerValue | Uint8Array /* ptr */,
+  szNameNew: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetRenameTableA(util.toPointer(sesid), dbid, util.toPointer(szName), util.toPointer(szNameNew));
 }
 
 export function JetRenameTableW(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   dbid: number /* u32 */,
-  szName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szNameNew: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szName: Deno.PointerValue | Uint8Array /* ptr */,
+  szNameNew: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetRenameTableW(util.toPointer(sesid), dbid, util.toPointer(szName), util.toPointer(szNameNew));
 }
 
 export function JetGetTableColumnInfoA(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  szColumnName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pvResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  szColumnName: Deno.PointerValue | Uint8Array /* ptr */,
+  pvResult: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
@@ -15392,10 +15392,10 @@ export function JetGetTableColumnInfoA(
 }
 
 export function JetGetTableColumnInfoW(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  szColumnName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pvResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  szColumnName: Deno.PointerValue | Uint8Array /* ptr */,
+  pvResult: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
@@ -15403,11 +15403,11 @@ export function JetGetTableColumnInfoW(
 }
 
 export function JetGetColumnInfoA(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   dbid: number /* u32 */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pColumnNameOrId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pvResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
+  pColumnNameOrId: Deno.PointerValue | Uint8Array /* ptr */,
+  pvResult: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
@@ -15415,11 +15415,11 @@ export function JetGetColumnInfoA(
 }
 
 export function JetGetColumnInfoW(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   dbid: number /* u32 */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwColumnNameOrId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pvResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
+  pwColumnNameOrId: Deno.PointerValue | Uint8Array /* ptr */,
+  pvResult: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
@@ -15427,89 +15427,89 @@ export function JetGetColumnInfoW(
 }
 
 export function JetAddColumnA(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  szColumnName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcolumndef: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pvDefault: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  szColumnName: Deno.PointerValue | Uint8Array /* ptr */,
+  pcolumndef: Deno.PointerValue | Uint8Array /* ptr */,
+  pvDefault: Deno.PointerValue | Uint8Array /* ptr */,
   cbDefault: number /* u32 */,
-  pcolumnid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcolumnid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetAddColumnA(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szColumnName), util.toPointer(pcolumndef), util.toPointer(pvDefault), cbDefault, util.toPointer(pcolumnid));
 }
 
 export function JetAddColumnW(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  szColumnName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcolumndef: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pvDefault: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  szColumnName: Deno.PointerValue | Uint8Array /* ptr */,
+  pcolumndef: Deno.PointerValue | Uint8Array /* ptr */,
+  pvDefault: Deno.PointerValue | Uint8Array /* ptr */,
   cbDefault: number /* u32 */,
-  pcolumnid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcolumnid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetAddColumnW(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szColumnName), util.toPointer(pcolumndef), util.toPointer(pvDefault), cbDefault, util.toPointer(pcolumnid));
 }
 
 export function JetDeleteColumnA(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  szColumnName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  szColumnName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetDeleteColumnA(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szColumnName));
 }
 
 export function JetDeleteColumnW(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  szColumnName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  szColumnName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetDeleteColumnW(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szColumnName));
 }
 
 export function JetDeleteColumn2A(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  szColumnName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  szColumnName: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetDeleteColumn2A(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szColumnName), grbit);
 }
 
 export function JetDeleteColumn2W(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  szColumnName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  szColumnName: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetDeleteColumn2W(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szColumnName), grbit);
 }
 
 export function JetRenameColumnA(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  szName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szNameNew: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  szName: Deno.PointerValue | Uint8Array /* ptr */,
+  szNameNew: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetRenameColumnA(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szName), util.toPointer(szNameNew), grbit);
 }
 
 export function JetRenameColumnW(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  szName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szNameNew: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  szName: Deno.PointerValue | Uint8Array /* ptr */,
+  szNameNew: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetRenameColumnW(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szName), util.toPointer(szNameNew), grbit);
 }
 
 export function JetSetColumnDefaultValueA(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   dbid: number /* u32 */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szColumnName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pvData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
+  szColumnName: Deno.PointerValue | Uint8Array /* ptr */,
+  pvData: Deno.PointerValue | Uint8Array /* ptr */,
   cbData: number /* u32 */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
@@ -15517,11 +15517,11 @@ export function JetSetColumnDefaultValueA(
 }
 
 export function JetSetColumnDefaultValueW(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   dbid: number /* u32 */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szColumnName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pvData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
+  szColumnName: Deno.PointerValue | Uint8Array /* ptr */,
+  pvData: Deno.PointerValue | Uint8Array /* ptr */,
   cbData: number /* u32 */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
@@ -15529,10 +15529,10 @@ export function JetSetColumnDefaultValueW(
 }
 
 export function JetGetTableIndexInfoA(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  szIndexName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pvResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  szIndexName: Deno.PointerValue | Uint8Array /* ptr */,
+  pvResult: Deno.PointerValue | Uint8Array /* ptr */,
   cbResult: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
@@ -15540,10 +15540,10 @@ export function JetGetTableIndexInfoA(
 }
 
 export function JetGetTableIndexInfoW(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  szIndexName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pvResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  szIndexName: Deno.PointerValue | Uint8Array /* ptr */,
+  pvResult: Deno.PointerValue | Uint8Array /* ptr */,
   cbResult: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
@@ -15551,11 +15551,11 @@ export function JetGetTableIndexInfoW(
 }
 
 export function JetGetIndexInfoA(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   dbid: number /* u32 */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szIndexName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pvResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
+  szIndexName: Deno.PointerValue | Uint8Array /* ptr */,
+  pvResult: Deno.PointerValue | Uint8Array /* ptr */,
   cbResult: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
@@ -15563,11 +15563,11 @@ export function JetGetIndexInfoA(
 }
 
 export function JetGetIndexInfoW(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   dbid: number /* u32 */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szIndexName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pvResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
+  szIndexName: Deno.PointerValue | Uint8Array /* ptr */,
+  pvResult: Deno.PointerValue | Uint8Array /* ptr */,
   cbResult: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
@@ -15575,9 +15575,9 @@ export function JetGetIndexInfoW(
 }
 
 export function JetCreateIndexA(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  szIndexName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  szIndexName: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
   szKey: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cbKey: number /* u32 */,
@@ -15587,9 +15587,9 @@ export function JetCreateIndexA(
 }
 
 export function JetCreateIndexW(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  szIndexName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  szIndexName: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
   szKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cbKey: number /* u32 */,
@@ -15599,90 +15599,90 @@ export function JetCreateIndexW(
 }
 
 export function JetCreateIndex2A(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  pindexcreate: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  pindexcreate: Deno.PointerValue | Uint8Array /* ptr */,
   cIndexCreate: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetCreateIndex2A(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pindexcreate), cIndexCreate);
 }
 
 export function JetCreateIndex2W(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  pindexcreate: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  pindexcreate: Deno.PointerValue | Uint8Array /* ptr */,
   cIndexCreate: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetCreateIndex2W(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pindexcreate), cIndexCreate);
 }
 
 export function JetCreateIndex3A(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  pindexcreate: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  pindexcreate: Deno.PointerValue | Uint8Array /* ptr */,
   cIndexCreate: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetCreateIndex3A(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pindexcreate), cIndexCreate);
 }
 
 export function JetCreateIndex3W(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  pindexcreate: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  pindexcreate: Deno.PointerValue | Uint8Array /* ptr */,
   cIndexCreate: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetCreateIndex3W(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pindexcreate), cIndexCreate);
 }
 
 export function JetCreateIndex4A(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  pindexcreate: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  pindexcreate: Deno.PointerValue | Uint8Array /* ptr */,
   cIndexCreate: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetCreateIndex4A(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pindexcreate), cIndexCreate);
 }
 
 export function JetCreateIndex4W(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  pindexcreate: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  pindexcreate: Deno.PointerValue | Uint8Array /* ptr */,
   cIndexCreate: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetCreateIndex4W(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pindexcreate), cIndexCreate);
 }
 
 export function JetDeleteIndexA(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  szIndexName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  szIndexName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetDeleteIndexA(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName));
 }
 
 export function JetDeleteIndexW(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  szIndexName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  szIndexName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetDeleteIndexW(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName));
 }
 
 export function JetBeginTransaction(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
 ): number /* i32 */ {
   return libESENT_dll.JetBeginTransaction(util.toPointer(sesid));
 }
 
 export function JetBeginTransaction2(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetBeginTransaction2(util.toPointer(sesid), grbit);
 }
 
 export function JetBeginTransaction3(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   trxid: Deno.PointerValue /* i64 */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
@@ -15690,32 +15690,32 @@ export function JetBeginTransaction3(
 }
 
 export function JetCommitTransaction(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetCommitTransaction(util.toPointer(sesid), grbit);
 }
 
 export function JetCommitTransaction2(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   grbit: number /* u32 */,
   cmsecDurableCommit: number /* u32 */,
-  pCommitId: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pCommitId: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetCommitTransaction2(util.toPointer(sesid), grbit, cmsecDurableCommit, util.toPointer(pCommitId));
 }
 
 export function JetRollback(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetRollback(util.toPointer(sesid), grbit);
 }
 
 export function JetGetDatabaseInfoA(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   dbid: number /* u32 */,
-  pvResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pvResult: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
@@ -15723,9 +15723,9 @@ export function JetGetDatabaseInfoA(
 }
 
 export function JetGetDatabaseInfoW(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   dbid: number /* u32 */,
-  pvResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pvResult: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
@@ -15733,8 +15733,8 @@ export function JetGetDatabaseInfoW(
 }
 
 export function JetGetDatabaseFileInfoA(
-  szDatabaseName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pvResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szDatabaseName: Deno.PointerValue | Uint8Array /* ptr */,
+  pvResult: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
@@ -15742,8 +15742,8 @@ export function JetGetDatabaseFileInfoA(
 }
 
 export function JetGetDatabaseFileInfoW(
-  szDatabaseName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pvResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szDatabaseName: Deno.PointerValue | Uint8Array /* ptr */,
+  pvResult: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
@@ -15751,27 +15751,27 @@ export function JetGetDatabaseFileInfoW(
 }
 
 export function JetOpenDatabaseA(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  szFilename: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pdbid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  szFilename: Deno.PointerValue | Uint8Array /* ptr */,
+  szConnect: Deno.PointerValue | Uint8Array /* ptr */,
+  pdbid: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetOpenDatabaseA(util.toPointer(sesid), util.toPointer(szFilename), util.toPointer(szConnect), util.toPointer(pdbid), grbit);
 }
 
 export function JetOpenDatabaseW(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  szFilename: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szConnect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pdbid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  szFilename: Deno.PointerValue | Uint8Array /* ptr */,
+  szConnect: Deno.PointerValue | Uint8Array /* ptr */,
+  pdbid: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetOpenDatabaseW(util.toPointer(sesid), util.toPointer(szFilename), util.toPointer(szConnect), util.toPointer(pdbid), grbit);
 }
 
 export function JetCloseDatabase(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   dbid: number /* u32 */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
@@ -15779,125 +15779,125 @@ export function JetCloseDatabase(
 }
 
 export function JetOpenTableA(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   dbid: number /* u32 */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pvParameters: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
+  pvParameters: Deno.PointerValue | Uint8Array /* ptr */,
   cbParameters: number /* u32 */,
   grbit: number /* u32 */,
-  ptableid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ptableid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetOpenTableA(util.toPointer(sesid), dbid, util.toPointer(szTableName), util.toPointer(pvParameters), cbParameters, grbit, util.toPointer(ptableid));
 }
 
 export function JetOpenTableW(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   dbid: number /* u32 */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pvParameters: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
+  pvParameters: Deno.PointerValue | Uint8Array /* ptr */,
   cbParameters: number /* u32 */,
   grbit: number /* u32 */,
-  ptableid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ptableid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetOpenTableW(util.toPointer(sesid), dbid, util.toPointer(szTableName), util.toPointer(pvParameters), cbParameters, grbit, util.toPointer(ptableid));
 }
 
 export function JetSetTableSequential(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetSetTableSequential(util.toPointer(sesid), util.toPointer(tableid), grbit);
 }
 
 export function JetResetTableSequential(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetResetTableSequential(util.toPointer(sesid), util.toPointer(tableid), grbit);
 }
 
 export function JetCloseTable(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
 ): number /* i32 */ {
   return libESENT_dll.JetCloseTable(util.toPointer(sesid), util.toPointer(tableid));
 }
 
 export function JetDelete(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
 ): number /* i32 */ {
   return libESENT_dll.JetDelete(util.toPointer(sesid), util.toPointer(tableid));
 }
 
 export function JetUpdate(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  pvBookmark: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  pvBookmark: Deno.PointerValue | Uint8Array /* ptr */,
   cbBookmark: number /* u32 */,
-  pcbActual: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetUpdate(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pvBookmark), cbBookmark, util.toPointer(pcbActual));
 }
 
 export function JetUpdate2(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  pvBookmark: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  pvBookmark: Deno.PointerValue | Uint8Array /* ptr */,
   cbBookmark: number /* u32 */,
-  pcbActual: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetUpdate2(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pvBookmark), cbBookmark, util.toPointer(pcbActual), grbit);
 }
 
 export function JetEscrowUpdate(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
   columnid: number /* u32 */,
-  pv: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pv: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
-  pvOld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pvOld: Deno.PointerValue | Uint8Array /* ptr */,
   cbOldMax: number /* u32 */,
-  pcbOldActual: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbOldActual: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetEscrowUpdate(util.toPointer(sesid), util.toPointer(tableid), columnid, util.toPointer(pv), cbMax, util.toPointer(pvOld), cbOldMax, util.toPointer(pcbOldActual), grbit);
 }
 
 export function JetRetrieveColumn(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
   columnid: number /* u32 */,
-  pvData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pvData: Deno.PointerValue | Uint8Array /* ptr */,
   cbData: number /* u32 */,
-  pcbActual: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
-  pretinfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pretinfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetRetrieveColumn(util.toPointer(sesid), util.toPointer(tableid), columnid, util.toPointer(pvData), cbData, util.toPointer(pcbActual), grbit, util.toPointer(pretinfo));
 }
 
 export function JetRetrieveColumns(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  pretrievecolumn: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  pretrievecolumn: Deno.PointerValue | Uint8Array /* ptr */,
   cretrievecolumn: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetRetrieveColumns(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pretrievecolumn), cretrievecolumn);
 }
 
 export function JetEnumerateColumns(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
   cEnumColumnId: number /* u32 */,
-  rgEnumColumnId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcEnumColumn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  prgEnumColumn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfnRealloc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Jet.JET_PFNREALLOC */,
-  pvReallocContext: Deno.PointerValue | Uint8Array | null /* ptr */,
+  rgEnumColumnId: Deno.PointerValue | Uint8Array /* ptr */,
+  pcEnumColumn: Deno.PointerValue | Uint8Array /* ptr */,
+  prgEnumColumn: Deno.PointerValue | Uint8Array /* ptr */,
+  pfnRealloc: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_PFNREALLOC */,
+  pvReallocContext: Deno.PointerValue | Uint8Array /* ptr */,
   cbDataMost: number /* u32 */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
@@ -15905,73 +15905,73 @@ export function JetEnumerateColumns(
 }
 
 export function JetGetRecordSize(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  precsize: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  precsize: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetGetRecordSize(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(precsize), grbit);
 }
 
 export function JetGetRecordSize2(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  precsize: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  precsize: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetGetRecordSize2(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(precsize), grbit);
 }
 
 export function JetSetColumn(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
   columnid: number /* u32 */,
-  pvData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pvData: Deno.PointerValue | Uint8Array /* ptr */,
   cbData: number /* u32 */,
   grbit: number /* u32 */,
-  psetinfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  psetinfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetSetColumn(util.toPointer(sesid), util.toPointer(tableid), columnid, util.toPointer(pvData), cbData, grbit, util.toPointer(psetinfo));
 }
 
 export function JetSetColumns(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  psetcolumn: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  psetcolumn: Deno.PointerValue | Uint8Array /* ptr */,
   csetcolumn: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetSetColumns(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(psetcolumn), csetcolumn);
 }
 
 export function JetPrepareUpdate(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
   prep: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetPrepareUpdate(util.toPointer(sesid), util.toPointer(tableid), prep);
 }
 
 export function JetGetRecordPosition(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  precpos: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  precpos: Deno.PointerValue | Uint8Array /* ptr */,
   cbRecpos: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetGetRecordPosition(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(precpos), cbRecpos);
 }
 
 export function JetGotoPosition(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  precpos: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  precpos: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetGotoPosition(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(precpos));
 }
 
 export function JetGetCursorInfo(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  pvResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  pvResult: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
@@ -15979,70 +15979,70 @@ export function JetGetCursorInfo(
 }
 
 export function JetDupCursor(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  ptableid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  ptableid: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetDupCursor(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(ptableid), grbit);
 }
 
 export function JetGetCurrentIndexA(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  szIndexName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  szIndexName: Deno.PointerValue | Uint8Array /* ptr */,
   cbIndexName: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetGetCurrentIndexA(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName), cbIndexName);
 }
 
 export function JetGetCurrentIndexW(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  szIndexName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  szIndexName: Deno.PointerValue | Uint8Array /* ptr */,
   cbIndexName: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetGetCurrentIndexW(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName), cbIndexName);
 }
 
 export function JetSetCurrentIndexA(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  szIndexName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  szIndexName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetSetCurrentIndexA(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName));
 }
 
 export function JetSetCurrentIndexW(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  szIndexName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  szIndexName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetSetCurrentIndexW(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName));
 }
 
 export function JetSetCurrentIndex2A(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  szIndexName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  szIndexName: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetSetCurrentIndex2A(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName), grbit);
 }
 
 export function JetSetCurrentIndex2W(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  szIndexName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  szIndexName: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetSetCurrentIndex2W(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName), grbit);
 }
 
 export function JetSetCurrentIndex3A(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  szIndexName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  szIndexName: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
   itagSequence: number /* u32 */,
 ): number /* i32 */ {
@@ -16050,9 +16050,9 @@ export function JetSetCurrentIndex3A(
 }
 
 export function JetSetCurrentIndex3W(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  szIndexName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  szIndexName: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
   itagSequence: number /* u32 */,
 ): number /* i32 */ {
@@ -16060,10 +16060,10 @@ export function JetSetCurrentIndex3W(
 }
 
 export function JetSetCurrentIndex4A(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  szIndexName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pindexid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  szIndexName: Deno.PointerValue | Uint8Array /* ptr */,
+  pindexid: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
   itagSequence: number /* u32 */,
 ): number /* i32 */ {
@@ -16071,10 +16071,10 @@ export function JetSetCurrentIndex4A(
 }
 
 export function JetSetCurrentIndex4W(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  szIndexName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pindexid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  szIndexName: Deno.PointerValue | Uint8Array /* ptr */,
+  pindexid: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
   itagSequence: number /* u32 */,
 ): number /* i32 */ {
@@ -16082,8 +16082,8 @@ export function JetSetCurrentIndex4W(
 }
 
 export function JetMove(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
   cRow: number /* i32 */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
@@ -16091,9 +16091,9 @@ export function JetMove(
 }
 
 export function JetSetCursorFilter(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  rgColumnFilters: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  rgColumnFilters: Deno.PointerValue | Uint8Array /* ptr */,
   cColumnFilters: number /* u32 */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
@@ -16101,17 +16101,17 @@ export function JetSetCursorFilter(
 }
 
 export function JetGetLock(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetGetLock(util.toPointer(sesid), util.toPointer(tableid), grbit);
 }
 
 export function JetMakeKey(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  pvData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  pvData: Deno.PointerValue | Uint8Array /* ptr */,
   cbData: number /* u32 */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
@@ -16119,32 +16119,32 @@ export function JetMakeKey(
 }
 
 export function JetSeek(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetSeek(util.toPointer(sesid), util.toPointer(tableid), grbit);
 }
 
 export function JetPrereadKeys(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  rgpvKeys: Deno.PointerValue | Uint8Array | null /* ptr */,
-  rgcbKeys: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  rgpvKeys: Deno.PointerValue | Uint8Array /* ptr */,
+  rgcbKeys: Deno.PointerValue | Uint8Array /* ptr */,
   ckeys: number /* i32 */,
-  pckeysPreread: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pckeysPreread: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetPrereadKeys(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(rgpvKeys), util.toPointer(rgcbKeys), ckeys, util.toPointer(pckeysPreread), grbit);
 }
 
 export function JetPrereadIndexRanges(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  rgIndexRanges: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  rgIndexRanges: Deno.PointerValue | Uint8Array /* ptr */,
   cIndexRanges: number /* u32 */,
-  pcRangesPreread: Deno.PointerValue | Uint8Array | null /* ptr */,
-  rgcolumnidPreread: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcRangesPreread: Deno.PointerValue | Uint8Array /* ptr */,
+  rgcolumnidPreread: Deno.PointerValue | Uint8Array /* ptr */,
   ccolumnidPreread: number /* u32 */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
@@ -16152,188 +16152,188 @@ export function JetPrereadIndexRanges(
 }
 
 export function JetGetBookmark(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  pvBookmark: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  pvBookmark: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
-  pcbActual: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetGetBookmark(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pvBookmark), cbMax, util.toPointer(pcbActual));
 }
 
 export function JetGetSecondaryIndexBookmark(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  pvSecondaryKey: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  pvSecondaryKey: Deno.PointerValue | Uint8Array /* ptr */,
   cbSecondaryKeyMax: number /* u32 */,
-  pcbSecondaryKeyActual: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pvPrimaryBookmark: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbSecondaryKeyActual: Deno.PointerValue | Uint8Array /* ptr */,
+  pvPrimaryBookmark: Deno.PointerValue | Uint8Array /* ptr */,
   cbPrimaryBookmarkMax: number /* u32 */,
-  pcbPrimaryBookmarkActual: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbPrimaryBookmarkActual: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetGetSecondaryIndexBookmark(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pvSecondaryKey), cbSecondaryKeyMax, util.toPointer(pcbSecondaryKeyActual), util.toPointer(pvPrimaryBookmark), cbPrimaryBookmarkMax, util.toPointer(pcbPrimaryBookmarkActual), grbit);
 }
 
 export function JetCompactA(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  szDatabaseSrc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szDatabaseDest: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfnStatus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
-  pconvert: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  szDatabaseSrc: Deno.PointerValue | Uint8Array /* ptr */,
+  szDatabaseDest: Deno.PointerValue | Uint8Array /* ptr */,
+  pfnStatus: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
+  pconvert: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetCompactA(util.toPointer(sesid), util.toPointer(szDatabaseSrc), util.toPointer(szDatabaseDest), util.toPointer(pfnStatus), util.toPointer(pconvert), grbit);
 }
 
 export function JetCompactW(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  szDatabaseSrc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szDatabaseDest: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfnStatus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
-  pconvert: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  szDatabaseSrc: Deno.PointerValue | Uint8Array /* ptr */,
+  szDatabaseDest: Deno.PointerValue | Uint8Array /* ptr */,
+  pfnStatus: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
+  pconvert: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetCompactW(util.toPointer(sesid), util.toPointer(szDatabaseSrc), util.toPointer(szDatabaseDest), util.toPointer(pfnStatus), util.toPointer(pconvert), grbit);
 }
 
 export function JetDefragmentA(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   dbid: number /* u32 */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcPasses: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcSeconds: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
+  pcPasses: Deno.PointerValue | Uint8Array /* ptr */,
+  pcSeconds: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetDefragmentA(util.toPointer(sesid), dbid, util.toPointer(szTableName), util.toPointer(pcPasses), util.toPointer(pcSeconds), grbit);
 }
 
 export function JetDefragmentW(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   dbid: number /* u32 */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcPasses: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcSeconds: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
+  pcPasses: Deno.PointerValue | Uint8Array /* ptr */,
+  pcSeconds: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetDefragmentW(util.toPointer(sesid), dbid, util.toPointer(szTableName), util.toPointer(pcPasses), util.toPointer(pcSeconds), grbit);
 }
 
 export function JetDefragment2A(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   dbid: number /* u32 */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcPasses: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcSeconds: Deno.PointerValue | Uint8Array | null /* ptr */,
-  callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Jet.JET_CALLBACK */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
+  pcPasses: Deno.PointerValue | Uint8Array /* ptr */,
+  pcSeconds: Deno.PointerValue | Uint8Array /* ptr */,
+  callback: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_CALLBACK */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetDefragment2A(util.toPointer(sesid), dbid, util.toPointer(szTableName), util.toPointer(pcPasses), util.toPointer(pcSeconds), util.toPointer(callback), grbit);
 }
 
 export function JetDefragment2W(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   dbid: number /* u32 */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcPasses: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcSeconds: Deno.PointerValue | Uint8Array | null /* ptr */,
-  callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Jet.JET_CALLBACK */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
+  pcPasses: Deno.PointerValue | Uint8Array /* ptr */,
+  pcSeconds: Deno.PointerValue | Uint8Array /* ptr */,
+  callback: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_CALLBACK */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetDefragment2W(util.toPointer(sesid), dbid, util.toPointer(szTableName), util.toPointer(pcPasses), util.toPointer(pcSeconds), util.toPointer(callback), grbit);
 }
 
 export function JetDefragment3A(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  szDatabaseName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcPasses: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcSeconds: Deno.PointerValue | Uint8Array | null /* ptr */,
-  callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Jet.JET_CALLBACK */,
-  pvContext: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  szDatabaseName: Deno.PointerValue | Uint8Array /* ptr */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
+  pcPasses: Deno.PointerValue | Uint8Array /* ptr */,
+  pcSeconds: Deno.PointerValue | Uint8Array /* ptr */,
+  callback: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_CALLBACK */,
+  pvContext: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetDefragment3A(util.toPointer(sesid), util.toPointer(szDatabaseName), util.toPointer(szTableName), util.toPointer(pcPasses), util.toPointer(pcSeconds), util.toPointer(callback), util.toPointer(pvContext), grbit);
 }
 
 export function JetDefragment3W(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  szDatabaseName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcPasses: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcSeconds: Deno.PointerValue | Uint8Array | null /* ptr */,
-  callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Jet.JET_CALLBACK */,
-  pvContext: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  szDatabaseName: Deno.PointerValue | Uint8Array /* ptr */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
+  pcPasses: Deno.PointerValue | Uint8Array /* ptr */,
+  pcSeconds: Deno.PointerValue | Uint8Array /* ptr */,
+  callback: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_CALLBACK */,
+  pvContext: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetDefragment3W(util.toPointer(sesid), util.toPointer(szDatabaseName), util.toPointer(szTableName), util.toPointer(pcPasses), util.toPointer(pcSeconds), util.toPointer(callback), util.toPointer(pvContext), grbit);
 }
 
 export function JetSetDatabaseSizeA(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  szDatabaseName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  szDatabaseName: Deno.PointerValue | Uint8Array /* ptr */,
   cpg: number /* u32 */,
-  pcpgReal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcpgReal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetSetDatabaseSizeA(util.toPointer(sesid), util.toPointer(szDatabaseName), cpg, util.toPointer(pcpgReal));
 }
 
 export function JetSetDatabaseSizeW(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  szDatabaseName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  szDatabaseName: Deno.PointerValue | Uint8Array /* ptr */,
   cpg: number /* u32 */,
-  pcpgReal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcpgReal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetSetDatabaseSizeW(util.toPointer(sesid), util.toPointer(szDatabaseName), cpg, util.toPointer(pcpgReal));
 }
 
 export function JetGrowDatabase(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   dbid: number /* u32 */,
   cpg: number /* u32 */,
-  pcpgReal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcpgReal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetGrowDatabase(util.toPointer(sesid), dbid, cpg, util.toPointer(pcpgReal));
 }
 
 export function JetResizeDatabase(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   dbid: number /* u32 */,
   cpgTarget: number /* u32 */,
-  pcpgActual: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcpgActual: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetResizeDatabase(util.toPointer(sesid), dbid, cpgTarget, util.toPointer(pcpgActual), grbit);
 }
 
 export function JetSetSessionContext(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  ulContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_API_PTR */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  ulContext: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_API_PTR */,
 ): number /* i32 */ {
   return libESENT_dll.JetSetSessionContext(util.toPointer(sesid), util.toPointer(ulContext));
 }
 
 export function JetResetSessionContext(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
 ): number /* i32 */ {
   return libESENT_dll.JetResetSessionContext(util.toPointer(sesid));
 }
 
 export function JetGotoBookmark(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  pvBookmark: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  pvBookmark: Deno.PointerValue | Uint8Array /* ptr */,
   cbBookmark: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetGotoBookmark(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pvBookmark), cbBookmark);
 }
 
 export function JetGotoSecondaryIndexBookmark(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  pvSecondaryKey: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  pvSecondaryKey: Deno.PointerValue | Uint8Array /* ptr */,
   cbSecondaryKey: number /* u32 */,
-  pvPrimaryBookmark: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pvPrimaryBookmark: Deno.PointerValue | Uint8Array /* ptr */,
   cbPrimaryBookmark: number /* u32 */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
@@ -16341,176 +16341,176 @@ export function JetGotoSecondaryIndexBookmark(
 }
 
 export function JetIntersectIndexes(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  rgindexrange: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  rgindexrange: Deno.PointerValue | Uint8Array /* ptr */,
   cindexrange: number /* u32 */,
-  precordlist: Deno.PointerValue | Uint8Array | null /* ptr */,
+  precordlist: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetIntersectIndexes(util.toPointer(sesid), util.toPointer(rgindexrange), cindexrange, util.toPointer(precordlist), grbit);
 }
 
 export function JetComputeStats(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
 ): number /* i32 */ {
   return libESENT_dll.JetComputeStats(util.toPointer(sesid), util.toPointer(tableid));
 }
 
 export function JetOpenTempTable(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  prgcolumndef: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  prgcolumndef: Deno.PointerValue | Uint8Array /* ptr */,
   ccolumn: number /* u32 */,
   grbit: number /* u32 */,
-  ptableid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  prgcolumnid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ptableid: Deno.PointerValue | Uint8Array /* ptr */,
+  prgcolumnid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetOpenTempTable(util.toPointer(sesid), util.toPointer(prgcolumndef), ccolumn, grbit, util.toPointer(ptableid), util.toPointer(prgcolumnid));
 }
 
 export function JetOpenTempTable2(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  prgcolumndef: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  prgcolumndef: Deno.PointerValue | Uint8Array /* ptr */,
   ccolumn: number /* u32 */,
   lcid: number /* u32 */,
   grbit: number /* u32 */,
-  ptableid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  prgcolumnid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ptableid: Deno.PointerValue | Uint8Array /* ptr */,
+  prgcolumnid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetOpenTempTable2(util.toPointer(sesid), util.toPointer(prgcolumndef), ccolumn, lcid, grbit, util.toPointer(ptableid), util.toPointer(prgcolumnid));
 }
 
 export function JetOpenTempTable3(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  prgcolumndef: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  prgcolumndef: Deno.PointerValue | Uint8Array /* ptr */,
   ccolumn: number /* u32 */,
-  pidxunicode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pidxunicode: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
-  ptableid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  prgcolumnid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ptableid: Deno.PointerValue | Uint8Array /* ptr */,
+  prgcolumnid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetOpenTempTable3(util.toPointer(sesid), util.toPointer(prgcolumndef), ccolumn, util.toPointer(pidxunicode), grbit, util.toPointer(ptableid), util.toPointer(prgcolumnid));
 }
 
 export function JetOpenTemporaryTable(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  popentemporarytable: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  popentemporarytable: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetOpenTemporaryTable(util.toPointer(sesid), util.toPointer(popentemporarytable));
 }
 
 export function JetOpenTemporaryTable2(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  popentemporarytable: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  popentemporarytable: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetOpenTemporaryTable2(util.toPointer(sesid), util.toPointer(popentemporarytable));
 }
 
 export function JetBackupA(
-  szBackupPath: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szBackupPath: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
-  pfnStatus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
+  pfnStatus: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
 ): number /* i32 */ {
   return libESENT_dll.JetBackupA(util.toPointer(szBackupPath), grbit, util.toPointer(pfnStatus));
 }
 
 export function JetBackupW(
-  szBackupPath: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szBackupPath: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
-  pfnStatus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
+  pfnStatus: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
 ): number /* i32 */ {
   return libESENT_dll.JetBackupW(util.toPointer(szBackupPath), grbit, util.toPointer(pfnStatus));
 }
 
 export function JetBackupInstanceA(
-  instance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
-  szBackupPath: Deno.PointerValue | Uint8Array | null /* ptr */,
+  instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
+  szBackupPath: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
-  pfnStatus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
+  pfnStatus: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
 ): number /* i32 */ {
   return libESENT_dll.JetBackupInstanceA(util.toPointer(instance), util.toPointer(szBackupPath), grbit, util.toPointer(pfnStatus));
 }
 
 export function JetBackupInstanceW(
-  instance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
-  szBackupPath: Deno.PointerValue | Uint8Array | null /* ptr */,
+  instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
+  szBackupPath: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
-  pfnStatus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
+  pfnStatus: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
 ): number /* i32 */ {
   return libESENT_dll.JetBackupInstanceW(util.toPointer(instance), util.toPointer(szBackupPath), grbit, util.toPointer(pfnStatus));
 }
 
 export function JetRestoreA(
-  szSource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfn: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
+  szSource: Deno.PointerValue | Uint8Array /* ptr */,
+  pfn: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
 ): number /* i32 */ {
   return libESENT_dll.JetRestoreA(util.toPointer(szSource), util.toPointer(pfn));
 }
 
 export function JetRestoreW(
-  szSource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfn: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
+  szSource: Deno.PointerValue | Uint8Array /* ptr */,
+  pfn: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
 ): number /* i32 */ {
   return libESENT_dll.JetRestoreW(util.toPointer(szSource), util.toPointer(pfn));
 }
 
 export function JetRestore2A(
-  sz: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szDest: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfn: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
+  sz: Deno.PointerValue | Uint8Array /* ptr */,
+  szDest: Deno.PointerValue | Uint8Array /* ptr */,
+  pfn: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
 ): number /* i32 */ {
   return libESENT_dll.JetRestore2A(util.toPointer(sz), util.toPointer(szDest), util.toPointer(pfn));
 }
 
 export function JetRestore2W(
-  sz: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szDest: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfn: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
+  sz: Deno.PointerValue | Uint8Array /* ptr */,
+  szDest: Deno.PointerValue | Uint8Array /* ptr */,
+  pfn: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
 ): number /* i32 */ {
   return libESENT_dll.JetRestore2W(util.toPointer(sz), util.toPointer(szDest), util.toPointer(pfn));
 }
 
 export function JetRestoreInstanceA(
-  instance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
-  sz: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szDest: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfn: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
+  instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
+  sz: Deno.PointerValue | Uint8Array /* ptr */,
+  szDest: Deno.PointerValue | Uint8Array /* ptr */,
+  pfn: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
 ): number /* i32 */ {
   return libESENT_dll.JetRestoreInstanceA(util.toPointer(instance), util.toPointer(sz), util.toPointer(szDest), util.toPointer(pfn));
 }
 
 export function JetRestoreInstanceW(
-  instance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
-  sz: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szDest: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfn: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
+  instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
+  sz: Deno.PointerValue | Uint8Array /* ptr */,
+  szDest: Deno.PointerValue | Uint8Array /* ptr */,
+  pfn: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
 ): number /* i32 */ {
   return libESENT_dll.JetRestoreInstanceW(util.toPointer(instance), util.toPointer(sz), util.toPointer(szDest), util.toPointer(pfn));
 }
 
 export function JetSetIndexRange(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableidSrc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableidSrc: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetSetIndexRange(util.toPointer(sesid), util.toPointer(tableidSrc), grbit);
 }
 
 export function JetIndexRecordCount(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  pcrec: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  pcrec: Deno.PointerValue | Uint8Array /* ptr */,
   crecMax: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetIndexRecordCount(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pcrec), crecMax);
 }
 
 export function JetRetrieveKey(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  pvKey: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  pvKey: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
-  pcbActual: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetRetrieveKey(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pvKey), cbMax, util.toPointer(pcbActual), grbit);
@@ -16523,184 +16523,184 @@ export function JetBeginExternalBackup(
 }
 
 export function JetBeginExternalBackupInstance(
-  instance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
+  instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetBeginExternalBackupInstance(util.toPointer(instance), grbit);
 }
 
 export function JetGetAttachInfoA(
-  szzDatabases: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szzDatabases: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
-  pcbActual: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetGetAttachInfoA(util.toPointer(szzDatabases), cbMax, util.toPointer(pcbActual));
 }
 
 export function JetGetAttachInfoW(
-  wszzDatabases: Deno.PointerValue | Uint8Array | null /* ptr */,
+  wszzDatabases: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
-  pcbActual: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetGetAttachInfoW(util.toPointer(wszzDatabases), cbMax, util.toPointer(pcbActual));
 }
 
 export function JetGetAttachInfoInstanceA(
-  instance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
-  szzDatabases: Deno.PointerValue | Uint8Array | null /* ptr */,
+  instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
+  szzDatabases: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
-  pcbActual: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetGetAttachInfoInstanceA(util.toPointer(instance), util.toPointer(szzDatabases), cbMax, util.toPointer(pcbActual));
 }
 
 export function JetGetAttachInfoInstanceW(
-  instance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
-  szzDatabases: Deno.PointerValue | Uint8Array | null /* ptr */,
+  instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
+  szzDatabases: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
-  pcbActual: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetGetAttachInfoInstanceW(util.toPointer(instance), util.toPointer(szzDatabases), cbMax, util.toPointer(pcbActual));
 }
 
 export function JetOpenFileA(
-  szFileName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  phfFile: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pulFileSizeLow: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pulFileSizeHigh: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szFileName: Deno.PointerValue | Uint8Array /* ptr */,
+  phfFile: Deno.PointerValue | Uint8Array /* ptr */,
+  pulFileSizeLow: Deno.PointerValue | Uint8Array /* ptr */,
+  pulFileSizeHigh: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetOpenFileA(util.toPointer(szFileName), util.toPointer(phfFile), util.toPointer(pulFileSizeLow), util.toPointer(pulFileSizeHigh));
 }
 
 export function JetOpenFileW(
-  szFileName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  phfFile: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pulFileSizeLow: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pulFileSizeHigh: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szFileName: Deno.PointerValue | Uint8Array /* ptr */,
+  phfFile: Deno.PointerValue | Uint8Array /* ptr */,
+  pulFileSizeLow: Deno.PointerValue | Uint8Array /* ptr */,
+  pulFileSizeHigh: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetOpenFileW(util.toPointer(szFileName), util.toPointer(phfFile), util.toPointer(pulFileSizeLow), util.toPointer(pulFileSizeHigh));
 }
 
 export function JetOpenFileInstanceA(
-  instance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
-  szFileName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  phfFile: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pulFileSizeLow: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pulFileSizeHigh: Deno.PointerValue | Uint8Array | null /* ptr */,
+  instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
+  szFileName: Deno.PointerValue | Uint8Array /* ptr */,
+  phfFile: Deno.PointerValue | Uint8Array /* ptr */,
+  pulFileSizeLow: Deno.PointerValue | Uint8Array /* ptr */,
+  pulFileSizeHigh: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetOpenFileInstanceA(util.toPointer(instance), util.toPointer(szFileName), util.toPointer(phfFile), util.toPointer(pulFileSizeLow), util.toPointer(pulFileSizeHigh));
 }
 
 export function JetOpenFileInstanceW(
-  instance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
-  szFileName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  phfFile: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pulFileSizeLow: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pulFileSizeHigh: Deno.PointerValue | Uint8Array | null /* ptr */,
+  instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
+  szFileName: Deno.PointerValue | Uint8Array /* ptr */,
+  phfFile: Deno.PointerValue | Uint8Array /* ptr */,
+  pulFileSizeLow: Deno.PointerValue | Uint8Array /* ptr */,
+  pulFileSizeHigh: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetOpenFileInstanceW(util.toPointer(instance), util.toPointer(szFileName), util.toPointer(phfFile), util.toPointer(pulFileSizeLow), util.toPointer(pulFileSizeHigh));
 }
 
 export function JetReadFile(
-  hfFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_HANDLE */,
-  pv: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hfFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_HANDLE */,
+  pv: Deno.PointerValue | Uint8Array /* ptr */,
   cb: number /* u32 */,
-  pcbActual: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetReadFile(util.toPointer(hfFile), util.toPointer(pv), cb, util.toPointer(pcbActual));
 }
 
 export function JetReadFileInstance(
-  instance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
-  hfFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_HANDLE */,
-  pv: Deno.PointerValue | Uint8Array | null /* ptr */,
+  instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
+  hfFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_HANDLE */,
+  pv: Deno.PointerValue | Uint8Array /* ptr */,
   cb: number /* u32 */,
-  pcbActual: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetReadFileInstance(util.toPointer(instance), util.toPointer(hfFile), util.toPointer(pv), cb, util.toPointer(pcbActual));
 }
 
 export function JetCloseFile(
-  hfFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_HANDLE */,
+  hfFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_HANDLE */,
 ): number /* i32 */ {
   return libESENT_dll.JetCloseFile(util.toPointer(hfFile));
 }
 
 export function JetCloseFileInstance(
-  instance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
-  hfFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_HANDLE */,
+  instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
+  hfFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_HANDLE */,
 ): number /* i32 */ {
   return libESENT_dll.JetCloseFileInstance(util.toPointer(instance), util.toPointer(hfFile));
 }
 
 export function JetGetLogInfoA(
-  szzLogs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szzLogs: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
-  pcbActual: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetGetLogInfoA(util.toPointer(szzLogs), cbMax, util.toPointer(pcbActual));
 }
 
 export function JetGetLogInfoW(
-  szzLogs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szzLogs: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
-  pcbActual: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetGetLogInfoW(util.toPointer(szzLogs), cbMax, util.toPointer(pcbActual));
 }
 
 export function JetGetLogInfoInstanceA(
-  instance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
-  szzLogs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
+  szzLogs: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
-  pcbActual: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetGetLogInfoInstanceA(util.toPointer(instance), util.toPointer(szzLogs), cbMax, util.toPointer(pcbActual));
 }
 
 export function JetGetLogInfoInstanceW(
-  instance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
-  wszzLogs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
+  wszzLogs: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
-  pcbActual: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetGetLogInfoInstanceW(util.toPointer(instance), util.toPointer(wszzLogs), cbMax, util.toPointer(pcbActual));
 }
 
 export function JetGetLogInfoInstance2A(
-  instance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
-  szzLogs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
+  szzLogs: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
-  pcbActual: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pLogInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
+  pLogInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetGetLogInfoInstance2A(util.toPointer(instance), util.toPointer(szzLogs), cbMax, util.toPointer(pcbActual), util.toPointer(pLogInfo));
 }
 
 export function JetGetLogInfoInstance2W(
-  instance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
-  wszzLogs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
+  wszzLogs: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
-  pcbActual: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pLogInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
+  pLogInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetGetLogInfoInstance2W(util.toPointer(instance), util.toPointer(wszzLogs), cbMax, util.toPointer(pcbActual), util.toPointer(pLogInfo));
 }
 
 export function JetGetTruncateLogInfoInstanceA(
-  instance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
-  szzLogs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
+  szzLogs: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
-  pcbActual: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetGetTruncateLogInfoInstanceA(util.toPointer(instance), util.toPointer(szzLogs), cbMax, util.toPointer(pcbActual));
 }
 
 export function JetGetTruncateLogInfoInstanceW(
-  instance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
-  wszzLogs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
+  wszzLogs: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
-  pcbActual: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetGetTruncateLogInfoInstanceW(util.toPointer(instance), util.toPointer(wszzLogs), cbMax, util.toPointer(pcbActual));
 }
@@ -16710,7 +16710,7 @@ export function JetTruncateLog(): number /* i32 */ {
 }
 
 export function JetTruncateLogInstance(
-  instance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
+  instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
 ): number /* i32 */ {
   return libESENT_dll.JetTruncateLogInstance(util.toPointer(instance));
 }
@@ -16720,104 +16720,104 @@ export function JetEndExternalBackup(): number /* i32 */ {
 }
 
 export function JetEndExternalBackupInstance(
-  instance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
+  instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
 ): number /* i32 */ {
   return libESENT_dll.JetEndExternalBackupInstance(util.toPointer(instance));
 }
 
 export function JetEndExternalBackupInstance2(
-  instance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
+  instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetEndExternalBackupInstance2(util.toPointer(instance), grbit);
 }
 
 export function JetExternalRestoreA(
-  szCheckpointFilePath: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szLogPath: Deno.PointerValue | Uint8Array | null /* ptr */,
-  rgrstmap: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szCheckpointFilePath: Deno.PointerValue | Uint8Array /* ptr */,
+  szLogPath: Deno.PointerValue | Uint8Array /* ptr */,
+  rgrstmap: Deno.PointerValue | Uint8Array /* ptr */,
   crstfilemap: number /* i32 */,
-  szBackupLogPath: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szBackupLogPath: Deno.PointerValue | Uint8Array /* ptr */,
   genLow: number /* i32 */,
   genHigh: number /* i32 */,
-  pfn: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
+  pfn: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
 ): number /* i32 */ {
   return libESENT_dll.JetExternalRestoreA(util.toPointer(szCheckpointFilePath), util.toPointer(szLogPath), util.toPointer(rgrstmap), crstfilemap, util.toPointer(szBackupLogPath), genLow, genHigh, util.toPointer(pfn));
 }
 
 export function JetExternalRestoreW(
-  szCheckpointFilePath: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szLogPath: Deno.PointerValue | Uint8Array | null /* ptr */,
-  rgrstmap: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szCheckpointFilePath: Deno.PointerValue | Uint8Array /* ptr */,
+  szLogPath: Deno.PointerValue | Uint8Array /* ptr */,
+  rgrstmap: Deno.PointerValue | Uint8Array /* ptr */,
   crstfilemap: number /* i32 */,
-  szBackupLogPath: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szBackupLogPath: Deno.PointerValue | Uint8Array /* ptr */,
   genLow: number /* i32 */,
   genHigh: number /* i32 */,
-  pfn: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
+  pfn: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
 ): number /* i32 */ {
   return libESENT_dll.JetExternalRestoreW(util.toPointer(szCheckpointFilePath), util.toPointer(szLogPath), util.toPointer(rgrstmap), crstfilemap, util.toPointer(szBackupLogPath), genLow, genHigh, util.toPointer(pfn));
 }
 
 export function JetExternalRestore2A(
-  szCheckpointFilePath: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szLogPath: Deno.PointerValue | Uint8Array | null /* ptr */,
-  rgrstmap: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szCheckpointFilePath: Deno.PointerValue | Uint8Array /* ptr */,
+  szLogPath: Deno.PointerValue | Uint8Array /* ptr */,
+  rgrstmap: Deno.PointerValue | Uint8Array /* ptr */,
   crstfilemap: number /* i32 */,
-  szBackupLogPath: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pLogInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szTargetInstanceName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szTargetInstanceLogPath: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szTargetInstanceCheckpointPath: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfn: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
+  szBackupLogPath: Deno.PointerValue | Uint8Array /* ptr */,
+  pLogInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  szTargetInstanceName: Deno.PointerValue | Uint8Array /* ptr */,
+  szTargetInstanceLogPath: Deno.PointerValue | Uint8Array /* ptr */,
+  szTargetInstanceCheckpointPath: Deno.PointerValue | Uint8Array /* ptr */,
+  pfn: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
 ): number /* i32 */ {
   return libESENT_dll.JetExternalRestore2A(util.toPointer(szCheckpointFilePath), util.toPointer(szLogPath), util.toPointer(rgrstmap), crstfilemap, util.toPointer(szBackupLogPath), util.toPointer(pLogInfo), util.toPointer(szTargetInstanceName), util.toPointer(szTargetInstanceLogPath), util.toPointer(szTargetInstanceCheckpointPath), util.toPointer(pfn));
 }
 
 export function JetExternalRestore2W(
-  szCheckpointFilePath: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szLogPath: Deno.PointerValue | Uint8Array | null /* ptr */,
-  rgrstmap: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szCheckpointFilePath: Deno.PointerValue | Uint8Array /* ptr */,
+  szLogPath: Deno.PointerValue | Uint8Array /* ptr */,
+  rgrstmap: Deno.PointerValue | Uint8Array /* ptr */,
   crstfilemap: number /* i32 */,
-  szBackupLogPath: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pLogInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szTargetInstanceName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szTargetInstanceLogPath: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szTargetInstanceCheckpointPath: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfn: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
+  szBackupLogPath: Deno.PointerValue | Uint8Array /* ptr */,
+  pLogInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  szTargetInstanceName: Deno.PointerValue | Uint8Array /* ptr */,
+  szTargetInstanceLogPath: Deno.PointerValue | Uint8Array /* ptr */,
+  szTargetInstanceCheckpointPath: Deno.PointerValue | Uint8Array /* ptr */,
+  pfn: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
 ): number /* i32 */ {
   return libESENT_dll.JetExternalRestore2W(util.toPointer(szCheckpointFilePath), util.toPointer(szLogPath), util.toPointer(rgrstmap), crstfilemap, util.toPointer(szBackupLogPath), util.toPointer(pLogInfo), util.toPointer(szTargetInstanceName), util.toPointer(szTargetInstanceLogPath), util.toPointer(szTargetInstanceCheckpointPath), util.toPointer(pfn));
 }
 
 export function JetRegisterCallback(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
   cbtyp: number /* u32 */,
-  pCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Jet.JET_CALLBACK */,
-  pvContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  phCallbackId: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_CALLBACK */,
+  pvContext: Deno.PointerValue | Uint8Array /* ptr */,
+  phCallbackId: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetRegisterCallback(util.toPointer(sesid), util.toPointer(tableid), cbtyp, util.toPointer(pCallback), util.toPointer(pvContext), util.toPointer(phCallbackId));
 }
 
 export function JetUnregisterCallback(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
   cbtyp: number /* u32 */,
-  hCallbackId: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_HANDLE */,
+  hCallbackId: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_HANDLE */,
 ): number /* i32 */ {
   return libESENT_dll.JetUnregisterCallback(util.toPointer(sesid), util.toPointer(tableid), cbtyp, util.toPointer(hCallbackId));
 }
 
 export function JetGetInstanceInfoA(
-  pcInstanceInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  paInstanceInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcInstanceInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  paInstanceInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetGetInstanceInfoA(util.toPointer(pcInstanceInfo), util.toPointer(paInstanceInfo));
 }
 
 export function JetGetInstanceInfoW(
-  pcInstanceInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  paInstanceInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcInstanceInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  paInstanceInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetGetInstanceInfoW(util.toPointer(pcInstanceInfo), util.toPointer(paInstanceInfo));
 }
@@ -16829,105 +16829,105 @@ export function JetFreeBuffer(
 }
 
 export function JetSetLS(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  ls: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Jet.JET_LS */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  ls: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_LS */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetSetLS(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(ls), grbit);
 }
 
 export function JetGetLS(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  tableid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
-  pls: Deno.PointerValue | Uint8Array | null /* ptr */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
+  pls: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetGetLS(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pls), grbit);
 }
 
 export function JetOSSnapshotPrepare(
-  psnapId: Deno.PointerValue | Uint8Array | null /* ptr */,
+  psnapId: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetOSSnapshotPrepare(util.toPointer(psnapId), grbit);
 }
 
 export function JetOSSnapshotPrepareInstance(
-  snapId: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Jet.JET_OSSNAPID */,
-  instance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
+  snapId: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_OSSNAPID */,
+  instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetOSSnapshotPrepareInstance(util.toPointer(snapId), util.toPointer(instance), grbit);
 }
 
 export function JetOSSnapshotFreezeA(
-  snapId: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Jet.JET_OSSNAPID */,
-  pcInstanceInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  paInstanceInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  snapId: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_OSSNAPID */,
+  pcInstanceInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  paInstanceInfo: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetOSSnapshotFreezeA(util.toPointer(snapId), util.toPointer(pcInstanceInfo), util.toPointer(paInstanceInfo), grbit);
 }
 
 export function JetOSSnapshotFreezeW(
-  snapId: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Jet.JET_OSSNAPID */,
-  pcInstanceInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  paInstanceInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  snapId: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_OSSNAPID */,
+  pcInstanceInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  paInstanceInfo: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetOSSnapshotFreezeW(util.toPointer(snapId), util.toPointer(pcInstanceInfo), util.toPointer(paInstanceInfo), grbit);
 }
 
 export function JetOSSnapshotThaw(
-  snapId: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Jet.JET_OSSNAPID */,
+  snapId: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_OSSNAPID */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetOSSnapshotThaw(util.toPointer(snapId), grbit);
 }
 
 export function JetOSSnapshotAbort(
-  snapId: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Jet.JET_OSSNAPID */,
+  snapId: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_OSSNAPID */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetOSSnapshotAbort(util.toPointer(snapId), grbit);
 }
 
 export function JetOSSnapshotTruncateLog(
-  snapId: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Jet.JET_OSSNAPID */,
+  snapId: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_OSSNAPID */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetOSSnapshotTruncateLog(util.toPointer(snapId), grbit);
 }
 
 export function JetOSSnapshotTruncateLogInstance(
-  snapId: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Jet.JET_OSSNAPID */,
-  instance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
+  snapId: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_OSSNAPID */,
+  instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetOSSnapshotTruncateLogInstance(util.toPointer(snapId), util.toPointer(instance), grbit);
 }
 
 export function JetOSSnapshotGetFreezeInfoA(
-  snapId: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Jet.JET_OSSNAPID */,
-  pcInstanceInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  paInstanceInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  snapId: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_OSSNAPID */,
+  pcInstanceInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  paInstanceInfo: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetOSSnapshotGetFreezeInfoA(util.toPointer(snapId), util.toPointer(pcInstanceInfo), util.toPointer(paInstanceInfo), grbit);
 }
 
 export function JetOSSnapshotGetFreezeInfoW(
-  snapId: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Jet.JET_OSSNAPID */,
-  pcInstanceInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  paInstanceInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  snapId: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_OSSNAPID */,
+  pcInstanceInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  paInstanceInfo: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetOSSnapshotGetFreezeInfoW(util.toPointer(snapId), util.toPointer(pcInstanceInfo), util.toPointer(paInstanceInfo), grbit);
 }
 
 export function JetOSSnapshotEnd(
-  snapId: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Jet.JET_OSSNAPID */,
+  snapId: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_OSSNAPID */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetOSSnapshotEnd(util.toPointer(snapId), grbit);
@@ -16940,8 +16940,8 @@ export function JetConfigureProcessForCrashDump(
 }
 
 export function JetGetErrorInfoW(
-  pvContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pvResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pvContext: Deno.PointerValue | Uint8Array /* ptr */,
+  pvResult: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
   InfoLevel: number /* u32 */,
   grbit: number /* u32 */,
@@ -16950,20 +16950,20 @@ export function JetGetErrorInfoW(
 }
 
 export function JetSetSessionParameter(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   sesparamid: number /* u32 */,
-  pvParam: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pvParam: Deno.PointerValue | Uint8Array /* ptr */,
   cbParam: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetSetSessionParameter(util.toPointer(sesid), sesparamid, util.toPointer(pvParam), cbParam);
 }
 
 export function JetGetSessionParameter(
-  sesid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
+  sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   sesparamid: number /* u32 */,
-  pvParam: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pvParam: Deno.PointerValue | Uint8Array /* ptr */,
   cbParamMax: number /* u32 */,
-  pcbParamActual: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbParamActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libESENT_dll.JetGetSessionParameter(util.toPointer(sesid), sesparamid, util.toPointer(pvParam), cbParamMax, util.toPointer(pcbParamActual));
 }

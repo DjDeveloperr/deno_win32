@@ -163,7 +163,7 @@ export interface FILTER_FULL_INFORMATION {
   /** u16 */
   FilterNameLength: number;
   /** array */
-  FilterNameBuffer: Deno.PointerValue | null;
+  FilterNameBuffer: Deno.PointerValue;
 }
 
 export const sizeofFILTER_FULL_INFORMATION = 24;
@@ -181,7 +181,7 @@ export function allocFILTER_FULL_INFORMATION(data?: Partial<FILTER_FULL_INFORMAT
   if (data?.FilterNameLength !== undefined) view.setUint16(12, Number(data.FilterNameLength), true);
   // 0x0e: pad2
   // 0x10: pointer
-  if (data?.FilterNameBuffer !== undefined) view.setBigUint64(16, data.FilterNameBuffer === null ? 0n : BigInt(util.toPointer(data.FilterNameBuffer)), true);
+  if (data?.FilterNameBuffer !== undefined) view.setBigUint64(16, data.FilterNameBuffer === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.FilterNameBuffer))), true);
   return buf;
 }
 
@@ -218,9 +218,9 @@ export class FILTER_FULL_INFORMATIONView {
   // 0x0e: pad2
 
   // 0x10: pointer
-  get FilterNameBuffer(): Uint8Array | Deno.PointerValue | null {
+  get FilterNameBuffer(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -246,8 +246,8 @@ export class FILTER_FULL_INFORMATIONView {
   // 0x0e: pad2
 
   // 0x10: pointer
-  set FilterNameBuffer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set FilterNameBuffer(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -423,9 +423,9 @@ export class _LegacyFilter_e__StructView {
  */
 export interface _Type_e__Union {
   /** _MiniFilter_e__Struct */
-  MiniFilter: Uint8Array | Deno.PointerValue | null;
+  MiniFilter: Uint8Array | Deno.PointerValue;
   /** _LegacyFilter_e__Struct */
-  LegacyFilter: Uint8Array | Deno.PointerValue | null;
+  LegacyFilter: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeof_Type_e__Union = 16;
@@ -434,9 +434,9 @@ export function alloc_Type_e__Union(data?: Partial<_Type_e__Union>): Uint8Array 
   const buf = new Uint8Array(sizeof_Type_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.MiniFilter !== undefined) view.setBigUint64(0, data.MiniFilter === null ? 0n : BigInt(util.toPointer(data.MiniFilter)), true);
+  if (data?.MiniFilter !== undefined) view.setBigUint64(0, data.MiniFilter === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.MiniFilter))), true);
   // 0x08: pointer
-  if (data?.LegacyFilter !== undefined) view.setBigUint64(8, data.LegacyFilter === null ? 0n : BigInt(util.toPointer(data.LegacyFilter)), true);
+  if (data?.LegacyFilter !== undefined) view.setBigUint64(8, data.LegacyFilter === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.LegacyFilter))), true);
   return buf;
 }
 
@@ -451,25 +451,25 @@ export class _Type_e__UnionView {
   }
 
   // 0x00: pointer
-  get MiniFilter(): Uint8Array | Deno.PointerValue | null {
+  get MiniFilter(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get LegacyFilter(): Uint8Array | Deno.PointerValue | null {
+  get LegacyFilter(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set MiniFilter(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set MiniFilter(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set LegacyFilter(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set LegacyFilter(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -482,7 +482,7 @@ export interface FILTER_AGGREGATE_BASIC_INFORMATION {
   /** u32 */
   Flags: number;
   /** _Type_e__Union */
-  Type: Uint8Array | Deno.PointerValue | null;
+  Type: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofFILTER_AGGREGATE_BASIC_INFORMATION = 16;
@@ -495,7 +495,7 @@ export function allocFILTER_AGGREGATE_BASIC_INFORMATION(data?: Partial<FILTER_AG
   // 0x04: u32
   if (data?.Flags !== undefined) view.setUint32(4, Number(data.Flags), true);
   // 0x08: pointer
-  if (data?.Type !== undefined) view.setBigUint64(8, data.Type === null ? 0n : BigInt(util.toPointer(data.Type)), true);
+  if (data?.Type !== undefined) view.setBigUint64(8, data.Type === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Type))), true);
   return buf;
 }
 
@@ -520,9 +520,9 @@ export class FILTER_AGGREGATE_BASIC_INFORMATIONView {
   }
 
   // 0x08: pointer
-  get Type(): Uint8Array | Deno.PointerValue | null {
+  get Type(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -536,8 +536,8 @@ export class FILTER_AGGREGATE_BASIC_INFORMATIONView {
   }
 
   // 0x08: pointer
-  set Type(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Type(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -550,7 +550,7 @@ export interface FILTER_AGGREGATE_STANDARD_INFORMATION {
   /** u32 */
   Flags: number;
   /** _Type_e__Union */
-  Type: Uint8Array | Deno.PointerValue | null;
+  Type: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofFILTER_AGGREGATE_STANDARD_INFORMATION = 16;
@@ -563,7 +563,7 @@ export function allocFILTER_AGGREGATE_STANDARD_INFORMATION(data?: Partial<FILTER
   // 0x04: u32
   if (data?.Flags !== undefined) view.setUint32(4, Number(data.Flags), true);
   // 0x08: pointer
-  if (data?.Type !== undefined) view.setBigUint64(8, data.Type === null ? 0n : BigInt(util.toPointer(data.Type)), true);
+  if (data?.Type !== undefined) view.setBigUint64(8, data.Type === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Type))), true);
   return buf;
 }
 
@@ -588,9 +588,9 @@ export class FILTER_AGGREGATE_STANDARD_INFORMATIONView {
   }
 
   // 0x08: pointer
-  get Type(): Uint8Array | Deno.PointerValue | null {
+  get Type(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -604,8 +604,8 @@ export class FILTER_AGGREGATE_STANDARD_INFORMATIONView {
   }
 
   // 0x08: pointer
-  set Type(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Type(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -616,7 +616,7 @@ export interface FILTER_VOLUME_BASIC_INFORMATION {
   /** u16 */
   FilterVolumeNameLength: number;
   /** array */
-  FilterVolumeName: Deno.PointerValue | null;
+  FilterVolumeName: Deno.PointerValue;
 }
 
 export const sizeofFILTER_VOLUME_BASIC_INFORMATION = 16;
@@ -628,7 +628,7 @@ export function allocFILTER_VOLUME_BASIC_INFORMATION(data?: Partial<FILTER_VOLUM
   if (data?.FilterVolumeNameLength !== undefined) view.setUint16(0, Number(data.FilterVolumeNameLength), true);
   // 0x02: pad6
   // 0x08: pointer
-  if (data?.FilterVolumeName !== undefined) view.setBigUint64(8, data.FilterVolumeName === null ? 0n : BigInt(util.toPointer(data.FilterVolumeName)), true);
+  if (data?.FilterVolumeName !== undefined) view.setBigUint64(8, data.FilterVolumeName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.FilterVolumeName))), true);
   return buf;
 }
 
@@ -650,9 +650,9 @@ export class FILTER_VOLUME_BASIC_INFORMATIONView {
   // 0x02: pad6
 
   // 0x08: pointer
-  get FilterVolumeName(): Uint8Array | Deno.PointerValue | null {
+  get FilterVolumeName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u16
@@ -663,8 +663,8 @@ export class FILTER_VOLUME_BASIC_INFORMATIONView {
   // 0x02: pad6
 
   // 0x08: pointer
-  set FilterVolumeName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set FilterVolumeName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -683,7 +683,7 @@ export interface FILTER_VOLUME_STANDARD_INFORMATION {
   /** u16 */
   FilterVolumeNameLength: number;
   /** array */
-  FilterVolumeName: Deno.PointerValue | null;
+  FilterVolumeName: Deno.PointerValue;
 }
 
 export const sizeofFILTER_VOLUME_STANDARD_INFORMATION = 32;
@@ -703,7 +703,7 @@ export function allocFILTER_VOLUME_STANDARD_INFORMATION(data?: Partial<FILTER_VO
   if (data?.FilterVolumeNameLength !== undefined) view.setUint16(16, Number(data.FilterVolumeNameLength), true);
   // 0x12: pad6
   // 0x18: pointer
-  if (data?.FilterVolumeName !== undefined) view.setBigUint64(24, data.FilterVolumeName === null ? 0n : BigInt(util.toPointer(data.FilterVolumeName)), true);
+  if (data?.FilterVolumeName !== undefined) view.setBigUint64(24, data.FilterVolumeName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.FilterVolumeName))), true);
   return buf;
 }
 
@@ -745,9 +745,9 @@ export class FILTER_VOLUME_STANDARD_INFORMATIONView {
   // 0x12: pad6
 
   // 0x18: pointer
-  get FilterVolumeName(): Uint8Array | Deno.PointerValue | null {
+  get FilterVolumeName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -778,8 +778,8 @@ export class FILTER_VOLUME_STANDARD_INFORMATIONView {
   // 0x12: pad6
 
   // 0x18: pointer
-  set FilterVolumeName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set FilterVolumeName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1115,7 +1115,7 @@ export interface INSTANCE_AGGREGATE_STANDARD_INFORMATION {
   /** u32 */
   Flags: number;
   /** _Type_e__Union */
-  Type: Uint8Array | Deno.PointerValue | null;
+  Type: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofINSTANCE_AGGREGATE_STANDARD_INFORMATION = 16;
@@ -1128,7 +1128,7 @@ export function allocINSTANCE_AGGREGATE_STANDARD_INFORMATION(data?: Partial<INST
   // 0x04: u32
   if (data?.Flags !== undefined) view.setUint32(4, Number(data.Flags), true);
   // 0x08: pointer
-  if (data?.Type !== undefined) view.setBigUint64(8, data.Type === null ? 0n : BigInt(util.toPointer(data.Type)), true);
+  if (data?.Type !== undefined) view.setBigUint64(8, data.Type === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Type))), true);
   return buf;
 }
 
@@ -1153,9 +1153,9 @@ export class INSTANCE_AGGREGATE_STANDARD_INFORMATIONView {
   }
 
   // 0x08: pointer
-  get Type(): Uint8Array | Deno.PointerValue | null {
+  get Type(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1169,8 +1169,8 @@ export class INSTANCE_AGGREGATE_STANDARD_INFORMATIONView {
   }
 
   // 0x08: pointer
-  set Type(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Type(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1239,7 +1239,7 @@ export type NTSTATUS = number;
  */
 export interface FILTER_REPLY_HEADER {
   /** Windows.Win32.Foundation.NTSTATUS */
-  Status: Uint8Array | Deno.PointerValue | null;
+  Status: Uint8Array | Deno.PointerValue;
   /** u64 */
   MessageId: Deno.PointerValue;
 }
@@ -1250,7 +1250,7 @@ export function allocFILTER_REPLY_HEADER(data?: Partial<FILTER_REPLY_HEADER>): U
   const buf = new Uint8Array(sizeofFILTER_REPLY_HEADER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Status !== undefined) view.setBigUint64(0, data.Status === null ? 0n : BigInt(util.toPointer(data.Status)), true);
+  if (data?.Status !== undefined) view.setBigUint64(0, data.Status === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Status))), true);
   // 0x08: u64
   if (data?.MessageId !== undefined) view.setBigUint64(8, BigInt(data.MessageId), true);
   return buf;
@@ -1267,9 +1267,9 @@ export class FILTER_REPLY_HEADERView {
   }
 
   // 0x00: pointer
-  get Status(): Uint8Array | Deno.PointerValue | null {
+  get Status(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u64
@@ -1278,8 +1278,8 @@ export class FILTER_REPLY_HEADERView {
   }
 
   // 0x00: pointer
-  set Status(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Status(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u64
@@ -1288,7 +1288,7 @@ export class FILTER_REPLY_HEADERView {
   }
 }
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 export type HRESULT = number;
 
@@ -1417,42 +1417,42 @@ try {
 
 export function FilterLoad(
   lpFilterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB_dll.FilterLoad(util.pwstrToFfi(lpFilterName)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libFLTLIB_dll.FilterLoad(util.pwstrToFfi(lpFilterName));
 }
 
 export function FilterUnload(
   lpFilterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB_dll.FilterUnload(util.pwstrToFfi(lpFilterName)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libFLTLIB_dll.FilterUnload(util.pwstrToFfi(lpFilterName));
 }
 
 export function FilterCreate(
   lpFilterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  hFilter: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB_dll.FilterCreate(util.pwstrToFfi(lpFilterName), util.toPointer(hFilter)));
+  hFilter: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libFLTLIB_dll.FilterCreate(util.pwstrToFfi(lpFilterName), util.toPointer(hFilter));
 }
 
 export function FilterClose(
-  hFilter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.InstallableFileSystems.HFILTER */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB_dll.FilterClose(util.toPointer(hFilter)));
+  hFilter: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.InstallableFileSystems.HFILTER */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libFLTLIB_dll.FilterClose(util.toPointer(hFilter));
 }
 
 export function FilterInstanceCreate(
   lpFilterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpVolumeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpInstanceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  hInstance: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB_dll.FilterInstanceCreate(util.pwstrToFfi(lpFilterName), util.pwstrToFfi(lpVolumeName), util.pwstrToFfi(lpInstanceName), util.toPointer(hInstance)));
+  hInstance: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libFLTLIB_dll.FilterInstanceCreate(util.pwstrToFfi(lpFilterName), util.pwstrToFfi(lpVolumeName), util.pwstrToFfi(lpInstanceName), util.toPointer(hInstance));
 }
 
 export function FilterInstanceClose(
-  hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.InstallableFileSystems.HFILTER_INSTANCE */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB_dll.FilterInstanceClose(util.toPointer(hInstance)));
+  hInstance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.InstallableFileSystems.HFILTER_INSTANCE */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libFLTLIB_dll.FilterInstanceClose(util.toPointer(hInstance));
 }
 
 export function FilterAttach(
@@ -1461,8 +1461,8 @@ export function FilterAttach(
   lpInstanceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwCreatedInstanceNameLength: number /* u32 */,
   lpCreatedInstanceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB_dll.FilterAttach(util.pwstrToFfi(lpFilterName), util.pwstrToFfi(lpVolumeName), util.pwstrToFfi(lpInstanceName), dwCreatedInstanceNameLength, util.pwstrToFfi(lpCreatedInstanceName)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libFLTLIB_dll.FilterAttach(util.pwstrToFfi(lpFilterName), util.pwstrToFfi(lpVolumeName), util.pwstrToFfi(lpInstanceName), dwCreatedInstanceNameLength, util.pwstrToFfi(lpCreatedInstanceName));
 }
 
 export function FilterAttachAtAltitude(
@@ -1472,188 +1472,188 @@ export function FilterAttachAtAltitude(
   lpInstanceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwCreatedInstanceNameLength: number /* u32 */,
   lpCreatedInstanceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB_dll.FilterAttachAtAltitude(util.pwstrToFfi(lpFilterName), util.pwstrToFfi(lpVolumeName), util.pwstrToFfi(lpAltitude), util.pwstrToFfi(lpInstanceName), dwCreatedInstanceNameLength, util.pwstrToFfi(lpCreatedInstanceName)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libFLTLIB_dll.FilterAttachAtAltitude(util.pwstrToFfi(lpFilterName), util.pwstrToFfi(lpVolumeName), util.pwstrToFfi(lpAltitude), util.pwstrToFfi(lpInstanceName), dwCreatedInstanceNameLength, util.pwstrToFfi(lpCreatedInstanceName));
 }
 
 export function FilterDetach(
   lpFilterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpVolumeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpInstanceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB_dll.FilterDetach(util.pwstrToFfi(lpFilterName), util.pwstrToFfi(lpVolumeName), util.pwstrToFfi(lpInstanceName)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libFLTLIB_dll.FilterDetach(util.pwstrToFfi(lpFilterName), util.pwstrToFfi(lpVolumeName), util.pwstrToFfi(lpInstanceName));
 }
 
 export function FilterFindFirst(
   dwInformationClass: FILTER_INFORMATION_CLASS /* Windows.Win32.Storage.InstallableFileSystems.FILTER_INFORMATION_CLASS */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   dwBufferSize: number /* u32 */,
-  lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpFilterFind: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB_dll.FilterFindFirst(dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned), util.toPointer(lpFilterFind)));
+  lpBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
+  lpFilterFind: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libFLTLIB_dll.FilterFindFirst(dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned), util.toPointer(lpFilterFind));
 }
 
 export function FilterFindNext(
-  hFilterFind: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hFilterFind: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwInformationClass: FILTER_INFORMATION_CLASS /* Windows.Win32.Storage.InstallableFileSystems.FILTER_INFORMATION_CLASS */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   dwBufferSize: number /* u32 */,
-  lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB_dll.FilterFindNext(util.toPointer(hFilterFind), dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned)));
+  lpBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libFLTLIB_dll.FilterFindNext(util.toPointer(hFilterFind), dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned));
 }
 
 export function FilterFindClose(
-  hFilterFind: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB_dll.FilterFindClose(util.toPointer(hFilterFind)));
+  hFilterFind: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libFLTLIB_dll.FilterFindClose(util.toPointer(hFilterFind));
 }
 
 export function FilterVolumeFindFirst(
   dwInformationClass: FILTER_VOLUME_INFORMATION_CLASS /* Windows.Win32.Storage.InstallableFileSystems.FILTER_VOLUME_INFORMATION_CLASS */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   dwBufferSize: number /* u32 */,
-  lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpVolumeFind: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB_dll.FilterVolumeFindFirst(dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned), util.toPointer(lpVolumeFind)));
+  lpBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
+  lpVolumeFind: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libFLTLIB_dll.FilterVolumeFindFirst(dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned), util.toPointer(lpVolumeFind));
 }
 
 export function FilterVolumeFindNext(
-  hVolumeFind: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hVolumeFind: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwInformationClass: FILTER_VOLUME_INFORMATION_CLASS /* Windows.Win32.Storage.InstallableFileSystems.FILTER_VOLUME_INFORMATION_CLASS */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   dwBufferSize: number /* u32 */,
-  lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB_dll.FilterVolumeFindNext(util.toPointer(hVolumeFind), dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned)));
+  lpBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libFLTLIB_dll.FilterVolumeFindNext(util.toPointer(hVolumeFind), dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned));
 }
 
 export function FilterVolumeFindClose(
-  hVolumeFind: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB_dll.FilterVolumeFindClose(util.toPointer(hVolumeFind)));
+  hVolumeFind: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libFLTLIB_dll.FilterVolumeFindClose(util.toPointer(hVolumeFind));
 }
 
 export function FilterInstanceFindFirst(
   lpFilterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwInformationClass: INSTANCE_INFORMATION_CLASS /* Windows.Win32.Storage.InstallableFileSystems.INSTANCE_INFORMATION_CLASS */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   dwBufferSize: number /* u32 */,
-  lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpFilterInstanceFind: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB_dll.FilterInstanceFindFirst(util.pwstrToFfi(lpFilterName), dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned), util.toPointer(lpFilterInstanceFind)));
+  lpBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
+  lpFilterInstanceFind: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libFLTLIB_dll.FilterInstanceFindFirst(util.pwstrToFfi(lpFilterName), dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned), util.toPointer(lpFilterInstanceFind));
 }
 
 export function FilterInstanceFindNext(
-  hFilterInstanceFind: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hFilterInstanceFind: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwInformationClass: INSTANCE_INFORMATION_CLASS /* Windows.Win32.Storage.InstallableFileSystems.INSTANCE_INFORMATION_CLASS */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   dwBufferSize: number /* u32 */,
-  lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB_dll.FilterInstanceFindNext(util.toPointer(hFilterInstanceFind), dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned)));
+  lpBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libFLTLIB_dll.FilterInstanceFindNext(util.toPointer(hFilterInstanceFind), dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned));
 }
 
 export function FilterInstanceFindClose(
-  hFilterInstanceFind: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB_dll.FilterInstanceFindClose(util.toPointer(hFilterInstanceFind)));
+  hFilterInstanceFind: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libFLTLIB_dll.FilterInstanceFindClose(util.toPointer(hFilterInstanceFind));
 }
 
 export function FilterVolumeInstanceFindFirst(
   lpVolumeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwInformationClass: INSTANCE_INFORMATION_CLASS /* Windows.Win32.Storage.InstallableFileSystems.INSTANCE_INFORMATION_CLASS */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   dwBufferSize: number /* u32 */,
-  lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpVolumeInstanceFind: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB_dll.FilterVolumeInstanceFindFirst(util.pwstrToFfi(lpVolumeName), dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned), util.toPointer(lpVolumeInstanceFind)));
+  lpBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
+  lpVolumeInstanceFind: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libFLTLIB_dll.FilterVolumeInstanceFindFirst(util.pwstrToFfi(lpVolumeName), dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned), util.toPointer(lpVolumeInstanceFind));
 }
 
 export function FilterVolumeInstanceFindNext(
-  hVolumeInstanceFind: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hVolumeInstanceFind: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwInformationClass: INSTANCE_INFORMATION_CLASS /* Windows.Win32.Storage.InstallableFileSystems.INSTANCE_INFORMATION_CLASS */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   dwBufferSize: number /* u32 */,
-  lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB_dll.FilterVolumeInstanceFindNext(util.toPointer(hVolumeInstanceFind), dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned)));
+  lpBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libFLTLIB_dll.FilterVolumeInstanceFindNext(util.toPointer(hVolumeInstanceFind), dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned));
 }
 
 export function FilterVolumeInstanceFindClose(
-  hVolumeInstanceFind: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB_dll.FilterVolumeInstanceFindClose(util.toPointer(hVolumeInstanceFind)));
+  hVolumeInstanceFind: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libFLTLIB_dll.FilterVolumeInstanceFindClose(util.toPointer(hVolumeInstanceFind));
 }
 
 export function FilterGetInformation(
-  hFilter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.InstallableFileSystems.HFILTER */,
+  hFilter: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.InstallableFileSystems.HFILTER */,
   dwInformationClass: FILTER_INFORMATION_CLASS /* Windows.Win32.Storage.InstallableFileSystems.FILTER_INFORMATION_CLASS */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   dwBufferSize: number /* u32 */,
-  lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB_dll.FilterGetInformation(util.toPointer(hFilter), dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned)));
+  lpBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libFLTLIB_dll.FilterGetInformation(util.toPointer(hFilter), dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned));
 }
 
 export function FilterInstanceGetInformation(
-  hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.InstallableFileSystems.HFILTER_INSTANCE */,
+  hInstance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.InstallableFileSystems.HFILTER_INSTANCE */,
   dwInformationClass: INSTANCE_INFORMATION_CLASS /* Windows.Win32.Storage.InstallableFileSystems.INSTANCE_INFORMATION_CLASS */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   dwBufferSize: number /* u32 */,
-  lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB_dll.FilterInstanceGetInformation(util.toPointer(hInstance), dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned)));
+  lpBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libFLTLIB_dll.FilterInstanceGetInformation(util.toPointer(hInstance), dwInformationClass, util.toPointer(lpBuffer), dwBufferSize, util.toPointer(lpBytesReturned));
 }
 
 export function FilterConnectCommunicationPort(
   lpPortName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwOptions: number /* u32 */,
-  lpContext: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpContext: Deno.PointerValue | Uint8Array /* ptr */,
   wSizeOfContext: number /* u16 */,
-  lpSecurityAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
-  hPort: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB_dll.FilterConnectCommunicationPort(util.pwstrToFfi(lpPortName), dwOptions, util.toPointer(lpContext), wSizeOfContext, util.toPointer(lpSecurityAttributes), util.toPointer(hPort)));
+  lpSecurityAttributes: Deno.PointerValue | Uint8Array /* ptr */,
+  hPort: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libFLTLIB_dll.FilterConnectCommunicationPort(util.pwstrToFfi(lpPortName), dwOptions, util.toPointer(lpContext), wSizeOfContext, util.toPointer(lpSecurityAttributes), util.toPointer(hPort));
 }
 
 export function FilterSendMessage(
-  hPort: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpInBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hPort: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpInBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   dwInBufferSize: number /* u32 */,
-  lpOutBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpOutBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   dwOutBufferSize: number /* u32 */,
-  lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB_dll.FilterSendMessage(util.toPointer(hPort), util.toPointer(lpInBuffer), dwInBufferSize, util.toPointer(lpOutBuffer), dwOutBufferSize, util.toPointer(lpBytesReturned)));
+  lpBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libFLTLIB_dll.FilterSendMessage(util.toPointer(hPort), util.toPointer(lpInBuffer), dwInBufferSize, util.toPointer(lpOutBuffer), dwOutBufferSize, util.toPointer(lpBytesReturned));
 }
 
 export function FilterGetMessage(
-  hPort: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpMessageBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hPort: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpMessageBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   dwMessageBufferSize: number /* u32 */,
-  lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB_dll.FilterGetMessage(util.toPointer(hPort), util.toPointer(lpMessageBuffer), dwMessageBufferSize, util.toPointer(lpOverlapped)));
+  lpOverlapped: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libFLTLIB_dll.FilterGetMessage(util.toPointer(hPort), util.toPointer(lpMessageBuffer), dwMessageBufferSize, util.toPointer(lpOverlapped));
 }
 
 export function FilterReplyMessage(
-  hPort: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpReplyBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hPort: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpReplyBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   dwReplyBufferSize: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB_dll.FilterReplyMessage(util.toPointer(hPort), util.toPointer(lpReplyBuffer), dwReplyBufferSize));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libFLTLIB_dll.FilterReplyMessage(util.toPointer(hPort), util.toPointer(lpReplyBuffer), dwReplyBufferSize);
 }
 
 export function FilterGetDosName(
   lpVolumeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpDosName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwDosNameBufferSize: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libFLTLIB_dll.FilterGetDosName(util.pwstrToFfi(lpVolumeName), util.pwstrToFfi(lpDosName), dwDosNameBufferSize));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libFLTLIB_dll.FilterGetDosName(util.pwstrToFfi(lpVolumeName), util.pwstrToFfi(lpDosName), dwDosNameBufferSize);
 }
 

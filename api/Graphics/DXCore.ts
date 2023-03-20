@@ -371,9 +371,9 @@ try {
 // Symbols
 
 export function DXCoreCreateAdapterFactory(
-  riid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppvFactory: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDXCORE_dll.DXCoreCreateAdapterFactory(util.toPointer(riid), util.toPointer(ppvFactory)));
+  riid: Deno.PointerValue | Uint8Array /* ptr */,
+  ppvFactory: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDXCORE_dll.DXCoreCreateAdapterFactory(util.toPointer(riid), util.toPointer(ppvFactory));
 }
 

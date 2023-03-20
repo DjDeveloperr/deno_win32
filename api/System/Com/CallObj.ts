@@ -53,7 +53,7 @@ export interface CALLFRAMEINFO {
   /** i32 */
   cTopLevelInInterfaces: number;
   /** System.Guid */
-  iid: Uint8Array | Deno.PointerValue | null;
+  iid: Uint8Array | Deno.PointerValue;
   /** u32 */
   cMethod: number;
   /** u32 */
@@ -85,7 +85,7 @@ export function allocCALLFRAMEINFO(data?: Partial<CALLFRAMEINFO>): Uint8Array {
   if (data?.cTopLevelInInterfaces !== undefined) view.setInt32(32, Number(data.cTopLevelInInterfaces), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.iid !== undefined) view.setBigUint64(40, data.iid === null ? 0n : BigInt(util.toPointer(data.iid)), true);
+  if (data?.iid !== undefined) view.setBigUint64(40, data.iid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.iid))), true);
   // 0x30: u32
   if (data?.cMethod !== undefined) view.setUint32(48, Number(data.cMethod), true);
   // 0x34: u32
@@ -151,9 +151,9 @@ export class CALLFRAMEINFOView {
   // 0x24: pad4
 
   // 0x28: pointer
-  get iid(): Uint8Array | Deno.PointerValue | null {
+  get iid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: u32
@@ -214,8 +214,8 @@ export class CALLFRAMEINFOView {
   // 0x24: pad4
 
   // 0x28: pointer
-  set iid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set iid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: u32
@@ -236,9 +236,9 @@ export type BOOLEAN = number;
  */
 export interface CALLFRAMEPARAMINFO {
   /** Windows.Win32.Foundation.BOOLEAN */
-  fIn: Uint8Array | Deno.PointerValue | null;
+  fIn: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fOut: Uint8Array | Deno.PointerValue | null;
+  fOut: Uint8Array | Deno.PointerValue;
   /** u32 */
   stackOffset: number;
   /** u32 */
@@ -251,9 +251,9 @@ export function allocCALLFRAMEPARAMINFO(data?: Partial<CALLFRAMEPARAMINFO>): Uin
   const buf = new Uint8Array(sizeofCALLFRAMEPARAMINFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.fIn !== undefined) view.setBigUint64(0, data.fIn === null ? 0n : BigInt(util.toPointer(data.fIn)), true);
+  if (data?.fIn !== undefined) view.setBigUint64(0, data.fIn === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fIn))), true);
   // 0x08: pointer
-  if (data?.fOut !== undefined) view.setBigUint64(8, data.fOut === null ? 0n : BigInt(util.toPointer(data.fOut)), true);
+  if (data?.fOut !== undefined) view.setBigUint64(8, data.fOut === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fOut))), true);
   // 0x10: u32
   if (data?.stackOffset !== undefined) view.setUint32(16, Number(data.stackOffset), true);
   // 0x14: u32
@@ -272,15 +272,15 @@ export class CALLFRAMEPARAMINFOView {
   }
 
   // 0x00: pointer
-  get fIn(): Uint8Array | Deno.PointerValue | null {
+  get fIn(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get fOut(): Uint8Array | Deno.PointerValue | null {
+  get fOut(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -294,13 +294,13 @@ export class CALLFRAMEPARAMINFOView {
   }
 
   // 0x00: pointer
-  set fIn(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set fIn(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set fOut(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set fOut(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -319,15 +319,15 @@ export class CALLFRAMEPARAMINFOView {
  */
 export interface CALLFRAME_MARSHALCONTEXT {
   /** Windows.Win32.Foundation.BOOLEAN */
-  fIn: Uint8Array | Deno.PointerValue | null;
+  fIn: Uint8Array | Deno.PointerValue;
   /** u32 */
   dwDestContext: number;
   /** ptr */
-  pvDestContext: Deno.PointerValue | Uint8Array | null;
+  pvDestContext: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.System.Com.IUnknown */
-  punkReserved: Uint8Array | Deno.PointerValue | null;
+  punkReserved: Uint8Array | Deno.PointerValue;
   /** System.Guid */
-  guidTransferSyntax: Uint8Array | Deno.PointerValue | null;
+  guidTransferSyntax: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofCALLFRAME_MARSHALCONTEXT = 40;
@@ -336,16 +336,16 @@ export function allocCALLFRAME_MARSHALCONTEXT(data?: Partial<CALLFRAME_MARSHALCO
   const buf = new Uint8Array(sizeofCALLFRAME_MARSHALCONTEXT);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.fIn !== undefined) view.setBigUint64(0, data.fIn === null ? 0n : BigInt(util.toPointer(data.fIn)), true);
+  if (data?.fIn !== undefined) view.setBigUint64(0, data.fIn === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fIn))), true);
   // 0x08: u32
   if (data?.dwDestContext !== undefined) view.setUint32(8, Number(data.dwDestContext), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.pvDestContext !== undefined) view.setBigUint64(16, data.pvDestContext === null ? 0n : BigInt(util.toPointer(data.pvDestContext)), true);
+  if (data?.pvDestContext !== undefined) view.setBigUint64(16, data.pvDestContext === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pvDestContext))), true);
   // 0x18: pointer
-  if (data?.punkReserved !== undefined) view.setBigUint64(24, data.punkReserved === null ? 0n : BigInt(util.toPointer(data.punkReserved)), true);
+  if (data?.punkReserved !== undefined) view.setBigUint64(24, data.punkReserved === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.punkReserved))), true);
   // 0x20: pointer
-  if (data?.guidTransferSyntax !== undefined) view.setBigUint64(32, data.guidTransferSyntax === null ? 0n : BigInt(util.toPointer(data.guidTransferSyntax)), true);
+  if (data?.guidTransferSyntax !== undefined) view.setBigUint64(32, data.guidTransferSyntax === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.guidTransferSyntax))), true);
   return buf;
 }
 
@@ -360,9 +360,9 @@ export class CALLFRAME_MARSHALCONTEXTView {
   }
 
   // 0x00: pointer
-  get fIn(): Uint8Array | Deno.PointerValue | null {
+  get fIn(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -373,26 +373,26 @@ export class CALLFRAME_MARSHALCONTEXTView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get pvDestContext(): Uint8Array | Deno.PointerValue | null {
+  get pvDestContext(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get punkReserved(): Uint8Array | Deno.PointerValue | null {
+  get punkReserved(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get guidTransferSyntax(): Uint8Array | Deno.PointerValue | null {
+  get guidTransferSyntax(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set fIn(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set fIn(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -403,18 +403,18 @@ export class CALLFRAME_MARSHALCONTEXTView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set pvDestContext(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pvDestContext(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set punkReserved(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set punkReserved(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set guidTransferSyntax(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set guidTransferSyntax(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -438,21 +438,21 @@ try {
 // Symbols
 
 export function CoGetInterceptor(
-  iidIntercepted: Deno.PointerValue | Uint8Array | null /* ptr */,
-  punkOuter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
-  iid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libole32_dll.CoGetInterceptor(util.toPointer(iidIntercepted), util.toPointer(punkOuter), util.toPointer(iid), util.toPointer(ppv)));
+  iidIntercepted: Deno.PointerValue | Uint8Array /* ptr */,
+  punkOuter: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
+  iid: Deno.PointerValue | Uint8Array /* ptr */,
+  ppv: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libole32_dll.CoGetInterceptor(util.toPointer(iidIntercepted), util.toPointer(punkOuter), util.toPointer(iid), util.toPointer(ppv));
 }
 
 export function CoGetInterceptorFromTypeInfo(
-  iidIntercepted: Deno.PointerValue | Uint8Array | null /* ptr */,
-  punkOuter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
-  typeInfo: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.ITypeInfo */,
-  iid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libole32_dll.CoGetInterceptorFromTypeInfo(util.toPointer(iidIntercepted), util.toPointer(punkOuter), util.toPointer(typeInfo), util.toPointer(iid), util.toPointer(ppv)));
+  iidIntercepted: Deno.PointerValue | Uint8Array /* ptr */,
+  punkOuter: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
+  typeInfo: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.ITypeInfo */,
+  iid: Deno.PointerValue | Uint8Array /* ptr */,
+  ppv: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libole32_dll.CoGetInterceptorFromTypeInfo(util.toPointer(iidIntercepted), util.toPointer(punkOuter), util.toPointer(typeInfo), util.toPointer(iid), util.toPointer(ppv));
 }
 

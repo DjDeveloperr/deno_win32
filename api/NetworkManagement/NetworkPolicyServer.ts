@@ -697,9 +697,9 @@ export class _Anonymous_e__StructView {
  */
 export interface _Anonymous_e__Union {
   /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** array */
-  X: Deno.PointerValue | null;
+  X: Deno.PointerValue;
 }
 
 export const sizeof_Anonymous_e__Union = 16;
@@ -708,9 +708,9 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   const buf = new Uint8Array(sizeof_Anonymous_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x08: pointer
-  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.X))), true);
   return buf;
 }
 
@@ -725,25 +725,25 @@ export class _Anonymous_e__UnionView {
   }
 
   // 0x00: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get X(): Uint8Array | Deno.PointerValue | null {
+  get X(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set X(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set X(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -758,7 +758,7 @@ export interface RADIUS_ATTRIBUTE {
   /** u32 */
   cbDataLength: number;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofRADIUS_ATTRIBUTE = 24;
@@ -774,7 +774,7 @@ export function allocRADIUS_ATTRIBUTE(data?: Partial<RADIUS_ATTRIBUTE>): Uint8Ar
   if (data?.cbDataLength !== undefined) view.setUint32(8, Number(data.cbDataLength), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -806,9 +806,9 @@ export class RADIUS_ATTRIBUTEView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -829,8 +829,8 @@ export class RADIUS_ATTRIBUTEView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -839,13 +839,13 @@ export class RADIUS_ATTRIBUTEView {
  */
 export interface RADIUS_VSA_FORMAT {
   /** array */
-  VendorId: Deno.PointerValue | null;
+  VendorId: Deno.PointerValue;
   /** u8 */
   VendorType: number;
   /** u8 */
   VendorLength: number;
   /** array */
-  AttributeSpecific: Deno.PointerValue | null;
+  AttributeSpecific: Deno.PointerValue;
 }
 
 export const sizeofRADIUS_VSA_FORMAT = 24;
@@ -854,14 +854,14 @@ export function allocRADIUS_VSA_FORMAT(data?: Partial<RADIUS_VSA_FORMAT>): Uint8
   const buf = new Uint8Array(sizeofRADIUS_VSA_FORMAT);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.VendorId !== undefined) view.setBigUint64(0, data.VendorId === null ? 0n : BigInt(util.toPointer(data.VendorId)), true);
+  if (data?.VendorId !== undefined) view.setBigUint64(0, data.VendorId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.VendorId))), true);
   // 0x08: u8
   if (data?.VendorType !== undefined) view.setUint8(8, Number(data.VendorType));
   // 0x09: u8
   if (data?.VendorLength !== undefined) view.setUint8(9, Number(data.VendorLength));
   // 0x0a: pad6
   // 0x10: pointer
-  if (data?.AttributeSpecific !== undefined) view.setBigUint64(16, data.AttributeSpecific === null ? 0n : BigInt(util.toPointer(data.AttributeSpecific)), true);
+  if (data?.AttributeSpecific !== undefined) view.setBigUint64(16, data.AttributeSpecific === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.AttributeSpecific))), true);
   return buf;
 }
 
@@ -876,9 +876,9 @@ export class RADIUS_VSA_FORMATView {
   }
 
   // 0x00: pointer
-  get VendorId(): Uint8Array | Deno.PointerValue | null {
+  get VendorId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u8
@@ -894,14 +894,14 @@ export class RADIUS_VSA_FORMATView {
   // 0x0a: pad6
 
   // 0x10: pointer
-  get AttributeSpecific(): Uint8Array | Deno.PointerValue | null {
+  get AttributeSpecific(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set VendorId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set VendorId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u8
@@ -917,8 +917,8 @@ export class RADIUS_VSA_FORMATView {
   // 0x0a: pad6
 
   // 0x10: pointer
-  set AttributeSpecific(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set AttributeSpecific(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 

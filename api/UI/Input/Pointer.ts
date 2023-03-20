@@ -120,17 +120,17 @@ export interface POINTER_INFO {
   /** Windows.Win32.UI.Input.Pointer.POINTER_FLAGS */
   pointerFlags: POINTER_FLAGS;
   /** Windows.Win32.Foundation.HANDLE */
-  sourceDevice: Uint8Array | Deno.PointerValue | null;
+  sourceDevice: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.HWND */
-  hwndTarget: Deno.PointerValue | null;
+  hwndTarget: Deno.PointerValue;
   /** Windows.Win32.Foundation.POINT */
-  ptPixelLocation: Uint8Array | Deno.PointerValue | null;
+  ptPixelLocation: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.POINT */
-  ptHimetricLocation: Uint8Array | Deno.PointerValue | null;
+  ptHimetricLocation: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.POINT */
-  ptPixelLocationRaw: Uint8Array | Deno.PointerValue | null;
+  ptPixelLocationRaw: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.POINT */
-  ptHimetricLocationRaw: Uint8Array | Deno.PointerValue | null;
+  ptHimetricLocationRaw: Uint8Array | Deno.PointerValue;
   /** u32 */
   dwTime: number;
   /** u32 */
@@ -159,17 +159,17 @@ export function allocPOINTER_INFO(data?: Partial<POINTER_INFO>): Uint8Array {
   // 0x0c: u32
   if (data?.pointerFlags !== undefined) view.setUint32(12, Number(data.pointerFlags), true);
   // 0x10: pointer
-  if (data?.sourceDevice !== undefined) view.setBigUint64(16, data.sourceDevice === null ? 0n : BigInt(util.toPointer(data.sourceDevice)), true);
+  if (data?.sourceDevice !== undefined) view.setBigUint64(16, data.sourceDevice === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.sourceDevice))), true);
   // 0x18: pointer
-  if (data?.hwndTarget !== undefined) view.setBigUint64(24, data.hwndTarget === null ? 0n : BigInt(util.toPointer(data.hwndTarget)), true);
+  if (data?.hwndTarget !== undefined) view.setBigUint64(24, data.hwndTarget === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hwndTarget))), true);
   // 0x20: pointer
-  if (data?.ptPixelLocation !== undefined) view.setBigUint64(32, data.ptPixelLocation === null ? 0n : BigInt(util.toPointer(data.ptPixelLocation)), true);
+  if (data?.ptPixelLocation !== undefined) view.setBigUint64(32, data.ptPixelLocation === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ptPixelLocation))), true);
   // 0x28: pointer
-  if (data?.ptHimetricLocation !== undefined) view.setBigUint64(40, data.ptHimetricLocation === null ? 0n : BigInt(util.toPointer(data.ptHimetricLocation)), true);
+  if (data?.ptHimetricLocation !== undefined) view.setBigUint64(40, data.ptHimetricLocation === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ptHimetricLocation))), true);
   // 0x30: pointer
-  if (data?.ptPixelLocationRaw !== undefined) view.setBigUint64(48, data.ptPixelLocationRaw === null ? 0n : BigInt(util.toPointer(data.ptPixelLocationRaw)), true);
+  if (data?.ptPixelLocationRaw !== undefined) view.setBigUint64(48, data.ptPixelLocationRaw === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ptPixelLocationRaw))), true);
   // 0x38: pointer
-  if (data?.ptHimetricLocationRaw !== undefined) view.setBigUint64(56, data.ptHimetricLocationRaw === null ? 0n : BigInt(util.toPointer(data.ptHimetricLocationRaw)), true);
+  if (data?.ptHimetricLocationRaw !== undefined) view.setBigUint64(56, data.ptHimetricLocationRaw === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ptHimetricLocationRaw))), true);
   // 0x40: u32
   if (data?.dwTime !== undefined) view.setUint32(64, Number(data.dwTime), true);
   // 0x44: u32
@@ -217,39 +217,39 @@ export class POINTER_INFOView {
   }
 
   // 0x10: pointer
-  get sourceDevice(): Uint8Array | Deno.PointerValue | null {
+  get sourceDevice(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get hwndTarget(): Uint8Array | Deno.PointerValue | null {
+  get hwndTarget(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get ptPixelLocation(): Uint8Array | Deno.PointerValue | null {
+  get ptPixelLocation(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get ptHimetricLocation(): Uint8Array | Deno.PointerValue | null {
+  get ptHimetricLocation(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get ptPixelLocationRaw(): Uint8Array | Deno.PointerValue | null {
+  get ptPixelLocationRaw(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get ptHimetricLocationRaw(): Uint8Array | Deno.PointerValue | null {
+  get ptHimetricLocationRaw(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: u32
@@ -305,33 +305,33 @@ export class POINTER_INFOView {
   }
 
   // 0x10: pointer
-  set sourceDevice(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set sourceDevice(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set hwndTarget(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set hwndTarget(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set ptPixelLocation(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set ptPixelLocation(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set ptHimetricLocation(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set ptHimetricLocation(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set ptPixelLocationRaw(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set ptPixelLocationRaw(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set ptHimetricLocationRaw(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set ptHimetricLocationRaw(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: u32
@@ -453,15 +453,15 @@ export class RECTView {
  */
 export interface POINTER_TOUCH_INFO {
   /** Windows.Win32.UI.Input.Pointer.POINTER_INFO */
-  pointerInfo: Uint8Array | Deno.PointerValue | null;
+  pointerInfo: Uint8Array | Deno.PointerValue;
   /** u32 */
   touchFlags: number;
   /** u32 */
   touchMask: number;
   /** Windows.Win32.Foundation.RECT */
-  rcContact: Uint8Array | Deno.PointerValue | null;
+  rcContact: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.RECT */
-  rcContactRaw: Uint8Array | Deno.PointerValue | null;
+  rcContactRaw: Uint8Array | Deno.PointerValue;
   /** u32 */
   orientation: number;
   /** u32 */
@@ -474,15 +474,15 @@ export function allocPOINTER_TOUCH_INFO(data?: Partial<POINTER_TOUCH_INFO>): Uin
   const buf = new Uint8Array(sizeofPOINTER_TOUCH_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pointerInfo !== undefined) view.setBigUint64(0, data.pointerInfo === null ? 0n : BigInt(util.toPointer(data.pointerInfo)), true);
+  if (data?.pointerInfo !== undefined) view.setBigUint64(0, data.pointerInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pointerInfo))), true);
   // 0x08: u32
   if (data?.touchFlags !== undefined) view.setUint32(8, Number(data.touchFlags), true);
   // 0x0c: u32
   if (data?.touchMask !== undefined) view.setUint32(12, Number(data.touchMask), true);
   // 0x10: pointer
-  if (data?.rcContact !== undefined) view.setBigUint64(16, data.rcContact === null ? 0n : BigInt(util.toPointer(data.rcContact)), true);
+  if (data?.rcContact !== undefined) view.setBigUint64(16, data.rcContact === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rcContact))), true);
   // 0x18: pointer
-  if (data?.rcContactRaw !== undefined) view.setBigUint64(24, data.rcContactRaw === null ? 0n : BigInt(util.toPointer(data.rcContactRaw)), true);
+  if (data?.rcContactRaw !== undefined) view.setBigUint64(24, data.rcContactRaw === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rcContactRaw))), true);
   // 0x20: u32
   if (data?.orientation !== undefined) view.setUint32(32, Number(data.orientation), true);
   // 0x24: u32
@@ -501,9 +501,9 @@ export class POINTER_TOUCH_INFOView {
   }
 
   // 0x00: pointer
-  get pointerInfo(): Uint8Array | Deno.PointerValue | null {
+  get pointerInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -517,15 +517,15 @@ export class POINTER_TOUCH_INFOView {
   }
 
   // 0x10: pointer
-  get rcContact(): Uint8Array | Deno.PointerValue | null {
+  get rcContact(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get rcContactRaw(): Uint8Array | Deno.PointerValue | null {
+  get rcContactRaw(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -539,8 +539,8 @@ export class POINTER_TOUCH_INFOView {
   }
 
   // 0x00: pointer
-  set pointerInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pointerInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -554,13 +554,13 @@ export class POINTER_TOUCH_INFOView {
   }
 
   // 0x10: pointer
-  set rcContact(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set rcContact(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set rcContactRaw(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set rcContactRaw(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -579,7 +579,7 @@ export class POINTER_TOUCH_INFOView {
  */
 export interface POINTER_PEN_INFO {
   /** Windows.Win32.UI.Input.Pointer.POINTER_INFO */
-  pointerInfo: Uint8Array | Deno.PointerValue | null;
+  pointerInfo: Uint8Array | Deno.PointerValue;
   /** u32 */
   penFlags: number;
   /** u32 */
@@ -600,7 +600,7 @@ export function allocPOINTER_PEN_INFO(data?: Partial<POINTER_PEN_INFO>): Uint8Ar
   const buf = new Uint8Array(sizeofPOINTER_PEN_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pointerInfo !== undefined) view.setBigUint64(0, data.pointerInfo === null ? 0n : BigInt(util.toPointer(data.pointerInfo)), true);
+  if (data?.pointerInfo !== undefined) view.setBigUint64(0, data.pointerInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pointerInfo))), true);
   // 0x08: u32
   if (data?.penFlags !== undefined) view.setUint32(8, Number(data.penFlags), true);
   // 0x0c: u32
@@ -627,9 +627,9 @@ export class POINTER_PEN_INFOView {
   }
 
   // 0x00: pointer
-  get pointerInfo(): Uint8Array | Deno.PointerValue | null {
+  get pointerInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -663,8 +663,8 @@ export class POINTER_PEN_INFOView {
   }
 
   // 0x00: pointer
-  set pointerInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pointerInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -842,9 +842,9 @@ export class _Anonymous_e__StructView {
  */
 export interface _Anonymous_e__Union {
   /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** array */
-  X: Deno.PointerValue | null;
+  X: Deno.PointerValue;
 }
 
 export const sizeof_Anonymous_e__Union = 16;
@@ -853,9 +853,9 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   const buf = new Uint8Array(sizeof_Anonymous_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x08: pointer
-  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.X))), true);
   return buf;
 }
 
@@ -870,25 +870,25 @@ export class _Anonymous_e__UnionView {
   }
 
   // 0x00: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get X(): Uint8Array | Deno.PointerValue | null {
+  get X(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set X(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set X(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -897,7 +897,7 @@ export class _Anonymous_e__UnionView {
  */
 export interface INPUT_TRANSFORM {
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofINPUT_TRANSFORM = 8;
@@ -906,7 +906,7 @@ export function allocINPUT_TRANSFORM(data?: Partial<INPUT_TRANSFORM>): Uint8Arra
   const buf = new Uint8Array(sizeofINPUT_TRANSFORM);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -921,14 +921,14 @@ export class INPUT_TRANSFORMView {
   }
 
   // 0x00: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1070,117 +1070,117 @@ export function InitializeTouchInjection(
 
 export function InjectTouchInput(
   count: number /* u32 */,
-  contacts: Deno.PointerValue | Uint8Array | null /* ptr */,
+  contacts: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.InjectTouchInput(count, util.toPointer(contacts)));
 }
 
 export function GetPointerType(
   pointerId: number /* u32 */,
-  pointerType: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pointerType: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.GetPointerType(pointerId, util.toPointer(pointerType)));
 }
 
 export function GetPointerCursorId(
   pointerId: number /* u32 */,
-  cursorId: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cursorId: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.GetPointerCursorId(pointerId, util.toPointer(cursorId)));
 }
 
 export function GetPointerInfo(
   pointerId: number /* u32 */,
-  pointerInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pointerInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.GetPointerInfo(pointerId, util.toPointer(pointerInfo)));
 }
 
 export function GetPointerInfoHistory(
   pointerId: number /* u32 */,
-  entriesCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pointerInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  entriesCount: Deno.PointerValue | Uint8Array /* ptr */,
+  pointerInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.GetPointerInfoHistory(pointerId, util.toPointer(entriesCount), util.toPointer(pointerInfo)));
 }
 
 export function GetPointerFrameInfo(
   pointerId: number /* u32 */,
-  pointerCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pointerInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pointerCount: Deno.PointerValue | Uint8Array /* ptr */,
+  pointerInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.GetPointerFrameInfo(pointerId, util.toPointer(pointerCount), util.toPointer(pointerInfo)));
 }
 
 export function GetPointerFrameInfoHistory(
   pointerId: number /* u32 */,
-  entriesCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pointerCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pointerInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  entriesCount: Deno.PointerValue | Uint8Array /* ptr */,
+  pointerCount: Deno.PointerValue | Uint8Array /* ptr */,
+  pointerInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.GetPointerFrameInfoHistory(pointerId, util.toPointer(entriesCount), util.toPointer(pointerCount), util.toPointer(pointerInfo)));
 }
 
 export function GetPointerTouchInfo(
   pointerId: number /* u32 */,
-  touchInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  touchInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.GetPointerTouchInfo(pointerId, util.toPointer(touchInfo)));
 }
 
 export function GetPointerTouchInfoHistory(
   pointerId: number /* u32 */,
-  entriesCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  touchInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  entriesCount: Deno.PointerValue | Uint8Array /* ptr */,
+  touchInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.GetPointerTouchInfoHistory(pointerId, util.toPointer(entriesCount), util.toPointer(touchInfo)));
 }
 
 export function GetPointerFrameTouchInfo(
   pointerId: number /* u32 */,
-  pointerCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  touchInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pointerCount: Deno.PointerValue | Uint8Array /* ptr */,
+  touchInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.GetPointerFrameTouchInfo(pointerId, util.toPointer(pointerCount), util.toPointer(touchInfo)));
 }
 
 export function GetPointerFrameTouchInfoHistory(
   pointerId: number /* u32 */,
-  entriesCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pointerCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  touchInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  entriesCount: Deno.PointerValue | Uint8Array /* ptr */,
+  pointerCount: Deno.PointerValue | Uint8Array /* ptr */,
+  touchInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.GetPointerFrameTouchInfoHistory(pointerId, util.toPointer(entriesCount), util.toPointer(pointerCount), util.toPointer(touchInfo)));
 }
 
 export function GetPointerPenInfo(
   pointerId: number /* u32 */,
-  penInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  penInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.GetPointerPenInfo(pointerId, util.toPointer(penInfo)));
 }
 
 export function GetPointerPenInfoHistory(
   pointerId: number /* u32 */,
-  entriesCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  penInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  entriesCount: Deno.PointerValue | Uint8Array /* ptr */,
+  penInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.GetPointerPenInfoHistory(pointerId, util.toPointer(entriesCount), util.toPointer(penInfo)));
 }
 
 export function GetPointerFramePenInfo(
   pointerId: number /* u32 */,
-  pointerCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  penInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pointerCount: Deno.PointerValue | Uint8Array /* ptr */,
+  penInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.GetPointerFramePenInfo(pointerId, util.toPointer(pointerCount), util.toPointer(penInfo)));
 }
 
 export function GetPointerFramePenInfoHistory(
   pointerId: number /* u32 */,
-  entriesCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pointerCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  penInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  entriesCount: Deno.PointerValue | Uint8Array /* ptr */,
+  pointerCount: Deno.PointerValue | Uint8Array /* ptr */,
+  penInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.GetPointerFramePenInfoHistory(pointerId, util.toPointer(entriesCount), util.toPointer(pointerCount), util.toPointer(penInfo)));
 }
@@ -1192,8 +1192,8 @@ export function SkipPointerFrameMessages(
 }
 
 export function InjectSyntheticPointerInput(
-  device: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Controls.HSYNTHETICPOINTERDEVICE */,
-  pointerInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  device: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.HSYNTHETICPOINTERDEVICE */,
+  pointerInfo: Deno.PointerValue | Uint8Array /* ptr */,
   count: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.InjectSyntheticPointerInput(util.toPointer(device), util.toPointer(pointerInfo), count));
@@ -1212,45 +1212,45 @@ export function IsMouseInPointerEnabled(): boolean /* Windows.Win32.Foundation.B
 export function GetPointerInputTransform(
   pointerId: number /* u32 */,
   historyCount: number /* u32 */,
-  inputTransform: Deno.PointerValue | Uint8Array | null /* ptr */,
+  inputTransform: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.GetPointerInputTransform(pointerId, historyCount, util.toPointer(inputTransform)));
 }
 
 export function GetPointerDevices(
-  deviceCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pointerDevices: Deno.PointerValue | Uint8Array | null /* ptr */,
+  deviceCount: Deno.PointerValue | Uint8Array /* ptr */,
+  pointerDevices: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.GetPointerDevices(util.toPointer(deviceCount), util.toPointer(pointerDevices)));
 }
 
 export function GetPointerDevice(
-  device: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pointerDevice: Deno.PointerValue | Uint8Array | null /* ptr */,
+  device: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  pointerDevice: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.GetPointerDevice(util.toPointer(device), util.toPointer(pointerDevice)));
 }
 
 export function GetPointerDeviceProperties(
-  device: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  propertyCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pointerProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
+  device: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  propertyCount: Deno.PointerValue | Uint8Array /* ptr */,
+  pointerProperties: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.GetPointerDeviceProperties(util.toPointer(device), util.toPointer(propertyCount), util.toPointer(pointerProperties)));
 }
 
 export function GetPointerDeviceRects(
-  device: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pointerDeviceRect: Deno.PointerValue | Uint8Array | null /* ptr */,
-  displayRect: Deno.PointerValue | Uint8Array | null /* ptr */,
+  device: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  pointerDeviceRect: Deno.PointerValue | Uint8Array /* ptr */,
+  displayRect: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.GetPointerDeviceRects(util.toPointer(device), util.toPointer(pointerDeviceRect), util.toPointer(displayRect)));
 }
 
 export function GetPointerDeviceCursors(
-  device: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  cursorCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  deviceCursors: Deno.PointerValue | Uint8Array | null /* ptr */,
+  device: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  cursorCount: Deno.PointerValue | Uint8Array /* ptr */,
+  deviceCursors: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.GetPointerDeviceCursors(util.toPointer(device), util.toPointer(cursorCount), util.toPointer(deviceCursors)));
 }
@@ -1259,8 +1259,8 @@ export function GetRawPointerDeviceData(
   pointerId: number /* u32 */,
   historyCount: number /* u32 */,
   propertiesCount: number /* u32 */,
-  pProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pValues: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pProperties: Deno.PointerValue | Uint8Array /* ptr */,
+  pValues: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.GetRawPointerDeviceData(pointerId, historyCount, propertiesCount, util.toPointer(pProperties), util.toPointer(pValues)));
 }

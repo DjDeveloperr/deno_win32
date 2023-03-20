@@ -9,7 +9,7 @@ import * as util from "../../../util.ts";
  */
 export interface NV_MEMORY_RANGE {
   /** ptr */
-  BaseAddress: Deno.PointerValue | Uint8Array | null;
+  BaseAddress: Deno.PointerValue | Uint8Array;
   /** usize */
   Length: Deno.PointerValue;
 }
@@ -20,7 +20,7 @@ export function allocNV_MEMORY_RANGE(data?: Partial<NV_MEMORY_RANGE>): Uint8Arra
   const buf = new Uint8Array(sizeofNV_MEMORY_RANGE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.BaseAddress !== undefined) view.setBigUint64(0, data.BaseAddress === null ? 0n : BigInt(util.toPointer(data.BaseAddress)), true);
+  if (data?.BaseAddress !== undefined) view.setBigUint64(0, data.BaseAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BaseAddress))), true);
   // 0x08: usize
   if (data?.Length !== undefined) view.setBigUint64(8, BigInt(data.Length), true);
   return buf;
@@ -37,9 +37,9 @@ export class NV_MEMORY_RANGEView {
   }
 
   // 0x00: pointer
-  get BaseAddress(): Uint8Array | Deno.PointerValue | null {
+  get BaseAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: usize
@@ -48,8 +48,8 @@ export class NV_MEMORY_RANGEView {
   }
 
   // 0x00: pointer
-  set BaseAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set BaseAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: usize
@@ -96,22 +96,22 @@ try {
 // Symbols
 
 export function RtlGetNonVolatileToken(
-  NvBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  NvBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   Size: Deno.PointerValue /* usize */,
-  NvToken: Deno.PointerValue | Uint8Array | null /* ptr */,
+  NvToken: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libntdll_dll.RtlGetNonVolatileToken(util.toPointer(NvBuffer), Size, util.toPointer(NvToken));
 }
 
 export function RtlFreeNonVolatileToken(
-  NvToken: Deno.PointerValue | Uint8Array | null /* ptr */,
+  NvToken: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libntdll_dll.RtlFreeNonVolatileToken(util.toPointer(NvToken));
 }
 
 export function RtlFlushNonVolatileMemory(
-  NvToken: Deno.PointerValue | Uint8Array | null /* ptr */,
-  NvBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  NvToken: Deno.PointerValue | Uint8Array /* ptr */,
+  NvBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   Size: Deno.PointerValue /* usize */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
@@ -119,15 +119,15 @@ export function RtlFlushNonVolatileMemory(
 }
 
 export function RtlDrainNonVolatileFlush(
-  NvToken: Deno.PointerValue | Uint8Array | null /* ptr */,
+  NvToken: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libntdll_dll.RtlDrainNonVolatileFlush(util.toPointer(NvToken));
 }
 
 export function RtlWriteNonVolatileMemory(
-  NvToken: Deno.PointerValue | Uint8Array | null /* ptr */,
-  NvDestination: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Source: Deno.PointerValue | Uint8Array | null /* ptr */,
+  NvToken: Deno.PointerValue | Uint8Array /* ptr */,
+  NvDestination: Deno.PointerValue | Uint8Array /* ptr */,
+  Source: Deno.PointerValue | Uint8Array /* ptr */,
   Size: Deno.PointerValue /* usize */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
@@ -135,8 +135,8 @@ export function RtlWriteNonVolatileMemory(
 }
 
 export function RtlFillNonVolatileMemory(
-  NvToken: Deno.PointerValue | Uint8Array | null /* ptr */,
-  NvDestination: Deno.PointerValue | Uint8Array | null /* ptr */,
+  NvToken: Deno.PointerValue | Uint8Array /* ptr */,
+  NvDestination: Deno.PointerValue | Uint8Array /* ptr */,
   Size: Deno.PointerValue /* usize */,
   Value: number /* u8 */,
   Flags: number /* u32 */,
@@ -145,8 +145,8 @@ export function RtlFillNonVolatileMemory(
 }
 
 export function RtlFlushNonVolatileMemoryRanges(
-  NvToken: Deno.PointerValue | Uint8Array | null /* ptr */,
-  NvRanges: Deno.PointerValue | Uint8Array | null /* ptr */,
+  NvToken: Deno.PointerValue | Uint8Array /* ptr */,
+  NvRanges: Deno.PointerValue | Uint8Array /* ptr */,
   NumRanges: Deno.PointerValue /* usize */,
   Flags: number /* u32 */,
 ): number /* u32 */ {

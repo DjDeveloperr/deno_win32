@@ -95,7 +95,7 @@ export class _Anonymous_e__StructView {
   }
 }
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * _u_e__Struct (size: 16)
@@ -118,7 +118,7 @@ export function alloc_u_e__Struct(data?: Partial<_u_e__Struct>): Uint8Array {
   // 0x08: buffer
   if (data?.pwszName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pwszName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   return buf;
 }
@@ -141,9 +141,9 @@ export class _u_e__StructView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get pwszName(): Uint8Array | Deno.PointerValue | null {
+  get pwszName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -154,9 +154,9 @@ export class _u_e__StructView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set pwszName(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 }
 
@@ -165,9 +165,9 @@ export class _u_e__StructView {
  */
 export interface LARGE_INTEGER {
   /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** _u_e__Struct */
-  u: Uint8Array | Deno.PointerValue | null;
+  u: Uint8Array | Deno.PointerValue;
   /** i64 */
   QuadPart: Deno.PointerValue;
 }
@@ -178,9 +178,9 @@ export function allocLARGE_INTEGER(data?: Partial<LARGE_INTEGER>): Uint8Array {
   const buf = new Uint8Array(sizeofLARGE_INTEGER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x08: pointer
-  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : BigInt(util.toPointer(data.u)), true);
+  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.u))), true);
   // 0x10: i64
   if (data?.QuadPart !== undefined) view.setBigInt64(16, BigInt(data.QuadPart), true);
   return buf;
@@ -197,15 +197,15 @@ export class LARGE_INTEGERView {
   }
 
   // 0x00: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get u(): Uint8Array | Deno.PointerValue | null {
+  get u(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i64
@@ -214,13 +214,13 @@ export class LARGE_INTEGERView {
   }
 
   // 0x00: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set u(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set u(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: i64
@@ -287,15 +287,15 @@ export class DXGI_RATIONALView {
  */
 export interface DCOMPOSITION_FRAME_STATISTICS {
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  lastFrameTime: Uint8Array | Deno.PointerValue | null;
+  lastFrameTime: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Dxgi.Common.DXGI_RATIONAL */
-  currentCompositionRate: Uint8Array | Deno.PointerValue | null;
+  currentCompositionRate: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  currentTime: Uint8Array | Deno.PointerValue | null;
+  currentTime: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  timeFrequency: Uint8Array | Deno.PointerValue | null;
+  timeFrequency: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  nextEstimatedFrameTime: Uint8Array | Deno.PointerValue | null;
+  nextEstimatedFrameTime: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDCOMPOSITION_FRAME_STATISTICS = 40;
@@ -304,15 +304,15 @@ export function allocDCOMPOSITION_FRAME_STATISTICS(data?: Partial<DCOMPOSITION_F
   const buf = new Uint8Array(sizeofDCOMPOSITION_FRAME_STATISTICS);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.lastFrameTime !== undefined) view.setBigUint64(0, data.lastFrameTime === null ? 0n : BigInt(util.toPointer(data.lastFrameTime)), true);
+  if (data?.lastFrameTime !== undefined) view.setBigUint64(0, data.lastFrameTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lastFrameTime))), true);
   // 0x08: pointer
-  if (data?.currentCompositionRate !== undefined) view.setBigUint64(8, data.currentCompositionRate === null ? 0n : BigInt(util.toPointer(data.currentCompositionRate)), true);
+  if (data?.currentCompositionRate !== undefined) view.setBigUint64(8, data.currentCompositionRate === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.currentCompositionRate))), true);
   // 0x10: pointer
-  if (data?.currentTime !== undefined) view.setBigUint64(16, data.currentTime === null ? 0n : BigInt(util.toPointer(data.currentTime)), true);
+  if (data?.currentTime !== undefined) view.setBigUint64(16, data.currentTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.currentTime))), true);
   // 0x18: pointer
-  if (data?.timeFrequency !== undefined) view.setBigUint64(24, data.timeFrequency === null ? 0n : BigInt(util.toPointer(data.timeFrequency)), true);
+  if (data?.timeFrequency !== undefined) view.setBigUint64(24, data.timeFrequency === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.timeFrequency))), true);
   // 0x20: pointer
-  if (data?.nextEstimatedFrameTime !== undefined) view.setBigUint64(32, data.nextEstimatedFrameTime === null ? 0n : BigInt(util.toPointer(data.nextEstimatedFrameTime)), true);
+  if (data?.nextEstimatedFrameTime !== undefined) view.setBigUint64(32, data.nextEstimatedFrameTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.nextEstimatedFrameTime))), true);
   return buf;
 }
 
@@ -327,58 +327,58 @@ export class DCOMPOSITION_FRAME_STATISTICSView {
   }
 
   // 0x00: pointer
-  get lastFrameTime(): Uint8Array | Deno.PointerValue | null {
+  get lastFrameTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get currentCompositionRate(): Uint8Array | Deno.PointerValue | null {
+  get currentCompositionRate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get currentTime(): Uint8Array | Deno.PointerValue | null {
+  get currentTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get timeFrequency(): Uint8Array | Deno.PointerValue | null {
+  get timeFrequency(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get nextEstimatedFrameTime(): Uint8Array | Deno.PointerValue | null {
+  get nextEstimatedFrameTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set lastFrameTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set lastFrameTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set currentCompositionRate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set currentCompositionRate(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set currentTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set currentTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set timeFrequency(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set timeFrequency(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set nextEstimatedFrameTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set nextEstimatedFrameTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -507,9 +507,9 @@ export class LUIDView {
  */
 export interface COMPOSITION_TARGET_ID {
   /** Windows.Win32.Foundation.LUID */
-  displayAdapterLuid: Uint8Array | Deno.PointerValue | null;
+  displayAdapterLuid: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LUID */
-  renderAdapterLuid: Uint8Array | Deno.PointerValue | null;
+  renderAdapterLuid: Uint8Array | Deno.PointerValue;
   /** u32 */
   vidPnSourceId: number;
   /** u32 */
@@ -524,9 +524,9 @@ export function allocCOMPOSITION_TARGET_ID(data?: Partial<COMPOSITION_TARGET_ID>
   const buf = new Uint8Array(sizeofCOMPOSITION_TARGET_ID);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.displayAdapterLuid !== undefined) view.setBigUint64(0, data.displayAdapterLuid === null ? 0n : BigInt(util.toPointer(data.displayAdapterLuid)), true);
+  if (data?.displayAdapterLuid !== undefined) view.setBigUint64(0, data.displayAdapterLuid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.displayAdapterLuid))), true);
   // 0x08: pointer
-  if (data?.renderAdapterLuid !== undefined) view.setBigUint64(8, data.renderAdapterLuid === null ? 0n : BigInt(util.toPointer(data.renderAdapterLuid)), true);
+  if (data?.renderAdapterLuid !== undefined) view.setBigUint64(8, data.renderAdapterLuid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.renderAdapterLuid))), true);
   // 0x10: u32
   if (data?.vidPnSourceId !== undefined) view.setUint32(16, Number(data.vidPnSourceId), true);
   // 0x14: u32
@@ -548,15 +548,15 @@ export class COMPOSITION_TARGET_IDView {
   }
 
   // 0x00: pointer
-  get displayAdapterLuid(): Uint8Array | Deno.PointerValue | null {
+  get displayAdapterLuid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get renderAdapterLuid(): Uint8Array | Deno.PointerValue | null {
+  get renderAdapterLuid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -577,13 +577,13 @@ export class COMPOSITION_TARGET_IDView {
   // 0x1c: pad4
 
   // 0x00: pointer
-  set displayAdapterLuid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set displayAdapterLuid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set renderAdapterLuid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set renderAdapterLuid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -701,9 +701,9 @@ export interface COMPOSITION_TARGET_STATS {
   /** u64 */
   vblankDuration: Deno.PointerValue;
   /** Windows.Win32.Graphics.DirectComposition.COMPOSITION_STATS */
-  presentedStats: Uint8Array | Deno.PointerValue | null;
+  presentedStats: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.DirectComposition.COMPOSITION_STATS */
-  completedStats: Uint8Array | Deno.PointerValue | null;
+  completedStats: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofCOMPOSITION_TARGET_STATS = 40;
@@ -719,9 +719,9 @@ export function allocCOMPOSITION_TARGET_STATS(data?: Partial<COMPOSITION_TARGET_
   // 0x10: u64
   if (data?.vblankDuration !== undefined) view.setBigUint64(16, BigInt(data.vblankDuration), true);
   // 0x18: pointer
-  if (data?.presentedStats !== undefined) view.setBigUint64(24, data.presentedStats === null ? 0n : BigInt(util.toPointer(data.presentedStats)), true);
+  if (data?.presentedStats !== undefined) view.setBigUint64(24, data.presentedStats === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.presentedStats))), true);
   // 0x20: pointer
-  if (data?.completedStats !== undefined) view.setBigUint64(32, data.completedStats === null ? 0n : BigInt(util.toPointer(data.completedStats)), true);
+  if (data?.completedStats !== undefined) view.setBigUint64(32, data.completedStats === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.completedStats))), true);
   return buf;
 }
 
@@ -753,15 +753,15 @@ export class COMPOSITION_TARGET_STATSView {
   }
 
   // 0x18: pointer
-  get presentedStats(): Uint8Array | Deno.PointerValue | null {
+  get presentedStats(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get completedStats(): Uint8Array | Deno.PointerValue | null {
+  get completedStats(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -782,13 +782,13 @@ export class COMPOSITION_TARGET_STATSView {
   }
 
   // 0x18: pointer
-  set presentedStats(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set presentedStats(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set completedStats(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set completedStats(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -924,87 +924,87 @@ try {
 // Symbols
 
 export function DCompositionCreateDevice(
-  dxgiDevice: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Dxgi.IDXGIDevice */,
-  iid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dcompositionDevice: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdcomp_dll.DCompositionCreateDevice(util.toPointer(dxgiDevice), util.toPointer(iid), util.toPointer(dcompositionDevice)));
+  dxgiDevice: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Dxgi.IDXGIDevice */,
+  iid: Deno.PointerValue | Uint8Array /* ptr */,
+  dcompositionDevice: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libdcomp_dll.DCompositionCreateDevice(util.toPointer(dxgiDevice), util.toPointer(iid), util.toPointer(dcompositionDevice));
 }
 
 export function DCompositionCreateDevice2(
-  renderingDevice: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
-  iid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dcompositionDevice: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdcomp_dll.DCompositionCreateDevice2(util.toPointer(renderingDevice), util.toPointer(iid), util.toPointer(dcompositionDevice)));
+  renderingDevice: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
+  iid: Deno.PointerValue | Uint8Array /* ptr */,
+  dcompositionDevice: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libdcomp_dll.DCompositionCreateDevice2(util.toPointer(renderingDevice), util.toPointer(iid), util.toPointer(dcompositionDevice));
 }
 
 export function DCompositionCreateDevice3(
-  renderingDevice: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
-  iid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dcompositionDevice: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdcomp_dll.DCompositionCreateDevice3(util.toPointer(renderingDevice), util.toPointer(iid), util.toPointer(dcompositionDevice)));
+  renderingDevice: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
+  iid: Deno.PointerValue | Uint8Array /* ptr */,
+  dcompositionDevice: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libdcomp_dll.DCompositionCreateDevice3(util.toPointer(renderingDevice), util.toPointer(iid), util.toPointer(dcompositionDevice));
 }
 
 export function DCompositionCreateSurfaceHandle(
   desiredAccess: number /* u32 */,
-  securityAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
-  surfaceHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdcomp_dll.DCompositionCreateSurfaceHandle(desiredAccess, util.toPointer(securityAttributes), util.toPointer(surfaceHandle)));
+  securityAttributes: Deno.PointerValue | Uint8Array /* ptr */,
+  surfaceHandle: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libdcomp_dll.DCompositionCreateSurfaceHandle(desiredAccess, util.toPointer(securityAttributes), util.toPointer(surfaceHandle));
 }
 
 export function DCompositionAttachMouseWheelToHwnd(
-  visual: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.DirectComposition.IDCompositionVisual */,
-  hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
+  visual: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.DirectComposition.IDCompositionVisual */,
+  hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   enable: boolean /* Windows.Win32.Foundation.BOOL */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdcomp_dll.DCompositionAttachMouseWheelToHwnd(util.toPointer(visual), util.hwndToFfi(hwnd), util.boolToFfi(enable)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libdcomp_dll.DCompositionAttachMouseWheelToHwnd(util.toPointer(visual), (hwnd), util.boolToFfi(enable));
 }
 
 export function DCompositionAttachMouseDragToHwnd(
-  visual: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.DirectComposition.IDCompositionVisual */,
-  hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
+  visual: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.DirectComposition.IDCompositionVisual */,
+  hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   enable: boolean /* Windows.Win32.Foundation.BOOL */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdcomp_dll.DCompositionAttachMouseDragToHwnd(util.toPointer(visual), util.hwndToFfi(hwnd), util.boolToFfi(enable)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libdcomp_dll.DCompositionAttachMouseDragToHwnd(util.toPointer(visual), (hwnd), util.boolToFfi(enable));
 }
 
 export function DCompositionGetFrameId(
   frameIdType: COMPOSITION_FRAME_ID_TYPE /* Windows.Win32.Graphics.DirectComposition.COMPOSITION_FRAME_ID_TYPE */,
-  frameId: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdcomp_dll.DCompositionGetFrameId(frameIdType, util.toPointer(frameId)));
+  frameId: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libdcomp_dll.DCompositionGetFrameId(frameIdType, util.toPointer(frameId));
 }
 
 export function DCompositionGetStatistics(
   frameId: Deno.PointerValue /* u64 */,
-  frameStats: Deno.PointerValue | Uint8Array | null /* ptr */,
+  frameStats: Deno.PointerValue | Uint8Array /* ptr */,
   targetIdCount: number /* u32 */,
-  targetIds: Deno.PointerValue | Uint8Array | null /* ptr */,
-  actualTargetIdCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdcomp_dll.DCompositionGetStatistics(frameId, util.toPointer(frameStats), targetIdCount, util.toPointer(targetIds), util.toPointer(actualTargetIdCount)));
+  targetIds: Deno.PointerValue | Uint8Array /* ptr */,
+  actualTargetIdCount: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libdcomp_dll.DCompositionGetStatistics(frameId, util.toPointer(frameStats), targetIdCount, util.toPointer(targetIds), util.toPointer(actualTargetIdCount));
 }
 
 export function DCompositionGetTargetStatistics(
   frameId: Deno.PointerValue /* u64 */,
-  targetId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  targetStats: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdcomp_dll.DCompositionGetTargetStatistics(frameId, util.toPointer(targetId), util.toPointer(targetStats)));
+  targetId: Deno.PointerValue | Uint8Array /* ptr */,
+  targetStats: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libdcomp_dll.DCompositionGetTargetStatistics(frameId, util.toPointer(targetId), util.toPointer(targetStats));
 }
 
 export function DCompositionBoostCompositorClock(
   enable: boolean /* Windows.Win32.Foundation.BOOL */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdcomp_dll.DCompositionBoostCompositorClock(util.boolToFfi(enable)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libdcomp_dll.DCompositionBoostCompositorClock(util.boolToFfi(enable));
 }
 
 export function DCompositionWaitForCompositorClock(
   count: number /* u32 */,
-  handles: Deno.PointerValue | Uint8Array | null /* ptr */,
+  handles: Deno.PointerValue | Uint8Array /* ptr */,
   timeoutInMs: number /* u32 */,
 ): number /* u32 */ {
   return libdcomp_dll.DCompositionWaitForCompositorClock(count, util.toPointer(handles), timeoutInMs);

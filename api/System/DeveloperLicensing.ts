@@ -30,21 +30,21 @@ try {
 // Symbols
 
 export function CheckDeveloperLicense(
-  pExpiration: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWSClient_dll.CheckDeveloperLicense(util.toPointer(pExpiration)));
+  pExpiration: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWSClient_dll.CheckDeveloperLicense(util.toPointer(pExpiration));
 }
 
 export function AcquireDeveloperLicense(
-  hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pExpiration: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWSClient_dll.AcquireDeveloperLicense(util.hwndToFfi(hwndParent), util.toPointer(pExpiration)));
+  hwndParent: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
+  pExpiration: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWSClient_dll.AcquireDeveloperLicense((hwndParent), util.toPointer(pExpiration));
 }
 
 export function RemoveDeveloperLicense(
-  hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWSClient_dll.RemoveDeveloperLicense(util.hwndToFfi(hwndParent)));
+  hwndParent: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWSClient_dll.RemoveDeveloperLicense((hwndParent));
 }
 

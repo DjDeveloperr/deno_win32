@@ -281,80 +281,80 @@ try {
 // Symbols
 
 export function HasExpandedResources(
-  hasExpandedResources: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_gaming_expandedresources_l1_1_0_dll.HasExpandedResources(util.toPointer(hasExpandedResources)));
+  hasExpandedResources: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_gaming_expandedresources_l1_1_0_dll.HasExpandedResources(util.toPointer(hasExpandedResources));
 }
 
 export function GetExpandedResourceExclusiveCpuCount(
-  exclusiveCpuCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_gaming_expandedresources_l1_1_0_dll.GetExpandedResourceExclusiveCpuCount(util.toPointer(exclusiveCpuCount)));
+  exclusiveCpuCount: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_gaming_expandedresources_l1_1_0_dll.GetExpandedResourceExclusiveCpuCount(util.toPointer(exclusiveCpuCount));
 }
 
-export function ReleaseExclusiveCpuSets(): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_gaming_expandedresources_l1_1_0_dll.ReleaseExclusiveCpuSets());
+export function ReleaseExclusiveCpuSets(): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_gaming_expandedresources_l1_1_0_dll.ReleaseExclusiveCpuSets();
 }
 
 export function GetGamingDeviceModelInformation(
-  information: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_gaming_deviceinformation_l1_1_0_dll.GetGamingDeviceModelInformation(util.toPointer(information)));
+  information: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_gaming_deviceinformation_l1_1_0_dll.GetGamingDeviceModelInformation(util.toPointer(information));
 }
 
 export function ShowGameInviteUI(
-  serviceConfigurationId: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  sessionTemplateName: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  sessionId: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  invitationDisplayText: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  completionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Gaming.GameUICompletionRoutine */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_gaming_tcui_l1_1_0_dll.ShowGameInviteUI(util.toPointer(serviceConfigurationId), util.toPointer(sessionTemplateName), util.toPointer(sessionId), util.toPointer(invitationDisplayText), util.toPointer(completionRoutine), util.toPointer(context)));
+  serviceConfigurationId: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  sessionTemplateName: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  sessionId: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  invitationDisplayText: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  completionRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.Gaming.GameUICompletionRoutine */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_gaming_tcui_l1_1_0_dll.ShowGameInviteUI(util.toPointer(serviceConfigurationId), util.toPointer(sessionTemplateName), util.toPointer(sessionId), util.toPointer(invitationDisplayText), util.toPointer(completionRoutine), util.toPointer(context));
 }
 
 export function ShowPlayerPickerUI(
-  promptDisplayText: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  xuids: Deno.PointerValue | Uint8Array | null /* ptr */,
+  promptDisplayText: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  xuids: Deno.PointerValue | Uint8Array /* ptr */,
   xuidsCount: Deno.PointerValue /* usize */,
-  preSelectedXuids: Deno.PointerValue | Uint8Array | null /* ptr */,
+  preSelectedXuids: Deno.PointerValue | Uint8Array /* ptr */,
   preSelectedXuidsCount: Deno.PointerValue /* usize */,
   minSelectionCount: Deno.PointerValue /* usize */,
   maxSelectionCount: Deno.PointerValue /* usize */,
-  completionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Gaming.PlayerPickerUICompletionRoutine */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_gaming_tcui_l1_1_0_dll.ShowPlayerPickerUI(util.toPointer(promptDisplayText), util.toPointer(xuids), xuidsCount, util.toPointer(preSelectedXuids), preSelectedXuidsCount, minSelectionCount, maxSelectionCount, util.toPointer(completionRoutine), util.toPointer(context)));
+  completionRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.Gaming.PlayerPickerUICompletionRoutine */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_gaming_tcui_l1_1_0_dll.ShowPlayerPickerUI(util.toPointer(promptDisplayText), util.toPointer(xuids), xuidsCount, util.toPointer(preSelectedXuids), preSelectedXuidsCount, minSelectionCount, maxSelectionCount, util.toPointer(completionRoutine), util.toPointer(context));
 }
 
 export function ShowProfileCardUI(
-  targetUserXuid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  completionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Gaming.GameUICompletionRoutine */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_gaming_tcui_l1_1_0_dll.ShowProfileCardUI(util.toPointer(targetUserXuid), util.toPointer(completionRoutine), util.toPointer(context)));
+  targetUserXuid: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  completionRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.Gaming.GameUICompletionRoutine */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_gaming_tcui_l1_1_0_dll.ShowProfileCardUI(util.toPointer(targetUserXuid), util.toPointer(completionRoutine), util.toPointer(context));
 }
 
 export function ShowChangeFriendRelationshipUI(
-  targetUserXuid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  completionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Gaming.GameUICompletionRoutine */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_gaming_tcui_l1_1_0_dll.ShowChangeFriendRelationshipUI(util.toPointer(targetUserXuid), util.toPointer(completionRoutine), util.toPointer(context)));
+  targetUserXuid: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  completionRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.Gaming.GameUICompletionRoutine */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_gaming_tcui_l1_1_0_dll.ShowChangeFriendRelationshipUI(util.toPointer(targetUserXuid), util.toPointer(completionRoutine), util.toPointer(context));
 }
 
 export function ShowTitleAchievementsUI(
   titleId: number /* u32 */,
-  completionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Gaming.GameUICompletionRoutine */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_gaming_tcui_l1_1_0_dll.ShowTitleAchievementsUI(titleId, util.toPointer(completionRoutine), util.toPointer(context)));
+  completionRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.Gaming.GameUICompletionRoutine */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_gaming_tcui_l1_1_0_dll.ShowTitleAchievementsUI(titleId, util.toPointer(completionRoutine), util.toPointer(context));
 }
 
 export function ProcessPendingGameUI(
   waitForCompletion: boolean /* Windows.Win32.Foundation.BOOL */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_gaming_tcui_l1_1_0_dll.ProcessPendingGameUI(util.boolToFfi(waitForCompletion)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_gaming_tcui_l1_1_0_dll.ProcessPendingGameUI(util.boolToFfi(waitForCompletion));
 }
 
 export function TryCancelPendingGameUI(): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -363,184 +363,184 @@ export function TryCancelPendingGameUI(): boolean /* Windows.Win32.Foundation.BO
 
 export function CheckGamingPrivilegeWithUI(
   privilegeId: number /* u32 */,
-  scope: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  policy: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  friendlyMessage: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  completionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Gaming.GameUICompletionRoutine */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_gaming_tcui_l1_1_1_dll.CheckGamingPrivilegeWithUI(privilegeId, util.toPointer(scope), util.toPointer(policy), util.toPointer(friendlyMessage), util.toPointer(completionRoutine), util.toPointer(context)));
+  scope: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  policy: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  friendlyMessage: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  completionRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.Gaming.GameUICompletionRoutine */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_gaming_tcui_l1_1_1_dll.CheckGamingPrivilegeWithUI(privilegeId, util.toPointer(scope), util.toPointer(policy), util.toPointer(friendlyMessage), util.toPointer(completionRoutine), util.toPointer(context));
 }
 
 export function CheckGamingPrivilegeSilently(
   privilegeId: number /* u32 */,
-  scope: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  policy: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  hasPrivilege: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_gaming_tcui_l1_1_1_dll.CheckGamingPrivilegeSilently(privilegeId, util.toPointer(scope), util.toPointer(policy), util.toPointer(hasPrivilege)));
+  scope: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  policy: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  hasPrivilege: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_gaming_tcui_l1_1_1_dll.CheckGamingPrivilegeSilently(privilegeId, util.toPointer(scope), util.toPointer(policy), util.toPointer(hasPrivilege));
 }
 
 export function ShowGameInviteUIForUser(
-  user: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.IInspectable */,
-  serviceConfigurationId: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  sessionTemplateName: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  sessionId: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  invitationDisplayText: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  completionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Gaming.GameUICompletionRoutine */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_gaming_tcui_l1_1_2_dll.ShowGameInviteUIForUser(util.toPointer(user), util.toPointer(serviceConfigurationId), util.toPointer(sessionTemplateName), util.toPointer(sessionId), util.toPointer(invitationDisplayText), util.toPointer(completionRoutine), util.toPointer(context)));
+  user: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.IInspectable */,
+  serviceConfigurationId: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  sessionTemplateName: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  sessionId: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  invitationDisplayText: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  completionRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.Gaming.GameUICompletionRoutine */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_gaming_tcui_l1_1_2_dll.ShowGameInviteUIForUser(util.toPointer(user), util.toPointer(serviceConfigurationId), util.toPointer(sessionTemplateName), util.toPointer(sessionId), util.toPointer(invitationDisplayText), util.toPointer(completionRoutine), util.toPointer(context));
 }
 
 export function ShowPlayerPickerUIForUser(
-  user: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.IInspectable */,
-  promptDisplayText: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  xuids: Deno.PointerValue | Uint8Array | null /* ptr */,
+  user: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.IInspectable */,
+  promptDisplayText: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  xuids: Deno.PointerValue | Uint8Array /* ptr */,
   xuidsCount: Deno.PointerValue /* usize */,
-  preSelectedXuids: Deno.PointerValue | Uint8Array | null /* ptr */,
+  preSelectedXuids: Deno.PointerValue | Uint8Array /* ptr */,
   preSelectedXuidsCount: Deno.PointerValue /* usize */,
   minSelectionCount: Deno.PointerValue /* usize */,
   maxSelectionCount: Deno.PointerValue /* usize */,
-  completionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Gaming.PlayerPickerUICompletionRoutine */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_gaming_tcui_l1_1_2_dll.ShowPlayerPickerUIForUser(util.toPointer(user), util.toPointer(promptDisplayText), util.toPointer(xuids), xuidsCount, util.toPointer(preSelectedXuids), preSelectedXuidsCount, minSelectionCount, maxSelectionCount, util.toPointer(completionRoutine), util.toPointer(context)));
+  completionRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.Gaming.PlayerPickerUICompletionRoutine */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_gaming_tcui_l1_1_2_dll.ShowPlayerPickerUIForUser(util.toPointer(user), util.toPointer(promptDisplayText), util.toPointer(xuids), xuidsCount, util.toPointer(preSelectedXuids), preSelectedXuidsCount, minSelectionCount, maxSelectionCount, util.toPointer(completionRoutine), util.toPointer(context));
 }
 
 export function ShowProfileCardUIForUser(
-  user: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.IInspectable */,
-  targetUserXuid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  completionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Gaming.GameUICompletionRoutine */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_gaming_tcui_l1_1_2_dll.ShowProfileCardUIForUser(util.toPointer(user), util.toPointer(targetUserXuid), util.toPointer(completionRoutine), util.toPointer(context)));
+  user: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.IInspectable */,
+  targetUserXuid: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  completionRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.Gaming.GameUICompletionRoutine */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_gaming_tcui_l1_1_2_dll.ShowProfileCardUIForUser(util.toPointer(user), util.toPointer(targetUserXuid), util.toPointer(completionRoutine), util.toPointer(context));
 }
 
 export function ShowChangeFriendRelationshipUIForUser(
-  user: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.IInspectable */,
-  targetUserXuid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  completionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Gaming.GameUICompletionRoutine */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_gaming_tcui_l1_1_2_dll.ShowChangeFriendRelationshipUIForUser(util.toPointer(user), util.toPointer(targetUserXuid), util.toPointer(completionRoutine), util.toPointer(context)));
+  user: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.IInspectable */,
+  targetUserXuid: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  completionRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.Gaming.GameUICompletionRoutine */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_gaming_tcui_l1_1_2_dll.ShowChangeFriendRelationshipUIForUser(util.toPointer(user), util.toPointer(targetUserXuid), util.toPointer(completionRoutine), util.toPointer(context));
 }
 
 export function ShowTitleAchievementsUIForUser(
-  user: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.IInspectable */,
+  user: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.IInspectable */,
   titleId: number /* u32 */,
-  completionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Gaming.GameUICompletionRoutine */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_gaming_tcui_l1_1_2_dll.ShowTitleAchievementsUIForUser(util.toPointer(user), titleId, util.toPointer(completionRoutine), util.toPointer(context)));
+  completionRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.Gaming.GameUICompletionRoutine */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_gaming_tcui_l1_1_2_dll.ShowTitleAchievementsUIForUser(util.toPointer(user), titleId, util.toPointer(completionRoutine), util.toPointer(context));
 }
 
 export function CheckGamingPrivilegeWithUIForUser(
-  user: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.IInspectable */,
+  user: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.IInspectable */,
   privilegeId: number /* u32 */,
-  scope: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  policy: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  friendlyMessage: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  completionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Gaming.GameUICompletionRoutine */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_gaming_tcui_l1_1_2_dll.CheckGamingPrivilegeWithUIForUser(util.toPointer(user), privilegeId, util.toPointer(scope), util.toPointer(policy), util.toPointer(friendlyMessage), util.toPointer(completionRoutine), util.toPointer(context)));
+  scope: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  policy: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  friendlyMessage: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  completionRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.Gaming.GameUICompletionRoutine */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_gaming_tcui_l1_1_2_dll.CheckGamingPrivilegeWithUIForUser(util.toPointer(user), privilegeId, util.toPointer(scope), util.toPointer(policy), util.toPointer(friendlyMessage), util.toPointer(completionRoutine), util.toPointer(context));
 }
 
 export function CheckGamingPrivilegeSilentlyForUser(
-  user: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.IInspectable */,
+  user: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.IInspectable */,
   privilegeId: number /* u32 */,
-  scope: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  policy: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  hasPrivilege: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_gaming_tcui_l1_1_2_dll.CheckGamingPrivilegeSilentlyForUser(util.toPointer(user), privilegeId, util.toPointer(scope), util.toPointer(policy), util.toPointer(hasPrivilege)));
+  scope: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  policy: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  hasPrivilege: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_gaming_tcui_l1_1_2_dll.CheckGamingPrivilegeSilentlyForUser(util.toPointer(user), privilegeId, util.toPointer(scope), util.toPointer(policy), util.toPointer(hasPrivilege));
 }
 
 export function ShowGameInviteUIWithContext(
-  serviceConfigurationId: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  sessionTemplateName: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  sessionId: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  invitationDisplayText: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  customActivationContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  completionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Gaming.GameUICompletionRoutine */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_gaming_tcui_l1_1_3_dll.ShowGameInviteUIWithContext(util.toPointer(serviceConfigurationId), util.toPointer(sessionTemplateName), util.toPointer(sessionId), util.toPointer(invitationDisplayText), util.toPointer(customActivationContext), util.toPointer(completionRoutine), util.toPointer(context)));
+  serviceConfigurationId: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  sessionTemplateName: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  sessionId: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  invitationDisplayText: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  customActivationContext: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  completionRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.Gaming.GameUICompletionRoutine */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_gaming_tcui_l1_1_3_dll.ShowGameInviteUIWithContext(util.toPointer(serviceConfigurationId), util.toPointer(sessionTemplateName), util.toPointer(sessionId), util.toPointer(invitationDisplayText), util.toPointer(customActivationContext), util.toPointer(completionRoutine), util.toPointer(context));
 }
 
 export function ShowGameInviteUIWithContextForUser(
-  user: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.IInspectable */,
-  serviceConfigurationId: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  sessionTemplateName: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  sessionId: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  invitationDisplayText: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  customActivationContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  completionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Gaming.GameUICompletionRoutine */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_gaming_tcui_l1_1_3_dll.ShowGameInviteUIWithContextForUser(util.toPointer(user), util.toPointer(serviceConfigurationId), util.toPointer(sessionTemplateName), util.toPointer(sessionId), util.toPointer(invitationDisplayText), util.toPointer(customActivationContext), util.toPointer(completionRoutine), util.toPointer(context)));
+  user: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.IInspectable */,
+  serviceConfigurationId: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  sessionTemplateName: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  sessionId: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  invitationDisplayText: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  customActivationContext: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  completionRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.Gaming.GameUICompletionRoutine */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_gaming_tcui_l1_1_3_dll.ShowGameInviteUIWithContextForUser(util.toPointer(user), util.toPointer(serviceConfigurationId), util.toPointer(sessionTemplateName), util.toPointer(sessionId), util.toPointer(invitationDisplayText), util.toPointer(customActivationContext), util.toPointer(completionRoutine), util.toPointer(context));
 }
 
 export function ShowGameInfoUI(
   titleId: number /* u32 */,
-  completionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Gaming.GameUICompletionRoutine */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_gaming_tcui_l1_1_4_dll.ShowGameInfoUI(titleId, util.toPointer(completionRoutine), util.toPointer(context)));
+  completionRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.Gaming.GameUICompletionRoutine */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_gaming_tcui_l1_1_4_dll.ShowGameInfoUI(titleId, util.toPointer(completionRoutine), util.toPointer(context));
 }
 
 export function ShowGameInfoUIForUser(
-  user: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.IInspectable */,
+  user: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.IInspectable */,
   titleId: number /* u32 */,
-  completionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Gaming.GameUICompletionRoutine */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_gaming_tcui_l1_1_4_dll.ShowGameInfoUIForUser(util.toPointer(user), titleId, util.toPointer(completionRoutine), util.toPointer(context)));
+  completionRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.Gaming.GameUICompletionRoutine */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_gaming_tcui_l1_1_4_dll.ShowGameInfoUIForUser(util.toPointer(user), titleId, util.toPointer(completionRoutine), util.toPointer(context));
 }
 
 export function ShowFindFriendsUI(
-  completionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Gaming.GameUICompletionRoutine */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_gaming_tcui_l1_1_4_dll.ShowFindFriendsUI(util.toPointer(completionRoutine), util.toPointer(context)));
+  completionRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.Gaming.GameUICompletionRoutine */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_gaming_tcui_l1_1_4_dll.ShowFindFriendsUI(util.toPointer(completionRoutine), util.toPointer(context));
 }
 
 export function ShowFindFriendsUIForUser(
-  user: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.IInspectable */,
-  completionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Gaming.GameUICompletionRoutine */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_gaming_tcui_l1_1_4_dll.ShowFindFriendsUIForUser(util.toPointer(user), util.toPointer(completionRoutine), util.toPointer(context)));
+  user: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.IInspectable */,
+  completionRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.Gaming.GameUICompletionRoutine */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_gaming_tcui_l1_1_4_dll.ShowFindFriendsUIForUser(util.toPointer(user), util.toPointer(completionRoutine), util.toPointer(context));
 }
 
 export function ShowCustomizeUserProfileUI(
-  completionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Gaming.GameUICompletionRoutine */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_gaming_tcui_l1_1_4_dll.ShowCustomizeUserProfileUI(util.toPointer(completionRoutine), util.toPointer(context)));
+  completionRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.Gaming.GameUICompletionRoutine */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_gaming_tcui_l1_1_4_dll.ShowCustomizeUserProfileUI(util.toPointer(completionRoutine), util.toPointer(context));
 }
 
 export function ShowCustomizeUserProfileUIForUser(
-  user: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.IInspectable */,
-  completionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Gaming.GameUICompletionRoutine */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_gaming_tcui_l1_1_4_dll.ShowCustomizeUserProfileUIForUser(util.toPointer(user), util.toPointer(completionRoutine), util.toPointer(context)));
+  user: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.IInspectable */,
+  completionRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.Gaming.GameUICompletionRoutine */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_gaming_tcui_l1_1_4_dll.ShowCustomizeUserProfileUIForUser(util.toPointer(user), util.toPointer(completionRoutine), util.toPointer(context));
 }
 
 export function ShowUserSettingsUI(
-  completionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Gaming.GameUICompletionRoutine */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_gaming_tcui_l1_1_4_dll.ShowUserSettingsUI(util.toPointer(completionRoutine), util.toPointer(context)));
+  completionRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.Gaming.GameUICompletionRoutine */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_gaming_tcui_l1_1_4_dll.ShowUserSettingsUI(util.toPointer(completionRoutine), util.toPointer(context));
 }
 
 export function ShowUserSettingsUIForUser(
-  user: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.IInspectable */,
-  completionRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Gaming.GameUICompletionRoutine */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_gaming_tcui_l1_1_4_dll.ShowUserSettingsUIForUser(util.toPointer(user), util.toPointer(completionRoutine), util.toPointer(context)));
+  user: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.IInspectable */,
+  completionRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.Gaming.GameUICompletionRoutine */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_gaming_tcui_l1_1_4_dll.ShowUserSettingsUIForUser(util.toPointer(user), util.toPointer(completionRoutine), util.toPointer(context));
 }
 

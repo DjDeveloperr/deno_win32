@@ -223,7 +223,7 @@ export const DTCLUCOMPARESTATESRESPONSE_PROTOCOL = 2;
  */
 export interface BOID {
   /** array */
-  rgb: Deno.PointerValue | null;
+  rgb: Deno.PointerValue;
 }
 
 export const sizeofBOID = 8;
@@ -232,7 +232,7 @@ export function allocBOID(data?: Partial<BOID>): Uint8Array {
   const buf = new Uint8Array(sizeofBOID);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.rgb !== undefined) view.setBigUint64(0, data.rgb === null ? 0n : BigInt(util.toPointer(data.rgb)), true);
+  if (data?.rgb !== undefined) view.setBigUint64(0, data.rgb === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgb))), true);
   return buf;
 }
 
@@ -247,14 +247,14 @@ export class BOIDView {
   }
 
   // 0x00: pointer
-  get rgb(): Uint8Array | Deno.PointerValue | null {
+  get rgb(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set rgb(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set rgb(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -263,7 +263,7 @@ export class BOIDView {
  */
 export interface XACTTRANSINFO {
   /** Windows.Win32.System.DistributedTransactionCoordinator.BOID */
-  uow: Uint8Array | Deno.PointerValue | null;
+  uow: Uint8Array | Deno.PointerValue;
   /** i32 */
   isoLevel: number;
   /** u32 */
@@ -284,7 +284,7 @@ export function allocXACTTRANSINFO(data?: Partial<XACTTRANSINFO>): Uint8Array {
   const buf = new Uint8Array(sizeofXACTTRANSINFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.uow !== undefined) view.setBigUint64(0, data.uow === null ? 0n : BigInt(util.toPointer(data.uow)), true);
+  if (data?.uow !== undefined) view.setBigUint64(0, data.uow === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.uow))), true);
   // 0x08: i32
   if (data?.isoLevel !== undefined) view.setInt32(8, Number(data.isoLevel), true);
   // 0x0c: u32
@@ -311,9 +311,9 @@ export class XACTTRANSINFOView {
   }
 
   // 0x00: pointer
-  get uow(): Uint8Array | Deno.PointerValue | null {
+  get uow(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: i32
@@ -347,8 +347,8 @@ export class XACTTRANSINFOView {
   }
 
   // 0x00: pointer
-  set uow(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set uow(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: i32
@@ -454,7 +454,7 @@ export interface XACTSTATS {
   /** u32 */
   cHeuristicDecision: number;
   /** Windows.Win32.Foundation.FILETIME */
-  timeTransactionsUp: Uint8Array | Deno.PointerValue | null;
+  timeTransactionsUp: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofXACTSTATS = 40;
@@ -478,7 +478,7 @@ export function allocXACTSTATS(data?: Partial<XACTSTATS>): Uint8Array {
   if (data?.cHeuristicDecision !== undefined) view.setUint32(24, Number(data.cHeuristicDecision), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.timeTransactionsUp !== undefined) view.setBigUint64(32, data.timeTransactionsUp === null ? 0n : BigInt(util.toPointer(data.timeTransactionsUp)), true);
+  if (data?.timeTransactionsUp !== undefined) view.setBigUint64(32, data.timeTransactionsUp === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.timeTransactionsUp))), true);
   return buf;
 }
 
@@ -530,9 +530,9 @@ export class XACTSTATSView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get timeTransactionsUp(): Uint8Array | Deno.PointerValue | null {
+  get timeTransactionsUp(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -573,8 +573,8 @@ export class XACTSTATSView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set timeTransactionsUp(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set timeTransactionsUp(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -585,7 +585,7 @@ export interface XACTOPT {
   /** u32 */
   ulTimeout: number;
   /** array */
-  szDescription: Deno.PointerValue | null;
+  szDescription: Deno.PointerValue;
 }
 
 export const sizeofXACTOPT = 16;
@@ -597,7 +597,7 @@ export function allocXACTOPT(data?: Partial<XACTOPT>): Uint8Array {
   if (data?.ulTimeout !== undefined) view.setUint32(0, Number(data.ulTimeout), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.szDescription !== undefined) view.setBigUint64(8, data.szDescription === null ? 0n : BigInt(util.toPointer(data.szDescription)), true);
+  if (data?.szDescription !== undefined) view.setBigUint64(8, data.szDescription === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.szDescription))), true);
   return buf;
 }
 
@@ -619,9 +619,9 @@ export class XACTOPTView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get szDescription(): Uint8Array | Deno.PointerValue | null {
+  get szDescription(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -632,8 +632,8 @@ export class XACTOPTView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set szDescription(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set szDescription(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -648,7 +648,7 @@ export interface XID {
   /** i32 */
   bqual_length: number;
   /** array */
-  data: Deno.PointerValue | null;
+  data: Deno.PointerValue;
 }
 
 export const sizeofXID = 24;
@@ -664,7 +664,7 @@ export function allocXID(data?: Partial<XID>): Uint8Array {
   if (data?.bqual_length !== undefined) view.setInt32(8, Number(data.bqual_length), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.data !== undefined) view.setBigUint64(16, data.data === null ? 0n : BigInt(util.toPointer(data.data)), true);
+  if (data?.data !== undefined) view.setBigUint64(16, data.data === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.data))), true);
   return buf;
 }
 
@@ -696,9 +696,9 @@ export class XIDView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get data(): Uint8Array | Deno.PointerValue | null {
+  get data(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -719,8 +719,8 @@ export class XIDView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set data(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set data(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -729,7 +729,7 @@ export class XIDView {
  */
 export interface xa_switch_t {
   /** array */
-  name: Deno.PointerValue | null;
+  name: Deno.PointerValue;
   /** i32 */
   flags: number;
   /** i32 */
@@ -762,7 +762,7 @@ export function allocXa_switch_t(data?: Partial<xa_switch_t>): Uint8Array {
   const buf = new Uint8Array(sizeofXa_switch_t);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.name !== undefined) view.setBigUint64(0, data.name === null ? 0n : BigInt(util.toPointer(data.name)), true);
+  if (data?.name !== undefined) view.setBigUint64(0, data.name === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.name))), true);
   // 0x08: i32
   if (data?.flags !== undefined) view.setInt32(8, Number(data.flags), true);
   // 0x0c: i32
@@ -801,9 +801,9 @@ export class xa_switch_tView {
   }
 
   // 0x00: pointer
-  get name(): Uint8Array | Deno.PointerValue | null {
+  get name(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: i32
@@ -867,8 +867,8 @@ export class xa_switch_tView {
   }
 
   // 0x00: pointer
-  set name(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set name(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: i32
@@ -996,7 +996,7 @@ export interface OLE_TM_CONFIG_PARAMS_V2 {
   /** Windows.Win32.System.DistributedTransactionCoordinator.APPLICATIONTYPE */
   applicationType: APPLICATIONTYPE;
   /** System.Guid */
-  clusterResourceId: Uint8Array | Deno.PointerValue | null;
+  clusterResourceId: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofOLE_TM_CONFIG_PARAMS_V2 = 24;
@@ -1012,7 +1012,7 @@ export function allocOLE_TM_CONFIG_PARAMS_V2(data?: Partial<OLE_TM_CONFIG_PARAMS
   if (data?.applicationType !== undefined) view.setInt32(8, Number(data.applicationType), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.clusterResourceId !== undefined) view.setBigUint64(16, data.clusterResourceId === null ? 0n : BigInt(util.toPointer(data.clusterResourceId)), true);
+  if (data?.clusterResourceId !== undefined) view.setBigUint64(16, data.clusterResourceId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.clusterResourceId))), true);
   return buf;
 }
 
@@ -1044,9 +1044,9 @@ export class OLE_TM_CONFIG_PARAMS_V2View {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get clusterResourceId(): Uint8Array | Deno.PointerValue | null {
+  get clusterResourceId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1067,8 +1067,8 @@ export class OLE_TM_CONFIG_PARAMS_V2View {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set clusterResourceId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set clusterResourceId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1116,11 +1116,11 @@ export class PROXY_CONFIG_PARAMSView {
   // 0x02: pad6
 }
 
-export type PSTR = Deno.PointerValue | Uint8Array | null;
+export type PSTR = Deno.PointerValue | Uint8Array;
 
 export type HRESULT = number;
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 // Native Libraries
 
@@ -1150,46 +1150,46 @@ try {
 export function DtcGetTransactionManager(
   i_pszHost: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   i_pszTmName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  i_riid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  i_riid: Deno.PointerValue | Uint8Array /* ptr */,
   i_dwReserved1: number /* u32 */,
   i_wcbReserved2: number /* u16 */,
-  i_pvReserved2: Deno.PointerValue | Uint8Array | null /* ptr */,
-  o_ppvObject: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libXOLEHLP_dll.DtcGetTransactionManager(util.pstrToFfi(i_pszHost), util.pstrToFfi(i_pszTmName), util.toPointer(i_riid), i_dwReserved1, i_wcbReserved2, util.toPointer(i_pvReserved2), util.toPointer(o_ppvObject)));
+  i_pvReserved2: Deno.PointerValue | Uint8Array /* ptr */,
+  o_ppvObject: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libXOLEHLP_dll.DtcGetTransactionManager(util.pstrToFfi(i_pszHost), util.pstrToFfi(i_pszTmName), util.toPointer(i_riid), i_dwReserved1, i_wcbReserved2, util.toPointer(i_pvReserved2), util.toPointer(o_ppvObject));
 }
 
 export function DtcGetTransactionManagerC(
   i_pszHost: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   i_pszTmName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  i_riid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  i_riid: Deno.PointerValue | Uint8Array /* ptr */,
   i_dwReserved1: number /* u32 */,
   i_wcbReserved2: number /* u16 */,
-  i_pvReserved2: Deno.PointerValue | Uint8Array | null /* ptr */,
-  o_ppvObject: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libXOLEHLP_dll.DtcGetTransactionManagerC(util.pstrToFfi(i_pszHost), util.pstrToFfi(i_pszTmName), util.toPointer(i_riid), i_dwReserved1, i_wcbReserved2, util.toPointer(i_pvReserved2), util.toPointer(o_ppvObject)));
+  i_pvReserved2: Deno.PointerValue | Uint8Array /* ptr */,
+  o_ppvObject: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libXOLEHLP_dll.DtcGetTransactionManagerC(util.pstrToFfi(i_pszHost), util.pstrToFfi(i_pszTmName), util.toPointer(i_riid), i_dwReserved1, i_wcbReserved2, util.toPointer(i_pvReserved2), util.toPointer(o_ppvObject));
 }
 
 export function DtcGetTransactionManagerExA(
   i_pszHost: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   i_pszTmName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  i_riid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  i_riid: Deno.PointerValue | Uint8Array /* ptr */,
   i_grfOptions: number /* u32 */,
-  i_pvConfigParams: Deno.PointerValue | Uint8Array | null /* ptr */,
-  o_ppvObject: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libXOLEHLP_dll.DtcGetTransactionManagerExA(util.pstrToFfi(i_pszHost), util.pstrToFfi(i_pszTmName), util.toPointer(i_riid), i_grfOptions, util.toPointer(i_pvConfigParams), util.toPointer(o_ppvObject)));
+  i_pvConfigParams: Deno.PointerValue | Uint8Array /* ptr */,
+  o_ppvObject: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libXOLEHLP_dll.DtcGetTransactionManagerExA(util.pstrToFfi(i_pszHost), util.pstrToFfi(i_pszTmName), util.toPointer(i_riid), i_grfOptions, util.toPointer(i_pvConfigParams), util.toPointer(o_ppvObject));
 }
 
 export function DtcGetTransactionManagerExW(
   i_pwszHost: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   i_pwszTmName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  i_riid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  i_riid: Deno.PointerValue | Uint8Array /* ptr */,
   i_grfOptions: number /* u32 */,
-  i_pvConfigParams: Deno.PointerValue | Uint8Array | null /* ptr */,
-  o_ppvObject: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libXOLEHLP_dll.DtcGetTransactionManagerExW(util.pwstrToFfi(i_pwszHost), util.pwstrToFfi(i_pwszTmName), util.toPointer(i_riid), i_grfOptions, util.toPointer(i_pvConfigParams), util.toPointer(o_ppvObject)));
+  i_pvConfigParams: Deno.PointerValue | Uint8Array /* ptr */,
+  o_ppvObject: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libXOLEHLP_dll.DtcGetTransactionManagerExW(util.pwstrToFfi(i_pwszHost), util.pwstrToFfi(i_pwszTmName), util.toPointer(i_riid), i_grfOptions, util.toPointer(i_pvConfigParams), util.toPointer(o_ppvObject));
 }
 

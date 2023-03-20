@@ -101,17 +101,17 @@ try {
 // Symbols
 
 export function D3D11On12CreateDevice(
-  pDevice: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
+  pDevice: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
   Flags: number /* u32 */,
-  pFeatureLevels: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pFeatureLevels: Deno.PointerValue | Uint8Array /* ptr */,
   FeatureLevels: number /* u32 */,
-  ppCommandQueues: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ppCommandQueues: Deno.PointerValue | Uint8Array /* ptr */,
   NumQueues: number /* u32 */,
   NodeMask: number /* u32 */,
-  ppDevice: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppImmediateContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pChosenFeatureLevel: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d11_dll.D3D11On12CreateDevice(util.toPointer(pDevice), Flags, util.toPointer(pFeatureLevels), FeatureLevels, util.toPointer(ppCommandQueues), NumQueues, NodeMask, util.toPointer(ppDevice), util.toPointer(ppImmediateContext), util.toPointer(pChosenFeatureLevel)));
+  ppDevice: Deno.PointerValue | Uint8Array /* ptr */,
+  ppImmediateContext: Deno.PointerValue | Uint8Array /* ptr */,
+  pChosenFeatureLevel: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libd3d11_dll.D3D11On12CreateDevice(util.toPointer(pDevice), Flags, util.toPointer(pFeatureLevels), FeatureLevels, util.toPointer(ppCommandQueues), NumQueues, NodeMask, util.toPointer(ppDevice), util.toPointer(ppImmediateContext), util.toPointer(pChosenFeatureLevel));
 }
 

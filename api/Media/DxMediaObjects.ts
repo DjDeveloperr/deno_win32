@@ -61,9 +61,9 @@ export type BOOL = number;
  */
 export interface DMO_MEDIA_TYPE {
   /** System.Guid */
-  majortype: Uint8Array | Deno.PointerValue | null;
+  majortype: Uint8Array | Deno.PointerValue;
   /** System.Guid */
-  subtype: Uint8Array | Deno.PointerValue | null;
+  subtype: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOL */
   bFixedSizeSamples: boolean;
   /** Windows.Win32.Foundation.BOOL */
@@ -71,13 +71,13 @@ export interface DMO_MEDIA_TYPE {
   /** u32 */
   lSampleSize: number;
   /** System.Guid */
-  formattype: Uint8Array | Deno.PointerValue | null;
+  formattype: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Com.IUnknown */
-  pUnk: Uint8Array | Deno.PointerValue | null;
+  pUnk: Uint8Array | Deno.PointerValue;
   /** u32 */
   cbFormat: number;
   /** ptr */
-  pbFormat: Deno.PointerValue | Uint8Array | null;
+  pbFormat: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDMO_MEDIA_TYPE = 64;
@@ -86,9 +86,9 @@ export function allocDMO_MEDIA_TYPE(data?: Partial<DMO_MEDIA_TYPE>): Uint8Array 
   const buf = new Uint8Array(sizeofDMO_MEDIA_TYPE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.majortype !== undefined) view.setBigUint64(0, data.majortype === null ? 0n : BigInt(util.toPointer(data.majortype)), true);
+  if (data?.majortype !== undefined) view.setBigUint64(0, data.majortype === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.majortype))), true);
   // 0x08: pointer
-  if (data?.subtype !== undefined) view.setBigUint64(8, data.subtype === null ? 0n : BigInt(util.toPointer(data.subtype)), true);
+  if (data?.subtype !== undefined) view.setBigUint64(8, data.subtype === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.subtype))), true);
   // 0x10: i32
   if (data?.bFixedSizeSamples !== undefined) view.setInt32(16, Number(data.bFixedSizeSamples), true);
   // 0x14: i32
@@ -97,14 +97,14 @@ export function allocDMO_MEDIA_TYPE(data?: Partial<DMO_MEDIA_TYPE>): Uint8Array 
   if (data?.lSampleSize !== undefined) view.setUint32(24, Number(data.lSampleSize), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.formattype !== undefined) view.setBigUint64(32, data.formattype === null ? 0n : BigInt(util.toPointer(data.formattype)), true);
+  if (data?.formattype !== undefined) view.setBigUint64(32, data.formattype === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.formattype))), true);
   // 0x28: pointer
-  if (data?.pUnk !== undefined) view.setBigUint64(40, data.pUnk === null ? 0n : BigInt(util.toPointer(data.pUnk)), true);
+  if (data?.pUnk !== undefined) view.setBigUint64(40, data.pUnk === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pUnk))), true);
   // 0x30: u32
   if (data?.cbFormat !== undefined) view.setUint32(48, Number(data.cbFormat), true);
   // 0x34: pad4
   // 0x38: pointer
-  if (data?.pbFormat !== undefined) view.setBigUint64(56, data.pbFormat === null ? 0n : BigInt(util.toPointer(data.pbFormat)), true);
+  if (data?.pbFormat !== undefined) view.setBigUint64(56, data.pbFormat === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pbFormat))), true);
   return buf;
 }
 
@@ -119,15 +119,15 @@ export class DMO_MEDIA_TYPEView {
   }
 
   // 0x00: pointer
-  get majortype(): Uint8Array | Deno.PointerValue | null {
+  get majortype(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get subtype(): Uint8Array | Deno.PointerValue | null {
+  get subtype(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i32
@@ -148,15 +148,15 @@ export class DMO_MEDIA_TYPEView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get formattype(): Uint8Array | Deno.PointerValue | null {
+  get formattype(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get pUnk(): Uint8Array | Deno.PointerValue | null {
+  get pUnk(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: u32
@@ -167,19 +167,19 @@ export class DMO_MEDIA_TYPEView {
   // 0x34: pad4
 
   // 0x38: pointer
-  get pbFormat(): Uint8Array | Deno.PointerValue | null {
+  get pbFormat(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set majortype(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set majortype(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set subtype(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set subtype(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: i32
@@ -200,13 +200,13 @@ export class DMO_MEDIA_TYPEView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set formattype(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set formattype(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set pUnk(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set pUnk(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: u32
@@ -217,8 +217,8 @@ export class DMO_MEDIA_TYPEView {
   // 0x34: pad4
 
   // 0x38: pointer
-  set pbFormat(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set pbFormat(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -227,7 +227,7 @@ export class DMO_MEDIA_TYPEView {
  */
 export interface DMO_OUTPUT_DATA_BUFFER {
   /** Windows.Win32.Media.DxMediaObjects.IMediaBuffer */
-  pBuffer: Uint8Array | Deno.PointerValue | null;
+  pBuffer: Uint8Array | Deno.PointerValue;
   /** u32 */
   dwStatus: number;
   /** i64 */
@@ -242,7 +242,7 @@ export function allocDMO_OUTPUT_DATA_BUFFER(data?: Partial<DMO_OUTPUT_DATA_BUFFE
   const buf = new Uint8Array(sizeofDMO_OUTPUT_DATA_BUFFER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pBuffer !== undefined) view.setBigUint64(0, data.pBuffer === null ? 0n : BigInt(util.toPointer(data.pBuffer)), true);
+  if (data?.pBuffer !== undefined) view.setBigUint64(0, data.pBuffer === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pBuffer))), true);
   // 0x08: u32
   if (data?.dwStatus !== undefined) view.setUint32(8, Number(data.dwStatus), true);
   // 0x0c: pad4
@@ -264,9 +264,9 @@ export class DMO_OUTPUT_DATA_BUFFERView {
   }
 
   // 0x00: pointer
-  get pBuffer(): Uint8Array | Deno.PointerValue | null {
+  get pBuffer(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -287,8 +287,8 @@ export class DMO_OUTPUT_DATA_BUFFERView {
   }
 
   // 0x00: pointer
-  set pBuffer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pBuffer(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -314,9 +314,9 @@ export class DMO_OUTPUT_DATA_BUFFERView {
  */
 export interface DMO_PARTIAL_MEDIATYPE {
   /** System.Guid */
-  type: Uint8Array | Deno.PointerValue | null;
+  type: Uint8Array | Deno.PointerValue;
   /** System.Guid */
-  subtype: Uint8Array | Deno.PointerValue | null;
+  subtype: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDMO_PARTIAL_MEDIATYPE = 16;
@@ -325,9 +325,9 @@ export function allocDMO_PARTIAL_MEDIATYPE(data?: Partial<DMO_PARTIAL_MEDIATYPE>
   const buf = new Uint8Array(sizeofDMO_PARTIAL_MEDIATYPE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.type !== undefined) view.setBigUint64(0, data.type === null ? 0n : BigInt(util.toPointer(data.type)), true);
+  if (data?.type !== undefined) view.setBigUint64(0, data.type === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.type))), true);
   // 0x08: pointer
-  if (data?.subtype !== undefined) view.setBigUint64(8, data.subtype === null ? 0n : BigInt(util.toPointer(data.subtype)), true);
+  if (data?.subtype !== undefined) view.setBigUint64(8, data.subtype === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.subtype))), true);
   return buf;
 }
 
@@ -342,29 +342,29 @@ export class DMO_PARTIAL_MEDIATYPEView {
   }
 
   // 0x00: pointer
-  get type(): Uint8Array | Deno.PointerValue | null {
+  get type(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get subtype(): Uint8Array | Deno.PointerValue | null {
+  get subtype(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set type(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set type(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set subtype(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set subtype(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 export type HRESULT = number;
 
@@ -423,92 +423,92 @@ try {
 
 export function DMORegister(
   szName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  clsidDMO: Deno.PointerValue | Uint8Array | null /* ptr */,
-  guidCategory: Deno.PointerValue | Uint8Array | null /* ptr */,
+  clsidDMO: Deno.PointerValue | Uint8Array /* ptr */,
+  guidCategory: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
   cInTypes: number /* u32 */,
-  pInTypes: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pInTypes: Deno.PointerValue | Uint8Array /* ptr */,
   cOutTypes: number /* u32 */,
-  pOutTypes: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdmo_dll.DMORegister(util.pwstrToFfi(szName), util.toPointer(clsidDMO), util.toPointer(guidCategory), dwFlags, cInTypes, util.toPointer(pInTypes), cOutTypes, util.toPointer(pOutTypes)));
+  pOutTypes: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdmo_dll.DMORegister(util.pwstrToFfi(szName), util.toPointer(clsidDMO), util.toPointer(guidCategory), dwFlags, cInTypes, util.toPointer(pInTypes), cOutTypes, util.toPointer(pOutTypes));
 }
 
 export function DMOUnregister(
-  clsidDMO: Deno.PointerValue | Uint8Array | null /* ptr */,
-  guidCategory: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdmo_dll.DMOUnregister(util.toPointer(clsidDMO), util.toPointer(guidCategory)));
+  clsidDMO: Deno.PointerValue | Uint8Array /* ptr */,
+  guidCategory: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdmo_dll.DMOUnregister(util.toPointer(clsidDMO), util.toPointer(guidCategory));
 }
 
 export function DMOEnum(
-  guidCategory: Deno.PointerValue | Uint8Array | null /* ptr */,
+  guidCategory: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
   cInTypes: number /* u32 */,
-  pInTypes: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pInTypes: Deno.PointerValue | Uint8Array /* ptr */,
   cOutTypes: number /* u32 */,
-  pOutTypes: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdmo_dll.DMOEnum(util.toPointer(guidCategory), dwFlags, cInTypes, util.toPointer(pInTypes), cOutTypes, util.toPointer(pOutTypes), util.toPointer(ppEnum)));
+  pOutTypes: Deno.PointerValue | Uint8Array /* ptr */,
+  ppEnum: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdmo_dll.DMOEnum(util.toPointer(guidCategory), dwFlags, cInTypes, util.toPointer(pInTypes), cOutTypes, util.toPointer(pOutTypes), util.toPointer(ppEnum));
 }
 
 export function DMOGetTypes(
-  clsidDMO: Deno.PointerValue | Uint8Array | null /* ptr */,
+  clsidDMO: Deno.PointerValue | Uint8Array /* ptr */,
   ulInputTypesRequested: number /* u32 */,
-  pulInputTypesSupplied: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pInputTypes: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pulInputTypesSupplied: Deno.PointerValue | Uint8Array /* ptr */,
+  pInputTypes: Deno.PointerValue | Uint8Array /* ptr */,
   ulOutputTypesRequested: number /* u32 */,
-  pulOutputTypesSupplied: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pOutputTypes: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdmo_dll.DMOGetTypes(util.toPointer(clsidDMO), ulInputTypesRequested, util.toPointer(pulInputTypesSupplied), util.toPointer(pInputTypes), ulOutputTypesRequested, util.toPointer(pulOutputTypesSupplied), util.toPointer(pOutputTypes)));
+  pulOutputTypesSupplied: Deno.PointerValue | Uint8Array /* ptr */,
+  pOutputTypes: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdmo_dll.DMOGetTypes(util.toPointer(clsidDMO), ulInputTypesRequested, util.toPointer(pulInputTypesSupplied), util.toPointer(pInputTypes), ulOutputTypesRequested, util.toPointer(pulOutputTypesSupplied), util.toPointer(pOutputTypes));
 }
 
 export function DMOGetName(
-  clsidDMO: Deno.PointerValue | Uint8Array | null /* ptr */,
+  clsidDMO: Deno.PointerValue | Uint8Array /* ptr */,
   szName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdmo_dll.DMOGetName(util.toPointer(clsidDMO), util.pwstrToFfi(szName)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdmo_dll.DMOGetName(util.toPointer(clsidDMO), util.pwstrToFfi(szName));
 }
 
 export function MoInitMediaType(
-  pmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pmt: Deno.PointerValue | Uint8Array /* ptr */,
   cbFormat: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdmo_dll.MoInitMediaType(util.toPointer(pmt), cbFormat));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdmo_dll.MoInitMediaType(util.toPointer(pmt), cbFormat);
 }
 
 export function MoFreeMediaType(
-  pmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdmo_dll.MoFreeMediaType(util.toPointer(pmt)));
+  pmt: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdmo_dll.MoFreeMediaType(util.toPointer(pmt));
 }
 
 export function MoCopyMediaType(
-  pmtDest: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pmtSrc: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdmo_dll.MoCopyMediaType(util.toPointer(pmtDest), util.toPointer(pmtSrc)));
+  pmtDest: Deno.PointerValue | Uint8Array /* ptr */,
+  pmtSrc: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdmo_dll.MoCopyMediaType(util.toPointer(pmtDest), util.toPointer(pmtSrc));
 }
 
 export function MoCreateMediaType(
-  ppmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ppmt: Deno.PointerValue | Uint8Array /* ptr */,
   cbFormat: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdmo_dll.MoCreateMediaType(util.toPointer(ppmt), cbFormat));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdmo_dll.MoCreateMediaType(util.toPointer(ppmt), cbFormat);
 }
 
 export function MoDeleteMediaType(
-  pmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdmo_dll.MoDeleteMediaType(util.toPointer(pmt)));
+  pmt: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdmo_dll.MoDeleteMediaType(util.toPointer(pmt));
 }
 
 export function MoDuplicateMediaType(
-  ppmtDest: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pmtSrc: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdmo_dll.MoDuplicateMediaType(util.toPointer(ppmtDest), util.toPointer(pmtSrc)));
+  ppmtDest: Deno.PointerValue | Uint8Array /* ptr */,
+  pmtSrc: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdmo_dll.MoDuplicateMediaType(util.toPointer(ppmtDest), util.toPointer(pmtSrc));
 }
 

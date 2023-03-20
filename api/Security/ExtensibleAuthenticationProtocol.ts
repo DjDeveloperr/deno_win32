@@ -529,11 +529,11 @@ export type HANDLE = Deno.PointerValue;
  */
 export interface NgcTicketContext {
   /** array */
-  wszTicket: Deno.PointerValue | null;
+  wszTicket: Deno.PointerValue;
   /** Windows.Win32.Security.Cryptography.NCRYPT_KEY_HANDLE */
-  hKey: Uint8Array | Deno.PointerValue | null;
+  hKey: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.HANDLE */
-  hImpersonateToken: Uint8Array | Deno.PointerValue | null;
+  hImpersonateToken: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofNgcTicketContext = 24;
@@ -542,11 +542,11 @@ export function allocNgcTicketContext(data?: Partial<NgcTicketContext>): Uint8Ar
   const buf = new Uint8Array(sizeofNgcTicketContext);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.wszTicket !== undefined) view.setBigUint64(0, data.wszTicket === null ? 0n : BigInt(util.toPointer(data.wszTicket)), true);
+  if (data?.wszTicket !== undefined) view.setBigUint64(0, data.wszTicket === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.wszTicket))), true);
   // 0x08: pointer
-  if (data?.hKey !== undefined) view.setBigUint64(8, data.hKey === null ? 0n : BigInt(util.toPointer(data.hKey)), true);
+  if (data?.hKey !== undefined) view.setBigUint64(8, data.hKey === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hKey))), true);
   // 0x10: pointer
-  if (data?.hImpersonateToken !== undefined) view.setBigUint64(16, data.hImpersonateToken === null ? 0n : BigInt(util.toPointer(data.hImpersonateToken)), true);
+  if (data?.hImpersonateToken !== undefined) view.setBigUint64(16, data.hImpersonateToken === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hImpersonateToken))), true);
   return buf;
 }
 
@@ -561,36 +561,36 @@ export class NgcTicketContextView {
   }
 
   // 0x00: pointer
-  get wszTicket(): Uint8Array | Deno.PointerValue | null {
+  get wszTicket(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get hKey(): Uint8Array | Deno.PointerValue | null {
+  get hKey(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get hImpersonateToken(): Uint8Array | Deno.PointerValue | null {
+  get hImpersonateToken(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set wszTicket(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set wszTicket(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set hKey(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set hKey(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set hImpersonateToken(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set hImpersonateToken(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -603,7 +603,7 @@ export interface RAS_AUTH_ATTRIBUTE {
   /** u32 */
   dwLength: number;
   /** ptr */
-  Value: Deno.PointerValue | Uint8Array | null;
+  Value: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofRAS_AUTH_ATTRIBUTE = 16;
@@ -616,7 +616,7 @@ export function allocRAS_AUTH_ATTRIBUTE(data?: Partial<RAS_AUTH_ATTRIBUTE>): Uin
   // 0x04: u32
   if (data?.dwLength !== undefined) view.setUint32(4, Number(data.dwLength), true);
   // 0x08: pointer
-  if (data?.Value !== undefined) view.setBigUint64(8, data.Value === null ? 0n : BigInt(util.toPointer(data.Value)), true);
+  if (data?.Value !== undefined) view.setBigUint64(8, data.Value === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Value))), true);
   return buf;
 }
 
@@ -641,9 +641,9 @@ export class RAS_AUTH_ATTRIBUTEView {
   }
 
   // 0x08: pointer
-  get Value(): Uint8Array | Deno.PointerValue | null {
+  get Value(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -657,8 +657,8 @@ export class RAS_AUTH_ATTRIBUTEView {
   }
 
   // 0x08: pointer
-  set Value(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Value(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -671,9 +671,9 @@ export interface PPP_EAP_PACKET {
   /** u8 */
   Id: number;
   /** array */
-  Length: Deno.PointerValue | null;
+  Length: Deno.PointerValue;
   /** array */
-  Data: Deno.PointerValue | null;
+  Data: Deno.PointerValue;
 }
 
 export const sizeofPPP_EAP_PACKET = 24;
@@ -687,9 +687,9 @@ export function allocPPP_EAP_PACKET(data?: Partial<PPP_EAP_PACKET>): Uint8Array 
   if (data?.Id !== undefined) view.setUint8(1, Number(data.Id));
   // 0x02: pad6
   // 0x08: pointer
-  if (data?.Length !== undefined) view.setBigUint64(8, data.Length === null ? 0n : BigInt(util.toPointer(data.Length)), true);
+  if (data?.Length !== undefined) view.setBigUint64(8, data.Length === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Length))), true);
   // 0x10: pointer
-  if (data?.Data !== undefined) view.setBigUint64(16, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
+  if (data?.Data !== undefined) view.setBigUint64(16, data.Data === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Data))), true);
   return buf;
 }
 
@@ -716,15 +716,15 @@ export class PPP_EAP_PACKETView {
   // 0x02: pad6
 
   // 0x08: pointer
-  get Length(): Uint8Array | Deno.PointerValue | null {
+  get Length(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get Data(): Uint8Array | Deno.PointerValue | null {
+  get Data(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u8
@@ -740,19 +740,19 @@ export class PPP_EAP_PACKETView {
   // 0x02: pad6
 
   // 0x08: pointer
-  set Length(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Length(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set Data(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set Data(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
 export type BOOL = number;
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.Security.ExtensibleAuthenticationProtocol.PPP_EAP_INPUT (size: 144)
@@ -771,33 +771,33 @@ export interface PPP_EAP_INPUT {
   /** u8 */
   bInitialId: number;
   /** ptr */
-  pUserAttributes: Deno.PointerValue | Uint8Array | null;
+  pUserAttributes: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.BOOL */
   fAuthenticationComplete: boolean;
   /** u32 */
   dwAuthResultCode: number;
   /** Windows.Win32.Foundation.HANDLE */
-  hTokenImpersonateUser: Uint8Array | Deno.PointerValue | null;
+  hTokenImpersonateUser: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOL */
   fSuccessPacketReceived: boolean;
   /** Windows.Win32.Foundation.BOOL */
   fDataReceivedFromInteractiveUI: boolean;
   /** ptr */
-  pDataFromInteractiveUI: Deno.PointerValue | Uint8Array | null;
+  pDataFromInteractiveUI: Deno.PointerValue | Uint8Array;
   /** u32 */
   dwSizeOfDataFromInteractiveUI: number;
   /** ptr */
-  pConnectionData: Deno.PointerValue | Uint8Array | null;
+  pConnectionData: Deno.PointerValue | Uint8Array;
   /** u32 */
   dwSizeOfConnectionData: number;
   /** ptr */
-  pUserData: Deno.PointerValue | Uint8Array | null;
+  pUserData: Deno.PointerValue | Uint8Array;
   /** u32 */
   dwSizeOfUserData: number;
   /** Windows.Win32.Foundation.HANDLE */
-  hReserved: Uint8Array | Deno.PointerValue | null;
+  hReserved: Uint8Array | Deno.PointerValue;
   /** System.Guid */
-  guidConnectionId: Uint8Array | Deno.PointerValue | null;
+  guidConnectionId: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOL */
   isVpn: boolean;
 }
@@ -817,47 +817,47 @@ export function allocPPP_EAP_INPUT(data?: Partial<PPP_EAP_INPUT>): Uint8Array {
   // 0x10: buffer
   if (data?.pwszIdentity !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pwszIdentity);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.pwszPassword !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.pwszPassword);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: u8
   if (data?.bInitialId !== undefined) view.setUint8(32, Number(data.bInitialId));
   // 0x21: pad7
   // 0x28: pointer
-  if (data?.pUserAttributes !== undefined) view.setBigUint64(40, data.pUserAttributes === null ? 0n : BigInt(util.toPointer(data.pUserAttributes)), true);
+  if (data?.pUserAttributes !== undefined) view.setBigUint64(40, data.pUserAttributes === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pUserAttributes))), true);
   // 0x30: i32
   if (data?.fAuthenticationComplete !== undefined) view.setInt32(48, Number(data.fAuthenticationComplete), true);
   // 0x34: u32
   if (data?.dwAuthResultCode !== undefined) view.setUint32(52, Number(data.dwAuthResultCode), true);
   // 0x38: pointer
-  if (data?.hTokenImpersonateUser !== undefined) view.setBigUint64(56, data.hTokenImpersonateUser === null ? 0n : BigInt(util.toPointer(data.hTokenImpersonateUser)), true);
+  if (data?.hTokenImpersonateUser !== undefined) view.setBigUint64(56, data.hTokenImpersonateUser === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hTokenImpersonateUser))), true);
   // 0x40: i32
   if (data?.fSuccessPacketReceived !== undefined) view.setInt32(64, Number(data.fSuccessPacketReceived), true);
   // 0x44: i32
   if (data?.fDataReceivedFromInteractiveUI !== undefined) view.setInt32(68, Number(data.fDataReceivedFromInteractiveUI), true);
   // 0x48: pointer
-  if (data?.pDataFromInteractiveUI !== undefined) view.setBigUint64(72, data.pDataFromInteractiveUI === null ? 0n : BigInt(util.toPointer(data.pDataFromInteractiveUI)), true);
+  if (data?.pDataFromInteractiveUI !== undefined) view.setBigUint64(72, data.pDataFromInteractiveUI === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pDataFromInteractiveUI))), true);
   // 0x50: u32
   if (data?.dwSizeOfDataFromInteractiveUI !== undefined) view.setUint32(80, Number(data.dwSizeOfDataFromInteractiveUI), true);
   // 0x54: pad4
   // 0x58: pointer
-  if (data?.pConnectionData !== undefined) view.setBigUint64(88, data.pConnectionData === null ? 0n : BigInt(util.toPointer(data.pConnectionData)), true);
+  if (data?.pConnectionData !== undefined) view.setBigUint64(88, data.pConnectionData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pConnectionData))), true);
   // 0x60: u32
   if (data?.dwSizeOfConnectionData !== undefined) view.setUint32(96, Number(data.dwSizeOfConnectionData), true);
   // 0x64: pad4
   // 0x68: pointer
-  if (data?.pUserData !== undefined) view.setBigUint64(104, data.pUserData === null ? 0n : BigInt(util.toPointer(data.pUserData)), true);
+  if (data?.pUserData !== undefined) view.setBigUint64(104, data.pUserData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pUserData))), true);
   // 0x70: u32
   if (data?.dwSizeOfUserData !== undefined) view.setUint32(112, Number(data.dwSizeOfUserData), true);
   // 0x74: pad4
   // 0x78: pointer
-  if (data?.hReserved !== undefined) view.setBigUint64(120, data.hReserved === null ? 0n : BigInt(util.toPointer(data.hReserved)), true);
+  if (data?.hReserved !== undefined) view.setBigUint64(120, data.hReserved === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hReserved))), true);
   // 0x80: pointer
-  if (data?.guidConnectionId !== undefined) view.setBigUint64(128, data.guidConnectionId === null ? 0n : BigInt(util.toPointer(data.guidConnectionId)), true);
+  if (data?.guidConnectionId !== undefined) view.setBigUint64(128, data.guidConnectionId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.guidConnectionId))), true);
   // 0x88: i32
   if (data?.isVpn !== undefined) view.setInt32(136, Number(data.isVpn), true);
   // 0x8c: pad4
@@ -892,15 +892,15 @@ export class PPP_EAP_INPUTView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  get pwszIdentity(): Uint8Array | Deno.PointerValue | null {
+  get pwszIdentity(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get pwszPassword(): Uint8Array | Deno.PointerValue | null {
+  get pwszPassword(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u8
@@ -911,9 +911,9 @@ export class PPP_EAP_INPUTView {
   // 0x21: pad7
 
   // 0x28: pointer
-  get pUserAttributes(): Uint8Array | Deno.PointerValue | null {
+  get pUserAttributes(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: i32
@@ -927,9 +927,9 @@ export class PPP_EAP_INPUTView {
   }
 
   // 0x38: pointer
-  get hTokenImpersonateUser(): Uint8Array | Deno.PointerValue | null {
+  get hTokenImpersonateUser(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: i32
@@ -943,9 +943,9 @@ export class PPP_EAP_INPUTView {
   }
 
   // 0x48: pointer
-  get pDataFromInteractiveUI(): Uint8Array | Deno.PointerValue | null {
+  get pDataFromInteractiveUI(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: u32
@@ -956,9 +956,9 @@ export class PPP_EAP_INPUTView {
   // 0x54: pad4
 
   // 0x58: pointer
-  get pConnectionData(): Uint8Array | Deno.PointerValue | null {
+  get pConnectionData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x60: u32
@@ -969,9 +969,9 @@ export class PPP_EAP_INPUTView {
   // 0x64: pad4
 
   // 0x68: pointer
-  get pUserData(): Uint8Array | Deno.PointerValue | null {
+  get pUserData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(104, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x70: u32
@@ -982,15 +982,15 @@ export class PPP_EAP_INPUTView {
   // 0x74: pad4
 
   // 0x78: pointer
-  get hReserved(): Uint8Array | Deno.PointerValue | null {
+  get hReserved(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(120, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x80: pointer
-  get guidConnectionId(): Uint8Array | Deno.PointerValue | null {
+  get guidConnectionId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(128, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x88: i32
@@ -1018,15 +1018,15 @@ export class PPP_EAP_INPUTView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  set pwszIdentity(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszIdentity(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set pwszPassword(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszPassword(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: u8
@@ -1037,8 +1037,8 @@ export class PPP_EAP_INPUTView {
   // 0x21: pad7
 
   // 0x28: pointer
-  set pUserAttributes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set pUserAttributes(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: i32
@@ -1052,8 +1052,8 @@ export class PPP_EAP_INPUTView {
   }
 
   // 0x38: pointer
-  set hTokenImpersonateUser(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set hTokenImpersonateUser(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: i32
@@ -1067,8 +1067,8 @@ export class PPP_EAP_INPUTView {
   }
 
   // 0x48: pointer
-  set pDataFromInteractiveUI(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set pDataFromInteractiveUI(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x50: u32
@@ -1079,8 +1079,8 @@ export class PPP_EAP_INPUTView {
   // 0x54: pad4
 
   // 0x58: pointer
-  set pConnectionData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  set pConnectionData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x60: u32
@@ -1091,8 +1091,8 @@ export class PPP_EAP_INPUTView {
   // 0x64: pad4
 
   // 0x68: pointer
-  set pUserData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(104, BigInt(util.toPointer(value)), true);
+  set pUserData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(104, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x70: u32
@@ -1103,13 +1103,13 @@ export class PPP_EAP_INPUTView {
   // 0x74: pad4
 
   // 0x78: pointer
-  set hReserved(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(120, BigInt(util.toPointer(value)), true);
+  set hReserved(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(120, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x80: pointer
-  set guidConnectionId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(128, BigInt(util.toPointer(value)), true);
+  set guidConnectionId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(128, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x88: i32
@@ -1131,27 +1131,27 @@ export interface PPP_EAP_OUTPUT {
   /** u32 */
   dwAuthResultCode: number;
   /** ptr */
-  pUserAttributes: Deno.PointerValue | Uint8Array | null;
+  pUserAttributes: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.BOOL */
   fInvokeInteractiveUI: boolean;
   /** ptr */
-  pUIContextData: Deno.PointerValue | Uint8Array | null;
+  pUIContextData: Deno.PointerValue | Uint8Array;
   /** u32 */
   dwSizeOfUIContextData: number;
   /** Windows.Win32.Foundation.BOOL */
   fSaveConnectionData: boolean;
   /** ptr */
-  pConnectionData: Deno.PointerValue | Uint8Array | null;
+  pConnectionData: Deno.PointerValue | Uint8Array;
   /** u32 */
   dwSizeOfConnectionData: number;
   /** Windows.Win32.Foundation.BOOL */
   fSaveUserData: boolean;
   /** ptr */
-  pUserData: Deno.PointerValue | Uint8Array | null;
+  pUserData: Deno.PointerValue | Uint8Array;
   /** u32 */
   dwSizeOfUserData: number;
   /** ptr */
-  pNgcKerbTicket: Deno.PointerValue | Uint8Array | null;
+  pNgcKerbTicket: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.BOOL */
   fSaveToCredMan: boolean;
 }
@@ -1169,29 +1169,29 @@ export function allocPPP_EAP_OUTPUT(data?: Partial<PPP_EAP_OUTPUT>): Uint8Array 
   if (data?.dwAuthResultCode !== undefined) view.setUint32(8, Number(data.dwAuthResultCode), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.pUserAttributes !== undefined) view.setBigUint64(16, data.pUserAttributes === null ? 0n : BigInt(util.toPointer(data.pUserAttributes)), true);
+  if (data?.pUserAttributes !== undefined) view.setBigUint64(16, data.pUserAttributes === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pUserAttributes))), true);
   // 0x18: i32
   if (data?.fInvokeInteractiveUI !== undefined) view.setInt32(24, Number(data.fInvokeInteractiveUI), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.pUIContextData !== undefined) view.setBigUint64(32, data.pUIContextData === null ? 0n : BigInt(util.toPointer(data.pUIContextData)), true);
+  if (data?.pUIContextData !== undefined) view.setBigUint64(32, data.pUIContextData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pUIContextData))), true);
   // 0x28: u32
   if (data?.dwSizeOfUIContextData !== undefined) view.setUint32(40, Number(data.dwSizeOfUIContextData), true);
   // 0x2c: i32
   if (data?.fSaveConnectionData !== undefined) view.setInt32(44, Number(data.fSaveConnectionData), true);
   // 0x30: pointer
-  if (data?.pConnectionData !== undefined) view.setBigUint64(48, data.pConnectionData === null ? 0n : BigInt(util.toPointer(data.pConnectionData)), true);
+  if (data?.pConnectionData !== undefined) view.setBigUint64(48, data.pConnectionData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pConnectionData))), true);
   // 0x38: u32
   if (data?.dwSizeOfConnectionData !== undefined) view.setUint32(56, Number(data.dwSizeOfConnectionData), true);
   // 0x3c: i32
   if (data?.fSaveUserData !== undefined) view.setInt32(60, Number(data.fSaveUserData), true);
   // 0x40: pointer
-  if (data?.pUserData !== undefined) view.setBigUint64(64, data.pUserData === null ? 0n : BigInt(util.toPointer(data.pUserData)), true);
+  if (data?.pUserData !== undefined) view.setBigUint64(64, data.pUserData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pUserData))), true);
   // 0x48: u32
   if (data?.dwSizeOfUserData !== undefined) view.setUint32(72, Number(data.dwSizeOfUserData), true);
   // 0x4c: pad4
   // 0x50: pointer
-  if (data?.pNgcKerbTicket !== undefined) view.setBigUint64(80, data.pNgcKerbTicket === null ? 0n : BigInt(util.toPointer(data.pNgcKerbTicket)), true);
+  if (data?.pNgcKerbTicket !== undefined) view.setBigUint64(80, data.pNgcKerbTicket === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pNgcKerbTicket))), true);
   // 0x58: i32
   if (data?.fSaveToCredMan !== undefined) view.setInt32(88, Number(data.fSaveToCredMan), true);
   // 0x5c: pad4
@@ -1226,9 +1226,9 @@ export class PPP_EAP_OUTPUTView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get pUserAttributes(): Uint8Array | Deno.PointerValue | null {
+  get pUserAttributes(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: i32
@@ -1239,9 +1239,9 @@ export class PPP_EAP_OUTPUTView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get pUIContextData(): Uint8Array | Deno.PointerValue | null {
+  get pUIContextData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -1255,9 +1255,9 @@ export class PPP_EAP_OUTPUTView {
   }
 
   // 0x30: pointer
-  get pConnectionData(): Uint8Array | Deno.PointerValue | null {
+  get pConnectionData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: u32
@@ -1271,9 +1271,9 @@ export class PPP_EAP_OUTPUTView {
   }
 
   // 0x40: pointer
-  get pUserData(): Uint8Array | Deno.PointerValue | null {
+  get pUserData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: u32
@@ -1284,9 +1284,9 @@ export class PPP_EAP_OUTPUTView {
   // 0x4c: pad4
 
   // 0x50: pointer
-  get pNgcKerbTicket(): Uint8Array | Deno.PointerValue | null {
+  get pNgcKerbTicket(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x58: i32
@@ -1314,8 +1314,8 @@ export class PPP_EAP_OUTPUTView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set pUserAttributes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pUserAttributes(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: i32
@@ -1326,8 +1326,8 @@ export class PPP_EAP_OUTPUTView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set pUIContextData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set pUIContextData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u32
@@ -1341,8 +1341,8 @@ export class PPP_EAP_OUTPUTView {
   }
 
   // 0x30: pointer
-  set pConnectionData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set pConnectionData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: u32
@@ -1356,8 +1356,8 @@ export class PPP_EAP_OUTPUTView {
   }
 
   // 0x40: pointer
-  set pUserData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set pUserData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: u32
@@ -1368,8 +1368,8 @@ export class PPP_EAP_OUTPUTView {
   // 0x4c: pad4
 
   // 0x50: pointer
-  set pNgcKerbTicket(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set pNgcKerbTicket(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x58: i32
@@ -1500,15 +1500,15 @@ export interface LEGACY_IDENTITY_UI_PARAMS {
   /** u32 */
   dwSizeofConnectionData: number;
   /** ptr */
-  pConnectionData: Deno.PointerValue | Uint8Array | null;
+  pConnectionData: Deno.PointerValue | Uint8Array;
   /** u32 */
   dwSizeofUserData: number;
   /** ptr */
-  pUserData: Deno.PointerValue | Uint8Array | null;
+  pUserData: Deno.PointerValue | Uint8Array;
   /** u32 */
   dwSizeofUserDataOut: number;
   /** ptr */
-  pUserDataOut: Deno.PointerValue | Uint8Array | null;
+  pUserDataOut: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.PWSTR */
   pwszIdentity: string | null | Uint8Array | Uint16Array;
   /** u32 */
@@ -1528,21 +1528,21 @@ export function allocLEGACY_IDENTITY_UI_PARAMS(data?: Partial<LEGACY_IDENTITY_UI
   if (data?.dwSizeofConnectionData !== undefined) view.setUint32(8, Number(data.dwSizeofConnectionData), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.pConnectionData !== undefined) view.setBigUint64(16, data.pConnectionData === null ? 0n : BigInt(util.toPointer(data.pConnectionData)), true);
+  if (data?.pConnectionData !== undefined) view.setBigUint64(16, data.pConnectionData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pConnectionData))), true);
   // 0x18: u32
   if (data?.dwSizeofUserData !== undefined) view.setUint32(24, Number(data.dwSizeofUserData), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.pUserData !== undefined) view.setBigUint64(32, data.pUserData === null ? 0n : BigInt(util.toPointer(data.pUserData)), true);
+  if (data?.pUserData !== undefined) view.setBigUint64(32, data.pUserData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pUserData))), true);
   // 0x28: u32
   if (data?.dwSizeofUserDataOut !== undefined) view.setUint32(40, Number(data.dwSizeofUserDataOut), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.pUserDataOut !== undefined) view.setBigUint64(48, data.pUserDataOut === null ? 0n : BigInt(util.toPointer(data.pUserDataOut)), true);
+  if (data?.pUserDataOut !== undefined) view.setBigUint64(48, data.pUserDataOut === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pUserDataOut))), true);
   // 0x38: buffer
   if (data?.pwszIdentity !== undefined) {
     (buf as any)._f56 = util.pwstrToFfi(data.pwszIdentity);
-    view.setBigUint64(56, (buf as any)._f56 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f56)), true);
+    view.setBigUint64(56, (buf as any)._f56 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f56))), true);
   }
   // 0x40: u32
   if (data?.dwError !== undefined) view.setUint32(64, Number(data.dwError), true);
@@ -1578,9 +1578,9 @@ export class LEGACY_IDENTITY_UI_PARAMSView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get pConnectionData(): Uint8Array | Deno.PointerValue | null {
+  get pConnectionData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -1591,9 +1591,9 @@ export class LEGACY_IDENTITY_UI_PARAMSView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get pUserData(): Uint8Array | Deno.PointerValue | null {
+  get pUserData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -1604,15 +1604,15 @@ export class LEGACY_IDENTITY_UI_PARAMSView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  get pUserDataOut(): Uint8Array | Deno.PointerValue | null {
+  get pUserDataOut(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: buffer
-  get pwszIdentity(): Uint8Array | Deno.PointerValue | null {
+  get pwszIdentity(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: u32
@@ -1640,8 +1640,8 @@ export class LEGACY_IDENTITY_UI_PARAMSView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set pConnectionData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pConnectionData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -1652,8 +1652,8 @@ export class LEGACY_IDENTITY_UI_PARAMSView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set pUserData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set pUserData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u32
@@ -1664,14 +1664,14 @@ export class LEGACY_IDENTITY_UI_PARAMSView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  set pUserDataOut(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set pUserDataOut(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: buffer
-  set pwszIdentity(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszIdentity(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f56 = value;
-    this.view.setBigUint64(56, BigInt(util.toPointer((this.buf as any)._f56)), true);
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f56))), true);
   }
 
   // 0x40: u32
@@ -1691,11 +1691,11 @@ export interface LEGACY_INTERACTIVE_UI_PARAMS {
   /** u32 */
   dwSizeofContextData: number;
   /** ptr */
-  pContextData: Deno.PointerValue | Uint8Array | null;
+  pContextData: Deno.PointerValue | Uint8Array;
   /** u32 */
   dwSizeofInteractiveUIData: number;
   /** ptr */
-  pInteractiveUIData: Deno.PointerValue | Uint8Array | null;
+  pInteractiveUIData: Deno.PointerValue | Uint8Array;
   /** u32 */
   dwError: number;
 }
@@ -1710,12 +1710,12 @@ export function allocLEGACY_INTERACTIVE_UI_PARAMS(data?: Partial<LEGACY_INTERACT
   // 0x04: u32
   if (data?.dwSizeofContextData !== undefined) view.setUint32(4, Number(data.dwSizeofContextData), true);
   // 0x08: pointer
-  if (data?.pContextData !== undefined) view.setBigUint64(8, data.pContextData === null ? 0n : BigInt(util.toPointer(data.pContextData)), true);
+  if (data?.pContextData !== undefined) view.setBigUint64(8, data.pContextData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pContextData))), true);
   // 0x10: u32
   if (data?.dwSizeofInteractiveUIData !== undefined) view.setUint32(16, Number(data.dwSizeofInteractiveUIData), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.pInteractiveUIData !== undefined) view.setBigUint64(24, data.pInteractiveUIData === null ? 0n : BigInt(util.toPointer(data.pInteractiveUIData)), true);
+  if (data?.pInteractiveUIData !== undefined) view.setBigUint64(24, data.pInteractiveUIData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pInteractiveUIData))), true);
   // 0x20: u32
   if (data?.dwError !== undefined) view.setUint32(32, Number(data.dwError), true);
   // 0x24: pad4
@@ -1743,9 +1743,9 @@ export class LEGACY_INTERACTIVE_UI_PARAMSView {
   }
 
   // 0x08: pointer
-  get pContextData(): Uint8Array | Deno.PointerValue | null {
+  get pContextData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -1756,9 +1756,9 @@ export class LEGACY_INTERACTIVE_UI_PARAMSView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get pInteractiveUIData(): Uint8Array | Deno.PointerValue | null {
+  get pInteractiveUIData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -1779,8 +1779,8 @@ export class LEGACY_INTERACTIVE_UI_PARAMSView {
   }
 
   // 0x08: pointer
-  set pContextData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pContextData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -1791,8 +1791,8 @@ export class LEGACY_INTERACTIVE_UI_PARAMSView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set pInteractiveUIData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set pInteractiveUIData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -1880,7 +1880,7 @@ export class EAP_TYPEView {
  */
 export interface EAP_METHOD_TYPE {
   /** Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_TYPE */
-  eapType: Uint8Array | Deno.PointerValue | null;
+  eapType: Uint8Array | Deno.PointerValue;
   /** u32 */
   dwAuthorId: number;
 }
@@ -1891,7 +1891,7 @@ export function allocEAP_METHOD_TYPE(data?: Partial<EAP_METHOD_TYPE>): Uint8Arra
   const buf = new Uint8Array(sizeofEAP_METHOD_TYPE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.eapType !== undefined) view.setBigUint64(0, data.eapType === null ? 0n : BigInt(util.toPointer(data.eapType)), true);
+  if (data?.eapType !== undefined) view.setBigUint64(0, data.eapType === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.eapType))), true);
   // 0x08: u32
   if (data?.dwAuthorId !== undefined) view.setUint32(8, Number(data.dwAuthorId), true);
   // 0x0c: pad4
@@ -1909,9 +1909,9 @@ export class EAP_METHOD_TYPEView {
   }
 
   // 0x00: pointer
-  get eapType(): Uint8Array | Deno.PointerValue | null {
+  get eapType(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -1922,8 +1922,8 @@ export class EAP_METHOD_TYPEView {
   // 0x0c: pad4
 
   // 0x00: pointer
-  set eapType(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set eapType(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -1939,7 +1939,7 @@ export class EAP_METHOD_TYPEView {
  */
 export interface EAP_METHOD_INFO {
   /** Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_METHOD_TYPE */
-  eaptype: Uint8Array | Deno.PointerValue | null;
+  eaptype: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   pwszAuthorName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
@@ -1947,7 +1947,7 @@ export interface EAP_METHOD_INFO {
   /** u32 */
   eapProperties: number;
   /** ptr */
-  pInnerMethodInfo: Deno.PointerValue | Uint8Array | null;
+  pInnerMethodInfo: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofEAP_METHOD_INFO = 40;
@@ -1956,22 +1956,22 @@ export function allocEAP_METHOD_INFO(data?: Partial<EAP_METHOD_INFO>): Uint8Arra
   const buf = new Uint8Array(sizeofEAP_METHOD_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.eaptype !== undefined) view.setBigUint64(0, data.eaptype === null ? 0n : BigInt(util.toPointer(data.eaptype)), true);
+  if (data?.eaptype !== undefined) view.setBigUint64(0, data.eaptype === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.eaptype))), true);
   // 0x08: buffer
   if (data?.pwszAuthorName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pwszAuthorName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.pwszFriendlyName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pwszFriendlyName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: u32
   if (data?.eapProperties !== undefined) view.setUint32(24, Number(data.eapProperties), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.pInnerMethodInfo !== undefined) view.setBigUint64(32, data.pInnerMethodInfo === null ? 0n : BigInt(util.toPointer(data.pInnerMethodInfo)), true);
+  if (data?.pInnerMethodInfo !== undefined) view.setBigUint64(32, data.pInnerMethodInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pInnerMethodInfo))), true);
   return buf;
 }
 
@@ -1986,21 +1986,21 @@ export class EAP_METHOD_INFOView {
   }
 
   // 0x00: pointer
-  get eaptype(): Uint8Array | Deno.PointerValue | null {
+  get eaptype(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get pwszAuthorName(): Uint8Array | Deno.PointerValue | null {
+  get pwszAuthorName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get pwszFriendlyName(): Uint8Array | Deno.PointerValue | null {
+  get pwszFriendlyName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -2011,26 +2011,26 @@ export class EAP_METHOD_INFOView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get pInnerMethodInfo(): Uint8Array | Deno.PointerValue | null {
+  get pInnerMethodInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set eaptype(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set eaptype(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: buffer
-  set pwszAuthorName(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszAuthorName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set pwszFriendlyName(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszFriendlyName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: u32
@@ -2041,8 +2041,8 @@ export class EAP_METHOD_INFOView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set pInnerMethodInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set pInnerMethodInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2051,7 +2051,7 @@ export class EAP_METHOD_INFOView {
  */
 export interface EAP_METHOD_INFO_EX {
   /** Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_METHOD_TYPE */
-  eaptype: Uint8Array | Deno.PointerValue | null;
+  eaptype: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   pwszAuthorName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
@@ -2059,7 +2059,7 @@ export interface EAP_METHOD_INFO_EX {
   /** u32 */
   eapProperties: number;
   /** ptr */
-  pInnerMethodInfoArray: Deno.PointerValue | Uint8Array | null;
+  pInnerMethodInfoArray: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofEAP_METHOD_INFO_EX = 40;
@@ -2068,22 +2068,22 @@ export function allocEAP_METHOD_INFO_EX(data?: Partial<EAP_METHOD_INFO_EX>): Uin
   const buf = new Uint8Array(sizeofEAP_METHOD_INFO_EX);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.eaptype !== undefined) view.setBigUint64(0, data.eaptype === null ? 0n : BigInt(util.toPointer(data.eaptype)), true);
+  if (data?.eaptype !== undefined) view.setBigUint64(0, data.eaptype === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.eaptype))), true);
   // 0x08: buffer
   if (data?.pwszAuthorName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pwszAuthorName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.pwszFriendlyName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pwszFriendlyName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: u32
   if (data?.eapProperties !== undefined) view.setUint32(24, Number(data.eapProperties), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.pInnerMethodInfoArray !== undefined) view.setBigUint64(32, data.pInnerMethodInfoArray === null ? 0n : BigInt(util.toPointer(data.pInnerMethodInfoArray)), true);
+  if (data?.pInnerMethodInfoArray !== undefined) view.setBigUint64(32, data.pInnerMethodInfoArray === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pInnerMethodInfoArray))), true);
   return buf;
 }
 
@@ -2098,21 +2098,21 @@ export class EAP_METHOD_INFO_EXView {
   }
 
   // 0x00: pointer
-  get eaptype(): Uint8Array | Deno.PointerValue | null {
+  get eaptype(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get pwszAuthorName(): Uint8Array | Deno.PointerValue | null {
+  get pwszAuthorName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get pwszFriendlyName(): Uint8Array | Deno.PointerValue | null {
+  get pwszFriendlyName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -2123,26 +2123,26 @@ export class EAP_METHOD_INFO_EXView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get pInnerMethodInfoArray(): Uint8Array | Deno.PointerValue | null {
+  get pInnerMethodInfoArray(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set eaptype(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set eaptype(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: buffer
-  set pwszAuthorName(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszAuthorName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set pwszFriendlyName(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszFriendlyName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: u32
@@ -2153,8 +2153,8 @@ export class EAP_METHOD_INFO_EXView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set pInnerMethodInfoArray(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set pInnerMethodInfoArray(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2165,7 +2165,7 @@ export interface EAP_METHOD_INFO_ARRAY {
   /** u32 */
   dwNumberOfMethods: number;
   /** ptr */
-  pEapMethods: Deno.PointerValue | Uint8Array | null;
+  pEapMethods: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofEAP_METHOD_INFO_ARRAY = 16;
@@ -2177,7 +2177,7 @@ export function allocEAP_METHOD_INFO_ARRAY(data?: Partial<EAP_METHOD_INFO_ARRAY>
   if (data?.dwNumberOfMethods !== undefined) view.setUint32(0, Number(data.dwNumberOfMethods), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pEapMethods !== undefined) view.setBigUint64(8, data.pEapMethods === null ? 0n : BigInt(util.toPointer(data.pEapMethods)), true);
+  if (data?.pEapMethods !== undefined) view.setBigUint64(8, data.pEapMethods === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pEapMethods))), true);
   return buf;
 }
 
@@ -2199,9 +2199,9 @@ export class EAP_METHOD_INFO_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pEapMethods(): Uint8Array | Deno.PointerValue | null {
+  get pEapMethods(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -2212,8 +2212,8 @@ export class EAP_METHOD_INFO_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pEapMethods(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pEapMethods(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2224,7 +2224,7 @@ export interface EAP_METHOD_INFO_ARRAY_EX {
   /** u32 */
   dwNumberOfMethods: number;
   /** ptr */
-  pEapMethods: Deno.PointerValue | Uint8Array | null;
+  pEapMethods: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofEAP_METHOD_INFO_ARRAY_EX = 16;
@@ -2236,7 +2236,7 @@ export function allocEAP_METHOD_INFO_ARRAY_EX(data?: Partial<EAP_METHOD_INFO_ARR
   if (data?.dwNumberOfMethods !== undefined) view.setUint32(0, Number(data.dwNumberOfMethods), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pEapMethods !== undefined) view.setBigUint64(8, data.pEapMethods === null ? 0n : BigInt(util.toPointer(data.pEapMethods)), true);
+  if (data?.pEapMethods !== undefined) view.setBigUint64(8, data.pEapMethods === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pEapMethods))), true);
   return buf;
 }
 
@@ -2258,9 +2258,9 @@ export class EAP_METHOD_INFO_ARRAY_EXView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pEapMethods(): Uint8Array | Deno.PointerValue | null {
+  get pEapMethods(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -2271,8 +2271,8 @@ export class EAP_METHOD_INFO_ARRAY_EXView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pEapMethods(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pEapMethods(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2283,15 +2283,15 @@ export interface EAP_ERROR {
   /** u32 */
   dwWinError: number;
   /** Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_METHOD_TYPE */
-  type: Uint8Array | Deno.PointerValue | null;
+  type: Uint8Array | Deno.PointerValue;
   /** u32 */
   dwReasonCode: number;
   /** System.Guid */
-  rootCauseGuid: Uint8Array | Deno.PointerValue | null;
+  rootCauseGuid: Uint8Array | Deno.PointerValue;
   /** System.Guid */
-  repairGuid: Uint8Array | Deno.PointerValue | null;
+  repairGuid: Uint8Array | Deno.PointerValue;
   /** System.Guid */
-  helpLinkGuid: Uint8Array | Deno.PointerValue | null;
+  helpLinkGuid: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   pRootCauseString: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
@@ -2307,25 +2307,25 @@ export function allocEAP_ERROR(data?: Partial<EAP_ERROR>): Uint8Array {
   if (data?.dwWinError !== undefined) view.setUint32(0, Number(data.dwWinError), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.type !== undefined) view.setBigUint64(8, data.type === null ? 0n : BigInt(util.toPointer(data.type)), true);
+  if (data?.type !== undefined) view.setBigUint64(8, data.type === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.type))), true);
   // 0x10: u32
   if (data?.dwReasonCode !== undefined) view.setUint32(16, Number(data.dwReasonCode), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.rootCauseGuid !== undefined) view.setBigUint64(24, data.rootCauseGuid === null ? 0n : BigInt(util.toPointer(data.rootCauseGuid)), true);
+  if (data?.rootCauseGuid !== undefined) view.setBigUint64(24, data.rootCauseGuid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rootCauseGuid))), true);
   // 0x20: pointer
-  if (data?.repairGuid !== undefined) view.setBigUint64(32, data.repairGuid === null ? 0n : BigInt(util.toPointer(data.repairGuid)), true);
+  if (data?.repairGuid !== undefined) view.setBigUint64(32, data.repairGuid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.repairGuid))), true);
   // 0x28: pointer
-  if (data?.helpLinkGuid !== undefined) view.setBigUint64(40, data.helpLinkGuid === null ? 0n : BigInt(util.toPointer(data.helpLinkGuid)), true);
+  if (data?.helpLinkGuid !== undefined) view.setBigUint64(40, data.helpLinkGuid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.helpLinkGuid))), true);
   // 0x30: buffer
   if (data?.pRootCauseString !== undefined) {
     (buf as any)._f48 = util.pwstrToFfi(data.pRootCauseString);
-    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
+    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f48))), true);
   }
   // 0x38: buffer
   if (data?.pRepairString !== undefined) {
     (buf as any)._f56 = util.pwstrToFfi(data.pRepairString);
-    view.setBigUint64(56, (buf as any)._f56 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f56)), true);
+    view.setBigUint64(56, (buf as any)._f56 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f56))), true);
   }
   return buf;
 }
@@ -2348,9 +2348,9 @@ export class EAP_ERRORView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get type(): Uint8Array | Deno.PointerValue | null {
+  get type(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -2361,33 +2361,33 @@ export class EAP_ERRORView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get rootCauseGuid(): Uint8Array | Deno.PointerValue | null {
+  get rootCauseGuid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get repairGuid(): Uint8Array | Deno.PointerValue | null {
+  get repairGuid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get helpLinkGuid(): Uint8Array | Deno.PointerValue | null {
+  get helpLinkGuid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: buffer
-  get pRootCauseString(): Uint8Array | Deno.PointerValue | null {
+  get pRootCauseString(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: buffer
-  get pRepairString(): Uint8Array | Deno.PointerValue | null {
+  get pRepairString(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -2398,8 +2398,8 @@ export class EAP_ERRORView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set type(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set type(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -2410,30 +2410,30 @@ export class EAP_ERRORView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set rootCauseGuid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set rootCauseGuid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set repairGuid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set repairGuid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set helpLinkGuid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set helpLinkGuid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: buffer
-  set pRootCauseString(value: Uint8Array | Deno.PointerValue | null) {
+  set pRootCauseString(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f48 = value;
-    this.view.setBigUint64(48, BigInt(util.toPointer((this.buf as any)._f48)), true);
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f48))), true);
   }
 
   // 0x38: buffer
-  set pRepairString(value: Uint8Array | Deno.PointerValue | null) {
+  set pRepairString(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f56 = value;
-    this.view.setBigUint64(56, BigInt(util.toPointer((this.buf as any)._f56)), true);
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f56))), true);
   }
 }
 
@@ -2446,7 +2446,7 @@ export interface EAP_ATTRIBUTE {
   /** u32 */
   dwLength: number;
   /** ptr */
-  pValue: Deno.PointerValue | Uint8Array | null;
+  pValue: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofEAP_ATTRIBUTE = 16;
@@ -2459,7 +2459,7 @@ export function allocEAP_ATTRIBUTE(data?: Partial<EAP_ATTRIBUTE>): Uint8Array {
   // 0x04: u32
   if (data?.dwLength !== undefined) view.setUint32(4, Number(data.dwLength), true);
   // 0x08: pointer
-  if (data?.pValue !== undefined) view.setBigUint64(8, data.pValue === null ? 0n : BigInt(util.toPointer(data.pValue)), true);
+  if (data?.pValue !== undefined) view.setBigUint64(8, data.pValue === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pValue))), true);
   return buf;
 }
 
@@ -2484,9 +2484,9 @@ export class EAP_ATTRIBUTEView {
   }
 
   // 0x08: pointer
-  get pValue(): Uint8Array | Deno.PointerValue | null {
+  get pValue(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -2500,8 +2500,8 @@ export class EAP_ATTRIBUTEView {
   }
 
   // 0x08: pointer
-  set pValue(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pValue(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2512,7 +2512,7 @@ export interface EAP_ATTRIBUTES {
   /** u32 */
   dwNumberOfAttributes: number;
   /** ptr */
-  pAttribs: Deno.PointerValue | Uint8Array | null;
+  pAttribs: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofEAP_ATTRIBUTES = 16;
@@ -2524,7 +2524,7 @@ export function allocEAP_ATTRIBUTES(data?: Partial<EAP_ATTRIBUTES>): Uint8Array 
   if (data?.dwNumberOfAttributes !== undefined) view.setUint32(0, Number(data.dwNumberOfAttributes), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pAttribs !== undefined) view.setBigUint64(8, data.pAttribs === null ? 0n : BigInt(util.toPointer(data.pAttribs)), true);
+  if (data?.pAttribs !== undefined) view.setBigUint64(8, data.pAttribs === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pAttribs))), true);
   return buf;
 }
 
@@ -2546,9 +2546,9 @@ export class EAP_ATTRIBUTESView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pAttribs(): Uint8Array | Deno.PointerValue | null {
+  get pAttribs(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -2559,8 +2559,8 @@ export class EAP_ATTRIBUTESView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pAttribs(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pAttribs(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2599,12 +2599,12 @@ export function allocEAP_CONFIG_INPUT_FIELD_DATA(data?: Partial<EAP_CONFIG_INPUT
   // 0x10: buffer
   if (data?.pwszLabel !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pwszLabel);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.pwszData !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.pwszData);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: u32
   if (data?.dwMinDataLength !== undefined) view.setUint32(32, Number(data.dwMinDataLength), true);
@@ -2641,15 +2641,15 @@ export class EAP_CONFIG_INPUT_FIELD_DATAView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  get pwszLabel(): Uint8Array | Deno.PointerValue | null {
+  get pwszLabel(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get pwszData(): Uint8Array | Deno.PointerValue | null {
+  get pwszData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -2680,15 +2680,15 @@ export class EAP_CONFIG_INPUT_FIELD_DATAView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  set pwszLabel(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszLabel(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set pwszData(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszData(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: u32
@@ -2711,7 +2711,7 @@ export interface EAP_CONFIG_INPUT_FIELD_ARRAY {
   /** u32 */
   dwNumberOfFields: number;
   /** ptr */
-  pFields: Deno.PointerValue | Uint8Array | null;
+  pFields: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofEAP_CONFIG_INPUT_FIELD_ARRAY = 16;
@@ -2724,7 +2724,7 @@ export function allocEAP_CONFIG_INPUT_FIELD_ARRAY(data?: Partial<EAP_CONFIG_INPU
   // 0x04: u32
   if (data?.dwNumberOfFields !== undefined) view.setUint32(4, Number(data.dwNumberOfFields), true);
   // 0x08: pointer
-  if (data?.pFields !== undefined) view.setBigUint64(8, data.pFields === null ? 0n : BigInt(util.toPointer(data.pFields)), true);
+  if (data?.pFields !== undefined) view.setBigUint64(8, data.pFields === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pFields))), true);
   return buf;
 }
 
@@ -2749,9 +2749,9 @@ export class EAP_CONFIG_INPUT_FIELD_ARRAYView {
   }
 
   // 0x08: pointer
-  get pFields(): Uint8Array | Deno.PointerValue | null {
+  get pFields(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -2765,8 +2765,8 @@ export class EAP_CONFIG_INPUT_FIELD_ARRAYView {
   }
 
   // 0x08: pointer
-  set pFields(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pFields(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2775,9 +2775,9 @@ export class EAP_CONFIG_INPUT_FIELD_ARRAYView {
  */
 export interface EAP_CRED_EXPIRY_REQ {
   /** Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_CONFIG_INPUT_FIELD_ARRAY */
-  curCreds: Uint8Array | Deno.PointerValue | null;
+  curCreds: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_CONFIG_INPUT_FIELD_ARRAY */
-  newCreds: Uint8Array | Deno.PointerValue | null;
+  newCreds: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofEAP_CRED_EXPIRY_REQ = 16;
@@ -2786,9 +2786,9 @@ export function allocEAP_CRED_EXPIRY_REQ(data?: Partial<EAP_CRED_EXPIRY_REQ>): U
   const buf = new Uint8Array(sizeofEAP_CRED_EXPIRY_REQ);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.curCreds !== undefined) view.setBigUint64(0, data.curCreds === null ? 0n : BigInt(util.toPointer(data.curCreds)), true);
+  if (data?.curCreds !== undefined) view.setBigUint64(0, data.curCreds === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.curCreds))), true);
   // 0x08: pointer
-  if (data?.newCreds !== undefined) view.setBigUint64(8, data.newCreds === null ? 0n : BigInt(util.toPointer(data.newCreds)), true);
+  if (data?.newCreds !== undefined) view.setBigUint64(8, data.newCreds === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.newCreds))), true);
   return buf;
 }
 
@@ -2803,25 +2803,25 @@ export class EAP_CRED_EXPIRY_REQView {
   }
 
   // 0x00: pointer
-  get curCreds(): Uint8Array | Deno.PointerValue | null {
+  get curCreds(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get newCreds(): Uint8Array | Deno.PointerValue | null {
+  get newCreds(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set curCreds(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set curCreds(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set newCreds(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set newCreds(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2830,11 +2830,11 @@ export class EAP_CRED_EXPIRY_REQView {
  */
 export interface EAP_UI_DATA_FORMAT {
   /** ptr */
-  credData: Deno.PointerValue | Uint8Array | null;
+  credData: Deno.PointerValue | Uint8Array;
   /** ptr */
-  credExpiryData: Deno.PointerValue | Uint8Array | null;
+  credExpiryData: Deno.PointerValue | Uint8Array;
   /** ptr */
-  credLogonData: Deno.PointerValue | Uint8Array | null;
+  credLogonData: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofEAP_UI_DATA_FORMAT = 24;
@@ -2843,11 +2843,11 @@ export function allocEAP_UI_DATA_FORMAT(data?: Partial<EAP_UI_DATA_FORMAT>): Uin
   const buf = new Uint8Array(sizeofEAP_UI_DATA_FORMAT);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.credData !== undefined) view.setBigUint64(0, data.credData === null ? 0n : BigInt(util.toPointer(data.credData)), true);
+  if (data?.credData !== undefined) view.setBigUint64(0, data.credData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.credData))), true);
   // 0x08: pointer
-  if (data?.credExpiryData !== undefined) view.setBigUint64(8, data.credExpiryData === null ? 0n : BigInt(util.toPointer(data.credExpiryData)), true);
+  if (data?.credExpiryData !== undefined) view.setBigUint64(8, data.credExpiryData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.credExpiryData))), true);
   // 0x10: pointer
-  if (data?.credLogonData !== undefined) view.setBigUint64(16, data.credLogonData === null ? 0n : BigInt(util.toPointer(data.credLogonData)), true);
+  if (data?.credLogonData !== undefined) view.setBigUint64(16, data.credLogonData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.credLogonData))), true);
   return buf;
 }
 
@@ -2862,36 +2862,36 @@ export class EAP_UI_DATA_FORMATView {
   }
 
   // 0x00: pointer
-  get credData(): Uint8Array | Deno.PointerValue | null {
+  get credData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get credExpiryData(): Uint8Array | Deno.PointerValue | null {
+  get credExpiryData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get credLogonData(): Uint8Array | Deno.PointerValue | null {
+  get credLogonData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set credData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set credData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set credExpiryData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set credExpiryData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set credLogonData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set credLogonData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2908,7 +2908,7 @@ export interface EAP_INTERACTIVE_UI_DATA {
   /** u32 */
   cbUiData: number;
   /** Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_UI_DATA_FORMAT */
-  pbUiData: Uint8Array | Deno.PointerValue | null;
+  pbUiData: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofEAP_INTERACTIVE_UI_DATA = 24;
@@ -2925,7 +2925,7 @@ export function allocEAP_INTERACTIVE_UI_DATA(data?: Partial<EAP_INTERACTIVE_UI_D
   // 0x0c: u32
   if (data?.cbUiData !== undefined) view.setUint32(12, Number(data.cbUiData), true);
   // 0x10: pointer
-  if (data?.pbUiData !== undefined) view.setBigUint64(16, data.pbUiData === null ? 0n : BigInt(util.toPointer(data.pbUiData)), true);
+  if (data?.pbUiData !== undefined) view.setBigUint64(16, data.pbUiData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pbUiData))), true);
   return buf;
 }
 
@@ -2960,9 +2960,9 @@ export class EAP_INTERACTIVE_UI_DATAView {
   }
 
   // 0x10: pointer
-  get pbUiData(): Uint8Array | Deno.PointerValue | null {
+  get pbUiData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -2986,8 +2986,8 @@ export class EAP_INTERACTIVE_UI_DATAView {
   }
 
   // 0x10: pointer
-  set pbUiData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pbUiData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3104,7 +3104,7 @@ export interface EAP_METHOD_PROPERTY_VALUE_STRING {
   /** u32 */
   length: number;
   /** ptr */
-  value: Deno.PointerValue | Uint8Array | null;
+  value: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofEAP_METHOD_PROPERTY_VALUE_STRING = 16;
@@ -3116,7 +3116,7 @@ export function allocEAP_METHOD_PROPERTY_VALUE_STRING(data?: Partial<EAP_METHOD_
   if (data?.length !== undefined) view.setUint32(0, Number(data.length), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.value !== undefined) view.setBigUint64(8, data.value === null ? 0n : BigInt(util.toPointer(data.value)), true);
+  if (data?.value !== undefined) view.setBigUint64(8, data.value === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.value))), true);
   return buf;
 }
 
@@ -3138,9 +3138,9 @@ export class EAP_METHOD_PROPERTY_VALUE_STRINGView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get value(): Uint8Array | Deno.PointerValue | null {
+  get value(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -3151,8 +3151,8 @@ export class EAP_METHOD_PROPERTY_VALUE_STRINGView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set value(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set value(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3161,11 +3161,11 @@ export class EAP_METHOD_PROPERTY_VALUE_STRINGView {
  */
 export interface EAP_METHOD_PROPERTY_VALUE {
   /** Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_METHOD_PROPERTY_VALUE_BOOL */
-  empvBool: Uint8Array | Deno.PointerValue | null;
+  empvBool: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_METHOD_PROPERTY_VALUE_DWORD */
-  empvDword: Uint8Array | Deno.PointerValue | null;
+  empvDword: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_METHOD_PROPERTY_VALUE_STRING */
-  empvString: Uint8Array | Deno.PointerValue | null;
+  empvString: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofEAP_METHOD_PROPERTY_VALUE = 24;
@@ -3174,11 +3174,11 @@ export function allocEAP_METHOD_PROPERTY_VALUE(data?: Partial<EAP_METHOD_PROPERT
   const buf = new Uint8Array(sizeofEAP_METHOD_PROPERTY_VALUE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.empvBool !== undefined) view.setBigUint64(0, data.empvBool === null ? 0n : BigInt(util.toPointer(data.empvBool)), true);
+  if (data?.empvBool !== undefined) view.setBigUint64(0, data.empvBool === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.empvBool))), true);
   // 0x08: pointer
-  if (data?.empvDword !== undefined) view.setBigUint64(8, data.empvDword === null ? 0n : BigInt(util.toPointer(data.empvDword)), true);
+  if (data?.empvDword !== undefined) view.setBigUint64(8, data.empvDword === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.empvDword))), true);
   // 0x10: pointer
-  if (data?.empvString !== undefined) view.setBigUint64(16, data.empvString === null ? 0n : BigInt(util.toPointer(data.empvString)), true);
+  if (data?.empvString !== undefined) view.setBigUint64(16, data.empvString === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.empvString))), true);
   return buf;
 }
 
@@ -3193,36 +3193,36 @@ export class EAP_METHOD_PROPERTY_VALUEView {
   }
 
   // 0x00: pointer
-  get empvBool(): Uint8Array | Deno.PointerValue | null {
+  get empvBool(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get empvDword(): Uint8Array | Deno.PointerValue | null {
+  get empvDword(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get empvString(): Uint8Array | Deno.PointerValue | null {
+  get empvString(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set empvBool(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set empvBool(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set empvDword(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set empvDword(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set empvString(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set empvString(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3235,7 +3235,7 @@ export interface EAP_METHOD_PROPERTY {
   /** Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_METHOD_PROPERTY_VALUE_TYPE */
   eapMethodPropertyValueType: EAP_METHOD_PROPERTY_VALUE_TYPE;
   /** Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_METHOD_PROPERTY_VALUE */
-  eapMethodPropertyValue: Uint8Array | Deno.PointerValue | null;
+  eapMethodPropertyValue: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofEAP_METHOD_PROPERTY = 16;
@@ -3248,7 +3248,7 @@ export function allocEAP_METHOD_PROPERTY(data?: Partial<EAP_METHOD_PROPERTY>): U
   // 0x04: i32
   if (data?.eapMethodPropertyValueType !== undefined) view.setInt32(4, Number(data.eapMethodPropertyValueType), true);
   // 0x08: pointer
-  if (data?.eapMethodPropertyValue !== undefined) view.setBigUint64(8, data.eapMethodPropertyValue === null ? 0n : BigInt(util.toPointer(data.eapMethodPropertyValue)), true);
+  if (data?.eapMethodPropertyValue !== undefined) view.setBigUint64(8, data.eapMethodPropertyValue === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.eapMethodPropertyValue))), true);
   return buf;
 }
 
@@ -3273,9 +3273,9 @@ export class EAP_METHOD_PROPERTYView {
   }
 
   // 0x08: pointer
-  get eapMethodPropertyValue(): Uint8Array | Deno.PointerValue | null {
+  get eapMethodPropertyValue(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -3289,8 +3289,8 @@ export class EAP_METHOD_PROPERTYView {
   }
 
   // 0x08: pointer
-  set eapMethodPropertyValue(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set eapMethodPropertyValue(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3301,7 +3301,7 @@ export interface EAP_METHOD_PROPERTY_ARRAY {
   /** u32 */
   dwNumberOfProperties: number;
   /** ptr */
-  pMethodProperty: Deno.PointerValue | Uint8Array | null;
+  pMethodProperty: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofEAP_METHOD_PROPERTY_ARRAY = 16;
@@ -3313,7 +3313,7 @@ export function allocEAP_METHOD_PROPERTY_ARRAY(data?: Partial<EAP_METHOD_PROPERT
   if (data?.dwNumberOfProperties !== undefined) view.setUint32(0, Number(data.dwNumberOfProperties), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pMethodProperty !== undefined) view.setBigUint64(8, data.pMethodProperty === null ? 0n : BigInt(util.toPointer(data.pMethodProperty)), true);
+  if (data?.pMethodProperty !== undefined) view.setBigUint64(8, data.pMethodProperty === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pMethodProperty))), true);
   return buf;
 }
 
@@ -3335,9 +3335,9 @@ export class EAP_METHOD_PROPERTY_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pMethodProperty(): Uint8Array | Deno.PointerValue | null {
+  get pMethodProperty(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -3348,8 +3348,8 @@ export class EAP_METHOD_PROPERTY_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pMethodProperty(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pMethodProperty(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3358,27 +3358,27 @@ export class EAP_METHOD_PROPERTY_ARRAYView {
  */
 export interface EAPHOST_IDENTITY_UI_PARAMS {
   /** Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_METHOD_TYPE */
-  eapMethodType: Uint8Array | Deno.PointerValue | null;
+  eapMethodType: Uint8Array | Deno.PointerValue;
   /** u32 */
   dwFlags: number;
   /** u32 */
   dwSizeofConnectionData: number;
   /** ptr */
-  pConnectionData: Deno.PointerValue | Uint8Array | null;
+  pConnectionData: Deno.PointerValue | Uint8Array;
   /** u32 */
   dwSizeofUserData: number;
   /** ptr */
-  pUserData: Deno.PointerValue | Uint8Array | null;
+  pUserData: Deno.PointerValue | Uint8Array;
   /** u32 */
   dwSizeofUserDataOut: number;
   /** ptr */
-  pUserDataOut: Deno.PointerValue | Uint8Array | null;
+  pUserDataOut: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.PWSTR */
   pwszIdentity: string | null | Uint8Array | Uint16Array;
   /** u32 */
   dwError: number;
   /** ptr */
-  pEapError: Deno.PointerValue | Uint8Array | null;
+  pEapError: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofEAPHOST_IDENTITY_UI_PARAMS = 80;
@@ -3387,33 +3387,33 @@ export function allocEAPHOST_IDENTITY_UI_PARAMS(data?: Partial<EAPHOST_IDENTITY_
   const buf = new Uint8Array(sizeofEAPHOST_IDENTITY_UI_PARAMS);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.eapMethodType !== undefined) view.setBigUint64(0, data.eapMethodType === null ? 0n : BigInt(util.toPointer(data.eapMethodType)), true);
+  if (data?.eapMethodType !== undefined) view.setBigUint64(0, data.eapMethodType === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.eapMethodType))), true);
   // 0x08: u32
   if (data?.dwFlags !== undefined) view.setUint32(8, Number(data.dwFlags), true);
   // 0x0c: u32
   if (data?.dwSizeofConnectionData !== undefined) view.setUint32(12, Number(data.dwSizeofConnectionData), true);
   // 0x10: pointer
-  if (data?.pConnectionData !== undefined) view.setBigUint64(16, data.pConnectionData === null ? 0n : BigInt(util.toPointer(data.pConnectionData)), true);
+  if (data?.pConnectionData !== undefined) view.setBigUint64(16, data.pConnectionData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pConnectionData))), true);
   // 0x18: u32
   if (data?.dwSizeofUserData !== undefined) view.setUint32(24, Number(data.dwSizeofUserData), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.pUserData !== undefined) view.setBigUint64(32, data.pUserData === null ? 0n : BigInt(util.toPointer(data.pUserData)), true);
+  if (data?.pUserData !== undefined) view.setBigUint64(32, data.pUserData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pUserData))), true);
   // 0x28: u32
   if (data?.dwSizeofUserDataOut !== undefined) view.setUint32(40, Number(data.dwSizeofUserDataOut), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.pUserDataOut !== undefined) view.setBigUint64(48, data.pUserDataOut === null ? 0n : BigInt(util.toPointer(data.pUserDataOut)), true);
+  if (data?.pUserDataOut !== undefined) view.setBigUint64(48, data.pUserDataOut === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pUserDataOut))), true);
   // 0x38: buffer
   if (data?.pwszIdentity !== undefined) {
     (buf as any)._f56 = util.pwstrToFfi(data.pwszIdentity);
-    view.setBigUint64(56, (buf as any)._f56 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f56)), true);
+    view.setBigUint64(56, (buf as any)._f56 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f56))), true);
   }
   // 0x40: u32
   if (data?.dwError !== undefined) view.setUint32(64, Number(data.dwError), true);
   // 0x44: pad4
   // 0x48: pointer
-  if (data?.pEapError !== undefined) view.setBigUint64(72, data.pEapError === null ? 0n : BigInt(util.toPointer(data.pEapError)), true);
+  if (data?.pEapError !== undefined) view.setBigUint64(72, data.pEapError === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pEapError))), true);
   return buf;
 }
 
@@ -3428,9 +3428,9 @@ export class EAPHOST_IDENTITY_UI_PARAMSView {
   }
 
   // 0x00: pointer
-  get eapMethodType(): Uint8Array | Deno.PointerValue | null {
+  get eapMethodType(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -3444,9 +3444,9 @@ export class EAPHOST_IDENTITY_UI_PARAMSView {
   }
 
   // 0x10: pointer
-  get pConnectionData(): Uint8Array | Deno.PointerValue | null {
+  get pConnectionData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -3457,9 +3457,9 @@ export class EAPHOST_IDENTITY_UI_PARAMSView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get pUserData(): Uint8Array | Deno.PointerValue | null {
+  get pUserData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -3470,15 +3470,15 @@ export class EAPHOST_IDENTITY_UI_PARAMSView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  get pUserDataOut(): Uint8Array | Deno.PointerValue | null {
+  get pUserDataOut(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: buffer
-  get pwszIdentity(): Uint8Array | Deno.PointerValue | null {
+  get pwszIdentity(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: u32
@@ -3489,14 +3489,14 @@ export class EAPHOST_IDENTITY_UI_PARAMSView {
   // 0x44: pad4
 
   // 0x48: pointer
-  get pEapError(): Uint8Array | Deno.PointerValue | null {
+  get pEapError(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set eapMethodType(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set eapMethodType(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -3510,8 +3510,8 @@ export class EAPHOST_IDENTITY_UI_PARAMSView {
   }
 
   // 0x10: pointer
-  set pConnectionData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pConnectionData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -3522,8 +3522,8 @@ export class EAPHOST_IDENTITY_UI_PARAMSView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set pUserData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set pUserData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u32
@@ -3534,14 +3534,14 @@ export class EAPHOST_IDENTITY_UI_PARAMSView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  set pUserDataOut(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set pUserDataOut(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: buffer
-  set pwszIdentity(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszIdentity(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f56 = value;
-    this.view.setBigUint64(56, BigInt(util.toPointer((this.buf as any)._f56)), true);
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f56))), true);
   }
 
   // 0x40: u32
@@ -3552,8 +3552,8 @@ export class EAPHOST_IDENTITY_UI_PARAMSView {
   // 0x44: pad4
 
   // 0x48: pointer
-  set pEapError(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set pEapError(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3564,15 +3564,15 @@ export interface EAPHOST_INTERACTIVE_UI_PARAMS {
   /** u32 */
   dwSizeofContextData: number;
   /** ptr */
-  pContextData: Deno.PointerValue | Uint8Array | null;
+  pContextData: Deno.PointerValue | Uint8Array;
   /** u32 */
   dwSizeofInteractiveUIData: number;
   /** ptr */
-  pInteractiveUIData: Deno.PointerValue | Uint8Array | null;
+  pInteractiveUIData: Deno.PointerValue | Uint8Array;
   /** u32 */
   dwError: number;
   /** ptr */
-  pEapError: Deno.PointerValue | Uint8Array | null;
+  pEapError: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofEAPHOST_INTERACTIVE_UI_PARAMS = 48;
@@ -3584,17 +3584,17 @@ export function allocEAPHOST_INTERACTIVE_UI_PARAMS(data?: Partial<EAPHOST_INTERA
   if (data?.dwSizeofContextData !== undefined) view.setUint32(0, Number(data.dwSizeofContextData), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pContextData !== undefined) view.setBigUint64(8, data.pContextData === null ? 0n : BigInt(util.toPointer(data.pContextData)), true);
+  if (data?.pContextData !== undefined) view.setBigUint64(8, data.pContextData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pContextData))), true);
   // 0x10: u32
   if (data?.dwSizeofInteractiveUIData !== undefined) view.setUint32(16, Number(data.dwSizeofInteractiveUIData), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.pInteractiveUIData !== undefined) view.setBigUint64(24, data.pInteractiveUIData === null ? 0n : BigInt(util.toPointer(data.pInteractiveUIData)), true);
+  if (data?.pInteractiveUIData !== undefined) view.setBigUint64(24, data.pInteractiveUIData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pInteractiveUIData))), true);
   // 0x20: u32
   if (data?.dwError !== undefined) view.setUint32(32, Number(data.dwError), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.pEapError !== undefined) view.setBigUint64(40, data.pEapError === null ? 0n : BigInt(util.toPointer(data.pEapError)), true);
+  if (data?.pEapError !== undefined) view.setBigUint64(40, data.pEapError === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pEapError))), true);
   return buf;
 }
 
@@ -3616,9 +3616,9 @@ export class EAPHOST_INTERACTIVE_UI_PARAMSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pContextData(): Uint8Array | Deno.PointerValue | null {
+  get pContextData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -3629,9 +3629,9 @@ export class EAPHOST_INTERACTIVE_UI_PARAMSView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get pInteractiveUIData(): Uint8Array | Deno.PointerValue | null {
+  get pInteractiveUIData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -3642,9 +3642,9 @@ export class EAPHOST_INTERACTIVE_UI_PARAMSView {
   // 0x24: pad4
 
   // 0x28: pointer
-  get pEapError(): Uint8Array | Deno.PointerValue | null {
+  get pEapError(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -3655,8 +3655,8 @@ export class EAPHOST_INTERACTIVE_UI_PARAMSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pContextData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pContextData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -3667,8 +3667,8 @@ export class EAPHOST_INTERACTIVE_UI_PARAMSView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set pInteractiveUIData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set pInteractiveUIData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -3679,8 +3679,8 @@ export class EAPHOST_INTERACTIVE_UI_PARAMSView {
   // 0x24: pad4
 
   // 0x28: pointer
-  set pEapError(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set pEapError(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3702,12 +3702,12 @@ export function allocEapUsernamePasswordCredential(data?: Partial<EapUsernamePas
   // 0x00: buffer
   if (data?.username !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.username);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: buffer
   if (data?.password !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.password);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   return buf;
 }
@@ -3723,27 +3723,27 @@ export class EapUsernamePasswordCredentialView {
   }
 
   // 0x00: buffer
-  get username(): Uint8Array | Deno.PointerValue | null {
+  get username(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get password(): Uint8Array | Deno.PointerValue | null {
+  get password(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set username(value: Uint8Array | Deno.PointerValue | null) {
+  set username(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: buffer
-  set password(value: Uint8Array | Deno.PointerValue | null) {
+  set password(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 }
 
@@ -3752,7 +3752,7 @@ export class EapUsernamePasswordCredentialView {
  */
 export interface EapCertificateCredential {
   /** array */
-  certHash: Deno.PointerValue | null;
+  certHash: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   password: string | null | Uint8Array | Uint16Array;
 }
@@ -3763,11 +3763,11 @@ export function allocEapCertificateCredential(data?: Partial<EapCertificateCrede
   const buf = new Uint8Array(sizeofEapCertificateCredential);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.certHash !== undefined) view.setBigUint64(0, data.certHash === null ? 0n : BigInt(util.toPointer(data.certHash)), true);
+  if (data?.certHash !== undefined) view.setBigUint64(0, data.certHash === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.certHash))), true);
   // 0x08: buffer
   if (data?.password !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.password);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   return buf;
 }
@@ -3783,26 +3783,26 @@ export class EapCertificateCredentialView {
   }
 
   // 0x00: pointer
-  get certHash(): Uint8Array | Deno.PointerValue | null {
+  get certHash(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get password(): Uint8Array | Deno.PointerValue | null {
+  get password(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set certHash(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set certHash(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: buffer
-  set password(value: Uint8Array | Deno.PointerValue | null) {
+  set password(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 }
 
@@ -3822,7 +3822,7 @@ export function allocEapSimCredential(data?: Partial<EapSimCredential>): Uint8Ar
   // 0x00: buffer
   if (data?.iccID !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.iccID);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   return buf;
 }
@@ -3838,15 +3838,15 @@ export class EapSimCredentialView {
   }
 
   // 0x00: buffer
-  get iccID(): Uint8Array | Deno.PointerValue | null {
+  get iccID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set iccID(value: Uint8Array | Deno.PointerValue | null) {
+  set iccID(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 }
 
@@ -3855,11 +3855,11 @@ export class EapSimCredentialView {
  */
 export interface EapCredentialTypeData {
   /** Windows.Win32.Security.ExtensibleAuthenticationProtocol.EapUsernamePasswordCredential */
-  username_password: Uint8Array | Deno.PointerValue | null;
+  username_password: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Security.ExtensibleAuthenticationProtocol.EapCertificateCredential */
-  certificate: Uint8Array | Deno.PointerValue | null;
+  certificate: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Security.ExtensibleAuthenticationProtocol.EapSimCredential */
-  sim: Uint8Array | Deno.PointerValue | null;
+  sim: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofEapCredentialTypeData = 24;
@@ -3868,11 +3868,11 @@ export function allocEapCredentialTypeData(data?: Partial<EapCredentialTypeData>
   const buf = new Uint8Array(sizeofEapCredentialTypeData);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.username_password !== undefined) view.setBigUint64(0, data.username_password === null ? 0n : BigInt(util.toPointer(data.username_password)), true);
+  if (data?.username_password !== undefined) view.setBigUint64(0, data.username_password === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.username_password))), true);
   // 0x08: pointer
-  if (data?.certificate !== undefined) view.setBigUint64(8, data.certificate === null ? 0n : BigInt(util.toPointer(data.certificate)), true);
+  if (data?.certificate !== undefined) view.setBigUint64(8, data.certificate === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.certificate))), true);
   // 0x10: pointer
-  if (data?.sim !== undefined) view.setBigUint64(16, data.sim === null ? 0n : BigInt(util.toPointer(data.sim)), true);
+  if (data?.sim !== undefined) view.setBigUint64(16, data.sim === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.sim))), true);
   return buf;
 }
 
@@ -3887,36 +3887,36 @@ export class EapCredentialTypeDataView {
   }
 
   // 0x00: pointer
-  get username_password(): Uint8Array | Deno.PointerValue | null {
+  get username_password(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get certificate(): Uint8Array | Deno.PointerValue | null {
+  get certificate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get sim(): Uint8Array | Deno.PointerValue | null {
+  get sim(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set username_password(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set username_password(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set certificate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set certificate(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set sim(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set sim(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3927,7 +3927,7 @@ export interface EapCredential {
   /** Windows.Win32.Security.ExtensibleAuthenticationProtocol.EapCredentialType */
   credType: EapCredentialType;
   /** Windows.Win32.Security.ExtensibleAuthenticationProtocol.EapCredentialTypeData */
-  credData: Uint8Array | Deno.PointerValue | null;
+  credData: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofEapCredential = 16;
@@ -3939,7 +3939,7 @@ export function allocEapCredential(data?: Partial<EapCredential>): Uint8Array {
   if (data?.credType !== undefined) view.setInt32(0, Number(data.credType), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.credData !== undefined) view.setBigUint64(8, data.credData === null ? 0n : BigInt(util.toPointer(data.credData)), true);
+  if (data?.credData !== undefined) view.setBigUint64(8, data.credData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.credData))), true);
   return buf;
 }
 
@@ -3961,9 +3961,9 @@ export class EapCredentialView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get credData(): Uint8Array | Deno.PointerValue | null {
+  get credData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -3974,8 +3974,8 @@ export class EapCredentialView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set credData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set credData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4064,21 +4064,21 @@ export interface EapHostPeerMethodResult {
   /** u32 */
   dwSizeofConnectionData: number;
   /** ptr */
-  pConnectionData: Deno.PointerValue | Uint8Array | null;
+  pConnectionData: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.BOOL */
   fSaveUserData: boolean;
   /** u32 */
   dwSizeofUserData: number;
   /** ptr */
-  pUserData: Deno.PointerValue | Uint8Array | null;
+  pUserData: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pAttribArray: Deno.PointerValue | Uint8Array | null;
+  pAttribArray: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Security.ExtensibleAuthenticationProtocol.ISOLATION_STATE */
   isolationState: ISOLATION_STATE;
   /** ptr */
-  pEapMethodInfo: Deno.PointerValue | Uint8Array | null;
+  pEapMethodInfo: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pEapError: Deno.PointerValue | Uint8Array | null;
+  pEapError: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofEapHostPeerMethodResult = 72;
@@ -4095,22 +4095,22 @@ export function allocEapHostPeerMethodResult(data?: Partial<EapHostPeerMethodRes
   // 0x0c: u32
   if (data?.dwSizeofConnectionData !== undefined) view.setUint32(12, Number(data.dwSizeofConnectionData), true);
   // 0x10: pointer
-  if (data?.pConnectionData !== undefined) view.setBigUint64(16, data.pConnectionData === null ? 0n : BigInt(util.toPointer(data.pConnectionData)), true);
+  if (data?.pConnectionData !== undefined) view.setBigUint64(16, data.pConnectionData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pConnectionData))), true);
   // 0x18: i32
   if (data?.fSaveUserData !== undefined) view.setInt32(24, Number(data.fSaveUserData), true);
   // 0x1c: u32
   if (data?.dwSizeofUserData !== undefined) view.setUint32(28, Number(data.dwSizeofUserData), true);
   // 0x20: pointer
-  if (data?.pUserData !== undefined) view.setBigUint64(32, data.pUserData === null ? 0n : BigInt(util.toPointer(data.pUserData)), true);
+  if (data?.pUserData !== undefined) view.setBigUint64(32, data.pUserData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pUserData))), true);
   // 0x28: pointer
-  if (data?.pAttribArray !== undefined) view.setBigUint64(40, data.pAttribArray === null ? 0n : BigInt(util.toPointer(data.pAttribArray)), true);
+  if (data?.pAttribArray !== undefined) view.setBigUint64(40, data.pAttribArray === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pAttribArray))), true);
   // 0x30: i32
   if (data?.isolationState !== undefined) view.setInt32(48, Number(data.isolationState), true);
   // 0x34: pad4
   // 0x38: pointer
-  if (data?.pEapMethodInfo !== undefined) view.setBigUint64(56, data.pEapMethodInfo === null ? 0n : BigInt(util.toPointer(data.pEapMethodInfo)), true);
+  if (data?.pEapMethodInfo !== undefined) view.setBigUint64(56, data.pEapMethodInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pEapMethodInfo))), true);
   // 0x40: pointer
-  if (data?.pEapError !== undefined) view.setBigUint64(64, data.pEapError === null ? 0n : BigInt(util.toPointer(data.pEapError)), true);
+  if (data?.pEapError !== undefined) view.setBigUint64(64, data.pEapError === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pEapError))), true);
   return buf;
 }
 
@@ -4145,9 +4145,9 @@ export class EapHostPeerMethodResultView {
   }
 
   // 0x10: pointer
-  get pConnectionData(): Uint8Array | Deno.PointerValue | null {
+  get pConnectionData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: i32
@@ -4161,15 +4161,15 @@ export class EapHostPeerMethodResultView {
   }
 
   // 0x20: pointer
-  get pUserData(): Uint8Array | Deno.PointerValue | null {
+  get pUserData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get pAttribArray(): Uint8Array | Deno.PointerValue | null {
+  get pAttribArray(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: i32
@@ -4180,15 +4180,15 @@ export class EapHostPeerMethodResultView {
   // 0x34: pad4
 
   // 0x38: pointer
-  get pEapMethodInfo(): Uint8Array | Deno.PointerValue | null {
+  get pEapMethodInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get pEapError(): Uint8Array | Deno.PointerValue | null {
+  get pEapError(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -4212,8 +4212,8 @@ export class EapHostPeerMethodResultView {
   }
 
   // 0x10: pointer
-  set pConnectionData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pConnectionData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: i32
@@ -4227,13 +4227,13 @@ export class EapHostPeerMethodResultView {
   }
 
   // 0x20: pointer
-  set pUserData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set pUserData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set pAttribArray(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set pAttribArray(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: i32
@@ -4244,13 +4244,13 @@ export class EapHostPeerMethodResultView {
   // 0x34: pad4
 
   // 0x38: pointer
-  set pEapMethodInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set pEapMethodInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set pEapError(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set pEapError(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4263,9 +4263,9 @@ export interface EapPacket {
   /** u8 */
   Id: number;
   /** array */
-  Length: Deno.PointerValue | null;
+  Length: Deno.PointerValue;
   /** array */
-  Data: Deno.PointerValue | null;
+  Data: Deno.PointerValue;
 }
 
 export const sizeofEapPacket = 24;
@@ -4279,9 +4279,9 @@ export function allocEapPacket(data?: Partial<EapPacket>): Uint8Array {
   if (data?.Id !== undefined) view.setUint8(1, Number(data.Id));
   // 0x02: pad6
   // 0x08: pointer
-  if (data?.Length !== undefined) view.setBigUint64(8, data.Length === null ? 0n : BigInt(util.toPointer(data.Length)), true);
+  if (data?.Length !== undefined) view.setBigUint64(8, data.Length === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Length))), true);
   // 0x10: pointer
-  if (data?.Data !== undefined) view.setBigUint64(16, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
+  if (data?.Data !== undefined) view.setBigUint64(16, data.Data === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Data))), true);
   return buf;
 }
 
@@ -4308,15 +4308,15 @@ export class EapPacketView {
   // 0x02: pad6
 
   // 0x08: pointer
-  get Length(): Uint8Array | Deno.PointerValue | null {
+  get Length(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get Data(): Uint8Array | Deno.PointerValue | null {
+  get Data(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u8
@@ -4332,13 +4332,13 @@ export class EapPacketView {
   // 0x02: pad6
 
   // 0x08: pointer
-  set Length(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Length(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set Data(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set Data(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4351,7 +4351,7 @@ export interface EAP_METHOD_AUTHENTICATOR_RESULT {
   /** u32 */
   dwFailureReason: number;
   /** ptr */
-  pAuthAttribs: Deno.PointerValue | Uint8Array | null;
+  pAuthAttribs: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofEAP_METHOD_AUTHENTICATOR_RESULT = 16;
@@ -4364,7 +4364,7 @@ export function allocEAP_METHOD_AUTHENTICATOR_RESULT(data?: Partial<EAP_METHOD_A
   // 0x04: u32
   if (data?.dwFailureReason !== undefined) view.setUint32(4, Number(data.dwFailureReason), true);
   // 0x08: pointer
-  if (data?.pAuthAttribs !== undefined) view.setBigUint64(8, data.pAuthAttribs === null ? 0n : BigInt(util.toPointer(data.pAuthAttribs)), true);
+  if (data?.pAuthAttribs !== undefined) view.setBigUint64(8, data.pAuthAttribs === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pAuthAttribs))), true);
   return buf;
 }
 
@@ -4389,9 +4389,9 @@ export class EAP_METHOD_AUTHENTICATOR_RESULTView {
   }
 
   // 0x08: pointer
-  get pAuthAttribs(): Uint8Array | Deno.PointerValue | null {
+  get pAuthAttribs(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -4405,8 +4405,8 @@ export class EAP_METHOD_AUTHENTICATOR_RESULTView {
   }
 
   // 0x08: pointer
-  set pAuthAttribs(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pAuthAttribs(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4476,19 +4476,19 @@ export interface EapPeerMethodResult {
   /** u32 */
   dwSizeofConnectionData: number;
   /** ptr */
-  pConnectionData: Deno.PointerValue | Uint8Array | null;
+  pConnectionData: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.BOOL */
   fSaveUserData: boolean;
   /** u32 */
   dwSizeofUserData: number;
   /** ptr */
-  pUserData: Deno.PointerValue | Uint8Array | null;
+  pUserData: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pAttribArray: Deno.PointerValue | Uint8Array | null;
+  pAttribArray: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pEapError: Deno.PointerValue | Uint8Array | null;
+  pEapError: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pNgcKerbTicket: Deno.PointerValue | Uint8Array | null;
+  pNgcKerbTicket: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.BOOL */
   fSaveToCredMan: boolean;
 }
@@ -4507,19 +4507,19 @@ export function allocEapPeerMethodResult(data?: Partial<EapPeerMethodResult>): U
   // 0x0c: u32
   if (data?.dwSizeofConnectionData !== undefined) view.setUint32(12, Number(data.dwSizeofConnectionData), true);
   // 0x10: pointer
-  if (data?.pConnectionData !== undefined) view.setBigUint64(16, data.pConnectionData === null ? 0n : BigInt(util.toPointer(data.pConnectionData)), true);
+  if (data?.pConnectionData !== undefined) view.setBigUint64(16, data.pConnectionData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pConnectionData))), true);
   // 0x18: i32
   if (data?.fSaveUserData !== undefined) view.setInt32(24, Number(data.fSaveUserData), true);
   // 0x1c: u32
   if (data?.dwSizeofUserData !== undefined) view.setUint32(28, Number(data.dwSizeofUserData), true);
   // 0x20: pointer
-  if (data?.pUserData !== undefined) view.setBigUint64(32, data.pUserData === null ? 0n : BigInt(util.toPointer(data.pUserData)), true);
+  if (data?.pUserData !== undefined) view.setBigUint64(32, data.pUserData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pUserData))), true);
   // 0x28: pointer
-  if (data?.pAttribArray !== undefined) view.setBigUint64(40, data.pAttribArray === null ? 0n : BigInt(util.toPointer(data.pAttribArray)), true);
+  if (data?.pAttribArray !== undefined) view.setBigUint64(40, data.pAttribArray === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pAttribArray))), true);
   // 0x30: pointer
-  if (data?.pEapError !== undefined) view.setBigUint64(48, data.pEapError === null ? 0n : BigInt(util.toPointer(data.pEapError)), true);
+  if (data?.pEapError !== undefined) view.setBigUint64(48, data.pEapError === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pEapError))), true);
   // 0x38: pointer
-  if (data?.pNgcKerbTicket !== undefined) view.setBigUint64(56, data.pNgcKerbTicket === null ? 0n : BigInt(util.toPointer(data.pNgcKerbTicket)), true);
+  if (data?.pNgcKerbTicket !== undefined) view.setBigUint64(56, data.pNgcKerbTicket === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pNgcKerbTicket))), true);
   // 0x40: i32
   if (data?.fSaveToCredMan !== undefined) view.setInt32(64, Number(data.fSaveToCredMan), true);
   // 0x44: pad4
@@ -4557,9 +4557,9 @@ export class EapPeerMethodResultView {
   }
 
   // 0x10: pointer
-  get pConnectionData(): Uint8Array | Deno.PointerValue | null {
+  get pConnectionData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: i32
@@ -4573,27 +4573,27 @@ export class EapPeerMethodResultView {
   }
 
   // 0x20: pointer
-  get pUserData(): Uint8Array | Deno.PointerValue | null {
+  get pUserData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get pAttribArray(): Uint8Array | Deno.PointerValue | null {
+  get pAttribArray(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get pEapError(): Uint8Array | Deno.PointerValue | null {
+  get pEapError(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get pNgcKerbTicket(): Uint8Array | Deno.PointerValue | null {
+  get pNgcKerbTicket(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: i32
@@ -4624,8 +4624,8 @@ export class EapPeerMethodResultView {
   }
 
   // 0x10: pointer
-  set pConnectionData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pConnectionData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: i32
@@ -4639,23 +4639,23 @@ export class EapPeerMethodResultView {
   }
 
   // 0x20: pointer
-  set pUserData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set pUserData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set pAttribArray(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set pAttribArray(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set pEapError(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set pEapError(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set pNgcKerbTicket(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set pNgcKerbTicket(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: i32
@@ -4673,7 +4673,7 @@ export interface EAP_PEER_METHOD_ROUTINES {
   /** u32 */
   dwVersion: number;
   /** ptr */
-  pEapType: Deno.PointerValue | Uint8Array | null;
+  pEapType: Deno.PointerValue | Uint8Array;
   /** isize */
   EapPeerInitialize: Deno.PointerValue;
   /** isize */
@@ -4711,7 +4711,7 @@ export function allocEAP_PEER_METHOD_ROUTINES(data?: Partial<EAP_PEER_METHOD_ROU
   if (data?.dwVersion !== undefined) view.setUint32(0, Number(data.dwVersion), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pEapType !== undefined) view.setBigUint64(8, data.pEapType === null ? 0n : BigInt(util.toPointer(data.pEapType)), true);
+  if (data?.pEapType !== undefined) view.setBigUint64(8, data.pEapType === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pEapType))), true);
   // 0x10: isize
   if (data?.EapPeerInitialize !== undefined) view.setBigInt64(16, BigInt(data.EapPeerInitialize), true);
   // 0x18: isize
@@ -4759,9 +4759,9 @@ export class EAP_PEER_METHOD_ROUTINESView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pEapType(): Uint8Array | Deno.PointerValue | null {
+  get pEapType(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: isize
@@ -4837,8 +4837,8 @@ export class EAP_PEER_METHOD_ROUTINESView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pEapType(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pEapType(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: isize
@@ -4914,7 +4914,7 @@ export interface EAP_AUTHENTICATOR_METHOD_ROUTINES {
   /** u32 */
   dwSizeInBytes: number;
   /** ptr */
-  pEapType: Deno.PointerValue | Uint8Array | null;
+  pEapType: Deno.PointerValue | Uint8Array;
   /** isize */
   EapMethodAuthenticatorInitialize: Deno.PointerValue;
   /** isize */
@@ -4946,7 +4946,7 @@ export function allocEAP_AUTHENTICATOR_METHOD_ROUTINES(data?: Partial<EAP_AUTHEN
   if (data?.dwSizeInBytes !== undefined) view.setUint32(0, Number(data.dwSizeInBytes), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pEapType !== undefined) view.setBigUint64(8, data.pEapType === null ? 0n : BigInt(util.toPointer(data.pEapType)), true);
+  if (data?.pEapType !== undefined) view.setBigUint64(8, data.pEapType === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pEapType))), true);
   // 0x10: isize
   if (data?.EapMethodAuthenticatorInitialize !== undefined) view.setBigInt64(16, BigInt(data.EapMethodAuthenticatorInitialize), true);
   // 0x18: isize
@@ -4988,9 +4988,9 @@ export class EAP_AUTHENTICATOR_METHOD_ROUTINESView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pEapType(): Uint8Array | Deno.PointerValue | null {
+  get pEapType(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: isize
@@ -5051,8 +5051,8 @@ export class EAP_AUTHENTICATOR_METHOD_ROUTINESView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pEapType(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pEapType(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: isize
@@ -5251,8 +5251,8 @@ try {
 // Symbols
 
 export function EapHostPeerGetMethods(
-  pEapMethodInfoArray: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pEapMethodInfoArray: Deno.PointerValue | Uint8Array /* ptr */,
+  ppEapError: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libeappcfg_dll.EapHostPeerGetMethods(util.toPointer(pEapMethodInfoArray), util.toPointer(ppEapError));
 }
@@ -5260,94 +5260,94 @@ export function EapHostPeerGetMethods(
 export function EapHostPeerGetMethodProperties(
   dwVersion: number /* u32 */,
   dwFlags: number /* u32 */,
-  eapMethodType: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_METHOD_TYPE */,
-  hUserImpersonationToken: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  eapMethodType: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_METHOD_TYPE */,
+  hUserImpersonationToken: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwEapConnDataSize: number /* u32 */,
-  pbEapConnData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pbEapConnData: Deno.PointerValue | Uint8Array /* ptr */,
   dwUserDataSize: number /* u32 */,
-  pbUserData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pMethodPropertyArray: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pbUserData: Deno.PointerValue | Uint8Array /* ptr */,
+  pMethodPropertyArray: Deno.PointerValue | Uint8Array /* ptr */,
+  ppEapError: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libeappcfg_dll.EapHostPeerGetMethodProperties(dwVersion, dwFlags, util.toPointer(eapMethodType), util.toPointer(hUserImpersonationToken), dwEapConnDataSize, util.toPointer(pbEapConnData), dwUserDataSize, util.toPointer(pbUserData), util.toPointer(pMethodPropertyArray), util.toPointer(ppEapError));
 }
 
 export function EapHostPeerInvokeConfigUI(
-  hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
+  hwndParent: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   dwFlags: number /* u32 */,
-  eapMethodType: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_METHOD_TYPE */,
+  eapMethodType: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_METHOD_TYPE */,
   dwSizeOfConfigIn: number /* u32 */,
-  pConfigIn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pdwSizeOfConfigOut: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppConfigOut: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pConfigIn: Deno.PointerValue | Uint8Array /* ptr */,
+  pdwSizeOfConfigOut: Deno.PointerValue | Uint8Array /* ptr */,
+  ppConfigOut: Deno.PointerValue | Uint8Array /* ptr */,
+  ppEapError: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libeappcfg_dll.EapHostPeerInvokeConfigUI(util.hwndToFfi(hwndParent), dwFlags, util.toPointer(eapMethodType), dwSizeOfConfigIn, util.toPointer(pConfigIn), util.toPointer(pdwSizeOfConfigOut), util.toPointer(ppConfigOut), util.toPointer(ppEapError));
+  return libeappcfg_dll.EapHostPeerInvokeConfigUI((hwndParent), dwFlags, util.toPointer(eapMethodType), dwSizeOfConfigIn, util.toPointer(pConfigIn), util.toPointer(pdwSizeOfConfigOut), util.toPointer(ppConfigOut), util.toPointer(ppEapError));
 }
 
 export function EapHostPeerQueryCredentialInputFields(
-  hUserImpersonationToken: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  eapMethodType: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_METHOD_TYPE */,
+  hUserImpersonationToken: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  eapMethodType: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_METHOD_TYPE */,
   dwFlags: number /* u32 */,
   dwEapConnDataSize: number /* u32 */,
-  pbEapConnData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pEapConfigInputFieldArray: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pbEapConnData: Deno.PointerValue | Uint8Array /* ptr */,
+  pEapConfigInputFieldArray: Deno.PointerValue | Uint8Array /* ptr */,
+  ppEapError: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libeappcfg_dll.EapHostPeerQueryCredentialInputFields(util.toPointer(hUserImpersonationToken), util.toPointer(eapMethodType), dwFlags, dwEapConnDataSize, util.toPointer(pbEapConnData), util.toPointer(pEapConfigInputFieldArray), util.toPointer(ppEapError));
 }
 
 export function EapHostPeerQueryUserBlobFromCredentialInputFields(
-  hUserImpersonationToken: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  eapMethodType: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_METHOD_TYPE */,
+  hUserImpersonationToken: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  eapMethodType: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_METHOD_TYPE */,
   dwFlags: number /* u32 */,
   dwEapConnDataSize: number /* u32 */,
-  pbEapConnData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pEapConfigInputFieldArray: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pdwUserBlobSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppbUserBlob: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pbEapConnData: Deno.PointerValue | Uint8Array /* ptr */,
+  pEapConfigInputFieldArray: Deno.PointerValue | Uint8Array /* ptr */,
+  pdwUserBlobSize: Deno.PointerValue | Uint8Array /* ptr */,
+  ppbUserBlob: Deno.PointerValue | Uint8Array /* ptr */,
+  ppEapError: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libeappcfg_dll.EapHostPeerQueryUserBlobFromCredentialInputFields(util.toPointer(hUserImpersonationToken), util.toPointer(eapMethodType), dwFlags, dwEapConnDataSize, util.toPointer(pbEapConnData), util.toPointer(pEapConfigInputFieldArray), util.toPointer(pdwUserBlobSize), util.toPointer(ppbUserBlob), util.toPointer(ppEapError));
 }
 
 export function EapHostPeerInvokeIdentityUI(
   dwVersion: number /* u32 */,
-  eapMethodType: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_METHOD_TYPE */,
+  eapMethodType: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_METHOD_TYPE */,
   dwFlags: number /* u32 */,
-  hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
+  hwndParent: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   dwSizeofConnectionData: number /* u32 */,
-  pConnectionData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pConnectionData: Deno.PointerValue | Uint8Array /* ptr */,
   dwSizeofUserData: number /* u32 */,
-  pUserData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pdwSizeOfUserDataOut: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppUserDataOut: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppwszIdentity: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pUserData: Deno.PointerValue | Uint8Array /* ptr */,
+  pdwSizeOfUserDataOut: Deno.PointerValue | Uint8Array /* ptr */,
+  ppUserDataOut: Deno.PointerValue | Uint8Array /* ptr */,
+  ppwszIdentity: Deno.PointerValue | Uint8Array /* ptr */,
+  ppEapError: Deno.PointerValue | Uint8Array /* ptr */,
+  ppvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libeappcfg_dll.EapHostPeerInvokeIdentityUI(dwVersion, util.toPointer(eapMethodType), dwFlags, util.hwndToFfi(hwndParent), dwSizeofConnectionData, util.toPointer(pConnectionData), dwSizeofUserData, util.toPointer(pUserData), util.toPointer(pdwSizeOfUserDataOut), util.toPointer(ppUserDataOut), util.toPointer(ppwszIdentity), util.toPointer(ppEapError), util.toPointer(ppvReserved));
+  return libeappcfg_dll.EapHostPeerInvokeIdentityUI(dwVersion, util.toPointer(eapMethodType), dwFlags, (hwndParent), dwSizeofConnectionData, util.toPointer(pConnectionData), dwSizeofUserData, util.toPointer(pUserData), util.toPointer(pdwSizeOfUserDataOut), util.toPointer(ppUserDataOut), util.toPointer(ppwszIdentity), util.toPointer(ppEapError), util.toPointer(ppvReserved));
 }
 
 export function EapHostPeerInvokeInteractiveUI(
-  hwndParent: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
+  hwndParent: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   dwSizeofUIContextData: number /* u32 */,
-  pUIContextData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pdwSizeOfDataFromInteractiveUI: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppDataFromInteractiveUI: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pUIContextData: Deno.PointerValue | Uint8Array /* ptr */,
+  pdwSizeOfDataFromInteractiveUI: Deno.PointerValue | Uint8Array /* ptr */,
+  ppDataFromInteractiveUI: Deno.PointerValue | Uint8Array /* ptr */,
+  ppEapError: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libeappcfg_dll.EapHostPeerInvokeInteractiveUI(util.hwndToFfi(hwndParent), dwSizeofUIContextData, util.toPointer(pUIContextData), util.toPointer(pdwSizeOfDataFromInteractiveUI), util.toPointer(ppDataFromInteractiveUI), util.toPointer(ppEapError));
+  return libeappcfg_dll.EapHostPeerInvokeInteractiveUI((hwndParent), dwSizeofUIContextData, util.toPointer(pUIContextData), util.toPointer(pdwSizeOfDataFromInteractiveUI), util.toPointer(ppDataFromInteractiveUI), util.toPointer(ppEapError));
 }
 
 export function EapHostPeerQueryInteractiveUIInputFields(
   dwVersion: number /* u32 */,
   dwFlags: number /* u32 */,
   dwSizeofUIContextData: number /* u32 */,
-  pUIContextData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pEapInteractiveUIData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pUIContextData: Deno.PointerValue | Uint8Array /* ptr */,
+  pEapInteractiveUIData: Deno.PointerValue | Uint8Array /* ptr */,
+  ppEapError: Deno.PointerValue | Uint8Array /* ptr */,
+  ppvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libeappcfg_dll.EapHostPeerQueryInteractiveUIInputFields(dwVersion, dwFlags, dwSizeofUIContextData, util.toPointer(pUIContextData), util.toPointer(pEapInteractiveUIData), util.toPointer(ppEapError), util.toPointer(ppvReserved));
 }
@@ -5356,59 +5356,59 @@ export function EapHostPeerQueryUIBlobFromInteractiveUIInputFields(
   dwVersion: number /* u32 */,
   dwFlags: number /* u32 */,
   dwSizeofUIContextData: number /* u32 */,
-  pUIContextData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pEapInteractiveUIData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pdwSizeOfDataFromInteractiveUI: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppDataFromInteractiveUI: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pUIContextData: Deno.PointerValue | Uint8Array /* ptr */,
+  pEapInteractiveUIData: Deno.PointerValue | Uint8Array /* ptr */,
+  pdwSizeOfDataFromInteractiveUI: Deno.PointerValue | Uint8Array /* ptr */,
+  ppDataFromInteractiveUI: Deno.PointerValue | Uint8Array /* ptr */,
+  ppEapError: Deno.PointerValue | Uint8Array /* ptr */,
+  ppvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libeappcfg_dll.EapHostPeerQueryUIBlobFromInteractiveUIInputFields(dwVersion, dwFlags, dwSizeofUIContextData, util.toPointer(pUIContextData), util.toPointer(pEapInteractiveUIData), util.toPointer(pdwSizeOfDataFromInteractiveUI), util.toPointer(ppDataFromInteractiveUI), util.toPointer(ppEapError), util.toPointer(ppvReserved));
 }
 
 export function EapHostPeerConfigXml2Blob(
   dwFlags: number /* u32 */,
-  pConfigDoc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Data.Xml.MsXml.IXMLDOMNode */,
-  pdwSizeOfConfigOut: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppConfigOut: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pEapMethodType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pConfigDoc: Uint8Array | Deno.PointerValue /* Windows.Win32.Data.Xml.MsXml.IXMLDOMNode */,
+  pdwSizeOfConfigOut: Deno.PointerValue | Uint8Array /* ptr */,
+  ppConfigOut: Deno.PointerValue | Uint8Array /* ptr */,
+  pEapMethodType: Deno.PointerValue | Uint8Array /* ptr */,
+  ppEapError: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libeappcfg_dll.EapHostPeerConfigXml2Blob(dwFlags, util.toPointer(pConfigDoc), util.toPointer(pdwSizeOfConfigOut), util.toPointer(ppConfigOut), util.toPointer(pEapMethodType), util.toPointer(ppEapError));
 }
 
 export function EapHostPeerCredentialsXml2Blob(
   dwFlags: number /* u32 */,
-  pCredentialsDoc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Data.Xml.MsXml.IXMLDOMNode */,
+  pCredentialsDoc: Uint8Array | Deno.PointerValue /* Windows.Win32.Data.Xml.MsXml.IXMLDOMNode */,
   dwSizeOfConfigIn: number /* u32 */,
-  pConfigIn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pdwSizeOfCredentialsOut: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppCredentialsOut: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pEapMethodType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pConfigIn: Deno.PointerValue | Uint8Array /* ptr */,
+  pdwSizeOfCredentialsOut: Deno.PointerValue | Uint8Array /* ptr */,
+  ppCredentialsOut: Deno.PointerValue | Uint8Array /* ptr */,
+  pEapMethodType: Deno.PointerValue | Uint8Array /* ptr */,
+  ppEapError: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libeappcfg_dll.EapHostPeerCredentialsXml2Blob(dwFlags, util.toPointer(pCredentialsDoc), dwSizeOfConfigIn, util.toPointer(pConfigIn), util.toPointer(pdwSizeOfCredentialsOut), util.toPointer(ppCredentialsOut), util.toPointer(pEapMethodType), util.toPointer(ppEapError));
 }
 
 export function EapHostPeerConfigBlob2Xml(
   dwFlags: number /* u32 */,
-  eapMethodType: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_METHOD_TYPE */,
+  eapMethodType: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_METHOD_TYPE */,
   dwSizeOfConfigIn: number /* u32 */,
-  pConfigIn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppConfigDoc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pConfigIn: Deno.PointerValue | Uint8Array /* ptr */,
+  ppConfigDoc: Deno.PointerValue | Uint8Array /* ptr */,
+  ppEapError: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libeappcfg_dll.EapHostPeerConfigBlob2Xml(dwFlags, util.toPointer(eapMethodType), dwSizeOfConfigIn, util.toPointer(pConfigIn), util.toPointer(ppConfigDoc), util.toPointer(ppEapError));
 }
 
 export function EapHostPeerFreeMemory(
-  pData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pData: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libeappcfg_dll.EapHostPeerFreeMemory(util.toPointer(pData));
 }
 
 export function EapHostPeerFreeErrorMemory(
-  pEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pEapError: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libeappcfg_dll.EapHostPeerFreeErrorMemory(util.toPointer(pEapError));
 }
@@ -5423,19 +5423,19 @@ export function EapHostPeerUninitialize(): void /* void */ {
 
 export function EapHostPeerBeginSession(
   dwFlags: number /* u32 */,
-  eapType: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_METHOD_TYPE */,
-  pAttributeArray: Deno.PointerValue | Uint8Array | null /* ptr */,
-  hTokenImpersonateUser: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  eapType: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_METHOD_TYPE */,
+  pAttributeArray: Deno.PointerValue | Uint8Array /* ptr */,
+  hTokenImpersonateUser: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwSizeofConnectionData: number /* u32 */,
-  pConnectionData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pConnectionData: Deno.PointerValue | Uint8Array /* ptr */,
   dwSizeofUserData: number /* u32 */,
-  pUserData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pUserData: Deno.PointerValue | Uint8Array /* ptr */,
   dwMaxSendPacketSize: number /* u32 */,
-  pConnectionId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  func: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.ExtensibleAuthenticationProtocol.NotificationHandler */,
-  pContextData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pSessionId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pConnectionId: Deno.PointerValue | Uint8Array /* ptr */,
+  func: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.ExtensibleAuthenticationProtocol.NotificationHandler */,
+  pContextData: Deno.PointerValue | Uint8Array /* ptr */,
+  pSessionId: Deno.PointerValue | Uint8Array /* ptr */,
+  ppEapError: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libeappprxy_dll.EapHostPeerBeginSession(dwFlags, util.toPointer(eapType), util.toPointer(pAttributeArray), util.toPointer(hTokenImpersonateUser), dwSizeofConnectionData, util.toPointer(pConnectionData), dwSizeofUserData, util.toPointer(pUserData), dwMaxSendPacketSize, util.toPointer(pConnectionId), util.toPointer(func), util.toPointer(pContextData), util.toPointer(pSessionId), util.toPointer(ppEapError));
 }
@@ -5443,18 +5443,18 @@ export function EapHostPeerBeginSession(
 export function EapHostPeerProcessReceivedPacket(
   sessionHandle: number /* u32 */,
   cbReceivePacket: number /* u32 */,
-  pReceivePacket: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pEapOutput: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pReceivePacket: Deno.PointerValue | Uint8Array /* ptr */,
+  pEapOutput: Deno.PointerValue | Uint8Array /* ptr */,
+  ppEapError: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libeappprxy_dll.EapHostPeerProcessReceivedPacket(sessionHandle, cbReceivePacket, util.toPointer(pReceivePacket), util.toPointer(pEapOutput), util.toPointer(ppEapError));
 }
 
 export function EapHostPeerGetSendPacket(
   sessionHandle: number /* u32 */,
-  pcbSendPacket: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppSendPacket: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbSendPacket: Deno.PointerValue | Uint8Array /* ptr */,
+  ppSendPacket: Deno.PointerValue | Uint8Array /* ptr */,
+  ppEapError: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libeappprxy_dll.EapHostPeerGetSendPacket(sessionHandle, util.toPointer(pcbSendPacket), util.toPointer(ppSendPacket), util.toPointer(ppEapError));
 }
@@ -5462,17 +5462,17 @@ export function EapHostPeerGetSendPacket(
 export function EapHostPeerGetResult(
   sessionHandle: number /* u32 */,
   reason: EapHostPeerMethodResultReason /* Windows.Win32.Security.ExtensibleAuthenticationProtocol.EapHostPeerMethodResultReason */,
-  ppResult: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ppResult: Deno.PointerValue | Uint8Array /* ptr */,
+  ppEapError: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libeappprxy_dll.EapHostPeerGetResult(sessionHandle, reason, util.toPointer(ppResult), util.toPointer(ppEapError));
 }
 
 export function EapHostPeerGetUIContext(
   sessionHandle: number /* u32 */,
-  pdwSizeOfUIContextData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppUIContextData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pdwSizeOfUIContextData: Deno.PointerValue | Uint8Array /* ptr */,
+  ppUIContextData: Deno.PointerValue | Uint8Array /* ptr */,
+  ppEapError: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libeappprxy_dll.EapHostPeerGetUIContext(sessionHandle, util.toPointer(pdwSizeOfUIContextData), util.toPointer(ppUIContextData), util.toPointer(ppEapError));
 }
@@ -5480,26 +5480,26 @@ export function EapHostPeerGetUIContext(
 export function EapHostPeerSetUIContext(
   sessionHandle: number /* u32 */,
   dwSizeOfUIContextData: number /* u32 */,
-  pUIContextData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pEapOutput: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pUIContextData: Deno.PointerValue | Uint8Array /* ptr */,
+  pEapOutput: Deno.PointerValue | Uint8Array /* ptr */,
+  ppEapError: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libeappprxy_dll.EapHostPeerSetUIContext(sessionHandle, dwSizeOfUIContextData, util.toPointer(pUIContextData), util.toPointer(pEapOutput), util.toPointer(ppEapError));
 }
 
 export function EapHostPeerGetResponseAttributes(
   sessionHandle: number /* u32 */,
-  pAttribs: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pAttribs: Deno.PointerValue | Uint8Array /* ptr */,
+  ppEapError: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libeappprxy_dll.EapHostPeerGetResponseAttributes(sessionHandle, util.toPointer(pAttribs), util.toPointer(ppEapError));
 }
 
 export function EapHostPeerSetResponseAttributes(
   sessionHandle: number /* u32 */,
-  pAttribs: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pEapOutput: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pAttribs: Deno.PointerValue | Uint8Array /* ptr */,
+  pEapOutput: Deno.PointerValue | Uint8Array /* ptr */,
+  ppEapError: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libeappprxy_dll.EapHostPeerSetResponseAttributes(sessionHandle, util.toPointer(pAttribs), util.toPointer(pEapOutput), util.toPointer(ppEapError));
 }
@@ -5507,39 +5507,39 @@ export function EapHostPeerSetResponseAttributes(
 export function EapHostPeerGetAuthStatus(
   sessionHandle: number /* u32 */,
   authParam: EapHostPeerAuthParams /* Windows.Win32.Security.ExtensibleAuthenticationProtocol.EapHostPeerAuthParams */,
-  pcbAuthData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppAuthData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbAuthData: Deno.PointerValue | Uint8Array /* ptr */,
+  ppAuthData: Deno.PointerValue | Uint8Array /* ptr */,
+  ppEapError: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libeappprxy_dll.EapHostPeerGetAuthStatus(sessionHandle, authParam, util.toPointer(pcbAuthData), util.toPointer(ppAuthData), util.toPointer(ppEapError));
 }
 
 export function EapHostPeerEndSession(
   sessionHandle: number /* u32 */,
-  ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ppEapError: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libeappprxy_dll.EapHostPeerEndSession(sessionHandle, util.toPointer(ppEapError));
 }
 
 export function EapHostPeerGetDataToUnplumbCredentials(
-  pConnectionIdThatLastSavedCreds: Deno.PointerValue | Uint8Array | null /* ptr */,
-  phCredentialImpersonationToken: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pConnectionIdThatLastSavedCreds: Deno.PointerValue | Uint8Array /* ptr */,
+  phCredentialImpersonationToken: Deno.PointerValue | Uint8Array /* ptr */,
   sessionHandle: number /* u32 */,
-  ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
-  fSaveToCredMan: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ppEapError: Deno.PointerValue | Uint8Array /* ptr */,
+  fSaveToCredMan: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libeappprxy_dll.EapHostPeerGetDataToUnplumbCredentials(util.toPointer(pConnectionIdThatLastSavedCreds), util.toPointer(phCredentialImpersonationToken), sessionHandle, util.toPointer(ppEapError), util.toPointer(fSaveToCredMan));
 }
 
 export function EapHostPeerClearConnection(
-  pConnectionId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pConnectionId: Deno.PointerValue | Uint8Array /* ptr */,
+  ppEapError: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libeappprxy_dll.EapHostPeerClearConnection(util.toPointer(pConnectionId), util.toPointer(ppEapError));
 }
 
 export function EapHostPeerFreeEapError(
-  pEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pEapError: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libeappprxy_dll.EapHostPeerFreeEapError(util.toPointer(pEapError));
 }
@@ -5547,18 +5547,18 @@ export function EapHostPeerFreeEapError(
 export function EapHostPeerGetIdentity(
   dwVersion: number /* u32 */,
   dwFlags: number /* u32 */,
-  eapMethodType: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_METHOD_TYPE */,
+  eapMethodType: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.ExtensibleAuthenticationProtocol.EAP_METHOD_TYPE */,
   dwSizeofConnectionData: number /* u32 */,
-  pConnectionData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pConnectionData: Deno.PointerValue | Uint8Array /* ptr */,
   dwSizeofUserData: number /* u32 */,
-  pUserData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  hTokenImpersonateUser: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pfInvokeUI: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pdwSizeOfUserDataOut: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppUserDataOut: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppwszIdentity: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppEapError: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pUserData: Deno.PointerValue | Uint8Array /* ptr */,
+  hTokenImpersonateUser: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  pfInvokeUI: Deno.PointerValue | Uint8Array /* ptr */,
+  pdwSizeOfUserDataOut: Deno.PointerValue | Uint8Array /* ptr */,
+  ppUserDataOut: Deno.PointerValue | Uint8Array /* ptr */,
+  ppwszIdentity: Deno.PointerValue | Uint8Array /* ptr */,
+  ppEapError: Deno.PointerValue | Uint8Array /* ptr */,
+  ppvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libeappprxy_dll.EapHostPeerGetIdentity(dwVersion, dwFlags, util.toPointer(eapMethodType), dwSizeofConnectionData, util.toPointer(pConnectionData), dwSizeofUserData, util.toPointer(pUserData), util.toPointer(hTokenImpersonateUser), util.toPointer(pfInvokeUI), util.toPointer(pdwSizeOfUserDataOut), util.toPointer(ppUserDataOut), util.toPointer(ppwszIdentity), util.toPointer(ppEapError), util.toPointer(ppvReserved));
 }
@@ -5566,13 +5566,13 @@ export function EapHostPeerGetIdentity(
 export function EapHostPeerGetEncryptedPassword(
   dwSizeofPassword: number /* u32 */,
   szPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ppszEncPassword: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ppszEncPassword: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libeappprxy_dll.EapHostPeerGetEncryptedPassword(dwSizeofPassword, util.pwstrToFfi(szPassword), util.toPointer(ppszEncPassword));
 }
 
 export function EapHostPeerFreeRuntimeMemory(
-  pData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pData: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libeappprxy_dll.EapHostPeerFreeRuntimeMemory(util.toPointer(pData));
 }

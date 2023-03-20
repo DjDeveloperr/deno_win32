@@ -148,9 +148,9 @@ export class _Anonymous_e__StructView {
  */
 export interface _Anonymous_e__Union {
   /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** array */
-  X: Deno.PointerValue | null;
+  X: Deno.PointerValue;
 }
 
 export const sizeof_Anonymous_e__Union = 16;
@@ -159,9 +159,9 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   const buf = new Uint8Array(sizeof_Anonymous_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x08: pointer
-  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.X))), true);
   return buf;
 }
 
@@ -176,25 +176,25 @@ export class _Anonymous_e__UnionView {
   }
 
   // 0x00: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get X(): Uint8Array | Deno.PointerValue | null {
+  get X(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set X(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set X(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -203,7 +203,7 @@ export class _Anonymous_e__UnionView {
  */
 export interface EC_VARIANT {
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** u32 */
   Count: number;
   /** u32 */
@@ -216,7 +216,7 @@ export function allocEC_VARIANT(data?: Partial<EC_VARIANT>): Uint8Array {
   const buf = new Uint8Array(sizeofEC_VARIANT);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x08: u32
   if (data?.Count !== undefined) view.setUint32(8, Number(data.Count), true);
   // 0x0c: u32
@@ -235,9 +235,9 @@ export class EC_VARIANTView {
   }
 
   // 0x00: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -251,8 +251,8 @@ export class EC_VARIANTView {
   }
 
   // 0x00: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -266,7 +266,7 @@ export class EC_VARIANTView {
   }
 }
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 export type BOOL = number;
 
@@ -349,7 +349,7 @@ export function EcEnumNextSubscription(
   SubscriptionEnum: Deno.PointerValue /* isize */,
   SubscriptionNameBufferSize: number /* u32 */,
   SubscriptionNameBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  SubscriptionNameBufferUsed: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SubscriptionNameBufferUsed: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWecApi_dll.EcEnumNextSubscription(SubscriptionEnum, SubscriptionNameBufferSize, util.pwstrToFfi(SubscriptionNameBuffer), util.toPointer(SubscriptionNameBufferUsed)));
 }
@@ -366,7 +366,7 @@ export function EcSetSubscriptionProperty(
   Subscription: Deno.PointerValue /* isize */,
   PropertyId: EC_SUBSCRIPTION_PROPERTY_ID /* Windows.Win32.System.EventCollector.EC_SUBSCRIPTION_PROPERTY_ID */,
   Flags: number /* u32 */,
-  PropertyValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  PropertyValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWecApi_dll.EcSetSubscriptionProperty(Subscription, PropertyId, Flags, util.toPointer(PropertyValue)));
 }
@@ -376,8 +376,8 @@ export function EcGetSubscriptionProperty(
   PropertyId: EC_SUBSCRIPTION_PROPERTY_ID /* Windows.Win32.System.EventCollector.EC_SUBSCRIPTION_PROPERTY_ID */,
   Flags: number /* u32 */,
   PropertyValueBufferSize: number /* u32 */,
-  PropertyValueBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  PropertyValueBufferUsed: Deno.PointerValue | Uint8Array | null /* ptr */,
+  PropertyValueBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  PropertyValueBufferUsed: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWecApi_dll.EcGetSubscriptionProperty(Subscription, PropertyId, Flags, PropertyValueBufferSize, util.toPointer(PropertyValueBuffer), util.toPointer(PropertyValueBufferUsed)));
 }
@@ -398,7 +398,7 @@ export function EcDeleteSubscription(
 
 export function EcGetObjectArraySize(
   ObjectArray: Deno.PointerValue /* isize */,
-  ObjectArraySize: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ObjectArraySize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWecApi_dll.EcGetObjectArraySize(ObjectArray, util.toPointer(ObjectArraySize)));
 }
@@ -408,7 +408,7 @@ export function EcSetObjectArrayProperty(
   PropertyId: EC_SUBSCRIPTION_PROPERTY_ID /* Windows.Win32.System.EventCollector.EC_SUBSCRIPTION_PROPERTY_ID */,
   ArrayIndex: number /* u32 */,
   Flags: number /* u32 */,
-  PropertyValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  PropertyValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWecApi_dll.EcSetObjectArrayProperty(ObjectArray, PropertyId, ArrayIndex, Flags, util.toPointer(PropertyValue)));
 }
@@ -419,8 +419,8 @@ export function EcGetObjectArrayProperty(
   ArrayIndex: number /* u32 */,
   Flags: number /* u32 */,
   PropertyValueBufferSize: number /* u32 */,
-  PropertyValueBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  PropertyValueBufferUsed: Deno.PointerValue | Uint8Array | null /* ptr */,
+  PropertyValueBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  PropertyValueBufferUsed: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWecApi_dll.EcGetObjectArrayProperty(ObjectArray, PropertyId, ArrayIndex, Flags, PropertyValueBufferSize, util.toPointer(PropertyValueBuffer), util.toPointer(PropertyValueBufferUsed)));
 }
@@ -445,8 +445,8 @@ export function EcGetSubscriptionRunTimeStatus(
   EventSourceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
   StatusValueBufferSize: number /* u32 */,
-  StatusValueBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  StatusValueBufferUsed: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatusValueBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  StatusValueBufferUsed: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWecApi_dll.EcGetSubscriptionRunTimeStatus(util.pwstrToFfi(SubscriptionName), StatusInfoId, util.pwstrToFfi(EventSourceName), Flags, StatusValueBufferSize, util.toPointer(StatusValueBuffer), util.toPointer(StatusValueBufferUsed)));
 }

@@ -733,32 +733,32 @@ export class AE_CURRENT_POSITIONView {
 
 export type HwtsVirtualChannelHandle = Deno.PointerValue;
 
-export type BSTR = Deno.PointerValue | Uint8Array | null;
+export type BSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.System.RemoteDesktop.AAAccountingData (size: 80)
  */
 export interface AAAccountingData {
   /** Windows.Win32.Foundation.BSTR */
-  userName: Uint8Array | Deno.PointerValue | null;
+  userName: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BSTR */
-  clientName: Uint8Array | Deno.PointerValue | null;
+  clientName: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.RemoteDesktop.AAAuthSchemes */
   authType: AAAuthSchemes;
   /** Windows.Win32.Foundation.BSTR */
-  resourceName: Uint8Array | Deno.PointerValue | null;
+  resourceName: Uint8Array | Deno.PointerValue;
   /** i32 */
   portNumber: number;
   /** Windows.Win32.Foundation.BSTR */
-  protocolName: Uint8Array | Deno.PointerValue | null;
+  protocolName: Uint8Array | Deno.PointerValue;
   /** i32 */
   numberOfBytesReceived: number;
   /** i32 */
   numberOfBytesTransfered: number;
   /** Windows.Win32.Foundation.BSTR */
-  reasonForDisconnect: Uint8Array | Deno.PointerValue | null;
+  reasonForDisconnect: Uint8Array | Deno.PointerValue;
   /** System.Guid */
-  mainSessionId: Uint8Array | Deno.PointerValue | null;
+  mainSessionId: Uint8Array | Deno.PointerValue;
   /** i32 */
   subSessionId: number;
 }
@@ -769,27 +769,27 @@ export function allocAAAccountingData(data?: Partial<AAAccountingData>): Uint8Ar
   const buf = new Uint8Array(sizeofAAAccountingData);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.userName !== undefined) view.setBigUint64(0, data.userName === null ? 0n : BigInt(util.toPointer(data.userName)), true);
+  if (data?.userName !== undefined) view.setBigUint64(0, data.userName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.userName))), true);
   // 0x08: pointer
-  if (data?.clientName !== undefined) view.setBigUint64(8, data.clientName === null ? 0n : BigInt(util.toPointer(data.clientName)), true);
+  if (data?.clientName !== undefined) view.setBigUint64(8, data.clientName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.clientName))), true);
   // 0x10: i32
   if (data?.authType !== undefined) view.setInt32(16, Number(data.authType), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.resourceName !== undefined) view.setBigUint64(24, data.resourceName === null ? 0n : BigInt(util.toPointer(data.resourceName)), true);
+  if (data?.resourceName !== undefined) view.setBigUint64(24, data.resourceName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.resourceName))), true);
   // 0x20: i32
   if (data?.portNumber !== undefined) view.setInt32(32, Number(data.portNumber), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.protocolName !== undefined) view.setBigUint64(40, data.protocolName === null ? 0n : BigInt(util.toPointer(data.protocolName)), true);
+  if (data?.protocolName !== undefined) view.setBigUint64(40, data.protocolName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.protocolName))), true);
   // 0x30: i32
   if (data?.numberOfBytesReceived !== undefined) view.setInt32(48, Number(data.numberOfBytesReceived), true);
   // 0x34: i32
   if (data?.numberOfBytesTransfered !== undefined) view.setInt32(52, Number(data.numberOfBytesTransfered), true);
   // 0x38: pointer
-  if (data?.reasonForDisconnect !== undefined) view.setBigUint64(56, data.reasonForDisconnect === null ? 0n : BigInt(util.toPointer(data.reasonForDisconnect)), true);
+  if (data?.reasonForDisconnect !== undefined) view.setBigUint64(56, data.reasonForDisconnect === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.reasonForDisconnect))), true);
   // 0x40: pointer
-  if (data?.mainSessionId !== undefined) view.setBigUint64(64, data.mainSessionId === null ? 0n : BigInt(util.toPointer(data.mainSessionId)), true);
+  if (data?.mainSessionId !== undefined) view.setBigUint64(64, data.mainSessionId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.mainSessionId))), true);
   // 0x48: i32
   if (data?.subSessionId !== undefined) view.setInt32(72, Number(data.subSessionId), true);
   // 0x4c: pad4
@@ -807,15 +807,15 @@ export class AAAccountingDataView {
   }
 
   // 0x00: pointer
-  get userName(): Uint8Array | Deno.PointerValue | null {
+  get userName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get clientName(): Uint8Array | Deno.PointerValue | null {
+  get clientName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i32
@@ -826,9 +826,9 @@ export class AAAccountingDataView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get resourceName(): Uint8Array | Deno.PointerValue | null {
+  get resourceName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: i32
@@ -839,9 +839,9 @@ export class AAAccountingDataView {
   // 0x24: pad4
 
   // 0x28: pointer
-  get protocolName(): Uint8Array | Deno.PointerValue | null {
+  get protocolName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: i32
@@ -855,15 +855,15 @@ export class AAAccountingDataView {
   }
 
   // 0x38: pointer
-  get reasonForDisconnect(): Uint8Array | Deno.PointerValue | null {
+  get reasonForDisconnect(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get mainSessionId(): Uint8Array | Deno.PointerValue | null {
+  get mainSessionId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: i32
@@ -874,13 +874,13 @@ export class AAAccountingDataView {
   // 0x4c: pad4
 
   // 0x00: pointer
-  set userName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set userName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set clientName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set clientName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: i32
@@ -891,8 +891,8 @@ export class AAAccountingDataView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set resourceName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set resourceName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: i32
@@ -903,8 +903,8 @@ export class AAAccountingDataView {
   // 0x24: pad4
 
   // 0x28: pointer
-  set protocolName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set protocolName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: i32
@@ -918,13 +918,13 @@ export class AAAccountingDataView {
   }
 
   // 0x38: pointer
-  set reasonForDisconnect(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set reasonForDisconnect(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set mainSessionId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set mainSessionId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: i32
@@ -935,7 +935,7 @@ export class AAAccountingDataView {
   // 0x4c: pad4
 }
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.System.RemoteDesktop.WTS_SERVER_INFOW (size: 8)
@@ -953,7 +953,7 @@ export function allocWTS_SERVER_INFOW(data?: Partial<WTS_SERVER_INFOW>): Uint8Ar
   // 0x00: buffer
   if (data?.pServerName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pServerName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   return buf;
 }
@@ -969,19 +969,19 @@ export class WTS_SERVER_INFOWView {
   }
 
   // 0x00: buffer
-  get pServerName(): Uint8Array | Deno.PointerValue | null {
+  get pServerName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set pServerName(value: Uint8Array | Deno.PointerValue | null) {
+  set pServerName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 }
 
-export type PSTR = Deno.PointerValue | Uint8Array | null;
+export type PSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.System.RemoteDesktop.WTS_SERVER_INFOA (size: 8)
@@ -999,7 +999,7 @@ export function allocWTS_SERVER_INFOA(data?: Partial<WTS_SERVER_INFOA>): Uint8Ar
   // 0x00: buffer
   if (data?.pServerName !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.pServerName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   return buf;
 }
@@ -1015,15 +1015,15 @@ export class WTS_SERVER_INFOAView {
   }
 
   // 0x00: buffer
-  get pServerName(): Uint8Array | Deno.PointerValue | null {
+  get pServerName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set pServerName(value: Uint8Array | Deno.PointerValue | null) {
+  set pServerName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 }
 
@@ -1050,7 +1050,7 @@ export function allocWTS_SESSION_INFOW(data?: Partial<WTS_SESSION_INFOW>): Uint8
   // 0x08: buffer
   if (data?.pWinStationName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pWinStationName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: i32
   if (data?.State !== undefined) view.setInt32(16, Number(data.State), true);
@@ -1076,9 +1076,9 @@ export class WTS_SESSION_INFOWView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get pWinStationName(): Uint8Array | Deno.PointerValue | null {
+  get pWinStationName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i32
@@ -1096,9 +1096,9 @@ export class WTS_SESSION_INFOWView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set pWinStationName(value: Uint8Array | Deno.PointerValue | null) {
+  set pWinStationName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: i32
@@ -1132,7 +1132,7 @@ export function allocWTS_SESSION_INFOA(data?: Partial<WTS_SESSION_INFOA>): Uint8
   // 0x08: buffer
   if (data?.pWinStationName !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.pWinStationName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: i32
   if (data?.State !== undefined) view.setInt32(16, Number(data.State), true);
@@ -1158,9 +1158,9 @@ export class WTS_SESSION_INFOAView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get pWinStationName(): Uint8Array | Deno.PointerValue | null {
+  get pWinStationName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i32
@@ -1178,9 +1178,9 @@ export class WTS_SESSION_INFOAView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set pWinStationName(value: Uint8Array | Deno.PointerValue | null) {
+  set pWinStationName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: i32
@@ -1228,27 +1228,27 @@ export function allocWTS_SESSION_INFO_1W(data?: Partial<WTS_SESSION_INFO_1W>): U
   // 0x10: buffer
   if (data?.pSessionName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pSessionName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.pHostName !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.pHostName);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: buffer
   if (data?.pUserName !== undefined) {
     (buf as any)._f32 = util.pwstrToFfi(data.pUserName);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f32))), true);
   }
   // 0x28: buffer
   if (data?.pDomainName !== undefined) {
     (buf as any)._f40 = util.pwstrToFfi(data.pDomainName);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f40))), true);
   }
   // 0x30: buffer
   if (data?.pFarmName !== undefined) {
     (buf as any)._f48 = util.pwstrToFfi(data.pFarmName);
-    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
+    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f48))), true);
   }
   return buf;
 }
@@ -1281,33 +1281,33 @@ export class WTS_SESSION_INFO_1WView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  get pSessionName(): Uint8Array | Deno.PointerValue | null {
+  get pSessionName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get pHostName(): Uint8Array | Deno.PointerValue | null {
+  get pHostName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: buffer
-  get pUserName(): Uint8Array | Deno.PointerValue | null {
+  get pUserName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: buffer
-  get pDomainName(): Uint8Array | Deno.PointerValue | null {
+  get pDomainName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: buffer
-  get pFarmName(): Uint8Array | Deno.PointerValue | null {
+  get pFarmName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1328,33 +1328,33 @@ export class WTS_SESSION_INFO_1WView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  set pSessionName(value: Uint8Array | Deno.PointerValue | null) {
+  set pSessionName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set pHostName(value: Uint8Array | Deno.PointerValue | null) {
+  set pHostName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: buffer
-  set pUserName(value: Uint8Array | Deno.PointerValue | null) {
+  set pUserName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f32))), true);
   }
 
   // 0x28: buffer
-  set pDomainName(value: Uint8Array | Deno.PointerValue | null) {
+  set pDomainName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f40))), true);
   }
 
   // 0x30: buffer
-  set pFarmName(value: Uint8Array | Deno.PointerValue | null) {
+  set pFarmName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f48 = value;
-    this.view.setBigUint64(48, BigInt(util.toPointer((this.buf as any)._f48)), true);
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f48))), true);
   }
 }
 
@@ -1395,27 +1395,27 @@ export function allocWTS_SESSION_INFO_1A(data?: Partial<WTS_SESSION_INFO_1A>): U
   // 0x10: buffer
   if (data?.pSessionName !== undefined) {
     (buf as any)._f16 = util.pstrToFfi(data.pSessionName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.pHostName !== undefined) {
     (buf as any)._f24 = util.pstrToFfi(data.pHostName);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: buffer
   if (data?.pUserName !== undefined) {
     (buf as any)._f32 = util.pstrToFfi(data.pUserName);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f32))), true);
   }
   // 0x28: buffer
   if (data?.pDomainName !== undefined) {
     (buf as any)._f40 = util.pstrToFfi(data.pDomainName);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f40))), true);
   }
   // 0x30: buffer
   if (data?.pFarmName !== undefined) {
     (buf as any)._f48 = util.pstrToFfi(data.pFarmName);
-    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
+    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f48))), true);
   }
   return buf;
 }
@@ -1448,33 +1448,33 @@ export class WTS_SESSION_INFO_1AView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  get pSessionName(): Uint8Array | Deno.PointerValue | null {
+  get pSessionName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get pHostName(): Uint8Array | Deno.PointerValue | null {
+  get pHostName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: buffer
-  get pUserName(): Uint8Array | Deno.PointerValue | null {
+  get pUserName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: buffer
-  get pDomainName(): Uint8Array | Deno.PointerValue | null {
+  get pDomainName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: buffer
-  get pFarmName(): Uint8Array | Deno.PointerValue | null {
+  get pFarmName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1495,37 +1495,37 @@ export class WTS_SESSION_INFO_1AView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  set pSessionName(value: Uint8Array | Deno.PointerValue | null) {
+  set pSessionName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set pHostName(value: Uint8Array | Deno.PointerValue | null) {
+  set pHostName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: buffer
-  set pUserName(value: Uint8Array | Deno.PointerValue | null) {
+  set pUserName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f32))), true);
   }
 
   // 0x28: buffer
-  set pDomainName(value: Uint8Array | Deno.PointerValue | null) {
+  set pDomainName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f40))), true);
   }
 
   // 0x30: buffer
-  set pFarmName(value: Uint8Array | Deno.PointerValue | null) {
+  set pFarmName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f48 = value;
-    this.view.setBigUint64(48, BigInt(util.toPointer((this.buf as any)._f48)), true);
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f48))), true);
   }
 }
 
-export type PSID = Deno.PointerValue | Uint8Array | null;
+export type PSID = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.System.RemoteDesktop.WTS_PROCESS_INFOW (size: 24)
@@ -1538,7 +1538,7 @@ export interface WTS_PROCESS_INFOW {
   /** Windows.Win32.Foundation.PWSTR */
   pProcessName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PSID */
-  pUserSid: Uint8Array | Deno.PointerValue | null;
+  pUserSid: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofWTS_PROCESS_INFOW = 24;
@@ -1553,10 +1553,10 @@ export function allocWTS_PROCESS_INFOW(data?: Partial<WTS_PROCESS_INFOW>): Uint8
   // 0x08: buffer
   if (data?.pProcessName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pProcessName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: pointer
-  if (data?.pUserSid !== undefined) view.setBigUint64(16, data.pUserSid === null ? 0n : BigInt(util.toPointer(data.pUserSid)), true);
+  if (data?.pUserSid !== undefined) view.setBigUint64(16, data.pUserSid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pUserSid))), true);
   return buf;
 }
 
@@ -1581,15 +1581,15 @@ export class WTS_PROCESS_INFOWView {
   }
 
   // 0x08: buffer
-  get pProcessName(): Uint8Array | Deno.PointerValue | null {
+  get pProcessName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get pUserSid(): Uint8Array | Deno.PointerValue | null {
+  get pUserSid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1603,14 +1603,14 @@ export class WTS_PROCESS_INFOWView {
   }
 
   // 0x08: buffer
-  set pProcessName(value: Uint8Array | Deno.PointerValue | null) {
+  set pProcessName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: pointer
-  set pUserSid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pUserSid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1625,7 +1625,7 @@ export interface WTS_PROCESS_INFOA {
   /** Windows.Win32.Foundation.PSTR */
   pProcessName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSID */
-  pUserSid: Uint8Array | Deno.PointerValue | null;
+  pUserSid: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofWTS_PROCESS_INFOA = 24;
@@ -1640,10 +1640,10 @@ export function allocWTS_PROCESS_INFOA(data?: Partial<WTS_PROCESS_INFOA>): Uint8
   // 0x08: buffer
   if (data?.pProcessName !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.pProcessName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: pointer
-  if (data?.pUserSid !== undefined) view.setBigUint64(16, data.pUserSid === null ? 0n : BigInt(util.toPointer(data.pUserSid)), true);
+  if (data?.pUserSid !== undefined) view.setBigUint64(16, data.pUserSid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pUserSid))), true);
   return buf;
 }
 
@@ -1668,15 +1668,15 @@ export class WTS_PROCESS_INFOAView {
   }
 
   // 0x08: buffer
-  get pProcessName(): Uint8Array | Deno.PointerValue | null {
+  get pProcessName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get pUserSid(): Uint8Array | Deno.PointerValue | null {
+  get pUserSid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1690,14 +1690,14 @@ export class WTS_PROCESS_INFOAView {
   }
 
   // 0x08: buffer
-  set pProcessName(value: Uint8Array | Deno.PointerValue | null) {
+  set pProcessName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: pointer
-  set pUserSid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pUserSid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1718,15 +1718,15 @@ export interface WTSCONFIGINFOW {
   /** u32 */
   ShadowSettings: number;
   /** array */
-  LogonUserName: Deno.PointerValue | null;
+  LogonUserName: Deno.PointerValue;
   /** array */
-  LogonDomain: Deno.PointerValue | null;
+  LogonDomain: Deno.PointerValue;
   /** array */
-  WorkDirectory: Deno.PointerValue | null;
+  WorkDirectory: Deno.PointerValue;
   /** array */
-  InitialProgram: Deno.PointerValue | null;
+  InitialProgram: Deno.PointerValue;
   /** array */
-  ApplicationName: Deno.PointerValue | null;
+  ApplicationName: Deno.PointerValue;
 }
 
 export const sizeofWTSCONFIGINFOW = 64;
@@ -1747,15 +1747,15 @@ export function allocWTSCONFIGINFOW(data?: Partial<WTSCONFIGINFOW>): Uint8Array 
   // 0x14: u32
   if (data?.ShadowSettings !== undefined) view.setUint32(20, Number(data.ShadowSettings), true);
   // 0x18: pointer
-  if (data?.LogonUserName !== undefined) view.setBigUint64(24, data.LogonUserName === null ? 0n : BigInt(util.toPointer(data.LogonUserName)), true);
+  if (data?.LogonUserName !== undefined) view.setBigUint64(24, data.LogonUserName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.LogonUserName))), true);
   // 0x20: pointer
-  if (data?.LogonDomain !== undefined) view.setBigUint64(32, data.LogonDomain === null ? 0n : BigInt(util.toPointer(data.LogonDomain)), true);
+  if (data?.LogonDomain !== undefined) view.setBigUint64(32, data.LogonDomain === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.LogonDomain))), true);
   // 0x28: pointer
-  if (data?.WorkDirectory !== undefined) view.setBigUint64(40, data.WorkDirectory === null ? 0n : BigInt(util.toPointer(data.WorkDirectory)), true);
+  if (data?.WorkDirectory !== undefined) view.setBigUint64(40, data.WorkDirectory === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WorkDirectory))), true);
   // 0x30: pointer
-  if (data?.InitialProgram !== undefined) view.setBigUint64(48, data.InitialProgram === null ? 0n : BigInt(util.toPointer(data.InitialProgram)), true);
+  if (data?.InitialProgram !== undefined) view.setBigUint64(48, data.InitialProgram === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InitialProgram))), true);
   // 0x38: pointer
-  if (data?.ApplicationName !== undefined) view.setBigUint64(56, data.ApplicationName === null ? 0n : BigInt(util.toPointer(data.ApplicationName)), true);
+  if (data?.ApplicationName !== undefined) view.setBigUint64(56, data.ApplicationName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ApplicationName))), true);
   return buf;
 }
 
@@ -1800,33 +1800,33 @@ export class WTSCONFIGINFOWView {
   }
 
   // 0x18: pointer
-  get LogonUserName(): Uint8Array | Deno.PointerValue | null {
+  get LogonUserName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get LogonDomain(): Uint8Array | Deno.PointerValue | null {
+  get LogonDomain(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get WorkDirectory(): Uint8Array | Deno.PointerValue | null {
+  get WorkDirectory(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get InitialProgram(): Uint8Array | Deno.PointerValue | null {
+  get InitialProgram(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get ApplicationName(): Uint8Array | Deno.PointerValue | null {
+  get ApplicationName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1860,28 +1860,28 @@ export class WTSCONFIGINFOWView {
   }
 
   // 0x18: pointer
-  set LogonUserName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set LogonUserName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set LogonDomain(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set LogonDomain(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set WorkDirectory(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set WorkDirectory(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set InitialProgram(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set InitialProgram(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set ApplicationName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set ApplicationName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1902,15 +1902,15 @@ export interface WTSCONFIGINFOA {
   /** u32 */
   ShadowSettings: number;
   /** array */
-  LogonUserName: Deno.PointerValue | null;
+  LogonUserName: Deno.PointerValue;
   /** array */
-  LogonDomain: Deno.PointerValue | null;
+  LogonDomain: Deno.PointerValue;
   /** array */
-  WorkDirectory: Deno.PointerValue | null;
+  WorkDirectory: Deno.PointerValue;
   /** array */
-  InitialProgram: Deno.PointerValue | null;
+  InitialProgram: Deno.PointerValue;
   /** array */
-  ApplicationName: Deno.PointerValue | null;
+  ApplicationName: Deno.PointerValue;
 }
 
 export const sizeofWTSCONFIGINFOA = 64;
@@ -1931,15 +1931,15 @@ export function allocWTSCONFIGINFOA(data?: Partial<WTSCONFIGINFOA>): Uint8Array 
   // 0x14: u32
   if (data?.ShadowSettings !== undefined) view.setUint32(20, Number(data.ShadowSettings), true);
   // 0x18: pointer
-  if (data?.LogonUserName !== undefined) view.setBigUint64(24, data.LogonUserName === null ? 0n : BigInt(util.toPointer(data.LogonUserName)), true);
+  if (data?.LogonUserName !== undefined) view.setBigUint64(24, data.LogonUserName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.LogonUserName))), true);
   // 0x20: pointer
-  if (data?.LogonDomain !== undefined) view.setBigUint64(32, data.LogonDomain === null ? 0n : BigInt(util.toPointer(data.LogonDomain)), true);
+  if (data?.LogonDomain !== undefined) view.setBigUint64(32, data.LogonDomain === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.LogonDomain))), true);
   // 0x28: pointer
-  if (data?.WorkDirectory !== undefined) view.setBigUint64(40, data.WorkDirectory === null ? 0n : BigInt(util.toPointer(data.WorkDirectory)), true);
+  if (data?.WorkDirectory !== undefined) view.setBigUint64(40, data.WorkDirectory === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WorkDirectory))), true);
   // 0x30: pointer
-  if (data?.InitialProgram !== undefined) view.setBigUint64(48, data.InitialProgram === null ? 0n : BigInt(util.toPointer(data.InitialProgram)), true);
+  if (data?.InitialProgram !== undefined) view.setBigUint64(48, data.InitialProgram === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InitialProgram))), true);
   // 0x38: pointer
-  if (data?.ApplicationName !== undefined) view.setBigUint64(56, data.ApplicationName === null ? 0n : BigInt(util.toPointer(data.ApplicationName)), true);
+  if (data?.ApplicationName !== undefined) view.setBigUint64(56, data.ApplicationName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ApplicationName))), true);
   return buf;
 }
 
@@ -1984,33 +1984,33 @@ export class WTSCONFIGINFOAView {
   }
 
   // 0x18: pointer
-  get LogonUserName(): Uint8Array | Deno.PointerValue | null {
+  get LogonUserName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get LogonDomain(): Uint8Array | Deno.PointerValue | null {
+  get LogonDomain(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get WorkDirectory(): Uint8Array | Deno.PointerValue | null {
+  get WorkDirectory(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get InitialProgram(): Uint8Array | Deno.PointerValue | null {
+  get InitialProgram(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get ApplicationName(): Uint8Array | Deno.PointerValue | null {
+  get ApplicationName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -2044,28 +2044,28 @@ export class WTSCONFIGINFOAView {
   }
 
   // 0x18: pointer
-  set LogonUserName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set LogonUserName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set LogonDomain(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set LogonDomain(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set WorkDirectory(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set WorkDirectory(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set InitialProgram(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set InitialProgram(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set ApplicationName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set ApplicationName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2143,7 +2143,7 @@ export function alloc_u_e__Struct(data?: Partial<_u_e__Struct>): Uint8Array {
   // 0x08: buffer
   if (data?.pwszName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pwszName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   return buf;
 }
@@ -2166,9 +2166,9 @@ export class _u_e__StructView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get pwszName(): Uint8Array | Deno.PointerValue | null {
+  get pwszName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -2179,9 +2179,9 @@ export class _u_e__StructView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set pwszName(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 }
 
@@ -2190,9 +2190,9 @@ export class _u_e__StructView {
  */
 export interface LARGE_INTEGER {
   /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** _u_e__Struct */
-  u: Uint8Array | Deno.PointerValue | null;
+  u: Uint8Array | Deno.PointerValue;
   /** i64 */
   QuadPart: Deno.PointerValue;
 }
@@ -2203,9 +2203,9 @@ export function allocLARGE_INTEGER(data?: Partial<LARGE_INTEGER>): Uint8Array {
   const buf = new Uint8Array(sizeofLARGE_INTEGER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x08: pointer
-  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : BigInt(util.toPointer(data.u)), true);
+  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.u))), true);
   // 0x10: i64
   if (data?.QuadPart !== undefined) view.setBigInt64(16, BigInt(data.QuadPart), true);
   return buf;
@@ -2222,15 +2222,15 @@ export class LARGE_INTEGERView {
   }
 
   // 0x00: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get u(): Uint8Array | Deno.PointerValue | null {
+  get u(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i64
@@ -2239,13 +2239,13 @@ export class LARGE_INTEGERView {
   }
 
   // 0x00: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set u(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set u(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: i64
@@ -2275,21 +2275,21 @@ export interface WTSINFOW {
   /** u32 */
   OutgoingCompressedBytes: number;
   /** array */
-  WinStationName: Deno.PointerValue | null;
+  WinStationName: Deno.PointerValue;
   /** array */
-  Domain: Deno.PointerValue | null;
+  Domain: Deno.PointerValue;
   /** array */
-  UserName: Deno.PointerValue | null;
+  UserName: Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  ConnectTime: Uint8Array | Deno.PointerValue | null;
+  ConnectTime: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  DisconnectTime: Uint8Array | Deno.PointerValue | null;
+  DisconnectTime: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  LastInputTime: Uint8Array | Deno.PointerValue | null;
+  LastInputTime: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  LogonTime: Uint8Array | Deno.PointerValue | null;
+  LogonTime: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  CurrentTime: Uint8Array | Deno.PointerValue | null;
+  CurrentTime: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofWTSINFOW = 96;
@@ -2314,21 +2314,21 @@ export function allocWTSINFOW(data?: Partial<WTSINFOW>): Uint8Array {
   // 0x1c: u32
   if (data?.OutgoingCompressedBytes !== undefined) view.setUint32(28, Number(data.OutgoingCompressedBytes), true);
   // 0x20: pointer
-  if (data?.WinStationName !== undefined) view.setBigUint64(32, data.WinStationName === null ? 0n : BigInt(util.toPointer(data.WinStationName)), true);
+  if (data?.WinStationName !== undefined) view.setBigUint64(32, data.WinStationName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WinStationName))), true);
   // 0x28: pointer
-  if (data?.Domain !== undefined) view.setBigUint64(40, data.Domain === null ? 0n : BigInt(util.toPointer(data.Domain)), true);
+  if (data?.Domain !== undefined) view.setBigUint64(40, data.Domain === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Domain))), true);
   // 0x30: pointer
-  if (data?.UserName !== undefined) view.setBigUint64(48, data.UserName === null ? 0n : BigInt(util.toPointer(data.UserName)), true);
+  if (data?.UserName !== undefined) view.setBigUint64(48, data.UserName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.UserName))), true);
   // 0x38: pointer
-  if (data?.ConnectTime !== undefined) view.setBigUint64(56, data.ConnectTime === null ? 0n : BigInt(util.toPointer(data.ConnectTime)), true);
+  if (data?.ConnectTime !== undefined) view.setBigUint64(56, data.ConnectTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ConnectTime))), true);
   // 0x40: pointer
-  if (data?.DisconnectTime !== undefined) view.setBigUint64(64, data.DisconnectTime === null ? 0n : BigInt(util.toPointer(data.DisconnectTime)), true);
+  if (data?.DisconnectTime !== undefined) view.setBigUint64(64, data.DisconnectTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DisconnectTime))), true);
   // 0x48: pointer
-  if (data?.LastInputTime !== undefined) view.setBigUint64(72, data.LastInputTime === null ? 0n : BigInt(util.toPointer(data.LastInputTime)), true);
+  if (data?.LastInputTime !== undefined) view.setBigUint64(72, data.LastInputTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.LastInputTime))), true);
   // 0x50: pointer
-  if (data?.LogonTime !== undefined) view.setBigUint64(80, data.LogonTime === null ? 0n : BigInt(util.toPointer(data.LogonTime)), true);
+  if (data?.LogonTime !== undefined) view.setBigUint64(80, data.LogonTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.LogonTime))), true);
   // 0x58: pointer
-  if (data?.CurrentTime !== undefined) view.setBigUint64(88, data.CurrentTime === null ? 0n : BigInt(util.toPointer(data.CurrentTime)), true);
+  if (data?.CurrentTime !== undefined) view.setBigUint64(88, data.CurrentTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.CurrentTime))), true);
   return buf;
 }
 
@@ -2383,51 +2383,51 @@ export class WTSINFOWView {
   }
 
   // 0x20: pointer
-  get WinStationName(): Uint8Array | Deno.PointerValue | null {
+  get WinStationName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get Domain(): Uint8Array | Deno.PointerValue | null {
+  get Domain(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get UserName(): Uint8Array | Deno.PointerValue | null {
+  get UserName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get ConnectTime(): Uint8Array | Deno.PointerValue | null {
+  get ConnectTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get DisconnectTime(): Uint8Array | Deno.PointerValue | null {
+  get DisconnectTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: pointer
-  get LastInputTime(): Uint8Array | Deno.PointerValue | null {
+  get LastInputTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: pointer
-  get LogonTime(): Uint8Array | Deno.PointerValue | null {
+  get LogonTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x58: pointer
-  get CurrentTime(): Uint8Array | Deno.PointerValue | null {
+  get CurrentTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -2471,43 +2471,43 @@ export class WTSINFOWView {
   }
 
   // 0x20: pointer
-  set WinStationName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set WinStationName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set Domain(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set Domain(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set UserName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set UserName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set ConnectTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set ConnectTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set DisconnectTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set DisconnectTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: pointer
-  set LastInputTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set LastInputTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x50: pointer
-  set LogonTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set LogonTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x58: pointer
-  set CurrentTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  set CurrentTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2532,21 +2532,21 @@ export interface WTSINFOA {
   /** u32 */
   OutgoingCompressedBy: number;
   /** array */
-  WinStationName: Deno.PointerValue | null;
+  WinStationName: Deno.PointerValue;
   /** array */
-  Domain: Deno.PointerValue | null;
+  Domain: Deno.PointerValue;
   /** array */
-  UserName: Deno.PointerValue | null;
+  UserName: Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  ConnectTime: Uint8Array | Deno.PointerValue | null;
+  ConnectTime: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  DisconnectTime: Uint8Array | Deno.PointerValue | null;
+  DisconnectTime: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  LastInputTime: Uint8Array | Deno.PointerValue | null;
+  LastInputTime: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  LogonTime: Uint8Array | Deno.PointerValue | null;
+  LogonTime: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  CurrentTime: Uint8Array | Deno.PointerValue | null;
+  CurrentTime: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofWTSINFOA = 96;
@@ -2571,21 +2571,21 @@ export function allocWTSINFOA(data?: Partial<WTSINFOA>): Uint8Array {
   // 0x1c: u32
   if (data?.OutgoingCompressedBy !== undefined) view.setUint32(28, Number(data.OutgoingCompressedBy), true);
   // 0x20: pointer
-  if (data?.WinStationName !== undefined) view.setBigUint64(32, data.WinStationName === null ? 0n : BigInt(util.toPointer(data.WinStationName)), true);
+  if (data?.WinStationName !== undefined) view.setBigUint64(32, data.WinStationName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WinStationName))), true);
   // 0x28: pointer
-  if (data?.Domain !== undefined) view.setBigUint64(40, data.Domain === null ? 0n : BigInt(util.toPointer(data.Domain)), true);
+  if (data?.Domain !== undefined) view.setBigUint64(40, data.Domain === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Domain))), true);
   // 0x30: pointer
-  if (data?.UserName !== undefined) view.setBigUint64(48, data.UserName === null ? 0n : BigInt(util.toPointer(data.UserName)), true);
+  if (data?.UserName !== undefined) view.setBigUint64(48, data.UserName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.UserName))), true);
   // 0x38: pointer
-  if (data?.ConnectTime !== undefined) view.setBigUint64(56, data.ConnectTime === null ? 0n : BigInt(util.toPointer(data.ConnectTime)), true);
+  if (data?.ConnectTime !== undefined) view.setBigUint64(56, data.ConnectTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ConnectTime))), true);
   // 0x40: pointer
-  if (data?.DisconnectTime !== undefined) view.setBigUint64(64, data.DisconnectTime === null ? 0n : BigInt(util.toPointer(data.DisconnectTime)), true);
+  if (data?.DisconnectTime !== undefined) view.setBigUint64(64, data.DisconnectTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DisconnectTime))), true);
   // 0x48: pointer
-  if (data?.LastInputTime !== undefined) view.setBigUint64(72, data.LastInputTime === null ? 0n : BigInt(util.toPointer(data.LastInputTime)), true);
+  if (data?.LastInputTime !== undefined) view.setBigUint64(72, data.LastInputTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.LastInputTime))), true);
   // 0x50: pointer
-  if (data?.LogonTime !== undefined) view.setBigUint64(80, data.LogonTime === null ? 0n : BigInt(util.toPointer(data.LogonTime)), true);
+  if (data?.LogonTime !== undefined) view.setBigUint64(80, data.LogonTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.LogonTime))), true);
   // 0x58: pointer
-  if (data?.CurrentTime !== undefined) view.setBigUint64(88, data.CurrentTime === null ? 0n : BigInt(util.toPointer(data.CurrentTime)), true);
+  if (data?.CurrentTime !== undefined) view.setBigUint64(88, data.CurrentTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.CurrentTime))), true);
   return buf;
 }
 
@@ -2640,51 +2640,51 @@ export class WTSINFOAView {
   }
 
   // 0x20: pointer
-  get WinStationName(): Uint8Array | Deno.PointerValue | null {
+  get WinStationName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get Domain(): Uint8Array | Deno.PointerValue | null {
+  get Domain(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get UserName(): Uint8Array | Deno.PointerValue | null {
+  get UserName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get ConnectTime(): Uint8Array | Deno.PointerValue | null {
+  get ConnectTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get DisconnectTime(): Uint8Array | Deno.PointerValue | null {
+  get DisconnectTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: pointer
-  get LastInputTime(): Uint8Array | Deno.PointerValue | null {
+  get LastInputTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: pointer
-  get LogonTime(): Uint8Array | Deno.PointerValue | null {
+  get LogonTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x58: pointer
-  get CurrentTime(): Uint8Array | Deno.PointerValue | null {
+  get CurrentTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -2728,43 +2728,43 @@ export class WTSINFOAView {
   }
 
   // 0x20: pointer
-  set WinStationName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set WinStationName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set Domain(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set Domain(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set UserName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set UserName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set ConnectTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set ConnectTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set DisconnectTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set DisconnectTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: pointer
-  set LastInputTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set LastInputTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x50: pointer
-  set LogonTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set LogonTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x58: pointer
-  set CurrentTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  set CurrentTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2779,21 +2779,21 @@ export interface WTSINFOEX_LEVEL1_W {
   /** i32 */
   SessionFlags: number;
   /** array */
-  WinStationName: Deno.PointerValue | null;
+  WinStationName: Deno.PointerValue;
   /** array */
-  UserName: Deno.PointerValue | null;
+  UserName: Deno.PointerValue;
   /** array */
-  DomainName: Deno.PointerValue | null;
+  DomainName: Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  LogonTime: Uint8Array | Deno.PointerValue | null;
+  LogonTime: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  ConnectTime: Uint8Array | Deno.PointerValue | null;
+  ConnectTime: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  DisconnectTime: Uint8Array | Deno.PointerValue | null;
+  DisconnectTime: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  LastInputTime: Uint8Array | Deno.PointerValue | null;
+  LastInputTime: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  CurrentTime: Uint8Array | Deno.PointerValue | null;
+  CurrentTime: Uint8Array | Deno.PointerValue;
   /** u32 */
   IncomingBytes: number;
   /** u32 */
@@ -2821,21 +2821,21 @@ export function allocWTSINFOEX_LEVEL1_W(data?: Partial<WTSINFOEX_LEVEL1_W>): Uin
   if (data?.SessionFlags !== undefined) view.setInt32(8, Number(data.SessionFlags), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.WinStationName !== undefined) view.setBigUint64(16, data.WinStationName === null ? 0n : BigInt(util.toPointer(data.WinStationName)), true);
+  if (data?.WinStationName !== undefined) view.setBigUint64(16, data.WinStationName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WinStationName))), true);
   // 0x18: pointer
-  if (data?.UserName !== undefined) view.setBigUint64(24, data.UserName === null ? 0n : BigInt(util.toPointer(data.UserName)), true);
+  if (data?.UserName !== undefined) view.setBigUint64(24, data.UserName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.UserName))), true);
   // 0x20: pointer
-  if (data?.DomainName !== undefined) view.setBigUint64(32, data.DomainName === null ? 0n : BigInt(util.toPointer(data.DomainName)), true);
+  if (data?.DomainName !== undefined) view.setBigUint64(32, data.DomainName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DomainName))), true);
   // 0x28: pointer
-  if (data?.LogonTime !== undefined) view.setBigUint64(40, data.LogonTime === null ? 0n : BigInt(util.toPointer(data.LogonTime)), true);
+  if (data?.LogonTime !== undefined) view.setBigUint64(40, data.LogonTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.LogonTime))), true);
   // 0x30: pointer
-  if (data?.ConnectTime !== undefined) view.setBigUint64(48, data.ConnectTime === null ? 0n : BigInt(util.toPointer(data.ConnectTime)), true);
+  if (data?.ConnectTime !== undefined) view.setBigUint64(48, data.ConnectTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ConnectTime))), true);
   // 0x38: pointer
-  if (data?.DisconnectTime !== undefined) view.setBigUint64(56, data.DisconnectTime === null ? 0n : BigInt(util.toPointer(data.DisconnectTime)), true);
+  if (data?.DisconnectTime !== undefined) view.setBigUint64(56, data.DisconnectTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DisconnectTime))), true);
   // 0x40: pointer
-  if (data?.LastInputTime !== undefined) view.setBigUint64(64, data.LastInputTime === null ? 0n : BigInt(util.toPointer(data.LastInputTime)), true);
+  if (data?.LastInputTime !== undefined) view.setBigUint64(64, data.LastInputTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.LastInputTime))), true);
   // 0x48: pointer
-  if (data?.CurrentTime !== undefined) view.setBigUint64(72, data.CurrentTime === null ? 0n : BigInt(util.toPointer(data.CurrentTime)), true);
+  if (data?.CurrentTime !== undefined) view.setBigUint64(72, data.CurrentTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.CurrentTime))), true);
   // 0x50: u32
   if (data?.IncomingBytes !== undefined) view.setUint32(80, Number(data.IncomingBytes), true);
   // 0x54: u32
@@ -2879,51 +2879,51 @@ export class WTSINFOEX_LEVEL1_WView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get WinStationName(): Uint8Array | Deno.PointerValue | null {
+  get WinStationName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get UserName(): Uint8Array | Deno.PointerValue | null {
+  get UserName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get DomainName(): Uint8Array | Deno.PointerValue | null {
+  get DomainName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get LogonTime(): Uint8Array | Deno.PointerValue | null {
+  get LogonTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get ConnectTime(): Uint8Array | Deno.PointerValue | null {
+  get ConnectTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get DisconnectTime(): Uint8Array | Deno.PointerValue | null {
+  get DisconnectTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get LastInputTime(): Uint8Array | Deno.PointerValue | null {
+  get LastInputTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: pointer
-  get CurrentTime(): Uint8Array | Deno.PointerValue | null {
+  get CurrentTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: u32
@@ -2974,43 +2974,43 @@ export class WTSINFOEX_LEVEL1_WView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set WinStationName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set WinStationName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set UserName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set UserName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set DomainName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set DomainName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set LogonTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set LogonTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set ConnectTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set ConnectTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set DisconnectTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set DisconnectTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set LastInputTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set LastInputTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: pointer
-  set CurrentTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set CurrentTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x50: u32
@@ -3055,21 +3055,21 @@ export interface WTSINFOEX_LEVEL1_A {
   /** i32 */
   SessionFlags: number;
   /** array */
-  WinStationName: Deno.PointerValue | null;
+  WinStationName: Deno.PointerValue;
   /** array */
-  UserName: Deno.PointerValue | null;
+  UserName: Deno.PointerValue;
   /** array */
-  DomainName: Deno.PointerValue | null;
+  DomainName: Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  LogonTime: Uint8Array | Deno.PointerValue | null;
+  LogonTime: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  ConnectTime: Uint8Array | Deno.PointerValue | null;
+  ConnectTime: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  DisconnectTime: Uint8Array | Deno.PointerValue | null;
+  DisconnectTime: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  LastInputTime: Uint8Array | Deno.PointerValue | null;
+  LastInputTime: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  CurrentTime: Uint8Array | Deno.PointerValue | null;
+  CurrentTime: Uint8Array | Deno.PointerValue;
   /** u32 */
   IncomingBytes: number;
   /** u32 */
@@ -3097,21 +3097,21 @@ export function allocWTSINFOEX_LEVEL1_A(data?: Partial<WTSINFOEX_LEVEL1_A>): Uin
   if (data?.SessionFlags !== undefined) view.setInt32(8, Number(data.SessionFlags), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.WinStationName !== undefined) view.setBigUint64(16, data.WinStationName === null ? 0n : BigInt(util.toPointer(data.WinStationName)), true);
+  if (data?.WinStationName !== undefined) view.setBigUint64(16, data.WinStationName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WinStationName))), true);
   // 0x18: pointer
-  if (data?.UserName !== undefined) view.setBigUint64(24, data.UserName === null ? 0n : BigInt(util.toPointer(data.UserName)), true);
+  if (data?.UserName !== undefined) view.setBigUint64(24, data.UserName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.UserName))), true);
   // 0x20: pointer
-  if (data?.DomainName !== undefined) view.setBigUint64(32, data.DomainName === null ? 0n : BigInt(util.toPointer(data.DomainName)), true);
+  if (data?.DomainName !== undefined) view.setBigUint64(32, data.DomainName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DomainName))), true);
   // 0x28: pointer
-  if (data?.LogonTime !== undefined) view.setBigUint64(40, data.LogonTime === null ? 0n : BigInt(util.toPointer(data.LogonTime)), true);
+  if (data?.LogonTime !== undefined) view.setBigUint64(40, data.LogonTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.LogonTime))), true);
   // 0x30: pointer
-  if (data?.ConnectTime !== undefined) view.setBigUint64(48, data.ConnectTime === null ? 0n : BigInt(util.toPointer(data.ConnectTime)), true);
+  if (data?.ConnectTime !== undefined) view.setBigUint64(48, data.ConnectTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ConnectTime))), true);
   // 0x38: pointer
-  if (data?.DisconnectTime !== undefined) view.setBigUint64(56, data.DisconnectTime === null ? 0n : BigInt(util.toPointer(data.DisconnectTime)), true);
+  if (data?.DisconnectTime !== undefined) view.setBigUint64(56, data.DisconnectTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DisconnectTime))), true);
   // 0x40: pointer
-  if (data?.LastInputTime !== undefined) view.setBigUint64(64, data.LastInputTime === null ? 0n : BigInt(util.toPointer(data.LastInputTime)), true);
+  if (data?.LastInputTime !== undefined) view.setBigUint64(64, data.LastInputTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.LastInputTime))), true);
   // 0x48: pointer
-  if (data?.CurrentTime !== undefined) view.setBigUint64(72, data.CurrentTime === null ? 0n : BigInt(util.toPointer(data.CurrentTime)), true);
+  if (data?.CurrentTime !== undefined) view.setBigUint64(72, data.CurrentTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.CurrentTime))), true);
   // 0x50: u32
   if (data?.IncomingBytes !== undefined) view.setUint32(80, Number(data.IncomingBytes), true);
   // 0x54: u32
@@ -3155,51 +3155,51 @@ export class WTSINFOEX_LEVEL1_AView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get WinStationName(): Uint8Array | Deno.PointerValue | null {
+  get WinStationName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get UserName(): Uint8Array | Deno.PointerValue | null {
+  get UserName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get DomainName(): Uint8Array | Deno.PointerValue | null {
+  get DomainName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get LogonTime(): Uint8Array | Deno.PointerValue | null {
+  get LogonTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get ConnectTime(): Uint8Array | Deno.PointerValue | null {
+  get ConnectTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get DisconnectTime(): Uint8Array | Deno.PointerValue | null {
+  get DisconnectTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get LastInputTime(): Uint8Array | Deno.PointerValue | null {
+  get LastInputTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: pointer
-  get CurrentTime(): Uint8Array | Deno.PointerValue | null {
+  get CurrentTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: u32
@@ -3250,43 +3250,43 @@ export class WTSINFOEX_LEVEL1_AView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set WinStationName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set WinStationName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set UserName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set UserName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set DomainName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set DomainName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set LogonTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set LogonTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set ConnectTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set ConnectTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set DisconnectTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set DisconnectTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set LastInputTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set LastInputTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: pointer
-  set CurrentTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set CurrentTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x50: u32
@@ -3325,7 +3325,7 @@ export class WTSINFOEX_LEVEL1_AView {
  */
 export interface WTSINFOEX_LEVEL_W {
   /** Windows.Win32.System.RemoteDesktop.WTSINFOEX_LEVEL1_W */
-  WTSInfoExLevel1: Uint8Array | Deno.PointerValue | null;
+  WTSInfoExLevel1: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofWTSINFOEX_LEVEL_W = 8;
@@ -3334,7 +3334,7 @@ export function allocWTSINFOEX_LEVEL_W(data?: Partial<WTSINFOEX_LEVEL_W>): Uint8
   const buf = new Uint8Array(sizeofWTSINFOEX_LEVEL_W);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.WTSInfoExLevel1 !== undefined) view.setBigUint64(0, data.WTSInfoExLevel1 === null ? 0n : BigInt(util.toPointer(data.WTSInfoExLevel1)), true);
+  if (data?.WTSInfoExLevel1 !== undefined) view.setBigUint64(0, data.WTSInfoExLevel1 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WTSInfoExLevel1))), true);
   return buf;
 }
 
@@ -3349,14 +3349,14 @@ export class WTSINFOEX_LEVEL_WView {
   }
 
   // 0x00: pointer
-  get WTSInfoExLevel1(): Uint8Array | Deno.PointerValue | null {
+  get WTSInfoExLevel1(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set WTSInfoExLevel1(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set WTSInfoExLevel1(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3365,7 +3365,7 @@ export class WTSINFOEX_LEVEL_WView {
  */
 export interface WTSINFOEX_LEVEL_A {
   /** Windows.Win32.System.RemoteDesktop.WTSINFOEX_LEVEL1_A */
-  WTSInfoExLevel1: Uint8Array | Deno.PointerValue | null;
+  WTSInfoExLevel1: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofWTSINFOEX_LEVEL_A = 8;
@@ -3374,7 +3374,7 @@ export function allocWTSINFOEX_LEVEL_A(data?: Partial<WTSINFOEX_LEVEL_A>): Uint8
   const buf = new Uint8Array(sizeofWTSINFOEX_LEVEL_A);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.WTSInfoExLevel1 !== undefined) view.setBigUint64(0, data.WTSInfoExLevel1 === null ? 0n : BigInt(util.toPointer(data.WTSInfoExLevel1)), true);
+  if (data?.WTSInfoExLevel1 !== undefined) view.setBigUint64(0, data.WTSInfoExLevel1 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WTSInfoExLevel1))), true);
   return buf;
 }
 
@@ -3389,14 +3389,14 @@ export class WTSINFOEX_LEVEL_AView {
   }
 
   // 0x00: pointer
-  get WTSInfoExLevel1(): Uint8Array | Deno.PointerValue | null {
+  get WTSInfoExLevel1(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set WTSInfoExLevel1(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set WTSInfoExLevel1(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3407,7 +3407,7 @@ export interface WTSINFOEXW {
   /** u32 */
   Level: number;
   /** Windows.Win32.System.RemoteDesktop.WTSINFOEX_LEVEL_W */
-  Data: Uint8Array | Deno.PointerValue | null;
+  Data: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofWTSINFOEXW = 16;
@@ -3419,7 +3419,7 @@ export function allocWTSINFOEXW(data?: Partial<WTSINFOEXW>): Uint8Array {
   if (data?.Level !== undefined) view.setUint32(0, Number(data.Level), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
+  if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Data))), true);
   return buf;
 }
 
@@ -3441,9 +3441,9 @@ export class WTSINFOEXWView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Data(): Uint8Array | Deno.PointerValue | null {
+  get Data(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -3454,8 +3454,8 @@ export class WTSINFOEXWView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Data(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Data(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3466,7 +3466,7 @@ export interface WTSINFOEXA {
   /** u32 */
   Level: number;
   /** Windows.Win32.System.RemoteDesktop.WTSINFOEX_LEVEL_A */
-  Data: Uint8Array | Deno.PointerValue | null;
+  Data: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofWTSINFOEXA = 16;
@@ -3478,7 +3478,7 @@ export function allocWTSINFOEXA(data?: Partial<WTSINFOEXA>): Uint8Array {
   if (data?.Level !== undefined) view.setUint32(0, Number(data.Level), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
+  if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Data))), true);
   return buf;
 }
 
@@ -3500,9 +3500,9 @@ export class WTSINFOEXAView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Data(): Uint8Array | Deno.PointerValue | null {
+  get Data(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -3513,8 +3513,8 @@ export class WTSINFOEXAView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Data(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Data(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3523,21 +3523,21 @@ export class WTSINFOEXAView {
  */
 export interface WTSCLIENTW {
   /** array */
-  ClientName: Deno.PointerValue | null;
+  ClientName: Deno.PointerValue;
   /** array */
-  Domain: Deno.PointerValue | null;
+  Domain: Deno.PointerValue;
   /** array */
-  UserName: Deno.PointerValue | null;
+  UserName: Deno.PointerValue;
   /** array */
-  WorkDirectory: Deno.PointerValue | null;
+  WorkDirectory: Deno.PointerValue;
   /** array */
-  InitialProgram: Deno.PointerValue | null;
+  InitialProgram: Deno.PointerValue;
   /** u8 */
   EncryptionLevel: number;
   /** u32 */
   ClientAddressFamily: number;
   /** array */
-  ClientAddress: Deno.PointerValue | null;
+  ClientAddress: Deno.PointerValue;
   /** u16 */
   HRes: number;
   /** u16 */
@@ -3545,7 +3545,7 @@ export interface WTSCLIENTW {
   /** u16 */
   ColorDepth: number;
   /** array */
-  ClientDirectory: Deno.PointerValue | null;
+  ClientDirectory: Deno.PointerValue;
   /** u32 */
   ClientBuildNumber: number;
   /** u32 */
@@ -3559,7 +3559,7 @@ export interface WTSCLIENTW {
   /** u16 */
   OutBufLength: number;
   /** array */
-  DeviceId: Deno.PointerValue | null;
+  DeviceId: Deno.PointerValue;
 }
 
 export const sizeofWTSCLIENTW = 96;
@@ -3568,22 +3568,22 @@ export function allocWTSCLIENTW(data?: Partial<WTSCLIENTW>): Uint8Array {
   const buf = new Uint8Array(sizeofWTSCLIENTW);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ClientName !== undefined) view.setBigUint64(0, data.ClientName === null ? 0n : BigInt(util.toPointer(data.ClientName)), true);
+  if (data?.ClientName !== undefined) view.setBigUint64(0, data.ClientName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientName))), true);
   // 0x08: pointer
-  if (data?.Domain !== undefined) view.setBigUint64(8, data.Domain === null ? 0n : BigInt(util.toPointer(data.Domain)), true);
+  if (data?.Domain !== undefined) view.setBigUint64(8, data.Domain === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Domain))), true);
   // 0x10: pointer
-  if (data?.UserName !== undefined) view.setBigUint64(16, data.UserName === null ? 0n : BigInt(util.toPointer(data.UserName)), true);
+  if (data?.UserName !== undefined) view.setBigUint64(16, data.UserName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.UserName))), true);
   // 0x18: pointer
-  if (data?.WorkDirectory !== undefined) view.setBigUint64(24, data.WorkDirectory === null ? 0n : BigInt(util.toPointer(data.WorkDirectory)), true);
+  if (data?.WorkDirectory !== undefined) view.setBigUint64(24, data.WorkDirectory === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WorkDirectory))), true);
   // 0x20: pointer
-  if (data?.InitialProgram !== undefined) view.setBigUint64(32, data.InitialProgram === null ? 0n : BigInt(util.toPointer(data.InitialProgram)), true);
+  if (data?.InitialProgram !== undefined) view.setBigUint64(32, data.InitialProgram === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InitialProgram))), true);
   // 0x28: u8
   if (data?.EncryptionLevel !== undefined) view.setUint8(40, Number(data.EncryptionLevel));
   // 0x29: u32
   if (data?.ClientAddressFamily !== undefined) view.setUint32(41, Number(data.ClientAddressFamily), true);
   // 0x2d: pad3
   // 0x30: pointer
-  if (data?.ClientAddress !== undefined) view.setBigUint64(48, data.ClientAddress === null ? 0n : BigInt(util.toPointer(data.ClientAddress)), true);
+  if (data?.ClientAddress !== undefined) view.setBigUint64(48, data.ClientAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientAddress))), true);
   // 0x38: u16
   if (data?.HRes !== undefined) view.setUint16(56, Number(data.HRes), true);
   // 0x3a: u16
@@ -3592,7 +3592,7 @@ export function allocWTSCLIENTW(data?: Partial<WTSCLIENTW>): Uint8Array {
   if (data?.ColorDepth !== undefined) view.setUint16(60, Number(data.ColorDepth), true);
   // 0x3e: pad2
   // 0x40: pointer
-  if (data?.ClientDirectory !== undefined) view.setBigUint64(64, data.ClientDirectory === null ? 0n : BigInt(util.toPointer(data.ClientDirectory)), true);
+  if (data?.ClientDirectory !== undefined) view.setBigUint64(64, data.ClientDirectory === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientDirectory))), true);
   // 0x48: u32
   if (data?.ClientBuildNumber !== undefined) view.setUint32(72, Number(data.ClientBuildNumber), true);
   // 0x4c: u32
@@ -3606,7 +3606,7 @@ export function allocWTSCLIENTW(data?: Partial<WTSCLIENTW>): Uint8Array {
   // 0x56: u16
   if (data?.OutBufLength !== undefined) view.setUint16(86, Number(data.OutBufLength), true);
   // 0x58: pointer
-  if (data?.DeviceId !== undefined) view.setBigUint64(88, data.DeviceId === null ? 0n : BigInt(util.toPointer(data.DeviceId)), true);
+  if (data?.DeviceId !== undefined) view.setBigUint64(88, data.DeviceId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DeviceId))), true);
   return buf;
 }
 
@@ -3621,33 +3621,33 @@ export class WTSCLIENTWView {
   }
 
   // 0x00: pointer
-  get ClientName(): Uint8Array | Deno.PointerValue | null {
+  get ClientName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get Domain(): Uint8Array | Deno.PointerValue | null {
+  get Domain(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get UserName(): Uint8Array | Deno.PointerValue | null {
+  get UserName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get WorkDirectory(): Uint8Array | Deno.PointerValue | null {
+  get WorkDirectory(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get InitialProgram(): Uint8Array | Deno.PointerValue | null {
+  get InitialProgram(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u8
@@ -3663,9 +3663,9 @@ export class WTSCLIENTWView {
   // 0x2d: pad3
 
   // 0x30: pointer
-  get ClientAddress(): Uint8Array | Deno.PointerValue | null {
+  get ClientAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: u16
@@ -3686,9 +3686,9 @@ export class WTSCLIENTWView {
   // 0x3e: pad2
 
   // 0x40: pointer
-  get ClientDirectory(): Uint8Array | Deno.PointerValue | null {
+  get ClientDirectory(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: u32
@@ -3722,34 +3722,34 @@ export class WTSCLIENTWView {
   }
 
   // 0x58: pointer
-  get DeviceId(): Uint8Array | Deno.PointerValue | null {
+  get DeviceId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ClientName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ClientName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set Domain(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Domain(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set UserName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set UserName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set WorkDirectory(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set WorkDirectory(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set InitialProgram(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set InitialProgram(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u8
@@ -3765,8 +3765,8 @@ export class WTSCLIENTWView {
   // 0x2d: pad3
 
   // 0x30: pointer
-  set ClientAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set ClientAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: u16
@@ -3787,8 +3787,8 @@ export class WTSCLIENTWView {
   // 0x3e: pad2
 
   // 0x40: pointer
-  set ClientDirectory(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set ClientDirectory(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: u32
@@ -3822,8 +3822,8 @@ export class WTSCLIENTWView {
   }
 
   // 0x58: pointer
-  set DeviceId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  set DeviceId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3832,21 +3832,21 @@ export class WTSCLIENTWView {
  */
 export interface WTSCLIENTA {
   /** array */
-  ClientName: Deno.PointerValue | null;
+  ClientName: Deno.PointerValue;
   /** array */
-  Domain: Deno.PointerValue | null;
+  Domain: Deno.PointerValue;
   /** array */
-  UserName: Deno.PointerValue | null;
+  UserName: Deno.PointerValue;
   /** array */
-  WorkDirectory: Deno.PointerValue | null;
+  WorkDirectory: Deno.PointerValue;
   /** array */
-  InitialProgram: Deno.PointerValue | null;
+  InitialProgram: Deno.PointerValue;
   /** u8 */
   EncryptionLevel: number;
   /** u32 */
   ClientAddressFamily: number;
   /** array */
-  ClientAddress: Deno.PointerValue | null;
+  ClientAddress: Deno.PointerValue;
   /** u16 */
   HRes: number;
   /** u16 */
@@ -3854,7 +3854,7 @@ export interface WTSCLIENTA {
   /** u16 */
   ColorDepth: number;
   /** array */
-  ClientDirectory: Deno.PointerValue | null;
+  ClientDirectory: Deno.PointerValue;
   /** u32 */
   ClientBuildNumber: number;
   /** u32 */
@@ -3868,7 +3868,7 @@ export interface WTSCLIENTA {
   /** u16 */
   OutBufLength: number;
   /** array */
-  DeviceId: Deno.PointerValue | null;
+  DeviceId: Deno.PointerValue;
 }
 
 export const sizeofWTSCLIENTA = 96;
@@ -3877,22 +3877,22 @@ export function allocWTSCLIENTA(data?: Partial<WTSCLIENTA>): Uint8Array {
   const buf = new Uint8Array(sizeofWTSCLIENTA);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ClientName !== undefined) view.setBigUint64(0, data.ClientName === null ? 0n : BigInt(util.toPointer(data.ClientName)), true);
+  if (data?.ClientName !== undefined) view.setBigUint64(0, data.ClientName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientName))), true);
   // 0x08: pointer
-  if (data?.Domain !== undefined) view.setBigUint64(8, data.Domain === null ? 0n : BigInt(util.toPointer(data.Domain)), true);
+  if (data?.Domain !== undefined) view.setBigUint64(8, data.Domain === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Domain))), true);
   // 0x10: pointer
-  if (data?.UserName !== undefined) view.setBigUint64(16, data.UserName === null ? 0n : BigInt(util.toPointer(data.UserName)), true);
+  if (data?.UserName !== undefined) view.setBigUint64(16, data.UserName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.UserName))), true);
   // 0x18: pointer
-  if (data?.WorkDirectory !== undefined) view.setBigUint64(24, data.WorkDirectory === null ? 0n : BigInt(util.toPointer(data.WorkDirectory)), true);
+  if (data?.WorkDirectory !== undefined) view.setBigUint64(24, data.WorkDirectory === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WorkDirectory))), true);
   // 0x20: pointer
-  if (data?.InitialProgram !== undefined) view.setBigUint64(32, data.InitialProgram === null ? 0n : BigInt(util.toPointer(data.InitialProgram)), true);
+  if (data?.InitialProgram !== undefined) view.setBigUint64(32, data.InitialProgram === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InitialProgram))), true);
   // 0x28: u8
   if (data?.EncryptionLevel !== undefined) view.setUint8(40, Number(data.EncryptionLevel));
   // 0x29: u32
   if (data?.ClientAddressFamily !== undefined) view.setUint32(41, Number(data.ClientAddressFamily), true);
   // 0x2d: pad3
   // 0x30: pointer
-  if (data?.ClientAddress !== undefined) view.setBigUint64(48, data.ClientAddress === null ? 0n : BigInt(util.toPointer(data.ClientAddress)), true);
+  if (data?.ClientAddress !== undefined) view.setBigUint64(48, data.ClientAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientAddress))), true);
   // 0x38: u16
   if (data?.HRes !== undefined) view.setUint16(56, Number(data.HRes), true);
   // 0x3a: u16
@@ -3901,7 +3901,7 @@ export function allocWTSCLIENTA(data?: Partial<WTSCLIENTA>): Uint8Array {
   if (data?.ColorDepth !== undefined) view.setUint16(60, Number(data.ColorDepth), true);
   // 0x3e: pad2
   // 0x40: pointer
-  if (data?.ClientDirectory !== undefined) view.setBigUint64(64, data.ClientDirectory === null ? 0n : BigInt(util.toPointer(data.ClientDirectory)), true);
+  if (data?.ClientDirectory !== undefined) view.setBigUint64(64, data.ClientDirectory === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientDirectory))), true);
   // 0x48: u32
   if (data?.ClientBuildNumber !== undefined) view.setUint32(72, Number(data.ClientBuildNumber), true);
   // 0x4c: u32
@@ -3915,7 +3915,7 @@ export function allocWTSCLIENTA(data?: Partial<WTSCLIENTA>): Uint8Array {
   // 0x56: u16
   if (data?.OutBufLength !== undefined) view.setUint16(86, Number(data.OutBufLength), true);
   // 0x58: pointer
-  if (data?.DeviceId !== undefined) view.setBigUint64(88, data.DeviceId === null ? 0n : BigInt(util.toPointer(data.DeviceId)), true);
+  if (data?.DeviceId !== undefined) view.setBigUint64(88, data.DeviceId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DeviceId))), true);
   return buf;
 }
 
@@ -3930,33 +3930,33 @@ export class WTSCLIENTAView {
   }
 
   // 0x00: pointer
-  get ClientName(): Uint8Array | Deno.PointerValue | null {
+  get ClientName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get Domain(): Uint8Array | Deno.PointerValue | null {
+  get Domain(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get UserName(): Uint8Array | Deno.PointerValue | null {
+  get UserName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get WorkDirectory(): Uint8Array | Deno.PointerValue | null {
+  get WorkDirectory(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get InitialProgram(): Uint8Array | Deno.PointerValue | null {
+  get InitialProgram(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u8
@@ -3972,9 +3972,9 @@ export class WTSCLIENTAView {
   // 0x2d: pad3
 
   // 0x30: pointer
-  get ClientAddress(): Uint8Array | Deno.PointerValue | null {
+  get ClientAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: u16
@@ -3995,9 +3995,9 @@ export class WTSCLIENTAView {
   // 0x3e: pad2
 
   // 0x40: pointer
-  get ClientDirectory(): Uint8Array | Deno.PointerValue | null {
+  get ClientDirectory(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: u32
@@ -4031,34 +4031,34 @@ export class WTSCLIENTAView {
   }
 
   // 0x58: pointer
-  get DeviceId(): Uint8Array | Deno.PointerValue | null {
+  get DeviceId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ClientName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ClientName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set Domain(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Domain(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set UserName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set UserName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set WorkDirectory(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set WorkDirectory(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set InitialProgram(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set InitialProgram(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u8
@@ -4074,8 +4074,8 @@ export class WTSCLIENTAView {
   // 0x2d: pad3
 
   // 0x30: pointer
-  set ClientAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set ClientAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: u16
@@ -4096,8 +4096,8 @@ export class WTSCLIENTAView {
   // 0x3e: pad2
 
   // 0x40: pointer
-  set ClientDirectory(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set ClientDirectory(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: u32
@@ -4131,8 +4131,8 @@ export class WTSCLIENTAView {
   }
 
   // 0x58: pointer
-  set DeviceId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  set DeviceId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4141,9 +4141,9 @@ export class WTSCLIENTAView {
  */
 export interface PRODUCT_INFOA {
   /** array */
-  CompanyName: Deno.PointerValue | null;
+  CompanyName: Deno.PointerValue;
   /** array */
-  ProductID: Deno.PointerValue | null;
+  ProductID: Deno.PointerValue;
 }
 
 export const sizeofPRODUCT_INFOA = 16;
@@ -4152,9 +4152,9 @@ export function allocPRODUCT_INFOA(data?: Partial<PRODUCT_INFOA>): Uint8Array {
   const buf = new Uint8Array(sizeofPRODUCT_INFOA);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.CompanyName !== undefined) view.setBigUint64(0, data.CompanyName === null ? 0n : BigInt(util.toPointer(data.CompanyName)), true);
+  if (data?.CompanyName !== undefined) view.setBigUint64(0, data.CompanyName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.CompanyName))), true);
   // 0x08: pointer
-  if (data?.ProductID !== undefined) view.setBigUint64(8, data.ProductID === null ? 0n : BigInt(util.toPointer(data.ProductID)), true);
+  if (data?.ProductID !== undefined) view.setBigUint64(8, data.ProductID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ProductID))), true);
   return buf;
 }
 
@@ -4169,25 +4169,25 @@ export class PRODUCT_INFOAView {
   }
 
   // 0x00: pointer
-  get CompanyName(): Uint8Array | Deno.PointerValue | null {
+  get CompanyName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get ProductID(): Uint8Array | Deno.PointerValue | null {
+  get ProductID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set CompanyName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set CompanyName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set ProductID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ProductID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4196,9 +4196,9 @@ export class PRODUCT_INFOAView {
  */
 export interface PRODUCT_INFOW {
   /** array */
-  CompanyName: Deno.PointerValue | null;
+  CompanyName: Deno.PointerValue;
   /** array */
-  ProductID: Deno.PointerValue | null;
+  ProductID: Deno.PointerValue;
 }
 
 export const sizeofPRODUCT_INFOW = 16;
@@ -4207,9 +4207,9 @@ export function allocPRODUCT_INFOW(data?: Partial<PRODUCT_INFOW>): Uint8Array {
   const buf = new Uint8Array(sizeofPRODUCT_INFOW);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.CompanyName !== undefined) view.setBigUint64(0, data.CompanyName === null ? 0n : BigInt(util.toPointer(data.CompanyName)), true);
+  if (data?.CompanyName !== undefined) view.setBigUint64(0, data.CompanyName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.CompanyName))), true);
   // 0x08: pointer
-  if (data?.ProductID !== undefined) view.setBigUint64(8, data.ProductID === null ? 0n : BigInt(util.toPointer(data.ProductID)), true);
+  if (data?.ProductID !== undefined) view.setBigUint64(8, data.ProductID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ProductID))), true);
   return buf;
 }
 
@@ -4224,25 +4224,25 @@ export class PRODUCT_INFOWView {
   }
 
   // 0x00: pointer
-  get CompanyName(): Uint8Array | Deno.PointerValue | null {
+  get CompanyName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get ProductID(): Uint8Array | Deno.PointerValue | null {
+  get ProductID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set CompanyName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set CompanyName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set ProductID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ProductID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4251,13 +4251,13 @@ export class PRODUCT_INFOWView {
  */
 export interface WTS_VALIDATION_INFORMATIONA {
   /** Windows.Win32.System.RemoteDesktop.PRODUCT_INFOA */
-  ProductInfo: Uint8Array | Deno.PointerValue | null;
+  ProductInfo: Uint8Array | Deno.PointerValue;
   /** array */
-  License: Deno.PointerValue | null;
+  License: Deno.PointerValue;
   /** u32 */
   LicenseLength: number;
   /** array */
-  HardwareID: Deno.PointerValue | null;
+  HardwareID: Deno.PointerValue;
   /** u32 */
   HardwareIDLength: number;
 }
@@ -4268,14 +4268,14 @@ export function allocWTS_VALIDATION_INFORMATIONA(data?: Partial<WTS_VALIDATION_I
   const buf = new Uint8Array(sizeofWTS_VALIDATION_INFORMATIONA);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ProductInfo !== undefined) view.setBigUint64(0, data.ProductInfo === null ? 0n : BigInt(util.toPointer(data.ProductInfo)), true);
+  if (data?.ProductInfo !== undefined) view.setBigUint64(0, data.ProductInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ProductInfo))), true);
   // 0x08: pointer
-  if (data?.License !== undefined) view.setBigUint64(8, data.License === null ? 0n : BigInt(util.toPointer(data.License)), true);
+  if (data?.License !== undefined) view.setBigUint64(8, data.License === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.License))), true);
   // 0x10: u32
   if (data?.LicenseLength !== undefined) view.setUint32(16, Number(data.LicenseLength), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.HardwareID !== undefined) view.setBigUint64(24, data.HardwareID === null ? 0n : BigInt(util.toPointer(data.HardwareID)), true);
+  if (data?.HardwareID !== undefined) view.setBigUint64(24, data.HardwareID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.HardwareID))), true);
   // 0x20: u32
   if (data?.HardwareIDLength !== undefined) view.setUint32(32, Number(data.HardwareIDLength), true);
   // 0x24: pad4
@@ -4293,15 +4293,15 @@ export class WTS_VALIDATION_INFORMATIONAView {
   }
 
   // 0x00: pointer
-  get ProductInfo(): Uint8Array | Deno.PointerValue | null {
+  get ProductInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get License(): Uint8Array | Deno.PointerValue | null {
+  get License(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -4312,9 +4312,9 @@ export class WTS_VALIDATION_INFORMATIONAView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get HardwareID(): Uint8Array | Deno.PointerValue | null {
+  get HardwareID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -4325,13 +4325,13 @@ export class WTS_VALIDATION_INFORMATIONAView {
   // 0x24: pad4
 
   // 0x00: pointer
-  set ProductInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ProductInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set License(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set License(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -4342,8 +4342,8 @@ export class WTS_VALIDATION_INFORMATIONAView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set HardwareID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set HardwareID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -4359,13 +4359,13 @@ export class WTS_VALIDATION_INFORMATIONAView {
  */
 export interface WTS_VALIDATION_INFORMATIONW {
   /** Windows.Win32.System.RemoteDesktop.PRODUCT_INFOW */
-  ProductInfo: Uint8Array | Deno.PointerValue | null;
+  ProductInfo: Uint8Array | Deno.PointerValue;
   /** array */
-  License: Deno.PointerValue | null;
+  License: Deno.PointerValue;
   /** u32 */
   LicenseLength: number;
   /** array */
-  HardwareID: Deno.PointerValue | null;
+  HardwareID: Deno.PointerValue;
   /** u32 */
   HardwareIDLength: number;
 }
@@ -4376,14 +4376,14 @@ export function allocWTS_VALIDATION_INFORMATIONW(data?: Partial<WTS_VALIDATION_I
   const buf = new Uint8Array(sizeofWTS_VALIDATION_INFORMATIONW);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ProductInfo !== undefined) view.setBigUint64(0, data.ProductInfo === null ? 0n : BigInt(util.toPointer(data.ProductInfo)), true);
+  if (data?.ProductInfo !== undefined) view.setBigUint64(0, data.ProductInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ProductInfo))), true);
   // 0x08: pointer
-  if (data?.License !== undefined) view.setBigUint64(8, data.License === null ? 0n : BigInt(util.toPointer(data.License)), true);
+  if (data?.License !== undefined) view.setBigUint64(8, data.License === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.License))), true);
   // 0x10: u32
   if (data?.LicenseLength !== undefined) view.setUint32(16, Number(data.LicenseLength), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.HardwareID !== undefined) view.setBigUint64(24, data.HardwareID === null ? 0n : BigInt(util.toPointer(data.HardwareID)), true);
+  if (data?.HardwareID !== undefined) view.setBigUint64(24, data.HardwareID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.HardwareID))), true);
   // 0x20: u32
   if (data?.HardwareIDLength !== undefined) view.setUint32(32, Number(data.HardwareIDLength), true);
   // 0x24: pad4
@@ -4401,15 +4401,15 @@ export class WTS_VALIDATION_INFORMATIONWView {
   }
 
   // 0x00: pointer
-  get ProductInfo(): Uint8Array | Deno.PointerValue | null {
+  get ProductInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get License(): Uint8Array | Deno.PointerValue | null {
+  get License(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -4420,9 +4420,9 @@ export class WTS_VALIDATION_INFORMATIONWView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get HardwareID(): Uint8Array | Deno.PointerValue | null {
+  get HardwareID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -4433,13 +4433,13 @@ export class WTS_VALIDATION_INFORMATIONWView {
   // 0x24: pad4
 
   // 0x00: pointer
-  set ProductInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ProductInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set License(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set License(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -4450,8 +4450,8 @@ export class WTS_VALIDATION_INFORMATIONWView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set HardwareID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set HardwareID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -4469,7 +4469,7 @@ export interface WTS_CLIENT_ADDRESS {
   /** u32 */
   AddressFamily: number;
   /** array */
-  Address: Deno.PointerValue | null;
+  Address: Deno.PointerValue;
 }
 
 export const sizeofWTS_CLIENT_ADDRESS = 16;
@@ -4481,7 +4481,7 @@ export function allocWTS_CLIENT_ADDRESS(data?: Partial<WTS_CLIENT_ADDRESS>): Uin
   if (data?.AddressFamily !== undefined) view.setUint32(0, Number(data.AddressFamily), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Address !== undefined) view.setBigUint64(8, data.Address === null ? 0n : BigInt(util.toPointer(data.Address)), true);
+  if (data?.Address !== undefined) view.setBigUint64(8, data.Address === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Address))), true);
   return buf;
 }
 
@@ -4503,9 +4503,9 @@ export class WTS_CLIENT_ADDRESSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Address(): Uint8Array | Deno.PointerValue | null {
+  get Address(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -4516,8 +4516,8 @@ export class WTS_CLIENT_ADDRESSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Address(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Address(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4624,15 +4624,15 @@ export interface WTSUSERCONFIGA {
   /** u32 */
   TerminalServerRemoteHomeDir: number;
   /** array */
-  InitialProgram: Deno.PointerValue | null;
+  InitialProgram: Deno.PointerValue;
   /** array */
-  WorkDirectory: Deno.PointerValue | null;
+  WorkDirectory: Deno.PointerValue;
   /** array */
-  TerminalServerProfilePath: Deno.PointerValue | null;
+  TerminalServerProfilePath: Deno.PointerValue;
   /** array */
-  TerminalServerHomeDir: Deno.PointerValue | null;
+  TerminalServerHomeDir: Deno.PointerValue;
   /** array */
-  TerminalServerHomeDirDrive: Deno.PointerValue | null;
+  TerminalServerHomeDirDrive: Deno.PointerValue;
 }
 
 export const sizeofWTSUSERCONFIGA = 96;
@@ -4668,15 +4668,15 @@ export function allocWTSUSERCONFIGA(data?: Partial<WTSUSERCONFIGA>): Uint8Array 
   if (data?.TerminalServerRemoteHomeDir !== undefined) view.setUint32(48, Number(data.TerminalServerRemoteHomeDir), true);
   // 0x34: pad4
   // 0x38: pointer
-  if (data?.InitialProgram !== undefined) view.setBigUint64(56, data.InitialProgram === null ? 0n : BigInt(util.toPointer(data.InitialProgram)), true);
+  if (data?.InitialProgram !== undefined) view.setBigUint64(56, data.InitialProgram === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InitialProgram))), true);
   // 0x40: pointer
-  if (data?.WorkDirectory !== undefined) view.setBigUint64(64, data.WorkDirectory === null ? 0n : BigInt(util.toPointer(data.WorkDirectory)), true);
+  if (data?.WorkDirectory !== undefined) view.setBigUint64(64, data.WorkDirectory === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WorkDirectory))), true);
   // 0x48: pointer
-  if (data?.TerminalServerProfilePath !== undefined) view.setBigUint64(72, data.TerminalServerProfilePath === null ? 0n : BigInt(util.toPointer(data.TerminalServerProfilePath)), true);
+  if (data?.TerminalServerProfilePath !== undefined) view.setBigUint64(72, data.TerminalServerProfilePath === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.TerminalServerProfilePath))), true);
   // 0x50: pointer
-  if (data?.TerminalServerHomeDir !== undefined) view.setBigUint64(80, data.TerminalServerHomeDir === null ? 0n : BigInt(util.toPointer(data.TerminalServerHomeDir)), true);
+  if (data?.TerminalServerHomeDir !== undefined) view.setBigUint64(80, data.TerminalServerHomeDir === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.TerminalServerHomeDir))), true);
   // 0x58: pointer
-  if (data?.TerminalServerHomeDirDrive !== undefined) view.setBigUint64(88, data.TerminalServerHomeDirDrive === null ? 0n : BigInt(util.toPointer(data.TerminalServerHomeDirDrive)), true);
+  if (data?.TerminalServerHomeDirDrive !== undefined) view.setBigUint64(88, data.TerminalServerHomeDirDrive === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.TerminalServerHomeDirDrive))), true);
   return buf;
 }
 
@@ -4758,33 +4758,33 @@ export class WTSUSERCONFIGAView {
   // 0x34: pad4
 
   // 0x38: pointer
-  get InitialProgram(): Uint8Array | Deno.PointerValue | null {
+  get InitialProgram(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get WorkDirectory(): Uint8Array | Deno.PointerValue | null {
+  get WorkDirectory(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: pointer
-  get TerminalServerProfilePath(): Uint8Array | Deno.PointerValue | null {
+  get TerminalServerProfilePath(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: pointer
-  get TerminalServerHomeDir(): Uint8Array | Deno.PointerValue | null {
+  get TerminalServerHomeDir(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x58: pointer
-  get TerminalServerHomeDirDrive(): Uint8Array | Deno.PointerValue | null {
+  get TerminalServerHomeDirDrive(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -4855,28 +4855,28 @@ export class WTSUSERCONFIGAView {
   // 0x34: pad4
 
   // 0x38: pointer
-  set InitialProgram(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set InitialProgram(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set WorkDirectory(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set WorkDirectory(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: pointer
-  set TerminalServerProfilePath(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set TerminalServerProfilePath(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x50: pointer
-  set TerminalServerHomeDir(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set TerminalServerHomeDir(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x58: pointer
-  set TerminalServerHomeDirDrive(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  set TerminalServerHomeDirDrive(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4911,15 +4911,15 @@ export interface WTSUSERCONFIGW {
   /** u32 */
   TerminalServerRemoteHomeDir: number;
   /** array */
-  InitialProgram: Deno.PointerValue | null;
+  InitialProgram: Deno.PointerValue;
   /** array */
-  WorkDirectory: Deno.PointerValue | null;
+  WorkDirectory: Deno.PointerValue;
   /** array */
-  TerminalServerProfilePath: Deno.PointerValue | null;
+  TerminalServerProfilePath: Deno.PointerValue;
   /** array */
-  TerminalServerHomeDir: Deno.PointerValue | null;
+  TerminalServerHomeDir: Deno.PointerValue;
   /** array */
-  TerminalServerHomeDirDrive: Deno.PointerValue | null;
+  TerminalServerHomeDirDrive: Deno.PointerValue;
 }
 
 export const sizeofWTSUSERCONFIGW = 96;
@@ -4955,15 +4955,15 @@ export function allocWTSUSERCONFIGW(data?: Partial<WTSUSERCONFIGW>): Uint8Array 
   if (data?.TerminalServerRemoteHomeDir !== undefined) view.setUint32(48, Number(data.TerminalServerRemoteHomeDir), true);
   // 0x34: pad4
   // 0x38: pointer
-  if (data?.InitialProgram !== undefined) view.setBigUint64(56, data.InitialProgram === null ? 0n : BigInt(util.toPointer(data.InitialProgram)), true);
+  if (data?.InitialProgram !== undefined) view.setBigUint64(56, data.InitialProgram === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InitialProgram))), true);
   // 0x40: pointer
-  if (data?.WorkDirectory !== undefined) view.setBigUint64(64, data.WorkDirectory === null ? 0n : BigInt(util.toPointer(data.WorkDirectory)), true);
+  if (data?.WorkDirectory !== undefined) view.setBigUint64(64, data.WorkDirectory === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WorkDirectory))), true);
   // 0x48: pointer
-  if (data?.TerminalServerProfilePath !== undefined) view.setBigUint64(72, data.TerminalServerProfilePath === null ? 0n : BigInt(util.toPointer(data.TerminalServerProfilePath)), true);
+  if (data?.TerminalServerProfilePath !== undefined) view.setBigUint64(72, data.TerminalServerProfilePath === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.TerminalServerProfilePath))), true);
   // 0x50: pointer
-  if (data?.TerminalServerHomeDir !== undefined) view.setBigUint64(80, data.TerminalServerHomeDir === null ? 0n : BigInt(util.toPointer(data.TerminalServerHomeDir)), true);
+  if (data?.TerminalServerHomeDir !== undefined) view.setBigUint64(80, data.TerminalServerHomeDir === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.TerminalServerHomeDir))), true);
   // 0x58: pointer
-  if (data?.TerminalServerHomeDirDrive !== undefined) view.setBigUint64(88, data.TerminalServerHomeDirDrive === null ? 0n : BigInt(util.toPointer(data.TerminalServerHomeDirDrive)), true);
+  if (data?.TerminalServerHomeDirDrive !== undefined) view.setBigUint64(88, data.TerminalServerHomeDirDrive === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.TerminalServerHomeDirDrive))), true);
   return buf;
 }
 
@@ -5045,33 +5045,33 @@ export class WTSUSERCONFIGWView {
   // 0x34: pad4
 
   // 0x38: pointer
-  get InitialProgram(): Uint8Array | Deno.PointerValue | null {
+  get InitialProgram(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get WorkDirectory(): Uint8Array | Deno.PointerValue | null {
+  get WorkDirectory(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: pointer
-  get TerminalServerProfilePath(): Uint8Array | Deno.PointerValue | null {
+  get TerminalServerProfilePath(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: pointer
-  get TerminalServerHomeDir(): Uint8Array | Deno.PointerValue | null {
+  get TerminalServerHomeDir(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x58: pointer
-  get TerminalServerHomeDirDrive(): Uint8Array | Deno.PointerValue | null {
+  get TerminalServerHomeDirDrive(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -5142,28 +5142,28 @@ export class WTSUSERCONFIGWView {
   // 0x34: pad4
 
   // 0x38: pointer
-  set InitialProgram(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set InitialProgram(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set WorkDirectory(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set WorkDirectory(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: pointer
-  set TerminalServerProfilePath(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set TerminalServerProfilePath(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x50: pointer
-  set TerminalServerHomeDir(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set TerminalServerHomeDir(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x58: pointer
-  set TerminalServerHomeDirDrive(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  set TerminalServerHomeDirDrive(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -5174,7 +5174,7 @@ export interface WTS_SESSION_ADDRESS {
   /** u32 */
   AddressFamily: number;
   /** array */
-  Address: Deno.PointerValue | null;
+  Address: Deno.PointerValue;
 }
 
 export const sizeofWTS_SESSION_ADDRESS = 16;
@@ -5186,7 +5186,7 @@ export function allocWTS_SESSION_ADDRESS(data?: Partial<WTS_SESSION_ADDRESS>): U
   if (data?.AddressFamily !== undefined) view.setUint32(0, Number(data.AddressFamily), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Address !== undefined) view.setBigUint64(8, data.Address === null ? 0n : BigInt(util.toPointer(data.Address)), true);
+  if (data?.Address !== undefined) view.setBigUint64(8, data.Address === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Address))), true);
   return buf;
 }
 
@@ -5208,9 +5208,9 @@ export class WTS_SESSION_ADDRESSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Address(): Uint8Array | Deno.PointerValue | null {
+  get Address(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -5221,8 +5221,8 @@ export class WTS_SESSION_ADDRESSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Address(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Address(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -5237,7 +5237,7 @@ export interface WTS_PROCESS_INFO_EXW {
   /** Windows.Win32.Foundation.PWSTR */
   pProcessName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PSID */
-  pUserSid: Uint8Array | Deno.PointerValue | null;
+  pUserSid: Uint8Array | Deno.PointerValue;
   /** u32 */
   NumberOfThreads: number;
   /** u32 */
@@ -5251,9 +5251,9 @@ export interface WTS_PROCESS_INFO_EXW {
   /** u32 */
   PeakWorkingSetSize: number;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  UserTime: Uint8Array | Deno.PointerValue | null;
+  UserTime: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  KernelTime: Uint8Array | Deno.PointerValue | null;
+  KernelTime: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofWTS_PROCESS_INFO_EXW = 64;
@@ -5268,10 +5268,10 @@ export function allocWTS_PROCESS_INFO_EXW(data?: Partial<WTS_PROCESS_INFO_EXW>):
   // 0x08: buffer
   if (data?.pProcessName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pProcessName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: pointer
-  if (data?.pUserSid !== undefined) view.setBigUint64(16, data.pUserSid === null ? 0n : BigInt(util.toPointer(data.pUserSid)), true);
+  if (data?.pUserSid !== undefined) view.setBigUint64(16, data.pUserSid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pUserSid))), true);
   // 0x18: u32
   if (data?.NumberOfThreads !== undefined) view.setUint32(24, Number(data.NumberOfThreads), true);
   // 0x1c: u32
@@ -5285,9 +5285,9 @@ export function allocWTS_PROCESS_INFO_EXW(data?: Partial<WTS_PROCESS_INFO_EXW>):
   // 0x2c: u32
   if (data?.PeakWorkingSetSize !== undefined) view.setUint32(44, Number(data.PeakWorkingSetSize), true);
   // 0x30: pointer
-  if (data?.UserTime !== undefined) view.setBigUint64(48, data.UserTime === null ? 0n : BigInt(util.toPointer(data.UserTime)), true);
+  if (data?.UserTime !== undefined) view.setBigUint64(48, data.UserTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.UserTime))), true);
   // 0x38: pointer
-  if (data?.KernelTime !== undefined) view.setBigUint64(56, data.KernelTime === null ? 0n : BigInt(util.toPointer(data.KernelTime)), true);
+  if (data?.KernelTime !== undefined) view.setBigUint64(56, data.KernelTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.KernelTime))), true);
   return buf;
 }
 
@@ -5312,15 +5312,15 @@ export class WTS_PROCESS_INFO_EXWView {
   }
 
   // 0x08: buffer
-  get pProcessName(): Uint8Array | Deno.PointerValue | null {
+  get pProcessName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get pUserSid(): Uint8Array | Deno.PointerValue | null {
+  get pUserSid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -5354,15 +5354,15 @@ export class WTS_PROCESS_INFO_EXWView {
   }
 
   // 0x30: pointer
-  get UserTime(): Uint8Array | Deno.PointerValue | null {
+  get UserTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get KernelTime(): Uint8Array | Deno.PointerValue | null {
+  get KernelTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -5376,14 +5376,14 @@ export class WTS_PROCESS_INFO_EXWView {
   }
 
   // 0x08: buffer
-  set pProcessName(value: Uint8Array | Deno.PointerValue | null) {
+  set pProcessName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: pointer
-  set pUserSid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pUserSid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -5417,13 +5417,13 @@ export class WTS_PROCESS_INFO_EXWView {
   }
 
   // 0x30: pointer
-  set UserTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set UserTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set KernelTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set KernelTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -5438,7 +5438,7 @@ export interface WTS_PROCESS_INFO_EXA {
   /** Windows.Win32.Foundation.PSTR */
   pProcessName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSID */
-  pUserSid: Uint8Array | Deno.PointerValue | null;
+  pUserSid: Uint8Array | Deno.PointerValue;
   /** u32 */
   NumberOfThreads: number;
   /** u32 */
@@ -5452,9 +5452,9 @@ export interface WTS_PROCESS_INFO_EXA {
   /** u32 */
   PeakWorkingSetSize: number;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  UserTime: Uint8Array | Deno.PointerValue | null;
+  UserTime: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  KernelTime: Uint8Array | Deno.PointerValue | null;
+  KernelTime: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofWTS_PROCESS_INFO_EXA = 64;
@@ -5469,10 +5469,10 @@ export function allocWTS_PROCESS_INFO_EXA(data?: Partial<WTS_PROCESS_INFO_EXA>):
   // 0x08: buffer
   if (data?.pProcessName !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.pProcessName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: pointer
-  if (data?.pUserSid !== undefined) view.setBigUint64(16, data.pUserSid === null ? 0n : BigInt(util.toPointer(data.pUserSid)), true);
+  if (data?.pUserSid !== undefined) view.setBigUint64(16, data.pUserSid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pUserSid))), true);
   // 0x18: u32
   if (data?.NumberOfThreads !== undefined) view.setUint32(24, Number(data.NumberOfThreads), true);
   // 0x1c: u32
@@ -5486,9 +5486,9 @@ export function allocWTS_PROCESS_INFO_EXA(data?: Partial<WTS_PROCESS_INFO_EXA>):
   // 0x2c: u32
   if (data?.PeakWorkingSetSize !== undefined) view.setUint32(44, Number(data.PeakWorkingSetSize), true);
   // 0x30: pointer
-  if (data?.UserTime !== undefined) view.setBigUint64(48, data.UserTime === null ? 0n : BigInt(util.toPointer(data.UserTime)), true);
+  if (data?.UserTime !== undefined) view.setBigUint64(48, data.UserTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.UserTime))), true);
   // 0x38: pointer
-  if (data?.KernelTime !== undefined) view.setBigUint64(56, data.KernelTime === null ? 0n : BigInt(util.toPointer(data.KernelTime)), true);
+  if (data?.KernelTime !== undefined) view.setBigUint64(56, data.KernelTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.KernelTime))), true);
   return buf;
 }
 
@@ -5513,15 +5513,15 @@ export class WTS_PROCESS_INFO_EXAView {
   }
 
   // 0x08: buffer
-  get pProcessName(): Uint8Array | Deno.PointerValue | null {
+  get pProcessName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get pUserSid(): Uint8Array | Deno.PointerValue | null {
+  get pUserSid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -5555,15 +5555,15 @@ export class WTS_PROCESS_INFO_EXAView {
   }
 
   // 0x30: pointer
-  get UserTime(): Uint8Array | Deno.PointerValue | null {
+  get UserTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get KernelTime(): Uint8Array | Deno.PointerValue | null {
+  get KernelTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -5577,14 +5577,14 @@ export class WTS_PROCESS_INFO_EXAView {
   }
 
   // 0x08: buffer
-  set pProcessName(value: Uint8Array | Deno.PointerValue | null) {
+  set pProcessName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: pointer
-  set pUserSid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pUserSid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -5618,13 +5618,13 @@ export class WTS_PROCESS_INFO_EXAView {
   }
 
   // 0x30: pointer
-  set UserTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set UserTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set KernelTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set KernelTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -5685,15 +5685,15 @@ export interface WTSLISTENERCONFIGW {
   /** u32 */
   UserAuthentication: number;
   /** array */
-  Comment: Deno.PointerValue | null;
+  Comment: Deno.PointerValue;
   /** array */
-  LogonUserName: Deno.PointerValue | null;
+  LogonUserName: Deno.PointerValue;
   /** array */
-  LogonDomain: Deno.PointerValue | null;
+  LogonDomain: Deno.PointerValue;
   /** array */
-  WorkDirectory: Deno.PointerValue | null;
+  WorkDirectory: Deno.PointerValue;
   /** array */
-  InitialProgram: Deno.PointerValue | null;
+  InitialProgram: Deno.PointerValue;
 }
 
 export const sizeofWTSLISTENERCONFIGW = 144;
@@ -5754,15 +5754,15 @@ export function allocWTSLISTENERCONFIGW(data?: Partial<WTSLISTENERCONFIGW>): Uin
   // 0x64: u32
   if (data?.UserAuthentication !== undefined) view.setUint32(100, Number(data.UserAuthentication), true);
   // 0x68: pointer
-  if (data?.Comment !== undefined) view.setBigUint64(104, data.Comment === null ? 0n : BigInt(util.toPointer(data.Comment)), true);
+  if (data?.Comment !== undefined) view.setBigUint64(104, data.Comment === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Comment))), true);
   // 0x70: pointer
-  if (data?.LogonUserName !== undefined) view.setBigUint64(112, data.LogonUserName === null ? 0n : BigInt(util.toPointer(data.LogonUserName)), true);
+  if (data?.LogonUserName !== undefined) view.setBigUint64(112, data.LogonUserName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.LogonUserName))), true);
   // 0x78: pointer
-  if (data?.LogonDomain !== undefined) view.setBigUint64(120, data.LogonDomain === null ? 0n : BigInt(util.toPointer(data.LogonDomain)), true);
+  if (data?.LogonDomain !== undefined) view.setBigUint64(120, data.LogonDomain === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.LogonDomain))), true);
   // 0x80: pointer
-  if (data?.WorkDirectory !== undefined) view.setBigUint64(128, data.WorkDirectory === null ? 0n : BigInt(util.toPointer(data.WorkDirectory)), true);
+  if (data?.WorkDirectory !== undefined) view.setBigUint64(128, data.WorkDirectory === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WorkDirectory))), true);
   // 0x88: pointer
-  if (data?.InitialProgram !== undefined) view.setBigUint64(136, data.InitialProgram === null ? 0n : BigInt(util.toPointer(data.InitialProgram)), true);
+  if (data?.InitialProgram !== undefined) view.setBigUint64(136, data.InitialProgram === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InitialProgram))), true);
   return buf;
 }
 
@@ -5907,33 +5907,33 @@ export class WTSLISTENERCONFIGWView {
   }
 
   // 0x68: pointer
-  get Comment(): Uint8Array | Deno.PointerValue | null {
+  get Comment(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(104, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x70: pointer
-  get LogonUserName(): Uint8Array | Deno.PointerValue | null {
+  get LogonUserName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(112, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x78: pointer
-  get LogonDomain(): Uint8Array | Deno.PointerValue | null {
+  get LogonDomain(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(120, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x80: pointer
-  get WorkDirectory(): Uint8Array | Deno.PointerValue | null {
+  get WorkDirectory(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(128, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x88: pointer
-  get InitialProgram(): Uint8Array | Deno.PointerValue | null {
+  get InitialProgram(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(136, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -6067,28 +6067,28 @@ export class WTSLISTENERCONFIGWView {
   }
 
   // 0x68: pointer
-  set Comment(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(104, BigInt(util.toPointer(value)), true);
+  set Comment(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(104, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x70: pointer
-  set LogonUserName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(112, BigInt(util.toPointer(value)), true);
+  set LogonUserName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(112, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x78: pointer
-  set LogonDomain(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(120, BigInt(util.toPointer(value)), true);
+  set LogonDomain(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(120, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x80: pointer
-  set WorkDirectory(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(128, BigInt(util.toPointer(value)), true);
+  set WorkDirectory(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(128, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x88: pointer
-  set InitialProgram(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(136, BigInt(util.toPointer(value)), true);
+  set InitialProgram(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(136, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -6149,15 +6149,15 @@ export interface WTSLISTENERCONFIGA {
   /** u32 */
   UserAuthentication: number;
   /** array */
-  Comment: Deno.PointerValue | null;
+  Comment: Deno.PointerValue;
   /** array */
-  LogonUserName: Deno.PointerValue | null;
+  LogonUserName: Deno.PointerValue;
   /** array */
-  LogonDomain: Deno.PointerValue | null;
+  LogonDomain: Deno.PointerValue;
   /** array */
-  WorkDirectory: Deno.PointerValue | null;
+  WorkDirectory: Deno.PointerValue;
   /** array */
-  InitialProgram: Deno.PointerValue | null;
+  InitialProgram: Deno.PointerValue;
 }
 
 export const sizeofWTSLISTENERCONFIGA = 144;
@@ -6218,15 +6218,15 @@ export function allocWTSLISTENERCONFIGA(data?: Partial<WTSLISTENERCONFIGA>): Uin
   // 0x64: u32
   if (data?.UserAuthentication !== undefined) view.setUint32(100, Number(data.UserAuthentication), true);
   // 0x68: pointer
-  if (data?.Comment !== undefined) view.setBigUint64(104, data.Comment === null ? 0n : BigInt(util.toPointer(data.Comment)), true);
+  if (data?.Comment !== undefined) view.setBigUint64(104, data.Comment === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Comment))), true);
   // 0x70: pointer
-  if (data?.LogonUserName !== undefined) view.setBigUint64(112, data.LogonUserName === null ? 0n : BigInt(util.toPointer(data.LogonUserName)), true);
+  if (data?.LogonUserName !== undefined) view.setBigUint64(112, data.LogonUserName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.LogonUserName))), true);
   // 0x78: pointer
-  if (data?.LogonDomain !== undefined) view.setBigUint64(120, data.LogonDomain === null ? 0n : BigInt(util.toPointer(data.LogonDomain)), true);
+  if (data?.LogonDomain !== undefined) view.setBigUint64(120, data.LogonDomain === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.LogonDomain))), true);
   // 0x80: pointer
-  if (data?.WorkDirectory !== undefined) view.setBigUint64(128, data.WorkDirectory === null ? 0n : BigInt(util.toPointer(data.WorkDirectory)), true);
+  if (data?.WorkDirectory !== undefined) view.setBigUint64(128, data.WorkDirectory === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WorkDirectory))), true);
   // 0x88: pointer
-  if (data?.InitialProgram !== undefined) view.setBigUint64(136, data.InitialProgram === null ? 0n : BigInt(util.toPointer(data.InitialProgram)), true);
+  if (data?.InitialProgram !== undefined) view.setBigUint64(136, data.InitialProgram === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InitialProgram))), true);
   return buf;
 }
 
@@ -6371,33 +6371,33 @@ export class WTSLISTENERCONFIGAView {
   }
 
   // 0x68: pointer
-  get Comment(): Uint8Array | Deno.PointerValue | null {
+  get Comment(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(104, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x70: pointer
-  get LogonUserName(): Uint8Array | Deno.PointerValue | null {
+  get LogonUserName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(112, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x78: pointer
-  get LogonDomain(): Uint8Array | Deno.PointerValue | null {
+  get LogonDomain(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(120, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x80: pointer
-  get WorkDirectory(): Uint8Array | Deno.PointerValue | null {
+  get WorkDirectory(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(128, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x88: pointer
-  get InitialProgram(): Uint8Array | Deno.PointerValue | null {
+  get InitialProgram(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(136, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -6531,28 +6531,28 @@ export class WTSLISTENERCONFIGAView {
   }
 
   // 0x68: pointer
-  set Comment(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(104, BigInt(util.toPointer(value)), true);
+  set Comment(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(104, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x70: pointer
-  set LogonUserName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(112, BigInt(util.toPointer(value)), true);
+  set LogonUserName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(112, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x78: pointer
-  set LogonDomain(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(120, BigInt(util.toPointer(value)), true);
+  set LogonDomain(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(120, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x80: pointer
-  set WorkDirectory(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(128, BigInt(util.toPointer(value)), true);
+  set WorkDirectory(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(128, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x88: pointer
-  set InitialProgram(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(136, BigInt(util.toPointer(value)), true);
+  set InitialProgram(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(136, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -6563,7 +6563,7 @@ export interface WTSSBX_IP_ADDRESS {
   /** Windows.Win32.System.RemoteDesktop.WTSSBX_ADDRESS_FAMILY */
   AddressFamily: WTSSBX_ADDRESS_FAMILY;
   /** array */
-  Address: Deno.PointerValue | null;
+  Address: Deno.PointerValue;
   /** u16 */
   PortNumber: number;
   /** u32 */
@@ -6579,7 +6579,7 @@ export function allocWTSSBX_IP_ADDRESS(data?: Partial<WTSSBX_IP_ADDRESS>): Uint8
   if (data?.AddressFamily !== undefined) view.setInt32(0, Number(data.AddressFamily), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Address !== undefined) view.setBigUint64(8, data.Address === null ? 0n : BigInt(util.toPointer(data.Address)), true);
+  if (data?.Address !== undefined) view.setBigUint64(8, data.Address === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Address))), true);
   // 0x10: u16
   if (data?.PortNumber !== undefined) view.setUint16(16, Number(data.PortNumber), true);
   // 0x12: u32
@@ -6606,9 +6606,9 @@ export class WTSSBX_IP_ADDRESSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Address(): Uint8Array | Deno.PointerValue | null {
+  get Address(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u16
@@ -6631,8 +6631,8 @@ export class WTSSBX_IP_ADDRESSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Address(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Address(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u16
@@ -6653,13 +6653,13 @@ export class WTSSBX_IP_ADDRESSView {
  */
 export interface WTSSBX_MACHINE_CONNECT_INFO {
   /** array */
-  wczMachineFQDN: Deno.PointerValue | null;
+  wczMachineFQDN: Deno.PointerValue;
   /** array */
-  wczMachineNetBiosName: Deno.PointerValue | null;
+  wczMachineNetBiosName: Deno.PointerValue;
   /** u32 */
   dwNumOfIPAddr: number;
   /** array */
-  IPaddr: Deno.PointerValue | null;
+  IPaddr: Deno.PointerValue;
 }
 
 export const sizeofWTSSBX_MACHINE_CONNECT_INFO = 32;
@@ -6668,14 +6668,14 @@ export function allocWTSSBX_MACHINE_CONNECT_INFO(data?: Partial<WTSSBX_MACHINE_C
   const buf = new Uint8Array(sizeofWTSSBX_MACHINE_CONNECT_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.wczMachineFQDN !== undefined) view.setBigUint64(0, data.wczMachineFQDN === null ? 0n : BigInt(util.toPointer(data.wczMachineFQDN)), true);
+  if (data?.wczMachineFQDN !== undefined) view.setBigUint64(0, data.wczMachineFQDN === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.wczMachineFQDN))), true);
   // 0x08: pointer
-  if (data?.wczMachineNetBiosName !== undefined) view.setBigUint64(8, data.wczMachineNetBiosName === null ? 0n : BigInt(util.toPointer(data.wczMachineNetBiosName)), true);
+  if (data?.wczMachineNetBiosName !== undefined) view.setBigUint64(8, data.wczMachineNetBiosName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.wczMachineNetBiosName))), true);
   // 0x10: u32
   if (data?.dwNumOfIPAddr !== undefined) view.setUint32(16, Number(data.dwNumOfIPAddr), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.IPaddr !== undefined) view.setBigUint64(24, data.IPaddr === null ? 0n : BigInt(util.toPointer(data.IPaddr)), true);
+  if (data?.IPaddr !== undefined) view.setBigUint64(24, data.IPaddr === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.IPaddr))), true);
   return buf;
 }
 
@@ -6690,15 +6690,15 @@ export class WTSSBX_MACHINE_CONNECT_INFOView {
   }
 
   // 0x00: pointer
-  get wczMachineFQDN(): Uint8Array | Deno.PointerValue | null {
+  get wczMachineFQDN(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get wczMachineNetBiosName(): Uint8Array | Deno.PointerValue | null {
+  get wczMachineNetBiosName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -6709,19 +6709,19 @@ export class WTSSBX_MACHINE_CONNECT_INFOView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get IPaddr(): Uint8Array | Deno.PointerValue | null {
+  get IPaddr(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set wczMachineFQDN(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set wczMachineFQDN(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set wczMachineNetBiosName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set wczMachineNetBiosName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -6732,8 +6732,8 @@ export class WTSSBX_MACHINE_CONNECT_INFOView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set IPaddr(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set IPaddr(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -6742,11 +6742,11 @@ export class WTSSBX_MACHINE_CONNECT_INFOView {
  */
 export interface WTSSBX_MACHINE_INFO {
   /** Windows.Win32.System.RemoteDesktop.WTSSBX_MACHINE_CONNECT_INFO */
-  ClientConnectInfo: Uint8Array | Deno.PointerValue | null;
+  ClientConnectInfo: Uint8Array | Deno.PointerValue;
   /** array */
-  wczFarmName: Deno.PointerValue | null;
+  wczFarmName: Deno.PointerValue;
   /** Windows.Win32.System.RemoteDesktop.WTSSBX_IP_ADDRESS */
-  InternalIPAddress: Uint8Array | Deno.PointerValue | null;
+  InternalIPAddress: Uint8Array | Deno.PointerValue;
   /** u32 */
   dwMaxSessionsLimit: number;
   /** u32 */
@@ -6765,11 +6765,11 @@ export function allocWTSSBX_MACHINE_INFO(data?: Partial<WTSSBX_MACHINE_INFO>): U
   const buf = new Uint8Array(sizeofWTSSBX_MACHINE_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ClientConnectInfo !== undefined) view.setBigUint64(0, data.ClientConnectInfo === null ? 0n : BigInt(util.toPointer(data.ClientConnectInfo)), true);
+  if (data?.ClientConnectInfo !== undefined) view.setBigUint64(0, data.ClientConnectInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientConnectInfo))), true);
   // 0x08: pointer
-  if (data?.wczFarmName !== undefined) view.setBigUint64(8, data.wczFarmName === null ? 0n : BigInt(util.toPointer(data.wczFarmName)), true);
+  if (data?.wczFarmName !== undefined) view.setBigUint64(8, data.wczFarmName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.wczFarmName))), true);
   // 0x10: pointer
-  if (data?.InternalIPAddress !== undefined) view.setBigUint64(16, data.InternalIPAddress === null ? 0n : BigInt(util.toPointer(data.InternalIPAddress)), true);
+  if (data?.InternalIPAddress !== undefined) view.setBigUint64(16, data.InternalIPAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InternalIPAddress))), true);
   // 0x18: u32
   if (data?.dwMaxSessionsLimit !== undefined) view.setUint32(24, Number(data.dwMaxSessionsLimit), true);
   // 0x1c: u32
@@ -6795,21 +6795,21 @@ export class WTSSBX_MACHINE_INFOView {
   }
 
   // 0x00: pointer
-  get ClientConnectInfo(): Uint8Array | Deno.PointerValue | null {
+  get ClientConnectInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get wczFarmName(): Uint8Array | Deno.PointerValue | null {
+  get wczFarmName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get InternalIPAddress(): Uint8Array | Deno.PointerValue | null {
+  get InternalIPAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -6840,18 +6840,18 @@ export class WTSSBX_MACHINE_INFOView {
   // 0x2c: pad4
 
   // 0x00: pointer
-  set ClientConnectInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ClientConnectInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set wczFarmName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set wczFarmName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set InternalIPAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set InternalIPAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -6940,17 +6940,17 @@ export class FILETIMEView {
  */
 export interface WTSSBX_SESSION_INFO {
   /** array */
-  wszUserName: Deno.PointerValue | null;
+  wszUserName: Deno.PointerValue;
   /** array */
-  wszDomainName: Deno.PointerValue | null;
+  wszDomainName: Deno.PointerValue;
   /** array */
-  ApplicationType: Deno.PointerValue | null;
+  ApplicationType: Deno.PointerValue;
   /** u32 */
   dwSessionId: number;
   /** Windows.Win32.Foundation.FILETIME */
-  CreateTime: Uint8Array | Deno.PointerValue | null;
+  CreateTime: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.FILETIME */
-  DisconnectTime: Uint8Array | Deno.PointerValue | null;
+  DisconnectTime: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.RemoteDesktop.WTSSBX_SESSION_STATE */
   SessionState: WTSSBX_SESSION_STATE;
 }
@@ -6961,18 +6961,18 @@ export function allocWTSSBX_SESSION_INFO(data?: Partial<WTSSBX_SESSION_INFO>): U
   const buf = new Uint8Array(sizeofWTSSBX_SESSION_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.wszUserName !== undefined) view.setBigUint64(0, data.wszUserName === null ? 0n : BigInt(util.toPointer(data.wszUserName)), true);
+  if (data?.wszUserName !== undefined) view.setBigUint64(0, data.wszUserName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.wszUserName))), true);
   // 0x08: pointer
-  if (data?.wszDomainName !== undefined) view.setBigUint64(8, data.wszDomainName === null ? 0n : BigInt(util.toPointer(data.wszDomainName)), true);
+  if (data?.wszDomainName !== undefined) view.setBigUint64(8, data.wszDomainName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.wszDomainName))), true);
   // 0x10: pointer
-  if (data?.ApplicationType !== undefined) view.setBigUint64(16, data.ApplicationType === null ? 0n : BigInt(util.toPointer(data.ApplicationType)), true);
+  if (data?.ApplicationType !== undefined) view.setBigUint64(16, data.ApplicationType === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ApplicationType))), true);
   // 0x18: u32
   if (data?.dwSessionId !== undefined) view.setUint32(24, Number(data.dwSessionId), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.CreateTime !== undefined) view.setBigUint64(32, data.CreateTime === null ? 0n : BigInt(util.toPointer(data.CreateTime)), true);
+  if (data?.CreateTime !== undefined) view.setBigUint64(32, data.CreateTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.CreateTime))), true);
   // 0x28: pointer
-  if (data?.DisconnectTime !== undefined) view.setBigUint64(40, data.DisconnectTime === null ? 0n : BigInt(util.toPointer(data.DisconnectTime)), true);
+  if (data?.DisconnectTime !== undefined) view.setBigUint64(40, data.DisconnectTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DisconnectTime))), true);
   // 0x30: i32
   if (data?.SessionState !== undefined) view.setInt32(48, Number(data.SessionState), true);
   // 0x34: pad4
@@ -6990,21 +6990,21 @@ export class WTSSBX_SESSION_INFOView {
   }
 
   // 0x00: pointer
-  get wszUserName(): Uint8Array | Deno.PointerValue | null {
+  get wszUserName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get wszDomainName(): Uint8Array | Deno.PointerValue | null {
+  get wszDomainName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ApplicationType(): Uint8Array | Deno.PointerValue | null {
+  get ApplicationType(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -7015,15 +7015,15 @@ export class WTSSBX_SESSION_INFOView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get CreateTime(): Uint8Array | Deno.PointerValue | null {
+  get CreateTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get DisconnectTime(): Uint8Array | Deno.PointerValue | null {
+  get DisconnectTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: i32
@@ -7034,18 +7034,18 @@ export class WTSSBX_SESSION_INFOView {
   // 0x34: pad4
 
   // 0x00: pointer
-  set wszUserName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set wszUserName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set wszDomainName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set wszDomainName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ApplicationType(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ApplicationType(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -7056,13 +7056,13 @@ export class WTSSBX_SESSION_INFOView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set CreateTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set CreateTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set DisconnectTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set DisconnectTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: i32
@@ -7078,7 +7078,7 @@ export class WTSSBX_SESSION_INFOView {
  */
 export interface CHANNEL_DEF {
   /** array */
-  name: Deno.PointerValue | null;
+  name: Deno.PointerValue;
   /** u32 */
   options: number;
 }
@@ -7089,7 +7089,7 @@ export function allocCHANNEL_DEF(data?: Partial<CHANNEL_DEF>): Uint8Array {
   const buf = new Uint8Array(sizeofCHANNEL_DEF);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.name !== undefined) view.setBigUint64(0, data.name === null ? 0n : BigInt(util.toPointer(data.name)), true);
+  if (data?.name !== undefined) view.setBigUint64(0, data.name === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.name))), true);
   // 0x08: u32
   if (data?.options !== undefined) view.setUint32(8, Number(data.options), true);
   // 0x0c: pad4
@@ -7107,9 +7107,9 @@ export class CHANNEL_DEFView {
   }
 
   // 0x00: pointer
-  get name(): Uint8Array | Deno.PointerValue | null {
+  get name(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -7120,8 +7120,8 @@ export class CHANNEL_DEFView {
   // 0x0c: pad4
 
   // 0x00: pointer
-  set name(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set name(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -7194,13 +7194,13 @@ export interface CHANNEL_ENTRY_POINTS {
   /** u32 */
   protocolVersion: number;
   /** Windows.Win32.System.RemoteDesktop.PVIRTUALCHANNELINIT */
-  pVirtualChannelInit: Uint8Array | Deno.PointerValue | null;
+  pVirtualChannelInit: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.RemoteDesktop.PVIRTUALCHANNELOPEN */
-  pVirtualChannelOpen: Uint8Array | Deno.PointerValue | null;
+  pVirtualChannelOpen: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.RemoteDesktop.PVIRTUALCHANNELCLOSE */
-  pVirtualChannelClose: Uint8Array | Deno.PointerValue | null;
+  pVirtualChannelClose: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.RemoteDesktop.PVIRTUALCHANNELWRITE */
-  pVirtualChannelWrite: Uint8Array | Deno.PointerValue | null;
+  pVirtualChannelWrite: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofCHANNEL_ENTRY_POINTS = 40;
@@ -7213,13 +7213,13 @@ export function allocCHANNEL_ENTRY_POINTS(data?: Partial<CHANNEL_ENTRY_POINTS>):
   // 0x04: u32
   if (data?.protocolVersion !== undefined) view.setUint32(4, Number(data.protocolVersion), true);
   // 0x08: pointer
-  if (data?.pVirtualChannelInit !== undefined) view.setBigUint64(8, data.pVirtualChannelInit === null ? 0n : BigInt(util.toPointer(data.pVirtualChannelInit)), true);
+  if (data?.pVirtualChannelInit !== undefined) view.setBigUint64(8, data.pVirtualChannelInit === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pVirtualChannelInit))), true);
   // 0x10: pointer
-  if (data?.pVirtualChannelOpen !== undefined) view.setBigUint64(16, data.pVirtualChannelOpen === null ? 0n : BigInt(util.toPointer(data.pVirtualChannelOpen)), true);
+  if (data?.pVirtualChannelOpen !== undefined) view.setBigUint64(16, data.pVirtualChannelOpen === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pVirtualChannelOpen))), true);
   // 0x18: pointer
-  if (data?.pVirtualChannelClose !== undefined) view.setBigUint64(24, data.pVirtualChannelClose === null ? 0n : BigInt(util.toPointer(data.pVirtualChannelClose)), true);
+  if (data?.pVirtualChannelClose !== undefined) view.setBigUint64(24, data.pVirtualChannelClose === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pVirtualChannelClose))), true);
   // 0x20: pointer
-  if (data?.pVirtualChannelWrite !== undefined) view.setBigUint64(32, data.pVirtualChannelWrite === null ? 0n : BigInt(util.toPointer(data.pVirtualChannelWrite)), true);
+  if (data?.pVirtualChannelWrite !== undefined) view.setBigUint64(32, data.pVirtualChannelWrite === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pVirtualChannelWrite))), true);
   return buf;
 }
 
@@ -7244,27 +7244,27 @@ export class CHANNEL_ENTRY_POINTSView {
   }
 
   // 0x08: pointer
-  get pVirtualChannelInit(): Uint8Array | Deno.PointerValue | null {
+  get pVirtualChannelInit(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get pVirtualChannelOpen(): Uint8Array | Deno.PointerValue | null {
+  get pVirtualChannelOpen(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get pVirtualChannelClose(): Uint8Array | Deno.PointerValue | null {
+  get pVirtualChannelClose(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get pVirtualChannelWrite(): Uint8Array | Deno.PointerValue | null {
+  get pVirtualChannelWrite(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -7278,23 +7278,23 @@ export class CHANNEL_ENTRY_POINTSView {
   }
 
   // 0x08: pointer
-  set pVirtualChannelInit(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pVirtualChannelInit(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set pVirtualChannelOpen(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pVirtualChannelOpen(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set pVirtualChannelClose(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set pVirtualChannelClose(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set pVirtualChannelWrite(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set pVirtualChannelWrite(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -7375,7 +7375,7 @@ export class CLIENT_DISPLAYView {
  */
 export interface TSSD_ConnectionPoint {
   /** array */
-  ServerAddressB: Deno.PointerValue | null;
+  ServerAddressB: Deno.PointerValue;
   /** Windows.Win32.System.RemoteDesktop.TSSD_AddrV46Type */
   AddressType: TSSD_AddrV46Type;
   /** u16 */
@@ -7390,7 +7390,7 @@ export function allocTSSD_ConnectionPoint(data?: Partial<TSSD_ConnectionPoint>):
   const buf = new Uint8Array(sizeofTSSD_ConnectionPoint);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ServerAddressB !== undefined) view.setBigUint64(0, data.ServerAddressB === null ? 0n : BigInt(util.toPointer(data.ServerAddressB)), true);
+  if (data?.ServerAddressB !== undefined) view.setBigUint64(0, data.ServerAddressB === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ServerAddressB))), true);
   // 0x08: i32
   if (data?.AddressType !== undefined) view.setInt32(8, Number(data.AddressType), true);
   // 0x0c: u16
@@ -7412,9 +7412,9 @@ export class TSSD_ConnectionPointView {
   }
 
   // 0x00: pointer
-  get ServerAddressB(): Uint8Array | Deno.PointerValue | null {
+  get ServerAddressB(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: i32
@@ -7435,8 +7435,8 @@ export class TSSD_ConnectionPointView {
   // 0x12: pad6
 
   // 0x00: pointer
-  set ServerAddressB(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ServerAddressB(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: i32
@@ -7462,9 +7462,9 @@ export class TSSD_ConnectionPointView {
  */
 export interface VM_NOTIFY_ENTRY {
   /** array */
-  VmName: Deno.PointerValue | null;
+  VmName: Deno.PointerValue;
   /** array */
-  VmHost: Deno.PointerValue | null;
+  VmHost: Deno.PointerValue;
 }
 
 export const sizeofVM_NOTIFY_ENTRY = 16;
@@ -7473,9 +7473,9 @@ export function allocVM_NOTIFY_ENTRY(data?: Partial<VM_NOTIFY_ENTRY>): Uint8Arra
   const buf = new Uint8Array(sizeofVM_NOTIFY_ENTRY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.VmName !== undefined) view.setBigUint64(0, data.VmName === null ? 0n : BigInt(util.toPointer(data.VmName)), true);
+  if (data?.VmName !== undefined) view.setBigUint64(0, data.VmName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.VmName))), true);
   // 0x08: pointer
-  if (data?.VmHost !== undefined) view.setBigUint64(8, data.VmHost === null ? 0n : BigInt(util.toPointer(data.VmHost)), true);
+  if (data?.VmHost !== undefined) view.setBigUint64(8, data.VmHost === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.VmHost))), true);
   return buf;
 }
 
@@ -7490,25 +7490,25 @@ export class VM_NOTIFY_ENTRYView {
   }
 
   // 0x00: pointer
-  get VmName(): Uint8Array | Deno.PointerValue | null {
+  get VmName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get VmHost(): Uint8Array | Deno.PointerValue | null {
+  get VmHost(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set VmName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set VmName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set VmHost(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set VmHost(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -7519,7 +7519,7 @@ export interface VM_PATCH_INFO {
   /** u32 */
   dwNumEntries: number;
   /** ptr */
-  pVmNames: Deno.PointerValue | Uint8Array | null;
+  pVmNames: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofVM_PATCH_INFO = 16;
@@ -7531,7 +7531,7 @@ export function allocVM_PATCH_INFO(data?: Partial<VM_PATCH_INFO>): Uint8Array {
   if (data?.dwNumEntries !== undefined) view.setUint32(0, Number(data.dwNumEntries), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pVmNames !== undefined) view.setBigUint64(8, data.pVmNames === null ? 0n : BigInt(util.toPointer(data.pVmNames)), true);
+  if (data?.pVmNames !== undefined) view.setBigUint64(8, data.pVmNames === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pVmNames))), true);
   return buf;
 }
 
@@ -7553,9 +7553,9 @@ export class VM_PATCH_INFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pVmNames(): Uint8Array | Deno.PointerValue | null {
+  get pVmNames(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -7566,8 +7566,8 @@ export class VM_PATCH_INFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pVmNames(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pVmNames(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -7578,7 +7578,7 @@ export interface VM_NOTIFY_INFO {
   /** u32 */
   dwNumEntries: number;
   /** ptr */
-  ppVmEntries: Deno.PointerValue | Uint8Array | null;
+  ppVmEntries: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofVM_NOTIFY_INFO = 16;
@@ -7590,7 +7590,7 @@ export function allocVM_NOTIFY_INFO(data?: Partial<VM_NOTIFY_INFO>): Uint8Array 
   if (data?.dwNumEntries !== undefined) view.setUint32(0, Number(data.dwNumEntries), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.ppVmEntries !== undefined) view.setBigUint64(8, data.ppVmEntries === null ? 0n : BigInt(util.toPointer(data.ppVmEntries)), true);
+  if (data?.ppVmEntries !== undefined) view.setBigUint64(8, data.ppVmEntries === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ppVmEntries))), true);
   return buf;
 }
 
@@ -7612,9 +7612,9 @@ export class VM_NOTIFY_INFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get ppVmEntries(): Uint8Array | Deno.PointerValue | null {
+  get ppVmEntries(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -7625,8 +7625,8 @@ export class VM_NOTIFY_INFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set ppVmEntries(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ppVmEntries(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -7635,15 +7635,15 @@ export class VM_NOTIFY_INFOView {
  */
 export interface pluginResource {
   /** array */
-  alias: Deno.PointerValue | null;
+  alias: Deno.PointerValue;
   /** array */
-  name: Deno.PointerValue | null;
+  name: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   resourceFileContents: string | null | Uint8Array | Uint16Array;
   /** array */
-  fileExtension: Deno.PointerValue | null;
+  fileExtension: Deno.PointerValue;
   /** array */
-  resourcePluginType: Deno.PointerValue | null;
+  resourcePluginType: Deno.PointerValue;
   /** u8 */
   isDiscoverable: number;
   /** i32 */
@@ -7651,11 +7651,11 @@ export interface pluginResource {
   /** u32 */
   pceIconSize: number;
   /** ptr */
-  iconContents: Deno.PointerValue | Uint8Array | null;
+  iconContents: Deno.PointerValue | Uint8Array;
   /** u32 */
   pcePluginBlobSize: number;
   /** ptr */
-  blobContents: Deno.PointerValue | Uint8Array | null;
+  blobContents: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofPluginResource = 80;
@@ -7664,18 +7664,18 @@ export function allocPluginResource(data?: Partial<pluginResource>): Uint8Array 
   const buf = new Uint8Array(sizeofPluginResource);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.alias !== undefined) view.setBigUint64(0, data.alias === null ? 0n : BigInt(util.toPointer(data.alias)), true);
+  if (data?.alias !== undefined) view.setBigUint64(0, data.alias === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.alias))), true);
   // 0x08: pointer
-  if (data?.name !== undefined) view.setBigUint64(8, data.name === null ? 0n : BigInt(util.toPointer(data.name)), true);
+  if (data?.name !== undefined) view.setBigUint64(8, data.name === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.name))), true);
   // 0x10: buffer
   if (data?.resourceFileContents !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.resourceFileContents);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: pointer
-  if (data?.fileExtension !== undefined) view.setBigUint64(24, data.fileExtension === null ? 0n : BigInt(util.toPointer(data.fileExtension)), true);
+  if (data?.fileExtension !== undefined) view.setBigUint64(24, data.fileExtension === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fileExtension))), true);
   // 0x20: pointer
-  if (data?.resourcePluginType !== undefined) view.setBigUint64(32, data.resourcePluginType === null ? 0n : BigInt(util.toPointer(data.resourcePluginType)), true);
+  if (data?.resourcePluginType !== undefined) view.setBigUint64(32, data.resourcePluginType === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.resourcePluginType))), true);
   // 0x28: u8
   if (data?.isDiscoverable !== undefined) view.setUint8(40, Number(data.isDiscoverable));
   // 0x29: i32
@@ -7684,12 +7684,12 @@ export function allocPluginResource(data?: Partial<pluginResource>): Uint8Array 
   if (data?.pceIconSize !== undefined) view.setUint32(45, Number(data.pceIconSize), true);
   // 0x31: pad7
   // 0x38: pointer
-  if (data?.iconContents !== undefined) view.setBigUint64(56, data.iconContents === null ? 0n : BigInt(util.toPointer(data.iconContents)), true);
+  if (data?.iconContents !== undefined) view.setBigUint64(56, data.iconContents === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.iconContents))), true);
   // 0x40: u32
   if (data?.pcePluginBlobSize !== undefined) view.setUint32(64, Number(data.pcePluginBlobSize), true);
   // 0x44: pad4
   // 0x48: pointer
-  if (data?.blobContents !== undefined) view.setBigUint64(72, data.blobContents === null ? 0n : BigInt(util.toPointer(data.blobContents)), true);
+  if (data?.blobContents !== undefined) view.setBigUint64(72, data.blobContents === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.blobContents))), true);
   return buf;
 }
 
@@ -7704,33 +7704,33 @@ export class pluginResourceView {
   }
 
   // 0x00: pointer
-  get alias(): Uint8Array | Deno.PointerValue | null {
+  get alias(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get name(): Uint8Array | Deno.PointerValue | null {
+  get name(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get resourceFileContents(): Uint8Array | Deno.PointerValue | null {
+  get resourceFileContents(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get fileExtension(): Uint8Array | Deno.PointerValue | null {
+  get fileExtension(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get resourcePluginType(): Uint8Array | Deno.PointerValue | null {
+  get resourcePluginType(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u8
@@ -7751,9 +7751,9 @@ export class pluginResourceView {
   // 0x31: pad7
 
   // 0x38: pointer
-  get iconContents(): Uint8Array | Deno.PointerValue | null {
+  get iconContents(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: u32
@@ -7764,35 +7764,35 @@ export class pluginResourceView {
   // 0x44: pad4
 
   // 0x48: pointer
-  get blobContents(): Uint8Array | Deno.PointerValue | null {
+  get blobContents(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set alias(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set alias(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set name(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set name(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: buffer
-  set resourceFileContents(value: Uint8Array | Deno.PointerValue | null) {
+  set resourceFileContents(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: pointer
-  set fileExtension(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set fileExtension(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set resourcePluginType(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set resourcePluginType(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u8
@@ -7813,8 +7813,8 @@ export class pluginResourceView {
   // 0x31: pad7
 
   // 0x38: pointer
-  set iconContents(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set iconContents(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: u32
@@ -7825,8 +7825,8 @@ export class pluginResourceView {
   // 0x44: pad4
 
   // 0x48: pointer
-  set blobContents(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set blobContents(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -7835,13 +7835,13 @@ export class pluginResourceView {
  */
 export interface pluginResource2FileAssociation {
   /** array */
-  extName: Deno.PointerValue | null;
+  extName: Deno.PointerValue;
   /** u8 */
   primaryHandler: number;
   /** u32 */
   pceIconSize: number;
   /** ptr */
-  iconContents: Deno.PointerValue | Uint8Array | null;
+  iconContents: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofPluginResource2FileAssociation = 24;
@@ -7850,14 +7850,14 @@ export function allocPluginResource2FileAssociation(data?: Partial<pluginResourc
   const buf = new Uint8Array(sizeofPluginResource2FileAssociation);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.extName !== undefined) view.setBigUint64(0, data.extName === null ? 0n : BigInt(util.toPointer(data.extName)), true);
+  if (data?.extName !== undefined) view.setBigUint64(0, data.extName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.extName))), true);
   // 0x08: u8
   if (data?.primaryHandler !== undefined) view.setUint8(8, Number(data.primaryHandler));
   // 0x09: u32
   if (data?.pceIconSize !== undefined) view.setUint32(9, Number(data.pceIconSize), true);
   // 0x0d: pad3
   // 0x10: pointer
-  if (data?.iconContents !== undefined) view.setBigUint64(16, data.iconContents === null ? 0n : BigInt(util.toPointer(data.iconContents)), true);
+  if (data?.iconContents !== undefined) view.setBigUint64(16, data.iconContents === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.iconContents))), true);
   return buf;
 }
 
@@ -7872,9 +7872,9 @@ export class pluginResource2FileAssociationView {
   }
 
   // 0x00: pointer
-  get extName(): Uint8Array | Deno.PointerValue | null {
+  get extName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u8
@@ -7890,14 +7890,14 @@ export class pluginResource2FileAssociationView {
   // 0x0d: pad3
 
   // 0x10: pointer
-  get iconContents(): Uint8Array | Deno.PointerValue | null {
+  get iconContents(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set extName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set extName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u8
@@ -7913,8 +7913,8 @@ export class pluginResource2FileAssociationView {
   // 0x0d: pad3
 
   // 0x10: pointer
-  set iconContents(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set iconContents(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -7923,17 +7923,17 @@ export class pluginResource2FileAssociationView {
  */
 export interface pluginResource2 {
   /** Windows.Win32.System.RemoteDesktop.pluginResource */
-  resourceV1: Uint8Array | Deno.PointerValue | null;
+  resourceV1: Uint8Array | Deno.PointerValue;
   /** u32 */
   pceFileAssocListSize: number;
   /** ptr */
-  fileAssocList: Deno.PointerValue | Uint8Array | null;
+  fileAssocList: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.PWSTR */
   securityDescriptor: string | null | Uint8Array | Uint16Array;
   /** u32 */
   pceFolderListSize: number;
   /** ptr */
-  folderList: Deno.PointerValue | Uint8Array | null;
+  folderList: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofPluginResource2 = 48;
@@ -7942,22 +7942,22 @@ export function allocPluginResource2(data?: Partial<pluginResource2>): Uint8Arra
   const buf = new Uint8Array(sizeofPluginResource2);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.resourceV1 !== undefined) view.setBigUint64(0, data.resourceV1 === null ? 0n : BigInt(util.toPointer(data.resourceV1)), true);
+  if (data?.resourceV1 !== undefined) view.setBigUint64(0, data.resourceV1 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.resourceV1))), true);
   // 0x08: u32
   if (data?.pceFileAssocListSize !== undefined) view.setUint32(8, Number(data.pceFileAssocListSize), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.fileAssocList !== undefined) view.setBigUint64(16, data.fileAssocList === null ? 0n : BigInt(util.toPointer(data.fileAssocList)), true);
+  if (data?.fileAssocList !== undefined) view.setBigUint64(16, data.fileAssocList === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fileAssocList))), true);
   // 0x18: buffer
   if (data?.securityDescriptor !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.securityDescriptor);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: u32
   if (data?.pceFolderListSize !== undefined) view.setUint32(32, Number(data.pceFolderListSize), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.folderList !== undefined) view.setBigUint64(40, data.folderList === null ? 0n : BigInt(util.toPointer(data.folderList)), true);
+  if (data?.folderList !== undefined) view.setBigUint64(40, data.folderList === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.folderList))), true);
   return buf;
 }
 
@@ -7972,9 +7972,9 @@ export class pluginResource2View {
   }
 
   // 0x00: pointer
-  get resourceV1(): Uint8Array | Deno.PointerValue | null {
+  get resourceV1(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -7985,15 +7985,15 @@ export class pluginResource2View {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get fileAssocList(): Uint8Array | Deno.PointerValue | null {
+  get fileAssocList(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get securityDescriptor(): Uint8Array | Deno.PointerValue | null {
+  get securityDescriptor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -8004,14 +8004,14 @@ export class pluginResource2View {
   // 0x24: pad4
 
   // 0x28: pointer
-  get folderList(): Uint8Array | Deno.PointerValue | null {
+  get folderList(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set resourceV1(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set resourceV1(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -8022,14 +8022,14 @@ export class pluginResource2View {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set fileAssocList(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set fileAssocList(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: buffer
-  set securityDescriptor(value: Uint8Array | Deno.PointerValue | null) {
+  set securityDescriptor(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: u32
@@ -8040,8 +8040,8 @@ export class pluginResource2View {
   // 0x24: pad4
 
   // 0x28: pointer
-  set folderList(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set folderList(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -8381,7 +8381,7 @@ export class RFX_GFX_MONITOR_INFOView {
  */
 export interface RFX_GFX_MSG_CLIENT_DESKTOP_INFO_REQUEST {
   /** Windows.Win32.System.RemoteDesktop.RFX_GFX_MSG_HEADER */
-  channelHdr: Uint8Array | Deno.PointerValue | null;
+  channelHdr: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofRFX_GFX_MSG_CLIENT_DESKTOP_INFO_REQUEST = 8;
@@ -8390,7 +8390,7 @@ export function allocRFX_GFX_MSG_CLIENT_DESKTOP_INFO_REQUEST(data?: Partial<RFX_
   const buf = new Uint8Array(sizeofRFX_GFX_MSG_CLIENT_DESKTOP_INFO_REQUEST);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.channelHdr !== undefined) view.setBigUint64(0, data.channelHdr === null ? 0n : BigInt(util.toPointer(data.channelHdr)), true);
+  if (data?.channelHdr !== undefined) view.setBigUint64(0, data.channelHdr === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.channelHdr))), true);
   return buf;
 }
 
@@ -8405,14 +8405,14 @@ export class RFX_GFX_MSG_CLIENT_DESKTOP_INFO_REQUESTView {
   }
 
   // 0x00: pointer
-  get channelHdr(): Uint8Array | Deno.PointerValue | null {
+  get channelHdr(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set channelHdr(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set channelHdr(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -8421,15 +8421,15 @@ export class RFX_GFX_MSG_CLIENT_DESKTOP_INFO_REQUESTView {
  */
 export interface RFX_GFX_MSG_CLIENT_DESKTOP_INFO_RESPONSE {
   /** Windows.Win32.System.RemoteDesktop.RFX_GFX_MSG_HEADER */
-  channelHdr: Uint8Array | Deno.PointerValue | null;
+  channelHdr: Uint8Array | Deno.PointerValue;
   /** u32 */
   reserved: number;
   /** u32 */
   monitorCount: number;
   /** array */
-  MonitorData: Deno.PointerValue | null;
+  MonitorData: Deno.PointerValue;
   /** array */
-  clientUniqueId: Deno.PointerValue | null;
+  clientUniqueId: Deno.PointerValue;
 }
 
 export const sizeofRFX_GFX_MSG_CLIENT_DESKTOP_INFO_RESPONSE = 32;
@@ -8438,15 +8438,15 @@ export function allocRFX_GFX_MSG_CLIENT_DESKTOP_INFO_RESPONSE(data?: Partial<RFX
   const buf = new Uint8Array(sizeofRFX_GFX_MSG_CLIENT_DESKTOP_INFO_RESPONSE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.channelHdr !== undefined) view.setBigUint64(0, data.channelHdr === null ? 0n : BigInt(util.toPointer(data.channelHdr)), true);
+  if (data?.channelHdr !== undefined) view.setBigUint64(0, data.channelHdr === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.channelHdr))), true);
   // 0x08: u32
   if (data?.reserved !== undefined) view.setUint32(8, Number(data.reserved), true);
   // 0x0c: u32
   if (data?.monitorCount !== undefined) view.setUint32(12, Number(data.monitorCount), true);
   // 0x10: pointer
-  if (data?.MonitorData !== undefined) view.setBigUint64(16, data.MonitorData === null ? 0n : BigInt(util.toPointer(data.MonitorData)), true);
+  if (data?.MonitorData !== undefined) view.setBigUint64(16, data.MonitorData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.MonitorData))), true);
   // 0x18: pointer
-  if (data?.clientUniqueId !== undefined) view.setBigUint64(24, data.clientUniqueId === null ? 0n : BigInt(util.toPointer(data.clientUniqueId)), true);
+  if (data?.clientUniqueId !== undefined) view.setBigUint64(24, data.clientUniqueId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.clientUniqueId))), true);
   return buf;
 }
 
@@ -8461,9 +8461,9 @@ export class RFX_GFX_MSG_CLIENT_DESKTOP_INFO_RESPONSEView {
   }
 
   // 0x00: pointer
-  get channelHdr(): Uint8Array | Deno.PointerValue | null {
+  get channelHdr(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -8477,20 +8477,20 @@ export class RFX_GFX_MSG_CLIENT_DESKTOP_INFO_RESPONSEView {
   }
 
   // 0x10: pointer
-  get MonitorData(): Uint8Array | Deno.PointerValue | null {
+  get MonitorData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get clientUniqueId(): Uint8Array | Deno.PointerValue | null {
+  get clientUniqueId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set channelHdr(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set channelHdr(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -8504,13 +8504,13 @@ export class RFX_GFX_MSG_CLIENT_DESKTOP_INFO_RESPONSEView {
   }
 
   // 0x10: pointer
-  set MonitorData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set MonitorData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set clientUniqueId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set clientUniqueId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -8519,7 +8519,7 @@ export class RFX_GFX_MSG_CLIENT_DESKTOP_INFO_RESPONSEView {
  */
 export interface RFX_GFX_MSG_DESKTOP_CONFIG_CHANGE_NOTIFY {
   /** Windows.Win32.System.RemoteDesktop.RFX_GFX_MSG_HEADER */
-  channelHdr: Uint8Array | Deno.PointerValue | null;
+  channelHdr: Uint8Array | Deno.PointerValue;
   /** u32 */
   ulWidth: number;
   /** u32 */
@@ -8536,7 +8536,7 @@ export function allocRFX_GFX_MSG_DESKTOP_CONFIG_CHANGE_NOTIFY(data?: Partial<RFX
   const buf = new Uint8Array(sizeofRFX_GFX_MSG_DESKTOP_CONFIG_CHANGE_NOTIFY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.channelHdr !== undefined) view.setBigUint64(0, data.channelHdr === null ? 0n : BigInt(util.toPointer(data.channelHdr)), true);
+  if (data?.channelHdr !== undefined) view.setBigUint64(0, data.channelHdr === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.channelHdr))), true);
   // 0x08: u32
   if (data?.ulWidth !== undefined) view.setUint32(8, Number(data.ulWidth), true);
   // 0x0c: u32
@@ -8559,9 +8559,9 @@ export class RFX_GFX_MSG_DESKTOP_CONFIG_CHANGE_NOTIFYView {
   }
 
   // 0x00: pointer
-  get channelHdr(): Uint8Array | Deno.PointerValue | null {
+  get channelHdr(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -8585,8 +8585,8 @@ export class RFX_GFX_MSG_DESKTOP_CONFIG_CHANGE_NOTIFYView {
   }
 
   // 0x00: pointer
-  set channelHdr(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set channelHdr(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -8615,7 +8615,7 @@ export class RFX_GFX_MSG_DESKTOP_CONFIG_CHANGE_NOTIFYView {
  */
 export interface RFX_GFX_MSG_DESKTOP_CONFIG_CHANGE_CONFIRM {
   /** Windows.Win32.System.RemoteDesktop.RFX_GFX_MSG_HEADER */
-  channelHdr: Uint8Array | Deno.PointerValue | null;
+  channelHdr: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofRFX_GFX_MSG_DESKTOP_CONFIG_CHANGE_CONFIRM = 8;
@@ -8624,7 +8624,7 @@ export function allocRFX_GFX_MSG_DESKTOP_CONFIG_CHANGE_CONFIRM(data?: Partial<RF
   const buf = new Uint8Array(sizeofRFX_GFX_MSG_DESKTOP_CONFIG_CHANGE_CONFIRM);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.channelHdr !== undefined) view.setBigUint64(0, data.channelHdr === null ? 0n : BigInt(util.toPointer(data.channelHdr)), true);
+  if (data?.channelHdr !== undefined) view.setBigUint64(0, data.channelHdr === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.channelHdr))), true);
   return buf;
 }
 
@@ -8639,14 +8639,14 @@ export class RFX_GFX_MSG_DESKTOP_CONFIG_CHANGE_CONFIRMView {
   }
 
   // 0x00: pointer
-  get channelHdr(): Uint8Array | Deno.PointerValue | null {
+  get channelHdr(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set channelHdr(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set channelHdr(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -8655,7 +8655,7 @@ export class RFX_GFX_MSG_DESKTOP_CONFIG_CHANGE_CONFIRMView {
  */
 export interface RFX_GFX_MSG_DESKTOP_INPUT_RESET {
   /** Windows.Win32.System.RemoteDesktop.RFX_GFX_MSG_HEADER */
-  channelHdr: Uint8Array | Deno.PointerValue | null;
+  channelHdr: Uint8Array | Deno.PointerValue;
   /** u32 */
   ulWidth: number;
   /** u32 */
@@ -8668,7 +8668,7 @@ export function allocRFX_GFX_MSG_DESKTOP_INPUT_RESET(data?: Partial<RFX_GFX_MSG_
   const buf = new Uint8Array(sizeofRFX_GFX_MSG_DESKTOP_INPUT_RESET);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.channelHdr !== undefined) view.setBigUint64(0, data.channelHdr === null ? 0n : BigInt(util.toPointer(data.channelHdr)), true);
+  if (data?.channelHdr !== undefined) view.setBigUint64(0, data.channelHdr === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.channelHdr))), true);
   // 0x08: u32
   if (data?.ulWidth !== undefined) view.setUint32(8, Number(data.ulWidth), true);
   // 0x0c: u32
@@ -8687,9 +8687,9 @@ export class RFX_GFX_MSG_DESKTOP_INPUT_RESETView {
   }
 
   // 0x00: pointer
-  get channelHdr(): Uint8Array | Deno.PointerValue | null {
+  get channelHdr(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -8703,8 +8703,8 @@ export class RFX_GFX_MSG_DESKTOP_INPUT_RESETView {
   }
 
   // 0x00: pointer
-  set channelHdr(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set channelHdr(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -8723,7 +8723,7 @@ export class RFX_GFX_MSG_DESKTOP_INPUT_RESETView {
  */
 export interface RFX_GFX_MSG_DISCONNECT_NOTIFY {
   /** Windows.Win32.System.RemoteDesktop.RFX_GFX_MSG_HEADER */
-  channelHdr: Uint8Array | Deno.PointerValue | null;
+  channelHdr: Uint8Array | Deno.PointerValue;
   /** u32 */
   DisconnectReason: number;
 }
@@ -8734,7 +8734,7 @@ export function allocRFX_GFX_MSG_DISCONNECT_NOTIFY(data?: Partial<RFX_GFX_MSG_DI
   const buf = new Uint8Array(sizeofRFX_GFX_MSG_DISCONNECT_NOTIFY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.channelHdr !== undefined) view.setBigUint64(0, data.channelHdr === null ? 0n : BigInt(util.toPointer(data.channelHdr)), true);
+  if (data?.channelHdr !== undefined) view.setBigUint64(0, data.channelHdr === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.channelHdr))), true);
   // 0x08: u32
   if (data?.DisconnectReason !== undefined) view.setUint32(8, Number(data.DisconnectReason), true);
   // 0x0c: pad4
@@ -8752,9 +8752,9 @@ export class RFX_GFX_MSG_DISCONNECT_NOTIFYView {
   }
 
   // 0x00: pointer
-  get channelHdr(): Uint8Array | Deno.PointerValue | null {
+  get channelHdr(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -8765,8 +8765,8 @@ export class RFX_GFX_MSG_DISCONNECT_NOTIFYView {
   // 0x0c: pad4
 
   // 0x00: pointer
-  set channelHdr(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set channelHdr(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -8782,9 +8782,9 @@ export class RFX_GFX_MSG_DISCONNECT_NOTIFYView {
  */
 export interface RFX_GFX_MSG_DESKTOP_RESEND_REQUEST {
   /** Windows.Win32.System.RemoteDesktop.RFX_GFX_MSG_HEADER */
-  channelHdr: Uint8Array | Deno.PointerValue | null;
+  channelHdr: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.RemoteDesktop.RFX_GFX_RECT */
-  RedrawRect: Uint8Array | Deno.PointerValue | null;
+  RedrawRect: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofRFX_GFX_MSG_DESKTOP_RESEND_REQUEST = 16;
@@ -8793,9 +8793,9 @@ export function allocRFX_GFX_MSG_DESKTOP_RESEND_REQUEST(data?: Partial<RFX_GFX_M
   const buf = new Uint8Array(sizeofRFX_GFX_MSG_DESKTOP_RESEND_REQUEST);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.channelHdr !== undefined) view.setBigUint64(0, data.channelHdr === null ? 0n : BigInt(util.toPointer(data.channelHdr)), true);
+  if (data?.channelHdr !== undefined) view.setBigUint64(0, data.channelHdr === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.channelHdr))), true);
   // 0x08: pointer
-  if (data?.RedrawRect !== undefined) view.setBigUint64(8, data.RedrawRect === null ? 0n : BigInt(util.toPointer(data.RedrawRect)), true);
+  if (data?.RedrawRect !== undefined) view.setBigUint64(8, data.RedrawRect === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.RedrawRect))), true);
   return buf;
 }
 
@@ -8810,25 +8810,25 @@ export class RFX_GFX_MSG_DESKTOP_RESEND_REQUESTView {
   }
 
   // 0x00: pointer
-  get channelHdr(): Uint8Array | Deno.PointerValue | null {
+  get channelHdr(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get RedrawRect(): Uint8Array | Deno.PointerValue | null {
+  get RedrawRect(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set channelHdr(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set channelHdr(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set RedrawRect(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set RedrawRect(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -8837,9 +8837,9 @@ export class RFX_GFX_MSG_DESKTOP_RESEND_REQUESTView {
  */
 export interface RFX_GFX_MSG_RDP_DATA {
   /** Windows.Win32.System.RemoteDesktop.RFX_GFX_MSG_HEADER */
-  channelHdr: Uint8Array | Deno.PointerValue | null;
+  channelHdr: Uint8Array | Deno.PointerValue;
   /** array */
-  rdpData: Deno.PointerValue | null;
+  rdpData: Deno.PointerValue;
 }
 
 export const sizeofRFX_GFX_MSG_RDP_DATA = 16;
@@ -8848,9 +8848,9 @@ export function allocRFX_GFX_MSG_RDP_DATA(data?: Partial<RFX_GFX_MSG_RDP_DATA>):
   const buf = new Uint8Array(sizeofRFX_GFX_MSG_RDP_DATA);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.channelHdr !== undefined) view.setBigUint64(0, data.channelHdr === null ? 0n : BigInt(util.toPointer(data.channelHdr)), true);
+  if (data?.channelHdr !== undefined) view.setBigUint64(0, data.channelHdr === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.channelHdr))), true);
   // 0x08: pointer
-  if (data?.rdpData !== undefined) view.setBigUint64(8, data.rdpData === null ? 0n : BigInt(util.toPointer(data.rdpData)), true);
+  if (data?.rdpData !== undefined) view.setBigUint64(8, data.rdpData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rdpData))), true);
   return buf;
 }
 
@@ -8865,25 +8865,25 @@ export class RFX_GFX_MSG_RDP_DATAView {
   }
 
   // 0x00: pointer
-  get channelHdr(): Uint8Array | Deno.PointerValue | null {
+  get channelHdr(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get rdpData(): Uint8Array | Deno.PointerValue | null {
+  get rdpData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set channelHdr(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set channelHdr(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set rdpData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set rdpData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -8894,17 +8894,17 @@ export type NTSTATUS = number;
  */
 export interface EXCEPTION_RECORD {
   /** Windows.Win32.Foundation.NTSTATUS */
-  ExceptionCode: Uint8Array | Deno.PointerValue | null;
+  ExceptionCode: Uint8Array | Deno.PointerValue;
   /** u32 */
   ExceptionFlags: number;
   /** ptr */
-  ExceptionRecord: Deno.PointerValue | Uint8Array | null;
+  ExceptionRecord: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ExceptionAddress: Deno.PointerValue | Uint8Array | null;
+  ExceptionAddress: Deno.PointerValue | Uint8Array;
   /** u32 */
   NumberParameters: number;
   /** array */
-  ExceptionInformation: Deno.PointerValue | null;
+  ExceptionInformation: Deno.PointerValue;
 }
 
 export const sizeofEXCEPTION_RECORD = 48;
@@ -8913,19 +8913,19 @@ export function allocEXCEPTION_RECORD(data?: Partial<EXCEPTION_RECORD>): Uint8Ar
   const buf = new Uint8Array(sizeofEXCEPTION_RECORD);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ExceptionCode !== undefined) view.setBigUint64(0, data.ExceptionCode === null ? 0n : BigInt(util.toPointer(data.ExceptionCode)), true);
+  if (data?.ExceptionCode !== undefined) view.setBigUint64(0, data.ExceptionCode === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ExceptionCode))), true);
   // 0x08: u32
   if (data?.ExceptionFlags !== undefined) view.setUint32(8, Number(data.ExceptionFlags), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.ExceptionRecord !== undefined) view.setBigUint64(16, data.ExceptionRecord === null ? 0n : BigInt(util.toPointer(data.ExceptionRecord)), true);
+  if (data?.ExceptionRecord !== undefined) view.setBigUint64(16, data.ExceptionRecord === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ExceptionRecord))), true);
   // 0x18: pointer
-  if (data?.ExceptionAddress !== undefined) view.setBigUint64(24, data.ExceptionAddress === null ? 0n : BigInt(util.toPointer(data.ExceptionAddress)), true);
+  if (data?.ExceptionAddress !== undefined) view.setBigUint64(24, data.ExceptionAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ExceptionAddress))), true);
   // 0x20: u32
   if (data?.NumberParameters !== undefined) view.setUint32(32, Number(data.NumberParameters), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.ExceptionInformation !== undefined) view.setBigUint64(40, data.ExceptionInformation === null ? 0n : BigInt(util.toPointer(data.ExceptionInformation)), true);
+  if (data?.ExceptionInformation !== undefined) view.setBigUint64(40, data.ExceptionInformation === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ExceptionInformation))), true);
   return buf;
 }
 
@@ -8940,9 +8940,9 @@ export class EXCEPTION_RECORDView {
   }
 
   // 0x00: pointer
-  get ExceptionCode(): Uint8Array | Deno.PointerValue | null {
+  get ExceptionCode(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -8953,15 +8953,15 @@ export class EXCEPTION_RECORDView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get ExceptionRecord(): Uint8Array | Deno.PointerValue | null {
+  get ExceptionRecord(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get ExceptionAddress(): Uint8Array | Deno.PointerValue | null {
+  get ExceptionAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -8972,14 +8972,14 @@ export class EXCEPTION_RECORDView {
   // 0x24: pad4
 
   // 0x28: pointer
-  get ExceptionInformation(): Uint8Array | Deno.PointerValue | null {
+  get ExceptionInformation(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ExceptionCode(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ExceptionCode(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -8990,13 +8990,13 @@ export class EXCEPTION_RECORDView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set ExceptionRecord(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ExceptionRecord(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set ExceptionAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set ExceptionAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -9007,8 +9007,8 @@ export class EXCEPTION_RECORDView {
   // 0x24: pad4
 
   // 0x28: pointer
-  set ExceptionInformation(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set ExceptionInformation(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -9017,7 +9017,7 @@ export class EXCEPTION_RECORDView {
  */
 export interface EXCEPTION_DEBUG_INFO {
   /** Windows.Win32.System.Diagnostics.Debug.EXCEPTION_RECORD */
-  ExceptionRecord: Uint8Array | Deno.PointerValue | null;
+  ExceptionRecord: Uint8Array | Deno.PointerValue;
   /** u32 */
   dwFirstChance: number;
 }
@@ -9028,7 +9028,7 @@ export function allocEXCEPTION_DEBUG_INFO(data?: Partial<EXCEPTION_DEBUG_INFO>):
   const buf = new Uint8Array(sizeofEXCEPTION_DEBUG_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ExceptionRecord !== undefined) view.setBigUint64(0, data.ExceptionRecord === null ? 0n : BigInt(util.toPointer(data.ExceptionRecord)), true);
+  if (data?.ExceptionRecord !== undefined) view.setBigUint64(0, data.ExceptionRecord === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ExceptionRecord))), true);
   // 0x08: u32
   if (data?.dwFirstChance !== undefined) view.setUint32(8, Number(data.dwFirstChance), true);
   // 0x0c: pad4
@@ -9046,9 +9046,9 @@ export class EXCEPTION_DEBUG_INFOView {
   }
 
   // 0x00: pointer
-  get ExceptionRecord(): Uint8Array | Deno.PointerValue | null {
+  get ExceptionRecord(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -9059,8 +9059,8 @@ export class EXCEPTION_DEBUG_INFOView {
   // 0x0c: pad4
 
   // 0x00: pointer
-  set ExceptionRecord(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ExceptionRecord(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -9078,11 +9078,11 @@ export type HANDLE = Deno.PointerValue;
  */
 export interface CREATE_THREAD_DEBUG_INFO {
   /** Windows.Win32.Foundation.HANDLE */
-  hThread: Uint8Array | Deno.PointerValue | null;
+  hThread: Uint8Array | Deno.PointerValue;
   /** ptr */
-  lpThreadLocalBase: Deno.PointerValue | Uint8Array | null;
+  lpThreadLocalBase: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.System.Threading.LPTHREAD_START_ROUTINE */
-  lpStartAddress: Uint8Array | Deno.PointerValue | null;
+  lpStartAddress: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofCREATE_THREAD_DEBUG_INFO = 24;
@@ -9091,11 +9091,11 @@ export function allocCREATE_THREAD_DEBUG_INFO(data?: Partial<CREATE_THREAD_DEBUG
   const buf = new Uint8Array(sizeofCREATE_THREAD_DEBUG_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.hThread !== undefined) view.setBigUint64(0, data.hThread === null ? 0n : BigInt(util.toPointer(data.hThread)), true);
+  if (data?.hThread !== undefined) view.setBigUint64(0, data.hThread === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hThread))), true);
   // 0x08: pointer
-  if (data?.lpThreadLocalBase !== undefined) view.setBigUint64(8, data.lpThreadLocalBase === null ? 0n : BigInt(util.toPointer(data.lpThreadLocalBase)), true);
+  if (data?.lpThreadLocalBase !== undefined) view.setBigUint64(8, data.lpThreadLocalBase === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpThreadLocalBase))), true);
   // 0x10: pointer
-  if (data?.lpStartAddress !== undefined) view.setBigUint64(16, data.lpStartAddress === null ? 0n : BigInt(util.toPointer(data.lpStartAddress)), true);
+  if (data?.lpStartAddress !== undefined) view.setBigUint64(16, data.lpStartAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpStartAddress))), true);
   return buf;
 }
 
@@ -9110,36 +9110,36 @@ export class CREATE_THREAD_DEBUG_INFOView {
   }
 
   // 0x00: pointer
-  get hThread(): Uint8Array | Deno.PointerValue | null {
+  get hThread(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get lpThreadLocalBase(): Uint8Array | Deno.PointerValue | null {
+  get lpThreadLocalBase(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get lpStartAddress(): Uint8Array | Deno.PointerValue | null {
+  get lpStartAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set hThread(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set hThread(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set lpThreadLocalBase(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set lpThreadLocalBase(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set lpStartAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set lpStartAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -9148,23 +9148,23 @@ export class CREATE_THREAD_DEBUG_INFOView {
  */
 export interface CREATE_PROCESS_DEBUG_INFO {
   /** Windows.Win32.Foundation.HANDLE */
-  hFile: Uint8Array | Deno.PointerValue | null;
+  hFile: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.HANDLE */
-  hProcess: Uint8Array | Deno.PointerValue | null;
+  hProcess: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.HANDLE */
-  hThread: Uint8Array | Deno.PointerValue | null;
+  hThread: Uint8Array | Deno.PointerValue;
   /** ptr */
-  lpBaseOfImage: Deno.PointerValue | Uint8Array | null;
+  lpBaseOfImage: Deno.PointerValue | Uint8Array;
   /** u32 */
   dwDebugInfoFileOffset: number;
   /** u32 */
   nDebugInfoSize: number;
   /** ptr */
-  lpThreadLocalBase: Deno.PointerValue | Uint8Array | null;
+  lpThreadLocalBase: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.System.Threading.LPTHREAD_START_ROUTINE */
-  lpStartAddress: Uint8Array | Deno.PointerValue | null;
+  lpStartAddress: Uint8Array | Deno.PointerValue;
   /** ptr */
-  lpImageName: Deno.PointerValue | Uint8Array | null;
+  lpImageName: Deno.PointerValue | Uint8Array;
   /** u16 */
   fUnicode: number;
 }
@@ -9175,23 +9175,23 @@ export function allocCREATE_PROCESS_DEBUG_INFO(data?: Partial<CREATE_PROCESS_DEB
   const buf = new Uint8Array(sizeofCREATE_PROCESS_DEBUG_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.hFile !== undefined) view.setBigUint64(0, data.hFile === null ? 0n : BigInt(util.toPointer(data.hFile)), true);
+  if (data?.hFile !== undefined) view.setBigUint64(0, data.hFile === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hFile))), true);
   // 0x08: pointer
-  if (data?.hProcess !== undefined) view.setBigUint64(8, data.hProcess === null ? 0n : BigInt(util.toPointer(data.hProcess)), true);
+  if (data?.hProcess !== undefined) view.setBigUint64(8, data.hProcess === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hProcess))), true);
   // 0x10: pointer
-  if (data?.hThread !== undefined) view.setBigUint64(16, data.hThread === null ? 0n : BigInt(util.toPointer(data.hThread)), true);
+  if (data?.hThread !== undefined) view.setBigUint64(16, data.hThread === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hThread))), true);
   // 0x18: pointer
-  if (data?.lpBaseOfImage !== undefined) view.setBigUint64(24, data.lpBaseOfImage === null ? 0n : BigInt(util.toPointer(data.lpBaseOfImage)), true);
+  if (data?.lpBaseOfImage !== undefined) view.setBigUint64(24, data.lpBaseOfImage === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpBaseOfImage))), true);
   // 0x20: u32
   if (data?.dwDebugInfoFileOffset !== undefined) view.setUint32(32, Number(data.dwDebugInfoFileOffset), true);
   // 0x24: u32
   if (data?.nDebugInfoSize !== undefined) view.setUint32(36, Number(data.nDebugInfoSize), true);
   // 0x28: pointer
-  if (data?.lpThreadLocalBase !== undefined) view.setBigUint64(40, data.lpThreadLocalBase === null ? 0n : BigInt(util.toPointer(data.lpThreadLocalBase)), true);
+  if (data?.lpThreadLocalBase !== undefined) view.setBigUint64(40, data.lpThreadLocalBase === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpThreadLocalBase))), true);
   // 0x30: pointer
-  if (data?.lpStartAddress !== undefined) view.setBigUint64(48, data.lpStartAddress === null ? 0n : BigInt(util.toPointer(data.lpStartAddress)), true);
+  if (data?.lpStartAddress !== undefined) view.setBigUint64(48, data.lpStartAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpStartAddress))), true);
   // 0x38: pointer
-  if (data?.lpImageName !== undefined) view.setBigUint64(56, data.lpImageName === null ? 0n : BigInt(util.toPointer(data.lpImageName)), true);
+  if (data?.lpImageName !== undefined) view.setBigUint64(56, data.lpImageName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpImageName))), true);
   // 0x40: u16
   if (data?.fUnicode !== undefined) view.setUint16(64, Number(data.fUnicode), true);
   // 0x42: pad6
@@ -9209,27 +9209,27 @@ export class CREATE_PROCESS_DEBUG_INFOView {
   }
 
   // 0x00: pointer
-  get hFile(): Uint8Array | Deno.PointerValue | null {
+  get hFile(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get hProcess(): Uint8Array | Deno.PointerValue | null {
+  get hProcess(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get hThread(): Uint8Array | Deno.PointerValue | null {
+  get hThread(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get lpBaseOfImage(): Uint8Array | Deno.PointerValue | null {
+  get lpBaseOfImage(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -9243,21 +9243,21 @@ export class CREATE_PROCESS_DEBUG_INFOView {
   }
 
   // 0x28: pointer
-  get lpThreadLocalBase(): Uint8Array | Deno.PointerValue | null {
+  get lpThreadLocalBase(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get lpStartAddress(): Uint8Array | Deno.PointerValue | null {
+  get lpStartAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get lpImageName(): Uint8Array | Deno.PointerValue | null {
+  get lpImageName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: u16
@@ -9268,23 +9268,23 @@ export class CREATE_PROCESS_DEBUG_INFOView {
   // 0x42: pad6
 
   // 0x00: pointer
-  set hFile(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set hFile(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set hProcess(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set hProcess(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set hThread(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set hThread(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set lpBaseOfImage(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set lpBaseOfImage(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -9298,18 +9298,18 @@ export class CREATE_PROCESS_DEBUG_INFOView {
   }
 
   // 0x28: pointer
-  set lpThreadLocalBase(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set lpThreadLocalBase(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set lpStartAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set lpStartAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set lpImageName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set lpImageName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: u16
@@ -9413,15 +9413,15 @@ export class EXIT_PROCESS_DEBUG_INFOView {
  */
 export interface LOAD_DLL_DEBUG_INFO {
   /** Windows.Win32.Foundation.HANDLE */
-  hFile: Uint8Array | Deno.PointerValue | null;
+  hFile: Uint8Array | Deno.PointerValue;
   /** ptr */
-  lpBaseOfDll: Deno.PointerValue | Uint8Array | null;
+  lpBaseOfDll: Deno.PointerValue | Uint8Array;
   /** u32 */
   dwDebugInfoFileOffset: number;
   /** u32 */
   nDebugInfoSize: number;
   /** ptr */
-  lpImageName: Deno.PointerValue | Uint8Array | null;
+  lpImageName: Deno.PointerValue | Uint8Array;
   /** u16 */
   fUnicode: number;
 }
@@ -9432,15 +9432,15 @@ export function allocLOAD_DLL_DEBUG_INFO(data?: Partial<LOAD_DLL_DEBUG_INFO>): U
   const buf = new Uint8Array(sizeofLOAD_DLL_DEBUG_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.hFile !== undefined) view.setBigUint64(0, data.hFile === null ? 0n : BigInt(util.toPointer(data.hFile)), true);
+  if (data?.hFile !== undefined) view.setBigUint64(0, data.hFile === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hFile))), true);
   // 0x08: pointer
-  if (data?.lpBaseOfDll !== undefined) view.setBigUint64(8, data.lpBaseOfDll === null ? 0n : BigInt(util.toPointer(data.lpBaseOfDll)), true);
+  if (data?.lpBaseOfDll !== undefined) view.setBigUint64(8, data.lpBaseOfDll === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpBaseOfDll))), true);
   // 0x10: u32
   if (data?.dwDebugInfoFileOffset !== undefined) view.setUint32(16, Number(data.dwDebugInfoFileOffset), true);
   // 0x14: u32
   if (data?.nDebugInfoSize !== undefined) view.setUint32(20, Number(data.nDebugInfoSize), true);
   // 0x18: pointer
-  if (data?.lpImageName !== undefined) view.setBigUint64(24, data.lpImageName === null ? 0n : BigInt(util.toPointer(data.lpImageName)), true);
+  if (data?.lpImageName !== undefined) view.setBigUint64(24, data.lpImageName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpImageName))), true);
   // 0x20: u16
   if (data?.fUnicode !== undefined) view.setUint16(32, Number(data.fUnicode), true);
   // 0x22: pad6
@@ -9458,15 +9458,15 @@ export class LOAD_DLL_DEBUG_INFOView {
   }
 
   // 0x00: pointer
-  get hFile(): Uint8Array | Deno.PointerValue | null {
+  get hFile(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get lpBaseOfDll(): Uint8Array | Deno.PointerValue | null {
+  get lpBaseOfDll(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -9480,9 +9480,9 @@ export class LOAD_DLL_DEBUG_INFOView {
   }
 
   // 0x18: pointer
-  get lpImageName(): Uint8Array | Deno.PointerValue | null {
+  get lpImageName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u16
@@ -9493,13 +9493,13 @@ export class LOAD_DLL_DEBUG_INFOView {
   // 0x22: pad6
 
   // 0x00: pointer
-  set hFile(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set hFile(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set lpBaseOfDll(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set lpBaseOfDll(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -9513,8 +9513,8 @@ export class LOAD_DLL_DEBUG_INFOView {
   }
 
   // 0x18: pointer
-  set lpImageName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set lpImageName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u16
@@ -9530,7 +9530,7 @@ export class LOAD_DLL_DEBUG_INFOView {
  */
 export interface UNLOAD_DLL_DEBUG_INFO {
   /** ptr */
-  lpBaseOfDll: Deno.PointerValue | Uint8Array | null;
+  lpBaseOfDll: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofUNLOAD_DLL_DEBUG_INFO = 8;
@@ -9539,7 +9539,7 @@ export function allocUNLOAD_DLL_DEBUG_INFO(data?: Partial<UNLOAD_DLL_DEBUG_INFO>
   const buf = new Uint8Array(sizeofUNLOAD_DLL_DEBUG_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.lpBaseOfDll !== undefined) view.setBigUint64(0, data.lpBaseOfDll === null ? 0n : BigInt(util.toPointer(data.lpBaseOfDll)), true);
+  if (data?.lpBaseOfDll !== undefined) view.setBigUint64(0, data.lpBaseOfDll === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpBaseOfDll))), true);
   return buf;
 }
 
@@ -9554,14 +9554,14 @@ export class UNLOAD_DLL_DEBUG_INFOView {
   }
 
   // 0x00: pointer
-  get lpBaseOfDll(): Uint8Array | Deno.PointerValue | null {
+  get lpBaseOfDll(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set lpBaseOfDll(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set lpBaseOfDll(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -9585,7 +9585,7 @@ export function allocOUTPUT_DEBUG_STRING_INFO(data?: Partial<OUTPUT_DEBUG_STRING
   // 0x00: buffer
   if (data?.lpDebugStringData !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.lpDebugStringData);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: u16
   if (data?.fUnicode !== undefined) view.setUint16(8, Number(data.fUnicode), true);
@@ -9606,9 +9606,9 @@ export class OUTPUT_DEBUG_STRING_INFOView {
   }
 
   // 0x00: buffer
-  get lpDebugStringData(): Uint8Array | Deno.PointerValue | null {
+  get lpDebugStringData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u16
@@ -9624,9 +9624,9 @@ export class OUTPUT_DEBUG_STRING_INFOView {
   // 0x0c: pad4
 
   // 0x00: buffer
-  set lpDebugStringData(value: Uint8Array | Deno.PointerValue | null) {
+  set lpDebugStringData(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: u16
@@ -9700,23 +9700,23 @@ export class RIP_INFOView {
  */
 export interface _u_e__Union {
   /** Windows.Win32.System.Diagnostics.Debug.EXCEPTION_DEBUG_INFO */
-  Exception: Uint8Array | Deno.PointerValue | null;
+  Exception: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Diagnostics.Debug.CREATE_THREAD_DEBUG_INFO */
-  CreateThread: Uint8Array | Deno.PointerValue | null;
+  CreateThread: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Diagnostics.Debug.CREATE_PROCESS_DEBUG_INFO */
-  CreateProcessInfo: Uint8Array | Deno.PointerValue | null;
+  CreateProcessInfo: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Diagnostics.Debug.EXIT_THREAD_DEBUG_INFO */
-  ExitThread: Uint8Array | Deno.PointerValue | null;
+  ExitThread: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Diagnostics.Debug.EXIT_PROCESS_DEBUG_INFO */
-  ExitProcess: Uint8Array | Deno.PointerValue | null;
+  ExitProcess: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Diagnostics.Debug.LOAD_DLL_DEBUG_INFO */
-  LoadDll: Uint8Array | Deno.PointerValue | null;
+  LoadDll: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Diagnostics.Debug.UNLOAD_DLL_DEBUG_INFO */
-  UnloadDll: Uint8Array | Deno.PointerValue | null;
+  UnloadDll: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Diagnostics.Debug.OUTPUT_DEBUG_STRING_INFO */
-  DebugString: Uint8Array | Deno.PointerValue | null;
+  DebugString: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Diagnostics.Debug.RIP_INFO */
-  RipInfo: Uint8Array | Deno.PointerValue | null;
+  RipInfo: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeof_u_e__Union = 72;
@@ -9725,23 +9725,23 @@ export function alloc_u_e__Union(data?: Partial<_u_e__Union>): Uint8Array {
   const buf = new Uint8Array(sizeof_u_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Exception !== undefined) view.setBigUint64(0, data.Exception === null ? 0n : BigInt(util.toPointer(data.Exception)), true);
+  if (data?.Exception !== undefined) view.setBigUint64(0, data.Exception === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Exception))), true);
   // 0x08: pointer
-  if (data?.CreateThread !== undefined) view.setBigUint64(8, data.CreateThread === null ? 0n : BigInt(util.toPointer(data.CreateThread)), true);
+  if (data?.CreateThread !== undefined) view.setBigUint64(8, data.CreateThread === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.CreateThread))), true);
   // 0x10: pointer
-  if (data?.CreateProcessInfo !== undefined) view.setBigUint64(16, data.CreateProcessInfo === null ? 0n : BigInt(util.toPointer(data.CreateProcessInfo)), true);
+  if (data?.CreateProcessInfo !== undefined) view.setBigUint64(16, data.CreateProcessInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.CreateProcessInfo))), true);
   // 0x18: pointer
-  if (data?.ExitThread !== undefined) view.setBigUint64(24, data.ExitThread === null ? 0n : BigInt(util.toPointer(data.ExitThread)), true);
+  if (data?.ExitThread !== undefined) view.setBigUint64(24, data.ExitThread === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ExitThread))), true);
   // 0x20: pointer
-  if (data?.ExitProcess !== undefined) view.setBigUint64(32, data.ExitProcess === null ? 0n : BigInt(util.toPointer(data.ExitProcess)), true);
+  if (data?.ExitProcess !== undefined) view.setBigUint64(32, data.ExitProcess === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ExitProcess))), true);
   // 0x28: pointer
-  if (data?.LoadDll !== undefined) view.setBigUint64(40, data.LoadDll === null ? 0n : BigInt(util.toPointer(data.LoadDll)), true);
+  if (data?.LoadDll !== undefined) view.setBigUint64(40, data.LoadDll === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.LoadDll))), true);
   // 0x30: pointer
-  if (data?.UnloadDll !== undefined) view.setBigUint64(48, data.UnloadDll === null ? 0n : BigInt(util.toPointer(data.UnloadDll)), true);
+  if (data?.UnloadDll !== undefined) view.setBigUint64(48, data.UnloadDll === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.UnloadDll))), true);
   // 0x38: pointer
-  if (data?.DebugString !== undefined) view.setBigUint64(56, data.DebugString === null ? 0n : BigInt(util.toPointer(data.DebugString)), true);
+  if (data?.DebugString !== undefined) view.setBigUint64(56, data.DebugString === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DebugString))), true);
   // 0x40: pointer
-  if (data?.RipInfo !== undefined) view.setBigUint64(64, data.RipInfo === null ? 0n : BigInt(util.toPointer(data.RipInfo)), true);
+  if (data?.RipInfo !== undefined) view.setBigUint64(64, data.RipInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.RipInfo))), true);
   return buf;
 }
 
@@ -9756,102 +9756,102 @@ export class _u_e__UnionView {
   }
 
   // 0x00: pointer
-  get Exception(): Uint8Array | Deno.PointerValue | null {
+  get Exception(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get CreateThread(): Uint8Array | Deno.PointerValue | null {
+  get CreateThread(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get CreateProcessInfo(): Uint8Array | Deno.PointerValue | null {
+  get CreateProcessInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get ExitThread(): Uint8Array | Deno.PointerValue | null {
+  get ExitThread(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get ExitProcess(): Uint8Array | Deno.PointerValue | null {
+  get ExitProcess(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get LoadDll(): Uint8Array | Deno.PointerValue | null {
+  get LoadDll(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get UnloadDll(): Uint8Array | Deno.PointerValue | null {
+  get UnloadDll(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get DebugString(): Uint8Array | Deno.PointerValue | null {
+  get DebugString(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get RipInfo(): Uint8Array | Deno.PointerValue | null {
+  get RipInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Exception(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Exception(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set CreateThread(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set CreateThread(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set CreateProcessInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set CreateProcessInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set ExitThread(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set ExitThread(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set ExitProcess(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set ExitProcess(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set LoadDll(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set LoadDll(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set UnloadDll(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set UnloadDll(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set DebugString(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set DebugString(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set RipInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set RipInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -9862,7 +9862,7 @@ export interface WTS_SOCKADDR {
   /** u16 */
   sin_family: number;
   /** _u_e__Union */
-  u: Uint8Array | Deno.PointerValue | null;
+  u: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofWTS_SOCKADDR = 16;
@@ -9874,7 +9874,7 @@ export function allocWTS_SOCKADDR(data?: Partial<WTS_SOCKADDR>): Uint8Array {
   if (data?.sin_family !== undefined) view.setUint16(0, Number(data.sin_family), true);
   // 0x02: pad6
   // 0x08: pointer
-  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : BigInt(util.toPointer(data.u)), true);
+  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.u))), true);
   return buf;
 }
 
@@ -9896,9 +9896,9 @@ export class WTS_SOCKADDRView {
   // 0x02: pad6
 
   // 0x08: pointer
-  get u(): Uint8Array | Deno.PointerValue | null {
+  get u(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u16
@@ -9909,8 +9909,8 @@ export class WTS_SOCKADDRView {
   // 0x02: pad6
 
   // 0x08: pointer
-  set u(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set u(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -10053,7 +10053,7 @@ export class WTS_SERVICE_STATEView {
  */
 export interface WTS_SESSION_ID {
   /** System.Guid */
-  SessionUniqueGuid: Uint8Array | Deno.PointerValue | null;
+  SessionUniqueGuid: Uint8Array | Deno.PointerValue;
   /** u32 */
   SessionId: number;
 }
@@ -10064,7 +10064,7 @@ export function allocWTS_SESSION_ID(data?: Partial<WTS_SESSION_ID>): Uint8Array 
   const buf = new Uint8Array(sizeofWTS_SESSION_ID);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.SessionUniqueGuid !== undefined) view.setBigUint64(0, data.SessionUniqueGuid === null ? 0n : BigInt(util.toPointer(data.SessionUniqueGuid)), true);
+  if (data?.SessionUniqueGuid !== undefined) view.setBigUint64(0, data.SessionUniqueGuid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.SessionUniqueGuid))), true);
   // 0x08: u32
   if (data?.SessionId !== undefined) view.setUint32(8, Number(data.SessionId), true);
   // 0x0c: pad4
@@ -10082,9 +10082,9 @@ export class WTS_SESSION_IDView {
   }
 
   // 0x00: pointer
-  get SessionUniqueGuid(): Uint8Array | Deno.PointerValue | null {
+  get SessionUniqueGuid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -10095,8 +10095,8 @@ export class WTS_SESSION_IDView {
   // 0x0c: pad4
 
   // 0x00: pointer
-  set SessionUniqueGuid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set SessionUniqueGuid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -10112,11 +10112,11 @@ export class WTS_SESSION_IDView {
  */
 export interface WTS_USER_CREDENTIAL {
   /** array */
-  UserName: Deno.PointerValue | null;
+  UserName: Deno.PointerValue;
   /** array */
-  Password: Deno.PointerValue | null;
+  Password: Deno.PointerValue;
   /** array */
-  Domain: Deno.PointerValue | null;
+  Domain: Deno.PointerValue;
 }
 
 export const sizeofWTS_USER_CREDENTIAL = 24;
@@ -10125,11 +10125,11 @@ export function allocWTS_USER_CREDENTIAL(data?: Partial<WTS_USER_CREDENTIAL>): U
   const buf = new Uint8Array(sizeofWTS_USER_CREDENTIAL);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.UserName !== undefined) view.setBigUint64(0, data.UserName === null ? 0n : BigInt(util.toPointer(data.UserName)), true);
+  if (data?.UserName !== undefined) view.setBigUint64(0, data.UserName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.UserName))), true);
   // 0x08: pointer
-  if (data?.Password !== undefined) view.setBigUint64(8, data.Password === null ? 0n : BigInt(util.toPointer(data.Password)), true);
+  if (data?.Password !== undefined) view.setBigUint64(8, data.Password === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Password))), true);
   // 0x10: pointer
-  if (data?.Domain !== undefined) view.setBigUint64(16, data.Domain === null ? 0n : BigInt(util.toPointer(data.Domain)), true);
+  if (data?.Domain !== undefined) view.setBigUint64(16, data.Domain === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Domain))), true);
   return buf;
 }
 
@@ -10144,36 +10144,36 @@ export class WTS_USER_CREDENTIALView {
   }
 
   // 0x00: pointer
-  get UserName(): Uint8Array | Deno.PointerValue | null {
+  get UserName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get Password(): Uint8Array | Deno.PointerValue | null {
+  get Password(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get Domain(): Uint8Array | Deno.PointerValue | null {
+  get Domain(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set UserName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set UserName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set Password(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Password(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set Domain(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set Domain(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -10321,15 +10321,15 @@ export interface WTS_TIME_ZONE_INFORMATION {
   /** i32 */
   Bias: number;
   /** array */
-  StandardName: Deno.PointerValue | null;
+  StandardName: Deno.PointerValue;
   /** Windows.Win32.System.RemoteDesktop.WTS_SYSTEMTIME */
-  StandardDate: Uint8Array | Deno.PointerValue | null;
+  StandardDate: Uint8Array | Deno.PointerValue;
   /** i32 */
   StandardBias: number;
   /** array */
-  DaylightName: Deno.PointerValue | null;
+  DaylightName: Deno.PointerValue;
   /** Windows.Win32.System.RemoteDesktop.WTS_SYSTEMTIME */
-  DaylightDate: Uint8Array | Deno.PointerValue | null;
+  DaylightDate: Uint8Array | Deno.PointerValue;
   /** i32 */
   DaylightBias: number;
 }
@@ -10343,16 +10343,16 @@ export function allocWTS_TIME_ZONE_INFORMATION(data?: Partial<WTS_TIME_ZONE_INFO
   if (data?.Bias !== undefined) view.setInt32(0, Number(data.Bias), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.StandardName !== undefined) view.setBigUint64(8, data.StandardName === null ? 0n : BigInt(util.toPointer(data.StandardName)), true);
+  if (data?.StandardName !== undefined) view.setBigUint64(8, data.StandardName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.StandardName))), true);
   // 0x10: pointer
-  if (data?.StandardDate !== undefined) view.setBigUint64(16, data.StandardDate === null ? 0n : BigInt(util.toPointer(data.StandardDate)), true);
+  if (data?.StandardDate !== undefined) view.setBigUint64(16, data.StandardDate === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.StandardDate))), true);
   // 0x18: i32
   if (data?.StandardBias !== undefined) view.setInt32(24, Number(data.StandardBias), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.DaylightName !== undefined) view.setBigUint64(32, data.DaylightName === null ? 0n : BigInt(util.toPointer(data.DaylightName)), true);
+  if (data?.DaylightName !== undefined) view.setBigUint64(32, data.DaylightName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DaylightName))), true);
   // 0x28: pointer
-  if (data?.DaylightDate !== undefined) view.setBigUint64(40, data.DaylightDate === null ? 0n : BigInt(util.toPointer(data.DaylightDate)), true);
+  if (data?.DaylightDate !== undefined) view.setBigUint64(40, data.DaylightDate === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DaylightDate))), true);
   // 0x30: i32
   if (data?.DaylightBias !== undefined) view.setInt32(48, Number(data.DaylightBias), true);
   // 0x34: pad4
@@ -10377,15 +10377,15 @@ export class WTS_TIME_ZONE_INFORMATIONView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get StandardName(): Uint8Array | Deno.PointerValue | null {
+  get StandardName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get StandardDate(): Uint8Array | Deno.PointerValue | null {
+  get StandardDate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: i32
@@ -10396,15 +10396,15 @@ export class WTS_TIME_ZONE_INFORMATIONView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get DaylightName(): Uint8Array | Deno.PointerValue | null {
+  get DaylightName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get DaylightDate(): Uint8Array | Deno.PointerValue | null {
+  get DaylightDate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: i32
@@ -10422,13 +10422,13 @@ export class WTS_TIME_ZONE_INFORMATIONView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set StandardName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set StandardName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set StandardDate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set StandardDate(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: i32
@@ -10439,13 +10439,13 @@ export class WTS_TIME_ZONE_INFORMATIONView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set DaylightName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set DaylightName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set DaylightDate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set DaylightDate(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: i32
@@ -10463,19 +10463,19 @@ export interface WRDS_DYNAMIC_TIME_ZONE_INFORMATION {
   /** i32 */
   Bias: number;
   /** array */
-  StandardName: Deno.PointerValue | null;
+  StandardName: Deno.PointerValue;
   /** Windows.Win32.System.RemoteDesktop.WTS_SYSTEMTIME */
-  StandardDate: Uint8Array | Deno.PointerValue | null;
+  StandardDate: Uint8Array | Deno.PointerValue;
   /** i32 */
   StandardBias: number;
   /** array */
-  DaylightName: Deno.PointerValue | null;
+  DaylightName: Deno.PointerValue;
   /** Windows.Win32.System.RemoteDesktop.WTS_SYSTEMTIME */
-  DaylightDate: Uint8Array | Deno.PointerValue | null;
+  DaylightDate: Uint8Array | Deno.PointerValue;
   /** i32 */
   DaylightBias: number;
   /** array */
-  TimeZoneKeyName: Deno.PointerValue | null;
+  TimeZoneKeyName: Deno.PointerValue;
   /** u16 */
   DynamicDaylightTimeDisabled: number;
 }
@@ -10489,21 +10489,21 @@ export function allocWRDS_DYNAMIC_TIME_ZONE_INFORMATION(data?: Partial<WRDS_DYNA
   if (data?.Bias !== undefined) view.setInt32(0, Number(data.Bias), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.StandardName !== undefined) view.setBigUint64(8, data.StandardName === null ? 0n : BigInt(util.toPointer(data.StandardName)), true);
+  if (data?.StandardName !== undefined) view.setBigUint64(8, data.StandardName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.StandardName))), true);
   // 0x10: pointer
-  if (data?.StandardDate !== undefined) view.setBigUint64(16, data.StandardDate === null ? 0n : BigInt(util.toPointer(data.StandardDate)), true);
+  if (data?.StandardDate !== undefined) view.setBigUint64(16, data.StandardDate === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.StandardDate))), true);
   // 0x18: i32
   if (data?.StandardBias !== undefined) view.setInt32(24, Number(data.StandardBias), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.DaylightName !== undefined) view.setBigUint64(32, data.DaylightName === null ? 0n : BigInt(util.toPointer(data.DaylightName)), true);
+  if (data?.DaylightName !== undefined) view.setBigUint64(32, data.DaylightName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DaylightName))), true);
   // 0x28: pointer
-  if (data?.DaylightDate !== undefined) view.setBigUint64(40, data.DaylightDate === null ? 0n : BigInt(util.toPointer(data.DaylightDate)), true);
+  if (data?.DaylightDate !== undefined) view.setBigUint64(40, data.DaylightDate === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DaylightDate))), true);
   // 0x30: i32
   if (data?.DaylightBias !== undefined) view.setInt32(48, Number(data.DaylightBias), true);
   // 0x34: pad4
   // 0x38: pointer
-  if (data?.TimeZoneKeyName !== undefined) view.setBigUint64(56, data.TimeZoneKeyName === null ? 0n : BigInt(util.toPointer(data.TimeZoneKeyName)), true);
+  if (data?.TimeZoneKeyName !== undefined) view.setBigUint64(56, data.TimeZoneKeyName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.TimeZoneKeyName))), true);
   // 0x40: u16
   if (data?.DynamicDaylightTimeDisabled !== undefined) view.setUint16(64, Number(data.DynamicDaylightTimeDisabled), true);
   // 0x42: pad6
@@ -10528,15 +10528,15 @@ export class WRDS_DYNAMIC_TIME_ZONE_INFORMATIONView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get StandardName(): Uint8Array | Deno.PointerValue | null {
+  get StandardName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get StandardDate(): Uint8Array | Deno.PointerValue | null {
+  get StandardDate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: i32
@@ -10547,15 +10547,15 @@ export class WRDS_DYNAMIC_TIME_ZONE_INFORMATIONView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get DaylightName(): Uint8Array | Deno.PointerValue | null {
+  get DaylightName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get DaylightDate(): Uint8Array | Deno.PointerValue | null {
+  get DaylightDate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: i32
@@ -10566,9 +10566,9 @@ export class WRDS_DYNAMIC_TIME_ZONE_INFORMATIONView {
   // 0x34: pad4
 
   // 0x38: pointer
-  get TimeZoneKeyName(): Uint8Array | Deno.PointerValue | null {
+  get TimeZoneKeyName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: u16
@@ -10586,13 +10586,13 @@ export class WRDS_DYNAMIC_TIME_ZONE_INFORMATIONView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set StandardName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set StandardName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set StandardDate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set StandardDate(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: i32
@@ -10603,13 +10603,13 @@ export class WRDS_DYNAMIC_TIME_ZONE_INFORMATIONView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set DaylightName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set DaylightName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set DaylightDate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set DaylightDate(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: i32
@@ -10620,8 +10620,8 @@ export class WRDS_DYNAMIC_TIME_ZONE_INFORMATIONView {
   // 0x34: pad4
 
   // 0x38: pointer
-  set TimeZoneKeyName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set TimeZoneKeyName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: u16
@@ -10639,41 +10639,41 @@ export type BOOLEAN = number;
  */
 export interface WTS_CLIENT_DATA {
   /** Windows.Win32.Foundation.BOOLEAN */
-  fDisableCtrlAltDel: Uint8Array | Deno.PointerValue | null;
+  fDisableCtrlAltDel: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fDoubleClickDetect: Uint8Array | Deno.PointerValue | null;
+  fDoubleClickDetect: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fEnableWindowsKey: Uint8Array | Deno.PointerValue | null;
+  fEnableWindowsKey: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fHideTitleBar: Uint8Array | Deno.PointerValue | null;
+  fHideTitleBar: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOL */
   fInheritAutoLogon: boolean;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fPromptForPassword: Uint8Array | Deno.PointerValue | null;
+  fPromptForPassword: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fUsingSavedCreds: Uint8Array | Deno.PointerValue | null;
+  fUsingSavedCreds: Uint8Array | Deno.PointerValue;
   /** array */
-  Domain: Deno.PointerValue | null;
+  Domain: Deno.PointerValue;
   /** array */
-  UserName: Deno.PointerValue | null;
+  UserName: Deno.PointerValue;
   /** array */
-  Password: Deno.PointerValue | null;
+  Password: Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fPasswordIsScPin: Uint8Array | Deno.PointerValue | null;
+  fPasswordIsScPin: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOL */
   fInheritInitialProgram: boolean;
   /** array */
-  WorkDirectory: Deno.PointerValue | null;
+  WorkDirectory: Deno.PointerValue;
   /** array */
-  InitialProgram: Deno.PointerValue | null;
+  InitialProgram: Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fMaximizeShell: Uint8Array | Deno.PointerValue | null;
+  fMaximizeShell: Uint8Array | Deno.PointerValue;
   /** u8 */
   EncryptionLevel: number;
   /** u32 */
   PerformanceFlags: number;
   /** array */
-  ProtocolName: Deno.PointerValue | null;
+  ProtocolName: Deno.PointerValue;
   /** u16 */
   ProtocolType: number;
   /** Windows.Win32.Foundation.BOOL */
@@ -10685,11 +10685,11 @@ export interface WTS_CLIENT_DATA {
   /** u16 */
   ColorDepth: number;
   /** array */
-  DisplayDriverName: Deno.PointerValue | null;
+  DisplayDriverName: Deno.PointerValue;
   /** array */
-  DisplayDeviceName: Deno.PointerValue | null;
+  DisplayDeviceName: Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fMouse: Uint8Array | Deno.PointerValue | null;
+  fMouse: Uint8Array | Deno.PointerValue;
   /** u32 */
   KeyboardLayout: number;
   /** u32 */
@@ -10699,29 +10699,29 @@ export interface WTS_CLIENT_DATA {
   /** u32 */
   KeyboardFunctionKey: number;
   /** array */
-  imeFileName: Deno.PointerValue | null;
+  imeFileName: Deno.PointerValue;
   /** u32 */
   ActiveInputLocale: number;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fNoAudioPlayback: Uint8Array | Deno.PointerValue | null;
+  fNoAudioPlayback: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fRemoteConsoleAudio: Uint8Array | Deno.PointerValue | null;
+  fRemoteConsoleAudio: Uint8Array | Deno.PointerValue;
   /** array */
-  AudioDriverName: Deno.PointerValue | null;
+  AudioDriverName: Deno.PointerValue;
   /** Windows.Win32.System.RemoteDesktop.WTS_TIME_ZONE_INFORMATION */
-  ClientTimeZone: Uint8Array | Deno.PointerValue | null;
+  ClientTimeZone: Uint8Array | Deno.PointerValue;
   /** array */
-  ClientName: Deno.PointerValue | null;
+  ClientName: Deno.PointerValue;
   /** u32 */
   SerialNumber: number;
   /** u32 */
   ClientAddressFamily: number;
   /** array */
-  ClientAddress: Deno.PointerValue | null;
+  ClientAddress: Deno.PointerValue;
   /** Windows.Win32.System.RemoteDesktop.WTS_SOCKADDR */
-  ClientSockAddress: Uint8Array | Deno.PointerValue | null;
+  ClientSockAddress: Uint8Array | Deno.PointerValue;
   /** array */
-  ClientDirectory: Deno.PointerValue | null;
+  ClientDirectory: Deno.PointerValue;
   /** u32 */
   ClientBuildNumber: number;
   /** u16 */
@@ -10735,19 +10735,19 @@ export interface WTS_CLIENT_DATA {
   /** u32 */
   ClientSessionId: number;
   /** array */
-  ClientDigProductId: Deno.PointerValue | null;
+  ClientDigProductId: Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fDisableCpm: Uint8Array | Deno.PointerValue | null;
+  fDisableCpm: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fDisableCdm: Uint8Array | Deno.PointerValue | null;
+  fDisableCdm: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fDisableCcm: Uint8Array | Deno.PointerValue | null;
+  fDisableCcm: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fDisableLPT: Uint8Array | Deno.PointerValue | null;
+  fDisableLPT: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fDisableClip: Uint8Array | Deno.PointerValue | null;
+  fDisableClip: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fDisablePNP: Uint8Array | Deno.PointerValue | null;
+  fDisablePNP: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofWTS_CLIENT_DATA = 352;
@@ -10756,44 +10756,44 @@ export function allocWTS_CLIENT_DATA(data?: Partial<WTS_CLIENT_DATA>): Uint8Arra
   const buf = new Uint8Array(sizeofWTS_CLIENT_DATA);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.fDisableCtrlAltDel !== undefined) view.setBigUint64(0, data.fDisableCtrlAltDel === null ? 0n : BigInt(util.toPointer(data.fDisableCtrlAltDel)), true);
+  if (data?.fDisableCtrlAltDel !== undefined) view.setBigUint64(0, data.fDisableCtrlAltDel === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fDisableCtrlAltDel))), true);
   // 0x08: pointer
-  if (data?.fDoubleClickDetect !== undefined) view.setBigUint64(8, data.fDoubleClickDetect === null ? 0n : BigInt(util.toPointer(data.fDoubleClickDetect)), true);
+  if (data?.fDoubleClickDetect !== undefined) view.setBigUint64(8, data.fDoubleClickDetect === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fDoubleClickDetect))), true);
   // 0x10: pointer
-  if (data?.fEnableWindowsKey !== undefined) view.setBigUint64(16, data.fEnableWindowsKey === null ? 0n : BigInt(util.toPointer(data.fEnableWindowsKey)), true);
+  if (data?.fEnableWindowsKey !== undefined) view.setBigUint64(16, data.fEnableWindowsKey === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fEnableWindowsKey))), true);
   // 0x18: pointer
-  if (data?.fHideTitleBar !== undefined) view.setBigUint64(24, data.fHideTitleBar === null ? 0n : BigInt(util.toPointer(data.fHideTitleBar)), true);
+  if (data?.fHideTitleBar !== undefined) view.setBigUint64(24, data.fHideTitleBar === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fHideTitleBar))), true);
   // 0x20: i32
   if (data?.fInheritAutoLogon !== undefined) view.setInt32(32, Number(data.fInheritAutoLogon), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.fPromptForPassword !== undefined) view.setBigUint64(40, data.fPromptForPassword === null ? 0n : BigInt(util.toPointer(data.fPromptForPassword)), true);
+  if (data?.fPromptForPassword !== undefined) view.setBigUint64(40, data.fPromptForPassword === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fPromptForPassword))), true);
   // 0x30: pointer
-  if (data?.fUsingSavedCreds !== undefined) view.setBigUint64(48, data.fUsingSavedCreds === null ? 0n : BigInt(util.toPointer(data.fUsingSavedCreds)), true);
+  if (data?.fUsingSavedCreds !== undefined) view.setBigUint64(48, data.fUsingSavedCreds === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fUsingSavedCreds))), true);
   // 0x38: pointer
-  if (data?.Domain !== undefined) view.setBigUint64(56, data.Domain === null ? 0n : BigInt(util.toPointer(data.Domain)), true);
+  if (data?.Domain !== undefined) view.setBigUint64(56, data.Domain === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Domain))), true);
   // 0x40: pointer
-  if (data?.UserName !== undefined) view.setBigUint64(64, data.UserName === null ? 0n : BigInt(util.toPointer(data.UserName)), true);
+  if (data?.UserName !== undefined) view.setBigUint64(64, data.UserName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.UserName))), true);
   // 0x48: pointer
-  if (data?.Password !== undefined) view.setBigUint64(72, data.Password === null ? 0n : BigInt(util.toPointer(data.Password)), true);
+  if (data?.Password !== undefined) view.setBigUint64(72, data.Password === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Password))), true);
   // 0x50: pointer
-  if (data?.fPasswordIsScPin !== undefined) view.setBigUint64(80, data.fPasswordIsScPin === null ? 0n : BigInt(util.toPointer(data.fPasswordIsScPin)), true);
+  if (data?.fPasswordIsScPin !== undefined) view.setBigUint64(80, data.fPasswordIsScPin === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fPasswordIsScPin))), true);
   // 0x58: i32
   if (data?.fInheritInitialProgram !== undefined) view.setInt32(88, Number(data.fInheritInitialProgram), true);
   // 0x5c: pad4
   // 0x60: pointer
-  if (data?.WorkDirectory !== undefined) view.setBigUint64(96, data.WorkDirectory === null ? 0n : BigInt(util.toPointer(data.WorkDirectory)), true);
+  if (data?.WorkDirectory !== undefined) view.setBigUint64(96, data.WorkDirectory === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WorkDirectory))), true);
   // 0x68: pointer
-  if (data?.InitialProgram !== undefined) view.setBigUint64(104, data.InitialProgram === null ? 0n : BigInt(util.toPointer(data.InitialProgram)), true);
+  if (data?.InitialProgram !== undefined) view.setBigUint64(104, data.InitialProgram === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InitialProgram))), true);
   // 0x70: pointer
-  if (data?.fMaximizeShell !== undefined) view.setBigUint64(112, data.fMaximizeShell === null ? 0n : BigInt(util.toPointer(data.fMaximizeShell)), true);
+  if (data?.fMaximizeShell !== undefined) view.setBigUint64(112, data.fMaximizeShell === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fMaximizeShell))), true);
   // 0x78: u8
   if (data?.EncryptionLevel !== undefined) view.setUint8(120, Number(data.EncryptionLevel));
   // 0x79: u32
   if (data?.PerformanceFlags !== undefined) view.setUint32(121, Number(data.PerformanceFlags), true);
   // 0x7d: pad3
   // 0x80: pointer
-  if (data?.ProtocolName !== undefined) view.setBigUint64(128, data.ProtocolName === null ? 0n : BigInt(util.toPointer(data.ProtocolName)), true);
+  if (data?.ProtocolName !== undefined) view.setBigUint64(128, data.ProtocolName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ProtocolName))), true);
   // 0x88: u16
   if (data?.ProtocolType !== undefined) view.setUint16(136, Number(data.ProtocolType), true);
   // 0x8a: i32
@@ -10806,11 +10806,11 @@ export function allocWTS_CLIENT_DATA(data?: Partial<WTS_CLIENT_DATA>): Uint8Arra
   if (data?.ColorDepth !== undefined) view.setUint16(146, Number(data.ColorDepth), true);
   // 0x94: pad4
   // 0x98: pointer
-  if (data?.DisplayDriverName !== undefined) view.setBigUint64(152, data.DisplayDriverName === null ? 0n : BigInt(util.toPointer(data.DisplayDriverName)), true);
+  if (data?.DisplayDriverName !== undefined) view.setBigUint64(152, data.DisplayDriverName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DisplayDriverName))), true);
   // 0xa0: pointer
-  if (data?.DisplayDeviceName !== undefined) view.setBigUint64(160, data.DisplayDeviceName === null ? 0n : BigInt(util.toPointer(data.DisplayDeviceName)), true);
+  if (data?.DisplayDeviceName !== undefined) view.setBigUint64(160, data.DisplayDeviceName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DisplayDeviceName))), true);
   // 0xa8: pointer
-  if (data?.fMouse !== undefined) view.setBigUint64(168, data.fMouse === null ? 0n : BigInt(util.toPointer(data.fMouse)), true);
+  if (data?.fMouse !== undefined) view.setBigUint64(168, data.fMouse === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fMouse))), true);
   // 0xb0: u32
   if (data?.KeyboardLayout !== undefined) view.setUint32(176, Number(data.KeyboardLayout), true);
   // 0xb4: u32
@@ -10820,30 +10820,30 @@ export function allocWTS_CLIENT_DATA(data?: Partial<WTS_CLIENT_DATA>): Uint8Arra
   // 0xbc: u32
   if (data?.KeyboardFunctionKey !== undefined) view.setUint32(188, Number(data.KeyboardFunctionKey), true);
   // 0xc0: pointer
-  if (data?.imeFileName !== undefined) view.setBigUint64(192, data.imeFileName === null ? 0n : BigInt(util.toPointer(data.imeFileName)), true);
+  if (data?.imeFileName !== undefined) view.setBigUint64(192, data.imeFileName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.imeFileName))), true);
   // 0xc8: u32
   if (data?.ActiveInputLocale !== undefined) view.setUint32(200, Number(data.ActiveInputLocale), true);
   // 0xcc: pad4
   // 0xd0: pointer
-  if (data?.fNoAudioPlayback !== undefined) view.setBigUint64(208, data.fNoAudioPlayback === null ? 0n : BigInt(util.toPointer(data.fNoAudioPlayback)), true);
+  if (data?.fNoAudioPlayback !== undefined) view.setBigUint64(208, data.fNoAudioPlayback === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fNoAudioPlayback))), true);
   // 0xd8: pointer
-  if (data?.fRemoteConsoleAudio !== undefined) view.setBigUint64(216, data.fRemoteConsoleAudio === null ? 0n : BigInt(util.toPointer(data.fRemoteConsoleAudio)), true);
+  if (data?.fRemoteConsoleAudio !== undefined) view.setBigUint64(216, data.fRemoteConsoleAudio === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fRemoteConsoleAudio))), true);
   // 0xe0: pointer
-  if (data?.AudioDriverName !== undefined) view.setBigUint64(224, data.AudioDriverName === null ? 0n : BigInt(util.toPointer(data.AudioDriverName)), true);
+  if (data?.AudioDriverName !== undefined) view.setBigUint64(224, data.AudioDriverName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.AudioDriverName))), true);
   // 0xe8: pointer
-  if (data?.ClientTimeZone !== undefined) view.setBigUint64(232, data.ClientTimeZone === null ? 0n : BigInt(util.toPointer(data.ClientTimeZone)), true);
+  if (data?.ClientTimeZone !== undefined) view.setBigUint64(232, data.ClientTimeZone === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientTimeZone))), true);
   // 0xf0: pointer
-  if (data?.ClientName !== undefined) view.setBigUint64(240, data.ClientName === null ? 0n : BigInt(util.toPointer(data.ClientName)), true);
+  if (data?.ClientName !== undefined) view.setBigUint64(240, data.ClientName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientName))), true);
   // 0xf8: u32
   if (data?.SerialNumber !== undefined) view.setUint32(248, Number(data.SerialNumber), true);
   // 0xfc: u32
   if (data?.ClientAddressFamily !== undefined) view.setUint32(252, Number(data.ClientAddressFamily), true);
   // 0x100: pointer
-  if (data?.ClientAddress !== undefined) view.setBigUint64(256, data.ClientAddress === null ? 0n : BigInt(util.toPointer(data.ClientAddress)), true);
+  if (data?.ClientAddress !== undefined) view.setBigUint64(256, data.ClientAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientAddress))), true);
   // 0x108: pointer
-  if (data?.ClientSockAddress !== undefined) view.setBigUint64(264, data.ClientSockAddress === null ? 0n : BigInt(util.toPointer(data.ClientSockAddress)), true);
+  if (data?.ClientSockAddress !== undefined) view.setBigUint64(264, data.ClientSockAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientSockAddress))), true);
   // 0x110: pointer
-  if (data?.ClientDirectory !== undefined) view.setBigUint64(272, data.ClientDirectory === null ? 0n : BigInt(util.toPointer(data.ClientDirectory)), true);
+  if (data?.ClientDirectory !== undefined) view.setBigUint64(272, data.ClientDirectory === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientDirectory))), true);
   // 0x118: u32
   if (data?.ClientBuildNumber !== undefined) view.setUint32(280, Number(data.ClientBuildNumber), true);
   // 0x11c: u16
@@ -10857,19 +10857,19 @@ export function allocWTS_CLIENT_DATA(data?: Partial<WTS_CLIENT_DATA>): Uint8Arra
   // 0x124: u32
   if (data?.ClientSessionId !== undefined) view.setUint32(292, Number(data.ClientSessionId), true);
   // 0x128: pointer
-  if (data?.ClientDigProductId !== undefined) view.setBigUint64(296, data.ClientDigProductId === null ? 0n : BigInt(util.toPointer(data.ClientDigProductId)), true);
+  if (data?.ClientDigProductId !== undefined) view.setBigUint64(296, data.ClientDigProductId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientDigProductId))), true);
   // 0x130: pointer
-  if (data?.fDisableCpm !== undefined) view.setBigUint64(304, data.fDisableCpm === null ? 0n : BigInt(util.toPointer(data.fDisableCpm)), true);
+  if (data?.fDisableCpm !== undefined) view.setBigUint64(304, data.fDisableCpm === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fDisableCpm))), true);
   // 0x138: pointer
-  if (data?.fDisableCdm !== undefined) view.setBigUint64(312, data.fDisableCdm === null ? 0n : BigInt(util.toPointer(data.fDisableCdm)), true);
+  if (data?.fDisableCdm !== undefined) view.setBigUint64(312, data.fDisableCdm === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fDisableCdm))), true);
   // 0x140: pointer
-  if (data?.fDisableCcm !== undefined) view.setBigUint64(320, data.fDisableCcm === null ? 0n : BigInt(util.toPointer(data.fDisableCcm)), true);
+  if (data?.fDisableCcm !== undefined) view.setBigUint64(320, data.fDisableCcm === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fDisableCcm))), true);
   // 0x148: pointer
-  if (data?.fDisableLPT !== undefined) view.setBigUint64(328, data.fDisableLPT === null ? 0n : BigInt(util.toPointer(data.fDisableLPT)), true);
+  if (data?.fDisableLPT !== undefined) view.setBigUint64(328, data.fDisableLPT === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fDisableLPT))), true);
   // 0x150: pointer
-  if (data?.fDisableClip !== undefined) view.setBigUint64(336, data.fDisableClip === null ? 0n : BigInt(util.toPointer(data.fDisableClip)), true);
+  if (data?.fDisableClip !== undefined) view.setBigUint64(336, data.fDisableClip === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fDisableClip))), true);
   // 0x158: pointer
-  if (data?.fDisablePNP !== undefined) view.setBigUint64(344, data.fDisablePNP === null ? 0n : BigInt(util.toPointer(data.fDisablePNP)), true);
+  if (data?.fDisablePNP !== undefined) view.setBigUint64(344, data.fDisablePNP === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fDisablePNP))), true);
   return buf;
 }
 
@@ -10884,27 +10884,27 @@ export class WTS_CLIENT_DATAView {
   }
 
   // 0x00: pointer
-  get fDisableCtrlAltDel(): Uint8Array | Deno.PointerValue | null {
+  get fDisableCtrlAltDel(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get fDoubleClickDetect(): Uint8Array | Deno.PointerValue | null {
+  get fDoubleClickDetect(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get fEnableWindowsKey(): Uint8Array | Deno.PointerValue | null {
+  get fEnableWindowsKey(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get fHideTitleBar(): Uint8Array | Deno.PointerValue | null {
+  get fHideTitleBar(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: i32
@@ -10915,39 +10915,39 @@ export class WTS_CLIENT_DATAView {
   // 0x24: pad4
 
   // 0x28: pointer
-  get fPromptForPassword(): Uint8Array | Deno.PointerValue | null {
+  get fPromptForPassword(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get fUsingSavedCreds(): Uint8Array | Deno.PointerValue | null {
+  get fUsingSavedCreds(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get Domain(): Uint8Array | Deno.PointerValue | null {
+  get Domain(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get UserName(): Uint8Array | Deno.PointerValue | null {
+  get UserName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: pointer
-  get Password(): Uint8Array | Deno.PointerValue | null {
+  get Password(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: pointer
-  get fPasswordIsScPin(): Uint8Array | Deno.PointerValue | null {
+  get fPasswordIsScPin(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x58: i32
@@ -10958,21 +10958,21 @@ export class WTS_CLIENT_DATAView {
   // 0x5c: pad4
 
   // 0x60: pointer
-  get WorkDirectory(): Uint8Array | Deno.PointerValue | null {
+  get WorkDirectory(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(96, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x68: pointer
-  get InitialProgram(): Uint8Array | Deno.PointerValue | null {
+  get InitialProgram(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(104, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x70: pointer
-  get fMaximizeShell(): Uint8Array | Deno.PointerValue | null {
+  get fMaximizeShell(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(112, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x78: u8
@@ -10988,9 +10988,9 @@ export class WTS_CLIENT_DATAView {
   // 0x7d: pad3
 
   // 0x80: pointer
-  get ProtocolName(): Uint8Array | Deno.PointerValue | null {
+  get ProtocolName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(128, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x88: u16
@@ -11021,21 +11021,21 @@ export class WTS_CLIENT_DATAView {
   // 0x94: pad4
 
   // 0x98: pointer
-  get DisplayDriverName(): Uint8Array | Deno.PointerValue | null {
+  get DisplayDriverName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(152, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0xa0: pointer
-  get DisplayDeviceName(): Uint8Array | Deno.PointerValue | null {
+  get DisplayDeviceName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(160, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0xa8: pointer
-  get fMouse(): Uint8Array | Deno.PointerValue | null {
+  get fMouse(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(168, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0xb0: u32
@@ -11059,9 +11059,9 @@ export class WTS_CLIENT_DATAView {
   }
 
   // 0xc0: pointer
-  get imeFileName(): Uint8Array | Deno.PointerValue | null {
+  get imeFileName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(192, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0xc8: u32
@@ -11072,33 +11072,33 @@ export class WTS_CLIENT_DATAView {
   // 0xcc: pad4
 
   // 0xd0: pointer
-  get fNoAudioPlayback(): Uint8Array | Deno.PointerValue | null {
+  get fNoAudioPlayback(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(208, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0xd8: pointer
-  get fRemoteConsoleAudio(): Uint8Array | Deno.PointerValue | null {
+  get fRemoteConsoleAudio(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(216, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0xe0: pointer
-  get AudioDriverName(): Uint8Array | Deno.PointerValue | null {
+  get AudioDriverName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(224, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0xe8: pointer
-  get ClientTimeZone(): Uint8Array | Deno.PointerValue | null {
+  get ClientTimeZone(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(232, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0xf0: pointer
-  get ClientName(): Uint8Array | Deno.PointerValue | null {
+  get ClientName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(240, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0xf8: u32
@@ -11112,21 +11112,21 @@ export class WTS_CLIENT_DATAView {
   }
 
   // 0x100: pointer
-  get ClientAddress(): Uint8Array | Deno.PointerValue | null {
+  get ClientAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(256, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x108: pointer
-  get ClientSockAddress(): Uint8Array | Deno.PointerValue | null {
+  get ClientSockAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(264, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x110: pointer
-  get ClientDirectory(): Uint8Array | Deno.PointerValue | null {
+  get ClientDirectory(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(272, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x118: u32
@@ -11160,65 +11160,65 @@ export class WTS_CLIENT_DATAView {
   }
 
   // 0x128: pointer
-  get ClientDigProductId(): Uint8Array | Deno.PointerValue | null {
+  get ClientDigProductId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(296, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x130: pointer
-  get fDisableCpm(): Uint8Array | Deno.PointerValue | null {
+  get fDisableCpm(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(304, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x138: pointer
-  get fDisableCdm(): Uint8Array | Deno.PointerValue | null {
+  get fDisableCdm(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(312, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x140: pointer
-  get fDisableCcm(): Uint8Array | Deno.PointerValue | null {
+  get fDisableCcm(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(320, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x148: pointer
-  get fDisableLPT(): Uint8Array | Deno.PointerValue | null {
+  get fDisableLPT(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(328, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x150: pointer
-  get fDisableClip(): Uint8Array | Deno.PointerValue | null {
+  get fDisableClip(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(336, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x158: pointer
-  get fDisablePNP(): Uint8Array | Deno.PointerValue | null {
+  get fDisablePNP(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(344, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set fDisableCtrlAltDel(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set fDisableCtrlAltDel(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set fDoubleClickDetect(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set fDoubleClickDetect(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set fEnableWindowsKey(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set fEnableWindowsKey(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set fHideTitleBar(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set fHideTitleBar(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: i32
@@ -11229,33 +11229,33 @@ export class WTS_CLIENT_DATAView {
   // 0x24: pad4
 
   // 0x28: pointer
-  set fPromptForPassword(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set fPromptForPassword(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set fUsingSavedCreds(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set fUsingSavedCreds(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set Domain(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set Domain(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set UserName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set UserName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: pointer
-  set Password(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set Password(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x50: pointer
-  set fPasswordIsScPin(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set fPasswordIsScPin(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x58: i32
@@ -11266,18 +11266,18 @@ export class WTS_CLIENT_DATAView {
   // 0x5c: pad4
 
   // 0x60: pointer
-  set WorkDirectory(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(96, BigInt(util.toPointer(value)), true);
+  set WorkDirectory(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(96, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x68: pointer
-  set InitialProgram(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(104, BigInt(util.toPointer(value)), true);
+  set InitialProgram(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(104, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x70: pointer
-  set fMaximizeShell(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(112, BigInt(util.toPointer(value)), true);
+  set fMaximizeShell(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(112, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x78: u8
@@ -11293,8 +11293,8 @@ export class WTS_CLIENT_DATAView {
   // 0x7d: pad3
 
   // 0x80: pointer
-  set ProtocolName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(128, BigInt(util.toPointer(value)), true);
+  set ProtocolName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(128, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x88: u16
@@ -11325,18 +11325,18 @@ export class WTS_CLIENT_DATAView {
   // 0x94: pad4
 
   // 0x98: pointer
-  set DisplayDriverName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(152, BigInt(util.toPointer(value)), true);
+  set DisplayDriverName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(152, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0xa0: pointer
-  set DisplayDeviceName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(160, BigInt(util.toPointer(value)), true);
+  set DisplayDeviceName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(160, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0xa8: pointer
-  set fMouse(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(168, BigInt(util.toPointer(value)), true);
+  set fMouse(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(168, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0xb0: u32
@@ -11360,8 +11360,8 @@ export class WTS_CLIENT_DATAView {
   }
 
   // 0xc0: pointer
-  set imeFileName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(192, BigInt(util.toPointer(value)), true);
+  set imeFileName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(192, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0xc8: u32
@@ -11372,28 +11372,28 @@ export class WTS_CLIENT_DATAView {
   // 0xcc: pad4
 
   // 0xd0: pointer
-  set fNoAudioPlayback(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(208, BigInt(util.toPointer(value)), true);
+  set fNoAudioPlayback(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(208, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0xd8: pointer
-  set fRemoteConsoleAudio(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(216, BigInt(util.toPointer(value)), true);
+  set fRemoteConsoleAudio(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(216, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0xe0: pointer
-  set AudioDriverName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(224, BigInt(util.toPointer(value)), true);
+  set AudioDriverName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(224, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0xe8: pointer
-  set ClientTimeZone(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(232, BigInt(util.toPointer(value)), true);
+  set ClientTimeZone(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(232, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0xf0: pointer
-  set ClientName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(240, BigInt(util.toPointer(value)), true);
+  set ClientName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(240, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0xf8: u32
@@ -11407,18 +11407,18 @@ export class WTS_CLIENT_DATAView {
   }
 
   // 0x100: pointer
-  set ClientAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(256, BigInt(util.toPointer(value)), true);
+  set ClientAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(256, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x108: pointer
-  set ClientSockAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(264, BigInt(util.toPointer(value)), true);
+  set ClientSockAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(264, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x110: pointer
-  set ClientDirectory(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(272, BigInt(util.toPointer(value)), true);
+  set ClientDirectory(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(272, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x118: u32
@@ -11452,38 +11452,38 @@ export class WTS_CLIENT_DATAView {
   }
 
   // 0x128: pointer
-  set ClientDigProductId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(296, BigInt(util.toPointer(value)), true);
+  set ClientDigProductId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(296, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x130: pointer
-  set fDisableCpm(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(304, BigInt(util.toPointer(value)), true);
+  set fDisableCpm(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(304, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x138: pointer
-  set fDisableCdm(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(312, BigInt(util.toPointer(value)), true);
+  set fDisableCdm(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(312, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x140: pointer
-  set fDisableCcm(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(320, BigInt(util.toPointer(value)), true);
+  set fDisableCcm(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(320, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x148: pointer
-  set fDisableLPT(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(328, BigInt(util.toPointer(value)), true);
+  set fDisableLPT(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(328, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x150: pointer
-  set fDisableClip(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(336, BigInt(util.toPointer(value)), true);
+  set fDisableClip(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(336, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x158: pointer
-  set fDisablePNP(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(344, BigInt(util.toPointer(value)), true);
+  set fDisablePNP(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(344, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -11492,11 +11492,11 @@ export class WTS_CLIENT_DATAView {
  */
 export interface WTS_USER_DATA {
   /** array */
-  WorkDirectory: Deno.PointerValue | null;
+  WorkDirectory: Deno.PointerValue;
   /** array */
-  InitialProgram: Deno.PointerValue | null;
+  InitialProgram: Deno.PointerValue;
   /** Windows.Win32.System.RemoteDesktop.WTS_TIME_ZONE_INFORMATION */
-  UserTimeZone: Uint8Array | Deno.PointerValue | null;
+  UserTimeZone: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofWTS_USER_DATA = 24;
@@ -11505,11 +11505,11 @@ export function allocWTS_USER_DATA(data?: Partial<WTS_USER_DATA>): Uint8Array {
   const buf = new Uint8Array(sizeofWTS_USER_DATA);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.WorkDirectory !== undefined) view.setBigUint64(0, data.WorkDirectory === null ? 0n : BigInt(util.toPointer(data.WorkDirectory)), true);
+  if (data?.WorkDirectory !== undefined) view.setBigUint64(0, data.WorkDirectory === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WorkDirectory))), true);
   // 0x08: pointer
-  if (data?.InitialProgram !== undefined) view.setBigUint64(8, data.InitialProgram === null ? 0n : BigInt(util.toPointer(data.InitialProgram)), true);
+  if (data?.InitialProgram !== undefined) view.setBigUint64(8, data.InitialProgram === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InitialProgram))), true);
   // 0x10: pointer
-  if (data?.UserTimeZone !== undefined) view.setBigUint64(16, data.UserTimeZone === null ? 0n : BigInt(util.toPointer(data.UserTimeZone)), true);
+  if (data?.UserTimeZone !== undefined) view.setBigUint64(16, data.UserTimeZone === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.UserTimeZone))), true);
   return buf;
 }
 
@@ -11524,36 +11524,36 @@ export class WTS_USER_DATAView {
   }
 
   // 0x00: pointer
-  get WorkDirectory(): Uint8Array | Deno.PointerValue | null {
+  get WorkDirectory(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get InitialProgram(): Uint8Array | Deno.PointerValue | null {
+  get InitialProgram(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get UserTimeZone(): Uint8Array | Deno.PointerValue | null {
+  get UserTimeZone(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set WorkDirectory(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set WorkDirectory(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set InitialProgram(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set InitialProgram(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set UserTimeZone(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set UserTimeZone(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -11562,25 +11562,25 @@ export class WTS_USER_DATAView {
  */
 export interface WTS_POLICY_DATA {
   /** Windows.Win32.Foundation.BOOLEAN */
-  fDisableEncryption: Uint8Array | Deno.PointerValue | null;
+  fDisableEncryption: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fDisableAutoReconnect: Uint8Array | Deno.PointerValue | null;
+  fDisableAutoReconnect: Uint8Array | Deno.PointerValue;
   /** u32 */
   ColorDepth: number;
   /** u8 */
   MinEncryptionLevel: number;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fDisableCpm: Uint8Array | Deno.PointerValue | null;
+  fDisableCpm: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fDisableCdm: Uint8Array | Deno.PointerValue | null;
+  fDisableCdm: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fDisableCcm: Uint8Array | Deno.PointerValue | null;
+  fDisableCcm: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fDisableLPT: Uint8Array | Deno.PointerValue | null;
+  fDisableLPT: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fDisableClip: Uint8Array | Deno.PointerValue | null;
+  fDisableClip: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fDisablePNPRedir: Uint8Array | Deno.PointerValue | null;
+  fDisablePNPRedir: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofWTS_POLICY_DATA = 72;
@@ -11589,26 +11589,26 @@ export function allocWTS_POLICY_DATA(data?: Partial<WTS_POLICY_DATA>): Uint8Arra
   const buf = new Uint8Array(sizeofWTS_POLICY_DATA);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.fDisableEncryption !== undefined) view.setBigUint64(0, data.fDisableEncryption === null ? 0n : BigInt(util.toPointer(data.fDisableEncryption)), true);
+  if (data?.fDisableEncryption !== undefined) view.setBigUint64(0, data.fDisableEncryption === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fDisableEncryption))), true);
   // 0x08: pointer
-  if (data?.fDisableAutoReconnect !== undefined) view.setBigUint64(8, data.fDisableAutoReconnect === null ? 0n : BigInt(util.toPointer(data.fDisableAutoReconnect)), true);
+  if (data?.fDisableAutoReconnect !== undefined) view.setBigUint64(8, data.fDisableAutoReconnect === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fDisableAutoReconnect))), true);
   // 0x10: u32
   if (data?.ColorDepth !== undefined) view.setUint32(16, Number(data.ColorDepth), true);
   // 0x14: u8
   if (data?.MinEncryptionLevel !== undefined) view.setUint8(20, Number(data.MinEncryptionLevel));
   // 0x15: pad3
   // 0x18: pointer
-  if (data?.fDisableCpm !== undefined) view.setBigUint64(24, data.fDisableCpm === null ? 0n : BigInt(util.toPointer(data.fDisableCpm)), true);
+  if (data?.fDisableCpm !== undefined) view.setBigUint64(24, data.fDisableCpm === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fDisableCpm))), true);
   // 0x20: pointer
-  if (data?.fDisableCdm !== undefined) view.setBigUint64(32, data.fDisableCdm === null ? 0n : BigInt(util.toPointer(data.fDisableCdm)), true);
+  if (data?.fDisableCdm !== undefined) view.setBigUint64(32, data.fDisableCdm === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fDisableCdm))), true);
   // 0x28: pointer
-  if (data?.fDisableCcm !== undefined) view.setBigUint64(40, data.fDisableCcm === null ? 0n : BigInt(util.toPointer(data.fDisableCcm)), true);
+  if (data?.fDisableCcm !== undefined) view.setBigUint64(40, data.fDisableCcm === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fDisableCcm))), true);
   // 0x30: pointer
-  if (data?.fDisableLPT !== undefined) view.setBigUint64(48, data.fDisableLPT === null ? 0n : BigInt(util.toPointer(data.fDisableLPT)), true);
+  if (data?.fDisableLPT !== undefined) view.setBigUint64(48, data.fDisableLPT === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fDisableLPT))), true);
   // 0x38: pointer
-  if (data?.fDisableClip !== undefined) view.setBigUint64(56, data.fDisableClip === null ? 0n : BigInt(util.toPointer(data.fDisableClip)), true);
+  if (data?.fDisableClip !== undefined) view.setBigUint64(56, data.fDisableClip === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fDisableClip))), true);
   // 0x40: pointer
-  if (data?.fDisablePNPRedir !== undefined) view.setBigUint64(64, data.fDisablePNPRedir === null ? 0n : BigInt(util.toPointer(data.fDisablePNPRedir)), true);
+  if (data?.fDisablePNPRedir !== undefined) view.setBigUint64(64, data.fDisablePNPRedir === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fDisablePNPRedir))), true);
   return buf;
 }
 
@@ -11623,15 +11623,15 @@ export class WTS_POLICY_DATAView {
   }
 
   // 0x00: pointer
-  get fDisableEncryption(): Uint8Array | Deno.PointerValue | null {
+  get fDisableEncryption(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get fDisableAutoReconnect(): Uint8Array | Deno.PointerValue | null {
+  get fDisableAutoReconnect(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -11647,49 +11647,49 @@ export class WTS_POLICY_DATAView {
   // 0x15: pad3
 
   // 0x18: pointer
-  get fDisableCpm(): Uint8Array | Deno.PointerValue | null {
+  get fDisableCpm(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get fDisableCdm(): Uint8Array | Deno.PointerValue | null {
+  get fDisableCdm(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get fDisableCcm(): Uint8Array | Deno.PointerValue | null {
+  get fDisableCcm(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get fDisableLPT(): Uint8Array | Deno.PointerValue | null {
+  get fDisableLPT(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get fDisableClip(): Uint8Array | Deno.PointerValue | null {
+  get fDisableClip(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get fDisablePNPRedir(): Uint8Array | Deno.PointerValue | null {
+  get fDisablePNPRedir(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set fDisableEncryption(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set fDisableEncryption(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set fDisableAutoReconnect(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set fDisableAutoReconnect(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -11705,33 +11705,33 @@ export class WTS_POLICY_DATAView {
   // 0x15: pad3
 
   // 0x18: pointer
-  set fDisableCpm(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set fDisableCpm(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set fDisableCdm(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set fDisableCdm(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set fDisableCcm(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set fDisableCcm(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set fDisableLPT(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set fDisableLPT(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set fDisableClip(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set fDisableClip(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set fDisablePNPRedir(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set fDisablePNPRedir(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -11793,11 +11793,11 @@ export class WTS_PROTOCOL_CACHEView {
  */
 export interface WTS_CACHE_STATS_UN {
   /** array */
-  ProtocolCache: Deno.PointerValue | null;
+  ProtocolCache: Deno.PointerValue;
   /** u32 */
   TShareCacheStats: number;
   /** array */
-  Reserved: Deno.PointerValue | null;
+  Reserved: Deno.PointerValue;
 }
 
 export const sizeofWTS_CACHE_STATS_UN = 24;
@@ -11806,12 +11806,12 @@ export function allocWTS_CACHE_STATS_UN(data?: Partial<WTS_CACHE_STATS_UN>): Uin
   const buf = new Uint8Array(sizeofWTS_CACHE_STATS_UN);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ProtocolCache !== undefined) view.setBigUint64(0, data.ProtocolCache === null ? 0n : BigInt(util.toPointer(data.ProtocolCache)), true);
+  if (data?.ProtocolCache !== undefined) view.setBigUint64(0, data.ProtocolCache === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ProtocolCache))), true);
   // 0x08: u32
   if (data?.TShareCacheStats !== undefined) view.setUint32(8, Number(data.TShareCacheStats), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.Reserved !== undefined) view.setBigUint64(16, data.Reserved === null ? 0n : BigInt(util.toPointer(data.Reserved)), true);
+  if (data?.Reserved !== undefined) view.setBigUint64(16, data.Reserved === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Reserved))), true);
   return buf;
 }
 
@@ -11826,9 +11826,9 @@ export class WTS_CACHE_STATS_UNView {
   }
 
   // 0x00: pointer
-  get ProtocolCache(): Uint8Array | Deno.PointerValue | null {
+  get ProtocolCache(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -11839,14 +11839,14 @@ export class WTS_CACHE_STATS_UNView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get Reserved(): Uint8Array | Deno.PointerValue | null {
+  get Reserved(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ProtocolCache(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ProtocolCache(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -11857,8 +11857,8 @@ export class WTS_CACHE_STATS_UNView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set Reserved(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set Reserved(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -11869,7 +11869,7 @@ export interface WTS_CACHE_STATS {
   /** u32 */
   Specific: number;
   /** Windows.Win32.System.RemoteDesktop.WTS_CACHE_STATS_UN */
-  Data: Uint8Array | Deno.PointerValue | null;
+  Data: Uint8Array | Deno.PointerValue;
   /** u16 */
   ProtocolType: number;
   /** u16 */
@@ -11885,7 +11885,7 @@ export function allocWTS_CACHE_STATS(data?: Partial<WTS_CACHE_STATS>): Uint8Arra
   if (data?.Specific !== undefined) view.setUint32(0, Number(data.Specific), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
+  if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Data))), true);
   // 0x10: u16
   if (data?.ProtocolType !== undefined) view.setUint16(16, Number(data.ProtocolType), true);
   // 0x12: u16
@@ -11912,9 +11912,9 @@ export class WTS_CACHE_STATSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Data(): Uint8Array | Deno.PointerValue | null {
+  get Data(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u16
@@ -11937,8 +11937,8 @@ export class WTS_CACHE_STATSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Data(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Data(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u16
@@ -11993,7 +11993,7 @@ export interface WTS_PROTOCOL_COUNTERS {
   /** u16 */
   Specific: number;
   /** array */
-  Reserved: Deno.PointerValue | null;
+  Reserved: Deno.PointerValue;
 }
 
 export const sizeofWTS_PROTOCOL_COUNTERS = 72;
@@ -12037,7 +12037,7 @@ export function allocWTS_PROTOCOL_COUNTERS(data?: Partial<WTS_PROTOCOL_COUNTERS>
   if (data?.Specific !== undefined) view.setUint16(60, Number(data.Specific), true);
   // 0x3e: pad2
   // 0x40: pointer
-  if (data?.Reserved !== undefined) view.setBigUint64(64, data.Reserved === null ? 0n : BigInt(util.toPointer(data.Reserved)), true);
+  if (data?.Reserved !== undefined) view.setBigUint64(64, data.Reserved === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Reserved))), true);
   return buf;
 }
 
@@ -12139,9 +12139,9 @@ export class WTS_PROTOCOL_COUNTERSView {
   // 0x3e: pad2
 
   // 0x40: pointer
-  get Reserved(): Uint8Array | Deno.PointerValue | null {
+  get Reserved(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -12232,8 +12232,8 @@ export class WTS_PROTOCOL_COUNTERSView {
   // 0x3e: pad2
 
   // 0x40: pointer
-  set Reserved(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set Reserved(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12242,17 +12242,17 @@ export class WTS_PROTOCOL_COUNTERSView {
  */
 export interface WTS_PROTOCOL_STATUS {
   /** Windows.Win32.System.RemoteDesktop.WTS_PROTOCOL_COUNTERS */
-  Output: Uint8Array | Deno.PointerValue | null;
+  Output: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.RemoteDesktop.WTS_PROTOCOL_COUNTERS */
-  Input: Uint8Array | Deno.PointerValue | null;
+  Input: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.RemoteDesktop.WTS_CACHE_STATS */
-  Cache: Uint8Array | Deno.PointerValue | null;
+  Cache: Uint8Array | Deno.PointerValue;
   /** u32 */
   AsyncSignal: number;
   /** u32 */
   AsyncSignalMask: number;
   /** array */
-  Counters: Deno.PointerValue | null;
+  Counters: Deno.PointerValue;
 }
 
 export const sizeofWTS_PROTOCOL_STATUS = 40;
@@ -12261,17 +12261,17 @@ export function allocWTS_PROTOCOL_STATUS(data?: Partial<WTS_PROTOCOL_STATUS>): U
   const buf = new Uint8Array(sizeofWTS_PROTOCOL_STATUS);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Output !== undefined) view.setBigUint64(0, data.Output === null ? 0n : BigInt(util.toPointer(data.Output)), true);
+  if (data?.Output !== undefined) view.setBigUint64(0, data.Output === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Output))), true);
   // 0x08: pointer
-  if (data?.Input !== undefined) view.setBigUint64(8, data.Input === null ? 0n : BigInt(util.toPointer(data.Input)), true);
+  if (data?.Input !== undefined) view.setBigUint64(8, data.Input === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Input))), true);
   // 0x10: pointer
-  if (data?.Cache !== undefined) view.setBigUint64(16, data.Cache === null ? 0n : BigInt(util.toPointer(data.Cache)), true);
+  if (data?.Cache !== undefined) view.setBigUint64(16, data.Cache === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Cache))), true);
   // 0x18: u32
   if (data?.AsyncSignal !== undefined) view.setUint32(24, Number(data.AsyncSignal), true);
   // 0x1c: u32
   if (data?.AsyncSignalMask !== undefined) view.setUint32(28, Number(data.AsyncSignalMask), true);
   // 0x20: pointer
-  if (data?.Counters !== undefined) view.setBigUint64(32, data.Counters === null ? 0n : BigInt(util.toPointer(data.Counters)), true);
+  if (data?.Counters !== undefined) view.setBigUint64(32, data.Counters === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Counters))), true);
   return buf;
 }
 
@@ -12286,21 +12286,21 @@ export class WTS_PROTOCOL_STATUSView {
   }
 
   // 0x00: pointer
-  get Output(): Uint8Array | Deno.PointerValue | null {
+  get Output(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get Input(): Uint8Array | Deno.PointerValue | null {
+  get Input(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get Cache(): Uint8Array | Deno.PointerValue | null {
+  get Cache(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -12314,24 +12314,24 @@ export class WTS_PROTOCOL_STATUSView {
   }
 
   // 0x20: pointer
-  get Counters(): Uint8Array | Deno.PointerValue | null {
+  get Counters(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Output(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Output(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set Input(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Input(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set Cache(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set Cache(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -12345,8 +12345,8 @@ export class WTS_PROTOCOL_STATUSView {
   }
 
   // 0x20: pointer
-  set Counters(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set Counters(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12355,7 +12355,7 @@ export class WTS_PROTOCOL_STATUSView {
  */
 export interface WTS_DISPLAY_IOCTL {
   /** array */
-  pDisplayIOCtlData: Deno.PointerValue | null;
+  pDisplayIOCtlData: Deno.PointerValue;
   /** u32 */
   cbDisplayIOCtlData: number;
 }
@@ -12366,7 +12366,7 @@ export function allocWTS_DISPLAY_IOCTL(data?: Partial<WTS_DISPLAY_IOCTL>): Uint8
   const buf = new Uint8Array(sizeofWTS_DISPLAY_IOCTL);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pDisplayIOCtlData !== undefined) view.setBigUint64(0, data.pDisplayIOCtlData === null ? 0n : BigInt(util.toPointer(data.pDisplayIOCtlData)), true);
+  if (data?.pDisplayIOCtlData !== undefined) view.setBigUint64(0, data.pDisplayIOCtlData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pDisplayIOCtlData))), true);
   // 0x08: u32
   if (data?.cbDisplayIOCtlData !== undefined) view.setUint32(8, Number(data.cbDisplayIOCtlData), true);
   // 0x0c: pad4
@@ -12384,9 +12384,9 @@ export class WTS_DISPLAY_IOCTLView {
   }
 
   // 0x00: pointer
-  get pDisplayIOCtlData(): Uint8Array | Deno.PointerValue | null {
+  get pDisplayIOCtlData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -12397,8 +12397,8 @@ export class WTS_DISPLAY_IOCTLView {
   // 0x0c: pad4
 
   // 0x00: pointer
-  set pDisplayIOCtlData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pDisplayIOCtlData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -12416,7 +12416,7 @@ export interface WTS_PROPERTY_VALUE {
   /** u16 */
   Type: number;
   /** _u_e__Union */
-  u: Uint8Array | Deno.PointerValue | null;
+  u: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofWTS_PROPERTY_VALUE = 16;
@@ -12428,7 +12428,7 @@ export function allocWTS_PROPERTY_VALUE(data?: Partial<WTS_PROPERTY_VALUE>): Uin
   if (data?.Type !== undefined) view.setUint16(0, Number(data.Type), true);
   // 0x02: pad6
   // 0x08: pointer
-  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : BigInt(util.toPointer(data.u)), true);
+  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.u))), true);
   return buf;
 }
 
@@ -12450,9 +12450,9 @@ export class WTS_PROPERTY_VALUEView {
   // 0x02: pad6
 
   // 0x08: pointer
-  get u(): Uint8Array | Deno.PointerValue | null {
+  get u(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u16
@@ -12463,8 +12463,8 @@ export class WTS_PROPERTY_VALUEView {
   // 0x02: pad6
 
   // 0x08: pointer
-  set u(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set u(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12483,7 +12483,7 @@ export interface WTS_LICENSE_CAPABILITIES {
   /** u32 */
   cbClientName: number;
   /** array */
-  rgbClientName: Deno.PointerValue | null;
+  rgbClientName: Deno.PointerValue;
 }
 
 export const sizeofWTS_LICENSE_CAPABILITIES = 32;
@@ -12503,7 +12503,7 @@ export function allocWTS_LICENSE_CAPABILITIES(data?: Partial<WTS_LICENSE_CAPABIL
   if (data?.cbClientName !== undefined) view.setUint32(16, Number(data.cbClientName), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.rgbClientName !== undefined) view.setBigUint64(24, data.rgbClientName === null ? 0n : BigInt(util.toPointer(data.rgbClientName)), true);
+  if (data?.rgbClientName !== undefined) view.setBigUint64(24, data.rgbClientName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgbClientName))), true);
   return buf;
 }
 
@@ -12545,9 +12545,9 @@ export class WTS_LICENSE_CAPABILITIESView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get rgbClientName(): Uint8Array | Deno.PointerValue | null {
+  get rgbClientName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -12578,8 +12578,8 @@ export class WTS_LICENSE_CAPABILITIESView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set rgbClientName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set rgbClientName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12592,7 +12592,7 @@ export interface WRDS_LISTENER_SETTINGS_1 {
   /** u32 */
   SecurityDescriptorSize: number;
   /** ptr */
-  pSecurityDescriptor: Deno.PointerValue | Uint8Array | null;
+  pSecurityDescriptor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofWRDS_LISTENER_SETTINGS_1 = 16;
@@ -12605,7 +12605,7 @@ export function allocWRDS_LISTENER_SETTINGS_1(data?: Partial<WRDS_LISTENER_SETTI
   // 0x04: u32
   if (data?.SecurityDescriptorSize !== undefined) view.setUint32(4, Number(data.SecurityDescriptorSize), true);
   // 0x08: pointer
-  if (data?.pSecurityDescriptor !== undefined) view.setBigUint64(8, data.pSecurityDescriptor === null ? 0n : BigInt(util.toPointer(data.pSecurityDescriptor)), true);
+  if (data?.pSecurityDescriptor !== undefined) view.setBigUint64(8, data.pSecurityDescriptor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pSecurityDescriptor))), true);
   return buf;
 }
 
@@ -12630,9 +12630,9 @@ export class WRDS_LISTENER_SETTINGS_1View {
   }
 
   // 0x08: pointer
-  get pSecurityDescriptor(): Uint8Array | Deno.PointerValue | null {
+  get pSecurityDescriptor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -12646,8 +12646,8 @@ export class WRDS_LISTENER_SETTINGS_1View {
   }
 
   // 0x08: pointer
-  set pSecurityDescriptor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pSecurityDescriptor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12656,7 +12656,7 @@ export class WRDS_LISTENER_SETTINGS_1View {
  */
 export interface WRDS_LISTENER_SETTING {
   /** Windows.Win32.System.RemoteDesktop.WRDS_LISTENER_SETTINGS_1 */
-  WRdsListenerSettings1: Uint8Array | Deno.PointerValue | null;
+  WRdsListenerSettings1: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofWRDS_LISTENER_SETTING = 8;
@@ -12665,7 +12665,7 @@ export function allocWRDS_LISTENER_SETTING(data?: Partial<WRDS_LISTENER_SETTING>
   const buf = new Uint8Array(sizeofWRDS_LISTENER_SETTING);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.WRdsListenerSettings1 !== undefined) view.setBigUint64(0, data.WRdsListenerSettings1 === null ? 0n : BigInt(util.toPointer(data.WRdsListenerSettings1)), true);
+  if (data?.WRdsListenerSettings1 !== undefined) view.setBigUint64(0, data.WRdsListenerSettings1 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WRdsListenerSettings1))), true);
   return buf;
 }
 
@@ -12680,14 +12680,14 @@ export class WRDS_LISTENER_SETTINGView {
   }
 
   // 0x00: pointer
-  get WRdsListenerSettings1(): Uint8Array | Deno.PointerValue | null {
+  get WRdsListenerSettings1(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set WRdsListenerSettings1(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set WRdsListenerSettings1(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12698,7 +12698,7 @@ export interface WRDS_LISTENER_SETTINGS {
   /** Windows.Win32.System.RemoteDesktop.WRDS_LISTENER_SETTING_LEVEL */
   WRdsListenerSettingLevel: WRDS_LISTENER_SETTING_LEVEL;
   /** Windows.Win32.System.RemoteDesktop.WRDS_LISTENER_SETTING */
-  WRdsListenerSetting: Uint8Array | Deno.PointerValue | null;
+  WRdsListenerSetting: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofWRDS_LISTENER_SETTINGS = 16;
@@ -12710,7 +12710,7 @@ export function allocWRDS_LISTENER_SETTINGS(data?: Partial<WRDS_LISTENER_SETTING
   if (data?.WRdsListenerSettingLevel !== undefined) view.setInt32(0, Number(data.WRdsListenerSettingLevel), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.WRdsListenerSetting !== undefined) view.setBigUint64(8, data.WRdsListenerSetting === null ? 0n : BigInt(util.toPointer(data.WRdsListenerSetting)), true);
+  if (data?.WRdsListenerSetting !== undefined) view.setBigUint64(8, data.WRdsListenerSetting === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WRdsListenerSetting))), true);
   return buf;
 }
 
@@ -12732,9 +12732,9 @@ export class WRDS_LISTENER_SETTINGSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get WRdsListenerSetting(): Uint8Array | Deno.PointerValue | null {
+  get WRdsListenerSetting(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -12745,8 +12745,8 @@ export class WRDS_LISTENER_SETTINGSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set WRdsListenerSetting(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set WRdsListenerSetting(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12755,51 +12755,51 @@ export class WRDS_LISTENER_SETTINGSView {
  */
 export interface WRDS_CONNECTION_SETTINGS_1 {
   /** Windows.Win32.Foundation.BOOLEAN */
-  fInheritInitialProgram: Uint8Array | Deno.PointerValue | null;
+  fInheritInitialProgram: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fInheritColorDepth: Uint8Array | Deno.PointerValue | null;
+  fInheritColorDepth: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fHideTitleBar: Uint8Array | Deno.PointerValue | null;
+  fHideTitleBar: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fInheritAutoLogon: Uint8Array | Deno.PointerValue | null;
+  fInheritAutoLogon: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fMaximizeShell: Uint8Array | Deno.PointerValue | null;
+  fMaximizeShell: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fDisablePNP: Uint8Array | Deno.PointerValue | null;
+  fDisablePNP: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fPasswordIsScPin: Uint8Array | Deno.PointerValue | null;
+  fPasswordIsScPin: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fPromptForPassword: Uint8Array | Deno.PointerValue | null;
+  fPromptForPassword: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fDisableCpm: Uint8Array | Deno.PointerValue | null;
+  fDisableCpm: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fDisableCdm: Uint8Array | Deno.PointerValue | null;
+  fDisableCdm: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fDisableCcm: Uint8Array | Deno.PointerValue | null;
+  fDisableCcm: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fDisableLPT: Uint8Array | Deno.PointerValue | null;
+  fDisableLPT: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fDisableClip: Uint8Array | Deno.PointerValue | null;
+  fDisableClip: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fResetBroken: Uint8Array | Deno.PointerValue | null;
+  fResetBroken: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fDisableEncryption: Uint8Array | Deno.PointerValue | null;
+  fDisableEncryption: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fDisableAutoReconnect: Uint8Array | Deno.PointerValue | null;
+  fDisableAutoReconnect: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fDisableCtrlAltDel: Uint8Array | Deno.PointerValue | null;
+  fDisableCtrlAltDel: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fDoubleClickDetect: Uint8Array | Deno.PointerValue | null;
+  fDoubleClickDetect: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fEnableWindowsKey: Uint8Array | Deno.PointerValue | null;
+  fEnableWindowsKey: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fUsingSavedCreds: Uint8Array | Deno.PointerValue | null;
+  fUsingSavedCreds: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fMouse: Uint8Array | Deno.PointerValue | null;
+  fMouse: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fNoAudioPlayback: Uint8Array | Deno.PointerValue | null;
+  fNoAudioPlayback: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  fRemoteConsoleAudio: Uint8Array | Deno.PointerValue | null;
+  fRemoteConsoleAudio: Uint8Array | Deno.PointerValue;
   /** u8 */
   EncryptionLevel: number;
   /** u16 */
@@ -12845,45 +12845,45 @@ export interface WRDS_CONNECTION_SETTINGS_1 {
   /** u32 */
   ClientSessionId: number;
   /** array */
-  WorkDirectory: Deno.PointerValue | null;
+  WorkDirectory: Deno.PointerValue;
   /** array */
-  InitialProgram: Deno.PointerValue | null;
+  InitialProgram: Deno.PointerValue;
   /** array */
-  UserName: Deno.PointerValue | null;
+  UserName: Deno.PointerValue;
   /** array */
-  Domain: Deno.PointerValue | null;
+  Domain: Deno.PointerValue;
   /** array */
-  Password: Deno.PointerValue | null;
+  Password: Deno.PointerValue;
   /** array */
-  ProtocolName: Deno.PointerValue | null;
+  ProtocolName: Deno.PointerValue;
   /** array */
-  DisplayDriverName: Deno.PointerValue | null;
+  DisplayDriverName: Deno.PointerValue;
   /** array */
-  DisplayDeviceName: Deno.PointerValue | null;
+  DisplayDeviceName: Deno.PointerValue;
   /** array */
-  imeFileName: Deno.PointerValue | null;
+  imeFileName: Deno.PointerValue;
   /** array */
-  AudioDriverName: Deno.PointerValue | null;
+  AudioDriverName: Deno.PointerValue;
   /** array */
-  ClientName: Deno.PointerValue | null;
+  ClientName: Deno.PointerValue;
   /** array */
-  ClientAddress: Deno.PointerValue | null;
+  ClientAddress: Deno.PointerValue;
   /** array */
-  ClientDirectory: Deno.PointerValue | null;
+  ClientDirectory: Deno.PointerValue;
   /** array */
-  ClientDigProductId: Deno.PointerValue | null;
+  ClientDigProductId: Deno.PointerValue;
   /** Windows.Win32.System.RemoteDesktop.WTS_SOCKADDR */
-  ClientSockAddress: Uint8Array | Deno.PointerValue | null;
+  ClientSockAddress: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.RemoteDesktop.WTS_TIME_ZONE_INFORMATION */
-  ClientTimeZone: Uint8Array | Deno.PointerValue | null;
+  ClientTimeZone: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.RemoteDesktop.WRDS_LISTENER_SETTINGS */
-  WRdsListenerSettings: Uint8Array | Deno.PointerValue | null;
+  WRdsListenerSettings: Uint8Array | Deno.PointerValue;
   /** System.Guid */
-  EventLogActivityId: Uint8Array | Deno.PointerValue | null;
+  EventLogActivityId: Uint8Array | Deno.PointerValue;
   /** u32 */
   ContextSize: number;
   /** ptr */
-  ContextData: Deno.PointerValue | Uint8Array | null;
+  ContextData: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofWRDS_CONNECTION_SETTINGS_1 = 416;
@@ -12892,51 +12892,51 @@ export function allocWRDS_CONNECTION_SETTINGS_1(data?: Partial<WRDS_CONNECTION_S
   const buf = new Uint8Array(sizeofWRDS_CONNECTION_SETTINGS_1);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.fInheritInitialProgram !== undefined) view.setBigUint64(0, data.fInheritInitialProgram === null ? 0n : BigInt(util.toPointer(data.fInheritInitialProgram)), true);
+  if (data?.fInheritInitialProgram !== undefined) view.setBigUint64(0, data.fInheritInitialProgram === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fInheritInitialProgram))), true);
   // 0x08: pointer
-  if (data?.fInheritColorDepth !== undefined) view.setBigUint64(8, data.fInheritColorDepth === null ? 0n : BigInt(util.toPointer(data.fInheritColorDepth)), true);
+  if (data?.fInheritColorDepth !== undefined) view.setBigUint64(8, data.fInheritColorDepth === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fInheritColorDepth))), true);
   // 0x10: pointer
-  if (data?.fHideTitleBar !== undefined) view.setBigUint64(16, data.fHideTitleBar === null ? 0n : BigInt(util.toPointer(data.fHideTitleBar)), true);
+  if (data?.fHideTitleBar !== undefined) view.setBigUint64(16, data.fHideTitleBar === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fHideTitleBar))), true);
   // 0x18: pointer
-  if (data?.fInheritAutoLogon !== undefined) view.setBigUint64(24, data.fInheritAutoLogon === null ? 0n : BigInt(util.toPointer(data.fInheritAutoLogon)), true);
+  if (data?.fInheritAutoLogon !== undefined) view.setBigUint64(24, data.fInheritAutoLogon === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fInheritAutoLogon))), true);
   // 0x20: pointer
-  if (data?.fMaximizeShell !== undefined) view.setBigUint64(32, data.fMaximizeShell === null ? 0n : BigInt(util.toPointer(data.fMaximizeShell)), true);
+  if (data?.fMaximizeShell !== undefined) view.setBigUint64(32, data.fMaximizeShell === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fMaximizeShell))), true);
   // 0x28: pointer
-  if (data?.fDisablePNP !== undefined) view.setBigUint64(40, data.fDisablePNP === null ? 0n : BigInt(util.toPointer(data.fDisablePNP)), true);
+  if (data?.fDisablePNP !== undefined) view.setBigUint64(40, data.fDisablePNP === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fDisablePNP))), true);
   // 0x30: pointer
-  if (data?.fPasswordIsScPin !== undefined) view.setBigUint64(48, data.fPasswordIsScPin === null ? 0n : BigInt(util.toPointer(data.fPasswordIsScPin)), true);
+  if (data?.fPasswordIsScPin !== undefined) view.setBigUint64(48, data.fPasswordIsScPin === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fPasswordIsScPin))), true);
   // 0x38: pointer
-  if (data?.fPromptForPassword !== undefined) view.setBigUint64(56, data.fPromptForPassword === null ? 0n : BigInt(util.toPointer(data.fPromptForPassword)), true);
+  if (data?.fPromptForPassword !== undefined) view.setBigUint64(56, data.fPromptForPassword === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fPromptForPassword))), true);
   // 0x40: pointer
-  if (data?.fDisableCpm !== undefined) view.setBigUint64(64, data.fDisableCpm === null ? 0n : BigInt(util.toPointer(data.fDisableCpm)), true);
+  if (data?.fDisableCpm !== undefined) view.setBigUint64(64, data.fDisableCpm === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fDisableCpm))), true);
   // 0x48: pointer
-  if (data?.fDisableCdm !== undefined) view.setBigUint64(72, data.fDisableCdm === null ? 0n : BigInt(util.toPointer(data.fDisableCdm)), true);
+  if (data?.fDisableCdm !== undefined) view.setBigUint64(72, data.fDisableCdm === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fDisableCdm))), true);
   // 0x50: pointer
-  if (data?.fDisableCcm !== undefined) view.setBigUint64(80, data.fDisableCcm === null ? 0n : BigInt(util.toPointer(data.fDisableCcm)), true);
+  if (data?.fDisableCcm !== undefined) view.setBigUint64(80, data.fDisableCcm === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fDisableCcm))), true);
   // 0x58: pointer
-  if (data?.fDisableLPT !== undefined) view.setBigUint64(88, data.fDisableLPT === null ? 0n : BigInt(util.toPointer(data.fDisableLPT)), true);
+  if (data?.fDisableLPT !== undefined) view.setBigUint64(88, data.fDisableLPT === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fDisableLPT))), true);
   // 0x60: pointer
-  if (data?.fDisableClip !== undefined) view.setBigUint64(96, data.fDisableClip === null ? 0n : BigInt(util.toPointer(data.fDisableClip)), true);
+  if (data?.fDisableClip !== undefined) view.setBigUint64(96, data.fDisableClip === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fDisableClip))), true);
   // 0x68: pointer
-  if (data?.fResetBroken !== undefined) view.setBigUint64(104, data.fResetBroken === null ? 0n : BigInt(util.toPointer(data.fResetBroken)), true);
+  if (data?.fResetBroken !== undefined) view.setBigUint64(104, data.fResetBroken === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fResetBroken))), true);
   // 0x70: pointer
-  if (data?.fDisableEncryption !== undefined) view.setBigUint64(112, data.fDisableEncryption === null ? 0n : BigInt(util.toPointer(data.fDisableEncryption)), true);
+  if (data?.fDisableEncryption !== undefined) view.setBigUint64(112, data.fDisableEncryption === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fDisableEncryption))), true);
   // 0x78: pointer
-  if (data?.fDisableAutoReconnect !== undefined) view.setBigUint64(120, data.fDisableAutoReconnect === null ? 0n : BigInt(util.toPointer(data.fDisableAutoReconnect)), true);
+  if (data?.fDisableAutoReconnect !== undefined) view.setBigUint64(120, data.fDisableAutoReconnect === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fDisableAutoReconnect))), true);
   // 0x80: pointer
-  if (data?.fDisableCtrlAltDel !== undefined) view.setBigUint64(128, data.fDisableCtrlAltDel === null ? 0n : BigInt(util.toPointer(data.fDisableCtrlAltDel)), true);
+  if (data?.fDisableCtrlAltDel !== undefined) view.setBigUint64(128, data.fDisableCtrlAltDel === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fDisableCtrlAltDel))), true);
   // 0x88: pointer
-  if (data?.fDoubleClickDetect !== undefined) view.setBigUint64(136, data.fDoubleClickDetect === null ? 0n : BigInt(util.toPointer(data.fDoubleClickDetect)), true);
+  if (data?.fDoubleClickDetect !== undefined) view.setBigUint64(136, data.fDoubleClickDetect === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fDoubleClickDetect))), true);
   // 0x90: pointer
-  if (data?.fEnableWindowsKey !== undefined) view.setBigUint64(144, data.fEnableWindowsKey === null ? 0n : BigInt(util.toPointer(data.fEnableWindowsKey)), true);
+  if (data?.fEnableWindowsKey !== undefined) view.setBigUint64(144, data.fEnableWindowsKey === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fEnableWindowsKey))), true);
   // 0x98: pointer
-  if (data?.fUsingSavedCreds !== undefined) view.setBigUint64(152, data.fUsingSavedCreds === null ? 0n : BigInt(util.toPointer(data.fUsingSavedCreds)), true);
+  if (data?.fUsingSavedCreds !== undefined) view.setBigUint64(152, data.fUsingSavedCreds === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fUsingSavedCreds))), true);
   // 0xa0: pointer
-  if (data?.fMouse !== undefined) view.setBigUint64(160, data.fMouse === null ? 0n : BigInt(util.toPointer(data.fMouse)), true);
+  if (data?.fMouse !== undefined) view.setBigUint64(160, data.fMouse === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fMouse))), true);
   // 0xa8: pointer
-  if (data?.fNoAudioPlayback !== undefined) view.setBigUint64(168, data.fNoAudioPlayback === null ? 0n : BigInt(util.toPointer(data.fNoAudioPlayback)), true);
+  if (data?.fNoAudioPlayback !== undefined) view.setBigUint64(168, data.fNoAudioPlayback === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fNoAudioPlayback))), true);
   // 0xb0: pointer
-  if (data?.fRemoteConsoleAudio !== undefined) view.setBigUint64(176, data.fRemoteConsoleAudio === null ? 0n : BigInt(util.toPointer(data.fRemoteConsoleAudio)), true);
+  if (data?.fRemoteConsoleAudio !== undefined) view.setBigUint64(176, data.fRemoteConsoleAudio === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fRemoteConsoleAudio))), true);
   // 0xb8: u8
   if (data?.EncryptionLevel !== undefined) view.setUint8(184, Number(data.EncryptionLevel));
   // 0xb9: u16
@@ -12983,46 +12983,46 @@ export function allocWRDS_CONNECTION_SETTINGS_1(data?: Partial<WRDS_CONNECTION_S
   if (data?.ClientSessionId !== undefined) view.setUint32(249, Number(data.ClientSessionId), true);
   // 0xfd: pad3
   // 0x100: pointer
-  if (data?.WorkDirectory !== undefined) view.setBigUint64(256, data.WorkDirectory === null ? 0n : BigInt(util.toPointer(data.WorkDirectory)), true);
+  if (data?.WorkDirectory !== undefined) view.setBigUint64(256, data.WorkDirectory === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WorkDirectory))), true);
   // 0x108: pointer
-  if (data?.InitialProgram !== undefined) view.setBigUint64(264, data.InitialProgram === null ? 0n : BigInt(util.toPointer(data.InitialProgram)), true);
+  if (data?.InitialProgram !== undefined) view.setBigUint64(264, data.InitialProgram === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InitialProgram))), true);
   // 0x110: pointer
-  if (data?.UserName !== undefined) view.setBigUint64(272, data.UserName === null ? 0n : BigInt(util.toPointer(data.UserName)), true);
+  if (data?.UserName !== undefined) view.setBigUint64(272, data.UserName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.UserName))), true);
   // 0x118: pointer
-  if (data?.Domain !== undefined) view.setBigUint64(280, data.Domain === null ? 0n : BigInt(util.toPointer(data.Domain)), true);
+  if (data?.Domain !== undefined) view.setBigUint64(280, data.Domain === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Domain))), true);
   // 0x120: pointer
-  if (data?.Password !== undefined) view.setBigUint64(288, data.Password === null ? 0n : BigInt(util.toPointer(data.Password)), true);
+  if (data?.Password !== undefined) view.setBigUint64(288, data.Password === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Password))), true);
   // 0x128: pointer
-  if (data?.ProtocolName !== undefined) view.setBigUint64(296, data.ProtocolName === null ? 0n : BigInt(util.toPointer(data.ProtocolName)), true);
+  if (data?.ProtocolName !== undefined) view.setBigUint64(296, data.ProtocolName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ProtocolName))), true);
   // 0x130: pointer
-  if (data?.DisplayDriverName !== undefined) view.setBigUint64(304, data.DisplayDriverName === null ? 0n : BigInt(util.toPointer(data.DisplayDriverName)), true);
+  if (data?.DisplayDriverName !== undefined) view.setBigUint64(304, data.DisplayDriverName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DisplayDriverName))), true);
   // 0x138: pointer
-  if (data?.DisplayDeviceName !== undefined) view.setBigUint64(312, data.DisplayDeviceName === null ? 0n : BigInt(util.toPointer(data.DisplayDeviceName)), true);
+  if (data?.DisplayDeviceName !== undefined) view.setBigUint64(312, data.DisplayDeviceName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DisplayDeviceName))), true);
   // 0x140: pointer
-  if (data?.imeFileName !== undefined) view.setBigUint64(320, data.imeFileName === null ? 0n : BigInt(util.toPointer(data.imeFileName)), true);
+  if (data?.imeFileName !== undefined) view.setBigUint64(320, data.imeFileName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.imeFileName))), true);
   // 0x148: pointer
-  if (data?.AudioDriverName !== undefined) view.setBigUint64(328, data.AudioDriverName === null ? 0n : BigInt(util.toPointer(data.AudioDriverName)), true);
+  if (data?.AudioDriverName !== undefined) view.setBigUint64(328, data.AudioDriverName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.AudioDriverName))), true);
   // 0x150: pointer
-  if (data?.ClientName !== undefined) view.setBigUint64(336, data.ClientName === null ? 0n : BigInt(util.toPointer(data.ClientName)), true);
+  if (data?.ClientName !== undefined) view.setBigUint64(336, data.ClientName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientName))), true);
   // 0x158: pointer
-  if (data?.ClientAddress !== undefined) view.setBigUint64(344, data.ClientAddress === null ? 0n : BigInt(util.toPointer(data.ClientAddress)), true);
+  if (data?.ClientAddress !== undefined) view.setBigUint64(344, data.ClientAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientAddress))), true);
   // 0x160: pointer
-  if (data?.ClientDirectory !== undefined) view.setBigUint64(352, data.ClientDirectory === null ? 0n : BigInt(util.toPointer(data.ClientDirectory)), true);
+  if (data?.ClientDirectory !== undefined) view.setBigUint64(352, data.ClientDirectory === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientDirectory))), true);
   // 0x168: pointer
-  if (data?.ClientDigProductId !== undefined) view.setBigUint64(360, data.ClientDigProductId === null ? 0n : BigInt(util.toPointer(data.ClientDigProductId)), true);
+  if (data?.ClientDigProductId !== undefined) view.setBigUint64(360, data.ClientDigProductId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientDigProductId))), true);
   // 0x170: pointer
-  if (data?.ClientSockAddress !== undefined) view.setBigUint64(368, data.ClientSockAddress === null ? 0n : BigInt(util.toPointer(data.ClientSockAddress)), true);
+  if (data?.ClientSockAddress !== undefined) view.setBigUint64(368, data.ClientSockAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientSockAddress))), true);
   // 0x178: pointer
-  if (data?.ClientTimeZone !== undefined) view.setBigUint64(376, data.ClientTimeZone === null ? 0n : BigInt(util.toPointer(data.ClientTimeZone)), true);
+  if (data?.ClientTimeZone !== undefined) view.setBigUint64(376, data.ClientTimeZone === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientTimeZone))), true);
   // 0x180: pointer
-  if (data?.WRdsListenerSettings !== undefined) view.setBigUint64(384, data.WRdsListenerSettings === null ? 0n : BigInt(util.toPointer(data.WRdsListenerSettings)), true);
+  if (data?.WRdsListenerSettings !== undefined) view.setBigUint64(384, data.WRdsListenerSettings === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WRdsListenerSettings))), true);
   // 0x188: pointer
-  if (data?.EventLogActivityId !== undefined) view.setBigUint64(392, data.EventLogActivityId === null ? 0n : BigInt(util.toPointer(data.EventLogActivityId)), true);
+  if (data?.EventLogActivityId !== undefined) view.setBigUint64(392, data.EventLogActivityId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.EventLogActivityId))), true);
   // 0x190: u32
   if (data?.ContextSize !== undefined) view.setUint32(400, Number(data.ContextSize), true);
   // 0x194: pad4
   // 0x198: pointer
-  if (data?.ContextData !== undefined) view.setBigUint64(408, data.ContextData === null ? 0n : BigInt(util.toPointer(data.ContextData)), true);
+  if (data?.ContextData !== undefined) view.setBigUint64(408, data.ContextData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ContextData))), true);
   return buf;
 }
 
@@ -13037,141 +13037,141 @@ export class WRDS_CONNECTION_SETTINGS_1View {
   }
 
   // 0x00: pointer
-  get fInheritInitialProgram(): Uint8Array | Deno.PointerValue | null {
+  get fInheritInitialProgram(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get fInheritColorDepth(): Uint8Array | Deno.PointerValue | null {
+  get fInheritColorDepth(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get fHideTitleBar(): Uint8Array | Deno.PointerValue | null {
+  get fHideTitleBar(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get fInheritAutoLogon(): Uint8Array | Deno.PointerValue | null {
+  get fInheritAutoLogon(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get fMaximizeShell(): Uint8Array | Deno.PointerValue | null {
+  get fMaximizeShell(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get fDisablePNP(): Uint8Array | Deno.PointerValue | null {
+  get fDisablePNP(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get fPasswordIsScPin(): Uint8Array | Deno.PointerValue | null {
+  get fPasswordIsScPin(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get fPromptForPassword(): Uint8Array | Deno.PointerValue | null {
+  get fPromptForPassword(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get fDisableCpm(): Uint8Array | Deno.PointerValue | null {
+  get fDisableCpm(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: pointer
-  get fDisableCdm(): Uint8Array | Deno.PointerValue | null {
+  get fDisableCdm(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: pointer
-  get fDisableCcm(): Uint8Array | Deno.PointerValue | null {
+  get fDisableCcm(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x58: pointer
-  get fDisableLPT(): Uint8Array | Deno.PointerValue | null {
+  get fDisableLPT(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x60: pointer
-  get fDisableClip(): Uint8Array | Deno.PointerValue | null {
+  get fDisableClip(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(96, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x68: pointer
-  get fResetBroken(): Uint8Array | Deno.PointerValue | null {
+  get fResetBroken(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(104, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x70: pointer
-  get fDisableEncryption(): Uint8Array | Deno.PointerValue | null {
+  get fDisableEncryption(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(112, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x78: pointer
-  get fDisableAutoReconnect(): Uint8Array | Deno.PointerValue | null {
+  get fDisableAutoReconnect(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(120, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x80: pointer
-  get fDisableCtrlAltDel(): Uint8Array | Deno.PointerValue | null {
+  get fDisableCtrlAltDel(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(128, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x88: pointer
-  get fDoubleClickDetect(): Uint8Array | Deno.PointerValue | null {
+  get fDoubleClickDetect(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(136, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x90: pointer
-  get fEnableWindowsKey(): Uint8Array | Deno.PointerValue | null {
+  get fEnableWindowsKey(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(144, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x98: pointer
-  get fUsingSavedCreds(): Uint8Array | Deno.PointerValue | null {
+  get fUsingSavedCreds(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(152, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0xa0: pointer
-  get fMouse(): Uint8Array | Deno.PointerValue | null {
+  get fMouse(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(160, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0xa8: pointer
-  get fNoAudioPlayback(): Uint8Array | Deno.PointerValue | null {
+  get fNoAudioPlayback(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(168, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0xb0: pointer
-  get fRemoteConsoleAudio(): Uint8Array | Deno.PointerValue | null {
+  get fRemoteConsoleAudio(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(176, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0xb8: u8
@@ -13287,111 +13287,111 @@ export class WRDS_CONNECTION_SETTINGS_1View {
   // 0xfd: pad3
 
   // 0x100: pointer
-  get WorkDirectory(): Uint8Array | Deno.PointerValue | null {
+  get WorkDirectory(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(256, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x108: pointer
-  get InitialProgram(): Uint8Array | Deno.PointerValue | null {
+  get InitialProgram(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(264, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x110: pointer
-  get UserName(): Uint8Array | Deno.PointerValue | null {
+  get UserName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(272, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x118: pointer
-  get Domain(): Uint8Array | Deno.PointerValue | null {
+  get Domain(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(280, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x120: pointer
-  get Password(): Uint8Array | Deno.PointerValue | null {
+  get Password(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(288, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x128: pointer
-  get ProtocolName(): Uint8Array | Deno.PointerValue | null {
+  get ProtocolName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(296, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x130: pointer
-  get DisplayDriverName(): Uint8Array | Deno.PointerValue | null {
+  get DisplayDriverName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(304, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x138: pointer
-  get DisplayDeviceName(): Uint8Array | Deno.PointerValue | null {
+  get DisplayDeviceName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(312, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x140: pointer
-  get imeFileName(): Uint8Array | Deno.PointerValue | null {
+  get imeFileName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(320, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x148: pointer
-  get AudioDriverName(): Uint8Array | Deno.PointerValue | null {
+  get AudioDriverName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(328, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x150: pointer
-  get ClientName(): Uint8Array | Deno.PointerValue | null {
+  get ClientName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(336, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x158: pointer
-  get ClientAddress(): Uint8Array | Deno.PointerValue | null {
+  get ClientAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(344, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x160: pointer
-  get ClientDirectory(): Uint8Array | Deno.PointerValue | null {
+  get ClientDirectory(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(352, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x168: pointer
-  get ClientDigProductId(): Uint8Array | Deno.PointerValue | null {
+  get ClientDigProductId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(360, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x170: pointer
-  get ClientSockAddress(): Uint8Array | Deno.PointerValue | null {
+  get ClientSockAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(368, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x178: pointer
-  get ClientTimeZone(): Uint8Array | Deno.PointerValue | null {
+  get ClientTimeZone(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(376, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x180: pointer
-  get WRdsListenerSettings(): Uint8Array | Deno.PointerValue | null {
+  get WRdsListenerSettings(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(384, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x188: pointer
-  get EventLogActivityId(): Uint8Array | Deno.PointerValue | null {
+  get EventLogActivityId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(392, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x190: u32
@@ -13402,124 +13402,124 @@ export class WRDS_CONNECTION_SETTINGS_1View {
   // 0x194: pad4
 
   // 0x198: pointer
-  get ContextData(): Uint8Array | Deno.PointerValue | null {
+  get ContextData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(408, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set fInheritInitialProgram(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set fInheritInitialProgram(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set fInheritColorDepth(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set fInheritColorDepth(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set fHideTitleBar(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set fHideTitleBar(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set fInheritAutoLogon(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set fInheritAutoLogon(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set fMaximizeShell(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set fMaximizeShell(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set fDisablePNP(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set fDisablePNP(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set fPasswordIsScPin(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set fPasswordIsScPin(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set fPromptForPassword(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set fPromptForPassword(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set fDisableCpm(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set fDisableCpm(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: pointer
-  set fDisableCdm(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set fDisableCdm(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x50: pointer
-  set fDisableCcm(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set fDisableCcm(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x58: pointer
-  set fDisableLPT(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  set fDisableLPT(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x60: pointer
-  set fDisableClip(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(96, BigInt(util.toPointer(value)), true);
+  set fDisableClip(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(96, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x68: pointer
-  set fResetBroken(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(104, BigInt(util.toPointer(value)), true);
+  set fResetBroken(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(104, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x70: pointer
-  set fDisableEncryption(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(112, BigInt(util.toPointer(value)), true);
+  set fDisableEncryption(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(112, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x78: pointer
-  set fDisableAutoReconnect(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(120, BigInt(util.toPointer(value)), true);
+  set fDisableAutoReconnect(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(120, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x80: pointer
-  set fDisableCtrlAltDel(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(128, BigInt(util.toPointer(value)), true);
+  set fDisableCtrlAltDel(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(128, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x88: pointer
-  set fDoubleClickDetect(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(136, BigInt(util.toPointer(value)), true);
+  set fDoubleClickDetect(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(136, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x90: pointer
-  set fEnableWindowsKey(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(144, BigInt(util.toPointer(value)), true);
+  set fEnableWindowsKey(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(144, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x98: pointer
-  set fUsingSavedCreds(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(152, BigInt(util.toPointer(value)), true);
+  set fUsingSavedCreds(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(152, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0xa0: pointer
-  set fMouse(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(160, BigInt(util.toPointer(value)), true);
+  set fMouse(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(160, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0xa8: pointer
-  set fNoAudioPlayback(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(168, BigInt(util.toPointer(value)), true);
+  set fNoAudioPlayback(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(168, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0xb0: pointer
-  set fRemoteConsoleAudio(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(176, BigInt(util.toPointer(value)), true);
+  set fRemoteConsoleAudio(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(176, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0xb8: u8
@@ -13635,93 +13635,93 @@ export class WRDS_CONNECTION_SETTINGS_1View {
   // 0xfd: pad3
 
   // 0x100: pointer
-  set WorkDirectory(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(256, BigInt(util.toPointer(value)), true);
+  set WorkDirectory(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(256, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x108: pointer
-  set InitialProgram(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(264, BigInt(util.toPointer(value)), true);
+  set InitialProgram(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(264, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x110: pointer
-  set UserName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(272, BigInt(util.toPointer(value)), true);
+  set UserName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(272, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x118: pointer
-  set Domain(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(280, BigInt(util.toPointer(value)), true);
+  set Domain(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(280, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x120: pointer
-  set Password(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(288, BigInt(util.toPointer(value)), true);
+  set Password(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(288, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x128: pointer
-  set ProtocolName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(296, BigInt(util.toPointer(value)), true);
+  set ProtocolName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(296, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x130: pointer
-  set DisplayDriverName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(304, BigInt(util.toPointer(value)), true);
+  set DisplayDriverName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(304, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x138: pointer
-  set DisplayDeviceName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(312, BigInt(util.toPointer(value)), true);
+  set DisplayDeviceName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(312, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x140: pointer
-  set imeFileName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(320, BigInt(util.toPointer(value)), true);
+  set imeFileName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(320, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x148: pointer
-  set AudioDriverName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(328, BigInt(util.toPointer(value)), true);
+  set AudioDriverName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(328, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x150: pointer
-  set ClientName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(336, BigInt(util.toPointer(value)), true);
+  set ClientName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(336, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x158: pointer
-  set ClientAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(344, BigInt(util.toPointer(value)), true);
+  set ClientAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(344, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x160: pointer
-  set ClientDirectory(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(352, BigInt(util.toPointer(value)), true);
+  set ClientDirectory(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(352, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x168: pointer
-  set ClientDigProductId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(360, BigInt(util.toPointer(value)), true);
+  set ClientDigProductId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(360, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x170: pointer
-  set ClientSockAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(368, BigInt(util.toPointer(value)), true);
+  set ClientSockAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(368, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x178: pointer
-  set ClientTimeZone(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(376, BigInt(util.toPointer(value)), true);
+  set ClientTimeZone(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(376, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x180: pointer
-  set WRdsListenerSettings(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(384, BigInt(util.toPointer(value)), true);
+  set WRdsListenerSettings(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(384, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x188: pointer
-  set EventLogActivityId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(392, BigInt(util.toPointer(value)), true);
+  set EventLogActivityId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(392, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x190: u32
@@ -13732,8 +13732,8 @@ export class WRDS_CONNECTION_SETTINGS_1View {
   // 0x194: pad4
 
   // 0x198: pointer
-  set ContextData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(408, BigInt(util.toPointer(value)), true);
+  set ContextData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(408, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -13800,7 +13800,7 @@ export interface WRDS_SETTINGS_1 {
   /** Windows.Win32.System.RemoteDesktop.WRDS_SETTING_STATUS */
   WRdsKeepAliveStatus: WRDS_SETTING_STATUS;
   /** Windows.Win32.Foundation.BOOLEAN */
-  WRdsKeepAliveStartValue: Uint8Array | Deno.PointerValue | null;
+  WRdsKeepAliveStartValue: Uint8Array | Deno.PointerValue;
   /** u32 */
   WRdsKeepAliveIntervalValue: number;
 }
@@ -13870,7 +13870,7 @@ export function allocWRDS_SETTINGS_1(data?: Partial<WRDS_SETTINGS_1>): Uint8Arra
   if (data?.WRdsKeepAliveStatus !== undefined) view.setInt32(112, Number(data.WRdsKeepAliveStatus), true);
   // 0x74: pad4
   // 0x78: pointer
-  if (data?.WRdsKeepAliveStartValue !== undefined) view.setBigUint64(120, data.WRdsKeepAliveStartValue === null ? 0n : BigInt(util.toPointer(data.WRdsKeepAliveStartValue)), true);
+  if (data?.WRdsKeepAliveStartValue !== undefined) view.setBigUint64(120, data.WRdsKeepAliveStartValue === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WRdsKeepAliveStartValue))), true);
   // 0x80: u32
   if (data?.WRdsKeepAliveIntervalValue !== undefined) view.setUint32(128, Number(data.WRdsKeepAliveIntervalValue), true);
   // 0x84: pad4
@@ -14035,9 +14035,9 @@ export class WRDS_SETTINGS_1View {
   // 0x74: pad4
 
   // 0x78: pointer
-  get WRdsKeepAliveStartValue(): Uint8Array | Deno.PointerValue | null {
+  get WRdsKeepAliveStartValue(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(120, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x80: u32
@@ -14195,8 +14195,8 @@ export class WRDS_SETTINGS_1View {
   // 0x74: pad4
 
   // 0x78: pointer
-  set WRdsKeepAliveStartValue(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(120, BigInt(util.toPointer(value)), true);
+  set WRdsKeepAliveStartValue(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(120, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x80: u32
@@ -14212,7 +14212,7 @@ export class WRDS_SETTINGS_1View {
  */
 export interface WRDS_CONNECTION_SETTING {
   /** Windows.Win32.System.RemoteDesktop.WRDS_CONNECTION_SETTINGS_1 */
-  WRdsConnectionSettings1: Uint8Array | Deno.PointerValue | null;
+  WRdsConnectionSettings1: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofWRDS_CONNECTION_SETTING = 8;
@@ -14221,7 +14221,7 @@ export function allocWRDS_CONNECTION_SETTING(data?: Partial<WRDS_CONNECTION_SETT
   const buf = new Uint8Array(sizeofWRDS_CONNECTION_SETTING);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.WRdsConnectionSettings1 !== undefined) view.setBigUint64(0, data.WRdsConnectionSettings1 === null ? 0n : BigInt(util.toPointer(data.WRdsConnectionSettings1)), true);
+  if (data?.WRdsConnectionSettings1 !== undefined) view.setBigUint64(0, data.WRdsConnectionSettings1 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WRdsConnectionSettings1))), true);
   return buf;
 }
 
@@ -14236,14 +14236,14 @@ export class WRDS_CONNECTION_SETTINGView {
   }
 
   // 0x00: pointer
-  get WRdsConnectionSettings1(): Uint8Array | Deno.PointerValue | null {
+  get WRdsConnectionSettings1(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set WRdsConnectionSettings1(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set WRdsConnectionSettings1(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -14254,7 +14254,7 @@ export interface WRDS_CONNECTION_SETTINGS {
   /** Windows.Win32.System.RemoteDesktop.WRDS_CONNECTION_SETTING_LEVEL */
   WRdsConnectionSettingLevel: WRDS_CONNECTION_SETTING_LEVEL;
   /** Windows.Win32.System.RemoteDesktop.WRDS_CONNECTION_SETTING */
-  WRdsConnectionSetting: Uint8Array | Deno.PointerValue | null;
+  WRdsConnectionSetting: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofWRDS_CONNECTION_SETTINGS = 16;
@@ -14266,7 +14266,7 @@ export function allocWRDS_CONNECTION_SETTINGS(data?: Partial<WRDS_CONNECTION_SET
   if (data?.WRdsConnectionSettingLevel !== undefined) view.setInt32(0, Number(data.WRdsConnectionSettingLevel), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.WRdsConnectionSetting !== undefined) view.setBigUint64(8, data.WRdsConnectionSetting === null ? 0n : BigInt(util.toPointer(data.WRdsConnectionSetting)), true);
+  if (data?.WRdsConnectionSetting !== undefined) view.setBigUint64(8, data.WRdsConnectionSetting === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WRdsConnectionSetting))), true);
   return buf;
 }
 
@@ -14288,9 +14288,9 @@ export class WRDS_CONNECTION_SETTINGSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get WRdsConnectionSetting(): Uint8Array | Deno.PointerValue | null {
+  get WRdsConnectionSetting(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -14301,8 +14301,8 @@ export class WRDS_CONNECTION_SETTINGSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set WRdsConnectionSetting(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set WRdsConnectionSetting(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -14311,7 +14311,7 @@ export class WRDS_CONNECTION_SETTINGSView {
  */
 export interface WRDS_SETTING {
   /** Windows.Win32.System.RemoteDesktop.WRDS_SETTINGS_1 */
-  WRdsSettings1: Uint8Array | Deno.PointerValue | null;
+  WRdsSettings1: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofWRDS_SETTING = 8;
@@ -14320,7 +14320,7 @@ export function allocWRDS_SETTING(data?: Partial<WRDS_SETTING>): Uint8Array {
   const buf = new Uint8Array(sizeofWRDS_SETTING);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.WRdsSettings1 !== undefined) view.setBigUint64(0, data.WRdsSettings1 === null ? 0n : BigInt(util.toPointer(data.WRdsSettings1)), true);
+  if (data?.WRdsSettings1 !== undefined) view.setBigUint64(0, data.WRdsSettings1 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WRdsSettings1))), true);
   return buf;
 }
 
@@ -14335,14 +14335,14 @@ export class WRDS_SETTINGView {
   }
 
   // 0x00: pointer
-  get WRdsSettings1(): Uint8Array | Deno.PointerValue | null {
+  get WRdsSettings1(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set WRdsSettings1(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set WRdsSettings1(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -14355,7 +14355,7 @@ export interface WRDS_SETTINGS {
   /** Windows.Win32.System.RemoteDesktop.WRDS_SETTING_LEVEL */
   WRdsSettingLevel: WRDS_SETTING_LEVEL;
   /** Windows.Win32.System.RemoteDesktop.WRDS_SETTING */
-  WRdsSetting: Uint8Array | Deno.PointerValue | null;
+  WRdsSetting: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofWRDS_SETTINGS = 16;
@@ -14368,7 +14368,7 @@ export function allocWRDS_SETTINGS(data?: Partial<WRDS_SETTINGS>): Uint8Array {
   // 0x04: i32
   if (data?.WRdsSettingLevel !== undefined) view.setInt32(4, Number(data.WRdsSettingLevel), true);
   // 0x08: pointer
-  if (data?.WRdsSetting !== undefined) view.setBigUint64(8, data.WRdsSetting === null ? 0n : BigInt(util.toPointer(data.WRdsSetting)), true);
+  if (data?.WRdsSetting !== undefined) view.setBigUint64(8, data.WRdsSetting === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WRdsSetting))), true);
   return buf;
 }
 
@@ -14393,9 +14393,9 @@ export class WRDS_SETTINGSView {
   }
 
   // 0x08: pointer
-  get WRdsSetting(): Uint8Array | Deno.PointerValue | null {
+  get WRdsSetting(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -14409,8 +14409,8 @@ export class WRDS_SETTINGSView {
   }
 
   // 0x08: pointer
-  set WRdsSetting(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set WRdsSetting(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -14469,7 +14469,7 @@ export class WTSSESSION_NOTIFICATIONView {
 
 export type HWND = Deno.PointerValue;
 
-export type PSECURITY_DESCRIPTOR = Deno.PointerValue | Uint8Array | null;
+export type PSECURITY_DESCRIPTOR = Deno.PointerValue | Uint8Array;
 
 export type HRESULT = number;
 
@@ -14793,8 +14793,8 @@ export function WTSEnumerateServersW(
   pDomainName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Reserved: number /* u32 */,
   Version: number /* u32 */,
-  ppServerInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pCount: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ppServerInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  pCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateServersW(util.pwstrToFfi(pDomainName), Reserved, Version, util.toPointer(ppServerInfo), util.toPointer(pCount)));
 }
@@ -14803,104 +14803,104 @@ export function WTSEnumerateServersA(
   pDomainName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Reserved: number /* u32 */,
   Version: number /* u32 */,
-  ppServerInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pCount: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ppServerInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  pCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateServersA(util.pstrToFfi(pDomainName), Reserved, Version, util.toPointer(ppServerInfo), util.toPointer(pCount)));
 }
 
 export function WTSOpenServerW(
   pServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libWTSAPI32_dll.WTSOpenServerW(util.pwstrToFfi(pServerName)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
+  return libWTSAPI32_dll.WTSOpenServerW(util.pwstrToFfi(pServerName));
 }
 
 export function WTSOpenServerA(
   pServerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libWTSAPI32_dll.WTSOpenServerA(util.pstrToFfi(pServerName)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
+  return libWTSAPI32_dll.WTSOpenServerA(util.pstrToFfi(pServerName));
 }
 
 export function WTSOpenServerExW(
   pServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libWTSAPI32_dll.WTSOpenServerExW(util.pwstrToFfi(pServerName)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
+  return libWTSAPI32_dll.WTSOpenServerExW(util.pwstrToFfi(pServerName));
 }
 
 export function WTSOpenServerExA(
   pServerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libWTSAPI32_dll.WTSOpenServerExA(util.pstrToFfi(pServerName)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
+  return libWTSAPI32_dll.WTSOpenServerExA(util.pstrToFfi(pServerName));
 }
 
 export function WTSCloseServer(
-  hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hServer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): void /* void */ {
   return libWTSAPI32_dll.WTSCloseServer(util.toPointer(hServer));
 }
 
 export function WTSEnumerateSessionsW(
-  hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hServer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Reserved: number /* u32 */,
   Version: number /* u32 */,
-  ppSessionInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pCount: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ppSessionInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  pCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateSessionsW(util.toPointer(hServer), Reserved, Version, util.toPointer(ppSessionInfo), util.toPointer(pCount)));
 }
 
 export function WTSEnumerateSessionsA(
-  hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hServer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Reserved: number /* u32 */,
   Version: number /* u32 */,
-  ppSessionInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pCount: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ppSessionInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  pCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateSessionsA(util.toPointer(hServer), Reserved, Version, util.toPointer(ppSessionInfo), util.toPointer(pCount)));
 }
 
 export function WTSEnumerateSessionsExW(
-  hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pLevel: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hServer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  pLevel: Deno.PointerValue | Uint8Array /* ptr */,
   Filter: number /* u32 */,
-  ppSessionInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pCount: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ppSessionInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  pCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateSessionsExW(util.toPointer(hServer), util.toPointer(pLevel), Filter, util.toPointer(ppSessionInfo), util.toPointer(pCount)));
 }
 
 export function WTSEnumerateSessionsExA(
-  hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pLevel: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hServer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  pLevel: Deno.PointerValue | Uint8Array /* ptr */,
   Filter: number /* u32 */,
-  ppSessionInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pCount: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ppSessionInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  pCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateSessionsExA(util.toPointer(hServer), util.toPointer(pLevel), Filter, util.toPointer(ppSessionInfo), util.toPointer(pCount)));
 }
 
 export function WTSEnumerateProcessesW(
-  hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hServer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Reserved: number /* u32 */,
   Version: number /* u32 */,
-  ppProcessInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pCount: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ppProcessInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  pCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateProcessesW(util.toPointer(hServer), Reserved, Version, util.toPointer(ppProcessInfo), util.toPointer(pCount)));
 }
 
 export function WTSEnumerateProcessesA(
-  hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hServer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Reserved: number /* u32 */,
   Version: number /* u32 */,
-  ppProcessInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pCount: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ppProcessInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  pCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateProcessesA(util.toPointer(hServer), Reserved, Version, util.toPointer(ppProcessInfo), util.toPointer(pCount)));
 }
 
 export function WTSTerminateProcess(
-  hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hServer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ProcessId: number /* u32 */,
   ExitCode: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -14908,21 +14908,21 @@ export function WTSTerminateProcess(
 }
 
 export function WTSQuerySessionInformationW(
-  hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hServer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   SessionId: number /* u32 */,
   WTSInfoClass: WTS_INFO_CLASS /* Windows.Win32.System.RemoteDesktop.WTS_INFO_CLASS */,
-  ppBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ppBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  pBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSQuerySessionInformationW(util.toPointer(hServer), SessionId, WTSInfoClass, util.toPointer(ppBuffer), util.toPointer(pBytesReturned)));
 }
 
 export function WTSQuerySessionInformationA(
-  hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hServer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   SessionId: number /* u32 */,
   WTSInfoClass: WTS_INFO_CLASS /* Windows.Win32.System.RemoteDesktop.WTS_INFO_CLASS */,
-  ppBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ppBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  pBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSQuerySessionInformationA(util.toPointer(hServer), SessionId, WTSInfoClass, util.toPointer(ppBuffer), util.toPointer(pBytesReturned)));
 }
@@ -14931,8 +14931,8 @@ export function WTSQueryUserConfigW(
   pServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pUserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   WTSConfigClass: WTS_CONFIG_CLASS /* Windows.Win32.System.RemoteDesktop.WTS_CONFIG_CLASS */,
-  ppBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ppBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  pBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSQueryUserConfigW(util.pwstrToFfi(pServerName), util.pwstrToFfi(pUserName), WTSConfigClass, util.toPointer(ppBuffer), util.toPointer(pBytesReturned)));
 }
@@ -14941,8 +14941,8 @@ export function WTSQueryUserConfigA(
   pServerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pUserName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   WTSConfigClass: WTS_CONFIG_CLASS /* Windows.Win32.System.RemoteDesktop.WTS_CONFIG_CLASS */,
-  ppBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ppBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  pBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSQueryUserConfigA(util.pstrToFfi(pServerName), util.pstrToFfi(pUserName), WTSConfigClass, util.toPointer(ppBuffer), util.toPointer(pBytesReturned)));
 }
@@ -14968,7 +14968,7 @@ export function WTSSetUserConfigA(
 }
 
 export function WTSSendMessageW(
-  hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hServer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   SessionId: number /* u32 */,
   pTitle: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   TitleLength: number /* u32 */,
@@ -14976,14 +14976,14 @@ export function WTSSendMessageW(
   MessageLength: number /* u32 */,
   Style: MESSAGEBOX_STYLE /* Windows.Win32.UI.WindowsAndMessaging.MESSAGEBOX_STYLE */,
   Timeout: number /* u32 */,
-  pResponse: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pResponse: Deno.PointerValue | Uint8Array /* ptr */,
   bWait: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSSendMessageW(util.toPointer(hServer), SessionId, util.pwstrToFfi(pTitle), TitleLength, util.pwstrToFfi(pMessage), MessageLength, Style, Timeout, util.toPointer(pResponse), util.boolToFfi(bWait)));
 }
 
 export function WTSSendMessageA(
-  hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hServer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   SessionId: number /* u32 */,
   pTitle: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   TitleLength: number /* u32 */,
@@ -14991,14 +14991,14 @@ export function WTSSendMessageA(
   MessageLength: number /* u32 */,
   Style: MESSAGEBOX_STYLE /* Windows.Win32.UI.WindowsAndMessaging.MESSAGEBOX_STYLE */,
   Timeout: number /* u32 */,
-  pResponse: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pResponse: Deno.PointerValue | Uint8Array /* ptr */,
   bWait: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSSendMessageA(util.toPointer(hServer), SessionId, util.pstrToFfi(pTitle), TitleLength, util.pstrToFfi(pMessage), MessageLength, Style, Timeout, util.toPointer(pResponse), util.boolToFfi(bWait)));
 }
 
 export function WTSDisconnectSession(
-  hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hServer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   SessionId: number /* u32 */,
   bWait: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -15006,7 +15006,7 @@ export function WTSDisconnectSession(
 }
 
 export function WTSLogoffSession(
-  hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hServer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   SessionId: number /* u32 */,
   bWait: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -15014,126 +15014,126 @@ export function WTSLogoffSession(
 }
 
 export function WTSShutdownSystem(
-  hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hServer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ShutdownFlag: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSShutdownSystem(util.toPointer(hServer), ShutdownFlag));
 }
 
 export function WTSWaitSystemEvent(
-  hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hServer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   EventMask: number /* u32 */,
-  pEventFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pEventFlags: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSWaitSystemEvent(util.toPointer(hServer), EventMask, util.toPointer(pEventFlags)));
 }
 
 export function WTSVirtualChannelOpen(
-  hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hServer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   SessionId: number /* u32 */,
   pVirtualName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-): Deno.PointerValue | null /* Windows.Win32.System.RemoteDesktop.HwtsVirtualChannelHandle */ {
-  return util.pointerFromFfi(libWTSAPI32_dll.WTSVirtualChannelOpen(util.toPointer(hServer), SessionId, util.pstrToFfi(pVirtualName)));
+): Deno.PointerValue /* Windows.Win32.System.RemoteDesktop.HwtsVirtualChannelHandle */ {
+  return libWTSAPI32_dll.WTSVirtualChannelOpen(util.toPointer(hServer), SessionId, util.pstrToFfi(pVirtualName));
 }
 
 export function WTSVirtualChannelOpenEx(
   SessionId: number /* u32 */,
   pVirtualName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   flags: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.System.RemoteDesktop.HwtsVirtualChannelHandle */ {
-  return util.pointerFromFfi(libWTSAPI32_dll.WTSVirtualChannelOpenEx(SessionId, util.pstrToFfi(pVirtualName), flags));
+): Deno.PointerValue /* Windows.Win32.System.RemoteDesktop.HwtsVirtualChannelHandle */ {
+  return libWTSAPI32_dll.WTSVirtualChannelOpenEx(SessionId, util.pstrToFfi(pVirtualName), flags);
 }
 
 export function WTSVirtualChannelClose(
-  hChannelHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hChannelHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSVirtualChannelClose(util.toPointer(hChannelHandle)));
 }
 
 export function WTSVirtualChannelRead(
-  hChannelHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hChannelHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   TimeOut: number /* u32 */,
   Buffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   BufferSize: number /* u32 */,
-  pBytesRead: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBytesRead: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSVirtualChannelRead(util.toPointer(hChannelHandle), TimeOut, util.pstrToFfi(Buffer), BufferSize, util.toPointer(pBytesRead)));
 }
 
 export function WTSVirtualChannelWrite(
-  hChannelHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hChannelHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Buffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Length: number /* u32 */,
-  pBytesWritten: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBytesWritten: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSVirtualChannelWrite(util.toPointer(hChannelHandle), util.pstrToFfi(Buffer), Length, util.toPointer(pBytesWritten)));
 }
 
 export function WTSVirtualChannelPurgeInput(
-  hChannelHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hChannelHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSVirtualChannelPurgeInput(util.toPointer(hChannelHandle)));
 }
 
 export function WTSVirtualChannelPurgeOutput(
-  hChannelHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hChannelHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSVirtualChannelPurgeOutput(util.toPointer(hChannelHandle)));
 }
 
 export function WTSVirtualChannelQuery(
-  hChannelHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hChannelHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   param1: WTS_VIRTUAL_CLASS /* Windows.Win32.System.RemoteDesktop.WTS_VIRTUAL_CLASS */,
-  ppBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ppBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  pBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSVirtualChannelQuery(util.toPointer(hChannelHandle), param1, util.toPointer(ppBuffer), util.toPointer(pBytesReturned)));
 }
 
 export function WTSFreeMemory(
-  pMemory: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pMemory: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libWTSAPI32_dll.WTSFreeMemory(util.toPointer(pMemory));
 }
 
 export function WTSRegisterSessionNotification(
-  hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
+  hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSRegisterSessionNotification(util.hwndToFfi(hWnd), dwFlags));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSRegisterSessionNotification((hWnd), dwFlags));
 }
 
 export function WTSUnRegisterSessionNotification(
-  hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
+  hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSUnRegisterSessionNotification(util.hwndToFfi(hWnd)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSUnRegisterSessionNotification((hWnd)));
 }
 
 export function WTSRegisterSessionNotificationEx(
-  hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
+  hServer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSRegisterSessionNotificationEx(util.toPointer(hServer), util.hwndToFfi(hWnd), dwFlags));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSRegisterSessionNotificationEx(util.toPointer(hServer), (hWnd), dwFlags));
 }
 
 export function WTSUnRegisterSessionNotificationEx(
-  hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
+  hServer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSUnRegisterSessionNotificationEx(util.toPointer(hServer), util.hwndToFfi(hWnd)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSUnRegisterSessionNotificationEx(util.toPointer(hServer), (hWnd)));
 }
 
 export function WTSQueryUserToken(
   SessionId: number /* u32 */,
-  phToken: Deno.PointerValue | Uint8Array | null /* ptr */,
+  phToken: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSQueryUserToken(SessionId, util.toPointer(phToken)));
 }
 
 export function WTSFreeMemoryExW(
   WTSTypeClass: WTS_TYPE_CLASS /* Windows.Win32.System.RemoteDesktop.WTS_TYPE_CLASS */,
-  pMemory: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   NumberOfEntries: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSFreeMemoryExW(WTSTypeClass, util.toPointer(pMemory), NumberOfEntries));
@@ -15141,138 +15141,138 @@ export function WTSFreeMemoryExW(
 
 export function WTSFreeMemoryExA(
   WTSTypeClass: WTS_TYPE_CLASS /* Windows.Win32.System.RemoteDesktop.WTS_TYPE_CLASS */,
-  pMemory: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   NumberOfEntries: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSFreeMemoryExA(WTSTypeClass, util.toPointer(pMemory), NumberOfEntries));
 }
 
 export function WTSEnumerateProcessesExW(
-  hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pLevel: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hServer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  pLevel: Deno.PointerValue | Uint8Array /* ptr */,
   SessionId: number /* u32 */,
-  ppProcessInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pCount: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ppProcessInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  pCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateProcessesExW(util.toPointer(hServer), util.toPointer(pLevel), SessionId, util.toPointer(ppProcessInfo), util.toPointer(pCount)));
 }
 
 export function WTSEnumerateProcessesExA(
-  hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pLevel: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hServer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  pLevel: Deno.PointerValue | Uint8Array /* ptr */,
   SessionId: number /* u32 */,
-  ppProcessInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pCount: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ppProcessInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  pCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateProcessesExA(util.toPointer(hServer), util.toPointer(pLevel), SessionId, util.toPointer(ppProcessInfo), util.toPointer(pCount)));
 }
 
 export function WTSEnumerateListenersW(
-  hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hServer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  pReserved: Deno.PointerValue | Uint8Array /* ptr */,
   Reserved: number /* u32 */,
-  pListeners: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pCount: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pListeners: Deno.PointerValue | Uint8Array /* ptr */,
+  pCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateListenersW(util.toPointer(hServer), util.toPointer(pReserved), Reserved, util.toPointer(pListeners), util.toPointer(pCount)));
 }
 
 export function WTSEnumerateListenersA(
-  hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hServer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  pReserved: Deno.PointerValue | Uint8Array /* ptr */,
   Reserved: number /* u32 */,
-  pListeners: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pCount: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pListeners: Deno.PointerValue | Uint8Array /* ptr */,
+  pCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateListenersA(util.toPointer(hServer), util.toPointer(pReserved), Reserved, util.toPointer(pListeners), util.toPointer(pCount)));
 }
 
 export function WTSQueryListenerConfigW(
-  hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hServer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  pReserved: Deno.PointerValue | Uint8Array /* ptr */,
   Reserved: number /* u32 */,
   pListenerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSQueryListenerConfigW(util.toPointer(hServer), util.toPointer(pReserved), Reserved, util.pwstrToFfi(pListenerName), util.toPointer(pBuffer)));
 }
 
 export function WTSQueryListenerConfigA(
-  hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hServer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  pReserved: Deno.PointerValue | Uint8Array /* ptr */,
   Reserved: number /* u32 */,
   pListenerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSQueryListenerConfigA(util.toPointer(hServer), util.toPointer(pReserved), Reserved, util.pstrToFfi(pListenerName), util.toPointer(pBuffer)));
 }
 
 export function WTSCreateListenerW(
-  hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hServer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  pReserved: Deno.PointerValue | Uint8Array /* ptr */,
   Reserved: number /* u32 */,
   pListenerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   flag: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSCreateListenerW(util.toPointer(hServer), util.toPointer(pReserved), Reserved, util.pwstrToFfi(pListenerName), util.toPointer(pBuffer), flag));
 }
 
 export function WTSCreateListenerA(
-  hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hServer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  pReserved: Deno.PointerValue | Uint8Array /* ptr */,
   Reserved: number /* u32 */,
   pListenerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   flag: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSCreateListenerA(util.toPointer(hServer), util.toPointer(pReserved), Reserved, util.pstrToFfi(pListenerName), util.toPointer(pBuffer), flag));
 }
 
 export function WTSSetListenerSecurityW(
-  hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hServer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  pReserved: Deno.PointerValue | Uint8Array /* ptr */,
   Reserved: number /* u32 */,
   pListenerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SecurityInformation: number /* u32 */,
-  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSSetListenerSecurityW(util.toPointer(hServer), util.toPointer(pReserved), Reserved, util.pwstrToFfi(pListenerName), SecurityInformation, util.toPointer(pSecurityDescriptor)));
 }
 
 export function WTSSetListenerSecurityA(
-  hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hServer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  pReserved: Deno.PointerValue | Uint8Array /* ptr */,
   Reserved: number /* u32 */,
   pListenerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   SecurityInformation: number /* u32 */,
-  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSSetListenerSecurityA(util.toPointer(hServer), util.toPointer(pReserved), Reserved, util.pstrToFfi(pListenerName), SecurityInformation, util.toPointer(pSecurityDescriptor)));
 }
 
 export function WTSGetListenerSecurityW(
-  hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hServer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  pReserved: Deno.PointerValue | Uint8Array /* ptr */,
   Reserved: number /* u32 */,
   pListenerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SecurityInformation: number /* u32 */,
-  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   nLength: number /* u32 */,
-  lpnLengthNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpnLengthNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSGetListenerSecurityW(util.toPointer(hServer), util.toPointer(pReserved), Reserved, util.pwstrToFfi(pListenerName), SecurityInformation, util.toPointer(pSecurityDescriptor), nLength, util.toPointer(lpnLengthNeeded)));
 }
 
 export function WTSGetListenerSecurityA(
-  hServer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hServer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  pReserved: Deno.PointerValue | Uint8Array /* ptr */,
   Reserved: number /* u32 */,
   pListenerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   SecurityInformation: number /* u32 */,
-  pSecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
+  pSecurityDescriptor: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   nLength: number /* u32 */,
-  lpnLengthNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpnLengthNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSGetListenerSecurityA(util.toPointer(hServer), util.toPointer(pReserved), Reserved, util.pstrToFfi(pListenerName), SecurityInformation, util.toPointer(pSecurityDescriptor), nLength, util.toPointer(lpnLengthNeeded)));
 }
@@ -15284,30 +15284,30 @@ export function WTSEnableChildSessions(
 }
 
 export function WTSIsChildSessionsEnabled(
-  pbEnabled: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pbEnabled: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSIsChildSessionsEnabled(util.toPointer(pbEnabled)));
 }
 
 export function WTSGetChildSessionId(
-  pSessionId: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSessionId: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWTSAPI32_dll.WTSGetChildSessionId(util.toPointer(pSessionId)));
 }
 
 export function WTSSetRenderHint(
-  pRenderHintID: Deno.PointerValue | Uint8Array | null /* ptr */,
-  hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
+  pRenderHintID: Deno.PointerValue | Uint8Array /* ptr */,
+  hwndOwner: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   renderHintType: number /* u32 */,
   cbHintDataLength: number /* u32 */,
-  pHintData: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWTSAPI32_dll.WTSSetRenderHint(util.toPointer(pRenderHintID), util.hwndToFfi(hwndOwner), renderHintType, cbHintDataLength, util.toPointer(pHintData)));
+  pHintData: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWTSAPI32_dll.WTSSetRenderHint(util.toPointer(pRenderHintID), (hwndOwner), renderHintType, cbHintDataLength, util.toPointer(pHintData));
 }
 
 export function ProcessIdToSessionId(
   dwProcessId: number /* u32 */,
-  pSessionId: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSessionId: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.ProcessIdToSessionId(dwProcessId, util.toPointer(pSessionId)));
 }

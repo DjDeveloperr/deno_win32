@@ -374,13 +374,13 @@ export class MONTHLYDOWView {
  */
 export interface TRIGGER_TYPE_UNION {
   /** Windows.Win32.System.TaskScheduler.DAILY */
-  Daily: Uint8Array | Deno.PointerValue | null;
+  Daily: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.TaskScheduler.WEEKLY */
-  Weekly: Uint8Array | Deno.PointerValue | null;
+  Weekly: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.TaskScheduler.MONTHLYDATE */
-  MonthlyDate: Uint8Array | Deno.PointerValue | null;
+  MonthlyDate: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.TaskScheduler.MONTHLYDOW */
-  MonthlyDOW: Uint8Array | Deno.PointerValue | null;
+  MonthlyDOW: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofTRIGGER_TYPE_UNION = 32;
@@ -389,13 +389,13 @@ export function allocTRIGGER_TYPE_UNION(data?: Partial<TRIGGER_TYPE_UNION>): Uin
   const buf = new Uint8Array(sizeofTRIGGER_TYPE_UNION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Daily !== undefined) view.setBigUint64(0, data.Daily === null ? 0n : BigInt(util.toPointer(data.Daily)), true);
+  if (data?.Daily !== undefined) view.setBigUint64(0, data.Daily === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Daily))), true);
   // 0x08: pointer
-  if (data?.Weekly !== undefined) view.setBigUint64(8, data.Weekly === null ? 0n : BigInt(util.toPointer(data.Weekly)), true);
+  if (data?.Weekly !== undefined) view.setBigUint64(8, data.Weekly === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Weekly))), true);
   // 0x10: pointer
-  if (data?.MonthlyDate !== undefined) view.setBigUint64(16, data.MonthlyDate === null ? 0n : BigInt(util.toPointer(data.MonthlyDate)), true);
+  if (data?.MonthlyDate !== undefined) view.setBigUint64(16, data.MonthlyDate === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.MonthlyDate))), true);
   // 0x18: pointer
-  if (data?.MonthlyDOW !== undefined) view.setBigUint64(24, data.MonthlyDOW === null ? 0n : BigInt(util.toPointer(data.MonthlyDOW)), true);
+  if (data?.MonthlyDOW !== undefined) view.setBigUint64(24, data.MonthlyDOW === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.MonthlyDOW))), true);
   return buf;
 }
 
@@ -410,47 +410,47 @@ export class TRIGGER_TYPE_UNIONView {
   }
 
   // 0x00: pointer
-  get Daily(): Uint8Array | Deno.PointerValue | null {
+  get Daily(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get Weekly(): Uint8Array | Deno.PointerValue | null {
+  get Weekly(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get MonthlyDate(): Uint8Array | Deno.PointerValue | null {
+  get MonthlyDate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get MonthlyDOW(): Uint8Array | Deno.PointerValue | null {
+  get MonthlyDOW(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Daily(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Daily(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set Weekly(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Weekly(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set MonthlyDate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set MonthlyDate(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set MonthlyDOW(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set MonthlyDOW(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -487,7 +487,7 @@ export interface TASK_TRIGGER {
   /** Windows.Win32.System.TaskScheduler.TASK_TRIGGER_TYPE */
   TriggerType: TASK_TRIGGER_TYPE;
   /** Windows.Win32.System.TaskScheduler.TRIGGER_TYPE_UNION */
-  Type: Uint8Array | Deno.PointerValue | null;
+  Type: Uint8Array | Deno.PointerValue;
   /** u16 */
   Reserved2: number;
   /** u16 */
@@ -529,7 +529,7 @@ export function allocTASK_TRIGGER(data?: Partial<TASK_TRIGGER>): Uint8Array {
   if (data?.TriggerType !== undefined) view.setInt32(32, Number(data.TriggerType), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.Type !== undefined) view.setBigUint64(40, data.Type === null ? 0n : BigInt(util.toPointer(data.Type)), true);
+  if (data?.Type !== undefined) view.setBigUint64(40, data.Type === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Type))), true);
   // 0x30: u16
   if (data?.Reserved2 !== undefined) view.setUint16(48, Number(data.Reserved2), true);
   // 0x32: u16
@@ -621,9 +621,9 @@ export class TASK_TRIGGERView {
   // 0x24: pad4
 
   // 0x28: pointer
-  get Type(): Uint8Array | Deno.PointerValue | null {
+  get Type(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: u16
@@ -711,8 +711,8 @@ export class TASK_TRIGGERView {
   // 0x24: pad4
 
   // 0x28: pointer
-  set Type(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set Type(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: u16

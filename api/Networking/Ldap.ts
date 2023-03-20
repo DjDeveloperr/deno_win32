@@ -3602,11 +3602,11 @@ export interface _ld_sb_e__Struct {
   /** usize */
   sb_sd: Deno.PointerValue;
   /** array */
-  Reserved1: Deno.PointerValue | null;
+  Reserved1: Deno.PointerValue;
   /** usize */
   sb_naddr: Deno.PointerValue;
   /** array */
-  Reserved2: Deno.PointerValue | null;
+  Reserved2: Deno.PointerValue;
 }
 
 export const sizeof_ld_sb_e__Struct = 32;
@@ -3617,11 +3617,11 @@ export function alloc_ld_sb_e__Struct(data?: Partial<_ld_sb_e__Struct>): Uint8Ar
   // 0x00: usize
   if (data?.sb_sd !== undefined) view.setBigUint64(0, BigInt(data.sb_sd), true);
   // 0x08: pointer
-  if (data?.Reserved1 !== undefined) view.setBigUint64(8, data.Reserved1 === null ? 0n : BigInt(util.toPointer(data.Reserved1)), true);
+  if (data?.Reserved1 !== undefined) view.setBigUint64(8, data.Reserved1 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Reserved1))), true);
   // 0x10: usize
   if (data?.sb_naddr !== undefined) view.setBigUint64(16, BigInt(data.sb_naddr), true);
   // 0x18: pointer
-  if (data?.Reserved2 !== undefined) view.setBigUint64(24, data.Reserved2 === null ? 0n : BigInt(util.toPointer(data.Reserved2)), true);
+  if (data?.Reserved2 !== undefined) view.setBigUint64(24, data.Reserved2 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Reserved2))), true);
   return buf;
 }
 
@@ -3641,9 +3641,9 @@ export class _ld_sb_e__StructView {
   }
 
   // 0x08: pointer
-  get Reserved1(): Uint8Array | Deno.PointerValue | null {
+  get Reserved1(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: usize
@@ -3652,9 +3652,9 @@ export class _ld_sb_e__StructView {
   }
 
   // 0x18: pointer
-  get Reserved2(): Uint8Array | Deno.PointerValue | null {
+  get Reserved2(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: usize
@@ -3663,8 +3663,8 @@ export class _ld_sb_e__StructView {
   }
 
   // 0x08: pointer
-  set Reserved1(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Reserved1(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: usize
@@ -3673,19 +3673,19 @@ export class _ld_sb_e__StructView {
   }
 
   // 0x18: pointer
-  set Reserved2(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set Reserved2(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
-export type PSTR = Deno.PointerValue | Uint8Array | null;
+export type PSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.Networking.Ldap.LDAP (size: 88)
  */
 export interface LDAP {
   /** _ld_sb_e__Struct */
-  ld_sb: Uint8Array | Deno.PointerValue | null;
+  ld_sb: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
   ld_host: string | null | Uint8Array;
   /** u32 */
@@ -3707,7 +3707,7 @@ export interface LDAP {
   /** u32 */
   ld_msgid: number;
   /** array */
-  Reserved3: Deno.PointerValue | null;
+  Reserved3: Deno.PointerValue;
   /** u32 */
   ld_cldaptries: number;
   /** u32 */
@@ -3724,11 +3724,11 @@ export function allocLDAP(data?: Partial<LDAP>): Uint8Array {
   const buf = new Uint8Array(sizeofLDAP);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ld_sb !== undefined) view.setBigUint64(0, data.ld_sb === null ? 0n : BigInt(util.toPointer(data.ld_sb)), true);
+  if (data?.ld_sb !== undefined) view.setBigUint64(0, data.ld_sb === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ld_sb))), true);
   // 0x08: buffer
   if (data?.ld_host !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.ld_host);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: u32
   if (data?.ld_version !== undefined) view.setUint32(16, Number(data.ld_version), true);
@@ -3746,18 +3746,18 @@ export function allocLDAP(data?: Partial<LDAP>): Uint8Array {
   // 0x28: buffer
   if (data?.ld_matched !== undefined) {
     (buf as any)._f40 = util.pstrToFfi(data.ld_matched);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f40))), true);
   }
   // 0x30: buffer
   if (data?.ld_error !== undefined) {
     (buf as any)._f48 = util.pstrToFfi(data.ld_error);
-    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
+    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f48))), true);
   }
   // 0x38: u32
   if (data?.ld_msgid !== undefined) view.setUint32(56, Number(data.ld_msgid), true);
   // 0x3c: pad4
   // 0x40: pointer
-  if (data?.Reserved3 !== undefined) view.setBigUint64(64, data.Reserved3 === null ? 0n : BigInt(util.toPointer(data.Reserved3)), true);
+  if (data?.Reserved3 !== undefined) view.setBigUint64(64, data.Reserved3 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Reserved3))), true);
   // 0x48: u32
   if (data?.ld_cldaptries !== undefined) view.setUint32(72, Number(data.ld_cldaptries), true);
   // 0x4c: u32
@@ -3780,15 +3780,15 @@ export class LDAPView {
   }
 
   // 0x00: pointer
-  get ld_sb(): Uint8Array | Deno.PointerValue | null {
+  get ld_sb(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get ld_host(): Uint8Array | Deno.PointerValue | null {
+  get ld_host(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -3824,15 +3824,15 @@ export class LDAPView {
   // 0x25: pad3
 
   // 0x28: buffer
-  get ld_matched(): Uint8Array | Deno.PointerValue | null {
+  get ld_matched(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: buffer
-  get ld_error(): Uint8Array | Deno.PointerValue | null {
+  get ld_error(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: u32
@@ -3843,9 +3843,9 @@ export class LDAPView {
   // 0x3c: pad4
 
   // 0x40: pointer
-  get Reserved3(): Uint8Array | Deno.PointerValue | null {
+  get Reserved3(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: u32
@@ -3869,14 +3869,14 @@ export class LDAPView {
   }
 
   // 0x00: pointer
-  set ld_sb(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ld_sb(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: buffer
-  set ld_host(value: Uint8Array | Deno.PointerValue | null) {
+  set ld_host(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: u32
@@ -3912,15 +3912,15 @@ export class LDAPView {
   // 0x25: pad3
 
   // 0x28: buffer
-  set ld_matched(value: Uint8Array | Deno.PointerValue | null) {
+  set ld_matched(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f40))), true);
   }
 
   // 0x30: buffer
-  set ld_error(value: Uint8Array | Deno.PointerValue | null) {
+  set ld_error(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f48 = value;
-    this.view.setBigUint64(48, BigInt(util.toPointer((this.buf as any)._f48)), true);
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f48))), true);
   }
 
   // 0x38: u32
@@ -3931,8 +3931,8 @@ export class LDAPView {
   // 0x3c: pad4
 
   // 0x40: pointer
-  set Reserved3(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set Reserved3(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: u32
@@ -4030,7 +4030,7 @@ export function allocLDAP_BERVAL(data?: Partial<LDAP_BERVAL>): Uint8Array {
   // 0x08: buffer
   if (data?.bv_val !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.bv_val);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   return buf;
 }
@@ -4053,9 +4053,9 @@ export class LDAP_BERVALView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get bv_val(): Uint8Array | Deno.PointerValue | null {
+  get bv_val(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -4066,9 +4066,9 @@ export class LDAP_BERVALView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set bv_val(value: Uint8Array | Deno.PointerValue | null) {
+  set bv_val(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 }
 
@@ -4083,27 +4083,27 @@ export interface LDAPMessage {
   /** u32 */
   lm_msgtype: number;
   /** ptr */
-  lm_ber: Deno.PointerValue | Uint8Array | null;
+  lm_ber: Deno.PointerValue | Uint8Array;
   /** ptr */
-  lm_chain: Deno.PointerValue | Uint8Array | null;
+  lm_chain: Deno.PointerValue | Uint8Array;
   /** ptr */
-  lm_next: Deno.PointerValue | Uint8Array | null;
+  lm_next: Deno.PointerValue | Uint8Array;
   /** u32 */
   lm_time: number;
   /** ptr */
-  Connection: Deno.PointerValue | Uint8Array | null;
+  Connection: Deno.PointerValue | Uint8Array;
   /** ptr */
-  Request: Deno.PointerValue | Uint8Array | null;
+  Request: Deno.PointerValue | Uint8Array;
   /** u32 */
   lm_returncode: number;
   /** u16 */
   lm_referral: number;
   /** Windows.Win32.Foundation.BOOLEAN */
-  lm_chased: Uint8Array | Deno.PointerValue | null;
+  lm_chased: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  lm_eom: Uint8Array | Deno.PointerValue | null;
+  lm_eom: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  ConnectionReferenced: Uint8Array | Deno.PointerValue | null;
+  ConnectionReferenced: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofLDAPMessage = 88;
@@ -4116,29 +4116,29 @@ export function allocLDAPMessage(data?: Partial<LDAPMessage>): Uint8Array {
   // 0x04: u32
   if (data?.lm_msgtype !== undefined) view.setUint32(4, Number(data.lm_msgtype), true);
   // 0x08: pointer
-  if (data?.lm_ber !== undefined) view.setBigUint64(8, data.lm_ber === null ? 0n : BigInt(util.toPointer(data.lm_ber)), true);
+  if (data?.lm_ber !== undefined) view.setBigUint64(8, data.lm_ber === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lm_ber))), true);
   // 0x10: pointer
-  if (data?.lm_chain !== undefined) view.setBigUint64(16, data.lm_chain === null ? 0n : BigInt(util.toPointer(data.lm_chain)), true);
+  if (data?.lm_chain !== undefined) view.setBigUint64(16, data.lm_chain === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lm_chain))), true);
   // 0x18: pointer
-  if (data?.lm_next !== undefined) view.setBigUint64(24, data.lm_next === null ? 0n : BigInt(util.toPointer(data.lm_next)), true);
+  if (data?.lm_next !== undefined) view.setBigUint64(24, data.lm_next === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lm_next))), true);
   // 0x20: u32
   if (data?.lm_time !== undefined) view.setUint32(32, Number(data.lm_time), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.Connection !== undefined) view.setBigUint64(40, data.Connection === null ? 0n : BigInt(util.toPointer(data.Connection)), true);
+  if (data?.Connection !== undefined) view.setBigUint64(40, data.Connection === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Connection))), true);
   // 0x30: pointer
-  if (data?.Request !== undefined) view.setBigUint64(48, data.Request === null ? 0n : BigInt(util.toPointer(data.Request)), true);
+  if (data?.Request !== undefined) view.setBigUint64(48, data.Request === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Request))), true);
   // 0x38: u32
   if (data?.lm_returncode !== undefined) view.setUint32(56, Number(data.lm_returncode), true);
   // 0x3c: u16
   if (data?.lm_referral !== undefined) view.setUint16(60, Number(data.lm_referral), true);
   // 0x3e: pad2
   // 0x40: pointer
-  if (data?.lm_chased !== undefined) view.setBigUint64(64, data.lm_chased === null ? 0n : BigInt(util.toPointer(data.lm_chased)), true);
+  if (data?.lm_chased !== undefined) view.setBigUint64(64, data.lm_chased === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lm_chased))), true);
   // 0x48: pointer
-  if (data?.lm_eom !== undefined) view.setBigUint64(72, data.lm_eom === null ? 0n : BigInt(util.toPointer(data.lm_eom)), true);
+  if (data?.lm_eom !== undefined) view.setBigUint64(72, data.lm_eom === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lm_eom))), true);
   // 0x50: pointer
-  if (data?.ConnectionReferenced !== undefined) view.setBigUint64(80, data.ConnectionReferenced === null ? 0n : BigInt(util.toPointer(data.ConnectionReferenced)), true);
+  if (data?.ConnectionReferenced !== undefined) view.setBigUint64(80, data.ConnectionReferenced === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ConnectionReferenced))), true);
   return buf;
 }
 
@@ -4163,21 +4163,21 @@ export class LDAPMessageView {
   }
 
   // 0x08: pointer
-  get lm_ber(): Uint8Array | Deno.PointerValue | null {
+  get lm_ber(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get lm_chain(): Uint8Array | Deno.PointerValue | null {
+  get lm_chain(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get lm_next(): Uint8Array | Deno.PointerValue | null {
+  get lm_next(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -4188,15 +4188,15 @@ export class LDAPMessageView {
   // 0x24: pad4
 
   // 0x28: pointer
-  get Connection(): Uint8Array | Deno.PointerValue | null {
+  get Connection(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get Request(): Uint8Array | Deno.PointerValue | null {
+  get Request(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: u32
@@ -4212,21 +4212,21 @@ export class LDAPMessageView {
   // 0x3e: pad2
 
   // 0x40: pointer
-  get lm_chased(): Uint8Array | Deno.PointerValue | null {
+  get lm_chased(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: pointer
-  get lm_eom(): Uint8Array | Deno.PointerValue | null {
+  get lm_eom(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: pointer
-  get ConnectionReferenced(): Uint8Array | Deno.PointerValue | null {
+  get ConnectionReferenced(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -4240,18 +4240,18 @@ export class LDAPMessageView {
   }
 
   // 0x08: pointer
-  set lm_ber(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set lm_ber(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set lm_chain(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set lm_chain(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set lm_next(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set lm_next(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -4262,13 +4262,13 @@ export class LDAPMessageView {
   // 0x24: pad4
 
   // 0x28: pointer
-  set Connection(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set Connection(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set Request(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set Request(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: u32
@@ -4284,18 +4284,18 @@ export class LDAPMessageView {
   // 0x3e: pad2
 
   // 0x40: pointer
-  set lm_chased(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set lm_chased(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: pointer
-  set lm_eom(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set lm_eom(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x50: pointer
-  set ConnectionReferenced(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set ConnectionReferenced(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4306,9 +4306,9 @@ export interface LDAPControlA {
   /** Windows.Win32.Foundation.PSTR */
   ldctl_oid: string | null | Uint8Array;
   /** Windows.Win32.Networking.Ldap.LDAP_BERVAL */
-  ldctl_value: Uint8Array | Deno.PointerValue | null;
+  ldctl_value: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  ldctl_iscritical: Uint8Array | Deno.PointerValue | null;
+  ldctl_iscritical: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofLDAPControlA = 24;
@@ -4319,12 +4319,12 @@ export function allocLDAPControlA(data?: Partial<LDAPControlA>): Uint8Array {
   // 0x00: buffer
   if (data?.ldctl_oid !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.ldctl_oid);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: pointer
-  if (data?.ldctl_value !== undefined) view.setBigUint64(8, data.ldctl_value === null ? 0n : BigInt(util.toPointer(data.ldctl_value)), true);
+  if (data?.ldctl_value !== undefined) view.setBigUint64(8, data.ldctl_value === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ldctl_value))), true);
   // 0x10: pointer
-  if (data?.ldctl_iscritical !== undefined) view.setBigUint64(16, data.ldctl_iscritical === null ? 0n : BigInt(util.toPointer(data.ldctl_iscritical)), true);
+  if (data?.ldctl_iscritical !== undefined) view.setBigUint64(16, data.ldctl_iscritical === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ldctl_iscritical))), true);
   return buf;
 }
 
@@ -4339,41 +4339,41 @@ export class LDAPControlAView {
   }
 
   // 0x00: buffer
-  get ldctl_oid(): Uint8Array | Deno.PointerValue | null {
+  get ldctl_oid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get ldctl_value(): Uint8Array | Deno.PointerValue | null {
+  get ldctl_value(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ldctl_iscritical(): Uint8Array | Deno.PointerValue | null {
+  get ldctl_iscritical(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set ldctl_oid(value: Uint8Array | Deno.PointerValue | null) {
+  set ldctl_oid(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: pointer
-  set ldctl_value(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ldctl_value(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ldctl_iscritical(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ldctl_iscritical(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.Networking.Ldap.LDAPControlW (size: 24)
@@ -4382,9 +4382,9 @@ export interface LDAPControlW {
   /** Windows.Win32.Foundation.PWSTR */
   ldctl_oid: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Networking.Ldap.LDAP_BERVAL */
-  ldctl_value: Uint8Array | Deno.PointerValue | null;
+  ldctl_value: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  ldctl_iscritical: Uint8Array | Deno.PointerValue | null;
+  ldctl_iscritical: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofLDAPControlW = 24;
@@ -4395,12 +4395,12 @@ export function allocLDAPControlW(data?: Partial<LDAPControlW>): Uint8Array {
   // 0x00: buffer
   if (data?.ldctl_oid !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.ldctl_oid);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: pointer
-  if (data?.ldctl_value !== undefined) view.setBigUint64(8, data.ldctl_value === null ? 0n : BigInt(util.toPointer(data.ldctl_value)), true);
+  if (data?.ldctl_value !== undefined) view.setBigUint64(8, data.ldctl_value === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ldctl_value))), true);
   // 0x10: pointer
-  if (data?.ldctl_iscritical !== undefined) view.setBigUint64(16, data.ldctl_iscritical === null ? 0n : BigInt(util.toPointer(data.ldctl_iscritical)), true);
+  if (data?.ldctl_iscritical !== undefined) view.setBigUint64(16, data.ldctl_iscritical === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ldctl_iscritical))), true);
   return buf;
 }
 
@@ -4415,37 +4415,37 @@ export class LDAPControlWView {
   }
 
   // 0x00: buffer
-  get ldctl_oid(): Uint8Array | Deno.PointerValue | null {
+  get ldctl_oid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get ldctl_value(): Uint8Array | Deno.PointerValue | null {
+  get ldctl_value(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ldctl_iscritical(): Uint8Array | Deno.PointerValue | null {
+  get ldctl_iscritical(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set ldctl_oid(value: Uint8Array | Deno.PointerValue | null) {
+  set ldctl_oid(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: pointer
-  set ldctl_value(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ldctl_value(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ldctl_iscritical(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ldctl_iscritical(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4454,9 +4454,9 @@ export class LDAPControlWView {
  */
 export interface _mod_vals_e__Union {
   /** ptr */
-  modv_strvals: Deno.PointerValue | Uint8Array | null;
+  modv_strvals: Deno.PointerValue | Uint8Array;
   /** ptr */
-  modv_bvals: Deno.PointerValue | Uint8Array | null;
+  modv_bvals: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeof_mod_vals_e__Union = 16;
@@ -4465,9 +4465,9 @@ export function alloc_mod_vals_e__Union(data?: Partial<_mod_vals_e__Union>): Uin
   const buf = new Uint8Array(sizeof_mod_vals_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.modv_strvals !== undefined) view.setBigUint64(0, data.modv_strvals === null ? 0n : BigInt(util.toPointer(data.modv_strvals)), true);
+  if (data?.modv_strvals !== undefined) view.setBigUint64(0, data.modv_strvals === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.modv_strvals))), true);
   // 0x08: pointer
-  if (data?.modv_bvals !== undefined) view.setBigUint64(8, data.modv_bvals === null ? 0n : BigInt(util.toPointer(data.modv_bvals)), true);
+  if (data?.modv_bvals !== undefined) view.setBigUint64(8, data.modv_bvals === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.modv_bvals))), true);
   return buf;
 }
 
@@ -4482,25 +4482,25 @@ export class _mod_vals_e__UnionView {
   }
 
   // 0x00: pointer
-  get modv_strvals(): Uint8Array | Deno.PointerValue | null {
+  get modv_strvals(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get modv_bvals(): Uint8Array | Deno.PointerValue | null {
+  get modv_bvals(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set modv_strvals(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set modv_strvals(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set modv_bvals(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set modv_bvals(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4513,7 +4513,7 @@ export interface LDAPModW {
   /** Windows.Win32.Foundation.PWSTR */
   mod_type: string | null | Uint8Array | Uint16Array;
   /** _mod_vals_e__Union */
-  mod_vals: Uint8Array | Deno.PointerValue | null;
+  mod_vals: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofLDAPModW = 24;
@@ -4527,10 +4527,10 @@ export function allocLDAPModW(data?: Partial<LDAPModW>): Uint8Array {
   // 0x08: buffer
   if (data?.mod_type !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.mod_type);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: pointer
-  if (data?.mod_vals !== undefined) view.setBigUint64(16, data.mod_vals === null ? 0n : BigInt(util.toPointer(data.mod_vals)), true);
+  if (data?.mod_vals !== undefined) view.setBigUint64(16, data.mod_vals === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.mod_vals))), true);
   return buf;
 }
 
@@ -4552,15 +4552,15 @@ export class LDAPModWView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get mod_type(): Uint8Array | Deno.PointerValue | null {
+  get mod_type(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get mod_vals(): Uint8Array | Deno.PointerValue | null {
+  get mod_vals(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -4571,14 +4571,14 @@ export class LDAPModWView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set mod_type(value: Uint8Array | Deno.PointerValue | null) {
+  set mod_type(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: pointer
-  set mod_vals(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set mod_vals(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4591,7 +4591,7 @@ export interface LDAPModA {
   /** Windows.Win32.Foundation.PSTR */
   mod_type: string | null | Uint8Array;
   /** _mod_vals_e__Union */
-  mod_vals: Uint8Array | Deno.PointerValue | null;
+  mod_vals: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofLDAPModA = 24;
@@ -4605,10 +4605,10 @@ export function allocLDAPModA(data?: Partial<LDAPModA>): Uint8Array {
   // 0x08: buffer
   if (data?.mod_type !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.mod_type);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: pointer
-  if (data?.mod_vals !== undefined) view.setBigUint64(16, data.mod_vals === null ? 0n : BigInt(util.toPointer(data.mod_vals)), true);
+  if (data?.mod_vals !== undefined) view.setBigUint64(16, data.mod_vals === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.mod_vals))), true);
   return buf;
 }
 
@@ -4630,15 +4630,15 @@ export class LDAPModAView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get mod_type(): Uint8Array | Deno.PointerValue | null {
+  get mod_type(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get mod_vals(): Uint8Array | Deno.PointerValue | null {
+  get mod_vals(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -4649,14 +4649,14 @@ export class LDAPModAView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set mod_type(value: Uint8Array | Deno.PointerValue | null) {
+  set mod_type(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: pointer
-  set mod_vals(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set mod_vals(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4676,7 +4676,7 @@ export function allocBerElement(data?: Partial<BerElement>): Uint8Array {
   // 0x00: buffer
   if (data?.opaque !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.opaque);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   return buf;
 }
@@ -4692,15 +4692,15 @@ export class BerElementView {
   }
 
   // 0x00: buffer
-  get opaque(): Uint8Array | Deno.PointerValue | null {
+  get opaque(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set opaque(value: Uint8Array | Deno.PointerValue | null) {
+  set opaque(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 }
 
@@ -4787,7 +4787,7 @@ export interface LDAPAPIInfoA {
   /** i32 */
   ldapai_protocol_version: number;
   /** ptr */
-  ldapai_extensions: Deno.PointerValue | Uint8Array | null;
+  ldapai_extensions: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
   ldapai_vendor_name: string | null | Uint8Array;
   /** i32 */
@@ -4807,11 +4807,11 @@ export function allocLDAPAPIInfoA(data?: Partial<LDAPAPIInfoA>): Uint8Array {
   if (data?.ldapai_protocol_version !== undefined) view.setInt32(8, Number(data.ldapai_protocol_version), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.ldapai_extensions !== undefined) view.setBigUint64(16, data.ldapai_extensions === null ? 0n : BigInt(util.toPointer(data.ldapai_extensions)), true);
+  if (data?.ldapai_extensions !== undefined) view.setBigUint64(16, data.ldapai_extensions === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ldapai_extensions))), true);
   // 0x18: buffer
   if (data?.ldapai_vendor_name !== undefined) {
     (buf as any)._f24 = util.pstrToFfi(data.ldapai_vendor_name);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: i32
   if (data?.ldapai_vendor_version !== undefined) view.setInt32(32, Number(data.ldapai_vendor_version), true);
@@ -4847,15 +4847,15 @@ export class LDAPAPIInfoAView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get ldapai_extensions(): Uint8Array | Deno.PointerValue | null {
+  get ldapai_extensions(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get ldapai_vendor_name(): Uint8Array | Deno.PointerValue | null {
+  get ldapai_vendor_name(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: i32
@@ -4883,14 +4883,14 @@ export class LDAPAPIInfoAView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set ldapai_extensions(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ldapai_extensions(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: buffer
-  set ldapai_vendor_name(value: Uint8Array | Deno.PointerValue | null) {
+  set ldapai_vendor_name(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: i32
@@ -4912,7 +4912,7 @@ export interface LDAPAPIInfoW {
   /** i32 */
   ldapai_protocol_version: number;
   /** ptr */
-  ldapai_extensions: Deno.PointerValue | Uint8Array | null;
+  ldapai_extensions: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.PWSTR */
   ldapai_vendor_name: string | null | Uint8Array | Uint16Array;
   /** i32 */
@@ -4932,11 +4932,11 @@ export function allocLDAPAPIInfoW(data?: Partial<LDAPAPIInfoW>): Uint8Array {
   if (data?.ldapai_protocol_version !== undefined) view.setInt32(8, Number(data.ldapai_protocol_version), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.ldapai_extensions !== undefined) view.setBigUint64(16, data.ldapai_extensions === null ? 0n : BigInt(util.toPointer(data.ldapai_extensions)), true);
+  if (data?.ldapai_extensions !== undefined) view.setBigUint64(16, data.ldapai_extensions === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ldapai_extensions))), true);
   // 0x18: buffer
   if (data?.ldapai_vendor_name !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.ldapai_vendor_name);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: i32
   if (data?.ldapai_vendor_version !== undefined) view.setInt32(32, Number(data.ldapai_vendor_version), true);
@@ -4972,15 +4972,15 @@ export class LDAPAPIInfoWView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get ldapai_extensions(): Uint8Array | Deno.PointerValue | null {
+  get ldapai_extensions(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get ldapai_vendor_name(): Uint8Array | Deno.PointerValue | null {
+  get ldapai_vendor_name(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: i32
@@ -5008,14 +5008,14 @@ export class LDAPAPIInfoWView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set ldapai_extensions(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ldapai_extensions(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: buffer
-  set ldapai_vendor_name(value: Uint8Array | Deno.PointerValue | null) {
+  set ldapai_vendor_name(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: i32
@@ -5049,7 +5049,7 @@ export function allocLDAPAPIFeatureInfoA(data?: Partial<LDAPAPIFeatureInfoA>): U
   // 0x08: buffer
   if (data?.ldapaif_name !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.ldapaif_name);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: i32
   if (data?.ldapaif_version !== undefined) view.setInt32(16, Number(data.ldapaif_version), true);
@@ -5075,9 +5075,9 @@ export class LDAPAPIFeatureInfoAView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get ldapaif_name(): Uint8Array | Deno.PointerValue | null {
+  get ldapaif_name(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i32
@@ -5095,9 +5095,9 @@ export class LDAPAPIFeatureInfoAView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set ldapaif_name(value: Uint8Array | Deno.PointerValue | null) {
+  set ldapaif_name(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: i32
@@ -5131,7 +5131,7 @@ export function allocLDAPAPIFeatureInfoW(data?: Partial<LDAPAPIFeatureInfoW>): U
   // 0x08: buffer
   if (data?.ldapaif_name !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.ldapaif_name);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: i32
   if (data?.ldapaif_version !== undefined) view.setInt32(16, Number(data.ldapaif_version), true);
@@ -5157,9 +5157,9 @@ export class LDAPAPIFeatureInfoWView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get ldapaif_name(): Uint8Array | Deno.PointerValue | null {
+  get ldapaif_name(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i32
@@ -5177,9 +5177,9 @@ export class LDAPAPIFeatureInfoWView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set ldapaif_name(value: Uint8Array | Deno.PointerValue | null) {
+  set ldapaif_name(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: i32
@@ -5199,7 +5199,7 @@ export interface LDAPSortKeyW {
   /** Windows.Win32.Foundation.PWSTR */
   sk_matchruleoid: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.BOOLEAN */
-  sk_reverseorder: Uint8Array | Deno.PointerValue | null;
+  sk_reverseorder: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofLDAPSortKeyW = 24;
@@ -5210,15 +5210,15 @@ export function allocLDAPSortKeyW(data?: Partial<LDAPSortKeyW>): Uint8Array {
   // 0x00: buffer
   if (data?.sk_attrtype !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.sk_attrtype);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: buffer
   if (data?.sk_matchruleoid !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.sk_matchruleoid);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: pointer
-  if (data?.sk_reverseorder !== undefined) view.setBigUint64(16, data.sk_reverseorder === null ? 0n : BigInt(util.toPointer(data.sk_reverseorder)), true);
+  if (data?.sk_reverseorder !== undefined) view.setBigUint64(16, data.sk_reverseorder === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.sk_reverseorder))), true);
   return buf;
 }
 
@@ -5233,38 +5233,38 @@ export class LDAPSortKeyWView {
   }
 
   // 0x00: buffer
-  get sk_attrtype(): Uint8Array | Deno.PointerValue | null {
+  get sk_attrtype(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get sk_matchruleoid(): Uint8Array | Deno.PointerValue | null {
+  get sk_matchruleoid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get sk_reverseorder(): Uint8Array | Deno.PointerValue | null {
+  get sk_reverseorder(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set sk_attrtype(value: Uint8Array | Deno.PointerValue | null) {
+  set sk_attrtype(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: buffer
-  set sk_matchruleoid(value: Uint8Array | Deno.PointerValue | null) {
+  set sk_matchruleoid(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: pointer
-  set sk_reverseorder(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set sk_reverseorder(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -5277,7 +5277,7 @@ export interface LDAPSortKeyA {
   /** Windows.Win32.Foundation.PSTR */
   sk_matchruleoid: string | null | Uint8Array;
   /** Windows.Win32.Foundation.BOOLEAN */
-  sk_reverseorder: Uint8Array | Deno.PointerValue | null;
+  sk_reverseorder: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofLDAPSortKeyA = 24;
@@ -5288,15 +5288,15 @@ export function allocLDAPSortKeyA(data?: Partial<LDAPSortKeyA>): Uint8Array {
   // 0x00: buffer
   if (data?.sk_attrtype !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.sk_attrtype);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: buffer
   if (data?.sk_matchruleoid !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.sk_matchruleoid);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: pointer
-  if (data?.sk_reverseorder !== undefined) view.setBigUint64(16, data.sk_reverseorder === null ? 0n : BigInt(util.toPointer(data.sk_reverseorder)), true);
+  if (data?.sk_reverseorder !== undefined) view.setBigUint64(16, data.sk_reverseorder === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.sk_reverseorder))), true);
   return buf;
 }
 
@@ -5311,38 +5311,38 @@ export class LDAPSortKeyAView {
   }
 
   // 0x00: buffer
-  get sk_attrtype(): Uint8Array | Deno.PointerValue | null {
+  get sk_attrtype(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get sk_matchruleoid(): Uint8Array | Deno.PointerValue | null {
+  get sk_matchruleoid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get sk_reverseorder(): Uint8Array | Deno.PointerValue | null {
+  get sk_reverseorder(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set sk_attrtype(value: Uint8Array | Deno.PointerValue | null) {
+  set sk_attrtype(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: buffer
-  set sk_matchruleoid(value: Uint8Array | Deno.PointerValue | null) {
+  set sk_matchruleoid(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: pointer
-  set sk_reverseorder(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set sk_reverseorder(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -5361,11 +5361,11 @@ export interface LDAPVLVInfo {
   /** u32 */
   ldvlv_count: number;
   /** ptr */
-  ldvlv_attrvalue: Deno.PointerValue | Uint8Array | null;
+  ldvlv_attrvalue: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ldvlv_context: Deno.PointerValue | Uint8Array | null;
+  ldvlv_context: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ldvlv_extradata: Deno.PointerValue | Uint8Array | null;
+  ldvlv_extradata: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofLDAPVLVInfo = 48;
@@ -5385,11 +5385,11 @@ export function allocLDAPVLVInfo(data?: Partial<LDAPVLVInfo>): Uint8Array {
   if (data?.ldvlv_count !== undefined) view.setUint32(16, Number(data.ldvlv_count), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.ldvlv_attrvalue !== undefined) view.setBigUint64(24, data.ldvlv_attrvalue === null ? 0n : BigInt(util.toPointer(data.ldvlv_attrvalue)), true);
+  if (data?.ldvlv_attrvalue !== undefined) view.setBigUint64(24, data.ldvlv_attrvalue === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ldvlv_attrvalue))), true);
   // 0x20: pointer
-  if (data?.ldvlv_context !== undefined) view.setBigUint64(32, data.ldvlv_context === null ? 0n : BigInt(util.toPointer(data.ldvlv_context)), true);
+  if (data?.ldvlv_context !== undefined) view.setBigUint64(32, data.ldvlv_context === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ldvlv_context))), true);
   // 0x28: pointer
-  if (data?.ldvlv_extradata !== undefined) view.setBigUint64(40, data.ldvlv_extradata === null ? 0n : BigInt(util.toPointer(data.ldvlv_extradata)), true);
+  if (data?.ldvlv_extradata !== undefined) view.setBigUint64(40, data.ldvlv_extradata === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ldvlv_extradata))), true);
   return buf;
 }
 
@@ -5431,21 +5431,21 @@ export class LDAPVLVInfoView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get ldvlv_attrvalue(): Uint8Array | Deno.PointerValue | null {
+  get ldvlv_attrvalue(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get ldvlv_context(): Uint8Array | Deno.PointerValue | null {
+  get ldvlv_context(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get ldvlv_extradata(): Uint8Array | Deno.PointerValue | null {
+  get ldvlv_extradata(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -5476,18 +5476,18 @@ export class LDAPVLVInfoView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set ldvlv_attrvalue(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set ldvlv_attrvalue(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set ldvlv_context(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set ldvlv_context(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set ldvlv_extradata(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set ldvlv_extradata(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -5498,11 +5498,11 @@ export interface LDAP_REFERRAL_CALLBACK {
   /** u32 */
   SizeOfCallbacks: number;
   /** Windows.Win32.Networking.Ldap.QUERYFORCONNECTION */
-  QueryForConnection: Uint8Array | Deno.PointerValue | null;
+  QueryForConnection: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Networking.Ldap.NOTIFYOFNEWCONNECTION */
-  NotifyRoutine: Uint8Array | Deno.PointerValue | null;
+  NotifyRoutine: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Networking.Ldap.DEREFERENCECONNECTION */
-  DereferenceRoutine: Uint8Array | Deno.PointerValue | null;
+  DereferenceRoutine: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofLDAP_REFERRAL_CALLBACK = 32;
@@ -5514,11 +5514,11 @@ export function allocLDAP_REFERRAL_CALLBACK(data?: Partial<LDAP_REFERRAL_CALLBAC
   if (data?.SizeOfCallbacks !== undefined) view.setUint32(0, Number(data.SizeOfCallbacks), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.QueryForConnection !== undefined) view.setBigUint64(8, data.QueryForConnection === null ? 0n : BigInt(util.toPointer(data.QueryForConnection)), true);
+  if (data?.QueryForConnection !== undefined) view.setBigUint64(8, data.QueryForConnection === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.QueryForConnection))), true);
   // 0x10: pointer
-  if (data?.NotifyRoutine !== undefined) view.setBigUint64(16, data.NotifyRoutine === null ? 0n : BigInt(util.toPointer(data.NotifyRoutine)), true);
+  if (data?.NotifyRoutine !== undefined) view.setBigUint64(16, data.NotifyRoutine === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.NotifyRoutine))), true);
   // 0x18: pointer
-  if (data?.DereferenceRoutine !== undefined) view.setBigUint64(24, data.DereferenceRoutine === null ? 0n : BigInt(util.toPointer(data.DereferenceRoutine)), true);
+  if (data?.DereferenceRoutine !== undefined) view.setBigUint64(24, data.DereferenceRoutine === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DereferenceRoutine))), true);
   return buf;
 }
 
@@ -5540,21 +5540,21 @@ export class LDAP_REFERRAL_CALLBACKView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get QueryForConnection(): Uint8Array | Deno.PointerValue | null {
+  get QueryForConnection(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get NotifyRoutine(): Uint8Array | Deno.PointerValue | null {
+  get NotifyRoutine(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get DereferenceRoutine(): Uint8Array | Deno.PointerValue | null {
+  get DereferenceRoutine(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -5565,18 +5565,18 @@ export class LDAP_REFERRAL_CALLBACKView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set QueryForConnection(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set QueryForConnection(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set NotifyRoutine(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set NotifyRoutine(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set DereferenceRoutine(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set DereferenceRoutine(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -6566,50 +6566,50 @@ try {
 export function ldap_openW(
   HostName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   PortNumber: number /* u32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWLDAP32_dll.ldap_openW(util.pwstrToFfi(HostName), PortNumber));
+): Deno.PointerValue /* ptr */ {
+  return libWLDAP32_dll.ldap_openW(util.pwstrToFfi(HostName), PortNumber);
 }
 
 export function ldap_openA(
   HostName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   PortNumber: number /* u32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWLDAP32_dll.ldap_openA(util.pstrToFfi(HostName), PortNumber));
+): Deno.PointerValue /* ptr */ {
+  return libWLDAP32_dll.ldap_openA(util.pstrToFfi(HostName), PortNumber);
 }
 
 export function ldap_initW(
   HostName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   PortNumber: number /* u32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWLDAP32_dll.ldap_initW(util.pwstrToFfi(HostName), PortNumber));
+): Deno.PointerValue /* ptr */ {
+  return libWLDAP32_dll.ldap_initW(util.pwstrToFfi(HostName), PortNumber);
 }
 
 export function ldap_initA(
   HostName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   PortNumber: number /* u32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWLDAP32_dll.ldap_initA(util.pstrToFfi(HostName), PortNumber));
+): Deno.PointerValue /* ptr */ {
+  return libWLDAP32_dll.ldap_initA(util.pstrToFfi(HostName), PortNumber);
 }
 
 export function ldap_sslinitW(
   HostName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   PortNumber: number /* u32 */,
   secure: number /* i32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWLDAP32_dll.ldap_sslinitW(util.pwstrToFfi(HostName), PortNumber, secure));
+): Deno.PointerValue /* ptr */ {
+  return libWLDAP32_dll.ldap_sslinitW(util.pwstrToFfi(HostName), PortNumber, secure);
 }
 
 export function ldap_sslinitA(
   HostName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   PortNumber: number /* u32 */,
   secure: number /* i32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWLDAP32_dll.ldap_sslinitA(util.pstrToFfi(HostName), PortNumber, secure));
+): Deno.PointerValue /* ptr */ {
+  return libWLDAP32_dll.ldap_sslinitA(util.pstrToFfi(HostName), PortNumber, secure);
 }
 
 export function ldap_connect(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
-  timeout: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
+  timeout: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_connect(util.toPointer(ld), util.toPointer(timeout));
 }
@@ -6617,92 +6617,92 @@ export function ldap_connect(
 export function ldap_open(
   HostName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   PortNumber: number /* u32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWLDAP32_dll.ldap_open(util.pstrToFfi(HostName), PortNumber));
+): Deno.PointerValue /* ptr */ {
+  return libWLDAP32_dll.ldap_open(util.pstrToFfi(HostName), PortNumber);
 }
 
 export function ldap_init(
   HostName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   PortNumber: number /* u32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWLDAP32_dll.ldap_init(util.pstrToFfi(HostName), PortNumber));
+): Deno.PointerValue /* ptr */ {
+  return libWLDAP32_dll.ldap_init(util.pstrToFfi(HostName), PortNumber);
 }
 
 export function ldap_sslinit(
   HostName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   PortNumber: number /* u32 */,
   secure: number /* i32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWLDAP32_dll.ldap_sslinit(util.pstrToFfi(HostName), PortNumber, secure));
+): Deno.PointerValue /* ptr */ {
+  return libWLDAP32_dll.ldap_sslinit(util.pstrToFfi(HostName), PortNumber, secure);
 }
 
 export function cldap_openW(
   HostName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   PortNumber: number /* u32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWLDAP32_dll.cldap_openW(util.pwstrToFfi(HostName), PortNumber));
+): Deno.PointerValue /* ptr */ {
+  return libWLDAP32_dll.cldap_openW(util.pwstrToFfi(HostName), PortNumber);
 }
 
 export function cldap_openA(
   HostName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   PortNumber: number /* u32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWLDAP32_dll.cldap_openA(util.pstrToFfi(HostName), PortNumber));
+): Deno.PointerValue /* ptr */ {
+  return libWLDAP32_dll.cldap_openA(util.pstrToFfi(HostName), PortNumber);
 }
 
 export function cldap_open(
   HostName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   PortNumber: number /* u32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWLDAP32_dll.cldap_open(util.pstrToFfi(HostName), PortNumber));
+): Deno.PointerValue /* ptr */ {
+  return libWLDAP32_dll.cldap_open(util.pstrToFfi(HostName), PortNumber);
 }
 
 export function ldap_unbind(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_unbind(util.toPointer(ld));
 }
 
 export function ldap_unbind_s(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_unbind_s(util.toPointer(ld));
 }
 
 export function ldap_get_option(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   option: number /* i32 */,
-  outvalue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  outvalue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_get_option(util.toPointer(ld), option, util.toPointer(outvalue));
 }
 
 export function ldap_get_optionW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   option: number /* i32 */,
-  outvalue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  outvalue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_get_optionW(util.toPointer(ld), option, util.toPointer(outvalue));
 }
 
 export function ldap_set_option(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   option: number /* i32 */,
-  invalue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  invalue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_set_option(util.toPointer(ld), option, util.toPointer(invalue));
 }
 
 export function ldap_set_optionW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   option: number /* i32 */,
-  invalue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  invalue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_set_optionW(util.toPointer(ld), option, util.toPointer(invalue));
 }
 
 export function ldap_simple_bindW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   passwd: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
@@ -6710,7 +6710,7 @@ export function ldap_simple_bindW(
 }
 
 export function ldap_simple_bindA(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   passwd: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
@@ -6718,7 +6718,7 @@ export function ldap_simple_bindA(
 }
 
 export function ldap_simple_bind_sW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   passwd: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
@@ -6726,7 +6726,7 @@ export function ldap_simple_bind_sW(
 }
 
 export function ldap_simple_bind_sA(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   passwd: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
@@ -6734,7 +6734,7 @@ export function ldap_simple_bind_sA(
 }
 
 export function ldap_bindW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cred: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   method: number /* u32 */,
@@ -6743,7 +6743,7 @@ export function ldap_bindW(
 }
 
 export function ldap_bindA(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cred: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   method: number /* u32 */,
@@ -6752,7 +6752,7 @@ export function ldap_bindA(
 }
 
 export function ldap_bind_sW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cred: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   method: number /* u32 */,
@@ -6761,7 +6761,7 @@ export function ldap_bind_sW(
 }
 
 export function ldap_bind_sA(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cred: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   method: number /* u32 */,
@@ -6770,55 +6770,55 @@ export function ldap_bind_sA(
 }
 
 export function ldap_sasl_bindA(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
   DistName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   AuthMechanism: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  cred: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerCtrls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientCtrls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MessageNumber: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cred: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerCtrls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientCtrls: Deno.PointerValue | Uint8Array /* ptr */,
+  MessageNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libWLDAP32_dll.ldap_sasl_bindA(util.toPointer(ExternalHandle), util.pstrToFfi(DistName), util.pstrToFfi(AuthMechanism), util.toPointer(cred), util.toPointer(ServerCtrls), util.toPointer(ClientCtrls), util.toPointer(MessageNumber));
 }
 
 export function ldap_sasl_bindW(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
   DistName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   AuthMechanism: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  cred: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerCtrls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientCtrls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MessageNumber: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cred: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerCtrls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientCtrls: Deno.PointerValue | Uint8Array /* ptr */,
+  MessageNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libWLDAP32_dll.ldap_sasl_bindW(util.toPointer(ExternalHandle), util.pwstrToFfi(DistName), util.pwstrToFfi(AuthMechanism), util.toPointer(cred), util.toPointer(ServerCtrls), util.toPointer(ClientCtrls), util.toPointer(MessageNumber));
 }
 
 export function ldap_sasl_bind_sA(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
   DistName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   AuthMechanism: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  cred: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerCtrls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientCtrls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cred: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerCtrls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientCtrls: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libWLDAP32_dll.ldap_sasl_bind_sA(util.toPointer(ExternalHandle), util.pstrToFfi(DistName), util.pstrToFfi(AuthMechanism), util.toPointer(cred), util.toPointer(ServerCtrls), util.toPointer(ClientCtrls), util.toPointer(ServerData));
 }
 
 export function ldap_sasl_bind_sW(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
   DistName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   AuthMechanism: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  cred: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerCtrls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientCtrls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cred: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerCtrls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientCtrls: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libWLDAP32_dll.ldap_sasl_bind_sW(util.toPointer(ExternalHandle), util.pwstrToFfi(DistName), util.pwstrToFfi(AuthMechanism), util.toPointer(cred), util.toPointer(ServerCtrls), util.toPointer(ClientCtrls), util.toPointer(ServerData));
 }
 
 export function ldap_simple_bind(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   passwd: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
@@ -6826,7 +6826,7 @@ export function ldap_simple_bind(
 }
 
 export function ldap_simple_bind_s(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   passwd: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
@@ -6834,7 +6834,7 @@ export function ldap_simple_bind_s(
 }
 
 export function ldap_bind(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cred: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   method: number /* u32 */,
@@ -6843,7 +6843,7 @@ export function ldap_bind(
 }
 
 export function ldap_bind_s(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cred: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   method: number /* u32 */,
@@ -6852,336 +6852,336 @@ export function ldap_bind_s(
 }
 
 export function ldap_searchW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   base: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   scope: number /* u32 */,
   filter: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  attrs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  attrs: Deno.PointerValue | Uint8Array /* ptr */,
   attrsonly: number /* u32 */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_searchW(util.toPointer(ld), util.pwstrToFfi(base), scope, util.pwstrToFfi(filter), util.toPointer(attrs), attrsonly);
 }
 
 export function ldap_searchA(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   base: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   scope: number /* u32 */,
   filter: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  attrs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  attrs: Deno.PointerValue | Uint8Array /* ptr */,
   attrsonly: number /* u32 */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_searchA(util.toPointer(ld), util.pstrToFfi(base), scope, util.pstrToFfi(filter), util.toPointer(attrs), attrsonly);
 }
 
 export function ldap_search_sW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   base: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   scope: number /* u32 */,
   filter: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  attrs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  attrs: Deno.PointerValue | Uint8Array /* ptr */,
   attrsonly: number /* u32 */,
-  res: Deno.PointerValue | Uint8Array | null /* ptr */,
+  res: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_search_sW(util.toPointer(ld), util.pwstrToFfi(base), scope, util.pwstrToFfi(filter), util.toPointer(attrs), attrsonly, util.toPointer(res));
 }
 
 export function ldap_search_sA(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   base: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   scope: number /* u32 */,
   filter: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  attrs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  attrs: Deno.PointerValue | Uint8Array /* ptr */,
   attrsonly: number /* u32 */,
-  res: Deno.PointerValue | Uint8Array | null /* ptr */,
+  res: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_search_sA(util.toPointer(ld), util.pstrToFfi(base), scope, util.pstrToFfi(filter), util.toPointer(attrs), attrsonly, util.toPointer(res));
 }
 
 export function ldap_search_stW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   base: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   scope: number /* u32 */,
   filter: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  attrs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  attrs: Deno.PointerValue | Uint8Array /* ptr */,
   attrsonly: number /* u32 */,
-  timeout: Deno.PointerValue | Uint8Array | null /* ptr */,
-  res: Deno.PointerValue | Uint8Array | null /* ptr */,
+  timeout: Deno.PointerValue | Uint8Array /* ptr */,
+  res: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_search_stW(util.toPointer(ld), util.pwstrToFfi(base), scope, util.pwstrToFfi(filter), util.toPointer(attrs), attrsonly, util.toPointer(timeout), util.toPointer(res));
 }
 
 export function ldap_search_stA(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   base: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   scope: number /* u32 */,
   filter: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  attrs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  attrs: Deno.PointerValue | Uint8Array /* ptr */,
   attrsonly: number /* u32 */,
-  timeout: Deno.PointerValue | Uint8Array | null /* ptr */,
-  res: Deno.PointerValue | Uint8Array | null /* ptr */,
+  timeout: Deno.PointerValue | Uint8Array /* ptr */,
+  res: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_search_stA(util.toPointer(ld), util.pstrToFfi(base), scope, util.pstrToFfi(filter), util.toPointer(attrs), attrsonly, util.toPointer(timeout), util.toPointer(res));
 }
 
 export function ldap_search_extW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   base: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   scope: number /* u32 */,
   filter: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  attrs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  attrs: Deno.PointerValue | Uint8Array /* ptr */,
   attrsonly: number /* u32 */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
   TimeLimit: number /* u32 */,
   SizeLimit: number /* u32 */,
-  MessageNumber: Deno.PointerValue | Uint8Array | null /* ptr */,
+  MessageNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_search_extW(util.toPointer(ld), util.pwstrToFfi(base), scope, util.pwstrToFfi(filter), util.toPointer(attrs), attrsonly, util.toPointer(ServerControls), util.toPointer(ClientControls), TimeLimit, SizeLimit, util.toPointer(MessageNumber));
 }
 
 export function ldap_search_extA(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   base: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   scope: number /* u32 */,
   filter: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  attrs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  attrs: Deno.PointerValue | Uint8Array /* ptr */,
   attrsonly: number /* u32 */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
   TimeLimit: number /* u32 */,
   SizeLimit: number /* u32 */,
-  MessageNumber: Deno.PointerValue | Uint8Array | null /* ptr */,
+  MessageNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_search_extA(util.toPointer(ld), util.pstrToFfi(base), scope, util.pstrToFfi(filter), util.toPointer(attrs), attrsonly, util.toPointer(ServerControls), util.toPointer(ClientControls), TimeLimit, SizeLimit, util.toPointer(MessageNumber));
 }
 
 export function ldap_search_ext_sW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   base: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   scope: number /* u32 */,
   filter: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  attrs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  attrs: Deno.PointerValue | Uint8Array /* ptr */,
   attrsonly: number /* u32 */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  timeout: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
+  timeout: Deno.PointerValue | Uint8Array /* ptr */,
   SizeLimit: number /* u32 */,
-  res: Deno.PointerValue | Uint8Array | null /* ptr */,
+  res: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_search_ext_sW(util.toPointer(ld), util.pwstrToFfi(base), scope, util.pwstrToFfi(filter), util.toPointer(attrs), attrsonly, util.toPointer(ServerControls), util.toPointer(ClientControls), util.toPointer(timeout), SizeLimit, util.toPointer(res));
 }
 
 export function ldap_search_ext_sA(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   base: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   scope: number /* u32 */,
   filter: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  attrs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  attrs: Deno.PointerValue | Uint8Array /* ptr */,
   attrsonly: number /* u32 */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  timeout: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
+  timeout: Deno.PointerValue | Uint8Array /* ptr */,
   SizeLimit: number /* u32 */,
-  res: Deno.PointerValue | Uint8Array | null /* ptr */,
+  res: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_search_ext_sA(util.toPointer(ld), util.pstrToFfi(base), scope, util.pstrToFfi(filter), util.toPointer(attrs), attrsonly, util.toPointer(ServerControls), util.toPointer(ClientControls), util.toPointer(timeout), SizeLimit, util.toPointer(res));
 }
 
 export function ldap_search(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   base: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   scope: number /* u32 */,
   filter: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  attrs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  attrs: Deno.PointerValue | Uint8Array /* ptr */,
   attrsonly: number /* u32 */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_search(util.toPointer(ld), util.pstrToFfi(base), scope, util.pstrToFfi(filter), util.toPointer(attrs), attrsonly);
 }
 
 export function ldap_search_s(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   base: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   scope: number /* u32 */,
   filter: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  attrs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  attrs: Deno.PointerValue | Uint8Array /* ptr */,
   attrsonly: number /* u32 */,
-  res: Deno.PointerValue | Uint8Array | null /* ptr */,
+  res: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_search_s(util.toPointer(ld), util.pstrToFfi(base), scope, util.pstrToFfi(filter), util.toPointer(attrs), attrsonly, util.toPointer(res));
 }
 
 export function ldap_search_st(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   base: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   scope: number /* u32 */,
   filter: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  attrs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  attrs: Deno.PointerValue | Uint8Array /* ptr */,
   attrsonly: number /* u32 */,
-  timeout: Deno.PointerValue | Uint8Array | null /* ptr */,
-  res: Deno.PointerValue | Uint8Array | null /* ptr */,
+  timeout: Deno.PointerValue | Uint8Array /* ptr */,
+  res: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_search_st(util.toPointer(ld), util.pstrToFfi(base), scope, util.pstrToFfi(filter), util.toPointer(attrs), attrsonly, util.toPointer(timeout), util.toPointer(res));
 }
 
 export function ldap_search_ext(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   base: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   scope: number /* u32 */,
   filter: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  attrs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  attrs: Deno.PointerValue | Uint8Array /* ptr */,
   attrsonly: number /* u32 */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
   TimeLimit: number /* u32 */,
   SizeLimit: number /* u32 */,
-  MessageNumber: Deno.PointerValue | Uint8Array | null /* ptr */,
+  MessageNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_search_ext(util.toPointer(ld), util.pstrToFfi(base), scope, util.pstrToFfi(filter), util.toPointer(attrs), attrsonly, util.toPointer(ServerControls), util.toPointer(ClientControls), TimeLimit, SizeLimit, util.toPointer(MessageNumber));
 }
 
 export function ldap_search_ext_s(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   base: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   scope: number /* u32 */,
   filter: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  attrs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  attrs: Deno.PointerValue | Uint8Array /* ptr */,
   attrsonly: number /* u32 */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  timeout: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
+  timeout: Deno.PointerValue | Uint8Array /* ptr */,
   SizeLimit: number /* u32 */,
-  res: Deno.PointerValue | Uint8Array | null /* ptr */,
+  res: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_search_ext_s(util.toPointer(ld), util.pstrToFfi(base), scope, util.pstrToFfi(filter), util.toPointer(attrs), attrsonly, util.toPointer(ServerControls), util.toPointer(ClientControls), util.toPointer(timeout), SizeLimit, util.toPointer(res));
 }
 
 export function ldap_check_filterW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   SearchFilter: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_check_filterW(util.toPointer(ld), util.pwstrToFfi(SearchFilter));
 }
 
 export function ldap_check_filterA(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   SearchFilter: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_check_filterA(util.toPointer(ld), util.pstrToFfi(SearchFilter));
 }
 
 export function ldap_modifyW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  mods: Deno.PointerValue | Uint8Array | null /* ptr */,
+  mods: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_modifyW(util.toPointer(ld), util.pwstrToFfi(dn), util.toPointer(mods));
 }
 
 export function ldap_modifyA(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  mods: Deno.PointerValue | Uint8Array | null /* ptr */,
+  mods: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_modifyA(util.toPointer(ld), util.pstrToFfi(dn), util.toPointer(mods));
 }
 
 export function ldap_modify_sW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  mods: Deno.PointerValue | Uint8Array | null /* ptr */,
+  mods: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_modify_sW(util.toPointer(ld), util.pwstrToFfi(dn), util.toPointer(mods));
 }
 
 export function ldap_modify_sA(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  mods: Deno.PointerValue | Uint8Array | null /* ptr */,
+  mods: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_modify_sA(util.toPointer(ld), util.pstrToFfi(dn), util.toPointer(mods));
 }
 
 export function ldap_modify_extW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  mods: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MessageNumber: Deno.PointerValue | Uint8Array | null /* ptr */,
+  mods: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
+  MessageNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_modify_extW(util.toPointer(ld), util.pwstrToFfi(dn), util.toPointer(mods), util.toPointer(ServerControls), util.toPointer(ClientControls), util.toPointer(MessageNumber));
 }
 
 export function ldap_modify_extA(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  mods: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MessageNumber: Deno.PointerValue | Uint8Array | null /* ptr */,
+  mods: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
+  MessageNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_modify_extA(util.toPointer(ld), util.pstrToFfi(dn), util.toPointer(mods), util.toPointer(ServerControls), util.toPointer(ClientControls), util.toPointer(MessageNumber));
 }
 
 export function ldap_modify_ext_sW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  mods: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
+  mods: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_modify_ext_sW(util.toPointer(ld), util.pwstrToFfi(dn), util.toPointer(mods), util.toPointer(ServerControls), util.toPointer(ClientControls));
 }
 
 export function ldap_modify_ext_sA(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  mods: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
+  mods: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_modify_ext_sA(util.toPointer(ld), util.pstrToFfi(dn), util.toPointer(mods), util.toPointer(ServerControls), util.toPointer(ClientControls));
 }
 
 export function ldap_modify(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  mods: Deno.PointerValue | Uint8Array | null /* ptr */,
+  mods: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_modify(util.toPointer(ld), util.pstrToFfi(dn), util.toPointer(mods));
 }
 
 export function ldap_modify_s(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  mods: Deno.PointerValue | Uint8Array | null /* ptr */,
+  mods: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_modify_s(util.toPointer(ld), util.pstrToFfi(dn), util.toPointer(mods));
 }
 
 export function ldap_modify_ext(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  mods: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MessageNumber: Deno.PointerValue | Uint8Array | null /* ptr */,
+  mods: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
+  MessageNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_modify_ext(util.toPointer(ld), util.pstrToFfi(dn), util.toPointer(mods), util.toPointer(ServerControls), util.toPointer(ClientControls), util.toPointer(MessageNumber));
 }
 
 export function ldap_modify_ext_s(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  mods: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
+  mods: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_modify_ext_s(util.toPointer(ld), util.pstrToFfi(dn), util.toPointer(mods), util.toPointer(ServerControls), util.toPointer(ClientControls));
 }
 
 export function ldap_modrdn2W(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
   DistinguishedName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   NewDistinguishedName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   DeleteOldRdn: number /* i32 */,
@@ -7190,7 +7190,7 @@ export function ldap_modrdn2W(
 }
 
 export function ldap_modrdn2A(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
   DistinguishedName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   NewDistinguishedName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   DeleteOldRdn: number /* i32 */,
@@ -7199,7 +7199,7 @@ export function ldap_modrdn2A(
 }
 
 export function ldap_modrdnW(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
   DistinguishedName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   NewDistinguishedName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
@@ -7207,7 +7207,7 @@ export function ldap_modrdnW(
 }
 
 export function ldap_modrdnA(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
   DistinguishedName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   NewDistinguishedName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
@@ -7215,7 +7215,7 @@ export function ldap_modrdnA(
 }
 
 export function ldap_modrdn2_sW(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
   DistinguishedName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   NewDistinguishedName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   DeleteOldRdn: number /* i32 */,
@@ -7224,7 +7224,7 @@ export function ldap_modrdn2_sW(
 }
 
 export function ldap_modrdn2_sA(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
   DistinguishedName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   NewDistinguishedName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   DeleteOldRdn: number /* i32 */,
@@ -7233,7 +7233,7 @@ export function ldap_modrdn2_sA(
 }
 
 export function ldap_modrdn_sW(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
   DistinguishedName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   NewDistinguishedName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
@@ -7241,7 +7241,7 @@ export function ldap_modrdn_sW(
 }
 
 export function ldap_modrdn_sA(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
   DistinguishedName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   NewDistinguishedName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
@@ -7249,7 +7249,7 @@ export function ldap_modrdn_sA(
 }
 
 export function ldap_modrdn2(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
   DistinguishedName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   NewDistinguishedName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   DeleteOldRdn: number /* i32 */,
@@ -7258,7 +7258,7 @@ export function ldap_modrdn2(
 }
 
 export function ldap_modrdn(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
   DistinguishedName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   NewDistinguishedName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
@@ -7266,7 +7266,7 @@ export function ldap_modrdn(
 }
 
 export function ldap_modrdn2_s(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
   DistinguishedName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   NewDistinguishedName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   DeleteOldRdn: number /* i32 */,
@@ -7275,7 +7275,7 @@ export function ldap_modrdn2_s(
 }
 
 export function ldap_modrdn_s(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
   DistinguishedName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   NewDistinguishedName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
@@ -7283,193 +7283,193 @@ export function ldap_modrdn_s(
 }
 
 export function ldap_rename_extW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   NewRDN: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   NewParent: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   DeleteOldRdn: number /* i32 */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MessageNumber: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
+  MessageNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_rename_extW(util.toPointer(ld), util.pwstrToFfi(dn), util.pwstrToFfi(NewRDN), util.pwstrToFfi(NewParent), DeleteOldRdn, util.toPointer(ServerControls), util.toPointer(ClientControls), util.toPointer(MessageNumber));
 }
 
 export function ldap_rename_extA(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   NewRDN: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   NewParent: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   DeleteOldRdn: number /* i32 */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MessageNumber: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
+  MessageNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_rename_extA(util.toPointer(ld), util.pstrToFfi(dn), util.pstrToFfi(NewRDN), util.pstrToFfi(NewParent), DeleteOldRdn, util.toPointer(ServerControls), util.toPointer(ClientControls), util.toPointer(MessageNumber));
 }
 
 export function ldap_rename_ext_sW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   NewRDN: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   NewParent: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   DeleteOldRdn: number /* i32 */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_rename_ext_sW(util.toPointer(ld), util.pwstrToFfi(dn), util.pwstrToFfi(NewRDN), util.pwstrToFfi(NewParent), DeleteOldRdn, util.toPointer(ServerControls), util.toPointer(ClientControls));
 }
 
 export function ldap_rename_ext_sA(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   NewRDN: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   NewParent: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   DeleteOldRdn: number /* i32 */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_rename_ext_sA(util.toPointer(ld), util.pstrToFfi(dn), util.pstrToFfi(NewRDN), util.pstrToFfi(NewParent), DeleteOldRdn, util.toPointer(ServerControls), util.toPointer(ClientControls));
 }
 
 export function ldap_rename_ext(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   NewRDN: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   NewParent: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   DeleteOldRdn: number /* i32 */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MessageNumber: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
+  MessageNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_rename_ext(util.toPointer(ld), util.pstrToFfi(dn), util.pstrToFfi(NewRDN), util.pstrToFfi(NewParent), DeleteOldRdn, util.toPointer(ServerControls), util.toPointer(ClientControls), util.toPointer(MessageNumber));
 }
 
 export function ldap_rename_ext_s(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   NewRDN: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   NewParent: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   DeleteOldRdn: number /* i32 */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_rename_ext_s(util.toPointer(ld), util.pstrToFfi(dn), util.pstrToFfi(NewRDN), util.pstrToFfi(NewParent), DeleteOldRdn, util.toPointer(ServerControls), util.toPointer(ClientControls));
 }
 
 export function ldap_addW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  attrs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  attrs: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_addW(util.toPointer(ld), util.pwstrToFfi(dn), util.toPointer(attrs));
 }
 
 export function ldap_addA(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  attrs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  attrs: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_addA(util.toPointer(ld), util.pstrToFfi(dn), util.toPointer(attrs));
 }
 
 export function ldap_add_sW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  attrs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  attrs: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_add_sW(util.toPointer(ld), util.pwstrToFfi(dn), util.toPointer(attrs));
 }
 
 export function ldap_add_sA(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  attrs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  attrs: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_add_sA(util.toPointer(ld), util.pstrToFfi(dn), util.toPointer(attrs));
 }
 
 export function ldap_add_extW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  attrs: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MessageNumber: Deno.PointerValue | Uint8Array | null /* ptr */,
+  attrs: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
+  MessageNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_add_extW(util.toPointer(ld), util.pwstrToFfi(dn), util.toPointer(attrs), util.toPointer(ServerControls), util.toPointer(ClientControls), util.toPointer(MessageNumber));
 }
 
 export function ldap_add_extA(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  attrs: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MessageNumber: Deno.PointerValue | Uint8Array | null /* ptr */,
+  attrs: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
+  MessageNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_add_extA(util.toPointer(ld), util.pstrToFfi(dn), util.toPointer(attrs), util.toPointer(ServerControls), util.toPointer(ClientControls), util.toPointer(MessageNumber));
 }
 
 export function ldap_add_ext_sW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  attrs: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
+  attrs: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_add_ext_sW(util.toPointer(ld), util.pwstrToFfi(dn), util.toPointer(attrs), util.toPointer(ServerControls), util.toPointer(ClientControls));
 }
 
 export function ldap_add_ext_sA(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  attrs: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
+  attrs: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_add_ext_sA(util.toPointer(ld), util.pstrToFfi(dn), util.toPointer(attrs), util.toPointer(ServerControls), util.toPointer(ClientControls));
 }
 
 export function ldap_add(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  attrs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  attrs: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_add(util.toPointer(ld), util.pstrToFfi(dn), util.toPointer(attrs));
 }
 
 export function ldap_add_s(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  attrs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  attrs: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_add_s(util.toPointer(ld), util.pstrToFfi(dn), util.toPointer(attrs));
 }
 
 export function ldap_add_ext(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  attrs: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MessageNumber: Deno.PointerValue | Uint8Array | null /* ptr */,
+  attrs: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
+  MessageNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_add_ext(util.toPointer(ld), util.pstrToFfi(dn), util.toPointer(attrs), util.toPointer(ServerControls), util.toPointer(ClientControls), util.toPointer(MessageNumber));
 }
 
 export function ldap_add_ext_s(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  attrs: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
+  attrs: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_add_ext_s(util.toPointer(ld), util.pstrToFfi(dn), util.toPointer(attrs), util.toPointer(ServerControls), util.toPointer(ClientControls));
 }
 
 export function ldap_compareW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   attr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   value: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
@@ -7478,7 +7478,7 @@ export function ldap_compareW(
 }
 
 export function ldap_compareA(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   attr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   value: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
@@ -7487,7 +7487,7 @@ export function ldap_compareA(
 }
 
 export function ldap_compare_sW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   attr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   value: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
@@ -7496,7 +7496,7 @@ export function ldap_compare_sW(
 }
 
 export function ldap_compare_sA(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   attr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   value: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
@@ -7505,7 +7505,7 @@ export function ldap_compare_sA(
 }
 
 export function ldap_compare(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   attr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   value: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
@@ -7514,7 +7514,7 @@ export function ldap_compare(
 }
 
 export function ldap_compare_s(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   attr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   value: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
@@ -7523,319 +7523,319 @@ export function ldap_compare_s(
 }
 
 export function ldap_compare_extW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Attr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Value: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  Data: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MessageNumber: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Data: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
+  MessageNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_compare_extW(util.toPointer(ld), util.pwstrToFfi(dn), util.pwstrToFfi(Attr), util.pwstrToFfi(Value), util.toPointer(Data), util.toPointer(ServerControls), util.toPointer(ClientControls), util.toPointer(MessageNumber));
 }
 
 export function ldap_compare_extA(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Attr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Value: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  Data: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MessageNumber: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Data: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
+  MessageNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_compare_extA(util.toPointer(ld), util.pstrToFfi(dn), util.pstrToFfi(Attr), util.pstrToFfi(Value), util.toPointer(Data), util.toPointer(ServerControls), util.toPointer(ClientControls), util.toPointer(MessageNumber));
 }
 
 export function ldap_compare_ext_sW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Attr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Value: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  Data: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Data: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_compare_ext_sW(util.toPointer(ld), util.pwstrToFfi(dn), util.pwstrToFfi(Attr), util.pwstrToFfi(Value), util.toPointer(Data), util.toPointer(ServerControls), util.toPointer(ClientControls));
 }
 
 export function ldap_compare_ext_sA(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Attr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Value: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  Data: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Data: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_compare_ext_sA(util.toPointer(ld), util.pstrToFfi(dn), util.pstrToFfi(Attr), util.pstrToFfi(Value), util.toPointer(Data), util.toPointer(ServerControls), util.toPointer(ClientControls));
 }
 
 export function ldap_compare_ext(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Attr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Value: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  Data: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MessageNumber: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Data: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
+  MessageNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_compare_ext(util.toPointer(ld), util.pstrToFfi(dn), util.pstrToFfi(Attr), util.pstrToFfi(Value), util.toPointer(Data), util.toPointer(ServerControls), util.toPointer(ClientControls), util.toPointer(MessageNumber));
 }
 
 export function ldap_compare_ext_s(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Attr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Value: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  Data: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Data: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_compare_ext_s(util.toPointer(ld), util.pstrToFfi(dn), util.pstrToFfi(Attr), util.pstrToFfi(Value), util.toPointer(Data), util.toPointer(ServerControls), util.toPointer(ClientControls));
 }
 
 export function ldap_deleteW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_deleteW(util.toPointer(ld), util.pwstrToFfi(dn));
 }
 
 export function ldap_deleteA(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_deleteA(util.toPointer(ld), util.pstrToFfi(dn));
 }
 
 export function ldap_delete_sW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_delete_sW(util.toPointer(ld), util.pwstrToFfi(dn));
 }
 
 export function ldap_delete_sA(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_delete_sA(util.toPointer(ld), util.pstrToFfi(dn));
 }
 
 export function ldap_delete_extW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MessageNumber: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
+  MessageNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_delete_extW(util.toPointer(ld), util.pwstrToFfi(dn), util.toPointer(ServerControls), util.toPointer(ClientControls), util.toPointer(MessageNumber));
 }
 
 export function ldap_delete_extA(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MessageNumber: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
+  MessageNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_delete_extA(util.toPointer(ld), util.pstrToFfi(dn), util.toPointer(ServerControls), util.toPointer(ClientControls), util.toPointer(MessageNumber));
 }
 
 export function ldap_delete_ext_sW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_delete_ext_sW(util.toPointer(ld), util.pwstrToFfi(dn), util.toPointer(ServerControls), util.toPointer(ClientControls));
 }
 
 export function ldap_delete_ext_sA(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_delete_ext_sA(util.toPointer(ld), util.pstrToFfi(dn), util.toPointer(ServerControls), util.toPointer(ClientControls));
 }
 
 export function ldap_delete(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_delete(util.toPointer(ld), util.pstrToFfi(dn));
 }
 
 export function ldap_delete_s(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_delete_s(util.toPointer(ld), util.pstrToFfi(dn));
 }
 
 export function ldap_delete_ext(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MessageNumber: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
+  MessageNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_delete_ext(util.toPointer(ld), util.pstrToFfi(dn), util.toPointer(ServerControls), util.toPointer(ClientControls), util.toPointer(MessageNumber));
 }
 
 export function ldap_delete_ext_s(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_delete_ext_s(util.toPointer(ld), util.pstrToFfi(dn), util.toPointer(ServerControls), util.toPointer(ClientControls));
 }
 
 export function ldap_abandon(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   msgid: number /* u32 */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_abandon(util.toPointer(ld), msgid);
 }
 
 export function ldap_result(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   msgid: number /* u32 */,
   all: number /* u32 */,
-  timeout: Deno.PointerValue | Uint8Array | null /* ptr */,
-  res: Deno.PointerValue | Uint8Array | null /* ptr */,
+  timeout: Deno.PointerValue | Uint8Array /* ptr */,
+  res: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_result(util.toPointer(ld), msgid, all, util.toPointer(timeout), util.toPointer(res));
 }
 
 export function ldap_msgfree(
-  res: Deno.PointerValue | Uint8Array | null /* ptr */,
+  res: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_msgfree(util.toPointer(res));
 }
 
 export function ldap_result2error(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
-  res: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
+  res: Deno.PointerValue | Uint8Array /* ptr */,
   freeit: number /* u32 */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_result2error(util.toPointer(ld), util.toPointer(res), freeit);
 }
 
 export function ldap_parse_resultW(
-  Connection: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ResultMessage: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ReturnCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MatchedDNs: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ErrorMessage: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Referrals: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Freeit: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
+  Connection: Deno.PointerValue | Uint8Array /* ptr */,
+  ResultMessage: Deno.PointerValue | Uint8Array /* ptr */,
+  ReturnCode: Deno.PointerValue | Uint8Array /* ptr */,
+  MatchedDNs: Deno.PointerValue | Uint8Array /* ptr */,
+  ErrorMessage: Deno.PointerValue | Uint8Array /* ptr */,
+  Referrals: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  Freeit: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_parse_resultW(util.toPointer(Connection), util.toPointer(ResultMessage), util.toPointer(ReturnCode), util.toPointer(MatchedDNs), util.toPointer(ErrorMessage), util.toPointer(Referrals), util.toPointer(ServerControls), util.toPointer(Freeit));
 }
 
 export function ldap_parse_resultA(
-  Connection: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ResultMessage: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ReturnCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MatchedDNs: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ErrorMessage: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Referrals: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Freeit: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
+  Connection: Deno.PointerValue | Uint8Array /* ptr */,
+  ResultMessage: Deno.PointerValue | Uint8Array /* ptr */,
+  ReturnCode: Deno.PointerValue | Uint8Array /* ptr */,
+  MatchedDNs: Deno.PointerValue | Uint8Array /* ptr */,
+  ErrorMessage: Deno.PointerValue | Uint8Array /* ptr */,
+  Referrals: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  Freeit: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_parse_resultA(util.toPointer(Connection), util.toPointer(ResultMessage), util.toPointer(ReturnCode), util.toPointer(MatchedDNs), util.toPointer(ErrorMessage), util.toPointer(Referrals), util.toPointer(ServerControls), util.toPointer(Freeit));
 }
 
 export function ldap_parse_extended_resultA(
-  Connection: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ResultMessage: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ResultOID: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ResultData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Freeit: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
+  Connection: Deno.PointerValue | Uint8Array /* ptr */,
+  ResultMessage: Deno.PointerValue | Uint8Array /* ptr */,
+  ResultOID: Deno.PointerValue | Uint8Array /* ptr */,
+  ResultData: Deno.PointerValue | Uint8Array /* ptr */,
+  Freeit: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_parse_extended_resultA(util.toPointer(Connection), util.toPointer(ResultMessage), util.toPointer(ResultOID), util.toPointer(ResultData), util.toPointer(Freeit));
 }
 
 export function ldap_parse_extended_resultW(
-  Connection: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ResultMessage: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ResultOID: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ResultData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Freeit: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
+  Connection: Deno.PointerValue | Uint8Array /* ptr */,
+  ResultMessage: Deno.PointerValue | Uint8Array /* ptr */,
+  ResultOID: Deno.PointerValue | Uint8Array /* ptr */,
+  ResultData: Deno.PointerValue | Uint8Array /* ptr */,
+  Freeit: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_parse_extended_resultW(util.toPointer(Connection), util.toPointer(ResultMessage), util.toPointer(ResultOID), util.toPointer(ResultData), util.toPointer(Freeit));
 }
 
 export function ldap_controls_freeA(
-  Controls: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Controls: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_controls_freeA(util.toPointer(Controls));
 }
 
 export function ldap_control_freeA(
-  Controls: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Controls: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_control_freeA(util.toPointer(Controls));
 }
 
 export function ldap_controls_freeW(
-  Control: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Control: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_controls_freeW(util.toPointer(Control));
 }
 
 export function ldap_control_freeW(
-  Control: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Control: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_control_freeW(util.toPointer(Control));
 }
 
 export function ldap_free_controlsW(
-  Controls: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Controls: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_free_controlsW(util.toPointer(Controls));
 }
 
 export function ldap_free_controlsA(
-  Controls: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Controls: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_free_controlsA(util.toPointer(Controls));
 }
 
 export function ldap_parse_result(
-  Connection: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ResultMessage: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ReturnCode: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MatchedDNs: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ErrorMessage: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Referrals: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Freeit: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
+  Connection: Deno.PointerValue | Uint8Array /* ptr */,
+  ResultMessage: Deno.PointerValue | Uint8Array /* ptr */,
+  ReturnCode: Deno.PointerValue | Uint8Array /* ptr */,
+  MatchedDNs: Deno.PointerValue | Uint8Array /* ptr */,
+  ErrorMessage: Deno.PointerValue | Uint8Array /* ptr */,
+  Referrals: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  Freeit: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_parse_result(util.toPointer(Connection), util.toPointer(ResultMessage), util.toPointer(ReturnCode), util.toPointer(MatchedDNs), util.toPointer(ErrorMessage), util.toPointer(Referrals), util.toPointer(ServerControls), util.toPointer(Freeit));
 }
 
 export function ldap_controls_free(
-  Controls: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Controls: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_controls_free(util.toPointer(Controls));
 }
 
 export function ldap_control_free(
-  Control: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Control: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_control_free(util.toPointer(Control));
 }
 
 export function ldap_free_controls(
-  Controls: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Controls: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_free_controls(util.toPointer(Controls));
 }
@@ -7859,194 +7859,194 @@ export function ldap_err2string(
 }
 
 export function ldap_perror(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   msg: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
   return libWLDAP32_dll.ldap_perror(util.toPointer(ld), util.pstrToFfi(msg));
 }
 
 export function ldap_first_entry(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
-  res: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWLDAP32_dll.ldap_first_entry(util.toPointer(ld), util.toPointer(res)));
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
+  res: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libWLDAP32_dll.ldap_first_entry(util.toPointer(ld), util.toPointer(res));
 }
 
 export function ldap_next_entry(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
-  entry: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWLDAP32_dll.ldap_next_entry(util.toPointer(ld), util.toPointer(entry)));
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
+  entry: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libWLDAP32_dll.ldap_next_entry(util.toPointer(ld), util.toPointer(entry));
 }
 
 export function ldap_count_entries(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
-  res: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
+  res: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_count_entries(util.toPointer(ld), util.toPointer(res));
 }
 
 export function ldap_first_attributeW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
-  entry: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ptr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
+  entry: Deno.PointerValue | Uint8Array /* ptr */,
+  ptr: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
   return util.pwstrFromFfi(libWLDAP32_dll.ldap_first_attributeW(util.toPointer(ld), util.toPointer(entry), util.toPointer(ptr)));
 }
 
 export function ldap_first_attributeA(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
-  entry: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ptr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
+  entry: Deno.PointerValue | Uint8Array /* ptr */,
+  ptr: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libWLDAP32_dll.ldap_first_attributeA(util.toPointer(ld), util.toPointer(entry), util.toPointer(ptr)));
 }
 
 export function ldap_first_attribute(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
-  entry: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ptr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
+  entry: Deno.PointerValue | Uint8Array /* ptr */,
+  ptr: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libWLDAP32_dll.ldap_first_attribute(util.toPointer(ld), util.toPointer(entry), util.toPointer(ptr)));
 }
 
 export function ldap_next_attributeW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
-  entry: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ptr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
+  entry: Deno.PointerValue | Uint8Array /* ptr */,
+  ptr: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
   return util.pwstrFromFfi(libWLDAP32_dll.ldap_next_attributeW(util.toPointer(ld), util.toPointer(entry), util.toPointer(ptr)));
 }
 
 export function ldap_next_attributeA(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
-  entry: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ptr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
+  entry: Deno.PointerValue | Uint8Array /* ptr */,
+  ptr: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libWLDAP32_dll.ldap_next_attributeA(util.toPointer(ld), util.toPointer(entry), util.toPointer(ptr)));
 }
 
 export function ldap_next_attribute(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
-  entry: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ptr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
+  entry: Deno.PointerValue | Uint8Array /* ptr */,
+  ptr: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libWLDAP32_dll.ldap_next_attribute(util.toPointer(ld), util.toPointer(entry), util.toPointer(ptr)));
 }
 
 export function ldap_get_valuesW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
-  entry: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
+  entry: Deno.PointerValue | Uint8Array /* ptr */,
   attr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWLDAP32_dll.ldap_get_valuesW(util.toPointer(ld), util.toPointer(entry), util.pwstrToFfi(attr)));
+): Deno.PointerValue /* ptr */ {
+  return libWLDAP32_dll.ldap_get_valuesW(util.toPointer(ld), util.toPointer(entry), util.pwstrToFfi(attr));
 }
 
 export function ldap_get_valuesA(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
-  entry: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
+  entry: Deno.PointerValue | Uint8Array /* ptr */,
   attr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWLDAP32_dll.ldap_get_valuesA(util.toPointer(ld), util.toPointer(entry), util.pstrToFfi(attr)));
+): Deno.PointerValue /* ptr */ {
+  return libWLDAP32_dll.ldap_get_valuesA(util.toPointer(ld), util.toPointer(entry), util.pstrToFfi(attr));
 }
 
 export function ldap_get_values(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
-  entry: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
+  entry: Deno.PointerValue | Uint8Array /* ptr */,
   attr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWLDAP32_dll.ldap_get_values(util.toPointer(ld), util.toPointer(entry), util.pstrToFfi(attr)));
+): Deno.PointerValue /* ptr */ {
+  return libWLDAP32_dll.ldap_get_values(util.toPointer(ld), util.toPointer(entry), util.pstrToFfi(attr));
 }
 
 export function ldap_get_values_lenW(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Message: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  Message: Deno.PointerValue | Uint8Array /* ptr */,
   attr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWLDAP32_dll.ldap_get_values_lenW(util.toPointer(ExternalHandle), util.toPointer(Message), util.pwstrToFfi(attr)));
+): Deno.PointerValue /* ptr */ {
+  return libWLDAP32_dll.ldap_get_values_lenW(util.toPointer(ExternalHandle), util.toPointer(Message), util.pwstrToFfi(attr));
 }
 
 export function ldap_get_values_lenA(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Message: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  Message: Deno.PointerValue | Uint8Array /* ptr */,
   attr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWLDAP32_dll.ldap_get_values_lenA(util.toPointer(ExternalHandle), util.toPointer(Message), util.pstrToFfi(attr)));
+): Deno.PointerValue /* ptr */ {
+  return libWLDAP32_dll.ldap_get_values_lenA(util.toPointer(ExternalHandle), util.toPointer(Message), util.pstrToFfi(attr));
 }
 
 export function ldap_get_values_len(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Message: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  Message: Deno.PointerValue | Uint8Array /* ptr */,
   attr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWLDAP32_dll.ldap_get_values_len(util.toPointer(ExternalHandle), util.toPointer(Message), util.pstrToFfi(attr)));
+): Deno.PointerValue /* ptr */ {
+  return libWLDAP32_dll.ldap_get_values_len(util.toPointer(ExternalHandle), util.toPointer(Message), util.pstrToFfi(attr));
 }
 
 export function ldap_count_valuesW(
-  vals: Deno.PointerValue | Uint8Array | null /* ptr */,
+  vals: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_count_valuesW(util.toPointer(vals));
 }
 
 export function ldap_count_valuesA(
-  vals: Deno.PointerValue | Uint8Array | null /* ptr */,
+  vals: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_count_valuesA(util.toPointer(vals));
 }
 
 export function ldap_count_values(
-  vals: Deno.PointerValue | Uint8Array | null /* ptr */,
+  vals: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_count_values(util.toPointer(vals));
 }
 
 export function ldap_count_values_len(
-  vals: Deno.PointerValue | Uint8Array | null /* ptr */,
+  vals: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_count_values_len(util.toPointer(vals));
 }
 
 export function ldap_value_freeW(
-  vals: Deno.PointerValue | Uint8Array | null /* ptr */,
+  vals: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_value_freeW(util.toPointer(vals));
 }
 
 export function ldap_value_freeA(
-  vals: Deno.PointerValue | Uint8Array | null /* ptr */,
+  vals: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_value_freeA(util.toPointer(vals));
 }
 
 export function ldap_value_free(
-  vals: Deno.PointerValue | Uint8Array | null /* ptr */,
+  vals: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_value_free(util.toPointer(vals));
 }
 
 export function ldap_value_free_len(
-  vals: Deno.PointerValue | Uint8Array | null /* ptr */,
+  vals: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_value_free_len(util.toPointer(vals));
 }
 
 export function ldap_get_dnW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
-  entry: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
+  entry: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
   return util.pwstrFromFfi(libWLDAP32_dll.ldap_get_dnW(util.toPointer(ld), util.toPointer(entry)));
 }
 
 export function ldap_get_dnA(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
-  entry: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
+  entry: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libWLDAP32_dll.ldap_get_dnA(util.toPointer(ld), util.toPointer(entry)));
 }
 
 export function ldap_get_dn(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
-  entry: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
+  entry: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libWLDAP32_dll.ldap_get_dn(util.toPointer(ld), util.toPointer(entry)));
 }
@@ -8054,22 +8054,22 @@ export function ldap_get_dn(
 export function ldap_explode_dnW(
   dn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   notypes: number /* u32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWLDAP32_dll.ldap_explode_dnW(util.pwstrToFfi(dn), notypes));
+): Deno.PointerValue /* ptr */ {
+  return libWLDAP32_dll.ldap_explode_dnW(util.pwstrToFfi(dn), notypes);
 }
 
 export function ldap_explode_dnA(
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   notypes: number /* u32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWLDAP32_dll.ldap_explode_dnA(util.pstrToFfi(dn), notypes));
+): Deno.PointerValue /* ptr */ {
+  return libWLDAP32_dll.ldap_explode_dnA(util.pstrToFfi(dn), notypes);
 }
 
 export function ldap_explode_dn(
   dn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   notypes: number /* u32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWLDAP32_dll.ldap_explode_dn(util.pstrToFfi(dn), notypes));
+): Deno.PointerValue /* ptr */ {
+  return libWLDAP32_dll.ldap_explode_dn(util.pstrToFfi(dn), notypes);
 }
 
 export function ldap_dn2ufnW(
@@ -8103,7 +8103,7 @@ export function ldap_memfreeA(
 }
 
 export function ber_bvfree(
-  bv: Deno.PointerValue | Uint8Array | null /* ptr */,
+  bv: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libWLDAP32_dll.ber_bvfree(util.toPointer(bv));
 }
@@ -8116,34 +8116,34 @@ export function ldap_memfree(
 
 export function ldap_ufn2dnW(
   ufn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pDn: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDn: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_ufn2dnW(util.pwstrToFfi(ufn), util.toPointer(pDn));
 }
 
 export function ldap_ufn2dnA(
   ufn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pDn: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDn: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_ufn2dnA(util.pstrToFfi(ufn), util.toPointer(pDn));
 }
 
 export function ldap_ufn2dn(
   ufn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pDn: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDn: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_ufn2dn(util.pstrToFfi(ufn), util.toPointer(pDn));
 }
 
 export function ldap_startup(
-  version: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Instance: Deno.PointerValue | Uint8Array | null /* ptr */,
+  version: Deno.PointerValue | Uint8Array /* ptr */,
+  Instance: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_startup(util.toPointer(version), util.toPointer(Instance));
 }
 
 export function ldap_cleanup(
-  hInstance: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hInstance: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_cleanup(util.toPointer(hInstance));
 }
@@ -8182,7 +8182,7 @@ export function ldap_set_dbg_flags(
 }
 
 export function ldap_set_dbg_routine(
-  DebugPrintRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Networking.Ldap.DBGPRINT */,
+  DebugPrintRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.Ldap.DBGPRINT */,
 ): void /* void */ {
   return libWLDAP32_dll.ldap_set_dbg_routine(util.toPointer(DebugPrintRoutine));
 }
@@ -8206,388 +8206,388 @@ export function LdapUnicodeToUTF8(
 }
 
 export function ldap_create_sort_controlA(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SortKeys: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  SortKeys: Deno.PointerValue | Uint8Array /* ptr */,
   IsCritical: number /* u8 */,
-  Control: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Control: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_create_sort_controlA(util.toPointer(ExternalHandle), util.toPointer(SortKeys), IsCritical, util.toPointer(Control));
 }
 
 export function ldap_create_sort_controlW(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SortKeys: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  SortKeys: Deno.PointerValue | Uint8Array /* ptr */,
   IsCritical: number /* u8 */,
-  Control: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Control: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_create_sort_controlW(util.toPointer(ExternalHandle), util.toPointer(SortKeys), IsCritical, util.toPointer(Control));
 }
 
 export function ldap_parse_sort_controlA(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Control: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Result: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Attribute: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  Control: Deno.PointerValue | Uint8Array /* ptr */,
+  Result: Deno.PointerValue | Uint8Array /* ptr */,
+  Attribute: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_parse_sort_controlA(util.toPointer(ExternalHandle), util.toPointer(Control), util.toPointer(Result), util.toPointer(Attribute));
 }
 
 export function ldap_parse_sort_controlW(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Control: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Result: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Attribute: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  Control: Deno.PointerValue | Uint8Array /* ptr */,
+  Result: Deno.PointerValue | Uint8Array /* ptr */,
+  Attribute: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_parse_sort_controlW(util.toPointer(ExternalHandle), util.toPointer(Control), util.toPointer(Result), util.toPointer(Attribute));
 }
 
 export function ldap_create_sort_control(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SortKeys: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  SortKeys: Deno.PointerValue | Uint8Array /* ptr */,
   IsCritical: number /* u8 */,
-  Control: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Control: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_create_sort_control(util.toPointer(ExternalHandle), util.toPointer(SortKeys), IsCritical, util.toPointer(Control));
 }
 
 export function ldap_parse_sort_control(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Control: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Result: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Attribute: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  Control: Deno.PointerValue | Uint8Array /* ptr */,
+  Result: Deno.PointerValue | Uint8Array /* ptr */,
+  Attribute: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_parse_sort_control(util.toPointer(ExternalHandle), util.toPointer(Control), util.toPointer(Result), util.toPointer(Attribute));
 }
 
 export function ldap_encode_sort_controlW(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SortKeys: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Control: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Criticality: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  SortKeys: Deno.PointerValue | Uint8Array /* ptr */,
+  Control: Deno.PointerValue | Uint8Array /* ptr */,
+  Criticality: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_encode_sort_controlW(util.toPointer(ExternalHandle), util.toPointer(SortKeys), util.toPointer(Control), util.toPointer(Criticality));
 }
 
 export function ldap_encode_sort_controlA(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SortKeys: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Control: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Criticality: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  SortKeys: Deno.PointerValue | Uint8Array /* ptr */,
+  Control: Deno.PointerValue | Uint8Array /* ptr */,
+  Criticality: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_encode_sort_controlA(util.toPointer(ExternalHandle), util.toPointer(SortKeys), util.toPointer(Control), util.toPointer(Criticality));
 }
 
 export function ldap_create_page_controlW(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PageSize: number /* u32 */,
-  Cookie: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Cookie: Deno.PointerValue | Uint8Array /* ptr */,
   IsCritical: number /* u8 */,
-  Control: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Control: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_create_page_controlW(util.toPointer(ExternalHandle), PageSize, util.toPointer(Cookie), IsCritical, util.toPointer(Control));
 }
 
 export function ldap_create_page_controlA(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PageSize: number /* u32 */,
-  Cookie: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Cookie: Deno.PointerValue | Uint8Array /* ptr */,
   IsCritical: number /* u8 */,
-  Control: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Control: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_create_page_controlA(util.toPointer(ExternalHandle), PageSize, util.toPointer(Cookie), IsCritical, util.toPointer(Control));
 }
 
 export function ldap_parse_page_controlW(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  TotalCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Cookie: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  TotalCount: Deno.PointerValue | Uint8Array /* ptr */,
+  Cookie: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_parse_page_controlW(util.toPointer(ExternalHandle), util.toPointer(ServerControls), util.toPointer(TotalCount), util.toPointer(Cookie));
 }
 
 export function ldap_parse_page_controlA(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  TotalCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Cookie: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  TotalCount: Deno.PointerValue | Uint8Array /* ptr */,
+  Cookie: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_parse_page_controlA(util.toPointer(ExternalHandle), util.toPointer(ServerControls), util.toPointer(TotalCount), util.toPointer(Cookie));
 }
 
 export function ldap_create_page_control(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PageSize: number /* u32 */,
-  Cookie: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Cookie: Deno.PointerValue | Uint8Array /* ptr */,
   IsCritical: number /* u8 */,
-  Control: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Control: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_create_page_control(util.toPointer(ExternalHandle), PageSize, util.toPointer(Cookie), IsCritical, util.toPointer(Control));
 }
 
 export function ldap_parse_page_control(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  TotalCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Cookie: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  TotalCount: Deno.PointerValue | Uint8Array /* ptr */,
+  Cookie: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_parse_page_control(util.toPointer(ExternalHandle), util.toPointer(ServerControls), util.toPointer(TotalCount), util.toPointer(Cookie));
 }
 
 export function ldap_search_init_pageW(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
   DistinguishedName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ScopeOfSearch: number /* u32 */,
   SearchFilter: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  AttributeList: Deno.PointerValue | Uint8Array | null /* ptr */,
+  AttributeList: Deno.PointerValue | Uint8Array /* ptr */,
   AttributesOnly: number /* u32 */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
   PageTimeLimit: number /* u32 */,
   TotalSizeLimit: number /* u32 */,
-  SortKeys: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWLDAP32_dll.ldap_search_init_pageW(util.toPointer(ExternalHandle), util.pwstrToFfi(DistinguishedName), ScopeOfSearch, util.pwstrToFfi(SearchFilter), util.toPointer(AttributeList), AttributesOnly, util.toPointer(ServerControls), util.toPointer(ClientControls), PageTimeLimit, TotalSizeLimit, util.toPointer(SortKeys)));
+  SortKeys: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libWLDAP32_dll.ldap_search_init_pageW(util.toPointer(ExternalHandle), util.pwstrToFfi(DistinguishedName), ScopeOfSearch, util.pwstrToFfi(SearchFilter), util.toPointer(AttributeList), AttributesOnly, util.toPointer(ServerControls), util.toPointer(ClientControls), PageTimeLimit, TotalSizeLimit, util.toPointer(SortKeys));
 }
 
 export function ldap_search_init_pageA(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
   DistinguishedName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ScopeOfSearch: number /* u32 */,
   SearchFilter: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  AttributeList: Deno.PointerValue | Uint8Array | null /* ptr */,
+  AttributeList: Deno.PointerValue | Uint8Array /* ptr */,
   AttributesOnly: number /* u32 */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
   PageTimeLimit: number /* u32 */,
   TotalSizeLimit: number /* u32 */,
-  SortKeys: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWLDAP32_dll.ldap_search_init_pageA(util.toPointer(ExternalHandle), util.pstrToFfi(DistinguishedName), ScopeOfSearch, util.pstrToFfi(SearchFilter), util.toPointer(AttributeList), AttributesOnly, util.toPointer(ServerControls), util.toPointer(ClientControls), PageTimeLimit, TotalSizeLimit, util.toPointer(SortKeys)));
+  SortKeys: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libWLDAP32_dll.ldap_search_init_pageA(util.toPointer(ExternalHandle), util.pstrToFfi(DistinguishedName), ScopeOfSearch, util.pstrToFfi(SearchFilter), util.toPointer(AttributeList), AttributesOnly, util.toPointer(ServerControls), util.toPointer(ClientControls), PageTimeLimit, TotalSizeLimit, util.toPointer(SortKeys));
 }
 
 export function ldap_search_init_page(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
   DistinguishedName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ScopeOfSearch: number /* u32 */,
   SearchFilter: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  AttributeList: Deno.PointerValue | Uint8Array | null /* ptr */,
+  AttributeList: Deno.PointerValue | Uint8Array /* ptr */,
   AttributesOnly: number /* u32 */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
   PageTimeLimit: number /* u32 */,
   TotalSizeLimit: number /* u32 */,
-  SortKeys: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWLDAP32_dll.ldap_search_init_page(util.toPointer(ExternalHandle), util.pstrToFfi(DistinguishedName), ScopeOfSearch, util.pstrToFfi(SearchFilter), util.toPointer(AttributeList), AttributesOnly, util.toPointer(ServerControls), util.toPointer(ClientControls), PageTimeLimit, TotalSizeLimit, util.toPointer(SortKeys)));
+  SortKeys: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libWLDAP32_dll.ldap_search_init_page(util.toPointer(ExternalHandle), util.pstrToFfi(DistinguishedName), ScopeOfSearch, util.pstrToFfi(SearchFilter), util.toPointer(AttributeList), AttributesOnly, util.toPointer(ServerControls), util.toPointer(ClientControls), PageTimeLimit, TotalSizeLimit, util.toPointer(SortKeys));
 }
 
 export function ldap_get_next_page(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SearchHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  SearchHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PageSize: number /* u32 */,
-  MessageNumber: Deno.PointerValue | Uint8Array | null /* ptr */,
+  MessageNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_get_next_page(util.toPointer(ExternalHandle), util.toPointer(SearchHandle), PageSize, util.toPointer(MessageNumber));
 }
 
 export function ldap_get_next_page_s(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SearchHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  timeout: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  SearchHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  timeout: Deno.PointerValue | Uint8Array /* ptr */,
   PageSize: number /* u32 */,
-  TotalCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Results: Deno.PointerValue | Uint8Array | null /* ptr */,
+  TotalCount: Deno.PointerValue | Uint8Array /* ptr */,
+  Results: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_get_next_page_s(util.toPointer(ExternalHandle), util.toPointer(SearchHandle), util.toPointer(timeout), PageSize, util.toPointer(TotalCount), util.toPointer(Results));
 }
 
 export function ldap_get_paged_count(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SearchBlock: Deno.PointerValue | Uint8Array | null /* ptr */,
-  TotalCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Results: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  SearchBlock: Deno.PointerValue | Uint8Array /* ptr */,
+  TotalCount: Deno.PointerValue | Uint8Array /* ptr */,
+  Results: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_get_paged_count(util.toPointer(ExternalHandle), util.toPointer(SearchBlock), util.toPointer(TotalCount), util.toPointer(Results));
 }
 
 export function ldap_search_abandon_page(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SearchBlock: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  SearchBlock: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_search_abandon_page(util.toPointer(ExternalHandle), util.toPointer(SearchBlock));
 }
 
 export function ldap_create_vlv_controlW(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  VlvInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  VlvInfo: Deno.PointerValue | Uint8Array /* ptr */,
   IsCritical: number /* u8 */,
-  Control: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Control: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libWLDAP32_dll.ldap_create_vlv_controlW(util.toPointer(ExternalHandle), util.toPointer(VlvInfo), IsCritical, util.toPointer(Control));
 }
 
 export function ldap_create_vlv_controlA(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  VlvInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  VlvInfo: Deno.PointerValue | Uint8Array /* ptr */,
   IsCritical: number /* u8 */,
-  Control: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Control: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libWLDAP32_dll.ldap_create_vlv_controlA(util.toPointer(ExternalHandle), util.toPointer(VlvInfo), IsCritical, util.toPointer(Control));
 }
 
 export function ldap_parse_vlv_controlW(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Control: Deno.PointerValue | Uint8Array | null /* ptr */,
-  TargetPos: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ListCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Context: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ErrCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  Control: Deno.PointerValue | Uint8Array /* ptr */,
+  TargetPos: Deno.PointerValue | Uint8Array /* ptr */,
+  ListCount: Deno.PointerValue | Uint8Array /* ptr */,
+  Context: Deno.PointerValue | Uint8Array /* ptr */,
+  ErrCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libWLDAP32_dll.ldap_parse_vlv_controlW(util.toPointer(ExternalHandle), util.toPointer(Control), util.toPointer(TargetPos), util.toPointer(ListCount), util.toPointer(Context), util.toPointer(ErrCode));
 }
 
 export function ldap_parse_vlv_controlA(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Control: Deno.PointerValue | Uint8Array | null /* ptr */,
-  TargetPos: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ListCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Context: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ErrCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  Control: Deno.PointerValue | Uint8Array /* ptr */,
+  TargetPos: Deno.PointerValue | Uint8Array /* ptr */,
+  ListCount: Deno.PointerValue | Uint8Array /* ptr */,
+  Context: Deno.PointerValue | Uint8Array /* ptr */,
+  ErrCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libWLDAP32_dll.ldap_parse_vlv_controlA(util.toPointer(ExternalHandle), util.toPointer(Control), util.toPointer(TargetPos), util.toPointer(ListCount), util.toPointer(Context), util.toPointer(ErrCode));
 }
 
 export function ldap_start_tls_sW(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerReturnValue: Deno.PointerValue | Uint8Array | null /* ptr */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerReturnValue: Deno.PointerValue | Uint8Array /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_start_tls_sW(util.toPointer(ExternalHandle), util.toPointer(ServerReturnValue), util.toPointer(result), util.toPointer(ServerControls), util.toPointer(ClientControls));
 }
 
 export function ldap_start_tls_sA(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerReturnValue: Deno.PointerValue | Uint8Array | null /* ptr */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerReturnValue: Deno.PointerValue | Uint8Array /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_start_tls_sA(util.toPointer(ExternalHandle), util.toPointer(ServerReturnValue), util.toPointer(result), util.toPointer(ServerControls), util.toPointer(ClientControls));
 }
 
 export function ldap_stop_tls_s(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */ {
-  return util.pointerFromFfi(libWLDAP32_dll.ldap_stop_tls_s(util.toPointer(ExternalHandle)));
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
+  return libWLDAP32_dll.ldap_stop_tls_s(util.toPointer(ExternalHandle));
 }
 
 export function ldap_first_reference(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
-  res: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWLDAP32_dll.ldap_first_reference(util.toPointer(ld), util.toPointer(res)));
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
+  res: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libWLDAP32_dll.ldap_first_reference(util.toPointer(ld), util.toPointer(res));
 }
 
 export function ldap_next_reference(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
-  entry: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWLDAP32_dll.ldap_next_reference(util.toPointer(ld), util.toPointer(entry)));
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
+  entry: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libWLDAP32_dll.ldap_next_reference(util.toPointer(ld), util.toPointer(entry));
 }
 
 export function ldap_count_references(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
-  res: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
+  res: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_count_references(util.toPointer(ld), util.toPointer(res));
 }
 
 export function ldap_parse_referenceW(
-  Connection: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ResultMessage: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Referrals: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Connection: Deno.PointerValue | Uint8Array /* ptr */,
+  ResultMessage: Deno.PointerValue | Uint8Array /* ptr */,
+  Referrals: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_parse_referenceW(util.toPointer(Connection), util.toPointer(ResultMessage), util.toPointer(Referrals));
 }
 
 export function ldap_parse_referenceA(
-  Connection: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ResultMessage: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Referrals: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Connection: Deno.PointerValue | Uint8Array /* ptr */,
+  ResultMessage: Deno.PointerValue | Uint8Array /* ptr */,
+  Referrals: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_parse_referenceA(util.toPointer(Connection), util.toPointer(ResultMessage), util.toPointer(Referrals));
 }
 
 export function ldap_parse_reference(
-  Connection: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ResultMessage: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Referrals: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Connection: Deno.PointerValue | Uint8Array /* ptr */,
+  ResultMessage: Deno.PointerValue | Uint8Array /* ptr */,
+  Referrals: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_parse_reference(util.toPointer(Connection), util.toPointer(ResultMessage), util.toPointer(Referrals));
 }
 
 export function ldap_extended_operationW(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   Oid: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  Data: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MessageNumber: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Data: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
+  MessageNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_extended_operationW(util.toPointer(ld), util.pwstrToFfi(Oid), util.toPointer(Data), util.toPointer(ServerControls), util.toPointer(ClientControls), util.toPointer(MessageNumber));
 }
 
 export function ldap_extended_operationA(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   Oid: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  Data: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MessageNumber: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Data: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
+  MessageNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_extended_operationA(util.toPointer(ld), util.pstrToFfi(Oid), util.toPointer(Data), util.toPointer(ServerControls), util.toPointer(ClientControls), util.toPointer(MessageNumber));
 }
 
 export function ldap_extended_operation_sA(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
   Oid: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  Data: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ReturnedOid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ReturnedData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Data: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ReturnedOid: Deno.PointerValue | Uint8Array /* ptr */,
+  ReturnedData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_extended_operation_sA(util.toPointer(ExternalHandle), util.pstrToFfi(Oid), util.toPointer(Data), util.toPointer(ServerControls), util.toPointer(ClientControls), util.toPointer(ReturnedOid), util.toPointer(ReturnedData));
 }
 
 export function ldap_extended_operation_sW(
-  ExternalHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExternalHandle: Deno.PointerValue | Uint8Array /* ptr */,
   Oid: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  Data: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ReturnedOid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ReturnedData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Data: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ReturnedOid: Deno.PointerValue | Uint8Array /* ptr */,
+  ReturnedData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_extended_operation_sW(util.toPointer(ExternalHandle), util.pwstrToFfi(Oid), util.toPointer(Data), util.toPointer(ServerControls), util.toPointer(ClientControls), util.toPointer(ReturnedOid), util.toPointer(ReturnedData));
 }
 
 export function ldap_extended_operation(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   Oid: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  Data: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientControls: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MessageNumber: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Data: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerControls: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientControls: Deno.PointerValue | Uint8Array /* ptr */,
+  MessageNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_extended_operation(util.toPointer(ld), util.pstrToFfi(Oid), util.toPointer(Data), util.toPointer(ServerControls), util.toPointer(ClientControls), util.toPointer(MessageNumber));
 }
 
 export function ldap_close_extended_op(
-  ld: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ld: Deno.PointerValue | Uint8Array /* ptr */,
   MessageNumber: number /* u32 */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ldap_close_extended_op(util.toPointer(ld), MessageNumber);
@@ -8604,89 +8604,89 @@ export function LdapMapErrorToWin32(
 }
 
 export function ldap_conn_from_msg(
-  PrimaryConn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  res: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWLDAP32_dll.ldap_conn_from_msg(util.toPointer(PrimaryConn), util.toPointer(res)));
+  PrimaryConn: Deno.PointerValue | Uint8Array /* ptr */,
+  res: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libWLDAP32_dll.ldap_conn_from_msg(util.toPointer(PrimaryConn), util.toPointer(res));
 }
 
 export function ber_init(
-  pBerVal: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWLDAP32_dll.ber_init(util.toPointer(pBerVal)));
+  pBerVal: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libWLDAP32_dll.ber_init(util.toPointer(pBerVal));
 }
 
 export function ber_free(
-  pBerElement: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBerElement: Deno.PointerValue | Uint8Array /* ptr */,
   fbuf: number /* i32 */,
 ): void /* void */ {
   return libWLDAP32_dll.ber_free(util.toPointer(pBerElement), fbuf);
 }
 
 export function ber_bvecfree(
-  pBerVal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBerVal: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libWLDAP32_dll.ber_bvecfree(util.toPointer(pBerVal));
 }
 
 export function ber_bvdup(
-  pBerVal: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWLDAP32_dll.ber_bvdup(util.toPointer(pBerVal)));
+  pBerVal: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libWLDAP32_dll.ber_bvdup(util.toPointer(pBerVal));
 }
 
 export function ber_alloc_t(
   options: number /* i32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWLDAP32_dll.ber_alloc_t(options));
+): Deno.PointerValue /* ptr */ {
+  return libWLDAP32_dll.ber_alloc_t(options);
 }
 
 export function ber_skip_tag(
-  pBerElement: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pLen: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBerElement: Deno.PointerValue | Uint8Array /* ptr */,
+  pLen: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ber_skip_tag(util.toPointer(pBerElement), util.toPointer(pLen));
 }
 
 export function ber_peek_tag(
-  pBerElement: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pLen: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBerElement: Deno.PointerValue | Uint8Array /* ptr */,
+  pLen: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ber_peek_tag(util.toPointer(pBerElement), util.toPointer(pLen));
 }
 
 export function ber_first_element(
-  pBerElement: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pLen: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppOpaque: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBerElement: Deno.PointerValue | Uint8Array /* ptr */,
+  pLen: Deno.PointerValue | Uint8Array /* ptr */,
+  ppOpaque: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ber_first_element(util.toPointer(pBerElement), util.toPointer(pLen), util.toPointer(ppOpaque));
 }
 
 export function ber_next_element(
-  pBerElement: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pLen: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBerElement: Deno.PointerValue | Uint8Array /* ptr */,
+  pLen: Deno.PointerValue | Uint8Array /* ptr */,
   opaque: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ber_next_element(util.toPointer(pBerElement), util.toPointer(pLen), util.pstrToFfi(opaque));
 }
 
 export function ber_flatten(
-  pBerElement: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pBerVal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBerElement: Deno.PointerValue | Uint8Array /* ptr */,
+  pBerVal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libWLDAP32_dll.ber_flatten(util.toPointer(pBerElement), util.toPointer(pBerVal));
 }
 
 export function ber_printf(
-  pBerElement: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBerElement: Deno.PointerValue | Uint8Array /* ptr */,
   fmt: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libWLDAP32_dll.ber_printf(util.toPointer(pBerElement), util.pstrToFfi(fmt));
 }
 
 export function ber_scanf(
-  pBerElement: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBerElement: Deno.PointerValue | Uint8Array /* ptr */,
   fmt: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libWLDAP32_dll.ber_scanf(util.toPointer(pBerElement), util.pstrToFfi(fmt));

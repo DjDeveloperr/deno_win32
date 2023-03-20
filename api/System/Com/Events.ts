@@ -12,7 +12,7 @@ export const EOC_DeletedObject = 2;
 
 // Structs
 
-export type BSTR = Deno.PointerValue | Uint8Array | null;
+export type BSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.System.Com.Events.COMEVENTSYSCHANGEINFO (size: 40)
@@ -23,13 +23,13 @@ export interface COMEVENTSYSCHANGEINFO {
   /** Windows.Win32.System.Com.Events.EOC_ChangeType */
   changeType: EOC_ChangeType;
   /** Windows.Win32.Foundation.BSTR */
-  objectId: Uint8Array | Deno.PointerValue | null;
+  objectId: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BSTR */
-  partitionId: Uint8Array | Deno.PointerValue | null;
+  partitionId: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BSTR */
-  applicationId: Uint8Array | Deno.PointerValue | null;
+  applicationId: Uint8Array | Deno.PointerValue;
   /** array */
-  reserved: Deno.PointerValue | null;
+  reserved: Deno.PointerValue;
 }
 
 export const sizeofCOMEVENTSYSCHANGEINFO = 40;
@@ -42,13 +42,13 @@ export function allocCOMEVENTSYSCHANGEINFO(data?: Partial<COMEVENTSYSCHANGEINFO>
   // 0x04: i32
   if (data?.changeType !== undefined) view.setInt32(4, Number(data.changeType), true);
   // 0x08: pointer
-  if (data?.objectId !== undefined) view.setBigUint64(8, data.objectId === null ? 0n : BigInt(util.toPointer(data.objectId)), true);
+  if (data?.objectId !== undefined) view.setBigUint64(8, data.objectId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.objectId))), true);
   // 0x10: pointer
-  if (data?.partitionId !== undefined) view.setBigUint64(16, data.partitionId === null ? 0n : BigInt(util.toPointer(data.partitionId)), true);
+  if (data?.partitionId !== undefined) view.setBigUint64(16, data.partitionId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.partitionId))), true);
   // 0x18: pointer
-  if (data?.applicationId !== undefined) view.setBigUint64(24, data.applicationId === null ? 0n : BigInt(util.toPointer(data.applicationId)), true);
+  if (data?.applicationId !== undefined) view.setBigUint64(24, data.applicationId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.applicationId))), true);
   // 0x20: pointer
-  if (data?.reserved !== undefined) view.setBigUint64(32, data.reserved === null ? 0n : BigInt(util.toPointer(data.reserved)), true);
+  if (data?.reserved !== undefined) view.setBigUint64(32, data.reserved === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.reserved))), true);
   return buf;
 }
 
@@ -73,27 +73,27 @@ export class COMEVENTSYSCHANGEINFOView {
   }
 
   // 0x08: pointer
-  get objectId(): Uint8Array | Deno.PointerValue | null {
+  get objectId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get partitionId(): Uint8Array | Deno.PointerValue | null {
+  get partitionId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get applicationId(): Uint8Array | Deno.PointerValue | null {
+  get applicationId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get reserved(): Uint8Array | Deno.PointerValue | null {
+  get reserved(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -107,23 +107,23 @@ export class COMEVENTSYSCHANGEINFOView {
   }
 
   // 0x08: pointer
-  set objectId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set objectId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set partitionId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set partitionId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set applicationId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set applicationId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set reserved(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set reserved(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 

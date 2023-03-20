@@ -222,7 +222,7 @@ export interface MODEMDEVCAPS {
   /** u32 */
   dwMaxDCERate: number;
   /** array */
-  abVariablePortion: Deno.PointerValue | null;
+  abVariablePortion: Deno.PointerValue;
 }
 
 export const sizeofMODEMDEVCAPS = 88;
@@ -270,7 +270,7 @@ export function allocMODEMDEVCAPS(data?: Partial<MODEMDEVCAPS>): Uint8Array {
   if (data?.dwMaxDCERate !== undefined) view.setUint32(72, Number(data.dwMaxDCERate), true);
   // 0x4c: pad4
   // 0x50: pointer
-  if (data?.abVariablePortion !== undefined) view.setBigUint64(80, data.abVariablePortion === null ? 0n : BigInt(util.toPointer(data.abVariablePortion)), true);
+  if (data?.abVariablePortion !== undefined) view.setBigUint64(80, data.abVariablePortion === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.abVariablePortion))), true);
   return buf;
 }
 
@@ -382,9 +382,9 @@ export class MODEMDEVCAPSView {
   // 0x4c: pad4
 
   // 0x50: pointer
-  get abVariablePortion(): Uint8Array | Deno.PointerValue | null {
+  get abVariablePortion(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -485,8 +485,8 @@ export class MODEMDEVCAPSView {
   // 0x4c: pad4
 
   // 0x50: pointer
-  set abVariablePortion(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set abVariablePortion(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -517,7 +517,7 @@ export interface MODEMSETTINGS {
   /** u32 */
   dwNegotiatedDCERate: number;
   /** array */
-  abVariablePortion: Deno.PointerValue | null;
+  abVariablePortion: Deno.PointerValue;
 }
 
 export const sizeofMODEMSETTINGS = 56;
@@ -549,7 +549,7 @@ export function allocMODEMSETTINGS(data?: Partial<MODEMSETTINGS>): Uint8Array {
   if (data?.dwNegotiatedDCERate !== undefined) view.setUint32(40, Number(data.dwNegotiatedDCERate), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.abVariablePortion !== undefined) view.setBigUint64(48, data.abVariablePortion === null ? 0n : BigInt(util.toPointer(data.abVariablePortion)), true);
+  if (data?.abVariablePortion !== undefined) view.setBigUint64(48, data.abVariablePortion === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.abVariablePortion))), true);
   return buf;
 }
 
@@ -621,9 +621,9 @@ export class MODEMSETTINGSView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  get abVariablePortion(): Uint8Array | Deno.PointerValue | null {
+  get abVariablePortion(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -684,8 +684,8 @@ export class MODEMSETTINGSView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  set abVariablePortion(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set abVariablePortion(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -728,7 +728,7 @@ export interface COMMPROP {
   /** u32 */
   dwProvSpec2: number;
   /** array */
-  wcProvChar: Deno.PointerValue | null;
+  wcProvChar: Deno.PointerValue;
 }
 
 export const sizeofCOMMPROP = 72;
@@ -772,7 +772,7 @@ export function allocCOMMPROP(data?: Partial<COMMPROP>): Uint8Array {
   if (data?.dwProvSpec2 !== undefined) view.setUint32(56, Number(data.dwProvSpec2), true);
   // 0x3c: pad4
   // 0x40: pointer
-  if (data?.wcProvChar !== undefined) view.setBigUint64(64, data.wcProvChar === null ? 0n : BigInt(util.toPointer(data.wcProvChar)), true);
+  if (data?.wcProvChar !== undefined) view.setBigUint64(64, data.wcProvChar === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.wcProvChar))), true);
   return buf;
 }
 
@@ -874,9 +874,9 @@ export class COMMPROPView {
   // 0x3c: pad4
 
   // 0x40: pointer
-  get wcProvChar(): Uint8Array | Deno.PointerValue | null {
+  get wcProvChar(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u16
@@ -967,8 +967,8 @@ export class COMMPROPView {
   // 0x3c: pad4
 
   // 0x40: pointer
-  set wcProvChar(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set wcProvChar(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1397,7 +1397,7 @@ export interface COMMCONFIG {
   /** u16 */
   wReserved: number;
   /** Windows.Win32.Devices.Communication.DCB */
-  dcb: Uint8Array | Deno.PointerValue | null;
+  dcb: Uint8Array | Deno.PointerValue;
   /** u32 */
   dwProviderSubType: number;
   /** u32 */
@@ -1405,7 +1405,7 @@ export interface COMMCONFIG {
   /** u32 */
   dwProviderSize: number;
   /** array */
-  wcProviderData: Deno.PointerValue | null;
+  wcProviderData: Deno.PointerValue;
 }
 
 export const sizeofCOMMCONFIG = 40;
@@ -1420,7 +1420,7 @@ export function allocCOMMCONFIG(data?: Partial<COMMCONFIG>): Uint8Array {
   // 0x06: u16
   if (data?.wReserved !== undefined) view.setUint16(6, Number(data.wReserved), true);
   // 0x08: pointer
-  if (data?.dcb !== undefined) view.setBigUint64(8, data.dcb === null ? 0n : BigInt(util.toPointer(data.dcb)), true);
+  if (data?.dcb !== undefined) view.setBigUint64(8, data.dcb === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.dcb))), true);
   // 0x10: u32
   if (data?.dwProviderSubType !== undefined) view.setUint32(16, Number(data.dwProviderSubType), true);
   // 0x14: u32
@@ -1429,7 +1429,7 @@ export function allocCOMMCONFIG(data?: Partial<COMMCONFIG>): Uint8Array {
   if (data?.dwProviderSize !== undefined) view.setUint32(24, Number(data.dwProviderSize), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.wcProviderData !== undefined) view.setBigUint64(32, data.wcProviderData === null ? 0n : BigInt(util.toPointer(data.wcProviderData)), true);
+  if (data?.wcProviderData !== undefined) view.setBigUint64(32, data.wcProviderData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.wcProviderData))), true);
   return buf;
 }
 
@@ -1459,9 +1459,9 @@ export class COMMCONFIGView {
   }
 
   // 0x08: pointer
-  get dcb(): Uint8Array | Deno.PointerValue | null {
+  get dcb(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -1482,9 +1482,9 @@ export class COMMCONFIGView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get wcProviderData(): Uint8Array | Deno.PointerValue | null {
+  get wcProviderData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1503,8 +1503,8 @@ export class COMMCONFIGView {
   }
 
   // 0x08: pointer
-  set dcb(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set dcb(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -1525,8 +1525,8 @@ export class COMMCONFIGView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set wcProviderData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set wcProviderData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1534,9 +1534,9 @@ export type HANDLE = Deno.PointerValue;
 
 export type BOOL = number;
 
-export type PSTR = Deno.PointerValue | Uint8Array | null;
+export type PSTR = Deno.PointerValue | Uint8Array;
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 export type HWND = Deno.PointerValue;
 
@@ -1680,21 +1680,21 @@ try {
 // Symbols
 
 export function ClearCommBreak(
-  hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.ClearCommBreak(util.toPointer(hFile)));
 }
 
 export function ClearCommError(
-  hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpErrors: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpStat: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpErrors: Deno.PointerValue | Uint8Array /* ptr */,
+  lpStat: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.ClearCommError(util.toPointer(hFile), util.toPointer(lpErrors), util.toPointer(lpStat)));
 }
 
 export function SetupComm(
-  hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwInQueue: number /* u32 */,
   dwOutQueue: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -1702,108 +1702,108 @@ export function SetupComm(
 }
 
 export function EscapeCommFunction(
-  hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwFunc: ESCAPE_COMM_FUNCTION /* Windows.Win32.Devices.Communication.ESCAPE_COMM_FUNCTION */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.EscapeCommFunction(util.toPointer(hFile), dwFunc));
 }
 
 export function GetCommConfig(
-  hCommDev: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpCC: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpdwSize: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hCommDev: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpCC: Deno.PointerValue | Uint8Array /* ptr */,
+  lpdwSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetCommConfig(util.toPointer(hCommDev), util.toPointer(lpCC), util.toPointer(lpdwSize)));
 }
 
 export function GetCommMask(
-  hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpEvtMask: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpEvtMask: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetCommMask(util.toPointer(hFile), util.toPointer(lpEvtMask)));
 }
 
 export function GetCommProperties(
-  hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpCommProp: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpCommProp: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetCommProperties(util.toPointer(hFile), util.toPointer(lpCommProp)));
 }
 
 export function GetCommModemStatus(
-  hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpModemStat: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpModemStat: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetCommModemStatus(util.toPointer(hFile), util.toPointer(lpModemStat)));
 }
 
 export function GetCommState(
-  hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpDCB: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpDCB: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetCommState(util.toPointer(hFile), util.toPointer(lpDCB)));
 }
 
 export function GetCommTimeouts(
-  hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpCommTimeouts: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpCommTimeouts: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetCommTimeouts(util.toPointer(hFile), util.toPointer(lpCommTimeouts)));
 }
 
 export function PurgeComm(
-  hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwFlags: PURGE_COMM_FLAGS /* Windows.Win32.Devices.Communication.PURGE_COMM_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.PurgeComm(util.toPointer(hFile), dwFlags));
 }
 
 export function SetCommBreak(
-  hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetCommBreak(util.toPointer(hFile)));
 }
 
 export function SetCommConfig(
-  hCommDev: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpCC: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hCommDev: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpCC: Deno.PointerValue | Uint8Array /* ptr */,
   dwSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetCommConfig(util.toPointer(hCommDev), util.toPointer(lpCC), dwSize));
 }
 
 export function SetCommMask(
-  hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwEvtMask: COMM_EVENT_MASK /* Windows.Win32.Devices.Communication.COMM_EVENT_MASK */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetCommMask(util.toPointer(hFile), dwEvtMask));
 }
 
 export function SetCommState(
-  hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpDCB: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpDCB: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetCommState(util.toPointer(hFile), util.toPointer(lpDCB)));
 }
 
 export function SetCommTimeouts(
-  hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpCommTimeouts: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpCommTimeouts: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetCommTimeouts(util.toPointer(hFile), util.toPointer(lpCommTimeouts)));
 }
 
 export function TransmitCommChar(
-  hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   cChar: string | number /* Windows.Win32.Foundation.CHAR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.TransmitCommChar(util.toPointer(hFile), util.charToFfi(cChar)));
 }
 
 export function WaitCommEvent(
-  hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpEvtMask: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpEvtMask: Deno.PointerValue | Uint8Array /* ptr */,
+  lpOverlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.WaitCommEvent(util.toPointer(hFile), util.toPointer(lpEvtMask), util.toPointer(lpOverlapped)));
 }
@@ -1812,83 +1812,83 @@ export function OpenCommPort(
   uPortNumber: number /* u32 */,
   dwDesiredAccess: number /* u32 */,
   dwFlagsAndAttributes: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libapi_ms_win_core_comm_l1_1_1_dll.OpenCommPort(uPortNumber, dwDesiredAccess, dwFlagsAndAttributes));
+): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
+  return libapi_ms_win_core_comm_l1_1_1_dll.OpenCommPort(uPortNumber, dwDesiredAccess, dwFlagsAndAttributes);
 }
 
 export function GetCommPorts(
-  lpPortNumbers: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpPortNumbers: Deno.PointerValue | Uint8Array /* ptr */,
   uPortNumbersCount: number /* u32 */,
-  puPortNumbersFound: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puPortNumbersFound: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libapi_ms_win_core_comm_l1_1_2_dll.GetCommPorts(util.toPointer(lpPortNumbers), uPortNumbersCount, util.toPointer(puPortNumbersFound));
 }
 
 export function BuildCommDCBA(
   lpDef: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  lpDCB: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpDCB: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.BuildCommDCBA(util.pstrToFfi(lpDef), util.toPointer(lpDCB)));
 }
 
 export function BuildCommDCBW(
   lpDef: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  lpDCB: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpDCB: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.BuildCommDCBW(util.pwstrToFfi(lpDef), util.toPointer(lpDCB)));
 }
 
 export function BuildCommDCBAndTimeoutsA(
   lpDef: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  lpDCB: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpCommTimeouts: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpDCB: Deno.PointerValue | Uint8Array /* ptr */,
+  lpCommTimeouts: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.BuildCommDCBAndTimeoutsA(util.pstrToFfi(lpDef), util.toPointer(lpDCB), util.toPointer(lpCommTimeouts)));
 }
 
 export function BuildCommDCBAndTimeoutsW(
   lpDef: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  lpDCB: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpCommTimeouts: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpDCB: Deno.PointerValue | Uint8Array /* ptr */,
+  lpCommTimeouts: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.BuildCommDCBAndTimeoutsW(util.pwstrToFfi(lpDef), util.toPointer(lpDCB), util.toPointer(lpCommTimeouts)));
 }
 
 export function CommConfigDialogA(
   lpszName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpCC: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
+  lpCC: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.CommConfigDialogA(util.pstrToFfi(lpszName), util.hwndToFfi(hWnd), util.toPointer(lpCC)));
+  return util.boolFromFfi(libKERNEL32_dll.CommConfigDialogA(util.pstrToFfi(lpszName), (hWnd), util.toPointer(lpCC)));
 }
 
 export function CommConfigDialogW(
   lpszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpCC: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
+  lpCC: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.CommConfigDialogW(util.pwstrToFfi(lpszName), util.hwndToFfi(hWnd), util.toPointer(lpCC)));
+  return util.boolFromFfi(libKERNEL32_dll.CommConfigDialogW(util.pwstrToFfi(lpszName), (hWnd), util.toPointer(lpCC)));
 }
 
 export function GetDefaultCommConfigA(
   lpszName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  lpCC: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpdwSize: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpCC: Deno.PointerValue | Uint8Array /* ptr */,
+  lpdwSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetDefaultCommConfigA(util.pstrToFfi(lpszName), util.toPointer(lpCC), util.toPointer(lpdwSize)));
 }
 
 export function GetDefaultCommConfigW(
   lpszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  lpCC: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpdwSize: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpCC: Deno.PointerValue | Uint8Array /* ptr */,
+  lpdwSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetDefaultCommConfigW(util.pwstrToFfi(lpszName), util.toPointer(lpCC), util.toPointer(lpdwSize)));
 }
 
 export function SetDefaultCommConfigA(
   lpszName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  lpCC: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpCC: Deno.PointerValue | Uint8Array /* ptr */,
   dwSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetDefaultCommConfigA(util.pstrToFfi(lpszName), util.toPointer(lpCC), dwSize));
@@ -1896,7 +1896,7 @@ export function SetDefaultCommConfigA(
 
 export function SetDefaultCommConfigW(
   lpszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  lpCC: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpCC: Deno.PointerValue | Uint8Array /* ptr */,
   dwSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetDefaultCommConfigW(util.pwstrToFfi(lpszName), util.toPointer(lpCC), dwSize));

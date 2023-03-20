@@ -61,7 +61,7 @@ export const MAPI_E_ATTACHMENT_TOO_LARGE = 28;
 
 // Structs
 
-export type PSTR = Deno.PointerValue | Uint8Array | null;
+export type PSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.System.Mapi.MapiFileDesc (size: 40)
@@ -78,7 +78,7 @@ export interface MapiFileDesc {
   /** Windows.Win32.Foundation.PSTR */
   lpszFileName: string | null | Uint8Array;
   /** ptr */
-  lpFileType: Deno.PointerValue | Uint8Array | null;
+  lpFileType: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofMapiFileDesc = 40;
@@ -96,15 +96,15 @@ export function allocMapiFileDesc(data?: Partial<MapiFileDesc>): Uint8Array {
   // 0x10: buffer
   if (data?.lpszPathName !== undefined) {
     (buf as any)._f16 = util.pstrToFfi(data.lpszPathName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.lpszFileName !== undefined) {
     (buf as any)._f24 = util.pstrToFfi(data.lpszFileName);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: pointer
-  if (data?.lpFileType !== undefined) view.setBigUint64(32, data.lpFileType === null ? 0n : BigInt(util.toPointer(data.lpFileType)), true);
+  if (data?.lpFileType !== undefined) view.setBigUint64(32, data.lpFileType === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpFileType))), true);
   return buf;
 }
 
@@ -136,21 +136,21 @@ export class MapiFileDescView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  get lpszPathName(): Uint8Array | Deno.PointerValue | null {
+  get lpszPathName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get lpszFileName(): Uint8Array | Deno.PointerValue | null {
+  get lpszFileName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get lpFileType(): Uint8Array | Deno.PointerValue | null {
+  get lpFileType(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -171,24 +171,24 @@ export class MapiFileDescView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  set lpszPathName(value: Uint8Array | Deno.PointerValue | null) {
+  set lpszPathName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set lpszFileName(value: Uint8Array | Deno.PointerValue | null) {
+  set lpszFileName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: pointer
-  set lpFileType(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set lpFileType(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.System.Mapi.MapiFileDescW (size: 40)
@@ -205,7 +205,7 @@ export interface MapiFileDescW {
   /** Windows.Win32.Foundation.PWSTR */
   lpszFileName: string | null | Uint8Array | Uint16Array;
   /** ptr */
-  lpFileType: Deno.PointerValue | Uint8Array | null;
+  lpFileType: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofMapiFileDescW = 40;
@@ -223,15 +223,15 @@ export function allocMapiFileDescW(data?: Partial<MapiFileDescW>): Uint8Array {
   // 0x10: buffer
   if (data?.lpszPathName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.lpszPathName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.lpszFileName !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.lpszFileName);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: pointer
-  if (data?.lpFileType !== undefined) view.setBigUint64(32, data.lpFileType === null ? 0n : BigInt(util.toPointer(data.lpFileType)), true);
+  if (data?.lpFileType !== undefined) view.setBigUint64(32, data.lpFileType === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpFileType))), true);
   return buf;
 }
 
@@ -263,21 +263,21 @@ export class MapiFileDescWView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  get lpszPathName(): Uint8Array | Deno.PointerValue | null {
+  get lpszPathName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get lpszFileName(): Uint8Array | Deno.PointerValue | null {
+  get lpszFileName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get lpFileType(): Uint8Array | Deno.PointerValue | null {
+  get lpFileType(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -298,20 +298,20 @@ export class MapiFileDescWView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  set lpszPathName(value: Uint8Array | Deno.PointerValue | null) {
+  set lpszPathName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set lpszFileName(value: Uint8Array | Deno.PointerValue | null) {
+  set lpszFileName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: pointer
-  set lpFileType(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set lpFileType(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -324,11 +324,11 @@ export interface MapiFileTagExt {
   /** u32 */
   cbTag: number;
   /** ptr */
-  lpTag: Deno.PointerValue | Uint8Array | null;
+  lpTag: Deno.PointerValue | Uint8Array;
   /** u32 */
   cbEncoding: number;
   /** ptr */
-  lpEncoding: Deno.PointerValue | Uint8Array | null;
+  lpEncoding: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofMapiFileTagExt = 32;
@@ -341,12 +341,12 @@ export function allocMapiFileTagExt(data?: Partial<MapiFileTagExt>): Uint8Array 
   // 0x04: u32
   if (data?.cbTag !== undefined) view.setUint32(4, Number(data.cbTag), true);
   // 0x08: pointer
-  if (data?.lpTag !== undefined) view.setBigUint64(8, data.lpTag === null ? 0n : BigInt(util.toPointer(data.lpTag)), true);
+  if (data?.lpTag !== undefined) view.setBigUint64(8, data.lpTag === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpTag))), true);
   // 0x10: u32
   if (data?.cbEncoding !== undefined) view.setUint32(16, Number(data.cbEncoding), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.lpEncoding !== undefined) view.setBigUint64(24, data.lpEncoding === null ? 0n : BigInt(util.toPointer(data.lpEncoding)), true);
+  if (data?.lpEncoding !== undefined) view.setBigUint64(24, data.lpEncoding === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpEncoding))), true);
   return buf;
 }
 
@@ -371,9 +371,9 @@ export class MapiFileTagExtView {
   }
 
   // 0x08: pointer
-  get lpTag(): Uint8Array | Deno.PointerValue | null {
+  get lpTag(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -384,9 +384,9 @@ export class MapiFileTagExtView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get lpEncoding(): Uint8Array | Deno.PointerValue | null {
+  get lpEncoding(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -400,8 +400,8 @@ export class MapiFileTagExtView {
   }
 
   // 0x08: pointer
-  set lpTag(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set lpTag(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -412,8 +412,8 @@ export class MapiFileTagExtView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set lpEncoding(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set lpEncoding(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -432,7 +432,7 @@ export interface MapiRecipDesc {
   /** u32 */
   ulEIDSize: number;
   /** ptr */
-  lpEntryID: Deno.PointerValue | Uint8Array | null;
+  lpEntryID: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofMapiRecipDesc = 40;
@@ -447,18 +447,18 @@ export function allocMapiRecipDesc(data?: Partial<MapiRecipDesc>): Uint8Array {
   // 0x08: buffer
   if (data?.lpszName !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.lpszName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.lpszAddress !== undefined) {
     (buf as any)._f16 = util.pstrToFfi(data.lpszAddress);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: u32
   if (data?.ulEIDSize !== undefined) view.setUint32(24, Number(data.ulEIDSize), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.lpEntryID !== undefined) view.setBigUint64(32, data.lpEntryID === null ? 0n : BigInt(util.toPointer(data.lpEntryID)), true);
+  if (data?.lpEntryID !== undefined) view.setBigUint64(32, data.lpEntryID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpEntryID))), true);
   return buf;
 }
 
@@ -483,15 +483,15 @@ export class MapiRecipDescView {
   }
 
   // 0x08: buffer
-  get lpszName(): Uint8Array | Deno.PointerValue | null {
+  get lpszName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get lpszAddress(): Uint8Array | Deno.PointerValue | null {
+  get lpszAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -502,9 +502,9 @@ export class MapiRecipDescView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get lpEntryID(): Uint8Array | Deno.PointerValue | null {
+  get lpEntryID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -518,15 +518,15 @@ export class MapiRecipDescView {
   }
 
   // 0x08: buffer
-  set lpszName(value: Uint8Array | Deno.PointerValue | null) {
+  set lpszName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set lpszAddress(value: Uint8Array | Deno.PointerValue | null) {
+  set lpszAddress(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: u32
@@ -537,8 +537,8 @@ export class MapiRecipDescView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set lpEntryID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set lpEntryID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -557,7 +557,7 @@ export interface MapiRecipDescW {
   /** u32 */
   ulEIDSize: number;
   /** ptr */
-  lpEntryID: Deno.PointerValue | Uint8Array | null;
+  lpEntryID: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofMapiRecipDescW = 40;
@@ -572,18 +572,18 @@ export function allocMapiRecipDescW(data?: Partial<MapiRecipDescW>): Uint8Array 
   // 0x08: buffer
   if (data?.lpszName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.lpszName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.lpszAddress !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.lpszAddress);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: u32
   if (data?.ulEIDSize !== undefined) view.setUint32(24, Number(data.ulEIDSize), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.lpEntryID !== undefined) view.setBigUint64(32, data.lpEntryID === null ? 0n : BigInt(util.toPointer(data.lpEntryID)), true);
+  if (data?.lpEntryID !== undefined) view.setBigUint64(32, data.lpEntryID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpEntryID))), true);
   return buf;
 }
 
@@ -608,15 +608,15 @@ export class MapiRecipDescWView {
   }
 
   // 0x08: buffer
-  get lpszName(): Uint8Array | Deno.PointerValue | null {
+  get lpszName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get lpszAddress(): Uint8Array | Deno.PointerValue | null {
+  get lpszAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -627,9 +627,9 @@ export class MapiRecipDescWView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get lpEntryID(): Uint8Array | Deno.PointerValue | null {
+  get lpEntryID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -643,15 +643,15 @@ export class MapiRecipDescWView {
   }
 
   // 0x08: buffer
-  set lpszName(value: Uint8Array | Deno.PointerValue | null) {
+  set lpszName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set lpszAddress(value: Uint8Array | Deno.PointerValue | null) {
+  set lpszAddress(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: u32
@@ -662,8 +662,8 @@ export class MapiRecipDescWView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set lpEntryID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set lpEntryID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -686,15 +686,15 @@ export interface MapiMessage {
   /** u32 */
   flFlags: number;
   /** ptr */
-  lpOriginator: Deno.PointerValue | Uint8Array | null;
+  lpOriginator: Deno.PointerValue | Uint8Array;
   /** u32 */
   nRecipCount: number;
   /** ptr */
-  lpRecips: Deno.PointerValue | Uint8Array | null;
+  lpRecips: Deno.PointerValue | Uint8Array;
   /** u32 */
   nFileCount: number;
   /** ptr */
-  lpFiles: Deno.PointerValue | Uint8Array | null;
+  lpFiles: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofMapiMessage = 96;
@@ -708,43 +708,43 @@ export function allocMapiMessage(data?: Partial<MapiMessage>): Uint8Array {
   // 0x08: buffer
   if (data?.lpszSubject !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.lpszSubject);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.lpszNoteText !== undefined) {
     (buf as any)._f16 = util.pstrToFfi(data.lpszNoteText);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.lpszMessageType !== undefined) {
     (buf as any)._f24 = util.pstrToFfi(data.lpszMessageType);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: buffer
   if (data?.lpszDateReceived !== undefined) {
     (buf as any)._f32 = util.pstrToFfi(data.lpszDateReceived);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f32))), true);
   }
   // 0x28: buffer
   if (data?.lpszConversationID !== undefined) {
     (buf as any)._f40 = util.pstrToFfi(data.lpszConversationID);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f40))), true);
   }
   // 0x30: u32
   if (data?.flFlags !== undefined) view.setUint32(48, Number(data.flFlags), true);
   // 0x34: pad4
   // 0x38: pointer
-  if (data?.lpOriginator !== undefined) view.setBigUint64(56, data.lpOriginator === null ? 0n : BigInt(util.toPointer(data.lpOriginator)), true);
+  if (data?.lpOriginator !== undefined) view.setBigUint64(56, data.lpOriginator === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpOriginator))), true);
   // 0x40: u32
   if (data?.nRecipCount !== undefined) view.setUint32(64, Number(data.nRecipCount), true);
   // 0x44: pad4
   // 0x48: pointer
-  if (data?.lpRecips !== undefined) view.setBigUint64(72, data.lpRecips === null ? 0n : BigInt(util.toPointer(data.lpRecips)), true);
+  if (data?.lpRecips !== undefined) view.setBigUint64(72, data.lpRecips === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpRecips))), true);
   // 0x50: u32
   if (data?.nFileCount !== undefined) view.setUint32(80, Number(data.nFileCount), true);
   // 0x54: pad4
   // 0x58: pointer
-  if (data?.lpFiles !== undefined) view.setBigUint64(88, data.lpFiles === null ? 0n : BigInt(util.toPointer(data.lpFiles)), true);
+  if (data?.lpFiles !== undefined) view.setBigUint64(88, data.lpFiles === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpFiles))), true);
   return buf;
 }
 
@@ -766,33 +766,33 @@ export class MapiMessageView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get lpszSubject(): Uint8Array | Deno.PointerValue | null {
+  get lpszSubject(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get lpszNoteText(): Uint8Array | Deno.PointerValue | null {
+  get lpszNoteText(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get lpszMessageType(): Uint8Array | Deno.PointerValue | null {
+  get lpszMessageType(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: buffer
-  get lpszDateReceived(): Uint8Array | Deno.PointerValue | null {
+  get lpszDateReceived(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: buffer
-  get lpszConversationID(): Uint8Array | Deno.PointerValue | null {
+  get lpszConversationID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: u32
@@ -803,9 +803,9 @@ export class MapiMessageView {
   // 0x34: pad4
 
   // 0x38: pointer
-  get lpOriginator(): Uint8Array | Deno.PointerValue | null {
+  get lpOriginator(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: u32
@@ -816,9 +816,9 @@ export class MapiMessageView {
   // 0x44: pad4
 
   // 0x48: pointer
-  get lpRecips(): Uint8Array | Deno.PointerValue | null {
+  get lpRecips(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: u32
@@ -829,9 +829,9 @@ export class MapiMessageView {
   // 0x54: pad4
 
   // 0x58: pointer
-  get lpFiles(): Uint8Array | Deno.PointerValue | null {
+  get lpFiles(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -842,33 +842,33 @@ export class MapiMessageView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set lpszSubject(value: Uint8Array | Deno.PointerValue | null) {
+  set lpszSubject(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set lpszNoteText(value: Uint8Array | Deno.PointerValue | null) {
+  set lpszNoteText(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set lpszMessageType(value: Uint8Array | Deno.PointerValue | null) {
+  set lpszMessageType(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: buffer
-  set lpszDateReceived(value: Uint8Array | Deno.PointerValue | null) {
+  set lpszDateReceived(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f32))), true);
   }
 
   // 0x28: buffer
-  set lpszConversationID(value: Uint8Array | Deno.PointerValue | null) {
+  set lpszConversationID(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f40))), true);
   }
 
   // 0x30: u32
@@ -879,8 +879,8 @@ export class MapiMessageView {
   // 0x34: pad4
 
   // 0x38: pointer
-  set lpOriginator(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set lpOriginator(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: u32
@@ -891,8 +891,8 @@ export class MapiMessageView {
   // 0x44: pad4
 
   // 0x48: pointer
-  set lpRecips(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set lpRecips(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x50: u32
@@ -903,8 +903,8 @@ export class MapiMessageView {
   // 0x54: pad4
 
   // 0x58: pointer
-  set lpFiles(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  set lpFiles(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -927,15 +927,15 @@ export interface MapiMessageW {
   /** u32 */
   flFlags: number;
   /** ptr */
-  lpOriginator: Deno.PointerValue | Uint8Array | null;
+  lpOriginator: Deno.PointerValue | Uint8Array;
   /** u32 */
   nRecipCount: number;
   /** ptr */
-  lpRecips: Deno.PointerValue | Uint8Array | null;
+  lpRecips: Deno.PointerValue | Uint8Array;
   /** u32 */
   nFileCount: number;
   /** ptr */
-  lpFiles: Deno.PointerValue | Uint8Array | null;
+  lpFiles: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofMapiMessageW = 96;
@@ -949,43 +949,43 @@ export function allocMapiMessageW(data?: Partial<MapiMessageW>): Uint8Array {
   // 0x08: buffer
   if (data?.lpszSubject !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.lpszSubject);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.lpszNoteText !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.lpszNoteText);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.lpszMessageType !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.lpszMessageType);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: buffer
   if (data?.lpszDateReceived !== undefined) {
     (buf as any)._f32 = util.pwstrToFfi(data.lpszDateReceived);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f32))), true);
   }
   // 0x28: buffer
   if (data?.lpszConversationID !== undefined) {
     (buf as any)._f40 = util.pwstrToFfi(data.lpszConversationID);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f40))), true);
   }
   // 0x30: u32
   if (data?.flFlags !== undefined) view.setUint32(48, Number(data.flFlags), true);
   // 0x34: pad4
   // 0x38: pointer
-  if (data?.lpOriginator !== undefined) view.setBigUint64(56, data.lpOriginator === null ? 0n : BigInt(util.toPointer(data.lpOriginator)), true);
+  if (data?.lpOriginator !== undefined) view.setBigUint64(56, data.lpOriginator === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpOriginator))), true);
   // 0x40: u32
   if (data?.nRecipCount !== undefined) view.setUint32(64, Number(data.nRecipCount), true);
   // 0x44: pad4
   // 0x48: pointer
-  if (data?.lpRecips !== undefined) view.setBigUint64(72, data.lpRecips === null ? 0n : BigInt(util.toPointer(data.lpRecips)), true);
+  if (data?.lpRecips !== undefined) view.setBigUint64(72, data.lpRecips === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpRecips))), true);
   // 0x50: u32
   if (data?.nFileCount !== undefined) view.setUint32(80, Number(data.nFileCount), true);
   // 0x54: pad4
   // 0x58: pointer
-  if (data?.lpFiles !== undefined) view.setBigUint64(88, data.lpFiles === null ? 0n : BigInt(util.toPointer(data.lpFiles)), true);
+  if (data?.lpFiles !== undefined) view.setBigUint64(88, data.lpFiles === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpFiles))), true);
   return buf;
 }
 
@@ -1007,33 +1007,33 @@ export class MapiMessageWView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get lpszSubject(): Uint8Array | Deno.PointerValue | null {
+  get lpszSubject(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get lpszNoteText(): Uint8Array | Deno.PointerValue | null {
+  get lpszNoteText(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get lpszMessageType(): Uint8Array | Deno.PointerValue | null {
+  get lpszMessageType(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: buffer
-  get lpszDateReceived(): Uint8Array | Deno.PointerValue | null {
+  get lpszDateReceived(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: buffer
-  get lpszConversationID(): Uint8Array | Deno.PointerValue | null {
+  get lpszConversationID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: u32
@@ -1044,9 +1044,9 @@ export class MapiMessageWView {
   // 0x34: pad4
 
   // 0x38: pointer
-  get lpOriginator(): Uint8Array | Deno.PointerValue | null {
+  get lpOriginator(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: u32
@@ -1057,9 +1057,9 @@ export class MapiMessageWView {
   // 0x44: pad4
 
   // 0x48: pointer
-  get lpRecips(): Uint8Array | Deno.PointerValue | null {
+  get lpRecips(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: u32
@@ -1070,9 +1070,9 @@ export class MapiMessageWView {
   // 0x54: pad4
 
   // 0x58: pointer
-  get lpFiles(): Uint8Array | Deno.PointerValue | null {
+  get lpFiles(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1083,33 +1083,33 @@ export class MapiMessageWView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set lpszSubject(value: Uint8Array | Deno.PointerValue | null) {
+  set lpszSubject(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set lpszNoteText(value: Uint8Array | Deno.PointerValue | null) {
+  set lpszNoteText(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set lpszMessageType(value: Uint8Array | Deno.PointerValue | null) {
+  set lpszMessageType(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: buffer
-  set lpszDateReceived(value: Uint8Array | Deno.PointerValue | null) {
+  set lpszDateReceived(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f32))), true);
   }
 
   // 0x28: buffer
-  set lpszConversationID(value: Uint8Array | Deno.PointerValue | null) {
+  set lpszConversationID(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f40))), true);
   }
 
   // 0x30: u32
@@ -1120,8 +1120,8 @@ export class MapiMessageWView {
   // 0x34: pad4
 
   // 0x38: pointer
-  set lpOriginator(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set lpOriginator(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: u32
@@ -1132,8 +1132,8 @@ export class MapiMessageWView {
   // 0x44: pad4
 
   // 0x48: pointer
-  set lpRecips(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set lpRecips(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x50: u32
@@ -1144,8 +1144,8 @@ export class MapiMessageWView {
   // 0x54: pad4
 
   // 0x58: pointer
-  set lpFiles(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  set lpFiles(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1163,7 +1163,7 @@ try {
 // Symbols
 
 export function MAPIFreeBuffer(
-  pv: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pv: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libMAPI32_dll.MAPIFreeBuffer(util.toPointer(pv));
 }

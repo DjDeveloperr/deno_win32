@@ -301,7 +301,7 @@ export const WdsTptTftpCapVariableWindow = 2;
 
 // Structs
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.System.DeploymentServices.WDS_CLI_CRED (size: 24)
@@ -323,17 +323,17 @@ export function allocWDS_CLI_CRED(data?: Partial<WDS_CLI_CRED>): Uint8Array {
   // 0x00: buffer
   if (data?.pwszUserName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pwszUserName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: buffer
   if (data?.pwszDomain !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pwszDomain);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.pwszPassword !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pwszPassword);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   return buf;
 }
@@ -349,39 +349,39 @@ export class WDS_CLI_CREDView {
   }
 
   // 0x00: buffer
-  get pwszUserName(): Uint8Array | Deno.PointerValue | null {
+  get pwszUserName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get pwszDomain(): Uint8Array | Deno.PointerValue | null {
+  get pwszDomain(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get pwszPassword(): Uint8Array | Deno.PointerValue | null {
+  get pwszPassword(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set pwszUserName(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszUserName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: buffer
-  set pwszDomain(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszDomain(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set pwszPassword(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszPassword(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 }
 
@@ -394,7 +394,7 @@ export interface PXE_DHCP_OPTION {
   /** u8 */
   OptionLength: number;
   /** array */
-  OptionValue: Deno.PointerValue | null;
+  OptionValue: Deno.PointerValue;
 }
 
 export const sizeofPXE_DHCP_OPTION = 16;
@@ -408,7 +408,7 @@ export function allocPXE_DHCP_OPTION(data?: Partial<PXE_DHCP_OPTION>): Uint8Arra
   if (data?.OptionLength !== undefined) view.setUint8(1, Number(data.OptionLength));
   // 0x02: pad6
   // 0x08: pointer
-  if (data?.OptionValue !== undefined) view.setBigUint64(8, data.OptionValue === null ? 0n : BigInt(util.toPointer(data.OptionValue)), true);
+  if (data?.OptionValue !== undefined) view.setBigUint64(8, data.OptionValue === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OptionValue))), true);
   return buf;
 }
 
@@ -435,9 +435,9 @@ export class PXE_DHCP_OPTIONView {
   // 0x02: pad6
 
   // 0x08: pointer
-  get OptionValue(): Uint8Array | Deno.PointerValue | null {
+  get OptionValue(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u8
@@ -453,8 +453,8 @@ export class PXE_DHCP_OPTIONView {
   // 0x02: pad6
 
   // 0x08: pointer
-  set OptionValue(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OptionValue(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -516,9 +516,9 @@ export class _Anonymous_e__StructView {
  */
 export interface _Anonymous_e__Union {
   /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** array */
-  X: Deno.PointerValue | null;
+  X: Deno.PointerValue;
 }
 
 export const sizeof_Anonymous_e__Union = 16;
@@ -527,9 +527,9 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   const buf = new Uint8Array(sizeof_Anonymous_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x08: pointer
-  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.X))), true);
   return buf;
 }
 
@@ -544,25 +544,25 @@ export class _Anonymous_e__UnionView {
   }
 
   // 0x00: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get X(): Uint8Array | Deno.PointerValue | null {
+  get X(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set X(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set X(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -593,15 +593,15 @@ export interface PXE_DHCP_MESSAGE {
   /** u32 */
   RelayAgentIpAddress: number;
   /** array */
-  HardwareAddress: Deno.PointerValue | null;
+  HardwareAddress: Deno.PointerValue;
   /** array */
-  HostName: Deno.PointerValue | null;
+  HostName: Deno.PointerValue;
   /** array */
-  BootFileName: Deno.PointerValue | null;
+  BootFileName: Deno.PointerValue;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.DeploymentServices.PXE_DHCP_OPTION */
-  Option: Uint8Array | Deno.PointerValue | null;
+  Option: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofPXE_DHCP_MESSAGE = 72;
@@ -633,15 +633,15 @@ export function allocPXE_DHCP_MESSAGE(data?: Partial<PXE_DHCP_MESSAGE>): Uint8Ar
   if (data?.RelayAgentIpAddress !== undefined) view.setUint32(24, Number(data.RelayAgentIpAddress), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.HardwareAddress !== undefined) view.setBigUint64(32, data.HardwareAddress === null ? 0n : BigInt(util.toPointer(data.HardwareAddress)), true);
+  if (data?.HardwareAddress !== undefined) view.setBigUint64(32, data.HardwareAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.HardwareAddress))), true);
   // 0x28: pointer
-  if (data?.HostName !== undefined) view.setBigUint64(40, data.HostName === null ? 0n : BigInt(util.toPointer(data.HostName)), true);
+  if (data?.HostName !== undefined) view.setBigUint64(40, data.HostName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.HostName))), true);
   // 0x30: pointer
-  if (data?.BootFileName !== undefined) view.setBigUint64(48, data.BootFileName === null ? 0n : BigInt(util.toPointer(data.BootFileName)), true);
+  if (data?.BootFileName !== undefined) view.setBigUint64(48, data.BootFileName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BootFileName))), true);
   // 0x38: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(56, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(56, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x40: pointer
-  if (data?.Option !== undefined) view.setBigUint64(64, data.Option === null ? 0n : BigInt(util.toPointer(data.Option)), true);
+  if (data?.Option !== undefined) view.setBigUint64(64, data.Option === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Option))), true);
   return buf;
 }
 
@@ -713,33 +713,33 @@ export class PXE_DHCP_MESSAGEView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get HardwareAddress(): Uint8Array | Deno.PointerValue | null {
+  get HardwareAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get HostName(): Uint8Array | Deno.PointerValue | null {
+  get HostName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get BootFileName(): Uint8Array | Deno.PointerValue | null {
+  get BootFileName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get Option(): Uint8Array | Deno.PointerValue | null {
+  get Option(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u8
@@ -800,28 +800,28 @@ export class PXE_DHCP_MESSAGEView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set HardwareAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set HardwareAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set HostName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set HostName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set BootFileName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set BootFileName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set Option(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set Option(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -834,7 +834,7 @@ export interface PXE_DHCPV6_OPTION {
   /** u16 */
   DataLength: number;
   /** array */
-  Data: Deno.PointerValue | null;
+  Data: Deno.PointerValue;
 }
 
 export const sizeofPXE_DHCPV6_OPTION = 16;
@@ -848,7 +848,7 @@ export function allocPXE_DHCPV6_OPTION(data?: Partial<PXE_DHCPV6_OPTION>): Uint8
   if (data?.DataLength !== undefined) view.setUint16(2, Number(data.DataLength), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
+  if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Data))), true);
   return buf;
 }
 
@@ -875,9 +875,9 @@ export class PXE_DHCPV6_OPTIONView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Data(): Uint8Array | Deno.PointerValue | null {
+  get Data(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u16
@@ -893,8 +893,8 @@ export class PXE_DHCPV6_OPTIONView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Data(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Data(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -905,7 +905,7 @@ export interface PXE_DHCPV6_MESSAGE_HEADER {
   /** u8 */
   MessageType: number;
   /** array */
-  Message: Deno.PointerValue | null;
+  Message: Deno.PointerValue;
 }
 
 export const sizeofPXE_DHCPV6_MESSAGE_HEADER = 16;
@@ -917,7 +917,7 @@ export function allocPXE_DHCPV6_MESSAGE_HEADER(data?: Partial<PXE_DHCPV6_MESSAGE
   if (data?.MessageType !== undefined) view.setUint8(0, Number(data.MessageType));
   // 0x01: pad7
   // 0x08: pointer
-  if (data?.Message !== undefined) view.setBigUint64(8, data.Message === null ? 0n : BigInt(util.toPointer(data.Message)), true);
+  if (data?.Message !== undefined) view.setBigUint64(8, data.Message === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Message))), true);
   return buf;
 }
 
@@ -939,9 +939,9 @@ export class PXE_DHCPV6_MESSAGE_HEADERView {
   // 0x01: pad7
 
   // 0x08: pointer
-  get Message(): Uint8Array | Deno.PointerValue | null {
+  get Message(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u8
@@ -952,8 +952,8 @@ export class PXE_DHCPV6_MESSAGE_HEADERView {
   // 0x01: pad7
 
   // 0x08: pointer
-  set Message(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Message(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -970,7 +970,7 @@ export interface PXE_DHCPV6_MESSAGE {
   /** u8 */
   TransactionIDByte3: number;
   /** array */
-  Options: Deno.PointerValue | null;
+  Options: Deno.PointerValue;
 }
 
 export const sizeofPXE_DHCPV6_MESSAGE = 16;
@@ -988,7 +988,7 @@ export function allocPXE_DHCPV6_MESSAGE(data?: Partial<PXE_DHCPV6_MESSAGE>): Uin
   if (data?.TransactionIDByte3 !== undefined) view.setUint8(3, Number(data.TransactionIDByte3));
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Options !== undefined) view.setBigUint64(8, data.Options === null ? 0n : BigInt(util.toPointer(data.Options)), true);
+  if (data?.Options !== undefined) view.setBigUint64(8, data.Options === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Options))), true);
   return buf;
 }
 
@@ -1025,9 +1025,9 @@ export class PXE_DHCPV6_MESSAGEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Options(): Uint8Array | Deno.PointerValue | null {
+  get Options(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u8
@@ -1053,8 +1053,8 @@ export class PXE_DHCPV6_MESSAGEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Options(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Options(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1067,11 +1067,11 @@ export interface PXE_DHCPV6_RELAY_MESSAGE {
   /** u8 */
   HopCount: number;
   /** array */
-  LinkAddress: Deno.PointerValue | null;
+  LinkAddress: Deno.PointerValue;
   /** array */
-  PeerAddress: Deno.PointerValue | null;
+  PeerAddress: Deno.PointerValue;
   /** array */
-  Options: Deno.PointerValue | null;
+  Options: Deno.PointerValue;
 }
 
 export const sizeofPXE_DHCPV6_RELAY_MESSAGE = 32;
@@ -1085,11 +1085,11 @@ export function allocPXE_DHCPV6_RELAY_MESSAGE(data?: Partial<PXE_DHCPV6_RELAY_ME
   if (data?.HopCount !== undefined) view.setUint8(1, Number(data.HopCount));
   // 0x02: pad6
   // 0x08: pointer
-  if (data?.LinkAddress !== undefined) view.setBigUint64(8, data.LinkAddress === null ? 0n : BigInt(util.toPointer(data.LinkAddress)), true);
+  if (data?.LinkAddress !== undefined) view.setBigUint64(8, data.LinkAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.LinkAddress))), true);
   // 0x10: pointer
-  if (data?.PeerAddress !== undefined) view.setBigUint64(16, data.PeerAddress === null ? 0n : BigInt(util.toPointer(data.PeerAddress)), true);
+  if (data?.PeerAddress !== undefined) view.setBigUint64(16, data.PeerAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.PeerAddress))), true);
   // 0x18: pointer
-  if (data?.Options !== undefined) view.setBigUint64(24, data.Options === null ? 0n : BigInt(util.toPointer(data.Options)), true);
+  if (data?.Options !== undefined) view.setBigUint64(24, data.Options === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Options))), true);
   return buf;
 }
 
@@ -1116,21 +1116,21 @@ export class PXE_DHCPV6_RELAY_MESSAGEView {
   // 0x02: pad6
 
   // 0x08: pointer
-  get LinkAddress(): Uint8Array | Deno.PointerValue | null {
+  get LinkAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get PeerAddress(): Uint8Array | Deno.PointerValue | null {
+  get PeerAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get Options(): Uint8Array | Deno.PointerValue | null {
+  get Options(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u8
@@ -1146,18 +1146,18 @@ export class PXE_DHCPV6_RELAY_MESSAGEView {
   // 0x02: pad6
 
   // 0x08: pointer
-  set LinkAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set LinkAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set PeerAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set PeerAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set Options(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set Options(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1190,12 +1190,12 @@ export function allocPXE_PROVIDER(data?: Partial<PXE_PROVIDER>): Uint8Array {
   // 0x08: buffer
   if (data?.pwszName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pwszName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.pwszFilePath !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pwszFilePath);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: i32
   if (data?.bIsCritical !== undefined) view.setInt32(24, Number(data.bIsCritical), true);
@@ -1222,15 +1222,15 @@ export class PXE_PROVIDERView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get pwszName(): Uint8Array | Deno.PointerValue | null {
+  get pwszName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get pwszFilePath(): Uint8Array | Deno.PointerValue | null {
+  get pwszFilePath(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: i32
@@ -1251,15 +1251,15 @@ export class PXE_PROVIDERView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set pwszName(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set pwszFilePath(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszFilePath(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: i32
@@ -1280,7 +1280,7 @@ export interface PXE_ADDRESS {
   /** u32 */
   uFlags: number;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** u32 */
   uAddrLen: number;
   /** u16 */
@@ -1296,7 +1296,7 @@ export function allocPXE_ADDRESS(data?: Partial<PXE_ADDRESS>): Uint8Array {
   if (data?.uFlags !== undefined) view.setUint32(0, Number(data.uFlags), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x10: u32
   if (data?.uAddrLen !== undefined) view.setUint32(16, Number(data.uAddrLen), true);
   // 0x14: u16
@@ -1323,9 +1323,9 @@ export class PXE_ADDRESSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -1348,8 +1348,8 @@ export class PXE_ADDRESSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -1370,11 +1370,11 @@ export class PXE_ADDRESSView {
  */
 export interface PXE_DHCPV6_NESTED_RELAY_MESSAGE {
   /** ptr */
-  pRelayMessage: Deno.PointerValue | Uint8Array | null;
+  pRelayMessage: Deno.PointerValue | Uint8Array;
   /** u32 */
   cbRelayMessage: number;
   /** ptr */
-  pInterfaceIdOption: Deno.PointerValue | Uint8Array | null;
+  pInterfaceIdOption: Deno.PointerValue | Uint8Array;
   /** u16 */
   cbInterfaceIdOption: number;
 }
@@ -1385,12 +1385,12 @@ export function allocPXE_DHCPV6_NESTED_RELAY_MESSAGE(data?: Partial<PXE_DHCPV6_N
   const buf = new Uint8Array(sizeofPXE_DHCPV6_NESTED_RELAY_MESSAGE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pRelayMessage !== undefined) view.setBigUint64(0, data.pRelayMessage === null ? 0n : BigInt(util.toPointer(data.pRelayMessage)), true);
+  if (data?.pRelayMessage !== undefined) view.setBigUint64(0, data.pRelayMessage === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pRelayMessage))), true);
   // 0x08: u32
   if (data?.cbRelayMessage !== undefined) view.setUint32(8, Number(data.cbRelayMessage), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.pInterfaceIdOption !== undefined) view.setBigUint64(16, data.pInterfaceIdOption === null ? 0n : BigInt(util.toPointer(data.pInterfaceIdOption)), true);
+  if (data?.pInterfaceIdOption !== undefined) view.setBigUint64(16, data.pInterfaceIdOption === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pInterfaceIdOption))), true);
   // 0x18: u16
   if (data?.cbInterfaceIdOption !== undefined) view.setUint16(24, Number(data.cbInterfaceIdOption), true);
   // 0x1a: pad6
@@ -1408,9 +1408,9 @@ export class PXE_DHCPV6_NESTED_RELAY_MESSAGEView {
   }
 
   // 0x00: pointer
-  get pRelayMessage(): Uint8Array | Deno.PointerValue | null {
+  get pRelayMessage(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -1421,9 +1421,9 @@ export class PXE_DHCPV6_NESTED_RELAY_MESSAGEView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get pInterfaceIdOption(): Uint8Array | Deno.PointerValue | null {
+  get pInterfaceIdOption(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u16
@@ -1434,8 +1434,8 @@ export class PXE_DHCPV6_NESTED_RELAY_MESSAGEView {
   // 0x1a: pad6
 
   // 0x00: pointer
-  set pRelayMessage(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pRelayMessage(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -1446,8 +1446,8 @@ export class PXE_DHCPV6_NESTED_RELAY_MESSAGEView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set pInterfaceIdOption(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pInterfaceIdOption(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u16
@@ -1471,9 +1471,9 @@ export interface WDS_TRANSPORTPROVIDER_INIT_PARAMS {
   /** u32 */
   ulMcServerVersion: number;
   /** Windows.Win32.System.Registry.HKEY */
-  hRegistryKey: Uint8Array | Deno.PointerValue | null;
+  hRegistryKey: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.HANDLE */
-  hProvider: Uint8Array | Deno.PointerValue | null;
+  hProvider: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofWDS_TRANSPORTPROVIDER_INIT_PARAMS = 24;
@@ -1486,9 +1486,9 @@ export function allocWDS_TRANSPORTPROVIDER_INIT_PARAMS(data?: Partial<WDS_TRANSP
   // 0x04: u32
   if (data?.ulMcServerVersion !== undefined) view.setUint32(4, Number(data.ulMcServerVersion), true);
   // 0x08: pointer
-  if (data?.hRegistryKey !== undefined) view.setBigUint64(8, data.hRegistryKey === null ? 0n : BigInt(util.toPointer(data.hRegistryKey)), true);
+  if (data?.hRegistryKey !== undefined) view.setBigUint64(8, data.hRegistryKey === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hRegistryKey))), true);
   // 0x10: pointer
-  if (data?.hProvider !== undefined) view.setBigUint64(16, data.hProvider === null ? 0n : BigInt(util.toPointer(data.hProvider)), true);
+  if (data?.hProvider !== undefined) view.setBigUint64(16, data.hProvider === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hProvider))), true);
   return buf;
 }
 
@@ -1513,15 +1513,15 @@ export class WDS_TRANSPORTPROVIDER_INIT_PARAMSView {
   }
 
   // 0x08: pointer
-  get hRegistryKey(): Uint8Array | Deno.PointerValue | null {
+  get hRegistryKey(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get hProvider(): Uint8Array | Deno.PointerValue | null {
+  get hProvider(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1535,13 +1535,13 @@ export class WDS_TRANSPORTPROVIDER_INIT_PARAMSView {
   }
 
   // 0x08: pointer
-  set hRegistryKey(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set hRegistryKey(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set hProvider(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set hProvider(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1619,7 +1619,7 @@ export function alloc_u_e__Struct(data?: Partial<_u_e__Struct>): Uint8Array {
   // 0x08: buffer
   if (data?.pwszName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pwszName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   return buf;
 }
@@ -1642,9 +1642,9 @@ export class _u_e__StructView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get pwszName(): Uint8Array | Deno.PointerValue | null {
+  get pwszName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1655,9 +1655,9 @@ export class _u_e__StructView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set pwszName(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 }
 
@@ -1666,9 +1666,9 @@ export class _u_e__StructView {
  */
 export interface ULARGE_INTEGER {
   /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** _u_e__Struct */
-  u: Uint8Array | Deno.PointerValue | null;
+  u: Uint8Array | Deno.PointerValue;
   /** u64 */
   QuadPart: Deno.PointerValue;
 }
@@ -1679,9 +1679,9 @@ export function allocULARGE_INTEGER(data?: Partial<ULARGE_INTEGER>): Uint8Array 
   const buf = new Uint8Array(sizeofULARGE_INTEGER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x08: pointer
-  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : BigInt(util.toPointer(data.u)), true);
+  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.u))), true);
   // 0x10: u64
   if (data?.QuadPart !== undefined) view.setBigUint64(16, BigInt(data.QuadPart), true);
   return buf;
@@ -1698,15 +1698,15 @@ export class ULARGE_INTEGERView {
   }
 
   // 0x00: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get u(): Uint8Array | Deno.PointerValue | null {
+  get u(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u64
@@ -1715,13 +1715,13 @@ export class ULARGE_INTEGERView {
   }
 
   // 0x00: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set u(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set u(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u64
@@ -1737,7 +1737,7 @@ export interface TRANSPORTCLIENT_SESSION_INFO {
   /** u32 */
   ulStructureLength: number;
   /** Windows.Win32.Foundation.ULARGE_INTEGER */
-  ullFileSize: Uint8Array | Deno.PointerValue | null;
+  ullFileSize: Uint8Array | Deno.PointerValue;
   /** u32 */
   ulBlockSize: number;
 }
@@ -1751,7 +1751,7 @@ export function allocTRANSPORTCLIENT_SESSION_INFO(data?: Partial<TRANSPORTCLIENT
   if (data?.ulStructureLength !== undefined) view.setUint32(0, Number(data.ulStructureLength), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.ullFileSize !== undefined) view.setBigUint64(8, data.ullFileSize === null ? 0n : BigInt(util.toPointer(data.ullFileSize)), true);
+  if (data?.ullFileSize !== undefined) view.setBigUint64(8, data.ullFileSize === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ullFileSize))), true);
   // 0x10: u32
   if (data?.ulBlockSize !== undefined) view.setUint32(16, Number(data.ulBlockSize), true);
   // 0x14: pad4
@@ -1776,9 +1776,9 @@ export class TRANSPORTCLIENT_SESSION_INFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get ullFileSize(): Uint8Array | Deno.PointerValue | null {
+  get ullFileSize(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -1796,8 +1796,8 @@ export class TRANSPORTCLIENT_SESSION_INFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set ullFileSize(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ullFileSize(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -1829,7 +1829,7 @@ export interface WDS_TRANSPORTCLIENT_REQUEST {
   /** u32 */
   ulProtocol: number;
   /** ptr */
-  pvProtocolData: Deno.PointerValue | Uint8Array | null;
+  pvProtocolData: Deno.PointerValue | Uint8Array;
   /** u32 */
   ulProtocolDataLength: number;
 }
@@ -1849,24 +1849,24 @@ export function allocWDS_TRANSPORTCLIENT_REQUEST(data?: Partial<WDS_TRANSPORTCLI
   // 0x10: buffer
   if (data?.pwszServer !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pwszServer);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.pwszNamespace !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.pwszNamespace);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: buffer
   if (data?.pwszObjectName !== undefined) {
     (buf as any)._f32 = util.pwstrToFfi(data.pwszObjectName);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f32))), true);
   }
   // 0x28: u32
   if (data?.ulCacheSize !== undefined) view.setUint32(40, Number(data.ulCacheSize), true);
   // 0x2c: u32
   if (data?.ulProtocol !== undefined) view.setUint32(44, Number(data.ulProtocol), true);
   // 0x30: pointer
-  if (data?.pvProtocolData !== undefined) view.setBigUint64(48, data.pvProtocolData === null ? 0n : BigInt(util.toPointer(data.pvProtocolData)), true);
+  if (data?.pvProtocolData !== undefined) view.setBigUint64(48, data.pvProtocolData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pvProtocolData))), true);
   // 0x38: u32
   if (data?.ulProtocolDataLength !== undefined) view.setUint32(56, Number(data.ulProtocolDataLength), true);
   // 0x3c: pad4
@@ -1901,21 +1901,21 @@ export class WDS_TRANSPORTCLIENT_REQUESTView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  get pwszServer(): Uint8Array | Deno.PointerValue | null {
+  get pwszServer(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get pwszNamespace(): Uint8Array | Deno.PointerValue | null {
+  get pwszNamespace(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: buffer
-  get pwszObjectName(): Uint8Array | Deno.PointerValue | null {
+  get pwszObjectName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -1929,9 +1929,9 @@ export class WDS_TRANSPORTCLIENT_REQUESTView {
   }
 
   // 0x30: pointer
-  get pvProtocolData(): Uint8Array | Deno.PointerValue | null {
+  get pvProtocolData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: u32
@@ -1959,21 +1959,21 @@ export class WDS_TRANSPORTCLIENT_REQUESTView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  set pwszServer(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszServer(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set pwszNamespace(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszNamespace(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: buffer
-  set pwszObjectName(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszObjectName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f32))), true);
   }
 
   // 0x28: u32
@@ -1987,8 +1987,8 @@ export class WDS_TRANSPORTCLIENT_REQUESTView {
   }
 
   // 0x30: pointer
-  set pvProtocolData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set pvProtocolData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: u32
@@ -2004,17 +2004,17 @@ export class WDS_TRANSPORTCLIENT_REQUESTView {
  */
 export interface WDS_TRANSPORTCLIENT_CALLBACKS {
   /** Windows.Win32.System.DeploymentServices.PFN_WdsTransportClientSessionStart */
-  SessionStart: Uint8Array | Deno.PointerValue | null;
+  SessionStart: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.DeploymentServices.PFN_WdsTransportClientSessionStartEx */
-  SessionStartEx: Uint8Array | Deno.PointerValue | null;
+  SessionStartEx: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.DeploymentServices.PFN_WdsTransportClientReceiveContents */
-  ReceiveContents: Uint8Array | Deno.PointerValue | null;
+  ReceiveContents: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.DeploymentServices.PFN_WdsTransportClientReceiveMetadata */
-  ReceiveMetadata: Uint8Array | Deno.PointerValue | null;
+  ReceiveMetadata: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.DeploymentServices.PFN_WdsTransportClientSessionComplete */
-  SessionComplete: Uint8Array | Deno.PointerValue | null;
+  SessionComplete: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.DeploymentServices.PFN_WdsTransportClientSessionNegotiate */
-  SessionNegotiate: Uint8Array | Deno.PointerValue | null;
+  SessionNegotiate: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofWDS_TRANSPORTCLIENT_CALLBACKS = 48;
@@ -2023,17 +2023,17 @@ export function allocWDS_TRANSPORTCLIENT_CALLBACKS(data?: Partial<WDS_TRANSPORTC
   const buf = new Uint8Array(sizeofWDS_TRANSPORTCLIENT_CALLBACKS);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.SessionStart !== undefined) view.setBigUint64(0, data.SessionStart === null ? 0n : BigInt(util.toPointer(data.SessionStart)), true);
+  if (data?.SessionStart !== undefined) view.setBigUint64(0, data.SessionStart === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.SessionStart))), true);
   // 0x08: pointer
-  if (data?.SessionStartEx !== undefined) view.setBigUint64(8, data.SessionStartEx === null ? 0n : BigInt(util.toPointer(data.SessionStartEx)), true);
+  if (data?.SessionStartEx !== undefined) view.setBigUint64(8, data.SessionStartEx === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.SessionStartEx))), true);
   // 0x10: pointer
-  if (data?.ReceiveContents !== undefined) view.setBigUint64(16, data.ReceiveContents === null ? 0n : BigInt(util.toPointer(data.ReceiveContents)), true);
+  if (data?.ReceiveContents !== undefined) view.setBigUint64(16, data.ReceiveContents === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ReceiveContents))), true);
   // 0x18: pointer
-  if (data?.ReceiveMetadata !== undefined) view.setBigUint64(24, data.ReceiveMetadata === null ? 0n : BigInt(util.toPointer(data.ReceiveMetadata)), true);
+  if (data?.ReceiveMetadata !== undefined) view.setBigUint64(24, data.ReceiveMetadata === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ReceiveMetadata))), true);
   // 0x20: pointer
-  if (data?.SessionComplete !== undefined) view.setBigUint64(32, data.SessionComplete === null ? 0n : BigInt(util.toPointer(data.SessionComplete)), true);
+  if (data?.SessionComplete !== undefined) view.setBigUint64(32, data.SessionComplete === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.SessionComplete))), true);
   // 0x28: pointer
-  if (data?.SessionNegotiate !== undefined) view.setBigUint64(40, data.SessionNegotiate === null ? 0n : BigInt(util.toPointer(data.SessionNegotiate)), true);
+  if (data?.SessionNegotiate !== undefined) view.setBigUint64(40, data.SessionNegotiate === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.SessionNegotiate))), true);
   return buf;
 }
 
@@ -2048,69 +2048,69 @@ export class WDS_TRANSPORTCLIENT_CALLBACKSView {
   }
 
   // 0x00: pointer
-  get SessionStart(): Uint8Array | Deno.PointerValue | null {
+  get SessionStart(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get SessionStartEx(): Uint8Array | Deno.PointerValue | null {
+  get SessionStartEx(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ReceiveContents(): Uint8Array | Deno.PointerValue | null {
+  get ReceiveContents(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get ReceiveMetadata(): Uint8Array | Deno.PointerValue | null {
+  get ReceiveMetadata(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get SessionComplete(): Uint8Array | Deno.PointerValue | null {
+  get SessionComplete(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get SessionNegotiate(): Uint8Array | Deno.PointerValue | null {
+  get SessionNegotiate(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set SessionStart(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set SessionStart(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set SessionStartEx(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set SessionStartEx(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ReceiveContents(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ReceiveContents(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set ReceiveMetadata(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set ReceiveMetadata(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set SessionComplete(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set SessionComplete(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set SessionNegotiate(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set SessionNegotiate(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2522,211 +2522,211 @@ try {
 // Symbols
 
 export function WdsCliClose(
-  Handle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliClose(util.toPointer(Handle)));
+  Handle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliClose(util.toPointer(Handle));
 }
 
 export function WdsCliRegisterTrace(
-  pfn: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.DeploymentServices.PFN_WdsCliTraceFunction */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliRegisterTrace(util.toPointer(pfn)));
+  pfn: Uint8Array | Deno.PointerValue /* Windows.Win32.System.DeploymentServices.PFN_WdsCliTraceFunction */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliRegisterTrace(util.toPointer(pfn));
 }
 
 export function WdsCliFreeStringArray(
-  ppwszArray: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ppwszArray: Deno.PointerValue | Uint8Array /* ptr */,
   ulCount: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliFreeStringArray(util.toPointer(ppwszArray), ulCount));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliFreeStringArray(util.toPointer(ppwszArray), ulCount);
 }
 
 export function WdsCliFindFirstImage(
-  hSession: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  phFindHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliFindFirstImage(util.toPointer(hSession), util.toPointer(phFindHandle)));
+  hSession: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  phFindHandle: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliFindFirstImage(util.toPointer(hSession), util.toPointer(phFindHandle));
 }
 
 export function WdsCliFindNextImage(
-  Handle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliFindNextImage(util.toPointer(Handle)));
+  Handle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliFindNextImage(util.toPointer(Handle));
 }
 
 export function WdsCliGetEnumerationFlags(
-  Handle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pdwFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliGetEnumerationFlags(util.toPointer(Handle), util.toPointer(pdwFlags)));
+  Handle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  pdwFlags: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliGetEnumerationFlags(util.toPointer(Handle), util.toPointer(pdwFlags));
 }
 
 export function WdsCliGetImageHandleFromFindHandle(
-  FindHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  phImageHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliGetImageHandleFromFindHandle(util.toPointer(FindHandle), util.toPointer(phImageHandle)));
+  FindHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  phImageHandle: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliGetImageHandleFromFindHandle(util.toPointer(FindHandle), util.toPointer(phImageHandle));
 }
 
 export function WdsCliGetImageHandleFromTransferHandle(
-  hTransfer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  phImageHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliGetImageHandleFromTransferHandle(util.toPointer(hTransfer), util.toPointer(phImageHandle)));
+  hTransfer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  phImageHandle: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliGetImageHandleFromTransferHandle(util.toPointer(hTransfer), util.toPointer(phImageHandle));
 }
 
 export function WdsCliCreateSession(
   pwszServer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pCred: Deno.PointerValue | Uint8Array | null /* ptr */,
-  phSession: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliCreateSession(util.pwstrToFfi(pwszServer), util.toPointer(pCred), util.toPointer(phSession)));
+  pCred: Deno.PointerValue | Uint8Array /* ptr */,
+  phSession: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliCreateSession(util.pwstrToFfi(pwszServer), util.toPointer(pCred), util.toPointer(phSession));
 }
 
 export function WdsCliAuthorizeSession(
-  hSession: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pCred: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliAuthorizeSession(util.toPointer(hSession), util.toPointer(pCred)));
+  hSession: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  pCred: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliAuthorizeSession(util.toPointer(hSession), util.toPointer(pCred));
 }
 
 export function WdsCliInitializeLog(
-  hSession: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hSession: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ulClientArchitecture: CPU_ARCHITECTURE /* Windows.Win32.System.DeploymentServices.CPU_ARCHITECTURE */,
   pwszClientId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pwszClientAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliInitializeLog(util.toPointer(hSession), ulClientArchitecture, util.pwstrToFfi(pwszClientId), util.pwstrToFfi(pwszClientAddress)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliInitializeLog(util.toPointer(hSession), ulClientArchitecture, util.pwstrToFfi(pwszClientId), util.pwstrToFfi(pwszClientAddress));
 }
 
 export function WdsCliLog(
-  hSession: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hSession: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ulLogLevel: number /* u32 */,
   ulMessageCode: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliLog(util.toPointer(hSession), ulLogLevel, ulMessageCode));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliLog(util.toPointer(hSession), ulLogLevel, ulMessageCode);
 }
 
 export function WdsCliGetImageName(
-  hIfh: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  ppwszValue: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliGetImageName(util.toPointer(hIfh), util.toPointer(ppwszValue)));
+  hIfh: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  ppwszValue: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliGetImageName(util.toPointer(hIfh), util.toPointer(ppwszValue));
 }
 
 export function WdsCliGetImageDescription(
-  hIfh: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  ppwszValue: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliGetImageDescription(util.toPointer(hIfh), util.toPointer(ppwszValue)));
+  hIfh: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  ppwszValue: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliGetImageDescription(util.toPointer(hIfh), util.toPointer(ppwszValue));
 }
 
 export function WdsCliGetImageType(
-  hIfh: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pImageType: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliGetImageType(util.toPointer(hIfh), util.toPointer(pImageType)));
+  hIfh: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  pImageType: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliGetImageType(util.toPointer(hIfh), util.toPointer(pImageType));
 }
 
 export function WdsCliGetImageFiles(
-  hIfh: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pppwszFiles: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pdwCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliGetImageFiles(util.toPointer(hIfh), util.toPointer(pppwszFiles), util.toPointer(pdwCount)));
+  hIfh: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  pppwszFiles: Deno.PointerValue | Uint8Array /* ptr */,
+  pdwCount: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliGetImageFiles(util.toPointer(hIfh), util.toPointer(pppwszFiles), util.toPointer(pdwCount));
 }
 
 export function WdsCliGetImageLanguage(
-  hIfh: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  ppwszValue: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliGetImageLanguage(util.toPointer(hIfh), util.toPointer(ppwszValue)));
+  hIfh: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  ppwszValue: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliGetImageLanguage(util.toPointer(hIfh), util.toPointer(ppwszValue));
 }
 
 export function WdsCliGetImageLanguages(
-  hIfh: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pppszValues: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pdwNumValues: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliGetImageLanguages(util.toPointer(hIfh), util.toPointer(pppszValues), util.toPointer(pdwNumValues)));
+  hIfh: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  pppszValues: Deno.PointerValue | Uint8Array /* ptr */,
+  pdwNumValues: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliGetImageLanguages(util.toPointer(hIfh), util.toPointer(pppszValues), util.toPointer(pdwNumValues));
 }
 
 export function WdsCliGetImageVersion(
-  hIfh: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  ppwszValue: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliGetImageVersion(util.toPointer(hIfh), util.toPointer(ppwszValue)));
+  hIfh: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  ppwszValue: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliGetImageVersion(util.toPointer(hIfh), util.toPointer(ppwszValue));
 }
 
 export function WdsCliGetImagePath(
-  hIfh: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  ppwszValue: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliGetImagePath(util.toPointer(hIfh), util.toPointer(ppwszValue)));
+  hIfh: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  ppwszValue: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliGetImagePath(util.toPointer(hIfh), util.toPointer(ppwszValue));
 }
 
 export function WdsCliGetImageIndex(
-  hIfh: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pdwValue: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliGetImageIndex(util.toPointer(hIfh), util.toPointer(pdwValue)));
+  hIfh: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  pdwValue: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliGetImageIndex(util.toPointer(hIfh), util.toPointer(pdwValue));
 }
 
 export function WdsCliGetImageArchitecture(
-  hIfh: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pdwValue: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliGetImageArchitecture(util.toPointer(hIfh), util.toPointer(pdwValue)));
+  hIfh: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  pdwValue: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliGetImageArchitecture(util.toPointer(hIfh), util.toPointer(pdwValue));
 }
 
 export function WdsCliGetImageLastModifiedTime(
-  hIfh: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  ppSysTimeValue: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliGetImageLastModifiedTime(util.toPointer(hIfh), util.toPointer(ppSysTimeValue)));
+  hIfh: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  ppSysTimeValue: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliGetImageLastModifiedTime(util.toPointer(hIfh), util.toPointer(ppSysTimeValue));
 }
 
 export function WdsCliGetImageSize(
-  hIfh: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pullValue: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliGetImageSize(util.toPointer(hIfh), util.toPointer(pullValue)));
+  hIfh: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  pullValue: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliGetImageSize(util.toPointer(hIfh), util.toPointer(pullValue));
 }
 
 export function WdsCliGetImageHalName(
-  hIfh: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  ppwszValue: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliGetImageHalName(util.toPointer(hIfh), util.toPointer(ppwszValue)));
+  hIfh: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  ppwszValue: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliGetImageHalName(util.toPointer(hIfh), util.toPointer(ppwszValue));
 }
 
 export function WdsCliGetImageGroup(
-  hIfh: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  ppwszValue: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliGetImageGroup(util.toPointer(hIfh), util.toPointer(ppwszValue)));
+  hIfh: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  ppwszValue: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliGetImageGroup(util.toPointer(hIfh), util.toPointer(ppwszValue));
 }
 
 export function WdsCliGetImageNamespace(
-  hIfh: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  ppwszValue: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliGetImageNamespace(util.toPointer(hIfh), util.toPointer(ppwszValue)));
+  hIfh: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  ppwszValue: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliGetImageNamespace(util.toPointer(hIfh), util.toPointer(ppwszValue));
 }
 
 export function WdsCliGetImageParameter(
-  hIfh: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hIfh: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ParamType: WDS_CLI_IMAGE_PARAM_TYPE /* Windows.Win32.System.DeploymentServices.WDS_CLI_IMAGE_PARAM_TYPE */,
-  pResponse: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pResponse: Deno.PointerValue | Uint8Array /* ptr */,
   uResponseLen: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliGetImageParameter(util.toPointer(hIfh), ParamType, util.toPointer(pResponse), uResponseLen));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliGetImageParameter(util.toPointer(hIfh), ParamType, util.toPointer(pResponse), uResponseLen);
 }
 
 export function WdsCliGetTransferSize(
-  hIfh: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pullValue: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliGetTransferSize(util.toPointer(hIfh), util.toPointer(pullValue)));
+  hIfh: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  pullValue: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliGetTransferSize(util.toPointer(hIfh), util.toPointer(pullValue));
 }
 
 export function WdsCliSetTransferBufferSize(
@@ -2736,15 +2736,15 @@ export function WdsCliSetTransferBufferSize(
 }
 
 export function WdsCliTransferImage(
-  hImage: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hImage: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pwszLocalPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   dwReserved: number /* u32 */,
-  pfnWdsCliCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.DeploymentServices.PFN_WdsCliCallback */,
-  pvUserData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  phTransfer: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliTransferImage(util.toPointer(hImage), util.pwstrToFfi(pwszLocalPath), dwFlags, dwReserved, util.toPointer(pfnWdsCliCallback), util.toPointer(pvUserData), util.toPointer(phTransfer)));
+  pfnWdsCliCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.DeploymentServices.PFN_WdsCliCallback */,
+  pvUserData: Deno.PointerValue | Uint8Array /* ptr */,
+  phTransfer: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliTransferImage(util.toPointer(hImage), util.pwstrToFfi(pwszLocalPath), dwFlags, dwReserved, util.toPointer(pfnWdsCliCallback), util.toPointer(pvUserData), util.toPointer(phTransfer));
 }
 
 export function WdsCliTransferFile(
@@ -2754,49 +2754,49 @@ export function WdsCliTransferFile(
   pwszLocalFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
   dwReserved: number /* u32 */,
-  pfnWdsCliCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.DeploymentServices.PFN_WdsCliCallback */,
-  pvUserData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  phTransfer: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliTransferFile(util.pwstrToFfi(pwszServer), util.pwstrToFfi(pwszNamespace), util.pwstrToFfi(pwszRemoteFilePath), util.pwstrToFfi(pwszLocalFilePath), dwFlags, dwReserved, util.toPointer(pfnWdsCliCallback), util.toPointer(pvUserData), util.toPointer(phTransfer)));
+  pfnWdsCliCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.DeploymentServices.PFN_WdsCliCallback */,
+  pvUserData: Deno.PointerValue | Uint8Array /* ptr */,
+  phTransfer: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliTransferFile(util.pwstrToFfi(pwszServer), util.pwstrToFfi(pwszNamespace), util.pwstrToFfi(pwszRemoteFilePath), util.pwstrToFfi(pwszLocalFilePath), dwFlags, dwReserved, util.toPointer(pfnWdsCliCallback), util.toPointer(pvUserData), util.toPointer(phTransfer));
 }
 
 export function WdsCliCancelTransfer(
-  hTransfer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliCancelTransfer(util.toPointer(hTransfer)));
+  hTransfer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliCancelTransfer(util.toPointer(hTransfer));
 }
 
 export function WdsCliWaitForTransfer(
-  hTransfer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliWaitForTransfer(util.toPointer(hTransfer)));
+  hTransfer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliWaitForTransfer(util.toPointer(hTransfer));
 }
 
 export function WdsCliObtainDriverPackages(
-  hImage: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  ppwszServerName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pppwszDriverPackages: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pulCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliObtainDriverPackages(util.toPointer(hImage), util.toPointer(ppwszServerName), util.toPointer(pppwszDriverPackages), util.toPointer(pulCount)));
+  hImage: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  ppwszServerName: Deno.PointerValue | Uint8Array /* ptr */,
+  pppwszDriverPackages: Deno.PointerValue | Uint8Array /* ptr */,
+  pulCount: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliObtainDriverPackages(util.toPointer(hImage), util.toPointer(ppwszServerName), util.toPointer(pppwszDriverPackages), util.toPointer(pulCount));
 }
 
 export function WdsCliObtainDriverPackagesEx(
-  hSession: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hSession: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pwszMachineInfo: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ppwszServerName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pppwszDriverPackages: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pulCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliObtainDriverPackagesEx(util.toPointer(hSession), util.pwstrToFfi(pwszMachineInfo), util.toPointer(ppwszServerName), util.toPointer(pppwszDriverPackages), util.toPointer(pulCount)));
+  ppwszServerName: Deno.PointerValue | Uint8Array /* ptr */,
+  pppwszDriverPackages: Deno.PointerValue | Uint8Array /* ptr */,
+  pulCount: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliObtainDriverPackagesEx(util.toPointer(hSession), util.pwstrToFfi(pwszMachineInfo), util.toPointer(ppwszServerName), util.toPointer(pppwszDriverPackages), util.toPointer(pulCount));
 }
 
 export function WdsCliGetDriverQueryXml(
   pwszWinDirPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ppwszDriverQuery: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSCLIENTAPI_dll.WdsCliGetDriverQueryXml(util.pwstrToFfi(pwszWinDirPath), util.toPointer(ppwszDriverQuery)));
+  ppwszDriverQuery: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSCLIENTAPI_dll.WdsCliGetDriverQueryXml(util.pwstrToFfi(pwszWinDirPath), util.toPointer(ppwszDriverQuery));
 }
 
 export function PxeProviderRegister(
@@ -2804,7 +2804,7 @@ export function PxeProviderRegister(
   pszModulePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Index: number /* u32 */,
   bIsCritical: boolean /* Windows.Win32.Foundation.BOOL */,
-  phProviderKey: Deno.PointerValue | Uint8Array | null /* ptr */,
+  phProviderKey: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSPXE_dll.PxeProviderRegister(util.pwstrToFfi(pszProviderName), util.pwstrToFfi(pszModulePath), Index, util.boolToFfi(bIsCritical), util.toPointer(phProviderKey));
 }
@@ -2817,63 +2817,63 @@ export function PxeProviderUnRegister(
 
 export function PxeProviderQueryIndex(
   pszProviderName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  puIndex: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puIndex: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSPXE_dll.PxeProviderQueryIndex(util.pwstrToFfi(pszProviderName), util.toPointer(puIndex));
 }
 
 export function PxeProviderEnumFirst(
-  phEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
+  phEnum: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSPXE_dll.PxeProviderEnumFirst(util.toPointer(phEnum));
 }
 
 export function PxeProviderEnumNext(
-  hEnum: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  ppProvider: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hEnum: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  ppProvider: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSPXE_dll.PxeProviderEnumNext(util.toPointer(hEnum), util.toPointer(ppProvider));
 }
 
 export function PxeProviderEnumClose(
-  hEnum: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hEnum: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
   return libWDSPXE_dll.PxeProviderEnumClose(util.toPointer(hEnum));
 }
 
 export function PxeProviderFreeInfo(
-  pProvider: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pProvider: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSPXE_dll.PxeProviderFreeInfo(util.toPointer(pProvider));
 }
 
 export function PxeRegisterCallback(
-  hProvider: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hProvider: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   CallbackType: number /* u32 */,
-  pCallbackFunction: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pContext: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pCallbackFunction: Deno.PointerValue | Uint8Array /* ptr */,
+  pContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSPXE_dll.PxeRegisterCallback(util.toPointer(hProvider), CallbackType, util.toPointer(pCallbackFunction), util.toPointer(pContext));
 }
 
 export function PxeSendReply(
-  hClientRequest: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pPacket: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hClientRequest: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  pPacket: Deno.PointerValue | Uint8Array /* ptr */,
   uPacketLen: number /* u32 */,
-  pAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pAddress: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSPXE_dll.PxeSendReply(util.toPointer(hClientRequest), util.toPointer(pPacket), uPacketLen, util.toPointer(pAddress));
 }
 
 export function PxeAsyncRecvDone(
-  hClientRequest: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hClientRequest: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Action: number /* u32 */,
 ): number /* u32 */ {
   return libWDSPXE_dll.PxeAsyncRecvDone(util.toPointer(hClientRequest), Action);
 }
 
 export function PxeTrace(
-  hProvider: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hProvider: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Severity: number /* u32 */,
   pszFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
@@ -2881,191 +2881,191 @@ export function PxeTrace(
 }
 
 export function PxeTraceV(
-  hProvider: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hProvider: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Severity: number /* u32 */,
   pszFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  Params: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Params: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSPXE_dll.PxeTraceV(util.toPointer(hProvider), Severity, util.pwstrToFfi(pszFormat), util.toPointer(Params));
 }
 
 export function PxePacketAllocate(
-  hProvider: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  hClientRequest: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hProvider: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  hClientRequest: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   uSize: number /* u32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWDSPXE_dll.PxePacketAllocate(util.toPointer(hProvider), util.toPointer(hClientRequest), uSize));
+): Deno.PointerValue /* ptr */ {
+  return libWDSPXE_dll.PxePacketAllocate(util.toPointer(hProvider), util.toPointer(hClientRequest), uSize);
 }
 
 export function PxePacketFree(
-  hProvider: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  hClientRequest: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pPacket: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hProvider: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  hClientRequest: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  pPacket: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSPXE_dll.PxePacketFree(util.toPointer(hProvider), util.toPointer(hClientRequest), util.toPointer(pPacket));
 }
 
 export function PxeProviderSetAttribute(
-  hProvider: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hProvider: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Attribute: number /* u32 */,
-  pParameterBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pParameterBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   uParamLen: number /* u32 */,
 ): number /* u32 */ {
   return libWDSPXE_dll.PxeProviderSetAttribute(util.toPointer(hProvider), Attribute, util.toPointer(pParameterBuffer), uParamLen);
 }
 
 export function PxeDhcpInitialize(
-  pRecvPacket: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pRecvPacket: Deno.PointerValue | Uint8Array /* ptr */,
   uRecvPacketLen: number /* u32 */,
-  pReplyPacket: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pReplyPacket: Deno.PointerValue | Uint8Array /* ptr */,
   uMaxReplyPacketLen: number /* u32 */,
-  puReplyPacketLen: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puReplyPacketLen: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSPXE_dll.PxeDhcpInitialize(util.toPointer(pRecvPacket), uRecvPacketLen, util.toPointer(pReplyPacket), uMaxReplyPacketLen, util.toPointer(puReplyPacketLen));
 }
 
 export function PxeDhcpv6Initialize(
-  pRequest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pRequest: Deno.PointerValue | Uint8Array /* ptr */,
   cbRequest: number /* u32 */,
-  pReply: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pReply: Deno.PointerValue | Uint8Array /* ptr */,
   cbReply: number /* u32 */,
-  pcbReplyUsed: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbReplyUsed: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSPXE_dll.PxeDhcpv6Initialize(util.toPointer(pRequest), cbRequest, util.toPointer(pReply), cbReply, util.toPointer(pcbReplyUsed));
 }
 
 export function PxeDhcpAppendOption(
-  pReplyPacket: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pReplyPacket: Deno.PointerValue | Uint8Array /* ptr */,
   uMaxReplyPacketLen: number /* u32 */,
-  puReplyPacketLen: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puReplyPacketLen: Deno.PointerValue | Uint8Array /* ptr */,
   bOption: number /* u8 */,
   bOptionLen: number /* u8 */,
-  pValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSPXE_dll.PxeDhcpAppendOption(util.toPointer(pReplyPacket), uMaxReplyPacketLen, util.toPointer(puReplyPacketLen), bOption, bOptionLen, util.toPointer(pValue));
 }
 
 export function PxeDhcpv6AppendOption(
-  pReply: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pReply: Deno.PointerValue | Uint8Array /* ptr */,
   cbReply: number /* u32 */,
-  pcbReplyUsed: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbReplyUsed: Deno.PointerValue | Uint8Array /* ptr */,
   wOptionType: number /* u16 */,
   cbOption: number /* u16 */,
-  pOption: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pOption: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSPXE_dll.PxeDhcpv6AppendOption(util.toPointer(pReply), cbReply, util.toPointer(pcbReplyUsed), wOptionType, cbOption, util.toPointer(pOption));
 }
 
 export function PxeDhcpAppendOptionRaw(
-  pReplyPacket: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pReplyPacket: Deno.PointerValue | Uint8Array /* ptr */,
   uMaxReplyPacketLen: number /* u32 */,
-  puReplyPacketLen: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puReplyPacketLen: Deno.PointerValue | Uint8Array /* ptr */,
   uBufferLen: number /* u16 */,
-  pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSPXE_dll.PxeDhcpAppendOptionRaw(util.toPointer(pReplyPacket), uMaxReplyPacketLen, util.toPointer(puReplyPacketLen), uBufferLen, util.toPointer(pBuffer));
 }
 
 export function PxeDhcpv6AppendOptionRaw(
-  pReply: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pReply: Deno.PointerValue | Uint8Array /* ptr */,
   cbReply: number /* u32 */,
-  pcbReplyUsed: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbReplyUsed: Deno.PointerValue | Uint8Array /* ptr */,
   cbBuffer: number /* u16 */,
-  pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSPXE_dll.PxeDhcpv6AppendOptionRaw(util.toPointer(pReply), cbReply, util.toPointer(pcbReplyUsed), cbBuffer, util.toPointer(pBuffer));
 }
 
 export function PxeDhcpIsValid(
-  pPacket: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pPacket: Deno.PointerValue | Uint8Array /* ptr */,
   uPacketLen: number /* u32 */,
   bRequestPacket: boolean /* Windows.Win32.Foundation.BOOL */,
-  pbPxeOptionPresent: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pbPxeOptionPresent: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSPXE_dll.PxeDhcpIsValid(util.toPointer(pPacket), uPacketLen, util.boolToFfi(bRequestPacket), util.toPointer(pbPxeOptionPresent));
 }
 
 export function PxeDhcpv6IsValid(
-  pPacket: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pPacket: Deno.PointerValue | Uint8Array /* ptr */,
   uPacketLen: number /* u32 */,
   bRequestPacket: boolean /* Windows.Win32.Foundation.BOOL */,
-  pbPxeOptionPresent: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pbPxeOptionPresent: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSPXE_dll.PxeDhcpv6IsValid(util.toPointer(pPacket), uPacketLen, util.boolToFfi(bRequestPacket), util.toPointer(pbPxeOptionPresent));
 }
 
 export function PxeDhcpGetOptionValue(
-  pPacket: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pPacket: Deno.PointerValue | Uint8Array /* ptr */,
   uPacketLen: number /* u32 */,
   uInstance: number /* u32 */,
   bOption: number /* u8 */,
-  pbOptionLen: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppOptionValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pbOptionLen: Deno.PointerValue | Uint8Array /* ptr */,
+  ppOptionValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSPXE_dll.PxeDhcpGetOptionValue(util.toPointer(pPacket), uPacketLen, uInstance, bOption, util.toPointer(pbOptionLen), util.toPointer(ppOptionValue));
 }
 
 export function PxeDhcpv6GetOptionValue(
-  pPacket: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pPacket: Deno.PointerValue | Uint8Array /* ptr */,
   uPacketLen: number /* u32 */,
   uInstance: number /* u32 */,
   wOption: number /* u16 */,
-  pwOptionLen: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppOptionValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pwOptionLen: Deno.PointerValue | Uint8Array /* ptr */,
+  ppOptionValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSPXE_dll.PxeDhcpv6GetOptionValue(util.toPointer(pPacket), uPacketLen, uInstance, wOption, util.toPointer(pwOptionLen), util.toPointer(ppOptionValue));
 }
 
 export function PxeDhcpGetVendorOptionValue(
-  pPacket: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pPacket: Deno.PointerValue | Uint8Array /* ptr */,
   uPacketLen: number /* u32 */,
   bOption: number /* u8 */,
   uInstance: number /* u32 */,
-  pbOptionLen: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppOptionValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pbOptionLen: Deno.PointerValue | Uint8Array /* ptr */,
+  ppOptionValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSPXE_dll.PxeDhcpGetVendorOptionValue(util.toPointer(pPacket), uPacketLen, bOption, uInstance, util.toPointer(pbOptionLen), util.toPointer(ppOptionValue));
 }
 
 export function PxeDhcpv6GetVendorOptionValue(
-  pPacket: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pPacket: Deno.PointerValue | Uint8Array /* ptr */,
   uPacketLen: number /* u32 */,
   dwEnterpriseNumber: number /* u32 */,
   wOption: number /* u16 */,
   uInstance: number /* u32 */,
-  pwOptionLen: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppOptionValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pwOptionLen: Deno.PointerValue | Uint8Array /* ptr */,
+  ppOptionValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSPXE_dll.PxeDhcpv6GetVendorOptionValue(util.toPointer(pPacket), uPacketLen, dwEnterpriseNumber, wOption, uInstance, util.toPointer(pwOptionLen), util.toPointer(ppOptionValue));
 }
 
 export function PxeDhcpv6ParseRelayForw(
-  pRelayForwPacket: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pRelayForwPacket: Deno.PointerValue | Uint8Array /* ptr */,
   uRelayForwPacketLen: number /* u32 */,
-  pRelayMessages: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pRelayMessages: Deno.PointerValue | Uint8Array /* ptr */,
   nRelayMessages: number /* u32 */,
-  pnRelayMessages: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppInnerPacket: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcbInnerPacket: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pnRelayMessages: Deno.PointerValue | Uint8Array /* ptr */,
+  ppInnerPacket: Deno.PointerValue | Uint8Array /* ptr */,
+  pcbInnerPacket: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSPXE_dll.PxeDhcpv6ParseRelayForw(util.toPointer(pRelayForwPacket), uRelayForwPacketLen, util.toPointer(pRelayMessages), nRelayMessages, util.toPointer(pnRelayMessages), util.toPointer(ppInnerPacket), util.toPointer(pcbInnerPacket));
 }
 
 export function PxeDhcpv6CreateRelayRepl(
-  pRelayMessages: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pRelayMessages: Deno.PointerValue | Uint8Array /* ptr */,
   nRelayMessages: number /* u32 */,
-  pInnerPacket: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pInnerPacket: Deno.PointerValue | Uint8Array /* ptr */,
   cbInnerPacket: number /* u32 */,
-  pReplyBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pReplyBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   cbReplyBuffer: number /* u32 */,
-  pcbReplyBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbReplyBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSPXE_dll.PxeDhcpv6CreateRelayRepl(util.toPointer(pRelayMessages), nRelayMessages, util.toPointer(pInnerPacket), cbInnerPacket, util.toPointer(pReplyBuffer), cbReplyBuffer, util.toPointer(pcbReplyBuffer));
 }
 
 export function PxeGetServerInfo(
   uInfoType: number /* u32 */,
-  pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   uBufferLen: number /* u32 */,
 ): number /* u32 */ {
   return libWDSPXE_dll.PxeGetServerInfo(uInfoType, util.toPointer(pBuffer), uBufferLen);
@@ -3073,59 +3073,59 @@ export function PxeGetServerInfo(
 
 export function PxeGetServerInfoEx(
   uInfoType: number /* u32 */,
-  pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   uBufferLen: number /* u32 */,
-  puBufferUsed: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puBufferUsed: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSPXE_dll.PxeGetServerInfoEx(uInfoType, util.toPointer(pBuffer), uBufferLen, util.toPointer(puBufferUsed));
 }
 
 export function WdsTransportServerRegisterCallback(
-  hProvider: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hProvider: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   CallbackId: TRANSPORTPROVIDER_CALLBACK_ID /* Windows.Win32.System.DeploymentServices.TRANSPORTPROVIDER_CALLBACK_ID */,
-  pfnCallback: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSMC_dll.WdsTransportServerRegisterCallback(util.toPointer(hProvider), CallbackId, util.toPointer(pfnCallback)));
+  pfnCallback: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSMC_dll.WdsTransportServerRegisterCallback(util.toPointer(hProvider), CallbackId, util.toPointer(pfnCallback));
 }
 
 export function WdsTransportServerCompleteRead(
-  hProvider: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hProvider: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ulBytesRead: number /* u32 */,
-  pvUserData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  hReadResult: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSMC_dll.WdsTransportServerCompleteRead(util.toPointer(hProvider), ulBytesRead, util.toPointer(pvUserData), util.toPointer(hReadResult)));
+  pvUserData: Deno.PointerValue | Uint8Array /* ptr */,
+  hReadResult: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSMC_dll.WdsTransportServerCompleteRead(util.toPointer(hProvider), ulBytesRead, util.toPointer(pvUserData), util.toPointer(hReadResult));
 }
 
 export function WdsTransportServerTrace(
-  hProvider: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hProvider: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Severity: number /* u32 */,
   pwszFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSMC_dll.WdsTransportServerTrace(util.toPointer(hProvider), Severity, util.pwstrToFfi(pwszFormat)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSMC_dll.WdsTransportServerTrace(util.toPointer(hProvider), Severity, util.pwstrToFfi(pwszFormat));
 }
 
 export function WdsTransportServerTraceV(
-  hProvider: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hProvider: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Severity: number /* u32 */,
   pwszFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  Params: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSMC_dll.WdsTransportServerTraceV(util.toPointer(hProvider), Severity, util.pwstrToFfi(pwszFormat), util.toPointer(Params)));
+  Params: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSMC_dll.WdsTransportServerTraceV(util.toPointer(hProvider), Severity, util.pwstrToFfi(pwszFormat), util.toPointer(Params));
 }
 
 export function WdsTransportServerAllocateBuffer(
-  hProvider: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hProvider: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ulBufferSize: number /* u32 */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libWDSMC_dll.WdsTransportServerAllocateBuffer(util.toPointer(hProvider), ulBufferSize));
+): Deno.PointerValue /* ptr */ {
+  return libWDSMC_dll.WdsTransportServerAllocateBuffer(util.toPointer(hProvider), ulBufferSize);
 }
 
 export function WdsTransportServerFreeBuffer(
-  hProvider: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pvBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWDSMC_dll.WdsTransportServerFreeBuffer(util.toPointer(hProvider), util.toPointer(pvBuffer)));
+  hProvider: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  pvBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWDSMC_dll.WdsTransportServerFreeBuffer(util.toPointer(hProvider), util.toPointer(pvBuffer));
 }
 
 export function WdsTransportClientInitialize(): number /* u32 */ {
@@ -3133,77 +3133,77 @@ export function WdsTransportClientInitialize(): number /* u32 */ {
 }
 
 export function WdsTransportClientInitializeSession(
-  pSessionRequest: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pCallerData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  hSessionKey: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSessionRequest: Deno.PointerValue | Uint8Array /* ptr */,
+  pCallerData: Deno.PointerValue | Uint8Array /* ptr */,
+  hSessionKey: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSTPTC_dll.WdsTransportClientInitializeSession(util.toPointer(pSessionRequest), util.toPointer(pCallerData), util.toPointer(hSessionKey));
 }
 
 export function WdsTransportClientRegisterCallback(
-  hSessionKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hSessionKey: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   CallbackId: TRANSPORTCLIENT_CALLBACK_ID /* Windows.Win32.System.DeploymentServices.TRANSPORTCLIENT_CALLBACK_ID */,
-  pfnCallback: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pfnCallback: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSTPTC_dll.WdsTransportClientRegisterCallback(util.toPointer(hSessionKey), CallbackId, util.toPointer(pfnCallback));
 }
 
 export function WdsTransportClientStartSession(
-  hSessionKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hSessionKey: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
   return libWDSTPTC_dll.WdsTransportClientStartSession(util.toPointer(hSessionKey));
 }
 
 export function WdsTransportClientCompleteReceive(
-  hSessionKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hSessionKey: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ulSize: number /* u32 */,
-  pullOffset: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pullOffset: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSTPTC_dll.WdsTransportClientCompleteReceive(util.toPointer(hSessionKey), ulSize, util.toPointer(pullOffset));
 }
 
 export function WdsTransportClientCancelSession(
-  hSessionKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hSessionKey: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
   return libWDSTPTC_dll.WdsTransportClientCancelSession(util.toPointer(hSessionKey));
 }
 
 export function WdsTransportClientCancelSessionEx(
-  hSessionKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hSessionKey: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwErrorCode: number /* u32 */,
 ): number /* u32 */ {
   return libWDSTPTC_dll.WdsTransportClientCancelSessionEx(util.toPointer(hSessionKey), dwErrorCode);
 }
 
 export function WdsTransportClientWaitForCompletion(
-  hSessionKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hSessionKey: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   uTimeout: number /* u32 */,
 ): number /* u32 */ {
   return libWDSTPTC_dll.WdsTransportClientWaitForCompletion(util.toPointer(hSessionKey), uTimeout);
 }
 
 export function WdsTransportClientQueryStatus(
-  hSessionKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  puStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
-  puErrorCode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hSessionKey: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  puStatus: Deno.PointerValue | Uint8Array /* ptr */,
+  puErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSTPTC_dll.WdsTransportClientQueryStatus(util.toPointer(hSessionKey), util.toPointer(puStatus), util.toPointer(puErrorCode));
 }
 
 export function WdsTransportClientCloseSession(
-  hSessionKey: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hSessionKey: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
   return libWDSTPTC_dll.WdsTransportClientCloseSession(util.toPointer(hSessionKey));
 }
 
 export function WdsTransportClientAddRefBuffer(
-  pvBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pvBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSTPTC_dll.WdsTransportClientAddRefBuffer(util.toPointer(pvBuffer));
 }
 
 export function WdsTransportClientReleaseBuffer(
-  pvBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pvBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSTPTC_dll.WdsTransportClientReleaseBuffer(util.toPointer(pvBuffer));
 }
@@ -3213,60 +3213,60 @@ export function WdsTransportClientShutdown(): number /* u32 */ {
 }
 
 export function WdsBpParseInitialize(
-  pPacket: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pPacket: Deno.PointerValue | Uint8Array /* ptr */,
   uPacketLen: number /* u32 */,
-  pbPacketType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  phHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pbPacketType: Deno.PointerValue | Uint8Array /* ptr */,
+  phHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSBP_dll.WdsBpParseInitialize(util.toPointer(pPacket), uPacketLen, util.toPointer(pbPacketType), util.toPointer(phHandle));
 }
 
 export function WdsBpParseInitializev6(
-  pPacket: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pPacket: Deno.PointerValue | Uint8Array /* ptr */,
   uPacketLen: number /* u32 */,
-  pbPacketType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  phHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pbPacketType: Deno.PointerValue | Uint8Array /* ptr */,
+  phHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSBP_dll.WdsBpParseInitializev6(util.toPointer(pPacket), uPacketLen, util.toPointer(pbPacketType), util.toPointer(phHandle));
 }
 
 export function WdsBpInitialize(
   bPacketType: number /* u8 */,
-  phHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  phHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSBP_dll.WdsBpInitialize(bPacketType, util.toPointer(phHandle));
 }
 
 export function WdsBpCloseHandle(
-  hHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
   return libWDSBP_dll.WdsBpCloseHandle(util.toPointer(hHandle));
 }
 
 export function WdsBpQueryOption(
-  hHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   uOption: number /* u32 */,
   uValueLen: number /* u32 */,
-  pValue: Deno.PointerValue | Uint8Array | null /* ptr */,
-  puBytes: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pValue: Deno.PointerValue | Uint8Array /* ptr */,
+  puBytes: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSBP_dll.WdsBpQueryOption(util.toPointer(hHandle), uOption, uValueLen, util.toPointer(pValue), util.toPointer(puBytes));
 }
 
 export function WdsBpAddOption(
-  hHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   uOption: number /* u32 */,
   uValueLen: number /* u32 */,
-  pValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSBP_dll.WdsBpAddOption(util.toPointer(hHandle), uOption, uValueLen, util.toPointer(pValue));
 }
 
 export function WdsBpGetOptionBuffer(
-  hHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   uBufferLen: number /* u32 */,
-  pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  puBytes: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  puBytes: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWDSBP_dll.WdsBpGetOptionBuffer(util.toPointer(hHandle), uBufferLen, util.toPointer(pBuffer), util.toPointer(puBytes));
 }

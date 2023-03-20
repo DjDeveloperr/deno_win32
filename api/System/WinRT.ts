@@ -555,15 +555,15 @@ export type BOOLEAN = number;
  */
 export interface PDF_RENDER_PARAMS {
   /** Windows.Win32.Graphics.Direct2D.Common.D2D_RECT_F */
-  SourceRect: Uint8Array | Deno.PointerValue | null;
+  SourceRect: Uint8Array | Deno.PointerValue;
   /** u32 */
   DestinationWidth: number;
   /** u32 */
   DestinationHeight: number;
   /** Windows.Win32.Graphics.Direct2D.Common.D2D_COLOR_F */
-  BackgroundColor: Uint8Array | Deno.PointerValue | null;
+  BackgroundColor: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  IgnoreHighContrast: Uint8Array | Deno.PointerValue | null;
+  IgnoreHighContrast: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofPDF_RENDER_PARAMS = 32;
@@ -572,15 +572,15 @@ export function allocPDF_RENDER_PARAMS(data?: Partial<PDF_RENDER_PARAMS>): Uint8
   const buf = new Uint8Array(sizeofPDF_RENDER_PARAMS);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.SourceRect !== undefined) view.setBigUint64(0, data.SourceRect === null ? 0n : BigInt(util.toPointer(data.SourceRect)), true);
+  if (data?.SourceRect !== undefined) view.setBigUint64(0, data.SourceRect === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.SourceRect))), true);
   // 0x08: u32
   if (data?.DestinationWidth !== undefined) view.setUint32(8, Number(data.DestinationWidth), true);
   // 0x0c: u32
   if (data?.DestinationHeight !== undefined) view.setUint32(12, Number(data.DestinationHeight), true);
   // 0x10: pointer
-  if (data?.BackgroundColor !== undefined) view.setBigUint64(16, data.BackgroundColor === null ? 0n : BigInt(util.toPointer(data.BackgroundColor)), true);
+  if (data?.BackgroundColor !== undefined) view.setBigUint64(16, data.BackgroundColor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BackgroundColor))), true);
   // 0x18: pointer
-  if (data?.IgnoreHighContrast !== undefined) view.setBigUint64(24, data.IgnoreHighContrast === null ? 0n : BigInt(util.toPointer(data.IgnoreHighContrast)), true);
+  if (data?.IgnoreHighContrast !== undefined) view.setBigUint64(24, data.IgnoreHighContrast === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.IgnoreHighContrast))), true);
   return buf;
 }
 
@@ -595,9 +595,9 @@ export class PDF_RENDER_PARAMSView {
   }
 
   // 0x00: pointer
-  get SourceRect(): Uint8Array | Deno.PointerValue | null {
+  get SourceRect(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -611,20 +611,20 @@ export class PDF_RENDER_PARAMSView {
   }
 
   // 0x10: pointer
-  get BackgroundColor(): Uint8Array | Deno.PointerValue | null {
+  get BackgroundColor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get IgnoreHighContrast(): Uint8Array | Deno.PointerValue | null {
+  get IgnoreHighContrast(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set SourceRect(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set SourceRect(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -638,13 +638,13 @@ export class PDF_RENDER_PARAMSView {
   }
 
   // 0x10: pointer
-  set BackgroundColor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set BackgroundColor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set IgnoreHighContrast(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set IgnoreHighContrast(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -694,11 +694,11 @@ export class TrackerHandle__View {
 
 export type HRESULT = number;
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 export type BOOL = number;
 
-export type PSTR = Deno.PointerValue | Uint8Array | null;
+export type PSTR = Deno.PointerValue | Uint8Array;
 
 // Native Libraries
 
@@ -1052,78 +1052,78 @@ try {
 export function CoDecodeProxy(
   dwClientPid: number /* u32 */,
   ui64ProxyAddress: Deno.PointerValue /* u64 */,
-  pServerInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.CoDecodeProxy(dwClientPid, ui64ProxyAddress, util.toPointer(pServerInformation)));
+  pServerInformation: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.CoDecodeProxy(dwClientPid, ui64ProxyAddress, util.toPointer(pServerInformation));
 }
 
 export function RoGetAgileReference(
   options: AgileReferenceOptions /* Windows.Win32.System.WinRT.AgileReferenceOptions */,
-  riid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pUnk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
-  ppAgileReference: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libOLE32_dll.RoGetAgileReference(options, util.toPointer(riid), util.toPointer(pUnk), util.toPointer(ppAgileReference)));
+  riid: Deno.PointerValue | Uint8Array /* ptr */,
+  pUnk: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
+  ppAgileReference: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libOLE32_dll.RoGetAgileReference(options, util.toPointer(riid), util.toPointer(pUnk), util.toPointer(ppAgileReference));
 }
 
 export function HSTRING_UserSize(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* u32 */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libapi_ms_win_core_winrt_string_l1_1_0_dll.HSTRING_UserSize(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function HSTRING_UserMarshal(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_string_l1_1_0_dll.HSTRING_UserMarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libapi_ms_win_core_winrt_string_l1_1_0_dll.HSTRING_UserMarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HSTRING_UserUnmarshal(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_string_l1_1_0_dll.HSTRING_UserUnmarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libapi_ms_win_core_winrt_string_l1_1_0_dll.HSTRING_UserUnmarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HSTRING_UserFree(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libapi_ms_win_core_winrt_string_l1_1_0_dll.HSTRING_UserFree(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function HSTRING_UserSize64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* u32 */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libapi_ms_win_core_winrt_string_l1_1_0_dll.HSTRING_UserSize64(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function HSTRING_UserMarshal64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_string_l1_1_0_dll.HSTRING_UserMarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libapi_ms_win_core_winrt_string_l1_1_0_dll.HSTRING_UserMarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HSTRING_UserUnmarshal64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_string_l1_1_0_dll.HSTRING_UserUnmarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2)));
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libapi_ms_win_core_winrt_string_l1_1_0_dll.HSTRING_UserUnmarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HSTRING_UserFree64(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libapi_ms_win_core_winrt_string_l1_1_0_dll.HSTRING_UserFree64(util.toPointer(param0), util.toPointer(param1));
 }
@@ -1131,171 +1131,171 @@ export function HSTRING_UserFree64(
 export function WindowsCreateString(
   sourceString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   length: number /* u32 */,
-  string: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsCreateString(util.pwstrToFfi(sourceString), length, util.toPointer(string)));
+  string: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsCreateString(util.pwstrToFfi(sourceString), length, util.toPointer(string));
 }
 
 export function WindowsCreateStringReference(
   sourceString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   length: number /* u32 */,
-  hstringHeader: Deno.PointerValue | Uint8Array | null /* ptr */,
-  string: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsCreateStringReference(util.pwstrToFfi(sourceString), length, util.toPointer(hstringHeader), util.toPointer(string)));
+  hstringHeader: Deno.PointerValue | Uint8Array /* ptr */,
+  string: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsCreateStringReference(util.pwstrToFfi(sourceString), length, util.toPointer(hstringHeader), util.toPointer(string));
 }
 
 export function WindowsDeleteString(
-  string: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsDeleteString(util.toPointer(string)));
+  string: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsDeleteString(util.toPointer(string));
 }
 
 export function WindowsDuplicateString(
-  string: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  newString: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsDuplicateString(util.toPointer(string), util.toPointer(newString)));
+  string: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  newString: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsDuplicateString(util.toPointer(string), util.toPointer(newString));
 }
 
 export function WindowsGetStringLen(
-  string: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
+  string: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
 ): number /* u32 */ {
   return libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsGetStringLen(util.toPointer(string));
 }
 
 export function WindowsGetStringRawBuffer(
-  string: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  length: Deno.PointerValue | Uint8Array | null /* ptr */,
+  string: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  length: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
   return util.pwstrFromFfi(libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsGetStringRawBuffer(util.toPointer(string), util.toPointer(length)));
 }
 
 export function WindowsIsStringEmpty(
-  string: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
+  string: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsIsStringEmpty(util.toPointer(string)));
 }
 
 export function WindowsStringHasEmbeddedNull(
-  string: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  hasEmbedNull: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsStringHasEmbeddedNull(util.toPointer(string), util.toPointer(hasEmbedNull)));
+  string: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  hasEmbedNull: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsStringHasEmbeddedNull(util.toPointer(string), util.toPointer(hasEmbedNull));
 }
 
 export function WindowsCompareStringOrdinal(
-  string1: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  string2: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsCompareStringOrdinal(util.toPointer(string1), util.toPointer(string2), util.toPointer(result)));
+  string1: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  string2: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsCompareStringOrdinal(util.toPointer(string1), util.toPointer(string2), util.toPointer(result));
 }
 
 export function WindowsSubstring(
-  string: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
+  string: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
   startIndex: number /* u32 */,
-  newString: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsSubstring(util.toPointer(string), startIndex, util.toPointer(newString)));
+  newString: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsSubstring(util.toPointer(string), startIndex, util.toPointer(newString));
 }
 
 export function WindowsSubstringWithSpecifiedLength(
-  string: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
+  string: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
   startIndex: number /* u32 */,
   length: number /* u32 */,
-  newString: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsSubstringWithSpecifiedLength(util.toPointer(string), startIndex, length, util.toPointer(newString)));
+  newString: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsSubstringWithSpecifiedLength(util.toPointer(string), startIndex, length, util.toPointer(newString));
 }
 
 export function WindowsConcatString(
-  string1: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  string2: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  newString: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsConcatString(util.toPointer(string1), util.toPointer(string2), util.toPointer(newString)));
+  string1: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  string2: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  newString: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsConcatString(util.toPointer(string1), util.toPointer(string2), util.toPointer(newString));
 }
 
 export function WindowsReplaceString(
-  string: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  stringReplaced: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  stringReplaceWith: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  newString: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsReplaceString(util.toPointer(string), util.toPointer(stringReplaced), util.toPointer(stringReplaceWith), util.toPointer(newString)));
+  string: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  stringReplaced: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  stringReplaceWith: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  newString: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsReplaceString(util.toPointer(string), util.toPointer(stringReplaced), util.toPointer(stringReplaceWith), util.toPointer(newString));
 }
 
 export function WindowsTrimStringStart(
-  string: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  trimString: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  newString: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsTrimStringStart(util.toPointer(string), util.toPointer(trimString), util.toPointer(newString)));
+  string: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  trimString: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  newString: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsTrimStringStart(util.toPointer(string), util.toPointer(trimString), util.toPointer(newString));
 }
 
 export function WindowsTrimStringEnd(
-  string: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  trimString: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  newString: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsTrimStringEnd(util.toPointer(string), util.toPointer(trimString), util.toPointer(newString)));
+  string: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  trimString: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  newString: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsTrimStringEnd(util.toPointer(string), util.toPointer(trimString), util.toPointer(newString));
 }
 
 export function WindowsPreallocateStringBuffer(
   length: number /* u32 */,
-  charBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  bufferHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsPreallocateStringBuffer(length, util.toPointer(charBuffer), util.toPointer(bufferHandle)));
+  charBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  bufferHandle: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsPreallocateStringBuffer(length, util.toPointer(charBuffer), util.toPointer(bufferHandle));
 }
 
 export function WindowsPromoteStringBuffer(
-  bufferHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING_BUFFER */,
-  string: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsPromoteStringBuffer(util.toPointer(bufferHandle), util.toPointer(string)));
+  bufferHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING_BUFFER */,
+  string: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsPromoteStringBuffer(util.toPointer(bufferHandle), util.toPointer(string));
 }
 
 export function WindowsDeleteStringBuffer(
-  bufferHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING_BUFFER */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsDeleteStringBuffer(util.toPointer(bufferHandle)));
+  bufferHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING_BUFFER */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsDeleteStringBuffer(util.toPointer(bufferHandle));
 }
 
 export function WindowsInspectString(
   targetHString: Deno.PointerValue /* usize */,
   machine: number /* u16 */,
-  callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.PINSPECT_HSTRING_CALLBACK */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-  length: Deno.PointerValue | Uint8Array | null /* ptr */,
-  targetStringAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsInspectString(targetHString, machine, util.toPointer(callback), util.toPointer(context), util.toPointer(length), util.toPointer(targetStringAddress)));
+  callback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.PINSPECT_HSTRING_CALLBACK */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+  length: Deno.PointerValue | Uint8Array /* ptr */,
+  targetStringAddress: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_string_l1_1_0_dll.WindowsInspectString(targetHString, machine, util.toPointer(callback), util.toPointer(context), util.toPointer(length), util.toPointer(targetStringAddress));
 }
 
 export function WindowsInspectString2(
   targetHString: Deno.PointerValue /* u64 */,
   machine: number /* u16 */,
-  callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.PINSPECT_HSTRING_CALLBACK2 */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-  length: Deno.PointerValue | Uint8Array | null /* ptr */,
-  targetStringAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_string_l1_1_1_dll.WindowsInspectString2(targetHString, machine, util.toPointer(callback), util.toPointer(context), util.toPointer(length), util.toPointer(targetStringAddress)));
+  callback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.PINSPECT_HSTRING_CALLBACK2 */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+  length: Deno.PointerValue | Uint8Array /* ptr */,
+  targetStringAddress: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_string_l1_1_1_dll.WindowsInspectString2(targetHString, machine, util.toPointer(callback), util.toPointer(context), util.toPointer(length), util.toPointer(targetStringAddress));
 }
 
 export function CreateDispatcherQueueController(
-  options: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.DispatcherQueueOptions */,
-  dispatcherQueueController: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libCoreMessaging_dll.CreateDispatcherQueueController(util.toPointer(options), util.toPointer(dispatcherQueueController)));
+  options: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.DispatcherQueueOptions */,
+  dispatcherQueueController: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libCoreMessaging_dll.CreateDispatcherQueueController(util.toPointer(options), util.toPointer(dispatcherQueueController));
 }
 
 export function RoInitialize(
   initType: RO_INIT_TYPE /* Windows.Win32.System.WinRT.RO_INIT_TYPE */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_l1_1_0_dll.RoInitialize(initType));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_l1_1_0_dll.RoInitialize(initType);
 }
 
 export function RoUninitialize(): void /* void */ {
@@ -1303,19 +1303,19 @@ export function RoUninitialize(): void /* void */ {
 }
 
 export function RoActivateInstance(
-  activatableClassId: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  instance: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_l1_1_0_dll.RoActivateInstance(util.toPointer(activatableClassId), util.toPointer(instance)));
+  activatableClassId: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  instance: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_l1_1_0_dll.RoActivateInstance(util.toPointer(activatableClassId), util.toPointer(instance));
 }
 
 export function RoRegisterActivationFactories(
-  activatableClassIds: Deno.PointerValue | Uint8Array | null /* ptr */,
-  activationFactoryCallbacks: Deno.PointerValue | Uint8Array | null /* ptr */,
+  activatableClassIds: Deno.PointerValue | Uint8Array /* ptr */,
+  activationFactoryCallbacks: Deno.PointerValue | Uint8Array /* ptr */,
   count: number /* u32 */,
-  cookie: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_l1_1_0_dll.RoRegisterActivationFactories(util.toPointer(activatableClassIds), util.toPointer(activationFactoryCallbacks), count, util.toPointer(cookie)));
+  cookie: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_l1_1_0_dll.RoRegisterActivationFactories(util.toPointer(activatableClassIds), util.toPointer(activationFactoryCallbacks), count, util.toPointer(cookie));
 }
 
 export function RoRevokeActivationFactories(
@@ -1325,72 +1325,72 @@ export function RoRevokeActivationFactories(
 }
 
 export function RoGetActivationFactory(
-  activatableClassId: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  iid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  factory: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_l1_1_0_dll.RoGetActivationFactory(util.toPointer(activatableClassId), util.toPointer(iid), util.toPointer(factory)));
+  activatableClassId: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  iid: Deno.PointerValue | Uint8Array /* ptr */,
+  factory: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_l1_1_0_dll.RoGetActivationFactory(util.toPointer(activatableClassId), util.toPointer(iid), util.toPointer(factory));
 }
 
 export function RoRegisterForApartmentShutdown(
-  callbackObject: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.IApartmentShutdown */,
-  apartmentIdentifier: Deno.PointerValue | Uint8Array | null /* ptr */,
-  regCookie: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_l1_1_0_dll.RoRegisterForApartmentShutdown(util.toPointer(callbackObject), util.toPointer(apartmentIdentifier), util.toPointer(regCookie)));
+  callbackObject: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.IApartmentShutdown */,
+  apartmentIdentifier: Deno.PointerValue | Uint8Array /* ptr */,
+  regCookie: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_l1_1_0_dll.RoRegisterForApartmentShutdown(util.toPointer(callbackObject), util.toPointer(apartmentIdentifier), util.toPointer(regCookie));
 }
 
 export function RoUnregisterForApartmentShutdown(
-  regCookie: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.APARTMENT_SHUTDOWN_REGISTRATION_COOKIE */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_l1_1_0_dll.RoUnregisterForApartmentShutdown(util.toPointer(regCookie)));
+  regCookie: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.APARTMENT_SHUTDOWN_REGISTRATION_COOKIE */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_l1_1_0_dll.RoUnregisterForApartmentShutdown(util.toPointer(regCookie));
 }
 
 export function RoGetApartmentIdentifier(
-  apartmentIdentifier: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_l1_1_0_dll.RoGetApartmentIdentifier(util.toPointer(apartmentIdentifier)));
+  apartmentIdentifier: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_l1_1_0_dll.RoGetApartmentIdentifier(util.toPointer(apartmentIdentifier));
 }
 
 export function RoGetBufferMarshaler(
-  bufferMarshaler: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_robuffer_l1_1_0_dll.RoGetBufferMarshaler(util.toPointer(bufferMarshaler)));
+  bufferMarshaler: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_robuffer_l1_1_0_dll.RoGetBufferMarshaler(util.toPointer(bufferMarshaler));
 }
 
 export function RoGetErrorReportingFlags(
-  pflags: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_error_l1_1_0_dll.RoGetErrorReportingFlags(util.toPointer(pflags)));
+  pflags: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_error_l1_1_0_dll.RoGetErrorReportingFlags(util.toPointer(pflags));
 }
 
 export function RoSetErrorReportingFlags(
   flags: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_error_l1_1_0_dll.RoSetErrorReportingFlags(flags));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_error_l1_1_0_dll.RoSetErrorReportingFlags(flags);
 }
 
 export function RoResolveRestrictedErrorInfoReference(
   reference: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ppRestrictedErrorInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_error_l1_1_0_dll.RoResolveRestrictedErrorInfoReference(util.pwstrToFfi(reference), util.toPointer(ppRestrictedErrorInfo)));
+  ppRestrictedErrorInfo: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_error_l1_1_0_dll.RoResolveRestrictedErrorInfoReference(util.pwstrToFfi(reference), util.toPointer(ppRestrictedErrorInfo));
 }
 
 export function SetRestrictedErrorInfo(
-  pRestrictedErrorInfo: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.IRestrictedErrorInfo */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_error_l1_1_0_dll.SetRestrictedErrorInfo(util.toPointer(pRestrictedErrorInfo)));
+  pRestrictedErrorInfo: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.IRestrictedErrorInfo */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_error_l1_1_0_dll.SetRestrictedErrorInfo(util.toPointer(pRestrictedErrorInfo));
 }
 
 export function GetRestrictedErrorInfo(
-  ppRestrictedErrorInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_error_l1_1_0_dll.GetRestrictedErrorInfo(util.toPointer(ppRestrictedErrorInfo)));
+  ppRestrictedErrorInfo: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_error_l1_1_0_dll.GetRestrictedErrorInfo(util.toPointer(ppRestrictedErrorInfo));
 }
 
 export function RoOriginateErrorW(
-  error: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */,
+  error: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */,
   cchMax: number /* u32 */,
   message: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -1398,15 +1398,15 @@ export function RoOriginateErrorW(
 }
 
 export function RoOriginateError(
-  error: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */,
-  message: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
+  error: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */,
+  message: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libapi_ms_win_core_winrt_error_l1_1_0_dll.RoOriginateError(util.toPointer(error), util.toPointer(message)));
 }
 
 export function RoTransformErrorW(
-  oldError: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */,
-  newError: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */,
+  oldError: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */,
+  newError: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */,
   cchMax: number /* u32 */,
   message: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -1414,29 +1414,29 @@ export function RoTransformErrorW(
 }
 
 export function RoTransformError(
-  oldError: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */,
-  newError: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */,
-  message: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
+  oldError: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */,
+  newError: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */,
+  message: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libapi_ms_win_core_winrt_error_l1_1_0_dll.RoTransformError(util.toPointer(oldError), util.toPointer(newError), util.toPointer(message)));
 }
 
 export function RoCaptureErrorContext(
-  hr: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_error_l1_1_0_dll.RoCaptureErrorContext(util.toPointer(hr)));
+  hr: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_error_l1_1_0_dll.RoCaptureErrorContext(util.toPointer(hr));
 }
 
 export function RoFailFastWithErrorContext(
-  hrError: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */,
+  hrError: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */,
 ): void /* void */ {
   return libapi_ms_win_core_winrt_error_l1_1_0_dll.RoFailFastWithErrorContext(util.toPointer(hrError));
 }
 
 export function RoOriginateLanguageException(
-  error: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */,
-  message: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  languageException: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
+  error: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */,
+  message: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  languageException: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libapi_ms_win_core_winrt_error_l1_1_1_dll.RoOriginateLanguageException(util.toPointer(error), util.toPointer(message), util.toPointer(languageException)));
 }
@@ -1446,44 +1446,44 @@ export function RoClearError(): void /* void */ {
 }
 
 export function RoReportUnhandledError(
-  pRestrictedErrorInfo: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.IRestrictedErrorInfo */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_error_l1_1_1_dll.RoReportUnhandledError(util.toPointer(pRestrictedErrorInfo)));
+  pRestrictedErrorInfo: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.IRestrictedErrorInfo */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_error_l1_1_1_dll.RoReportUnhandledError(util.toPointer(pRestrictedErrorInfo));
 }
 
 export function RoInspectThreadErrorInfo(
   targetTebAddress: Deno.PointerValue /* usize */,
   machine: number /* u16 */,
-  readMemoryCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.PINSPECT_MEMORY_CALLBACK */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-  targetErrorInfoAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_error_l1_1_1_dll.RoInspectThreadErrorInfo(targetTebAddress, machine, util.toPointer(readMemoryCallback), util.toPointer(context), util.toPointer(targetErrorInfoAddress)));
+  readMemoryCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.PINSPECT_MEMORY_CALLBACK */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+  targetErrorInfoAddress: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_error_l1_1_1_dll.RoInspectThreadErrorInfo(targetTebAddress, machine, util.toPointer(readMemoryCallback), util.toPointer(context), util.toPointer(targetErrorInfoAddress));
 }
 
 export function RoInspectCapturedStackBackTrace(
   targetErrorInfoAddress: Deno.PointerValue /* usize */,
   machine: number /* u16 */,
-  readMemoryCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.PINSPECT_MEMORY_CALLBACK */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-  frameCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  targetBackTraceAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_error_l1_1_1_dll.RoInspectCapturedStackBackTrace(targetErrorInfoAddress, machine, util.toPointer(readMemoryCallback), util.toPointer(context), util.toPointer(frameCount), util.toPointer(targetBackTraceAddress)));
+  readMemoryCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.PINSPECT_MEMORY_CALLBACK */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+  frameCount: Deno.PointerValue | Uint8Array /* ptr */,
+  targetBackTraceAddress: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_error_l1_1_1_dll.RoInspectCapturedStackBackTrace(targetErrorInfoAddress, machine, util.toPointer(readMemoryCallback), util.toPointer(context), util.toPointer(frameCount), util.toPointer(targetBackTraceAddress));
 }
 
 export function RoGetMatchingRestrictedErrorInfo(
-  hrIn: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */,
-  ppRestrictedErrorInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_error_l1_1_1_dll.RoGetMatchingRestrictedErrorInfo(util.toPointer(hrIn), util.toPointer(ppRestrictedErrorInfo)));
+  hrIn: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */,
+  ppRestrictedErrorInfo: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_error_l1_1_1_dll.RoGetMatchingRestrictedErrorInfo(util.toPointer(hrIn), util.toPointer(ppRestrictedErrorInfo));
 }
 
 export function RoReportFailedDelegate(
-  punkDelegate: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
-  pRestrictedErrorInfo: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.IRestrictedErrorInfo */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_error_l1_1_1_dll.RoReportFailedDelegate(util.toPointer(punkDelegate), util.toPointer(pRestrictedErrorInfo)));
+  punkDelegate: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
+  pRestrictedErrorInfo: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.IRestrictedErrorInfo */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_error_l1_1_1_dll.RoReportFailedDelegate(util.toPointer(punkDelegate), util.toPointer(pRestrictedErrorInfo));
 }
 
 export function IsErrorPropagationEnabled(): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -1491,81 +1491,81 @@ export function IsErrorPropagationEnabled(): boolean /* Windows.Win32.Foundation
 }
 
 export function MetaDataGetDispenser(
-  rclsid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  riid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libRoMetadata_dll.MetaDataGetDispenser(util.toPointer(rclsid), util.toPointer(riid), util.toPointer(ppv)));
+  rclsid: Deno.PointerValue | Uint8Array /* ptr */,
+  riid: Deno.PointerValue | Uint8Array /* ptr */,
+  ppv: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libRoMetadata_dll.MetaDataGetDispenser(util.toPointer(rclsid), util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function RoGetParameterizedTypeInstanceIID(
   nameElementCount: number /* u32 */,
-  nameElements: Deno.PointerValue | Uint8Array | null /* ptr */,
-  metaDataLocator: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.IRoMetaDataLocator */,
-  iid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pExtra: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_roparameterizediid_l1_1_0_dll.RoGetParameterizedTypeInstanceIID(nameElementCount, util.toPointer(nameElements), util.toPointer(metaDataLocator), util.toPointer(iid), util.toPointer(pExtra)));
+  nameElements: Deno.PointerValue | Uint8Array /* ptr */,
+  metaDataLocator: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.IRoMetaDataLocator */,
+  iid: Deno.PointerValue | Uint8Array /* ptr */,
+  pExtra: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_roparameterizediid_l1_1_0_dll.RoGetParameterizedTypeInstanceIID(nameElementCount, util.toPointer(nameElements), util.toPointer(metaDataLocator), util.toPointer(iid), util.toPointer(pExtra));
 }
 
 export function RoFreeParameterizedTypeExtra(
-  extra: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.ROPARAMIIDHANDLE */,
+  extra: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.ROPARAMIIDHANDLE */,
 ): void /* void */ {
   return libapi_ms_win_core_winrt_roparameterizediid_l1_1_0_dll.RoFreeParameterizedTypeExtra(util.toPointer(extra));
 }
 
 export function RoParameterizedTypeExtraGetTypeSignature(
-  extra: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.ROPARAMIIDHANDLE */,
+  extra: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.ROPARAMIIDHANDLE */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libapi_ms_win_core_winrt_roparameterizediid_l1_1_0_dll.RoParameterizedTypeExtraGetTypeSignature(util.toPointer(extra)));
 }
 
 export function RoGetServerActivatableClasses(
-  serverName: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.WinRT.HSTRING */,
-  activatableClassIds: Deno.PointerValue | Uint8Array | null /* ptr */,
-  count: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_core_winrt_registration_l1_1_0_dll.RoGetServerActivatableClasses(util.toPointer(serverName), util.toPointer(activatableClassIds), util.toPointer(count)));
+  serverName: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
+  activatableClassIds: Deno.PointerValue | Uint8Array /* ptr */,
+  count: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_core_winrt_registration_l1_1_0_dll.RoGetServerActivatableClasses(util.toPointer(serverName), util.toPointer(activatableClassIds), util.toPointer(count));
 }
 
 export function CreateRandomAccessStreamOnFile(
   filePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   accessMode: number /* u32 */,
-  riid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_shcore_stream_winrt_l1_1_0_dll.CreateRandomAccessStreamOnFile(util.pwstrToFfi(filePath), accessMode, util.toPointer(riid), util.toPointer(ppv)));
+  riid: Deno.PointerValue | Uint8Array /* ptr */,
+  ppv: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_shcore_stream_winrt_l1_1_0_dll.CreateRandomAccessStreamOnFile(util.pwstrToFfi(filePath), accessMode, util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function CreateRandomAccessStreamOverStream(
-  stream: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IStream */,
+  stream: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IStream */,
   options: BSOS_OPTIONS /* Windows.Win32.System.WinRT.BSOS_OPTIONS */,
-  riid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_shcore_stream_winrt_l1_1_0_dll.CreateRandomAccessStreamOverStream(util.toPointer(stream), options, util.toPointer(riid), util.toPointer(ppv)));
+  riid: Deno.PointerValue | Uint8Array /* ptr */,
+  ppv: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_shcore_stream_winrt_l1_1_0_dll.CreateRandomAccessStreamOverStream(util.toPointer(stream), options, util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function CreateStreamOverRandomAccessStream(
-  randomAccessStream: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
-  riid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_shcore_stream_winrt_l1_1_0_dll.CreateStreamOverRandomAccessStream(util.toPointer(randomAccessStream), util.toPointer(riid), util.toPointer(ppv)));
+  randomAccessStream: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
+  riid: Deno.PointerValue | Uint8Array /* ptr */,
+  ppv: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_shcore_stream_winrt_l1_1_0_dll.CreateStreamOverRandomAccessStream(util.toPointer(randomAccessStream), util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function CreateControlInput(
-  riid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWindows_UI_dll.CreateControlInput(util.toPointer(riid), util.toPointer(ppv)));
+  riid: Deno.PointerValue | Uint8Array /* ptr */,
+  ppv: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWindows_UI_dll.CreateControlInput(util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function CreateControlInputEx(
-  pCoreWindow: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
-  riid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWindows_UI_dll.CreateControlInputEx(util.toPointer(pCoreWindow), util.toPointer(riid), util.toPointer(ppv)));
+  pCoreWindow: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
+  riid: Deno.PointerValue | Uint8Array /* ptr */,
+  ppv: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWindows_UI_dll.CreateControlInputEx(util.toPointer(pCoreWindow), util.toPointer(riid), util.toPointer(ppv));
 }
 

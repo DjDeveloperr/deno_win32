@@ -20,7 +20,7 @@ export interface CORRELATION_VECTOR {
   /** Windows.Win32.Foundation.CHAR */
   Version: string | number;
   /** array */
-  Vector: Deno.PointerValue | null;
+  Vector: Deno.PointerValue;
 }
 
 export const sizeofCORRELATION_VECTOR = 16;
@@ -32,7 +32,7 @@ export function allocCORRELATION_VECTOR(data?: Partial<CORRELATION_VECTOR>): Uin
   if (data?.Version !== undefined) view.setUint8(0, Number(data.Version));
   // 0x01: pad7
   // 0x08: pointer
-  if (data?.Vector !== undefined) view.setBigUint64(8, data.Vector === null ? 0n : BigInt(util.toPointer(data.Vector)), true);
+  if (data?.Vector !== undefined) view.setBigUint64(8, data.Vector === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Vector))), true);
   return buf;
 }
 
@@ -54,9 +54,9 @@ export class CORRELATION_VECTORView {
   // 0x01: pad7
 
   // 0x08: pointer
-  get Vector(): Uint8Array | Deno.PointerValue | null {
+  get Vector(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u8
@@ -67,8 +67,8 @@ export class CORRELATION_VECTORView {
   // 0x01: pad7
 
   // 0x08: pointer
-  set Vector(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Vector(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -98,27 +98,27 @@ try {
 // Symbols
 
 export function RtlInitializeCorrelationVector(
-  CorrelationVector: Deno.PointerValue | Uint8Array | null /* ptr */,
+  CorrelationVector: Deno.PointerValue | Uint8Array /* ptr */,
   Version: number /* i32 */,
-  Guid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Guid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libntdll_dll.RtlInitializeCorrelationVector(util.toPointer(CorrelationVector), Version, util.toPointer(Guid));
 }
 
 export function RtlIncrementCorrelationVector(
-  CorrelationVector: Deno.PointerValue | Uint8Array | null /* ptr */,
+  CorrelationVector: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libntdll_dll.RtlIncrementCorrelationVector(util.toPointer(CorrelationVector));
 }
 
 export function RtlExtendCorrelationVector(
-  CorrelationVector: Deno.PointerValue | Uint8Array | null /* ptr */,
+  CorrelationVector: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libntdll_dll.RtlExtendCorrelationVector(util.toPointer(CorrelationVector));
 }
 
 export function RtlValidateCorrelationVector(
-  Vector: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Vector: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libntdll_dll.RtlValidateCorrelationVector(util.toPointer(Vector));
 }

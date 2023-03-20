@@ -50,7 +50,7 @@ export const ED_VIDEO = 33554432;
 
 // Structs
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 export type HRESULT = number;
 
@@ -70,8 +70,8 @@ try {
 export function CreateDeviceAccessInstance(
   deviceInterfacePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   desiredAccess: number /* u32 */,
-  createAsync: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdeviceaccess_dll.CreateDeviceAccessInstance(util.pwstrToFfi(deviceInterfacePath), desiredAccess, util.toPointer(createAsync)));
+  createAsync: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libdeviceaccess_dll.CreateDeviceAccessInstance(util.pwstrToFfi(deviceInterfacePath), desiredAccess, util.toPointer(createAsync));
 }
 

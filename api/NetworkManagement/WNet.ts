@@ -3351,7 +3351,7 @@ export const ERROR_QUERY_STORAGE_ERROR = 2151284737;
 
 export type NetEnumHandle = Deno.PointerValue;
 
-export type PSTR = Deno.PointerValue | Uint8Array | null;
+export type PSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.NetworkManagement.WNet.NETRESOURCEA (size: 48)
@@ -3391,22 +3391,22 @@ export function allocNETRESOURCEA(data?: Partial<NETRESOURCEA>): Uint8Array {
   // 0x10: buffer
   if (data?.lpLocalName !== undefined) {
     (buf as any)._f16 = util.pstrToFfi(data.lpLocalName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.lpRemoteName !== undefined) {
     (buf as any)._f24 = util.pstrToFfi(data.lpRemoteName);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: buffer
   if (data?.lpComment !== undefined) {
     (buf as any)._f32 = util.pstrToFfi(data.lpComment);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f32))), true);
   }
   // 0x28: buffer
   if (data?.lpProvider !== undefined) {
     (buf as any)._f40 = util.pstrToFfi(data.lpProvider);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f40))), true);
   }
   return buf;
 }
@@ -3442,27 +3442,27 @@ export class NETRESOURCEAView {
   }
 
   // 0x10: buffer
-  get lpLocalName(): Uint8Array | Deno.PointerValue | null {
+  get lpLocalName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get lpRemoteName(): Uint8Array | Deno.PointerValue | null {
+  get lpRemoteName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: buffer
-  get lpComment(): Uint8Array | Deno.PointerValue | null {
+  get lpComment(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: buffer
-  get lpProvider(): Uint8Array | Deno.PointerValue | null {
+  get lpProvider(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -3486,31 +3486,31 @@ export class NETRESOURCEAView {
   }
 
   // 0x10: buffer
-  set lpLocalName(value: Uint8Array | Deno.PointerValue | null) {
+  set lpLocalName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set lpRemoteName(value: Uint8Array | Deno.PointerValue | null) {
+  set lpRemoteName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: buffer
-  set lpComment(value: Uint8Array | Deno.PointerValue | null) {
+  set lpComment(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f32))), true);
   }
 
   // 0x28: buffer
-  set lpProvider(value: Uint8Array | Deno.PointerValue | null) {
+  set lpProvider(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f40))), true);
   }
 }
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.NetworkManagement.WNet.NETRESOURCEW (size: 48)
@@ -3550,22 +3550,22 @@ export function allocNETRESOURCEW(data?: Partial<NETRESOURCEW>): Uint8Array {
   // 0x10: buffer
   if (data?.lpLocalName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.lpLocalName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.lpRemoteName !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.lpRemoteName);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: buffer
   if (data?.lpComment !== undefined) {
     (buf as any)._f32 = util.pwstrToFfi(data.lpComment);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f32))), true);
   }
   // 0x28: buffer
   if (data?.lpProvider !== undefined) {
     (buf as any)._f40 = util.pwstrToFfi(data.lpProvider);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f40))), true);
   }
   return buf;
 }
@@ -3601,27 +3601,27 @@ export class NETRESOURCEWView {
   }
 
   // 0x10: buffer
-  get lpLocalName(): Uint8Array | Deno.PointerValue | null {
+  get lpLocalName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get lpRemoteName(): Uint8Array | Deno.PointerValue | null {
+  get lpRemoteName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: buffer
-  get lpComment(): Uint8Array | Deno.PointerValue | null {
+  get lpComment(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: buffer
-  get lpProvider(): Uint8Array | Deno.PointerValue | null {
+  get lpProvider(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -3645,27 +3645,27 @@ export class NETRESOURCEWView {
   }
 
   // 0x10: buffer
-  set lpLocalName(value: Uint8Array | Deno.PointerValue | null) {
+  set lpLocalName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set lpRemoteName(value: Uint8Array | Deno.PointerValue | null) {
+  set lpRemoteName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: buffer
-  set lpComment(value: Uint8Array | Deno.PointerValue | null) {
+  set lpComment(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f32))), true);
   }
 
   // 0x28: buffer
-  set lpProvider(value: Uint8Array | Deno.PointerValue | null) {
+  set lpProvider(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f40))), true);
   }
 }
 
@@ -3678,9 +3678,9 @@ export interface CONNECTDLGSTRUCTA {
   /** u32 */
   cbStructure: number;
   /** Windows.Win32.Foundation.HWND */
-  hwndOwner: Deno.PointerValue | null;
+  hwndOwner: Deno.PointerValue;
   /** ptr */
-  lpConnRes: Deno.PointerValue | Uint8Array | null;
+  lpConnRes: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.NetworkManagement.WNet.CONNECTDLGSTRUCT_FLAGS */
   dwFlags: CONNECTDLGSTRUCT_FLAGS;
   /** u32 */
@@ -3696,9 +3696,9 @@ export function allocCONNECTDLGSTRUCTA(data?: Partial<CONNECTDLGSTRUCTA>): Uint8
   if (data?.cbStructure !== undefined) view.setUint32(0, Number(data.cbStructure), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
+  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hwndOwner))), true);
   // 0x10: pointer
-  if (data?.lpConnRes !== undefined) view.setBigUint64(16, data.lpConnRes === null ? 0n : BigInt(util.toPointer(data.lpConnRes)), true);
+  if (data?.lpConnRes !== undefined) view.setBigUint64(16, data.lpConnRes === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpConnRes))), true);
   // 0x18: u32
   if (data?.dwFlags !== undefined) view.setUint32(24, Number(data.dwFlags), true);
   // 0x1c: u32
@@ -3724,15 +3724,15 @@ export class CONNECTDLGSTRUCTAView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get hwndOwner(): Uint8Array | Deno.PointerValue | null {
+  get hwndOwner(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get lpConnRes(): Uint8Array | Deno.PointerValue | null {
+  get lpConnRes(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -3753,13 +3753,13 @@ export class CONNECTDLGSTRUCTAView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set hwndOwner(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set hwndOwner(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set lpConnRes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set lpConnRes(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -3780,9 +3780,9 @@ export interface CONNECTDLGSTRUCTW {
   /** u32 */
   cbStructure: number;
   /** Windows.Win32.Foundation.HWND */
-  hwndOwner: Deno.PointerValue | null;
+  hwndOwner: Deno.PointerValue;
   /** ptr */
-  lpConnRes: Deno.PointerValue | Uint8Array | null;
+  lpConnRes: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.NetworkManagement.WNet.CONNECTDLGSTRUCT_FLAGS */
   dwFlags: CONNECTDLGSTRUCT_FLAGS;
   /** u32 */
@@ -3798,9 +3798,9 @@ export function allocCONNECTDLGSTRUCTW(data?: Partial<CONNECTDLGSTRUCTW>): Uint8
   if (data?.cbStructure !== undefined) view.setUint32(0, Number(data.cbStructure), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
+  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hwndOwner))), true);
   // 0x10: pointer
-  if (data?.lpConnRes !== undefined) view.setBigUint64(16, data.lpConnRes === null ? 0n : BigInt(util.toPointer(data.lpConnRes)), true);
+  if (data?.lpConnRes !== undefined) view.setBigUint64(16, data.lpConnRes === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpConnRes))), true);
   // 0x18: u32
   if (data?.dwFlags !== undefined) view.setUint32(24, Number(data.dwFlags), true);
   // 0x1c: u32
@@ -3826,15 +3826,15 @@ export class CONNECTDLGSTRUCTWView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get hwndOwner(): Uint8Array | Deno.PointerValue | null {
+  get hwndOwner(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get lpConnRes(): Uint8Array | Deno.PointerValue | null {
+  get lpConnRes(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -3855,13 +3855,13 @@ export class CONNECTDLGSTRUCTWView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set hwndOwner(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set hwndOwner(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set lpConnRes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set lpConnRes(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -3882,7 +3882,7 @@ export interface DISCDLGSTRUCTA {
   /** u32 */
   cbStructure: number;
   /** Windows.Win32.Foundation.HWND */
-  hwndOwner: Deno.PointerValue | null;
+  hwndOwner: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
   lpLocalName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
@@ -3900,16 +3900,16 @@ export function allocDISCDLGSTRUCTA(data?: Partial<DISCDLGSTRUCTA>): Uint8Array 
   if (data?.cbStructure !== undefined) view.setUint32(0, Number(data.cbStructure), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
+  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hwndOwner))), true);
   // 0x10: buffer
   if (data?.lpLocalName !== undefined) {
     (buf as any)._f16 = util.pstrToFfi(data.lpLocalName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.lpRemoteName !== undefined) {
     (buf as any)._f24 = util.pstrToFfi(data.lpRemoteName);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: u32
   if (data?.dwFlags !== undefined) view.setUint32(32, Number(data.dwFlags), true);
@@ -3935,21 +3935,21 @@ export class DISCDLGSTRUCTAView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get hwndOwner(): Uint8Array | Deno.PointerValue | null {
+  get hwndOwner(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get lpLocalName(): Uint8Array | Deno.PointerValue | null {
+  get lpLocalName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get lpRemoteName(): Uint8Array | Deno.PointerValue | null {
+  get lpRemoteName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -3967,20 +3967,20 @@ export class DISCDLGSTRUCTAView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set hwndOwner(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set hwndOwner(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: buffer
-  set lpLocalName(value: Uint8Array | Deno.PointerValue | null) {
+  set lpLocalName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set lpRemoteName(value: Uint8Array | Deno.PointerValue | null) {
+  set lpRemoteName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: u32
@@ -3998,7 +3998,7 @@ export interface DISCDLGSTRUCTW {
   /** u32 */
   cbStructure: number;
   /** Windows.Win32.Foundation.HWND */
-  hwndOwner: Deno.PointerValue | null;
+  hwndOwner: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   lpLocalName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
@@ -4016,16 +4016,16 @@ export function allocDISCDLGSTRUCTW(data?: Partial<DISCDLGSTRUCTW>): Uint8Array 
   if (data?.cbStructure !== undefined) view.setUint32(0, Number(data.cbStructure), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
+  if (data?.hwndOwner !== undefined) view.setBigUint64(8, data.hwndOwner === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hwndOwner))), true);
   // 0x10: buffer
   if (data?.lpLocalName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.lpLocalName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.lpRemoteName !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.lpRemoteName);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: u32
   if (data?.dwFlags !== undefined) view.setUint32(32, Number(data.dwFlags), true);
@@ -4051,21 +4051,21 @@ export class DISCDLGSTRUCTWView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get hwndOwner(): Uint8Array | Deno.PointerValue | null {
+  get hwndOwner(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get lpLocalName(): Uint8Array | Deno.PointerValue | null {
+  get lpLocalName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get lpRemoteName(): Uint8Array | Deno.PointerValue | null {
+  get lpRemoteName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -4083,20 +4083,20 @@ export class DISCDLGSTRUCTWView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set hwndOwner(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set hwndOwner(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: buffer
-  set lpLocalName(value: Uint8Array | Deno.PointerValue | null) {
+  set lpLocalName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set lpRemoteName(value: Uint8Array | Deno.PointerValue | null) {
+  set lpRemoteName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: u32
@@ -4123,7 +4123,7 @@ export function allocUNIVERSAL_NAME_INFOA(data?: Partial<UNIVERSAL_NAME_INFOA>):
   // 0x00: buffer
   if (data?.lpUniversalName !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.lpUniversalName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   return buf;
 }
@@ -4139,15 +4139,15 @@ export class UNIVERSAL_NAME_INFOAView {
   }
 
   // 0x00: buffer
-  get lpUniversalName(): Uint8Array | Deno.PointerValue | null {
+  get lpUniversalName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set lpUniversalName(value: Uint8Array | Deno.PointerValue | null) {
+  set lpUniversalName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 }
 
@@ -4167,7 +4167,7 @@ export function allocUNIVERSAL_NAME_INFOW(data?: Partial<UNIVERSAL_NAME_INFOW>):
   // 0x00: buffer
   if (data?.lpUniversalName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.lpUniversalName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   return buf;
 }
@@ -4183,15 +4183,15 @@ export class UNIVERSAL_NAME_INFOWView {
   }
 
   // 0x00: buffer
-  get lpUniversalName(): Uint8Array | Deno.PointerValue | null {
+  get lpUniversalName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set lpUniversalName(value: Uint8Array | Deno.PointerValue | null) {
+  set lpUniversalName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 }
 
@@ -4215,17 +4215,17 @@ export function allocREMOTE_NAME_INFOA(data?: Partial<REMOTE_NAME_INFOA>): Uint8
   // 0x00: buffer
   if (data?.lpUniversalName !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.lpUniversalName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: buffer
   if (data?.lpConnectionName !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.lpConnectionName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.lpRemainingPath !== undefined) {
     (buf as any)._f16 = util.pstrToFfi(data.lpRemainingPath);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   return buf;
 }
@@ -4241,39 +4241,39 @@ export class REMOTE_NAME_INFOAView {
   }
 
   // 0x00: buffer
-  get lpUniversalName(): Uint8Array | Deno.PointerValue | null {
+  get lpUniversalName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get lpConnectionName(): Uint8Array | Deno.PointerValue | null {
+  get lpConnectionName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get lpRemainingPath(): Uint8Array | Deno.PointerValue | null {
+  get lpRemainingPath(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set lpUniversalName(value: Uint8Array | Deno.PointerValue | null) {
+  set lpUniversalName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: buffer
-  set lpConnectionName(value: Uint8Array | Deno.PointerValue | null) {
+  set lpConnectionName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set lpRemainingPath(value: Uint8Array | Deno.PointerValue | null) {
+  set lpRemainingPath(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 }
 
@@ -4297,17 +4297,17 @@ export function allocREMOTE_NAME_INFOW(data?: Partial<REMOTE_NAME_INFOW>): Uint8
   // 0x00: buffer
   if (data?.lpUniversalName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.lpUniversalName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: buffer
   if (data?.lpConnectionName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.lpConnectionName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.lpRemainingPath !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.lpRemainingPath);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   return buf;
 }
@@ -4323,39 +4323,39 @@ export class REMOTE_NAME_INFOWView {
   }
 
   // 0x00: buffer
-  get lpUniversalName(): Uint8Array | Deno.PointerValue | null {
+  get lpUniversalName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get lpConnectionName(): Uint8Array | Deno.PointerValue | null {
+  get lpConnectionName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get lpRemainingPath(): Uint8Array | Deno.PointerValue | null {
+  get lpRemainingPath(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set lpUniversalName(value: Uint8Array | Deno.PointerValue | null) {
+  set lpUniversalName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: buffer
-  set lpConnectionName(value: Uint8Array | Deno.PointerValue | null) {
+  set lpConnectionName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set lpRemainingPath(value: Uint8Array | Deno.PointerValue | null) {
+  set lpRemainingPath(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 }
 
@@ -4610,7 +4610,7 @@ export interface NOTIFYINFO {
   /** u32 */
   dwOperationStatus: number;
   /** ptr */
-  lpContext: Deno.PointerValue | Uint8Array | null;
+  lpContext: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofNOTIFYINFO = 16;
@@ -4623,7 +4623,7 @@ export function allocNOTIFYINFO(data?: Partial<NOTIFYINFO>): Uint8Array {
   // 0x04: u32
   if (data?.dwOperationStatus !== undefined) view.setUint32(4, Number(data.dwOperationStatus), true);
   // 0x08: pointer
-  if (data?.lpContext !== undefined) view.setBigUint64(8, data.lpContext === null ? 0n : BigInt(util.toPointer(data.lpContext)), true);
+  if (data?.lpContext !== undefined) view.setBigUint64(8, data.lpContext === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpContext))), true);
   return buf;
 }
 
@@ -4648,9 +4648,9 @@ export class NOTIFYINFOView {
   }
 
   // 0x08: pointer
-  get lpContext(): Uint8Array | Deno.PointerValue | null {
+  get lpContext(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -4664,8 +4664,8 @@ export class NOTIFYINFOView {
   }
 
   // 0x08: pointer
-  set lpContext(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set lpContext(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4674,9 +4674,9 @@ export class NOTIFYINFOView {
  */
 export interface NOTIFYADD {
   /** Windows.Win32.Foundation.HWND */
-  hwndOwner: Deno.PointerValue | null;
+  hwndOwner: Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.WNet.NETRESOURCEA */
-  NetResource: Uint8Array | Deno.PointerValue | null;
+  NetResource: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.WNet.NET_USE_CONNECT_FLAGS */
   dwAddFlags: NET_USE_CONNECT_FLAGS;
 }
@@ -4687,9 +4687,9 @@ export function allocNOTIFYADD(data?: Partial<NOTIFYADD>): Uint8Array {
   const buf = new Uint8Array(sizeofNOTIFYADD);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.hwndOwner !== undefined) view.setBigUint64(0, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
+  if (data?.hwndOwner !== undefined) view.setBigUint64(0, data.hwndOwner === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hwndOwner))), true);
   // 0x08: pointer
-  if (data?.NetResource !== undefined) view.setBigUint64(8, data.NetResource === null ? 0n : BigInt(util.toPointer(data.NetResource)), true);
+  if (data?.NetResource !== undefined) view.setBigUint64(8, data.NetResource === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.NetResource))), true);
   // 0x10: u32
   if (data?.dwAddFlags !== undefined) view.setUint32(16, Number(data.dwAddFlags), true);
   // 0x14: pad4
@@ -4707,15 +4707,15 @@ export class NOTIFYADDView {
   }
 
   // 0x00: pointer
-  get hwndOwner(): Uint8Array | Deno.PointerValue | null {
+  get hwndOwner(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get NetResource(): Uint8Array | Deno.PointerValue | null {
+  get NetResource(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -4726,13 +4726,13 @@ export class NOTIFYADDView {
   // 0x14: pad4
 
   // 0x00: pointer
-  set hwndOwner(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set hwndOwner(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set NetResource(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set NetResource(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -4767,12 +4767,12 @@ export function allocNOTIFYCANCEL(data?: Partial<NOTIFYCANCEL>): Uint8Array {
   // 0x00: buffer
   if (data?.lpName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.lpName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: buffer
   if (data?.lpProvider !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.lpProvider);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: u32
   if (data?.dwFlags !== undefined) view.setUint32(16, Number(data.dwFlags), true);
@@ -4792,15 +4792,15 @@ export class NOTIFYCANCELView {
   }
 
   // 0x00: buffer
-  get lpName(): Uint8Array | Deno.PointerValue | null {
+  get lpName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get lpProvider(): Uint8Array | Deno.PointerValue | null {
+  get lpProvider(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -4814,15 +4814,15 @@ export class NOTIFYCANCELView {
   }
 
   // 0x00: buffer
-  set lpName(value: Uint8Array | Deno.PointerValue | null) {
+  set lpName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: buffer
-  set lpProvider(value: Uint8Array | Deno.PointerValue | null) {
+  set lpProvider(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: u32
@@ -5134,7 +5134,7 @@ export function WNetAddConnectionW(
 }
 
 export function WNetAddConnection2A(
-  lpNetResource: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpNetResource: Deno.PointerValue | Uint8Array /* ptr */,
   lpPassword: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpUserName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
@@ -5143,7 +5143,7 @@ export function WNetAddConnection2A(
 }
 
 export function WNetAddConnection2W(
-  lpNetResource: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpNetResource: Deno.PointerValue | Uint8Array /* ptr */,
   lpPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpUserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
@@ -5152,47 +5152,47 @@ export function WNetAddConnection2W(
 }
 
 export function WNetAddConnection3A(
-  hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpNetResource: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hwndOwner: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
+  lpNetResource: Deno.PointerValue | Uint8Array /* ptr */,
   lpPassword: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpUserName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
 ): number /* u32 */ {
-  return libMPR_dll.WNetAddConnection3A(util.hwndToFfi(hwndOwner), util.toPointer(lpNetResource), util.pstrToFfi(lpPassword), util.pstrToFfi(lpUserName), dwFlags);
+  return libMPR_dll.WNetAddConnection3A((hwndOwner), util.toPointer(lpNetResource), util.pstrToFfi(lpPassword), util.pstrToFfi(lpUserName), dwFlags);
 }
 
 export function WNetAddConnection3W(
-  hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpNetResource: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hwndOwner: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
+  lpNetResource: Deno.PointerValue | Uint8Array /* ptr */,
   lpPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpUserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): number /* u32 */ {
-  return libMPR_dll.WNetAddConnection3W(util.hwndToFfi(hwndOwner), util.toPointer(lpNetResource), util.pwstrToFfi(lpPassword), util.pwstrToFfi(lpUserName), dwFlags);
+  return libMPR_dll.WNetAddConnection3W((hwndOwner), util.toPointer(lpNetResource), util.pwstrToFfi(lpPassword), util.pwstrToFfi(lpUserName), dwFlags);
 }
 
 export function WNetAddConnection4A(
-  hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpNetResource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pAuthBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hwndOwner: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
+  lpNetResource: Deno.PointerValue | Uint8Array /* ptr */,
+  pAuthBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   cbAuthBuffer: number /* u32 */,
   dwFlags: number /* u32 */,
-  lpUseOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpUseOptions: Deno.PointerValue | Uint8Array /* ptr */,
   cbUseOptions: number /* u32 */,
 ): number /* u32 */ {
-  return libMPR_dll.WNetAddConnection4A(util.hwndToFfi(hwndOwner), util.toPointer(lpNetResource), util.toPointer(pAuthBuffer), cbAuthBuffer, dwFlags, util.toPointer(lpUseOptions), cbUseOptions);
+  return libMPR_dll.WNetAddConnection4A((hwndOwner), util.toPointer(lpNetResource), util.toPointer(pAuthBuffer), cbAuthBuffer, dwFlags, util.toPointer(lpUseOptions), cbUseOptions);
 }
 
 export function WNetAddConnection4W(
-  hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpNetResource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pAuthBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hwndOwner: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
+  lpNetResource: Deno.PointerValue | Uint8Array /* ptr */,
+  pAuthBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   cbAuthBuffer: number /* u32 */,
   dwFlags: number /* u32 */,
-  lpUseOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpUseOptions: Deno.PointerValue | Uint8Array /* ptr */,
   cbUseOptions: number /* u32 */,
 ): number /* u32 */ {
-  return libMPR_dll.WNetAddConnection4W(util.hwndToFfi(hwndOwner), util.toPointer(lpNetResource), util.toPointer(pAuthBuffer), cbAuthBuffer, dwFlags, util.toPointer(lpUseOptions), cbUseOptions);
+  return libMPR_dll.WNetAddConnection4W((hwndOwner), util.toPointer(lpNetResource), util.toPointer(pAuthBuffer), cbAuthBuffer, dwFlags, util.toPointer(lpUseOptions), cbUseOptions);
 }
 
 export function WNetCancelConnectionA(
@@ -5228,7 +5228,7 @@ export function WNetCancelConnection2W(
 export function WNetGetConnectionA(
   lpLocalName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpRemoteName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  lpnLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpnLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libMPR_dll.WNetGetConnectionA(util.pstrToFfi(lpLocalName), util.pstrToFfi(lpRemoteName), util.toPointer(lpnLength));
 }
@@ -5236,101 +5236,101 @@ export function WNetGetConnectionA(
 export function WNetGetConnectionW(
   lpLocalName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpRemoteName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  lpnLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpnLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libMPR_dll.WNetGetConnectionW(util.pwstrToFfi(lpLocalName), util.pwstrToFfi(lpRemoteName), util.toPointer(lpnLength));
 }
 
 export function WNetUseConnectionA(
-  hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpNetResource: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hwndOwner: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
+  lpNetResource: Deno.PointerValue | Uint8Array /* ptr */,
   lpPassword: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpUserId: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: NET_USE_CONNECT_FLAGS /* Windows.Win32.NetworkManagement.WNet.NET_USE_CONNECT_FLAGS */,
   lpAccessName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  lpBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
+  lpResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPR_dll.WNetUseConnectionA(util.hwndToFfi(hwndOwner), util.toPointer(lpNetResource), util.pstrToFfi(lpPassword), util.pstrToFfi(lpUserId), dwFlags, util.pstrToFfi(lpAccessName), util.toPointer(lpBufferSize), util.toPointer(lpResult));
+  return libMPR_dll.WNetUseConnectionA((hwndOwner), util.toPointer(lpNetResource), util.pstrToFfi(lpPassword), util.pstrToFfi(lpUserId), dwFlags, util.pstrToFfi(lpAccessName), util.toPointer(lpBufferSize), util.toPointer(lpResult));
 }
 
 export function WNetUseConnectionW(
-  hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpNetResource: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hwndOwner: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
+  lpNetResource: Deno.PointerValue | Uint8Array /* ptr */,
   lpPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpUserId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: NET_USE_CONNECT_FLAGS /* Windows.Win32.NetworkManagement.WNet.NET_USE_CONNECT_FLAGS */,
   lpAccessName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  lpBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
+  lpResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPR_dll.WNetUseConnectionW(util.hwndToFfi(hwndOwner), util.toPointer(lpNetResource), util.pwstrToFfi(lpPassword), util.pwstrToFfi(lpUserId), dwFlags, util.pwstrToFfi(lpAccessName), util.toPointer(lpBufferSize), util.toPointer(lpResult));
+  return libMPR_dll.WNetUseConnectionW((hwndOwner), util.toPointer(lpNetResource), util.pwstrToFfi(lpPassword), util.pwstrToFfi(lpUserId), dwFlags, util.pwstrToFfi(lpAccessName), util.toPointer(lpBufferSize), util.toPointer(lpResult));
 }
 
 export function WNetUseConnection4A(
-  hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpNetResource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pAuthBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hwndOwner: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
+  lpNetResource: Deno.PointerValue | Uint8Array /* ptr */,
+  pAuthBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   cbAuthBuffer: number /* u32 */,
   dwFlags: number /* u32 */,
-  lpUseOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpUseOptions: Deno.PointerValue | Uint8Array /* ptr */,
   cbUseOptions: number /* u32 */,
   lpAccessName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  lpBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
+  lpResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPR_dll.WNetUseConnection4A(util.hwndToFfi(hwndOwner), util.toPointer(lpNetResource), util.toPointer(pAuthBuffer), cbAuthBuffer, dwFlags, util.toPointer(lpUseOptions), cbUseOptions, util.pstrToFfi(lpAccessName), util.toPointer(lpBufferSize), util.toPointer(lpResult));
+  return libMPR_dll.WNetUseConnection4A((hwndOwner), util.toPointer(lpNetResource), util.toPointer(pAuthBuffer), cbAuthBuffer, dwFlags, util.toPointer(lpUseOptions), cbUseOptions, util.pstrToFfi(lpAccessName), util.toPointer(lpBufferSize), util.toPointer(lpResult));
 }
 
 export function WNetUseConnection4W(
-  hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpNetResource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pAuthBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hwndOwner: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
+  lpNetResource: Deno.PointerValue | Uint8Array /* ptr */,
+  pAuthBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   cbAuthBuffer: number /* u32 */,
   dwFlags: number /* u32 */,
-  lpUseOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpUseOptions: Deno.PointerValue | Uint8Array /* ptr */,
   cbUseOptions: number /* u32 */,
   lpAccessName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  lpBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
+  lpResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPR_dll.WNetUseConnection4W(util.hwndToFfi(hwndOwner), util.toPointer(lpNetResource), util.toPointer(pAuthBuffer), cbAuthBuffer, dwFlags, util.toPointer(lpUseOptions), cbUseOptions, util.pwstrToFfi(lpAccessName), util.toPointer(lpBufferSize), util.toPointer(lpResult));
+  return libMPR_dll.WNetUseConnection4W((hwndOwner), util.toPointer(lpNetResource), util.toPointer(pAuthBuffer), cbAuthBuffer, dwFlags, util.toPointer(lpUseOptions), cbUseOptions, util.pwstrToFfi(lpAccessName), util.toPointer(lpBufferSize), util.toPointer(lpResult));
 }
 
 export function WNetConnectionDialog(
-  hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
+  hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   dwType: number /* u32 */,
 ): number /* u32 */ {
-  return libMPR_dll.WNetConnectionDialog(util.hwndToFfi(hwnd), dwType);
+  return libMPR_dll.WNetConnectionDialog((hwnd), dwType);
 }
 
 export function WNetDisconnectDialog(
-  hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
+  hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   dwType: number /* u32 */,
 ): number /* u32 */ {
-  return libMPR_dll.WNetDisconnectDialog(util.hwndToFfi(hwnd), dwType);
+  return libMPR_dll.WNetDisconnectDialog((hwnd), dwType);
 }
 
 export function WNetConnectionDialog1A(
-  lpConnDlgStruct: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpConnDlgStruct: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libMPR_dll.WNetConnectionDialog1A(util.toPointer(lpConnDlgStruct));
 }
 
 export function WNetConnectionDialog1W(
-  lpConnDlgStruct: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpConnDlgStruct: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libMPR_dll.WNetConnectionDialog1W(util.toPointer(lpConnDlgStruct));
 }
 
 export function WNetDisconnectDialog1A(
-  lpConnDlgStruct: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpConnDlgStruct: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libMPR_dll.WNetDisconnectDialog1A(util.toPointer(lpConnDlgStruct));
 }
 
 export function WNetDisconnectDialog1W(
-  lpConnDlgStruct: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpConnDlgStruct: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libMPR_dll.WNetDisconnectDialog1W(util.toPointer(lpConnDlgStruct));
 }
@@ -5339,8 +5339,8 @@ export function WNetOpenEnumA(
   dwScope: NET_RESOURCE_SCOPE /* Windows.Win32.NetworkManagement.WNet.NET_RESOURCE_SCOPE */,
   dwType: NET_RESOURCE_TYPE /* Windows.Win32.NetworkManagement.WNet.NET_RESOURCE_TYPE */,
   dwUsage: WNET_OPEN_ENUM_USAGE /* Windows.Win32.NetworkManagement.WNet.WNET_OPEN_ENUM_USAGE */,
-  lpNetResource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lphEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpNetResource: Deno.PointerValue | Uint8Array /* ptr */,
+  lphEnum: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libMPR_dll.WNetOpenEnumA(dwScope, dwType, dwUsage, util.toPointer(lpNetResource), util.toPointer(lphEnum));
 }
@@ -5349,66 +5349,66 @@ export function WNetOpenEnumW(
   dwScope: NET_RESOURCE_SCOPE /* Windows.Win32.NetworkManagement.WNet.NET_RESOURCE_SCOPE */,
   dwType: NET_RESOURCE_TYPE /* Windows.Win32.NetworkManagement.WNet.NET_RESOURCE_TYPE */,
   dwUsage: WNET_OPEN_ENUM_USAGE /* Windows.Win32.NetworkManagement.WNet.WNET_OPEN_ENUM_USAGE */,
-  lpNetResource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lphEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpNetResource: Deno.PointerValue | Uint8Array /* ptr */,
+  lphEnum: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libMPR_dll.WNetOpenEnumW(dwScope, dwType, dwUsage, util.toPointer(lpNetResource), util.toPointer(lphEnum));
 }
 
 export function WNetEnumResourceA(
-  hEnum: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpcCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hEnum: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpcCount: Deno.PointerValue | Uint8Array /* ptr */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  lpBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libMPR_dll.WNetEnumResourceA(util.toPointer(hEnum), util.toPointer(lpcCount), util.toPointer(lpBuffer), util.toPointer(lpBufferSize));
 }
 
 export function WNetEnumResourceW(
-  hEnum: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpcCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hEnum: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpcCount: Deno.PointerValue | Uint8Array /* ptr */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  lpBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libMPR_dll.WNetEnumResourceW(util.toPointer(hEnum), util.toPointer(lpcCount), util.toPointer(lpBuffer), util.toPointer(lpBufferSize));
 }
 
 export function WNetCloseEnum(
-  hEnum: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hEnum: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
   return libMPR_dll.WNetCloseEnum(util.toPointer(hEnum));
 }
 
 export function WNetGetResourceParentA(
-  lpNetResource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpcbBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpNetResource: Deno.PointerValue | Uint8Array /* ptr */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  lpcbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libMPR_dll.WNetGetResourceParentA(util.toPointer(lpNetResource), util.toPointer(lpBuffer), util.toPointer(lpcbBuffer));
 }
 
 export function WNetGetResourceParentW(
-  lpNetResource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpcbBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpNetResource: Deno.PointerValue | Uint8Array /* ptr */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  lpcbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libMPR_dll.WNetGetResourceParentW(util.toPointer(lpNetResource), util.toPointer(lpBuffer), util.toPointer(lpcbBuffer));
 }
 
 export function WNetGetResourceInformationA(
-  lpNetResource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpcbBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lplpSystem: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpNetResource: Deno.PointerValue | Uint8Array /* ptr */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  lpcbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  lplpSystem: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libMPR_dll.WNetGetResourceInformationA(util.toPointer(lpNetResource), util.toPointer(lpBuffer), util.toPointer(lpcbBuffer), util.toPointer(lplpSystem));
 }
 
 export function WNetGetResourceInformationW(
-  lpNetResource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpcbBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lplpSystem: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpNetResource: Deno.PointerValue | Uint8Array /* ptr */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  lpcbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  lplpSystem: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libMPR_dll.WNetGetResourceInformationW(util.toPointer(lpNetResource), util.toPointer(lpBuffer), util.toPointer(lpcbBuffer), util.toPointer(lplpSystem));
 }
@@ -5416,8 +5416,8 @@ export function WNetGetResourceInformationW(
 export function WNetGetUniversalNameA(
   lpLocalPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwInfoLevel: UNC_INFO_LEVEL /* Windows.Win32.NetworkManagement.WNet.UNC_INFO_LEVEL */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  lpBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libMPR_dll.WNetGetUniversalNameA(util.pstrToFfi(lpLocalPath), dwInfoLevel, util.toPointer(lpBuffer), util.toPointer(lpBufferSize));
 }
@@ -5425,8 +5425,8 @@ export function WNetGetUniversalNameA(
 export function WNetGetUniversalNameW(
   lpLocalPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwInfoLevel: UNC_INFO_LEVEL /* Windows.Win32.NetworkManagement.WNet.UNC_INFO_LEVEL */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  lpBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libMPR_dll.WNetGetUniversalNameW(util.pwstrToFfi(lpLocalPath), dwInfoLevel, util.toPointer(lpBuffer), util.toPointer(lpBufferSize));
 }
@@ -5434,7 +5434,7 @@ export function WNetGetUniversalNameW(
 export function WNetGetUserA(
   lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpUserName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  lpnLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpnLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libMPR_dll.WNetGetUserA(util.pstrToFfi(lpName), util.pstrToFfi(lpUserName), util.toPointer(lpnLength));
 }
@@ -5442,7 +5442,7 @@ export function WNetGetUserA(
 export function WNetGetUserW(
   lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpUserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  lpnLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpnLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libMPR_dll.WNetGetUserW(util.pwstrToFfi(lpName), util.pwstrToFfi(lpUserName), util.toPointer(lpnLength));
 }
@@ -5450,7 +5450,7 @@ export function WNetGetUserW(
 export function WNetGetProviderNameA(
   dwNetType: number /* u32 */,
   lpProviderName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  lpBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libMPR_dll.WNetGetProviderNameA(dwNetType, util.pstrToFfi(lpProviderName), util.toPointer(lpBufferSize));
 }
@@ -5458,27 +5458,27 @@ export function WNetGetProviderNameA(
 export function WNetGetProviderNameW(
   dwNetType: number /* u32 */,
   lpProviderName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  lpBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libMPR_dll.WNetGetProviderNameW(dwNetType, util.pwstrToFfi(lpProviderName), util.toPointer(lpBufferSize));
 }
 
 export function WNetGetNetworkInformationA(
   lpProvider: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  lpNetInfoStruct: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpNetInfoStruct: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libMPR_dll.WNetGetNetworkInformationA(util.pstrToFfi(lpProvider), util.toPointer(lpNetInfoStruct));
 }
 
 export function WNetGetNetworkInformationW(
   lpProvider: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  lpNetInfoStruct: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpNetInfoStruct: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libMPR_dll.WNetGetNetworkInformationW(util.pwstrToFfi(lpProvider), util.toPointer(lpNetInfoStruct));
 }
 
 export function WNetGetLastErrorA(
-  lpError: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpError: Deno.PointerValue | Uint8Array /* ptr */,
   lpErrorBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nErrorBufSize: number /* u32 */,
   lpNameBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
@@ -5488,7 +5488,7 @@ export function WNetGetLastErrorA(
 }
 
 export function WNetGetLastErrorW(
-  lpError: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpError: Deno.PointerValue | Uint8Array /* ptr */,
   lpErrorBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nErrorBufSize: number /* u32 */,
   lpNameBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
@@ -5498,21 +5498,21 @@ export function WNetGetLastErrorW(
 }
 
 export function MultinetGetConnectionPerformanceA(
-  lpNetResource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpNetConnectInfoStruct: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpNetResource: Deno.PointerValue | Uint8Array /* ptr */,
+  lpNetConnectInfoStruct: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libMPR_dll.MultinetGetConnectionPerformanceA(util.toPointer(lpNetResource), util.toPointer(lpNetConnectInfoStruct));
 }
 
 export function MultinetGetConnectionPerformanceW(
-  lpNetResource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpNetConnectInfoStruct: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpNetResource: Deno.PointerValue | Uint8Array /* ptr */,
+  lpNetConnectInfoStruct: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libMPR_dll.MultinetGetConnectionPerformanceW(util.toPointer(lpNetResource), util.toPointer(lpNetConnectInfoStruct));
 }
 
 export function NPAddConnection(
-  lpNetResource: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpNetResource: Deno.PointerValue | Uint8Array /* ptr */,
   lpPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpUserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
@@ -5520,25 +5520,25 @@ export function NPAddConnection(
 }
 
 export function NPAddConnection3(
-  hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpNetResource: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hwndOwner: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
+  lpNetResource: Deno.PointerValue | Uint8Array /* ptr */,
   lpPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpUserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: NET_USE_CONNECT_FLAGS /* Windows.Win32.NetworkManagement.WNet.NET_USE_CONNECT_FLAGS */,
 ): number /* u32 */ {
-  return libdavclnt_dll.NPAddConnection3(util.hwndToFfi(hwndOwner), util.toPointer(lpNetResource), util.pwstrToFfi(lpPassword), util.pwstrToFfi(lpUserName), dwFlags);
+  return libdavclnt_dll.NPAddConnection3((hwndOwner), util.toPointer(lpNetResource), util.pwstrToFfi(lpPassword), util.pwstrToFfi(lpUserName), dwFlags);
 }
 
 export function NPAddConnection4(
-  hwndOwner: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  lpNetResource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpAuthBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hwndOwner: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
+  lpNetResource: Deno.PointerValue | Uint8Array /* ptr */,
+  lpAuthBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   cbAuthBuffer: number /* u32 */,
   dwFlags: number /* u32 */,
-  lpUseOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpUseOptions: Deno.PointerValue | Uint8Array /* ptr */,
   cbUseOptions: number /* u32 */,
 ): number /* u32 */ {
-  return libNTLANMAN_dll.NPAddConnection4(util.hwndToFfi(hwndOwner), util.toPointer(lpNetResource), util.toPointer(lpAuthBuffer), cbAuthBuffer, dwFlags, util.toPointer(lpUseOptions), cbUseOptions);
+  return libNTLANMAN_dll.NPAddConnection4((hwndOwner), util.toPointer(lpNetResource), util.toPointer(lpAuthBuffer), cbAuthBuffer, dwFlags, util.toPointer(lpUseOptions), cbUseOptions);
 }
 
 export function NPCancelConnection(
@@ -5559,7 +5559,7 @@ export function NPCancelConnection2(
 export function NPGetConnection(
   lpLocalName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpRemoteName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  lpnBufferLen: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpnBufferLen: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libdavclnt_dll.NPGetConnection(util.pwstrToFfi(lpLocalName), util.pwstrToFfi(lpRemoteName), util.toPointer(lpnBufferLen));
 }
@@ -5567,8 +5567,8 @@ export function NPGetConnection(
 export function NPGetConnection3(
   lpLocalName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwLevel: number /* u32 */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  lpBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libNTLANMAN_dll.NPGetConnection3(util.pwstrToFfi(lpLocalName), dwLevel, util.toPointer(lpBuffer), util.toPointer(lpBufferSize));
 }
@@ -5576,15 +5576,15 @@ export function NPGetConnection3(
 export function NPGetUniversalName(
   lpLocalPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwInfoLevel: UNC_INFO_LEVEL /* Windows.Win32.NetworkManagement.WNet.UNC_INFO_LEVEL */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  lpBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libdavclnt_dll.NPGetUniversalName(util.pwstrToFfi(lpLocalPath), dwInfoLevel, util.toPointer(lpBuffer), util.toPointer(lpBufferSize));
 }
 
 export function NPGetConnectionPerformance(
   lpRemoteName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  lpNetConnectInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpNetConnectInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libNTLANMAN_dll.NPGetConnectionPerformance(util.pwstrToFfi(lpRemoteName), util.toPointer(lpNetConnectInfo));
 }
@@ -5593,23 +5593,23 @@ export function NPOpenEnum(
   dwScope: number /* u32 */,
   dwType: number /* u32 */,
   dwUsage: number /* u32 */,
-  lpNetResource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lphEnum: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpNetResource: Deno.PointerValue | Uint8Array /* ptr */,
+  lphEnum: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libdavclnt_dll.NPOpenEnum(dwScope, dwType, dwUsage, util.toPointer(lpNetResource), util.toPointer(lphEnum));
 }
 
 export function NPEnumResource(
-  hEnum: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpcCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hEnum: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpcCount: Deno.PointerValue | Uint8Array /* ptr */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  lpBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libdavclnt_dll.NPEnumResource(util.toPointer(hEnum), util.toPointer(lpcCount), util.toPointer(lpBuffer), util.toPointer(lpBufferSize));
 }
 
 export function NPCloseEnum(
-  hEnum: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hEnum: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
   return libdavclnt_dll.NPCloseEnum(util.toPointer(hEnum));
 }
@@ -5623,34 +5623,34 @@ export function NPGetCaps(
 export function NPGetUser(
   lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpUserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  lpnBufferLen: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpnBufferLen: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libdavclnt_dll.NPGetUser(util.pwstrToFfi(lpName), util.pwstrToFfi(lpUserName), util.toPointer(lpnBufferLen));
 }
 
 export function NPGetPersistentUseOptionsForConnection(
   lpRemotePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  lpReadUseOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpReadUseOptions: Deno.PointerValue | Uint8Array /* ptr */,
   cbReadUseOptions: number /* u32 */,
-  lpWriteUseOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpSizeWriteUseOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpWriteUseOptions: Deno.PointerValue | Uint8Array /* ptr */,
+  lpSizeWriteUseOptions: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libNTLANMAN_dll.NPGetPersistentUseOptionsForConnection(util.pwstrToFfi(lpRemotePath), util.toPointer(lpReadUseOptions), cbReadUseOptions, util.toPointer(lpWriteUseOptions), util.toPointer(lpSizeWriteUseOptions));
 }
 
 export function NPGetResourceParent(
-  lpNetResource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpNetResource: Deno.PointerValue | Uint8Array /* ptr */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  lpBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libdavclnt_dll.NPGetResourceParent(util.toPointer(lpNetResource), util.toPointer(lpBuffer), util.toPointer(lpBufferSize));
 }
 
 export function NPGetResourceInformation(
-  lpNetResource: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpBufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lplpSystem: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpNetResource: Deno.PointerValue | Uint8Array /* ptr */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  lpBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
+  lplpSystem: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libdavclnt_dll.NPGetResourceInformation(util.toPointer(lpNetResource), util.toPointer(lpBuffer), util.toPointer(lpBufferSize), util.toPointer(lplpSystem));
 }
@@ -5658,7 +5658,7 @@ export function NPGetResourceInformation(
 export function NPFormatNetworkName(
   lpRemoteName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpFormattedName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  lpnLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpnLength: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: NETWORK_NAME_FORMAT_FLAGS /* Windows.Win32.NetworkManagement.WNet.NETWORK_NAME_FORMAT_FLAGS */,
   dwAveCharPerLine: number /* u32 */,
 ): number /* u32 */ {

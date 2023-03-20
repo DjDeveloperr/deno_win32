@@ -253,17 +253,17 @@ export class LUIDView {
  */
 export interface CompositionFrameDisplayInstance {
   /** Windows.Win32.Foundation.LUID */
-  displayAdapterLUID: Uint8Array | Deno.PointerValue | null;
+  displayAdapterLUID: Uint8Array | Deno.PointerValue;
   /** u32 */
   displayVidPnSourceId: number;
   /** u32 */
   displayUniqueId: number;
   /** Windows.Win32.Foundation.LUID */
-  renderAdapterLUID: Uint8Array | Deno.PointerValue | null;
+  renderAdapterLUID: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.CompositionSwapchain.CompositionFrameInstanceKind */
   instanceKind: CompositionFrameInstanceKind;
   /** Windows.Win32.Graphics.CompositionSwapchain.PresentationTransform */
-  finalTransform: Uint8Array | Deno.PointerValue | null;
+  finalTransform: Uint8Array | Deno.PointerValue;
   /** u8 */
   requiredCrossAdapterCopy: number;
   /** Windows.Win32.Graphics.Dxgi.Common.DXGI_COLOR_SPACE_TYPE */
@@ -276,18 +276,18 @@ export function allocCompositionFrameDisplayInstance(data?: Partial<CompositionF
   const buf = new Uint8Array(sizeofCompositionFrameDisplayInstance);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.displayAdapterLUID !== undefined) view.setBigUint64(0, data.displayAdapterLUID === null ? 0n : BigInt(util.toPointer(data.displayAdapterLUID)), true);
+  if (data?.displayAdapterLUID !== undefined) view.setBigUint64(0, data.displayAdapterLUID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.displayAdapterLUID))), true);
   // 0x08: u32
   if (data?.displayVidPnSourceId !== undefined) view.setUint32(8, Number(data.displayVidPnSourceId), true);
   // 0x0c: u32
   if (data?.displayUniqueId !== undefined) view.setUint32(12, Number(data.displayUniqueId), true);
   // 0x10: pointer
-  if (data?.renderAdapterLUID !== undefined) view.setBigUint64(16, data.renderAdapterLUID === null ? 0n : BigInt(util.toPointer(data.renderAdapterLUID)), true);
+  if (data?.renderAdapterLUID !== undefined) view.setBigUint64(16, data.renderAdapterLUID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.renderAdapterLUID))), true);
   // 0x18: i32
   if (data?.instanceKind !== undefined) view.setInt32(24, Number(data.instanceKind), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.finalTransform !== undefined) view.setBigUint64(32, data.finalTransform === null ? 0n : BigInt(util.toPointer(data.finalTransform)), true);
+  if (data?.finalTransform !== undefined) view.setBigUint64(32, data.finalTransform === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.finalTransform))), true);
   // 0x28: u8
   if (data?.requiredCrossAdapterCopy !== undefined) view.setUint8(40, Number(data.requiredCrossAdapterCopy));
   // 0x29: i32
@@ -307,9 +307,9 @@ export class CompositionFrameDisplayInstanceView {
   }
 
   // 0x00: pointer
-  get displayAdapterLUID(): Uint8Array | Deno.PointerValue | null {
+  get displayAdapterLUID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -323,9 +323,9 @@ export class CompositionFrameDisplayInstanceView {
   }
 
   // 0x10: pointer
-  get renderAdapterLUID(): Uint8Array | Deno.PointerValue | null {
+  get renderAdapterLUID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: i32
@@ -336,9 +336,9 @@ export class CompositionFrameDisplayInstanceView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get finalTransform(): Uint8Array | Deno.PointerValue | null {
+  get finalTransform(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u8
@@ -354,8 +354,8 @@ export class CompositionFrameDisplayInstanceView {
   // 0x2d: pad3
 
   // 0x00: pointer
-  set displayAdapterLUID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set displayAdapterLUID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -369,8 +369,8 @@ export class CompositionFrameDisplayInstanceView {
   }
 
   // 0x10: pointer
-  set renderAdapterLUID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set renderAdapterLUID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: i32
@@ -381,8 +381,8 @@ export class CompositionFrameDisplayInstanceView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set finalTransform(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set finalTransform(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u8
@@ -414,10 +414,10 @@ try {
 // Symbols
 
 export function CreatePresentationFactory(
-  d3dDevice: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
-  riid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  presentationFactory: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libdcomp_dll.CreatePresentationFactory(util.toPointer(d3dDevice), util.toPointer(riid), util.toPointer(presentationFactory)));
+  d3dDevice: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
+  riid: Deno.PointerValue | Uint8Array /* ptr */,
+  presentationFactory: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libdcomp_dll.CreatePresentationFactory(util.toPointer(d3dDevice), util.toPointer(riid), util.toPointer(presentationFactory));
 }
 

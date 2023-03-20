@@ -98,11 +98,11 @@ export const MAX_NUM_REASONS = 256;
 
 // Structs
 
-export type PSTR = Deno.PointerValue | Uint8Array | null;
+export type PSTR = Deno.PointerValue | Uint8Array;
 
 export type BOOL = number;
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 export type BOOLEAN = number;
 
@@ -253,8 +253,8 @@ export function InitiateShutdownW(
 }
 
 export function CheckForHiberboot(
-  pHiberboot: Deno.PointerValue | Uint8Array | null /* ptr */,
-  bClearFlag: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.BOOLEAN */,
+  pHiberboot: Deno.PointerValue | Uint8Array /* ptr */,
+  bClearFlag: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
 ): number /* u32 */ {
   return libADVAPI32_dll.CheckForHiberboot(util.toPointer(pHiberboot), util.toPointer(bClearFlag));
 }
@@ -271,23 +271,23 @@ export function LockWorkStation(): boolean /* Windows.Win32.Foundation.BOOL */ {
 }
 
 export function ShutdownBlockReasonCreate(
-  hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
+  hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pwszReason: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.ShutdownBlockReasonCreate(util.hwndToFfi(hWnd), util.pwstrToFfi(pwszReason)));
+  return util.boolFromFfi(libUSER32_dll.ShutdownBlockReasonCreate((hWnd), util.pwstrToFfi(pwszReason)));
 }
 
 export function ShutdownBlockReasonQuery(
-  hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
+  hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pwszBuff: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchBuff: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchBuff: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.ShutdownBlockReasonQuery(util.hwndToFfi(hWnd), util.pwstrToFfi(pwszBuff), util.toPointer(pcchBuff)));
+  return util.boolFromFfi(libUSER32_dll.ShutdownBlockReasonQuery((hWnd), util.pwstrToFfi(pwszBuff), util.toPointer(pcchBuff)));
 }
 
 export function ShutdownBlockReasonDestroy(
-  hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
+  hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.ShutdownBlockReasonDestroy(util.hwndToFfi(hWnd)));
+  return util.boolFromFfi(libUSER32_dll.ShutdownBlockReasonDestroy((hWnd)));
 }
 

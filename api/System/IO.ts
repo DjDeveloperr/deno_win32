@@ -62,9 +62,9 @@ export class _Anonymous_e__StructView {
  */
 export interface _Anonymous_e__Union {
   /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** array */
-  X: Deno.PointerValue | null;
+  X: Deno.PointerValue;
 }
 
 export const sizeof_Anonymous_e__Union = 16;
@@ -73,9 +73,9 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   const buf = new Uint8Array(sizeof_Anonymous_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x08: pointer
-  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.X))), true);
   return buf;
 }
 
@@ -90,25 +90,25 @@ export class _Anonymous_e__UnionView {
   }
 
   // 0x00: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get X(): Uint8Array | Deno.PointerValue | null {
+  get X(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set X(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set X(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -123,9 +123,9 @@ export interface OVERLAPPED {
   /** usize */
   InternalHigh: Deno.PointerValue;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.HANDLE */
-  hEvent: Uint8Array | Deno.PointerValue | null;
+  hEvent: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofOVERLAPPED = 32;
@@ -138,9 +138,9 @@ export function allocOVERLAPPED(data?: Partial<OVERLAPPED>): Uint8Array {
   // 0x08: usize
   if (data?.InternalHigh !== undefined) view.setBigUint64(8, BigInt(data.InternalHigh), true);
   // 0x10: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x18: pointer
-  if (data?.hEvent !== undefined) view.setBigUint64(24, data.hEvent === null ? 0n : BigInt(util.toPointer(data.hEvent)), true);
+  if (data?.hEvent !== undefined) view.setBigUint64(24, data.hEvent === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hEvent))), true);
   return buf;
 }
 
@@ -165,15 +165,15 @@ export class OVERLAPPEDView {
   }
 
   // 0x10: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get hEvent(): Uint8Array | Deno.PointerValue | null {
+  get hEvent(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: usize
@@ -187,13 +187,13 @@ export class OVERLAPPEDView {
   }
 
   // 0x10: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set hEvent(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set hEvent(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -204,7 +204,7 @@ export interface OVERLAPPED_ENTRY {
   /** usize */
   lpCompletionKey: Deno.PointerValue;
   /** ptr */
-  lpOverlapped: Deno.PointerValue | Uint8Array | null;
+  lpOverlapped: Deno.PointerValue | Uint8Array;
   /** usize */
   Internal: Deno.PointerValue;
   /** u32 */
@@ -219,7 +219,7 @@ export function allocOVERLAPPED_ENTRY(data?: Partial<OVERLAPPED_ENTRY>): Uint8Ar
   // 0x00: usize
   if (data?.lpCompletionKey !== undefined) view.setBigUint64(0, BigInt(data.lpCompletionKey), true);
   // 0x08: pointer
-  if (data?.lpOverlapped !== undefined) view.setBigUint64(8, data.lpOverlapped === null ? 0n : BigInt(util.toPointer(data.lpOverlapped)), true);
+  if (data?.lpOverlapped !== undefined) view.setBigUint64(8, data.lpOverlapped === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpOverlapped))), true);
   // 0x10: usize
   if (data?.Internal !== undefined) view.setBigUint64(16, BigInt(data.Internal), true);
   // 0x18: u32
@@ -244,9 +244,9 @@ export class OVERLAPPED_ENTRYView {
   }
 
   // 0x08: pointer
-  get lpOverlapped(): Uint8Array | Deno.PointerValue | null {
+  get lpOverlapped(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: usize
@@ -267,8 +267,8 @@ export class OVERLAPPED_ENTRYView {
   }
 
   // 0x08: pointer
-  set lpOverlapped(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set lpOverlapped(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: usize
@@ -346,29 +346,29 @@ try {
 // Symbols
 
 export function CreateIoCompletionPort(
-  FileHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  ExistingCompletionPort: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  FileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  ExistingCompletionPort: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   CompletionKey: Deno.PointerValue /* usize */,
   NumberOfConcurrentThreads: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libKERNEL32_dll.CreateIoCompletionPort(util.toPointer(FileHandle), util.toPointer(ExistingCompletionPort), CompletionKey, NumberOfConcurrentThreads));
+): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
+  return libKERNEL32_dll.CreateIoCompletionPort(util.toPointer(FileHandle), util.toPointer(ExistingCompletionPort), CompletionKey, NumberOfConcurrentThreads);
 }
 
 export function GetQueuedCompletionStatus(
-  CompletionPort: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpNumberOfBytesTransferred: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpCompletionKey: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
+  CompletionPort: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpNumberOfBytesTransferred: Deno.PointerValue | Uint8Array /* ptr */,
+  lpCompletionKey: Deno.PointerValue | Uint8Array /* ptr */,
+  lpOverlapped: Deno.PointerValue | Uint8Array /* ptr */,
   dwMilliseconds: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetQueuedCompletionStatus(util.toPointer(CompletionPort), util.toPointer(lpNumberOfBytesTransferred), util.toPointer(lpCompletionKey), util.toPointer(lpOverlapped), dwMilliseconds));
 }
 
 export function GetQueuedCompletionStatusEx(
-  CompletionPort: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpCompletionPortEntries: Deno.PointerValue | Uint8Array | null /* ptr */,
+  CompletionPort: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpCompletionPortEntries: Deno.PointerValue | Uint8Array /* ptr */,
   ulCount: number /* u32 */,
-  ulNumEntriesRemoved: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ulNumEntriesRemoved: Deno.PointerValue | Uint8Array /* ptr */,
   dwMilliseconds: number /* u32 */,
   fAlertable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -376,62 +376,62 @@ export function GetQueuedCompletionStatusEx(
 }
 
 export function PostQueuedCompletionStatus(
-  CompletionPort: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  CompletionPort: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwNumberOfBytesTransferred: number /* u32 */,
   dwCompletionKey: Deno.PointerValue /* usize */,
-  lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpOverlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.PostQueuedCompletionStatus(util.toPointer(CompletionPort), dwNumberOfBytesTransferred, dwCompletionKey, util.toPointer(lpOverlapped)));
 }
 
 export function DeviceIoControl(
-  hDevice: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hDevice: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwIoControlCode: number /* u32 */,
-  lpInBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpInBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   nInBufferSize: number /* u32 */,
-  lpOutBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpOutBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   nOutBufferSize: number /* u32 */,
-  lpBytesReturned: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
+  lpOverlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.DeviceIoControl(util.toPointer(hDevice), dwIoControlCode, util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesReturned), util.toPointer(lpOverlapped)));
 }
 
 export function GetOverlappedResult(
-  hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpNumberOfBytesTransferred: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpOverlapped: Deno.PointerValue | Uint8Array /* ptr */,
+  lpNumberOfBytesTransferred: Deno.PointerValue | Uint8Array /* ptr */,
   bWait: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetOverlappedResult(util.toPointer(hFile), util.toPointer(lpOverlapped), util.toPointer(lpNumberOfBytesTransferred), util.boolToFfi(bWait)));
 }
 
 export async function GetOverlappedResultAsync(
-  hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpNumberOfBytesTransferred: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpOverlapped: Deno.PointerValue | Uint8Array /* ptr */,
+  lpNumberOfBytesTransferred: Deno.PointerValue | Uint8Array /* ptr */,
   bWait: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Promise<boolean> /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(await libKERNEL32_dll.GetOverlappedResultAsync(util.toPointer(hFile), util.toPointer(lpOverlapped), util.toPointer(lpNumberOfBytesTransferred), util.boolToFfi(bWait)));
 }
 
 export function CancelIoEx(
-  hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpOverlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.CancelIoEx(util.toPointer(hFile), util.toPointer(lpOverlapped)));
 }
 
 export function CancelIo(
-  hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.CancelIo(util.toPointer(hFile)));
 }
 
 export function GetOverlappedResultEx(
-  hFile: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpOverlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpNumberOfBytesTransferred: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpOverlapped: Deno.PointerValue | Uint8Array /* ptr */,
+  lpNumberOfBytesTransferred: Deno.PointerValue | Uint8Array /* ptr */,
   dwMilliseconds: number /* u32 */,
   bAlertable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -439,14 +439,14 @@ export function GetOverlappedResultEx(
 }
 
 export function CancelSynchronousIo(
-  hThread: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hThread: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.CancelSynchronousIo(util.toPointer(hThread)));
 }
 
 export function BindIoCompletionCallback(
-  FileHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  Function: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.IO.LPOVERLAPPED_COMPLETION_ROUTINE */,
+  FileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  Function: Uint8Array | Deno.PointerValue /* Windows.Win32.System.IO.LPOVERLAPPED_COMPLETION_ROUTINE */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.BindIoCompletionCallback(util.toPointer(FileHandle), util.toPointer(Function), Flags));

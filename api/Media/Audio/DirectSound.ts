@@ -773,7 +773,7 @@ export interface DSEFFECTDESC {
   /** u32 */
   dwFlags: number;
   /** System.Guid */
-  guidDSFXClass: Uint8Array | Deno.PointerValue | null;
+  guidDSFXClass: Uint8Array | Deno.PointerValue;
   /** usize */
   dwReserved1: Deno.PointerValue;
   /** usize */
@@ -790,7 +790,7 @@ export function allocDSEFFECTDESC(data?: Partial<DSEFFECTDESC>): Uint8Array {
   // 0x04: u32
   if (data?.dwFlags !== undefined) view.setUint32(4, Number(data.dwFlags), true);
   // 0x08: pointer
-  if (data?.guidDSFXClass !== undefined) view.setBigUint64(8, data.guidDSFXClass === null ? 0n : BigInt(util.toPointer(data.guidDSFXClass)), true);
+  if (data?.guidDSFXClass !== undefined) view.setBigUint64(8, data.guidDSFXClass === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.guidDSFXClass))), true);
   // 0x10: usize
   if (data?.dwReserved1 !== undefined) view.setBigUint64(16, BigInt(data.dwReserved1), true);
   // 0x18: usize
@@ -819,9 +819,9 @@ export class DSEFFECTDESCView {
   }
 
   // 0x08: pointer
-  get guidDSFXClass(): Uint8Array | Deno.PointerValue | null {
+  get guidDSFXClass(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: usize
@@ -845,8 +845,8 @@ export class DSEFFECTDESCView {
   }
 
   // 0x08: pointer
-  set guidDSFXClass(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set guidDSFXClass(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: usize
@@ -869,9 +869,9 @@ export interface DSCEFFECTDESC {
   /** u32 */
   dwFlags: number;
   /** System.Guid */
-  guidDSCFXClass: Uint8Array | Deno.PointerValue | null;
+  guidDSCFXClass: Uint8Array | Deno.PointerValue;
   /** System.Guid */
-  guidDSCFXInstance: Uint8Array | Deno.PointerValue | null;
+  guidDSCFXInstance: Uint8Array | Deno.PointerValue;
   /** u32 */
   dwReserved1: number;
   /** u32 */
@@ -888,9 +888,9 @@ export function allocDSCEFFECTDESC(data?: Partial<DSCEFFECTDESC>): Uint8Array {
   // 0x04: u32
   if (data?.dwFlags !== undefined) view.setUint32(4, Number(data.dwFlags), true);
   // 0x08: pointer
-  if (data?.guidDSCFXClass !== undefined) view.setBigUint64(8, data.guidDSCFXClass === null ? 0n : BigInt(util.toPointer(data.guidDSCFXClass)), true);
+  if (data?.guidDSCFXClass !== undefined) view.setBigUint64(8, data.guidDSCFXClass === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.guidDSCFXClass))), true);
   // 0x10: pointer
-  if (data?.guidDSCFXInstance !== undefined) view.setBigUint64(16, data.guidDSCFXInstance === null ? 0n : BigInt(util.toPointer(data.guidDSCFXInstance)), true);
+  if (data?.guidDSCFXInstance !== undefined) view.setBigUint64(16, data.guidDSCFXInstance === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.guidDSCFXInstance))), true);
   // 0x18: u32
   if (data?.dwReserved1 !== undefined) view.setUint32(24, Number(data.dwReserved1), true);
   // 0x1c: u32
@@ -919,15 +919,15 @@ export class DSCEFFECTDESCView {
   }
 
   // 0x08: pointer
-  get guidDSCFXClass(): Uint8Array | Deno.PointerValue | null {
+  get guidDSCFXClass(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get guidDSCFXInstance(): Uint8Array | Deno.PointerValue | null {
+  get guidDSCFXInstance(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -951,13 +951,13 @@ export class DSCEFFECTDESCView {
   }
 
   // 0x08: pointer
-  set guidDSCFXClass(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set guidDSCFXClass(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set guidDSCFXInstance(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set guidDSCFXInstance(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -984,9 +984,9 @@ export interface DSBUFFERDESC {
   /** u32 */
   dwReserved: number;
   /** ptr */
-  lpwfxFormat: Deno.PointerValue | Uint8Array | null;
+  lpwfxFormat: Deno.PointerValue | Uint8Array;
   /** System.Guid */
-  guid3DAlgorithm: Uint8Array | Deno.PointerValue | null;
+  guid3DAlgorithm: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDSBUFFERDESC = 32;
@@ -1003,9 +1003,9 @@ export function allocDSBUFFERDESC(data?: Partial<DSBUFFERDESC>): Uint8Array {
   // 0x0c: u32
   if (data?.dwReserved !== undefined) view.setUint32(12, Number(data.dwReserved), true);
   // 0x10: pointer
-  if (data?.lpwfxFormat !== undefined) view.setBigUint64(16, data.lpwfxFormat === null ? 0n : BigInt(util.toPointer(data.lpwfxFormat)), true);
+  if (data?.lpwfxFormat !== undefined) view.setBigUint64(16, data.lpwfxFormat === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpwfxFormat))), true);
   // 0x18: pointer
-  if (data?.guid3DAlgorithm !== undefined) view.setBigUint64(24, data.guid3DAlgorithm === null ? 0n : BigInt(util.toPointer(data.guid3DAlgorithm)), true);
+  if (data?.guid3DAlgorithm !== undefined) view.setBigUint64(24, data.guid3DAlgorithm === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.guid3DAlgorithm))), true);
   return buf;
 }
 
@@ -1040,15 +1040,15 @@ export class DSBUFFERDESCView {
   }
 
   // 0x10: pointer
-  get lpwfxFormat(): Uint8Array | Deno.PointerValue | null {
+  get lpwfxFormat(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get guid3DAlgorithm(): Uint8Array | Deno.PointerValue | null {
+  get guid3DAlgorithm(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1072,13 +1072,13 @@ export class DSBUFFERDESCView {
   }
 
   // 0x10: pointer
-  set lpwfxFormat(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set lpwfxFormat(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set guid3DAlgorithm(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set guid3DAlgorithm(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1095,7 +1095,7 @@ export interface DSBUFFERDESC1 {
   /** u32 */
   dwReserved: number;
   /** ptr */
-  lpwfxFormat: Deno.PointerValue | Uint8Array | null;
+  lpwfxFormat: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDSBUFFERDESC1 = 24;
@@ -1112,7 +1112,7 @@ export function allocDSBUFFERDESC1(data?: Partial<DSBUFFERDESC1>): Uint8Array {
   // 0x0c: u32
   if (data?.dwReserved !== undefined) view.setUint32(12, Number(data.dwReserved), true);
   // 0x10: pointer
-  if (data?.lpwfxFormat !== undefined) view.setBigUint64(16, data.lpwfxFormat === null ? 0n : BigInt(util.toPointer(data.lpwfxFormat)), true);
+  if (data?.lpwfxFormat !== undefined) view.setBigUint64(16, data.lpwfxFormat === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpwfxFormat))), true);
   return buf;
 }
 
@@ -1147,9 +1147,9 @@ export class DSBUFFERDESC1View {
   }
 
   // 0x10: pointer
-  get lpwfxFormat(): Uint8Array | Deno.PointerValue | null {
+  get lpwfxFormat(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1173,8 +1173,8 @@ export class DSBUFFERDESC1View {
   }
 
   // 0x10: pointer
-  set lpwfxFormat(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set lpwfxFormat(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1257,15 +1257,15 @@ export interface DS3DBUFFER {
   /** u32 */
   dwSize: number;
   /** Windows.Win32.Graphics.Direct3D.D3DVECTOR */
-  vPosition: Uint8Array | Deno.PointerValue | null;
+  vPosition: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D.D3DVECTOR */
-  vVelocity: Uint8Array | Deno.PointerValue | null;
+  vVelocity: Uint8Array | Deno.PointerValue;
   /** u32 */
   dwInsideConeAngle: number;
   /** u32 */
   dwOutsideConeAngle: number;
   /** Windows.Win32.Graphics.Direct3D.D3DVECTOR */
-  vConeOrientation: Uint8Array | Deno.PointerValue | null;
+  vConeOrientation: Uint8Array | Deno.PointerValue;
   /** i32 */
   lConeOutsideVolume: number;
   /** f32 */
@@ -1285,15 +1285,15 @@ export function allocDS3DBUFFER(data?: Partial<DS3DBUFFER>): Uint8Array {
   if (data?.dwSize !== undefined) view.setUint32(0, Number(data.dwSize), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.vPosition !== undefined) view.setBigUint64(8, data.vPosition === null ? 0n : BigInt(util.toPointer(data.vPosition)), true);
+  if (data?.vPosition !== undefined) view.setBigUint64(8, data.vPosition === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.vPosition))), true);
   // 0x10: pointer
-  if (data?.vVelocity !== undefined) view.setBigUint64(16, data.vVelocity === null ? 0n : BigInt(util.toPointer(data.vVelocity)), true);
+  if (data?.vVelocity !== undefined) view.setBigUint64(16, data.vVelocity === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.vVelocity))), true);
   // 0x18: u32
   if (data?.dwInsideConeAngle !== undefined) view.setUint32(24, Number(data.dwInsideConeAngle), true);
   // 0x1c: u32
   if (data?.dwOutsideConeAngle !== undefined) view.setUint32(28, Number(data.dwOutsideConeAngle), true);
   // 0x20: pointer
-  if (data?.vConeOrientation !== undefined) view.setBigUint64(32, data.vConeOrientation === null ? 0n : BigInt(util.toPointer(data.vConeOrientation)), true);
+  if (data?.vConeOrientation !== undefined) view.setBigUint64(32, data.vConeOrientation === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.vConeOrientation))), true);
   // 0x28: i32
   if (data?.lConeOutsideVolume !== undefined) view.setInt32(40, Number(data.lConeOutsideVolume), true);
   // 0x2c: f32
@@ -1323,15 +1323,15 @@ export class DS3DBUFFERView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get vPosition(): Uint8Array | Deno.PointerValue | null {
+  get vPosition(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get vVelocity(): Uint8Array | Deno.PointerValue | null {
+  get vVelocity(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -1345,9 +1345,9 @@ export class DS3DBUFFERView {
   }
 
   // 0x20: pointer
-  get vConeOrientation(): Uint8Array | Deno.PointerValue | null {
+  get vConeOrientation(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: i32
@@ -1378,13 +1378,13 @@ export class DS3DBUFFERView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set vPosition(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set vPosition(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set vVelocity(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set vVelocity(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -1398,8 +1398,8 @@ export class DS3DBUFFERView {
   }
 
   // 0x20: pointer
-  set vConeOrientation(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set vConeOrientation(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: i32
@@ -1430,13 +1430,13 @@ export interface DS3DLISTENER {
   /** u32 */
   dwSize: number;
   /** Windows.Win32.Graphics.Direct3D.D3DVECTOR */
-  vPosition: Uint8Array | Deno.PointerValue | null;
+  vPosition: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D.D3DVECTOR */
-  vVelocity: Uint8Array | Deno.PointerValue | null;
+  vVelocity: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D.D3DVECTOR */
-  vOrientFront: Uint8Array | Deno.PointerValue | null;
+  vOrientFront: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D.D3DVECTOR */
-  vOrientTop: Uint8Array | Deno.PointerValue | null;
+  vOrientTop: Uint8Array | Deno.PointerValue;
   /** f32 */
   flDistanceFactor: number;
   /** f32 */
@@ -1454,13 +1454,13 @@ export function allocDS3DLISTENER(data?: Partial<DS3DLISTENER>): Uint8Array {
   if (data?.dwSize !== undefined) view.setUint32(0, Number(data.dwSize), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.vPosition !== undefined) view.setBigUint64(8, data.vPosition === null ? 0n : BigInt(util.toPointer(data.vPosition)), true);
+  if (data?.vPosition !== undefined) view.setBigUint64(8, data.vPosition === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.vPosition))), true);
   // 0x10: pointer
-  if (data?.vVelocity !== undefined) view.setBigUint64(16, data.vVelocity === null ? 0n : BigInt(util.toPointer(data.vVelocity)), true);
+  if (data?.vVelocity !== undefined) view.setBigUint64(16, data.vVelocity === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.vVelocity))), true);
   // 0x18: pointer
-  if (data?.vOrientFront !== undefined) view.setBigUint64(24, data.vOrientFront === null ? 0n : BigInt(util.toPointer(data.vOrientFront)), true);
+  if (data?.vOrientFront !== undefined) view.setBigUint64(24, data.vOrientFront === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.vOrientFront))), true);
   // 0x20: pointer
-  if (data?.vOrientTop !== undefined) view.setBigUint64(32, data.vOrientTop === null ? 0n : BigInt(util.toPointer(data.vOrientTop)), true);
+  if (data?.vOrientTop !== undefined) view.setBigUint64(32, data.vOrientTop === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.vOrientTop))), true);
   // 0x28: f32
   if (data?.flDistanceFactor !== undefined) view.setFloat32(40, Number(data.flDistanceFactor), true);
   // 0x2c: f32
@@ -1489,27 +1489,27 @@ export class DS3DLISTENERView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get vPosition(): Uint8Array | Deno.PointerValue | null {
+  get vPosition(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get vVelocity(): Uint8Array | Deno.PointerValue | null {
+  get vVelocity(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get vOrientFront(): Uint8Array | Deno.PointerValue | null {
+  get vOrientFront(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get vOrientTop(): Uint8Array | Deno.PointerValue | null {
+  get vOrientTop(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: f32
@@ -1537,23 +1537,23 @@ export class DS3DLISTENERView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set vPosition(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set vPosition(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set vVelocity(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set vVelocity(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set vOrientFront(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set vOrientFront(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set vOrientTop(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set vOrientTop(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: f32
@@ -1668,7 +1668,7 @@ export interface DSCBUFFERDESC1 {
   /** u32 */
   dwReserved: number;
   /** ptr */
-  lpwfxFormat: Deno.PointerValue | Uint8Array | null;
+  lpwfxFormat: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDSCBUFFERDESC1 = 24;
@@ -1685,7 +1685,7 @@ export function allocDSCBUFFERDESC1(data?: Partial<DSCBUFFERDESC1>): Uint8Array 
   // 0x0c: u32
   if (data?.dwReserved !== undefined) view.setUint32(12, Number(data.dwReserved), true);
   // 0x10: pointer
-  if (data?.lpwfxFormat !== undefined) view.setBigUint64(16, data.lpwfxFormat === null ? 0n : BigInt(util.toPointer(data.lpwfxFormat)), true);
+  if (data?.lpwfxFormat !== undefined) view.setBigUint64(16, data.lpwfxFormat === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpwfxFormat))), true);
   return buf;
 }
 
@@ -1720,9 +1720,9 @@ export class DSCBUFFERDESC1View {
   }
 
   // 0x10: pointer
-  get lpwfxFormat(): Uint8Array | Deno.PointerValue | null {
+  get lpwfxFormat(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1746,8 +1746,8 @@ export class DSCBUFFERDESC1View {
   }
 
   // 0x10: pointer
-  set lpwfxFormat(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set lpwfxFormat(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1764,11 +1764,11 @@ export interface DSCBUFFERDESC {
   /** u32 */
   dwReserved: number;
   /** ptr */
-  lpwfxFormat: Deno.PointerValue | Uint8Array | null;
+  lpwfxFormat: Deno.PointerValue | Uint8Array;
   /** u32 */
   dwFXCount: number;
   /** ptr */
-  lpDSCFXDesc: Deno.PointerValue | Uint8Array | null;
+  lpDSCFXDesc: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDSCBUFFERDESC = 40;
@@ -1785,12 +1785,12 @@ export function allocDSCBUFFERDESC(data?: Partial<DSCBUFFERDESC>): Uint8Array {
   // 0x0c: u32
   if (data?.dwReserved !== undefined) view.setUint32(12, Number(data.dwReserved), true);
   // 0x10: pointer
-  if (data?.lpwfxFormat !== undefined) view.setBigUint64(16, data.lpwfxFormat === null ? 0n : BigInt(util.toPointer(data.lpwfxFormat)), true);
+  if (data?.lpwfxFormat !== undefined) view.setBigUint64(16, data.lpwfxFormat === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpwfxFormat))), true);
   // 0x18: u32
   if (data?.dwFXCount !== undefined) view.setUint32(24, Number(data.dwFXCount), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.lpDSCFXDesc !== undefined) view.setBigUint64(32, data.lpDSCFXDesc === null ? 0n : BigInt(util.toPointer(data.lpDSCFXDesc)), true);
+  if (data?.lpDSCFXDesc !== undefined) view.setBigUint64(32, data.lpDSCFXDesc === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpDSCFXDesc))), true);
   return buf;
 }
 
@@ -1825,9 +1825,9 @@ export class DSCBUFFERDESCView {
   }
 
   // 0x10: pointer
-  get lpwfxFormat(): Uint8Array | Deno.PointerValue | null {
+  get lpwfxFormat(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -1838,9 +1838,9 @@ export class DSCBUFFERDESCView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get lpDSCFXDesc(): Uint8Array | Deno.PointerValue | null {
+  get lpDSCFXDesc(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1864,8 +1864,8 @@ export class DSCBUFFERDESCView {
   }
 
   // 0x10: pointer
-  set lpwfxFormat(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set lpwfxFormat(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -1876,8 +1876,8 @@ export class DSCBUFFERDESCView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set lpDSCFXDesc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set lpDSCFXDesc(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1971,7 +1971,7 @@ export interface DSBPOSITIONNOTIFY {
   /** u32 */
   dwOffset: number;
   /** Windows.Win32.Foundation.HANDLE */
-  hEventNotify: Uint8Array | Deno.PointerValue | null;
+  hEventNotify: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDSBPOSITIONNOTIFY = 16;
@@ -1983,7 +1983,7 @@ export function allocDSBPOSITIONNOTIFY(data?: Partial<DSBPOSITIONNOTIFY>): Uint8
   if (data?.dwOffset !== undefined) view.setUint32(0, Number(data.dwOffset), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.hEventNotify !== undefined) view.setBigUint64(8, data.hEventNotify === null ? 0n : BigInt(util.toPointer(data.hEventNotify)), true);
+  if (data?.hEventNotify !== undefined) view.setBigUint64(8, data.hEventNotify === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hEventNotify))), true);
   return buf;
 }
 
@@ -2005,9 +2005,9 @@ export class DSBPOSITIONNOTIFYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get hEventNotify(): Uint8Array | Deno.PointerValue | null {
+  get hEventNotify(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -2018,8 +2018,8 @@ export class DSBPOSITIONNOTIFYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set hEventNotify(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set hEventNotify(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3159,84 +3159,84 @@ try {
 // Symbols
 
 export function DirectSoundCreate(
-  pcGuidDevice: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppDS: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pUnkOuter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDSOUND_dll.DirectSoundCreate(util.toPointer(pcGuidDevice), util.toPointer(ppDS), util.toPointer(pUnkOuter)));
+  pcGuidDevice: Deno.PointerValue | Uint8Array /* ptr */,
+  ppDS: Deno.PointerValue | Uint8Array /* ptr */,
+  pUnkOuter: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDSOUND_dll.DirectSoundCreate(util.toPointer(pcGuidDevice), util.toPointer(ppDS), util.toPointer(pUnkOuter));
 }
 
 export function DirectSoundEnumerateA(
-  pDSEnumCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Audio.DirectSound.LPDSENUMCALLBACKA */,
-  pContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDSOUND_dll.DirectSoundEnumerateA(util.toPointer(pDSEnumCallback), util.toPointer(pContext)));
+  pDSEnumCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.DirectSound.LPDSENUMCALLBACKA */,
+  pContext: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDSOUND_dll.DirectSoundEnumerateA(util.toPointer(pDSEnumCallback), util.toPointer(pContext));
 }
 
 export function DirectSoundEnumerateW(
-  pDSEnumCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Audio.DirectSound.LPDSENUMCALLBACKW */,
-  pContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDSOUND_dll.DirectSoundEnumerateW(util.toPointer(pDSEnumCallback), util.toPointer(pContext)));
+  pDSEnumCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.DirectSound.LPDSENUMCALLBACKW */,
+  pContext: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDSOUND_dll.DirectSoundEnumerateW(util.toPointer(pDSEnumCallback), util.toPointer(pContext));
 }
 
 export function DirectSoundCaptureCreate(
-  pcGuidDevice: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppDSC: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pUnkOuter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDSOUND_dll.DirectSoundCaptureCreate(util.toPointer(pcGuidDevice), util.toPointer(ppDSC), util.toPointer(pUnkOuter)));
+  pcGuidDevice: Deno.PointerValue | Uint8Array /* ptr */,
+  ppDSC: Deno.PointerValue | Uint8Array /* ptr */,
+  pUnkOuter: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDSOUND_dll.DirectSoundCaptureCreate(util.toPointer(pcGuidDevice), util.toPointer(ppDSC), util.toPointer(pUnkOuter));
 }
 
 export function DirectSoundCaptureEnumerateA(
-  pDSEnumCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Audio.DirectSound.LPDSENUMCALLBACKA */,
-  pContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDSOUND_dll.DirectSoundCaptureEnumerateA(util.toPointer(pDSEnumCallback), util.toPointer(pContext)));
+  pDSEnumCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.DirectSound.LPDSENUMCALLBACKA */,
+  pContext: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDSOUND_dll.DirectSoundCaptureEnumerateA(util.toPointer(pDSEnumCallback), util.toPointer(pContext));
 }
 
 export function DirectSoundCaptureEnumerateW(
-  pDSEnumCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Media.Audio.DirectSound.LPDSENUMCALLBACKW */,
-  pContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDSOUND_dll.DirectSoundCaptureEnumerateW(util.toPointer(pDSEnumCallback), util.toPointer(pContext)));
+  pDSEnumCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.DirectSound.LPDSENUMCALLBACKW */,
+  pContext: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDSOUND_dll.DirectSoundCaptureEnumerateW(util.toPointer(pDSEnumCallback), util.toPointer(pContext));
 }
 
 export function DirectSoundCreate8(
-  pcGuidDevice: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppDS8: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pUnkOuter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDSOUND_dll.DirectSoundCreate8(util.toPointer(pcGuidDevice), util.toPointer(ppDS8), util.toPointer(pUnkOuter)));
+  pcGuidDevice: Deno.PointerValue | Uint8Array /* ptr */,
+  ppDS8: Deno.PointerValue | Uint8Array /* ptr */,
+  pUnkOuter: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDSOUND_dll.DirectSoundCreate8(util.toPointer(pcGuidDevice), util.toPointer(ppDS8), util.toPointer(pUnkOuter));
 }
 
 export function DirectSoundCaptureCreate8(
-  pcGuidDevice: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppDSC8: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pUnkOuter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDSOUND_dll.DirectSoundCaptureCreate8(util.toPointer(pcGuidDevice), util.toPointer(ppDSC8), util.toPointer(pUnkOuter)));
+  pcGuidDevice: Deno.PointerValue | Uint8Array /* ptr */,
+  ppDSC8: Deno.PointerValue | Uint8Array /* ptr */,
+  pUnkOuter: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDSOUND_dll.DirectSoundCaptureCreate8(util.toPointer(pcGuidDevice), util.toPointer(ppDSC8), util.toPointer(pUnkOuter));
 }
 
 export function DirectSoundFullDuplexCreate(
-  pcGuidCaptureDevice: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcGuidRenderDevice: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcDSCBufferDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcDSBufferDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
+  pcGuidCaptureDevice: Deno.PointerValue | Uint8Array /* ptr */,
+  pcGuidRenderDevice: Deno.PointerValue | Uint8Array /* ptr */,
+  pcDSCBufferDesc: Deno.PointerValue | Uint8Array /* ptr */,
+  pcDSBufferDesc: Deno.PointerValue | Uint8Array /* ptr */,
+  hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   dwLevel: number /* u32 */,
-  ppDSFD: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppDSCBuffer8: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppDSBuffer8: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pUnkOuter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDSOUND_dll.DirectSoundFullDuplexCreate(util.toPointer(pcGuidCaptureDevice), util.toPointer(pcGuidRenderDevice), util.toPointer(pcDSCBufferDesc), util.toPointer(pcDSBufferDesc), util.hwndToFfi(hWnd), dwLevel, util.toPointer(ppDSFD), util.toPointer(ppDSCBuffer8), util.toPointer(ppDSBuffer8), util.toPointer(pUnkOuter)));
+  ppDSFD: Deno.PointerValue | Uint8Array /* ptr */,
+  ppDSCBuffer8: Deno.PointerValue | Uint8Array /* ptr */,
+  ppDSBuffer8: Deno.PointerValue | Uint8Array /* ptr */,
+  pUnkOuter: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDSOUND_dll.DirectSoundFullDuplexCreate(util.toPointer(pcGuidCaptureDevice), util.toPointer(pcGuidRenderDevice), util.toPointer(pcDSCBufferDesc), util.toPointer(pcDSBufferDesc), (hWnd), dwLevel, util.toPointer(ppDSFD), util.toPointer(ppDSCBuffer8), util.toPointer(ppDSBuffer8), util.toPointer(pUnkOuter));
 }
 
 export function GetDeviceID(
-  pGuidSrc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pGuidDest: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDSOUND_dll.GetDeviceID(util.toPointer(pGuidSrc), util.toPointer(pGuidDest)));
+  pGuidSrc: Deno.PointerValue | Uint8Array /* ptr */,
+  pGuidDest: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDSOUND_dll.GetDeviceID(util.toPointer(pGuidSrc), util.toPointer(pGuidDest));
 }
 

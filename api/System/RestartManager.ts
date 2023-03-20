@@ -110,7 +110,7 @@ export interface RM_UNIQUE_PROCESS {
   /** u32 */
   dwProcessId: number;
   /** Windows.Win32.Foundation.FILETIME */
-  ProcessStartTime: Uint8Array | Deno.PointerValue | null;
+  ProcessStartTime: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofRM_UNIQUE_PROCESS = 16;
@@ -122,7 +122,7 @@ export function allocRM_UNIQUE_PROCESS(data?: Partial<RM_UNIQUE_PROCESS>): Uint8
   if (data?.dwProcessId !== undefined) view.setUint32(0, Number(data.dwProcessId), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.ProcessStartTime !== undefined) view.setBigUint64(8, data.ProcessStartTime === null ? 0n : BigInt(util.toPointer(data.ProcessStartTime)), true);
+  if (data?.ProcessStartTime !== undefined) view.setBigUint64(8, data.ProcessStartTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ProcessStartTime))), true);
   return buf;
 }
 
@@ -144,9 +144,9 @@ export class RM_UNIQUE_PROCESSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get ProcessStartTime(): Uint8Array | Deno.PointerValue | null {
+  get ProcessStartTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -157,8 +157,8 @@ export class RM_UNIQUE_PROCESSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set ProcessStartTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ProcessStartTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -169,11 +169,11 @@ export type BOOL = number;
  */
 export interface RM_PROCESS_INFO {
   /** Windows.Win32.System.RestartManager.RM_UNIQUE_PROCESS */
-  Process: Uint8Array | Deno.PointerValue | null;
+  Process: Uint8Array | Deno.PointerValue;
   /** array */
-  strAppName: Deno.PointerValue | null;
+  strAppName: Deno.PointerValue;
   /** array */
-  strServiceShortName: Deno.PointerValue | null;
+  strServiceShortName: Deno.PointerValue;
   /** Windows.Win32.System.RestartManager.RM_APP_TYPE */
   ApplicationType: RM_APP_TYPE;
   /** u32 */
@@ -190,11 +190,11 @@ export function allocRM_PROCESS_INFO(data?: Partial<RM_PROCESS_INFO>): Uint8Arra
   const buf = new Uint8Array(sizeofRM_PROCESS_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Process !== undefined) view.setBigUint64(0, data.Process === null ? 0n : BigInt(util.toPointer(data.Process)), true);
+  if (data?.Process !== undefined) view.setBigUint64(0, data.Process === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Process))), true);
   // 0x08: pointer
-  if (data?.strAppName !== undefined) view.setBigUint64(8, data.strAppName === null ? 0n : BigInt(util.toPointer(data.strAppName)), true);
+  if (data?.strAppName !== undefined) view.setBigUint64(8, data.strAppName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.strAppName))), true);
   // 0x10: pointer
-  if (data?.strServiceShortName !== undefined) view.setBigUint64(16, data.strServiceShortName === null ? 0n : BigInt(util.toPointer(data.strServiceShortName)), true);
+  if (data?.strServiceShortName !== undefined) view.setBigUint64(16, data.strServiceShortName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.strServiceShortName))), true);
   // 0x18: i32
   if (data?.ApplicationType !== undefined) view.setInt32(24, Number(data.ApplicationType), true);
   // 0x1c: u32
@@ -217,21 +217,21 @@ export class RM_PROCESS_INFOView {
   }
 
   // 0x00: pointer
-  get Process(): Uint8Array | Deno.PointerValue | null {
+  get Process(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get strAppName(): Uint8Array | Deno.PointerValue | null {
+  get strAppName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get strServiceShortName(): Uint8Array | Deno.PointerValue | null {
+  get strServiceShortName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: i32
@@ -255,18 +255,18 @@ export class RM_PROCESS_INFOView {
   }
 
   // 0x00: pointer
-  set Process(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Process(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set strAppName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set strAppName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set strServiceShortName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set strServiceShortName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: i32
@@ -348,9 +348,9 @@ export class _Anonymous_e__StructView {
  */
 export interface _Anonymous_e__Union {
   /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** array */
-  X: Deno.PointerValue | null;
+  X: Deno.PointerValue;
 }
 
 export const sizeof_Anonymous_e__Union = 16;
@@ -359,9 +359,9 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   const buf = new Uint8Array(sizeof_Anonymous_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x08: pointer
-  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.X))), true);
   return buf;
 }
 
@@ -376,25 +376,25 @@ export class _Anonymous_e__UnionView {
   }
 
   // 0x00: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get X(): Uint8Array | Deno.PointerValue | null {
+  get X(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set X(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set X(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -409,7 +409,7 @@ export interface RM_FILTER_INFO {
   /** u32 */
   cbNextOffset: number;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofRM_FILTER_INFO = 24;
@@ -425,7 +425,7 @@ export function allocRM_FILTER_INFO(data?: Partial<RM_FILTER_INFO>): Uint8Array 
   if (data?.cbNextOffset !== undefined) view.setUint32(8, Number(data.cbNextOffset), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -457,9 +457,9 @@ export class RM_FILTER_INFOView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -480,12 +480,12 @@ export class RM_FILTER_INFOView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 // Native Libraries
 
@@ -546,7 +546,7 @@ try {
 // Symbols
 
 export function RmStartSession(
-  pSessionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSessionHandle: Deno.PointerValue | Uint8Array /* ptr */,
   dwSessionFlags: number /* u32 */,
   strSessionKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
@@ -554,7 +554,7 @@ export function RmStartSession(
 }
 
 export function RmJoinSession(
-  pSessionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSessionHandle: Deno.PointerValue | Uint8Array /* ptr */,
   strSessionKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libRstrtMgr_dll.RmJoinSession(util.toPointer(pSessionHandle), util.pwstrToFfi(strSessionKey));
@@ -569,21 +569,21 @@ export function RmEndSession(
 export function RmRegisterResources(
   dwSessionHandle: number /* u32 */,
   nFiles: number /* u32 */,
-  rgsFileNames: Deno.PointerValue | Uint8Array | null /* ptr */,
+  rgsFileNames: Deno.PointerValue | Uint8Array /* ptr */,
   nApplications: number /* u32 */,
-  rgApplications: Deno.PointerValue | Uint8Array | null /* ptr */,
+  rgApplications: Deno.PointerValue | Uint8Array /* ptr */,
   nServices: number /* u32 */,
-  rgsServiceNames: Deno.PointerValue | Uint8Array | null /* ptr */,
+  rgsServiceNames: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return librstrtmgr_dll.RmRegisterResources(dwSessionHandle, nFiles, util.toPointer(rgsFileNames), nApplications, util.toPointer(rgApplications), nServices, util.toPointer(rgsServiceNames));
 }
 
 export function RmGetList(
   dwSessionHandle: number /* u32 */,
-  pnProcInfoNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pnProcInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  rgAffectedApps: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpdwRebootReasons: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pnProcInfoNeeded: Deno.PointerValue | Uint8Array /* ptr */,
+  pnProcInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  rgAffectedApps: Deno.PointerValue | Uint8Array /* ptr */,
+  lpdwRebootReasons: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return librstrtmgr_dll.RmGetList(dwSessionHandle, util.toPointer(pnProcInfoNeeded), util.toPointer(pnProcInfo), util.toPointer(rgAffectedApps), util.toPointer(lpdwRebootReasons));
 }
@@ -591,7 +591,7 @@ export function RmGetList(
 export function RmShutdown(
   dwSessionHandle: number /* u32 */,
   lActionFlags: number /* u32 */,
-  fnStatus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.RestartManager.RM_WRITE_STATUS_CALLBACK */,
+  fnStatus: Uint8Array | Deno.PointerValue /* Windows.Win32.System.RestartManager.RM_WRITE_STATUS_CALLBACK */,
 ): number /* u32 */ {
   return librstrtmgr_dll.RmShutdown(dwSessionHandle, lActionFlags, util.toPointer(fnStatus));
 }
@@ -599,7 +599,7 @@ export function RmShutdown(
 export function RmRestart(
   dwSessionHandle: number /* u32 */,
   dwRestartFlags: number /* u32 */,
-  fnStatus: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.RestartManager.RM_WRITE_STATUS_CALLBACK */,
+  fnStatus: Uint8Array | Deno.PointerValue /* Windows.Win32.System.RestartManager.RM_WRITE_STATUS_CALLBACK */,
 ): number /* u32 */ {
   return librstrtmgr_dll.RmRestart(dwSessionHandle, dwRestartFlags, util.toPointer(fnStatus));
 }
@@ -613,7 +613,7 @@ export function RmCancelCurrentTask(
 export function RmAddFilter(
   dwSessionHandle: number /* u32 */,
   strModuleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pProcess: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pProcess: Deno.PointerValue | Uint8Array /* ptr */,
   strServiceShortName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   FilterAction: RM_FILTER_ACTION /* Windows.Win32.System.RestartManager.RM_FILTER_ACTION */,
 ): number /* u32 */ {
@@ -623,7 +623,7 @@ export function RmAddFilter(
 export function RmRemoveFilter(
   dwSessionHandle: number /* u32 */,
   strModuleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pProcess: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pProcess: Deno.PointerValue | Uint8Array /* ptr */,
   strServiceShortName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libRstrtMgr_dll.RmRemoveFilter(dwSessionHandle, util.pwstrToFfi(strModuleName), util.toPointer(pProcess), util.pwstrToFfi(strServiceShortName));
@@ -631,9 +631,9 @@ export function RmRemoveFilter(
 
 export function RmGetFilterList(
   dwSessionHandle: number /* u32 */,
-  pbFilterBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pbFilterBuf: Deno.PointerValue | Uint8Array /* ptr */,
   cbFilterBuf: number /* u32 */,
-  cbFilterBufNeeded: Deno.PointerValue | Uint8Array | null /* ptr */,
+  cbFilterBufNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libRstrtMgr_dll.RmGetFilterList(dwSessionHandle, util.toPointer(pbFilterBuf), cbFilterBuf, util.toPointer(cbFilterBufNeeded));
 }

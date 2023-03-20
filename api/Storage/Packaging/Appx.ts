@@ -3377,7 +3377,7 @@ export interface APPX_PACKAGE_SETTINGS {
   /** Windows.Win32.Foundation.BOOL */
   forceZip32: boolean;
   /** Windows.Win32.System.Com.IUri */
-  hashMethod: Uint8Array | Deno.PointerValue | null;
+  hashMethod: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofAPPX_PACKAGE_SETTINGS = 16;
@@ -3389,7 +3389,7 @@ export function allocAPPX_PACKAGE_SETTINGS(data?: Partial<APPX_PACKAGE_SETTINGS>
   if (data?.forceZip32 !== undefined) view.setInt32(0, Number(data.forceZip32), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.hashMethod !== undefined) view.setBigUint64(8, data.hashMethod === null ? 0n : BigInt(util.toPointer(data.hashMethod)), true);
+  if (data?.hashMethod !== undefined) view.setBigUint64(8, data.hashMethod === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hashMethod))), true);
   return buf;
 }
 
@@ -3411,9 +3411,9 @@ export class APPX_PACKAGE_SETTINGSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get hashMethod(): Uint8Array | Deno.PointerValue | null {
+  get hashMethod(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -3424,19 +3424,19 @@ export class APPX_PACKAGE_SETTINGSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set hashMethod(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set hashMethod(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.Storage.Packaging.Appx.APPX_PACKAGE_WRITER_PAYLOAD_STREAM (size: 32)
  */
 export interface APPX_PACKAGE_WRITER_PAYLOAD_STREAM {
   /** Windows.Win32.System.Com.IStream */
-  inputStream: Uint8Array | Deno.PointerValue | null;
+  inputStream: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   fileName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
@@ -3451,16 +3451,16 @@ export function allocAPPX_PACKAGE_WRITER_PAYLOAD_STREAM(data?: Partial<APPX_PACK
   const buf = new Uint8Array(sizeofAPPX_PACKAGE_WRITER_PAYLOAD_STREAM);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.inputStream !== undefined) view.setBigUint64(0, data.inputStream === null ? 0n : BigInt(util.toPointer(data.inputStream)), true);
+  if (data?.inputStream !== undefined) view.setBigUint64(0, data.inputStream === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.inputStream))), true);
   // 0x08: buffer
   if (data?.fileName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.fileName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.contentType !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.contentType);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: i32
   if (data?.compressionOption !== undefined) view.setInt32(24, Number(data.compressionOption), true);
@@ -3479,21 +3479,21 @@ export class APPX_PACKAGE_WRITER_PAYLOAD_STREAMView {
   }
 
   // 0x00: pointer
-  get inputStream(): Uint8Array | Deno.PointerValue | null {
+  get inputStream(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get fileName(): Uint8Array | Deno.PointerValue | null {
+  get fileName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get contentType(): Uint8Array | Deno.PointerValue | null {
+  get contentType(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: i32
@@ -3504,20 +3504,20 @@ export class APPX_PACKAGE_WRITER_PAYLOAD_STREAMView {
   // 0x1c: pad4
 
   // 0x00: pointer
-  set inputStream(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set inputStream(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: buffer
-  set fileName(value: Uint8Array | Deno.PointerValue | null) {
+  set fileName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set contentType(value: Uint8Array | Deno.PointerValue | null) {
+  set contentType(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: i32
@@ -3539,7 +3539,7 @@ export interface APPX_ENCRYPTED_PACKAGE_SETTINGS {
   /** Windows.Win32.Foundation.BOOL */
   useDiffusion: boolean;
   /** Windows.Win32.System.Com.IUri */
-  blockMapHashAlgorithm: Uint8Array | Deno.PointerValue | null;
+  blockMapHashAlgorithm: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofAPPX_ENCRYPTED_PACKAGE_SETTINGS = 32;
@@ -3553,13 +3553,13 @@ export function allocAPPX_ENCRYPTED_PACKAGE_SETTINGS(data?: Partial<APPX_ENCRYPT
   // 0x08: buffer
   if (data?.encryptionAlgorithm !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.encryptionAlgorithm);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: i32
   if (data?.useDiffusion !== undefined) view.setInt32(16, Number(data.useDiffusion), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.blockMapHashAlgorithm !== undefined) view.setBigUint64(24, data.blockMapHashAlgorithm === null ? 0n : BigInt(util.toPointer(data.blockMapHashAlgorithm)), true);
+  if (data?.blockMapHashAlgorithm !== undefined) view.setBigUint64(24, data.blockMapHashAlgorithm === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.blockMapHashAlgorithm))), true);
   return buf;
 }
 
@@ -3581,9 +3581,9 @@ export class APPX_ENCRYPTED_PACKAGE_SETTINGSView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get encryptionAlgorithm(): Uint8Array | Deno.PointerValue | null {
+  get encryptionAlgorithm(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i32
@@ -3594,9 +3594,9 @@ export class APPX_ENCRYPTED_PACKAGE_SETTINGSView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get blockMapHashAlgorithm(): Uint8Array | Deno.PointerValue | null {
+  get blockMapHashAlgorithm(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -3607,9 +3607,9 @@ export class APPX_ENCRYPTED_PACKAGE_SETTINGSView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set encryptionAlgorithm(value: Uint8Array | Deno.PointerValue | null) {
+  set encryptionAlgorithm(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: i32
@@ -3620,8 +3620,8 @@ export class APPX_ENCRYPTED_PACKAGE_SETTINGSView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set blockMapHashAlgorithm(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set blockMapHashAlgorithm(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3634,7 +3634,7 @@ export interface APPX_ENCRYPTED_PACKAGE_SETTINGS2 {
   /** Windows.Win32.Foundation.PWSTR */
   encryptionAlgorithm: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Com.IUri */
-  blockMapHashAlgorithm: Uint8Array | Deno.PointerValue | null;
+  blockMapHashAlgorithm: Uint8Array | Deno.PointerValue;
   /** u32 */
   options: number;
 }
@@ -3650,10 +3650,10 @@ export function allocAPPX_ENCRYPTED_PACKAGE_SETTINGS2(data?: Partial<APPX_ENCRYP
   // 0x08: buffer
   if (data?.encryptionAlgorithm !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.encryptionAlgorithm);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: pointer
-  if (data?.blockMapHashAlgorithm !== undefined) view.setBigUint64(16, data.blockMapHashAlgorithm === null ? 0n : BigInt(util.toPointer(data.blockMapHashAlgorithm)), true);
+  if (data?.blockMapHashAlgorithm !== undefined) view.setBigUint64(16, data.blockMapHashAlgorithm === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.blockMapHashAlgorithm))), true);
   // 0x18: u32
   if (data?.options !== undefined) view.setUint32(24, Number(data.options), true);
   // 0x1c: pad4
@@ -3678,15 +3678,15 @@ export class APPX_ENCRYPTED_PACKAGE_SETTINGS2View {
   // 0x04: pad4
 
   // 0x08: buffer
-  get encryptionAlgorithm(): Uint8Array | Deno.PointerValue | null {
+  get encryptionAlgorithm(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get blockMapHashAlgorithm(): Uint8Array | Deno.PointerValue | null {
+  get blockMapHashAlgorithm(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -3704,14 +3704,14 @@ export class APPX_ENCRYPTED_PACKAGE_SETTINGS2View {
   // 0x04: pad4
 
   // 0x08: buffer
-  set encryptionAlgorithm(value: Uint8Array | Deno.PointerValue | null) {
+  set encryptionAlgorithm(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: pointer
-  set blockMapHashAlgorithm(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set blockMapHashAlgorithm(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -3731,9 +3731,9 @@ export interface APPX_KEY_INFO {
   /** u32 */
   keyIdLength: number;
   /** ptr */
-  key: Deno.PointerValue | Uint8Array | null;
+  key: Deno.PointerValue | Uint8Array;
   /** ptr */
-  keyId: Deno.PointerValue | Uint8Array | null;
+  keyId: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofAPPX_KEY_INFO = 24;
@@ -3746,9 +3746,9 @@ export function allocAPPX_KEY_INFO(data?: Partial<APPX_KEY_INFO>): Uint8Array {
   // 0x04: u32
   if (data?.keyIdLength !== undefined) view.setUint32(4, Number(data.keyIdLength), true);
   // 0x08: pointer
-  if (data?.key !== undefined) view.setBigUint64(8, data.key === null ? 0n : BigInt(util.toPointer(data.key)), true);
+  if (data?.key !== undefined) view.setBigUint64(8, data.key === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.key))), true);
   // 0x10: pointer
-  if (data?.keyId !== undefined) view.setBigUint64(16, data.keyId === null ? 0n : BigInt(util.toPointer(data.keyId)), true);
+  if (data?.keyId !== undefined) view.setBigUint64(16, data.keyId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.keyId))), true);
   return buf;
 }
 
@@ -3773,15 +3773,15 @@ export class APPX_KEY_INFOView {
   }
 
   // 0x08: pointer
-  get key(): Uint8Array | Deno.PointerValue | null {
+  get key(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get keyId(): Uint8Array | Deno.PointerValue | null {
+  get keyId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -3795,13 +3795,13 @@ export class APPX_KEY_INFOView {
   }
 
   // 0x08: pointer
-  set key(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set key(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set keyId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set keyId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3812,7 +3812,7 @@ export interface APPX_ENCRYPTED_EXEMPTIONS {
   /** u32 */
   count: number;
   /** ptr */
-  plainTextFiles: Deno.PointerValue | Uint8Array | null;
+  plainTextFiles: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofAPPX_ENCRYPTED_EXEMPTIONS = 16;
@@ -3824,7 +3824,7 @@ export function allocAPPX_ENCRYPTED_EXEMPTIONS(data?: Partial<APPX_ENCRYPTED_EXE
   if (data?.count !== undefined) view.setUint32(0, Number(data.count), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.plainTextFiles !== undefined) view.setBigUint64(8, data.plainTextFiles === null ? 0n : BigInt(util.toPointer(data.plainTextFiles)), true);
+  if (data?.plainTextFiles !== undefined) view.setBigUint64(8, data.plainTextFiles === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.plainTextFiles))), true);
   return buf;
 }
 
@@ -3846,9 +3846,9 @@ export class APPX_ENCRYPTED_EXEMPTIONSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get plainTextFiles(): Uint8Array | Deno.PointerValue | null {
+  get plainTextFiles(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -3859,8 +3859,8 @@ export class APPX_ENCRYPTED_EXEMPTIONSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set plainTextFiles(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set plainTextFiles(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3922,9 +3922,9 @@ export class _Anonymous_e__StructView {
  */
 export interface _Anonymous_e__Union {
   /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** array */
-  X: Deno.PointerValue | null;
+  X: Deno.PointerValue;
 }
 
 export const sizeof_Anonymous_e__Union = 16;
@@ -3933,9 +3933,9 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   const buf = new Uint8Array(sizeof_Anonymous_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x08: pointer
-  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.X))), true);
   return buf;
 }
 
@@ -3950,25 +3950,25 @@ export class _Anonymous_e__UnionView {
   }
 
   // 0x00: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get X(): Uint8Array | Deno.PointerValue | null {
+  get X(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set X(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set X(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3977,7 +3977,7 @@ export class _Anonymous_e__UnionView {
  */
 export interface PACKAGE_VERSION {
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofPACKAGE_VERSION = 8;
@@ -3986,7 +3986,7 @@ export function allocPACKAGE_VERSION(data?: Partial<PACKAGE_VERSION>): Uint8Arra
   const buf = new Uint8Array(sizeofPACKAGE_VERSION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -4001,14 +4001,14 @@ export class PACKAGE_VERSIONView {
   }
 
   // 0x00: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4021,7 +4021,7 @@ export interface PACKAGE_ID {
   /** u32 */
   processorArchitecture: number;
   /** Windows.Win32.Storage.Packaging.Appx.PACKAGE_VERSION */
-  version: Uint8Array | Deno.PointerValue | null;
+  version: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   name: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
@@ -4042,26 +4042,26 @@ export function allocPACKAGE_ID(data?: Partial<PACKAGE_ID>): Uint8Array {
   // 0x04: u32
   if (data?.processorArchitecture !== undefined) view.setUint32(4, Number(data.processorArchitecture), true);
   // 0x08: pointer
-  if (data?.version !== undefined) view.setBigUint64(8, data.version === null ? 0n : BigInt(util.toPointer(data.version)), true);
+  if (data?.version !== undefined) view.setBigUint64(8, data.version === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.version))), true);
   // 0x10: buffer
   if (data?.name !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.name);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.publisher !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.publisher);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: buffer
   if (data?.resourceId !== undefined) {
     (buf as any)._f32 = util.pwstrToFfi(data.resourceId);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f32))), true);
   }
   // 0x28: buffer
   if (data?.publisherId !== undefined) {
     (buf as any)._f40 = util.pwstrToFfi(data.publisherId);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f40))), true);
   }
   return buf;
 }
@@ -4087,33 +4087,33 @@ export class PACKAGE_IDView {
   }
 
   // 0x08: pointer
-  get version(): Uint8Array | Deno.PointerValue | null {
+  get version(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get name(): Uint8Array | Deno.PointerValue | null {
+  get name(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get publisher(): Uint8Array | Deno.PointerValue | null {
+  get publisher(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: buffer
-  get resourceId(): Uint8Array | Deno.PointerValue | null {
+  get resourceId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: buffer
-  get publisherId(): Uint8Array | Deno.PointerValue | null {
+  get publisherId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -4127,32 +4127,32 @@ export class PACKAGE_IDView {
   }
 
   // 0x08: pointer
-  set version(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set version(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: buffer
-  set name(value: Uint8Array | Deno.PointerValue | null) {
+  set name(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set publisher(value: Uint8Array | Deno.PointerValue | null) {
+  set publisher(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: buffer
-  set resourceId(value: Uint8Array | Deno.PointerValue | null) {
+  set resourceId(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f32))), true);
   }
 
   // 0x28: buffer
-  set publisherId(value: Uint8Array | Deno.PointerValue | null) {
+  set publisherId(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f40))), true);
   }
 }
 
@@ -4161,7 +4161,7 @@ export class PACKAGE_IDView {
  */
 export interface _PACKAGE_INFO_REFERENCE {
   /** ptr */
-  reserved: Deno.PointerValue | Uint8Array | null;
+  reserved: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeof_PACKAGE_INFO_REFERENCE = 8;
@@ -4170,7 +4170,7 @@ export function alloc_PACKAGE_INFO_REFERENCE(data?: Partial<_PACKAGE_INFO_REFERE
   const buf = new Uint8Array(sizeof_PACKAGE_INFO_REFERENCE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.reserved !== undefined) view.setBigUint64(0, data.reserved === null ? 0n : BigInt(util.toPointer(data.reserved)), true);
+  if (data?.reserved !== undefined) view.setBigUint64(0, data.reserved === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.reserved))), true);
   return buf;
 }
 
@@ -4185,14 +4185,14 @@ export class _PACKAGE_INFO_REFERENCEView {
   }
 
   // 0x00: pointer
-  get reserved(): Uint8Array | Deno.PointerValue | null {
+  get reserved(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set reserved(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set reserved(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4211,7 +4211,7 @@ export interface PACKAGE_INFO {
   /** Windows.Win32.Foundation.PWSTR */
   packageFamilyName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Storage.Packaging.Appx.PACKAGE_ID */
-  packageId: Uint8Array | Deno.PointerValue | null;
+  packageId: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofPACKAGE_INFO = 40;
@@ -4226,20 +4226,20 @@ export function allocPACKAGE_INFO(data?: Partial<PACKAGE_INFO>): Uint8Array {
   // 0x08: buffer
   if (data?.path !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.path);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.packageFullName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.packageFullName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.packageFamilyName !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.packageFamilyName);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: pointer
-  if (data?.packageId !== undefined) view.setBigUint64(32, data.packageId === null ? 0n : BigInt(util.toPointer(data.packageId)), true);
+  if (data?.packageId !== undefined) view.setBigUint64(32, data.packageId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.packageId))), true);
   return buf;
 }
 
@@ -4264,27 +4264,27 @@ export class PACKAGE_INFOView {
   }
 
   // 0x08: buffer
-  get path(): Uint8Array | Deno.PointerValue | null {
+  get path(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get packageFullName(): Uint8Array | Deno.PointerValue | null {
+  get packageFullName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get packageFamilyName(): Uint8Array | Deno.PointerValue | null {
+  get packageFamilyName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get packageId(): Uint8Array | Deno.PointerValue | null {
+  get packageId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -4298,26 +4298,26 @@ export class PACKAGE_INFOView {
   }
 
   // 0x08: buffer
-  set path(value: Uint8Array | Deno.PointerValue | null) {
+  set path(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set packageFullName(value: Uint8Array | Deno.PointerValue | null) {
+  set packageFullName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set packageFamilyName(value: Uint8Array | Deno.PointerValue | null) {
+  set packageFamilyName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: pointer
-  set packageId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set packageId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4411,7 +4411,7 @@ export class PACKAGE_VIRTUALIZATION_CONTEXT_HANDLE__View {
 
 export type HANDLE = Deno.PointerValue;
 
-export type PSID = Deno.PointerValue | Uint8Array | null;
+export type PSID = Deno.PointerValue | Uint8Array;
 
 export type HRESULT = number;
 
@@ -4692,77 +4692,77 @@ try {
 // Symbols
 
 export function GetCurrentPackageId(
-  bufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  bufferLength: Deno.PointerValue | Uint8Array /* ptr */,
+  buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.GetCurrentPackageId(util.toPointer(bufferLength), util.toPointer(buffer));
 }
 
 export function GetCurrentPackageFullName(
-  packageFullNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  packageFullNameLength: Deno.PointerValue | Uint8Array /* ptr */,
   packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.GetCurrentPackageFullName(util.toPointer(packageFullNameLength), util.pwstrToFfi(packageFullName));
 }
 
 export function GetCurrentPackageFamilyName(
-  packageFamilyNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  packageFamilyNameLength: Deno.PointerValue | Uint8Array /* ptr */,
   packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.GetCurrentPackageFamilyName(util.toPointer(packageFamilyNameLength), util.pwstrToFfi(packageFamilyName));
 }
 
 export function GetCurrentPackagePath(
-  pathLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pathLength: Deno.PointerValue | Uint8Array /* ptr */,
   path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.GetCurrentPackagePath(util.toPointer(pathLength), util.pwstrToFfi(path));
 }
 
 export function GetPackageId(
-  hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  bufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  bufferLength: Deno.PointerValue | Uint8Array /* ptr */,
+  buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.GetPackageId(util.toPointer(hProcess), util.toPointer(bufferLength), util.toPointer(buffer));
 }
 
 export function GetPackageFullName(
-  hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  packageFullNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  packageFullNameLength: Deno.PointerValue | Uint8Array /* ptr */,
   packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.GetPackageFullName(util.toPointer(hProcess), util.toPointer(packageFullNameLength), util.pwstrToFfi(packageFullName));
 }
 
 export function GetPackageFullNameFromToken(
-  token: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  packageFullNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  token: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  packageFullNameLength: Deno.PointerValue | Uint8Array /* ptr */,
   packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libapi_ms_win_appmodel_runtime_l1_1_1_dll.GetPackageFullNameFromToken(util.toPointer(token), util.toPointer(packageFullNameLength), util.pwstrToFfi(packageFullName));
 }
 
 export function GetPackageFamilyName(
-  hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  packageFamilyNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  packageFamilyNameLength: Deno.PointerValue | Uint8Array /* ptr */,
   packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.GetPackageFamilyName(util.toPointer(hProcess), util.toPointer(packageFamilyNameLength), util.pwstrToFfi(packageFamilyName));
 }
 
 export function GetPackageFamilyNameFromToken(
-  token: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  packageFamilyNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  token: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  packageFamilyNameLength: Deno.PointerValue | Uint8Array /* ptr */,
   packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libapi_ms_win_appmodel_runtime_l1_1_1_dll.GetPackageFamilyNameFromToken(util.toPointer(token), util.toPointer(packageFamilyNameLength), util.pwstrToFfi(packageFamilyName));
 }
 
 export function GetPackagePath(
-  packageId: Deno.PointerValue | Uint8Array | null /* ptr */,
+  packageId: Deno.PointerValue | Uint8Array /* ptr */,
   reserved: number /* u32 */,
-  pathLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pathLength: Deno.PointerValue | Uint8Array /* ptr */,
   path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.GetPackagePath(util.toPointer(packageId), reserved, util.toPointer(pathLength), util.pwstrToFfi(path));
@@ -4770,7 +4770,7 @@ export function GetPackagePath(
 
 export function GetPackagePathByFullName(
   packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pathLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pathLength: Deno.PointerValue | Uint8Array /* ptr */,
   path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.GetPackagePathByFullName(util.pwstrToFfi(packageFullName), util.toPointer(pathLength), util.pwstrToFfi(path));
@@ -4778,7 +4778,7 @@ export function GetPackagePathByFullName(
 
 export function GetStagedPackagePathByFullName(
   packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pathLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pathLength: Deno.PointerValue | Uint8Array /* ptr */,
   path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.GetStagedPackagePathByFullName(util.pwstrToFfi(packageFullName), util.toPointer(pathLength), util.pwstrToFfi(path));
@@ -4787,7 +4787,7 @@ export function GetStagedPackagePathByFullName(
 export function GetPackagePathByFullName2(
   packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   packagePathType: PackagePathType /* Windows.Win32.Storage.Packaging.Appx.PackagePathType */,
-  pathLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pathLength: Deno.PointerValue | Uint8Array /* ptr */,
   path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libapi_ms_win_appmodel_runtime_l1_1_3_dll.GetPackagePathByFullName2(util.pwstrToFfi(packageFullName), packagePathType, util.toPointer(pathLength), util.pwstrToFfi(path));
@@ -4796,7 +4796,7 @@ export function GetPackagePathByFullName2(
 export function GetStagedPackagePathByFullName2(
   packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   packagePathType: PackagePathType /* Windows.Win32.Storage.Packaging.Appx.PackagePathType */,
-  pathLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pathLength: Deno.PointerValue | Uint8Array /* ptr */,
   path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libapi_ms_win_appmodel_runtime_l1_1_3_dll.GetStagedPackagePathByFullName2(util.pwstrToFfi(packageFullName), packagePathType, util.toPointer(pathLength), util.pwstrToFfi(path));
@@ -4805,39 +4805,39 @@ export function GetStagedPackagePathByFullName2(
 export function GetCurrentPackageInfo2(
   flags: number /* u32 */,
   packagePathType: PackagePathType /* Windows.Win32.Storage.Packaging.Appx.PackagePathType */,
-  bufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  count: Deno.PointerValue | Uint8Array | null /* ptr */,
+  bufferLength: Deno.PointerValue | Uint8Array /* ptr */,
+  buffer: Deno.PointerValue | Uint8Array /* ptr */,
+  count: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libapi_ms_win_appmodel_runtime_l1_1_3_dll.GetCurrentPackageInfo2(flags, packagePathType, util.toPointer(bufferLength), util.toPointer(buffer), util.toPointer(count));
 }
 
 export function GetCurrentPackagePath2(
   packagePathType: PackagePathType /* Windows.Win32.Storage.Packaging.Appx.PackagePathType */,
-  pathLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pathLength: Deno.PointerValue | Uint8Array /* ptr */,
   path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libapi_ms_win_appmodel_runtime_l1_1_3_dll.GetCurrentPackagePath2(packagePathType, util.toPointer(pathLength), util.pwstrToFfi(path));
 }
 
 export function GetCurrentApplicationUserModelId(
-  applicationUserModelIdLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  applicationUserModelIdLength: Deno.PointerValue | Uint8Array /* ptr */,
   applicationUserModelId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.GetCurrentApplicationUserModelId(util.toPointer(applicationUserModelIdLength), util.pwstrToFfi(applicationUserModelId));
 }
 
 export function GetApplicationUserModelId(
-  hProcess: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  applicationUserModelIdLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  applicationUserModelIdLength: Deno.PointerValue | Uint8Array /* ptr */,
   applicationUserModelId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.GetApplicationUserModelId(util.toPointer(hProcess), util.toPointer(applicationUserModelIdLength), util.pwstrToFfi(applicationUserModelId));
 }
 
 export function GetApplicationUserModelIdFromToken(
-  token: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  applicationUserModelIdLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  token: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  applicationUserModelIdLength: Deno.PointerValue | Uint8Array /* ptr */,
   applicationUserModelId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libapi_ms_win_appmodel_runtime_l1_1_1_dll.GetApplicationUserModelIdFromToken(util.toPointer(token), util.toPointer(applicationUserModelIdLength), util.pwstrToFfi(applicationUserModelId));
@@ -4856,7 +4856,7 @@ export function VerifyPackageFamilyName(
 }
 
 export function VerifyPackageId(
-  packageId: Deno.PointerValue | Uint8Array | null /* ptr */,
+  packageId: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libapi_ms_win_appmodel_runtime_l1_1_1_dll.VerifyPackageId(util.toPointer(packageId));
 }
@@ -4876,23 +4876,23 @@ export function VerifyPackageRelativeApplicationId(
 export function PackageIdFromFullName(
   packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   flags: number /* u32 */,
-  bufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  bufferLength: Deno.PointerValue | Uint8Array /* ptr */,
+  buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.PackageIdFromFullName(util.pwstrToFfi(packageFullName), flags, util.toPointer(bufferLength), util.toPointer(buffer));
 }
 
 export function PackageFullNameFromId(
-  packageId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  packageFullNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  packageId: Deno.PointerValue | Uint8Array /* ptr */,
+  packageFullNameLength: Deno.PointerValue | Uint8Array /* ptr */,
   packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.PackageFullNameFromId(util.toPointer(packageId), util.toPointer(packageFullNameLength), util.pwstrToFfi(packageFullName));
 }
 
 export function PackageFamilyNameFromId(
-  packageId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  packageFamilyNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  packageId: Deno.PointerValue | Uint8Array /* ptr */,
+  packageFamilyNameLength: Deno.PointerValue | Uint8Array /* ptr */,
   packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.PackageFamilyNameFromId(util.toPointer(packageId), util.toPointer(packageFamilyNameLength), util.pwstrToFfi(packageFamilyName));
@@ -4900,7 +4900,7 @@ export function PackageFamilyNameFromId(
 
 export function PackageFamilyNameFromFullName(
   packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  packageFamilyNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  packageFamilyNameLength: Deno.PointerValue | Uint8Array /* ptr */,
   packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.PackageFamilyNameFromFullName(util.pwstrToFfi(packageFullName), util.toPointer(packageFamilyNameLength), util.pwstrToFfi(packageFamilyName));
@@ -4908,9 +4908,9 @@ export function PackageFamilyNameFromFullName(
 
 export function PackageNameAndPublisherIdFromFamilyName(
   packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  packageNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  packageNameLength: Deno.PointerValue | Uint8Array /* ptr */,
   packageName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  packagePublisherIdLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  packagePublisherIdLength: Deno.PointerValue | Uint8Array /* ptr */,
   packagePublisherId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.PackageNameAndPublisherIdFromFamilyName(util.pwstrToFfi(packageFamilyName), util.toPointer(packageNameLength), util.pwstrToFfi(packageName), util.toPointer(packagePublisherIdLength), util.pwstrToFfi(packagePublisherId));
@@ -4919,7 +4919,7 @@ export function PackageNameAndPublisherIdFromFamilyName(
 export function FormatApplicationUserModelId(
   packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   packageRelativeApplicationId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  applicationUserModelIdLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  applicationUserModelIdLength: Deno.PointerValue | Uint8Array /* ptr */,
   applicationUserModelId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.FormatApplicationUserModelId(util.pwstrToFfi(packageFamilyName), util.pwstrToFfi(packageRelativeApplicationId), util.toPointer(applicationUserModelIdLength), util.pwstrToFfi(applicationUserModelId));
@@ -4927,9 +4927,9 @@ export function FormatApplicationUserModelId(
 
 export function ParseApplicationUserModelId(
   applicationUserModelId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  packageFamilyNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  packageFamilyNameLength: Deno.PointerValue | Uint8Array /* ptr */,
   packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  packageRelativeApplicationIdLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  packageRelativeApplicationIdLength: Deno.PointerValue | Uint8Array /* ptr */,
   packageRelativeApplicationId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.ParseApplicationUserModelId(util.pwstrToFfi(applicationUserModelId), util.toPointer(packageFamilyNameLength), util.pwstrToFfi(packageFamilyName), util.toPointer(packageRelativeApplicationIdLength), util.pwstrToFfi(packageRelativeApplicationId));
@@ -4937,9 +4937,9 @@ export function ParseApplicationUserModelId(
 
 export function GetPackagesByPackageFamily(
   packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  count: Deno.PointerValue | Uint8Array | null /* ptr */,
-  packageFullNames: Deno.PointerValue | Uint8Array | null /* ptr */,
-  bufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  count: Deno.PointerValue | Uint8Array /* ptr */,
+  packageFullNames: Deno.PointerValue | Uint8Array /* ptr */,
+  bufferLength: Deno.PointerValue | Uint8Array /* ptr */,
   buffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.GetPackagesByPackageFamily(util.pwstrToFfi(packageFamilyName), util.toPointer(count), util.toPointer(packageFullNames), util.toPointer(bufferLength), util.pwstrToFfi(buffer));
@@ -4948,27 +4948,27 @@ export function GetPackagesByPackageFamily(
 export function FindPackagesByPackageFamily(
   packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   packageFilters: number /* u32 */,
-  count: Deno.PointerValue | Uint8Array | null /* ptr */,
-  packageFullNames: Deno.PointerValue | Uint8Array | null /* ptr */,
-  bufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  count: Deno.PointerValue | Uint8Array /* ptr */,
+  packageFullNames: Deno.PointerValue | Uint8Array /* ptr */,
+  bufferLength: Deno.PointerValue | Uint8Array /* ptr */,
   buffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  packageProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
+  packageProperties: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.FindPackagesByPackageFamily(util.pwstrToFfi(packageFamilyName), packageFilters, util.toPointer(count), util.toPointer(packageFullNames), util.toPointer(bufferLength), util.pwstrToFfi(buffer), util.toPointer(packageProperties));
 }
 
 export function GetStagedPackageOrigin(
   packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  origin: Deno.PointerValue | Uint8Array | null /* ptr */,
+  origin: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libapi_ms_win_appmodel_runtime_l1_1_1_dll.GetStagedPackageOrigin(util.pwstrToFfi(packageFullName), util.toPointer(origin));
 }
 
 export function GetCurrentPackageInfo(
   flags: number /* u32 */,
-  bufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  count: Deno.PointerValue | Uint8Array | null /* ptr */,
+  bufferLength: Deno.PointerValue | Uint8Array /* ptr */,
+  buffer: Deno.PointerValue | Uint8Array /* ptr */,
+  count: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.GetCurrentPackageInfo(flags, util.toPointer(bufferLength), util.toPointer(buffer), util.toPointer(count));
 }
@@ -4976,184 +4976,184 @@ export function GetCurrentPackageInfo(
 export function OpenPackageInfoByFullName(
   packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   reserved: number /* u32 */,
-  packageInfoReference: Deno.PointerValue | Uint8Array | null /* ptr */,
+  packageInfoReference: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.OpenPackageInfoByFullName(util.pwstrToFfi(packageFullName), reserved, util.toPointer(packageInfoReference));
 }
 
 export function OpenPackageInfoByFullNameForUser(
-  userSid: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
+  userSid: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
   packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   reserved: number /* u32 */,
-  packageInfoReference: Deno.PointerValue | Uint8Array | null /* ptr */,
+  packageInfoReference: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libapi_ms_win_appmodel_runtime_l1_1_1_dll.OpenPackageInfoByFullNameForUser(util.toPointer(userSid), util.pwstrToFfi(packageFullName), reserved, util.toPointer(packageInfoReference));
 }
 
 export function ClosePackageInfo(
-  packageInfoReference: Deno.PointerValue | Uint8Array | null /* ptr */,
+  packageInfoReference: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.ClosePackageInfo(util.toPointer(packageInfoReference));
 }
 
 export function GetPackageInfo(
-  packageInfoReference: Deno.PointerValue | Uint8Array | null /* ptr */,
+  packageInfoReference: Deno.PointerValue | Uint8Array /* ptr */,
   flags: number /* u32 */,
-  bufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  count: Deno.PointerValue | Uint8Array | null /* ptr */,
+  bufferLength: Deno.PointerValue | Uint8Array /* ptr */,
+  buffer: Deno.PointerValue | Uint8Array /* ptr */,
+  count: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.GetPackageInfo(util.toPointer(packageInfoReference), flags, util.toPointer(bufferLength), util.toPointer(buffer), util.toPointer(count));
 }
 
 export function GetPackageApplicationIds(
-  packageInfoReference: Deno.PointerValue | Uint8Array | null /* ptr */,
-  bufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  count: Deno.PointerValue | Uint8Array | null /* ptr */,
+  packageInfoReference: Deno.PointerValue | Uint8Array /* ptr */,
+  bufferLength: Deno.PointerValue | Uint8Array /* ptr */,
+  buffer: Deno.PointerValue | Uint8Array /* ptr */,
+  count: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.GetPackageApplicationIds(util.toPointer(packageInfoReference), util.toPointer(bufferLength), util.toPointer(buffer), util.toPointer(count));
 }
 
 export function GetPackageInfo2(
-  packageInfoReference: Deno.PointerValue | Uint8Array | null /* ptr */,
+  packageInfoReference: Deno.PointerValue | Uint8Array /* ptr */,
   flags: number /* u32 */,
   packagePathType: PackagePathType /* Windows.Win32.Storage.Packaging.Appx.PackagePathType */,
-  bufferLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  count: Deno.PointerValue | Uint8Array | null /* ptr */,
+  bufferLength: Deno.PointerValue | Uint8Array /* ptr */,
+  buffer: Deno.PointerValue | Uint8Array /* ptr */,
+  count: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libapi_ms_win_appmodel_runtime_l1_1_3_dll.GetPackageInfo2(util.toPointer(packageInfoReference), flags, packagePathType, util.toPointer(bufferLength), util.toPointer(buffer), util.toPointer(count));
 }
 
 export function CheckIsMSIXPackage(
   packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  isMSIXPackage: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libKERNEL32_dll.CheckIsMSIXPackage(util.pwstrToFfi(packageFullName), util.toPointer(isMSIXPackage)));
+  isMSIXPackage: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libKERNEL32_dll.CheckIsMSIXPackage(util.pwstrToFfi(packageFullName), util.toPointer(isMSIXPackage));
 }
 
 export function TryCreatePackageDependency(
-  user: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.PSID */,
+  user: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
   packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  minVersion: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Storage.Packaging.Appx.PACKAGE_VERSION */,
+  minVersion: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Packaging.Appx.PACKAGE_VERSION */,
   packageDependencyProcessorArchitectures: PackageDependencyProcessorArchitectures /* Windows.Win32.Storage.Packaging.Appx.PackageDependencyProcessorArchitectures */,
   lifetimeKind: PackageDependencyLifetimeKind /* Windows.Win32.Storage.Packaging.Appx.PackageDependencyLifetimeKind */,
   lifetimeArtifact: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   options: CreatePackageDependencyOptions /* Windows.Win32.Storage.Packaging.Appx.CreatePackageDependencyOptions */,
-  packageDependencyId: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libKERNELBASE_dll.TryCreatePackageDependency(util.toPointer(user), util.pwstrToFfi(packageFamilyName), util.toPointer(minVersion), packageDependencyProcessorArchitectures, lifetimeKind, util.pwstrToFfi(lifetimeArtifact), options, util.toPointer(packageDependencyId)));
+  packageDependencyId: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libKERNELBASE_dll.TryCreatePackageDependency(util.toPointer(user), util.pwstrToFfi(packageFamilyName), util.toPointer(minVersion), packageDependencyProcessorArchitectures, lifetimeKind, util.pwstrToFfi(lifetimeArtifact), options, util.toPointer(packageDependencyId));
 }
 
 export function DeletePackageDependency(
   packageDependencyId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libKERNELBASE_dll.DeletePackageDependency(util.pwstrToFfi(packageDependencyId)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libKERNELBASE_dll.DeletePackageDependency(util.pwstrToFfi(packageDependencyId));
 }
 
 export function AddPackageDependency(
   packageDependencyId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   rank: number /* i32 */,
   options: AddPackageDependencyOptions /* Windows.Win32.Storage.Packaging.Appx.AddPackageDependencyOptions */,
-  packageDependencyContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  packageFullName: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libKERNELBASE_dll.AddPackageDependency(util.pwstrToFfi(packageDependencyId), rank, options, util.toPointer(packageDependencyContext), util.toPointer(packageFullName)));
+  packageDependencyContext: Deno.PointerValue | Uint8Array /* ptr */,
+  packageFullName: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libKERNELBASE_dll.AddPackageDependency(util.pwstrToFfi(packageDependencyId), rank, options, util.toPointer(packageDependencyContext), util.toPointer(packageFullName));
 }
 
 export function RemovePackageDependency(
-  packageDependencyContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libKERNELBASE_dll.RemovePackageDependency(util.toPointer(packageDependencyContext)));
+  packageDependencyContext: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libKERNELBASE_dll.RemovePackageDependency(util.toPointer(packageDependencyContext));
 }
 
 export function GetResolvedPackageFullNameForPackageDependency(
   packageDependencyId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  packageFullName: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libKERNELBASE_dll.GetResolvedPackageFullNameForPackageDependency(util.pwstrToFfi(packageDependencyId), util.toPointer(packageFullName)));
+  packageFullName: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libKERNELBASE_dll.GetResolvedPackageFullNameForPackageDependency(util.pwstrToFfi(packageDependencyId), util.toPointer(packageFullName));
 }
 
 export function GetIdForPackageDependencyContext(
-  packageDependencyContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  packageDependencyId: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libKERNELBASE_dll.GetIdForPackageDependencyContext(util.toPointer(packageDependencyContext), util.toPointer(packageDependencyId)));
+  packageDependencyContext: Deno.PointerValue | Uint8Array /* ptr */,
+  packageDependencyId: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libKERNELBASE_dll.GetIdForPackageDependencyContext(util.toPointer(packageDependencyContext), util.toPointer(packageDependencyId));
 }
 
 export function AppPolicyGetLifecycleManagement(
-  processToken: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  policy: Deno.PointerValue | Uint8Array | null /* ptr */,
+  processToken: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.AppPolicyGetLifecycleManagement(util.toPointer(processToken), util.toPointer(policy));
 }
 
 export function AppPolicyGetWindowingModel(
-  processToken: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  policy: Deno.PointerValue | Uint8Array | null /* ptr */,
+  processToken: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.AppPolicyGetWindowingModel(util.toPointer(processToken), util.toPointer(policy));
 }
 
 export function AppPolicyGetMediaFoundationCodecLoading(
-  processToken: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  policy: Deno.PointerValue | Uint8Array | null /* ptr */,
+  processToken: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.AppPolicyGetMediaFoundationCodecLoading(util.toPointer(processToken), util.toPointer(policy));
 }
 
 export function AppPolicyGetClrCompat(
-  processToken: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  policy: Deno.PointerValue | Uint8Array | null /* ptr */,
+  processToken: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.AppPolicyGetClrCompat(util.toPointer(processToken), util.toPointer(policy));
 }
 
 export function AppPolicyGetThreadInitializationType(
-  processToken: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  policy: Deno.PointerValue | Uint8Array | null /* ptr */,
+  processToken: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.AppPolicyGetThreadInitializationType(util.toPointer(processToken), util.toPointer(policy));
 }
 
 export function AppPolicyGetShowDeveloperDiagnostic(
-  processToken: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  policy: Deno.PointerValue | Uint8Array | null /* ptr */,
+  processToken: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.AppPolicyGetShowDeveloperDiagnostic(util.toPointer(processToken), util.toPointer(policy));
 }
 
 export function AppPolicyGetProcessTerminationMethod(
-  processToken: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  policy: Deno.PointerValue | Uint8Array | null /* ptr */,
+  processToken: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.AppPolicyGetProcessTerminationMethod(util.toPointer(processToken), util.toPointer(policy));
 }
 
 export function AppPolicyGetCreateFileAccess(
-  processToken: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  policy: Deno.PointerValue | Uint8Array | null /* ptr */,
+  processToken: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libKERNEL32_dll.AppPolicyGetCreateFileAccess(util.toPointer(processToken), util.toPointer(policy));
 }
 
 export function CreatePackageVirtualizationContext(
   packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libKERNEL32_dll.CreatePackageVirtualizationContext(util.pwstrToFfi(packageFamilyName), util.toPointer(context)));
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libKERNEL32_dll.CreatePackageVirtualizationContext(util.pwstrToFfi(packageFamilyName), util.toPointer(context));
 }
 
 export function ActivatePackageVirtualizationContext(
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-  cookie: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libKERNEL32_dll.ActivatePackageVirtualizationContext(util.toPointer(context), util.toPointer(cookie)));
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+  cookie: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libKERNEL32_dll.ActivatePackageVirtualizationContext(util.toPointer(context), util.toPointer(cookie));
 }
 
 export function ReleasePackageVirtualizationContext(
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libKERNEL32_dll.ReleasePackageVirtualizationContext(util.toPointer(context));
 }
@@ -5165,21 +5165,21 @@ export function DeactivatePackageVirtualizationContext(
 }
 
 export function DuplicatePackageVirtualizationContext(
-  sourceContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  destContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libKERNEL32_dll.DuplicatePackageVirtualizationContext(util.toPointer(sourceContext), util.toPointer(destContext)));
+  sourceContext: Deno.PointerValue | Uint8Array /* ptr */,
+  destContext: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libKERNEL32_dll.DuplicatePackageVirtualizationContext(util.toPointer(sourceContext), util.toPointer(destContext));
 }
 
-export function GetCurrentPackageVirtualizationContext(): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libKERNEL32_dll.GetCurrentPackageVirtualizationContext());
+export function GetCurrentPackageVirtualizationContext(): Deno.PointerValue /* ptr */ {
+  return libKERNEL32_dll.GetCurrentPackageVirtualizationContext();
 }
 
 export function GetProcessesInVirtualizationContext(
   packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  count: Deno.PointerValue | Uint8Array | null /* ptr */,
-  processes: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libKERNEL32_dll.GetProcessesInVirtualizationContext(util.pwstrToFfi(packageFamilyName), util.toPointer(count), util.toPointer(processes)));
+  count: Deno.PointerValue | Uint8Array /* ptr */,
+  processes: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libKERNEL32_dll.GetProcessesInVirtualizationContext(util.pwstrToFfi(packageFamilyName), util.toPointer(count), util.toPointer(processes));
 }
 

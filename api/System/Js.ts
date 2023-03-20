@@ -70,7 +70,7 @@ export const PROFILER_EVENT_MASK_TRACE_ALL_WITH_DOM = 7;
 
 // Structs
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 export type HRESULT = number;
 
@@ -424,15 +424,15 @@ try {
 // Symbols
 
 export function JsCreateContext(
-  runtime: Deno.PointerValue | Uint8Array | null /* ptr */,
-  debugApplication: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Debug.IDebugApplication32 */,
-  newContext: Deno.PointerValue | Uint8Array | null /* ptr */,
+  runtime: Deno.PointerValue | Uint8Array /* ptr */,
+  debugApplication: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.IDebugApplication32 */,
+  newContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsCreateContext(util.toPointer(runtime), util.toPointer(debugApplication), util.toPointer(newContext));
 }
 
 export function JsStartDebugging(
-  debugApplication: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Debug.IDebugApplication32 */,
+  debugApplication: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.IDebugApplication32 */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsStartDebugging(util.toPointer(debugApplication));
 }
@@ -440,96 +440,96 @@ export function JsStartDebugging(
 export function JsCreateRuntime(
   attributes: JsRuntimeAttributes /* Windows.Win32.System.Js.JsRuntimeAttributes */,
   runtimeVersion: JsRuntimeVersion /* Windows.Win32.System.Js.JsRuntimeVersion */,
-  threadService: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Js.JsThreadServiceCallback */,
-  runtime: Deno.PointerValue | Uint8Array | null /* ptr */,
+  threadService: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Js.JsThreadServiceCallback */,
+  runtime: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsCreateRuntime(attributes, runtimeVersion, util.toPointer(threadService), util.toPointer(runtime));
 }
 
 export function JsCollectGarbage(
-  runtime: Deno.PointerValue | Uint8Array | null /* ptr */,
+  runtime: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsCollectGarbage(util.toPointer(runtime));
 }
 
 export function JsDisposeRuntime(
-  runtime: Deno.PointerValue | Uint8Array | null /* ptr */,
+  runtime: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsDisposeRuntime(util.toPointer(runtime));
 }
 
 export function JsGetRuntimeMemoryUsage(
-  runtime: Deno.PointerValue | Uint8Array | null /* ptr */,
-  memoryUsage: Deno.PointerValue | Uint8Array | null /* ptr */,
+  runtime: Deno.PointerValue | Uint8Array /* ptr */,
+  memoryUsage: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsGetRuntimeMemoryUsage(util.toPointer(runtime), util.toPointer(memoryUsage));
 }
 
 export function JsGetRuntimeMemoryLimit(
-  runtime: Deno.PointerValue | Uint8Array | null /* ptr */,
-  memoryLimit: Deno.PointerValue | Uint8Array | null /* ptr */,
+  runtime: Deno.PointerValue | Uint8Array /* ptr */,
+  memoryLimit: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsGetRuntimeMemoryLimit(util.toPointer(runtime), util.toPointer(memoryLimit));
 }
 
 export function JsSetRuntimeMemoryLimit(
-  runtime: Deno.PointerValue | Uint8Array | null /* ptr */,
+  runtime: Deno.PointerValue | Uint8Array /* ptr */,
   memoryLimit: Deno.PointerValue /* usize */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsSetRuntimeMemoryLimit(util.toPointer(runtime), memoryLimit);
 }
 
 export function JsSetRuntimeMemoryAllocationCallback(
-  runtime: Deno.PointerValue | Uint8Array | null /* ptr */,
-  callbackState: Deno.PointerValue | Uint8Array | null /* ptr */,
-  allocationCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Js.JsMemoryAllocationCallback */,
+  runtime: Deno.PointerValue | Uint8Array /* ptr */,
+  callbackState: Deno.PointerValue | Uint8Array /* ptr */,
+  allocationCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Js.JsMemoryAllocationCallback */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsSetRuntimeMemoryAllocationCallback(util.toPointer(runtime), util.toPointer(callbackState), util.toPointer(allocationCallback));
 }
 
 export function JsSetRuntimeBeforeCollectCallback(
-  runtime: Deno.PointerValue | Uint8Array | null /* ptr */,
-  callbackState: Deno.PointerValue | Uint8Array | null /* ptr */,
-  beforeCollectCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Js.JsBeforeCollectCallback */,
+  runtime: Deno.PointerValue | Uint8Array /* ptr */,
+  callbackState: Deno.PointerValue | Uint8Array /* ptr */,
+  beforeCollectCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Js.JsBeforeCollectCallback */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsSetRuntimeBeforeCollectCallback(util.toPointer(runtime), util.toPointer(callbackState), util.toPointer(beforeCollectCallback));
 }
 
 export function JsAddRef(
-  ref: Deno.PointerValue | Uint8Array | null /* ptr */,
-  count: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ref: Deno.PointerValue | Uint8Array /* ptr */,
+  count: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsAddRef(util.toPointer(ref), util.toPointer(count));
 }
 
 export function JsRelease(
-  ref: Deno.PointerValue | Uint8Array | null /* ptr */,
-  count: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ref: Deno.PointerValue | Uint8Array /* ptr */,
+  count: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsRelease(util.toPointer(ref), util.toPointer(count));
 }
 
 export function JsGetCurrentContext(
-  currentContext: Deno.PointerValue | Uint8Array | null /* ptr */,
+  currentContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsGetCurrentContext(util.toPointer(currentContext));
 }
 
 export function JsSetCurrentContext(
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsSetCurrentContext(util.toPointer(context));
 }
 
 export function JsGetRuntime(
-  context: Deno.PointerValue | Uint8Array | null /* ptr */,
-  runtime: Deno.PointerValue | Uint8Array | null /* ptr */,
+  context: Deno.PointerValue | Uint8Array /* ptr */,
+  runtime: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsGetRuntime(util.toPointer(context), util.toPointer(runtime));
 }
 
 export function JsIdle(
-  nextIdleTick: Deno.PointerValue | Uint8Array | null /* ptr */,
+  nextIdleTick: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsIdle(util.toPointer(nextIdleTick));
 }
@@ -538,7 +538,7 @@ export function JsParseScript(
   script: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   sourceContext: Deno.PointerValue /* usize */,
   sourceUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsParseScript(util.pwstrToFfi(script), sourceContext, util.pwstrToFfi(sourceUrl), util.toPointer(result));
 }
@@ -547,136 +547,136 @@ export function JsRunScript(
   script: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   sourceContext: Deno.PointerValue /* usize */,
   sourceUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsRunScript(util.pwstrToFfi(script), sourceContext, util.pwstrToFfi(sourceUrl), util.toPointer(result));
 }
 
 export function JsSerializeScript(
   script: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  bufferSize: Deno.PointerValue | Uint8Array | null /* ptr */,
+  buffer: Deno.PointerValue | Uint8Array /* ptr */,
+  bufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsSerializeScript(util.pwstrToFfi(script), util.toPointer(buffer), util.toPointer(bufferSize));
 }
 
 export function JsParseSerializedScript(
   script: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  buffer: Deno.PointerValue | Uint8Array /* ptr */,
   sourceContext: Deno.PointerValue /* usize */,
   sourceUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsParseSerializedScript(util.pwstrToFfi(script), util.toPointer(buffer), sourceContext, util.pwstrToFfi(sourceUrl), util.toPointer(result));
 }
 
 export function JsRunSerializedScript(
   script: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  buffer: Deno.PointerValue | Uint8Array /* ptr */,
   sourceContext: Deno.PointerValue /* usize */,
   sourceUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsRunSerializedScript(util.pwstrToFfi(script), util.toPointer(buffer), sourceContext, util.pwstrToFfi(sourceUrl), util.toPointer(result));
 }
 
 export function JsGetPropertyIdFromName(
   name: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  propertyId: Deno.PointerValue | Uint8Array | null /* ptr */,
+  propertyId: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsGetPropertyIdFromName(util.pwstrToFfi(name), util.toPointer(propertyId));
 }
 
 export function JsGetPropertyNameFromId(
-  propertyId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  name: Deno.PointerValue | Uint8Array | null /* ptr */,
+  propertyId: Deno.PointerValue | Uint8Array /* ptr */,
+  name: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsGetPropertyNameFromId(util.toPointer(propertyId), util.toPointer(name));
 }
 
 export function JsGetUndefinedValue(
-  undefinedValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  undefinedValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsGetUndefinedValue(util.toPointer(undefinedValue));
 }
 
 export function JsGetNullValue(
-  nullValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  nullValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsGetNullValue(util.toPointer(nullValue));
 }
 
 export function JsGetTrueValue(
-  trueValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  trueValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsGetTrueValue(util.toPointer(trueValue));
 }
 
 export function JsGetFalseValue(
-  falseValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  falseValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsGetFalseValue(util.toPointer(falseValue));
 }
 
 export function JsBoolToBoolean(
   value: number /* u8 */,
-  booleanValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  booleanValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsBoolToBoolean(value, util.toPointer(booleanValue));
 }
 
 export function JsBooleanToBool(
-  value: Deno.PointerValue | Uint8Array | null /* ptr */,
-  boolValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  value: Deno.PointerValue | Uint8Array /* ptr */,
+  boolValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsBooleanToBool(util.toPointer(value), util.toPointer(boolValue));
 }
 
 export function JsConvertValueToBoolean(
-  value: Deno.PointerValue | Uint8Array | null /* ptr */,
-  booleanValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  value: Deno.PointerValue | Uint8Array /* ptr */,
+  booleanValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsConvertValueToBoolean(util.toPointer(value), util.toPointer(booleanValue));
 }
 
 export function JsGetValueType(
-  value: Deno.PointerValue | Uint8Array | null /* ptr */,
-  type: Deno.PointerValue | Uint8Array | null /* ptr */,
+  value: Deno.PointerValue | Uint8Array /* ptr */,
+  type: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsGetValueType(util.toPointer(value), util.toPointer(type));
 }
 
 export function JsDoubleToNumber(
   doubleValue: number /* f64 */,
-  value: Deno.PointerValue | Uint8Array | null /* ptr */,
+  value: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsDoubleToNumber(doubleValue, util.toPointer(value));
 }
 
 export function JsIntToNumber(
   intValue: number /* i32 */,
-  value: Deno.PointerValue | Uint8Array | null /* ptr */,
+  value: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsIntToNumber(intValue, util.toPointer(value));
 }
 
 export function JsNumberToDouble(
-  value: Deno.PointerValue | Uint8Array | null /* ptr */,
-  doubleValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  value: Deno.PointerValue | Uint8Array /* ptr */,
+  doubleValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsNumberToDouble(util.toPointer(value), util.toPointer(doubleValue));
 }
 
 export function JsConvertValueToNumber(
-  value: Deno.PointerValue | Uint8Array | null /* ptr */,
-  numberValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  value: Deno.PointerValue | Uint8Array /* ptr */,
+  numberValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsConvertValueToNumber(util.toPointer(value), util.toPointer(numberValue));
 }
 
 export function JsGetStringLength(
-  stringValue: Deno.PointerValue | Uint8Array | null /* ptr */,
-  length: Deno.PointerValue | Uint8Array | null /* ptr */,
+  stringValue: Deno.PointerValue | Uint8Array /* ptr */,
+  length: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsGetStringLength(util.toPointer(stringValue), util.toPointer(length));
 }
@@ -684,334 +684,334 @@ export function JsGetStringLength(
 export function JsPointerToString(
   stringValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   stringLength: Deno.PointerValue /* usize */,
-  value: Deno.PointerValue | Uint8Array | null /* ptr */,
+  value: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsPointerToString(util.pwstrToFfi(stringValue), stringLength, util.toPointer(value));
 }
 
 export function JsStringToPointer(
-  value: Deno.PointerValue | Uint8Array | null /* ptr */,
-  stringValue: Deno.PointerValue | Uint8Array | null /* ptr */,
-  stringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  value: Deno.PointerValue | Uint8Array /* ptr */,
+  stringValue: Deno.PointerValue | Uint8Array /* ptr */,
+  stringLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsStringToPointer(util.toPointer(value), util.toPointer(stringValue), util.toPointer(stringLength));
 }
 
 export function JsConvertValueToString(
-  value: Deno.PointerValue | Uint8Array | null /* ptr */,
-  stringValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  value: Deno.PointerValue | Uint8Array /* ptr */,
+  stringValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsConvertValueToString(util.toPointer(value), util.toPointer(stringValue));
 }
 
 export function JsVariantToValue(
-  variant: Deno.PointerValue | Uint8Array | null /* ptr */,
-  value: Deno.PointerValue | Uint8Array | null /* ptr */,
+  variant: Deno.PointerValue | Uint8Array /* ptr */,
+  value: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsVariantToValue(util.toPointer(variant), util.toPointer(value));
 }
 
 export function JsValueToVariant(
-  object: Deno.PointerValue | Uint8Array | null /* ptr */,
-  variant: Deno.PointerValue | Uint8Array | null /* ptr */,
+  object: Deno.PointerValue | Uint8Array /* ptr */,
+  variant: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsValueToVariant(util.toPointer(object), util.toPointer(variant));
 }
 
 export function JsGetGlobalObject(
-  globalObject: Deno.PointerValue | Uint8Array | null /* ptr */,
+  globalObject: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsGetGlobalObject(util.toPointer(globalObject));
 }
 
 export function JsCreateObject(
-  object: Deno.PointerValue | Uint8Array | null /* ptr */,
+  object: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsCreateObject(util.toPointer(object));
 }
 
 export function JsCreateExternalObject(
-  data: Deno.PointerValue | Uint8Array | null /* ptr */,
-  finalizeCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Js.JsFinalizeCallback */,
-  object: Deno.PointerValue | Uint8Array | null /* ptr */,
+  data: Deno.PointerValue | Uint8Array /* ptr */,
+  finalizeCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Js.JsFinalizeCallback */,
+  object: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsCreateExternalObject(util.toPointer(data), util.toPointer(finalizeCallback), util.toPointer(object));
 }
 
 export function JsConvertValueToObject(
-  value: Deno.PointerValue | Uint8Array | null /* ptr */,
-  object: Deno.PointerValue | Uint8Array | null /* ptr */,
+  value: Deno.PointerValue | Uint8Array /* ptr */,
+  object: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsConvertValueToObject(util.toPointer(value), util.toPointer(object));
 }
 
 export function JsGetPrototype(
-  object: Deno.PointerValue | Uint8Array | null /* ptr */,
-  prototypeObject: Deno.PointerValue | Uint8Array | null /* ptr */,
+  object: Deno.PointerValue | Uint8Array /* ptr */,
+  prototypeObject: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsGetPrototype(util.toPointer(object), util.toPointer(prototypeObject));
 }
 
 export function JsSetPrototype(
-  object: Deno.PointerValue | Uint8Array | null /* ptr */,
-  prototypeObject: Deno.PointerValue | Uint8Array | null /* ptr */,
+  object: Deno.PointerValue | Uint8Array /* ptr */,
+  prototypeObject: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsSetPrototype(util.toPointer(object), util.toPointer(prototypeObject));
 }
 
 export function JsGetExtensionAllowed(
-  object: Deno.PointerValue | Uint8Array | null /* ptr */,
-  value: Deno.PointerValue | Uint8Array | null /* ptr */,
+  object: Deno.PointerValue | Uint8Array /* ptr */,
+  value: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsGetExtensionAllowed(util.toPointer(object), util.toPointer(value));
 }
 
 export function JsPreventExtension(
-  object: Deno.PointerValue | Uint8Array | null /* ptr */,
+  object: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsPreventExtension(util.toPointer(object));
 }
 
 export function JsGetProperty(
-  object: Deno.PointerValue | Uint8Array | null /* ptr */,
-  propertyId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  value: Deno.PointerValue | Uint8Array | null /* ptr */,
+  object: Deno.PointerValue | Uint8Array /* ptr */,
+  propertyId: Deno.PointerValue | Uint8Array /* ptr */,
+  value: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsGetProperty(util.toPointer(object), util.toPointer(propertyId), util.toPointer(value));
 }
 
 export function JsGetOwnPropertyDescriptor(
-  object: Deno.PointerValue | Uint8Array | null /* ptr */,
-  propertyId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  propertyDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  object: Deno.PointerValue | Uint8Array /* ptr */,
+  propertyId: Deno.PointerValue | Uint8Array /* ptr */,
+  propertyDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsGetOwnPropertyDescriptor(util.toPointer(object), util.toPointer(propertyId), util.toPointer(propertyDescriptor));
 }
 
 export function JsGetOwnPropertyNames(
-  object: Deno.PointerValue | Uint8Array | null /* ptr */,
-  propertyNames: Deno.PointerValue | Uint8Array | null /* ptr */,
+  object: Deno.PointerValue | Uint8Array /* ptr */,
+  propertyNames: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsGetOwnPropertyNames(util.toPointer(object), util.toPointer(propertyNames));
 }
 
 export function JsSetProperty(
-  object: Deno.PointerValue | Uint8Array | null /* ptr */,
-  propertyId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  value: Deno.PointerValue | Uint8Array | null /* ptr */,
+  object: Deno.PointerValue | Uint8Array /* ptr */,
+  propertyId: Deno.PointerValue | Uint8Array /* ptr */,
+  value: Deno.PointerValue | Uint8Array /* ptr */,
   useStrictRules: number /* u8 */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsSetProperty(util.toPointer(object), util.toPointer(propertyId), util.toPointer(value), useStrictRules);
 }
 
 export function JsHasProperty(
-  object: Deno.PointerValue | Uint8Array | null /* ptr */,
-  propertyId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  hasProperty: Deno.PointerValue | Uint8Array | null /* ptr */,
+  object: Deno.PointerValue | Uint8Array /* ptr */,
+  propertyId: Deno.PointerValue | Uint8Array /* ptr */,
+  hasProperty: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsHasProperty(util.toPointer(object), util.toPointer(propertyId), util.toPointer(hasProperty));
 }
 
 export function JsDeleteProperty(
-  object: Deno.PointerValue | Uint8Array | null /* ptr */,
-  propertyId: Deno.PointerValue | Uint8Array | null /* ptr */,
+  object: Deno.PointerValue | Uint8Array /* ptr */,
+  propertyId: Deno.PointerValue | Uint8Array /* ptr */,
   useStrictRules: number /* u8 */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsDeleteProperty(util.toPointer(object), util.toPointer(propertyId), useStrictRules, util.toPointer(result));
 }
 
 export function JsDefineProperty(
-  object: Deno.PointerValue | Uint8Array | null /* ptr */,
-  propertyId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  propertyDescriptor: Deno.PointerValue | Uint8Array | null /* ptr */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  object: Deno.PointerValue | Uint8Array /* ptr */,
+  propertyId: Deno.PointerValue | Uint8Array /* ptr */,
+  propertyDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsDefineProperty(util.toPointer(object), util.toPointer(propertyId), util.toPointer(propertyDescriptor), util.toPointer(result));
 }
 
 export function JsHasIndexedProperty(
-  object: Deno.PointerValue | Uint8Array | null /* ptr */,
-  index: Deno.PointerValue | Uint8Array | null /* ptr */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  object: Deno.PointerValue | Uint8Array /* ptr */,
+  index: Deno.PointerValue | Uint8Array /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsHasIndexedProperty(util.toPointer(object), util.toPointer(index), util.toPointer(result));
 }
 
 export function JsGetIndexedProperty(
-  object: Deno.PointerValue | Uint8Array | null /* ptr */,
-  index: Deno.PointerValue | Uint8Array | null /* ptr */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  object: Deno.PointerValue | Uint8Array /* ptr */,
+  index: Deno.PointerValue | Uint8Array /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsGetIndexedProperty(util.toPointer(object), util.toPointer(index), util.toPointer(result));
 }
 
 export function JsSetIndexedProperty(
-  object: Deno.PointerValue | Uint8Array | null /* ptr */,
-  index: Deno.PointerValue | Uint8Array | null /* ptr */,
-  value: Deno.PointerValue | Uint8Array | null /* ptr */,
+  object: Deno.PointerValue | Uint8Array /* ptr */,
+  index: Deno.PointerValue | Uint8Array /* ptr */,
+  value: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsSetIndexedProperty(util.toPointer(object), util.toPointer(index), util.toPointer(value));
 }
 
 export function JsDeleteIndexedProperty(
-  object: Deno.PointerValue | Uint8Array | null /* ptr */,
-  index: Deno.PointerValue | Uint8Array | null /* ptr */,
+  object: Deno.PointerValue | Uint8Array /* ptr */,
+  index: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsDeleteIndexedProperty(util.toPointer(object), util.toPointer(index));
 }
 
 export function JsEquals(
-  object1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  object2: Deno.PointerValue | Uint8Array | null /* ptr */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  object1: Deno.PointerValue | Uint8Array /* ptr */,
+  object2: Deno.PointerValue | Uint8Array /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsEquals(util.toPointer(object1), util.toPointer(object2), util.toPointer(result));
 }
 
 export function JsStrictEquals(
-  object1: Deno.PointerValue | Uint8Array | null /* ptr */,
-  object2: Deno.PointerValue | Uint8Array | null /* ptr */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  object1: Deno.PointerValue | Uint8Array /* ptr */,
+  object2: Deno.PointerValue | Uint8Array /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsStrictEquals(util.toPointer(object1), util.toPointer(object2), util.toPointer(result));
 }
 
 export function JsHasExternalData(
-  object: Deno.PointerValue | Uint8Array | null /* ptr */,
-  value: Deno.PointerValue | Uint8Array | null /* ptr */,
+  object: Deno.PointerValue | Uint8Array /* ptr */,
+  value: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsHasExternalData(util.toPointer(object), util.toPointer(value));
 }
 
 export function JsGetExternalData(
-  object: Deno.PointerValue | Uint8Array | null /* ptr */,
-  externalData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  object: Deno.PointerValue | Uint8Array /* ptr */,
+  externalData: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsGetExternalData(util.toPointer(object), util.toPointer(externalData));
 }
 
 export function JsSetExternalData(
-  object: Deno.PointerValue | Uint8Array | null /* ptr */,
-  externalData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  object: Deno.PointerValue | Uint8Array /* ptr */,
+  externalData: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsSetExternalData(util.toPointer(object), util.toPointer(externalData));
 }
 
 export function JsCreateArray(
   length: number /* u32 */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsCreateArray(length, util.toPointer(result));
 }
 
 export function JsCallFunction(
-  function__: Deno.PointerValue | Uint8Array | null /* ptr */,
-  arguments__: Deno.PointerValue | Uint8Array | null /* ptr */,
+  function__: Deno.PointerValue | Uint8Array /* ptr */,
+  arguments__: Deno.PointerValue | Uint8Array /* ptr */,
   argumentCount: number /* u16 */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsCallFunction(util.toPointer(function__), util.toPointer(arguments__), argumentCount, util.toPointer(result));
 }
 
 export function JsConstructObject(
-  function__: Deno.PointerValue | Uint8Array | null /* ptr */,
-  arguments__: Deno.PointerValue | Uint8Array | null /* ptr */,
+  function__: Deno.PointerValue | Uint8Array /* ptr */,
+  arguments__: Deno.PointerValue | Uint8Array /* ptr */,
   argumentCount: number /* u16 */,
-  result: Deno.PointerValue | Uint8Array | null /* ptr */,
+  result: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsConstructObject(util.toPointer(function__), util.toPointer(arguments__), argumentCount, util.toPointer(result));
 }
 
 export function JsCreateFunction(
-  nativeFunction: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Js.JsNativeFunction */,
-  callbackState: Deno.PointerValue | Uint8Array | null /* ptr */,
-  function__: Deno.PointerValue | Uint8Array | null /* ptr */,
+  nativeFunction: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Js.JsNativeFunction */,
+  callbackState: Deno.PointerValue | Uint8Array /* ptr */,
+  function__: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsCreateFunction(util.toPointer(nativeFunction), util.toPointer(callbackState), util.toPointer(function__));
 }
 
 export function JsCreateError(
-  message: Deno.PointerValue | Uint8Array | null /* ptr */,
-  error: Deno.PointerValue | Uint8Array | null /* ptr */,
+  message: Deno.PointerValue | Uint8Array /* ptr */,
+  error: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsCreateError(util.toPointer(message), util.toPointer(error));
 }
 
 export function JsCreateRangeError(
-  message: Deno.PointerValue | Uint8Array | null /* ptr */,
-  error: Deno.PointerValue | Uint8Array | null /* ptr */,
+  message: Deno.PointerValue | Uint8Array /* ptr */,
+  error: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsCreateRangeError(util.toPointer(message), util.toPointer(error));
 }
 
 export function JsCreateReferenceError(
-  message: Deno.PointerValue | Uint8Array | null /* ptr */,
-  error: Deno.PointerValue | Uint8Array | null /* ptr */,
+  message: Deno.PointerValue | Uint8Array /* ptr */,
+  error: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsCreateReferenceError(util.toPointer(message), util.toPointer(error));
 }
 
 export function JsCreateSyntaxError(
-  message: Deno.PointerValue | Uint8Array | null /* ptr */,
-  error: Deno.PointerValue | Uint8Array | null /* ptr */,
+  message: Deno.PointerValue | Uint8Array /* ptr */,
+  error: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsCreateSyntaxError(util.toPointer(message), util.toPointer(error));
 }
 
 export function JsCreateTypeError(
-  message: Deno.PointerValue | Uint8Array | null /* ptr */,
-  error: Deno.PointerValue | Uint8Array | null /* ptr */,
+  message: Deno.PointerValue | Uint8Array /* ptr */,
+  error: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsCreateTypeError(util.toPointer(message), util.toPointer(error));
 }
 
 export function JsCreateURIError(
-  message: Deno.PointerValue | Uint8Array | null /* ptr */,
-  error: Deno.PointerValue | Uint8Array | null /* ptr */,
+  message: Deno.PointerValue | Uint8Array /* ptr */,
+  error: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsCreateURIError(util.toPointer(message), util.toPointer(error));
 }
 
 export function JsHasException(
-  hasException: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hasException: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsHasException(util.toPointer(hasException));
 }
 
 export function JsGetAndClearException(
-  exception: Deno.PointerValue | Uint8Array | null /* ptr */,
+  exception: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsGetAndClearException(util.toPointer(exception));
 }
 
 export function JsSetException(
-  exception: Deno.PointerValue | Uint8Array | null /* ptr */,
+  exception: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsSetException(util.toPointer(exception));
 }
 
 export function JsDisableRuntimeExecution(
-  runtime: Deno.PointerValue | Uint8Array | null /* ptr */,
+  runtime: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsDisableRuntimeExecution(util.toPointer(runtime));
 }
 
 export function JsEnableRuntimeExecution(
-  runtime: Deno.PointerValue | Uint8Array | null /* ptr */,
+  runtime: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsEnableRuntimeExecution(util.toPointer(runtime));
 }
 
 export function JsIsRuntimeExecutionDisabled(
-  runtime: Deno.PointerValue | Uint8Array | null /* ptr */,
-  isDisabled: Deno.PointerValue | Uint8Array | null /* ptr */,
+  runtime: Deno.PointerValue | Uint8Array /* ptr */,
+  isDisabled: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsIsRuntimeExecutionDisabled(util.toPointer(runtime), util.toPointer(isDisabled));
 }
 
 export function JsStartProfiling(
-  callback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Diagnostics.Debug.IActiveScriptProfilerCallback */,
+  callback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.IActiveScriptProfilerCallback */,
   eventMask: PROFILER_EVENT_MASK /* Windows.Win32.System.Diagnostics.Debug.PROFILER_EVENT_MASK */,
   context: number /* u32 */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
@@ -1019,19 +1019,19 @@ export function JsStartProfiling(
 }
 
 export function JsStopProfiling(
-  reason: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */,
+  reason: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsStopProfiling(util.toPointer(reason));
 }
 
 export function JsEnumerateHeap(
-  enumerator: Deno.PointerValue | Uint8Array | null /* ptr */,
+  enumerator: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsEnumerateHeap(util.toPointer(enumerator));
 }
 
 export function JsIsEnumeratingHeap(
-  isEnumeratingHeap: Deno.PointerValue | Uint8Array | null /* ptr */,
+  isEnumeratingHeap: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsIsEnumeratingHeap(util.toPointer(isEnumeratingHeap));
 }

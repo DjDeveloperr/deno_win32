@@ -55,7 +55,7 @@ export interface TOUCHINPUT {
   /** i32 */
   y: number;
   /** Windows.Win32.Foundation.HANDLE */
-  hSource: Uint8Array | Deno.PointerValue | null;
+  hSource: Uint8Array | Deno.PointerValue;
   /** u32 */
   dwID: number;
   /** Windows.Win32.UI.Input.Touch.TOUCHEVENTF_FLAGS */
@@ -82,7 +82,7 @@ export function allocTOUCHINPUT(data?: Partial<TOUCHINPUT>): Uint8Array {
   // 0x04: i32
   if (data?.y !== undefined) view.setInt32(4, Number(data.y), true);
   // 0x08: pointer
-  if (data?.hSource !== undefined) view.setBigUint64(8, data.hSource === null ? 0n : BigInt(util.toPointer(data.hSource)), true);
+  if (data?.hSource !== undefined) view.setBigUint64(8, data.hSource === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hSource))), true);
   // 0x10: u32
   if (data?.dwID !== undefined) view.setUint32(16, Number(data.dwID), true);
   // 0x14: u32
@@ -121,9 +121,9 @@ export class TOUCHINPUTView {
   }
 
   // 0x08: pointer
-  get hSource(): Uint8Array | Deno.PointerValue | null {
+  get hSource(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -172,8 +172,8 @@ export class TOUCHINPUTView {
   }
 
   // 0x08: pointer
-  set hSource(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set hSource(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -283,9 +283,9 @@ export interface GESTUREINFO {
   /** u32 */
   dwID: number;
   /** Windows.Win32.Foundation.HWND */
-  hwndTarget: Deno.PointerValue | null;
+  hwndTarget: Deno.PointerValue;
   /** Windows.Win32.Foundation.POINTS */
-  ptsLocation: Uint8Array | Deno.PointerValue | null;
+  ptsLocation: Uint8Array | Deno.PointerValue;
   /** u32 */
   dwInstanceID: number;
   /** u32 */
@@ -309,9 +309,9 @@ export function allocGESTUREINFO(data?: Partial<GESTUREINFO>): Uint8Array {
   if (data?.dwID !== undefined) view.setUint32(8, Number(data.dwID), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.hwndTarget !== undefined) view.setBigUint64(16, data.hwndTarget === null ? 0n : BigInt(util.toPointer(data.hwndTarget)), true);
+  if (data?.hwndTarget !== undefined) view.setBigUint64(16, data.hwndTarget === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hwndTarget))), true);
   // 0x18: pointer
-  if (data?.ptsLocation !== undefined) view.setBigUint64(24, data.ptsLocation === null ? 0n : BigInt(util.toPointer(data.ptsLocation)), true);
+  if (data?.ptsLocation !== undefined) view.setBigUint64(24, data.ptsLocation === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ptsLocation))), true);
   // 0x20: u32
   if (data?.dwInstanceID !== undefined) view.setUint32(32, Number(data.dwInstanceID), true);
   // 0x24: u32
@@ -352,15 +352,15 @@ export class GESTUREINFOView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get hwndTarget(): Uint8Array | Deno.PointerValue | null {
+  get hwndTarget(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get ptsLocation(): Uint8Array | Deno.PointerValue | null {
+  get ptsLocation(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -403,13 +403,13 @@ export class GESTUREINFOView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set hwndTarget(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set hwndTarget(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set ptsLocation(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set ptsLocation(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -444,9 +444,9 @@ export interface GESTURENOTIFYSTRUCT {
   /** u32 */
   dwFlags: number;
   /** Windows.Win32.Foundation.HWND */
-  hwndTarget: Deno.PointerValue | null;
+  hwndTarget: Deno.PointerValue;
   /** Windows.Win32.Foundation.POINTS */
-  ptsLocation: Uint8Array | Deno.PointerValue | null;
+  ptsLocation: Uint8Array | Deno.PointerValue;
   /** u32 */
   dwInstanceID: number;
 }
@@ -461,9 +461,9 @@ export function allocGESTURENOTIFYSTRUCT(data?: Partial<GESTURENOTIFYSTRUCT>): U
   // 0x04: u32
   if (data?.dwFlags !== undefined) view.setUint32(4, Number(data.dwFlags), true);
   // 0x08: pointer
-  if (data?.hwndTarget !== undefined) view.setBigUint64(8, data.hwndTarget === null ? 0n : BigInt(util.toPointer(data.hwndTarget)), true);
+  if (data?.hwndTarget !== undefined) view.setBigUint64(8, data.hwndTarget === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hwndTarget))), true);
   // 0x10: pointer
-  if (data?.ptsLocation !== undefined) view.setBigUint64(16, data.ptsLocation === null ? 0n : BigInt(util.toPointer(data.ptsLocation)), true);
+  if (data?.ptsLocation !== undefined) view.setBigUint64(16, data.ptsLocation === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ptsLocation))), true);
   // 0x18: u32
   if (data?.dwInstanceID !== undefined) view.setUint32(24, Number(data.dwInstanceID), true);
   // 0x1c: pad4
@@ -491,15 +491,15 @@ export class GESTURENOTIFYSTRUCTView {
   }
 
   // 0x08: pointer
-  get hwndTarget(): Uint8Array | Deno.PointerValue | null {
+  get hwndTarget(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ptsLocation(): Uint8Array | Deno.PointerValue | null {
+  get ptsLocation(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -520,13 +520,13 @@ export class GESTURENOTIFYSTRUCTView {
   }
 
   // 0x08: pointer
-  set hwndTarget(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set hwndTarget(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ptsLocation(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ptsLocation(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -661,79 +661,79 @@ try {
 // Symbols
 
 export function GetTouchInputInfo(
-  hTouchInput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Input.Touch.HTOUCHINPUT */,
+  hTouchInput: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Input.Touch.HTOUCHINPUT */,
   cInputs: number /* u32 */,
-  pInputs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pInputs: Deno.PointerValue | Uint8Array /* ptr */,
   cbSize: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.GetTouchInputInfo(util.toPointer(hTouchInput), cInputs, util.toPointer(pInputs), cbSize));
 }
 
 export function CloseTouchInputHandle(
-  hTouchInput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Input.Touch.HTOUCHINPUT */,
+  hTouchInput: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Input.Touch.HTOUCHINPUT */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.CloseTouchInputHandle(util.toPointer(hTouchInput)));
 }
 
 export function RegisterTouchWindow(
-  hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
+  hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   ulFlags: REGISTER_TOUCH_WINDOW_FLAGS /* Windows.Win32.UI.Input.Touch.REGISTER_TOUCH_WINDOW_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.RegisterTouchWindow(util.hwndToFfi(hwnd), ulFlags));
+  return util.boolFromFfi(libUSER32_dll.RegisterTouchWindow((hwnd), ulFlags));
 }
 
 export function UnregisterTouchWindow(
-  hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
+  hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.UnregisterTouchWindow(util.hwndToFfi(hwnd)));
+  return util.boolFromFfi(libUSER32_dll.UnregisterTouchWindow((hwnd)));
 }
 
 export function IsTouchWindow(
-  hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pulFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
+  pulFlags: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.IsTouchWindow(util.hwndToFfi(hwnd), util.toPointer(pulFlags)));
+  return util.boolFromFfi(libUSER32_dll.IsTouchWindow((hwnd), util.toPointer(pulFlags)));
 }
 
 export function GetGestureInfo(
-  hGestureInfo: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Input.Touch.HGESTUREINFO */,
-  pGestureInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hGestureInfo: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Input.Touch.HGESTUREINFO */,
+  pGestureInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.GetGestureInfo(util.toPointer(hGestureInfo), util.toPointer(pGestureInfo)));
 }
 
 export function GetGestureExtraArgs(
-  hGestureInfo: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Input.Touch.HGESTUREINFO */,
+  hGestureInfo: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Input.Touch.HGESTUREINFO */,
   cbExtraArgs: number /* u32 */,
-  pExtraArgs: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pExtraArgs: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.GetGestureExtraArgs(util.toPointer(hGestureInfo), cbExtraArgs, util.toPointer(pExtraArgs)));
 }
 
 export function CloseGestureInfoHandle(
-  hGestureInfo: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.Input.Touch.HGESTUREINFO */,
+  hGestureInfo: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Input.Touch.HGESTUREINFO */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.CloseGestureInfoHandle(util.toPointer(hGestureInfo)));
 }
 
 export function SetGestureConfig(
-  hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
+  hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   dwReserved: number /* u32 */,
   cIDs: number /* u32 */,
-  pGestureConfig: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pGestureConfig: Deno.PointerValue | Uint8Array /* ptr */,
   cbSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetGestureConfig(util.hwndToFfi(hwnd), dwReserved, cIDs, util.toPointer(pGestureConfig), cbSize));
+  return util.boolFromFfi(libUSER32_dll.SetGestureConfig((hwnd), dwReserved, cIDs, util.toPointer(pGestureConfig), cbSize));
 }
 
 export function GetGestureConfig(
-  hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
+  hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   dwReserved: number /* u32 */,
   dwFlags: number /* u32 */,
-  pcIDs: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pGestureConfig: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcIDs: Deno.PointerValue | Uint8Array /* ptr */,
+  pGestureConfig: Deno.PointerValue | Uint8Array /* ptr */,
   cbSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetGestureConfig(util.hwndToFfi(hwnd), dwReserved, dwFlags, util.toPointer(pcIDs), util.toPointer(pGestureConfig), cbSize));
+  return util.boolFromFfi(libUSER32_dll.GetGestureConfig((hwnd), dwReserved, dwFlags, util.toPointer(pcIDs), util.toPointer(pGestureConfig), cbSize));
 }
 

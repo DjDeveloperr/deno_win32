@@ -276,9 +276,9 @@ export interface DML_BUFFER_TENSOR_DESC {
   /** u32 */
   DimensionCount: number;
   /** ptr */
-  Sizes: Deno.PointerValue | Uint8Array | null;
+  Sizes: Deno.PointerValue | Uint8Array;
   /** ptr */
-  Strides: Deno.PointerValue | Uint8Array | null;
+  Strides: Deno.PointerValue | Uint8Array;
   /** u64 */
   TotalTensorSizeInBytes: Deno.PointerValue;
   /** u32 */
@@ -298,9 +298,9 @@ export function allocDML_BUFFER_TENSOR_DESC(data?: Partial<DML_BUFFER_TENSOR_DES
   if (data?.DimensionCount !== undefined) view.setUint32(8, Number(data.DimensionCount), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.Sizes !== undefined) view.setBigUint64(16, data.Sizes === null ? 0n : BigInt(util.toPointer(data.Sizes)), true);
+  if (data?.Sizes !== undefined) view.setBigUint64(16, data.Sizes === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Sizes))), true);
   // 0x18: pointer
-  if (data?.Strides !== undefined) view.setBigUint64(24, data.Strides === null ? 0n : BigInt(util.toPointer(data.Strides)), true);
+  if (data?.Strides !== undefined) view.setBigUint64(24, data.Strides === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Strides))), true);
   // 0x20: u64
   if (data?.TotalTensorSizeInBytes !== undefined) view.setBigUint64(32, BigInt(data.TotalTensorSizeInBytes), true);
   // 0x28: u32
@@ -337,15 +337,15 @@ export class DML_BUFFER_TENSOR_DESCView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get Sizes(): Uint8Array | Deno.PointerValue | null {
+  get Sizes(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get Strides(): Uint8Array | Deno.PointerValue | null {
+  get Strides(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u64
@@ -378,13 +378,13 @@ export class DML_BUFFER_TENSOR_DESCView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set Sizes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set Sizes(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set Strides(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set Strides(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u64
@@ -407,7 +407,7 @@ export interface DML_TENSOR_DESC {
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_TENSOR_TYPE */
   Type: DML_TENSOR_TYPE;
   /** ptr */
-  Desc: Deno.PointerValue | Uint8Array | null;
+  Desc: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_TENSOR_DESC = 16;
@@ -419,7 +419,7 @@ export function allocDML_TENSOR_DESC(data?: Partial<DML_TENSOR_DESC>): Uint8Arra
   if (data?.Type !== undefined) view.setInt32(0, Number(data.Type), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Desc !== undefined) view.setBigUint64(8, data.Desc === null ? 0n : BigInt(util.toPointer(data.Desc)), true);
+  if (data?.Desc !== undefined) view.setBigUint64(8, data.Desc === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Desc))), true);
   return buf;
 }
 
@@ -441,9 +441,9 @@ export class DML_TENSOR_DESCView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Desc(): Uint8Array | Deno.PointerValue | null {
+  get Desc(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -454,8 +454,8 @@ export class DML_TENSOR_DESCView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Desc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Desc(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -570,7 +570,7 @@ export class DML_SIZE_2DView {
  */
 export interface DML_SCALAR_UNION {
   /** array */
-  Bytes: Deno.PointerValue | null;
+  Bytes: Deno.PointerValue;
   /** i8 */
   Int8: number;
   /** u8 */
@@ -599,7 +599,7 @@ export function allocDML_SCALAR_UNION(data?: Partial<DML_SCALAR_UNION>): Uint8Ar
   const buf = new Uint8Array(sizeofDML_SCALAR_UNION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Bytes !== undefined) view.setBigUint64(0, data.Bytes === null ? 0n : BigInt(util.toPointer(data.Bytes)), true);
+  if (data?.Bytes !== undefined) view.setBigUint64(0, data.Bytes === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Bytes))), true);
   // 0x08: i8
   if (data?.Int8 !== undefined) view.setInt8(8, Number(data.Int8));
   // 0x09: u8
@@ -636,9 +636,9 @@ export class DML_SCALAR_UNIONView {
   }
 
   // 0x00: pointer
-  get Bytes(): Uint8Array | Deno.PointerValue | null {
+  get Bytes(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: i8
@@ -696,8 +696,8 @@ export class DML_SCALAR_UNIONView {
   }
 
   // 0x00: pointer
-  set Bytes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Bytes(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: i8
@@ -762,7 +762,7 @@ export interface DML_OPERATOR_DESC {
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_OPERATOR_TYPE */
   Type: DML_OPERATOR_TYPE;
   /** ptr */
-  Desc: Deno.PointerValue | Uint8Array | null;
+  Desc: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_OPERATOR_DESC = 16;
@@ -774,7 +774,7 @@ export function allocDML_OPERATOR_DESC(data?: Partial<DML_OPERATOR_DESC>): Uint8
   if (data?.Type !== undefined) view.setInt32(0, Number(data.Type), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Desc !== undefined) view.setBigUint64(8, data.Desc === null ? 0n : BigInt(util.toPointer(data.Desc)), true);
+  if (data?.Desc !== undefined) view.setBigUint64(8, data.Desc === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Desc))), true);
   return buf;
 }
 
@@ -796,9 +796,9 @@ export class DML_OPERATOR_DESCView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Desc(): Uint8Array | Deno.PointerValue | null {
+  get Desc(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -809,8 +809,8 @@ export class DML_OPERATOR_DESCView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Desc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Desc(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -819,11 +819,11 @@ export class DML_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_IDENTITY_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ScaleBias: Deno.PointerValue | Uint8Array | null;
+  ScaleBias: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_IDENTITY_OPERATOR_DESC = 24;
@@ -832,11 +832,11 @@ export function allocDML_ELEMENT_WISE_IDENTITY_OPERATOR_DESC(data?: Partial<DML_
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_IDENTITY_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: pointer
-  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(util.toPointer(data.ScaleBias)), true);
+  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScaleBias))), true);
   return buf;
 }
 
@@ -851,36 +851,36 @@ export class DML_ELEMENT_WISE_IDENTITY_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ScaleBias(): Uint8Array | Deno.PointerValue | null {
+  get ScaleBias(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ScaleBias(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ScaleBias(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -889,11 +889,11 @@ export class DML_ELEMENT_WISE_IDENTITY_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_ABS_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ScaleBias: Deno.PointerValue | Uint8Array | null;
+  ScaleBias: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_ABS_OPERATOR_DESC = 24;
@@ -902,11 +902,11 @@ export function allocDML_ELEMENT_WISE_ABS_OPERATOR_DESC(data?: Partial<DML_ELEME
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_ABS_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: pointer
-  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(util.toPointer(data.ScaleBias)), true);
+  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScaleBias))), true);
   return buf;
 }
 
@@ -921,36 +921,36 @@ export class DML_ELEMENT_WISE_ABS_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ScaleBias(): Uint8Array | Deno.PointerValue | null {
+  get ScaleBias(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ScaleBias(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ScaleBias(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -959,11 +959,11 @@ export class DML_ELEMENT_WISE_ABS_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_ACOS_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ScaleBias: Deno.PointerValue | Uint8Array | null;
+  ScaleBias: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_ACOS_OPERATOR_DESC = 24;
@@ -972,11 +972,11 @@ export function allocDML_ELEMENT_WISE_ACOS_OPERATOR_DESC(data?: Partial<DML_ELEM
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_ACOS_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: pointer
-  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(util.toPointer(data.ScaleBias)), true);
+  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScaleBias))), true);
   return buf;
 }
 
@@ -991,36 +991,36 @@ export class DML_ELEMENT_WISE_ACOS_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ScaleBias(): Uint8Array | Deno.PointerValue | null {
+  get ScaleBias(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ScaleBias(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ScaleBias(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1029,11 +1029,11 @@ export class DML_ELEMENT_WISE_ACOS_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_ADD_OPERATOR_DESC {
   /** ptr */
-  ATensor: Deno.PointerValue | Uint8Array | null;
+  ATensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BTensor: Deno.PointerValue | Uint8Array | null;
+  BTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_ADD_OPERATOR_DESC = 24;
@@ -1042,11 +1042,11 @@ export function allocDML_ELEMENT_WISE_ADD_OPERATOR_DESC(data?: Partial<DML_ELEME
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_ADD_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(util.toPointer(data.ATensor)), true);
+  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ATensor))), true);
   // 0x08: pointer
-  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(util.toPointer(data.BTensor)), true);
+  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -1061,36 +1061,36 @@ export class DML_ELEMENT_WISE_ADD_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get ATensor(): Uint8Array | Deno.PointerValue | null {
+  get ATensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get BTensor(): Uint8Array | Deno.PointerValue | null {
+  get BTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ATensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ATensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set BTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set BTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1099,13 +1099,13 @@ export class DML_ELEMENT_WISE_ADD_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_ADD1_OPERATOR_DESC {
   /** ptr */
-  ATensor: Deno.PointerValue | Uint8Array | null;
+  ATensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BTensor: Deno.PointerValue | Uint8Array | null;
+  BTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  FusedActivation: Deno.PointerValue | Uint8Array | null;
+  FusedActivation: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_ADD1_OPERATOR_DESC = 32;
@@ -1114,13 +1114,13 @@ export function allocDML_ELEMENT_WISE_ADD1_OPERATOR_DESC(data?: Partial<DML_ELEM
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_ADD1_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(util.toPointer(data.ATensor)), true);
+  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ATensor))), true);
   // 0x08: pointer
-  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(util.toPointer(data.BTensor)), true);
+  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x18: pointer
-  if (data?.FusedActivation !== undefined) view.setBigUint64(24, data.FusedActivation === null ? 0n : BigInt(util.toPointer(data.FusedActivation)), true);
+  if (data?.FusedActivation !== undefined) view.setBigUint64(24, data.FusedActivation === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.FusedActivation))), true);
   return buf;
 }
 
@@ -1135,47 +1135,47 @@ export class DML_ELEMENT_WISE_ADD1_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get ATensor(): Uint8Array | Deno.PointerValue | null {
+  get ATensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get BTensor(): Uint8Array | Deno.PointerValue | null {
+  get BTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get FusedActivation(): Uint8Array | Deno.PointerValue | null {
+  get FusedActivation(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ATensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ATensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set BTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set BTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set FusedActivation(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set FusedActivation(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1184,11 +1184,11 @@ export class DML_ELEMENT_WISE_ADD1_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_ASIN_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ScaleBias: Deno.PointerValue | Uint8Array | null;
+  ScaleBias: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_ASIN_OPERATOR_DESC = 24;
@@ -1197,11 +1197,11 @@ export function allocDML_ELEMENT_WISE_ASIN_OPERATOR_DESC(data?: Partial<DML_ELEM
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_ASIN_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: pointer
-  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(util.toPointer(data.ScaleBias)), true);
+  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScaleBias))), true);
   return buf;
 }
 
@@ -1216,36 +1216,36 @@ export class DML_ELEMENT_WISE_ASIN_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ScaleBias(): Uint8Array | Deno.PointerValue | null {
+  get ScaleBias(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ScaleBias(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ScaleBias(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1254,11 +1254,11 @@ export class DML_ELEMENT_WISE_ASIN_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_ATAN_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ScaleBias: Deno.PointerValue | Uint8Array | null;
+  ScaleBias: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_ATAN_OPERATOR_DESC = 24;
@@ -1267,11 +1267,11 @@ export function allocDML_ELEMENT_WISE_ATAN_OPERATOR_DESC(data?: Partial<DML_ELEM
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_ATAN_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: pointer
-  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(util.toPointer(data.ScaleBias)), true);
+  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScaleBias))), true);
   return buf;
 }
 
@@ -1286,36 +1286,36 @@ export class DML_ELEMENT_WISE_ATAN_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ScaleBias(): Uint8Array | Deno.PointerValue | null {
+  get ScaleBias(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ScaleBias(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ScaleBias(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1324,11 +1324,11 @@ export class DML_ELEMENT_WISE_ATAN_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_CEIL_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ScaleBias: Deno.PointerValue | Uint8Array | null;
+  ScaleBias: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_CEIL_OPERATOR_DESC = 24;
@@ -1337,11 +1337,11 @@ export function allocDML_ELEMENT_WISE_CEIL_OPERATOR_DESC(data?: Partial<DML_ELEM
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_CEIL_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: pointer
-  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(util.toPointer(data.ScaleBias)), true);
+  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScaleBias))), true);
   return buf;
 }
 
@@ -1356,36 +1356,36 @@ export class DML_ELEMENT_WISE_CEIL_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ScaleBias(): Uint8Array | Deno.PointerValue | null {
+  get ScaleBias(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ScaleBias(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ScaleBias(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1394,11 +1394,11 @@ export class DML_ELEMENT_WISE_CEIL_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_CLIP_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ScaleBias: Deno.PointerValue | Uint8Array | null;
+  ScaleBias: Deno.PointerValue | Uint8Array;
   /** f32 */
   Min: number;
   /** f32 */
@@ -1411,11 +1411,11 @@ export function allocDML_ELEMENT_WISE_CLIP_OPERATOR_DESC(data?: Partial<DML_ELEM
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_CLIP_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: pointer
-  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(util.toPointer(data.ScaleBias)), true);
+  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScaleBias))), true);
   // 0x18: f32
   if (data?.Min !== undefined) view.setFloat32(24, Number(data.Min), true);
   // 0x1c: f32
@@ -1434,21 +1434,21 @@ export class DML_ELEMENT_WISE_CLIP_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ScaleBias(): Uint8Array | Deno.PointerValue | null {
+  get ScaleBias(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: f32
@@ -1462,18 +1462,18 @@ export class DML_ELEMENT_WISE_CLIP_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ScaleBias(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ScaleBias(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: f32
@@ -1492,11 +1492,11 @@ export class DML_ELEMENT_WISE_CLIP_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_COS_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ScaleBias: Deno.PointerValue | Uint8Array | null;
+  ScaleBias: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_COS_OPERATOR_DESC = 24;
@@ -1505,11 +1505,11 @@ export function allocDML_ELEMENT_WISE_COS_OPERATOR_DESC(data?: Partial<DML_ELEME
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_COS_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: pointer
-  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(util.toPointer(data.ScaleBias)), true);
+  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScaleBias))), true);
   return buf;
 }
 
@@ -1524,36 +1524,36 @@ export class DML_ELEMENT_WISE_COS_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ScaleBias(): Uint8Array | Deno.PointerValue | null {
+  get ScaleBias(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ScaleBias(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ScaleBias(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1562,11 +1562,11 @@ export class DML_ELEMENT_WISE_COS_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_DIVIDE_OPERATOR_DESC {
   /** ptr */
-  ATensor: Deno.PointerValue | Uint8Array | null;
+  ATensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BTensor: Deno.PointerValue | Uint8Array | null;
+  BTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_DIVIDE_OPERATOR_DESC = 24;
@@ -1575,11 +1575,11 @@ export function allocDML_ELEMENT_WISE_DIVIDE_OPERATOR_DESC(data?: Partial<DML_EL
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_DIVIDE_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(util.toPointer(data.ATensor)), true);
+  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ATensor))), true);
   // 0x08: pointer
-  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(util.toPointer(data.BTensor)), true);
+  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -1594,36 +1594,36 @@ export class DML_ELEMENT_WISE_DIVIDE_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get ATensor(): Uint8Array | Deno.PointerValue | null {
+  get ATensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get BTensor(): Uint8Array | Deno.PointerValue | null {
+  get BTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ATensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ATensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set BTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set BTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1632,11 +1632,11 @@ export class DML_ELEMENT_WISE_DIVIDE_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_EXP_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ScaleBias: Deno.PointerValue | Uint8Array | null;
+  ScaleBias: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_EXP_OPERATOR_DESC = 24;
@@ -1645,11 +1645,11 @@ export function allocDML_ELEMENT_WISE_EXP_OPERATOR_DESC(data?: Partial<DML_ELEME
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_EXP_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: pointer
-  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(util.toPointer(data.ScaleBias)), true);
+  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScaleBias))), true);
   return buf;
 }
 
@@ -1664,36 +1664,36 @@ export class DML_ELEMENT_WISE_EXP_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ScaleBias(): Uint8Array | Deno.PointerValue | null {
+  get ScaleBias(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ScaleBias(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ScaleBias(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1702,11 +1702,11 @@ export class DML_ELEMENT_WISE_EXP_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_FLOOR_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ScaleBias: Deno.PointerValue | Uint8Array | null;
+  ScaleBias: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_FLOOR_OPERATOR_DESC = 24;
@@ -1715,11 +1715,11 @@ export function allocDML_ELEMENT_WISE_FLOOR_OPERATOR_DESC(data?: Partial<DML_ELE
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_FLOOR_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: pointer
-  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(util.toPointer(data.ScaleBias)), true);
+  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScaleBias))), true);
   return buf;
 }
 
@@ -1734,36 +1734,36 @@ export class DML_ELEMENT_WISE_FLOOR_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ScaleBias(): Uint8Array | Deno.PointerValue | null {
+  get ScaleBias(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ScaleBias(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ScaleBias(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1772,11 +1772,11 @@ export class DML_ELEMENT_WISE_FLOOR_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_LOG_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ScaleBias: Deno.PointerValue | Uint8Array | null;
+  ScaleBias: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_LOG_OPERATOR_DESC = 24;
@@ -1785,11 +1785,11 @@ export function allocDML_ELEMENT_WISE_LOG_OPERATOR_DESC(data?: Partial<DML_ELEME
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_LOG_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: pointer
-  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(util.toPointer(data.ScaleBias)), true);
+  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScaleBias))), true);
   return buf;
 }
 
@@ -1804,36 +1804,36 @@ export class DML_ELEMENT_WISE_LOG_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ScaleBias(): Uint8Array | Deno.PointerValue | null {
+  get ScaleBias(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ScaleBias(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ScaleBias(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1842,11 +1842,11 @@ export class DML_ELEMENT_WISE_LOG_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_LOGICAL_AND_OPERATOR_DESC {
   /** ptr */
-  ATensor: Deno.PointerValue | Uint8Array | null;
+  ATensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BTensor: Deno.PointerValue | Uint8Array | null;
+  BTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_LOGICAL_AND_OPERATOR_DESC = 24;
@@ -1855,11 +1855,11 @@ export function allocDML_ELEMENT_WISE_LOGICAL_AND_OPERATOR_DESC(data?: Partial<D
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_LOGICAL_AND_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(util.toPointer(data.ATensor)), true);
+  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ATensor))), true);
   // 0x08: pointer
-  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(util.toPointer(data.BTensor)), true);
+  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -1874,36 +1874,36 @@ export class DML_ELEMENT_WISE_LOGICAL_AND_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get ATensor(): Uint8Array | Deno.PointerValue | null {
+  get ATensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get BTensor(): Uint8Array | Deno.PointerValue | null {
+  get BTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ATensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ATensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set BTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set BTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1912,11 +1912,11 @@ export class DML_ELEMENT_WISE_LOGICAL_AND_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_LOGICAL_EQUALS_OPERATOR_DESC {
   /** ptr */
-  ATensor: Deno.PointerValue | Uint8Array | null;
+  ATensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BTensor: Deno.PointerValue | Uint8Array | null;
+  BTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_LOGICAL_EQUALS_OPERATOR_DESC = 24;
@@ -1925,11 +1925,11 @@ export function allocDML_ELEMENT_WISE_LOGICAL_EQUALS_OPERATOR_DESC(data?: Partia
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_LOGICAL_EQUALS_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(util.toPointer(data.ATensor)), true);
+  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ATensor))), true);
   // 0x08: pointer
-  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(util.toPointer(data.BTensor)), true);
+  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -1944,36 +1944,36 @@ export class DML_ELEMENT_WISE_LOGICAL_EQUALS_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get ATensor(): Uint8Array | Deno.PointerValue | null {
+  get ATensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get BTensor(): Uint8Array | Deno.PointerValue | null {
+  get BTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ATensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ATensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set BTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set BTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1982,11 +1982,11 @@ export class DML_ELEMENT_WISE_LOGICAL_EQUALS_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_LOGICAL_GREATER_THAN_OPERATOR_DESC {
   /** ptr */
-  ATensor: Deno.PointerValue | Uint8Array | null;
+  ATensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BTensor: Deno.PointerValue | Uint8Array | null;
+  BTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_LOGICAL_GREATER_THAN_OPERATOR_DESC = 24;
@@ -1995,11 +1995,11 @@ export function allocDML_ELEMENT_WISE_LOGICAL_GREATER_THAN_OPERATOR_DESC(data?: 
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_LOGICAL_GREATER_THAN_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(util.toPointer(data.ATensor)), true);
+  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ATensor))), true);
   // 0x08: pointer
-  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(util.toPointer(data.BTensor)), true);
+  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -2014,36 +2014,36 @@ export class DML_ELEMENT_WISE_LOGICAL_GREATER_THAN_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get ATensor(): Uint8Array | Deno.PointerValue | null {
+  get ATensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get BTensor(): Uint8Array | Deno.PointerValue | null {
+  get BTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ATensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ATensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set BTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set BTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2052,11 +2052,11 @@ export class DML_ELEMENT_WISE_LOGICAL_GREATER_THAN_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_LOGICAL_LESS_THAN_OPERATOR_DESC {
   /** ptr */
-  ATensor: Deno.PointerValue | Uint8Array | null;
+  ATensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BTensor: Deno.PointerValue | Uint8Array | null;
+  BTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_LOGICAL_LESS_THAN_OPERATOR_DESC = 24;
@@ -2065,11 +2065,11 @@ export function allocDML_ELEMENT_WISE_LOGICAL_LESS_THAN_OPERATOR_DESC(data?: Par
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_LOGICAL_LESS_THAN_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(util.toPointer(data.ATensor)), true);
+  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ATensor))), true);
   // 0x08: pointer
-  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(util.toPointer(data.BTensor)), true);
+  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -2084,36 +2084,36 @@ export class DML_ELEMENT_WISE_LOGICAL_LESS_THAN_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get ATensor(): Uint8Array | Deno.PointerValue | null {
+  get ATensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get BTensor(): Uint8Array | Deno.PointerValue | null {
+  get BTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ATensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ATensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set BTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set BTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2122,9 +2122,9 @@ export class DML_ELEMENT_WISE_LOGICAL_LESS_THAN_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_LOGICAL_NOT_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_LOGICAL_NOT_OPERATOR_DESC = 16;
@@ -2133,9 +2133,9 @@ export function allocDML_ELEMENT_WISE_LOGICAL_NOT_OPERATOR_DESC(data?: Partial<D
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_LOGICAL_NOT_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -2150,25 +2150,25 @@ export class DML_ELEMENT_WISE_LOGICAL_NOT_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2177,11 +2177,11 @@ export class DML_ELEMENT_WISE_LOGICAL_NOT_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_LOGICAL_OR_OPERATOR_DESC {
   /** ptr */
-  ATensor: Deno.PointerValue | Uint8Array | null;
+  ATensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BTensor: Deno.PointerValue | Uint8Array | null;
+  BTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_LOGICAL_OR_OPERATOR_DESC = 24;
@@ -2190,11 +2190,11 @@ export function allocDML_ELEMENT_WISE_LOGICAL_OR_OPERATOR_DESC(data?: Partial<DM
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_LOGICAL_OR_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(util.toPointer(data.ATensor)), true);
+  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ATensor))), true);
   // 0x08: pointer
-  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(util.toPointer(data.BTensor)), true);
+  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -2209,36 +2209,36 @@ export class DML_ELEMENT_WISE_LOGICAL_OR_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get ATensor(): Uint8Array | Deno.PointerValue | null {
+  get ATensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get BTensor(): Uint8Array | Deno.PointerValue | null {
+  get BTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ATensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ATensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set BTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set BTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2247,11 +2247,11 @@ export class DML_ELEMENT_WISE_LOGICAL_OR_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_LOGICAL_XOR_OPERATOR_DESC {
   /** ptr */
-  ATensor: Deno.PointerValue | Uint8Array | null;
+  ATensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BTensor: Deno.PointerValue | Uint8Array | null;
+  BTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_LOGICAL_XOR_OPERATOR_DESC = 24;
@@ -2260,11 +2260,11 @@ export function allocDML_ELEMENT_WISE_LOGICAL_XOR_OPERATOR_DESC(data?: Partial<D
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_LOGICAL_XOR_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(util.toPointer(data.ATensor)), true);
+  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ATensor))), true);
   // 0x08: pointer
-  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(util.toPointer(data.BTensor)), true);
+  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -2279,36 +2279,36 @@ export class DML_ELEMENT_WISE_LOGICAL_XOR_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get ATensor(): Uint8Array | Deno.PointerValue | null {
+  get ATensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get BTensor(): Uint8Array | Deno.PointerValue | null {
+  get BTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ATensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ATensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set BTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set BTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2317,11 +2317,11 @@ export class DML_ELEMENT_WISE_LOGICAL_XOR_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_MAX_OPERATOR_DESC {
   /** ptr */
-  ATensor: Deno.PointerValue | Uint8Array | null;
+  ATensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BTensor: Deno.PointerValue | Uint8Array | null;
+  BTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_MAX_OPERATOR_DESC = 24;
@@ -2330,11 +2330,11 @@ export function allocDML_ELEMENT_WISE_MAX_OPERATOR_DESC(data?: Partial<DML_ELEME
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_MAX_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(util.toPointer(data.ATensor)), true);
+  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ATensor))), true);
   // 0x08: pointer
-  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(util.toPointer(data.BTensor)), true);
+  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -2349,36 +2349,36 @@ export class DML_ELEMENT_WISE_MAX_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get ATensor(): Uint8Array | Deno.PointerValue | null {
+  get ATensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get BTensor(): Uint8Array | Deno.PointerValue | null {
+  get BTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ATensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ATensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set BTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set BTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2387,11 +2387,11 @@ export class DML_ELEMENT_WISE_MAX_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_MEAN_OPERATOR_DESC {
   /** ptr */
-  ATensor: Deno.PointerValue | Uint8Array | null;
+  ATensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BTensor: Deno.PointerValue | Uint8Array | null;
+  BTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_MEAN_OPERATOR_DESC = 24;
@@ -2400,11 +2400,11 @@ export function allocDML_ELEMENT_WISE_MEAN_OPERATOR_DESC(data?: Partial<DML_ELEM
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_MEAN_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(util.toPointer(data.ATensor)), true);
+  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ATensor))), true);
   // 0x08: pointer
-  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(util.toPointer(data.BTensor)), true);
+  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -2419,36 +2419,36 @@ export class DML_ELEMENT_WISE_MEAN_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get ATensor(): Uint8Array | Deno.PointerValue | null {
+  get ATensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get BTensor(): Uint8Array | Deno.PointerValue | null {
+  get BTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ATensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ATensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set BTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set BTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2457,11 +2457,11 @@ export class DML_ELEMENT_WISE_MEAN_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_MIN_OPERATOR_DESC {
   /** ptr */
-  ATensor: Deno.PointerValue | Uint8Array | null;
+  ATensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BTensor: Deno.PointerValue | Uint8Array | null;
+  BTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_MIN_OPERATOR_DESC = 24;
@@ -2470,11 +2470,11 @@ export function allocDML_ELEMENT_WISE_MIN_OPERATOR_DESC(data?: Partial<DML_ELEME
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_MIN_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(util.toPointer(data.ATensor)), true);
+  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ATensor))), true);
   // 0x08: pointer
-  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(util.toPointer(data.BTensor)), true);
+  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -2489,36 +2489,36 @@ export class DML_ELEMENT_WISE_MIN_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get ATensor(): Uint8Array | Deno.PointerValue | null {
+  get ATensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get BTensor(): Uint8Array | Deno.PointerValue | null {
+  get BTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ATensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ATensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set BTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set BTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2527,11 +2527,11 @@ export class DML_ELEMENT_WISE_MIN_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_MULTIPLY_OPERATOR_DESC {
   /** ptr */
-  ATensor: Deno.PointerValue | Uint8Array | null;
+  ATensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BTensor: Deno.PointerValue | Uint8Array | null;
+  BTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_MULTIPLY_OPERATOR_DESC = 24;
@@ -2540,11 +2540,11 @@ export function allocDML_ELEMENT_WISE_MULTIPLY_OPERATOR_DESC(data?: Partial<DML_
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_MULTIPLY_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(util.toPointer(data.ATensor)), true);
+  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ATensor))), true);
   // 0x08: pointer
-  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(util.toPointer(data.BTensor)), true);
+  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -2559,36 +2559,36 @@ export class DML_ELEMENT_WISE_MULTIPLY_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get ATensor(): Uint8Array | Deno.PointerValue | null {
+  get ATensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get BTensor(): Uint8Array | Deno.PointerValue | null {
+  get BTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ATensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ATensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set BTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set BTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2597,13 +2597,13 @@ export class DML_ELEMENT_WISE_MULTIPLY_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_POW_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ExponentTensor: Deno.PointerValue | Uint8Array | null;
+  ExponentTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ScaleBias: Deno.PointerValue | Uint8Array | null;
+  ScaleBias: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_POW_OPERATOR_DESC = 32;
@@ -2612,13 +2612,13 @@ export function allocDML_ELEMENT_WISE_POW_OPERATOR_DESC(data?: Partial<DML_ELEME
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_POW_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.ExponentTensor !== undefined) view.setBigUint64(8, data.ExponentTensor === null ? 0n : BigInt(util.toPointer(data.ExponentTensor)), true);
+  if (data?.ExponentTensor !== undefined) view.setBigUint64(8, data.ExponentTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ExponentTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x18: pointer
-  if (data?.ScaleBias !== undefined) view.setBigUint64(24, data.ScaleBias === null ? 0n : BigInt(util.toPointer(data.ScaleBias)), true);
+  if (data?.ScaleBias !== undefined) view.setBigUint64(24, data.ScaleBias === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScaleBias))), true);
   return buf;
 }
 
@@ -2633,47 +2633,47 @@ export class DML_ELEMENT_WISE_POW_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get ExponentTensor(): Uint8Array | Deno.PointerValue | null {
+  get ExponentTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get ScaleBias(): Uint8Array | Deno.PointerValue | null {
+  get ScaleBias(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set ExponentTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ExponentTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set ScaleBias(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set ScaleBias(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2682,11 +2682,11 @@ export class DML_ELEMENT_WISE_POW_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_CONSTANT_POW_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ScaleBias: Deno.PointerValue | Uint8Array | null;
+  ScaleBias: Deno.PointerValue | Uint8Array;
   /** f32 */
   Exponent: number;
 }
@@ -2697,11 +2697,11 @@ export function allocDML_ELEMENT_WISE_CONSTANT_POW_OPERATOR_DESC(data?: Partial<
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_CONSTANT_POW_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: pointer
-  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(util.toPointer(data.ScaleBias)), true);
+  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScaleBias))), true);
   // 0x18: f32
   if (data?.Exponent !== undefined) view.setFloat32(24, Number(data.Exponent), true);
   // 0x1c: pad4
@@ -2719,21 +2719,21 @@ export class DML_ELEMENT_WISE_CONSTANT_POW_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ScaleBias(): Uint8Array | Deno.PointerValue | null {
+  get ScaleBias(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: f32
@@ -2744,18 +2744,18 @@ export class DML_ELEMENT_WISE_CONSTANT_POW_OPERATOR_DESCView {
   // 0x1c: pad4
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ScaleBias(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ScaleBias(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: f32
@@ -2771,11 +2771,11 @@ export class DML_ELEMENT_WISE_CONSTANT_POW_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_RECIP_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ScaleBias: Deno.PointerValue | Uint8Array | null;
+  ScaleBias: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_RECIP_OPERATOR_DESC = 24;
@@ -2784,11 +2784,11 @@ export function allocDML_ELEMENT_WISE_RECIP_OPERATOR_DESC(data?: Partial<DML_ELE
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_RECIP_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: pointer
-  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(util.toPointer(data.ScaleBias)), true);
+  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScaleBias))), true);
   return buf;
 }
 
@@ -2803,36 +2803,36 @@ export class DML_ELEMENT_WISE_RECIP_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ScaleBias(): Uint8Array | Deno.PointerValue | null {
+  get ScaleBias(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ScaleBias(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ScaleBias(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2841,11 +2841,11 @@ export class DML_ELEMENT_WISE_RECIP_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_SIN_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ScaleBias: Deno.PointerValue | Uint8Array | null;
+  ScaleBias: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_SIN_OPERATOR_DESC = 24;
@@ -2854,11 +2854,11 @@ export function allocDML_ELEMENT_WISE_SIN_OPERATOR_DESC(data?: Partial<DML_ELEME
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_SIN_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: pointer
-  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(util.toPointer(data.ScaleBias)), true);
+  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScaleBias))), true);
   return buf;
 }
 
@@ -2873,36 +2873,36 @@ export class DML_ELEMENT_WISE_SIN_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ScaleBias(): Uint8Array | Deno.PointerValue | null {
+  get ScaleBias(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ScaleBias(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ScaleBias(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2911,11 +2911,11 @@ export class DML_ELEMENT_WISE_SIN_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_SQRT_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ScaleBias: Deno.PointerValue | Uint8Array | null;
+  ScaleBias: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_SQRT_OPERATOR_DESC = 24;
@@ -2924,11 +2924,11 @@ export function allocDML_ELEMENT_WISE_SQRT_OPERATOR_DESC(data?: Partial<DML_ELEM
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_SQRT_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: pointer
-  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(util.toPointer(data.ScaleBias)), true);
+  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScaleBias))), true);
   return buf;
 }
 
@@ -2943,36 +2943,36 @@ export class DML_ELEMENT_WISE_SQRT_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ScaleBias(): Uint8Array | Deno.PointerValue | null {
+  get ScaleBias(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ScaleBias(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ScaleBias(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2981,11 +2981,11 @@ export class DML_ELEMENT_WISE_SQRT_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_SUBTRACT_OPERATOR_DESC {
   /** ptr */
-  ATensor: Deno.PointerValue | Uint8Array | null;
+  ATensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BTensor: Deno.PointerValue | Uint8Array | null;
+  BTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_SUBTRACT_OPERATOR_DESC = 24;
@@ -2994,11 +2994,11 @@ export function allocDML_ELEMENT_WISE_SUBTRACT_OPERATOR_DESC(data?: Partial<DML_
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_SUBTRACT_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(util.toPointer(data.ATensor)), true);
+  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ATensor))), true);
   // 0x08: pointer
-  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(util.toPointer(data.BTensor)), true);
+  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -3013,36 +3013,36 @@ export class DML_ELEMENT_WISE_SUBTRACT_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get ATensor(): Uint8Array | Deno.PointerValue | null {
+  get ATensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get BTensor(): Uint8Array | Deno.PointerValue | null {
+  get BTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ATensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ATensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set BTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set BTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3051,11 +3051,11 @@ export class DML_ELEMENT_WISE_SUBTRACT_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_TAN_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ScaleBias: Deno.PointerValue | Uint8Array | null;
+  ScaleBias: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_TAN_OPERATOR_DESC = 24;
@@ -3064,11 +3064,11 @@ export function allocDML_ELEMENT_WISE_TAN_OPERATOR_DESC(data?: Partial<DML_ELEME
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_TAN_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: pointer
-  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(util.toPointer(data.ScaleBias)), true);
+  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScaleBias))), true);
   return buf;
 }
 
@@ -3083,36 +3083,36 @@ export class DML_ELEMENT_WISE_TAN_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ScaleBias(): Uint8Array | Deno.PointerValue | null {
+  get ScaleBias(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ScaleBias(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ScaleBias(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3121,11 +3121,11 @@ export class DML_ELEMENT_WISE_TAN_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_THRESHOLD_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ScaleBias: Deno.PointerValue | Uint8Array | null;
+  ScaleBias: Deno.PointerValue | Uint8Array;
   /** f32 */
   Min: number;
 }
@@ -3136,11 +3136,11 @@ export function allocDML_ELEMENT_WISE_THRESHOLD_OPERATOR_DESC(data?: Partial<DML
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_THRESHOLD_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: pointer
-  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(util.toPointer(data.ScaleBias)), true);
+  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScaleBias))), true);
   // 0x18: f32
   if (data?.Min !== undefined) view.setFloat32(24, Number(data.Min), true);
   // 0x1c: pad4
@@ -3158,21 +3158,21 @@ export class DML_ELEMENT_WISE_THRESHOLD_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ScaleBias(): Uint8Array | Deno.PointerValue | null {
+  get ScaleBias(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: f32
@@ -3183,18 +3183,18 @@ export class DML_ELEMENT_WISE_THRESHOLD_OPERATOR_DESCView {
   // 0x1c: pad4
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ScaleBias(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ScaleBias(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: f32
@@ -3210,13 +3210,13 @@ export class DML_ELEMENT_WISE_THRESHOLD_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_QUANTIZE_LINEAR_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ScaleTensor: Deno.PointerValue | Uint8Array | null;
+  ScaleTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ZeroPointTensor: Deno.PointerValue | Uint8Array | null;
+  ZeroPointTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_QUANTIZE_LINEAR_OPERATOR_DESC = 32;
@@ -3225,13 +3225,13 @@ export function allocDML_ELEMENT_WISE_QUANTIZE_LINEAR_OPERATOR_DESC(data?: Parti
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_QUANTIZE_LINEAR_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.ScaleTensor !== undefined) view.setBigUint64(8, data.ScaleTensor === null ? 0n : BigInt(util.toPointer(data.ScaleTensor)), true);
+  if (data?.ScaleTensor !== undefined) view.setBigUint64(8, data.ScaleTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScaleTensor))), true);
   // 0x10: pointer
-  if (data?.ZeroPointTensor !== undefined) view.setBigUint64(16, data.ZeroPointTensor === null ? 0n : BigInt(util.toPointer(data.ZeroPointTensor)), true);
+  if (data?.ZeroPointTensor !== undefined) view.setBigUint64(16, data.ZeroPointTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ZeroPointTensor))), true);
   // 0x18: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(24, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(24, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -3246,47 +3246,47 @@ export class DML_ELEMENT_WISE_QUANTIZE_LINEAR_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get ScaleTensor(): Uint8Array | Deno.PointerValue | null {
+  get ScaleTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ZeroPointTensor(): Uint8Array | Deno.PointerValue | null {
+  get ZeroPointTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set ScaleTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ScaleTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ZeroPointTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ZeroPointTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3295,13 +3295,13 @@ export class DML_ELEMENT_WISE_QUANTIZE_LINEAR_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_DEQUANTIZE_LINEAR_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ScaleTensor: Deno.PointerValue | Uint8Array | null;
+  ScaleTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ZeroPointTensor: Deno.PointerValue | Uint8Array | null;
+  ZeroPointTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_DEQUANTIZE_LINEAR_OPERATOR_DESC = 32;
@@ -3310,13 +3310,13 @@ export function allocDML_ELEMENT_WISE_DEQUANTIZE_LINEAR_OPERATOR_DESC(data?: Par
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_DEQUANTIZE_LINEAR_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.ScaleTensor !== undefined) view.setBigUint64(8, data.ScaleTensor === null ? 0n : BigInt(util.toPointer(data.ScaleTensor)), true);
+  if (data?.ScaleTensor !== undefined) view.setBigUint64(8, data.ScaleTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScaleTensor))), true);
   // 0x10: pointer
-  if (data?.ZeroPointTensor !== undefined) view.setBigUint64(16, data.ZeroPointTensor === null ? 0n : BigInt(util.toPointer(data.ZeroPointTensor)), true);
+  if (data?.ZeroPointTensor !== undefined) view.setBigUint64(16, data.ZeroPointTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ZeroPointTensor))), true);
   // 0x18: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(24, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(24, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -3331,47 +3331,47 @@ export class DML_ELEMENT_WISE_DEQUANTIZE_LINEAR_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get ScaleTensor(): Uint8Array | Deno.PointerValue | null {
+  get ScaleTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ZeroPointTensor(): Uint8Array | Deno.PointerValue | null {
+  get ZeroPointTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set ScaleTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ScaleTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ZeroPointTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ZeroPointTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3380,9 +3380,9 @@ export class DML_ELEMENT_WISE_DEQUANTIZE_LINEAR_OPERATOR_DESCView {
  */
 export interface DML_ACTIVATION_ELU_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** f32 */
   Alpha: number;
 }
@@ -3393,9 +3393,9 @@ export function allocDML_ACTIVATION_ELU_OPERATOR_DESC(data?: Partial<DML_ACTIVAT
   const buf = new Uint8Array(sizeofDML_ACTIVATION_ELU_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: f32
   if (data?.Alpha !== undefined) view.setFloat32(16, Number(data.Alpha), true);
   // 0x14: pad4
@@ -3413,15 +3413,15 @@ export class DML_ACTIVATION_ELU_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: f32
@@ -3432,13 +3432,13 @@ export class DML_ACTIVATION_ELU_OPERATOR_DESCView {
   // 0x14: pad4
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: f32
@@ -3454,9 +3454,9 @@ export class DML_ACTIVATION_ELU_OPERATOR_DESCView {
  */
 export interface DML_ACTIVATION_HARDMAX_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ACTIVATION_HARDMAX_OPERATOR_DESC = 16;
@@ -3465,9 +3465,9 @@ export function allocDML_ACTIVATION_HARDMAX_OPERATOR_DESC(data?: Partial<DML_ACT
   const buf = new Uint8Array(sizeofDML_ACTIVATION_HARDMAX_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -3482,25 +3482,25 @@ export class DML_ACTIVATION_HARDMAX_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3509,9 +3509,9 @@ export class DML_ACTIVATION_HARDMAX_OPERATOR_DESCView {
  */
 export interface DML_ACTIVATION_HARD_SIGMOID_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** f32 */
   Alpha: number;
   /** f32 */
@@ -3524,9 +3524,9 @@ export function allocDML_ACTIVATION_HARD_SIGMOID_OPERATOR_DESC(data?: Partial<DM
   const buf = new Uint8Array(sizeofDML_ACTIVATION_HARD_SIGMOID_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: f32
   if (data?.Alpha !== undefined) view.setFloat32(16, Number(data.Alpha), true);
   // 0x14: f32
@@ -3545,15 +3545,15 @@ export class DML_ACTIVATION_HARD_SIGMOID_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: f32
@@ -3567,13 +3567,13 @@ export class DML_ACTIVATION_HARD_SIGMOID_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: f32
@@ -3592,9 +3592,9 @@ export class DML_ACTIVATION_HARD_SIGMOID_OPERATOR_DESCView {
  */
 export interface DML_ACTIVATION_IDENTITY_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ACTIVATION_IDENTITY_OPERATOR_DESC = 16;
@@ -3603,9 +3603,9 @@ export function allocDML_ACTIVATION_IDENTITY_OPERATOR_DESC(data?: Partial<DML_AC
   const buf = new Uint8Array(sizeofDML_ACTIVATION_IDENTITY_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -3620,25 +3620,25 @@ export class DML_ACTIVATION_IDENTITY_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3647,9 +3647,9 @@ export class DML_ACTIVATION_IDENTITY_OPERATOR_DESCView {
  */
 export interface DML_ACTIVATION_LEAKY_RELU_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** f32 */
   Alpha: number;
 }
@@ -3660,9 +3660,9 @@ export function allocDML_ACTIVATION_LEAKY_RELU_OPERATOR_DESC(data?: Partial<DML_
   const buf = new Uint8Array(sizeofDML_ACTIVATION_LEAKY_RELU_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: f32
   if (data?.Alpha !== undefined) view.setFloat32(16, Number(data.Alpha), true);
   // 0x14: pad4
@@ -3680,15 +3680,15 @@ export class DML_ACTIVATION_LEAKY_RELU_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: f32
@@ -3699,13 +3699,13 @@ export class DML_ACTIVATION_LEAKY_RELU_OPERATOR_DESCView {
   // 0x14: pad4
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: f32
@@ -3721,9 +3721,9 @@ export class DML_ACTIVATION_LEAKY_RELU_OPERATOR_DESCView {
  */
 export interface DML_ACTIVATION_LINEAR_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** f32 */
   Alpha: number;
   /** f32 */
@@ -3736,9 +3736,9 @@ export function allocDML_ACTIVATION_LINEAR_OPERATOR_DESC(data?: Partial<DML_ACTI
   const buf = new Uint8Array(sizeofDML_ACTIVATION_LINEAR_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: f32
   if (data?.Alpha !== undefined) view.setFloat32(16, Number(data.Alpha), true);
   // 0x14: f32
@@ -3757,15 +3757,15 @@ export class DML_ACTIVATION_LINEAR_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: f32
@@ -3779,13 +3779,13 @@ export class DML_ACTIVATION_LINEAR_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: f32
@@ -3804,9 +3804,9 @@ export class DML_ACTIVATION_LINEAR_OPERATOR_DESCView {
  */
 export interface DML_ACTIVATION_LOG_SOFTMAX_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ACTIVATION_LOG_SOFTMAX_OPERATOR_DESC = 16;
@@ -3815,9 +3815,9 @@ export function allocDML_ACTIVATION_LOG_SOFTMAX_OPERATOR_DESC(data?: Partial<DML
   const buf = new Uint8Array(sizeofDML_ACTIVATION_LOG_SOFTMAX_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -3832,25 +3832,25 @@ export class DML_ACTIVATION_LOG_SOFTMAX_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3859,11 +3859,11 @@ export class DML_ACTIVATION_LOG_SOFTMAX_OPERATOR_DESCView {
  */
 export interface DML_ACTIVATION_PARAMETERIZED_RELU_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  SlopeTensor: Deno.PointerValue | Uint8Array | null;
+  SlopeTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ACTIVATION_PARAMETERIZED_RELU_OPERATOR_DESC = 24;
@@ -3872,11 +3872,11 @@ export function allocDML_ACTIVATION_PARAMETERIZED_RELU_OPERATOR_DESC(data?: Part
   const buf = new Uint8Array(sizeofDML_ACTIVATION_PARAMETERIZED_RELU_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.SlopeTensor !== undefined) view.setBigUint64(8, data.SlopeTensor === null ? 0n : BigInt(util.toPointer(data.SlopeTensor)), true);
+  if (data?.SlopeTensor !== undefined) view.setBigUint64(8, data.SlopeTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.SlopeTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -3891,36 +3891,36 @@ export class DML_ACTIVATION_PARAMETERIZED_RELU_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get SlopeTensor(): Uint8Array | Deno.PointerValue | null {
+  get SlopeTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set SlopeTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set SlopeTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3929,9 +3929,9 @@ export class DML_ACTIVATION_PARAMETERIZED_RELU_OPERATOR_DESCView {
  */
 export interface DML_ACTIVATION_PARAMETRIC_SOFTPLUS_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** f32 */
   Alpha: number;
   /** f32 */
@@ -3944,9 +3944,9 @@ export function allocDML_ACTIVATION_PARAMETRIC_SOFTPLUS_OPERATOR_DESC(data?: Par
   const buf = new Uint8Array(sizeofDML_ACTIVATION_PARAMETRIC_SOFTPLUS_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: f32
   if (data?.Alpha !== undefined) view.setFloat32(16, Number(data.Alpha), true);
   // 0x14: f32
@@ -3965,15 +3965,15 @@ export class DML_ACTIVATION_PARAMETRIC_SOFTPLUS_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: f32
@@ -3987,13 +3987,13 @@ export class DML_ACTIVATION_PARAMETRIC_SOFTPLUS_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: f32
@@ -4012,9 +4012,9 @@ export class DML_ACTIVATION_PARAMETRIC_SOFTPLUS_OPERATOR_DESCView {
  */
 export interface DML_ACTIVATION_RELU_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ACTIVATION_RELU_OPERATOR_DESC = 16;
@@ -4023,9 +4023,9 @@ export function allocDML_ACTIVATION_RELU_OPERATOR_DESC(data?: Partial<DML_ACTIVA
   const buf = new Uint8Array(sizeofDML_ACTIVATION_RELU_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -4040,25 +4040,25 @@ export class DML_ACTIVATION_RELU_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4067,9 +4067,9 @@ export class DML_ACTIVATION_RELU_OPERATOR_DESCView {
  */
 export interface DML_ACTIVATION_SCALED_ELU_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** f32 */
   Alpha: number;
   /** f32 */
@@ -4082,9 +4082,9 @@ export function allocDML_ACTIVATION_SCALED_ELU_OPERATOR_DESC(data?: Partial<DML_
   const buf = new Uint8Array(sizeofDML_ACTIVATION_SCALED_ELU_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: f32
   if (data?.Alpha !== undefined) view.setFloat32(16, Number(data.Alpha), true);
   // 0x14: f32
@@ -4103,15 +4103,15 @@ export class DML_ACTIVATION_SCALED_ELU_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: f32
@@ -4125,13 +4125,13 @@ export class DML_ACTIVATION_SCALED_ELU_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: f32
@@ -4150,9 +4150,9 @@ export class DML_ACTIVATION_SCALED_ELU_OPERATOR_DESCView {
  */
 export interface DML_ACTIVATION_SCALED_TANH_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** f32 */
   Alpha: number;
   /** f32 */
@@ -4165,9 +4165,9 @@ export function allocDML_ACTIVATION_SCALED_TANH_OPERATOR_DESC(data?: Partial<DML
   const buf = new Uint8Array(sizeofDML_ACTIVATION_SCALED_TANH_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: f32
   if (data?.Alpha !== undefined) view.setFloat32(16, Number(data.Alpha), true);
   // 0x14: f32
@@ -4186,15 +4186,15 @@ export class DML_ACTIVATION_SCALED_TANH_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: f32
@@ -4208,13 +4208,13 @@ export class DML_ACTIVATION_SCALED_TANH_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: f32
@@ -4233,9 +4233,9 @@ export class DML_ACTIVATION_SCALED_TANH_OPERATOR_DESCView {
  */
 export interface DML_ACTIVATION_SIGMOID_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ACTIVATION_SIGMOID_OPERATOR_DESC = 16;
@@ -4244,9 +4244,9 @@ export function allocDML_ACTIVATION_SIGMOID_OPERATOR_DESC(data?: Partial<DML_ACT
   const buf = new Uint8Array(sizeofDML_ACTIVATION_SIGMOID_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -4261,25 +4261,25 @@ export class DML_ACTIVATION_SIGMOID_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4288,9 +4288,9 @@ export class DML_ACTIVATION_SIGMOID_OPERATOR_DESCView {
  */
 export interface DML_ACTIVATION_SOFTMAX_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ACTIVATION_SOFTMAX_OPERATOR_DESC = 16;
@@ -4299,9 +4299,9 @@ export function allocDML_ACTIVATION_SOFTMAX_OPERATOR_DESC(data?: Partial<DML_ACT
   const buf = new Uint8Array(sizeofDML_ACTIVATION_SOFTMAX_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -4316,25 +4316,25 @@ export class DML_ACTIVATION_SOFTMAX_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4343,9 +4343,9 @@ export class DML_ACTIVATION_SOFTMAX_OPERATOR_DESCView {
  */
 export interface DML_ACTIVATION_SOFTPLUS_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** f32 */
   Steepness: number;
 }
@@ -4356,9 +4356,9 @@ export function allocDML_ACTIVATION_SOFTPLUS_OPERATOR_DESC(data?: Partial<DML_AC
   const buf = new Uint8Array(sizeofDML_ACTIVATION_SOFTPLUS_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: f32
   if (data?.Steepness !== undefined) view.setFloat32(16, Number(data.Steepness), true);
   // 0x14: pad4
@@ -4376,15 +4376,15 @@ export class DML_ACTIVATION_SOFTPLUS_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: f32
@@ -4395,13 +4395,13 @@ export class DML_ACTIVATION_SOFTPLUS_OPERATOR_DESCView {
   // 0x14: pad4
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: f32
@@ -4417,9 +4417,9 @@ export class DML_ACTIVATION_SOFTPLUS_OPERATOR_DESCView {
  */
 export interface DML_ACTIVATION_SOFTSIGN_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ACTIVATION_SOFTSIGN_OPERATOR_DESC = 16;
@@ -4428,9 +4428,9 @@ export function allocDML_ACTIVATION_SOFTSIGN_OPERATOR_DESC(data?: Partial<DML_AC
   const buf = new Uint8Array(sizeofDML_ACTIVATION_SOFTSIGN_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -4445,25 +4445,25 @@ export class DML_ACTIVATION_SOFTSIGN_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4472,9 +4472,9 @@ export class DML_ACTIVATION_SOFTSIGN_OPERATOR_DESCView {
  */
 export interface DML_ACTIVATION_TANH_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ACTIVATION_TANH_OPERATOR_DESC = 16;
@@ -4483,9 +4483,9 @@ export function allocDML_ACTIVATION_TANH_OPERATOR_DESC(data?: Partial<DML_ACTIVA
   const buf = new Uint8Array(sizeofDML_ACTIVATION_TANH_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -4500,25 +4500,25 @@ export class DML_ACTIVATION_TANH_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4527,9 +4527,9 @@ export class DML_ACTIVATION_TANH_OPERATOR_DESCView {
  */
 export interface DML_ACTIVATION_THRESHOLDED_RELU_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** f32 */
   Alpha: number;
 }
@@ -4540,9 +4540,9 @@ export function allocDML_ACTIVATION_THRESHOLDED_RELU_OPERATOR_DESC(data?: Partia
   const buf = new Uint8Array(sizeofDML_ACTIVATION_THRESHOLDED_RELU_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: f32
   if (data?.Alpha !== undefined) view.setFloat32(16, Number(data.Alpha), true);
   // 0x14: pad4
@@ -4560,15 +4560,15 @@ export class DML_ACTIVATION_THRESHOLDED_RELU_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: f32
@@ -4579,13 +4579,13 @@ export class DML_ACTIVATION_THRESHOLDED_RELU_OPERATOR_DESCView {
   // 0x14: pad4
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: f32
@@ -4601,13 +4601,13 @@ export class DML_ACTIVATION_THRESHOLDED_RELU_OPERATOR_DESCView {
  */
 export interface DML_CONVOLUTION_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  FilterTensor: Deno.PointerValue | Uint8Array | null;
+  FilterTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BiasTensor: Deno.PointerValue | Uint8Array | null;
+  BiasTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_CONVOLUTION_MODE */
   Mode: DML_CONVOLUTION_MODE;
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_CONVOLUTION_DIRECTION */
@@ -4615,19 +4615,19 @@ export interface DML_CONVOLUTION_OPERATOR_DESC {
   /** u32 */
   DimensionCount: number;
   /** ptr */
-  Strides: Deno.PointerValue | Uint8Array | null;
+  Strides: Deno.PointerValue | Uint8Array;
   /** ptr */
-  Dilations: Deno.PointerValue | Uint8Array | null;
+  Dilations: Deno.PointerValue | Uint8Array;
   /** ptr */
-  StartPadding: Deno.PointerValue | Uint8Array | null;
+  StartPadding: Deno.PointerValue | Uint8Array;
   /** ptr */
-  EndPadding: Deno.PointerValue | Uint8Array | null;
+  EndPadding: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputPadding: Deno.PointerValue | Uint8Array | null;
+  OutputPadding: Deno.PointerValue | Uint8Array;
   /** u32 */
   GroupCount: number;
   /** ptr */
-  FusedActivation: Deno.PointerValue | Uint8Array | null;
+  FusedActivation: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_CONVOLUTION_OPERATOR_DESC = 104;
@@ -4636,13 +4636,13 @@ export function allocDML_CONVOLUTION_OPERATOR_DESC(data?: Partial<DML_CONVOLUTIO
   const buf = new Uint8Array(sizeofDML_CONVOLUTION_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.FilterTensor !== undefined) view.setBigUint64(8, data.FilterTensor === null ? 0n : BigInt(util.toPointer(data.FilterTensor)), true);
+  if (data?.FilterTensor !== undefined) view.setBigUint64(8, data.FilterTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.FilterTensor))), true);
   // 0x10: pointer
-  if (data?.BiasTensor !== undefined) view.setBigUint64(16, data.BiasTensor === null ? 0n : BigInt(util.toPointer(data.BiasTensor)), true);
+  if (data?.BiasTensor !== undefined) view.setBigUint64(16, data.BiasTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BiasTensor))), true);
   // 0x18: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(24, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(24, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x20: i32
   if (data?.Mode !== undefined) view.setInt32(32, Number(data.Mode), true);
   // 0x24: i32
@@ -4651,20 +4651,20 @@ export function allocDML_CONVOLUTION_OPERATOR_DESC(data?: Partial<DML_CONVOLUTIO
   if (data?.DimensionCount !== undefined) view.setUint32(40, Number(data.DimensionCount), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.Strides !== undefined) view.setBigUint64(48, data.Strides === null ? 0n : BigInt(util.toPointer(data.Strides)), true);
+  if (data?.Strides !== undefined) view.setBigUint64(48, data.Strides === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Strides))), true);
   // 0x38: pointer
-  if (data?.Dilations !== undefined) view.setBigUint64(56, data.Dilations === null ? 0n : BigInt(util.toPointer(data.Dilations)), true);
+  if (data?.Dilations !== undefined) view.setBigUint64(56, data.Dilations === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Dilations))), true);
   // 0x40: pointer
-  if (data?.StartPadding !== undefined) view.setBigUint64(64, data.StartPadding === null ? 0n : BigInt(util.toPointer(data.StartPadding)), true);
+  if (data?.StartPadding !== undefined) view.setBigUint64(64, data.StartPadding === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.StartPadding))), true);
   // 0x48: pointer
-  if (data?.EndPadding !== undefined) view.setBigUint64(72, data.EndPadding === null ? 0n : BigInt(util.toPointer(data.EndPadding)), true);
+  if (data?.EndPadding !== undefined) view.setBigUint64(72, data.EndPadding === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.EndPadding))), true);
   // 0x50: pointer
-  if (data?.OutputPadding !== undefined) view.setBigUint64(80, data.OutputPadding === null ? 0n : BigInt(util.toPointer(data.OutputPadding)), true);
+  if (data?.OutputPadding !== undefined) view.setBigUint64(80, data.OutputPadding === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputPadding))), true);
   // 0x58: u32
   if (data?.GroupCount !== undefined) view.setUint32(88, Number(data.GroupCount), true);
   // 0x5c: pad4
   // 0x60: pointer
-  if (data?.FusedActivation !== undefined) view.setBigUint64(96, data.FusedActivation === null ? 0n : BigInt(util.toPointer(data.FusedActivation)), true);
+  if (data?.FusedActivation !== undefined) view.setBigUint64(96, data.FusedActivation === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.FusedActivation))), true);
   return buf;
 }
 
@@ -4679,27 +4679,27 @@ export class DML_CONVOLUTION_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get FilterTensor(): Uint8Array | Deno.PointerValue | null {
+  get FilterTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get BiasTensor(): Uint8Array | Deno.PointerValue | null {
+  get BiasTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: i32
@@ -4720,33 +4720,33 @@ export class DML_CONVOLUTION_OPERATOR_DESCView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  get Strides(): Uint8Array | Deno.PointerValue | null {
+  get Strides(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get Dilations(): Uint8Array | Deno.PointerValue | null {
+  get Dilations(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get StartPadding(): Uint8Array | Deno.PointerValue | null {
+  get StartPadding(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: pointer
-  get EndPadding(): Uint8Array | Deno.PointerValue | null {
+  get EndPadding(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: pointer
-  get OutputPadding(): Uint8Array | Deno.PointerValue | null {
+  get OutputPadding(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x58: u32
@@ -4757,29 +4757,29 @@ export class DML_CONVOLUTION_OPERATOR_DESCView {
   // 0x5c: pad4
 
   // 0x60: pointer
-  get FusedActivation(): Uint8Array | Deno.PointerValue | null {
+  get FusedActivation(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(96, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set FilterTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set FilterTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set BiasTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set BiasTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: i32
@@ -4800,28 +4800,28 @@ export class DML_CONVOLUTION_OPERATOR_DESCView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  set Strides(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set Strides(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set Dilations(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set Dilations(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set StartPadding(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set StartPadding(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: pointer
-  set EndPadding(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set EndPadding(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x50: pointer
-  set OutputPadding(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set OutputPadding(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x58: u32
@@ -4832,8 +4832,8 @@ export class DML_CONVOLUTION_OPERATOR_DESCView {
   // 0x5c: pad4
 
   // 0x60: pointer
-  set FusedActivation(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(96, BigInt(util.toPointer(value)), true);
+  set FusedActivation(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(96, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4842,13 +4842,13 @@ export class DML_CONVOLUTION_OPERATOR_DESCView {
  */
 export interface DML_GEMM_OPERATOR_DESC {
   /** ptr */
-  ATensor: Deno.PointerValue | Uint8Array | null;
+  ATensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BTensor: Deno.PointerValue | Uint8Array | null;
+  BTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  CTensor: Deno.PointerValue | Uint8Array | null;
+  CTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_MATRIX_TRANSFORM */
   TransA: DML_MATRIX_TRANSFORM;
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_MATRIX_TRANSFORM */
@@ -4858,7 +4858,7 @@ export interface DML_GEMM_OPERATOR_DESC {
   /** f32 */
   Beta: number;
   /** ptr */
-  FusedActivation: Deno.PointerValue | Uint8Array | null;
+  FusedActivation: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_GEMM_OPERATOR_DESC = 56;
@@ -4867,13 +4867,13 @@ export function allocDML_GEMM_OPERATOR_DESC(data?: Partial<DML_GEMM_OPERATOR_DES
   const buf = new Uint8Array(sizeofDML_GEMM_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(util.toPointer(data.ATensor)), true);
+  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ATensor))), true);
   // 0x08: pointer
-  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(util.toPointer(data.BTensor)), true);
+  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BTensor))), true);
   // 0x10: pointer
-  if (data?.CTensor !== undefined) view.setBigUint64(16, data.CTensor === null ? 0n : BigInt(util.toPointer(data.CTensor)), true);
+  if (data?.CTensor !== undefined) view.setBigUint64(16, data.CTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.CTensor))), true);
   // 0x18: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(24, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(24, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x20: i32
   if (data?.TransA !== undefined) view.setInt32(32, Number(data.TransA), true);
   // 0x24: i32
@@ -4883,7 +4883,7 @@ export function allocDML_GEMM_OPERATOR_DESC(data?: Partial<DML_GEMM_OPERATOR_DES
   // 0x2c: f32
   if (data?.Beta !== undefined) view.setFloat32(44, Number(data.Beta), true);
   // 0x30: pointer
-  if (data?.FusedActivation !== undefined) view.setBigUint64(48, data.FusedActivation === null ? 0n : BigInt(util.toPointer(data.FusedActivation)), true);
+  if (data?.FusedActivation !== undefined) view.setBigUint64(48, data.FusedActivation === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.FusedActivation))), true);
   return buf;
 }
 
@@ -4898,27 +4898,27 @@ export class DML_GEMM_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get ATensor(): Uint8Array | Deno.PointerValue | null {
+  get ATensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get BTensor(): Uint8Array | Deno.PointerValue | null {
+  get BTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get CTensor(): Uint8Array | Deno.PointerValue | null {
+  get CTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: i32
@@ -4942,29 +4942,29 @@ export class DML_GEMM_OPERATOR_DESCView {
   }
 
   // 0x30: pointer
-  get FusedActivation(): Uint8Array | Deno.PointerValue | null {
+  get FusedActivation(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ATensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ATensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set BTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set BTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set CTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set CTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: i32
@@ -4988,8 +4988,8 @@ export class DML_GEMM_OPERATOR_DESCView {
   }
 
   // 0x30: pointer
-  set FusedActivation(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set FusedActivation(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -5000,13 +5000,13 @@ export interface DML_REDUCE_OPERATOR_DESC {
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_REDUCE_FUNCTION */
   Function: DML_REDUCE_FUNCTION;
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   AxisCount: number;
   /** ptr */
-  Axes: Deno.PointerValue | Uint8Array | null;
+  Axes: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_REDUCE_OPERATOR_DESC = 40;
@@ -5018,14 +5018,14 @@ export function allocDML_REDUCE_OPERATOR_DESC(data?: Partial<DML_REDUCE_OPERATOR
   if (data?.Function !== undefined) view.setInt32(0, Number(data.Function), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(8, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(8, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x18: u32
   if (data?.AxisCount !== undefined) view.setUint32(24, Number(data.AxisCount), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.Axes !== undefined) view.setBigUint64(32, data.Axes === null ? 0n : BigInt(util.toPointer(data.Axes)), true);
+  if (data?.Axes !== undefined) view.setBigUint64(32, data.Axes === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Axes))), true);
   return buf;
 }
 
@@ -5047,15 +5047,15 @@ export class DML_REDUCE_OPERATOR_DESCView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -5066,9 +5066,9 @@ export class DML_REDUCE_OPERATOR_DESCView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get Axes(): Uint8Array | Deno.PointerValue | null {
+  get Axes(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -5079,13 +5079,13 @@ export class DML_REDUCE_OPERATOR_DESCView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -5096,8 +5096,8 @@ export class DML_REDUCE_OPERATOR_DESCView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set Axes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set Axes(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -5108,19 +5108,19 @@ export type BOOL = number;
  */
 export interface DML_AVERAGE_POOLING_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   DimensionCount: number;
   /** ptr */
-  Strides: Deno.PointerValue | Uint8Array | null;
+  Strides: Deno.PointerValue | Uint8Array;
   /** ptr */
-  WindowSize: Deno.PointerValue | Uint8Array | null;
+  WindowSize: Deno.PointerValue | Uint8Array;
   /** ptr */
-  StartPadding: Deno.PointerValue | Uint8Array | null;
+  StartPadding: Deno.PointerValue | Uint8Array;
   /** ptr */
-  EndPadding: Deno.PointerValue | Uint8Array | null;
+  EndPadding: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.BOOL */
   IncludePadding: boolean;
 }
@@ -5131,20 +5131,20 @@ export function allocDML_AVERAGE_POOLING_OPERATOR_DESC(data?: Partial<DML_AVERAG
   const buf = new Uint8Array(sizeofDML_AVERAGE_POOLING_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: u32
   if (data?.DimensionCount !== undefined) view.setUint32(16, Number(data.DimensionCount), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.Strides !== undefined) view.setBigUint64(24, data.Strides === null ? 0n : BigInt(util.toPointer(data.Strides)), true);
+  if (data?.Strides !== undefined) view.setBigUint64(24, data.Strides === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Strides))), true);
   // 0x20: pointer
-  if (data?.WindowSize !== undefined) view.setBigUint64(32, data.WindowSize === null ? 0n : BigInt(util.toPointer(data.WindowSize)), true);
+  if (data?.WindowSize !== undefined) view.setBigUint64(32, data.WindowSize === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WindowSize))), true);
   // 0x28: pointer
-  if (data?.StartPadding !== undefined) view.setBigUint64(40, data.StartPadding === null ? 0n : BigInt(util.toPointer(data.StartPadding)), true);
+  if (data?.StartPadding !== undefined) view.setBigUint64(40, data.StartPadding === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.StartPadding))), true);
   // 0x30: pointer
-  if (data?.EndPadding !== undefined) view.setBigUint64(48, data.EndPadding === null ? 0n : BigInt(util.toPointer(data.EndPadding)), true);
+  if (data?.EndPadding !== undefined) view.setBigUint64(48, data.EndPadding === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.EndPadding))), true);
   // 0x38: i32
   if (data?.IncludePadding !== undefined) view.setInt32(56, Number(data.IncludePadding), true);
   // 0x3c: pad4
@@ -5162,15 +5162,15 @@ export class DML_AVERAGE_POOLING_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -5181,27 +5181,27 @@ export class DML_AVERAGE_POOLING_OPERATOR_DESCView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get Strides(): Uint8Array | Deno.PointerValue | null {
+  get Strides(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get WindowSize(): Uint8Array | Deno.PointerValue | null {
+  get WindowSize(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get StartPadding(): Uint8Array | Deno.PointerValue | null {
+  get StartPadding(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get EndPadding(): Uint8Array | Deno.PointerValue | null {
+  get EndPadding(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: i32
@@ -5212,13 +5212,13 @@ export class DML_AVERAGE_POOLING_OPERATOR_DESCView {
   // 0x3c: pad4
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -5229,23 +5229,23 @@ export class DML_AVERAGE_POOLING_OPERATOR_DESCView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set Strides(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set Strides(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set WindowSize(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set WindowSize(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set StartPadding(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set StartPadding(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set EndPadding(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set EndPadding(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: i32
@@ -5261,19 +5261,19 @@ export class DML_AVERAGE_POOLING_OPERATOR_DESCView {
  */
 export interface DML_LP_POOLING_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   DimensionCount: number;
   /** ptr */
-  Strides: Deno.PointerValue | Uint8Array | null;
+  Strides: Deno.PointerValue | Uint8Array;
   /** ptr */
-  WindowSize: Deno.PointerValue | Uint8Array | null;
+  WindowSize: Deno.PointerValue | Uint8Array;
   /** ptr */
-  StartPadding: Deno.PointerValue | Uint8Array | null;
+  StartPadding: Deno.PointerValue | Uint8Array;
   /** ptr */
-  EndPadding: Deno.PointerValue | Uint8Array | null;
+  EndPadding: Deno.PointerValue | Uint8Array;
   /** u32 */
   P: number;
 }
@@ -5284,20 +5284,20 @@ export function allocDML_LP_POOLING_OPERATOR_DESC(data?: Partial<DML_LP_POOLING_
   const buf = new Uint8Array(sizeofDML_LP_POOLING_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: u32
   if (data?.DimensionCount !== undefined) view.setUint32(16, Number(data.DimensionCount), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.Strides !== undefined) view.setBigUint64(24, data.Strides === null ? 0n : BigInt(util.toPointer(data.Strides)), true);
+  if (data?.Strides !== undefined) view.setBigUint64(24, data.Strides === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Strides))), true);
   // 0x20: pointer
-  if (data?.WindowSize !== undefined) view.setBigUint64(32, data.WindowSize === null ? 0n : BigInt(util.toPointer(data.WindowSize)), true);
+  if (data?.WindowSize !== undefined) view.setBigUint64(32, data.WindowSize === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WindowSize))), true);
   // 0x28: pointer
-  if (data?.StartPadding !== undefined) view.setBigUint64(40, data.StartPadding === null ? 0n : BigInt(util.toPointer(data.StartPadding)), true);
+  if (data?.StartPadding !== undefined) view.setBigUint64(40, data.StartPadding === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.StartPadding))), true);
   // 0x30: pointer
-  if (data?.EndPadding !== undefined) view.setBigUint64(48, data.EndPadding === null ? 0n : BigInt(util.toPointer(data.EndPadding)), true);
+  if (data?.EndPadding !== undefined) view.setBigUint64(48, data.EndPadding === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.EndPadding))), true);
   // 0x38: u32
   if (data?.P !== undefined) view.setUint32(56, Number(data.P), true);
   // 0x3c: pad4
@@ -5315,15 +5315,15 @@ export class DML_LP_POOLING_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -5334,27 +5334,27 @@ export class DML_LP_POOLING_OPERATOR_DESCView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get Strides(): Uint8Array | Deno.PointerValue | null {
+  get Strides(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get WindowSize(): Uint8Array | Deno.PointerValue | null {
+  get WindowSize(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get StartPadding(): Uint8Array | Deno.PointerValue | null {
+  get StartPadding(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get EndPadding(): Uint8Array | Deno.PointerValue | null {
+  get EndPadding(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: u32
@@ -5365,13 +5365,13 @@ export class DML_LP_POOLING_OPERATOR_DESCView {
   // 0x3c: pad4
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -5382,23 +5382,23 @@ export class DML_LP_POOLING_OPERATOR_DESCView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set Strides(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set Strides(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set WindowSize(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set WindowSize(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set StartPadding(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set StartPadding(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set EndPadding(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set EndPadding(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: u32
@@ -5414,19 +5414,19 @@ export class DML_LP_POOLING_OPERATOR_DESCView {
  */
 export interface DML_MAX_POOLING_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   DimensionCount: number;
   /** ptr */
-  Strides: Deno.PointerValue | Uint8Array | null;
+  Strides: Deno.PointerValue | Uint8Array;
   /** ptr */
-  WindowSize: Deno.PointerValue | Uint8Array | null;
+  WindowSize: Deno.PointerValue | Uint8Array;
   /** ptr */
-  StartPadding: Deno.PointerValue | Uint8Array | null;
+  StartPadding: Deno.PointerValue | Uint8Array;
   /** ptr */
-  EndPadding: Deno.PointerValue | Uint8Array | null;
+  EndPadding: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_MAX_POOLING_OPERATOR_DESC = 56;
@@ -5435,20 +5435,20 @@ export function allocDML_MAX_POOLING_OPERATOR_DESC(data?: Partial<DML_MAX_POOLIN
   const buf = new Uint8Array(sizeofDML_MAX_POOLING_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: u32
   if (data?.DimensionCount !== undefined) view.setUint32(16, Number(data.DimensionCount), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.Strides !== undefined) view.setBigUint64(24, data.Strides === null ? 0n : BigInt(util.toPointer(data.Strides)), true);
+  if (data?.Strides !== undefined) view.setBigUint64(24, data.Strides === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Strides))), true);
   // 0x20: pointer
-  if (data?.WindowSize !== undefined) view.setBigUint64(32, data.WindowSize === null ? 0n : BigInt(util.toPointer(data.WindowSize)), true);
+  if (data?.WindowSize !== undefined) view.setBigUint64(32, data.WindowSize === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WindowSize))), true);
   // 0x28: pointer
-  if (data?.StartPadding !== undefined) view.setBigUint64(40, data.StartPadding === null ? 0n : BigInt(util.toPointer(data.StartPadding)), true);
+  if (data?.StartPadding !== undefined) view.setBigUint64(40, data.StartPadding === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.StartPadding))), true);
   // 0x30: pointer
-  if (data?.EndPadding !== undefined) view.setBigUint64(48, data.EndPadding === null ? 0n : BigInt(util.toPointer(data.EndPadding)), true);
+  if (data?.EndPadding !== undefined) view.setBigUint64(48, data.EndPadding === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.EndPadding))), true);
   return buf;
 }
 
@@ -5463,15 +5463,15 @@ export class DML_MAX_POOLING_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -5482,37 +5482,37 @@ export class DML_MAX_POOLING_OPERATOR_DESCView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get Strides(): Uint8Array | Deno.PointerValue | null {
+  get Strides(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get WindowSize(): Uint8Array | Deno.PointerValue | null {
+  get WindowSize(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get StartPadding(): Uint8Array | Deno.PointerValue | null {
+  get StartPadding(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get EndPadding(): Uint8Array | Deno.PointerValue | null {
+  get EndPadding(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -5523,23 +5523,23 @@ export class DML_MAX_POOLING_OPERATOR_DESCView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set Strides(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set Strides(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set WindowSize(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set WindowSize(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set StartPadding(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set StartPadding(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set EndPadding(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set EndPadding(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -5548,15 +5548,15 @@ export class DML_MAX_POOLING_OPERATOR_DESCView {
  */
 export interface DML_ROI_POOLING_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ROITensor: Deno.PointerValue | Uint8Array | null;
+  ROITensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** f32 */
   SpatialScale: number;
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_SIZE_2D */
-  PooledSize: Uint8Array | Deno.PointerValue | null;
+  PooledSize: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDML_ROI_POOLING_OPERATOR_DESC = 40;
@@ -5565,16 +5565,16 @@ export function allocDML_ROI_POOLING_OPERATOR_DESC(data?: Partial<DML_ROI_POOLIN
   const buf = new Uint8Array(sizeofDML_ROI_POOLING_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.ROITensor !== undefined) view.setBigUint64(8, data.ROITensor === null ? 0n : BigInt(util.toPointer(data.ROITensor)), true);
+  if (data?.ROITensor !== undefined) view.setBigUint64(8, data.ROITensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ROITensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x18: f32
   if (data?.SpatialScale !== undefined) view.setFloat32(24, Number(data.SpatialScale), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.PooledSize !== undefined) view.setBigUint64(32, data.PooledSize === null ? 0n : BigInt(util.toPointer(data.PooledSize)), true);
+  if (data?.PooledSize !== undefined) view.setBigUint64(32, data.PooledSize === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.PooledSize))), true);
   return buf;
 }
 
@@ -5589,21 +5589,21 @@ export class DML_ROI_POOLING_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get ROITensor(): Uint8Array | Deno.PointerValue | null {
+  get ROITensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: f32
@@ -5614,24 +5614,24 @@ export class DML_ROI_POOLING_OPERATOR_DESCView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get PooledSize(): Uint8Array | Deno.PointerValue | null {
+  get PooledSize(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set ROITensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ROITensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: f32
@@ -5642,8 +5642,8 @@ export class DML_ROI_POOLING_OPERATOR_DESCView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set PooledSize(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set PooledSize(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -5652,17 +5652,17 @@ export class DML_ROI_POOLING_OPERATOR_DESCView {
  */
 export interface DML_SLICE_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   DimensionCount: number;
   /** ptr */
-  Offsets: Deno.PointerValue | Uint8Array | null;
+  Offsets: Deno.PointerValue | Uint8Array;
   /** ptr */
-  Sizes: Deno.PointerValue | Uint8Array | null;
+  Sizes: Deno.PointerValue | Uint8Array;
   /** ptr */
-  Strides: Deno.PointerValue | Uint8Array | null;
+  Strides: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_SLICE_OPERATOR_DESC = 48;
@@ -5671,18 +5671,18 @@ export function allocDML_SLICE_OPERATOR_DESC(data?: Partial<DML_SLICE_OPERATOR_D
   const buf = new Uint8Array(sizeofDML_SLICE_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: u32
   if (data?.DimensionCount !== undefined) view.setUint32(16, Number(data.DimensionCount), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.Offsets !== undefined) view.setBigUint64(24, data.Offsets === null ? 0n : BigInt(util.toPointer(data.Offsets)), true);
+  if (data?.Offsets !== undefined) view.setBigUint64(24, data.Offsets === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Offsets))), true);
   // 0x20: pointer
-  if (data?.Sizes !== undefined) view.setBigUint64(32, data.Sizes === null ? 0n : BigInt(util.toPointer(data.Sizes)), true);
+  if (data?.Sizes !== undefined) view.setBigUint64(32, data.Sizes === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Sizes))), true);
   // 0x28: pointer
-  if (data?.Strides !== undefined) view.setBigUint64(40, data.Strides === null ? 0n : BigInt(util.toPointer(data.Strides)), true);
+  if (data?.Strides !== undefined) view.setBigUint64(40, data.Strides === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Strides))), true);
   return buf;
 }
 
@@ -5697,15 +5697,15 @@ export class DML_SLICE_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -5716,31 +5716,31 @@ export class DML_SLICE_OPERATOR_DESCView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get Offsets(): Uint8Array | Deno.PointerValue | null {
+  get Offsets(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get Sizes(): Uint8Array | Deno.PointerValue | null {
+  get Sizes(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get Strides(): Uint8Array | Deno.PointerValue | null {
+  get Strides(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -5751,18 +5751,18 @@ export class DML_SLICE_OPERATOR_DESCView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set Offsets(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set Offsets(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set Sizes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set Sizes(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set Strides(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set Strides(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -5771,9 +5771,9 @@ export class DML_SLICE_OPERATOR_DESCView {
  */
 export interface DML_CAST_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_CAST_OPERATOR_DESC = 16;
@@ -5782,9 +5782,9 @@ export function allocDML_CAST_OPERATOR_DESC(data?: Partial<DML_CAST_OPERATOR_DES
   const buf = new Uint8Array(sizeofDML_CAST_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -5799,25 +5799,25 @@ export class DML_CAST_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -5826,11 +5826,11 @@ export class DML_CAST_OPERATOR_DESCView {
  */
 export interface DML_SPLIT_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   OutputCount: number;
   /** ptr */
-  OutputTensors: Deno.PointerValue | Uint8Array | null;
+  OutputTensors: Deno.PointerValue | Uint8Array;
   /** u32 */
   Axis: number;
 }
@@ -5841,12 +5841,12 @@ export function allocDML_SPLIT_OPERATOR_DESC(data?: Partial<DML_SPLIT_OPERATOR_D
   const buf = new Uint8Array(sizeofDML_SPLIT_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: u32
   if (data?.OutputCount !== undefined) view.setUint32(8, Number(data.OutputCount), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.OutputTensors !== undefined) view.setBigUint64(16, data.OutputTensors === null ? 0n : BigInt(util.toPointer(data.OutputTensors)), true);
+  if (data?.OutputTensors !== undefined) view.setBigUint64(16, data.OutputTensors === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensors))), true);
   // 0x18: u32
   if (data?.Axis !== undefined) view.setUint32(24, Number(data.Axis), true);
   // 0x1c: pad4
@@ -5864,9 +5864,9 @@ export class DML_SPLIT_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -5877,9 +5877,9 @@ export class DML_SPLIT_OPERATOR_DESCView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get OutputTensors(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensors(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -5890,8 +5890,8 @@ export class DML_SPLIT_OPERATOR_DESCView {
   // 0x1c: pad4
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -5902,8 +5902,8 @@ export class DML_SPLIT_OPERATOR_DESCView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set OutputTensors(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensors(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -5921,9 +5921,9 @@ export interface DML_JOIN_OPERATOR_DESC {
   /** u32 */
   InputCount: number;
   /** ptr */
-  InputTensors: Deno.PointerValue | Uint8Array | null;
+  InputTensors: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   Axis: number;
 }
@@ -5937,9 +5937,9 @@ export function allocDML_JOIN_OPERATOR_DESC(data?: Partial<DML_JOIN_OPERATOR_DES
   if (data?.InputCount !== undefined) view.setUint32(0, Number(data.InputCount), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.InputTensors !== undefined) view.setBigUint64(8, data.InputTensors === null ? 0n : BigInt(util.toPointer(data.InputTensors)), true);
+  if (data?.InputTensors !== undefined) view.setBigUint64(8, data.InputTensors === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensors))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x18: u32
   if (data?.Axis !== undefined) view.setUint32(24, Number(data.Axis), true);
   // 0x1c: pad4
@@ -5964,15 +5964,15 @@ export class DML_JOIN_OPERATOR_DESCView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get InputTensors(): Uint8Array | Deno.PointerValue | null {
+  get InputTensors(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -5990,13 +5990,13 @@ export class DML_JOIN_OPERATOR_DESCView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set InputTensors(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set InputTensors(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -6012,9 +6012,9 @@ export class DML_JOIN_OPERATOR_DESCView {
  */
 export interface DML_PADDING_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_PADDING_MODE */
   PaddingMode: DML_PADDING_MODE;
   /** f32 */
@@ -6022,9 +6022,9 @@ export interface DML_PADDING_OPERATOR_DESC {
   /** u32 */
   DimensionCount: number;
   /** ptr */
-  StartPadding: Deno.PointerValue | Uint8Array | null;
+  StartPadding: Deno.PointerValue | Uint8Array;
   /** ptr */
-  EndPadding: Deno.PointerValue | Uint8Array | null;
+  EndPadding: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_PADDING_OPERATOR_DESC = 48;
@@ -6033,9 +6033,9 @@ export function allocDML_PADDING_OPERATOR_DESC(data?: Partial<DML_PADDING_OPERAT
   const buf = new Uint8Array(sizeofDML_PADDING_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: i32
   if (data?.PaddingMode !== undefined) view.setInt32(16, Number(data.PaddingMode), true);
   // 0x14: f32
@@ -6044,9 +6044,9 @@ export function allocDML_PADDING_OPERATOR_DESC(data?: Partial<DML_PADDING_OPERAT
   if (data?.DimensionCount !== undefined) view.setUint32(24, Number(data.DimensionCount), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.StartPadding !== undefined) view.setBigUint64(32, data.StartPadding === null ? 0n : BigInt(util.toPointer(data.StartPadding)), true);
+  if (data?.StartPadding !== undefined) view.setBigUint64(32, data.StartPadding === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.StartPadding))), true);
   // 0x28: pointer
-  if (data?.EndPadding !== undefined) view.setBigUint64(40, data.EndPadding === null ? 0n : BigInt(util.toPointer(data.EndPadding)), true);
+  if (data?.EndPadding !== undefined) view.setBigUint64(40, data.EndPadding === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.EndPadding))), true);
   return buf;
 }
 
@@ -6061,15 +6061,15 @@ export class DML_PADDING_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i32
@@ -6090,25 +6090,25 @@ export class DML_PADDING_OPERATOR_DESCView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get StartPadding(): Uint8Array | Deno.PointerValue | null {
+  get StartPadding(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get EndPadding(): Uint8Array | Deno.PointerValue | null {
+  get EndPadding(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: i32
@@ -6129,13 +6129,13 @@ export class DML_PADDING_OPERATOR_DESCView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set StartPadding(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set StartPadding(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set EndPadding(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set EndPadding(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -6144,15 +6144,15 @@ export class DML_PADDING_OPERATOR_DESCView {
  */
 export interface DML_VALUE_SCALE_2D_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** f32 */
   Scale: number;
   /** u32 */
   ChannelCount: number;
   /** ptr */
-  Bias: Deno.PointerValue | Uint8Array | null;
+  Bias: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_VALUE_SCALE_2D_OPERATOR_DESC = 32;
@@ -6161,15 +6161,15 @@ export function allocDML_VALUE_SCALE_2D_OPERATOR_DESC(data?: Partial<DML_VALUE_S
   const buf = new Uint8Array(sizeofDML_VALUE_SCALE_2D_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: f32
   if (data?.Scale !== undefined) view.setFloat32(16, Number(data.Scale), true);
   // 0x14: u32
   if (data?.ChannelCount !== undefined) view.setUint32(20, Number(data.ChannelCount), true);
   // 0x18: pointer
-  if (data?.Bias !== undefined) view.setBigUint64(24, data.Bias === null ? 0n : BigInt(util.toPointer(data.Bias)), true);
+  if (data?.Bias !== undefined) view.setBigUint64(24, data.Bias === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Bias))), true);
   return buf;
 }
 
@@ -6184,15 +6184,15 @@ export class DML_VALUE_SCALE_2D_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: f32
@@ -6206,19 +6206,19 @@ export class DML_VALUE_SCALE_2D_OPERATOR_DESCView {
   }
 
   // 0x18: pointer
-  get Bias(): Uint8Array | Deno.PointerValue | null {
+  get Bias(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: f32
@@ -6232,8 +6232,8 @@ export class DML_VALUE_SCALE_2D_OPERATOR_DESCView {
   }
 
   // 0x18: pointer
-  set Bias(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set Bias(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -6242,11 +6242,11 @@ export class DML_VALUE_SCALE_2D_OPERATOR_DESCView {
  */
 export interface DML_UPSAMPLE_2D_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_SIZE_2D */
-  ScaleSize: Uint8Array | Deno.PointerValue | null;
+  ScaleSize: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_INTERPOLATION_MODE */
   InterpolationMode: DML_INTERPOLATION_MODE;
 }
@@ -6257,11 +6257,11 @@ export function allocDML_UPSAMPLE_2D_OPERATOR_DESC(data?: Partial<DML_UPSAMPLE_2
   const buf = new Uint8Array(sizeofDML_UPSAMPLE_2D_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: pointer
-  if (data?.ScaleSize !== undefined) view.setBigUint64(16, data.ScaleSize === null ? 0n : BigInt(util.toPointer(data.ScaleSize)), true);
+  if (data?.ScaleSize !== undefined) view.setBigUint64(16, data.ScaleSize === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScaleSize))), true);
   // 0x18: i32
   if (data?.InterpolationMode !== undefined) view.setInt32(24, Number(data.InterpolationMode), true);
   // 0x1c: pad4
@@ -6279,21 +6279,21 @@ export class DML_UPSAMPLE_2D_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ScaleSize(): Uint8Array | Deno.PointerValue | null {
+  get ScaleSize(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: i32
@@ -6304,18 +6304,18 @@ export class DML_UPSAMPLE_2D_OPERATOR_DESCView {
   // 0x1c: pad4
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ScaleSize(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ScaleSize(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: i32
@@ -6331,11 +6331,11 @@ export class DML_UPSAMPLE_2D_OPERATOR_DESCView {
  */
 export interface DML_GATHER_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  IndicesTensor: Deno.PointerValue | Uint8Array | null;
+  IndicesTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   Axis: number;
   /** u32 */
@@ -6348,11 +6348,11 @@ export function allocDML_GATHER_OPERATOR_DESC(data?: Partial<DML_GATHER_OPERATOR
   const buf = new Uint8Array(sizeofDML_GATHER_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.IndicesTensor !== undefined) view.setBigUint64(8, data.IndicesTensor === null ? 0n : BigInt(util.toPointer(data.IndicesTensor)), true);
+  if (data?.IndicesTensor !== undefined) view.setBigUint64(8, data.IndicesTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.IndicesTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x18: u32
   if (data?.Axis !== undefined) view.setUint32(24, Number(data.Axis), true);
   // 0x1c: u32
@@ -6371,21 +6371,21 @@ export class DML_GATHER_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get IndicesTensor(): Uint8Array | Deno.PointerValue | null {
+  get IndicesTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -6399,18 +6399,18 @@ export class DML_GATHER_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set IndicesTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set IndicesTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -6429,9 +6429,9 @@ export class DML_GATHER_OPERATOR_DESCView {
  */
 export interface DML_SPACE_TO_DEPTH_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   BlockSize: number;
 }
@@ -6442,9 +6442,9 @@ export function allocDML_SPACE_TO_DEPTH_OPERATOR_DESC(data?: Partial<DML_SPACE_T
   const buf = new Uint8Array(sizeofDML_SPACE_TO_DEPTH_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: u32
   if (data?.BlockSize !== undefined) view.setUint32(16, Number(data.BlockSize), true);
   // 0x14: pad4
@@ -6462,15 +6462,15 @@ export class DML_SPACE_TO_DEPTH_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -6481,13 +6481,13 @@ export class DML_SPACE_TO_DEPTH_OPERATOR_DESCView {
   // 0x14: pad4
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -6503,9 +6503,9 @@ export class DML_SPACE_TO_DEPTH_OPERATOR_DESCView {
  */
 export interface DML_DEPTH_TO_SPACE_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   BlockSize: number;
 }
@@ -6516,9 +6516,9 @@ export function allocDML_DEPTH_TO_SPACE_OPERATOR_DESC(data?: Partial<DML_DEPTH_T
   const buf = new Uint8Array(sizeofDML_DEPTH_TO_SPACE_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: u32
   if (data?.BlockSize !== undefined) view.setUint32(16, Number(data.BlockSize), true);
   // 0x14: pad4
@@ -6536,15 +6536,15 @@ export class DML_DEPTH_TO_SPACE_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -6555,13 +6555,13 @@ export class DML_DEPTH_TO_SPACE_OPERATOR_DESCView {
   // 0x14: pad4
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -6577,13 +6577,13 @@ export class DML_DEPTH_TO_SPACE_OPERATOR_DESCView {
  */
 export interface DML_TILE_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   RepeatsCount: number;
   /** ptr */
-  Repeats: Deno.PointerValue | Uint8Array | null;
+  Repeats: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_TILE_OPERATOR_DESC = 32;
@@ -6592,14 +6592,14 @@ export function allocDML_TILE_OPERATOR_DESC(data?: Partial<DML_TILE_OPERATOR_DES
   const buf = new Uint8Array(sizeofDML_TILE_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: u32
   if (data?.RepeatsCount !== undefined) view.setUint32(16, Number(data.RepeatsCount), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.Repeats !== undefined) view.setBigUint64(24, data.Repeats === null ? 0n : BigInt(util.toPointer(data.Repeats)), true);
+  if (data?.Repeats !== undefined) view.setBigUint64(24, data.Repeats === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Repeats))), true);
   return buf;
 }
 
@@ -6614,15 +6614,15 @@ export class DML_TILE_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -6633,19 +6633,19 @@ export class DML_TILE_OPERATOR_DESCView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get Repeats(): Uint8Array | Deno.PointerValue | null {
+  get Repeats(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -6656,8 +6656,8 @@ export class DML_TILE_OPERATOR_DESCView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set Repeats(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set Repeats(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -6666,11 +6666,11 @@ export class DML_TILE_OPERATOR_DESCView {
  */
 export interface DML_TOP_K_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputValueTensor: Deno.PointerValue | Uint8Array | null;
+  OutputValueTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputIndexTensor: Deno.PointerValue | Uint8Array | null;
+  OutputIndexTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   Axis: number;
   /** u32 */
@@ -6683,11 +6683,11 @@ export function allocDML_TOP_K_OPERATOR_DESC(data?: Partial<DML_TOP_K_OPERATOR_D
   const buf = new Uint8Array(sizeofDML_TOP_K_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputValueTensor !== undefined) view.setBigUint64(8, data.OutputValueTensor === null ? 0n : BigInt(util.toPointer(data.OutputValueTensor)), true);
+  if (data?.OutputValueTensor !== undefined) view.setBigUint64(8, data.OutputValueTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputValueTensor))), true);
   // 0x10: pointer
-  if (data?.OutputIndexTensor !== undefined) view.setBigUint64(16, data.OutputIndexTensor === null ? 0n : BigInt(util.toPointer(data.OutputIndexTensor)), true);
+  if (data?.OutputIndexTensor !== undefined) view.setBigUint64(16, data.OutputIndexTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputIndexTensor))), true);
   // 0x18: u32
   if (data?.Axis !== undefined) view.setUint32(24, Number(data.Axis), true);
   // 0x1c: u32
@@ -6706,21 +6706,21 @@ export class DML_TOP_K_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputValueTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputValueTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputIndexTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputIndexTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -6734,18 +6734,18 @@ export class DML_TOP_K_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputValueTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputValueTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputIndexTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputIndexTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -6764,23 +6764,23 @@ export class DML_TOP_K_OPERATOR_DESCView {
  */
 export interface DML_BATCH_NORMALIZATION_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  MeanTensor: Deno.PointerValue | Uint8Array | null;
+  MeanTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  VarianceTensor: Deno.PointerValue | Uint8Array | null;
+  VarianceTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ScaleTensor: Deno.PointerValue | Uint8Array | null;
+  ScaleTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BiasTensor: Deno.PointerValue | Uint8Array | null;
+  BiasTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.BOOL */
   Spatial: boolean;
   /** f32 */
   Epsilon: number;
   /** ptr */
-  FusedActivation: Deno.PointerValue | Uint8Array | null;
+  FusedActivation: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_BATCH_NORMALIZATION_OPERATOR_DESC = 64;
@@ -6789,23 +6789,23 @@ export function allocDML_BATCH_NORMALIZATION_OPERATOR_DESC(data?: Partial<DML_BA
   const buf = new Uint8Array(sizeofDML_BATCH_NORMALIZATION_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.MeanTensor !== undefined) view.setBigUint64(8, data.MeanTensor === null ? 0n : BigInt(util.toPointer(data.MeanTensor)), true);
+  if (data?.MeanTensor !== undefined) view.setBigUint64(8, data.MeanTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.MeanTensor))), true);
   // 0x10: pointer
-  if (data?.VarianceTensor !== undefined) view.setBigUint64(16, data.VarianceTensor === null ? 0n : BigInt(util.toPointer(data.VarianceTensor)), true);
+  if (data?.VarianceTensor !== undefined) view.setBigUint64(16, data.VarianceTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.VarianceTensor))), true);
   // 0x18: pointer
-  if (data?.ScaleTensor !== undefined) view.setBigUint64(24, data.ScaleTensor === null ? 0n : BigInt(util.toPointer(data.ScaleTensor)), true);
+  if (data?.ScaleTensor !== undefined) view.setBigUint64(24, data.ScaleTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScaleTensor))), true);
   // 0x20: pointer
-  if (data?.BiasTensor !== undefined) view.setBigUint64(32, data.BiasTensor === null ? 0n : BigInt(util.toPointer(data.BiasTensor)), true);
+  if (data?.BiasTensor !== undefined) view.setBigUint64(32, data.BiasTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BiasTensor))), true);
   // 0x28: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(40, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(40, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x30: i32
   if (data?.Spatial !== undefined) view.setInt32(48, Number(data.Spatial), true);
   // 0x34: f32
   if (data?.Epsilon !== undefined) view.setFloat32(52, Number(data.Epsilon), true);
   // 0x38: pointer
-  if (data?.FusedActivation !== undefined) view.setBigUint64(56, data.FusedActivation === null ? 0n : BigInt(util.toPointer(data.FusedActivation)), true);
+  if (data?.FusedActivation !== undefined) view.setBigUint64(56, data.FusedActivation === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.FusedActivation))), true);
   return buf;
 }
 
@@ -6820,39 +6820,39 @@ export class DML_BATCH_NORMALIZATION_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get MeanTensor(): Uint8Array | Deno.PointerValue | null {
+  get MeanTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get VarianceTensor(): Uint8Array | Deno.PointerValue | null {
+  get VarianceTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get ScaleTensor(): Uint8Array | Deno.PointerValue | null {
+  get ScaleTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get BiasTensor(): Uint8Array | Deno.PointerValue | null {
+  get BiasTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: i32
@@ -6866,39 +6866,39 @@ export class DML_BATCH_NORMALIZATION_OPERATOR_DESCView {
   }
 
   // 0x38: pointer
-  get FusedActivation(): Uint8Array | Deno.PointerValue | null {
+  get FusedActivation(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set MeanTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set MeanTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set VarianceTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set VarianceTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set ScaleTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set ScaleTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set BiasTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set BiasTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: i32
@@ -6912,8 +6912,8 @@ export class DML_BATCH_NORMALIZATION_OPERATOR_DESCView {
   }
 
   // 0x38: pointer
-  set FusedActivation(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set FusedActivation(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -6922,13 +6922,13 @@ export class DML_BATCH_NORMALIZATION_OPERATOR_DESCView {
  */
 export interface DML_MEAN_VARIANCE_NORMALIZATION_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ScaleTensor: Deno.PointerValue | Uint8Array | null;
+  ScaleTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BiasTensor: Deno.PointerValue | Uint8Array | null;
+  BiasTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.BOOL */
   CrossChannel: boolean;
   /** Windows.Win32.Foundation.BOOL */
@@ -6936,7 +6936,7 @@ export interface DML_MEAN_VARIANCE_NORMALIZATION_OPERATOR_DESC {
   /** f32 */
   Epsilon: number;
   /** ptr */
-  FusedActivation: Deno.PointerValue | Uint8Array | null;
+  FusedActivation: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_MEAN_VARIANCE_NORMALIZATION_OPERATOR_DESC = 56;
@@ -6945,13 +6945,13 @@ export function allocDML_MEAN_VARIANCE_NORMALIZATION_OPERATOR_DESC(data?: Partia
   const buf = new Uint8Array(sizeofDML_MEAN_VARIANCE_NORMALIZATION_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.ScaleTensor !== undefined) view.setBigUint64(8, data.ScaleTensor === null ? 0n : BigInt(util.toPointer(data.ScaleTensor)), true);
+  if (data?.ScaleTensor !== undefined) view.setBigUint64(8, data.ScaleTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScaleTensor))), true);
   // 0x10: pointer
-  if (data?.BiasTensor !== undefined) view.setBigUint64(16, data.BiasTensor === null ? 0n : BigInt(util.toPointer(data.BiasTensor)), true);
+  if (data?.BiasTensor !== undefined) view.setBigUint64(16, data.BiasTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BiasTensor))), true);
   // 0x18: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(24, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(24, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x20: i32
   if (data?.CrossChannel !== undefined) view.setInt32(32, Number(data.CrossChannel), true);
   // 0x24: i32
@@ -6960,7 +6960,7 @@ export function allocDML_MEAN_VARIANCE_NORMALIZATION_OPERATOR_DESC(data?: Partia
   if (data?.Epsilon !== undefined) view.setFloat32(40, Number(data.Epsilon), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.FusedActivation !== undefined) view.setBigUint64(48, data.FusedActivation === null ? 0n : BigInt(util.toPointer(data.FusedActivation)), true);
+  if (data?.FusedActivation !== undefined) view.setBigUint64(48, data.FusedActivation === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.FusedActivation))), true);
   return buf;
 }
 
@@ -6975,27 +6975,27 @@ export class DML_MEAN_VARIANCE_NORMALIZATION_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get ScaleTensor(): Uint8Array | Deno.PointerValue | null {
+  get ScaleTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get BiasTensor(): Uint8Array | Deno.PointerValue | null {
+  get BiasTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: i32
@@ -7016,29 +7016,29 @@ export class DML_MEAN_VARIANCE_NORMALIZATION_OPERATOR_DESCView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  get FusedActivation(): Uint8Array | Deno.PointerValue | null {
+  get FusedActivation(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set ScaleTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ScaleTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set BiasTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set BiasTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: i32
@@ -7059,8 +7059,8 @@ export class DML_MEAN_VARIANCE_NORMALIZATION_OPERATOR_DESCView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  set FusedActivation(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set FusedActivation(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -7069,9 +7069,9 @@ export class DML_MEAN_VARIANCE_NORMALIZATION_OPERATOR_DESCView {
  */
 export interface DML_LOCAL_RESPONSE_NORMALIZATION_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.BOOL */
   CrossChannel: boolean;
   /** u32 */
@@ -7090,9 +7090,9 @@ export function allocDML_LOCAL_RESPONSE_NORMALIZATION_OPERATOR_DESC(data?: Parti
   const buf = new Uint8Array(sizeofDML_LOCAL_RESPONSE_NORMALIZATION_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: i32
   if (data?.CrossChannel !== undefined) view.setInt32(16, Number(data.CrossChannel), true);
   // 0x14: u32
@@ -7118,15 +7118,15 @@ export class DML_LOCAL_RESPONSE_NORMALIZATION_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i32
@@ -7157,13 +7157,13 @@ export class DML_LOCAL_RESPONSE_NORMALIZATION_OPERATOR_DESCView {
   // 0x24: pad4
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: i32
@@ -7199,9 +7199,9 @@ export class DML_LOCAL_RESPONSE_NORMALIZATION_OPERATOR_DESCView {
  */
 export interface DML_LP_NORMALIZATION_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   Axis: number;
   /** f32 */
@@ -7216,9 +7216,9 @@ export function allocDML_LP_NORMALIZATION_OPERATOR_DESC(data?: Partial<DML_LP_NO
   const buf = new Uint8Array(sizeofDML_LP_NORMALIZATION_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: u32
   if (data?.Axis !== undefined) view.setUint32(16, Number(data.Axis), true);
   // 0x14: f32
@@ -7240,15 +7240,15 @@ export class DML_LP_NORMALIZATION_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -7269,13 +7269,13 @@ export class DML_LP_NORMALIZATION_OPERATOR_DESCView {
   // 0x1c: pad4
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -7301,25 +7301,25 @@ export class DML_LP_NORMALIZATION_OPERATOR_DESCView {
  */
 export interface DML_RNN_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  WeightTensor: Deno.PointerValue | Uint8Array | null;
+  WeightTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  RecurrenceTensor: Deno.PointerValue | Uint8Array | null;
+  RecurrenceTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BiasTensor: Deno.PointerValue | Uint8Array | null;
+  BiasTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  HiddenInitTensor: Deno.PointerValue | Uint8Array | null;
+  HiddenInitTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  SequenceLengthsTensor: Deno.PointerValue | Uint8Array | null;
+  SequenceLengthsTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputSequenceTensor: Deno.PointerValue | Uint8Array | null;
+  OutputSequenceTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputSingleTensor: Deno.PointerValue | Uint8Array | null;
+  OutputSingleTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   ActivationDescCount: number;
   /** ptr */
-  ActivationDescs: Deno.PointerValue | Uint8Array | null;
+  ActivationDescs: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_RECURRENT_NETWORK_DIRECTION */
   Direction: DML_RECURRENT_NETWORK_DIRECTION;
 }
@@ -7330,26 +7330,26 @@ export function allocDML_RNN_OPERATOR_DESC(data?: Partial<DML_RNN_OPERATOR_DESC>
   const buf = new Uint8Array(sizeofDML_RNN_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.WeightTensor !== undefined) view.setBigUint64(8, data.WeightTensor === null ? 0n : BigInt(util.toPointer(data.WeightTensor)), true);
+  if (data?.WeightTensor !== undefined) view.setBigUint64(8, data.WeightTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WeightTensor))), true);
   // 0x10: pointer
-  if (data?.RecurrenceTensor !== undefined) view.setBigUint64(16, data.RecurrenceTensor === null ? 0n : BigInt(util.toPointer(data.RecurrenceTensor)), true);
+  if (data?.RecurrenceTensor !== undefined) view.setBigUint64(16, data.RecurrenceTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.RecurrenceTensor))), true);
   // 0x18: pointer
-  if (data?.BiasTensor !== undefined) view.setBigUint64(24, data.BiasTensor === null ? 0n : BigInt(util.toPointer(data.BiasTensor)), true);
+  if (data?.BiasTensor !== undefined) view.setBigUint64(24, data.BiasTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BiasTensor))), true);
   // 0x20: pointer
-  if (data?.HiddenInitTensor !== undefined) view.setBigUint64(32, data.HiddenInitTensor === null ? 0n : BigInt(util.toPointer(data.HiddenInitTensor)), true);
+  if (data?.HiddenInitTensor !== undefined) view.setBigUint64(32, data.HiddenInitTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.HiddenInitTensor))), true);
   // 0x28: pointer
-  if (data?.SequenceLengthsTensor !== undefined) view.setBigUint64(40, data.SequenceLengthsTensor === null ? 0n : BigInt(util.toPointer(data.SequenceLengthsTensor)), true);
+  if (data?.SequenceLengthsTensor !== undefined) view.setBigUint64(40, data.SequenceLengthsTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.SequenceLengthsTensor))), true);
   // 0x30: pointer
-  if (data?.OutputSequenceTensor !== undefined) view.setBigUint64(48, data.OutputSequenceTensor === null ? 0n : BigInt(util.toPointer(data.OutputSequenceTensor)), true);
+  if (data?.OutputSequenceTensor !== undefined) view.setBigUint64(48, data.OutputSequenceTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputSequenceTensor))), true);
   // 0x38: pointer
-  if (data?.OutputSingleTensor !== undefined) view.setBigUint64(56, data.OutputSingleTensor === null ? 0n : BigInt(util.toPointer(data.OutputSingleTensor)), true);
+  if (data?.OutputSingleTensor !== undefined) view.setBigUint64(56, data.OutputSingleTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputSingleTensor))), true);
   // 0x40: u32
   if (data?.ActivationDescCount !== undefined) view.setUint32(64, Number(data.ActivationDescCount), true);
   // 0x44: pad4
   // 0x48: pointer
-  if (data?.ActivationDescs !== undefined) view.setBigUint64(72, data.ActivationDescs === null ? 0n : BigInt(util.toPointer(data.ActivationDescs)), true);
+  if (data?.ActivationDescs !== undefined) view.setBigUint64(72, data.ActivationDescs === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ActivationDescs))), true);
   // 0x50: i32
   if (data?.Direction !== undefined) view.setInt32(80, Number(data.Direction), true);
   // 0x54: pad4
@@ -7367,51 +7367,51 @@ export class DML_RNN_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get WeightTensor(): Uint8Array | Deno.PointerValue | null {
+  get WeightTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get RecurrenceTensor(): Uint8Array | Deno.PointerValue | null {
+  get RecurrenceTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get BiasTensor(): Uint8Array | Deno.PointerValue | null {
+  get BiasTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get HiddenInitTensor(): Uint8Array | Deno.PointerValue | null {
+  get HiddenInitTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get SequenceLengthsTensor(): Uint8Array | Deno.PointerValue | null {
+  get SequenceLengthsTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get OutputSequenceTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputSequenceTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get OutputSingleTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputSingleTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: u32
@@ -7422,9 +7422,9 @@ export class DML_RNN_OPERATOR_DESCView {
   // 0x44: pad4
 
   // 0x48: pointer
-  get ActivationDescs(): Uint8Array | Deno.PointerValue | null {
+  get ActivationDescs(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: i32
@@ -7435,43 +7435,43 @@ export class DML_RNN_OPERATOR_DESCView {
   // 0x54: pad4
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set WeightTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set WeightTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set RecurrenceTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set RecurrenceTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set BiasTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set BiasTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set HiddenInitTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set HiddenInitTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set SequenceLengthsTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set SequenceLengthsTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set OutputSequenceTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set OutputSequenceTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set OutputSingleTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set OutputSingleTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: u32
@@ -7482,8 +7482,8 @@ export class DML_RNN_OPERATOR_DESCView {
   // 0x44: pad4
 
   // 0x48: pointer
-  set ActivationDescs(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set ActivationDescs(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x50: i32
@@ -7499,31 +7499,31 @@ export class DML_RNN_OPERATOR_DESCView {
  */
 export interface DML_LSTM_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  WeightTensor: Deno.PointerValue | Uint8Array | null;
+  WeightTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  RecurrenceTensor: Deno.PointerValue | Uint8Array | null;
+  RecurrenceTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BiasTensor: Deno.PointerValue | Uint8Array | null;
+  BiasTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  HiddenInitTensor: Deno.PointerValue | Uint8Array | null;
+  HiddenInitTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  CellMemInitTensor: Deno.PointerValue | Uint8Array | null;
+  CellMemInitTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  SequenceLengthsTensor: Deno.PointerValue | Uint8Array | null;
+  SequenceLengthsTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  PeepholeTensor: Deno.PointerValue | Uint8Array | null;
+  PeepholeTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputSequenceTensor: Deno.PointerValue | Uint8Array | null;
+  OutputSequenceTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputSingleTensor: Deno.PointerValue | Uint8Array | null;
+  OutputSingleTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputCellSingleTensor: Deno.PointerValue | Uint8Array | null;
+  OutputCellSingleTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   ActivationDescCount: number;
   /** ptr */
-  ActivationDescs: Deno.PointerValue | Uint8Array | null;
+  ActivationDescs: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_RECURRENT_NETWORK_DIRECTION */
   Direction: DML_RECURRENT_NETWORK_DIRECTION;
   /** f32 */
@@ -7540,32 +7540,32 @@ export function allocDML_LSTM_OPERATOR_DESC(data?: Partial<DML_LSTM_OPERATOR_DES
   const buf = new Uint8Array(sizeofDML_LSTM_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.WeightTensor !== undefined) view.setBigUint64(8, data.WeightTensor === null ? 0n : BigInt(util.toPointer(data.WeightTensor)), true);
+  if (data?.WeightTensor !== undefined) view.setBigUint64(8, data.WeightTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WeightTensor))), true);
   // 0x10: pointer
-  if (data?.RecurrenceTensor !== undefined) view.setBigUint64(16, data.RecurrenceTensor === null ? 0n : BigInt(util.toPointer(data.RecurrenceTensor)), true);
+  if (data?.RecurrenceTensor !== undefined) view.setBigUint64(16, data.RecurrenceTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.RecurrenceTensor))), true);
   // 0x18: pointer
-  if (data?.BiasTensor !== undefined) view.setBigUint64(24, data.BiasTensor === null ? 0n : BigInt(util.toPointer(data.BiasTensor)), true);
+  if (data?.BiasTensor !== undefined) view.setBigUint64(24, data.BiasTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BiasTensor))), true);
   // 0x20: pointer
-  if (data?.HiddenInitTensor !== undefined) view.setBigUint64(32, data.HiddenInitTensor === null ? 0n : BigInt(util.toPointer(data.HiddenInitTensor)), true);
+  if (data?.HiddenInitTensor !== undefined) view.setBigUint64(32, data.HiddenInitTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.HiddenInitTensor))), true);
   // 0x28: pointer
-  if (data?.CellMemInitTensor !== undefined) view.setBigUint64(40, data.CellMemInitTensor === null ? 0n : BigInt(util.toPointer(data.CellMemInitTensor)), true);
+  if (data?.CellMemInitTensor !== undefined) view.setBigUint64(40, data.CellMemInitTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.CellMemInitTensor))), true);
   // 0x30: pointer
-  if (data?.SequenceLengthsTensor !== undefined) view.setBigUint64(48, data.SequenceLengthsTensor === null ? 0n : BigInt(util.toPointer(data.SequenceLengthsTensor)), true);
+  if (data?.SequenceLengthsTensor !== undefined) view.setBigUint64(48, data.SequenceLengthsTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.SequenceLengthsTensor))), true);
   // 0x38: pointer
-  if (data?.PeepholeTensor !== undefined) view.setBigUint64(56, data.PeepholeTensor === null ? 0n : BigInt(util.toPointer(data.PeepholeTensor)), true);
+  if (data?.PeepholeTensor !== undefined) view.setBigUint64(56, data.PeepholeTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.PeepholeTensor))), true);
   // 0x40: pointer
-  if (data?.OutputSequenceTensor !== undefined) view.setBigUint64(64, data.OutputSequenceTensor === null ? 0n : BigInt(util.toPointer(data.OutputSequenceTensor)), true);
+  if (data?.OutputSequenceTensor !== undefined) view.setBigUint64(64, data.OutputSequenceTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputSequenceTensor))), true);
   // 0x48: pointer
-  if (data?.OutputSingleTensor !== undefined) view.setBigUint64(72, data.OutputSingleTensor === null ? 0n : BigInt(util.toPointer(data.OutputSingleTensor)), true);
+  if (data?.OutputSingleTensor !== undefined) view.setBigUint64(72, data.OutputSingleTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputSingleTensor))), true);
   // 0x50: pointer
-  if (data?.OutputCellSingleTensor !== undefined) view.setBigUint64(80, data.OutputCellSingleTensor === null ? 0n : BigInt(util.toPointer(data.OutputCellSingleTensor)), true);
+  if (data?.OutputCellSingleTensor !== undefined) view.setBigUint64(80, data.OutputCellSingleTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputCellSingleTensor))), true);
   // 0x58: u32
   if (data?.ActivationDescCount !== undefined) view.setUint32(88, Number(data.ActivationDescCount), true);
   // 0x5c: pad4
   // 0x60: pointer
-  if (data?.ActivationDescs !== undefined) view.setBigUint64(96, data.ActivationDescs === null ? 0n : BigInt(util.toPointer(data.ActivationDescs)), true);
+  if (data?.ActivationDescs !== undefined) view.setBigUint64(96, data.ActivationDescs === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ActivationDescs))), true);
   // 0x68: i32
   if (data?.Direction !== undefined) view.setInt32(104, Number(data.Direction), true);
   // 0x6c: f32
@@ -7588,69 +7588,69 @@ export class DML_LSTM_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get WeightTensor(): Uint8Array | Deno.PointerValue | null {
+  get WeightTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get RecurrenceTensor(): Uint8Array | Deno.PointerValue | null {
+  get RecurrenceTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get BiasTensor(): Uint8Array | Deno.PointerValue | null {
+  get BiasTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get HiddenInitTensor(): Uint8Array | Deno.PointerValue | null {
+  get HiddenInitTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get CellMemInitTensor(): Uint8Array | Deno.PointerValue | null {
+  get CellMemInitTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get SequenceLengthsTensor(): Uint8Array | Deno.PointerValue | null {
+  get SequenceLengthsTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get PeepholeTensor(): Uint8Array | Deno.PointerValue | null {
+  get PeepholeTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get OutputSequenceTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputSequenceTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: pointer
-  get OutputSingleTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputSingleTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: pointer
-  get OutputCellSingleTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputCellSingleTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x58: u32
@@ -7661,9 +7661,9 @@ export class DML_LSTM_OPERATOR_DESCView {
   // 0x5c: pad4
 
   // 0x60: pointer
-  get ActivationDescs(): Uint8Array | Deno.PointerValue | null {
+  get ActivationDescs(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(96, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x68: i32
@@ -7687,58 +7687,58 @@ export class DML_LSTM_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set WeightTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set WeightTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set RecurrenceTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set RecurrenceTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set BiasTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set BiasTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set HiddenInitTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set HiddenInitTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set CellMemInitTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set CellMemInitTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set SequenceLengthsTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set SequenceLengthsTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set PeepholeTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set PeepholeTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set OutputSequenceTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set OutputSequenceTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: pointer
-  set OutputSingleTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set OutputSingleTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x50: pointer
-  set OutputCellSingleTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set OutputCellSingleTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x58: u32
@@ -7749,8 +7749,8 @@ export class DML_LSTM_OPERATOR_DESCView {
   // 0x5c: pad4
 
   // 0x60: pointer
-  set ActivationDescs(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(96, BigInt(util.toPointer(value)), true);
+  set ActivationDescs(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(96, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x68: i32
@@ -7779,25 +7779,25 @@ export class DML_LSTM_OPERATOR_DESCView {
  */
 export interface DML_GRU_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  WeightTensor: Deno.PointerValue | Uint8Array | null;
+  WeightTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  RecurrenceTensor: Deno.PointerValue | Uint8Array | null;
+  RecurrenceTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BiasTensor: Deno.PointerValue | Uint8Array | null;
+  BiasTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  HiddenInitTensor: Deno.PointerValue | Uint8Array | null;
+  HiddenInitTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  SequenceLengthsTensor: Deno.PointerValue | Uint8Array | null;
+  SequenceLengthsTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputSequenceTensor: Deno.PointerValue | Uint8Array | null;
+  OutputSequenceTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputSingleTensor: Deno.PointerValue | Uint8Array | null;
+  OutputSingleTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   ActivationDescCount: number;
   /** ptr */
-  ActivationDescs: Deno.PointerValue | Uint8Array | null;
+  ActivationDescs: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_RECURRENT_NETWORK_DIRECTION */
   Direction: DML_RECURRENT_NETWORK_DIRECTION;
   /** Windows.Win32.Foundation.BOOL */
@@ -7810,26 +7810,26 @@ export function allocDML_GRU_OPERATOR_DESC(data?: Partial<DML_GRU_OPERATOR_DESC>
   const buf = new Uint8Array(sizeofDML_GRU_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.WeightTensor !== undefined) view.setBigUint64(8, data.WeightTensor === null ? 0n : BigInt(util.toPointer(data.WeightTensor)), true);
+  if (data?.WeightTensor !== undefined) view.setBigUint64(8, data.WeightTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WeightTensor))), true);
   // 0x10: pointer
-  if (data?.RecurrenceTensor !== undefined) view.setBigUint64(16, data.RecurrenceTensor === null ? 0n : BigInt(util.toPointer(data.RecurrenceTensor)), true);
+  if (data?.RecurrenceTensor !== undefined) view.setBigUint64(16, data.RecurrenceTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.RecurrenceTensor))), true);
   // 0x18: pointer
-  if (data?.BiasTensor !== undefined) view.setBigUint64(24, data.BiasTensor === null ? 0n : BigInt(util.toPointer(data.BiasTensor)), true);
+  if (data?.BiasTensor !== undefined) view.setBigUint64(24, data.BiasTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BiasTensor))), true);
   // 0x20: pointer
-  if (data?.HiddenInitTensor !== undefined) view.setBigUint64(32, data.HiddenInitTensor === null ? 0n : BigInt(util.toPointer(data.HiddenInitTensor)), true);
+  if (data?.HiddenInitTensor !== undefined) view.setBigUint64(32, data.HiddenInitTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.HiddenInitTensor))), true);
   // 0x28: pointer
-  if (data?.SequenceLengthsTensor !== undefined) view.setBigUint64(40, data.SequenceLengthsTensor === null ? 0n : BigInt(util.toPointer(data.SequenceLengthsTensor)), true);
+  if (data?.SequenceLengthsTensor !== undefined) view.setBigUint64(40, data.SequenceLengthsTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.SequenceLengthsTensor))), true);
   // 0x30: pointer
-  if (data?.OutputSequenceTensor !== undefined) view.setBigUint64(48, data.OutputSequenceTensor === null ? 0n : BigInt(util.toPointer(data.OutputSequenceTensor)), true);
+  if (data?.OutputSequenceTensor !== undefined) view.setBigUint64(48, data.OutputSequenceTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputSequenceTensor))), true);
   // 0x38: pointer
-  if (data?.OutputSingleTensor !== undefined) view.setBigUint64(56, data.OutputSingleTensor === null ? 0n : BigInt(util.toPointer(data.OutputSingleTensor)), true);
+  if (data?.OutputSingleTensor !== undefined) view.setBigUint64(56, data.OutputSingleTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputSingleTensor))), true);
   // 0x40: u32
   if (data?.ActivationDescCount !== undefined) view.setUint32(64, Number(data.ActivationDescCount), true);
   // 0x44: pad4
   // 0x48: pointer
-  if (data?.ActivationDescs !== undefined) view.setBigUint64(72, data.ActivationDescs === null ? 0n : BigInt(util.toPointer(data.ActivationDescs)), true);
+  if (data?.ActivationDescs !== undefined) view.setBigUint64(72, data.ActivationDescs === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ActivationDescs))), true);
   // 0x50: i32
   if (data?.Direction !== undefined) view.setInt32(80, Number(data.Direction), true);
   // 0x54: i32
@@ -7848,51 +7848,51 @@ export class DML_GRU_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get WeightTensor(): Uint8Array | Deno.PointerValue | null {
+  get WeightTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get RecurrenceTensor(): Uint8Array | Deno.PointerValue | null {
+  get RecurrenceTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get BiasTensor(): Uint8Array | Deno.PointerValue | null {
+  get BiasTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get HiddenInitTensor(): Uint8Array | Deno.PointerValue | null {
+  get HiddenInitTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get SequenceLengthsTensor(): Uint8Array | Deno.PointerValue | null {
+  get SequenceLengthsTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get OutputSequenceTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputSequenceTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get OutputSingleTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputSingleTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: u32
@@ -7903,9 +7903,9 @@ export class DML_GRU_OPERATOR_DESCView {
   // 0x44: pad4
 
   // 0x48: pointer
-  get ActivationDescs(): Uint8Array | Deno.PointerValue | null {
+  get ActivationDescs(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: i32
@@ -7919,43 +7919,43 @@ export class DML_GRU_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set WeightTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set WeightTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set RecurrenceTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set RecurrenceTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set BiasTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set BiasTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set HiddenInitTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set HiddenInitTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set SequenceLengthsTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set SequenceLengthsTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set OutputSequenceTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set OutputSequenceTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set OutputSingleTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set OutputSingleTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: u32
@@ -7966,8 +7966,8 @@ export class DML_GRU_OPERATOR_DESCView {
   // 0x44: pad4
 
   // 0x48: pointer
-  set ActivationDescs(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set ActivationDescs(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x50: i32
@@ -7986,9 +7986,9 @@ export class DML_GRU_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_SIGN_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_SIGN_OPERATOR_DESC = 16;
@@ -7997,9 +7997,9 @@ export function allocDML_ELEMENT_WISE_SIGN_OPERATOR_DESC(data?: Partial<DML_ELEM
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_SIGN_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -8014,25 +8014,25 @@ export class DML_ELEMENT_WISE_SIGN_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -8041,9 +8041,9 @@ export class DML_ELEMENT_WISE_SIGN_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_IS_NAN_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_IS_NAN_OPERATOR_DESC = 16;
@@ -8052,9 +8052,9 @@ export function allocDML_ELEMENT_WISE_IS_NAN_OPERATOR_DESC(data?: Partial<DML_EL
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_IS_NAN_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -8069,25 +8069,25 @@ export class DML_ELEMENT_WISE_IS_NAN_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -8096,11 +8096,11 @@ export class DML_ELEMENT_WISE_IS_NAN_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_ERF_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ScaleBias: Deno.PointerValue | Uint8Array | null;
+  ScaleBias: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_ERF_OPERATOR_DESC = 24;
@@ -8109,11 +8109,11 @@ export function allocDML_ELEMENT_WISE_ERF_OPERATOR_DESC(data?: Partial<DML_ELEME
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_ERF_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: pointer
-  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(util.toPointer(data.ScaleBias)), true);
+  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScaleBias))), true);
   return buf;
 }
 
@@ -8128,36 +8128,36 @@ export class DML_ELEMENT_WISE_ERF_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ScaleBias(): Uint8Array | Deno.PointerValue | null {
+  get ScaleBias(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ScaleBias(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ScaleBias(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -8166,11 +8166,11 @@ export class DML_ELEMENT_WISE_ERF_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_SINH_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ScaleBias: Deno.PointerValue | Uint8Array | null;
+  ScaleBias: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_SINH_OPERATOR_DESC = 24;
@@ -8179,11 +8179,11 @@ export function allocDML_ELEMENT_WISE_SINH_OPERATOR_DESC(data?: Partial<DML_ELEM
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_SINH_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: pointer
-  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(util.toPointer(data.ScaleBias)), true);
+  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScaleBias))), true);
   return buf;
 }
 
@@ -8198,36 +8198,36 @@ export class DML_ELEMENT_WISE_SINH_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ScaleBias(): Uint8Array | Deno.PointerValue | null {
+  get ScaleBias(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ScaleBias(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ScaleBias(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -8236,11 +8236,11 @@ export class DML_ELEMENT_WISE_SINH_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_COSH_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ScaleBias: Deno.PointerValue | Uint8Array | null;
+  ScaleBias: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_COSH_OPERATOR_DESC = 24;
@@ -8249,11 +8249,11 @@ export function allocDML_ELEMENT_WISE_COSH_OPERATOR_DESC(data?: Partial<DML_ELEM
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_COSH_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: pointer
-  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(util.toPointer(data.ScaleBias)), true);
+  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScaleBias))), true);
   return buf;
 }
 
@@ -8268,36 +8268,36 @@ export class DML_ELEMENT_WISE_COSH_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ScaleBias(): Uint8Array | Deno.PointerValue | null {
+  get ScaleBias(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ScaleBias(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ScaleBias(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -8306,11 +8306,11 @@ export class DML_ELEMENT_WISE_COSH_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_TANH_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ScaleBias: Deno.PointerValue | Uint8Array | null;
+  ScaleBias: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_TANH_OPERATOR_DESC = 24;
@@ -8319,11 +8319,11 @@ export function allocDML_ELEMENT_WISE_TANH_OPERATOR_DESC(data?: Partial<DML_ELEM
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_TANH_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: pointer
-  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(util.toPointer(data.ScaleBias)), true);
+  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScaleBias))), true);
   return buf;
 }
 
@@ -8338,36 +8338,36 @@ export class DML_ELEMENT_WISE_TANH_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ScaleBias(): Uint8Array | Deno.PointerValue | null {
+  get ScaleBias(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ScaleBias(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ScaleBias(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -8376,11 +8376,11 @@ export class DML_ELEMENT_WISE_TANH_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_ASINH_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ScaleBias: Deno.PointerValue | Uint8Array | null;
+  ScaleBias: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_ASINH_OPERATOR_DESC = 24;
@@ -8389,11 +8389,11 @@ export function allocDML_ELEMENT_WISE_ASINH_OPERATOR_DESC(data?: Partial<DML_ELE
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_ASINH_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: pointer
-  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(util.toPointer(data.ScaleBias)), true);
+  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScaleBias))), true);
   return buf;
 }
 
@@ -8408,36 +8408,36 @@ export class DML_ELEMENT_WISE_ASINH_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ScaleBias(): Uint8Array | Deno.PointerValue | null {
+  get ScaleBias(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ScaleBias(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ScaleBias(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -8446,11 +8446,11 @@ export class DML_ELEMENT_WISE_ASINH_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_ACOSH_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ScaleBias: Deno.PointerValue | Uint8Array | null;
+  ScaleBias: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_ACOSH_OPERATOR_DESC = 24;
@@ -8459,11 +8459,11 @@ export function allocDML_ELEMENT_WISE_ACOSH_OPERATOR_DESC(data?: Partial<DML_ELE
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_ACOSH_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: pointer
-  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(util.toPointer(data.ScaleBias)), true);
+  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScaleBias))), true);
   return buf;
 }
 
@@ -8478,36 +8478,36 @@ export class DML_ELEMENT_WISE_ACOSH_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ScaleBias(): Uint8Array | Deno.PointerValue | null {
+  get ScaleBias(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ScaleBias(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ScaleBias(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -8516,11 +8516,11 @@ export class DML_ELEMENT_WISE_ACOSH_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_ATANH_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ScaleBias: Deno.PointerValue | Uint8Array | null;
+  ScaleBias: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_ATANH_OPERATOR_DESC = 24;
@@ -8529,11 +8529,11 @@ export function allocDML_ELEMENT_WISE_ATANH_OPERATOR_DESC(data?: Partial<DML_ELE
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_ATANH_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: pointer
-  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(util.toPointer(data.ScaleBias)), true);
+  if (data?.ScaleBias !== undefined) view.setBigUint64(16, data.ScaleBias === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScaleBias))), true);
   return buf;
 }
 
@@ -8548,36 +8548,36 @@ export class DML_ELEMENT_WISE_ATANH_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ScaleBias(): Uint8Array | Deno.PointerValue | null {
+  get ScaleBias(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ScaleBias(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ScaleBias(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -8586,13 +8586,13 @@ export class DML_ELEMENT_WISE_ATANH_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_IF_OPERATOR_DESC {
   /** ptr */
-  ConditionTensor: Deno.PointerValue | Uint8Array | null;
+  ConditionTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ATensor: Deno.PointerValue | Uint8Array | null;
+  ATensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BTensor: Deno.PointerValue | Uint8Array | null;
+  BTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_IF_OPERATOR_DESC = 32;
@@ -8601,13 +8601,13 @@ export function allocDML_ELEMENT_WISE_IF_OPERATOR_DESC(data?: Partial<DML_ELEMEN
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_IF_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ConditionTensor !== undefined) view.setBigUint64(0, data.ConditionTensor === null ? 0n : BigInt(util.toPointer(data.ConditionTensor)), true);
+  if (data?.ConditionTensor !== undefined) view.setBigUint64(0, data.ConditionTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ConditionTensor))), true);
   // 0x08: pointer
-  if (data?.ATensor !== undefined) view.setBigUint64(8, data.ATensor === null ? 0n : BigInt(util.toPointer(data.ATensor)), true);
+  if (data?.ATensor !== undefined) view.setBigUint64(8, data.ATensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ATensor))), true);
   // 0x10: pointer
-  if (data?.BTensor !== undefined) view.setBigUint64(16, data.BTensor === null ? 0n : BigInt(util.toPointer(data.BTensor)), true);
+  if (data?.BTensor !== undefined) view.setBigUint64(16, data.BTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BTensor))), true);
   // 0x18: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(24, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(24, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -8622,47 +8622,47 @@ export class DML_ELEMENT_WISE_IF_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get ConditionTensor(): Uint8Array | Deno.PointerValue | null {
+  get ConditionTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get ATensor(): Uint8Array | Deno.PointerValue | null {
+  get ATensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get BTensor(): Uint8Array | Deno.PointerValue | null {
+  get BTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ConditionTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ConditionTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set ATensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ATensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set BTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set BTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -8671,9 +8671,9 @@ export class DML_ELEMENT_WISE_IF_OPERATOR_DESCView {
  */
 export interface DML_ACTIVATION_SHRINK_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** f32 */
   Bias: number;
   /** f32 */
@@ -8686,9 +8686,9 @@ export function allocDML_ACTIVATION_SHRINK_OPERATOR_DESC(data?: Partial<DML_ACTI
   const buf = new Uint8Array(sizeofDML_ACTIVATION_SHRINK_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: f32
   if (data?.Bias !== undefined) view.setFloat32(16, Number(data.Bias), true);
   // 0x14: f32
@@ -8707,15 +8707,15 @@ export class DML_ACTIVATION_SHRINK_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: f32
@@ -8729,13 +8729,13 @@ export class DML_ACTIVATION_SHRINK_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: f32
@@ -8754,21 +8754,21 @@ export class DML_ACTIVATION_SHRINK_OPERATOR_DESCView {
  */
 export interface DML_MAX_POOLING1_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputIndicesTensor: Deno.PointerValue | Uint8Array | null;
+  OutputIndicesTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   DimensionCount: number;
   /** ptr */
-  Strides: Deno.PointerValue | Uint8Array | null;
+  Strides: Deno.PointerValue | Uint8Array;
   /** ptr */
-  WindowSize: Deno.PointerValue | Uint8Array | null;
+  WindowSize: Deno.PointerValue | Uint8Array;
   /** ptr */
-  StartPadding: Deno.PointerValue | Uint8Array | null;
+  StartPadding: Deno.PointerValue | Uint8Array;
   /** ptr */
-  EndPadding: Deno.PointerValue | Uint8Array | null;
+  EndPadding: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_MAX_POOLING1_OPERATOR_DESC = 64;
@@ -8777,22 +8777,22 @@ export function allocDML_MAX_POOLING1_OPERATOR_DESC(data?: Partial<DML_MAX_POOLI
   const buf = new Uint8Array(sizeofDML_MAX_POOLING1_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: pointer
-  if (data?.OutputIndicesTensor !== undefined) view.setBigUint64(16, data.OutputIndicesTensor === null ? 0n : BigInt(util.toPointer(data.OutputIndicesTensor)), true);
+  if (data?.OutputIndicesTensor !== undefined) view.setBigUint64(16, data.OutputIndicesTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputIndicesTensor))), true);
   // 0x18: u32
   if (data?.DimensionCount !== undefined) view.setUint32(24, Number(data.DimensionCount), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.Strides !== undefined) view.setBigUint64(32, data.Strides === null ? 0n : BigInt(util.toPointer(data.Strides)), true);
+  if (data?.Strides !== undefined) view.setBigUint64(32, data.Strides === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Strides))), true);
   // 0x28: pointer
-  if (data?.WindowSize !== undefined) view.setBigUint64(40, data.WindowSize === null ? 0n : BigInt(util.toPointer(data.WindowSize)), true);
+  if (data?.WindowSize !== undefined) view.setBigUint64(40, data.WindowSize === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WindowSize))), true);
   // 0x30: pointer
-  if (data?.StartPadding !== undefined) view.setBigUint64(48, data.StartPadding === null ? 0n : BigInt(util.toPointer(data.StartPadding)), true);
+  if (data?.StartPadding !== undefined) view.setBigUint64(48, data.StartPadding === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.StartPadding))), true);
   // 0x38: pointer
-  if (data?.EndPadding !== undefined) view.setBigUint64(56, data.EndPadding === null ? 0n : BigInt(util.toPointer(data.EndPadding)), true);
+  if (data?.EndPadding !== undefined) view.setBigUint64(56, data.EndPadding === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.EndPadding))), true);
   return buf;
 }
 
@@ -8807,21 +8807,21 @@ export class DML_MAX_POOLING1_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputIndicesTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputIndicesTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -8832,42 +8832,42 @@ export class DML_MAX_POOLING1_OPERATOR_DESCView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get Strides(): Uint8Array | Deno.PointerValue | null {
+  get Strides(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get WindowSize(): Uint8Array | Deno.PointerValue | null {
+  get WindowSize(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get StartPadding(): Uint8Array | Deno.PointerValue | null {
+  get StartPadding(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get EndPadding(): Uint8Array | Deno.PointerValue | null {
+  get EndPadding(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputIndicesTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputIndicesTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -8878,23 +8878,23 @@ export class DML_MAX_POOLING1_OPERATOR_DESCView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set Strides(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set Strides(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set WindowSize(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set WindowSize(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set StartPadding(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set StartPadding(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set EndPadding(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set EndPadding(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -8903,11 +8903,11 @@ export class DML_MAX_POOLING1_OPERATOR_DESCView {
  */
 export interface DML_MAX_UNPOOLING_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  IndicesTensor: Deno.PointerValue | Uint8Array | null;
+  IndicesTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_MAX_UNPOOLING_OPERATOR_DESC = 24;
@@ -8916,11 +8916,11 @@ export function allocDML_MAX_UNPOOLING_OPERATOR_DESC(data?: Partial<DML_MAX_UNPO
   const buf = new Uint8Array(sizeofDML_MAX_UNPOOLING_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.IndicesTensor !== undefined) view.setBigUint64(8, data.IndicesTensor === null ? 0n : BigInt(util.toPointer(data.IndicesTensor)), true);
+  if (data?.IndicesTensor !== undefined) view.setBigUint64(8, data.IndicesTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.IndicesTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -8935,36 +8935,36 @@ export class DML_MAX_UNPOOLING_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get IndicesTensor(): Uint8Array | Deno.PointerValue | null {
+  get IndicesTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set IndicesTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set IndicesTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -8973,7 +8973,7 @@ export class DML_MAX_UNPOOLING_OPERATOR_DESCView {
  */
 export interface DML_DIAGONAL_MATRIX_OPERATOR_DESC {
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** i32 */
   Offset: number;
   /** f32 */
@@ -8986,7 +8986,7 @@ export function allocDML_DIAGONAL_MATRIX_OPERATOR_DESC(data?: Partial<DML_DIAGON
   const buf = new Uint8Array(sizeofDML_DIAGONAL_MATRIX_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(0, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(0, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x08: i32
   if (data?.Offset !== undefined) view.setInt32(8, Number(data.Offset), true);
   // 0x0c: f32
@@ -9005,9 +9005,9 @@ export class DML_DIAGONAL_MATRIX_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: i32
@@ -9021,8 +9021,8 @@ export class DML_DIAGONAL_MATRIX_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: i32
@@ -9041,13 +9041,13 @@ export class DML_DIAGONAL_MATRIX_OPERATOR_DESCView {
  */
 export interface DML_SCATTER_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  IndicesTensor: Deno.PointerValue | Uint8Array | null;
+  IndicesTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  UpdatesTensor: Deno.PointerValue | Uint8Array | null;
+  UpdatesTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   Axis: number;
 }
@@ -9058,13 +9058,13 @@ export function allocDML_SCATTER_OPERATOR_DESC(data?: Partial<DML_SCATTER_OPERAT
   const buf = new Uint8Array(sizeofDML_SCATTER_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.IndicesTensor !== undefined) view.setBigUint64(8, data.IndicesTensor === null ? 0n : BigInt(util.toPointer(data.IndicesTensor)), true);
+  if (data?.IndicesTensor !== undefined) view.setBigUint64(8, data.IndicesTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.IndicesTensor))), true);
   // 0x10: pointer
-  if (data?.UpdatesTensor !== undefined) view.setBigUint64(16, data.UpdatesTensor === null ? 0n : BigInt(util.toPointer(data.UpdatesTensor)), true);
+  if (data?.UpdatesTensor !== undefined) view.setBigUint64(16, data.UpdatesTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.UpdatesTensor))), true);
   // 0x18: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(24, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(24, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x20: u32
   if (data?.Axis !== undefined) view.setUint32(32, Number(data.Axis), true);
   // 0x24: pad4
@@ -9082,27 +9082,27 @@ export class DML_SCATTER_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get IndicesTensor(): Uint8Array | Deno.PointerValue | null {
+  get IndicesTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get UpdatesTensor(): Uint8Array | Deno.PointerValue | null {
+  get UpdatesTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -9113,23 +9113,23 @@ export class DML_SCATTER_OPERATOR_DESCView {
   // 0x24: pad4
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set IndicesTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set IndicesTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set UpdatesTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set UpdatesTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -9145,11 +9145,11 @@ export class DML_SCATTER_OPERATOR_DESCView {
  */
 export interface DML_ONE_HOT_OPERATOR_DESC {
   /** ptr */
-  IndicesTensor: Deno.PointerValue | Uint8Array | null;
+  IndicesTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ValuesTensor: Deno.PointerValue | Uint8Array | null;
+  ValuesTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   Axis: number;
 }
@@ -9160,11 +9160,11 @@ export function allocDML_ONE_HOT_OPERATOR_DESC(data?: Partial<DML_ONE_HOT_OPERAT
   const buf = new Uint8Array(sizeofDML_ONE_HOT_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.IndicesTensor !== undefined) view.setBigUint64(0, data.IndicesTensor === null ? 0n : BigInt(util.toPointer(data.IndicesTensor)), true);
+  if (data?.IndicesTensor !== undefined) view.setBigUint64(0, data.IndicesTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.IndicesTensor))), true);
   // 0x08: pointer
-  if (data?.ValuesTensor !== undefined) view.setBigUint64(8, data.ValuesTensor === null ? 0n : BigInt(util.toPointer(data.ValuesTensor)), true);
+  if (data?.ValuesTensor !== undefined) view.setBigUint64(8, data.ValuesTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ValuesTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x18: u32
   if (data?.Axis !== undefined) view.setUint32(24, Number(data.Axis), true);
   // 0x1c: pad4
@@ -9182,21 +9182,21 @@ export class DML_ONE_HOT_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get IndicesTensor(): Uint8Array | Deno.PointerValue | null {
+  get IndicesTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get ValuesTensor(): Uint8Array | Deno.PointerValue | null {
+  get ValuesTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -9207,18 +9207,18 @@ export class DML_ONE_HOT_OPERATOR_DESCView {
   // 0x1c: pad4
 
   // 0x00: pointer
-  set IndicesTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set IndicesTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set ValuesTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ValuesTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -9234,15 +9234,15 @@ export class DML_ONE_HOT_OPERATOR_DESCView {
  */
 export interface DML_RESAMPLE_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_INTERPOLATION_MODE */
   InterpolationMode: DML_INTERPOLATION_MODE;
   /** u32 */
   ScaleCount: number;
   /** ptr */
-  Scales: Deno.PointerValue | Uint8Array | null;
+  Scales: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_RESAMPLE_OPERATOR_DESC = 32;
@@ -9251,15 +9251,15 @@ export function allocDML_RESAMPLE_OPERATOR_DESC(data?: Partial<DML_RESAMPLE_OPER
   const buf = new Uint8Array(sizeofDML_RESAMPLE_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: i32
   if (data?.InterpolationMode !== undefined) view.setInt32(16, Number(data.InterpolationMode), true);
   // 0x14: u32
   if (data?.ScaleCount !== undefined) view.setUint32(20, Number(data.ScaleCount), true);
   // 0x18: pointer
-  if (data?.Scales !== undefined) view.setBigUint64(24, data.Scales === null ? 0n : BigInt(util.toPointer(data.Scales)), true);
+  if (data?.Scales !== undefined) view.setBigUint64(24, data.Scales === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Scales))), true);
   return buf;
 }
 
@@ -9274,15 +9274,15 @@ export class DML_RESAMPLE_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i32
@@ -9296,19 +9296,19 @@ export class DML_RESAMPLE_OPERATOR_DESCView {
   }
 
   // 0x18: pointer
-  get Scales(): Uint8Array | Deno.PointerValue | null {
+  get Scales(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: i32
@@ -9322,8 +9322,8 @@ export class DML_RESAMPLE_OPERATOR_DESCView {
   }
 
   // 0x18: pointer
-  set Scales(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set Scales(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -9332,11 +9332,11 @@ export class DML_RESAMPLE_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_BIT_SHIFT_LEFT_OPERATOR_DESC {
   /** ptr */
-  ATensor: Deno.PointerValue | Uint8Array | null;
+  ATensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BTensor: Deno.PointerValue | Uint8Array | null;
+  BTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_BIT_SHIFT_LEFT_OPERATOR_DESC = 24;
@@ -9345,11 +9345,11 @@ export function allocDML_ELEMENT_WISE_BIT_SHIFT_LEFT_OPERATOR_DESC(data?: Partia
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_BIT_SHIFT_LEFT_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(util.toPointer(data.ATensor)), true);
+  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ATensor))), true);
   // 0x08: pointer
-  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(util.toPointer(data.BTensor)), true);
+  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -9364,36 +9364,36 @@ export class DML_ELEMENT_WISE_BIT_SHIFT_LEFT_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get ATensor(): Uint8Array | Deno.PointerValue | null {
+  get ATensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get BTensor(): Uint8Array | Deno.PointerValue | null {
+  get BTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ATensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ATensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set BTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set BTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -9402,11 +9402,11 @@ export class DML_ELEMENT_WISE_BIT_SHIFT_LEFT_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_BIT_SHIFT_RIGHT_OPERATOR_DESC {
   /** ptr */
-  ATensor: Deno.PointerValue | Uint8Array | null;
+  ATensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BTensor: Deno.PointerValue | Uint8Array | null;
+  BTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_BIT_SHIFT_RIGHT_OPERATOR_DESC = 24;
@@ -9415,11 +9415,11 @@ export function allocDML_ELEMENT_WISE_BIT_SHIFT_RIGHT_OPERATOR_DESC(data?: Parti
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_BIT_SHIFT_RIGHT_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(util.toPointer(data.ATensor)), true);
+  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ATensor))), true);
   // 0x08: pointer
-  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(util.toPointer(data.BTensor)), true);
+  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -9434,36 +9434,36 @@ export class DML_ELEMENT_WISE_BIT_SHIFT_RIGHT_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get ATensor(): Uint8Array | Deno.PointerValue | null {
+  get ATensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get BTensor(): Uint8Array | Deno.PointerValue | null {
+  get BTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ATensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ATensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set BTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set BTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -9472,9 +9472,9 @@ export class DML_ELEMENT_WISE_BIT_SHIFT_RIGHT_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_ROUND_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_ROUNDING_MODE */
   RoundingMode: DML_ROUNDING_MODE;
 }
@@ -9485,9 +9485,9 @@ export function allocDML_ELEMENT_WISE_ROUND_OPERATOR_DESC(data?: Partial<DML_ELE
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_ROUND_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: i32
   if (data?.RoundingMode !== undefined) view.setInt32(16, Number(data.RoundingMode), true);
   // 0x14: pad4
@@ -9505,15 +9505,15 @@ export class DML_ELEMENT_WISE_ROUND_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i32
@@ -9524,13 +9524,13 @@ export class DML_ELEMENT_WISE_ROUND_OPERATOR_DESCView {
   // 0x14: pad4
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: i32
@@ -9546,9 +9546,9 @@ export class DML_ELEMENT_WISE_ROUND_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_IS_INFINITY_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_IS_INFINITY_MODE */
   InfinityMode: DML_IS_INFINITY_MODE;
 }
@@ -9559,9 +9559,9 @@ export function allocDML_ELEMENT_WISE_IS_INFINITY_OPERATOR_DESC(data?: Partial<D
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_IS_INFINITY_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: i32
   if (data?.InfinityMode !== undefined) view.setInt32(16, Number(data.InfinityMode), true);
   // 0x14: pad4
@@ -9579,15 +9579,15 @@ export class DML_ELEMENT_WISE_IS_INFINITY_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i32
@@ -9598,13 +9598,13 @@ export class DML_ELEMENT_WISE_IS_INFINITY_OPERATOR_DESCView {
   // 0x14: pad4
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: i32
@@ -9620,11 +9620,11 @@ export class DML_ELEMENT_WISE_IS_INFINITY_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_MODULUS_TRUNCATE_OPERATOR_DESC {
   /** ptr */
-  ATensor: Deno.PointerValue | Uint8Array | null;
+  ATensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BTensor: Deno.PointerValue | Uint8Array | null;
+  BTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_MODULUS_TRUNCATE_OPERATOR_DESC = 24;
@@ -9633,11 +9633,11 @@ export function allocDML_ELEMENT_WISE_MODULUS_TRUNCATE_OPERATOR_DESC(data?: Part
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_MODULUS_TRUNCATE_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(util.toPointer(data.ATensor)), true);
+  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ATensor))), true);
   // 0x08: pointer
-  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(util.toPointer(data.BTensor)), true);
+  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -9652,36 +9652,36 @@ export class DML_ELEMENT_WISE_MODULUS_TRUNCATE_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get ATensor(): Uint8Array | Deno.PointerValue | null {
+  get ATensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get BTensor(): Uint8Array | Deno.PointerValue | null {
+  get BTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ATensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ATensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set BTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set BTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -9690,11 +9690,11 @@ export class DML_ELEMENT_WISE_MODULUS_TRUNCATE_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_MODULUS_FLOOR_OPERATOR_DESC {
   /** ptr */
-  ATensor: Deno.PointerValue | Uint8Array | null;
+  ATensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BTensor: Deno.PointerValue | Uint8Array | null;
+  BTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_MODULUS_FLOOR_OPERATOR_DESC = 24;
@@ -9703,11 +9703,11 @@ export function allocDML_ELEMENT_WISE_MODULUS_FLOOR_OPERATOR_DESC(data?: Partial
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_MODULUS_FLOOR_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(util.toPointer(data.ATensor)), true);
+  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ATensor))), true);
   // 0x08: pointer
-  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(util.toPointer(data.BTensor)), true);
+  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -9722,36 +9722,36 @@ export class DML_ELEMENT_WISE_MODULUS_FLOOR_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get ATensor(): Uint8Array | Deno.PointerValue | null {
+  get ATensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get BTensor(): Uint8Array | Deno.PointerValue | null {
+  get BTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ATensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ATensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set BTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set BTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -9760,11 +9760,11 @@ export class DML_ELEMENT_WISE_MODULUS_FLOOR_OPERATOR_DESCView {
  */
 export interface DML_FILL_VALUE_CONSTANT_OPERATOR_DESC {
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_TENSOR_DATA_TYPE */
   ValueDataType: DML_TENSOR_DATA_TYPE;
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_SCALAR_UNION */
-  Value: Uint8Array | Deno.PointerValue | null;
+  Value: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDML_FILL_VALUE_CONSTANT_OPERATOR_DESC = 24;
@@ -9773,12 +9773,12 @@ export function allocDML_FILL_VALUE_CONSTANT_OPERATOR_DESC(data?: Partial<DML_FI
   const buf = new Uint8Array(sizeofDML_FILL_VALUE_CONSTANT_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(0, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(0, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x08: i32
   if (data?.ValueDataType !== undefined) view.setInt32(8, Number(data.ValueDataType), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.Value !== undefined) view.setBigUint64(16, data.Value === null ? 0n : BigInt(util.toPointer(data.Value)), true);
+  if (data?.Value !== undefined) view.setBigUint64(16, data.Value === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Value))), true);
   return buf;
 }
 
@@ -9793,9 +9793,9 @@ export class DML_FILL_VALUE_CONSTANT_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: i32
@@ -9806,14 +9806,14 @@ export class DML_FILL_VALUE_CONSTANT_OPERATOR_DESCView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get Value(): Uint8Array | Deno.PointerValue | null {
+  get Value(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: i32
@@ -9824,8 +9824,8 @@ export class DML_FILL_VALUE_CONSTANT_OPERATOR_DESCView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set Value(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set Value(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -9834,13 +9834,13 @@ export class DML_FILL_VALUE_CONSTANT_OPERATOR_DESCView {
  */
 export interface DML_FILL_VALUE_SEQUENCE_OPERATOR_DESC {
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_TENSOR_DATA_TYPE */
   ValueDataType: DML_TENSOR_DATA_TYPE;
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_SCALAR_UNION */
-  ValueStart: Uint8Array | Deno.PointerValue | null;
+  ValueStart: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_SCALAR_UNION */
-  ValueDelta: Uint8Array | Deno.PointerValue | null;
+  ValueDelta: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDML_FILL_VALUE_SEQUENCE_OPERATOR_DESC = 32;
@@ -9849,14 +9849,14 @@ export function allocDML_FILL_VALUE_SEQUENCE_OPERATOR_DESC(data?: Partial<DML_FI
   const buf = new Uint8Array(sizeofDML_FILL_VALUE_SEQUENCE_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(0, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(0, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x08: i32
   if (data?.ValueDataType !== undefined) view.setInt32(8, Number(data.ValueDataType), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.ValueStart !== undefined) view.setBigUint64(16, data.ValueStart === null ? 0n : BigInt(util.toPointer(data.ValueStart)), true);
+  if (data?.ValueStart !== undefined) view.setBigUint64(16, data.ValueStart === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ValueStart))), true);
   // 0x18: pointer
-  if (data?.ValueDelta !== undefined) view.setBigUint64(24, data.ValueDelta === null ? 0n : BigInt(util.toPointer(data.ValueDelta)), true);
+  if (data?.ValueDelta !== undefined) view.setBigUint64(24, data.ValueDelta === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ValueDelta))), true);
   return buf;
 }
 
@@ -9871,9 +9871,9 @@ export class DML_FILL_VALUE_SEQUENCE_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: i32
@@ -9884,20 +9884,20 @@ export class DML_FILL_VALUE_SEQUENCE_OPERATOR_DESCView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get ValueStart(): Uint8Array | Deno.PointerValue | null {
+  get ValueStart(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get ValueDelta(): Uint8Array | Deno.PointerValue | null {
+  get ValueDelta(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: i32
@@ -9908,13 +9908,13 @@ export class DML_FILL_VALUE_SEQUENCE_OPERATOR_DESCView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set ValueStart(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ValueStart(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set ValueDelta(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set ValueDelta(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -9923,9 +9923,9 @@ export class DML_FILL_VALUE_SEQUENCE_OPERATOR_DESCView {
  */
 export interface DML_CUMULATIVE_SUMMATION_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   Axis: number;
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_AXIS_DIRECTION */
@@ -9940,9 +9940,9 @@ export function allocDML_CUMULATIVE_SUMMATION_OPERATOR_DESC(data?: Partial<DML_C
   const buf = new Uint8Array(sizeofDML_CUMULATIVE_SUMMATION_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: u32
   if (data?.Axis !== undefined) view.setUint32(16, Number(data.Axis), true);
   // 0x14: i32
@@ -9964,15 +9964,15 @@ export class DML_CUMULATIVE_SUMMATION_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -9993,13 +9993,13 @@ export class DML_CUMULATIVE_SUMMATION_OPERATOR_DESCView {
   // 0x1c: pad4
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -10025,11 +10025,11 @@ export class DML_CUMULATIVE_SUMMATION_OPERATOR_DESCView {
  */
 export interface DML_REVERSE_SUBSEQUENCES_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  SequenceLengthsTensor: Deno.PointerValue | Uint8Array | null;
+  SequenceLengthsTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   Axis: number;
 }
@@ -10040,11 +10040,11 @@ export function allocDML_REVERSE_SUBSEQUENCES_OPERATOR_DESC(data?: Partial<DML_R
   const buf = new Uint8Array(sizeofDML_REVERSE_SUBSEQUENCES_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.SequenceLengthsTensor !== undefined) view.setBigUint64(8, data.SequenceLengthsTensor === null ? 0n : BigInt(util.toPointer(data.SequenceLengthsTensor)), true);
+  if (data?.SequenceLengthsTensor !== undefined) view.setBigUint64(8, data.SequenceLengthsTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.SequenceLengthsTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x18: u32
   if (data?.Axis !== undefined) view.setUint32(24, Number(data.Axis), true);
   // 0x1c: pad4
@@ -10062,21 +10062,21 @@ export class DML_REVERSE_SUBSEQUENCES_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get SequenceLengthsTensor(): Uint8Array | Deno.PointerValue | null {
+  get SequenceLengthsTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -10087,18 +10087,18 @@ export class DML_REVERSE_SUBSEQUENCES_OPERATOR_DESCView {
   // 0x1c: pad4
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set SequenceLengthsTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set SequenceLengthsTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -10114,11 +10114,11 @@ export class DML_REVERSE_SUBSEQUENCES_OPERATOR_DESCView {
  */
 export interface DML_GATHER_ELEMENTS_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  IndicesTensor: Deno.PointerValue | Uint8Array | null;
+  IndicesTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   Axis: number;
 }
@@ -10129,11 +10129,11 @@ export function allocDML_GATHER_ELEMENTS_OPERATOR_DESC(data?: Partial<DML_GATHER
   const buf = new Uint8Array(sizeofDML_GATHER_ELEMENTS_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.IndicesTensor !== undefined) view.setBigUint64(8, data.IndicesTensor === null ? 0n : BigInt(util.toPointer(data.IndicesTensor)), true);
+  if (data?.IndicesTensor !== undefined) view.setBigUint64(8, data.IndicesTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.IndicesTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x18: u32
   if (data?.Axis !== undefined) view.setUint32(24, Number(data.Axis), true);
   // 0x1c: pad4
@@ -10151,21 +10151,21 @@ export class DML_GATHER_ELEMENTS_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get IndicesTensor(): Uint8Array | Deno.PointerValue | null {
+  get IndicesTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -10176,18 +10176,18 @@ export class DML_GATHER_ELEMENTS_OPERATOR_DESCView {
   // 0x1c: pad4
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set IndicesTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set IndicesTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -10203,11 +10203,11 @@ export class DML_GATHER_ELEMENTS_OPERATOR_DESCView {
  */
 export interface DML_GATHER_ND_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  IndicesTensor: Deno.PointerValue | Uint8Array | null;
+  IndicesTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   InputDimensionCount: number;
   /** u32 */
@@ -10220,11 +10220,11 @@ export function allocDML_GATHER_ND_OPERATOR_DESC(data?: Partial<DML_GATHER_ND_OP
   const buf = new Uint8Array(sizeofDML_GATHER_ND_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.IndicesTensor !== undefined) view.setBigUint64(8, data.IndicesTensor === null ? 0n : BigInt(util.toPointer(data.IndicesTensor)), true);
+  if (data?.IndicesTensor !== undefined) view.setBigUint64(8, data.IndicesTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.IndicesTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x18: u32
   if (data?.InputDimensionCount !== undefined) view.setUint32(24, Number(data.InputDimensionCount), true);
   // 0x1c: u32
@@ -10243,21 +10243,21 @@ export class DML_GATHER_ND_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get IndicesTensor(): Uint8Array | Deno.PointerValue | null {
+  get IndicesTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -10271,18 +10271,18 @@ export class DML_GATHER_ND_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set IndicesTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set IndicesTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -10301,13 +10301,13 @@ export class DML_GATHER_ND_OPERATOR_DESCView {
  */
 export interface DML_SCATTER_ND_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  IndicesTensor: Deno.PointerValue | Uint8Array | null;
+  IndicesTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  UpdatesTensor: Deno.PointerValue | Uint8Array | null;
+  UpdatesTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   InputDimensionCount: number;
   /** u32 */
@@ -10320,13 +10320,13 @@ export function allocDML_SCATTER_ND_OPERATOR_DESC(data?: Partial<DML_SCATTER_ND_
   const buf = new Uint8Array(sizeofDML_SCATTER_ND_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.IndicesTensor !== undefined) view.setBigUint64(8, data.IndicesTensor === null ? 0n : BigInt(util.toPointer(data.IndicesTensor)), true);
+  if (data?.IndicesTensor !== undefined) view.setBigUint64(8, data.IndicesTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.IndicesTensor))), true);
   // 0x10: pointer
-  if (data?.UpdatesTensor !== undefined) view.setBigUint64(16, data.UpdatesTensor === null ? 0n : BigInt(util.toPointer(data.UpdatesTensor)), true);
+  if (data?.UpdatesTensor !== undefined) view.setBigUint64(16, data.UpdatesTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.UpdatesTensor))), true);
   // 0x18: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(24, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(24, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x20: u32
   if (data?.InputDimensionCount !== undefined) view.setUint32(32, Number(data.InputDimensionCount), true);
   // 0x24: u32
@@ -10345,27 +10345,27 @@ export class DML_SCATTER_ND_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get IndicesTensor(): Uint8Array | Deno.PointerValue | null {
+  get IndicesTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get UpdatesTensor(): Uint8Array | Deno.PointerValue | null {
+  get UpdatesTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -10379,23 +10379,23 @@ export class DML_SCATTER_ND_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set IndicesTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set IndicesTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set UpdatesTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set UpdatesTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -10414,23 +10414,23 @@ export class DML_SCATTER_ND_OPERATOR_DESCView {
  */
 export interface DML_MAX_POOLING2_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputIndicesTensor: Deno.PointerValue | Uint8Array | null;
+  OutputIndicesTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   DimensionCount: number;
   /** ptr */
-  Strides: Deno.PointerValue | Uint8Array | null;
+  Strides: Deno.PointerValue | Uint8Array;
   /** ptr */
-  WindowSize: Deno.PointerValue | Uint8Array | null;
+  WindowSize: Deno.PointerValue | Uint8Array;
   /** ptr */
-  StartPadding: Deno.PointerValue | Uint8Array | null;
+  StartPadding: Deno.PointerValue | Uint8Array;
   /** ptr */
-  EndPadding: Deno.PointerValue | Uint8Array | null;
+  EndPadding: Deno.PointerValue | Uint8Array;
   /** ptr */
-  Dilations: Deno.PointerValue | Uint8Array | null;
+  Dilations: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_MAX_POOLING2_OPERATOR_DESC = 72;
@@ -10439,24 +10439,24 @@ export function allocDML_MAX_POOLING2_OPERATOR_DESC(data?: Partial<DML_MAX_POOLI
   const buf = new Uint8Array(sizeofDML_MAX_POOLING2_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: pointer
-  if (data?.OutputIndicesTensor !== undefined) view.setBigUint64(16, data.OutputIndicesTensor === null ? 0n : BigInt(util.toPointer(data.OutputIndicesTensor)), true);
+  if (data?.OutputIndicesTensor !== undefined) view.setBigUint64(16, data.OutputIndicesTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputIndicesTensor))), true);
   // 0x18: u32
   if (data?.DimensionCount !== undefined) view.setUint32(24, Number(data.DimensionCount), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.Strides !== undefined) view.setBigUint64(32, data.Strides === null ? 0n : BigInt(util.toPointer(data.Strides)), true);
+  if (data?.Strides !== undefined) view.setBigUint64(32, data.Strides === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Strides))), true);
   // 0x28: pointer
-  if (data?.WindowSize !== undefined) view.setBigUint64(40, data.WindowSize === null ? 0n : BigInt(util.toPointer(data.WindowSize)), true);
+  if (data?.WindowSize !== undefined) view.setBigUint64(40, data.WindowSize === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WindowSize))), true);
   // 0x30: pointer
-  if (data?.StartPadding !== undefined) view.setBigUint64(48, data.StartPadding === null ? 0n : BigInt(util.toPointer(data.StartPadding)), true);
+  if (data?.StartPadding !== undefined) view.setBigUint64(48, data.StartPadding === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.StartPadding))), true);
   // 0x38: pointer
-  if (data?.EndPadding !== undefined) view.setBigUint64(56, data.EndPadding === null ? 0n : BigInt(util.toPointer(data.EndPadding)), true);
+  if (data?.EndPadding !== undefined) view.setBigUint64(56, data.EndPadding === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.EndPadding))), true);
   // 0x40: pointer
-  if (data?.Dilations !== undefined) view.setBigUint64(64, data.Dilations === null ? 0n : BigInt(util.toPointer(data.Dilations)), true);
+  if (data?.Dilations !== undefined) view.setBigUint64(64, data.Dilations === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Dilations))), true);
   return buf;
 }
 
@@ -10471,21 +10471,21 @@ export class DML_MAX_POOLING2_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputIndicesTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputIndicesTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -10496,48 +10496,48 @@ export class DML_MAX_POOLING2_OPERATOR_DESCView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get Strides(): Uint8Array | Deno.PointerValue | null {
+  get Strides(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get WindowSize(): Uint8Array | Deno.PointerValue | null {
+  get WindowSize(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get StartPadding(): Uint8Array | Deno.PointerValue | null {
+  get StartPadding(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get EndPadding(): Uint8Array | Deno.PointerValue | null {
+  get EndPadding(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get Dilations(): Uint8Array | Deno.PointerValue | null {
+  get Dilations(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputIndicesTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputIndicesTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -10548,28 +10548,28 @@ export class DML_MAX_POOLING2_OPERATOR_DESCView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set Strides(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set Strides(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set WindowSize(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set WindowSize(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set StartPadding(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set StartPadding(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set EndPadding(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set EndPadding(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set Dilations(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set Dilations(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -10578,17 +10578,17 @@ export class DML_MAX_POOLING2_OPERATOR_DESCView {
  */
 export interface DML_SLICE1_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   DimensionCount: number;
   /** ptr */
-  InputWindowOffsets: Deno.PointerValue | Uint8Array | null;
+  InputWindowOffsets: Deno.PointerValue | Uint8Array;
   /** ptr */
-  InputWindowSizes: Deno.PointerValue | Uint8Array | null;
+  InputWindowSizes: Deno.PointerValue | Uint8Array;
   /** ptr */
-  InputWindowStrides: Deno.PointerValue | Uint8Array | null;
+  InputWindowStrides: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_SLICE1_OPERATOR_DESC = 48;
@@ -10597,18 +10597,18 @@ export function allocDML_SLICE1_OPERATOR_DESC(data?: Partial<DML_SLICE1_OPERATOR
   const buf = new Uint8Array(sizeofDML_SLICE1_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: u32
   if (data?.DimensionCount !== undefined) view.setUint32(16, Number(data.DimensionCount), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.InputWindowOffsets !== undefined) view.setBigUint64(24, data.InputWindowOffsets === null ? 0n : BigInt(util.toPointer(data.InputWindowOffsets)), true);
+  if (data?.InputWindowOffsets !== undefined) view.setBigUint64(24, data.InputWindowOffsets === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputWindowOffsets))), true);
   // 0x20: pointer
-  if (data?.InputWindowSizes !== undefined) view.setBigUint64(32, data.InputWindowSizes === null ? 0n : BigInt(util.toPointer(data.InputWindowSizes)), true);
+  if (data?.InputWindowSizes !== undefined) view.setBigUint64(32, data.InputWindowSizes === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputWindowSizes))), true);
   // 0x28: pointer
-  if (data?.InputWindowStrides !== undefined) view.setBigUint64(40, data.InputWindowStrides === null ? 0n : BigInt(util.toPointer(data.InputWindowStrides)), true);
+  if (data?.InputWindowStrides !== undefined) view.setBigUint64(40, data.InputWindowStrides === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputWindowStrides))), true);
   return buf;
 }
 
@@ -10623,15 +10623,15 @@ export class DML_SLICE1_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -10642,31 +10642,31 @@ export class DML_SLICE1_OPERATOR_DESCView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get InputWindowOffsets(): Uint8Array | Deno.PointerValue | null {
+  get InputWindowOffsets(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get InputWindowSizes(): Uint8Array | Deno.PointerValue | null {
+  get InputWindowSizes(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get InputWindowStrides(): Uint8Array | Deno.PointerValue | null {
+  get InputWindowStrides(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -10677,18 +10677,18 @@ export class DML_SLICE1_OPERATOR_DESCView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set InputWindowOffsets(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set InputWindowOffsets(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set InputWindowSizes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set InputWindowSizes(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set InputWindowStrides(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set InputWindowStrides(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -10697,11 +10697,11 @@ export class DML_SLICE1_OPERATOR_DESCView {
  */
 export interface DML_TOP_K1_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputValueTensor: Deno.PointerValue | Uint8Array | null;
+  OutputValueTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputIndexTensor: Deno.PointerValue | Uint8Array | null;
+  OutputIndexTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   Axis: number;
   /** u32 */
@@ -10716,11 +10716,11 @@ export function allocDML_TOP_K1_OPERATOR_DESC(data?: Partial<DML_TOP_K1_OPERATOR
   const buf = new Uint8Array(sizeofDML_TOP_K1_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputValueTensor !== undefined) view.setBigUint64(8, data.OutputValueTensor === null ? 0n : BigInt(util.toPointer(data.OutputValueTensor)), true);
+  if (data?.OutputValueTensor !== undefined) view.setBigUint64(8, data.OutputValueTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputValueTensor))), true);
   // 0x10: pointer
-  if (data?.OutputIndexTensor !== undefined) view.setBigUint64(16, data.OutputIndexTensor === null ? 0n : BigInt(util.toPointer(data.OutputIndexTensor)), true);
+  if (data?.OutputIndexTensor !== undefined) view.setBigUint64(16, data.OutputIndexTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputIndexTensor))), true);
   // 0x18: u32
   if (data?.Axis !== undefined) view.setUint32(24, Number(data.Axis), true);
   // 0x1c: u32
@@ -10742,21 +10742,21 @@ export class DML_TOP_K1_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputValueTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputValueTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputIndexTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputIndexTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -10777,18 +10777,18 @@ export class DML_TOP_K1_OPERATOR_DESCView {
   // 0x24: pad4
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputValueTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputValueTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputIndexTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputIndexTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -10814,9 +10814,9 @@ export class DML_TOP_K1_OPERATOR_DESCView {
  */
 export interface DML_DEPTH_TO_SPACE1_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   BlockSize: number;
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_DEPTH_SPACE_ORDER */
@@ -10829,9 +10829,9 @@ export function allocDML_DEPTH_TO_SPACE1_OPERATOR_DESC(data?: Partial<DML_DEPTH_
   const buf = new Uint8Array(sizeofDML_DEPTH_TO_SPACE1_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: u32
   if (data?.BlockSize !== undefined) view.setUint32(16, Number(data.BlockSize), true);
   // 0x14: i32
@@ -10850,15 +10850,15 @@ export class DML_DEPTH_TO_SPACE1_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -10872,13 +10872,13 @@ export class DML_DEPTH_TO_SPACE1_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -10897,9 +10897,9 @@ export class DML_DEPTH_TO_SPACE1_OPERATOR_DESCView {
  */
 export interface DML_SPACE_TO_DEPTH1_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   BlockSize: number;
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_DEPTH_SPACE_ORDER */
@@ -10912,9 +10912,9 @@ export function allocDML_SPACE_TO_DEPTH1_OPERATOR_DESC(data?: Partial<DML_SPACE_
   const buf = new Uint8Array(sizeofDML_SPACE_TO_DEPTH1_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: u32
   if (data?.BlockSize !== undefined) view.setUint32(16, Number(data.BlockSize), true);
   // 0x14: i32
@@ -10933,15 +10933,15 @@ export class DML_SPACE_TO_DEPTH1_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -10955,13 +10955,13 @@ export class DML_SPACE_TO_DEPTH1_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -10980,23 +10980,23 @@ export class DML_SPACE_TO_DEPTH1_OPERATOR_DESCView {
  */
 export interface DML_MEAN_VARIANCE_NORMALIZATION1_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ScaleTensor: Deno.PointerValue | Uint8Array | null;
+  ScaleTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BiasTensor: Deno.PointerValue | Uint8Array | null;
+  BiasTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   AxisCount: number;
   /** ptr */
-  Axes: Deno.PointerValue | Uint8Array | null;
+  Axes: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.BOOL */
   NormalizeVariance: boolean;
   /** f32 */
   Epsilon: number;
   /** ptr */
-  FusedActivation: Deno.PointerValue | Uint8Array | null;
+  FusedActivation: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_MEAN_VARIANCE_NORMALIZATION1_OPERATOR_DESC = 64;
@@ -11005,24 +11005,24 @@ export function allocDML_MEAN_VARIANCE_NORMALIZATION1_OPERATOR_DESC(data?: Parti
   const buf = new Uint8Array(sizeofDML_MEAN_VARIANCE_NORMALIZATION1_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.ScaleTensor !== undefined) view.setBigUint64(8, data.ScaleTensor === null ? 0n : BigInt(util.toPointer(data.ScaleTensor)), true);
+  if (data?.ScaleTensor !== undefined) view.setBigUint64(8, data.ScaleTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScaleTensor))), true);
   // 0x10: pointer
-  if (data?.BiasTensor !== undefined) view.setBigUint64(16, data.BiasTensor === null ? 0n : BigInt(util.toPointer(data.BiasTensor)), true);
+  if (data?.BiasTensor !== undefined) view.setBigUint64(16, data.BiasTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BiasTensor))), true);
   // 0x18: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(24, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(24, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x20: u32
   if (data?.AxisCount !== undefined) view.setUint32(32, Number(data.AxisCount), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.Axes !== undefined) view.setBigUint64(40, data.Axes === null ? 0n : BigInt(util.toPointer(data.Axes)), true);
+  if (data?.Axes !== undefined) view.setBigUint64(40, data.Axes === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Axes))), true);
   // 0x30: i32
   if (data?.NormalizeVariance !== undefined) view.setInt32(48, Number(data.NormalizeVariance), true);
   // 0x34: f32
   if (data?.Epsilon !== undefined) view.setFloat32(52, Number(data.Epsilon), true);
   // 0x38: pointer
-  if (data?.FusedActivation !== undefined) view.setBigUint64(56, data.FusedActivation === null ? 0n : BigInt(util.toPointer(data.FusedActivation)), true);
+  if (data?.FusedActivation !== undefined) view.setBigUint64(56, data.FusedActivation === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.FusedActivation))), true);
   return buf;
 }
 
@@ -11037,27 +11037,27 @@ export class DML_MEAN_VARIANCE_NORMALIZATION1_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get ScaleTensor(): Uint8Array | Deno.PointerValue | null {
+  get ScaleTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get BiasTensor(): Uint8Array | Deno.PointerValue | null {
+  get BiasTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -11068,9 +11068,9 @@ export class DML_MEAN_VARIANCE_NORMALIZATION1_OPERATOR_DESCView {
   // 0x24: pad4
 
   // 0x28: pointer
-  get Axes(): Uint8Array | Deno.PointerValue | null {
+  get Axes(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: i32
@@ -11084,29 +11084,29 @@ export class DML_MEAN_VARIANCE_NORMALIZATION1_OPERATOR_DESCView {
   }
 
   // 0x38: pointer
-  get FusedActivation(): Uint8Array | Deno.PointerValue | null {
+  get FusedActivation(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set ScaleTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ScaleTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set BiasTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set BiasTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -11117,8 +11117,8 @@ export class DML_MEAN_VARIANCE_NORMALIZATION1_OPERATOR_DESCView {
   // 0x24: pad4
 
   // 0x28: pointer
-  set Axes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set Axes(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: i32
@@ -11132,8 +11132,8 @@ export class DML_MEAN_VARIANCE_NORMALIZATION1_OPERATOR_DESCView {
   }
 
   // 0x38: pointer
-  set FusedActivation(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set FusedActivation(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -11142,19 +11142,19 @@ export class DML_MEAN_VARIANCE_NORMALIZATION1_OPERATOR_DESCView {
  */
 export interface DML_RESAMPLE1_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_INTERPOLATION_MODE */
   InterpolationMode: DML_INTERPOLATION_MODE;
   /** u32 */
   DimensionCount: number;
   /** ptr */
-  Scales: Deno.PointerValue | Uint8Array | null;
+  Scales: Deno.PointerValue | Uint8Array;
   /** ptr */
-  InputPixelOffsets: Deno.PointerValue | Uint8Array | null;
+  InputPixelOffsets: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputPixelOffsets: Deno.PointerValue | Uint8Array | null;
+  OutputPixelOffsets: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_RESAMPLE1_OPERATOR_DESC = 48;
@@ -11163,19 +11163,19 @@ export function allocDML_RESAMPLE1_OPERATOR_DESC(data?: Partial<DML_RESAMPLE1_OP
   const buf = new Uint8Array(sizeofDML_RESAMPLE1_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: i32
   if (data?.InterpolationMode !== undefined) view.setInt32(16, Number(data.InterpolationMode), true);
   // 0x14: u32
   if (data?.DimensionCount !== undefined) view.setUint32(20, Number(data.DimensionCount), true);
   // 0x18: pointer
-  if (data?.Scales !== undefined) view.setBigUint64(24, data.Scales === null ? 0n : BigInt(util.toPointer(data.Scales)), true);
+  if (data?.Scales !== undefined) view.setBigUint64(24, data.Scales === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Scales))), true);
   // 0x20: pointer
-  if (data?.InputPixelOffsets !== undefined) view.setBigUint64(32, data.InputPixelOffsets === null ? 0n : BigInt(util.toPointer(data.InputPixelOffsets)), true);
+  if (data?.InputPixelOffsets !== undefined) view.setBigUint64(32, data.InputPixelOffsets === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputPixelOffsets))), true);
   // 0x28: pointer
-  if (data?.OutputPixelOffsets !== undefined) view.setBigUint64(40, data.OutputPixelOffsets === null ? 0n : BigInt(util.toPointer(data.OutputPixelOffsets)), true);
+  if (data?.OutputPixelOffsets !== undefined) view.setBigUint64(40, data.OutputPixelOffsets === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputPixelOffsets))), true);
   return buf;
 }
 
@@ -11190,15 +11190,15 @@ export class DML_RESAMPLE1_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i32
@@ -11212,31 +11212,31 @@ export class DML_RESAMPLE1_OPERATOR_DESCView {
   }
 
   // 0x18: pointer
-  get Scales(): Uint8Array | Deno.PointerValue | null {
+  get Scales(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get InputPixelOffsets(): Uint8Array | Deno.PointerValue | null {
+  get InputPixelOffsets(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get OutputPixelOffsets(): Uint8Array | Deno.PointerValue | null {
+  get OutputPixelOffsets(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: i32
@@ -11250,18 +11250,18 @@ export class DML_RESAMPLE1_OPERATOR_DESCView {
   }
 
   // 0x18: pointer
-  set Scales(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set Scales(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set InputPixelOffsets(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set InputPixelOffsets(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set OutputPixelOffsets(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set OutputPixelOffsets(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -11270,15 +11270,15 @@ export class DML_RESAMPLE1_OPERATOR_DESCView {
  */
 export interface DML_MATRIX_MULTIPLY_INTEGER_OPERATOR_DESC {
   /** ptr */
-  ATensor: Deno.PointerValue | Uint8Array | null;
+  ATensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  AZeroPointTensor: Deno.PointerValue | Uint8Array | null;
+  AZeroPointTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BTensor: Deno.PointerValue | Uint8Array | null;
+  BTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BZeroPointTensor: Deno.PointerValue | Uint8Array | null;
+  BZeroPointTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_MATRIX_MULTIPLY_INTEGER_OPERATOR_DESC = 40;
@@ -11287,15 +11287,15 @@ export function allocDML_MATRIX_MULTIPLY_INTEGER_OPERATOR_DESC(data?: Partial<DM
   const buf = new Uint8Array(sizeofDML_MATRIX_MULTIPLY_INTEGER_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(util.toPointer(data.ATensor)), true);
+  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ATensor))), true);
   // 0x08: pointer
-  if (data?.AZeroPointTensor !== undefined) view.setBigUint64(8, data.AZeroPointTensor === null ? 0n : BigInt(util.toPointer(data.AZeroPointTensor)), true);
+  if (data?.AZeroPointTensor !== undefined) view.setBigUint64(8, data.AZeroPointTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.AZeroPointTensor))), true);
   // 0x10: pointer
-  if (data?.BTensor !== undefined) view.setBigUint64(16, data.BTensor === null ? 0n : BigInt(util.toPointer(data.BTensor)), true);
+  if (data?.BTensor !== undefined) view.setBigUint64(16, data.BTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BTensor))), true);
   // 0x18: pointer
-  if (data?.BZeroPointTensor !== undefined) view.setBigUint64(24, data.BZeroPointTensor === null ? 0n : BigInt(util.toPointer(data.BZeroPointTensor)), true);
+  if (data?.BZeroPointTensor !== undefined) view.setBigUint64(24, data.BZeroPointTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BZeroPointTensor))), true);
   // 0x20: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(32, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(32, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -11310,58 +11310,58 @@ export class DML_MATRIX_MULTIPLY_INTEGER_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get ATensor(): Uint8Array | Deno.PointerValue | null {
+  get ATensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get AZeroPointTensor(): Uint8Array | Deno.PointerValue | null {
+  get AZeroPointTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get BTensor(): Uint8Array | Deno.PointerValue | null {
+  get BTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get BZeroPointTensor(): Uint8Array | Deno.PointerValue | null {
+  get BZeroPointTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ATensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ATensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set AZeroPointTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set AZeroPointTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set BTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set BTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set BZeroPointTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set BZeroPointTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -11370,23 +11370,23 @@ export class DML_MATRIX_MULTIPLY_INTEGER_OPERATOR_DESCView {
  */
 export interface DML_QUANTIZED_LINEAR_MATRIX_MULTIPLY_OPERATOR_DESC {
   /** ptr */
-  ATensor: Deno.PointerValue | Uint8Array | null;
+  ATensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  AScaleTensor: Deno.PointerValue | Uint8Array | null;
+  AScaleTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  AZeroPointTensor: Deno.PointerValue | Uint8Array | null;
+  AZeroPointTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BTensor: Deno.PointerValue | Uint8Array | null;
+  BTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BScaleTensor: Deno.PointerValue | Uint8Array | null;
+  BScaleTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BZeroPointTensor: Deno.PointerValue | Uint8Array | null;
+  BZeroPointTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputScaleTensor: Deno.PointerValue | Uint8Array | null;
+  OutputScaleTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputZeroPointTensor: Deno.PointerValue | Uint8Array | null;
+  OutputZeroPointTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_QUANTIZED_LINEAR_MATRIX_MULTIPLY_OPERATOR_DESC = 72;
@@ -11395,23 +11395,23 @@ export function allocDML_QUANTIZED_LINEAR_MATRIX_MULTIPLY_OPERATOR_DESC(data?: P
   const buf = new Uint8Array(sizeofDML_QUANTIZED_LINEAR_MATRIX_MULTIPLY_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(util.toPointer(data.ATensor)), true);
+  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ATensor))), true);
   // 0x08: pointer
-  if (data?.AScaleTensor !== undefined) view.setBigUint64(8, data.AScaleTensor === null ? 0n : BigInt(util.toPointer(data.AScaleTensor)), true);
+  if (data?.AScaleTensor !== undefined) view.setBigUint64(8, data.AScaleTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.AScaleTensor))), true);
   // 0x10: pointer
-  if (data?.AZeroPointTensor !== undefined) view.setBigUint64(16, data.AZeroPointTensor === null ? 0n : BigInt(util.toPointer(data.AZeroPointTensor)), true);
+  if (data?.AZeroPointTensor !== undefined) view.setBigUint64(16, data.AZeroPointTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.AZeroPointTensor))), true);
   // 0x18: pointer
-  if (data?.BTensor !== undefined) view.setBigUint64(24, data.BTensor === null ? 0n : BigInt(util.toPointer(data.BTensor)), true);
+  if (data?.BTensor !== undefined) view.setBigUint64(24, data.BTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BTensor))), true);
   // 0x20: pointer
-  if (data?.BScaleTensor !== undefined) view.setBigUint64(32, data.BScaleTensor === null ? 0n : BigInt(util.toPointer(data.BScaleTensor)), true);
+  if (data?.BScaleTensor !== undefined) view.setBigUint64(32, data.BScaleTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BScaleTensor))), true);
   // 0x28: pointer
-  if (data?.BZeroPointTensor !== undefined) view.setBigUint64(40, data.BZeroPointTensor === null ? 0n : BigInt(util.toPointer(data.BZeroPointTensor)), true);
+  if (data?.BZeroPointTensor !== undefined) view.setBigUint64(40, data.BZeroPointTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BZeroPointTensor))), true);
   // 0x30: pointer
-  if (data?.OutputScaleTensor !== undefined) view.setBigUint64(48, data.OutputScaleTensor === null ? 0n : BigInt(util.toPointer(data.OutputScaleTensor)), true);
+  if (data?.OutputScaleTensor !== undefined) view.setBigUint64(48, data.OutputScaleTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputScaleTensor))), true);
   // 0x38: pointer
-  if (data?.OutputZeroPointTensor !== undefined) view.setBigUint64(56, data.OutputZeroPointTensor === null ? 0n : BigInt(util.toPointer(data.OutputZeroPointTensor)), true);
+  if (data?.OutputZeroPointTensor !== undefined) view.setBigUint64(56, data.OutputZeroPointTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputZeroPointTensor))), true);
   // 0x40: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(64, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(64, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -11426,102 +11426,102 @@ export class DML_QUANTIZED_LINEAR_MATRIX_MULTIPLY_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get ATensor(): Uint8Array | Deno.PointerValue | null {
+  get ATensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get AScaleTensor(): Uint8Array | Deno.PointerValue | null {
+  get AScaleTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get AZeroPointTensor(): Uint8Array | Deno.PointerValue | null {
+  get AZeroPointTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get BTensor(): Uint8Array | Deno.PointerValue | null {
+  get BTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get BScaleTensor(): Uint8Array | Deno.PointerValue | null {
+  get BScaleTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get BZeroPointTensor(): Uint8Array | Deno.PointerValue | null {
+  get BZeroPointTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get OutputScaleTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputScaleTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get OutputZeroPointTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputZeroPointTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ATensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ATensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set AScaleTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set AScaleTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set AZeroPointTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set AZeroPointTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set BTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set BTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set BScaleTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set BScaleTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set BZeroPointTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set BZeroPointTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set OutputScaleTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set OutputScaleTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set OutputZeroPointTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set OutputZeroPointTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -11530,25 +11530,25 @@ export class DML_QUANTIZED_LINEAR_MATRIX_MULTIPLY_OPERATOR_DESCView {
  */
 export interface DML_CONVOLUTION_INTEGER_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  InputZeroPointTensor: Deno.PointerValue | Uint8Array | null;
+  InputZeroPointTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  FilterTensor: Deno.PointerValue | Uint8Array | null;
+  FilterTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  FilterZeroPointTensor: Deno.PointerValue | Uint8Array | null;
+  FilterZeroPointTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   DimensionCount: number;
   /** ptr */
-  Strides: Deno.PointerValue | Uint8Array | null;
+  Strides: Deno.PointerValue | Uint8Array;
   /** ptr */
-  Dilations: Deno.PointerValue | Uint8Array | null;
+  Dilations: Deno.PointerValue | Uint8Array;
   /** ptr */
-  StartPadding: Deno.PointerValue | Uint8Array | null;
+  StartPadding: Deno.PointerValue | Uint8Array;
   /** ptr */
-  EndPadding: Deno.PointerValue | Uint8Array | null;
+  EndPadding: Deno.PointerValue | Uint8Array;
   /** u32 */
   GroupCount: number;
 }
@@ -11559,26 +11559,26 @@ export function allocDML_CONVOLUTION_INTEGER_OPERATOR_DESC(data?: Partial<DML_CO
   const buf = new Uint8Array(sizeofDML_CONVOLUTION_INTEGER_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.InputZeroPointTensor !== undefined) view.setBigUint64(8, data.InputZeroPointTensor === null ? 0n : BigInt(util.toPointer(data.InputZeroPointTensor)), true);
+  if (data?.InputZeroPointTensor !== undefined) view.setBigUint64(8, data.InputZeroPointTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputZeroPointTensor))), true);
   // 0x10: pointer
-  if (data?.FilterTensor !== undefined) view.setBigUint64(16, data.FilterTensor === null ? 0n : BigInt(util.toPointer(data.FilterTensor)), true);
+  if (data?.FilterTensor !== undefined) view.setBigUint64(16, data.FilterTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.FilterTensor))), true);
   // 0x18: pointer
-  if (data?.FilterZeroPointTensor !== undefined) view.setBigUint64(24, data.FilterZeroPointTensor === null ? 0n : BigInt(util.toPointer(data.FilterZeroPointTensor)), true);
+  if (data?.FilterZeroPointTensor !== undefined) view.setBigUint64(24, data.FilterZeroPointTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.FilterZeroPointTensor))), true);
   // 0x20: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(32, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(32, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x28: u32
   if (data?.DimensionCount !== undefined) view.setUint32(40, Number(data.DimensionCount), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.Strides !== undefined) view.setBigUint64(48, data.Strides === null ? 0n : BigInt(util.toPointer(data.Strides)), true);
+  if (data?.Strides !== undefined) view.setBigUint64(48, data.Strides === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Strides))), true);
   // 0x38: pointer
-  if (data?.Dilations !== undefined) view.setBigUint64(56, data.Dilations === null ? 0n : BigInt(util.toPointer(data.Dilations)), true);
+  if (data?.Dilations !== undefined) view.setBigUint64(56, data.Dilations === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Dilations))), true);
   // 0x40: pointer
-  if (data?.StartPadding !== undefined) view.setBigUint64(64, data.StartPadding === null ? 0n : BigInt(util.toPointer(data.StartPadding)), true);
+  if (data?.StartPadding !== undefined) view.setBigUint64(64, data.StartPadding === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.StartPadding))), true);
   // 0x48: pointer
-  if (data?.EndPadding !== undefined) view.setBigUint64(72, data.EndPadding === null ? 0n : BigInt(util.toPointer(data.EndPadding)), true);
+  if (data?.EndPadding !== undefined) view.setBigUint64(72, data.EndPadding === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.EndPadding))), true);
   // 0x50: u32
   if (data?.GroupCount !== undefined) view.setUint32(80, Number(data.GroupCount), true);
   // 0x54: pad4
@@ -11596,33 +11596,33 @@ export class DML_CONVOLUTION_INTEGER_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get InputZeroPointTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputZeroPointTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get FilterTensor(): Uint8Array | Deno.PointerValue | null {
+  get FilterTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get FilterZeroPointTensor(): Uint8Array | Deno.PointerValue | null {
+  get FilterZeroPointTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -11633,27 +11633,27 @@ export class DML_CONVOLUTION_INTEGER_OPERATOR_DESCView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  get Strides(): Uint8Array | Deno.PointerValue | null {
+  get Strides(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get Dilations(): Uint8Array | Deno.PointerValue | null {
+  get Dilations(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get StartPadding(): Uint8Array | Deno.PointerValue | null {
+  get StartPadding(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: pointer
-  get EndPadding(): Uint8Array | Deno.PointerValue | null {
+  get EndPadding(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: u32
@@ -11664,28 +11664,28 @@ export class DML_CONVOLUTION_INTEGER_OPERATOR_DESCView {
   // 0x54: pad4
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set InputZeroPointTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set InputZeroPointTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set FilterTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set FilterTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set FilterZeroPointTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set FilterZeroPointTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u32
@@ -11696,23 +11696,23 @@ export class DML_CONVOLUTION_INTEGER_OPERATOR_DESCView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  set Strides(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set Strides(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set Dilations(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set Dilations(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set StartPadding(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set StartPadding(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: pointer
-  set EndPadding(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set EndPadding(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x50: u32
@@ -11728,35 +11728,35 @@ export class DML_CONVOLUTION_INTEGER_OPERATOR_DESCView {
  */
 export interface DML_QUANTIZED_LINEAR_CONVOLUTION_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  InputScaleTensor: Deno.PointerValue | Uint8Array | null;
+  InputScaleTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  InputZeroPointTensor: Deno.PointerValue | Uint8Array | null;
+  InputZeroPointTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  FilterTensor: Deno.PointerValue | Uint8Array | null;
+  FilterTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  FilterScaleTensor: Deno.PointerValue | Uint8Array | null;
+  FilterScaleTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  FilterZeroPointTensor: Deno.PointerValue | Uint8Array | null;
+  FilterZeroPointTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BiasTensor: Deno.PointerValue | Uint8Array | null;
+  BiasTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputScaleTensor: Deno.PointerValue | Uint8Array | null;
+  OutputScaleTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputZeroPointTensor: Deno.PointerValue | Uint8Array | null;
+  OutputZeroPointTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   DimensionCount: number;
   /** ptr */
-  Strides: Deno.PointerValue | Uint8Array | null;
+  Strides: Deno.PointerValue | Uint8Array;
   /** ptr */
-  Dilations: Deno.PointerValue | Uint8Array | null;
+  Dilations: Deno.PointerValue | Uint8Array;
   /** ptr */
-  StartPadding: Deno.PointerValue | Uint8Array | null;
+  StartPadding: Deno.PointerValue | Uint8Array;
   /** ptr */
-  EndPadding: Deno.PointerValue | Uint8Array | null;
+  EndPadding: Deno.PointerValue | Uint8Array;
   /** u32 */
   GroupCount: number;
 }
@@ -11767,36 +11767,36 @@ export function allocDML_QUANTIZED_LINEAR_CONVOLUTION_OPERATOR_DESC(data?: Parti
   const buf = new Uint8Array(sizeofDML_QUANTIZED_LINEAR_CONVOLUTION_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.InputScaleTensor !== undefined) view.setBigUint64(8, data.InputScaleTensor === null ? 0n : BigInt(util.toPointer(data.InputScaleTensor)), true);
+  if (data?.InputScaleTensor !== undefined) view.setBigUint64(8, data.InputScaleTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputScaleTensor))), true);
   // 0x10: pointer
-  if (data?.InputZeroPointTensor !== undefined) view.setBigUint64(16, data.InputZeroPointTensor === null ? 0n : BigInt(util.toPointer(data.InputZeroPointTensor)), true);
+  if (data?.InputZeroPointTensor !== undefined) view.setBigUint64(16, data.InputZeroPointTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputZeroPointTensor))), true);
   // 0x18: pointer
-  if (data?.FilterTensor !== undefined) view.setBigUint64(24, data.FilterTensor === null ? 0n : BigInt(util.toPointer(data.FilterTensor)), true);
+  if (data?.FilterTensor !== undefined) view.setBigUint64(24, data.FilterTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.FilterTensor))), true);
   // 0x20: pointer
-  if (data?.FilterScaleTensor !== undefined) view.setBigUint64(32, data.FilterScaleTensor === null ? 0n : BigInt(util.toPointer(data.FilterScaleTensor)), true);
+  if (data?.FilterScaleTensor !== undefined) view.setBigUint64(32, data.FilterScaleTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.FilterScaleTensor))), true);
   // 0x28: pointer
-  if (data?.FilterZeroPointTensor !== undefined) view.setBigUint64(40, data.FilterZeroPointTensor === null ? 0n : BigInt(util.toPointer(data.FilterZeroPointTensor)), true);
+  if (data?.FilterZeroPointTensor !== undefined) view.setBigUint64(40, data.FilterZeroPointTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.FilterZeroPointTensor))), true);
   // 0x30: pointer
-  if (data?.BiasTensor !== undefined) view.setBigUint64(48, data.BiasTensor === null ? 0n : BigInt(util.toPointer(data.BiasTensor)), true);
+  if (data?.BiasTensor !== undefined) view.setBigUint64(48, data.BiasTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BiasTensor))), true);
   // 0x38: pointer
-  if (data?.OutputScaleTensor !== undefined) view.setBigUint64(56, data.OutputScaleTensor === null ? 0n : BigInt(util.toPointer(data.OutputScaleTensor)), true);
+  if (data?.OutputScaleTensor !== undefined) view.setBigUint64(56, data.OutputScaleTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputScaleTensor))), true);
   // 0x40: pointer
-  if (data?.OutputZeroPointTensor !== undefined) view.setBigUint64(64, data.OutputZeroPointTensor === null ? 0n : BigInt(util.toPointer(data.OutputZeroPointTensor)), true);
+  if (data?.OutputZeroPointTensor !== undefined) view.setBigUint64(64, data.OutputZeroPointTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputZeroPointTensor))), true);
   // 0x48: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(72, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(72, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x50: u32
   if (data?.DimensionCount !== undefined) view.setUint32(80, Number(data.DimensionCount), true);
   // 0x54: pad4
   // 0x58: pointer
-  if (data?.Strides !== undefined) view.setBigUint64(88, data.Strides === null ? 0n : BigInt(util.toPointer(data.Strides)), true);
+  if (data?.Strides !== undefined) view.setBigUint64(88, data.Strides === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Strides))), true);
   // 0x60: pointer
-  if (data?.Dilations !== undefined) view.setBigUint64(96, data.Dilations === null ? 0n : BigInt(util.toPointer(data.Dilations)), true);
+  if (data?.Dilations !== undefined) view.setBigUint64(96, data.Dilations === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Dilations))), true);
   // 0x68: pointer
-  if (data?.StartPadding !== undefined) view.setBigUint64(104, data.StartPadding === null ? 0n : BigInt(util.toPointer(data.StartPadding)), true);
+  if (data?.StartPadding !== undefined) view.setBigUint64(104, data.StartPadding === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.StartPadding))), true);
   // 0x70: pointer
-  if (data?.EndPadding !== undefined) view.setBigUint64(112, data.EndPadding === null ? 0n : BigInt(util.toPointer(data.EndPadding)), true);
+  if (data?.EndPadding !== undefined) view.setBigUint64(112, data.EndPadding === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.EndPadding))), true);
   // 0x78: u32
   if (data?.GroupCount !== undefined) view.setUint32(120, Number(data.GroupCount), true);
   // 0x7c: pad4
@@ -11814,63 +11814,63 @@ export class DML_QUANTIZED_LINEAR_CONVOLUTION_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get InputScaleTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputScaleTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get InputZeroPointTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputZeroPointTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get FilterTensor(): Uint8Array | Deno.PointerValue | null {
+  get FilterTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get FilterScaleTensor(): Uint8Array | Deno.PointerValue | null {
+  get FilterScaleTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get FilterZeroPointTensor(): Uint8Array | Deno.PointerValue | null {
+  get FilterZeroPointTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get BiasTensor(): Uint8Array | Deno.PointerValue | null {
+  get BiasTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get OutputScaleTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputScaleTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get OutputZeroPointTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputZeroPointTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: u32
@@ -11881,27 +11881,27 @@ export class DML_QUANTIZED_LINEAR_CONVOLUTION_OPERATOR_DESCView {
   // 0x54: pad4
 
   // 0x58: pointer
-  get Strides(): Uint8Array | Deno.PointerValue | null {
+  get Strides(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x60: pointer
-  get Dilations(): Uint8Array | Deno.PointerValue | null {
+  get Dilations(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(96, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x68: pointer
-  get StartPadding(): Uint8Array | Deno.PointerValue | null {
+  get StartPadding(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(104, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x70: pointer
-  get EndPadding(): Uint8Array | Deno.PointerValue | null {
+  get EndPadding(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(112, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x78: u32
@@ -11912,53 +11912,53 @@ export class DML_QUANTIZED_LINEAR_CONVOLUTION_OPERATOR_DESCView {
   // 0x7c: pad4
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set InputScaleTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set InputScaleTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set InputZeroPointTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set InputZeroPointTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set FilterTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set FilterTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set FilterScaleTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set FilterScaleTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set FilterZeroPointTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set FilterZeroPointTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set BiasTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set BiasTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set OutputScaleTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set OutputScaleTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set OutputZeroPointTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set OutputZeroPointTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x50: u32
@@ -11969,23 +11969,23 @@ export class DML_QUANTIZED_LINEAR_CONVOLUTION_OPERATOR_DESCView {
   // 0x54: pad4
 
   // 0x58: pointer
-  set Strides(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  set Strides(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x60: pointer
-  set Dilations(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(96, BigInt(util.toPointer(value)), true);
+  set Dilations(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(96, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x68: pointer
-  set StartPadding(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(104, BigInt(util.toPointer(value)), true);
+  set StartPadding(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(104, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x70: pointer
-  set EndPadding(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(112, BigInt(util.toPointer(value)), true);
+  set EndPadding(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(112, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x78: u32
@@ -12001,11 +12001,11 @@ export class DML_QUANTIZED_LINEAR_CONVOLUTION_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_BIT_AND_OPERATOR_DESC {
   /** ptr */
-  ATensor: Deno.PointerValue | Uint8Array | null;
+  ATensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BTensor: Deno.PointerValue | Uint8Array | null;
+  BTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_BIT_AND_OPERATOR_DESC = 24;
@@ -12014,11 +12014,11 @@ export function allocDML_ELEMENT_WISE_BIT_AND_OPERATOR_DESC(data?: Partial<DML_E
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_BIT_AND_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(util.toPointer(data.ATensor)), true);
+  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ATensor))), true);
   // 0x08: pointer
-  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(util.toPointer(data.BTensor)), true);
+  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -12033,36 +12033,36 @@ export class DML_ELEMENT_WISE_BIT_AND_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get ATensor(): Uint8Array | Deno.PointerValue | null {
+  get ATensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get BTensor(): Uint8Array | Deno.PointerValue | null {
+  get BTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ATensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ATensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set BTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set BTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12071,11 +12071,11 @@ export class DML_ELEMENT_WISE_BIT_AND_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_BIT_OR_OPERATOR_DESC {
   /** ptr */
-  ATensor: Deno.PointerValue | Uint8Array | null;
+  ATensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BTensor: Deno.PointerValue | Uint8Array | null;
+  BTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_BIT_OR_OPERATOR_DESC = 24;
@@ -12084,11 +12084,11 @@ export function allocDML_ELEMENT_WISE_BIT_OR_OPERATOR_DESC(data?: Partial<DML_EL
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_BIT_OR_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(util.toPointer(data.ATensor)), true);
+  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ATensor))), true);
   // 0x08: pointer
-  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(util.toPointer(data.BTensor)), true);
+  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -12103,36 +12103,36 @@ export class DML_ELEMENT_WISE_BIT_OR_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get ATensor(): Uint8Array | Deno.PointerValue | null {
+  get ATensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get BTensor(): Uint8Array | Deno.PointerValue | null {
+  get BTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ATensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ATensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set BTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set BTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12141,11 +12141,11 @@ export class DML_ELEMENT_WISE_BIT_OR_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_BIT_XOR_OPERATOR_DESC {
   /** ptr */
-  ATensor: Deno.PointerValue | Uint8Array | null;
+  ATensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BTensor: Deno.PointerValue | Uint8Array | null;
+  BTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_BIT_XOR_OPERATOR_DESC = 24;
@@ -12154,11 +12154,11 @@ export function allocDML_ELEMENT_WISE_BIT_XOR_OPERATOR_DESC(data?: Partial<DML_E
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_BIT_XOR_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(util.toPointer(data.ATensor)), true);
+  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ATensor))), true);
   // 0x08: pointer
-  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(util.toPointer(data.BTensor)), true);
+  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -12173,36 +12173,36 @@ export class DML_ELEMENT_WISE_BIT_XOR_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get ATensor(): Uint8Array | Deno.PointerValue | null {
+  get ATensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get BTensor(): Uint8Array | Deno.PointerValue | null {
+  get BTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ATensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ATensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set BTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set BTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12211,9 +12211,9 @@ export class DML_ELEMENT_WISE_BIT_XOR_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_BIT_NOT_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_BIT_NOT_OPERATOR_DESC = 16;
@@ -12222,9 +12222,9 @@ export function allocDML_ELEMENT_WISE_BIT_NOT_OPERATOR_DESC(data?: Partial<DML_E
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_BIT_NOT_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -12239,25 +12239,25 @@ export class DML_ELEMENT_WISE_BIT_NOT_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12266,9 +12266,9 @@ export class DML_ELEMENT_WISE_BIT_NOT_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_BIT_COUNT_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_BIT_COUNT_OPERATOR_DESC = 16;
@@ -12277,9 +12277,9 @@ export function allocDML_ELEMENT_WISE_BIT_COUNT_OPERATOR_DESC(data?: Partial<DML
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_BIT_COUNT_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -12294,25 +12294,25 @@ export class DML_ELEMENT_WISE_BIT_COUNT_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12321,11 +12321,11 @@ export class DML_ELEMENT_WISE_BIT_COUNT_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_LOGICAL_GREATER_THAN_OR_EQUAL_OPERATOR_DESC {
   /** ptr */
-  ATensor: Deno.PointerValue | Uint8Array | null;
+  ATensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BTensor: Deno.PointerValue | Uint8Array | null;
+  BTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_LOGICAL_GREATER_THAN_OR_EQUAL_OPERATOR_DESC = 24;
@@ -12334,11 +12334,11 @@ export function allocDML_ELEMENT_WISE_LOGICAL_GREATER_THAN_OR_EQUAL_OPERATOR_DES
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_LOGICAL_GREATER_THAN_OR_EQUAL_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(util.toPointer(data.ATensor)), true);
+  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ATensor))), true);
   // 0x08: pointer
-  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(util.toPointer(data.BTensor)), true);
+  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -12353,36 +12353,36 @@ export class DML_ELEMENT_WISE_LOGICAL_GREATER_THAN_OR_EQUAL_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get ATensor(): Uint8Array | Deno.PointerValue | null {
+  get ATensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get BTensor(): Uint8Array | Deno.PointerValue | null {
+  get BTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ATensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ATensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set BTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set BTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12391,11 +12391,11 @@ export class DML_ELEMENT_WISE_LOGICAL_GREATER_THAN_OR_EQUAL_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_LOGICAL_LESS_THAN_OR_EQUAL_OPERATOR_DESC {
   /** ptr */
-  ATensor: Deno.PointerValue | Uint8Array | null;
+  ATensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BTensor: Deno.PointerValue | Uint8Array | null;
+  BTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_LOGICAL_LESS_THAN_OR_EQUAL_OPERATOR_DESC = 24;
@@ -12404,11 +12404,11 @@ export function allocDML_ELEMENT_WISE_LOGICAL_LESS_THAN_OR_EQUAL_OPERATOR_DESC(d
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_LOGICAL_LESS_THAN_OR_EQUAL_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(util.toPointer(data.ATensor)), true);
+  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ATensor))), true);
   // 0x08: pointer
-  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(util.toPointer(data.BTensor)), true);
+  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -12423,36 +12423,36 @@ export class DML_ELEMENT_WISE_LOGICAL_LESS_THAN_OR_EQUAL_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get ATensor(): Uint8Array | Deno.PointerValue | null {
+  get ATensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get BTensor(): Uint8Array | Deno.PointerValue | null {
+  get BTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ATensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ATensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set BTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set BTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12461,9 +12461,9 @@ export class DML_ELEMENT_WISE_LOGICAL_LESS_THAN_OR_EQUAL_OPERATOR_DESCView {
  */
 export interface DML_ACTIVATION_CELU_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** f32 */
   Alpha: number;
 }
@@ -12474,9 +12474,9 @@ export function allocDML_ACTIVATION_CELU_OPERATOR_DESC(data?: Partial<DML_ACTIVA
   const buf = new Uint8Array(sizeofDML_ACTIVATION_CELU_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: f32
   if (data?.Alpha !== undefined) view.setFloat32(16, Number(data.Alpha), true);
   // 0x14: pad4
@@ -12494,15 +12494,15 @@ export class DML_ACTIVATION_CELU_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: f32
@@ -12513,13 +12513,13 @@ export class DML_ACTIVATION_CELU_OPERATOR_DESCView {
   // 0x14: pad4
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: f32
@@ -12535,11 +12535,11 @@ export class DML_ACTIVATION_CELU_OPERATOR_DESCView {
  */
 export interface DML_ACTIVATION_RELU_GRAD_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  InputGradientTensor: Deno.PointerValue | Uint8Array | null;
+  InputGradientTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputGradientTensor: Deno.PointerValue | Uint8Array | null;
+  OutputGradientTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ACTIVATION_RELU_GRAD_OPERATOR_DESC = 24;
@@ -12548,11 +12548,11 @@ export function allocDML_ACTIVATION_RELU_GRAD_OPERATOR_DESC(data?: Partial<DML_A
   const buf = new Uint8Array(sizeofDML_ACTIVATION_RELU_GRAD_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.InputGradientTensor !== undefined) view.setBigUint64(8, data.InputGradientTensor === null ? 0n : BigInt(util.toPointer(data.InputGradientTensor)), true);
+  if (data?.InputGradientTensor !== undefined) view.setBigUint64(8, data.InputGradientTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputGradientTensor))), true);
   // 0x10: pointer
-  if (data?.OutputGradientTensor !== undefined) view.setBigUint64(16, data.OutputGradientTensor === null ? 0n : BigInt(util.toPointer(data.OutputGradientTensor)), true);
+  if (data?.OutputGradientTensor !== undefined) view.setBigUint64(16, data.OutputGradientTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputGradientTensor))), true);
   return buf;
 }
 
@@ -12567,36 +12567,36 @@ export class DML_ACTIVATION_RELU_GRAD_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get InputGradientTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputGradientTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputGradientTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputGradientTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set InputGradientTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set InputGradientTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputGradientTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputGradientTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12605,19 +12605,19 @@ export class DML_ACTIVATION_RELU_GRAD_OPERATOR_DESCView {
  */
 export interface DML_AVERAGE_POOLING_GRAD_OPERATOR_DESC {
   /** ptr */
-  InputGradientTensor: Deno.PointerValue | Uint8Array | null;
+  InputGradientTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputGradientTensor: Deno.PointerValue | Uint8Array | null;
+  OutputGradientTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   DimensionCount: number;
   /** ptr */
-  Strides: Deno.PointerValue | Uint8Array | null;
+  Strides: Deno.PointerValue | Uint8Array;
   /** ptr */
-  WindowSize: Deno.PointerValue | Uint8Array | null;
+  WindowSize: Deno.PointerValue | Uint8Array;
   /** ptr */
-  StartPadding: Deno.PointerValue | Uint8Array | null;
+  StartPadding: Deno.PointerValue | Uint8Array;
   /** ptr */
-  EndPadding: Deno.PointerValue | Uint8Array | null;
+  EndPadding: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.BOOL */
   IncludePadding: boolean;
 }
@@ -12628,20 +12628,20 @@ export function allocDML_AVERAGE_POOLING_GRAD_OPERATOR_DESC(data?: Partial<DML_A
   const buf = new Uint8Array(sizeofDML_AVERAGE_POOLING_GRAD_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputGradientTensor !== undefined) view.setBigUint64(0, data.InputGradientTensor === null ? 0n : BigInt(util.toPointer(data.InputGradientTensor)), true);
+  if (data?.InputGradientTensor !== undefined) view.setBigUint64(0, data.InputGradientTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputGradientTensor))), true);
   // 0x08: pointer
-  if (data?.OutputGradientTensor !== undefined) view.setBigUint64(8, data.OutputGradientTensor === null ? 0n : BigInt(util.toPointer(data.OutputGradientTensor)), true);
+  if (data?.OutputGradientTensor !== undefined) view.setBigUint64(8, data.OutputGradientTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputGradientTensor))), true);
   // 0x10: u32
   if (data?.DimensionCount !== undefined) view.setUint32(16, Number(data.DimensionCount), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.Strides !== undefined) view.setBigUint64(24, data.Strides === null ? 0n : BigInt(util.toPointer(data.Strides)), true);
+  if (data?.Strides !== undefined) view.setBigUint64(24, data.Strides === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Strides))), true);
   // 0x20: pointer
-  if (data?.WindowSize !== undefined) view.setBigUint64(32, data.WindowSize === null ? 0n : BigInt(util.toPointer(data.WindowSize)), true);
+  if (data?.WindowSize !== undefined) view.setBigUint64(32, data.WindowSize === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WindowSize))), true);
   // 0x28: pointer
-  if (data?.StartPadding !== undefined) view.setBigUint64(40, data.StartPadding === null ? 0n : BigInt(util.toPointer(data.StartPadding)), true);
+  if (data?.StartPadding !== undefined) view.setBigUint64(40, data.StartPadding === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.StartPadding))), true);
   // 0x30: pointer
-  if (data?.EndPadding !== undefined) view.setBigUint64(48, data.EndPadding === null ? 0n : BigInt(util.toPointer(data.EndPadding)), true);
+  if (data?.EndPadding !== undefined) view.setBigUint64(48, data.EndPadding === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.EndPadding))), true);
   // 0x38: i32
   if (data?.IncludePadding !== undefined) view.setInt32(56, Number(data.IncludePadding), true);
   // 0x3c: pad4
@@ -12659,15 +12659,15 @@ export class DML_AVERAGE_POOLING_GRAD_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputGradientTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputGradientTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputGradientTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputGradientTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -12678,27 +12678,27 @@ export class DML_AVERAGE_POOLING_GRAD_OPERATOR_DESCView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get Strides(): Uint8Array | Deno.PointerValue | null {
+  get Strides(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get WindowSize(): Uint8Array | Deno.PointerValue | null {
+  get WindowSize(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get StartPadding(): Uint8Array | Deno.PointerValue | null {
+  get StartPadding(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get EndPadding(): Uint8Array | Deno.PointerValue | null {
+  get EndPadding(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: i32
@@ -12709,13 +12709,13 @@ export class DML_AVERAGE_POOLING_GRAD_OPERATOR_DESCView {
   // 0x3c: pad4
 
   // 0x00: pointer
-  set InputGradientTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputGradientTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputGradientTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputGradientTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -12726,23 +12726,23 @@ export class DML_AVERAGE_POOLING_GRAD_OPERATOR_DESCView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set Strides(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set Strides(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set WindowSize(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set WindowSize(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set StartPadding(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set StartPadding(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set EndPadding(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set EndPadding(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: i32
@@ -12758,23 +12758,23 @@ export class DML_AVERAGE_POOLING_GRAD_OPERATOR_DESCView {
  */
 export interface DML_MAX_POOLING_GRAD_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  InputGradientTensor: Deno.PointerValue | Uint8Array | null;
+  InputGradientTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputGradientTensor: Deno.PointerValue | Uint8Array | null;
+  OutputGradientTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   DimensionCount: number;
   /** ptr */
-  Strides: Deno.PointerValue | Uint8Array | null;
+  Strides: Deno.PointerValue | Uint8Array;
   /** ptr */
-  WindowSize: Deno.PointerValue | Uint8Array | null;
+  WindowSize: Deno.PointerValue | Uint8Array;
   /** ptr */
-  StartPadding: Deno.PointerValue | Uint8Array | null;
+  StartPadding: Deno.PointerValue | Uint8Array;
   /** ptr */
-  EndPadding: Deno.PointerValue | Uint8Array | null;
+  EndPadding: Deno.PointerValue | Uint8Array;
   /** ptr */
-  Dilations: Deno.PointerValue | Uint8Array | null;
+  Dilations: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_MAX_POOLING_GRAD_OPERATOR_DESC = 72;
@@ -12783,24 +12783,24 @@ export function allocDML_MAX_POOLING_GRAD_OPERATOR_DESC(data?: Partial<DML_MAX_P
   const buf = new Uint8Array(sizeofDML_MAX_POOLING_GRAD_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.InputGradientTensor !== undefined) view.setBigUint64(8, data.InputGradientTensor === null ? 0n : BigInt(util.toPointer(data.InputGradientTensor)), true);
+  if (data?.InputGradientTensor !== undefined) view.setBigUint64(8, data.InputGradientTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputGradientTensor))), true);
   // 0x10: pointer
-  if (data?.OutputGradientTensor !== undefined) view.setBigUint64(16, data.OutputGradientTensor === null ? 0n : BigInt(util.toPointer(data.OutputGradientTensor)), true);
+  if (data?.OutputGradientTensor !== undefined) view.setBigUint64(16, data.OutputGradientTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputGradientTensor))), true);
   // 0x18: u32
   if (data?.DimensionCount !== undefined) view.setUint32(24, Number(data.DimensionCount), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.Strides !== undefined) view.setBigUint64(32, data.Strides === null ? 0n : BigInt(util.toPointer(data.Strides)), true);
+  if (data?.Strides !== undefined) view.setBigUint64(32, data.Strides === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Strides))), true);
   // 0x28: pointer
-  if (data?.WindowSize !== undefined) view.setBigUint64(40, data.WindowSize === null ? 0n : BigInt(util.toPointer(data.WindowSize)), true);
+  if (data?.WindowSize !== undefined) view.setBigUint64(40, data.WindowSize === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WindowSize))), true);
   // 0x30: pointer
-  if (data?.StartPadding !== undefined) view.setBigUint64(48, data.StartPadding === null ? 0n : BigInt(util.toPointer(data.StartPadding)), true);
+  if (data?.StartPadding !== undefined) view.setBigUint64(48, data.StartPadding === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.StartPadding))), true);
   // 0x38: pointer
-  if (data?.EndPadding !== undefined) view.setBigUint64(56, data.EndPadding === null ? 0n : BigInt(util.toPointer(data.EndPadding)), true);
+  if (data?.EndPadding !== undefined) view.setBigUint64(56, data.EndPadding === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.EndPadding))), true);
   // 0x40: pointer
-  if (data?.Dilations !== undefined) view.setBigUint64(64, data.Dilations === null ? 0n : BigInt(util.toPointer(data.Dilations)), true);
+  if (data?.Dilations !== undefined) view.setBigUint64(64, data.Dilations === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Dilations))), true);
   return buf;
 }
 
@@ -12815,21 +12815,21 @@ export class DML_MAX_POOLING_GRAD_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get InputGradientTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputGradientTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputGradientTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputGradientTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -12840,48 +12840,48 @@ export class DML_MAX_POOLING_GRAD_OPERATOR_DESCView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get Strides(): Uint8Array | Deno.PointerValue | null {
+  get Strides(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get WindowSize(): Uint8Array | Deno.PointerValue | null {
+  get WindowSize(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get StartPadding(): Uint8Array | Deno.PointerValue | null {
+  get StartPadding(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get EndPadding(): Uint8Array | Deno.PointerValue | null {
+  get EndPadding(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get Dilations(): Uint8Array | Deno.PointerValue | null {
+  get Dilations(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set InputGradientTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set InputGradientTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputGradientTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputGradientTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -12892,28 +12892,28 @@ export class DML_MAX_POOLING_GRAD_OPERATOR_DESCView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set Strides(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set Strides(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set WindowSize(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set WindowSize(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set StartPadding(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set StartPadding(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set EndPadding(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set EndPadding(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set Dilations(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set Dilations(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12922,11 +12922,11 @@ export class DML_MAX_POOLING_GRAD_OPERATOR_DESCView {
  */
 export interface DML_RANDOM_GENERATOR_OPERATOR_DESC {
   /** ptr */
-  InputStateTensor: Deno.PointerValue | Uint8Array | null;
+  InputStateTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputStateTensor: Deno.PointerValue | Uint8Array | null;
+  OutputStateTensor: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_RANDOM_GENERATOR_TYPE */
   Type: DML_RANDOM_GENERATOR_TYPE;
 }
@@ -12937,11 +12937,11 @@ export function allocDML_RANDOM_GENERATOR_OPERATOR_DESC(data?: Partial<DML_RANDO
   const buf = new Uint8Array(sizeofDML_RANDOM_GENERATOR_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputStateTensor !== undefined) view.setBigUint64(0, data.InputStateTensor === null ? 0n : BigInt(util.toPointer(data.InputStateTensor)), true);
+  if (data?.InputStateTensor !== undefined) view.setBigUint64(0, data.InputStateTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputStateTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: pointer
-  if (data?.OutputStateTensor !== undefined) view.setBigUint64(16, data.OutputStateTensor === null ? 0n : BigInt(util.toPointer(data.OutputStateTensor)), true);
+  if (data?.OutputStateTensor !== undefined) view.setBigUint64(16, data.OutputStateTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputStateTensor))), true);
   // 0x18: i32
   if (data?.Type !== undefined) view.setInt32(24, Number(data.Type), true);
   // 0x1c: pad4
@@ -12959,21 +12959,21 @@ export class DML_RANDOM_GENERATOR_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputStateTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputStateTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputStateTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputStateTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: i32
@@ -12984,18 +12984,18 @@ export class DML_RANDOM_GENERATOR_OPERATOR_DESCView {
   // 0x1c: pad4
 
   // 0x00: pointer
-  set InputStateTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputStateTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputStateTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputStateTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: i32
@@ -13011,11 +13011,11 @@ export class DML_RANDOM_GENERATOR_OPERATOR_DESCView {
  */
 export interface DML_NONZERO_COORDINATES_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputCountTensor: Deno.PointerValue | Uint8Array | null;
+  OutputCountTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputCoordinatesTensor: Deno.PointerValue | Uint8Array | null;
+  OutputCoordinatesTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_NONZERO_COORDINATES_OPERATOR_DESC = 24;
@@ -13024,11 +13024,11 @@ export function allocDML_NONZERO_COORDINATES_OPERATOR_DESC(data?: Partial<DML_NO
   const buf = new Uint8Array(sizeofDML_NONZERO_COORDINATES_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputCountTensor !== undefined) view.setBigUint64(8, data.OutputCountTensor === null ? 0n : BigInt(util.toPointer(data.OutputCountTensor)), true);
+  if (data?.OutputCountTensor !== undefined) view.setBigUint64(8, data.OutputCountTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputCountTensor))), true);
   // 0x10: pointer
-  if (data?.OutputCoordinatesTensor !== undefined) view.setBigUint64(16, data.OutputCoordinatesTensor === null ? 0n : BigInt(util.toPointer(data.OutputCoordinatesTensor)), true);
+  if (data?.OutputCoordinatesTensor !== undefined) view.setBigUint64(16, data.OutputCoordinatesTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputCoordinatesTensor))), true);
   return buf;
 }
 
@@ -13043,36 +13043,36 @@ export class DML_NONZERO_COORDINATES_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputCountTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputCountTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputCoordinatesTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputCoordinatesTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputCountTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputCountTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputCoordinatesTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputCoordinatesTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -13081,19 +13081,19 @@ export class DML_NONZERO_COORDINATES_OPERATOR_DESCView {
  */
 export interface DML_RESAMPLE_GRAD_OPERATOR_DESC {
   /** ptr */
-  InputGradientTensor: Deno.PointerValue | Uint8Array | null;
+  InputGradientTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputGradientTensor: Deno.PointerValue | Uint8Array | null;
+  OutputGradientTensor: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_INTERPOLATION_MODE */
   InterpolationMode: DML_INTERPOLATION_MODE;
   /** u32 */
   DimensionCount: number;
   /** ptr */
-  Scales: Deno.PointerValue | Uint8Array | null;
+  Scales: Deno.PointerValue | Uint8Array;
   /** ptr */
-  InputPixelOffsets: Deno.PointerValue | Uint8Array | null;
+  InputPixelOffsets: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputPixelOffsets: Deno.PointerValue | Uint8Array | null;
+  OutputPixelOffsets: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_RESAMPLE_GRAD_OPERATOR_DESC = 48;
@@ -13102,19 +13102,19 @@ export function allocDML_RESAMPLE_GRAD_OPERATOR_DESC(data?: Partial<DML_RESAMPLE
   const buf = new Uint8Array(sizeofDML_RESAMPLE_GRAD_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputGradientTensor !== undefined) view.setBigUint64(0, data.InputGradientTensor === null ? 0n : BigInt(util.toPointer(data.InputGradientTensor)), true);
+  if (data?.InputGradientTensor !== undefined) view.setBigUint64(0, data.InputGradientTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputGradientTensor))), true);
   // 0x08: pointer
-  if (data?.OutputGradientTensor !== undefined) view.setBigUint64(8, data.OutputGradientTensor === null ? 0n : BigInt(util.toPointer(data.OutputGradientTensor)), true);
+  if (data?.OutputGradientTensor !== undefined) view.setBigUint64(8, data.OutputGradientTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputGradientTensor))), true);
   // 0x10: i32
   if (data?.InterpolationMode !== undefined) view.setInt32(16, Number(data.InterpolationMode), true);
   // 0x14: u32
   if (data?.DimensionCount !== undefined) view.setUint32(20, Number(data.DimensionCount), true);
   // 0x18: pointer
-  if (data?.Scales !== undefined) view.setBigUint64(24, data.Scales === null ? 0n : BigInt(util.toPointer(data.Scales)), true);
+  if (data?.Scales !== undefined) view.setBigUint64(24, data.Scales === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Scales))), true);
   // 0x20: pointer
-  if (data?.InputPixelOffsets !== undefined) view.setBigUint64(32, data.InputPixelOffsets === null ? 0n : BigInt(util.toPointer(data.InputPixelOffsets)), true);
+  if (data?.InputPixelOffsets !== undefined) view.setBigUint64(32, data.InputPixelOffsets === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputPixelOffsets))), true);
   // 0x28: pointer
-  if (data?.OutputPixelOffsets !== undefined) view.setBigUint64(40, data.OutputPixelOffsets === null ? 0n : BigInt(util.toPointer(data.OutputPixelOffsets)), true);
+  if (data?.OutputPixelOffsets !== undefined) view.setBigUint64(40, data.OutputPixelOffsets === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputPixelOffsets))), true);
   return buf;
 }
 
@@ -13129,15 +13129,15 @@ export class DML_RESAMPLE_GRAD_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputGradientTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputGradientTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputGradientTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputGradientTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i32
@@ -13151,31 +13151,31 @@ export class DML_RESAMPLE_GRAD_OPERATOR_DESCView {
   }
 
   // 0x18: pointer
-  get Scales(): Uint8Array | Deno.PointerValue | null {
+  get Scales(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get InputPixelOffsets(): Uint8Array | Deno.PointerValue | null {
+  get InputPixelOffsets(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get OutputPixelOffsets(): Uint8Array | Deno.PointerValue | null {
+  get OutputPixelOffsets(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputGradientTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputGradientTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputGradientTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputGradientTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: i32
@@ -13189,18 +13189,18 @@ export class DML_RESAMPLE_GRAD_OPERATOR_DESCView {
   }
 
   // 0x18: pointer
-  set Scales(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set Scales(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set InputPixelOffsets(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set InputPixelOffsets(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set OutputPixelOffsets(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set OutputPixelOffsets(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -13209,17 +13209,17 @@ export class DML_RESAMPLE_GRAD_OPERATOR_DESCView {
  */
 export interface DML_SLICE_GRAD_OPERATOR_DESC {
   /** ptr */
-  InputGradientTensor: Deno.PointerValue | Uint8Array | null;
+  InputGradientTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputGradientTensor: Deno.PointerValue | Uint8Array | null;
+  OutputGradientTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   DimensionCount: number;
   /** ptr */
-  InputWindowOffsets: Deno.PointerValue | Uint8Array | null;
+  InputWindowOffsets: Deno.PointerValue | Uint8Array;
   /** ptr */
-  InputWindowSizes: Deno.PointerValue | Uint8Array | null;
+  InputWindowSizes: Deno.PointerValue | Uint8Array;
   /** ptr */
-  InputWindowStrides: Deno.PointerValue | Uint8Array | null;
+  InputWindowStrides: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_SLICE_GRAD_OPERATOR_DESC = 48;
@@ -13228,18 +13228,18 @@ export function allocDML_SLICE_GRAD_OPERATOR_DESC(data?: Partial<DML_SLICE_GRAD_
   const buf = new Uint8Array(sizeofDML_SLICE_GRAD_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputGradientTensor !== undefined) view.setBigUint64(0, data.InputGradientTensor === null ? 0n : BigInt(util.toPointer(data.InputGradientTensor)), true);
+  if (data?.InputGradientTensor !== undefined) view.setBigUint64(0, data.InputGradientTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputGradientTensor))), true);
   // 0x08: pointer
-  if (data?.OutputGradientTensor !== undefined) view.setBigUint64(8, data.OutputGradientTensor === null ? 0n : BigInt(util.toPointer(data.OutputGradientTensor)), true);
+  if (data?.OutputGradientTensor !== undefined) view.setBigUint64(8, data.OutputGradientTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputGradientTensor))), true);
   // 0x10: u32
   if (data?.DimensionCount !== undefined) view.setUint32(16, Number(data.DimensionCount), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.InputWindowOffsets !== undefined) view.setBigUint64(24, data.InputWindowOffsets === null ? 0n : BigInt(util.toPointer(data.InputWindowOffsets)), true);
+  if (data?.InputWindowOffsets !== undefined) view.setBigUint64(24, data.InputWindowOffsets === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputWindowOffsets))), true);
   // 0x20: pointer
-  if (data?.InputWindowSizes !== undefined) view.setBigUint64(32, data.InputWindowSizes === null ? 0n : BigInt(util.toPointer(data.InputWindowSizes)), true);
+  if (data?.InputWindowSizes !== undefined) view.setBigUint64(32, data.InputWindowSizes === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputWindowSizes))), true);
   // 0x28: pointer
-  if (data?.InputWindowStrides !== undefined) view.setBigUint64(40, data.InputWindowStrides === null ? 0n : BigInt(util.toPointer(data.InputWindowStrides)), true);
+  if (data?.InputWindowStrides !== undefined) view.setBigUint64(40, data.InputWindowStrides === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputWindowStrides))), true);
   return buf;
 }
 
@@ -13254,15 +13254,15 @@ export class DML_SLICE_GRAD_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputGradientTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputGradientTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputGradientTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputGradientTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -13273,31 +13273,31 @@ export class DML_SLICE_GRAD_OPERATOR_DESCView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get InputWindowOffsets(): Uint8Array | Deno.PointerValue | null {
+  get InputWindowOffsets(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get InputWindowSizes(): Uint8Array | Deno.PointerValue | null {
+  get InputWindowSizes(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get InputWindowStrides(): Uint8Array | Deno.PointerValue | null {
+  get InputWindowStrides(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputGradientTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputGradientTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputGradientTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputGradientTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -13308,18 +13308,18 @@ export class DML_SLICE_GRAD_OPERATOR_DESCView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set InputWindowOffsets(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set InputWindowOffsets(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set InputWindowSizes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set InputWindowSizes(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set InputWindowStrides(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set InputWindowStrides(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -13328,21 +13328,21 @@ export class DML_SLICE_GRAD_OPERATOR_DESCView {
  */
 export interface DML_ADAM_OPTIMIZER_OPERATOR_DESC {
   /** ptr */
-  InputParametersTensor: Deno.PointerValue | Uint8Array | null;
+  InputParametersTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  InputFirstMomentTensor: Deno.PointerValue | Uint8Array | null;
+  InputFirstMomentTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  InputSecondMomentTensor: Deno.PointerValue | Uint8Array | null;
+  InputSecondMomentTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  GradientTensor: Deno.PointerValue | Uint8Array | null;
+  GradientTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  TrainingStepTensor: Deno.PointerValue | Uint8Array | null;
+  TrainingStepTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputParametersTensor: Deno.PointerValue | Uint8Array | null;
+  OutputParametersTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputFirstMomentTensor: Deno.PointerValue | Uint8Array | null;
+  OutputFirstMomentTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputSecondMomentTensor: Deno.PointerValue | Uint8Array | null;
+  OutputSecondMomentTensor: Deno.PointerValue | Uint8Array;
   /** f32 */
   LearningRate: number;
   /** f32 */
@@ -13359,21 +13359,21 @@ export function allocDML_ADAM_OPTIMIZER_OPERATOR_DESC(data?: Partial<DML_ADAM_OP
   const buf = new Uint8Array(sizeofDML_ADAM_OPTIMIZER_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputParametersTensor !== undefined) view.setBigUint64(0, data.InputParametersTensor === null ? 0n : BigInt(util.toPointer(data.InputParametersTensor)), true);
+  if (data?.InputParametersTensor !== undefined) view.setBigUint64(0, data.InputParametersTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputParametersTensor))), true);
   // 0x08: pointer
-  if (data?.InputFirstMomentTensor !== undefined) view.setBigUint64(8, data.InputFirstMomentTensor === null ? 0n : BigInt(util.toPointer(data.InputFirstMomentTensor)), true);
+  if (data?.InputFirstMomentTensor !== undefined) view.setBigUint64(8, data.InputFirstMomentTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputFirstMomentTensor))), true);
   // 0x10: pointer
-  if (data?.InputSecondMomentTensor !== undefined) view.setBigUint64(16, data.InputSecondMomentTensor === null ? 0n : BigInt(util.toPointer(data.InputSecondMomentTensor)), true);
+  if (data?.InputSecondMomentTensor !== undefined) view.setBigUint64(16, data.InputSecondMomentTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputSecondMomentTensor))), true);
   // 0x18: pointer
-  if (data?.GradientTensor !== undefined) view.setBigUint64(24, data.GradientTensor === null ? 0n : BigInt(util.toPointer(data.GradientTensor)), true);
+  if (data?.GradientTensor !== undefined) view.setBigUint64(24, data.GradientTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.GradientTensor))), true);
   // 0x20: pointer
-  if (data?.TrainingStepTensor !== undefined) view.setBigUint64(32, data.TrainingStepTensor === null ? 0n : BigInt(util.toPointer(data.TrainingStepTensor)), true);
+  if (data?.TrainingStepTensor !== undefined) view.setBigUint64(32, data.TrainingStepTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.TrainingStepTensor))), true);
   // 0x28: pointer
-  if (data?.OutputParametersTensor !== undefined) view.setBigUint64(40, data.OutputParametersTensor === null ? 0n : BigInt(util.toPointer(data.OutputParametersTensor)), true);
+  if (data?.OutputParametersTensor !== undefined) view.setBigUint64(40, data.OutputParametersTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputParametersTensor))), true);
   // 0x30: pointer
-  if (data?.OutputFirstMomentTensor !== undefined) view.setBigUint64(48, data.OutputFirstMomentTensor === null ? 0n : BigInt(util.toPointer(data.OutputFirstMomentTensor)), true);
+  if (data?.OutputFirstMomentTensor !== undefined) view.setBigUint64(48, data.OutputFirstMomentTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputFirstMomentTensor))), true);
   // 0x38: pointer
-  if (data?.OutputSecondMomentTensor !== undefined) view.setBigUint64(56, data.OutputSecondMomentTensor === null ? 0n : BigInt(util.toPointer(data.OutputSecondMomentTensor)), true);
+  if (data?.OutputSecondMomentTensor !== undefined) view.setBigUint64(56, data.OutputSecondMomentTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputSecondMomentTensor))), true);
   // 0x40: f32
   if (data?.LearningRate !== undefined) view.setFloat32(64, Number(data.LearningRate), true);
   // 0x44: f32
@@ -13396,51 +13396,51 @@ export class DML_ADAM_OPTIMIZER_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputParametersTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputParametersTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get InputFirstMomentTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputFirstMomentTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get InputSecondMomentTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputSecondMomentTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get GradientTensor(): Uint8Array | Deno.PointerValue | null {
+  get GradientTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get TrainingStepTensor(): Uint8Array | Deno.PointerValue | null {
+  get TrainingStepTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get OutputParametersTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputParametersTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get OutputFirstMomentTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputFirstMomentTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get OutputSecondMomentTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputSecondMomentTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: f32
@@ -13464,43 +13464,43 @@ export class DML_ADAM_OPTIMIZER_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  set InputParametersTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputParametersTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set InputFirstMomentTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set InputFirstMomentTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set InputSecondMomentTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set InputSecondMomentTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set GradientTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set GradientTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set TrainingStepTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set TrainingStepTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set OutputParametersTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set OutputParametersTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set OutputFirstMomentTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set OutputFirstMomentTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set OutputSecondMomentTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set OutputSecondMomentTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: f32
@@ -13529,13 +13529,13 @@ export class DML_ADAM_OPTIMIZER_OPERATOR_DESCView {
  */
 export interface DML_ARGMIN_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   AxisCount: number;
   /** ptr */
-  Axes: Deno.PointerValue | Uint8Array | null;
+  Axes: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_AXIS_DIRECTION */
   AxisDirection: DML_AXIS_DIRECTION;
 }
@@ -13546,14 +13546,14 @@ export function allocDML_ARGMIN_OPERATOR_DESC(data?: Partial<DML_ARGMIN_OPERATOR
   const buf = new Uint8Array(sizeofDML_ARGMIN_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: u32
   if (data?.AxisCount !== undefined) view.setUint32(16, Number(data.AxisCount), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.Axes !== undefined) view.setBigUint64(24, data.Axes === null ? 0n : BigInt(util.toPointer(data.Axes)), true);
+  if (data?.Axes !== undefined) view.setBigUint64(24, data.Axes === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Axes))), true);
   // 0x20: i32
   if (data?.AxisDirection !== undefined) view.setInt32(32, Number(data.AxisDirection), true);
   // 0x24: pad4
@@ -13571,15 +13571,15 @@ export class DML_ARGMIN_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -13590,9 +13590,9 @@ export class DML_ARGMIN_OPERATOR_DESCView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get Axes(): Uint8Array | Deno.PointerValue | null {
+  get Axes(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: i32
@@ -13603,13 +13603,13 @@ export class DML_ARGMIN_OPERATOR_DESCView {
   // 0x24: pad4
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -13620,8 +13620,8 @@ export class DML_ARGMIN_OPERATOR_DESCView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set Axes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set Axes(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: i32
@@ -13637,13 +13637,13 @@ export class DML_ARGMIN_OPERATOR_DESCView {
  */
 export interface DML_ARGMAX_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   AxisCount: number;
   /** ptr */
-  Axes: Deno.PointerValue | Uint8Array | null;
+  Axes: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_AXIS_DIRECTION */
   AxisDirection: DML_AXIS_DIRECTION;
 }
@@ -13654,14 +13654,14 @@ export function allocDML_ARGMAX_OPERATOR_DESC(data?: Partial<DML_ARGMAX_OPERATOR
   const buf = new Uint8Array(sizeofDML_ARGMAX_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: u32
   if (data?.AxisCount !== undefined) view.setUint32(16, Number(data.AxisCount), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.Axes !== undefined) view.setBigUint64(24, data.Axes === null ? 0n : BigInt(util.toPointer(data.Axes)), true);
+  if (data?.Axes !== undefined) view.setBigUint64(24, data.Axes === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Axes))), true);
   // 0x20: i32
   if (data?.AxisDirection !== undefined) view.setInt32(32, Number(data.AxisDirection), true);
   // 0x24: pad4
@@ -13679,15 +13679,15 @@ export class DML_ARGMAX_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -13698,9 +13698,9 @@ export class DML_ARGMAX_OPERATOR_DESCView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get Axes(): Uint8Array | Deno.PointerValue | null {
+  get Axes(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: i32
@@ -13711,13 +13711,13 @@ export class DML_ARGMAX_OPERATOR_DESCView {
   // 0x24: pad4
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -13728,8 +13728,8 @@ export class DML_ARGMAX_OPERATOR_DESCView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set Axes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set Axes(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: i32
@@ -13745,13 +13745,13 @@ export class DML_ARGMAX_OPERATOR_DESCView {
  */
 export interface DML_ROI_ALIGN_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ROITensor: Deno.PointerValue | Uint8Array | null;
+  ROITensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BatchIndicesTensor: Deno.PointerValue | Uint8Array | null;
+  BatchIndicesTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_REDUCE_FUNCTION */
   ReductionFunction: DML_REDUCE_FUNCTION;
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_INTERPOLATION_MODE */
@@ -13774,13 +13774,13 @@ export function allocDML_ROI_ALIGN_OPERATOR_DESC(data?: Partial<DML_ROI_ALIGN_OP
   const buf = new Uint8Array(sizeofDML_ROI_ALIGN_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.ROITensor !== undefined) view.setBigUint64(8, data.ROITensor === null ? 0n : BigInt(util.toPointer(data.ROITensor)), true);
+  if (data?.ROITensor !== undefined) view.setBigUint64(8, data.ROITensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ROITensor))), true);
   // 0x10: pointer
-  if (data?.BatchIndicesTensor !== undefined) view.setBigUint64(16, data.BatchIndicesTensor === null ? 0n : BigInt(util.toPointer(data.BatchIndicesTensor)), true);
+  if (data?.BatchIndicesTensor !== undefined) view.setBigUint64(16, data.BatchIndicesTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BatchIndicesTensor))), true);
   // 0x18: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(24, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(24, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x20: i32
   if (data?.ReductionFunction !== undefined) view.setInt32(32, Number(data.ReductionFunction), true);
   // 0x24: i32
@@ -13810,27 +13810,27 @@ export class DML_ROI_ALIGN_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get ROITensor(): Uint8Array | Deno.PointerValue | null {
+  get ROITensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get BatchIndicesTensor(): Uint8Array | Deno.PointerValue | null {
+  get BatchIndicesTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: i32
@@ -13871,23 +13871,23 @@ export class DML_ROI_ALIGN_OPERATOR_DESCView {
   // 0x3c: pad4
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set ROITensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ROITensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set BatchIndicesTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set BatchIndicesTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: i32
@@ -13933,11 +13933,11 @@ export class DML_ROI_ALIGN_OPERATOR_DESCView {
  */
 export interface DML_GATHER_ND1_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  IndicesTensor: Deno.PointerValue | Uint8Array | null;
+  IndicesTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   InputDimensionCount: number;
   /** u32 */
@@ -13952,11 +13952,11 @@ export function allocDML_GATHER_ND1_OPERATOR_DESC(data?: Partial<DML_GATHER_ND1_
   const buf = new Uint8Array(sizeofDML_GATHER_ND1_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.IndicesTensor !== undefined) view.setBigUint64(8, data.IndicesTensor === null ? 0n : BigInt(util.toPointer(data.IndicesTensor)), true);
+  if (data?.IndicesTensor !== undefined) view.setBigUint64(8, data.IndicesTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.IndicesTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x18: u32
   if (data?.InputDimensionCount !== undefined) view.setUint32(24, Number(data.InputDimensionCount), true);
   // 0x1c: u32
@@ -13978,21 +13978,21 @@ export class DML_GATHER_ND1_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get IndicesTensor(): Uint8Array | Deno.PointerValue | null {
+  get IndicesTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -14013,18 +14013,18 @@ export class DML_GATHER_ND1_OPERATOR_DESCView {
   // 0x24: pad4
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set IndicesTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set IndicesTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -14050,11 +14050,11 @@ export class DML_GATHER_ND1_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_ATAN_YX_OPERATOR_DESC {
   /** ptr */
-  ATensor: Deno.PointerValue | Uint8Array | null;
+  ATensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BTensor: Deno.PointerValue | Uint8Array | null;
+  BTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_ATAN_YX_OPERATOR_DESC = 24;
@@ -14063,11 +14063,11 @@ export function allocDML_ELEMENT_WISE_ATAN_YX_OPERATOR_DESC(data?: Partial<DML_E
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_ATAN_YX_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(util.toPointer(data.ATensor)), true);
+  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ATensor))), true);
   // 0x08: pointer
-  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(util.toPointer(data.BTensor)), true);
+  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -14082,36 +14082,36 @@ export class DML_ELEMENT_WISE_ATAN_YX_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get ATensor(): Uint8Array | Deno.PointerValue | null {
+  get ATensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get BTensor(): Uint8Array | Deno.PointerValue | null {
+  get BTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ATensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ATensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set BTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set BTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -14120,11 +14120,11 @@ export class DML_ELEMENT_WISE_ATAN_YX_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_CLIP_GRAD_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  InputGradientTensor: Deno.PointerValue | Uint8Array | null;
+  InputGradientTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputGradientTensor: Deno.PointerValue | Uint8Array | null;
+  OutputGradientTensor: Deno.PointerValue | Uint8Array;
   /** f32 */
   Min: number;
   /** f32 */
@@ -14137,11 +14137,11 @@ export function allocDML_ELEMENT_WISE_CLIP_GRAD_OPERATOR_DESC(data?: Partial<DML
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_CLIP_GRAD_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.InputGradientTensor !== undefined) view.setBigUint64(8, data.InputGradientTensor === null ? 0n : BigInt(util.toPointer(data.InputGradientTensor)), true);
+  if (data?.InputGradientTensor !== undefined) view.setBigUint64(8, data.InputGradientTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputGradientTensor))), true);
   // 0x10: pointer
-  if (data?.OutputGradientTensor !== undefined) view.setBigUint64(16, data.OutputGradientTensor === null ? 0n : BigInt(util.toPointer(data.OutputGradientTensor)), true);
+  if (data?.OutputGradientTensor !== undefined) view.setBigUint64(16, data.OutputGradientTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputGradientTensor))), true);
   // 0x18: f32
   if (data?.Min !== undefined) view.setFloat32(24, Number(data.Min), true);
   // 0x1c: f32
@@ -14160,21 +14160,21 @@ export class DML_ELEMENT_WISE_CLIP_GRAD_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get InputGradientTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputGradientTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputGradientTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputGradientTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: f32
@@ -14188,18 +14188,18 @@ export class DML_ELEMENT_WISE_CLIP_GRAD_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set InputGradientTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set InputGradientTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputGradientTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputGradientTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: f32
@@ -14218,11 +14218,11 @@ export class DML_ELEMENT_WISE_CLIP_GRAD_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_DIFFERENCE_SQUARE_OPERATOR_DESC {
   /** ptr */
-  ATensor: Deno.PointerValue | Uint8Array | null;
+  ATensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BTensor: Deno.PointerValue | Uint8Array | null;
+  BTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_DIFFERENCE_SQUARE_OPERATOR_DESC = 24;
@@ -14231,11 +14231,11 @@ export function allocDML_ELEMENT_WISE_DIFFERENCE_SQUARE_OPERATOR_DESC(data?: Par
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_DIFFERENCE_SQUARE_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(util.toPointer(data.ATensor)), true);
+  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ATensor))), true);
   // 0x08: pointer
-  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(util.toPointer(data.BTensor)), true);
+  if (data?.BTensor !== undefined) view.setBigUint64(8, data.BTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BTensor))), true);
   // 0x10: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(16, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -14250,36 +14250,36 @@ export class DML_ELEMENT_WISE_DIFFERENCE_SQUARE_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get ATensor(): Uint8Array | Deno.PointerValue | null {
+  get ATensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get BTensor(): Uint8Array | Deno.PointerValue | null {
+  get BTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ATensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ATensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set BTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set BTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -14288,11 +14288,11 @@ export class DML_ELEMENT_WISE_DIFFERENCE_SQUARE_OPERATOR_DESCView {
  */
 export interface DML_LOCAL_RESPONSE_NORMALIZATION_GRAD_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  InputGradientTensor: Deno.PointerValue | Uint8Array | null;
+  InputGradientTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputGradientTensor: Deno.PointerValue | Uint8Array | null;
+  OutputGradientTensor: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.BOOL */
   CrossChannel: boolean;
   /** u32 */
@@ -14311,11 +14311,11 @@ export function allocDML_LOCAL_RESPONSE_NORMALIZATION_GRAD_OPERATOR_DESC(data?: 
   const buf = new Uint8Array(sizeofDML_LOCAL_RESPONSE_NORMALIZATION_GRAD_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.InputGradientTensor !== undefined) view.setBigUint64(8, data.InputGradientTensor === null ? 0n : BigInt(util.toPointer(data.InputGradientTensor)), true);
+  if (data?.InputGradientTensor !== undefined) view.setBigUint64(8, data.InputGradientTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputGradientTensor))), true);
   // 0x10: pointer
-  if (data?.OutputGradientTensor !== undefined) view.setBigUint64(16, data.OutputGradientTensor === null ? 0n : BigInt(util.toPointer(data.OutputGradientTensor)), true);
+  if (data?.OutputGradientTensor !== undefined) view.setBigUint64(16, data.OutputGradientTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputGradientTensor))), true);
   // 0x18: i32
   if (data?.CrossChannel !== undefined) view.setInt32(24, Number(data.CrossChannel), true);
   // 0x1c: u32
@@ -14341,21 +14341,21 @@ export class DML_LOCAL_RESPONSE_NORMALIZATION_GRAD_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get InputGradientTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputGradientTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputGradientTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputGradientTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: i32
@@ -14386,18 +14386,18 @@ export class DML_LOCAL_RESPONSE_NORMALIZATION_GRAD_OPERATOR_DESCView {
   // 0x2c: pad4
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set InputGradientTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set InputGradientTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputGradientTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputGradientTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: i32
@@ -14433,9 +14433,9 @@ export class DML_LOCAL_RESPONSE_NORMALIZATION_GRAD_OPERATOR_DESCView {
  */
 export interface DML_CUMULATIVE_PRODUCT_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** u32 */
   Axis: number;
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_AXIS_DIRECTION */
@@ -14450,9 +14450,9 @@ export function allocDML_CUMULATIVE_PRODUCT_OPERATOR_DESC(data?: Partial<DML_CUM
   const buf = new Uint8Array(sizeofDML_CUMULATIVE_PRODUCT_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: u32
   if (data?.Axis !== undefined) view.setUint32(16, Number(data.Axis), true);
   // 0x14: i32
@@ -14474,15 +14474,15 @@ export class DML_CUMULATIVE_PRODUCT_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -14503,13 +14503,13 @@ export class DML_CUMULATIVE_PRODUCT_OPERATOR_DESCView {
   // 0x1c: pad4
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -14535,21 +14535,21 @@ export class DML_CUMULATIVE_PRODUCT_OPERATOR_DESCView {
  */
 export interface DML_BATCH_NORMALIZATION_GRAD_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  InputGradientTensor: Deno.PointerValue | Uint8Array | null;
+  InputGradientTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  MeanTensor: Deno.PointerValue | Uint8Array | null;
+  MeanTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  VarianceTensor: Deno.PointerValue | Uint8Array | null;
+  VarianceTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ScaleTensor: Deno.PointerValue | Uint8Array | null;
+  ScaleTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputGradientTensor: Deno.PointerValue | Uint8Array | null;
+  OutputGradientTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputScaleGradientTensor: Deno.PointerValue | Uint8Array | null;
+  OutputScaleGradientTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputBiasGradientTensor: Deno.PointerValue | Uint8Array | null;
+  OutputBiasGradientTensor: Deno.PointerValue | Uint8Array;
   /** f32 */
   Epsilon: number;
 }
@@ -14560,21 +14560,21 @@ export function allocDML_BATCH_NORMALIZATION_GRAD_OPERATOR_DESC(data?: Partial<D
   const buf = new Uint8Array(sizeofDML_BATCH_NORMALIZATION_GRAD_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.InputGradientTensor !== undefined) view.setBigUint64(8, data.InputGradientTensor === null ? 0n : BigInt(util.toPointer(data.InputGradientTensor)), true);
+  if (data?.InputGradientTensor !== undefined) view.setBigUint64(8, data.InputGradientTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputGradientTensor))), true);
   // 0x10: pointer
-  if (data?.MeanTensor !== undefined) view.setBigUint64(16, data.MeanTensor === null ? 0n : BigInt(util.toPointer(data.MeanTensor)), true);
+  if (data?.MeanTensor !== undefined) view.setBigUint64(16, data.MeanTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.MeanTensor))), true);
   // 0x18: pointer
-  if (data?.VarianceTensor !== undefined) view.setBigUint64(24, data.VarianceTensor === null ? 0n : BigInt(util.toPointer(data.VarianceTensor)), true);
+  if (data?.VarianceTensor !== undefined) view.setBigUint64(24, data.VarianceTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.VarianceTensor))), true);
   // 0x20: pointer
-  if (data?.ScaleTensor !== undefined) view.setBigUint64(32, data.ScaleTensor === null ? 0n : BigInt(util.toPointer(data.ScaleTensor)), true);
+  if (data?.ScaleTensor !== undefined) view.setBigUint64(32, data.ScaleTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScaleTensor))), true);
   // 0x28: pointer
-  if (data?.OutputGradientTensor !== undefined) view.setBigUint64(40, data.OutputGradientTensor === null ? 0n : BigInt(util.toPointer(data.OutputGradientTensor)), true);
+  if (data?.OutputGradientTensor !== undefined) view.setBigUint64(40, data.OutputGradientTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputGradientTensor))), true);
   // 0x30: pointer
-  if (data?.OutputScaleGradientTensor !== undefined) view.setBigUint64(48, data.OutputScaleGradientTensor === null ? 0n : BigInt(util.toPointer(data.OutputScaleGradientTensor)), true);
+  if (data?.OutputScaleGradientTensor !== undefined) view.setBigUint64(48, data.OutputScaleGradientTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputScaleGradientTensor))), true);
   // 0x38: pointer
-  if (data?.OutputBiasGradientTensor !== undefined) view.setBigUint64(56, data.OutputBiasGradientTensor === null ? 0n : BigInt(util.toPointer(data.OutputBiasGradientTensor)), true);
+  if (data?.OutputBiasGradientTensor !== undefined) view.setBigUint64(56, data.OutputBiasGradientTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputBiasGradientTensor))), true);
   // 0x40: f32
   if (data?.Epsilon !== undefined) view.setFloat32(64, Number(data.Epsilon), true);
   // 0x44: pad4
@@ -14592,51 +14592,51 @@ export class DML_BATCH_NORMALIZATION_GRAD_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get InputGradientTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputGradientTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get MeanTensor(): Uint8Array | Deno.PointerValue | null {
+  get MeanTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get VarianceTensor(): Uint8Array | Deno.PointerValue | null {
+  get VarianceTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get ScaleTensor(): Uint8Array | Deno.PointerValue | null {
+  get ScaleTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get OutputGradientTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputGradientTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get OutputScaleGradientTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputScaleGradientTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get OutputBiasGradientTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputBiasGradientTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: f32
@@ -14647,43 +14647,43 @@ export class DML_BATCH_NORMALIZATION_GRAD_OPERATOR_DESCView {
   // 0x44: pad4
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set InputGradientTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set InputGradientTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set MeanTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set MeanTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set VarianceTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set VarianceTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set ScaleTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set ScaleTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set OutputGradientTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set OutputGradientTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set OutputScaleGradientTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set OutputScaleGradientTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set OutputBiasGradientTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set OutputBiasGradientTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: f32
@@ -14699,23 +14699,23 @@ export class DML_BATCH_NORMALIZATION_GRAD_OPERATOR_DESCView {
  */
 export interface DML_ELEMENT_WISE_QUANTIZED_LINEAR_ADD_OPERATOR_DESC {
   /** ptr */
-  ATensor: Deno.PointerValue | Uint8Array | null;
+  ATensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  AScaleTensor: Deno.PointerValue | Uint8Array | null;
+  AScaleTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  AZeroPointTensor: Deno.PointerValue | Uint8Array | null;
+  AZeroPointTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BTensor: Deno.PointerValue | Uint8Array | null;
+  BTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BScaleTensor: Deno.PointerValue | Uint8Array | null;
+  BScaleTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BZeroPointTensor: Deno.PointerValue | Uint8Array | null;
+  BZeroPointTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputScaleTensor: Deno.PointerValue | Uint8Array | null;
+  OutputScaleTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputZeroPointTensor: Deno.PointerValue | Uint8Array | null;
+  OutputZeroPointTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_ELEMENT_WISE_QUANTIZED_LINEAR_ADD_OPERATOR_DESC = 72;
@@ -14724,23 +14724,23 @@ export function allocDML_ELEMENT_WISE_QUANTIZED_LINEAR_ADD_OPERATOR_DESC(data?: 
   const buf = new Uint8Array(sizeofDML_ELEMENT_WISE_QUANTIZED_LINEAR_ADD_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(util.toPointer(data.ATensor)), true);
+  if (data?.ATensor !== undefined) view.setBigUint64(0, data.ATensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ATensor))), true);
   // 0x08: pointer
-  if (data?.AScaleTensor !== undefined) view.setBigUint64(8, data.AScaleTensor === null ? 0n : BigInt(util.toPointer(data.AScaleTensor)), true);
+  if (data?.AScaleTensor !== undefined) view.setBigUint64(8, data.AScaleTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.AScaleTensor))), true);
   // 0x10: pointer
-  if (data?.AZeroPointTensor !== undefined) view.setBigUint64(16, data.AZeroPointTensor === null ? 0n : BigInt(util.toPointer(data.AZeroPointTensor)), true);
+  if (data?.AZeroPointTensor !== undefined) view.setBigUint64(16, data.AZeroPointTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.AZeroPointTensor))), true);
   // 0x18: pointer
-  if (data?.BTensor !== undefined) view.setBigUint64(24, data.BTensor === null ? 0n : BigInt(util.toPointer(data.BTensor)), true);
+  if (data?.BTensor !== undefined) view.setBigUint64(24, data.BTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BTensor))), true);
   // 0x20: pointer
-  if (data?.BScaleTensor !== undefined) view.setBigUint64(32, data.BScaleTensor === null ? 0n : BigInt(util.toPointer(data.BScaleTensor)), true);
+  if (data?.BScaleTensor !== undefined) view.setBigUint64(32, data.BScaleTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BScaleTensor))), true);
   // 0x28: pointer
-  if (data?.BZeroPointTensor !== undefined) view.setBigUint64(40, data.BZeroPointTensor === null ? 0n : BigInt(util.toPointer(data.BZeroPointTensor)), true);
+  if (data?.BZeroPointTensor !== undefined) view.setBigUint64(40, data.BZeroPointTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BZeroPointTensor))), true);
   // 0x30: pointer
-  if (data?.OutputScaleTensor !== undefined) view.setBigUint64(48, data.OutputScaleTensor === null ? 0n : BigInt(util.toPointer(data.OutputScaleTensor)), true);
+  if (data?.OutputScaleTensor !== undefined) view.setBigUint64(48, data.OutputScaleTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputScaleTensor))), true);
   // 0x38: pointer
-  if (data?.OutputZeroPointTensor !== undefined) view.setBigUint64(56, data.OutputZeroPointTensor === null ? 0n : BigInt(util.toPointer(data.OutputZeroPointTensor)), true);
+  if (data?.OutputZeroPointTensor !== undefined) view.setBigUint64(56, data.OutputZeroPointTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputZeroPointTensor))), true);
   // 0x40: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(64, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(64, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   return buf;
 }
 
@@ -14755,102 +14755,102 @@ export class DML_ELEMENT_WISE_QUANTIZED_LINEAR_ADD_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get ATensor(): Uint8Array | Deno.PointerValue | null {
+  get ATensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get AScaleTensor(): Uint8Array | Deno.PointerValue | null {
+  get AScaleTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get AZeroPointTensor(): Uint8Array | Deno.PointerValue | null {
+  get AZeroPointTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get BTensor(): Uint8Array | Deno.PointerValue | null {
+  get BTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get BScaleTensor(): Uint8Array | Deno.PointerValue | null {
+  get BScaleTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get BZeroPointTensor(): Uint8Array | Deno.PointerValue | null {
+  get BZeroPointTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get OutputScaleTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputScaleTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get OutputZeroPointTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputZeroPointTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ATensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ATensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set AScaleTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set AScaleTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set AZeroPointTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set AZeroPointTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set BTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set BTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set BScaleTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set BScaleTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set BZeroPointTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set BZeroPointTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set OutputScaleTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set OutputScaleTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set OutputZeroPointTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set OutputZeroPointTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -14859,13 +14859,13 @@ export class DML_ELEMENT_WISE_QUANTIZED_LINEAR_ADD_OPERATOR_DESCView {
  */
 export interface DML_DYNAMIC_QUANTIZE_LINEAR_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputScaleTensor: Deno.PointerValue | Uint8Array | null;
+  OutputScaleTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputZeroPointTensor: Deno.PointerValue | Uint8Array | null;
+  OutputZeroPointTensor: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_DYNAMIC_QUANTIZE_LINEAR_OPERATOR_DESC = 32;
@@ -14874,13 +14874,13 @@ export function allocDML_DYNAMIC_QUANTIZE_LINEAR_OPERATOR_DESC(data?: Partial<DM
   const buf = new Uint8Array(sizeofDML_DYNAMIC_QUANTIZE_LINEAR_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(8, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x10: pointer
-  if (data?.OutputScaleTensor !== undefined) view.setBigUint64(16, data.OutputScaleTensor === null ? 0n : BigInt(util.toPointer(data.OutputScaleTensor)), true);
+  if (data?.OutputScaleTensor !== undefined) view.setBigUint64(16, data.OutputScaleTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputScaleTensor))), true);
   // 0x18: pointer
-  if (data?.OutputZeroPointTensor !== undefined) view.setBigUint64(24, data.OutputZeroPointTensor === null ? 0n : BigInt(util.toPointer(data.OutputZeroPointTensor)), true);
+  if (data?.OutputZeroPointTensor !== undefined) view.setBigUint64(24, data.OutputZeroPointTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputZeroPointTensor))), true);
   return buf;
 }
 
@@ -14895,47 +14895,47 @@ export class DML_DYNAMIC_QUANTIZE_LINEAR_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OutputScaleTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputScaleTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get OutputZeroPointTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputZeroPointTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set OutputScaleTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OutputScaleTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set OutputZeroPointTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set OutputZeroPointTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -14944,13 +14944,13 @@ export class DML_DYNAMIC_QUANTIZE_LINEAR_OPERATOR_DESCView {
  */
 export interface DML_ROI_ALIGN1_OPERATOR_DESC {
   /** ptr */
-  InputTensor: Deno.PointerValue | Uint8Array | null;
+  InputTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ROITensor: Deno.PointerValue | Uint8Array | null;
+  ROITensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  BatchIndicesTensor: Deno.PointerValue | Uint8Array | null;
+  BatchIndicesTensor: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OutputTensor: Deno.PointerValue | Uint8Array | null;
+  OutputTensor: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_REDUCE_FUNCTION */
   ReductionFunction: DML_REDUCE_FUNCTION;
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_INTERPOLATION_MODE */
@@ -14979,13 +14979,13 @@ export function allocDML_ROI_ALIGN1_OPERATOR_DESC(data?: Partial<DML_ROI_ALIGN1_
   const buf = new Uint8Array(sizeofDML_ROI_ALIGN1_OPERATOR_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(util.toPointer(data.InputTensor)), true);
+  if (data?.InputTensor !== undefined) view.setBigUint64(0, data.InputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputTensor))), true);
   // 0x08: pointer
-  if (data?.ROITensor !== undefined) view.setBigUint64(8, data.ROITensor === null ? 0n : BigInt(util.toPointer(data.ROITensor)), true);
+  if (data?.ROITensor !== undefined) view.setBigUint64(8, data.ROITensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ROITensor))), true);
   // 0x10: pointer
-  if (data?.BatchIndicesTensor !== undefined) view.setBigUint64(16, data.BatchIndicesTensor === null ? 0n : BigInt(util.toPointer(data.BatchIndicesTensor)), true);
+  if (data?.BatchIndicesTensor !== undefined) view.setBigUint64(16, data.BatchIndicesTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BatchIndicesTensor))), true);
   // 0x18: pointer
-  if (data?.OutputTensor !== undefined) view.setBigUint64(24, data.OutputTensor === null ? 0n : BigInt(util.toPointer(data.OutputTensor)), true);
+  if (data?.OutputTensor !== undefined) view.setBigUint64(24, data.OutputTensor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputTensor))), true);
   // 0x20: i32
   if (data?.ReductionFunction !== undefined) view.setInt32(32, Number(data.ReductionFunction), true);
   // 0x24: i32
@@ -15020,27 +15020,27 @@ export class DML_ROI_ALIGN1_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  get InputTensor(): Uint8Array | Deno.PointerValue | null {
+  get InputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get ROITensor(): Uint8Array | Deno.PointerValue | null {
+  get ROITensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get BatchIndicesTensor(): Uint8Array | Deno.PointerValue | null {
+  get BatchIndicesTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get OutputTensor(): Uint8Array | Deno.PointerValue | null {
+  get OutputTensor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: i32
@@ -15094,23 +15094,23 @@ export class DML_ROI_ALIGN1_OPERATOR_DESCView {
   }
 
   // 0x00: pointer
-  set InputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set ROITensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ROITensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set BatchIndicesTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set BatchIndicesTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set OutputTensor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set OutputTensor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: i32
@@ -15259,7 +15259,7 @@ export interface DML_FEATURE_QUERY_FEATURE_LEVELS {
   /** u32 */
   RequestedFeatureLevelCount: number;
   /** ptr */
-  RequestedFeatureLevels: Deno.PointerValue | Uint8Array | null;
+  RequestedFeatureLevels: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_FEATURE_QUERY_FEATURE_LEVELS = 16;
@@ -15271,7 +15271,7 @@ export function allocDML_FEATURE_QUERY_FEATURE_LEVELS(data?: Partial<DML_FEATURE
   if (data?.RequestedFeatureLevelCount !== undefined) view.setUint32(0, Number(data.RequestedFeatureLevelCount), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.RequestedFeatureLevels !== undefined) view.setBigUint64(8, data.RequestedFeatureLevels === null ? 0n : BigInt(util.toPointer(data.RequestedFeatureLevels)), true);
+  if (data?.RequestedFeatureLevels !== undefined) view.setBigUint64(8, data.RequestedFeatureLevels === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.RequestedFeatureLevels))), true);
   return buf;
 }
 
@@ -15293,9 +15293,9 @@ export class DML_FEATURE_QUERY_FEATURE_LEVELSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get RequestedFeatureLevels(): Uint8Array | Deno.PointerValue | null {
+  get RequestedFeatureLevels(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -15306,8 +15306,8 @@ export class DML_FEATURE_QUERY_FEATURE_LEVELSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set RequestedFeatureLevels(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set RequestedFeatureLevels(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -15438,11 +15438,11 @@ export class D3D12_GPU_DESCRIPTOR_HANDLEView {
  */
 export interface DML_BINDING_TABLE_DESC {
   /** Windows.Win32.AI.MachineLearning.DirectML.IDMLDispatchable */
-  Dispatchable: Uint8Array | Deno.PointerValue | null;
+  Dispatchable: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_CPU_DESCRIPTOR_HANDLE */
-  CPUDescriptorHandle: Uint8Array | Deno.PointerValue | null;
+  CPUDescriptorHandle: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_GPU_DESCRIPTOR_HANDLE */
-  GPUDescriptorHandle: Uint8Array | Deno.PointerValue | null;
+  GPUDescriptorHandle: Uint8Array | Deno.PointerValue;
   /** u32 */
   SizeInDescriptors: number;
 }
@@ -15453,11 +15453,11 @@ export function allocDML_BINDING_TABLE_DESC(data?: Partial<DML_BINDING_TABLE_DES
   const buf = new Uint8Array(sizeofDML_BINDING_TABLE_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Dispatchable !== undefined) view.setBigUint64(0, data.Dispatchable === null ? 0n : BigInt(util.toPointer(data.Dispatchable)), true);
+  if (data?.Dispatchable !== undefined) view.setBigUint64(0, data.Dispatchable === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Dispatchable))), true);
   // 0x08: pointer
-  if (data?.CPUDescriptorHandle !== undefined) view.setBigUint64(8, data.CPUDescriptorHandle === null ? 0n : BigInt(util.toPointer(data.CPUDescriptorHandle)), true);
+  if (data?.CPUDescriptorHandle !== undefined) view.setBigUint64(8, data.CPUDescriptorHandle === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.CPUDescriptorHandle))), true);
   // 0x10: pointer
-  if (data?.GPUDescriptorHandle !== undefined) view.setBigUint64(16, data.GPUDescriptorHandle === null ? 0n : BigInt(util.toPointer(data.GPUDescriptorHandle)), true);
+  if (data?.GPUDescriptorHandle !== undefined) view.setBigUint64(16, data.GPUDescriptorHandle === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.GPUDescriptorHandle))), true);
   // 0x18: u32
   if (data?.SizeInDescriptors !== undefined) view.setUint32(24, Number(data.SizeInDescriptors), true);
   // 0x1c: pad4
@@ -15475,21 +15475,21 @@ export class DML_BINDING_TABLE_DESCView {
   }
 
   // 0x00: pointer
-  get Dispatchable(): Uint8Array | Deno.PointerValue | null {
+  get Dispatchable(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get CPUDescriptorHandle(): Uint8Array | Deno.PointerValue | null {
+  get CPUDescriptorHandle(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get GPUDescriptorHandle(): Uint8Array | Deno.PointerValue | null {
+  get GPUDescriptorHandle(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -15500,18 +15500,18 @@ export class DML_BINDING_TABLE_DESCView {
   // 0x1c: pad4
 
   // 0x00: pointer
-  set Dispatchable(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Dispatchable(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set CPUDescriptorHandle(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set CPUDescriptorHandle(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set GPUDescriptorHandle(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set GPUDescriptorHandle(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -15601,7 +15601,7 @@ export interface DML_BINDING_DESC {
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_BINDING_TYPE */
   Type: DML_BINDING_TYPE;
   /** ptr */
-  Desc: Deno.PointerValue | Uint8Array | null;
+  Desc: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_BINDING_DESC = 16;
@@ -15613,7 +15613,7 @@ export function allocDML_BINDING_DESC(data?: Partial<DML_BINDING_DESC>): Uint8Ar
   if (data?.Type !== undefined) view.setInt32(0, Number(data.Type), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Desc !== undefined) view.setBigUint64(8, data.Desc === null ? 0n : BigInt(util.toPointer(data.Desc)), true);
+  if (data?.Desc !== undefined) view.setBigUint64(8, data.Desc === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Desc))), true);
   return buf;
 }
 
@@ -15635,9 +15635,9 @@ export class DML_BINDING_DESCView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Desc(): Uint8Array | Deno.PointerValue | null {
+  get Desc(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -15648,8 +15648,8 @@ export class DML_BINDING_DESCView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Desc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Desc(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -15658,7 +15658,7 @@ export class DML_BINDING_DESCView {
  */
 export interface DML_BUFFER_BINDING {
   /** Windows.Win32.Graphics.Direct3D12.ID3D12Resource */
-  Buffer: Uint8Array | Deno.PointerValue | null;
+  Buffer: Uint8Array | Deno.PointerValue;
   /** u64 */
   Offset: Deno.PointerValue;
   /** u64 */
@@ -15671,7 +15671,7 @@ export function allocDML_BUFFER_BINDING(data?: Partial<DML_BUFFER_BINDING>): Uin
   const buf = new Uint8Array(sizeofDML_BUFFER_BINDING);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Buffer !== undefined) view.setBigUint64(0, data.Buffer === null ? 0n : BigInt(util.toPointer(data.Buffer)), true);
+  if (data?.Buffer !== undefined) view.setBigUint64(0, data.Buffer === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Buffer))), true);
   // 0x08: u64
   if (data?.Offset !== undefined) view.setBigUint64(8, BigInt(data.Offset), true);
   // 0x10: u64
@@ -15690,9 +15690,9 @@ export class DML_BUFFER_BINDINGView {
   }
 
   // 0x00: pointer
-  get Buffer(): Uint8Array | Deno.PointerValue | null {
+  get Buffer(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u64
@@ -15706,8 +15706,8 @@ export class DML_BUFFER_BINDINGView {
   }
 
   // 0x00: pointer
-  set Buffer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Buffer(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u64
@@ -15728,7 +15728,7 @@ export interface DML_BUFFER_ARRAY_BINDING {
   /** u32 */
   BindingCount: number;
   /** ptr */
-  Bindings: Deno.PointerValue | Uint8Array | null;
+  Bindings: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_BUFFER_ARRAY_BINDING = 16;
@@ -15740,7 +15740,7 @@ export function allocDML_BUFFER_ARRAY_BINDING(data?: Partial<DML_BUFFER_ARRAY_BI
   if (data?.BindingCount !== undefined) view.setUint32(0, Number(data.BindingCount), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Bindings !== undefined) view.setBigUint64(8, data.Bindings === null ? 0n : BigInt(util.toPointer(data.Bindings)), true);
+  if (data?.Bindings !== undefined) view.setBigUint64(8, data.Bindings === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Bindings))), true);
   return buf;
 }
 
@@ -15762,9 +15762,9 @@ export class DML_BUFFER_ARRAY_BINDINGView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Bindings(): Uint8Array | Deno.PointerValue | null {
+  get Bindings(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -15775,8 +15775,8 @@ export class DML_BUFFER_ARRAY_BINDINGView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Bindings(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Bindings(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -15787,7 +15787,7 @@ export interface DML_GRAPH_EDGE_DESC {
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_GRAPH_EDGE_TYPE */
   Type: DML_GRAPH_EDGE_TYPE;
   /** ptr */
-  Desc: Deno.PointerValue | Uint8Array | null;
+  Desc: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_GRAPH_EDGE_DESC = 16;
@@ -15799,7 +15799,7 @@ export function allocDML_GRAPH_EDGE_DESC(data?: Partial<DML_GRAPH_EDGE_DESC>): U
   if (data?.Type !== undefined) view.setInt32(0, Number(data.Type), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Desc !== undefined) view.setBigUint64(8, data.Desc === null ? 0n : BigInt(util.toPointer(data.Desc)), true);
+  if (data?.Desc !== undefined) view.setBigUint64(8, data.Desc === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Desc))), true);
   return buf;
 }
 
@@ -15821,9 +15821,9 @@ export class DML_GRAPH_EDGE_DESCView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Desc(): Uint8Array | Deno.PointerValue | null {
+  get Desc(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -15834,12 +15834,12 @@ export class DML_GRAPH_EDGE_DESCView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Desc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Desc(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
-export type PSTR = Deno.PointerValue | Uint8Array | null;
+export type PSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.AI.MachineLearning.DirectML.DML_INPUT_GRAPH_EDGE_DESC (size: 24)
@@ -15870,7 +15870,7 @@ export function allocDML_INPUT_GRAPH_EDGE_DESC(data?: Partial<DML_INPUT_GRAPH_ED
   // 0x10: buffer
   if (data?.Name !== undefined) {
     (buf as any)._f16 = util.pstrToFfi(data.Name);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   return buf;
 }
@@ -15903,9 +15903,9 @@ export class DML_INPUT_GRAPH_EDGE_DESCView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  get Name(): Uint8Array | Deno.PointerValue | null {
+  get Name(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -15926,9 +15926,9 @@ export class DML_INPUT_GRAPH_EDGE_DESCView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  set Name(value: Uint8Array | Deno.PointerValue | null) {
+  set Name(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 }
 
@@ -15961,7 +15961,7 @@ export function allocDML_OUTPUT_GRAPH_EDGE_DESC(data?: Partial<DML_OUTPUT_GRAPH_
   // 0x10: buffer
   if (data?.Name !== undefined) {
     (buf as any)._f16 = util.pstrToFfi(data.Name);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   return buf;
 }
@@ -15994,9 +15994,9 @@ export class DML_OUTPUT_GRAPH_EDGE_DESCView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  get Name(): Uint8Array | Deno.PointerValue | null {
+  get Name(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -16017,9 +16017,9 @@ export class DML_OUTPUT_GRAPH_EDGE_DESCView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  set Name(value: Uint8Array | Deno.PointerValue | null) {
+  set Name(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 }
 
@@ -16055,7 +16055,7 @@ export function allocDML_INTERMEDIATE_GRAPH_EDGE_DESC(data?: Partial<DML_INTERME
   // 0x10: buffer
   if (data?.Name !== undefined) {
     (buf as any)._f16 = util.pstrToFfi(data.Name);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   return buf;
 }
@@ -16091,9 +16091,9 @@ export class DML_INTERMEDIATE_GRAPH_EDGE_DESCView {
   }
 
   // 0x10: buffer
-  get Name(): Uint8Array | Deno.PointerValue | null {
+  get Name(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -16117,9 +16117,9 @@ export class DML_INTERMEDIATE_GRAPH_EDGE_DESCView {
   }
 
   // 0x10: buffer
-  set Name(value: Uint8Array | Deno.PointerValue | null) {
+  set Name(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 }
 
@@ -16130,7 +16130,7 @@ export interface DML_GRAPH_NODE_DESC {
   /** Windows.Win32.AI.MachineLearning.DirectML.DML_GRAPH_NODE_TYPE */
   Type: DML_GRAPH_NODE_TYPE;
   /** ptr */
-  Desc: Deno.PointerValue | Uint8Array | null;
+  Desc: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_GRAPH_NODE_DESC = 16;
@@ -16142,7 +16142,7 @@ export function allocDML_GRAPH_NODE_DESC(data?: Partial<DML_GRAPH_NODE_DESC>): U
   if (data?.Type !== undefined) view.setInt32(0, Number(data.Type), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Desc !== undefined) view.setBigUint64(8, data.Desc === null ? 0n : BigInt(util.toPointer(data.Desc)), true);
+  if (data?.Desc !== undefined) view.setBigUint64(8, data.Desc === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Desc))), true);
   return buf;
 }
 
@@ -16164,9 +16164,9 @@ export class DML_GRAPH_NODE_DESCView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Desc(): Uint8Array | Deno.PointerValue | null {
+  get Desc(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -16177,8 +16177,8 @@ export class DML_GRAPH_NODE_DESCView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Desc(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Desc(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -16187,7 +16187,7 @@ export class DML_GRAPH_NODE_DESCView {
  */
 export interface DML_OPERATOR_GRAPH_NODE_DESC {
   /** Windows.Win32.AI.MachineLearning.DirectML.IDMLOperator */
-  Operator: Uint8Array | Deno.PointerValue | null;
+  Operator: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
   Name: string | null | Uint8Array;
 }
@@ -16198,11 +16198,11 @@ export function allocDML_OPERATOR_GRAPH_NODE_DESC(data?: Partial<DML_OPERATOR_GR
   const buf = new Uint8Array(sizeofDML_OPERATOR_GRAPH_NODE_DESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Operator !== undefined) view.setBigUint64(0, data.Operator === null ? 0n : BigInt(util.toPointer(data.Operator)), true);
+  if (data?.Operator !== undefined) view.setBigUint64(0, data.Operator === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Operator))), true);
   // 0x08: buffer
   if (data?.Name !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.Name);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   return buf;
 }
@@ -16218,26 +16218,26 @@ export class DML_OPERATOR_GRAPH_NODE_DESCView {
   }
 
   // 0x00: pointer
-  get Operator(): Uint8Array | Deno.PointerValue | null {
+  get Operator(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get Name(): Uint8Array | Deno.PointerValue | null {
+  get Name(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Operator(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Operator(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: buffer
-  set Name(value: Uint8Array | Deno.PointerValue | null) {
+  set Name(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 }
 
@@ -16252,19 +16252,19 @@ export interface DML_GRAPH_DESC {
   /** u32 */
   NodeCount: number;
   /** ptr */
-  Nodes: Deno.PointerValue | Uint8Array | null;
+  Nodes: Deno.PointerValue | Uint8Array;
   /** u32 */
   InputEdgeCount: number;
   /** ptr */
-  InputEdges: Deno.PointerValue | Uint8Array | null;
+  InputEdges: Deno.PointerValue | Uint8Array;
   /** u32 */
   OutputEdgeCount: number;
   /** ptr */
-  OutputEdges: Deno.PointerValue | Uint8Array | null;
+  OutputEdges: Deno.PointerValue | Uint8Array;
   /** u32 */
   IntermediateEdgeCount: number;
   /** ptr */
-  IntermediateEdges: Deno.PointerValue | Uint8Array | null;
+  IntermediateEdges: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDML_GRAPH_DESC = 72;
@@ -16280,22 +16280,22 @@ export function allocDML_GRAPH_DESC(data?: Partial<DML_GRAPH_DESC>): Uint8Array 
   if (data?.NodeCount !== undefined) view.setUint32(8, Number(data.NodeCount), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.Nodes !== undefined) view.setBigUint64(16, data.Nodes === null ? 0n : BigInt(util.toPointer(data.Nodes)), true);
+  if (data?.Nodes !== undefined) view.setBigUint64(16, data.Nodes === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Nodes))), true);
   // 0x18: u32
   if (data?.InputEdgeCount !== undefined) view.setUint32(24, Number(data.InputEdgeCount), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.InputEdges !== undefined) view.setBigUint64(32, data.InputEdges === null ? 0n : BigInt(util.toPointer(data.InputEdges)), true);
+  if (data?.InputEdges !== undefined) view.setBigUint64(32, data.InputEdges === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InputEdges))), true);
   // 0x28: u32
   if (data?.OutputEdgeCount !== undefined) view.setUint32(40, Number(data.OutputEdgeCount), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.OutputEdges !== undefined) view.setBigUint64(48, data.OutputEdges === null ? 0n : BigInt(util.toPointer(data.OutputEdges)), true);
+  if (data?.OutputEdges !== undefined) view.setBigUint64(48, data.OutputEdges === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OutputEdges))), true);
   // 0x38: u32
   if (data?.IntermediateEdgeCount !== undefined) view.setUint32(56, Number(data.IntermediateEdgeCount), true);
   // 0x3c: pad4
   // 0x40: pointer
-  if (data?.IntermediateEdges !== undefined) view.setBigUint64(64, data.IntermediateEdges === null ? 0n : BigInt(util.toPointer(data.IntermediateEdges)), true);
+  if (data?.IntermediateEdges !== undefined) view.setBigUint64(64, data.IntermediateEdges === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.IntermediateEdges))), true);
   return buf;
 }
 
@@ -16327,9 +16327,9 @@ export class DML_GRAPH_DESCView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get Nodes(): Uint8Array | Deno.PointerValue | null {
+  get Nodes(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -16340,9 +16340,9 @@ export class DML_GRAPH_DESCView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get InputEdges(): Uint8Array | Deno.PointerValue | null {
+  get InputEdges(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -16353,9 +16353,9 @@ export class DML_GRAPH_DESCView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  get OutputEdges(): Uint8Array | Deno.PointerValue | null {
+  get OutputEdges(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: u32
@@ -16366,9 +16366,9 @@ export class DML_GRAPH_DESCView {
   // 0x3c: pad4
 
   // 0x40: pointer
-  get IntermediateEdges(): Uint8Array | Deno.PointerValue | null {
+  get IntermediateEdges(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -16389,8 +16389,8 @@ export class DML_GRAPH_DESCView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set Nodes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set Nodes(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -16401,8 +16401,8 @@ export class DML_GRAPH_DESCView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set InputEdges(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set InputEdges(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u32
@@ -16413,8 +16413,8 @@ export class DML_GRAPH_DESCView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  set OutputEdges(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set OutputEdges(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: u32
@@ -16425,8 +16425,8 @@ export class DML_GRAPH_DESCView {
   // 0x3c: pad4
 
   // 0x40: pointer
-  set IntermediateEdges(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set IntermediateEdges(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -16450,21 +16450,21 @@ try {
 // Symbols
 
 export function DMLCreateDevice(
-  d3d12Device: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Direct3D12.ID3D12Device */,
+  d3d12Device: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Direct3D12.ID3D12Device */,
   flags: DML_CREATE_DEVICE_FLAGS /* Windows.Win32.AI.MachineLearning.DirectML.DML_CREATE_DEVICE_FLAGS */,
-  riid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDirectML_dll.DMLCreateDevice(util.toPointer(d3d12Device), flags, util.toPointer(riid), util.toPointer(ppv)));
+  riid: Deno.PointerValue | Uint8Array /* ptr */,
+  ppv: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDirectML_dll.DMLCreateDevice(util.toPointer(d3d12Device), flags, util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function DMLCreateDevice1(
-  d3d12Device: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Direct3D12.ID3D12Device */,
+  d3d12Device: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Direct3D12.ID3D12Device */,
   flags: DML_CREATE_DEVICE_FLAGS /* Windows.Win32.AI.MachineLearning.DirectML.DML_CREATE_DEVICE_FLAGS */,
   minimumFeatureLevel: DML_FEATURE_LEVEL /* Windows.Win32.AI.MachineLearning.DirectML.DML_FEATURE_LEVEL */,
-  riid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDirectML_dll.DMLCreateDevice1(util.toPointer(d3d12Device), flags, minimumFeatureLevel, util.toPointer(riid), util.toPointer(ppv)));
+  riid: Deno.PointerValue | Uint8Array /* ptr */,
+  ppv: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDirectML_dll.DMLCreateDevice1(util.toPointer(d3d12Device), flags, minimumFeatureLevel, util.toPointer(riid), util.toPointer(ppv));
 }
 

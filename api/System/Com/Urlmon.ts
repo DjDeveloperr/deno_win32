@@ -815,7 +815,7 @@ export class REMSECURITY_ATTRIBUTESView {
   // 0x0c: pad4
 }
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.System.Com.Urlmon.RemBINDINFO (size: 80)
@@ -840,11 +840,11 @@ export interface RemBINDINFO {
   /** u32 */
   dwCodePage: number;
   /** Windows.Win32.System.Com.Urlmon.REMSECURITY_ATTRIBUTES */
-  securityAttributes: Uint8Array | Deno.PointerValue | null;
+  securityAttributes: Uint8Array | Deno.PointerValue;
   /** System.Guid */
-  iid: Uint8Array | Deno.PointerValue | null;
+  iid: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Com.IUnknown */
-  pUnk: Uint8Array | Deno.PointerValue | null;
+  pUnk: Uint8Array | Deno.PointerValue;
   /** u32 */
   dwReserved: number;
 }
@@ -860,7 +860,7 @@ export function allocRemBINDINFO(data?: Partial<RemBINDINFO>): Uint8Array {
   // 0x08: buffer
   if (data?.szExtraInfo !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.szExtraInfo);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: u32
   if (data?.grfBindInfoF !== undefined) view.setUint32(16, Number(data.grfBindInfoF), true);
@@ -869,7 +869,7 @@ export function allocRemBINDINFO(data?: Partial<RemBINDINFO>): Uint8Array {
   // 0x18: buffer
   if (data?.szCustomVerb !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.szCustomVerb);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: u32
   if (data?.cbstgmedData !== undefined) view.setUint32(32, Number(data.cbstgmedData), true);
@@ -880,11 +880,11 @@ export function allocRemBINDINFO(data?: Partial<RemBINDINFO>): Uint8Array {
   // 0x2c: u32
   if (data?.dwCodePage !== undefined) view.setUint32(44, Number(data.dwCodePage), true);
   // 0x30: pointer
-  if (data?.securityAttributes !== undefined) view.setBigUint64(48, data.securityAttributes === null ? 0n : BigInt(util.toPointer(data.securityAttributes)), true);
+  if (data?.securityAttributes !== undefined) view.setBigUint64(48, data.securityAttributes === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.securityAttributes))), true);
   // 0x38: pointer
-  if (data?.iid !== undefined) view.setBigUint64(56, data.iid === null ? 0n : BigInt(util.toPointer(data.iid)), true);
+  if (data?.iid !== undefined) view.setBigUint64(56, data.iid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.iid))), true);
   // 0x40: pointer
-  if (data?.pUnk !== undefined) view.setBigUint64(64, data.pUnk === null ? 0n : BigInt(util.toPointer(data.pUnk)), true);
+  if (data?.pUnk !== undefined) view.setBigUint64(64, data.pUnk === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pUnk))), true);
   // 0x48: u32
   if (data?.dwReserved !== undefined) view.setUint32(72, Number(data.dwReserved), true);
   // 0x4c: pad4
@@ -909,9 +909,9 @@ export class RemBINDINFOView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get szExtraInfo(): Uint8Array | Deno.PointerValue | null {
+  get szExtraInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -925,9 +925,9 @@ export class RemBINDINFOView {
   }
 
   // 0x18: buffer
-  get szCustomVerb(): Uint8Array | Deno.PointerValue | null {
+  get szCustomVerb(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -951,21 +951,21 @@ export class RemBINDINFOView {
   }
 
   // 0x30: pointer
-  get securityAttributes(): Uint8Array | Deno.PointerValue | null {
+  get securityAttributes(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get iid(): Uint8Array | Deno.PointerValue | null {
+  get iid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get pUnk(): Uint8Array | Deno.PointerValue | null {
+  get pUnk(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: u32
@@ -983,9 +983,9 @@ export class RemBINDINFOView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set szExtraInfo(value: Uint8Array | Deno.PointerValue | null) {
+  set szExtraInfo(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: u32
@@ -999,9 +999,9 @@ export class RemBINDINFOView {
   }
 
   // 0x18: buffer
-  set szCustomVerb(value: Uint8Array | Deno.PointerValue | null) {
+  set szCustomVerb(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: u32
@@ -1025,18 +1025,18 @@ export class RemBINDINFOView {
   }
 
   // 0x30: pointer
-  set securityAttributes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set securityAttributes(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set iid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set iid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set pUnk(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set pUnk(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: u32
@@ -1156,7 +1156,7 @@ export interface PROTOCOLDATA {
   /** u32 */
   dwState: number;
   /** ptr */
-  pData: Deno.PointerValue | Uint8Array | null;
+  pData: Deno.PointerValue | Uint8Array;
   /** u32 */
   cbData: number;
 }
@@ -1171,7 +1171,7 @@ export function allocPROTOCOLDATA(data?: Partial<PROTOCOLDATA>): Uint8Array {
   // 0x04: u32
   if (data?.dwState !== undefined) view.setUint32(4, Number(data.dwState), true);
   // 0x08: pointer
-  if (data?.pData !== undefined) view.setBigUint64(8, data.pData === null ? 0n : BigInt(util.toPointer(data.pData)), true);
+  if (data?.pData !== undefined) view.setBigUint64(8, data.pData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pData))), true);
   // 0x10: u32
   if (data?.cbData !== undefined) view.setUint32(16, Number(data.cbData), true);
   // 0x14: pad4
@@ -1199,9 +1199,9 @@ export class PROTOCOLDATAView {
   }
 
   // 0x08: pointer
-  get pData(): Uint8Array | Deno.PointerValue | null {
+  get pData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -1222,8 +1222,8 @@ export class PROTOCOLDATAView {
   }
 
   // 0x08: pointer
-  set pData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -1239,11 +1239,11 @@ export class PROTOCOLDATAView {
  */
 export interface StartParam {
   /** System.Guid */
-  iid: Uint8Array | Deno.PointerValue | null;
+  iid: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Com.IBindCtx */
-  pIBindCtx: Uint8Array | Deno.PointerValue | null;
+  pIBindCtx: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Com.IUnknown */
-  pItf: Uint8Array | Deno.PointerValue | null;
+  pItf: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofStartParam = 24;
@@ -1252,11 +1252,11 @@ export function allocStartParam(data?: Partial<StartParam>): Uint8Array {
   const buf = new Uint8Array(sizeofStartParam);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.iid !== undefined) view.setBigUint64(0, data.iid === null ? 0n : BigInt(util.toPointer(data.iid)), true);
+  if (data?.iid !== undefined) view.setBigUint64(0, data.iid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.iid))), true);
   // 0x08: pointer
-  if (data?.pIBindCtx !== undefined) view.setBigUint64(8, data.pIBindCtx === null ? 0n : BigInt(util.toPointer(data.pIBindCtx)), true);
+  if (data?.pIBindCtx !== undefined) view.setBigUint64(8, data.pIBindCtx === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pIBindCtx))), true);
   // 0x10: pointer
-  if (data?.pItf !== undefined) view.setBigUint64(16, data.pItf === null ? 0n : BigInt(util.toPointer(data.pItf)), true);
+  if (data?.pItf !== undefined) view.setBigUint64(16, data.pItf === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pItf))), true);
   return buf;
 }
 
@@ -1271,36 +1271,36 @@ export class StartParamView {
   }
 
   // 0x00: pointer
-  get iid(): Uint8Array | Deno.PointerValue | null {
+  get iid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get pIBindCtx(): Uint8Array | Deno.PointerValue | null {
+  get pIBindCtx(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get pItf(): Uint8Array | Deno.PointerValue | null {
+  get pItf(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set iid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set iid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set pIBindCtx(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pIBindCtx(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set pItf(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pItf(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1311,11 +1311,11 @@ export interface ZONEATTRIBUTES {
   /** u32 */
   cbSize: number;
   /** array */
-  szDisplayName: Deno.PointerValue | null;
+  szDisplayName: Deno.PointerValue;
   /** array */
-  szDescription: Deno.PointerValue | null;
+  szDescription: Deno.PointerValue;
   /** array */
-  szIconPath: Deno.PointerValue | null;
+  szIconPath: Deno.PointerValue;
   /** u32 */
   dwTemplateMinLevel: number;
   /** u32 */
@@ -1335,11 +1335,11 @@ export function allocZONEATTRIBUTES(data?: Partial<ZONEATTRIBUTES>): Uint8Array 
   if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.szDisplayName !== undefined) view.setBigUint64(8, data.szDisplayName === null ? 0n : BigInt(util.toPointer(data.szDisplayName)), true);
+  if (data?.szDisplayName !== undefined) view.setBigUint64(8, data.szDisplayName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.szDisplayName))), true);
   // 0x10: pointer
-  if (data?.szDescription !== undefined) view.setBigUint64(16, data.szDescription === null ? 0n : BigInt(util.toPointer(data.szDescription)), true);
+  if (data?.szDescription !== undefined) view.setBigUint64(16, data.szDescription === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.szDescription))), true);
   // 0x18: pointer
-  if (data?.szIconPath !== undefined) view.setBigUint64(24, data.szIconPath === null ? 0n : BigInt(util.toPointer(data.szIconPath)), true);
+  if (data?.szIconPath !== undefined) view.setBigUint64(24, data.szIconPath === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.szIconPath))), true);
   // 0x20: u32
   if (data?.dwTemplateMinLevel !== undefined) view.setUint32(32, Number(data.dwTemplateMinLevel), true);
   // 0x24: u32
@@ -1369,21 +1369,21 @@ export class ZONEATTRIBUTESView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get szDisplayName(): Uint8Array | Deno.PointerValue | null {
+  get szDisplayName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get szDescription(): Uint8Array | Deno.PointerValue | null {
+  get szDescription(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get szIconPath(): Uint8Array | Deno.PointerValue | null {
+  get szIconPath(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -1414,18 +1414,18 @@ export class ZONEATTRIBUTESView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set szDisplayName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set szDisplayName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set szDescription(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set szDescription(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set szIconPath(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set szIconPath(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -1478,12 +1478,12 @@ export function allocCODEBASEHOLD(data?: Partial<CODEBASEHOLD>): Uint8Array {
   // 0x08: buffer
   if (data?.szDistUnit !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.szDistUnit);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.szCodeBase !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.szCodeBase);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: u32
   if (data?.dwVersionMS !== undefined) view.setUint32(24, Number(data.dwVersionMS), true);
@@ -1513,15 +1513,15 @@ export class CODEBASEHOLDView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get szDistUnit(): Uint8Array | Deno.PointerValue | null {
+  get szDistUnit(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get szCodeBase(): Uint8Array | Deno.PointerValue | null {
+  get szCodeBase(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -1549,15 +1549,15 @@ export class CODEBASEHOLDView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set szDistUnit(value: Uint8Array | Deno.PointerValue | null) {
+  set szDistUnit(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set szCodeBase(value: Uint8Array | Deno.PointerValue | null) {
+  set szCodeBase(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: u32
@@ -1625,17 +1625,17 @@ export function allocSOFTDISTINFO(data?: Partial<SOFTDISTINFO>): Uint8Array {
   // 0x10: buffer
   if (data?.szTitle !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.szTitle);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.szAbstract !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.szAbstract);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: buffer
   if (data?.szHREF !== undefined) {
     (buf as any)._f32 = util.pwstrToFfi(data.szHREF);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f32))), true);
   }
   // 0x28: u32
   if (data?.dwInstalledVersionMS !== undefined) view.setUint32(40, Number(data.dwInstalledVersionMS), true);
@@ -1683,21 +1683,21 @@ export class SOFTDISTINFOView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  get szTitle(): Uint8Array | Deno.PointerValue | null {
+  get szTitle(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get szAbstract(): Uint8Array | Deno.PointerValue | null {
+  get szAbstract(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: buffer
-  get szHREF(): Uint8Array | Deno.PointerValue | null {
+  get szHREF(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -1755,21 +1755,21 @@ export class SOFTDISTINFOView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  set szTitle(value: Uint8Array | Deno.PointerValue | null) {
+  set szTitle(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set szAbstract(value: Uint8Array | Deno.PointerValue | null) {
+  set szAbstract(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: buffer
-  set szHREF(value: Uint8Array | Deno.PointerValue | null) {
+  set szHREF(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f32))), true);
   }
 
   // 0x28: u32
@@ -1817,11 +1817,11 @@ export interface PROTOCOLFILTERDATA {
   /** u32 */
   cbSize: number;
   /** Windows.Win32.System.Com.Urlmon.IInternetProtocolSink */
-  pProtocolSink: Uint8Array | Deno.PointerValue | null;
+  pProtocolSink: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Com.Urlmon.IInternetProtocol */
-  pProtocol: Uint8Array | Deno.PointerValue | null;
+  pProtocol: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Com.IUnknown */
-  pUnk: Uint8Array | Deno.PointerValue | null;
+  pUnk: Uint8Array | Deno.PointerValue;
   /** u32 */
   dwFilterFlags: number;
 }
@@ -1835,11 +1835,11 @@ export function allocPROTOCOLFILTERDATA(data?: Partial<PROTOCOLFILTERDATA>): Uin
   if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pProtocolSink !== undefined) view.setBigUint64(8, data.pProtocolSink === null ? 0n : BigInt(util.toPointer(data.pProtocolSink)), true);
+  if (data?.pProtocolSink !== undefined) view.setBigUint64(8, data.pProtocolSink === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pProtocolSink))), true);
   // 0x10: pointer
-  if (data?.pProtocol !== undefined) view.setBigUint64(16, data.pProtocol === null ? 0n : BigInt(util.toPointer(data.pProtocol)), true);
+  if (data?.pProtocol !== undefined) view.setBigUint64(16, data.pProtocol === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pProtocol))), true);
   // 0x18: pointer
-  if (data?.pUnk !== undefined) view.setBigUint64(24, data.pUnk === null ? 0n : BigInt(util.toPointer(data.pUnk)), true);
+  if (data?.pUnk !== undefined) view.setBigUint64(24, data.pUnk === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pUnk))), true);
   // 0x20: u32
   if (data?.dwFilterFlags !== undefined) view.setUint32(32, Number(data.dwFilterFlags), true);
   // 0x24: pad4
@@ -1864,21 +1864,21 @@ export class PROTOCOLFILTERDATAView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pProtocolSink(): Uint8Array | Deno.PointerValue | null {
+  get pProtocolSink(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get pProtocol(): Uint8Array | Deno.PointerValue | null {
+  get pProtocol(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get pUnk(): Uint8Array | Deno.PointerValue | null {
+  get pUnk(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -1896,18 +1896,18 @@ export class PROTOCOLFILTERDATAView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pProtocolSink(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pProtocolSink(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set pProtocol(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pProtocol(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set pUnk(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set pUnk(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -1999,7 +1999,7 @@ export class DATAINFOView {
   }
 }
 
-export type PSTR = Deno.PointerValue | Uint8Array | null;
+export type PSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.Foundation.SYSTEMTIME (size: 16)
@@ -2147,9 +2147,9 @@ export interface HIT_LOGGING_INFO {
   /** Windows.Win32.Foundation.PSTR */
   lpszLoggedUrlName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.SYSTEMTIME */
-  StartTime: Uint8Array | Deno.PointerValue | null;
+  StartTime: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.SYSTEMTIME */
-  EndTime: Uint8Array | Deno.PointerValue | null;
+  EndTime: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
   lpszExtendedInfo: string | null | Uint8Array;
 }
@@ -2165,16 +2165,16 @@ export function allocHIT_LOGGING_INFO(data?: Partial<HIT_LOGGING_INFO>): Uint8Ar
   // 0x08: buffer
   if (data?.lpszLoggedUrlName !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.lpszLoggedUrlName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: pointer
-  if (data?.StartTime !== undefined) view.setBigUint64(16, data.StartTime === null ? 0n : BigInt(util.toPointer(data.StartTime)), true);
+  if (data?.StartTime !== undefined) view.setBigUint64(16, data.StartTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.StartTime))), true);
   // 0x18: pointer
-  if (data?.EndTime !== undefined) view.setBigUint64(24, data.EndTime === null ? 0n : BigInt(util.toPointer(data.EndTime)), true);
+  if (data?.EndTime !== undefined) view.setBigUint64(24, data.EndTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.EndTime))), true);
   // 0x20: buffer
   if (data?.lpszExtendedInfo !== undefined) {
     (buf as any)._f32 = util.pstrToFfi(data.lpszExtendedInfo);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f32))), true);
   }
   return buf;
 }
@@ -2197,27 +2197,27 @@ export class HIT_LOGGING_INFOView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get lpszLoggedUrlName(): Uint8Array | Deno.PointerValue | null {
+  get lpszLoggedUrlName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get StartTime(): Uint8Array | Deno.PointerValue | null {
+  get StartTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get EndTime(): Uint8Array | Deno.PointerValue | null {
+  get EndTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: buffer
-  get lpszExtendedInfo(): Uint8Array | Deno.PointerValue | null {
+  get lpszExtendedInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -2228,25 +2228,25 @@ export class HIT_LOGGING_INFOView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set lpszLoggedUrlName(value: Uint8Array | Deno.PointerValue | null) {
+  set lpszLoggedUrlName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: pointer
-  set StartTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set StartTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set EndTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set EndTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: buffer
-  set lpszExtendedInfo(value: Uint8Array | Deno.PointerValue | null) {
+  set lpszExtendedInfo(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f32))), true);
   }
 }
 
@@ -2255,9 +2255,9 @@ export class HIT_LOGGING_INFOView {
  */
 export interface CONFIRMSAFETY {
   /** System.Guid */
-  clsid: Uint8Array | Deno.PointerValue | null;
+  clsid: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Com.IUnknown */
-  pUnk: Uint8Array | Deno.PointerValue | null;
+  pUnk: Uint8Array | Deno.PointerValue;
   /** u32 */
   dwFlags: number;
 }
@@ -2268,9 +2268,9 @@ export function allocCONFIRMSAFETY(data?: Partial<CONFIRMSAFETY>): Uint8Array {
   const buf = new Uint8Array(sizeofCONFIRMSAFETY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.clsid !== undefined) view.setBigUint64(0, data.clsid === null ? 0n : BigInt(util.toPointer(data.clsid)), true);
+  if (data?.clsid !== undefined) view.setBigUint64(0, data.clsid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.clsid))), true);
   // 0x08: pointer
-  if (data?.pUnk !== undefined) view.setBigUint64(8, data.pUnk === null ? 0n : BigInt(util.toPointer(data.pUnk)), true);
+  if (data?.pUnk !== undefined) view.setBigUint64(8, data.pUnk === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pUnk))), true);
   // 0x10: u32
   if (data?.dwFlags !== undefined) view.setUint32(16, Number(data.dwFlags), true);
   // 0x14: pad4
@@ -2288,15 +2288,15 @@ export class CONFIRMSAFETYView {
   }
 
   // 0x00: pointer
-  get clsid(): Uint8Array | Deno.PointerValue | null {
+  get clsid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get pUnk(): Uint8Array | Deno.PointerValue | null {
+  get pUnk(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -2307,13 +2307,13 @@ export class CONFIRMSAFETYView {
   // 0x14: pad4
 
   // 0x00: pointer
-  set clsid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set clsid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set pUnk(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pUnk(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -2342,12 +2342,12 @@ export function allocPROTOCOL_ARGUMENT(data?: Partial<PROTOCOL_ARGUMENT>): Uint8
   // 0x00: buffer
   if (data?.szMethod !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.szMethod);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: buffer
   if (data?.szTargetUrl !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.szTargetUrl);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   return buf;
 }
@@ -2363,27 +2363,27 @@ export class PROTOCOL_ARGUMENTView {
   }
 
   // 0x00: buffer
-  get szMethod(): Uint8Array | Deno.PointerValue | null {
+  get szMethod(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get szTargetUrl(): Uint8Array | Deno.PointerValue | null {
+  get szTargetUrl(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set szMethod(value: Uint8Array | Deno.PointerValue | null) {
+  set szMethod(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: buffer
-  set szTargetUrl(value: Uint8Array | Deno.PointerValue | null) {
+  set szTargetUrl(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 }
 
@@ -2695,417 +2695,417 @@ try {
 // Symbols
 
 export function CreateURLMoniker(
-  pMkCtx: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IMoniker */,
+  pMkCtx: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IMoniker */,
   szURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ppmk: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.CreateURLMoniker(util.toPointer(pMkCtx), util.pwstrToFfi(szURL), util.toPointer(ppmk)));
+  ppmk: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.CreateURLMoniker(util.toPointer(pMkCtx), util.pwstrToFfi(szURL), util.toPointer(ppmk));
 }
 
 export function CreateURLMonikerEx(
-  pMkCtx: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IMoniker */,
+  pMkCtx: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IMoniker */,
   szURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ppmk: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ppmk: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.CreateURLMonikerEx(util.toPointer(pMkCtx), util.pwstrToFfi(szURL), util.toPointer(ppmk), dwFlags));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.CreateURLMonikerEx(util.toPointer(pMkCtx), util.pwstrToFfi(szURL), util.toPointer(ppmk), dwFlags);
 }
 
 export function GetClassURL(
   szURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pClsID: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.GetClassURL(util.pwstrToFfi(szURL), util.toPointer(pClsID)));
+  pClsID: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.GetClassURL(util.pwstrToFfi(szURL), util.toPointer(pClsID));
 }
 
 export function CreateAsyncBindCtx(
   reserved: number /* u32 */,
-  pBSCb: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
-  pEFetc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IEnumFORMATETC */,
-  ppBC: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.CreateAsyncBindCtx(reserved, util.toPointer(pBSCb), util.toPointer(pEFetc), util.toPointer(ppBC)));
+  pBSCb: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindStatusCallback */,
+  pEFetc: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IEnumFORMATETC */,
+  ppBC: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.CreateAsyncBindCtx(reserved, util.toPointer(pBSCb), util.toPointer(pEFetc), util.toPointer(ppBC));
 }
 
 export function CreateURLMonikerEx2(
-  pMkCtx: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IMoniker */,
-  pUri: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUri */,
-  ppmk: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pMkCtx: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IMoniker */,
+  pUri: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUri */,
+  ppmk: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.CreateURLMonikerEx2(util.toPointer(pMkCtx), util.toPointer(pUri), util.toPointer(ppmk), dwFlags));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.CreateURLMonikerEx2(util.toPointer(pMkCtx), util.toPointer(pUri), util.toPointer(ppmk), dwFlags);
 }
 
 export function CreateAsyncBindCtxEx(
-  pbc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindCtx */,
+  pbc: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindCtx */,
   dwOptions: number /* u32 */,
-  pBSCb: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
-  pEnum: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IEnumFORMATETC */,
-  ppBC: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBSCb: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindStatusCallback */,
+  pEnum: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IEnumFORMATETC */,
+  ppBC: Deno.PointerValue | Uint8Array /* ptr */,
   reserved: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.CreateAsyncBindCtxEx(util.toPointer(pbc), dwOptions, util.toPointer(pBSCb), util.toPointer(pEnum), util.toPointer(ppBC), reserved));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.CreateAsyncBindCtxEx(util.toPointer(pbc), dwOptions, util.toPointer(pBSCb), util.toPointer(pEnum), util.toPointer(ppBC), reserved);
 }
 
 export function MkParseDisplayNameEx(
-  pbc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindCtx */,
+  pbc: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindCtx */,
   szDisplayName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pchEaten: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppmk: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.MkParseDisplayNameEx(util.toPointer(pbc), util.pwstrToFfi(szDisplayName), util.toPointer(pchEaten), util.toPointer(ppmk)));
+  pchEaten: Deno.PointerValue | Uint8Array /* ptr */,
+  ppmk: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.MkParseDisplayNameEx(util.toPointer(pbc), util.pwstrToFfi(szDisplayName), util.toPointer(pchEaten), util.toPointer(ppmk));
 }
 
 export function RegisterBindStatusCallback(
-  pBC: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindCtx */,
-  pBSCb: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
-  ppBSCBPrev: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBC: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindCtx */,
+  pBSCb: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindStatusCallback */,
+  ppBSCBPrev: Deno.PointerValue | Uint8Array /* ptr */,
   dwReserved: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.RegisterBindStatusCallback(util.toPointer(pBC), util.toPointer(pBSCb), util.toPointer(ppBSCBPrev), dwReserved));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.RegisterBindStatusCallback(util.toPointer(pBC), util.toPointer(pBSCb), util.toPointer(ppBSCBPrev), dwReserved);
 }
 
 export function RevokeBindStatusCallback(
-  pBC: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindCtx */,
-  pBSCb: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.RevokeBindStatusCallback(util.toPointer(pBC), util.toPointer(pBSCb)));
+  pBC: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindCtx */,
+  pBSCb: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindStatusCallback */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.RevokeBindStatusCallback(util.toPointer(pBC), util.toPointer(pBSCb));
 }
 
 export function GetClassFileOrMime(
-  pBC: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindCtx */,
+  pBC: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindCtx */,
   szFilename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   cbSize: number /* u32 */,
   szMime: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwReserved: number /* u32 */,
-  pclsid: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.GetClassFileOrMime(util.toPointer(pBC), util.pwstrToFfi(szFilename), util.toPointer(pBuffer), cbSize, util.pwstrToFfi(szMime), dwReserved, util.toPointer(pclsid)));
+  pclsid: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.GetClassFileOrMime(util.toPointer(pBC), util.pwstrToFfi(szFilename), util.toPointer(pBuffer), cbSize, util.pwstrToFfi(szMime), dwReserved, util.toPointer(pclsid));
 }
 
 export function IsValidURL(
-  pBC: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindCtx */,
+  pBC: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindCtx */,
   szURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwReserved: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.IsValidURL(util.toPointer(pBC), util.pwstrToFfi(szURL), dwReserved));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.IsValidURL(util.toPointer(pBC), util.pwstrToFfi(szURL), dwReserved);
 }
 
 export function CoGetClassObjectFromURL(
-  rCLASSID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  rCLASSID: Deno.PointerValue | Uint8Array /* ptr */,
   szCODE: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFileVersionMS: number /* u32 */,
   dwFileVersionLS: number /* u32 */,
   szTYPE: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pBindCtx: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindCtx */,
+  pBindCtx: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindCtx */,
   dwClsContext: CLSCTX /* Windows.Win32.System.Com.CLSCTX */,
-  pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
-  riid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppv: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.CoGetClassObjectFromURL(util.toPointer(rCLASSID), util.pwstrToFfi(szCODE), dwFileVersionMS, dwFileVersionLS, util.pwstrToFfi(szTYPE), util.toPointer(pBindCtx), dwClsContext, util.toPointer(pvReserved), util.toPointer(riid), util.toPointer(ppv)));
+  pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
+  riid: Deno.PointerValue | Uint8Array /* ptr */,
+  ppv: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.CoGetClassObjectFromURL(util.toPointer(rCLASSID), util.pwstrToFfi(szCODE), dwFileVersionMS, dwFileVersionLS, util.pwstrToFfi(szTYPE), util.toPointer(pBindCtx), dwClsContext, util.toPointer(pvReserved), util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function IEInstallScope(
-  pdwScope: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.IEInstallScope(util.toPointer(pdwScope)));
+  pdwScope: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.IEInstallScope(util.toPointer(pdwScope));
 }
 
 export function FaultInIEFeature(
-  hWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pClassSpec: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pQuery: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
+  pClassSpec: Deno.PointerValue | Uint8Array /* ptr */,
+  pQuery: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.FaultInIEFeature(util.hwndToFfi(hWnd), util.toPointer(pClassSpec), util.toPointer(pQuery), dwFlags));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.FaultInIEFeature((hWnd), util.toPointer(pClassSpec), util.toPointer(pQuery), dwFlags);
 }
 
 export function GetComponentIDFromCLSSPEC(
-  pClassspec: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppszComponentID: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.GetComponentIDFromCLSSPEC(util.toPointer(pClassspec), util.toPointer(ppszComponentID)));
+  pClassspec: Deno.PointerValue | Uint8Array /* ptr */,
+  ppszComponentID: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.GetComponentIDFromCLSSPEC(util.toPointer(pClassspec), util.toPointer(ppszComponentID));
 }
 
 export function IsAsyncMoniker(
-  pmk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IMoniker */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.IsAsyncMoniker(util.toPointer(pmk)));
+  pmk: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IMoniker */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.IsAsyncMoniker(util.toPointer(pmk));
 }
 
 export function RegisterMediaTypes(
   ctypes: number /* u32 */,
-  rgszTypes: Deno.PointerValue | Uint8Array | null /* ptr */,
-  rgcfTypes: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.RegisterMediaTypes(ctypes, util.toPointer(rgszTypes), util.toPointer(rgcfTypes)));
+  rgszTypes: Deno.PointerValue | Uint8Array /* ptr */,
+  rgcfTypes: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.RegisterMediaTypes(ctypes, util.toPointer(rgszTypes), util.toPointer(rgcfTypes));
 }
 
 export function FindMediaType(
   rgszTypes: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  rgcfTypes: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.FindMediaType(util.pstrToFfi(rgszTypes), util.toPointer(rgcfTypes)));
+  rgcfTypes: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.FindMediaType(util.pstrToFfi(rgszTypes), util.toPointer(rgcfTypes));
 }
 
 export function CreateFormatEnumerator(
   cfmtetc: number /* u32 */,
-  rgfmtetc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppenumfmtetc: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.CreateFormatEnumerator(cfmtetc, util.toPointer(rgfmtetc), util.toPointer(ppenumfmtetc)));
+  rgfmtetc: Deno.PointerValue | Uint8Array /* ptr */,
+  ppenumfmtetc: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.CreateFormatEnumerator(cfmtetc, util.toPointer(rgfmtetc), util.toPointer(ppenumfmtetc));
 }
 
 export function RegisterFormatEnumerator(
-  pBC: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindCtx */,
-  pEFetc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IEnumFORMATETC */,
+  pBC: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindCtx */,
+  pEFetc: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IEnumFORMATETC */,
   reserved: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.RegisterFormatEnumerator(util.toPointer(pBC), util.toPointer(pEFetc), reserved));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.RegisterFormatEnumerator(util.toPointer(pBC), util.toPointer(pEFetc), reserved);
 }
 
 export function RevokeFormatEnumerator(
-  pBC: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindCtx */,
-  pEFetc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IEnumFORMATETC */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.RevokeFormatEnumerator(util.toPointer(pBC), util.toPointer(pEFetc)));
+  pBC: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindCtx */,
+  pEFetc: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IEnumFORMATETC */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.RevokeFormatEnumerator(util.toPointer(pBC), util.toPointer(pEFetc));
 }
 
 export function RegisterMediaTypeClass(
-  pBC: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindCtx */,
+  pBC: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindCtx */,
   ctypes: number /* u32 */,
-  rgszTypes: Deno.PointerValue | Uint8Array | null /* ptr */,
-  rgclsID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  rgszTypes: Deno.PointerValue | Uint8Array /* ptr */,
+  rgclsID: Deno.PointerValue | Uint8Array /* ptr */,
   reserved: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.RegisterMediaTypeClass(util.toPointer(pBC), ctypes, util.toPointer(rgszTypes), util.toPointer(rgclsID), reserved));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.RegisterMediaTypeClass(util.toPointer(pBC), ctypes, util.toPointer(rgszTypes), util.toPointer(rgclsID), reserved);
 }
 
 export function FindMediaTypeClass(
-  pBC: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindCtx */,
+  pBC: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindCtx */,
   szType: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pclsID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pclsID: Deno.PointerValue | Uint8Array /* ptr */,
   reserved: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.FindMediaTypeClass(util.toPointer(pBC), util.pstrToFfi(szType), util.toPointer(pclsID), reserved));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.FindMediaTypeClass(util.toPointer(pBC), util.pstrToFfi(szType), util.toPointer(pclsID), reserved);
 }
 
 export function UrlMkSetSessionOption(
   dwOption: number /* u32 */,
-  pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   dwBufferLength: number /* u32 */,
   dwReserved: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.UrlMkSetSessionOption(dwOption, util.toPointer(pBuffer), dwBufferLength, dwReserved));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.UrlMkSetSessionOption(dwOption, util.toPointer(pBuffer), dwBufferLength, dwReserved);
 }
 
 export function UrlMkGetSessionOption(
   dwOption: number /* u32 */,
-  pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   dwBufferLength: number /* u32 */,
-  pdwBufferLengthOut: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pdwBufferLengthOut: Deno.PointerValue | Uint8Array /* ptr */,
   dwReserved: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.UrlMkGetSessionOption(dwOption, util.toPointer(pBuffer), dwBufferLength, util.toPointer(pdwBufferLengthOut), dwReserved));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.UrlMkGetSessionOption(dwOption, util.toPointer(pBuffer), dwBufferLength, util.toPointer(pdwBufferLengthOut), dwReserved);
 }
 
 export function FindMimeFromData(
-  pBC: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindCtx */,
+  pBC: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindCtx */,
   pwzUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   cbSize: number /* u32 */,
   pwzMimeProposed: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwMimeFlags: number /* u32 */,
-  ppwzMimeOut: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ppwzMimeOut: Deno.PointerValue | Uint8Array /* ptr */,
   dwReserved: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.FindMimeFromData(util.toPointer(pBC), util.pwstrToFfi(pwzUrl), util.toPointer(pBuffer), cbSize, util.pwstrToFfi(pwzMimeProposed), dwMimeFlags, util.toPointer(ppwzMimeOut), dwReserved));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.FindMimeFromData(util.toPointer(pBC), util.pwstrToFfi(pwzUrl), util.toPointer(pBuffer), cbSize, util.pwstrToFfi(pwzMimeProposed), dwMimeFlags, util.toPointer(ppwzMimeOut), dwReserved);
 }
 
 export function ObtainUserAgentString(
   dwOption: number /* u32 */,
   pszUAOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  cbSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.ObtainUserAgentString(dwOption, util.pstrToFfi(pszUAOut), util.toPointer(cbSize)));
+  cbSize: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.ObtainUserAgentString(dwOption, util.pstrToFfi(pszUAOut), util.toPointer(cbSize));
 }
 
 export function CompareSecurityIds(
-  pbSecurityId1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pbSecurityId1: Deno.PointerValue | Uint8Array /* ptr */,
   dwLen1: number /* u32 */,
-  pbSecurityId2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pbSecurityId2: Deno.PointerValue | Uint8Array /* ptr */,
   dwLen2: number /* u32 */,
   dwReserved: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.CompareSecurityIds(util.toPointer(pbSecurityId1), dwLen1, util.toPointer(pbSecurityId2), dwLen2, dwReserved));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.CompareSecurityIds(util.toPointer(pbSecurityId1), dwLen1, util.toPointer(pbSecurityId2), dwLen2, dwReserved);
 }
 
 export function CompatFlagsFromClsid(
-  pclsid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pdwCompatFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pdwMiscStatusFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.CompatFlagsFromClsid(util.toPointer(pclsid), util.toPointer(pdwCompatFlags), util.toPointer(pdwMiscStatusFlags)));
+  pclsid: Deno.PointerValue | Uint8Array /* ptr */,
+  pdwCompatFlags: Deno.PointerValue | Uint8Array /* ptr */,
+  pdwMiscStatusFlags: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.CompatFlagsFromClsid(util.toPointer(pclsid), util.toPointer(pdwCompatFlags), util.toPointer(pdwMiscStatusFlags));
 }
 
 export function SetAccessForIEAppContainer(
-  hObject: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hObject: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ieObjectType: IEObjectType /* Windows.Win32.System.Com.Urlmon.IEObjectType */,
   dwAccessMask: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.SetAccessForIEAppContainer(util.toPointer(hObject), ieObjectType, dwAccessMask));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.SetAccessForIEAppContainer(util.toPointer(hObject), ieObjectType, dwAccessMask);
 }
 
 export function HlinkSimpleNavigateToString(
   szTarget: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szLocation: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szTargetFrameName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pUnk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
-  pbc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindCtx */,
-  param5: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
+  pUnk: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
+  pbc: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindCtx */,
+  param5: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindStatusCallback */,
   grfHLNF: number /* u32 */,
   dwReserved: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.HlinkSimpleNavigateToString(util.pwstrToFfi(szTarget), util.pwstrToFfi(szLocation), util.pwstrToFfi(szTargetFrameName), util.toPointer(pUnk), util.toPointer(pbc), util.toPointer(param5), grfHLNF, dwReserved));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.HlinkSimpleNavigateToString(util.pwstrToFfi(szTarget), util.pwstrToFfi(szLocation), util.pwstrToFfi(szTargetFrameName), util.toPointer(pUnk), util.toPointer(pbc), util.toPointer(param5), grfHLNF, dwReserved);
 }
 
 export function HlinkSimpleNavigateToMoniker(
-  pmkTarget: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IMoniker */,
+  pmkTarget: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IMoniker */,
   szLocation: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szTargetFrameName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pUnk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
-  pbc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindCtx */,
-  param5: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
+  pUnk: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
+  pbc: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindCtx */,
+  param5: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindStatusCallback */,
   grfHLNF: number /* u32 */,
   dwReserved: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.HlinkSimpleNavigateToMoniker(util.toPointer(pmkTarget), util.pwstrToFfi(szLocation), util.pwstrToFfi(szTargetFrameName), util.toPointer(pUnk), util.toPointer(pbc), util.toPointer(param5), grfHLNF, dwReserved));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.HlinkSimpleNavigateToMoniker(util.toPointer(pmkTarget), util.pwstrToFfi(szLocation), util.pwstrToFfi(szTargetFrameName), util.toPointer(pUnk), util.toPointer(pbc), util.toPointer(param5), grfHLNF, dwReserved);
 }
 
 export function URLOpenStreamA(
-  param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
+  param0: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
   param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param2: number /* u32 */,
-  param3: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.URLOpenStreamA(util.toPointer(param0), util.pstrToFfi(param1), param2, util.toPointer(param3)));
+  param3: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindStatusCallback */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.URLOpenStreamA(util.toPointer(param0), util.pstrToFfi(param1), param2, util.toPointer(param3));
 }
 
 export function URLOpenStreamW(
-  param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
+  param0: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
   param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param2: number /* u32 */,
-  param3: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.URLOpenStreamW(util.toPointer(param0), util.pwstrToFfi(param1), param2, util.toPointer(param3)));
+  param3: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindStatusCallback */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.URLOpenStreamW(util.toPointer(param0), util.pwstrToFfi(param1), param2, util.toPointer(param3));
 }
 
 export function URLOpenPullStreamA(
-  param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
+  param0: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
   param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param2: number /* u32 */,
-  param3: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.URLOpenPullStreamA(util.toPointer(param0), util.pstrToFfi(param1), param2, util.toPointer(param3)));
+  param3: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindStatusCallback */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.URLOpenPullStreamA(util.toPointer(param0), util.pstrToFfi(param1), param2, util.toPointer(param3));
 }
 
 export function URLOpenPullStreamW(
-  param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
+  param0: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
   param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param2: number /* u32 */,
-  param3: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.URLOpenPullStreamW(util.toPointer(param0), util.pwstrToFfi(param1), param2, util.toPointer(param3)));
+  param3: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindStatusCallback */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.URLOpenPullStreamW(util.toPointer(param0), util.pwstrToFfi(param1), param2, util.toPointer(param3));
 }
 
 export function URLDownloadToFileA(
-  param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
+  param0: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
   param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param3: number /* u32 */,
-  param4: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.URLDownloadToFileA(util.toPointer(param0), util.pstrToFfi(param1), util.pstrToFfi(param2), param3, util.toPointer(param4)));
+  param4: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindStatusCallback */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.URLDownloadToFileA(util.toPointer(param0), util.pstrToFfi(param1), util.pstrToFfi(param2), param3, util.toPointer(param4));
 }
 
 export function URLDownloadToFileW(
-  param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
+  param0: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
   param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param3: number /* u32 */,
-  param4: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.URLDownloadToFileW(util.toPointer(param0), util.pwstrToFfi(param1), util.pwstrToFfi(param2), param3, util.toPointer(param4)));
+  param4: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindStatusCallback */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.URLDownloadToFileW(util.toPointer(param0), util.pwstrToFfi(param1), util.pwstrToFfi(param2), param3, util.toPointer(param4));
 }
 
 export function URLDownloadToCacheFileA(
-  param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
+  param0: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
   param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchFileName: number /* u32 */,
   param4: number /* u32 */,
-  param5: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.URLDownloadToCacheFileA(util.toPointer(param0), util.pstrToFfi(param1), util.pstrToFfi(param2), cchFileName, param4, util.toPointer(param5)));
+  param5: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindStatusCallback */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.URLDownloadToCacheFileA(util.toPointer(param0), util.pstrToFfi(param1), util.pstrToFfi(param2), cchFileName, param4, util.toPointer(param5));
 }
 
 export function URLDownloadToCacheFileW(
-  param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
+  param0: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
   param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchFileName: number /* u32 */,
   param4: number /* u32 */,
-  param5: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.URLDownloadToCacheFileW(util.toPointer(param0), util.pwstrToFfi(param1), util.pwstrToFfi(param2), cchFileName, param4, util.toPointer(param5)));
+  param5: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindStatusCallback */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.URLDownloadToCacheFileW(util.toPointer(param0), util.pwstrToFfi(param1), util.pwstrToFfi(param2), cchFileName, param4, util.toPointer(param5));
 }
 
 export function URLOpenBlockingStreamA(
-  param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
+  param0: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
   param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
   param3: number /* u32 */,
-  param4: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.URLOpenBlockingStreamA(util.toPointer(param0), util.pstrToFfi(param1), util.toPointer(param2), param3, util.toPointer(param4)));
+  param4: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindStatusCallback */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.URLOpenBlockingStreamA(util.toPointer(param0), util.pstrToFfi(param1), util.toPointer(param2), param3, util.toPointer(param4));
 }
 
 export function URLOpenBlockingStreamW(
-  param0: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
+  param0: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
   param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
   param3: number /* u32 */,
-  param4: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IBindStatusCallback */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.URLOpenBlockingStreamW(util.toPointer(param0), util.pwstrToFfi(param1), util.toPointer(param2), param3, util.toPointer(param4)));
+  param4: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindStatusCallback */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.URLOpenBlockingStreamW(util.toPointer(param0), util.pwstrToFfi(param1), util.toPointer(param2), param3, util.toPointer(param4));
 }
 
 export function HlinkGoBack(
-  pUnk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.HlinkGoBack(util.toPointer(pUnk)));
+  pUnk: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.HlinkGoBack(util.toPointer(pUnk));
 }
 
 export function HlinkGoForward(
-  pUnk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.HlinkGoForward(util.toPointer(pUnk)));
+  pUnk: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.HlinkGoForward(util.toPointer(pUnk));
 }
 
 export function HlinkNavigateString(
-  pUnk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
+  pUnk: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
   szTarget: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.HlinkNavigateString(util.toPointer(pUnk), util.pwstrToFfi(szTarget)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.HlinkNavigateString(util.toPointer(pUnk), util.pwstrToFfi(szTarget));
 }
 
 export function HlinkNavigateMoniker(
-  pUnk: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUnknown */,
-  pmkTarget: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IMoniker */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.HlinkNavigateMoniker(util.toPointer(pUnk), util.toPointer(pmkTarget)));
+  pUnk: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
+  pmkTarget: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IMoniker */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.HlinkNavigateMoniker(util.toPointer(pUnk), util.toPointer(pmkTarget));
 }
 
 export function CoInternetParseUrl(
@@ -3114,22 +3114,22 @@ export function CoInternetParseUrl(
   dwFlags: number /* u32 */,
   pszResult: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchResult: number /* u32 */,
-  pcchResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchResult: Deno.PointerValue | Uint8Array /* ptr */,
   dwReserved: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.CoInternetParseUrl(util.pwstrToFfi(pwzUrl), ParseAction, dwFlags, util.pwstrToFfi(pszResult), cchResult, util.toPointer(pcchResult), dwReserved));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.CoInternetParseUrl(util.pwstrToFfi(pwzUrl), ParseAction, dwFlags, util.pwstrToFfi(pszResult), cchResult, util.toPointer(pcchResult), dwReserved);
 }
 
 export function CoInternetParseIUri(
-  pIUri: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUri */,
+  pIUri: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUri */,
   ParseAction: PARSEACTION /* Windows.Win32.System.Com.Urlmon.PARSEACTION */,
   dwFlags: number /* u32 */,
   pwzResult: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchResult: number /* u32 */,
-  pcchResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchResult: Deno.PointerValue | Uint8Array /* ptr */,
   dwReserved: Deno.PointerValue /* usize */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.CoInternetParseIUri(util.toPointer(pIUri), ParseAction, dwFlags, util.pwstrToFfi(pwzResult), cchResult, util.toPointer(pcchResult), dwReserved));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.CoInternetParseIUri(util.toPointer(pIUri), ParseAction, dwFlags, util.pwstrToFfi(pwzResult), cchResult, util.toPointer(pcchResult), dwReserved);
 }
 
 export function CoInternetCombineUrl(
@@ -3138,144 +3138,144 @@ export function CoInternetCombineUrl(
   dwCombineFlags: number /* u32 */,
   pszResult: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchResult: number /* u32 */,
-  pcchResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchResult: Deno.PointerValue | Uint8Array /* ptr */,
   dwReserved: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.CoInternetCombineUrl(util.pwstrToFfi(pwzBaseUrl), util.pwstrToFfi(pwzRelativeUrl), dwCombineFlags, util.pwstrToFfi(pszResult), cchResult, util.toPointer(pcchResult), dwReserved));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.CoInternetCombineUrl(util.pwstrToFfi(pwzBaseUrl), util.pwstrToFfi(pwzRelativeUrl), dwCombineFlags, util.pwstrToFfi(pszResult), cchResult, util.toPointer(pcchResult), dwReserved);
 }
 
 export function CoInternetCombineUrlEx(
-  pBaseUri: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUri */,
+  pBaseUri: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUri */,
   pwzRelativeUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwCombineFlags: number /* u32 */,
-  ppCombinedUri: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ppCombinedUri: Deno.PointerValue | Uint8Array /* ptr */,
   dwReserved: Deno.PointerValue /* usize */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.CoInternetCombineUrlEx(util.toPointer(pBaseUri), util.pwstrToFfi(pwzRelativeUrl), dwCombineFlags, util.toPointer(ppCombinedUri), dwReserved));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.CoInternetCombineUrlEx(util.toPointer(pBaseUri), util.pwstrToFfi(pwzRelativeUrl), dwCombineFlags, util.toPointer(ppCombinedUri), dwReserved);
 }
 
 export function CoInternetCombineIUri(
-  pBaseUri: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUri */,
-  pRelativeUri: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUri */,
+  pBaseUri: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUri */,
+  pRelativeUri: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUri */,
   dwCombineFlags: number /* u32 */,
-  ppCombinedUri: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ppCombinedUri: Deno.PointerValue | Uint8Array /* ptr */,
   dwReserved: Deno.PointerValue /* usize */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.CoInternetCombineIUri(util.toPointer(pBaseUri), util.toPointer(pRelativeUri), dwCombineFlags, util.toPointer(ppCombinedUri), dwReserved));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.CoInternetCombineIUri(util.toPointer(pBaseUri), util.toPointer(pRelativeUri), dwCombineFlags, util.toPointer(ppCombinedUri), dwReserved);
 }
 
 export function CoInternetCompareUrl(
   pwzUrl1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pwzUrl2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.CoInternetCompareUrl(util.pwstrToFfi(pwzUrl1), util.pwstrToFfi(pwzUrl2), dwFlags));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.CoInternetCompareUrl(util.pwstrToFfi(pwzUrl1), util.pwstrToFfi(pwzUrl2), dwFlags);
 }
 
 export function CoInternetGetProtocolFlags(
   pwzUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pdwFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pdwFlags: Deno.PointerValue | Uint8Array /* ptr */,
   dwReserved: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.CoInternetGetProtocolFlags(util.pwstrToFfi(pwzUrl), util.toPointer(pdwFlags), dwReserved));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.CoInternetGetProtocolFlags(util.pwstrToFfi(pwzUrl), util.toPointer(pdwFlags), dwReserved);
 }
 
 export function CoInternetQueryInfo(
   pwzUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   QueryOptions: QUERYOPTION /* Windows.Win32.System.Com.Urlmon.QUERYOPTION */,
   dwQueryFlags: number /* u32 */,
-  pvBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pvBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   cbBuffer: number /* u32 */,
-  pcbBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   dwReserved: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.CoInternetQueryInfo(util.pwstrToFfi(pwzUrl), QueryOptions, dwQueryFlags, util.toPointer(pvBuffer), cbBuffer, util.toPointer(pcbBuffer), dwReserved));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.CoInternetQueryInfo(util.pwstrToFfi(pwzUrl), QueryOptions, dwQueryFlags, util.toPointer(pvBuffer), cbBuffer, util.toPointer(pcbBuffer), dwReserved);
 }
 
 export function CoInternetGetSession(
   dwSessionMode: number /* u32 */,
-  ppIInternetSession: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ppIInternetSession: Deno.PointerValue | Uint8Array /* ptr */,
   dwReserved: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.CoInternetGetSession(dwSessionMode, util.toPointer(ppIInternetSession), dwReserved));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.CoInternetGetSession(dwSessionMode, util.toPointer(ppIInternetSession), dwReserved);
 }
 
 export function CoInternetGetSecurityUrl(
   pwszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ppwszSecUrl: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ppwszSecUrl: Deno.PointerValue | Uint8Array /* ptr */,
   psuAction: PSUACTION /* Windows.Win32.System.Com.Urlmon.PSUACTION */,
   dwReserved: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.CoInternetGetSecurityUrl(util.pwstrToFfi(pwszUrl), util.toPointer(ppwszSecUrl), psuAction, dwReserved));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.CoInternetGetSecurityUrl(util.pwstrToFfi(pwszUrl), util.toPointer(ppwszSecUrl), psuAction, dwReserved);
 }
 
 export function CoInternetGetSecurityUrlEx(
-  pUri: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUri */,
-  ppSecUri: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pUri: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUri */,
+  ppSecUri: Deno.PointerValue | Uint8Array /* ptr */,
   psuAction: PSUACTION /* Windows.Win32.System.Com.Urlmon.PSUACTION */,
   dwReserved: Deno.PointerValue /* usize */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.CoInternetGetSecurityUrlEx(util.toPointer(pUri), util.toPointer(ppSecUri), psuAction, dwReserved));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.CoInternetGetSecurityUrlEx(util.toPointer(pUri), util.toPointer(ppSecUri), psuAction, dwReserved);
 }
 
 export function CoInternetSetFeatureEnabled(
   FeatureEntry: INTERNETFEATURELIST /* Windows.Win32.System.Com.Urlmon.INTERNETFEATURELIST */,
   dwFlags: number /* u32 */,
   fEnable: boolean /* Windows.Win32.Foundation.BOOL */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.CoInternetSetFeatureEnabled(FeatureEntry, dwFlags, util.boolToFfi(fEnable)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.CoInternetSetFeatureEnabled(FeatureEntry, dwFlags, util.boolToFfi(fEnable));
 }
 
 export function CoInternetIsFeatureEnabled(
   FeatureEntry: INTERNETFEATURELIST /* Windows.Win32.System.Com.Urlmon.INTERNETFEATURELIST */,
   dwFlags: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.CoInternetIsFeatureEnabled(FeatureEntry, dwFlags));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.CoInternetIsFeatureEnabled(FeatureEntry, dwFlags);
 }
 
 export function CoInternetIsFeatureEnabledForUrl(
   FeatureEntry: INTERNETFEATURELIST /* Windows.Win32.System.Com.Urlmon.INTERNETFEATURELIST */,
   dwFlags: number /* u32 */,
   szURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pSecMgr: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.Urlmon.IInternetSecurityManager */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.CoInternetIsFeatureEnabledForUrl(FeatureEntry, dwFlags, util.pwstrToFfi(szURL), util.toPointer(pSecMgr)));
+  pSecMgr: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.Urlmon.IInternetSecurityManager */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.CoInternetIsFeatureEnabledForUrl(FeatureEntry, dwFlags, util.pwstrToFfi(szURL), util.toPointer(pSecMgr));
 }
 
 export function CoInternetIsFeatureEnabledForIUri(
   FeatureEntry: INTERNETFEATURELIST /* Windows.Win32.System.Com.Urlmon.INTERNETFEATURELIST */,
   dwFlags: number /* u32 */,
-  pIUri: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IUri */,
-  pSecMgr: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.Urlmon.IInternetSecurityManagerEx2 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.CoInternetIsFeatureEnabledForIUri(FeatureEntry, dwFlags, util.toPointer(pIUri), util.toPointer(pSecMgr)));
+  pIUri: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUri */,
+  pSecMgr: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.Urlmon.IInternetSecurityManagerEx2 */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.CoInternetIsFeatureEnabledForIUri(FeatureEntry, dwFlags, util.toPointer(pIUri), util.toPointer(pSecMgr));
 }
 
 export function CoInternetIsFeatureZoneElevationEnabled(
   szFromURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szToURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pSecMgr: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.Urlmon.IInternetSecurityManager */,
+  pSecMgr: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.Urlmon.IInternetSecurityManager */,
   dwFlags: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.CoInternetIsFeatureZoneElevationEnabled(util.pwstrToFfi(szFromURL), util.pwstrToFfi(szToURL), util.toPointer(pSecMgr), dwFlags));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.CoInternetIsFeatureZoneElevationEnabled(util.pwstrToFfi(szFromURL), util.pwstrToFfi(szToURL), util.toPointer(pSecMgr), dwFlags);
 }
 
 export function CopyStgMedium(
-  pcstgmedSrc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pstgmedDest: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.CopyStgMedium(util.toPointer(pcstgmedSrc), util.toPointer(pstgmedDest)));
+  pcstgmedSrc: Deno.PointerValue | Uint8Array /* ptr */,
+  pstgmedDest: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.CopyStgMedium(util.toPointer(pcstgmedSrc), util.toPointer(pstgmedDest));
 }
 
 export function CopyBindInfo(
-  pcbiSrc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pbiDest: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.CopyBindInfo(util.toPointer(pcbiSrc), util.toPointer(pbiDest)));
+  pcbiSrc: Deno.PointerValue | Uint8Array /* ptr */,
+  pbiDest: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.CopyBindInfo(util.toPointer(pcbiSrc), util.toPointer(pbiDest));
 }
 
 export function ReleaseBindInfo(
-  pbindinfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pbindinfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return liburlmon_dll.ReleaseBindInfo(util.toPointer(pbindinfo));
 }
@@ -3285,26 +3285,26 @@ export function IEGetUserPrivateNamespaceName(): string | null /* Windows.Win32.
 }
 
 export function CoInternetCreateSecurityManager(
-  pSP: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IServiceProvider */,
-  ppSM: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSP: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IServiceProvider */,
+  ppSM: Deno.PointerValue | Uint8Array /* ptr */,
   dwReserved: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.CoInternetCreateSecurityManager(util.toPointer(pSP), util.toPointer(ppSM), dwReserved));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.CoInternetCreateSecurityManager(util.toPointer(pSP), util.toPointer(ppSM), dwReserved);
 }
 
 export function CoInternetCreateZoneManager(
-  pSP: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IServiceProvider */,
-  ppZM: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSP: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IServiceProvider */,
+  ppZM: Deno.PointerValue | Uint8Array /* ptr */,
   dwReserved: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.CoInternetCreateZoneManager(util.toPointer(pSP), util.toPointer(ppZM), dwReserved));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.CoInternetCreateZoneManager(util.toPointer(pSP), util.toPointer(ppZM), dwReserved);
 }
 
 export function GetSoftwareUpdateInfo(
   szDistUnit: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  psdi: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.GetSoftwareUpdateInfo(util.pwstrToFfi(szDistUnit), util.toPointer(psdi)));
+  psdi: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.GetSoftwareUpdateInfo(util.pwstrToFfi(szDistUnit), util.toPointer(psdi));
 }
 
 export function SetSoftwareUpdateAdvertisementState(
@@ -3312,8 +3312,8 @@ export function SetSoftwareUpdateAdvertisementState(
   dwAdState: number /* u32 */,
   dwAdvertisedVersionMS: number /* u32 */,
   dwAdvertisedVersionLS: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liburlmon_dll.SetSoftwareUpdateAdvertisementState(util.pwstrToFfi(szDistUnit), dwAdState, dwAdvertisedVersionMS, dwAdvertisedVersionLS));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liburlmon_dll.SetSoftwareUpdateAdvertisementState(util.pwstrToFfi(szDistUnit), dwAdState, dwAdvertisedVersionMS, dwAdvertisedVersionLS);
 }
 
 export function IsLoggingEnabledA(
@@ -3329,7 +3329,7 @@ export function IsLoggingEnabledW(
 }
 
 export function WriteHitLogging(
-  lpLogginginfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpLogginginfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(liburlmon_dll.WriteHitLogging(util.toPointer(lpLogginginfo)));
 }

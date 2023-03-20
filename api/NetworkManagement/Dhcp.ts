@@ -475,7 +475,7 @@ export interface DHCPV6CAPI_PARAMS {
   /** Windows.Win32.Foundation.BOOL */
   IsVendor: boolean;
   /** ptr */
-  Data: Deno.PointerValue | Uint8Array | null;
+  Data: Deno.PointerValue | Uint8Array;
   /** u32 */
   nBytesData: number;
 }
@@ -493,7 +493,7 @@ export function allocDHCPV6CAPI_PARAMS(data?: Partial<DHCPV6CAPI_PARAMS>): Uint8
   if (data?.IsVendor !== undefined) view.setInt32(8, Number(data.IsVendor), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.Data !== undefined) view.setBigUint64(16, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
+  if (data?.Data !== undefined) view.setBigUint64(16, data.Data === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Data))), true);
   // 0x18: u32
   if (data?.nBytesData !== undefined) view.setUint32(24, Number(data.nBytesData), true);
   // 0x1c: pad4
@@ -528,9 +528,9 @@ export class DHCPV6CAPI_PARAMSView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get Data(): Uint8Array | Deno.PointerValue | null {
+  get Data(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -558,8 +558,8 @@ export class DHCPV6CAPI_PARAMSView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set Data(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set Data(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -577,7 +577,7 @@ export interface DHCPV6CAPI_PARAMS_ARRAY {
   /** u32 */
   nParams: number;
   /** ptr */
-  Params: Deno.PointerValue | Uint8Array | null;
+  Params: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCPV6CAPI_PARAMS_ARRAY = 16;
@@ -589,7 +589,7 @@ export function allocDHCPV6CAPI_PARAMS_ARRAY(data?: Partial<DHCPV6CAPI_PARAMS_AR
   if (data?.nParams !== undefined) view.setUint32(0, Number(data.nParams), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Params !== undefined) view.setBigUint64(8, data.Params === null ? 0n : BigInt(util.toPointer(data.Params)), true);
+  if (data?.Params !== undefined) view.setBigUint64(8, data.Params === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Params))), true);
   return buf;
 }
 
@@ -611,9 +611,9 @@ export class DHCPV6CAPI_PARAMS_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Params(): Uint8Array | Deno.PointerValue | null {
+  get Params(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -624,8 +624,8 @@ export class DHCPV6CAPI_PARAMS_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Params(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Params(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -636,7 +636,7 @@ export interface DHCPV6CAPI_CLASSID {
   /** u32 */
   Flags: number;
   /** ptr */
-  Data: Deno.PointerValue | Uint8Array | null;
+  Data: Deno.PointerValue | Uint8Array;
   /** u32 */
   nBytesData: number;
 }
@@ -650,7 +650,7 @@ export function allocDHCPV6CAPI_CLASSID(data?: Partial<DHCPV6CAPI_CLASSID>): Uin
   if (data?.Flags !== undefined) view.setUint32(0, Number(data.Flags), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
+  if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Data))), true);
   // 0x10: u32
   if (data?.nBytesData !== undefined) view.setUint32(16, Number(data.nBytesData), true);
   // 0x14: pad4
@@ -675,9 +675,9 @@ export class DHCPV6CAPI_CLASSIDView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Data(): Uint8Array | Deno.PointerValue | null {
+  get Data(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -695,8 +695,8 @@ export class DHCPV6CAPI_CLASSIDView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Data(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Data(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -712,7 +712,7 @@ export class DHCPV6CAPI_CLASSIDView {
  */
 export interface DHCPV6Prefix {
   /** array */
-  prefix: Deno.PointerValue | null;
+  prefix: Deno.PointerValue;
   /** u32 */
   prefixLength: number;
   /** u32 */
@@ -729,7 +729,7 @@ export function allocDHCPV6Prefix(data?: Partial<DHCPV6Prefix>): Uint8Array {
   const buf = new Uint8Array(sizeofDHCPV6Prefix);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.prefix !== undefined) view.setBigUint64(0, data.prefix === null ? 0n : BigInt(util.toPointer(data.prefix)), true);
+  if (data?.prefix !== undefined) view.setBigUint64(0, data.prefix === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.prefix))), true);
   // 0x08: u32
   if (data?.prefixLength !== undefined) view.setUint32(8, Number(data.prefixLength), true);
   // 0x0c: u32
@@ -752,9 +752,9 @@ export class DHCPV6PrefixView {
   }
 
   // 0x00: pointer
-  get prefix(): Uint8Array | Deno.PointerValue | null {
+  get prefix(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -778,8 +778,8 @@ export class DHCPV6PrefixView {
   }
 
   // 0x00: pointer
-  set prefix(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set prefix(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -810,7 +810,7 @@ export interface DHCPV6PrefixLeaseInformation {
   /** u32 */
   nPrefixes: number;
   /** ptr */
-  prefixArray: Deno.PointerValue | Uint8Array | null;
+  prefixArray: Deno.PointerValue | Uint8Array;
   /** u32 */
   iaid: number;
   /** i64 */
@@ -824,7 +824,7 @@ export interface DHCPV6PrefixLeaseInformation {
   /** Windows.Win32.NetworkManagement.Dhcp.StatusCode */
   status: StatusCode;
   /** ptr */
-  ServerId: Deno.PointerValue | Uint8Array | null;
+  ServerId: Deno.PointerValue | Uint8Array;
   /** u32 */
   ServerIdLen: number;
 }
@@ -838,7 +838,7 @@ export function allocDHCPV6PrefixLeaseInformation(data?: Partial<DHCPV6PrefixLea
   if (data?.nPrefixes !== undefined) view.setUint32(0, Number(data.nPrefixes), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.prefixArray !== undefined) view.setBigUint64(8, data.prefixArray === null ? 0n : BigInt(util.toPointer(data.prefixArray)), true);
+  if (data?.prefixArray !== undefined) view.setBigUint64(8, data.prefixArray === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.prefixArray))), true);
   // 0x10: u32
   if (data?.iaid !== undefined) view.setUint32(16, Number(data.iaid), true);
   // 0x14: pad4
@@ -854,7 +854,7 @@ export function allocDHCPV6PrefixLeaseInformation(data?: Partial<DHCPV6PrefixLea
   if (data?.status !== undefined) view.setInt32(56, Number(data.status), true);
   // 0x3c: pad4
   // 0x40: pointer
-  if (data?.ServerId !== undefined) view.setBigUint64(64, data.ServerId === null ? 0n : BigInt(util.toPointer(data.ServerId)), true);
+  if (data?.ServerId !== undefined) view.setBigUint64(64, data.ServerId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ServerId))), true);
   // 0x48: u32
   if (data?.ServerIdLen !== undefined) view.setUint32(72, Number(data.ServerIdLen), true);
   // 0x4c: pad4
@@ -879,9 +879,9 @@ export class DHCPV6PrefixLeaseInformationView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get prefixArray(): Uint8Array | Deno.PointerValue | null {
+  get prefixArray(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -919,9 +919,9 @@ export class DHCPV6PrefixLeaseInformationView {
   // 0x3c: pad4
 
   // 0x40: pointer
-  get ServerId(): Uint8Array | Deno.PointerValue | null {
+  get ServerId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: u32
@@ -939,8 +939,8 @@ export class DHCPV6PrefixLeaseInformationView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set prefixArray(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set prefixArray(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -978,8 +978,8 @@ export class DHCPV6PrefixLeaseInformationView {
   // 0x3c: pad4
 
   // 0x40: pointer
-  set ServerId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set ServerId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: u32
@@ -1001,7 +1001,7 @@ export interface DHCPAPI_PARAMS {
   /** Windows.Win32.Foundation.BOOL */
   IsVendor: boolean;
   /** ptr */
-  Data: Deno.PointerValue | Uint8Array | null;
+  Data: Deno.PointerValue | Uint8Array;
   /** u32 */
   nBytesData: number;
 }
@@ -1019,7 +1019,7 @@ export function allocDHCPAPI_PARAMS(data?: Partial<DHCPAPI_PARAMS>): Uint8Array 
   if (data?.IsVendor !== undefined) view.setInt32(8, Number(data.IsVendor), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.Data !== undefined) view.setBigUint64(16, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
+  if (data?.Data !== undefined) view.setBigUint64(16, data.Data === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Data))), true);
   // 0x18: u32
   if (data?.nBytesData !== undefined) view.setUint32(24, Number(data.nBytesData), true);
   // 0x1c: pad4
@@ -1054,9 +1054,9 @@ export class DHCPAPI_PARAMSView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get Data(): Uint8Array | Deno.PointerValue | null {
+  get Data(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -1084,8 +1084,8 @@ export class DHCPAPI_PARAMSView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set Data(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set Data(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -1103,7 +1103,7 @@ export interface DHCPCAPI_PARAMS_ARRAY {
   /** u32 */
   nParams: number;
   /** ptr */
-  Params: Deno.PointerValue | Uint8Array | null;
+  Params: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCPCAPI_PARAMS_ARRAY = 16;
@@ -1115,7 +1115,7 @@ export function allocDHCPCAPI_PARAMS_ARRAY(data?: Partial<DHCPCAPI_PARAMS_ARRAY>
   if (data?.nParams !== undefined) view.setUint32(0, Number(data.nParams), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Params !== undefined) view.setBigUint64(8, data.Params === null ? 0n : BigInt(util.toPointer(data.Params)), true);
+  if (data?.Params !== undefined) view.setBigUint64(8, data.Params === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Params))), true);
   return buf;
 }
 
@@ -1137,9 +1137,9 @@ export class DHCPCAPI_PARAMS_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Params(): Uint8Array | Deno.PointerValue | null {
+  get Params(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1150,8 +1150,8 @@ export class DHCPCAPI_PARAMS_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Params(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Params(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1162,7 +1162,7 @@ export interface DHCPCAPI_CLASSID {
   /** u32 */
   Flags: number;
   /** ptr */
-  Data: Deno.PointerValue | Uint8Array | null;
+  Data: Deno.PointerValue | Uint8Array;
   /** u32 */
   nBytesData: number;
 }
@@ -1176,7 +1176,7 @@ export function allocDHCPCAPI_CLASSID(data?: Partial<DHCPCAPI_CLASSID>): Uint8Ar
   if (data?.Flags !== undefined) view.setUint32(0, Number(data.Flags), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
+  if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Data))), true);
   // 0x10: u32
   if (data?.nBytesData !== undefined) view.setUint32(16, Number(data.nBytesData), true);
   // 0x14: pad4
@@ -1201,9 +1201,9 @@ export class DHCPCAPI_CLASSIDView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Data(): Uint8Array | Deno.PointerValue | null {
+  get Data(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -1221,8 +1221,8 @@ export class DHCPCAPI_CLASSIDView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Data(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Data(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -1233,7 +1233,7 @@ export class DHCPCAPI_CLASSIDView {
   // 0x14: pad4
 }
 
-export type PSTR = Deno.PointerValue | Uint8Array | null;
+export type PSTR = Deno.PointerValue | Uint8Array;
 
 export type BOOLEAN = number;
 
@@ -1242,21 +1242,21 @@ export type BOOLEAN = number;
  */
 export interface DHCP_SERVER_OPTIONS {
   /** ptr */
-  MessageType: Deno.PointerValue | Uint8Array | null;
+  MessageType: Deno.PointerValue | Uint8Array;
   /** ptr */
-  SubnetMask: Deno.PointerValue | Uint8Array | null;
+  SubnetMask: Deno.PointerValue | Uint8Array;
   /** ptr */
-  RequestedAddress: Deno.PointerValue | Uint8Array | null;
+  RequestedAddress: Deno.PointerValue | Uint8Array;
   /** ptr */
-  RequestLeaseTime: Deno.PointerValue | Uint8Array | null;
+  RequestLeaseTime: Deno.PointerValue | Uint8Array;
   /** ptr */
-  OverlayFields: Deno.PointerValue | Uint8Array | null;
+  OverlayFields: Deno.PointerValue | Uint8Array;
   /** ptr */
-  RouterAddress: Deno.PointerValue | Uint8Array | null;
+  RouterAddress: Deno.PointerValue | Uint8Array;
   /** ptr */
-  Server: Deno.PointerValue | Uint8Array | null;
+  Server: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ParameterRequestList: Deno.PointerValue | Uint8Array | null;
+  ParameterRequestList: Deno.PointerValue | Uint8Array;
   /** u32 */
   ParameterRequestListLength: number;
   /** Windows.Win32.Foundation.PSTR */
@@ -1268,13 +1268,13 @@ export interface DHCP_SERVER_OPTIONS {
   /** u8 */
   ClientHardwareAddressLength: number;
   /** ptr */
-  ClientHardwareAddress: Deno.PointerValue | Uint8Array | null;
+  ClientHardwareAddress: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
   ClassIdentifier: string | null | Uint8Array;
   /** u32 */
   ClassIdentifierLength: number;
   /** ptr */
-  VendorClass: Deno.PointerValue | Uint8Array | null;
+  VendorClass: Deno.PointerValue | Uint8Array;
   /** u32 */
   VendorClassLength: number;
   /** u32 */
@@ -1282,15 +1282,15 @@ export interface DHCP_SERVER_OPTIONS {
   /** u32 */
   DNSNameLength: number;
   /** ptr */
-  DNSName: Deno.PointerValue | Uint8Array | null;
+  DNSName: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.BOOLEAN */
-  DSDomainNameRequested: Uint8Array | Deno.PointerValue | null;
+  DSDomainNameRequested: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
   DSDomainName: string | null | Uint8Array;
   /** u32 */
   DSDomainNameLen: number;
   /** ptr */
-  ScopeId: Deno.PointerValue | Uint8Array | null;
+  ScopeId: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_SERVER_OPTIONS = 176;
@@ -1299,28 +1299,28 @@ export function allocDHCP_SERVER_OPTIONS(data?: Partial<DHCP_SERVER_OPTIONS>): U
   const buf = new Uint8Array(sizeofDHCP_SERVER_OPTIONS);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.MessageType !== undefined) view.setBigUint64(0, data.MessageType === null ? 0n : BigInt(util.toPointer(data.MessageType)), true);
+  if (data?.MessageType !== undefined) view.setBigUint64(0, data.MessageType === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.MessageType))), true);
   // 0x08: pointer
-  if (data?.SubnetMask !== undefined) view.setBigUint64(8, data.SubnetMask === null ? 0n : BigInt(util.toPointer(data.SubnetMask)), true);
+  if (data?.SubnetMask !== undefined) view.setBigUint64(8, data.SubnetMask === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.SubnetMask))), true);
   // 0x10: pointer
-  if (data?.RequestedAddress !== undefined) view.setBigUint64(16, data.RequestedAddress === null ? 0n : BigInt(util.toPointer(data.RequestedAddress)), true);
+  if (data?.RequestedAddress !== undefined) view.setBigUint64(16, data.RequestedAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.RequestedAddress))), true);
   // 0x18: pointer
-  if (data?.RequestLeaseTime !== undefined) view.setBigUint64(24, data.RequestLeaseTime === null ? 0n : BigInt(util.toPointer(data.RequestLeaseTime)), true);
+  if (data?.RequestLeaseTime !== undefined) view.setBigUint64(24, data.RequestLeaseTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.RequestLeaseTime))), true);
   // 0x20: pointer
-  if (data?.OverlayFields !== undefined) view.setBigUint64(32, data.OverlayFields === null ? 0n : BigInt(util.toPointer(data.OverlayFields)), true);
+  if (data?.OverlayFields !== undefined) view.setBigUint64(32, data.OverlayFields === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OverlayFields))), true);
   // 0x28: pointer
-  if (data?.RouterAddress !== undefined) view.setBigUint64(40, data.RouterAddress === null ? 0n : BigInt(util.toPointer(data.RouterAddress)), true);
+  if (data?.RouterAddress !== undefined) view.setBigUint64(40, data.RouterAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.RouterAddress))), true);
   // 0x30: pointer
-  if (data?.Server !== undefined) view.setBigUint64(48, data.Server === null ? 0n : BigInt(util.toPointer(data.Server)), true);
+  if (data?.Server !== undefined) view.setBigUint64(48, data.Server === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Server))), true);
   // 0x38: pointer
-  if (data?.ParameterRequestList !== undefined) view.setBigUint64(56, data.ParameterRequestList === null ? 0n : BigInt(util.toPointer(data.ParameterRequestList)), true);
+  if (data?.ParameterRequestList !== undefined) view.setBigUint64(56, data.ParameterRequestList === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ParameterRequestList))), true);
   // 0x40: u32
   if (data?.ParameterRequestListLength !== undefined) view.setUint32(64, Number(data.ParameterRequestListLength), true);
   // 0x44: pad4
   // 0x48: buffer
   if (data?.MachineName !== undefined) {
     (buf as any)._f72 = util.pstrToFfi(data.MachineName);
-    view.setBigUint64(72, (buf as any)._f72 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f72)), true);
+    view.setBigUint64(72, (buf as any)._f72 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f72))), true);
   }
   // 0x50: u32
   if (data?.MachineNameLength !== undefined) view.setUint32(80, Number(data.MachineNameLength), true);
@@ -1330,17 +1330,17 @@ export function allocDHCP_SERVER_OPTIONS(data?: Partial<DHCP_SERVER_OPTIONS>): U
   if (data?.ClientHardwareAddressLength !== undefined) view.setUint8(85, Number(data.ClientHardwareAddressLength));
   // 0x56: pad2
   // 0x58: pointer
-  if (data?.ClientHardwareAddress !== undefined) view.setBigUint64(88, data.ClientHardwareAddress === null ? 0n : BigInt(util.toPointer(data.ClientHardwareAddress)), true);
+  if (data?.ClientHardwareAddress !== undefined) view.setBigUint64(88, data.ClientHardwareAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientHardwareAddress))), true);
   // 0x60: buffer
   if (data?.ClassIdentifier !== undefined) {
     (buf as any)._f96 = util.pstrToFfi(data.ClassIdentifier);
-    view.setBigUint64(96, (buf as any)._f96 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f96)), true);
+    view.setBigUint64(96, (buf as any)._f96 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f96))), true);
   }
   // 0x68: u32
   if (data?.ClassIdentifierLength !== undefined) view.setUint32(104, Number(data.ClassIdentifierLength), true);
   // 0x6c: pad4
   // 0x70: pointer
-  if (data?.VendorClass !== undefined) view.setBigUint64(112, data.VendorClass === null ? 0n : BigInt(util.toPointer(data.VendorClass)), true);
+  if (data?.VendorClass !== undefined) view.setBigUint64(112, data.VendorClass === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.VendorClass))), true);
   // 0x78: u32
   if (data?.VendorClassLength !== undefined) view.setUint32(120, Number(data.VendorClassLength), true);
   // 0x7c: u32
@@ -1349,19 +1349,19 @@ export function allocDHCP_SERVER_OPTIONS(data?: Partial<DHCP_SERVER_OPTIONS>): U
   if (data?.DNSNameLength !== undefined) view.setUint32(128, Number(data.DNSNameLength), true);
   // 0x84: pad4
   // 0x88: pointer
-  if (data?.DNSName !== undefined) view.setBigUint64(136, data.DNSName === null ? 0n : BigInt(util.toPointer(data.DNSName)), true);
+  if (data?.DNSName !== undefined) view.setBigUint64(136, data.DNSName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DNSName))), true);
   // 0x90: pointer
-  if (data?.DSDomainNameRequested !== undefined) view.setBigUint64(144, data.DSDomainNameRequested === null ? 0n : BigInt(util.toPointer(data.DSDomainNameRequested)), true);
+  if (data?.DSDomainNameRequested !== undefined) view.setBigUint64(144, data.DSDomainNameRequested === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DSDomainNameRequested))), true);
   // 0x98: buffer
   if (data?.DSDomainName !== undefined) {
     (buf as any)._f152 = util.pstrToFfi(data.DSDomainName);
-    view.setBigUint64(152, (buf as any)._f152 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f152)), true);
+    view.setBigUint64(152, (buf as any)._f152 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f152))), true);
   }
   // 0xa0: u32
   if (data?.DSDomainNameLen !== undefined) view.setUint32(160, Number(data.DSDomainNameLen), true);
   // 0xa4: pad4
   // 0xa8: pointer
-  if (data?.ScopeId !== undefined) view.setBigUint64(168, data.ScopeId === null ? 0n : BigInt(util.toPointer(data.ScopeId)), true);
+  if (data?.ScopeId !== undefined) view.setBigUint64(168, data.ScopeId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScopeId))), true);
   return buf;
 }
 
@@ -1376,51 +1376,51 @@ export class DHCP_SERVER_OPTIONSView {
   }
 
   // 0x00: pointer
-  get MessageType(): Uint8Array | Deno.PointerValue | null {
+  get MessageType(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get SubnetMask(): Uint8Array | Deno.PointerValue | null {
+  get SubnetMask(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get RequestedAddress(): Uint8Array | Deno.PointerValue | null {
+  get RequestedAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get RequestLeaseTime(): Uint8Array | Deno.PointerValue | null {
+  get RequestLeaseTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get OverlayFields(): Uint8Array | Deno.PointerValue | null {
+  get OverlayFields(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get RouterAddress(): Uint8Array | Deno.PointerValue | null {
+  get RouterAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get Server(): Uint8Array | Deno.PointerValue | null {
+  get Server(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get ParameterRequestList(): Uint8Array | Deno.PointerValue | null {
+  get ParameterRequestList(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: u32
@@ -1431,9 +1431,9 @@ export class DHCP_SERVER_OPTIONSView {
   // 0x44: pad4
 
   // 0x48: buffer
-  get MachineName(): Uint8Array | Deno.PointerValue | null {
+  get MachineName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: u32
@@ -1454,15 +1454,15 @@ export class DHCP_SERVER_OPTIONSView {
   // 0x56: pad2
 
   // 0x58: pointer
-  get ClientHardwareAddress(): Uint8Array | Deno.PointerValue | null {
+  get ClientHardwareAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x60: buffer
-  get ClassIdentifier(): Uint8Array | Deno.PointerValue | null {
+  get ClassIdentifier(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(96, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x68: u32
@@ -1473,9 +1473,9 @@ export class DHCP_SERVER_OPTIONSView {
   // 0x6c: pad4
 
   // 0x70: pointer
-  get VendorClass(): Uint8Array | Deno.PointerValue | null {
+  get VendorClass(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(112, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x78: u32
@@ -1496,21 +1496,21 @@ export class DHCP_SERVER_OPTIONSView {
   // 0x84: pad4
 
   // 0x88: pointer
-  get DNSName(): Uint8Array | Deno.PointerValue | null {
+  get DNSName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(136, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x90: pointer
-  get DSDomainNameRequested(): Uint8Array | Deno.PointerValue | null {
+  get DSDomainNameRequested(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(144, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x98: buffer
-  get DSDomainName(): Uint8Array | Deno.PointerValue | null {
+  get DSDomainName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(152, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0xa0: u32
@@ -1521,49 +1521,49 @@ export class DHCP_SERVER_OPTIONSView {
   // 0xa4: pad4
 
   // 0xa8: pointer
-  get ScopeId(): Uint8Array | Deno.PointerValue | null {
+  get ScopeId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(168, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set MessageType(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set MessageType(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set SubnetMask(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set SubnetMask(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set RequestedAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set RequestedAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set RequestLeaseTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set RequestLeaseTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set OverlayFields(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set OverlayFields(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set RouterAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set RouterAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set Server(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set Server(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set ParameterRequestList(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set ParameterRequestList(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: u32
@@ -1574,9 +1574,9 @@ export class DHCP_SERVER_OPTIONSView {
   // 0x44: pad4
 
   // 0x48: buffer
-  set MachineName(value: Uint8Array | Deno.PointerValue | null) {
+  set MachineName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f72 = value;
-    this.view.setBigUint64(72, BigInt(util.toPointer((this.buf as any)._f72)), true);
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f72))), true);
   }
 
   // 0x50: u32
@@ -1597,14 +1597,14 @@ export class DHCP_SERVER_OPTIONSView {
   // 0x56: pad2
 
   // 0x58: pointer
-  set ClientHardwareAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  set ClientHardwareAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x60: buffer
-  set ClassIdentifier(value: Uint8Array | Deno.PointerValue | null) {
+  set ClassIdentifier(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f96 = value;
-    this.view.setBigUint64(96, BigInt(util.toPointer((this.buf as any)._f96)), true);
+    this.view.setBigUint64(96, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f96))), true);
   }
 
   // 0x68: u32
@@ -1615,8 +1615,8 @@ export class DHCP_SERVER_OPTIONSView {
   // 0x6c: pad4
 
   // 0x70: pointer
-  set VendorClass(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(112, BigInt(util.toPointer(value)), true);
+  set VendorClass(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(112, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x78: u32
@@ -1637,19 +1637,19 @@ export class DHCP_SERVER_OPTIONSView {
   // 0x84: pad4
 
   // 0x88: pointer
-  set DNSName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(136, BigInt(util.toPointer(value)), true);
+  set DNSName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(136, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x90: pointer
-  set DSDomainNameRequested(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(144, BigInt(util.toPointer(value)), true);
+  set DSDomainNameRequested(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(144, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x98: buffer
-  set DSDomainName(value: Uint8Array | Deno.PointerValue | null) {
+  set DSDomainName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f152 = value;
-    this.view.setBigUint64(152, BigInt(util.toPointer((this.buf as any)._f152)), true);
+    this.view.setBigUint64(152, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f152))), true);
   }
 
   // 0xa0: u32
@@ -1660,8 +1660,8 @@ export class DHCP_SERVER_OPTIONSView {
   // 0xa4: pad4
 
   // 0xa8: pointer
-  set ScopeId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(168, BigInt(util.toPointer(value)), true);
+  set ScopeId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(168, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1670,25 +1670,25 @@ export class DHCP_SERVER_OPTIONSView {
  */
 export interface DHCP_CALLOUT_TABLE {
   /** Windows.Win32.NetworkManagement.Dhcp.LPDHCP_CONTROL */
-  DhcpControlHook: Uint8Array | Deno.PointerValue | null;
+  DhcpControlHook: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.Dhcp.LPDHCP_NEWPKT */
-  DhcpNewPktHook: Uint8Array | Deno.PointerValue | null;
+  DhcpNewPktHook: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.Dhcp.LPDHCP_DROP_SEND */
-  DhcpPktDropHook: Uint8Array | Deno.PointerValue | null;
+  DhcpPktDropHook: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.Dhcp.LPDHCP_DROP_SEND */
-  DhcpPktSendHook: Uint8Array | Deno.PointerValue | null;
+  DhcpPktSendHook: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.Dhcp.LPDHCP_PROB */
-  DhcpAddressDelHook: Uint8Array | Deno.PointerValue | null;
+  DhcpAddressDelHook: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.Dhcp.LPDHCP_GIVE_ADDRESS */
-  DhcpAddressOfferHook: Uint8Array | Deno.PointerValue | null;
+  DhcpAddressOfferHook: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.Dhcp.LPDHCP_HANDLE_OPTIONS */
-  DhcpHandleOptionsHook: Uint8Array | Deno.PointerValue | null;
+  DhcpHandleOptionsHook: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.Dhcp.LPDHCP_DELETE_CLIENT */
-  DhcpDeleteClientHook: Uint8Array | Deno.PointerValue | null;
+  DhcpDeleteClientHook: Uint8Array | Deno.PointerValue;
   /** ptr */
-  DhcpExtensionHook: Deno.PointerValue | Uint8Array | null;
+  DhcpExtensionHook: Deno.PointerValue | Uint8Array;
   /** ptr */
-  DhcpReservedHook: Deno.PointerValue | Uint8Array | null;
+  DhcpReservedHook: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_CALLOUT_TABLE = 80;
@@ -1697,25 +1697,25 @@ export function allocDHCP_CALLOUT_TABLE(data?: Partial<DHCP_CALLOUT_TABLE>): Uin
   const buf = new Uint8Array(sizeofDHCP_CALLOUT_TABLE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.DhcpControlHook !== undefined) view.setBigUint64(0, data.DhcpControlHook === null ? 0n : BigInt(util.toPointer(data.DhcpControlHook)), true);
+  if (data?.DhcpControlHook !== undefined) view.setBigUint64(0, data.DhcpControlHook === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DhcpControlHook))), true);
   // 0x08: pointer
-  if (data?.DhcpNewPktHook !== undefined) view.setBigUint64(8, data.DhcpNewPktHook === null ? 0n : BigInt(util.toPointer(data.DhcpNewPktHook)), true);
+  if (data?.DhcpNewPktHook !== undefined) view.setBigUint64(8, data.DhcpNewPktHook === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DhcpNewPktHook))), true);
   // 0x10: pointer
-  if (data?.DhcpPktDropHook !== undefined) view.setBigUint64(16, data.DhcpPktDropHook === null ? 0n : BigInt(util.toPointer(data.DhcpPktDropHook)), true);
+  if (data?.DhcpPktDropHook !== undefined) view.setBigUint64(16, data.DhcpPktDropHook === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DhcpPktDropHook))), true);
   // 0x18: pointer
-  if (data?.DhcpPktSendHook !== undefined) view.setBigUint64(24, data.DhcpPktSendHook === null ? 0n : BigInt(util.toPointer(data.DhcpPktSendHook)), true);
+  if (data?.DhcpPktSendHook !== undefined) view.setBigUint64(24, data.DhcpPktSendHook === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DhcpPktSendHook))), true);
   // 0x20: pointer
-  if (data?.DhcpAddressDelHook !== undefined) view.setBigUint64(32, data.DhcpAddressDelHook === null ? 0n : BigInt(util.toPointer(data.DhcpAddressDelHook)), true);
+  if (data?.DhcpAddressDelHook !== undefined) view.setBigUint64(32, data.DhcpAddressDelHook === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DhcpAddressDelHook))), true);
   // 0x28: pointer
-  if (data?.DhcpAddressOfferHook !== undefined) view.setBigUint64(40, data.DhcpAddressOfferHook === null ? 0n : BigInt(util.toPointer(data.DhcpAddressOfferHook)), true);
+  if (data?.DhcpAddressOfferHook !== undefined) view.setBigUint64(40, data.DhcpAddressOfferHook === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DhcpAddressOfferHook))), true);
   // 0x30: pointer
-  if (data?.DhcpHandleOptionsHook !== undefined) view.setBigUint64(48, data.DhcpHandleOptionsHook === null ? 0n : BigInt(util.toPointer(data.DhcpHandleOptionsHook)), true);
+  if (data?.DhcpHandleOptionsHook !== undefined) view.setBigUint64(48, data.DhcpHandleOptionsHook === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DhcpHandleOptionsHook))), true);
   // 0x38: pointer
-  if (data?.DhcpDeleteClientHook !== undefined) view.setBigUint64(56, data.DhcpDeleteClientHook === null ? 0n : BigInt(util.toPointer(data.DhcpDeleteClientHook)), true);
+  if (data?.DhcpDeleteClientHook !== undefined) view.setBigUint64(56, data.DhcpDeleteClientHook === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DhcpDeleteClientHook))), true);
   // 0x40: pointer
-  if (data?.DhcpExtensionHook !== undefined) view.setBigUint64(64, data.DhcpExtensionHook === null ? 0n : BigInt(util.toPointer(data.DhcpExtensionHook)), true);
+  if (data?.DhcpExtensionHook !== undefined) view.setBigUint64(64, data.DhcpExtensionHook === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DhcpExtensionHook))), true);
   // 0x48: pointer
-  if (data?.DhcpReservedHook !== undefined) view.setBigUint64(72, data.DhcpReservedHook === null ? 0n : BigInt(util.toPointer(data.DhcpReservedHook)), true);
+  if (data?.DhcpReservedHook !== undefined) view.setBigUint64(72, data.DhcpReservedHook === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DhcpReservedHook))), true);
   return buf;
 }
 
@@ -1730,113 +1730,113 @@ export class DHCP_CALLOUT_TABLEView {
   }
 
   // 0x00: pointer
-  get DhcpControlHook(): Uint8Array | Deno.PointerValue | null {
+  get DhcpControlHook(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get DhcpNewPktHook(): Uint8Array | Deno.PointerValue | null {
+  get DhcpNewPktHook(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get DhcpPktDropHook(): Uint8Array | Deno.PointerValue | null {
+  get DhcpPktDropHook(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get DhcpPktSendHook(): Uint8Array | Deno.PointerValue | null {
+  get DhcpPktSendHook(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get DhcpAddressDelHook(): Uint8Array | Deno.PointerValue | null {
+  get DhcpAddressDelHook(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get DhcpAddressOfferHook(): Uint8Array | Deno.PointerValue | null {
+  get DhcpAddressOfferHook(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get DhcpHandleOptionsHook(): Uint8Array | Deno.PointerValue | null {
+  get DhcpHandleOptionsHook(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get DhcpDeleteClientHook(): Uint8Array | Deno.PointerValue | null {
+  get DhcpDeleteClientHook(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get DhcpExtensionHook(): Uint8Array | Deno.PointerValue | null {
+  get DhcpExtensionHook(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: pointer
-  get DhcpReservedHook(): Uint8Array | Deno.PointerValue | null {
+  get DhcpReservedHook(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set DhcpControlHook(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set DhcpControlHook(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set DhcpNewPktHook(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set DhcpNewPktHook(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set DhcpPktDropHook(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set DhcpPktDropHook(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set DhcpPktSendHook(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set DhcpPktSendHook(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set DhcpAddressDelHook(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set DhcpAddressDelHook(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set DhcpAddressOfferHook(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set DhcpAddressOfferHook(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set DhcpHandleOptionsHook(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set DhcpHandleOptionsHook(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set DhcpDeleteClientHook(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set DhcpDeleteClientHook(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set DhcpExtensionHook(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set DhcpExtensionHook(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: pointer
-  set DhcpReservedHook(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set DhcpReservedHook(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1953,7 +1953,7 @@ export interface DHCP_BINARY_DATA {
   /** u32 */
   DataLength: number;
   /** ptr */
-  Data: Deno.PointerValue | Uint8Array | null;
+  Data: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_BINARY_DATA = 16;
@@ -1965,7 +1965,7 @@ export function allocDHCP_BINARY_DATA(data?: Partial<DHCP_BINARY_DATA>): Uint8Ar
   if (data?.DataLength !== undefined) view.setUint32(0, Number(data.DataLength), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
+  if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Data))), true);
   return buf;
 }
 
@@ -1987,9 +1987,9 @@ export class DHCP_BINARY_DATAView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Data(): Uint8Array | Deno.PointerValue | null {
+  get Data(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -2000,12 +2000,12 @@ export class DHCP_BINARY_DATAView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Data(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Data(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.NetworkManagement.Dhcp.DHCP_HOST_INFO (size: 24)
@@ -2030,12 +2030,12 @@ export function allocDHCP_HOST_INFO(data?: Partial<DHCP_HOST_INFO>): Uint8Array 
   // 0x08: buffer
   if (data?.NetBiosName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.NetBiosName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.HostName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.HostName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   return buf;
 }
@@ -2058,15 +2058,15 @@ export class DHCP_HOST_INFOView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get NetBiosName(): Uint8Array | Deno.PointerValue | null {
+  get NetBiosName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get HostName(): Uint8Array | Deno.PointerValue | null {
+  get HostName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -2077,15 +2077,15 @@ export class DHCP_HOST_INFOView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set NetBiosName(value: Uint8Array | Deno.PointerValue | null) {
+  set NetBiosName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set HostName(value: Uint8Array | Deno.PointerValue | null) {
+  set HostName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 }
 
@@ -2155,7 +2155,7 @@ export interface DHCP_SUBNET_INFO {
   /** Windows.Win32.Foundation.PWSTR */
   SubnetComment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_HOST_INFO */
-  PrimaryHost: Uint8Array | Deno.PointerValue | null;
+  PrimaryHost: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_SUBNET_STATE */
   SubnetState: DHCP_SUBNET_STATE;
 }
@@ -2172,15 +2172,15 @@ export function allocDHCP_SUBNET_INFO(data?: Partial<DHCP_SUBNET_INFO>): Uint8Ar
   // 0x08: buffer
   if (data?.SubnetName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.SubnetName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.SubnetComment !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.SubnetComment);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: pointer
-  if (data?.PrimaryHost !== undefined) view.setBigUint64(24, data.PrimaryHost === null ? 0n : BigInt(util.toPointer(data.PrimaryHost)), true);
+  if (data?.PrimaryHost !== undefined) view.setBigUint64(24, data.PrimaryHost === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.PrimaryHost))), true);
   // 0x20: i32
   if (data?.SubnetState !== undefined) view.setInt32(32, Number(data.SubnetState), true);
   // 0x24: pad4
@@ -2208,21 +2208,21 @@ export class DHCP_SUBNET_INFOView {
   }
 
   // 0x08: buffer
-  get SubnetName(): Uint8Array | Deno.PointerValue | null {
+  get SubnetName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get SubnetComment(): Uint8Array | Deno.PointerValue | null {
+  get SubnetComment(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get PrimaryHost(): Uint8Array | Deno.PointerValue | null {
+  get PrimaryHost(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: i32
@@ -2243,20 +2243,20 @@ export class DHCP_SUBNET_INFOView {
   }
 
   // 0x08: buffer
-  set SubnetName(value: Uint8Array | Deno.PointerValue | null) {
+  set SubnetName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set SubnetComment(value: Uint8Array | Deno.PointerValue | null) {
+  set SubnetComment(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: pointer
-  set PrimaryHost(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set PrimaryHost(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: i32
@@ -2280,7 +2280,7 @@ export interface DHCP_SUBNET_INFO_VQ {
   /** Windows.Win32.Foundation.PWSTR */
   SubnetComment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_HOST_INFO */
-  PrimaryHost: Uint8Array | Deno.PointerValue | null;
+  PrimaryHost: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_SUBNET_STATE */
   SubnetState: DHCP_SUBNET_STATE;
   /** u32 */
@@ -2307,15 +2307,15 @@ export function allocDHCP_SUBNET_INFO_VQ(data?: Partial<DHCP_SUBNET_INFO_VQ>): U
   // 0x08: buffer
   if (data?.SubnetName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.SubnetName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.SubnetComment !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.SubnetComment);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: pointer
-  if (data?.PrimaryHost !== undefined) view.setBigUint64(24, data.PrimaryHost === null ? 0n : BigInt(util.toPointer(data.PrimaryHost)), true);
+  if (data?.PrimaryHost !== undefined) view.setBigUint64(24, data.PrimaryHost === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.PrimaryHost))), true);
   // 0x20: i32
   if (data?.SubnetState !== undefined) view.setInt32(32, Number(data.SubnetState), true);
   // 0x24: u32
@@ -2352,21 +2352,21 @@ export class DHCP_SUBNET_INFO_VQView {
   }
 
   // 0x08: buffer
-  get SubnetName(): Uint8Array | Deno.PointerValue | null {
+  get SubnetName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get SubnetComment(): Uint8Array | Deno.PointerValue | null {
+  get SubnetComment(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get PrimaryHost(): Uint8Array | Deno.PointerValue | null {
+  get PrimaryHost(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: i32
@@ -2410,20 +2410,20 @@ export class DHCP_SUBNET_INFO_VQView {
   }
 
   // 0x08: buffer
-  set SubnetName(value: Uint8Array | Deno.PointerValue | null) {
+  set SubnetName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set SubnetComment(value: Uint8Array | Deno.PointerValue | null) {
+  set SubnetComment(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: pointer
-  set PrimaryHost(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set PrimaryHost(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: i32
@@ -2464,7 +2464,7 @@ export interface DHCP_IP_ARRAY {
   /** u32 */
   NumElements: number;
   /** ptr */
-  Elements: Deno.PointerValue | Uint8Array | null;
+  Elements: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_IP_ARRAY = 16;
@@ -2476,7 +2476,7 @@ export function allocDHCP_IP_ARRAY(data?: Partial<DHCP_IP_ARRAY>): Uint8Array {
   if (data?.NumElements !== undefined) view.setUint32(0, Number(data.NumElements), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(util.toPointer(data.Elements)), true);
+  if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Elements))), true);
   return buf;
 }
 
@@ -2498,9 +2498,9 @@ export class DHCP_IP_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Elements(): Uint8Array | Deno.PointerValue | null {
+  get Elements(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -2511,8 +2511,8 @@ export class DHCP_IP_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Elements(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Elements(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2576,7 +2576,7 @@ export interface DHCP_IP_RESERVATION {
   /** u32 */
   ReservedIpAddress: number;
   /** ptr */
-  ReservedForClient: Deno.PointerValue | Uint8Array | null;
+  ReservedForClient: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_IP_RESERVATION = 16;
@@ -2588,7 +2588,7 @@ export function allocDHCP_IP_RESERVATION(data?: Partial<DHCP_IP_RESERVATION>): U
   if (data?.ReservedIpAddress !== undefined) view.setUint32(0, Number(data.ReservedIpAddress), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.ReservedForClient !== undefined) view.setBigUint64(8, data.ReservedForClient === null ? 0n : BigInt(util.toPointer(data.ReservedForClient)), true);
+  if (data?.ReservedForClient !== undefined) view.setBigUint64(8, data.ReservedForClient === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ReservedForClient))), true);
   return buf;
 }
 
@@ -2610,9 +2610,9 @@ export class DHCP_IP_RESERVATIONView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get ReservedForClient(): Uint8Array | Deno.PointerValue | null {
+  get ReservedForClient(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -2623,8 +2623,8 @@ export class DHCP_IP_RESERVATIONView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set ReservedForClient(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ReservedForClient(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2633,15 +2633,15 @@ export class DHCP_IP_RESERVATIONView {
  */
 export interface DHCP_SUBNET_ELEMENT_UNION {
   /** ptr */
-  IpRange: Deno.PointerValue | Uint8Array | null;
+  IpRange: Deno.PointerValue | Uint8Array;
   /** ptr */
-  SecondaryHost: Deno.PointerValue | Uint8Array | null;
+  SecondaryHost: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ReservedIp: Deno.PointerValue | Uint8Array | null;
+  ReservedIp: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ExcludeIpRange: Deno.PointerValue | Uint8Array | null;
+  ExcludeIpRange: Deno.PointerValue | Uint8Array;
   /** ptr */
-  IpUsedCluster: Deno.PointerValue | Uint8Array | null;
+  IpUsedCluster: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_SUBNET_ELEMENT_UNION = 40;
@@ -2650,15 +2650,15 @@ export function allocDHCP_SUBNET_ELEMENT_UNION(data?: Partial<DHCP_SUBNET_ELEMEN
   const buf = new Uint8Array(sizeofDHCP_SUBNET_ELEMENT_UNION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.IpRange !== undefined) view.setBigUint64(0, data.IpRange === null ? 0n : BigInt(util.toPointer(data.IpRange)), true);
+  if (data?.IpRange !== undefined) view.setBigUint64(0, data.IpRange === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.IpRange))), true);
   // 0x08: pointer
-  if (data?.SecondaryHost !== undefined) view.setBigUint64(8, data.SecondaryHost === null ? 0n : BigInt(util.toPointer(data.SecondaryHost)), true);
+  if (data?.SecondaryHost !== undefined) view.setBigUint64(8, data.SecondaryHost === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.SecondaryHost))), true);
   // 0x10: pointer
-  if (data?.ReservedIp !== undefined) view.setBigUint64(16, data.ReservedIp === null ? 0n : BigInt(util.toPointer(data.ReservedIp)), true);
+  if (data?.ReservedIp !== undefined) view.setBigUint64(16, data.ReservedIp === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ReservedIp))), true);
   // 0x18: pointer
-  if (data?.ExcludeIpRange !== undefined) view.setBigUint64(24, data.ExcludeIpRange === null ? 0n : BigInt(util.toPointer(data.ExcludeIpRange)), true);
+  if (data?.ExcludeIpRange !== undefined) view.setBigUint64(24, data.ExcludeIpRange === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ExcludeIpRange))), true);
   // 0x20: pointer
-  if (data?.IpUsedCluster !== undefined) view.setBigUint64(32, data.IpUsedCluster === null ? 0n : BigInt(util.toPointer(data.IpUsedCluster)), true);
+  if (data?.IpUsedCluster !== undefined) view.setBigUint64(32, data.IpUsedCluster === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.IpUsedCluster))), true);
   return buf;
 }
 
@@ -2673,58 +2673,58 @@ export class DHCP_SUBNET_ELEMENT_UNIONView {
   }
 
   // 0x00: pointer
-  get IpRange(): Uint8Array | Deno.PointerValue | null {
+  get IpRange(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get SecondaryHost(): Uint8Array | Deno.PointerValue | null {
+  get SecondaryHost(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ReservedIp(): Uint8Array | Deno.PointerValue | null {
+  get ReservedIp(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get ExcludeIpRange(): Uint8Array | Deno.PointerValue | null {
+  get ExcludeIpRange(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get IpUsedCluster(): Uint8Array | Deno.PointerValue | null {
+  get IpUsedCluster(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set IpRange(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set IpRange(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set SecondaryHost(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set SecondaryHost(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ReservedIp(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ReservedIp(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set ExcludeIpRange(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set ExcludeIpRange(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set IpUsedCluster(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set IpUsedCluster(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2735,7 +2735,7 @@ export interface DHCP_SUBNET_ELEMENT_DATA {
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_SUBNET_ELEMENT_TYPE */
   ElementType: DHCP_SUBNET_ELEMENT_TYPE;
   /** DHCP_SUBNET_ELEMENT_UNION */
-  Element: Uint8Array | Deno.PointerValue | null;
+  Element: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDHCP_SUBNET_ELEMENT_DATA = 16;
@@ -2747,7 +2747,7 @@ export function allocDHCP_SUBNET_ELEMENT_DATA(data?: Partial<DHCP_SUBNET_ELEMENT
   if (data?.ElementType !== undefined) view.setInt32(0, Number(data.ElementType), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Element !== undefined) view.setBigUint64(8, data.Element === null ? 0n : BigInt(util.toPointer(data.Element)), true);
+  if (data?.Element !== undefined) view.setBigUint64(8, data.Element === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Element))), true);
   return buf;
 }
 
@@ -2769,9 +2769,9 @@ export class DHCP_SUBNET_ELEMENT_DATAView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Element(): Uint8Array | Deno.PointerValue | null {
+  get Element(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -2782,8 +2782,8 @@ export class DHCP_SUBNET_ELEMENT_DATAView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Element(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Element(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2794,7 +2794,7 @@ export interface DHCP_SUBNET_ELEMENT_INFO_ARRAY {
   /** u32 */
   NumElements: number;
   /** ptr */
-  Elements: Deno.PointerValue | Uint8Array | null;
+  Elements: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_SUBNET_ELEMENT_INFO_ARRAY = 16;
@@ -2806,7 +2806,7 @@ export function allocDHCP_SUBNET_ELEMENT_INFO_ARRAY(data?: Partial<DHCP_SUBNET_E
   if (data?.NumElements !== undefined) view.setUint32(0, Number(data.NumElements), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(util.toPointer(data.Elements)), true);
+  if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Elements))), true);
   return buf;
 }
 
@@ -2828,9 +2828,9 @@ export class DHCP_SUBNET_ELEMENT_INFO_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Elements(): Uint8Array | Deno.PointerValue | null {
+  get Elements(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -2841,8 +2841,8 @@ export class DHCP_SUBNET_ELEMENT_INFO_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Elements(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Elements(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2912,7 +2912,7 @@ export interface DHCP_ADDR_PATTERN {
   /** u8 */
   Length: number;
   /** array */
-  Pattern: Deno.PointerValue | null;
+  Pattern: Deno.PointerValue;
 }
 
 export const sizeofDHCP_ADDR_PATTERN = 24;
@@ -2930,7 +2930,7 @@ export function allocDHCP_ADDR_PATTERN(data?: Partial<DHCP_ADDR_PATTERN>): Uint8
   if (data?.Length !== undefined) view.setUint8(9, Number(data.Length));
   // 0x0a: pad6
   // 0x10: pointer
-  if (data?.Pattern !== undefined) view.setBigUint64(16, data.Pattern === null ? 0n : BigInt(util.toPointer(data.Pattern)), true);
+  if (data?.Pattern !== undefined) view.setBigUint64(16, data.Pattern === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Pattern))), true);
   return buf;
 }
 
@@ -2967,9 +2967,9 @@ export class DHCP_ADDR_PATTERNView {
   // 0x0a: pad6
 
   // 0x10: pointer
-  get Pattern(): Uint8Array | Deno.PointerValue | null {
+  get Pattern(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -2995,8 +2995,8 @@ export class DHCP_ADDR_PATTERNView {
   // 0x0a: pad6
 
   // 0x10: pointer
-  set Pattern(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set Pattern(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3005,7 +3005,7 @@ export class DHCP_ADDR_PATTERNView {
  */
 export interface DHCP_FILTER_ADD_INFO {
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_ADDR_PATTERN */
-  AddrPatt: Uint8Array | Deno.PointerValue | null;
+  AddrPatt: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   Comment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_FILTER_LIST_TYPE */
@@ -3018,11 +3018,11 @@ export function allocDHCP_FILTER_ADD_INFO(data?: Partial<DHCP_FILTER_ADD_INFO>):
   const buf = new Uint8Array(sizeofDHCP_FILTER_ADD_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.AddrPatt !== undefined) view.setBigUint64(0, data.AddrPatt === null ? 0n : BigInt(util.toPointer(data.AddrPatt)), true);
+  if (data?.AddrPatt !== undefined) view.setBigUint64(0, data.AddrPatt === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.AddrPatt))), true);
   // 0x08: buffer
   if (data?.Comment !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.Comment);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: i32
   if (data?.ListType !== undefined) view.setInt32(16, Number(data.ListType), true);
@@ -3041,15 +3041,15 @@ export class DHCP_FILTER_ADD_INFOView {
   }
 
   // 0x00: pointer
-  get AddrPatt(): Uint8Array | Deno.PointerValue | null {
+  get AddrPatt(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get Comment(): Uint8Array | Deno.PointerValue | null {
+  get Comment(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i32
@@ -3060,14 +3060,14 @@ export class DHCP_FILTER_ADD_INFOView {
   // 0x14: pad4
 
   // 0x00: pointer
-  set AddrPatt(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set AddrPatt(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: buffer
-  set Comment(value: Uint8Array | Deno.PointerValue | null) {
+  set Comment(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: i32
@@ -3136,7 +3136,7 @@ export class DHCP_FILTER_GLOBAL_INFOView {
  */
 export interface DHCP_FILTER_RECORD {
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_ADDR_PATTERN */
-  AddrPatt: Uint8Array | Deno.PointerValue | null;
+  AddrPatt: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   Comment: string | null | Uint8Array | Uint16Array;
 }
@@ -3147,11 +3147,11 @@ export function allocDHCP_FILTER_RECORD(data?: Partial<DHCP_FILTER_RECORD>): Uin
   const buf = new Uint8Array(sizeofDHCP_FILTER_RECORD);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.AddrPatt !== undefined) view.setBigUint64(0, data.AddrPatt === null ? 0n : BigInt(util.toPointer(data.AddrPatt)), true);
+  if (data?.AddrPatt !== undefined) view.setBigUint64(0, data.AddrPatt === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.AddrPatt))), true);
   // 0x08: buffer
   if (data?.Comment !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.Comment);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   return buf;
 }
@@ -3167,26 +3167,26 @@ export class DHCP_FILTER_RECORDView {
   }
 
   // 0x00: pointer
-  get AddrPatt(): Uint8Array | Deno.PointerValue | null {
+  get AddrPatt(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get Comment(): Uint8Array | Deno.PointerValue | null {
+  get Comment(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set AddrPatt(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set AddrPatt(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: buffer
-  set Comment(value: Uint8Array | Deno.PointerValue | null) {
+  set Comment(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 }
 
@@ -3197,7 +3197,7 @@ export interface DHCP_FILTER_ENUM_INFO {
   /** u32 */
   NumElements: number;
   /** ptr */
-  pEnumRecords: Deno.PointerValue | Uint8Array | null;
+  pEnumRecords: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_FILTER_ENUM_INFO = 16;
@@ -3209,7 +3209,7 @@ export function allocDHCP_FILTER_ENUM_INFO(data?: Partial<DHCP_FILTER_ENUM_INFO>
   if (data?.NumElements !== undefined) view.setUint32(0, Number(data.NumElements), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pEnumRecords !== undefined) view.setBigUint64(8, data.pEnumRecords === null ? 0n : BigInt(util.toPointer(data.pEnumRecords)), true);
+  if (data?.pEnumRecords !== undefined) view.setBigUint64(8, data.pEnumRecords === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pEnumRecords))), true);
   return buf;
 }
 
@@ -3231,9 +3231,9 @@ export class DHCP_FILTER_ENUM_INFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pEnumRecords(): Uint8Array | Deno.PointerValue | null {
+  get pEnumRecords(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -3244,8 +3244,8 @@ export class DHCP_FILTER_ENUM_INFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pEnumRecords(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pEnumRecords(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3260,15 +3260,15 @@ export interface DHCP_OPTION_ELEMENT_UNION {
   /** u32 */
   DWordOption: number;
   /** Windows.Win32.NetworkManagement.Dhcp.DWORD_DWORD */
-  DWordDWordOption: Uint8Array | Deno.PointerValue | null;
+  DWordDWordOption: Uint8Array | Deno.PointerValue;
   /** u32 */
   IpAddressOption: number;
   /** Windows.Win32.Foundation.PWSTR */
   StringDataOption: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_BINARY_DATA */
-  BinaryDataOption: Uint8Array | Deno.PointerValue | null;
+  BinaryDataOption: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_BINARY_DATA */
-  EncapsulatedDataOption: Uint8Array | Deno.PointerValue | null;
+  EncapsulatedDataOption: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   Ipv6AddressDataOption: string | null | Uint8Array | Uint16Array;
 }
@@ -3286,23 +3286,23 @@ export function allocDHCP_OPTION_ELEMENT_UNION(data?: Partial<DHCP_OPTION_ELEMEN
   if (data?.DWordOption !== undefined) view.setUint32(3, Number(data.DWordOption), true);
   // 0x07: pad1
   // 0x08: pointer
-  if (data?.DWordDWordOption !== undefined) view.setBigUint64(8, data.DWordDWordOption === null ? 0n : BigInt(util.toPointer(data.DWordDWordOption)), true);
+  if (data?.DWordDWordOption !== undefined) view.setBigUint64(8, data.DWordDWordOption === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DWordDWordOption))), true);
   // 0x10: u32
   if (data?.IpAddressOption !== undefined) view.setUint32(16, Number(data.IpAddressOption), true);
   // 0x14: pad4
   // 0x18: buffer
   if (data?.StringDataOption !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.StringDataOption);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: pointer
-  if (data?.BinaryDataOption !== undefined) view.setBigUint64(32, data.BinaryDataOption === null ? 0n : BigInt(util.toPointer(data.BinaryDataOption)), true);
+  if (data?.BinaryDataOption !== undefined) view.setBigUint64(32, data.BinaryDataOption === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BinaryDataOption))), true);
   // 0x28: pointer
-  if (data?.EncapsulatedDataOption !== undefined) view.setBigUint64(40, data.EncapsulatedDataOption === null ? 0n : BigInt(util.toPointer(data.EncapsulatedDataOption)), true);
+  if (data?.EncapsulatedDataOption !== undefined) view.setBigUint64(40, data.EncapsulatedDataOption === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.EncapsulatedDataOption))), true);
   // 0x30: buffer
   if (data?.Ipv6AddressDataOption !== undefined) {
     (buf as any)._f48 = util.pwstrToFfi(data.Ipv6AddressDataOption);
-    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
+    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f48))), true);
   }
   return buf;
 }
@@ -3335,9 +3335,9 @@ export class DHCP_OPTION_ELEMENT_UNIONView {
   // 0x07: pad1
 
   // 0x08: pointer
-  get DWordDWordOption(): Uint8Array | Deno.PointerValue | null {
+  get DWordDWordOption(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -3348,27 +3348,27 @@ export class DHCP_OPTION_ELEMENT_UNIONView {
   // 0x14: pad4
 
   // 0x18: buffer
-  get StringDataOption(): Uint8Array | Deno.PointerValue | null {
+  get StringDataOption(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get BinaryDataOption(): Uint8Array | Deno.PointerValue | null {
+  get BinaryDataOption(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get EncapsulatedDataOption(): Uint8Array | Deno.PointerValue | null {
+  get EncapsulatedDataOption(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: buffer
-  get Ipv6AddressDataOption(): Uint8Array | Deno.PointerValue | null {
+  get Ipv6AddressDataOption(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u8
@@ -3389,8 +3389,8 @@ export class DHCP_OPTION_ELEMENT_UNIONView {
   // 0x07: pad1
 
   // 0x08: pointer
-  set DWordDWordOption(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set DWordDWordOption(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -3401,25 +3401,25 @@ export class DHCP_OPTION_ELEMENT_UNIONView {
   // 0x14: pad4
 
   // 0x18: buffer
-  set StringDataOption(value: Uint8Array | Deno.PointerValue | null) {
+  set StringDataOption(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: pointer
-  set BinaryDataOption(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set BinaryDataOption(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set EncapsulatedDataOption(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set EncapsulatedDataOption(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: buffer
-  set Ipv6AddressDataOption(value: Uint8Array | Deno.PointerValue | null) {
+  set Ipv6AddressDataOption(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f48 = value;
-    this.view.setBigUint64(48, BigInt(util.toPointer((this.buf as any)._f48)), true);
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f48))), true);
   }
 }
 
@@ -3430,7 +3430,7 @@ export interface DHCP_OPTION_DATA_ELEMENT {
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_OPTION_DATA_TYPE */
   OptionType: DHCP_OPTION_DATA_TYPE;
   /** DHCP_OPTION_ELEMENT_UNION */
-  Element: Uint8Array | Deno.PointerValue | null;
+  Element: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDHCP_OPTION_DATA_ELEMENT = 16;
@@ -3442,7 +3442,7 @@ export function allocDHCP_OPTION_DATA_ELEMENT(data?: Partial<DHCP_OPTION_DATA_EL
   if (data?.OptionType !== undefined) view.setInt32(0, Number(data.OptionType), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Element !== undefined) view.setBigUint64(8, data.Element === null ? 0n : BigInt(util.toPointer(data.Element)), true);
+  if (data?.Element !== undefined) view.setBigUint64(8, data.Element === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Element))), true);
   return buf;
 }
 
@@ -3464,9 +3464,9 @@ export class DHCP_OPTION_DATA_ELEMENTView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Element(): Uint8Array | Deno.PointerValue | null {
+  get Element(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -3477,8 +3477,8 @@ export class DHCP_OPTION_DATA_ELEMENTView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Element(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Element(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3489,7 +3489,7 @@ export interface DHCP_OPTION_DATA {
   /** u32 */
   NumElements: number;
   /** ptr */
-  Elements: Deno.PointerValue | Uint8Array | null;
+  Elements: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_OPTION_DATA = 16;
@@ -3501,7 +3501,7 @@ export function allocDHCP_OPTION_DATA(data?: Partial<DHCP_OPTION_DATA>): Uint8Ar
   if (data?.NumElements !== undefined) view.setUint32(0, Number(data.NumElements), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(util.toPointer(data.Elements)), true);
+  if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Elements))), true);
   return buf;
 }
 
@@ -3523,9 +3523,9 @@ export class DHCP_OPTION_DATAView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Elements(): Uint8Array | Deno.PointerValue | null {
+  get Elements(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -3536,8 +3536,8 @@ export class DHCP_OPTION_DATAView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Elements(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Elements(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3552,7 +3552,7 @@ export interface DHCP_OPTION {
   /** Windows.Win32.Foundation.PWSTR */
   OptionComment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_OPTION_DATA */
-  DefaultValue: Uint8Array | Deno.PointerValue | null;
+  DefaultValue: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_OPTION_TYPE */
   OptionType: DHCP_OPTION_TYPE;
 }
@@ -3568,15 +3568,15 @@ export function allocDHCP_OPTION(data?: Partial<DHCP_OPTION>): Uint8Array {
   // 0x08: buffer
   if (data?.OptionName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.OptionName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.OptionComment !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.OptionComment);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: pointer
-  if (data?.DefaultValue !== undefined) view.setBigUint64(24, data.DefaultValue === null ? 0n : BigInt(util.toPointer(data.DefaultValue)), true);
+  if (data?.DefaultValue !== undefined) view.setBigUint64(24, data.DefaultValue === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DefaultValue))), true);
   // 0x20: i32
   if (data?.OptionType !== undefined) view.setInt32(32, Number(data.OptionType), true);
   // 0x24: pad4
@@ -3601,21 +3601,21 @@ export class DHCP_OPTIONView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get OptionName(): Uint8Array | Deno.PointerValue | null {
+  get OptionName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get OptionComment(): Uint8Array | Deno.PointerValue | null {
+  get OptionComment(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get DefaultValue(): Uint8Array | Deno.PointerValue | null {
+  get DefaultValue(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: i32
@@ -3633,20 +3633,20 @@ export class DHCP_OPTIONView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set OptionName(value: Uint8Array | Deno.PointerValue | null) {
+  set OptionName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set OptionComment(value: Uint8Array | Deno.PointerValue | null) {
+  set OptionComment(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: pointer
-  set DefaultValue(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set DefaultValue(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: i32
@@ -3664,7 +3664,7 @@ export interface DHCP_OPTION_ARRAY {
   /** u32 */
   NumElements: number;
   /** ptr */
-  Options: Deno.PointerValue | Uint8Array | null;
+  Options: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_OPTION_ARRAY = 16;
@@ -3676,7 +3676,7 @@ export function allocDHCP_OPTION_ARRAY(data?: Partial<DHCP_OPTION_ARRAY>): Uint8
   if (data?.NumElements !== undefined) view.setUint32(0, Number(data.NumElements), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Options !== undefined) view.setBigUint64(8, data.Options === null ? 0n : BigInt(util.toPointer(data.Options)), true);
+  if (data?.Options !== undefined) view.setBigUint64(8, data.Options === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Options))), true);
   return buf;
 }
 
@@ -3698,9 +3698,9 @@ export class DHCP_OPTION_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Options(): Uint8Array | Deno.PointerValue | null {
+  get Options(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -3711,8 +3711,8 @@ export class DHCP_OPTION_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Options(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Options(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3723,7 +3723,7 @@ export interface DHCP_OPTION_VALUE {
   /** u32 */
   OptionID: number;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_OPTION_DATA */
-  Value: Uint8Array | Deno.PointerValue | null;
+  Value: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDHCP_OPTION_VALUE = 16;
@@ -3735,7 +3735,7 @@ export function allocDHCP_OPTION_VALUE(data?: Partial<DHCP_OPTION_VALUE>): Uint8
   if (data?.OptionID !== undefined) view.setUint32(0, Number(data.OptionID), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Value !== undefined) view.setBigUint64(8, data.Value === null ? 0n : BigInt(util.toPointer(data.Value)), true);
+  if (data?.Value !== undefined) view.setBigUint64(8, data.Value === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Value))), true);
   return buf;
 }
 
@@ -3757,9 +3757,9 @@ export class DHCP_OPTION_VALUEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Value(): Uint8Array | Deno.PointerValue | null {
+  get Value(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -3770,8 +3770,8 @@ export class DHCP_OPTION_VALUEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Value(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Value(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3782,7 +3782,7 @@ export interface DHCP_OPTION_VALUE_ARRAY {
   /** u32 */
   NumElements: number;
   /** ptr */
-  Values: Deno.PointerValue | Uint8Array | null;
+  Values: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_OPTION_VALUE_ARRAY = 16;
@@ -3794,7 +3794,7 @@ export function allocDHCP_OPTION_VALUE_ARRAY(data?: Partial<DHCP_OPTION_VALUE_AR
   if (data?.NumElements !== undefined) view.setUint32(0, Number(data.NumElements), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Values !== undefined) view.setBigUint64(8, data.Values === null ? 0n : BigInt(util.toPointer(data.Values)), true);
+  if (data?.Values !== undefined) view.setBigUint64(8, data.Values === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Values))), true);
   return buf;
 }
 
@@ -3816,9 +3816,9 @@ export class DHCP_OPTION_VALUE_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Values(): Uint8Array | Deno.PointerValue | null {
+  get Values(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -3829,8 +3829,8 @@ export class DHCP_OPTION_VALUE_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Values(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Values(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3892,13 +3892,13 @@ export class DHCP_RESERVED_SCOPEView {
  */
 export interface _DHCP_OPTION_SCOPE_UNION {
   /** ptr */
-  DefaultScopeInfo: Deno.PointerValue | Uint8Array | null;
+  DefaultScopeInfo: Deno.PointerValue | Uint8Array;
   /** ptr */
-  GlobalScopeInfo: Deno.PointerValue | Uint8Array | null;
+  GlobalScopeInfo: Deno.PointerValue | Uint8Array;
   /** u32 */
   SubnetScopeInfo: number;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_RESERVED_SCOPE */
-  ReservedScopeInfo: Uint8Array | Deno.PointerValue | null;
+  ReservedScopeInfo: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   MScopeInfo: string | null | Uint8Array | Uint16Array;
 }
@@ -3909,18 +3909,18 @@ export function alloc_DHCP_OPTION_SCOPE_UNION(data?: Partial<_DHCP_OPTION_SCOPE_
   const buf = new Uint8Array(sizeof_DHCP_OPTION_SCOPE_UNION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.DefaultScopeInfo !== undefined) view.setBigUint64(0, data.DefaultScopeInfo === null ? 0n : BigInt(util.toPointer(data.DefaultScopeInfo)), true);
+  if (data?.DefaultScopeInfo !== undefined) view.setBigUint64(0, data.DefaultScopeInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DefaultScopeInfo))), true);
   // 0x08: pointer
-  if (data?.GlobalScopeInfo !== undefined) view.setBigUint64(8, data.GlobalScopeInfo === null ? 0n : BigInt(util.toPointer(data.GlobalScopeInfo)), true);
+  if (data?.GlobalScopeInfo !== undefined) view.setBigUint64(8, data.GlobalScopeInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.GlobalScopeInfo))), true);
   // 0x10: u32
   if (data?.SubnetScopeInfo !== undefined) view.setUint32(16, Number(data.SubnetScopeInfo), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.ReservedScopeInfo !== undefined) view.setBigUint64(24, data.ReservedScopeInfo === null ? 0n : BigInt(util.toPointer(data.ReservedScopeInfo)), true);
+  if (data?.ReservedScopeInfo !== undefined) view.setBigUint64(24, data.ReservedScopeInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ReservedScopeInfo))), true);
   // 0x20: buffer
   if (data?.MScopeInfo !== undefined) {
     (buf as any)._f32 = util.pwstrToFfi(data.MScopeInfo);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f32))), true);
   }
   return buf;
 }
@@ -3936,15 +3936,15 @@ export class _DHCP_OPTION_SCOPE_UNIONView {
   }
 
   // 0x00: pointer
-  get DefaultScopeInfo(): Uint8Array | Deno.PointerValue | null {
+  get DefaultScopeInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get GlobalScopeInfo(): Uint8Array | Deno.PointerValue | null {
+  get GlobalScopeInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -3955,25 +3955,25 @@ export class _DHCP_OPTION_SCOPE_UNIONView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get ReservedScopeInfo(): Uint8Array | Deno.PointerValue | null {
+  get ReservedScopeInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: buffer
-  get MScopeInfo(): Uint8Array | Deno.PointerValue | null {
+  get MScopeInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set DefaultScopeInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set DefaultScopeInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set GlobalScopeInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set GlobalScopeInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -3984,14 +3984,14 @@ export class _DHCP_OPTION_SCOPE_UNIONView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set ReservedScopeInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set ReservedScopeInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: buffer
-  set MScopeInfo(value: Uint8Array | Deno.PointerValue | null) {
+  set MScopeInfo(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f32))), true);
   }
 }
 
@@ -4002,7 +4002,7 @@ export interface DHCP_OPTION_SCOPE_INFO {
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_OPTION_SCOPE_TYPE */
   ScopeType: DHCP_OPTION_SCOPE_TYPE;
   /** _DHCP_OPTION_SCOPE_UNION */
-  ScopeInfo: Uint8Array | Deno.PointerValue | null;
+  ScopeInfo: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDHCP_OPTION_SCOPE_INFO = 16;
@@ -4014,7 +4014,7 @@ export function allocDHCP_OPTION_SCOPE_INFO(data?: Partial<DHCP_OPTION_SCOPE_INF
   if (data?.ScopeType !== undefined) view.setInt32(0, Number(data.ScopeType), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.ScopeInfo !== undefined) view.setBigUint64(8, data.ScopeInfo === null ? 0n : BigInt(util.toPointer(data.ScopeInfo)), true);
+  if (data?.ScopeInfo !== undefined) view.setBigUint64(8, data.ScopeInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScopeInfo))), true);
   return buf;
 }
 
@@ -4036,9 +4036,9 @@ export class DHCP_OPTION_SCOPE_INFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get ScopeInfo(): Uint8Array | Deno.PointerValue | null {
+  get ScopeInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -4049,8 +4049,8 @@ export class DHCP_OPTION_SCOPE_INFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set ScopeInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ScopeInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4059,9 +4059,9 @@ export class DHCP_OPTION_SCOPE_INFOView {
  */
 export interface DHCP_RESERVED_SCOPE6 {
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */
-  ReservedIpAddress: Uint8Array | Deno.PointerValue | null;
+  ReservedIpAddress: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */
-  ReservedIpSubnetAddress: Uint8Array | Deno.PointerValue | null;
+  ReservedIpSubnetAddress: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDHCP_RESERVED_SCOPE6 = 16;
@@ -4070,9 +4070,9 @@ export function allocDHCP_RESERVED_SCOPE6(data?: Partial<DHCP_RESERVED_SCOPE6>):
   const buf = new Uint8Array(sizeofDHCP_RESERVED_SCOPE6);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ReservedIpAddress !== undefined) view.setBigUint64(0, data.ReservedIpAddress === null ? 0n : BigInt(util.toPointer(data.ReservedIpAddress)), true);
+  if (data?.ReservedIpAddress !== undefined) view.setBigUint64(0, data.ReservedIpAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ReservedIpAddress))), true);
   // 0x08: pointer
-  if (data?.ReservedIpSubnetAddress !== undefined) view.setBigUint64(8, data.ReservedIpSubnetAddress === null ? 0n : BigInt(util.toPointer(data.ReservedIpSubnetAddress)), true);
+  if (data?.ReservedIpSubnetAddress !== undefined) view.setBigUint64(8, data.ReservedIpSubnetAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ReservedIpSubnetAddress))), true);
   return buf;
 }
 
@@ -4087,25 +4087,25 @@ export class DHCP_RESERVED_SCOPE6View {
   }
 
   // 0x00: pointer
-  get ReservedIpAddress(): Uint8Array | Deno.PointerValue | null {
+  get ReservedIpAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get ReservedIpSubnetAddress(): Uint8Array | Deno.PointerValue | null {
+  get ReservedIpSubnetAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ReservedIpAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ReservedIpAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set ReservedIpSubnetAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ReservedIpSubnetAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4114,11 +4114,11 @@ export class DHCP_RESERVED_SCOPE6View {
  */
 export interface DHCP_OPTION_SCOPE_UNION6 {
   /** ptr */
-  DefaultScopeInfo: Deno.PointerValue | Uint8Array | null;
+  DefaultScopeInfo: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */
-  SubnetScopeInfo: Uint8Array | Deno.PointerValue | null;
+  SubnetScopeInfo: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_RESERVED_SCOPE6 */
-  ReservedScopeInfo: Uint8Array | Deno.PointerValue | null;
+  ReservedScopeInfo: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDHCP_OPTION_SCOPE_UNION6 = 24;
@@ -4127,11 +4127,11 @@ export function allocDHCP_OPTION_SCOPE_UNION6(data?: Partial<DHCP_OPTION_SCOPE_U
   const buf = new Uint8Array(sizeofDHCP_OPTION_SCOPE_UNION6);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.DefaultScopeInfo !== undefined) view.setBigUint64(0, data.DefaultScopeInfo === null ? 0n : BigInt(util.toPointer(data.DefaultScopeInfo)), true);
+  if (data?.DefaultScopeInfo !== undefined) view.setBigUint64(0, data.DefaultScopeInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DefaultScopeInfo))), true);
   // 0x08: pointer
-  if (data?.SubnetScopeInfo !== undefined) view.setBigUint64(8, data.SubnetScopeInfo === null ? 0n : BigInt(util.toPointer(data.SubnetScopeInfo)), true);
+  if (data?.SubnetScopeInfo !== undefined) view.setBigUint64(8, data.SubnetScopeInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.SubnetScopeInfo))), true);
   // 0x10: pointer
-  if (data?.ReservedScopeInfo !== undefined) view.setBigUint64(16, data.ReservedScopeInfo === null ? 0n : BigInt(util.toPointer(data.ReservedScopeInfo)), true);
+  if (data?.ReservedScopeInfo !== undefined) view.setBigUint64(16, data.ReservedScopeInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ReservedScopeInfo))), true);
   return buf;
 }
 
@@ -4146,36 +4146,36 @@ export class DHCP_OPTION_SCOPE_UNION6View {
   }
 
   // 0x00: pointer
-  get DefaultScopeInfo(): Uint8Array | Deno.PointerValue | null {
+  get DefaultScopeInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get SubnetScopeInfo(): Uint8Array | Deno.PointerValue | null {
+  get SubnetScopeInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ReservedScopeInfo(): Uint8Array | Deno.PointerValue | null {
+  get ReservedScopeInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set DefaultScopeInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set DefaultScopeInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set SubnetScopeInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set SubnetScopeInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ReservedScopeInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ReservedScopeInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4186,7 +4186,7 @@ export interface DHCP_OPTION_SCOPE_INFO6 {
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_OPTION_SCOPE_TYPE6 */
   ScopeType: DHCP_OPTION_SCOPE_TYPE6;
   /** DHCP_OPTION_SCOPE_UNION6 */
-  ScopeInfo: Uint8Array | Deno.PointerValue | null;
+  ScopeInfo: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDHCP_OPTION_SCOPE_INFO6 = 16;
@@ -4198,7 +4198,7 @@ export function allocDHCP_OPTION_SCOPE_INFO6(data?: Partial<DHCP_OPTION_SCOPE_IN
   if (data?.ScopeType !== undefined) view.setInt32(0, Number(data.ScopeType), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.ScopeInfo !== undefined) view.setBigUint64(8, data.ScopeInfo === null ? 0n : BigInt(util.toPointer(data.ScopeInfo)), true);
+  if (data?.ScopeInfo !== undefined) view.setBigUint64(8, data.ScopeInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScopeInfo))), true);
   return buf;
 }
 
@@ -4220,9 +4220,9 @@ export class DHCP_OPTION_SCOPE_INFO6View {
   // 0x04: pad4
 
   // 0x08: pointer
-  get ScopeInfo(): Uint8Array | Deno.PointerValue | null {
+  get ScopeInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -4233,8 +4233,8 @@ export class DHCP_OPTION_SCOPE_INFO6View {
   // 0x04: pad4
 
   // 0x08: pointer
-  set ScopeInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ScopeInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4245,7 +4245,7 @@ export interface DHCP_OPTION_LIST {
   /** u32 */
   NumOptions: number;
   /** ptr */
-  Options: Deno.PointerValue | Uint8Array | null;
+  Options: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_OPTION_LIST = 16;
@@ -4257,7 +4257,7 @@ export function allocDHCP_OPTION_LIST(data?: Partial<DHCP_OPTION_LIST>): Uint8Ar
   if (data?.NumOptions !== undefined) view.setUint32(0, Number(data.NumOptions), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Options !== undefined) view.setBigUint64(8, data.Options === null ? 0n : BigInt(util.toPointer(data.Options)), true);
+  if (data?.Options !== undefined) view.setBigUint64(8, data.Options === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Options))), true);
   return buf;
 }
 
@@ -4279,9 +4279,9 @@ export class DHCP_OPTION_LISTView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Options(): Uint8Array | Deno.PointerValue | null {
+  get Options(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -4292,8 +4292,8 @@ export class DHCP_OPTION_LISTView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Options(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Options(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4306,15 +4306,15 @@ export interface DHCP_CLIENT_INFO {
   /** u32 */
   SubnetMask: number;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_BINARY_DATA */
-  ClientHardwareAddress: Uint8Array | Deno.PointerValue | null;
+  ClientHardwareAddress: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   ClientName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
   ClientComment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.Dhcp.DATE_TIME */
-  ClientLeaseExpires: Uint8Array | Deno.PointerValue | null;
+  ClientLeaseExpires: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_HOST_INFO */
-  OwnerHost: Uint8Array | Deno.PointerValue | null;
+  OwnerHost: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDHCP_CLIENT_INFO = 48;
@@ -4327,21 +4327,21 @@ export function allocDHCP_CLIENT_INFO(data?: Partial<DHCP_CLIENT_INFO>): Uint8Ar
   // 0x04: u32
   if (data?.SubnetMask !== undefined) view.setUint32(4, Number(data.SubnetMask), true);
   // 0x08: pointer
-  if (data?.ClientHardwareAddress !== undefined) view.setBigUint64(8, data.ClientHardwareAddress === null ? 0n : BigInt(util.toPointer(data.ClientHardwareAddress)), true);
+  if (data?.ClientHardwareAddress !== undefined) view.setBigUint64(8, data.ClientHardwareAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientHardwareAddress))), true);
   // 0x10: buffer
   if (data?.ClientName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.ClientName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.ClientComment !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.ClientComment);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: pointer
-  if (data?.ClientLeaseExpires !== undefined) view.setBigUint64(32, data.ClientLeaseExpires === null ? 0n : BigInt(util.toPointer(data.ClientLeaseExpires)), true);
+  if (data?.ClientLeaseExpires !== undefined) view.setBigUint64(32, data.ClientLeaseExpires === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientLeaseExpires))), true);
   // 0x28: pointer
-  if (data?.OwnerHost !== undefined) view.setBigUint64(40, data.OwnerHost === null ? 0n : BigInt(util.toPointer(data.OwnerHost)), true);
+  if (data?.OwnerHost !== undefined) view.setBigUint64(40, data.OwnerHost === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OwnerHost))), true);
   return buf;
 }
 
@@ -4366,33 +4366,33 @@ export class DHCP_CLIENT_INFOView {
   }
 
   // 0x08: pointer
-  get ClientHardwareAddress(): Uint8Array | Deno.PointerValue | null {
+  get ClientHardwareAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get ClientName(): Uint8Array | Deno.PointerValue | null {
+  get ClientName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get ClientComment(): Uint8Array | Deno.PointerValue | null {
+  get ClientComment(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get ClientLeaseExpires(): Uint8Array | Deno.PointerValue | null {
+  get ClientLeaseExpires(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get OwnerHost(): Uint8Array | Deno.PointerValue | null {
+  get OwnerHost(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -4406,30 +4406,30 @@ export class DHCP_CLIENT_INFOView {
   }
 
   // 0x08: pointer
-  set ClientHardwareAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ClientHardwareAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: buffer
-  set ClientName(value: Uint8Array | Deno.PointerValue | null) {
+  set ClientName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set ClientComment(value: Uint8Array | Deno.PointerValue | null) {
+  set ClientComment(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: pointer
-  set ClientLeaseExpires(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set ClientLeaseExpires(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set OwnerHost(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set OwnerHost(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4440,7 +4440,7 @@ export interface DHCP_CLIENT_INFO_ARRAY {
   /** u32 */
   NumElements: number;
   /** ptr */
-  Clients: Deno.PointerValue | Uint8Array | null;
+  Clients: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_CLIENT_INFO_ARRAY = 16;
@@ -4452,7 +4452,7 @@ export function allocDHCP_CLIENT_INFO_ARRAY(data?: Partial<DHCP_CLIENT_INFO_ARRA
   if (data?.NumElements !== undefined) view.setUint32(0, Number(data.NumElements), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Clients !== undefined) view.setBigUint64(8, data.Clients === null ? 0n : BigInt(util.toPointer(data.Clients)), true);
+  if (data?.Clients !== undefined) view.setBigUint64(8, data.Clients === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Clients))), true);
   return buf;
 }
 
@@ -4474,9 +4474,9 @@ export class DHCP_CLIENT_INFO_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Clients(): Uint8Array | Deno.PointerValue | null {
+  get Clients(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -4487,8 +4487,8 @@ export class DHCP_CLIENT_INFO_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Clients(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Clients(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4501,15 +4501,15 @@ export interface DHCP_CLIENT_INFO_VQ {
   /** u32 */
   SubnetMask: number;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_BINARY_DATA */
-  ClientHardwareAddress: Uint8Array | Deno.PointerValue | null;
+  ClientHardwareAddress: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   ClientName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
   ClientComment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.Dhcp.DATE_TIME */
-  ClientLeaseExpires: Uint8Array | Deno.PointerValue | null;
+  ClientLeaseExpires: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_HOST_INFO */
-  OwnerHost: Uint8Array | Deno.PointerValue | null;
+  OwnerHost: Uint8Array | Deno.PointerValue;
   /** u8 */
   bClientType: number;
   /** u8 */
@@ -4517,7 +4517,7 @@ export interface DHCP_CLIENT_INFO_VQ {
   /** Windows.Win32.NetworkManagement.Dhcp.QuarantineStatus */
   Status: QuarantineStatus;
   /** Windows.Win32.NetworkManagement.Dhcp.DATE_TIME */
-  ProbationEnds: Uint8Array | Deno.PointerValue | null;
+  ProbationEnds: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOL */
   QuarantineCapable: boolean;
 }
@@ -4532,21 +4532,21 @@ export function allocDHCP_CLIENT_INFO_VQ(data?: Partial<DHCP_CLIENT_INFO_VQ>): U
   // 0x04: u32
   if (data?.SubnetMask !== undefined) view.setUint32(4, Number(data.SubnetMask), true);
   // 0x08: pointer
-  if (data?.ClientHardwareAddress !== undefined) view.setBigUint64(8, data.ClientHardwareAddress === null ? 0n : BigInt(util.toPointer(data.ClientHardwareAddress)), true);
+  if (data?.ClientHardwareAddress !== undefined) view.setBigUint64(8, data.ClientHardwareAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientHardwareAddress))), true);
   // 0x10: buffer
   if (data?.ClientName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.ClientName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.ClientComment !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.ClientComment);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: pointer
-  if (data?.ClientLeaseExpires !== undefined) view.setBigUint64(32, data.ClientLeaseExpires === null ? 0n : BigInt(util.toPointer(data.ClientLeaseExpires)), true);
+  if (data?.ClientLeaseExpires !== undefined) view.setBigUint64(32, data.ClientLeaseExpires === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientLeaseExpires))), true);
   // 0x28: pointer
-  if (data?.OwnerHost !== undefined) view.setBigUint64(40, data.OwnerHost === null ? 0n : BigInt(util.toPointer(data.OwnerHost)), true);
+  if (data?.OwnerHost !== undefined) view.setBigUint64(40, data.OwnerHost === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OwnerHost))), true);
   // 0x30: u8
   if (data?.bClientType !== undefined) view.setUint8(48, Number(data.bClientType));
   // 0x31: u8
@@ -4555,7 +4555,7 @@ export function allocDHCP_CLIENT_INFO_VQ(data?: Partial<DHCP_CLIENT_INFO_VQ>): U
   if (data?.Status !== undefined) view.setInt32(50, Number(data.Status), true);
   // 0x36: pad2
   // 0x38: pointer
-  if (data?.ProbationEnds !== undefined) view.setBigUint64(56, data.ProbationEnds === null ? 0n : BigInt(util.toPointer(data.ProbationEnds)), true);
+  if (data?.ProbationEnds !== undefined) view.setBigUint64(56, data.ProbationEnds === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ProbationEnds))), true);
   // 0x40: i32
   if (data?.QuarantineCapable !== undefined) view.setInt32(64, Number(data.QuarantineCapable), true);
   // 0x44: pad4
@@ -4583,33 +4583,33 @@ export class DHCP_CLIENT_INFO_VQView {
   }
 
   // 0x08: pointer
-  get ClientHardwareAddress(): Uint8Array | Deno.PointerValue | null {
+  get ClientHardwareAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get ClientName(): Uint8Array | Deno.PointerValue | null {
+  get ClientName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get ClientComment(): Uint8Array | Deno.PointerValue | null {
+  get ClientComment(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get ClientLeaseExpires(): Uint8Array | Deno.PointerValue | null {
+  get ClientLeaseExpires(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get OwnerHost(): Uint8Array | Deno.PointerValue | null {
+  get OwnerHost(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: u8
@@ -4630,9 +4630,9 @@ export class DHCP_CLIENT_INFO_VQView {
   // 0x36: pad2
 
   // 0x38: pointer
-  get ProbationEnds(): Uint8Array | Deno.PointerValue | null {
+  get ProbationEnds(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: i32
@@ -4653,30 +4653,30 @@ export class DHCP_CLIENT_INFO_VQView {
   }
 
   // 0x08: pointer
-  set ClientHardwareAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ClientHardwareAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: buffer
-  set ClientName(value: Uint8Array | Deno.PointerValue | null) {
+  set ClientName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set ClientComment(value: Uint8Array | Deno.PointerValue | null) {
+  set ClientComment(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: pointer
-  set ClientLeaseExpires(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set ClientLeaseExpires(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set OwnerHost(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set OwnerHost(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: u8
@@ -4697,8 +4697,8 @@ export class DHCP_CLIENT_INFO_VQView {
   // 0x36: pad2
 
   // 0x38: pointer
-  set ProbationEnds(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set ProbationEnds(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: i32
@@ -4716,7 +4716,7 @@ export interface DHCP_CLIENT_INFO_ARRAY_VQ {
   /** u32 */
   NumElements: number;
   /** ptr */
-  Clients: Deno.PointerValue | Uint8Array | null;
+  Clients: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_CLIENT_INFO_ARRAY_VQ = 16;
@@ -4728,7 +4728,7 @@ export function allocDHCP_CLIENT_INFO_ARRAY_VQ(data?: Partial<DHCP_CLIENT_INFO_A
   if (data?.NumElements !== undefined) view.setUint32(0, Number(data.NumElements), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Clients !== undefined) view.setBigUint64(8, data.Clients === null ? 0n : BigInt(util.toPointer(data.Clients)), true);
+  if (data?.Clients !== undefined) view.setBigUint64(8, data.Clients === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Clients))), true);
   return buf;
 }
 
@@ -4750,9 +4750,9 @@ export class DHCP_CLIENT_INFO_ARRAY_VQView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Clients(): Uint8Array | Deno.PointerValue | null {
+  get Clients(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -4763,8 +4763,8 @@ export class DHCP_CLIENT_INFO_ARRAY_VQView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Clients(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Clients(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4777,15 +4777,15 @@ export interface DHCP_CLIENT_FILTER_STATUS_INFO {
   /** u32 */
   SubnetMask: number;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_BINARY_DATA */
-  ClientHardwareAddress: Uint8Array | Deno.PointerValue | null;
+  ClientHardwareAddress: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   ClientName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
   ClientComment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.Dhcp.DATE_TIME */
-  ClientLeaseExpires: Uint8Array | Deno.PointerValue | null;
+  ClientLeaseExpires: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_HOST_INFO */
-  OwnerHost: Uint8Array | Deno.PointerValue | null;
+  OwnerHost: Uint8Array | Deno.PointerValue;
   /** u8 */
   bClientType: number;
   /** u8 */
@@ -4793,7 +4793,7 @@ export interface DHCP_CLIENT_FILTER_STATUS_INFO {
   /** Windows.Win32.NetworkManagement.Dhcp.QuarantineStatus */
   Status: QuarantineStatus;
   /** Windows.Win32.NetworkManagement.Dhcp.DATE_TIME */
-  ProbationEnds: Uint8Array | Deno.PointerValue | null;
+  ProbationEnds: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOL */
   QuarantineCapable: boolean;
   /** u32 */
@@ -4810,21 +4810,21 @@ export function allocDHCP_CLIENT_FILTER_STATUS_INFO(data?: Partial<DHCP_CLIENT_F
   // 0x04: u32
   if (data?.SubnetMask !== undefined) view.setUint32(4, Number(data.SubnetMask), true);
   // 0x08: pointer
-  if (data?.ClientHardwareAddress !== undefined) view.setBigUint64(8, data.ClientHardwareAddress === null ? 0n : BigInt(util.toPointer(data.ClientHardwareAddress)), true);
+  if (data?.ClientHardwareAddress !== undefined) view.setBigUint64(8, data.ClientHardwareAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientHardwareAddress))), true);
   // 0x10: buffer
   if (data?.ClientName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.ClientName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.ClientComment !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.ClientComment);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: pointer
-  if (data?.ClientLeaseExpires !== undefined) view.setBigUint64(32, data.ClientLeaseExpires === null ? 0n : BigInt(util.toPointer(data.ClientLeaseExpires)), true);
+  if (data?.ClientLeaseExpires !== undefined) view.setBigUint64(32, data.ClientLeaseExpires === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientLeaseExpires))), true);
   // 0x28: pointer
-  if (data?.OwnerHost !== undefined) view.setBigUint64(40, data.OwnerHost === null ? 0n : BigInt(util.toPointer(data.OwnerHost)), true);
+  if (data?.OwnerHost !== undefined) view.setBigUint64(40, data.OwnerHost === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OwnerHost))), true);
   // 0x30: u8
   if (data?.bClientType !== undefined) view.setUint8(48, Number(data.bClientType));
   // 0x31: u8
@@ -4833,7 +4833,7 @@ export function allocDHCP_CLIENT_FILTER_STATUS_INFO(data?: Partial<DHCP_CLIENT_F
   if (data?.Status !== undefined) view.setInt32(50, Number(data.Status), true);
   // 0x36: pad2
   // 0x38: pointer
-  if (data?.ProbationEnds !== undefined) view.setBigUint64(56, data.ProbationEnds === null ? 0n : BigInt(util.toPointer(data.ProbationEnds)), true);
+  if (data?.ProbationEnds !== undefined) view.setBigUint64(56, data.ProbationEnds === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ProbationEnds))), true);
   // 0x40: i32
   if (data?.QuarantineCapable !== undefined) view.setInt32(64, Number(data.QuarantineCapable), true);
   // 0x44: u32
@@ -4862,33 +4862,33 @@ export class DHCP_CLIENT_FILTER_STATUS_INFOView {
   }
 
   // 0x08: pointer
-  get ClientHardwareAddress(): Uint8Array | Deno.PointerValue | null {
+  get ClientHardwareAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get ClientName(): Uint8Array | Deno.PointerValue | null {
+  get ClientName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get ClientComment(): Uint8Array | Deno.PointerValue | null {
+  get ClientComment(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get ClientLeaseExpires(): Uint8Array | Deno.PointerValue | null {
+  get ClientLeaseExpires(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get OwnerHost(): Uint8Array | Deno.PointerValue | null {
+  get OwnerHost(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: u8
@@ -4909,9 +4909,9 @@ export class DHCP_CLIENT_FILTER_STATUS_INFOView {
   // 0x36: pad2
 
   // 0x38: pointer
-  get ProbationEnds(): Uint8Array | Deno.PointerValue | null {
+  get ProbationEnds(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: i32
@@ -4935,30 +4935,30 @@ export class DHCP_CLIENT_FILTER_STATUS_INFOView {
   }
 
   // 0x08: pointer
-  set ClientHardwareAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ClientHardwareAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: buffer
-  set ClientName(value: Uint8Array | Deno.PointerValue | null) {
+  set ClientName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set ClientComment(value: Uint8Array | Deno.PointerValue | null) {
+  set ClientComment(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: pointer
-  set ClientLeaseExpires(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set ClientLeaseExpires(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set OwnerHost(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set OwnerHost(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: u8
@@ -4979,8 +4979,8 @@ export class DHCP_CLIENT_FILTER_STATUS_INFOView {
   // 0x36: pad2
 
   // 0x38: pointer
-  set ProbationEnds(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set ProbationEnds(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: i32
@@ -5001,7 +5001,7 @@ export interface DHCP_CLIENT_FILTER_STATUS_INFO_ARRAY {
   /** u32 */
   NumElements: number;
   /** ptr */
-  Clients: Deno.PointerValue | Uint8Array | null;
+  Clients: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_CLIENT_FILTER_STATUS_INFO_ARRAY = 16;
@@ -5013,7 +5013,7 @@ export function allocDHCP_CLIENT_FILTER_STATUS_INFO_ARRAY(data?: Partial<DHCP_CL
   if (data?.NumElements !== undefined) view.setUint32(0, Number(data.NumElements), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Clients !== undefined) view.setBigUint64(8, data.Clients === null ? 0n : BigInt(util.toPointer(data.Clients)), true);
+  if (data?.Clients !== undefined) view.setBigUint64(8, data.Clients === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Clients))), true);
   return buf;
 }
 
@@ -5035,9 +5035,9 @@ export class DHCP_CLIENT_FILTER_STATUS_INFO_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Clients(): Uint8Array | Deno.PointerValue | null {
+  get Clients(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -5048,8 +5048,8 @@ export class DHCP_CLIENT_FILTER_STATUS_INFO_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Clients(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Clients(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -5062,15 +5062,15 @@ export interface DHCP_CLIENT_INFO_PB {
   /** u32 */
   SubnetMask: number;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_BINARY_DATA */
-  ClientHardwareAddress: Uint8Array | Deno.PointerValue | null;
+  ClientHardwareAddress: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   ClientName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
   ClientComment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.Dhcp.DATE_TIME */
-  ClientLeaseExpires: Uint8Array | Deno.PointerValue | null;
+  ClientLeaseExpires: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_HOST_INFO */
-  OwnerHost: Uint8Array | Deno.PointerValue | null;
+  OwnerHost: Uint8Array | Deno.PointerValue;
   /** u8 */
   bClientType: number;
   /** u8 */
@@ -5078,7 +5078,7 @@ export interface DHCP_CLIENT_INFO_PB {
   /** Windows.Win32.NetworkManagement.Dhcp.QuarantineStatus */
   Status: QuarantineStatus;
   /** Windows.Win32.NetworkManagement.Dhcp.DATE_TIME */
-  ProbationEnds: Uint8Array | Deno.PointerValue | null;
+  ProbationEnds: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOL */
   QuarantineCapable: boolean;
   /** u32 */
@@ -5097,21 +5097,21 @@ export function allocDHCP_CLIENT_INFO_PB(data?: Partial<DHCP_CLIENT_INFO_PB>): U
   // 0x04: u32
   if (data?.SubnetMask !== undefined) view.setUint32(4, Number(data.SubnetMask), true);
   // 0x08: pointer
-  if (data?.ClientHardwareAddress !== undefined) view.setBigUint64(8, data.ClientHardwareAddress === null ? 0n : BigInt(util.toPointer(data.ClientHardwareAddress)), true);
+  if (data?.ClientHardwareAddress !== undefined) view.setBigUint64(8, data.ClientHardwareAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientHardwareAddress))), true);
   // 0x10: buffer
   if (data?.ClientName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.ClientName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.ClientComment !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.ClientComment);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: pointer
-  if (data?.ClientLeaseExpires !== undefined) view.setBigUint64(32, data.ClientLeaseExpires === null ? 0n : BigInt(util.toPointer(data.ClientLeaseExpires)), true);
+  if (data?.ClientLeaseExpires !== undefined) view.setBigUint64(32, data.ClientLeaseExpires === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientLeaseExpires))), true);
   // 0x28: pointer
-  if (data?.OwnerHost !== undefined) view.setBigUint64(40, data.OwnerHost === null ? 0n : BigInt(util.toPointer(data.OwnerHost)), true);
+  if (data?.OwnerHost !== undefined) view.setBigUint64(40, data.OwnerHost === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OwnerHost))), true);
   // 0x30: u8
   if (data?.bClientType !== undefined) view.setUint8(48, Number(data.bClientType));
   // 0x31: u8
@@ -5120,7 +5120,7 @@ export function allocDHCP_CLIENT_INFO_PB(data?: Partial<DHCP_CLIENT_INFO_PB>): U
   if (data?.Status !== undefined) view.setInt32(50, Number(data.Status), true);
   // 0x36: pad2
   // 0x38: pointer
-  if (data?.ProbationEnds !== undefined) view.setBigUint64(56, data.ProbationEnds === null ? 0n : BigInt(util.toPointer(data.ProbationEnds)), true);
+  if (data?.ProbationEnds !== undefined) view.setBigUint64(56, data.ProbationEnds === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ProbationEnds))), true);
   // 0x40: i32
   if (data?.QuarantineCapable !== undefined) view.setInt32(64, Number(data.QuarantineCapable), true);
   // 0x44: u32
@@ -5128,7 +5128,7 @@ export function allocDHCP_CLIENT_INFO_PB(data?: Partial<DHCP_CLIENT_INFO_PB>): U
   // 0x48: buffer
   if (data?.PolicyName !== undefined) {
     (buf as any)._f72 = util.pwstrToFfi(data.PolicyName);
-    view.setBigUint64(72, (buf as any)._f72 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f72)), true);
+    view.setBigUint64(72, (buf as any)._f72 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f72))), true);
   }
   return buf;
 }
@@ -5154,33 +5154,33 @@ export class DHCP_CLIENT_INFO_PBView {
   }
 
   // 0x08: pointer
-  get ClientHardwareAddress(): Uint8Array | Deno.PointerValue | null {
+  get ClientHardwareAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get ClientName(): Uint8Array | Deno.PointerValue | null {
+  get ClientName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get ClientComment(): Uint8Array | Deno.PointerValue | null {
+  get ClientComment(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get ClientLeaseExpires(): Uint8Array | Deno.PointerValue | null {
+  get ClientLeaseExpires(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get OwnerHost(): Uint8Array | Deno.PointerValue | null {
+  get OwnerHost(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: u8
@@ -5201,9 +5201,9 @@ export class DHCP_CLIENT_INFO_PBView {
   // 0x36: pad2
 
   // 0x38: pointer
-  get ProbationEnds(): Uint8Array | Deno.PointerValue | null {
+  get ProbationEnds(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: i32
@@ -5217,9 +5217,9 @@ export class DHCP_CLIENT_INFO_PBView {
   }
 
   // 0x48: buffer
-  get PolicyName(): Uint8Array | Deno.PointerValue | null {
+  get PolicyName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -5233,30 +5233,30 @@ export class DHCP_CLIENT_INFO_PBView {
   }
 
   // 0x08: pointer
-  set ClientHardwareAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ClientHardwareAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: buffer
-  set ClientName(value: Uint8Array | Deno.PointerValue | null) {
+  set ClientName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set ClientComment(value: Uint8Array | Deno.PointerValue | null) {
+  set ClientComment(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: pointer
-  set ClientLeaseExpires(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set ClientLeaseExpires(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set OwnerHost(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set OwnerHost(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: u8
@@ -5277,8 +5277,8 @@ export class DHCP_CLIENT_INFO_PBView {
   // 0x36: pad2
 
   // 0x38: pointer
-  set ProbationEnds(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set ProbationEnds(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: i32
@@ -5292,9 +5292,9 @@ export class DHCP_CLIENT_INFO_PBView {
   }
 
   // 0x48: buffer
-  set PolicyName(value: Uint8Array | Deno.PointerValue | null) {
+  set PolicyName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f72 = value;
-    this.view.setBigUint64(72, BigInt(util.toPointer((this.buf as any)._f72)), true);
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f72))), true);
   }
 }
 
@@ -5305,7 +5305,7 @@ export interface DHCP_CLIENT_INFO_PB_ARRAY {
   /** u32 */
   NumElements: number;
   /** ptr */
-  Clients: Deno.PointerValue | Uint8Array | null;
+  Clients: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_CLIENT_INFO_PB_ARRAY = 16;
@@ -5317,7 +5317,7 @@ export function allocDHCP_CLIENT_INFO_PB_ARRAY(data?: Partial<DHCP_CLIENT_INFO_P
   if (data?.NumElements !== undefined) view.setUint32(0, Number(data.NumElements), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Clients !== undefined) view.setBigUint64(8, data.Clients === null ? 0n : BigInt(util.toPointer(data.Clients)), true);
+  if (data?.Clients !== undefined) view.setBigUint64(8, data.Clients === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Clients))), true);
   return buf;
 }
 
@@ -5339,9 +5339,9 @@ export class DHCP_CLIENT_INFO_PB_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Clients(): Uint8Array | Deno.PointerValue | null {
+  get Clients(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -5352,8 +5352,8 @@ export class DHCP_CLIENT_INFO_PB_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Clients(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Clients(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -5364,7 +5364,7 @@ export interface DHCP_CLIENT_SEARCH_UNION {
   /** u32 */
   ClientIpAddress: number;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_BINARY_DATA */
-  ClientHardwareAddress: Uint8Array | Deno.PointerValue | null;
+  ClientHardwareAddress: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   ClientName: string | null | Uint8Array | Uint16Array;
 }
@@ -5378,11 +5378,11 @@ export function allocDHCP_CLIENT_SEARCH_UNION(data?: Partial<DHCP_CLIENT_SEARCH_
   if (data?.ClientIpAddress !== undefined) view.setUint32(0, Number(data.ClientIpAddress), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.ClientHardwareAddress !== undefined) view.setBigUint64(8, data.ClientHardwareAddress === null ? 0n : BigInt(util.toPointer(data.ClientHardwareAddress)), true);
+  if (data?.ClientHardwareAddress !== undefined) view.setBigUint64(8, data.ClientHardwareAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientHardwareAddress))), true);
   // 0x10: buffer
   if (data?.ClientName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.ClientName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   return buf;
 }
@@ -5405,15 +5405,15 @@ export class DHCP_CLIENT_SEARCH_UNIONView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get ClientHardwareAddress(): Uint8Array | Deno.PointerValue | null {
+  get ClientHardwareAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get ClientName(): Uint8Array | Deno.PointerValue | null {
+  get ClientName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -5424,14 +5424,14 @@ export class DHCP_CLIENT_SEARCH_UNIONView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set ClientHardwareAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ClientHardwareAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: buffer
-  set ClientName(value: Uint8Array | Deno.PointerValue | null) {
+  set ClientName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 }
 
@@ -5442,7 +5442,7 @@ export interface DHCP_SEARCH_INFO {
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_SEARCH_INFO_TYPE */
   SearchType: DHCP_SEARCH_INFO_TYPE;
   /** DHCP_CLIENT_SEARCH_UNION */
-  SearchInfo: Uint8Array | Deno.PointerValue | null;
+  SearchInfo: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDHCP_SEARCH_INFO = 16;
@@ -5454,7 +5454,7 @@ export function allocDHCP_SEARCH_INFO(data?: Partial<DHCP_SEARCH_INFO>): Uint8Ar
   if (data?.SearchType !== undefined) view.setInt32(0, Number(data.SearchType), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.SearchInfo !== undefined) view.setBigUint64(8, data.SearchInfo === null ? 0n : BigInt(util.toPointer(data.SearchInfo)), true);
+  if (data?.SearchInfo !== undefined) view.setBigUint64(8, data.SearchInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.SearchInfo))), true);
   return buf;
 }
 
@@ -5476,9 +5476,9 @@ export class DHCP_SEARCH_INFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get SearchInfo(): Uint8Array | Deno.PointerValue | null {
+  get SearchInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -5489,8 +5489,8 @@ export class DHCP_SEARCH_INFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set SearchInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set SearchInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -5507,7 +5507,7 @@ export interface _DHCP_PROPERTY_VALUE_UNION {
   /** Windows.Win32.Foundation.PWSTR */
   StringValue: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_BINARY_DATA */
-  BinaryValue: Uint8Array | Deno.PointerValue | null;
+  BinaryValue: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeof_DHCP_PROPERTY_VALUE_UNION = 24;
@@ -5525,10 +5525,10 @@ export function alloc_DHCP_PROPERTY_VALUE_UNION(data?: Partial<_DHCP_PROPERTY_VA
   // 0x08: buffer
   if (data?.StringValue !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.StringValue);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: pointer
-  if (data?.BinaryValue !== undefined) view.setBigUint64(16, data.BinaryValue === null ? 0n : BigInt(util.toPointer(data.BinaryValue)), true);
+  if (data?.BinaryValue !== undefined) view.setBigUint64(16, data.BinaryValue === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BinaryValue))), true);
   return buf;
 }
 
@@ -5560,15 +5560,15 @@ export class _DHCP_PROPERTY_VALUE_UNIONView {
   // 0x07: pad1
 
   // 0x08: buffer
-  get StringValue(): Uint8Array | Deno.PointerValue | null {
+  get StringValue(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get BinaryValue(): Uint8Array | Deno.PointerValue | null {
+  get BinaryValue(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u8
@@ -5589,14 +5589,14 @@ export class _DHCP_PROPERTY_VALUE_UNIONView {
   // 0x07: pad1
 
   // 0x08: buffer
-  set StringValue(value: Uint8Array | Deno.PointerValue | null) {
+  set StringValue(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: pointer
-  set BinaryValue(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set BinaryValue(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -5609,7 +5609,7 @@ export interface DHCP_PROPERTY {
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_PROPERTY_TYPE */
   Type: DHCP_PROPERTY_TYPE;
   /** _DHCP_PROPERTY_VALUE_UNION */
-  Value: Uint8Array | Deno.PointerValue | null;
+  Value: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDHCP_PROPERTY = 16;
@@ -5622,7 +5622,7 @@ export function allocDHCP_PROPERTY(data?: Partial<DHCP_PROPERTY>): Uint8Array {
   // 0x04: i32
   if (data?.Type !== undefined) view.setInt32(4, Number(data.Type), true);
   // 0x08: pointer
-  if (data?.Value !== undefined) view.setBigUint64(8, data.Value === null ? 0n : BigInt(util.toPointer(data.Value)), true);
+  if (data?.Value !== undefined) view.setBigUint64(8, data.Value === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Value))), true);
   return buf;
 }
 
@@ -5647,9 +5647,9 @@ export class DHCP_PROPERTYView {
   }
 
   // 0x08: pointer
-  get Value(): Uint8Array | Deno.PointerValue | null {
+  get Value(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -5663,8 +5663,8 @@ export class DHCP_PROPERTYView {
   }
 
   // 0x08: pointer
-  set Value(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Value(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -5675,7 +5675,7 @@ export interface DHCP_PROPERTY_ARRAY {
   /** u32 */
   NumElements: number;
   /** ptr */
-  Elements: Deno.PointerValue | Uint8Array | null;
+  Elements: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_PROPERTY_ARRAY = 16;
@@ -5687,7 +5687,7 @@ export function allocDHCP_PROPERTY_ARRAY(data?: Partial<DHCP_PROPERTY_ARRAY>): U
   if (data?.NumElements !== undefined) view.setUint32(0, Number(data.NumElements), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(util.toPointer(data.Elements)), true);
+  if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Elements))), true);
   return buf;
 }
 
@@ -5709,9 +5709,9 @@ export class DHCP_PROPERTY_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Elements(): Uint8Array | Deno.PointerValue | null {
+  get Elements(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -5722,8 +5722,8 @@ export class DHCP_PROPERTY_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Elements(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Elements(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -5736,15 +5736,15 @@ export interface DHCP_CLIENT_INFO_EX {
   /** u32 */
   SubnetMask: number;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_BINARY_DATA */
-  ClientHardwareAddress: Uint8Array | Deno.PointerValue | null;
+  ClientHardwareAddress: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   ClientName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
   ClientComment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.Dhcp.DATE_TIME */
-  ClientLeaseExpires: Uint8Array | Deno.PointerValue | null;
+  ClientLeaseExpires: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_HOST_INFO */
-  OwnerHost: Uint8Array | Deno.PointerValue | null;
+  OwnerHost: Uint8Array | Deno.PointerValue;
   /** u8 */
   bClientType: number;
   /** u8 */
@@ -5752,7 +5752,7 @@ export interface DHCP_CLIENT_INFO_EX {
   /** Windows.Win32.NetworkManagement.Dhcp.QuarantineStatus */
   Status: QuarantineStatus;
   /** Windows.Win32.NetworkManagement.Dhcp.DATE_TIME */
-  ProbationEnds: Uint8Array | Deno.PointerValue | null;
+  ProbationEnds: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOL */
   QuarantineCapable: boolean;
   /** u32 */
@@ -5760,7 +5760,7 @@ export interface DHCP_CLIENT_INFO_EX {
   /** Windows.Win32.Foundation.PWSTR */
   PolicyName: string | null | Uint8Array | Uint16Array;
   /** ptr */
-  Properties: Deno.PointerValue | Uint8Array | null;
+  Properties: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_CLIENT_INFO_EX = 88;
@@ -5773,21 +5773,21 @@ export function allocDHCP_CLIENT_INFO_EX(data?: Partial<DHCP_CLIENT_INFO_EX>): U
   // 0x04: u32
   if (data?.SubnetMask !== undefined) view.setUint32(4, Number(data.SubnetMask), true);
   // 0x08: pointer
-  if (data?.ClientHardwareAddress !== undefined) view.setBigUint64(8, data.ClientHardwareAddress === null ? 0n : BigInt(util.toPointer(data.ClientHardwareAddress)), true);
+  if (data?.ClientHardwareAddress !== undefined) view.setBigUint64(8, data.ClientHardwareAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientHardwareAddress))), true);
   // 0x10: buffer
   if (data?.ClientName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.ClientName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.ClientComment !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.ClientComment);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: pointer
-  if (data?.ClientLeaseExpires !== undefined) view.setBigUint64(32, data.ClientLeaseExpires === null ? 0n : BigInt(util.toPointer(data.ClientLeaseExpires)), true);
+  if (data?.ClientLeaseExpires !== undefined) view.setBigUint64(32, data.ClientLeaseExpires === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientLeaseExpires))), true);
   // 0x28: pointer
-  if (data?.OwnerHost !== undefined) view.setBigUint64(40, data.OwnerHost === null ? 0n : BigInt(util.toPointer(data.OwnerHost)), true);
+  if (data?.OwnerHost !== undefined) view.setBigUint64(40, data.OwnerHost === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OwnerHost))), true);
   // 0x30: u8
   if (data?.bClientType !== undefined) view.setUint8(48, Number(data.bClientType));
   // 0x31: u8
@@ -5796,7 +5796,7 @@ export function allocDHCP_CLIENT_INFO_EX(data?: Partial<DHCP_CLIENT_INFO_EX>): U
   if (data?.Status !== undefined) view.setInt32(50, Number(data.Status), true);
   // 0x36: pad2
   // 0x38: pointer
-  if (data?.ProbationEnds !== undefined) view.setBigUint64(56, data.ProbationEnds === null ? 0n : BigInt(util.toPointer(data.ProbationEnds)), true);
+  if (data?.ProbationEnds !== undefined) view.setBigUint64(56, data.ProbationEnds === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ProbationEnds))), true);
   // 0x40: i32
   if (data?.QuarantineCapable !== undefined) view.setInt32(64, Number(data.QuarantineCapable), true);
   // 0x44: u32
@@ -5804,10 +5804,10 @@ export function allocDHCP_CLIENT_INFO_EX(data?: Partial<DHCP_CLIENT_INFO_EX>): U
   // 0x48: buffer
   if (data?.PolicyName !== undefined) {
     (buf as any)._f72 = util.pwstrToFfi(data.PolicyName);
-    view.setBigUint64(72, (buf as any)._f72 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f72)), true);
+    view.setBigUint64(72, (buf as any)._f72 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f72))), true);
   }
   // 0x50: pointer
-  if (data?.Properties !== undefined) view.setBigUint64(80, data.Properties === null ? 0n : BigInt(util.toPointer(data.Properties)), true);
+  if (data?.Properties !== undefined) view.setBigUint64(80, data.Properties === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Properties))), true);
   return buf;
 }
 
@@ -5832,33 +5832,33 @@ export class DHCP_CLIENT_INFO_EXView {
   }
 
   // 0x08: pointer
-  get ClientHardwareAddress(): Uint8Array | Deno.PointerValue | null {
+  get ClientHardwareAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get ClientName(): Uint8Array | Deno.PointerValue | null {
+  get ClientName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get ClientComment(): Uint8Array | Deno.PointerValue | null {
+  get ClientComment(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get ClientLeaseExpires(): Uint8Array | Deno.PointerValue | null {
+  get ClientLeaseExpires(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get OwnerHost(): Uint8Array | Deno.PointerValue | null {
+  get OwnerHost(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: u8
@@ -5879,9 +5879,9 @@ export class DHCP_CLIENT_INFO_EXView {
   // 0x36: pad2
 
   // 0x38: pointer
-  get ProbationEnds(): Uint8Array | Deno.PointerValue | null {
+  get ProbationEnds(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: i32
@@ -5895,15 +5895,15 @@ export class DHCP_CLIENT_INFO_EXView {
   }
 
   // 0x48: buffer
-  get PolicyName(): Uint8Array | Deno.PointerValue | null {
+  get PolicyName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: pointer
-  get Properties(): Uint8Array | Deno.PointerValue | null {
+  get Properties(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -5917,30 +5917,30 @@ export class DHCP_CLIENT_INFO_EXView {
   }
 
   // 0x08: pointer
-  set ClientHardwareAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ClientHardwareAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: buffer
-  set ClientName(value: Uint8Array | Deno.PointerValue | null) {
+  set ClientName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set ClientComment(value: Uint8Array | Deno.PointerValue | null) {
+  set ClientComment(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: pointer
-  set ClientLeaseExpires(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set ClientLeaseExpires(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set OwnerHost(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set OwnerHost(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: u8
@@ -5961,8 +5961,8 @@ export class DHCP_CLIENT_INFO_EXView {
   // 0x36: pad2
 
   // 0x38: pointer
-  set ProbationEnds(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set ProbationEnds(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: i32
@@ -5976,14 +5976,14 @@ export class DHCP_CLIENT_INFO_EXView {
   }
 
   // 0x48: buffer
-  set PolicyName(value: Uint8Array | Deno.PointerValue | null) {
+  set PolicyName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f72 = value;
-    this.view.setBigUint64(72, BigInt(util.toPointer((this.buf as any)._f72)), true);
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f72))), true);
   }
 
   // 0x50: pointer
-  set Properties(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set Properties(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -5994,7 +5994,7 @@ export interface DHCP_CLIENT_INFO_EX_ARRAY {
   /** u32 */
   NumElements: number;
   /** ptr */
-  Clients: Deno.PointerValue | Uint8Array | null;
+  Clients: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_CLIENT_INFO_EX_ARRAY = 16;
@@ -6006,7 +6006,7 @@ export function allocDHCP_CLIENT_INFO_EX_ARRAY(data?: Partial<DHCP_CLIENT_INFO_E
   if (data?.NumElements !== undefined) view.setUint32(0, Number(data.NumElements), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Clients !== undefined) view.setBigUint64(8, data.Clients === null ? 0n : BigInt(util.toPointer(data.Clients)), true);
+  if (data?.Clients !== undefined) view.setBigUint64(8, data.Clients === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Clients))), true);
   return buf;
 }
 
@@ -6028,9 +6028,9 @@ export class DHCP_CLIENT_INFO_EX_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Clients(): Uint8Array | Deno.PointerValue | null {
+  get Clients(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -6041,8 +6041,8 @@ export class DHCP_CLIENT_INFO_EX_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Clients(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Clients(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -6146,11 +6146,11 @@ export interface DHCP_MIB_INFO {
   /** u32 */
   Releases: number;
   /** Windows.Win32.NetworkManagement.Dhcp.DATE_TIME */
-  ServerStartTime: Uint8Array | Deno.PointerValue | null;
+  ServerStartTime: Uint8Array | Deno.PointerValue;
   /** u32 */
   Scopes: number;
   /** ptr */
-  ScopeInfo: Deno.PointerValue | Uint8Array | null;
+  ScopeInfo: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_MIB_INFO = 56;
@@ -6174,12 +6174,12 @@ export function allocDHCP_MIB_INFO(data?: Partial<DHCP_MIB_INFO>): Uint8Array {
   if (data?.Releases !== undefined) view.setUint32(24, Number(data.Releases), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.ServerStartTime !== undefined) view.setBigUint64(32, data.ServerStartTime === null ? 0n : BigInt(util.toPointer(data.ServerStartTime)), true);
+  if (data?.ServerStartTime !== undefined) view.setBigUint64(32, data.ServerStartTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ServerStartTime))), true);
   // 0x28: u32
   if (data?.Scopes !== undefined) view.setUint32(40, Number(data.Scopes), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.ScopeInfo !== undefined) view.setBigUint64(48, data.ScopeInfo === null ? 0n : BigInt(util.toPointer(data.ScopeInfo)), true);
+  if (data?.ScopeInfo !== undefined) view.setBigUint64(48, data.ScopeInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScopeInfo))), true);
   return buf;
 }
 
@@ -6231,9 +6231,9 @@ export class DHCP_MIB_INFOView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get ServerStartTime(): Uint8Array | Deno.PointerValue | null {
+  get ServerStartTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -6244,9 +6244,9 @@ export class DHCP_MIB_INFOView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  get ScopeInfo(): Uint8Array | Deno.PointerValue | null {
+  get ScopeInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -6287,8 +6287,8 @@ export class DHCP_MIB_INFOView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set ServerStartTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set ServerStartTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u32
@@ -6299,8 +6299,8 @@ export class DHCP_MIB_INFOView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  set ScopeInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set ScopeInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -6488,7 +6488,7 @@ export interface DHCP_MIB_INFO_VQ {
   /** u32 */
   Releases: number;
   /** Windows.Win32.NetworkManagement.Dhcp.DATE_TIME */
-  ServerStartTime: Uint8Array | Deno.PointerValue | null;
+  ServerStartTime: Uint8Array | Deno.PointerValue;
   /** u32 */
   QtnNumLeases: number;
   /** u32 */
@@ -6506,7 +6506,7 @@ export interface DHCP_MIB_INFO_VQ {
   /** u32 */
   Scopes: number;
   /** ptr */
-  ScopeInfo: Deno.PointerValue | Uint8Array | null;
+  ScopeInfo: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_MIB_INFO_VQ = 80;
@@ -6530,7 +6530,7 @@ export function allocDHCP_MIB_INFO_VQ(data?: Partial<DHCP_MIB_INFO_VQ>): Uint8Ar
   if (data?.Releases !== undefined) view.setUint32(24, Number(data.Releases), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.ServerStartTime !== undefined) view.setBigUint64(32, data.ServerStartTime === null ? 0n : BigInt(util.toPointer(data.ServerStartTime)), true);
+  if (data?.ServerStartTime !== undefined) view.setBigUint64(32, data.ServerStartTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ServerStartTime))), true);
   // 0x28: u32
   if (data?.QtnNumLeases !== undefined) view.setUint32(40, Number(data.QtnNumLeases), true);
   // 0x2c: u32
@@ -6548,7 +6548,7 @@ export function allocDHCP_MIB_INFO_VQ(data?: Partial<DHCP_MIB_INFO_VQ>): Uint8Ar
   // 0x44: u32
   if (data?.Scopes !== undefined) view.setUint32(68, Number(data.Scopes), true);
   // 0x48: pointer
-  if (data?.ScopeInfo !== undefined) view.setBigUint64(72, data.ScopeInfo === null ? 0n : BigInt(util.toPointer(data.ScopeInfo)), true);
+  if (data?.ScopeInfo !== undefined) view.setBigUint64(72, data.ScopeInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScopeInfo))), true);
   return buf;
 }
 
@@ -6600,9 +6600,9 @@ export class DHCP_MIB_INFO_VQView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get ServerStartTime(): Uint8Array | Deno.PointerValue | null {
+  get ServerStartTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -6646,9 +6646,9 @@ export class DHCP_MIB_INFO_VQView {
   }
 
   // 0x48: pointer
-  get ScopeInfo(): Uint8Array | Deno.PointerValue | null {
+  get ScopeInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -6689,8 +6689,8 @@ export class DHCP_MIB_INFO_VQView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set ServerStartTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set ServerStartTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u32
@@ -6734,8 +6734,8 @@ export class DHCP_MIB_INFO_VQView {
   }
 
   // 0x48: pointer
-  set ScopeInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set ScopeInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -6839,7 +6839,7 @@ export interface DHCP_MIB_INFO_V5 {
   /** u32 */
   Releases: number;
   /** Windows.Win32.NetworkManagement.Dhcp.DATE_TIME */
-  ServerStartTime: Uint8Array | Deno.PointerValue | null;
+  ServerStartTime: Uint8Array | Deno.PointerValue;
   /** u32 */
   QtnNumLeases: number;
   /** u32 */
@@ -6861,7 +6861,7 @@ export interface DHCP_MIB_INFO_V5 {
   /** u32 */
   Scopes: number;
   /** ptr */
-  ScopeInfo: Deno.PointerValue | Uint8Array | null;
+  ScopeInfo: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_MIB_INFO_V5 = 88;
@@ -6885,7 +6885,7 @@ export function allocDHCP_MIB_INFO_V5(data?: Partial<DHCP_MIB_INFO_V5>): Uint8Ar
   if (data?.Releases !== undefined) view.setUint32(24, Number(data.Releases), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.ServerStartTime !== undefined) view.setBigUint64(32, data.ServerStartTime === null ? 0n : BigInt(util.toPointer(data.ServerStartTime)), true);
+  if (data?.ServerStartTime !== undefined) view.setBigUint64(32, data.ServerStartTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ServerStartTime))), true);
   // 0x28: u32
   if (data?.QtnNumLeases !== undefined) view.setUint32(40, Number(data.QtnNumLeases), true);
   // 0x2c: u32
@@ -6907,7 +6907,7 @@ export function allocDHCP_MIB_INFO_V5(data?: Partial<DHCP_MIB_INFO_V5>): Uint8Ar
   // 0x4c: u32
   if (data?.Scopes !== undefined) view.setUint32(76, Number(data.Scopes), true);
   // 0x50: pointer
-  if (data?.ScopeInfo !== undefined) view.setBigUint64(80, data.ScopeInfo === null ? 0n : BigInt(util.toPointer(data.ScopeInfo)), true);
+  if (data?.ScopeInfo !== undefined) view.setBigUint64(80, data.ScopeInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScopeInfo))), true);
   return buf;
 }
 
@@ -6959,9 +6959,9 @@ export class DHCP_MIB_INFO_V5View {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get ServerStartTime(): Uint8Array | Deno.PointerValue | null {
+  get ServerStartTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -7015,9 +7015,9 @@ export class DHCP_MIB_INFO_V5View {
   }
 
   // 0x50: pointer
-  get ScopeInfo(): Uint8Array | Deno.PointerValue | null {
+  get ScopeInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -7058,8 +7058,8 @@ export class DHCP_MIB_INFO_V5View {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set ServerStartTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set ServerStartTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u32
@@ -7113,8 +7113,8 @@ export class DHCP_MIB_INFO_V5View {
   }
 
   // 0x50: pointer
-  set ScopeInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set ScopeInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -7153,17 +7153,17 @@ export function allocDHCP_SERVER_CONFIG_INFO(data?: Partial<DHCP_SERVER_CONFIG_I
   // 0x08: buffer
   if (data?.DatabaseName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.DatabaseName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.DatabasePath !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.DatabasePath);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.BackupPath !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.BackupPath);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: u32
   if (data?.BackupInterval !== undefined) view.setUint32(32, Number(data.BackupInterval), true);
@@ -7197,21 +7197,21 @@ export class DHCP_SERVER_CONFIG_INFOView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get DatabaseName(): Uint8Array | Deno.PointerValue | null {
+  get DatabaseName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get DatabasePath(): Uint8Array | Deno.PointerValue | null {
+  get DatabasePath(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get BackupPath(): Uint8Array | Deno.PointerValue | null {
+  get BackupPath(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -7249,21 +7249,21 @@ export class DHCP_SERVER_CONFIG_INFOView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set DatabaseName(value: Uint8Array | Deno.PointerValue | null) {
+  set DatabaseName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set DatabasePath(value: Uint8Array | Deno.PointerValue | null) {
+  set DatabasePath(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set BackupPath(value: Uint8Array | Deno.PointerValue | null) {
+  set BackupPath(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: u32
@@ -7354,7 +7354,7 @@ export interface DHCP_SCAN_LIST {
   /** u32 */
   NumScanItems: number;
   /** ptr */
-  ScanItems: Deno.PointerValue | Uint8Array | null;
+  ScanItems: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_SCAN_LIST = 16;
@@ -7366,7 +7366,7 @@ export function allocDHCP_SCAN_LIST(data?: Partial<DHCP_SCAN_LIST>): Uint8Array 
   if (data?.NumScanItems !== undefined) view.setUint32(0, Number(data.NumScanItems), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.ScanItems !== undefined) view.setBigUint64(8, data.ScanItems === null ? 0n : BigInt(util.toPointer(data.ScanItems)), true);
+  if (data?.ScanItems !== undefined) view.setBigUint64(8, data.ScanItems === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScanItems))), true);
   return buf;
 }
 
@@ -7388,9 +7388,9 @@ export class DHCP_SCAN_LISTView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get ScanItems(): Uint8Array | Deno.PointerValue | null {
+  get ScanItems(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -7401,8 +7401,8 @@ export class DHCP_SCAN_LISTView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set ScanItems(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ScanItems(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -7421,7 +7421,7 @@ export interface DHCP_CLASS_INFO {
   /** u32 */
   Flags: number;
   /** ptr */
-  ClassData: Deno.PointerValue | Uint8Array | null;
+  ClassData: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_CLASS_INFO = 40;
@@ -7432,12 +7432,12 @@ export function allocDHCP_CLASS_INFO(data?: Partial<DHCP_CLASS_INFO>): Uint8Arra
   // 0x00: buffer
   if (data?.ClassName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.ClassName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: buffer
   if (data?.ClassComment !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.ClassComment);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: u32
   if (data?.ClassDataLength !== undefined) view.setUint32(16, Number(data.ClassDataLength), true);
@@ -7447,7 +7447,7 @@ export function allocDHCP_CLASS_INFO(data?: Partial<DHCP_CLASS_INFO>): Uint8Arra
   if (data?.Flags !== undefined) view.setUint32(24, Number(data.Flags), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.ClassData !== undefined) view.setBigUint64(32, data.ClassData === null ? 0n : BigInt(util.toPointer(data.ClassData)), true);
+  if (data?.ClassData !== undefined) view.setBigUint64(32, data.ClassData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClassData))), true);
   return buf;
 }
 
@@ -7462,15 +7462,15 @@ export class DHCP_CLASS_INFOView {
   }
 
   // 0x00: buffer
-  get ClassName(): Uint8Array | Deno.PointerValue | null {
+  get ClassName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get ClassComment(): Uint8Array | Deno.PointerValue | null {
+  get ClassComment(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -7491,21 +7491,21 @@ export class DHCP_CLASS_INFOView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get ClassData(): Uint8Array | Deno.PointerValue | null {
+  get ClassData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set ClassName(value: Uint8Array | Deno.PointerValue | null) {
+  set ClassName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: buffer
-  set ClassComment(value: Uint8Array | Deno.PointerValue | null) {
+  set ClassComment(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: u32
@@ -7526,8 +7526,8 @@ export class DHCP_CLASS_INFOView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set ClassData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set ClassData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -7538,7 +7538,7 @@ export interface DHCP_CLASS_INFO_ARRAY {
   /** u32 */
   NumElements: number;
   /** ptr */
-  Classes: Deno.PointerValue | Uint8Array | null;
+  Classes: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_CLASS_INFO_ARRAY = 16;
@@ -7550,7 +7550,7 @@ export function allocDHCP_CLASS_INFO_ARRAY(data?: Partial<DHCP_CLASS_INFO_ARRAY>
   if (data?.NumElements !== undefined) view.setUint32(0, Number(data.NumElements), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Classes !== undefined) view.setBigUint64(8, data.Classes === null ? 0n : BigInt(util.toPointer(data.Classes)), true);
+  if (data?.Classes !== undefined) view.setBigUint64(8, data.Classes === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Classes))), true);
   return buf;
 }
 
@@ -7572,9 +7572,9 @@ export class DHCP_CLASS_INFO_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Classes(): Uint8Array | Deno.PointerValue | null {
+  get Classes(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -7585,8 +7585,8 @@ export class DHCP_CLASS_INFO_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Classes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Classes(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -7607,7 +7607,7 @@ export interface DHCP_CLASS_INFO_V6 {
   /** u32 */
   Flags: number;
   /** ptr */
-  ClassData: Deno.PointerValue | Uint8Array | null;
+  ClassData: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_CLASS_INFO_V6 = 40;
@@ -7618,12 +7618,12 @@ export function allocDHCP_CLASS_INFO_V6(data?: Partial<DHCP_CLASS_INFO_V6>): Uin
   // 0x00: buffer
   if (data?.ClassName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.ClassName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: buffer
   if (data?.ClassComment !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.ClassComment);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: u32
   if (data?.ClassDataLength !== undefined) view.setUint32(16, Number(data.ClassDataLength), true);
@@ -7634,7 +7634,7 @@ export function allocDHCP_CLASS_INFO_V6(data?: Partial<DHCP_CLASS_INFO_V6>): Uin
   // 0x1c: u32
   if (data?.Flags !== undefined) view.setUint32(28, Number(data.Flags), true);
   // 0x20: pointer
-  if (data?.ClassData !== undefined) view.setBigUint64(32, data.ClassData === null ? 0n : BigInt(util.toPointer(data.ClassData)), true);
+  if (data?.ClassData !== undefined) view.setBigUint64(32, data.ClassData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClassData))), true);
   return buf;
 }
 
@@ -7649,15 +7649,15 @@ export class DHCP_CLASS_INFO_V6View {
   }
 
   // 0x00: buffer
-  get ClassName(): Uint8Array | Deno.PointerValue | null {
+  get ClassName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get ClassComment(): Uint8Array | Deno.PointerValue | null {
+  get ClassComment(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -7681,21 +7681,21 @@ export class DHCP_CLASS_INFO_V6View {
   }
 
   // 0x20: pointer
-  get ClassData(): Uint8Array | Deno.PointerValue | null {
+  get ClassData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set ClassName(value: Uint8Array | Deno.PointerValue | null) {
+  set ClassName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: buffer
-  set ClassComment(value: Uint8Array | Deno.PointerValue | null) {
+  set ClassComment(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: u32
@@ -7719,8 +7719,8 @@ export class DHCP_CLASS_INFO_V6View {
   }
 
   // 0x20: pointer
-  set ClassData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set ClassData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -7731,7 +7731,7 @@ export interface DHCP_CLASS_INFO_ARRAY_V6 {
   /** u32 */
   NumElements: number;
   /** ptr */
-  Classes: Deno.PointerValue | Uint8Array | null;
+  Classes: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_CLASS_INFO_ARRAY_V6 = 16;
@@ -7743,7 +7743,7 @@ export function allocDHCP_CLASS_INFO_ARRAY_V6(data?: Partial<DHCP_CLASS_INFO_ARR
   if (data?.NumElements !== undefined) view.setUint32(0, Number(data.NumElements), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Classes !== undefined) view.setBigUint64(8, data.Classes === null ? 0n : BigInt(util.toPointer(data.Classes)), true);
+  if (data?.Classes !== undefined) view.setBigUint64(8, data.Classes === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Classes))), true);
   return buf;
 }
 
@@ -7765,9 +7765,9 @@ export class DHCP_CLASS_INFO_ARRAY_V6View {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Classes(): Uint8Array | Deno.PointerValue | null {
+  get Classes(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -7778,8 +7778,8 @@ export class DHCP_CLASS_INFO_ARRAY_V6View {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Classes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Classes(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -7801,12 +7801,12 @@ export function allocDHCP_SERVER_SPECIFIC_STRINGS(data?: Partial<DHCP_SERVER_SPE
   // 0x00: buffer
   if (data?.DefaultVendorClassName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.DefaultVendorClassName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: buffer
   if (data?.DefaultUserClassName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.DefaultUserClassName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   return buf;
 }
@@ -7822,27 +7822,27 @@ export class DHCP_SERVER_SPECIFIC_STRINGSView {
   }
 
   // 0x00: buffer
-  get DefaultVendorClassName(): Uint8Array | Deno.PointerValue | null {
+  get DefaultVendorClassName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get DefaultUserClassName(): Uint8Array | Deno.PointerValue | null {
+  get DefaultUserClassName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set DefaultVendorClassName(value: Uint8Array | Deno.PointerValue | null) {
+  set DefaultVendorClassName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: buffer
-  set DefaultUserClassName(value: Uint8Array | Deno.PointerValue | null) {
+  set DefaultUserClassName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 }
 
@@ -7853,7 +7853,7 @@ export interface DHCP_IP_RESERVATION_V4 {
   /** u32 */
   ReservedIpAddress: number;
   /** ptr */
-  ReservedForClient: Deno.PointerValue | Uint8Array | null;
+  ReservedForClient: Deno.PointerValue | Uint8Array;
   /** u8 */
   bAllowedClientTypes: number;
 }
@@ -7867,7 +7867,7 @@ export function allocDHCP_IP_RESERVATION_V4(data?: Partial<DHCP_IP_RESERVATION_V
   if (data?.ReservedIpAddress !== undefined) view.setUint32(0, Number(data.ReservedIpAddress), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.ReservedForClient !== undefined) view.setBigUint64(8, data.ReservedForClient === null ? 0n : BigInt(util.toPointer(data.ReservedForClient)), true);
+  if (data?.ReservedForClient !== undefined) view.setBigUint64(8, data.ReservedForClient === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ReservedForClient))), true);
   // 0x10: u8
   if (data?.bAllowedClientTypes !== undefined) view.setUint8(16, Number(data.bAllowedClientTypes));
   // 0x11: pad7
@@ -7892,9 +7892,9 @@ export class DHCP_IP_RESERVATION_V4View {
   // 0x04: pad4
 
   // 0x08: pointer
-  get ReservedForClient(): Uint8Array | Deno.PointerValue | null {
+  get ReservedForClient(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u8
@@ -7912,8 +7912,8 @@ export class DHCP_IP_RESERVATION_V4View {
   // 0x04: pad4
 
   // 0x08: pointer
-  set ReservedForClient(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ReservedForClient(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u8
@@ -7931,7 +7931,7 @@ export interface DHCP_IP_RESERVATION_INFO {
   /** u32 */
   ReservedIpAddress: number;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_BINARY_DATA */
-  ReservedForClient: Uint8Array | Deno.PointerValue | null;
+  ReservedForClient: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   ReservedClientName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
@@ -7951,16 +7951,16 @@ export function allocDHCP_IP_RESERVATION_INFO(data?: Partial<DHCP_IP_RESERVATION
   if (data?.ReservedIpAddress !== undefined) view.setUint32(0, Number(data.ReservedIpAddress), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.ReservedForClient !== undefined) view.setBigUint64(8, data.ReservedForClient === null ? 0n : BigInt(util.toPointer(data.ReservedForClient)), true);
+  if (data?.ReservedForClient !== undefined) view.setBigUint64(8, data.ReservedForClient === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ReservedForClient))), true);
   // 0x10: buffer
   if (data?.ReservedClientName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.ReservedClientName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.ReservedClientDesc !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.ReservedClientDesc);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: u8
   if (data?.bAllowedClientTypes !== undefined) view.setUint8(32, Number(data.bAllowedClientTypes));
@@ -7988,21 +7988,21 @@ export class DHCP_IP_RESERVATION_INFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get ReservedForClient(): Uint8Array | Deno.PointerValue | null {
+  get ReservedForClient(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get ReservedClientName(): Uint8Array | Deno.PointerValue | null {
+  get ReservedClientName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get ReservedClientDesc(): Uint8Array | Deno.PointerValue | null {
+  get ReservedClientDesc(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u8
@@ -8025,20 +8025,20 @@ export class DHCP_IP_RESERVATION_INFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set ReservedForClient(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ReservedForClient(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: buffer
-  set ReservedClientName(value: Uint8Array | Deno.PointerValue | null) {
+  set ReservedClientName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set ReservedClientDesc(value: Uint8Array | Deno.PointerValue | null) {
+  set ReservedClientDesc(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: u8
@@ -8061,7 +8061,7 @@ export interface DHCP_RESERVATION_INFO_ARRAY {
   /** u32 */
   NumElements: number;
   /** ptr */
-  Elements: Deno.PointerValue | Uint8Array | null;
+  Elements: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_RESERVATION_INFO_ARRAY = 16;
@@ -8073,7 +8073,7 @@ export function allocDHCP_RESERVATION_INFO_ARRAY(data?: Partial<DHCP_RESERVATION
   if (data?.NumElements !== undefined) view.setUint32(0, Number(data.NumElements), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(util.toPointer(data.Elements)), true);
+  if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Elements))), true);
   return buf;
 }
 
@@ -8095,9 +8095,9 @@ export class DHCP_RESERVATION_INFO_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Elements(): Uint8Array | Deno.PointerValue | null {
+  get Elements(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -8108,8 +8108,8 @@ export class DHCP_RESERVATION_INFO_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Elements(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Elements(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -8118,15 +8118,15 @@ export class DHCP_RESERVATION_INFO_ARRAYView {
  */
 export interface DHCP_SUBNET_ELEMENT_UNION_V4 {
   /** ptr */
-  IpRange: Deno.PointerValue | Uint8Array | null;
+  IpRange: Deno.PointerValue | Uint8Array;
   /** ptr */
-  SecondaryHost: Deno.PointerValue | Uint8Array | null;
+  SecondaryHost: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ReservedIp: Deno.PointerValue | Uint8Array | null;
+  ReservedIp: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ExcludeIpRange: Deno.PointerValue | Uint8Array | null;
+  ExcludeIpRange: Deno.PointerValue | Uint8Array;
   /** ptr */
-  IpUsedCluster: Deno.PointerValue | Uint8Array | null;
+  IpUsedCluster: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_SUBNET_ELEMENT_UNION_V4 = 40;
@@ -8135,15 +8135,15 @@ export function allocDHCP_SUBNET_ELEMENT_UNION_V4(data?: Partial<DHCP_SUBNET_ELE
   const buf = new Uint8Array(sizeofDHCP_SUBNET_ELEMENT_UNION_V4);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.IpRange !== undefined) view.setBigUint64(0, data.IpRange === null ? 0n : BigInt(util.toPointer(data.IpRange)), true);
+  if (data?.IpRange !== undefined) view.setBigUint64(0, data.IpRange === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.IpRange))), true);
   // 0x08: pointer
-  if (data?.SecondaryHost !== undefined) view.setBigUint64(8, data.SecondaryHost === null ? 0n : BigInt(util.toPointer(data.SecondaryHost)), true);
+  if (data?.SecondaryHost !== undefined) view.setBigUint64(8, data.SecondaryHost === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.SecondaryHost))), true);
   // 0x10: pointer
-  if (data?.ReservedIp !== undefined) view.setBigUint64(16, data.ReservedIp === null ? 0n : BigInt(util.toPointer(data.ReservedIp)), true);
+  if (data?.ReservedIp !== undefined) view.setBigUint64(16, data.ReservedIp === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ReservedIp))), true);
   // 0x18: pointer
-  if (data?.ExcludeIpRange !== undefined) view.setBigUint64(24, data.ExcludeIpRange === null ? 0n : BigInt(util.toPointer(data.ExcludeIpRange)), true);
+  if (data?.ExcludeIpRange !== undefined) view.setBigUint64(24, data.ExcludeIpRange === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ExcludeIpRange))), true);
   // 0x20: pointer
-  if (data?.IpUsedCluster !== undefined) view.setBigUint64(32, data.IpUsedCluster === null ? 0n : BigInt(util.toPointer(data.IpUsedCluster)), true);
+  if (data?.IpUsedCluster !== undefined) view.setBigUint64(32, data.IpUsedCluster === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.IpUsedCluster))), true);
   return buf;
 }
 
@@ -8158,58 +8158,58 @@ export class DHCP_SUBNET_ELEMENT_UNION_V4View {
   }
 
   // 0x00: pointer
-  get IpRange(): Uint8Array | Deno.PointerValue | null {
+  get IpRange(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get SecondaryHost(): Uint8Array | Deno.PointerValue | null {
+  get SecondaryHost(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ReservedIp(): Uint8Array | Deno.PointerValue | null {
+  get ReservedIp(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get ExcludeIpRange(): Uint8Array | Deno.PointerValue | null {
+  get ExcludeIpRange(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get IpUsedCluster(): Uint8Array | Deno.PointerValue | null {
+  get IpUsedCluster(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set IpRange(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set IpRange(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set SecondaryHost(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set SecondaryHost(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ReservedIp(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ReservedIp(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set ExcludeIpRange(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set ExcludeIpRange(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set IpUsedCluster(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set IpUsedCluster(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -8220,7 +8220,7 @@ export interface DHCP_SUBNET_ELEMENT_DATA_V4 {
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_SUBNET_ELEMENT_TYPE */
   ElementType: DHCP_SUBNET_ELEMENT_TYPE;
   /** DHCP_SUBNET_ELEMENT_UNION_V4 */
-  Element: Uint8Array | Deno.PointerValue | null;
+  Element: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDHCP_SUBNET_ELEMENT_DATA_V4 = 16;
@@ -8232,7 +8232,7 @@ export function allocDHCP_SUBNET_ELEMENT_DATA_V4(data?: Partial<DHCP_SUBNET_ELEM
   if (data?.ElementType !== undefined) view.setInt32(0, Number(data.ElementType), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Element !== undefined) view.setBigUint64(8, data.Element === null ? 0n : BigInt(util.toPointer(data.Element)), true);
+  if (data?.Element !== undefined) view.setBigUint64(8, data.Element === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Element))), true);
   return buf;
 }
 
@@ -8254,9 +8254,9 @@ export class DHCP_SUBNET_ELEMENT_DATA_V4View {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Element(): Uint8Array | Deno.PointerValue | null {
+  get Element(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -8267,8 +8267,8 @@ export class DHCP_SUBNET_ELEMENT_DATA_V4View {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Element(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Element(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -8279,7 +8279,7 @@ export interface DHCP_SUBNET_ELEMENT_INFO_ARRAY_V4 {
   /** u32 */
   NumElements: number;
   /** ptr */
-  Elements: Deno.PointerValue | Uint8Array | null;
+  Elements: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_SUBNET_ELEMENT_INFO_ARRAY_V4 = 16;
@@ -8291,7 +8291,7 @@ export function allocDHCP_SUBNET_ELEMENT_INFO_ARRAY_V4(data?: Partial<DHCP_SUBNE
   if (data?.NumElements !== undefined) view.setUint32(0, Number(data.NumElements), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(util.toPointer(data.Elements)), true);
+  if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Elements))), true);
   return buf;
 }
 
@@ -8313,9 +8313,9 @@ export class DHCP_SUBNET_ELEMENT_INFO_ARRAY_V4View {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Elements(): Uint8Array | Deno.PointerValue | null {
+  get Elements(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -8326,8 +8326,8 @@ export class DHCP_SUBNET_ELEMENT_INFO_ARRAY_V4View {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Elements(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Elements(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -8340,15 +8340,15 @@ export interface DHCP_CLIENT_INFO_V4 {
   /** u32 */
   SubnetMask: number;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_BINARY_DATA */
-  ClientHardwareAddress: Uint8Array | Deno.PointerValue | null;
+  ClientHardwareAddress: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   ClientName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
   ClientComment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.Dhcp.DATE_TIME */
-  ClientLeaseExpires: Uint8Array | Deno.PointerValue | null;
+  ClientLeaseExpires: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_HOST_INFO */
-  OwnerHost: Uint8Array | Deno.PointerValue | null;
+  OwnerHost: Uint8Array | Deno.PointerValue;
   /** u8 */
   bClientType: number;
 }
@@ -8363,21 +8363,21 @@ export function allocDHCP_CLIENT_INFO_V4(data?: Partial<DHCP_CLIENT_INFO_V4>): U
   // 0x04: u32
   if (data?.SubnetMask !== undefined) view.setUint32(4, Number(data.SubnetMask), true);
   // 0x08: pointer
-  if (data?.ClientHardwareAddress !== undefined) view.setBigUint64(8, data.ClientHardwareAddress === null ? 0n : BigInt(util.toPointer(data.ClientHardwareAddress)), true);
+  if (data?.ClientHardwareAddress !== undefined) view.setBigUint64(8, data.ClientHardwareAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientHardwareAddress))), true);
   // 0x10: buffer
   if (data?.ClientName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.ClientName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.ClientComment !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.ClientComment);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: pointer
-  if (data?.ClientLeaseExpires !== undefined) view.setBigUint64(32, data.ClientLeaseExpires === null ? 0n : BigInt(util.toPointer(data.ClientLeaseExpires)), true);
+  if (data?.ClientLeaseExpires !== undefined) view.setBigUint64(32, data.ClientLeaseExpires === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientLeaseExpires))), true);
   // 0x28: pointer
-  if (data?.OwnerHost !== undefined) view.setBigUint64(40, data.OwnerHost === null ? 0n : BigInt(util.toPointer(data.OwnerHost)), true);
+  if (data?.OwnerHost !== undefined) view.setBigUint64(40, data.OwnerHost === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OwnerHost))), true);
   // 0x30: u8
   if (data?.bClientType !== undefined) view.setUint8(48, Number(data.bClientType));
   // 0x31: pad7
@@ -8405,33 +8405,33 @@ export class DHCP_CLIENT_INFO_V4View {
   }
 
   // 0x08: pointer
-  get ClientHardwareAddress(): Uint8Array | Deno.PointerValue | null {
+  get ClientHardwareAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get ClientName(): Uint8Array | Deno.PointerValue | null {
+  get ClientName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get ClientComment(): Uint8Array | Deno.PointerValue | null {
+  get ClientComment(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get ClientLeaseExpires(): Uint8Array | Deno.PointerValue | null {
+  get ClientLeaseExpires(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get OwnerHost(): Uint8Array | Deno.PointerValue | null {
+  get OwnerHost(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: u8
@@ -8452,30 +8452,30 @@ export class DHCP_CLIENT_INFO_V4View {
   }
 
   // 0x08: pointer
-  set ClientHardwareAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ClientHardwareAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: buffer
-  set ClientName(value: Uint8Array | Deno.PointerValue | null) {
+  set ClientName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set ClientComment(value: Uint8Array | Deno.PointerValue | null) {
+  set ClientComment(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: pointer
-  set ClientLeaseExpires(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set ClientLeaseExpires(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set OwnerHost(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set OwnerHost(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: u8
@@ -8493,7 +8493,7 @@ export interface DHCP_CLIENT_INFO_ARRAY_V4 {
   /** u32 */
   NumElements: number;
   /** ptr */
-  Clients: Deno.PointerValue | Uint8Array | null;
+  Clients: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_CLIENT_INFO_ARRAY_V4 = 16;
@@ -8505,7 +8505,7 @@ export function allocDHCP_CLIENT_INFO_ARRAY_V4(data?: Partial<DHCP_CLIENT_INFO_A
   if (data?.NumElements !== undefined) view.setUint32(0, Number(data.NumElements), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Clients !== undefined) view.setBigUint64(8, data.Clients === null ? 0n : BigInt(util.toPointer(data.Clients)), true);
+  if (data?.Clients !== undefined) view.setBigUint64(8, data.Clients === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Clients))), true);
   return buf;
 }
 
@@ -8527,9 +8527,9 @@ export class DHCP_CLIENT_INFO_ARRAY_V4View {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Clients(): Uint8Array | Deno.PointerValue | null {
+  get Clients(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -8540,8 +8540,8 @@ export class DHCP_CLIENT_INFO_ARRAY_V4View {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Clients(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Clients(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -8588,17 +8588,17 @@ export function allocDHCP_SERVER_CONFIG_INFO_V4(data?: Partial<DHCP_SERVER_CONFI
   // 0x08: buffer
   if (data?.DatabaseName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.DatabaseName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.DatabasePath !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.DatabasePath);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.BackupPath !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.BackupPath);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: u32
   if (data?.BackupInterval !== undefined) view.setUint32(32, Number(data.BackupInterval), true);
@@ -8618,7 +8618,7 @@ export function allocDHCP_SERVER_CONFIG_INFO_V4(data?: Partial<DHCP_SERVER_CONFI
   // 0x40: buffer
   if (data?.wszBootTableString !== undefined) {
     (buf as any)._f64 = util.pwstrToFfi(data.wszBootTableString);
-    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
+    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f64))), true);
   }
   // 0x48: i32
   if (data?.fAuditLog !== undefined) view.setInt32(72, Number(data.fAuditLog), true);
@@ -8644,21 +8644,21 @@ export class DHCP_SERVER_CONFIG_INFO_V4View {
   // 0x04: pad4
 
   // 0x08: buffer
-  get DatabaseName(): Uint8Array | Deno.PointerValue | null {
+  get DatabaseName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get DatabasePath(): Uint8Array | Deno.PointerValue | null {
+  get DatabasePath(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get BackupPath(): Uint8Array | Deno.PointerValue | null {
+  get BackupPath(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -8699,9 +8699,9 @@ export class DHCP_SERVER_CONFIG_INFO_V4View {
   // 0x3c: pad4
 
   // 0x40: buffer
-  get wszBootTableString(): Uint8Array | Deno.PointerValue | null {
+  get wszBootTableString(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: i32
@@ -8719,21 +8719,21 @@ export class DHCP_SERVER_CONFIG_INFO_V4View {
   // 0x04: pad4
 
   // 0x08: buffer
-  set DatabaseName(value: Uint8Array | Deno.PointerValue | null) {
+  set DatabaseName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set DatabasePath(value: Uint8Array | Deno.PointerValue | null) {
+  set DatabasePath(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set BackupPath(value: Uint8Array | Deno.PointerValue | null) {
+  set BackupPath(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: u32
@@ -8774,9 +8774,9 @@ export class DHCP_SERVER_CONFIG_INFO_V4View {
   // 0x3c: pad4
 
   // 0x40: buffer
-  set wszBootTableString(value: Uint8Array | Deno.PointerValue | null) {
+  set wszBootTableString(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f64 = value;
-    this.view.setBigUint64(64, BigInt(util.toPointer((this.buf as any)._f64)), true);
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f64))), true);
   }
 
   // 0x48: i32
@@ -8836,17 +8836,17 @@ export function allocDHCP_SERVER_CONFIG_INFO_VQ(data?: Partial<DHCP_SERVER_CONFI
   // 0x08: buffer
   if (data?.DatabaseName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.DatabaseName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.DatabasePath !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.DatabasePath);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.BackupPath !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.BackupPath);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: u32
   if (data?.BackupInterval !== undefined) view.setUint32(32, Number(data.BackupInterval), true);
@@ -8866,7 +8866,7 @@ export function allocDHCP_SERVER_CONFIG_INFO_VQ(data?: Partial<DHCP_SERVER_CONFI
   // 0x40: buffer
   if (data?.wszBootTableString !== undefined) {
     (buf as any)._f64 = util.pwstrToFfi(data.wszBootTableString);
-    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
+    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f64))), true);
   }
   // 0x48: i32
   if (data?.fAuditLog !== undefined) view.setInt32(72, Number(data.fAuditLog), true);
@@ -8897,21 +8897,21 @@ export class DHCP_SERVER_CONFIG_INFO_VQView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get DatabaseName(): Uint8Array | Deno.PointerValue | null {
+  get DatabaseName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get DatabasePath(): Uint8Array | Deno.PointerValue | null {
+  get DatabasePath(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get BackupPath(): Uint8Array | Deno.PointerValue | null {
+  get BackupPath(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -8952,9 +8952,9 @@ export class DHCP_SERVER_CONFIG_INFO_VQView {
   // 0x3c: pad4
 
   // 0x40: buffer
-  get wszBootTableString(): Uint8Array | Deno.PointerValue | null {
+  get wszBootTableString(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: i32
@@ -8985,21 +8985,21 @@ export class DHCP_SERVER_CONFIG_INFO_VQView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set DatabaseName(value: Uint8Array | Deno.PointerValue | null) {
+  set DatabaseName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set DatabasePath(value: Uint8Array | Deno.PointerValue | null) {
+  set DatabasePath(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set BackupPath(value: Uint8Array | Deno.PointerValue | null) {
+  set BackupPath(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: u32
@@ -9040,9 +9040,9 @@ export class DHCP_SERVER_CONFIG_INFO_VQView {
   // 0x3c: pad4
 
   // 0x40: buffer
-  set wszBootTableString(value: Uint8Array | Deno.PointerValue | null) {
+  set wszBootTableString(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f64 = value;
-    this.view.setBigUint64(64, BigInt(util.toPointer((this.buf as any)._f64)), true);
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f64))), true);
   }
 
   // 0x48: i32
@@ -9251,7 +9251,7 @@ export function allocDHCP_SUPER_SCOPE_TABLE_ENTRY(data?: Partial<DHCP_SUPER_SCOP
   // 0x10: buffer
   if (data?.SuperScopeName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.SuperScopeName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   return buf;
 }
@@ -9284,9 +9284,9 @@ export class DHCP_SUPER_SCOPE_TABLE_ENTRYView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  get SuperScopeName(): Uint8Array | Deno.PointerValue | null {
+  get SuperScopeName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -9307,9 +9307,9 @@ export class DHCP_SUPER_SCOPE_TABLE_ENTRYView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  set SuperScopeName(value: Uint8Array | Deno.PointerValue | null) {
+  set SuperScopeName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 }
 
@@ -9320,7 +9320,7 @@ export interface DHCP_SUPER_SCOPE_TABLE {
   /** u32 */
   cEntries: number;
   /** ptr */
-  pEntries: Deno.PointerValue | Uint8Array | null;
+  pEntries: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_SUPER_SCOPE_TABLE = 16;
@@ -9332,7 +9332,7 @@ export function allocDHCP_SUPER_SCOPE_TABLE(data?: Partial<DHCP_SUPER_SCOPE_TABL
   if (data?.cEntries !== undefined) view.setUint32(0, Number(data.cEntries), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pEntries !== undefined) view.setBigUint64(8, data.pEntries === null ? 0n : BigInt(util.toPointer(data.pEntries)), true);
+  if (data?.pEntries !== undefined) view.setBigUint64(8, data.pEntries === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pEntries))), true);
   return buf;
 }
 
@@ -9354,9 +9354,9 @@ export class DHCP_SUPER_SCOPE_TABLEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pEntries(): Uint8Array | Deno.PointerValue | null {
+  get pEntries(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -9367,8 +9367,8 @@ export class DHCP_SUPER_SCOPE_TABLEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pEntries(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pEntries(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -9381,15 +9381,15 @@ export interface DHCP_CLIENT_INFO_V5 {
   /** u32 */
   SubnetMask: number;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_BINARY_DATA */
-  ClientHardwareAddress: Uint8Array | Deno.PointerValue | null;
+  ClientHardwareAddress: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   ClientName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
   ClientComment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.Dhcp.DATE_TIME */
-  ClientLeaseExpires: Uint8Array | Deno.PointerValue | null;
+  ClientLeaseExpires: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_HOST_INFO */
-  OwnerHost: Uint8Array | Deno.PointerValue | null;
+  OwnerHost: Uint8Array | Deno.PointerValue;
   /** u8 */
   bClientType: number;
   /** u8 */
@@ -9406,21 +9406,21 @@ export function allocDHCP_CLIENT_INFO_V5(data?: Partial<DHCP_CLIENT_INFO_V5>): U
   // 0x04: u32
   if (data?.SubnetMask !== undefined) view.setUint32(4, Number(data.SubnetMask), true);
   // 0x08: pointer
-  if (data?.ClientHardwareAddress !== undefined) view.setBigUint64(8, data.ClientHardwareAddress === null ? 0n : BigInt(util.toPointer(data.ClientHardwareAddress)), true);
+  if (data?.ClientHardwareAddress !== undefined) view.setBigUint64(8, data.ClientHardwareAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientHardwareAddress))), true);
   // 0x10: buffer
   if (data?.ClientName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.ClientName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.ClientComment !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.ClientComment);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: pointer
-  if (data?.ClientLeaseExpires !== undefined) view.setBigUint64(32, data.ClientLeaseExpires === null ? 0n : BigInt(util.toPointer(data.ClientLeaseExpires)), true);
+  if (data?.ClientLeaseExpires !== undefined) view.setBigUint64(32, data.ClientLeaseExpires === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientLeaseExpires))), true);
   // 0x28: pointer
-  if (data?.OwnerHost !== undefined) view.setBigUint64(40, data.OwnerHost === null ? 0n : BigInt(util.toPointer(data.OwnerHost)), true);
+  if (data?.OwnerHost !== undefined) view.setBigUint64(40, data.OwnerHost === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OwnerHost))), true);
   // 0x30: u8
   if (data?.bClientType !== undefined) view.setUint8(48, Number(data.bClientType));
   // 0x31: u8
@@ -9450,33 +9450,33 @@ export class DHCP_CLIENT_INFO_V5View {
   }
 
   // 0x08: pointer
-  get ClientHardwareAddress(): Uint8Array | Deno.PointerValue | null {
+  get ClientHardwareAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get ClientName(): Uint8Array | Deno.PointerValue | null {
+  get ClientName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get ClientComment(): Uint8Array | Deno.PointerValue | null {
+  get ClientComment(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get ClientLeaseExpires(): Uint8Array | Deno.PointerValue | null {
+  get ClientLeaseExpires(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get OwnerHost(): Uint8Array | Deno.PointerValue | null {
+  get OwnerHost(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: u8
@@ -9502,30 +9502,30 @@ export class DHCP_CLIENT_INFO_V5View {
   }
 
   // 0x08: pointer
-  set ClientHardwareAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ClientHardwareAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: buffer
-  set ClientName(value: Uint8Array | Deno.PointerValue | null) {
+  set ClientName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set ClientComment(value: Uint8Array | Deno.PointerValue | null) {
+  set ClientComment(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: pointer
-  set ClientLeaseExpires(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set ClientLeaseExpires(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set OwnerHost(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set OwnerHost(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: u8
@@ -9548,7 +9548,7 @@ export interface DHCP_CLIENT_INFO_ARRAY_V5 {
   /** u32 */
   NumElements: number;
   /** ptr */
-  Clients: Deno.PointerValue | Uint8Array | null;
+  Clients: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_CLIENT_INFO_ARRAY_V5 = 16;
@@ -9560,7 +9560,7 @@ export function allocDHCP_CLIENT_INFO_ARRAY_V5(data?: Partial<DHCP_CLIENT_INFO_A
   if (data?.NumElements !== undefined) view.setUint32(0, Number(data.NumElements), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Clients !== undefined) view.setBigUint64(8, data.Clients === null ? 0n : BigInt(util.toPointer(data.Clients)), true);
+  if (data?.Clients !== undefined) view.setBigUint64(8, data.Clients === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Clients))), true);
   return buf;
 }
 
@@ -9582,9 +9582,9 @@ export class DHCP_CLIENT_INFO_ARRAY_V5View {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Clients(): Uint8Array | Deno.PointerValue | null {
+  get Clients(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -9595,8 +9595,8 @@ export class DHCP_CLIENT_INFO_ARRAY_V5View {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Clients(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Clients(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -9607,11 +9607,11 @@ export interface DHCP_ALL_OPTIONS {
   /** u32 */
   Flags: number;
   /** ptr */
-  NonVendorOptions: Deno.PointerValue | Uint8Array | null;
+  NonVendorOptions: Deno.PointerValue | Uint8Array;
   /** u32 */
   NumVendorOptions: number;
   /** ptr */
-  VendorOptions: Deno.PointerValue | Uint8Array | null;
+  VendorOptions: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_ALL_OPTIONS = 32;
@@ -9623,12 +9623,12 @@ export function allocDHCP_ALL_OPTIONS(data?: Partial<DHCP_ALL_OPTIONS>): Uint8Ar
   if (data?.Flags !== undefined) view.setUint32(0, Number(data.Flags), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.NonVendorOptions !== undefined) view.setBigUint64(8, data.NonVendorOptions === null ? 0n : BigInt(util.toPointer(data.NonVendorOptions)), true);
+  if (data?.NonVendorOptions !== undefined) view.setBigUint64(8, data.NonVendorOptions === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.NonVendorOptions))), true);
   // 0x10: u32
   if (data?.NumVendorOptions !== undefined) view.setUint32(16, Number(data.NumVendorOptions), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.VendorOptions !== undefined) view.setBigUint64(24, data.VendorOptions === null ? 0n : BigInt(util.toPointer(data.VendorOptions)), true);
+  if (data?.VendorOptions !== undefined) view.setBigUint64(24, data.VendorOptions === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.VendorOptions))), true);
   return buf;
 }
 
@@ -9650,9 +9650,9 @@ export class DHCP_ALL_OPTIONSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get NonVendorOptions(): Uint8Array | Deno.PointerValue | null {
+  get NonVendorOptions(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -9663,9 +9663,9 @@ export class DHCP_ALL_OPTIONSView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get VendorOptions(): Uint8Array | Deno.PointerValue | null {
+  get VendorOptions(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -9676,8 +9676,8 @@ export class DHCP_ALL_OPTIONSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set NonVendorOptions(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set NonVendorOptions(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -9688,8 +9688,8 @@ export class DHCP_ALL_OPTIONSView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set VendorOptions(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set VendorOptions(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -9702,7 +9702,7 @@ export interface DHCP_ALL_OPTION_VALUES {
   /** u32 */
   NumElements: number;
   /** ptr */
-  Options: Deno.PointerValue | Uint8Array | null;
+  Options: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_ALL_OPTION_VALUES = 16;
@@ -9715,7 +9715,7 @@ export function allocDHCP_ALL_OPTION_VALUES(data?: Partial<DHCP_ALL_OPTION_VALUE
   // 0x04: u32
   if (data?.NumElements !== undefined) view.setUint32(4, Number(data.NumElements), true);
   // 0x08: pointer
-  if (data?.Options !== undefined) view.setBigUint64(8, data.Options === null ? 0n : BigInt(util.toPointer(data.Options)), true);
+  if (data?.Options !== undefined) view.setBigUint64(8, data.Options === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Options))), true);
   return buf;
 }
 
@@ -9740,9 +9740,9 @@ export class DHCP_ALL_OPTION_VALUESView {
   }
 
   // 0x08: pointer
-  get Options(): Uint8Array | Deno.PointerValue | null {
+  get Options(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -9756,8 +9756,8 @@ export class DHCP_ALL_OPTION_VALUESView {
   }
 
   // 0x08: pointer
-  set Options(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Options(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -9770,7 +9770,7 @@ export interface DHCP_ALL_OPTION_VALUES_PB {
   /** u32 */
   NumElements: number;
   /** ptr */
-  Options: Deno.PointerValue | Uint8Array | null;
+  Options: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_ALL_OPTION_VALUES_PB = 16;
@@ -9783,7 +9783,7 @@ export function allocDHCP_ALL_OPTION_VALUES_PB(data?: Partial<DHCP_ALL_OPTION_VA
   // 0x04: u32
   if (data?.NumElements !== undefined) view.setUint32(4, Number(data.NumElements), true);
   // 0x08: pointer
-  if (data?.Options !== undefined) view.setBigUint64(8, data.Options === null ? 0n : BigInt(util.toPointer(data.Options)), true);
+  if (data?.Options !== undefined) view.setBigUint64(8, data.Options === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Options))), true);
   return buf;
 }
 
@@ -9808,9 +9808,9 @@ export class DHCP_ALL_OPTION_VALUES_PBView {
   }
 
   // 0x08: pointer
-  get Options(): Uint8Array | Deno.PointerValue | null {
+  get Options(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -9824,8 +9824,8 @@ export class DHCP_ALL_OPTION_VALUES_PBView {
   }
 
   // 0x08: pointer
-  set Options(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Options(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -9860,7 +9860,7 @@ export function allocDHCPDS_SERVER(data?: Partial<DHCPDS_SERVER>): Uint8Array {
   // 0x08: buffer
   if (data?.ServerName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.ServerName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: u32
   if (data?.ServerAddress !== undefined) view.setUint32(16, Number(data.ServerAddress), true);
@@ -9872,7 +9872,7 @@ export function allocDHCPDS_SERVER(data?: Partial<DHCPDS_SERVER>): Uint8Array {
   // 0x20: buffer
   if (data?.DsLocation !== undefined) {
     (buf as any)._f32 = util.pwstrToFfi(data.DsLocation);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f32))), true);
   }
   // 0x28: u32
   if (data?.DsLocType !== undefined) view.setUint32(40, Number(data.DsLocType), true);
@@ -9898,9 +9898,9 @@ export class DHCPDS_SERVERView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get ServerName(): Uint8Array | Deno.PointerValue | null {
+  get ServerName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -9921,9 +9921,9 @@ export class DHCPDS_SERVERView {
   // 0x1c: pad4
 
   // 0x20: buffer
-  get DsLocation(): Uint8Array | Deno.PointerValue | null {
+  get DsLocation(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -9941,9 +9941,9 @@ export class DHCPDS_SERVERView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set ServerName(value: Uint8Array | Deno.PointerValue | null) {
+  set ServerName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: u32
@@ -9964,9 +9964,9 @@ export class DHCPDS_SERVERView {
   // 0x1c: pad4
 
   // 0x20: buffer
-  set DsLocation(value: Uint8Array | Deno.PointerValue | null) {
+  set DsLocation(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f32))), true);
   }
 
   // 0x28: u32
@@ -9986,7 +9986,7 @@ export interface DHCPDS_SERVERS {
   /** u32 */
   NumElements: number;
   /** ptr */
-  Servers: Deno.PointerValue | Uint8Array | null;
+  Servers: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCPDS_SERVERS = 16;
@@ -9999,7 +9999,7 @@ export function allocDHCPDS_SERVERS(data?: Partial<DHCPDS_SERVERS>): Uint8Array 
   // 0x04: u32
   if (data?.NumElements !== undefined) view.setUint32(4, Number(data.NumElements), true);
   // 0x08: pointer
-  if (data?.Servers !== undefined) view.setBigUint64(8, data.Servers === null ? 0n : BigInt(util.toPointer(data.Servers)), true);
+  if (data?.Servers !== undefined) view.setBigUint64(8, data.Servers === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Servers))), true);
   return buf;
 }
 
@@ -10024,9 +10024,9 @@ export class DHCPDS_SERVERSView {
   }
 
   // 0x08: pointer
-  get Servers(): Uint8Array | Deno.PointerValue | null {
+  get Servers(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -10040,8 +10040,8 @@ export class DHCPDS_SERVERSView {
   }
 
   // 0x08: pointer
-  set Servers(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Servers(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -10103,9 +10103,9 @@ export class _Anonymous_e__StructView {
  */
 export interface _Anonymous_e__Union {
   /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** array */
-  X: Deno.PointerValue | null;
+  X: Deno.PointerValue;
 }
 
 export const sizeof_Anonymous_e__Union = 16;
@@ -10114,9 +10114,9 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   const buf = new Uint8Array(sizeof_Anonymous_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x08: pointer
-  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.X))), true);
   return buf;
 }
 
@@ -10131,25 +10131,25 @@ export class _Anonymous_e__UnionView {
   }
 
   // 0x00: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get X(): Uint8Array | Deno.PointerValue | null {
+  get X(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set X(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set X(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -10162,7 +10162,7 @@ export interface DHCP_ATTRIB {
   /** u32 */
   DhcpAttribType: number;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDHCP_ATTRIB = 16;
@@ -10175,7 +10175,7 @@ export function allocDHCP_ATTRIB(data?: Partial<DHCP_ATTRIB>): Uint8Array {
   // 0x04: u32
   if (data?.DhcpAttribType !== undefined) view.setUint32(4, Number(data.DhcpAttribType), true);
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -10200,9 +10200,9 @@ export class DHCP_ATTRIBView {
   }
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -10216,8 +10216,8 @@ export class DHCP_ATTRIBView {
   }
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -10228,7 +10228,7 @@ export interface DHCP_ATTRIB_ARRAY {
   /** u32 */
   NumElements: number;
   /** ptr */
-  DhcpAttribs: Deno.PointerValue | Uint8Array | null;
+  DhcpAttribs: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_ATTRIB_ARRAY = 16;
@@ -10240,7 +10240,7 @@ export function allocDHCP_ATTRIB_ARRAY(data?: Partial<DHCP_ATTRIB_ARRAY>): Uint8
   if (data?.NumElements !== undefined) view.setUint32(0, Number(data.NumElements), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.DhcpAttribs !== undefined) view.setBigUint64(8, data.DhcpAttribs === null ? 0n : BigInt(util.toPointer(data.DhcpAttribs)), true);
+  if (data?.DhcpAttribs !== undefined) view.setBigUint64(8, data.DhcpAttribs === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DhcpAttribs))), true);
   return buf;
 }
 
@@ -10262,9 +10262,9 @@ export class DHCP_ATTRIB_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get DhcpAttribs(): Uint8Array | Deno.PointerValue | null {
+  get DhcpAttribs(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -10275,8 +10275,8 @@ export class DHCP_ATTRIB_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set DhcpAttribs(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set DhcpAttribs(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -10366,15 +10366,15 @@ export class DHCP_BOOTP_IP_RANGEView {
  */
 export interface _DHCP_SUBNET_ELEMENT_UNION_V5 {
   /** ptr */
-  IpRange: Deno.PointerValue | Uint8Array | null;
+  IpRange: Deno.PointerValue | Uint8Array;
   /** ptr */
-  SecondaryHost: Deno.PointerValue | Uint8Array | null;
+  SecondaryHost: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ReservedIp: Deno.PointerValue | Uint8Array | null;
+  ReservedIp: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ExcludeIpRange: Deno.PointerValue | Uint8Array | null;
+  ExcludeIpRange: Deno.PointerValue | Uint8Array;
   /** ptr */
-  IpUsedCluster: Deno.PointerValue | Uint8Array | null;
+  IpUsedCluster: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeof_DHCP_SUBNET_ELEMENT_UNION_V5 = 40;
@@ -10383,15 +10383,15 @@ export function alloc_DHCP_SUBNET_ELEMENT_UNION_V5(data?: Partial<_DHCP_SUBNET_E
   const buf = new Uint8Array(sizeof_DHCP_SUBNET_ELEMENT_UNION_V5);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.IpRange !== undefined) view.setBigUint64(0, data.IpRange === null ? 0n : BigInt(util.toPointer(data.IpRange)), true);
+  if (data?.IpRange !== undefined) view.setBigUint64(0, data.IpRange === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.IpRange))), true);
   // 0x08: pointer
-  if (data?.SecondaryHost !== undefined) view.setBigUint64(8, data.SecondaryHost === null ? 0n : BigInt(util.toPointer(data.SecondaryHost)), true);
+  if (data?.SecondaryHost !== undefined) view.setBigUint64(8, data.SecondaryHost === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.SecondaryHost))), true);
   // 0x10: pointer
-  if (data?.ReservedIp !== undefined) view.setBigUint64(16, data.ReservedIp === null ? 0n : BigInt(util.toPointer(data.ReservedIp)), true);
+  if (data?.ReservedIp !== undefined) view.setBigUint64(16, data.ReservedIp === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ReservedIp))), true);
   // 0x18: pointer
-  if (data?.ExcludeIpRange !== undefined) view.setBigUint64(24, data.ExcludeIpRange === null ? 0n : BigInt(util.toPointer(data.ExcludeIpRange)), true);
+  if (data?.ExcludeIpRange !== undefined) view.setBigUint64(24, data.ExcludeIpRange === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ExcludeIpRange))), true);
   // 0x20: pointer
-  if (data?.IpUsedCluster !== undefined) view.setBigUint64(32, data.IpUsedCluster === null ? 0n : BigInt(util.toPointer(data.IpUsedCluster)), true);
+  if (data?.IpUsedCluster !== undefined) view.setBigUint64(32, data.IpUsedCluster === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.IpUsedCluster))), true);
   return buf;
 }
 
@@ -10406,58 +10406,58 @@ export class _DHCP_SUBNET_ELEMENT_UNION_V5View {
   }
 
   // 0x00: pointer
-  get IpRange(): Uint8Array | Deno.PointerValue | null {
+  get IpRange(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get SecondaryHost(): Uint8Array | Deno.PointerValue | null {
+  get SecondaryHost(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ReservedIp(): Uint8Array | Deno.PointerValue | null {
+  get ReservedIp(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get ExcludeIpRange(): Uint8Array | Deno.PointerValue | null {
+  get ExcludeIpRange(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get IpUsedCluster(): Uint8Array | Deno.PointerValue | null {
+  get IpUsedCluster(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set IpRange(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set IpRange(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set SecondaryHost(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set SecondaryHost(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ReservedIp(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ReservedIp(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set ExcludeIpRange(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set ExcludeIpRange(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set IpUsedCluster(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set IpUsedCluster(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -10468,7 +10468,7 @@ export interface DHCP_SUBNET_ELEMENT_DATA_V5 {
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_SUBNET_ELEMENT_TYPE */
   ElementType: DHCP_SUBNET_ELEMENT_TYPE;
   /** _DHCP_SUBNET_ELEMENT_UNION_V5 */
-  Element: Uint8Array | Deno.PointerValue | null;
+  Element: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDHCP_SUBNET_ELEMENT_DATA_V5 = 16;
@@ -10480,7 +10480,7 @@ export function allocDHCP_SUBNET_ELEMENT_DATA_V5(data?: Partial<DHCP_SUBNET_ELEM
   if (data?.ElementType !== undefined) view.setInt32(0, Number(data.ElementType), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Element !== undefined) view.setBigUint64(8, data.Element === null ? 0n : BigInt(util.toPointer(data.Element)), true);
+  if (data?.Element !== undefined) view.setBigUint64(8, data.Element === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Element))), true);
   return buf;
 }
 
@@ -10502,9 +10502,9 @@ export class DHCP_SUBNET_ELEMENT_DATA_V5View {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Element(): Uint8Array | Deno.PointerValue | null {
+  get Element(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -10515,8 +10515,8 @@ export class DHCP_SUBNET_ELEMENT_DATA_V5View {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Element(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Element(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -10527,7 +10527,7 @@ export interface DHCP_SUBNET_ELEMENT_INFO_ARRAY_V5 {
   /** u32 */
   NumElements: number;
   /** ptr */
-  Elements: Deno.PointerValue | Uint8Array | null;
+  Elements: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_SUBNET_ELEMENT_INFO_ARRAY_V5 = 16;
@@ -10539,7 +10539,7 @@ export function allocDHCP_SUBNET_ELEMENT_INFO_ARRAY_V5(data?: Partial<DHCP_SUBNE
   if (data?.NumElements !== undefined) view.setUint32(0, Number(data.NumElements), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(util.toPointer(data.Elements)), true);
+  if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Elements))), true);
   return buf;
 }
 
@@ -10561,9 +10561,9 @@ export class DHCP_SUBNET_ELEMENT_INFO_ARRAY_V5View {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Elements(): Uint8Array | Deno.PointerValue | null {
+  get Elements(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -10574,8 +10574,8 @@ export class DHCP_SUBNET_ELEMENT_INFO_ARRAY_V5View {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Elements(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Elements(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -10892,7 +10892,7 @@ export interface DHCP_BIND_ELEMENT {
   /** u32 */
   IfIdSize: number;
   /** ptr */
-  IfId: Deno.PointerValue | Uint8Array | null;
+  IfId: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_BIND_ELEMENT = 40;
@@ -10911,13 +10911,13 @@ export function allocDHCP_BIND_ELEMENT(data?: Partial<DHCP_BIND_ELEMENT>): Uint8
   // 0x10: buffer
   if (data?.IfDescription !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.IfDescription);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: u32
   if (data?.IfIdSize !== undefined) view.setUint32(24, Number(data.IfIdSize), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.IfId !== undefined) view.setBigUint64(32, data.IfId === null ? 0n : BigInt(util.toPointer(data.IfId)), true);
+  if (data?.IfId !== undefined) view.setBigUint64(32, data.IfId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.IfId))), true);
   return buf;
 }
 
@@ -10952,9 +10952,9 @@ export class DHCP_BIND_ELEMENTView {
   }
 
   // 0x10: buffer
-  get IfDescription(): Uint8Array | Deno.PointerValue | null {
+  get IfDescription(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -10965,9 +10965,9 @@ export class DHCP_BIND_ELEMENTView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get IfId(): Uint8Array | Deno.PointerValue | null {
+  get IfId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -10991,9 +10991,9 @@ export class DHCP_BIND_ELEMENTView {
   }
 
   // 0x10: buffer
-  set IfDescription(value: Uint8Array | Deno.PointerValue | null) {
+  set IfDescription(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: u32
@@ -11004,8 +11004,8 @@ export class DHCP_BIND_ELEMENTView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set IfId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set IfId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -11016,7 +11016,7 @@ export interface DHCP_BIND_ELEMENT_ARRAY {
   /** u32 */
   NumElements: number;
   /** ptr */
-  Elements: Deno.PointerValue | Uint8Array | null;
+  Elements: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_BIND_ELEMENT_ARRAY = 16;
@@ -11028,7 +11028,7 @@ export function allocDHCP_BIND_ELEMENT_ARRAY(data?: Partial<DHCP_BIND_ELEMENT_AR
   if (data?.NumElements !== undefined) view.setUint32(0, Number(data.NumElements), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(util.toPointer(data.Elements)), true);
+  if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Elements))), true);
   return buf;
 }
 
@@ -11050,9 +11050,9 @@ export class DHCP_BIND_ELEMENT_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Elements(): Uint8Array | Deno.PointerValue | null {
+  get Elements(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -11063,8 +11063,8 @@ export class DHCP_BIND_ELEMENT_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Elements(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Elements(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -11077,9 +11077,9 @@ export interface DHCPV6_BIND_ELEMENT {
   /** Windows.Win32.Foundation.BOOL */
   fBoundToDHCPServer: boolean;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */
-  AdapterPrimaryAddress: Uint8Array | Deno.PointerValue | null;
+  AdapterPrimaryAddress: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */
-  AdapterSubnetAddress: Uint8Array | Deno.PointerValue | null;
+  AdapterSubnetAddress: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   IfDescription: string | null | Uint8Array | Uint16Array;
   /** u32 */
@@ -11087,7 +11087,7 @@ export interface DHCPV6_BIND_ELEMENT {
   /** u32 */
   IfIdSize: number;
   /** ptr */
-  IfId: Deno.PointerValue | Uint8Array | null;
+  IfId: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCPV6_BIND_ELEMENT = 48;
@@ -11100,20 +11100,20 @@ export function allocDHCPV6_BIND_ELEMENT(data?: Partial<DHCPV6_BIND_ELEMENT>): U
   // 0x04: i32
   if (data?.fBoundToDHCPServer !== undefined) view.setInt32(4, Number(data.fBoundToDHCPServer), true);
   // 0x08: pointer
-  if (data?.AdapterPrimaryAddress !== undefined) view.setBigUint64(8, data.AdapterPrimaryAddress === null ? 0n : BigInt(util.toPointer(data.AdapterPrimaryAddress)), true);
+  if (data?.AdapterPrimaryAddress !== undefined) view.setBigUint64(8, data.AdapterPrimaryAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.AdapterPrimaryAddress))), true);
   // 0x10: pointer
-  if (data?.AdapterSubnetAddress !== undefined) view.setBigUint64(16, data.AdapterSubnetAddress === null ? 0n : BigInt(util.toPointer(data.AdapterSubnetAddress)), true);
+  if (data?.AdapterSubnetAddress !== undefined) view.setBigUint64(16, data.AdapterSubnetAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.AdapterSubnetAddress))), true);
   // 0x18: buffer
   if (data?.IfDescription !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.IfDescription);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: u32
   if (data?.IpV6IfIndex !== undefined) view.setUint32(32, Number(data.IpV6IfIndex), true);
   // 0x24: u32
   if (data?.IfIdSize !== undefined) view.setUint32(36, Number(data.IfIdSize), true);
   // 0x28: pointer
-  if (data?.IfId !== undefined) view.setBigUint64(40, data.IfId === null ? 0n : BigInt(util.toPointer(data.IfId)), true);
+  if (data?.IfId !== undefined) view.setBigUint64(40, data.IfId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.IfId))), true);
   return buf;
 }
 
@@ -11138,21 +11138,21 @@ export class DHCPV6_BIND_ELEMENTView {
   }
 
   // 0x08: pointer
-  get AdapterPrimaryAddress(): Uint8Array | Deno.PointerValue | null {
+  get AdapterPrimaryAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get AdapterSubnetAddress(): Uint8Array | Deno.PointerValue | null {
+  get AdapterSubnetAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get IfDescription(): Uint8Array | Deno.PointerValue | null {
+  get IfDescription(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -11166,9 +11166,9 @@ export class DHCPV6_BIND_ELEMENTView {
   }
 
   // 0x28: pointer
-  get IfId(): Uint8Array | Deno.PointerValue | null {
+  get IfId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -11182,19 +11182,19 @@ export class DHCPV6_BIND_ELEMENTView {
   }
 
   // 0x08: pointer
-  set AdapterPrimaryAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set AdapterPrimaryAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set AdapterSubnetAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set AdapterSubnetAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: buffer
-  set IfDescription(value: Uint8Array | Deno.PointerValue | null) {
+  set IfDescription(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: u32
@@ -11208,8 +11208,8 @@ export class DHCPV6_BIND_ELEMENTView {
   }
 
   // 0x28: pointer
-  set IfId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set IfId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -11220,7 +11220,7 @@ export interface DHCPV6_BIND_ELEMENT_ARRAY {
   /** u32 */
   NumElements: number;
   /** ptr */
-  Elements: Deno.PointerValue | Uint8Array | null;
+  Elements: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCPV6_BIND_ELEMENT_ARRAY = 16;
@@ -11232,7 +11232,7 @@ export function allocDHCPV6_BIND_ELEMENT_ARRAY(data?: Partial<DHCPV6_BIND_ELEMEN
   if (data?.NumElements !== undefined) view.setUint32(0, Number(data.NumElements), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(util.toPointer(data.Elements)), true);
+  if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Elements))), true);
   return buf;
 }
 
@@ -11254,9 +11254,9 @@ export class DHCPV6_BIND_ELEMENT_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Elements(): Uint8Array | Deno.PointerValue | null {
+  get Elements(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -11267,8 +11267,8 @@ export class DHCPV6_BIND_ELEMENT_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Elements(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Elements(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -11277,9 +11277,9 @@ export class DHCPV6_BIND_ELEMENT_ARRAYView {
  */
 export interface DHCP_IP_RANGE_V6 {
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */
-  StartAddress: Uint8Array | Deno.PointerValue | null;
+  StartAddress: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */
-  EndAddress: Uint8Array | Deno.PointerValue | null;
+  EndAddress: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDHCP_IP_RANGE_V6 = 16;
@@ -11288,9 +11288,9 @@ export function allocDHCP_IP_RANGE_V6(data?: Partial<DHCP_IP_RANGE_V6>): Uint8Ar
   const buf = new Uint8Array(sizeofDHCP_IP_RANGE_V6);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.StartAddress !== undefined) view.setBigUint64(0, data.StartAddress === null ? 0n : BigInt(util.toPointer(data.StartAddress)), true);
+  if (data?.StartAddress !== undefined) view.setBigUint64(0, data.StartAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.StartAddress))), true);
   // 0x08: pointer
-  if (data?.EndAddress !== undefined) view.setBigUint64(8, data.EndAddress === null ? 0n : BigInt(util.toPointer(data.EndAddress)), true);
+  if (data?.EndAddress !== undefined) view.setBigUint64(8, data.EndAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.EndAddress))), true);
   return buf;
 }
 
@@ -11305,25 +11305,25 @@ export class DHCP_IP_RANGE_V6View {
   }
 
   // 0x00: pointer
-  get StartAddress(): Uint8Array | Deno.PointerValue | null {
+  get StartAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get EndAddress(): Uint8Array | Deno.PointerValue | null {
+  get EndAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set StartAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set StartAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set EndAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set EndAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -11332,7 +11332,7 @@ export class DHCP_IP_RANGE_V6View {
  */
 export interface DHCP_HOST_INFO_V6 {
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */
-  IpAddress: Uint8Array | Deno.PointerValue | null;
+  IpAddress: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   NetBiosName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
@@ -11345,16 +11345,16 @@ export function allocDHCP_HOST_INFO_V6(data?: Partial<DHCP_HOST_INFO_V6>): Uint8
   const buf = new Uint8Array(sizeofDHCP_HOST_INFO_V6);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.IpAddress !== undefined) view.setBigUint64(0, data.IpAddress === null ? 0n : BigInt(util.toPointer(data.IpAddress)), true);
+  if (data?.IpAddress !== undefined) view.setBigUint64(0, data.IpAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.IpAddress))), true);
   // 0x08: buffer
   if (data?.NetBiosName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.NetBiosName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.HostName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.HostName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   return buf;
 }
@@ -11370,38 +11370,38 @@ export class DHCP_HOST_INFO_V6View {
   }
 
   // 0x00: pointer
-  get IpAddress(): Uint8Array | Deno.PointerValue | null {
+  get IpAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get NetBiosName(): Uint8Array | Deno.PointerValue | null {
+  get NetBiosName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get HostName(): Uint8Array | Deno.PointerValue | null {
+  get HostName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set IpAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set IpAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: buffer
-  set NetBiosName(value: Uint8Array | Deno.PointerValue | null) {
+  set NetBiosName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set HostName(value: Uint8Array | Deno.PointerValue | null) {
+  set HostName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 }
 
@@ -11410,7 +11410,7 @@ export class DHCP_HOST_INFO_V6View {
  */
 export interface DHCP_SUBNET_INFO_V6 {
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */
-  SubnetAddress: Uint8Array | Deno.PointerValue | null;
+  SubnetAddress: Uint8Array | Deno.PointerValue;
   /** u32 */
   Prefix: number;
   /** u16 */
@@ -11431,7 +11431,7 @@ export function allocDHCP_SUBNET_INFO_V6(data?: Partial<DHCP_SUBNET_INFO_V6>): U
   const buf = new Uint8Array(sizeofDHCP_SUBNET_INFO_V6);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.SubnetAddress !== undefined) view.setBigUint64(0, data.SubnetAddress === null ? 0n : BigInt(util.toPointer(data.SubnetAddress)), true);
+  if (data?.SubnetAddress !== undefined) view.setBigUint64(0, data.SubnetAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.SubnetAddress))), true);
   // 0x08: u32
   if (data?.Prefix !== undefined) view.setUint32(8, Number(data.Prefix), true);
   // 0x0c: u16
@@ -11440,12 +11440,12 @@ export function allocDHCP_SUBNET_INFO_V6(data?: Partial<DHCP_SUBNET_INFO_V6>): U
   // 0x10: buffer
   if (data?.SubnetName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.SubnetName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.SubnetComment !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.SubnetComment);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: u32
   if (data?.State !== undefined) view.setUint32(32, Number(data.State), true);
@@ -11465,9 +11465,9 @@ export class DHCP_SUBNET_INFO_V6View {
   }
 
   // 0x00: pointer
-  get SubnetAddress(): Uint8Array | Deno.PointerValue | null {
+  get SubnetAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -11483,15 +11483,15 @@ export class DHCP_SUBNET_INFO_V6View {
   // 0x0e: pad2
 
   // 0x10: buffer
-  get SubnetName(): Uint8Array | Deno.PointerValue | null {
+  get SubnetName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get SubnetComment(): Uint8Array | Deno.PointerValue | null {
+  get SubnetComment(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -11505,8 +11505,8 @@ export class DHCP_SUBNET_INFO_V6View {
   }
 
   // 0x00: pointer
-  set SubnetAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set SubnetAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -11522,15 +11522,15 @@ export class DHCP_SUBNET_INFO_V6View {
   // 0x0e: pad2
 
   // 0x10: buffer
-  set SubnetName(value: Uint8Array | Deno.PointerValue | null) {
+  set SubnetName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set SubnetComment(value: Uint8Array | Deno.PointerValue | null) {
+  set SubnetComment(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: u32
@@ -11549,7 +11549,7 @@ export class DHCP_SUBNET_INFO_V6View {
  */
 export interface SCOPE_MIB_INFO_V6 {
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */
-  Subnet: Uint8Array | Deno.PointerValue | null;
+  Subnet: Uint8Array | Deno.PointerValue;
   /** u64 */
   NumAddressesInuse: Deno.PointerValue;
   /** u64 */
@@ -11564,7 +11564,7 @@ export function allocSCOPE_MIB_INFO_V6(data?: Partial<SCOPE_MIB_INFO_V6>): Uint8
   const buf = new Uint8Array(sizeofSCOPE_MIB_INFO_V6);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Subnet !== undefined) view.setBigUint64(0, data.Subnet === null ? 0n : BigInt(util.toPointer(data.Subnet)), true);
+  if (data?.Subnet !== undefined) view.setBigUint64(0, data.Subnet === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Subnet))), true);
   // 0x08: u64
   if (data?.NumAddressesInuse !== undefined) view.setBigUint64(8, BigInt(data.NumAddressesInuse), true);
   // 0x10: u64
@@ -11585,9 +11585,9 @@ export class SCOPE_MIB_INFO_V6View {
   }
 
   // 0x00: pointer
-  get Subnet(): Uint8Array | Deno.PointerValue | null {
+  get Subnet(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u64
@@ -11606,8 +11606,8 @@ export class SCOPE_MIB_INFO_V6View {
   }
 
   // 0x00: pointer
-  set Subnet(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Subnet(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u64
@@ -11651,11 +11651,11 @@ export interface DHCP_MIB_INFO_V6 {
   /** u32 */
   Informs: number;
   /** Windows.Win32.NetworkManagement.Dhcp.DATE_TIME */
-  ServerStartTime: Uint8Array | Deno.PointerValue | null;
+  ServerStartTime: Uint8Array | Deno.PointerValue;
   /** u32 */
   Scopes: number;
   /** ptr */
-  ScopeInfo: Deno.PointerValue | Uint8Array | null;
+  ScopeInfo: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_MIB_INFO_V6 = 64;
@@ -11684,12 +11684,12 @@ export function allocDHCP_MIB_INFO_V6(data?: Partial<DHCP_MIB_INFO_V6>): Uint8Ar
   // 0x24: u32
   if (data?.Informs !== undefined) view.setUint32(36, Number(data.Informs), true);
   // 0x28: pointer
-  if (data?.ServerStartTime !== undefined) view.setBigUint64(40, data.ServerStartTime === null ? 0n : BigInt(util.toPointer(data.ServerStartTime)), true);
+  if (data?.ServerStartTime !== undefined) view.setBigUint64(40, data.ServerStartTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ServerStartTime))), true);
   // 0x30: u32
   if (data?.Scopes !== undefined) view.setUint32(48, Number(data.Scopes), true);
   // 0x34: pad4
   // 0x38: pointer
-  if (data?.ScopeInfo !== undefined) view.setBigUint64(56, data.ScopeInfo === null ? 0n : BigInt(util.toPointer(data.ScopeInfo)), true);
+  if (data?.ScopeInfo !== undefined) view.setBigUint64(56, data.ScopeInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScopeInfo))), true);
   return buf;
 }
 
@@ -11754,9 +11754,9 @@ export class DHCP_MIB_INFO_V6View {
   }
 
   // 0x28: pointer
-  get ServerStartTime(): Uint8Array | Deno.PointerValue | null {
+  get ServerStartTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: u32
@@ -11767,9 +11767,9 @@ export class DHCP_MIB_INFO_V6View {
   // 0x34: pad4
 
   // 0x38: pointer
-  get ScopeInfo(): Uint8Array | Deno.PointerValue | null {
+  get ScopeInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -11823,8 +11823,8 @@ export class DHCP_MIB_INFO_V6View {
   }
 
   // 0x28: pointer
-  set ServerStartTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set ServerStartTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: u32
@@ -11835,8 +11835,8 @@ export class DHCP_MIB_INFO_V6View {
   // 0x34: pad4
 
   // 0x38: pointer
-  set ScopeInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set ScopeInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -11845,9 +11845,9 @@ export class DHCP_MIB_INFO_V6View {
  */
 export interface DHCP_IP_RESERVATION_V6 {
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */
-  ReservedIpAddress: Uint8Array | Deno.PointerValue | null;
+  ReservedIpAddress: Uint8Array | Deno.PointerValue;
   /** ptr */
-  ReservedForClient: Deno.PointerValue | Uint8Array | null;
+  ReservedForClient: Deno.PointerValue | Uint8Array;
   /** u32 */
   InterfaceId: number;
 }
@@ -11858,9 +11858,9 @@ export function allocDHCP_IP_RESERVATION_V6(data?: Partial<DHCP_IP_RESERVATION_V
   const buf = new Uint8Array(sizeofDHCP_IP_RESERVATION_V6);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ReservedIpAddress !== undefined) view.setBigUint64(0, data.ReservedIpAddress === null ? 0n : BigInt(util.toPointer(data.ReservedIpAddress)), true);
+  if (data?.ReservedIpAddress !== undefined) view.setBigUint64(0, data.ReservedIpAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ReservedIpAddress))), true);
   // 0x08: pointer
-  if (data?.ReservedForClient !== undefined) view.setBigUint64(8, data.ReservedForClient === null ? 0n : BigInt(util.toPointer(data.ReservedForClient)), true);
+  if (data?.ReservedForClient !== undefined) view.setBigUint64(8, data.ReservedForClient === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ReservedForClient))), true);
   // 0x10: u32
   if (data?.InterfaceId !== undefined) view.setUint32(16, Number(data.InterfaceId), true);
   // 0x14: pad4
@@ -11878,15 +11878,15 @@ export class DHCP_IP_RESERVATION_V6View {
   }
 
   // 0x00: pointer
-  get ReservedIpAddress(): Uint8Array | Deno.PointerValue | null {
+  get ReservedIpAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get ReservedForClient(): Uint8Array | Deno.PointerValue | null {
+  get ReservedForClient(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -11897,13 +11897,13 @@ export class DHCP_IP_RESERVATION_V6View {
   // 0x14: pad4
 
   // 0x00: pointer
-  set ReservedIpAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ReservedIpAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set ReservedForClient(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ReservedForClient(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -11919,11 +11919,11 @@ export class DHCP_IP_RESERVATION_V6View {
  */
 export interface DHCP_SUBNET_ELEMENT_UNION_V6 {
   /** ptr */
-  IpRange: Deno.PointerValue | Uint8Array | null;
+  IpRange: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ReservedIp: Deno.PointerValue | Uint8Array | null;
+  ReservedIp: Deno.PointerValue | Uint8Array;
   /** ptr */
-  ExcludeIpRange: Deno.PointerValue | Uint8Array | null;
+  ExcludeIpRange: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_SUBNET_ELEMENT_UNION_V6 = 24;
@@ -11932,11 +11932,11 @@ export function allocDHCP_SUBNET_ELEMENT_UNION_V6(data?: Partial<DHCP_SUBNET_ELE
   const buf = new Uint8Array(sizeofDHCP_SUBNET_ELEMENT_UNION_V6);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.IpRange !== undefined) view.setBigUint64(0, data.IpRange === null ? 0n : BigInt(util.toPointer(data.IpRange)), true);
+  if (data?.IpRange !== undefined) view.setBigUint64(0, data.IpRange === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.IpRange))), true);
   // 0x08: pointer
-  if (data?.ReservedIp !== undefined) view.setBigUint64(8, data.ReservedIp === null ? 0n : BigInt(util.toPointer(data.ReservedIp)), true);
+  if (data?.ReservedIp !== undefined) view.setBigUint64(8, data.ReservedIp === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ReservedIp))), true);
   // 0x10: pointer
-  if (data?.ExcludeIpRange !== undefined) view.setBigUint64(16, data.ExcludeIpRange === null ? 0n : BigInt(util.toPointer(data.ExcludeIpRange)), true);
+  if (data?.ExcludeIpRange !== undefined) view.setBigUint64(16, data.ExcludeIpRange === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ExcludeIpRange))), true);
   return buf;
 }
 
@@ -11951,36 +11951,36 @@ export class DHCP_SUBNET_ELEMENT_UNION_V6View {
   }
 
   // 0x00: pointer
-  get IpRange(): Uint8Array | Deno.PointerValue | null {
+  get IpRange(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get ReservedIp(): Uint8Array | Deno.PointerValue | null {
+  get ReservedIp(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ExcludeIpRange(): Uint8Array | Deno.PointerValue | null {
+  get ExcludeIpRange(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set IpRange(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set IpRange(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set ReservedIp(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ReservedIp(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ExcludeIpRange(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ExcludeIpRange(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -11991,7 +11991,7 @@ export interface DHCP_SUBNET_ELEMENT_DATA_V6 {
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_SUBNET_ELEMENT_TYPE_V6 */
   ElementType: DHCP_SUBNET_ELEMENT_TYPE_V6;
   /** DHCP_SUBNET_ELEMENT_UNION_V6 */
-  Element: Uint8Array | Deno.PointerValue | null;
+  Element: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDHCP_SUBNET_ELEMENT_DATA_V6 = 16;
@@ -12003,7 +12003,7 @@ export function allocDHCP_SUBNET_ELEMENT_DATA_V6(data?: Partial<DHCP_SUBNET_ELEM
   if (data?.ElementType !== undefined) view.setInt32(0, Number(data.ElementType), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Element !== undefined) view.setBigUint64(8, data.Element === null ? 0n : BigInt(util.toPointer(data.Element)), true);
+  if (data?.Element !== undefined) view.setBigUint64(8, data.Element === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Element))), true);
   return buf;
 }
 
@@ -12025,9 +12025,9 @@ export class DHCP_SUBNET_ELEMENT_DATA_V6View {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Element(): Uint8Array | Deno.PointerValue | null {
+  get Element(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -12038,8 +12038,8 @@ export class DHCP_SUBNET_ELEMENT_DATA_V6View {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Element(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Element(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12050,7 +12050,7 @@ export interface DHCP_SUBNET_ELEMENT_INFO_ARRAY_V6 {
   /** u32 */
   NumElements: number;
   /** ptr */
-  Elements: Deno.PointerValue | Uint8Array | null;
+  Elements: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_SUBNET_ELEMENT_INFO_ARRAY_V6 = 16;
@@ -12062,7 +12062,7 @@ export function allocDHCP_SUBNET_ELEMENT_INFO_ARRAY_V6(data?: Partial<DHCP_SUBNE
   if (data?.NumElements !== undefined) view.setUint32(0, Number(data.NumElements), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(util.toPointer(data.Elements)), true);
+  if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Elements))), true);
   return buf;
 }
 
@@ -12084,9 +12084,9 @@ export class DHCP_SUBNET_ELEMENT_INFO_ARRAY_V6View {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Elements(): Uint8Array | Deno.PointerValue | null {
+  get Elements(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -12097,8 +12097,8 @@ export class DHCP_SUBNET_ELEMENT_INFO_ARRAY_V6View {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Elements(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Elements(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12107,9 +12107,9 @@ export class DHCP_SUBNET_ELEMENT_INFO_ARRAY_V6View {
  */
 export interface DHCP_CLIENT_INFO_V6 {
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */
-  ClientIpAddress: Uint8Array | Deno.PointerValue | null;
+  ClientIpAddress: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_BINARY_DATA */
-  ClientDUID: Uint8Array | Deno.PointerValue | null;
+  ClientDUID: Uint8Array | Deno.PointerValue;
   /** u32 */
   AddressType: number;
   /** u32 */
@@ -12119,11 +12119,11 @@ export interface DHCP_CLIENT_INFO_V6 {
   /** Windows.Win32.Foundation.PWSTR */
   ClientComment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.Dhcp.DATE_TIME */
-  ClientValidLeaseExpires: Uint8Array | Deno.PointerValue | null;
+  ClientValidLeaseExpires: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.Dhcp.DATE_TIME */
-  ClientPrefLeaseExpires: Uint8Array | Deno.PointerValue | null;
+  ClientPrefLeaseExpires: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_HOST_INFO_V6 */
-  OwnerHost: Uint8Array | Deno.PointerValue | null;
+  OwnerHost: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDHCP_CLIENT_INFO_V6 = 64;
@@ -12132,9 +12132,9 @@ export function allocDHCP_CLIENT_INFO_V6(data?: Partial<DHCP_CLIENT_INFO_V6>): U
   const buf = new Uint8Array(sizeofDHCP_CLIENT_INFO_V6);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ClientIpAddress !== undefined) view.setBigUint64(0, data.ClientIpAddress === null ? 0n : BigInt(util.toPointer(data.ClientIpAddress)), true);
+  if (data?.ClientIpAddress !== undefined) view.setBigUint64(0, data.ClientIpAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientIpAddress))), true);
   // 0x08: pointer
-  if (data?.ClientDUID !== undefined) view.setBigUint64(8, data.ClientDUID === null ? 0n : BigInt(util.toPointer(data.ClientDUID)), true);
+  if (data?.ClientDUID !== undefined) view.setBigUint64(8, data.ClientDUID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientDUID))), true);
   // 0x10: u32
   if (data?.AddressType !== undefined) view.setUint32(16, Number(data.AddressType), true);
   // 0x14: u32
@@ -12142,19 +12142,19 @@ export function allocDHCP_CLIENT_INFO_V6(data?: Partial<DHCP_CLIENT_INFO_V6>): U
   // 0x18: buffer
   if (data?.ClientName !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.ClientName);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: buffer
   if (data?.ClientComment !== undefined) {
     (buf as any)._f32 = util.pwstrToFfi(data.ClientComment);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f32))), true);
   }
   // 0x28: pointer
-  if (data?.ClientValidLeaseExpires !== undefined) view.setBigUint64(40, data.ClientValidLeaseExpires === null ? 0n : BigInt(util.toPointer(data.ClientValidLeaseExpires)), true);
+  if (data?.ClientValidLeaseExpires !== undefined) view.setBigUint64(40, data.ClientValidLeaseExpires === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientValidLeaseExpires))), true);
   // 0x30: pointer
-  if (data?.ClientPrefLeaseExpires !== undefined) view.setBigUint64(48, data.ClientPrefLeaseExpires === null ? 0n : BigInt(util.toPointer(data.ClientPrefLeaseExpires)), true);
+  if (data?.ClientPrefLeaseExpires !== undefined) view.setBigUint64(48, data.ClientPrefLeaseExpires === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientPrefLeaseExpires))), true);
   // 0x38: pointer
-  if (data?.OwnerHost !== undefined) view.setBigUint64(56, data.OwnerHost === null ? 0n : BigInt(util.toPointer(data.OwnerHost)), true);
+  if (data?.OwnerHost !== undefined) view.setBigUint64(56, data.OwnerHost === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OwnerHost))), true);
   return buf;
 }
 
@@ -12169,15 +12169,15 @@ export class DHCP_CLIENT_INFO_V6View {
   }
 
   // 0x00: pointer
-  get ClientIpAddress(): Uint8Array | Deno.PointerValue | null {
+  get ClientIpAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get ClientDUID(): Uint8Array | Deno.PointerValue | null {
+  get ClientDUID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -12191,43 +12191,43 @@ export class DHCP_CLIENT_INFO_V6View {
   }
 
   // 0x18: buffer
-  get ClientName(): Uint8Array | Deno.PointerValue | null {
+  get ClientName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: buffer
-  get ClientComment(): Uint8Array | Deno.PointerValue | null {
+  get ClientComment(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get ClientValidLeaseExpires(): Uint8Array | Deno.PointerValue | null {
+  get ClientValidLeaseExpires(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get ClientPrefLeaseExpires(): Uint8Array | Deno.PointerValue | null {
+  get ClientPrefLeaseExpires(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get OwnerHost(): Uint8Array | Deno.PointerValue | null {
+  get OwnerHost(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ClientIpAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ClientIpAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set ClientDUID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ClientDUID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -12241,30 +12241,30 @@ export class DHCP_CLIENT_INFO_V6View {
   }
 
   // 0x18: buffer
-  set ClientName(value: Uint8Array | Deno.PointerValue | null) {
+  set ClientName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: buffer
-  set ClientComment(value: Uint8Array | Deno.PointerValue | null) {
+  set ClientComment(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f32))), true);
   }
 
   // 0x28: pointer
-  set ClientValidLeaseExpires(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set ClientValidLeaseExpires(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set ClientPrefLeaseExpires(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set ClientPrefLeaseExpires(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set OwnerHost(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set OwnerHost(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12275,7 +12275,7 @@ export interface DHCPV6_IP_ARRAY {
   /** u32 */
   NumElements: number;
   /** ptr */
-  Elements: Deno.PointerValue | Uint8Array | null;
+  Elements: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCPV6_IP_ARRAY = 16;
@@ -12287,7 +12287,7 @@ export function allocDHCPV6_IP_ARRAY(data?: Partial<DHCPV6_IP_ARRAY>): Uint8Arra
   if (data?.NumElements !== undefined) view.setUint32(0, Number(data.NumElements), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(util.toPointer(data.Elements)), true);
+  if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Elements))), true);
   return buf;
 }
 
@@ -12309,9 +12309,9 @@ export class DHCPV6_IP_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Elements(): Uint8Array | Deno.PointerValue | null {
+  get Elements(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -12322,8 +12322,8 @@ export class DHCPV6_IP_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Elements(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Elements(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12334,7 +12334,7 @@ export interface DHCP_CLIENT_INFO_ARRAY_V6 {
   /** u32 */
   NumElements: number;
   /** ptr */
-  Clients: Deno.PointerValue | Uint8Array | null;
+  Clients: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_CLIENT_INFO_ARRAY_V6 = 16;
@@ -12346,7 +12346,7 @@ export function allocDHCP_CLIENT_INFO_ARRAY_V6(data?: Partial<DHCP_CLIENT_INFO_A
   if (data?.NumElements !== undefined) view.setUint32(0, Number(data.NumElements), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Clients !== undefined) view.setBigUint64(8, data.Clients === null ? 0n : BigInt(util.toPointer(data.Clients)), true);
+  if (data?.Clients !== undefined) view.setBigUint64(8, data.Clients === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Clients))), true);
   return buf;
 }
 
@@ -12368,9 +12368,9 @@ export class DHCP_CLIENT_INFO_ARRAY_V6View {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Clients(): Uint8Array | Deno.PointerValue | null {
+  get Clients(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -12381,8 +12381,8 @@ export class DHCP_CLIENT_INFO_ARRAY_V6View {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Clients(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Clients(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12391,9 +12391,9 @@ export class DHCP_CLIENT_INFO_ARRAY_V6View {
  */
 export interface _DHCP_CLIENT_SEARCH_UNION_V6 {
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */
-  ClientIpAddress: Uint8Array | Deno.PointerValue | null;
+  ClientIpAddress: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_BINARY_DATA */
-  ClientDUID: Uint8Array | Deno.PointerValue | null;
+  ClientDUID: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   ClientName: string | null | Uint8Array | Uint16Array;
 }
@@ -12404,13 +12404,13 @@ export function alloc_DHCP_CLIENT_SEARCH_UNION_V6(data?: Partial<_DHCP_CLIENT_SE
   const buf = new Uint8Array(sizeof_DHCP_CLIENT_SEARCH_UNION_V6);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ClientIpAddress !== undefined) view.setBigUint64(0, data.ClientIpAddress === null ? 0n : BigInt(util.toPointer(data.ClientIpAddress)), true);
+  if (data?.ClientIpAddress !== undefined) view.setBigUint64(0, data.ClientIpAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientIpAddress))), true);
   // 0x08: pointer
-  if (data?.ClientDUID !== undefined) view.setBigUint64(8, data.ClientDUID === null ? 0n : BigInt(util.toPointer(data.ClientDUID)), true);
+  if (data?.ClientDUID !== undefined) view.setBigUint64(8, data.ClientDUID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientDUID))), true);
   // 0x10: buffer
   if (data?.ClientName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.ClientName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   return buf;
 }
@@ -12426,37 +12426,37 @@ export class _DHCP_CLIENT_SEARCH_UNION_V6View {
   }
 
   // 0x00: pointer
-  get ClientIpAddress(): Uint8Array | Deno.PointerValue | null {
+  get ClientIpAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get ClientDUID(): Uint8Array | Deno.PointerValue | null {
+  get ClientDUID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get ClientName(): Uint8Array | Deno.PointerValue | null {
+  get ClientName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ClientIpAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ClientIpAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set ClientDUID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ClientDUID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: buffer
-  set ClientName(value: Uint8Array | Deno.PointerValue | null) {
+  set ClientName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 }
 
@@ -12467,7 +12467,7 @@ export interface DHCP_SEARCH_INFO_V6 {
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_SEARCH_INFO_TYPE_V6 */
   SearchType: DHCP_SEARCH_INFO_TYPE_V6;
   /** _DHCP_CLIENT_SEARCH_UNION_V6 */
-  SearchInfo: Uint8Array | Deno.PointerValue | null;
+  SearchInfo: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDHCP_SEARCH_INFO_V6 = 16;
@@ -12479,7 +12479,7 @@ export function allocDHCP_SEARCH_INFO_V6(data?: Partial<DHCP_SEARCH_INFO_V6>): U
   if (data?.SearchType !== undefined) view.setInt32(0, Number(data.SearchType), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.SearchInfo !== undefined) view.setBigUint64(8, data.SearchInfo === null ? 0n : BigInt(util.toPointer(data.SearchInfo)), true);
+  if (data?.SearchInfo !== undefined) view.setBigUint64(8, data.SearchInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.SearchInfo))), true);
   return buf;
 }
 
@@ -12501,9 +12501,9 @@ export class DHCP_SEARCH_INFO_V6View {
   // 0x04: pad4
 
   // 0x08: pointer
-  get SearchInfo(): Uint8Array | Deno.PointerValue | null {
+  get SearchInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -12514,8 +12514,8 @@ export class DHCP_SEARCH_INFO_V6View {
   // 0x04: pad4
 
   // 0x08: pointer
-  set SearchInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set SearchInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12536,7 +12536,7 @@ export interface DHCP_POL_COND {
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_POL_COMPARATOR */
   Operator: DHCP_POL_COMPARATOR;
   /** ptr */
-  Value: Deno.PointerValue | Uint8Array | null;
+  Value: Deno.PointerValue | Uint8Array;
   /** u32 */
   ValueLength: number;
 }
@@ -12557,13 +12557,13 @@ export function allocDHCP_POL_COND(data?: Partial<DHCP_POL_COND>): Uint8Array {
   // 0x10: buffer
   if (data?.VendorName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.VendorName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: i32
   if (data?.Operator !== undefined) view.setInt32(24, Number(data.Operator), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.Value !== undefined) view.setBigUint64(32, data.Value === null ? 0n : BigInt(util.toPointer(data.Value)), true);
+  if (data?.Value !== undefined) view.setBigUint64(32, data.Value === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Value))), true);
   // 0x28: u32
   if (data?.ValueLength !== undefined) view.setUint32(40, Number(data.ValueLength), true);
   // 0x2c: pad4
@@ -12601,9 +12601,9 @@ export class DHCP_POL_CONDView {
   }
 
   // 0x10: buffer
-  get VendorName(): Uint8Array | Deno.PointerValue | null {
+  get VendorName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: i32
@@ -12614,9 +12614,9 @@ export class DHCP_POL_CONDView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get Value(): Uint8Array | Deno.PointerValue | null {
+  get Value(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -12647,9 +12647,9 @@ export class DHCP_POL_CONDView {
   }
 
   // 0x10: buffer
-  set VendorName(value: Uint8Array | Deno.PointerValue | null) {
+  set VendorName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: i32
@@ -12660,8 +12660,8 @@ export class DHCP_POL_CONDView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set Value(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set Value(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u32
@@ -12679,7 +12679,7 @@ export interface DHCP_POL_COND_ARRAY {
   /** u32 */
   NumElements: number;
   /** ptr */
-  Elements: Deno.PointerValue | Uint8Array | null;
+  Elements: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_POL_COND_ARRAY = 16;
@@ -12691,7 +12691,7 @@ export function allocDHCP_POL_COND_ARRAY(data?: Partial<DHCP_POL_COND_ARRAY>): U
   if (data?.NumElements !== undefined) view.setUint32(0, Number(data.NumElements), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(util.toPointer(data.Elements)), true);
+  if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Elements))), true);
   return buf;
 }
 
@@ -12713,9 +12713,9 @@ export class DHCP_POL_COND_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Elements(): Uint8Array | Deno.PointerValue | null {
+  get Elements(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -12726,8 +12726,8 @@ export class DHCP_POL_COND_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Elements(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Elements(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12791,7 +12791,7 @@ export interface DHCP_POL_EXPR_ARRAY {
   /** u32 */
   NumElements: number;
   /** ptr */
-  Elements: Deno.PointerValue | Uint8Array | null;
+  Elements: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_POL_EXPR_ARRAY = 16;
@@ -12803,7 +12803,7 @@ export function allocDHCP_POL_EXPR_ARRAY(data?: Partial<DHCP_POL_EXPR_ARRAY>): U
   if (data?.NumElements !== undefined) view.setUint32(0, Number(data.NumElements), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(util.toPointer(data.Elements)), true);
+  if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Elements))), true);
   return buf;
 }
 
@@ -12825,9 +12825,9 @@ export class DHCP_POL_EXPR_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Elements(): Uint8Array | Deno.PointerValue | null {
+  get Elements(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -12838,8 +12838,8 @@ export class DHCP_POL_EXPR_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Elements(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Elements(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12850,7 +12850,7 @@ export interface DHCP_IP_RANGE_ARRAY {
   /** u32 */
   NumElements: number;
   /** ptr */
-  Elements: Deno.PointerValue | Uint8Array | null;
+  Elements: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_IP_RANGE_ARRAY = 16;
@@ -12862,7 +12862,7 @@ export function allocDHCP_IP_RANGE_ARRAY(data?: Partial<DHCP_IP_RANGE_ARRAY>): U
   if (data?.NumElements !== undefined) view.setUint32(0, Number(data.NumElements), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(util.toPointer(data.Elements)), true);
+  if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Elements))), true);
   return buf;
 }
 
@@ -12884,9 +12884,9 @@ export class DHCP_IP_RANGE_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Elements(): Uint8Array | Deno.PointerValue | null {
+  get Elements(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -12897,8 +12897,8 @@ export class DHCP_IP_RANGE_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Elements(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Elements(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12915,11 +12915,11 @@ export interface DHCP_POLICY {
   /** u32 */
   ProcessingOrder: number;
   /** ptr */
-  Conditions: Deno.PointerValue | Uint8Array | null;
+  Conditions: Deno.PointerValue | Uint8Array;
   /** ptr */
-  Expressions: Deno.PointerValue | Uint8Array | null;
+  Expressions: Deno.PointerValue | Uint8Array;
   /** ptr */
-  Ranges: Deno.PointerValue | Uint8Array | null;
+  Ranges: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.PWSTR */
   Description: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.BOOL */
@@ -12934,7 +12934,7 @@ export function allocDHCP_POLICY(data?: Partial<DHCP_POLICY>): Uint8Array {
   // 0x00: buffer
   if (data?.PolicyName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.PolicyName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: i32
   if (data?.IsGlobalPolicy !== undefined) view.setInt32(8, Number(data.IsGlobalPolicy), true);
@@ -12944,15 +12944,15 @@ export function allocDHCP_POLICY(data?: Partial<DHCP_POLICY>): Uint8Array {
   if (data?.ProcessingOrder !== undefined) view.setUint32(16, Number(data.ProcessingOrder), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.Conditions !== undefined) view.setBigUint64(24, data.Conditions === null ? 0n : BigInt(util.toPointer(data.Conditions)), true);
+  if (data?.Conditions !== undefined) view.setBigUint64(24, data.Conditions === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Conditions))), true);
   // 0x20: pointer
-  if (data?.Expressions !== undefined) view.setBigUint64(32, data.Expressions === null ? 0n : BigInt(util.toPointer(data.Expressions)), true);
+  if (data?.Expressions !== undefined) view.setBigUint64(32, data.Expressions === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Expressions))), true);
   // 0x28: pointer
-  if (data?.Ranges !== undefined) view.setBigUint64(40, data.Ranges === null ? 0n : BigInt(util.toPointer(data.Ranges)), true);
+  if (data?.Ranges !== undefined) view.setBigUint64(40, data.Ranges === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Ranges))), true);
   // 0x30: buffer
   if (data?.Description !== undefined) {
     (buf as any)._f48 = util.pwstrToFfi(data.Description);
-    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
+    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f48))), true);
   }
   // 0x38: i32
   if (data?.Enabled !== undefined) view.setInt32(56, Number(data.Enabled), true);
@@ -12971,9 +12971,9 @@ export class DHCP_POLICYView {
   }
 
   // 0x00: buffer
-  get PolicyName(): Uint8Array | Deno.PointerValue | null {
+  get PolicyName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: i32
@@ -12994,27 +12994,27 @@ export class DHCP_POLICYView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get Conditions(): Uint8Array | Deno.PointerValue | null {
+  get Conditions(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get Expressions(): Uint8Array | Deno.PointerValue | null {
+  get Expressions(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get Ranges(): Uint8Array | Deno.PointerValue | null {
+  get Ranges(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: buffer
-  get Description(): Uint8Array | Deno.PointerValue | null {
+  get Description(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: i32
@@ -13025,9 +13025,9 @@ export class DHCP_POLICYView {
   // 0x3c: pad4
 
   // 0x00: buffer
-  set PolicyName(value: Uint8Array | Deno.PointerValue | null) {
+  set PolicyName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: i32
@@ -13048,24 +13048,24 @@ export class DHCP_POLICYView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set Conditions(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set Conditions(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set Expressions(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set Expressions(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set Ranges(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set Ranges(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: buffer
-  set Description(value: Uint8Array | Deno.PointerValue | null) {
+  set Description(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f48 = value;
-    this.view.setBigUint64(48, BigInt(util.toPointer((this.buf as any)._f48)), true);
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f48))), true);
   }
 
   // 0x38: i32
@@ -13083,7 +13083,7 @@ export interface DHCP_POLICY_ARRAY {
   /** u32 */
   NumElements: number;
   /** ptr */
-  Elements: Deno.PointerValue | Uint8Array | null;
+  Elements: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_POLICY_ARRAY = 16;
@@ -13095,7 +13095,7 @@ export function allocDHCP_POLICY_ARRAY(data?: Partial<DHCP_POLICY_ARRAY>): Uint8
   if (data?.NumElements !== undefined) view.setUint32(0, Number(data.NumElements), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(util.toPointer(data.Elements)), true);
+  if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Elements))), true);
   return buf;
 }
 
@@ -13117,9 +13117,9 @@ export class DHCP_POLICY_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Elements(): Uint8Array | Deno.PointerValue | null {
+  get Elements(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -13130,8 +13130,8 @@ export class DHCP_POLICY_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Elements(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Elements(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -13148,17 +13148,17 @@ export interface DHCP_POLICY_EX {
   /** u32 */
   ProcessingOrder: number;
   /** ptr */
-  Conditions: Deno.PointerValue | Uint8Array | null;
+  Conditions: Deno.PointerValue | Uint8Array;
   /** ptr */
-  Expressions: Deno.PointerValue | Uint8Array | null;
+  Expressions: Deno.PointerValue | Uint8Array;
   /** ptr */
-  Ranges: Deno.PointerValue | Uint8Array | null;
+  Ranges: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.PWSTR */
   Description: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.BOOL */
   Enabled: boolean;
   /** ptr */
-  Properties: Deno.PointerValue | Uint8Array | null;
+  Properties: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_POLICY_EX = 72;
@@ -13169,7 +13169,7 @@ export function allocDHCP_POLICY_EX(data?: Partial<DHCP_POLICY_EX>): Uint8Array 
   // 0x00: buffer
   if (data?.PolicyName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.PolicyName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: i32
   if (data?.IsGlobalPolicy !== undefined) view.setInt32(8, Number(data.IsGlobalPolicy), true);
@@ -13179,21 +13179,21 @@ export function allocDHCP_POLICY_EX(data?: Partial<DHCP_POLICY_EX>): Uint8Array 
   if (data?.ProcessingOrder !== undefined) view.setUint32(16, Number(data.ProcessingOrder), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.Conditions !== undefined) view.setBigUint64(24, data.Conditions === null ? 0n : BigInt(util.toPointer(data.Conditions)), true);
+  if (data?.Conditions !== undefined) view.setBigUint64(24, data.Conditions === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Conditions))), true);
   // 0x20: pointer
-  if (data?.Expressions !== undefined) view.setBigUint64(32, data.Expressions === null ? 0n : BigInt(util.toPointer(data.Expressions)), true);
+  if (data?.Expressions !== undefined) view.setBigUint64(32, data.Expressions === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Expressions))), true);
   // 0x28: pointer
-  if (data?.Ranges !== undefined) view.setBigUint64(40, data.Ranges === null ? 0n : BigInt(util.toPointer(data.Ranges)), true);
+  if (data?.Ranges !== undefined) view.setBigUint64(40, data.Ranges === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Ranges))), true);
   // 0x30: buffer
   if (data?.Description !== undefined) {
     (buf as any)._f48 = util.pwstrToFfi(data.Description);
-    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
+    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f48))), true);
   }
   // 0x38: i32
   if (data?.Enabled !== undefined) view.setInt32(56, Number(data.Enabled), true);
   // 0x3c: pad4
   // 0x40: pointer
-  if (data?.Properties !== undefined) view.setBigUint64(64, data.Properties === null ? 0n : BigInt(util.toPointer(data.Properties)), true);
+  if (data?.Properties !== undefined) view.setBigUint64(64, data.Properties === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Properties))), true);
   return buf;
 }
 
@@ -13208,9 +13208,9 @@ export class DHCP_POLICY_EXView {
   }
 
   // 0x00: buffer
-  get PolicyName(): Uint8Array | Deno.PointerValue | null {
+  get PolicyName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: i32
@@ -13231,27 +13231,27 @@ export class DHCP_POLICY_EXView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get Conditions(): Uint8Array | Deno.PointerValue | null {
+  get Conditions(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get Expressions(): Uint8Array | Deno.PointerValue | null {
+  get Expressions(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get Ranges(): Uint8Array | Deno.PointerValue | null {
+  get Ranges(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: buffer
-  get Description(): Uint8Array | Deno.PointerValue | null {
+  get Description(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: i32
@@ -13262,15 +13262,15 @@ export class DHCP_POLICY_EXView {
   // 0x3c: pad4
 
   // 0x40: pointer
-  get Properties(): Uint8Array | Deno.PointerValue | null {
+  get Properties(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set PolicyName(value: Uint8Array | Deno.PointerValue | null) {
+  set PolicyName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: i32
@@ -13291,24 +13291,24 @@ export class DHCP_POLICY_EXView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set Conditions(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set Conditions(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set Expressions(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set Expressions(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set Ranges(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set Ranges(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: buffer
-  set Description(value: Uint8Array | Deno.PointerValue | null) {
+  set Description(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f48 = value;
-    this.view.setBigUint64(48, BigInt(util.toPointer((this.buf as any)._f48)), true);
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f48))), true);
   }
 
   // 0x38: i32
@@ -13319,8 +13319,8 @@ export class DHCP_POLICY_EXView {
   // 0x3c: pad4
 
   // 0x40: pointer
-  set Properties(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set Properties(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -13331,7 +13331,7 @@ export interface DHCP_POLICY_EX_ARRAY {
   /** u32 */
   NumElements: number;
   /** ptr */
-  Elements: Deno.PointerValue | Uint8Array | null;
+  Elements: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_POLICY_EX_ARRAY = 16;
@@ -13343,7 +13343,7 @@ export function allocDHCP_POLICY_EX_ARRAY(data?: Partial<DHCP_POLICY_EX_ARRAY>):
   if (data?.NumElements !== undefined) view.setUint32(0, Number(data.NumElements), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(util.toPointer(data.Elements)), true);
+  if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Elements))), true);
   return buf;
 }
 
@@ -13365,9 +13365,9 @@ export class DHCP_POLICY_EX_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Elements(): Uint8Array | Deno.PointerValue | null {
+  get Elements(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -13378,8 +13378,8 @@ export class DHCP_POLICY_EX_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Elements(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Elements(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -13441,7 +13441,7 @@ export class DHCPV6_STATELESS_PARAMSView {
  */
 export interface DHCPV6_STATELESS_SCOPE_STATS {
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */
-  SubnetAddress: Uint8Array | Deno.PointerValue | null;
+  SubnetAddress: Uint8Array | Deno.PointerValue;
   /** u64 */
   NumStatelessClientsAdded: Deno.PointerValue;
   /** u64 */
@@ -13454,7 +13454,7 @@ export function allocDHCPV6_STATELESS_SCOPE_STATS(data?: Partial<DHCPV6_STATELES
   const buf = new Uint8Array(sizeofDHCPV6_STATELESS_SCOPE_STATS);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.SubnetAddress !== undefined) view.setBigUint64(0, data.SubnetAddress === null ? 0n : BigInt(util.toPointer(data.SubnetAddress)), true);
+  if (data?.SubnetAddress !== undefined) view.setBigUint64(0, data.SubnetAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.SubnetAddress))), true);
   // 0x08: u64
   if (data?.NumStatelessClientsAdded !== undefined) view.setBigUint64(8, BigInt(data.NumStatelessClientsAdded), true);
   // 0x10: u64
@@ -13473,9 +13473,9 @@ export class DHCPV6_STATELESS_SCOPE_STATSView {
   }
 
   // 0x00: pointer
-  get SubnetAddress(): Uint8Array | Deno.PointerValue | null {
+  get SubnetAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u64
@@ -13489,8 +13489,8 @@ export class DHCPV6_STATELESS_SCOPE_STATSView {
   }
 
   // 0x00: pointer
-  set SubnetAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set SubnetAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u64
@@ -13511,7 +13511,7 @@ export interface DHCPV6_STATELESS_STATS {
   /** u32 */
   NumScopes: number;
   /** ptr */
-  ScopeStats: Deno.PointerValue | Uint8Array | null;
+  ScopeStats: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCPV6_STATELESS_STATS = 16;
@@ -13523,7 +13523,7 @@ export function allocDHCPV6_STATELESS_STATS(data?: Partial<DHCPV6_STATELESS_STAT
   if (data?.NumScopes !== undefined) view.setUint32(0, Number(data.NumScopes), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.ScopeStats !== undefined) view.setBigUint64(8, data.ScopeStats === null ? 0n : BigInt(util.toPointer(data.ScopeStats)), true);
+  if (data?.ScopeStats !== undefined) view.setBigUint64(8, data.ScopeStats === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScopeStats))), true);
   return buf;
 }
 
@@ -13545,9 +13545,9 @@ export class DHCPV6_STATELESS_STATSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get ScopeStats(): Uint8Array | Deno.PointerValue | null {
+  get ScopeStats(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -13558,8 +13558,8 @@ export class DHCPV6_STATELESS_STATSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set ScopeStats(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ScopeStats(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -13590,7 +13590,7 @@ export interface DHCP_FAILOVER_RELATIONSHIP {
   /** Windows.Win32.Foundation.PWSTR */
   SecondaryServerName: string | null | Uint8Array | Uint16Array;
   /** ptr */
-  pScopes: Deno.PointerValue | Uint8Array | null;
+  pScopes: Deno.PointerValue | Uint8Array;
   /** u8 */
   Percentage: number;
   /** Windows.Win32.Foundation.PWSTR */
@@ -13621,27 +13621,27 @@ export function allocDHCP_FAILOVER_RELATIONSHIP(data?: Partial<DHCP_FAILOVER_REL
   // 0x20: buffer
   if (data?.RelationshipName !== undefined) {
     (buf as any)._f32 = util.pwstrToFfi(data.RelationshipName);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f32))), true);
   }
   // 0x28: buffer
   if (data?.PrimaryServerName !== undefined) {
     (buf as any)._f40 = util.pwstrToFfi(data.PrimaryServerName);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f40))), true);
   }
   // 0x30: buffer
   if (data?.SecondaryServerName !== undefined) {
     (buf as any)._f48 = util.pwstrToFfi(data.SecondaryServerName);
-    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
+    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f48))), true);
   }
   // 0x38: pointer
-  if (data?.pScopes !== undefined) view.setBigUint64(56, data.pScopes === null ? 0n : BigInt(util.toPointer(data.pScopes)), true);
+  if (data?.pScopes !== undefined) view.setBigUint64(56, data.pScopes === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pScopes))), true);
   // 0x40: u8
   if (data?.Percentage !== undefined) view.setUint8(64, Number(data.Percentage));
   // 0x41: pad7
   // 0x48: buffer
   if (data?.SharedSecret !== undefined) {
     (buf as any)._f72 = util.pwstrToFfi(data.SharedSecret);
-    view.setBigUint64(72, (buf as any)._f72 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f72)), true);
+    view.setBigUint64(72, (buf as any)._f72 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f72))), true);
   }
   return buf;
 }
@@ -13697,27 +13697,27 @@ export class DHCP_FAILOVER_RELATIONSHIPView {
   }
 
   // 0x20: buffer
-  get RelationshipName(): Uint8Array | Deno.PointerValue | null {
+  get RelationshipName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: buffer
-  get PrimaryServerName(): Uint8Array | Deno.PointerValue | null {
+  get PrimaryServerName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: buffer
-  get SecondaryServerName(): Uint8Array | Deno.PointerValue | null {
+  get SecondaryServerName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get pScopes(): Uint8Array | Deno.PointerValue | null {
+  get pScopes(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: u8
@@ -13728,9 +13728,9 @@ export class DHCP_FAILOVER_RELATIONSHIPView {
   // 0x41: pad7
 
   // 0x48: buffer
-  get SharedSecret(): Uint8Array | Deno.PointerValue | null {
+  get SharedSecret(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -13774,26 +13774,26 @@ export class DHCP_FAILOVER_RELATIONSHIPView {
   }
 
   // 0x20: buffer
-  set RelationshipName(value: Uint8Array | Deno.PointerValue | null) {
+  set RelationshipName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f32))), true);
   }
 
   // 0x28: buffer
-  set PrimaryServerName(value: Uint8Array | Deno.PointerValue | null) {
+  set PrimaryServerName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f40))), true);
   }
 
   // 0x30: buffer
-  set SecondaryServerName(value: Uint8Array | Deno.PointerValue | null) {
+  set SecondaryServerName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f48 = value;
-    this.view.setBigUint64(48, BigInt(util.toPointer((this.buf as any)._f48)), true);
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f48))), true);
   }
 
   // 0x38: pointer
-  set pScopes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set pScopes(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: u8
@@ -13804,9 +13804,9 @@ export class DHCP_FAILOVER_RELATIONSHIPView {
   // 0x41: pad7
 
   // 0x48: buffer
-  set SharedSecret(value: Uint8Array | Deno.PointerValue | null) {
+  set SharedSecret(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f72 = value;
-    this.view.setBigUint64(72, BigInt(util.toPointer((this.buf as any)._f72)), true);
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f72))), true);
   }
 }
 
@@ -13817,7 +13817,7 @@ export interface DHCP_FAILOVER_RELATIONSHIP_ARRAY {
   /** u32 */
   NumElements: number;
   /** ptr */
-  pRelationships: Deno.PointerValue | Uint8Array | null;
+  pRelationships: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCP_FAILOVER_RELATIONSHIP_ARRAY = 16;
@@ -13829,7 +13829,7 @@ export function allocDHCP_FAILOVER_RELATIONSHIP_ARRAY(data?: Partial<DHCP_FAILOV
   if (data?.NumElements !== undefined) view.setUint32(0, Number(data.NumElements), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pRelationships !== undefined) view.setBigUint64(8, data.pRelationships === null ? 0n : BigInt(util.toPointer(data.pRelationships)), true);
+  if (data?.pRelationships !== undefined) view.setBigUint64(8, data.pRelationships === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pRelationships))), true);
   return buf;
 }
 
@@ -13851,9 +13851,9 @@ export class DHCP_FAILOVER_RELATIONSHIP_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pRelationships(): Uint8Array | Deno.PointerValue | null {
+  get pRelationships(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -13864,8 +13864,8 @@ export class DHCP_FAILOVER_RELATIONSHIP_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pRelationships(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pRelationships(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -13878,15 +13878,15 @@ export interface DHCPV4_FAILOVER_CLIENT_INFO {
   /** u32 */
   SubnetMask: number;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_BINARY_DATA */
-  ClientHardwareAddress: Uint8Array | Deno.PointerValue | null;
+  ClientHardwareAddress: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   ClientName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
   ClientComment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.Dhcp.DATE_TIME */
-  ClientLeaseExpires: Uint8Array | Deno.PointerValue | null;
+  ClientLeaseExpires: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_HOST_INFO */
-  OwnerHost: Uint8Array | Deno.PointerValue | null;
+  OwnerHost: Uint8Array | Deno.PointerValue;
   /** u8 */
   bClientType: number;
   /** u8 */
@@ -13894,7 +13894,7 @@ export interface DHCPV4_FAILOVER_CLIENT_INFO {
   /** Windows.Win32.NetworkManagement.Dhcp.QuarantineStatus */
   Status: QuarantineStatus;
   /** Windows.Win32.NetworkManagement.Dhcp.DATE_TIME */
-  ProbationEnds: Uint8Array | Deno.PointerValue | null;
+  ProbationEnds: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOL */
   QuarantineCapable: boolean;
   /** u32 */
@@ -13927,21 +13927,21 @@ export function allocDHCPV4_FAILOVER_CLIENT_INFO(data?: Partial<DHCPV4_FAILOVER_
   // 0x04: u32
   if (data?.SubnetMask !== undefined) view.setUint32(4, Number(data.SubnetMask), true);
   // 0x08: pointer
-  if (data?.ClientHardwareAddress !== undefined) view.setBigUint64(8, data.ClientHardwareAddress === null ? 0n : BigInt(util.toPointer(data.ClientHardwareAddress)), true);
+  if (data?.ClientHardwareAddress !== undefined) view.setBigUint64(8, data.ClientHardwareAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientHardwareAddress))), true);
   // 0x10: buffer
   if (data?.ClientName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.ClientName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.ClientComment !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.ClientComment);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: pointer
-  if (data?.ClientLeaseExpires !== undefined) view.setBigUint64(32, data.ClientLeaseExpires === null ? 0n : BigInt(util.toPointer(data.ClientLeaseExpires)), true);
+  if (data?.ClientLeaseExpires !== undefined) view.setBigUint64(32, data.ClientLeaseExpires === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientLeaseExpires))), true);
   // 0x28: pointer
-  if (data?.OwnerHost !== undefined) view.setBigUint64(40, data.OwnerHost === null ? 0n : BigInt(util.toPointer(data.OwnerHost)), true);
+  if (data?.OwnerHost !== undefined) view.setBigUint64(40, data.OwnerHost === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OwnerHost))), true);
   // 0x30: u8
   if (data?.bClientType !== undefined) view.setUint8(48, Number(data.bClientType));
   // 0x31: u8
@@ -13950,7 +13950,7 @@ export function allocDHCPV4_FAILOVER_CLIENT_INFO(data?: Partial<DHCPV4_FAILOVER_
   if (data?.Status !== undefined) view.setInt32(50, Number(data.Status), true);
   // 0x36: pad2
   // 0x38: pointer
-  if (data?.ProbationEnds !== undefined) view.setBigUint64(56, data.ProbationEnds === null ? 0n : BigInt(util.toPointer(data.ProbationEnds)), true);
+  if (data?.ProbationEnds !== undefined) view.setBigUint64(56, data.ProbationEnds === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ProbationEnds))), true);
   // 0x40: i32
   if (data?.QuarantineCapable !== undefined) view.setInt32(64, Number(data.QuarantineCapable), true);
   // 0x44: u32
@@ -13970,7 +13970,7 @@ export function allocDHCPV4_FAILOVER_CLIENT_INFO(data?: Partial<DHCPV4_FAILOVER_
   // 0x60: buffer
   if (data?.PolicyName !== undefined) {
     (buf as any)._f96 = util.pwstrToFfi(data.PolicyName);
-    view.setBigUint64(96, (buf as any)._f96 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f96)), true);
+    view.setBigUint64(96, (buf as any)._f96 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f96))), true);
   }
   // 0x68: u8
   if (data?.Flags !== undefined) view.setUint8(104, Number(data.Flags));
@@ -13999,33 +13999,33 @@ export class DHCPV4_FAILOVER_CLIENT_INFOView {
   }
 
   // 0x08: pointer
-  get ClientHardwareAddress(): Uint8Array | Deno.PointerValue | null {
+  get ClientHardwareAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get ClientName(): Uint8Array | Deno.PointerValue | null {
+  get ClientName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get ClientComment(): Uint8Array | Deno.PointerValue | null {
+  get ClientComment(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get ClientLeaseExpires(): Uint8Array | Deno.PointerValue | null {
+  get ClientLeaseExpires(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get OwnerHost(): Uint8Array | Deno.PointerValue | null {
+  get OwnerHost(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: u8
@@ -14046,9 +14046,9 @@ export class DHCPV4_FAILOVER_CLIENT_INFOView {
   // 0x36: pad2
 
   // 0x38: pointer
-  get ProbationEnds(): Uint8Array | Deno.PointerValue | null {
+  get ProbationEnds(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: i32
@@ -14092,9 +14092,9 @@ export class DHCPV4_FAILOVER_CLIENT_INFOView {
   }
 
   // 0x60: buffer
-  get PolicyName(): Uint8Array | Deno.PointerValue | null {
+  get PolicyName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(96, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x68: u8
@@ -14115,30 +14115,30 @@ export class DHCPV4_FAILOVER_CLIENT_INFOView {
   }
 
   // 0x08: pointer
-  set ClientHardwareAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ClientHardwareAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: buffer
-  set ClientName(value: Uint8Array | Deno.PointerValue | null) {
+  set ClientName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set ClientComment(value: Uint8Array | Deno.PointerValue | null) {
+  set ClientComment(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: pointer
-  set ClientLeaseExpires(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set ClientLeaseExpires(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set OwnerHost(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set OwnerHost(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: u8
@@ -14159,8 +14159,8 @@ export class DHCPV4_FAILOVER_CLIENT_INFOView {
   // 0x36: pad2
 
   // 0x38: pointer
-  set ProbationEnds(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set ProbationEnds(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: i32
@@ -14204,9 +14204,9 @@ export class DHCPV4_FAILOVER_CLIENT_INFOView {
   }
 
   // 0x60: buffer
-  set PolicyName(value: Uint8Array | Deno.PointerValue | null) {
+  set PolicyName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f96 = value;
-    this.view.setBigUint64(96, BigInt(util.toPointer((this.buf as any)._f96)), true);
+    this.view.setBigUint64(96, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f96))), true);
   }
 
   // 0x68: u8
@@ -14224,7 +14224,7 @@ export interface DHCPV4_FAILOVER_CLIENT_INFO_ARRAY {
   /** u32 */
   NumElements: number;
   /** ptr */
-  Clients: Deno.PointerValue | Uint8Array | null;
+  Clients: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDHCPV4_FAILOVER_CLIENT_INFO_ARRAY = 16;
@@ -14236,7 +14236,7 @@ export function allocDHCPV4_FAILOVER_CLIENT_INFO_ARRAY(data?: Partial<DHCPV4_FAI
   if (data?.NumElements !== undefined) view.setUint32(0, Number(data.NumElements), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Clients !== undefined) view.setBigUint64(8, data.Clients === null ? 0n : BigInt(util.toPointer(data.Clients)), true);
+  if (data?.Clients !== undefined) view.setBigUint64(8, data.Clients === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Clients))), true);
   return buf;
 }
 
@@ -14258,9 +14258,9 @@ export class DHCPV4_FAILOVER_CLIENT_INFO_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Clients(): Uint8Array | Deno.PointerValue | null {
+  get Clients(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -14271,8 +14271,8 @@ export class DHCPV4_FAILOVER_CLIENT_INFO_ARRAYView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Clients(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Clients(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -14285,15 +14285,15 @@ export interface DHCPV4_FAILOVER_CLIENT_INFO_EX {
   /** u32 */
   SubnetMask: number;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_BINARY_DATA */
-  ClientHardwareAddress: Uint8Array | Deno.PointerValue | null;
+  ClientHardwareAddress: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   ClientName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
   ClientComment: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.Dhcp.DATE_TIME */
-  ClientLeaseExpires: Uint8Array | Deno.PointerValue | null;
+  ClientLeaseExpires: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_HOST_INFO */
-  OwnerHost: Uint8Array | Deno.PointerValue | null;
+  OwnerHost: Uint8Array | Deno.PointerValue;
   /** u8 */
   bClientType: number;
   /** u8 */
@@ -14301,7 +14301,7 @@ export interface DHCPV4_FAILOVER_CLIENT_INFO_EX {
   /** Windows.Win32.NetworkManagement.Dhcp.QuarantineStatus */
   Status: QuarantineStatus;
   /** Windows.Win32.NetworkManagement.Dhcp.DATE_TIME */
-  ProbationEnds: Uint8Array | Deno.PointerValue | null;
+  ProbationEnds: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOL */
   QuarantineCapable: boolean;
   /** u32 */
@@ -14336,21 +14336,21 @@ export function allocDHCPV4_FAILOVER_CLIENT_INFO_EX(data?: Partial<DHCPV4_FAILOV
   // 0x04: u32
   if (data?.SubnetMask !== undefined) view.setUint32(4, Number(data.SubnetMask), true);
   // 0x08: pointer
-  if (data?.ClientHardwareAddress !== undefined) view.setBigUint64(8, data.ClientHardwareAddress === null ? 0n : BigInt(util.toPointer(data.ClientHardwareAddress)), true);
+  if (data?.ClientHardwareAddress !== undefined) view.setBigUint64(8, data.ClientHardwareAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientHardwareAddress))), true);
   // 0x10: buffer
   if (data?.ClientName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.ClientName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.ClientComment !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.ClientComment);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: pointer
-  if (data?.ClientLeaseExpires !== undefined) view.setBigUint64(32, data.ClientLeaseExpires === null ? 0n : BigInt(util.toPointer(data.ClientLeaseExpires)), true);
+  if (data?.ClientLeaseExpires !== undefined) view.setBigUint64(32, data.ClientLeaseExpires === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClientLeaseExpires))), true);
   // 0x28: pointer
-  if (data?.OwnerHost !== undefined) view.setBigUint64(40, data.OwnerHost === null ? 0n : BigInt(util.toPointer(data.OwnerHost)), true);
+  if (data?.OwnerHost !== undefined) view.setBigUint64(40, data.OwnerHost === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OwnerHost))), true);
   // 0x30: u8
   if (data?.bClientType !== undefined) view.setUint8(48, Number(data.bClientType));
   // 0x31: u8
@@ -14359,7 +14359,7 @@ export function allocDHCPV4_FAILOVER_CLIENT_INFO_EX(data?: Partial<DHCPV4_FAILOV
   if (data?.Status !== undefined) view.setInt32(50, Number(data.Status), true);
   // 0x36: pad2
   // 0x38: pointer
-  if (data?.ProbationEnds !== undefined) view.setBigUint64(56, data.ProbationEnds === null ? 0n : BigInt(util.toPointer(data.ProbationEnds)), true);
+  if (data?.ProbationEnds !== undefined) view.setBigUint64(56, data.ProbationEnds === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ProbationEnds))), true);
   // 0x40: i32
   if (data?.QuarantineCapable !== undefined) view.setInt32(64, Number(data.QuarantineCapable), true);
   // 0x44: u32
@@ -14379,7 +14379,7 @@ export function allocDHCPV4_FAILOVER_CLIENT_INFO_EX(data?: Partial<DHCPV4_FAILOV
   // 0x60: buffer
   if (data?.PolicyName !== undefined) {
     (buf as any)._f96 = util.pwstrToFfi(data.PolicyName);
-    view.setBigUint64(96, (buf as any)._f96 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f96)), true);
+    view.setBigUint64(96, (buf as any)._f96 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f96))), true);
   }
   // 0x68: u8
   if (data?.Flags !== undefined) view.setUint8(104, Number(data.Flags));
@@ -14410,33 +14410,33 @@ export class DHCPV4_FAILOVER_CLIENT_INFO_EXView {
   }
 
   // 0x08: pointer
-  get ClientHardwareAddress(): Uint8Array | Deno.PointerValue | null {
+  get ClientHardwareAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get ClientName(): Uint8Array | Deno.PointerValue | null {
+  get ClientName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get ClientComment(): Uint8Array | Deno.PointerValue | null {
+  get ClientComment(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get ClientLeaseExpires(): Uint8Array | Deno.PointerValue | null {
+  get ClientLeaseExpires(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get OwnerHost(): Uint8Array | Deno.PointerValue | null {
+  get OwnerHost(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: u8
@@ -14457,9 +14457,9 @@ export class DHCPV4_FAILOVER_CLIENT_INFO_EXView {
   // 0x36: pad2
 
   // 0x38: pointer
-  get ProbationEnds(): Uint8Array | Deno.PointerValue | null {
+  get ProbationEnds(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: i32
@@ -14503,9 +14503,9 @@ export class DHCPV4_FAILOVER_CLIENT_INFO_EXView {
   }
 
   // 0x60: buffer
-  get PolicyName(): Uint8Array | Deno.PointerValue | null {
+  get PolicyName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(96, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x68: u8
@@ -14531,30 +14531,30 @@ export class DHCPV4_FAILOVER_CLIENT_INFO_EXView {
   }
 
   // 0x08: pointer
-  set ClientHardwareAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ClientHardwareAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: buffer
-  set ClientName(value: Uint8Array | Deno.PointerValue | null) {
+  set ClientName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set ClientComment(value: Uint8Array | Deno.PointerValue | null) {
+  set ClientComment(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: pointer
-  set ClientLeaseExpires(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set ClientLeaseExpires(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set OwnerHost(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set OwnerHost(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: u8
@@ -14575,8 +14575,8 @@ export class DHCPV4_FAILOVER_CLIENT_INFO_EXView {
   // 0x36: pad2
 
   // 0x38: pointer
-  set ProbationEnds(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set ProbationEnds(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: i32
@@ -14620,9 +14620,9 @@ export class DHCPV4_FAILOVER_CLIENT_INFO_EXView {
   }
 
   // 0x60: buffer
-  set PolicyName(value: Uint8Array | Deno.PointerValue | null) {
+  set PolicyName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f96 = value;
-    this.view.setBigUint64(96, BigInt(util.toPointer((this.buf as any)._f96)), true);
+    this.view.setBigUint64(96, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f96))), true);
   }
 
   // 0x68: u8
@@ -15626,7 +15626,7 @@ try {
 // Symbols
 
 export function Dhcpv6CApiInitialize(
-  Version: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Version: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libdhcpcsvc6_dll.Dhcpv6CApiInitialize(util.toPointer(Version));
 }
@@ -15637,30 +15637,30 @@ export function Dhcpv6CApiCleanup(): void /* void */ {
 
 export function Dhcpv6RequestParams(
   forceNewInform: boolean /* Windows.Win32.Foundation.BOOL */,
-  reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
+  reserved: Deno.PointerValue | Uint8Array /* ptr */,
   adapterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  classId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  recdParams: Uint8Array | Deno.PointerValue | null /* Windows.Win32.NetworkManagement.Dhcp.DHCPV6CAPI_PARAMS_ARRAY */,
-  buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pSize: Deno.PointerValue | Uint8Array | null /* ptr */,
+  classId: Deno.PointerValue | Uint8Array /* ptr */,
+  recdParams: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.Dhcp.DHCPV6CAPI_PARAMS_ARRAY */,
+  buffer: Deno.PointerValue | Uint8Array /* ptr */,
+  pSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libdhcpcsvc6_dll.Dhcpv6RequestParams(util.boolToFfi(forceNewInform), util.toPointer(reserved), util.pwstrToFfi(adapterName), util.toPointer(classId), util.toPointer(recdParams), util.toPointer(buffer), util.toPointer(pSize));
 }
 
 export function Dhcpv6RequestPrefix(
   adapterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pclassId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  prefixleaseInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pdwTimeToWait: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pclassId: Deno.PointerValue | Uint8Array /* ptr */,
+  prefixleaseInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  pdwTimeToWait: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libdhcpcsvc6_dll.Dhcpv6RequestPrefix(util.pwstrToFfi(adapterName), util.toPointer(pclassId), util.toPointer(prefixleaseInfo), util.toPointer(pdwTimeToWait));
 }
 
 export function Dhcpv6RenewPrefix(
   adapterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pclassId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  prefixleaseInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pdwTimeToWait: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pclassId: Deno.PointerValue | Uint8Array /* ptr */,
+  prefixleaseInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  pdwTimeToWait: Deno.PointerValue | Uint8Array /* ptr */,
   bValidatePrefix: number /* u32 */,
 ): number /* u32 */ {
   return libdhcpcsvc6_dll.Dhcpv6RenewPrefix(util.pwstrToFfi(adapterName), util.toPointer(pclassId), util.toPointer(prefixleaseInfo), util.toPointer(pdwTimeToWait), bValidatePrefix);
@@ -15668,14 +15668,14 @@ export function Dhcpv6RenewPrefix(
 
 export function Dhcpv6ReleasePrefix(
   adapterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  classId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  leaseInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  classId: Deno.PointerValue | Uint8Array /* ptr */,
+  leaseInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libdhcpcsvc6_dll.Dhcpv6ReleasePrefix(util.pwstrToFfi(adapterName), util.toPointer(classId), util.toPointer(leaseInfo));
 }
 
 export function DhcpCApiInitialize(
-  Version: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Version: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libdhcpcsvc_dll.DhcpCApiInitialize(util.toPointer(Version));
 }
@@ -15686,13 +15686,13 @@ export function DhcpCApiCleanup(): void /* void */ {
 
 export function DhcpRequestParams(
   Flags: number /* u32 */,
-  Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Reserved: Deno.PointerValue | Uint8Array /* ptr */,
   AdapterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ClassId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SendParams: Uint8Array | Deno.PointerValue | null /* Windows.Win32.NetworkManagement.Dhcp.DHCPCAPI_PARAMS_ARRAY */,
-  RecdParams: Uint8Array | Deno.PointerValue | null /* Windows.Win32.NetworkManagement.Dhcp.DHCPCAPI_PARAMS_ARRAY */,
-  Buffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pSize: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ClassId: Deno.PointerValue | Uint8Array /* ptr */,
+  SendParams: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.Dhcp.DHCPCAPI_PARAMS_ARRAY */,
+  RecdParams: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.Dhcp.DHCPCAPI_PARAMS_ARRAY */,
+  Buffer: Deno.PointerValue | Uint8Array /* ptr */,
+  pSize: Deno.PointerValue | Uint8Array /* ptr */,
   RequestIdStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libdhcpcsvc_dll.DhcpRequestParams(Flags, util.toPointer(Reserved), util.pwstrToFfi(AdapterName), util.toPointer(ClassId), util.toPointer(SendParams), util.toPointer(RecdParams), util.toPointer(Buffer), util.toPointer(pSize), util.pwstrToFfi(RequestIdStr));
@@ -15700,7 +15700,7 @@ export function DhcpRequestParams(
 
 export function DhcpUndoRequestParams(
   Flags: number /* u32 */,
-  Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Reserved: Deno.PointerValue | Uint8Array /* ptr */,
   AdapterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   RequestIdStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
@@ -15709,19 +15709,19 @@ export function DhcpUndoRequestParams(
 
 export function DhcpRegisterParamChange(
   Flags: number /* u32 */,
-  Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Reserved: Deno.PointerValue | Uint8Array /* ptr */,
   AdapterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ClassId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Params: Uint8Array | Deno.PointerValue | null /* Windows.Win32.NetworkManagement.Dhcp.DHCPCAPI_PARAMS_ARRAY */,
-  Handle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ClassId: Deno.PointerValue | Uint8Array /* ptr */,
+  Params: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.Dhcp.DHCPCAPI_PARAMS_ARRAY */,
+  Handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libdhcpcsvc_dll.DhcpRegisterParamChange(Flags, util.toPointer(Reserved), util.pwstrToFfi(AdapterName), util.toPointer(ClassId), util.toPointer(Params), util.toPointer(Handle));
 }
 
 export function DhcpDeRegisterParamChange(
   Flags: number /* u32 */,
-  Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Event: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Reserved: Deno.PointerValue | Uint8Array /* ptr */,
+  Event: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libdhcpcsvc_dll.DhcpDeRegisterParamChange(Flags, util.toPointer(Reserved), util.toPointer(Event));
 }
@@ -15732,14 +15732,14 @@ export function DhcpRemoveDNSRegistrations(): number /* u32 */ {
 
 export function DhcpGetOriginalSubnetMask(
   sAdapterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  dwSubnetMask: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dwSubnetMask: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libdhcpcsvc_dll.DhcpGetOriginalSubnetMask(util.pwstrToFfi(sAdapterName), util.toPointer(dwSubnetMask));
 }
 
 export function DhcpAddFilterV4(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  AddFilterInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  AddFilterInfo: Deno.PointerValue | Uint8Array /* ptr */,
   ForceFlag: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpAddFilterV4(util.pwstrToFfi(ServerIpAddress), util.toPointer(AddFilterInfo), util.boolToFfi(ForceFlag));
@@ -15747,33 +15747,33 @@ export function DhcpAddFilterV4(
 
 export function DhcpDeleteFilterV4(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  DeleteFilterInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DeleteFilterInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpDeleteFilterV4(util.pwstrToFfi(ServerIpAddress), util.toPointer(DeleteFilterInfo));
 }
 
 export function DhcpSetFilterV4(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  GlobalFilterInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  GlobalFilterInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpSetFilterV4(util.pwstrToFfi(ServerIpAddress), util.toPointer(GlobalFilterInfo));
 }
 
 export function DhcpGetFilterV4(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  GlobalFilterInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  GlobalFilterInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpGetFilterV4(util.pwstrToFfi(ServerIpAddress), util.toPointer(GlobalFilterInfo));
 }
 
 export function DhcpEnumFilterV4(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ResumeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PreferredMaximum: number /* u32 */,
   ListType: DHCP_FILTER_LIST_TYPE /* Windows.Win32.NetworkManagement.Dhcp.DHCP_FILTER_LIST_TYPE */,
-  EnumFilterInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ElementsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ElementsTotal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  EnumFilterInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  ElementsRead: Deno.PointerValue | Uint8Array /* ptr */,
+  ElementsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpEnumFilterV4(util.pwstrToFfi(ServerIpAddress), util.toPointer(ResumeHandle), PreferredMaximum, ListType, util.toPointer(EnumFilterInfo), util.toPointer(ElementsRead), util.toPointer(ElementsTotal));
 }
@@ -15781,7 +15781,7 @@ export function DhcpEnumFilterV4(
 export function DhcpCreateSubnet(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SubnetAddress: number /* u32 */,
-  SubnetInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SubnetInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpCreateSubnet(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(SubnetInfo));
 }
@@ -15789,7 +15789,7 @@ export function DhcpCreateSubnet(
 export function DhcpSetSubnetInfo(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SubnetAddress: number /* u32 */,
-  SubnetInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SubnetInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpSetSubnetInfo(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(SubnetInfo));
 }
@@ -15797,18 +15797,18 @@ export function DhcpSetSubnetInfo(
 export function DhcpGetSubnetInfo(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SubnetAddress: number /* u32 */,
-  SubnetInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SubnetInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpGetSubnetInfo(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(SubnetInfo));
 }
 
 export function DhcpEnumSubnets(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ResumeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PreferredMaximum: number /* u32 */,
-  EnumInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ElementsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ElementsTotal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  EnumInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  ElementsRead: Deno.PointerValue | Uint8Array /* ptr */,
+  ElementsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpEnumSubnets(util.pwstrToFfi(ServerIpAddress), util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(EnumInfo), util.toPointer(ElementsRead), util.toPointer(ElementsTotal));
 }
@@ -15816,7 +15816,7 @@ export function DhcpEnumSubnets(
 export function DhcpAddSubnetElement(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SubnetAddress: number /* u32 */,
-  AddElementInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  AddElementInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpAddSubnetElement(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(AddElementInfo));
 }
@@ -15825,11 +15825,11 @@ export function DhcpEnumSubnetElements(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SubnetAddress: number /* u32 */,
   EnumElementType: DHCP_SUBNET_ELEMENT_TYPE /* Windows.Win32.NetworkManagement.Dhcp.DHCP_SUBNET_ELEMENT_TYPE */,
-  ResumeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PreferredMaximum: number /* u32 */,
-  EnumElementInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ElementsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ElementsTotal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  EnumElementInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  ElementsRead: Deno.PointerValue | Uint8Array /* ptr */,
+  ElementsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpEnumSubnetElements(util.pwstrToFfi(ServerIpAddress), SubnetAddress, EnumElementType, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(EnumElementInfo), util.toPointer(ElementsRead), util.toPointer(ElementsTotal));
 }
@@ -15837,7 +15837,7 @@ export function DhcpEnumSubnetElements(
 export function DhcpRemoveSubnetElement(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SubnetAddress: number /* u32 */,
-  RemoveElementInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  RemoveElementInfo: Deno.PointerValue | Uint8Array /* ptr */,
   ForceFlag: DHCP_FORCE_FLAG /* Windows.Win32.NetworkManagement.Dhcp.DHCP_FORCE_FLAG */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpRemoveSubnetElement(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(RemoveElementInfo), ForceFlag);
@@ -15854,7 +15854,7 @@ export function DhcpDeleteSubnet(
 export function DhcpCreateOption(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   OptionID: number /* u32 */,
-  OptionInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OptionInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpCreateOption(util.pwstrToFfi(ServerIpAddress), OptionID, util.toPointer(OptionInfo));
 }
@@ -15862,7 +15862,7 @@ export function DhcpCreateOption(
 export function DhcpSetOptionInfo(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   OptionID: number /* u32 */,
-  OptionInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OptionInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpSetOptionInfo(util.pwstrToFfi(ServerIpAddress), OptionID, util.toPointer(OptionInfo));
 }
@@ -15870,18 +15870,18 @@ export function DhcpSetOptionInfo(
 export function DhcpGetOptionInfo(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   OptionID: number /* u32 */,
-  OptionInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OptionInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpGetOptionInfo(util.pwstrToFfi(ServerIpAddress), OptionID, util.toPointer(OptionInfo));
 }
 
 export function DhcpEnumOptions(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ResumeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PreferredMaximum: number /* u32 */,
-  Options: Deno.PointerValue | Uint8Array | null /* ptr */,
-  OptionsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
-  OptionsTotal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Options: Deno.PointerValue | Uint8Array /* ptr */,
+  OptionsRead: Deno.PointerValue | Uint8Array /* ptr */,
+  OptionsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpEnumOptions(util.pwstrToFfi(ServerIpAddress), util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(Options), util.toPointer(OptionsRead), util.toPointer(OptionsTotal));
 }
@@ -15896,16 +15896,16 @@ export function DhcpRemoveOption(
 export function DhcpSetOptionValue(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   OptionID: number /* u32 */,
-  ScopeInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  OptionValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  OptionValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpSetOptionValue(util.pwstrToFfi(ServerIpAddress), OptionID, util.toPointer(ScopeInfo), util.toPointer(OptionValue));
 }
 
 export function DhcpSetOptionValues(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ScopeInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  OptionValues: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  OptionValues: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpSetOptionValues(util.pwstrToFfi(ServerIpAddress), util.toPointer(ScopeInfo), util.toPointer(OptionValues));
 }
@@ -15913,20 +15913,20 @@ export function DhcpSetOptionValues(
 export function DhcpGetOptionValue(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   OptionID: number /* u32 */,
-  ScopeInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  OptionValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  OptionValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpGetOptionValue(util.pwstrToFfi(ServerIpAddress), OptionID, util.toPointer(ScopeInfo), util.toPointer(OptionValue));
 }
 
 export function DhcpEnumOptionValues(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ScopeInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ResumeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  ResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PreferredMaximum: number /* u32 */,
-  OptionValues: Deno.PointerValue | Uint8Array | null /* ptr */,
-  OptionsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
-  OptionsTotal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OptionValues: Deno.PointerValue | Uint8Array /* ptr */,
+  OptionsRead: Deno.PointerValue | Uint8Array /* ptr */,
+  OptionsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpEnumOptionValues(util.pwstrToFfi(ServerIpAddress), util.toPointer(ScopeInfo), util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(OptionValues), util.toPointer(OptionsRead), util.toPointer(OptionsTotal));
 }
@@ -15934,29 +15934,29 @@ export function DhcpEnumOptionValues(
 export function DhcpRemoveOptionValue(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   OptionID: number /* u32 */,
-  ScopeInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpRemoveOptionValue(util.pwstrToFfi(ServerIpAddress), OptionID, util.toPointer(ScopeInfo));
 }
 
 export function DhcpCreateClientInfoVQ(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ClientInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpCreateClientInfoVQ(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
 }
 
 export function DhcpSetClientInfoVQ(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ClientInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpSetClientInfoVQ(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
 }
 
 export function DhcpGetClientInfoVQ(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  SearchInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SearchInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpGetClientInfoVQ(util.pwstrToFfi(ServerIpAddress), util.toPointer(SearchInfo), util.toPointer(ClientInfo));
 }
@@ -15964,11 +15964,11 @@ export function DhcpGetClientInfoVQ(
 export function DhcpEnumSubnetClientsVQ(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SubnetAddress: number /* u32 */,
-  ResumeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PreferredMaximum: number /* u32 */,
-  ClientInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientsTotal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientsRead: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpEnumSubnetClientsVQ(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(ClientInfo), util.toPointer(ClientsRead), util.toPointer(ClientsTotal));
 }
@@ -15976,40 +15976,40 @@ export function DhcpEnumSubnetClientsVQ(
 export function DhcpEnumSubnetClientsFilterStatusInfo(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SubnetAddress: number /* u32 */,
-  ResumeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PreferredMaximum: number /* u32 */,
-  ClientInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientsTotal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientsRead: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpEnumSubnetClientsFilterStatusInfo(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(ClientInfo), util.toPointer(ClientsRead), util.toPointer(ClientsTotal));
 }
 
 export function DhcpCreateClientInfo(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ClientInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpCreateClientInfo(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
 }
 
 export function DhcpSetClientInfo(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ClientInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpSetClientInfo(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
 }
 
 export function DhcpGetClientInfo(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  SearchInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SearchInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpGetClientInfo(util.pwstrToFfi(ServerIpAddress), util.toPointer(SearchInfo), util.toPointer(ClientInfo));
 }
 
 export function DhcpDeleteClientInfo(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ClientInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpDeleteClientInfo(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
 }
@@ -16017,11 +16017,11 @@ export function DhcpDeleteClientInfo(
 export function DhcpEnumSubnetClients(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SubnetAddress: number /* u32 */,
-  ResumeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PreferredMaximum: number /* u32 */,
-  ClientInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientsTotal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientsRead: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpEnumSubnetClients(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(ClientInfo), util.toPointer(ClientsRead), util.toPointer(ClientsTotal));
 }
@@ -16030,14 +16030,14 @@ export function DhcpGetClientOptions(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ClientIpAddress: number /* u32 */,
   ClientSubnetMask: number /* u32 */,
-  ClientOptions: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ClientOptions: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpGetClientOptions(util.pwstrToFfi(ServerIpAddress), ClientIpAddress, ClientSubnetMask, util.toPointer(ClientOptions));
 }
 
 export function DhcpGetMibInfo(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  MibInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  MibInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpGetMibInfo(util.pwstrToFfi(ServerIpAddress), util.toPointer(MibInfo));
 }
@@ -16045,14 +16045,14 @@ export function DhcpGetMibInfo(
 export function DhcpServerSetConfig(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   FieldsToSet: number /* u32 */,
-  ConfigInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ConfigInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpServerSetConfig(util.pwstrToFfi(ServerIpAddress), FieldsToSet, util.toPointer(ConfigInfo));
 }
 
 export function DhcpServerGetConfig(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ConfigInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ConfigInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpServerGetConfig(util.pwstrToFfi(ServerIpAddress), util.toPointer(ConfigInfo));
 }
@@ -16061,21 +16061,21 @@ export function DhcpScanDatabase(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SubnetAddress: number /* u32 */,
   FixFlag: number /* u32 */,
-  ScanList: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ScanList: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpScanDatabase(util.pwstrToFfi(ServerIpAddress), SubnetAddress, FixFlag, util.toPointer(ScanList));
 }
 
 export function DhcpRpcFreeMemory(
-  BufferPointer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  BufferPointer: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libDHCPSAPI_dll.DhcpRpcFreeMemory(util.toPointer(BufferPointer));
 }
 
 export function DhcpGetVersion(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  MajorVersion: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MinorVersion: Deno.PointerValue | Uint8Array | null /* ptr */,
+  MajorVersion: Deno.PointerValue | Uint8Array /* ptr */,
+  MinorVersion: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpGetVersion(util.pwstrToFfi(ServerIpAddress), util.toPointer(MajorVersion), util.toPointer(MinorVersion));
 }
@@ -16083,7 +16083,7 @@ export function DhcpGetVersion(
 export function DhcpAddSubnetElementV4(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SubnetAddress: number /* u32 */,
-  AddElementInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  AddElementInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpAddSubnetElementV4(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(AddElementInfo));
 }
@@ -16092,11 +16092,11 @@ export function DhcpEnumSubnetElementsV4(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SubnetAddress: number /* u32 */,
   EnumElementType: DHCP_SUBNET_ELEMENT_TYPE /* Windows.Win32.NetworkManagement.Dhcp.DHCP_SUBNET_ELEMENT_TYPE */,
-  ResumeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PreferredMaximum: number /* u32 */,
-  EnumElementInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ElementsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ElementsTotal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  EnumElementInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  ElementsRead: Deno.PointerValue | Uint8Array /* ptr */,
+  ElementsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpEnumSubnetElementsV4(util.pwstrToFfi(ServerIpAddress), SubnetAddress, EnumElementType, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(EnumElementInfo), util.toPointer(ElementsRead), util.toPointer(ElementsTotal));
 }
@@ -16104,7 +16104,7 @@ export function DhcpEnumSubnetElementsV4(
 export function DhcpRemoveSubnetElementV4(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SubnetAddress: number /* u32 */,
-  RemoveElementInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  RemoveElementInfo: Deno.PointerValue | Uint8Array /* ptr */,
   ForceFlag: DHCP_FORCE_FLAG /* Windows.Win32.NetworkManagement.Dhcp.DHCP_FORCE_FLAG */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpRemoveSubnetElementV4(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(RemoveElementInfo), ForceFlag);
@@ -16112,22 +16112,22 @@ export function DhcpRemoveSubnetElementV4(
 
 export function DhcpCreateClientInfoV4(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ClientInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpCreateClientInfoV4(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
 }
 
 export function DhcpSetClientInfoV4(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ClientInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpSetClientInfoV4(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
 }
 
 export function DhcpGetClientInfoV4(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  SearchInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SearchInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpGetClientInfoV4(util.pwstrToFfi(ServerIpAddress), util.toPointer(SearchInfo), util.toPointer(ClientInfo));
 }
@@ -16135,11 +16135,11 @@ export function DhcpGetClientInfoV4(
 export function DhcpEnumSubnetClientsV4(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SubnetAddress: number /* u32 */,
-  ResumeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PreferredMaximum: number /* u32 */,
-  ClientInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientsTotal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientsRead: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpEnumSubnetClientsV4(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(ClientInfo), util.toPointer(ClientsRead), util.toPointer(ClientsTotal));
 }
@@ -16147,14 +16147,14 @@ export function DhcpEnumSubnetClientsV4(
 export function DhcpServerSetConfigV4(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   FieldsToSet: number /* u32 */,
-  ConfigInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ConfigInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpServerSetConfigV4(util.pwstrToFfi(ServerIpAddress), FieldsToSet, util.toPointer(ConfigInfo));
 }
 
 export function DhcpServerGetConfigV4(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ConfigInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ConfigInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpServerGetConfigV4(util.pwstrToFfi(ServerIpAddress), util.toPointer(ConfigInfo));
 }
@@ -16177,7 +16177,7 @@ export function DhcpDeleteSuperScopeV4(
 
 export function DhcpGetSuperScopeInfoV4(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  SuperScopeTable: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SuperScopeTable: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpGetSuperScopeInfoV4(util.pwstrToFfi(ServerIpAddress), util.toPointer(SuperScopeTable));
 }
@@ -16185,11 +16185,11 @@ export function DhcpGetSuperScopeInfoV4(
 export function DhcpEnumSubnetClientsV5(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SubnetAddress: number /* u32 */,
-  ResumeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PreferredMaximum: number /* u32 */,
-  ClientInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientsTotal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientsRead: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpEnumSubnetClientsV5(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(ClientInfo), util.toPointer(ClientsRead), util.toPointer(ClientsTotal));
 }
@@ -16200,7 +16200,7 @@ export function DhcpCreateOptionV5(
   OptionId: number /* u32 */,
   ClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   VendorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  OptionInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OptionInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpCreateOptionV5(util.pwstrToFfi(ServerIpAddress), Flags, OptionId, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(OptionInfo));
 }
@@ -16211,7 +16211,7 @@ export function DhcpSetOptionInfoV5(
   OptionID: number /* u32 */,
   ClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   VendorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  OptionInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OptionInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpSetOptionInfoV5(util.pwstrToFfi(ServerIpAddress), Flags, OptionID, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(OptionInfo));
 }
@@ -16222,7 +16222,7 @@ export function DhcpGetOptionInfoV5(
   OptionID: number /* u32 */,
   ClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   VendorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  OptionInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OptionInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpGetOptionInfoV5(util.pwstrToFfi(ServerIpAddress), Flags, OptionID, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(OptionInfo));
 }
@@ -16232,11 +16232,11 @@ export function DhcpEnumOptionsV5(
   Flags: number /* u32 */,
   ClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   VendorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ResumeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PreferredMaximum: number /* u32 */,
-  Options: Deno.PointerValue | Uint8Array | null /* ptr */,
-  OptionsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
-  OptionsTotal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Options: Deno.PointerValue | Uint8Array /* ptr */,
+  OptionsRead: Deno.PointerValue | Uint8Array /* ptr */,
+  OptionsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpEnumOptionsV5(util.pwstrToFfi(ServerIpAddress), Flags, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(Options), util.toPointer(OptionsRead), util.toPointer(OptionsTotal));
 }
@@ -16257,8 +16257,8 @@ export function DhcpSetOptionValueV5(
   OptionId: number /* u32 */,
   ClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   VendorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ScopeInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  OptionValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  OptionValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpSetOptionValueV5(util.pwstrToFfi(ServerIpAddress), Flags, OptionId, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo), util.toPointer(OptionValue));
 }
@@ -16268,8 +16268,8 @@ export function DhcpSetOptionValuesV5(
   Flags: number /* u32 */,
   ClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   VendorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ScopeInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  OptionValues: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  OptionValues: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpSetOptionValuesV5(util.pwstrToFfi(ServerIpAddress), Flags, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo), util.toPointer(OptionValues));
 }
@@ -16280,8 +16280,8 @@ export function DhcpGetOptionValueV5(
   OptionID: number /* u32 */,
   ClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   VendorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ScopeInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  OptionValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  OptionValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpGetOptionValueV5(util.pwstrToFfi(ServerIpAddress), Flags, OptionID, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo), util.toPointer(OptionValue));
 }
@@ -16292,8 +16292,8 @@ export function DhcpGetOptionValueV6(
   OptionID: number /* u32 */,
   ClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   VendorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ScopeInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  OptionValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  OptionValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpGetOptionValueV6(util.pwstrToFfi(ServerIpAddress), Flags, OptionID, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo), util.toPointer(OptionValue));
 }
@@ -16303,12 +16303,12 @@ export function DhcpEnumOptionValuesV5(
   Flags: number /* u32 */,
   ClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   VendorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ScopeInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ResumeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  ResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PreferredMaximum: number /* u32 */,
-  OptionValues: Deno.PointerValue | Uint8Array | null /* ptr */,
-  OptionsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
-  OptionsTotal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OptionValues: Deno.PointerValue | Uint8Array /* ptr */,
+  OptionsRead: Deno.PointerValue | Uint8Array /* ptr */,
+  OptionsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpEnumOptionValuesV5(util.pwstrToFfi(ServerIpAddress), Flags, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo), util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(OptionValues), util.toPointer(OptionsRead), util.toPointer(OptionsTotal));
 }
@@ -16319,7 +16319,7 @@ export function DhcpRemoveOptionValueV5(
   OptionID: number /* u32 */,
   ClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   VendorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ScopeInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpRemoveOptionValueV5(util.pwstrToFfi(ServerIpAddress), Flags, OptionID, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo));
 }
@@ -16327,7 +16327,7 @@ export function DhcpRemoveOptionValueV5(
 export function DhcpCreateClass(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ReservedMustBeZero: number /* u32 */,
-  ClassInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ClassInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpCreateClass(util.pwstrToFfi(ServerIpAddress), ReservedMustBeZero, util.toPointer(ClassInfo));
 }
@@ -16335,7 +16335,7 @@ export function DhcpCreateClass(
 export function DhcpModifyClass(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ReservedMustBeZero: number /* u32 */,
-  ClassInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ClassInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpModifyClass(util.pwstrToFfi(ServerIpAddress), ReservedMustBeZero, util.toPointer(ClassInfo));
 }
@@ -16351,8 +16351,8 @@ export function DhcpDeleteClass(
 export function DhcpGetClassInfo(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ReservedMustBeZero: number /* u32 */,
-  PartialClassInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  FilledClassInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  PartialClassInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  FilledClassInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpGetClassInfo(util.pwstrToFfi(ServerIpAddress), ReservedMustBeZero, util.toPointer(PartialClassInfo), util.toPointer(FilledClassInfo));
 }
@@ -16360,11 +16360,11 @@ export function DhcpGetClassInfo(
 export function DhcpEnumClasses(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ReservedMustBeZero: number /* u32 */,
-  ResumeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PreferredMaximum: number /* u32 */,
-  ClassInfoArray: Deno.PointerValue | Uint8Array | null /* ptr */,
-  nRead: Deno.PointerValue | Uint8Array | null /* ptr */,
-  nTotal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ClassInfoArray: Deno.PointerValue | Uint8Array /* ptr */,
+  nRead: Deno.PointerValue | Uint8Array /* ptr */,
+  nTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpEnumClasses(util.pwstrToFfi(ServerIpAddress), ReservedMustBeZero, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(ClassInfoArray), util.toPointer(nRead), util.toPointer(nTotal));
 }
@@ -16372,7 +16372,7 @@ export function DhcpEnumClasses(
 export function DhcpGetAllOptions(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
-  OptionStruct: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OptionStruct: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpGetAllOptions(util.pwstrToFfi(ServerIpAddress), Flags, util.toPointer(OptionStruct));
 }
@@ -16380,7 +16380,7 @@ export function DhcpGetAllOptions(
 export function DhcpGetAllOptionsV6(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
-  OptionStruct: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OptionStruct: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpGetAllOptionsV6(util.pwstrToFfi(ServerIpAddress), Flags, util.toPointer(OptionStruct));
 }
@@ -16388,8 +16388,8 @@ export function DhcpGetAllOptionsV6(
 export function DhcpGetAllOptionValues(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
-  ScopeInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Values: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  Values: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpGetAllOptionValues(util.pwstrToFfi(ServerIpAddress), Flags, util.toPointer(ScopeInfo), util.toPointer(Values));
 }
@@ -16397,38 +16397,38 @@ export function DhcpGetAllOptionValues(
 export function DhcpGetAllOptionValuesV6(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
-  ScopeInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Values: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  Values: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpGetAllOptionValuesV6(util.pwstrToFfi(ServerIpAddress), Flags, util.toPointer(ScopeInfo), util.toPointer(Values));
 }
 
 export function DhcpEnumServers(
   Flags: number /* u32 */,
-  IdInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Servers: Deno.PointerValue | Uint8Array | null /* ptr */,
-  CallbackFn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  CallbackData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  IdInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  Servers: Deno.PointerValue | Uint8Array /* ptr */,
+  CallbackFn: Deno.PointerValue | Uint8Array /* ptr */,
+  CallbackData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpEnumServers(Flags, util.toPointer(IdInfo), util.toPointer(Servers), util.toPointer(CallbackFn), util.toPointer(CallbackData));
 }
 
 export function DhcpAddServer(
   Flags: number /* u32 */,
-  IdInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  NewServer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  CallbackFn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  CallbackData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  IdInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  NewServer: Deno.PointerValue | Uint8Array /* ptr */,
+  CallbackFn: Deno.PointerValue | Uint8Array /* ptr */,
+  CallbackData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpAddServer(Flags, util.toPointer(IdInfo), util.toPointer(NewServer), util.toPointer(CallbackFn), util.toPointer(CallbackData));
 }
 
 export function DhcpDeleteServer(
   Flags: number /* u32 */,
-  IdInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  NewServer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  CallbackFn: Deno.PointerValue | Uint8Array | null /* ptr */,
-  CallbackData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  IdInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  NewServer: Deno.PointerValue | Uint8Array /* ptr */,
+  CallbackFn: Deno.PointerValue | Uint8Array /* ptr */,
+  CallbackData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpDeleteServer(Flags, util.toPointer(IdInfo), util.toPointer(NewServer), util.toPointer(CallbackFn), util.toPointer(CallbackData));
 }
@@ -16436,7 +16436,7 @@ export function DhcpDeleteServer(
 export function DhcpGetServerBindingInfo(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
-  BindElementsInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  BindElementsInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpGetServerBindingInfo(util.pwstrToFfi(ServerIpAddress), Flags, util.toPointer(BindElementsInfo));
 }
@@ -16444,7 +16444,7 @@ export function DhcpGetServerBindingInfo(
 export function DhcpSetServerBindingInfo(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
-  BindElementInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  BindElementInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpSetServerBindingInfo(util.pwstrToFfi(ServerIpAddress), Flags, util.toPointer(BindElementInfo));
 }
@@ -16452,7 +16452,7 @@ export function DhcpSetServerBindingInfo(
 export function DhcpAddSubnetElementV5(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SubnetAddress: number /* u32 */,
-  AddElementInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  AddElementInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpAddSubnetElementV5(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(AddElementInfo));
 }
@@ -16461,11 +16461,11 @@ export function DhcpEnumSubnetElementsV5(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SubnetAddress: number /* u32 */,
   EnumElementType: DHCP_SUBNET_ELEMENT_TYPE /* Windows.Win32.NetworkManagement.Dhcp.DHCP_SUBNET_ELEMENT_TYPE */,
-  ResumeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PreferredMaximum: number /* u32 */,
-  EnumElementInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ElementsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ElementsTotal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  EnumElementInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  ElementsRead: Deno.PointerValue | Uint8Array /* ptr */,
+  ElementsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpEnumSubnetElementsV5(util.pwstrToFfi(ServerIpAddress), SubnetAddress, EnumElementType, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(EnumElementInfo), util.toPointer(ElementsRead), util.toPointer(ElementsTotal));
 }
@@ -16473,7 +16473,7 @@ export function DhcpEnumSubnetElementsV5(
 export function DhcpRemoveSubnetElementV5(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SubnetAddress: number /* u32 */,
-  RemoveElementInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  RemoveElementInfo: Deno.PointerValue | Uint8Array /* ptr */,
   ForceFlag: DHCP_FORCE_FLAG /* Windows.Win32.NetworkManagement.Dhcp.DHCP_FORCE_FLAG */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpRemoveSubnetElementV5(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(RemoveElementInfo), ForceFlag);
@@ -16482,11 +16482,11 @@ export function DhcpRemoveSubnetElementV5(
 export function DhcpV4EnumSubnetReservations(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SubnetAddress: number /* u32 */,
-  ResumeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PreferredMaximum: number /* u32 */,
-  EnumElementInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ElementsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ElementsTotal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  EnumElementInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  ElementsRead: Deno.PointerValue | Uint8Array /* ptr */,
+  ElementsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4EnumSubnetReservations(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(EnumElementInfo), util.toPointer(ElementsRead), util.toPointer(ElementsTotal));
 }
@@ -16497,7 +16497,7 @@ export function DhcpCreateOptionV6(
   OptionId: number /* u32 */,
   ClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   VendorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  OptionInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OptionInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpCreateOptionV6(util.pwstrToFfi(ServerIpAddress), Flags, OptionId, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(OptionInfo));
 }
@@ -16517,11 +16517,11 @@ export function DhcpEnumOptionsV6(
   Flags: number /* u32 */,
   ClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   VendorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ResumeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PreferredMaximum: number /* u32 */,
-  Options: Deno.PointerValue | Uint8Array | null /* ptr */,
-  OptionsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
-  OptionsTotal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Options: Deno.PointerValue | Uint8Array /* ptr */,
+  OptionsRead: Deno.PointerValue | Uint8Array /* ptr */,
+  OptionsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpEnumOptionsV6(util.pwstrToFfi(ServerIpAddress), Flags, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(Options), util.toPointer(OptionsRead), util.toPointer(OptionsTotal));
 }
@@ -16532,7 +16532,7 @@ export function DhcpRemoveOptionValueV6(
   OptionID: number /* u32 */,
   ClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   VendorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ScopeInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpRemoveOptionValueV6(util.pwstrToFfi(ServerIpAddress), Flags, OptionID, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo));
 }
@@ -16543,7 +16543,7 @@ export function DhcpGetOptionInfoV6(
   OptionID: number /* u32 */,
   ClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   VendorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  OptionInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OptionInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpGetOptionInfoV6(util.pwstrToFfi(ServerIpAddress), Flags, OptionID, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(OptionInfo));
 }
@@ -16554,7 +16554,7 @@ export function DhcpSetOptionInfoV6(
   OptionID: number /* u32 */,
   ClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   VendorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  OptionInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OptionInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpSetOptionInfoV6(util.pwstrToFfi(ServerIpAddress), Flags, OptionID, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(OptionInfo));
 }
@@ -16565,8 +16565,8 @@ export function DhcpSetOptionValueV6(
   OptionId: number /* u32 */,
   ClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   VendorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ScopeInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  OptionValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  OptionValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpSetOptionValueV6(util.pwstrToFfi(ServerIpAddress), Flags, OptionId, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo), util.toPointer(OptionValue));
 }
@@ -16574,7 +16574,7 @@ export function DhcpSetOptionValueV6(
 export function DhcpGetSubnetInfoVQ(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SubnetAddress: number /* u32 */,
-  SubnetInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SubnetInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpGetSubnetInfoVQ(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(SubnetInfo));
 }
@@ -16582,7 +16582,7 @@ export function DhcpGetSubnetInfoVQ(
 export function DhcpCreateSubnetVQ(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SubnetAddress: number /* u32 */,
-  SubnetInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SubnetInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpCreateSubnetVQ(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(SubnetInfo));
 }
@@ -16590,7 +16590,7 @@ export function DhcpCreateSubnetVQ(
 export function DhcpSetSubnetInfoVQ(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SubnetAddress: number /* u32 */,
-  SubnetInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SubnetInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpSetSubnetInfoVQ(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(SubnetInfo));
 }
@@ -16600,12 +16600,12 @@ export function DhcpEnumOptionValuesV6(
   Flags: number /* u32 */,
   ClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   VendorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ScopeInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ResumeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  ResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PreferredMaximum: number /* u32 */,
-  OptionValues: Deno.PointerValue | Uint8Array | null /* ptr */,
-  OptionsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
-  OptionsTotal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OptionValues: Deno.PointerValue | Uint8Array /* ptr */,
+  OptionsRead: Deno.PointerValue | Uint8Array /* ptr */,
+  OptionsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpEnumOptionValuesV6(util.pwstrToFfi(ServerIpAddress), Flags, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo), util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(OptionValues), util.toPointer(OptionsRead), util.toPointer(OptionsTotal));
 }
@@ -16620,14 +16620,14 @@ export function DhcpDsCleanup(): void /* void */ {
 
 export function DhcpSetThreadOptions(
   Flags: number /* u32 */,
-  Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Reserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpSetThreadOptions(Flags, util.toPointer(Reserved));
 }
 
 export function DhcpGetThreadOptions(
-  pFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Reserved: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pFlags: Deno.PointerValue | Uint8Array /* ptr */,
+  Reserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpGetThreadOptions(util.toPointer(pFlags), util.toPointer(Reserved));
 }
@@ -16636,7 +16636,7 @@ export function DhcpServerQueryAttribute(
   ServerIpAddr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwReserved: number /* u32 */,
   DhcpAttribId: number /* u32 */,
-  pDhcpAttrib: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDhcpAttrib: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpServerQueryAttribute(util.pwstrToFfi(ServerIpAddr), dwReserved, DhcpAttribId, util.toPointer(pDhcpAttrib));
 }
@@ -16645,8 +16645,8 @@ export function DhcpServerQueryAttributes(
   ServerIpAddr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwReserved: number /* u32 */,
   dwAttribCount: number /* u32 */,
-  pDhcpAttribs: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pDhcpAttribArr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDhcpAttribs: Deno.PointerValue | Uint8Array /* ptr */,
+  pDhcpAttribArr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpServerQueryAttributes(util.pwstrToFfi(ServerIpAddr), dwReserved, dwAttribCount, util.toPointer(pDhcpAttribs), util.toPointer(pDhcpAttribArr));
 }
@@ -16672,10 +16672,10 @@ export function DhcpAuditLogSetParams(
 export function DhcpAuditLogGetParams(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
-  AuditLogDir: Deno.PointerValue | Uint8Array | null /* ptr */,
-  DiskCheckInterval: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MaxLogFilesSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MinSpaceOnDisk: Deno.PointerValue | Uint8Array | null /* ptr */,
+  AuditLogDir: Deno.PointerValue | Uint8Array /* ptr */,
+  DiskCheckInterval: Deno.PointerValue | Uint8Array /* ptr */,
+  MaxLogFilesSize: Deno.PointerValue | Uint8Array /* ptr */,
+  MinSpaceOnDisk: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpAuditLogGetParams(util.pwstrToFfi(ServerIpAddress), Flags, util.toPointer(AuditLogDir), util.toPointer(DiskCheckInterval), util.toPointer(MaxLogFilesSize), util.toPointer(MinSpaceOnDisk));
 }
@@ -16725,42 +16725,42 @@ export function DhcpServerRestoreDatabase(
 export function DhcpServerSetConfigVQ(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   FieldsToSet: number /* u32 */,
-  ConfigInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ConfigInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpServerSetConfigVQ(util.pwstrToFfi(ServerIpAddress), FieldsToSet, util.toPointer(ConfigInfo));
 }
 
 export function DhcpServerGetConfigVQ(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ConfigInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ConfigInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpServerGetConfigVQ(util.pwstrToFfi(ServerIpAddress), util.toPointer(ConfigInfo));
 }
 
 export function DhcpGetServerSpecificStrings(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ServerSpecificStrings: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ServerSpecificStrings: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpGetServerSpecificStrings(util.pwstrToFfi(ServerIpAddress), util.toPointer(ServerSpecificStrings));
 }
 
 export function DhcpServerAuditlogParamsFree(
-  ConfigInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ConfigInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libDHCPSAPI_dll.DhcpServerAuditlogParamsFree(util.toPointer(ConfigInfo));
 }
 
 export function DhcpCreateSubnetV6(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  SubnetAddress: Uint8Array | Deno.PointerValue | null /* Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */,
-  SubnetInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SubnetAddress: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */,
+  SubnetInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpCreateSubnetV6(util.pwstrToFfi(ServerIpAddress), util.toPointer(SubnetAddress), util.toPointer(SubnetInfo));
 }
 
 export function DhcpDeleteSubnetV6(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  SubnetAddress: Uint8Array | Deno.PointerValue | null /* Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */,
+  SubnetAddress: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */,
   ForceFlag: DHCP_FORCE_FLAG /* Windows.Win32.NetworkManagement.Dhcp.DHCP_FORCE_FLAG */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpDeleteSubnetV6(util.pwstrToFfi(ServerIpAddress), util.toPointer(SubnetAddress), ForceFlag);
@@ -16768,27 +16768,27 @@ export function DhcpDeleteSubnetV6(
 
 export function DhcpEnumSubnetsV6(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ResumeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PreferredMaximum: number /* u32 */,
-  EnumInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ElementsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ElementsTotal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  EnumInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  ElementsRead: Deno.PointerValue | Uint8Array /* ptr */,
+  ElementsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpEnumSubnetsV6(util.pwstrToFfi(ServerIpAddress), util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(EnumInfo), util.toPointer(ElementsRead), util.toPointer(ElementsTotal));
 }
 
 export function DhcpAddSubnetElementV6(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  SubnetAddress: Uint8Array | Deno.PointerValue | null /* Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */,
-  AddElementInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SubnetAddress: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */,
+  AddElementInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpAddSubnetElementV6(util.pwstrToFfi(ServerIpAddress), util.toPointer(SubnetAddress), util.toPointer(AddElementInfo));
 }
 
 export function DhcpRemoveSubnetElementV6(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  SubnetAddress: Uint8Array | Deno.PointerValue | null /* Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */,
-  RemoveElementInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SubnetAddress: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */,
+  RemoveElementInfo: Deno.PointerValue | Uint8Array /* ptr */,
   ForceFlag: DHCP_FORCE_FLAG /* Windows.Win32.NetworkManagement.Dhcp.DHCP_FORCE_FLAG */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpRemoveSubnetElementV6(util.pwstrToFfi(ServerIpAddress), util.toPointer(SubnetAddress), util.toPointer(RemoveElementInfo), ForceFlag);
@@ -16796,65 +16796,65 @@ export function DhcpRemoveSubnetElementV6(
 
 export function DhcpEnumSubnetElementsV6(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  SubnetAddress: Uint8Array | Deno.PointerValue | null /* Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */,
+  SubnetAddress: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */,
   EnumElementType: DHCP_SUBNET_ELEMENT_TYPE_V6 /* Windows.Win32.NetworkManagement.Dhcp.DHCP_SUBNET_ELEMENT_TYPE_V6 */,
-  ResumeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PreferredMaximum: number /* u32 */,
-  EnumElementInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ElementsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ElementsTotal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  EnumElementInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  ElementsRead: Deno.PointerValue | Uint8Array /* ptr */,
+  ElementsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpEnumSubnetElementsV6(util.pwstrToFfi(ServerIpAddress), util.toPointer(SubnetAddress), EnumElementType, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(EnumElementInfo), util.toPointer(ElementsRead), util.toPointer(ElementsTotal));
 }
 
 export function DhcpGetSubnetInfoV6(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  SubnetAddress: Uint8Array | Deno.PointerValue | null /* Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */,
-  SubnetInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SubnetAddress: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */,
+  SubnetInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpGetSubnetInfoV6(util.pwstrToFfi(ServerIpAddress), util.toPointer(SubnetAddress), util.toPointer(SubnetInfo));
 }
 
 export function DhcpEnumSubnetClientsV6(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  SubnetAddress: Uint8Array | Deno.PointerValue | null /* Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */,
-  ResumeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SubnetAddress: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */,
+  ResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PreferredMaximum: number /* u32 */,
-  ClientInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientsTotal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientsRead: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpEnumSubnetClientsV6(util.pwstrToFfi(ServerIpAddress), util.toPointer(SubnetAddress), util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(ClientInfo), util.toPointer(ClientsRead), util.toPointer(ClientsTotal));
 }
 
 export function DhcpServerGetConfigV6(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ScopeInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ConfigInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  ConfigInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpServerGetConfigV6(util.pwstrToFfi(ServerIpAddress), util.toPointer(ScopeInfo), util.toPointer(ConfigInfo));
 }
 
 export function DhcpServerSetConfigV6(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ScopeInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
   FieldsToSet: number /* u32 */,
-  ConfigInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ConfigInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpServerSetConfigV6(util.pwstrToFfi(ServerIpAddress), util.toPointer(ScopeInfo), FieldsToSet, util.toPointer(ConfigInfo));
 }
 
 export function DhcpSetSubnetInfoV6(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  SubnetAddress: Uint8Array | Deno.PointerValue | null /* Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */,
-  SubnetInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SubnetAddress: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */,
+  SubnetInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpSetSubnetInfoV6(util.pwstrToFfi(ServerIpAddress), util.toPointer(SubnetAddress), util.toPointer(SubnetInfo));
 }
 
 export function DhcpGetMibInfoV6(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  MibInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  MibInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpGetMibInfoV6(util.pwstrToFfi(ServerIpAddress), util.toPointer(MibInfo));
 }
@@ -16862,7 +16862,7 @@ export function DhcpGetMibInfoV6(
 export function DhcpGetServerBindingInfoV6(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
-  BindElementsInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  BindElementsInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpGetServerBindingInfoV6(util.pwstrToFfi(ServerIpAddress), Flags, util.toPointer(BindElementsInfo));
 }
@@ -16870,29 +16870,29 @@ export function DhcpGetServerBindingInfoV6(
 export function DhcpSetServerBindingInfoV6(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
-  BindElementInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  BindElementInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpSetServerBindingInfoV6(util.pwstrToFfi(ServerIpAddress), Flags, util.toPointer(BindElementInfo));
 }
 
 export function DhcpSetClientInfoV6(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ClientInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpSetClientInfoV6(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
 }
 
 export function DhcpGetClientInfoV6(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  SearchInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SearchInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpGetClientInfoV6(util.pwstrToFfi(ServerIpAddress), util.toPointer(SearchInfo), util.toPointer(ClientInfo));
 }
 
 export function DhcpDeleteClientInfoV6(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ClientInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpDeleteClientInfoV6(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
 }
@@ -16900,7 +16900,7 @@ export function DhcpDeleteClientInfoV6(
 export function DhcpCreateClassV6(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ReservedMustBeZero: number /* u32 */,
-  ClassInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ClassInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpCreateClassV6(util.pwstrToFfi(ServerIpAddress), ReservedMustBeZero, util.toPointer(ClassInfo));
 }
@@ -16908,7 +16908,7 @@ export function DhcpCreateClassV6(
 export function DhcpModifyClassV6(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ReservedMustBeZero: number /* u32 */,
-  ClassInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ClassInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpModifyClassV6(util.pwstrToFfi(ServerIpAddress), ReservedMustBeZero, util.toPointer(ClassInfo));
 }
@@ -16924,11 +16924,11 @@ export function DhcpDeleteClassV6(
 export function DhcpEnumClassesV6(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ReservedMustBeZero: number /* u32 */,
-  ResumeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PreferredMaximum: number /* u32 */,
-  ClassInfoArray: Deno.PointerValue | Uint8Array | null /* ptr */,
-  nRead: Deno.PointerValue | Uint8Array | null /* ptr */,
-  nTotal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ClassInfoArray: Deno.PointerValue | Uint8Array /* ptr */,
+  nRead: Deno.PointerValue | Uint8Array /* ptr */,
+  nTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpEnumClassesV6(util.pwstrToFfi(ServerIpAddress), ReservedMustBeZero, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(ClassInfoArray), util.toPointer(nRead), util.toPointer(nTotal));
 }
@@ -16944,14 +16944,14 @@ export function DhcpSetSubnetDelayOffer(
 export function DhcpGetSubnetDelayOffer(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SubnetAddress: number /* u32 */,
-  TimeDelayInMilliseconds: Deno.PointerValue | Uint8Array | null /* ptr */,
+  TimeDelayInMilliseconds: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpGetSubnetDelayOffer(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(TimeDelayInMilliseconds));
 }
 
 export function DhcpGetMibInfoV5(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  MibInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  MibInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpGetMibInfoV5(util.pwstrToFfi(ServerIpAddress), util.toPointer(MibInfo));
 }
@@ -16968,8 +16968,8 @@ export function DhcpV4GetOptionValue(
   OptionID: number /* u32 */,
   PolicyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   VendorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ScopeInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  OptionValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  OptionValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4GetOptionValue(util.pwstrToFfi(ServerIpAddress), Flags, OptionID, util.pwstrToFfi(PolicyName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo), util.toPointer(OptionValue));
 }
@@ -16980,8 +16980,8 @@ export function DhcpV4SetOptionValue(
   OptionId: number /* u32 */,
   PolicyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   VendorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ScopeInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  OptionValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  OptionValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4SetOptionValue(util.pwstrToFfi(ServerIpAddress), Flags, OptionId, util.pwstrToFfi(PolicyName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo), util.toPointer(OptionValue));
 }
@@ -16991,8 +16991,8 @@ export function DhcpV4SetOptionValues(
   Flags: number /* u32 */,
   PolicyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   VendorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ScopeInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  OptionValues: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  OptionValues: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4SetOptionValues(util.pwstrToFfi(ServerIpAddress), Flags, util.pwstrToFfi(PolicyName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo), util.toPointer(OptionValues));
 }
@@ -17003,7 +17003,7 @@ export function DhcpV4RemoveOptionValue(
   OptionID: number /* u32 */,
   PolicyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   VendorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ScopeInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4RemoveOptionValue(util.pwstrToFfi(ServerIpAddress), Flags, OptionID, util.pwstrToFfi(PolicyName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo));
 }
@@ -17011,15 +17011,15 @@ export function DhcpV4RemoveOptionValue(
 export function DhcpV4GetAllOptionValues(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
-  ScopeInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Values: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  Values: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4GetAllOptionValues(util.pwstrToFfi(ServerIpAddress), Flags, util.toPointer(ScopeInfo), util.toPointer(Values));
 }
 
 export function DhcpV4FailoverCreateRelationship(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pRelationship: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pRelationship: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4FailoverCreateRelationship(util.pwstrToFfi(ServerIpAddress), util.toPointer(pRelationship));
 }
@@ -17027,7 +17027,7 @@ export function DhcpV4FailoverCreateRelationship(
 export function DhcpV4FailoverSetRelationship(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
-  pRelationship: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pRelationship: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4FailoverSetRelationship(util.pwstrToFfi(ServerIpAddress), Flags, util.toPointer(pRelationship));
 }
@@ -17042,32 +17042,32 @@ export function DhcpV4FailoverDeleteRelationship(
 export function DhcpV4FailoverGetRelationship(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pRelationshipName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pRelationship: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pRelationship: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4FailoverGetRelationship(util.pwstrToFfi(ServerIpAddress), util.pwstrToFfi(pRelationshipName), util.toPointer(pRelationship));
 }
 
 export function DhcpV4FailoverEnumRelationship(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ResumeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PreferredMaximum: number /* u32 */,
-  pRelationship: Deno.PointerValue | Uint8Array | null /* ptr */,
-  RelationshipRead: Deno.PointerValue | Uint8Array | null /* ptr */,
-  RelationshipTotal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pRelationship: Deno.PointerValue | Uint8Array /* ptr */,
+  RelationshipRead: Deno.PointerValue | Uint8Array /* ptr */,
+  RelationshipTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4FailoverEnumRelationship(util.pwstrToFfi(ServerIpAddress), util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(pRelationship), util.toPointer(RelationshipRead), util.toPointer(RelationshipTotal));
 }
 
 export function DhcpV4FailoverAddScopeToRelationship(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pRelationship: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pRelationship: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4FailoverAddScopeToRelationship(util.pwstrToFfi(ServerIpAddress), util.toPointer(pRelationship));
 }
 
 export function DhcpV4FailoverDeleteScopeFromRelationship(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pRelationship: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pRelationship: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4FailoverDeleteScopeFromRelationship(util.pwstrToFfi(ServerIpAddress), util.toPointer(pRelationship));
 }
@@ -17075,7 +17075,7 @@ export function DhcpV4FailoverDeleteScopeFromRelationship(
 export function DhcpV4FailoverGetScopeRelationship(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ScopeId: number /* u32 */,
-  pRelationship: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pRelationship: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4FailoverGetScopeRelationship(util.pwstrToFfi(ServerIpAddress), ScopeId, util.toPointer(pRelationship));
 }
@@ -17083,23 +17083,23 @@ export function DhcpV4FailoverGetScopeRelationship(
 export function DhcpV4FailoverGetScopeStatistics(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ScopeId: number /* u32 */,
-  pStats: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pStats: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4FailoverGetScopeStatistics(util.pwstrToFfi(ServerIpAddress), ScopeId, util.toPointer(pStats));
 }
 
 export function DhcpV4FailoverGetClientInfo(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  SearchInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SearchInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4FailoverGetClientInfo(util.pwstrToFfi(ServerIpAddress), util.toPointer(SearchInfo), util.toPointer(ClientInfo));
 }
 
 export function DhcpV4FailoverGetSystemTime(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pTime: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pMaxAllowedDeltaTime: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pTime: Deno.PointerValue | Uint8Array /* ptr */,
+  pMaxAllowedDeltaTime: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4FailoverGetSystemTime(util.pwstrToFfi(ServerIpAddress), util.toPointer(pTime), util.toPointer(pMaxAllowedDeltaTime));
 }
@@ -17107,7 +17107,7 @@ export function DhcpV4FailoverGetSystemTime(
 export function DhcpV4FailoverGetAddressStatus(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SubnetAddress: number /* u32 */,
-  pStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4FailoverGetAddressStatus(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(pStatus));
 }
@@ -17127,7 +17127,7 @@ export function DhcpHlprCreateV4Policy(
   RootOperator: DHCP_POL_LOGIC_OPER /* Windows.Win32.NetworkManagement.Dhcp.DHCP_POL_LOGIC_OPER */,
   Description: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Enabled: boolean /* Windows.Win32.Foundation.BOOL */,
-  Policy: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpHlprCreateV4Policy(util.pwstrToFfi(PolicyName), util.boolToFfi(fGlobalPolicy), Subnet, ProcessingOrder, RootOperator, util.pwstrToFfi(Description), util.boolToFfi(Enabled), util.toPointer(Policy));
 }
@@ -17140,101 +17140,101 @@ export function DhcpHlprCreateV4PolicyEx(
   RootOperator: DHCP_POL_LOGIC_OPER /* Windows.Win32.NetworkManagement.Dhcp.DHCP_POL_LOGIC_OPER */,
   Description: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Enabled: boolean /* Windows.Win32.Foundation.BOOL */,
-  Policy: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpHlprCreateV4PolicyEx(util.pwstrToFfi(PolicyName), util.boolToFfi(fGlobalPolicy), Subnet, ProcessingOrder, RootOperator, util.pwstrToFfi(Description), util.boolToFfi(Enabled), util.toPointer(Policy));
 }
 
 export function DhcpHlprAddV4PolicyExpr(
-  Policy: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Policy: Deno.PointerValue | Uint8Array /* ptr */,
   ParentExpr: number /* u32 */,
   Operator: DHCP_POL_LOGIC_OPER /* Windows.Win32.NetworkManagement.Dhcp.DHCP_POL_LOGIC_OPER */,
-  ExprIndex: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ExprIndex: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpHlprAddV4PolicyExpr(util.toPointer(Policy), ParentExpr, Operator, util.toPointer(ExprIndex));
 }
 
 export function DhcpHlprAddV4PolicyCondition(
-  Policy: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Policy: Deno.PointerValue | Uint8Array /* ptr */,
   ParentExpr: number /* u32 */,
   Type: DHCP_POL_ATTR_TYPE /* Windows.Win32.NetworkManagement.Dhcp.DHCP_POL_ATTR_TYPE */,
   OptionID: number /* u32 */,
   SubOptionID: number /* u32 */,
   VendorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Operator: DHCP_POL_COMPARATOR /* Windows.Win32.NetworkManagement.Dhcp.DHCP_POL_COMPARATOR */,
-  Value: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Value: Deno.PointerValue | Uint8Array /* ptr */,
   ValueLength: number /* u32 */,
-  ConditionIndex: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ConditionIndex: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpHlprAddV4PolicyCondition(util.toPointer(Policy), ParentExpr, Type, OptionID, SubOptionID, util.pwstrToFfi(VendorName), Operator, util.toPointer(Value), ValueLength, util.toPointer(ConditionIndex));
 }
 
 export function DhcpHlprAddV4PolicyRange(
-  Policy: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Range: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Policy: Deno.PointerValue | Uint8Array /* ptr */,
+  Range: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpHlprAddV4PolicyRange(util.toPointer(Policy), util.toPointer(Range));
 }
 
 export function DhcpHlprResetV4PolicyExpr(
-  Policy: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpHlprResetV4PolicyExpr(util.toPointer(Policy));
 }
 
 export function DhcpHlprModifyV4PolicyExpr(
-  Policy: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Policy: Deno.PointerValue | Uint8Array /* ptr */,
   Operator: DHCP_POL_LOGIC_OPER /* Windows.Win32.NetworkManagement.Dhcp.DHCP_POL_LOGIC_OPER */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpHlprModifyV4PolicyExpr(util.toPointer(Policy), Operator);
 }
 
 export function DhcpHlprFreeV4Policy(
-  Policy: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libDHCPSAPI_dll.DhcpHlprFreeV4Policy(util.toPointer(Policy));
 }
 
 export function DhcpHlprFreeV4PolicyArray(
-  PolicyArray: Deno.PointerValue | Uint8Array | null /* ptr */,
+  PolicyArray: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libDHCPSAPI_dll.DhcpHlprFreeV4PolicyArray(util.toPointer(PolicyArray));
 }
 
 export function DhcpHlprFreeV4PolicyEx(
-  PolicyEx: Deno.PointerValue | Uint8Array | null /* ptr */,
+  PolicyEx: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libDHCPSAPI_dll.DhcpHlprFreeV4PolicyEx(util.toPointer(PolicyEx));
 }
 
 export function DhcpHlprFreeV4PolicyExArray(
-  PolicyExArray: Deno.PointerValue | Uint8Array | null /* ptr */,
+  PolicyExArray: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libDHCPSAPI_dll.DhcpHlprFreeV4PolicyExArray(util.toPointer(PolicyExArray));
 }
 
 export function DhcpHlprFreeV4DhcpProperty(
-  Property: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Property: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libDHCPSAPI_dll.DhcpHlprFreeV4DhcpProperty(util.toPointer(Property));
 }
 
 export function DhcpHlprFreeV4DhcpPropertyArray(
-  PropertyArray: Deno.PointerValue | Uint8Array | null /* ptr */,
+  PropertyArray: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libDHCPSAPI_dll.DhcpHlprFreeV4DhcpPropertyArray(util.toPointer(PropertyArray));
 }
 
 export function DhcpHlprFindV4DhcpProperty(
-  PropertyArray: Deno.PointerValue | Uint8Array | null /* ptr */,
+  PropertyArray: Deno.PointerValue | Uint8Array /* ptr */,
   ID: DHCP_PROPERTY_ID /* Windows.Win32.NetworkManagement.Dhcp.DHCP_PROPERTY_ID */,
   Type: DHCP_PROPERTY_TYPE /* Windows.Win32.NetworkManagement.Dhcp.DHCP_PROPERTY_TYPE */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libDHCPSAPI_dll.DhcpHlprFindV4DhcpProperty(util.toPointer(PropertyArray), ID, Type));
+): Deno.PointerValue /* ptr */ {
+  return libDHCPSAPI_dll.DhcpHlprFindV4DhcpProperty(util.toPointer(PropertyArray), ID, Type);
 }
 
 export function DhcpHlprIsV4PolicySingleUC(
-  Policy: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libDHCPSAPI_dll.DhcpHlprIsV4PolicySingleUC(util.toPointer(Policy)));
 }
@@ -17243,7 +17243,7 @@ export function DhcpV4QueryPolicyEnforcement(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fGlobalPolicy: boolean /* Windows.Win32.Foundation.BOOL */,
   SubnetAddress: number /* u32 */,
-  Enabled: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Enabled: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4QueryPolicyEnforcement(util.pwstrToFfi(ServerIpAddress), util.boolToFfi(fGlobalPolicy), SubnetAddress, util.toPointer(Enabled));
 }
@@ -17258,20 +17258,20 @@ export function DhcpV4SetPolicyEnforcement(
 }
 
 export function DhcpHlprIsV4PolicyWellFormed(
-  pPolicy: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pPolicy: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libDHCPSAPI_dll.DhcpHlprIsV4PolicyWellFormed(util.toPointer(pPolicy)));
 }
 
 export function DhcpHlprIsV4PolicyValid(
-  pPolicy: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pPolicy: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpHlprIsV4PolicyValid(util.toPointer(pPolicy));
 }
 
 export function DhcpV4CreatePolicy(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pPolicy: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pPolicy: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4CreatePolicy(util.pwstrToFfi(ServerIpAddress), util.toPointer(pPolicy));
 }
@@ -17281,7 +17281,7 @@ export function DhcpV4GetPolicy(
   fGlobalPolicy: boolean /* Windows.Win32.Foundation.BOOL */,
   SubnetAddress: number /* u32 */,
   PolicyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  Policy: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4GetPolicy(util.pwstrToFfi(ServerIpAddress), util.boolToFfi(fGlobalPolicy), SubnetAddress, util.pwstrToFfi(PolicyName), util.toPointer(Policy));
 }
@@ -17292,7 +17292,7 @@ export function DhcpV4SetPolicy(
   fGlobalPolicy: boolean /* Windows.Win32.Foundation.BOOL */,
   SubnetAddress: number /* u32 */,
   PolicyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  Policy: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4SetPolicy(util.pwstrToFfi(ServerIpAddress), FieldsModified, util.boolToFfi(fGlobalPolicy), SubnetAddress, util.pwstrToFfi(PolicyName), util.toPointer(Policy));
 }
@@ -17308,13 +17308,13 @@ export function DhcpV4DeletePolicy(
 
 export function DhcpV4EnumPolicies(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ResumeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PreferredMaximum: number /* u32 */,
   fGlobalPolicy: boolean /* Windows.Win32.Foundation.BOOL */,
   SubnetAddress: number /* u32 */,
-  EnumInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ElementsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ElementsTotal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  EnumInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  ElementsRead: Deno.PointerValue | Uint8Array /* ptr */,
+  ElementsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4EnumPolicies(util.pwstrToFfi(ServerIpAddress), util.toPointer(ResumeHandle), PreferredMaximum, util.boolToFfi(fGlobalPolicy), SubnetAddress, util.toPointer(EnumInfo), util.toPointer(ElementsRead), util.toPointer(ElementsTotal));
 }
@@ -17323,7 +17323,7 @@ export function DhcpV4AddPolicyRange(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SubnetAddress: number /* u32 */,
   PolicyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  Range: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Range: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4AddPolicyRange(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.pwstrToFfi(PolicyName), util.toPointer(Range));
 }
@@ -17332,7 +17332,7 @@ export function DhcpV4RemovePolicyRange(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SubnetAddress: number /* u32 */,
   PolicyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  Range: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Range: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4RemovePolicyRange(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.pwstrToFfi(PolicyName), util.toPointer(Range));
 }
@@ -17340,9 +17340,9 @@ export function DhcpV4RemovePolicyRange(
 export function DhcpV6SetStatelessStoreParams(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fServerLevel: boolean /* Windows.Win32.Foundation.BOOL */,
-  SubnetAddress: Uint8Array | Deno.PointerValue | null /* Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */,
+  SubnetAddress: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */,
   FieldModified: number /* u32 */,
-  Params: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Params: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV6SetStatelessStoreParams(util.pwstrToFfi(ServerIpAddress), util.boolToFfi(fServerLevel), util.toPointer(SubnetAddress), FieldModified, util.toPointer(Params));
 }
@@ -17350,22 +17350,22 @@ export function DhcpV6SetStatelessStoreParams(
 export function DhcpV6GetStatelessStoreParams(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fServerLevel: boolean /* Windows.Win32.Foundation.BOOL */,
-  SubnetAddress: Uint8Array | Deno.PointerValue | null /* Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */,
-  Params: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SubnetAddress: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */,
+  Params: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV6GetStatelessStoreParams(util.pwstrToFfi(ServerIpAddress), util.boolToFfi(fServerLevel), util.toPointer(SubnetAddress), util.toPointer(Params));
 }
 
 export function DhcpV6GetStatelessStatistics(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  StatelessStats: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatelessStats: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV6GetStatelessStatistics(util.pwstrToFfi(ServerIpAddress), util.toPointer(StatelessStats));
 }
 
 export function DhcpV4CreateClientInfo(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ClientInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4CreateClientInfo(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
 }
@@ -17373,26 +17373,26 @@ export function DhcpV4CreateClientInfo(
 export function DhcpV4EnumSubnetClients(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SubnetAddress: number /* u32 */,
-  ResumeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PreferredMaximum: number /* u32 */,
-  ClientInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientsTotal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientsRead: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4EnumSubnetClients(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(ClientInfo), util.toPointer(ClientsRead), util.toPointer(ClientsTotal));
 }
 
 export function DhcpV4GetClientInfo(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  SearchInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SearchInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4GetClientInfo(util.pwstrToFfi(ServerIpAddress), util.toPointer(SearchInfo), util.toPointer(ClientInfo));
 }
 
 export function DhcpV6CreateClientInfo(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ClientInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV6CreateClientInfo(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
 }
@@ -17403,25 +17403,25 @@ export function DhcpV4GetFreeIPAddress(
   StartIP: number /* u32 */,
   EndIP: number /* u32 */,
   NumFreeAddrReq: number /* u32 */,
-  IPAddrList: Deno.PointerValue | Uint8Array | null /* ptr */,
+  IPAddrList: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4GetFreeIPAddress(util.pwstrToFfi(ServerIpAddress), ScopeId, StartIP, EndIP, NumFreeAddrReq, util.toPointer(IPAddrList));
 }
 
 export function DhcpV6GetFreeIPAddress(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ScopeId: Uint8Array | Deno.PointerValue | null /* Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */,
-  StartIP: Uint8Array | Deno.PointerValue | null /* Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */,
-  EndIP: Uint8Array | Deno.PointerValue | null /* Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */,
+  ScopeId: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */,
+  StartIP: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */,
+  EndIP: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */,
   NumFreeAddrReq: number /* u32 */,
-  IPAddrList: Deno.PointerValue | Uint8Array | null /* ptr */,
+  IPAddrList: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV6GetFreeIPAddress(util.pwstrToFfi(ServerIpAddress), util.toPointer(ScopeId), util.toPointer(StartIP), util.toPointer(EndIP), NumFreeAddrReq, util.toPointer(IPAddrList));
 }
 
 export function DhcpV4CreateClientInfoEx(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ClientInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4CreateClientInfoEx(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
 }
@@ -17429,26 +17429,26 @@ export function DhcpV4CreateClientInfoEx(
 export function DhcpV4EnumSubnetClientsEx(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SubnetAddress: number /* u32 */,
-  ResumeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PreferredMaximum: number /* u32 */,
-  ClientInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientsTotal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientsRead: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4EnumSubnetClientsEx(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(ClientInfo), util.toPointer(ClientsRead), util.toPointer(ClientsTotal));
 }
 
 export function DhcpV4GetClientInfoEx(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  SearchInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ClientInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SearchInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4GetClientInfoEx(util.pwstrToFfi(ServerIpAddress), util.toPointer(SearchInfo), util.toPointer(ClientInfo));
 }
 
 export function DhcpV4CreatePolicyEx(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  PolicyEx: Deno.PointerValue | Uint8Array | null /* ptr */,
+  PolicyEx: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4CreatePolicyEx(util.pwstrToFfi(ServerIpAddress), util.toPointer(PolicyEx));
 }
@@ -17458,7 +17458,7 @@ export function DhcpV4GetPolicyEx(
   GlobalPolicy: boolean /* Windows.Win32.Foundation.BOOL */,
   SubnetAddress: number /* u32 */,
   PolicyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  Policy: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4GetPolicyEx(util.pwstrToFfi(ServerIpAddress), util.boolToFfi(GlobalPolicy), SubnetAddress, util.pwstrToFfi(PolicyName), util.toPointer(Policy));
 }
@@ -17469,20 +17469,20 @@ export function DhcpV4SetPolicyEx(
   GlobalPolicy: boolean /* Windows.Win32.Foundation.BOOL */,
   SubnetAddress: number /* u32 */,
   PolicyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  Policy: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4SetPolicyEx(util.pwstrToFfi(ServerIpAddress), FieldsModified, util.boolToFfi(GlobalPolicy), SubnetAddress, util.pwstrToFfi(PolicyName), util.toPointer(Policy));
 }
 
 export function DhcpV4EnumPoliciesEx(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ResumeHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PreferredMaximum: number /* u32 */,
   GlobalPolicy: boolean /* Windows.Win32.Foundation.BOOL */,
   SubnetAddress: number /* u32 */,
-  EnumInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ElementsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ElementsTotal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  EnumInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  ElementsRead: Deno.PointerValue | Uint8Array /* ptr */,
+  ElementsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libDHCPSAPI_dll.DhcpV4EnumPoliciesEx(util.pwstrToFfi(ServerIpAddress), util.toPointer(ResumeHandle), PreferredMaximum, util.boolToFfi(GlobalPolicy), SubnetAddress, util.toPointer(EnumInfo), util.toPointer(ElementsRead), util.toPointer(ElementsTotal));
 }

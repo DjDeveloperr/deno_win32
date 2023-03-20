@@ -88,7 +88,7 @@ export const DevQueryResultRemove = 3;
  */
 export interface DEVPROPKEY {
   /** System.Guid */
-  fmtid: Uint8Array | Deno.PointerValue | null;
+  fmtid: Uint8Array | Deno.PointerValue;
   /** u32 */
   pid: number;
 }
@@ -99,7 +99,7 @@ export function allocDEVPROPKEY(data?: Partial<DEVPROPKEY>): Uint8Array {
   const buf = new Uint8Array(sizeofDEVPROPKEY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.fmtid !== undefined) view.setBigUint64(0, data.fmtid === null ? 0n : BigInt(util.toPointer(data.fmtid)), true);
+  if (data?.fmtid !== undefined) view.setBigUint64(0, data.fmtid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fmtid))), true);
   // 0x08: u32
   if (data?.pid !== undefined) view.setUint32(8, Number(data.pid), true);
   // 0x0c: pad4
@@ -117,9 +117,9 @@ export class DEVPROPKEYView {
   }
 
   // 0x00: pointer
-  get fmtid(): Uint8Array | Deno.PointerValue | null {
+  get fmtid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -130,8 +130,8 @@ export class DEVPROPKEYView {
   // 0x0c: pad4
 
   // 0x00: pointer
-  set fmtid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set fmtid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -142,14 +142,14 @@ export class DEVPROPKEYView {
   // 0x0c: pad4
 }
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.Devices.Properties.DEVPROPCOMPKEY (size: 24)
  */
 export interface DEVPROPCOMPKEY {
   /** Windows.Win32.Devices.Properties.DEVPROPKEY */
-  Key: Uint8Array | Deno.PointerValue | null;
+  Key: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Devices.Properties.DEVPROPSTORE */
   Store: DEVPROPSTORE;
   /** Windows.Win32.Foundation.PWSTR */
@@ -162,14 +162,14 @@ export function allocDEVPROPCOMPKEY(data?: Partial<DEVPROPCOMPKEY>): Uint8Array 
   const buf = new Uint8Array(sizeofDEVPROPCOMPKEY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Key !== undefined) view.setBigUint64(0, data.Key === null ? 0n : BigInt(util.toPointer(data.Key)), true);
+  if (data?.Key !== undefined) view.setBigUint64(0, data.Key === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Key))), true);
   // 0x08: i32
   if (data?.Store !== undefined) view.setInt32(8, Number(data.Store), true);
   // 0x0c: pad4
   // 0x10: buffer
   if (data?.LocaleName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.LocaleName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   return buf;
 }
@@ -185,9 +185,9 @@ export class DEVPROPCOMPKEYView {
   }
 
   // 0x00: pointer
-  get Key(): Uint8Array | Deno.PointerValue | null {
+  get Key(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: i32
@@ -198,14 +198,14 @@ export class DEVPROPCOMPKEYView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  get LocaleName(): Uint8Array | Deno.PointerValue | null {
+  get LocaleName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Key(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Key(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: i32
@@ -216,9 +216,9 @@ export class DEVPROPCOMPKEYView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  set LocaleName(value: Uint8Array | Deno.PointerValue | null) {
+  set LocaleName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 }
 
@@ -227,13 +227,13 @@ export class DEVPROPCOMPKEYView {
  */
 export interface DEVPROPERTY {
   /** Windows.Win32.Devices.Properties.DEVPROPCOMPKEY */
-  CompKey: Uint8Array | Deno.PointerValue | null;
+  CompKey: Uint8Array | Deno.PointerValue;
   /** u32 */
   Type: number;
   /** u32 */
   BufferSize: number;
   /** ptr */
-  Buffer: Deno.PointerValue | Uint8Array | null;
+  Buffer: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDEVPROPERTY = 24;
@@ -242,13 +242,13 @@ export function allocDEVPROPERTY(data?: Partial<DEVPROPERTY>): Uint8Array {
   const buf = new Uint8Array(sizeofDEVPROPERTY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.CompKey !== undefined) view.setBigUint64(0, data.CompKey === null ? 0n : BigInt(util.toPointer(data.CompKey)), true);
+  if (data?.CompKey !== undefined) view.setBigUint64(0, data.CompKey === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.CompKey))), true);
   // 0x08: u32
   if (data?.Type !== undefined) view.setUint32(8, Number(data.Type), true);
   // 0x0c: u32
   if (data?.BufferSize !== undefined) view.setUint32(12, Number(data.BufferSize), true);
   // 0x10: pointer
-  if (data?.Buffer !== undefined) view.setBigUint64(16, data.Buffer === null ? 0n : BigInt(util.toPointer(data.Buffer)), true);
+  if (data?.Buffer !== undefined) view.setBigUint64(16, data.Buffer === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Buffer))), true);
   return buf;
 }
 
@@ -263,9 +263,9 @@ export class DEVPROPERTYView {
   }
 
   // 0x00: pointer
-  get CompKey(): Uint8Array | Deno.PointerValue | null {
+  get CompKey(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -279,14 +279,14 @@ export class DEVPROPERTYView {
   }
 
   // 0x10: pointer
-  get Buffer(): Uint8Array | Deno.PointerValue | null {
+  get Buffer(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set CompKey(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set CompKey(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -300,8 +300,8 @@ export class DEVPROPERTYView {
   }
 
   // 0x10: pointer
-  set Buffer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set Buffer(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -312,7 +312,7 @@ export interface DEVPROP_FILTER_EXPRESSION {
   /** Windows.Win32.Devices.DeviceQuery.DEVPROP_OPERATOR */
   Operator: DEVPROP_OPERATOR;
   /** Windows.Win32.Devices.Properties.DEVPROPERTY */
-  Property: Uint8Array | Deno.PointerValue | null;
+  Property: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDEVPROP_FILTER_EXPRESSION = 16;
@@ -324,7 +324,7 @@ export function allocDEVPROP_FILTER_EXPRESSION(data?: Partial<DEVPROP_FILTER_EXP
   if (data?.Operator !== undefined) view.setUint32(0, Number(data.Operator), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Property !== undefined) view.setBigUint64(8, data.Property === null ? 0n : BigInt(util.toPointer(data.Property)), true);
+  if (data?.Property !== undefined) view.setBigUint64(8, data.Property === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Property))), true);
   return buf;
 }
 
@@ -346,9 +346,9 @@ export class DEVPROP_FILTER_EXPRESSIONView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Property(): Uint8Array | Deno.PointerValue | null {
+  get Property(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -359,8 +359,8 @@ export class DEVPROP_FILTER_EXPRESSIONView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Property(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Property(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -375,7 +375,7 @@ export interface DEV_OBJECT {
   /** u32 */
   cPropertyCount: number;
   /** ptr */
-  pProperties: Deno.PointerValue | Uint8Array | null;
+  pProperties: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDEV_OBJECT = 32;
@@ -389,13 +389,13 @@ export function allocDEV_OBJECT(data?: Partial<DEV_OBJECT>): Uint8Array {
   // 0x08: buffer
   if (data?.pszObjectId !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pszObjectId);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: u32
   if (data?.cPropertyCount !== undefined) view.setUint32(16, Number(data.cPropertyCount), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.pProperties !== undefined) view.setBigUint64(24, data.pProperties === null ? 0n : BigInt(util.toPointer(data.pProperties)), true);
+  if (data?.pProperties !== undefined) view.setBigUint64(24, data.pProperties === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pProperties))), true);
   return buf;
 }
 
@@ -417,9 +417,9 @@ export class DEV_OBJECTView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get pszObjectId(): Uint8Array | Deno.PointerValue | null {
+  get pszObjectId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -430,9 +430,9 @@ export class DEV_OBJECTView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get pProperties(): Uint8Array | Deno.PointerValue | null {
+  get pProperties(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -443,9 +443,9 @@ export class DEV_OBJECTView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set pszObjectId(value: Uint8Array | Deno.PointerValue | null) {
+  set pszObjectId(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: u32
@@ -456,8 +456,8 @@ export class DEV_OBJECTView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set pProperties(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set pProperties(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -468,7 +468,7 @@ export interface _DEV_QUERY_RESULT_UPDATE_PAYLOAD {
   /** Windows.Win32.Devices.DeviceQuery.DEV_QUERY_STATE */
   State: DEV_QUERY_STATE;
   /** Windows.Win32.Devices.DeviceQuery.DEV_OBJECT */
-  DeviceObject: Uint8Array | Deno.PointerValue | null;
+  DeviceObject: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeof_DEV_QUERY_RESULT_UPDATE_PAYLOAD = 16;
@@ -480,7 +480,7 @@ export function alloc_DEV_QUERY_RESULT_UPDATE_PAYLOAD(data?: Partial<_DEV_QUERY_
   if (data?.State !== undefined) view.setInt32(0, Number(data.State), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.DeviceObject !== undefined) view.setBigUint64(8, data.DeviceObject === null ? 0n : BigInt(util.toPointer(data.DeviceObject)), true);
+  if (data?.DeviceObject !== undefined) view.setBigUint64(8, data.DeviceObject === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DeviceObject))), true);
   return buf;
 }
 
@@ -502,9 +502,9 @@ export class _DEV_QUERY_RESULT_UPDATE_PAYLOADView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get DeviceObject(): Uint8Array | Deno.PointerValue | null {
+  get DeviceObject(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -515,8 +515,8 @@ export class _DEV_QUERY_RESULT_UPDATE_PAYLOADView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set DeviceObject(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set DeviceObject(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -527,7 +527,7 @@ export interface DEV_QUERY_RESULT_ACTION_DATA {
   /** Windows.Win32.Devices.DeviceQuery.DEV_QUERY_RESULT_ACTION */
   Action: DEV_QUERY_RESULT_ACTION;
   /** _DEV_QUERY_RESULT_UPDATE_PAYLOAD */
-  Data: Uint8Array | Deno.PointerValue | null;
+  Data: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDEV_QUERY_RESULT_ACTION_DATA = 16;
@@ -539,7 +539,7 @@ export function allocDEV_QUERY_RESULT_ACTION_DATA(data?: Partial<DEV_QUERY_RESUL
   if (data?.Action !== undefined) view.setInt32(0, Number(data.Action), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
+  if (data?.Data !== undefined) view.setBigUint64(8, data.Data === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Data))), true);
   return buf;
 }
 
@@ -561,9 +561,9 @@ export class DEV_QUERY_RESULT_ACTION_DATAView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Data(): Uint8Array | Deno.PointerValue | null {
+  get Data(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -574,8 +574,8 @@ export class DEV_QUERY_RESULT_ACTION_DATAView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Data(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Data(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -584,13 +584,13 @@ export class DEV_QUERY_RESULT_ACTION_DATAView {
  */
 export interface DEV_QUERY_PARAMETER {
   /** Windows.Win32.Devices.Properties.DEVPROPKEY */
-  Key: Uint8Array | Deno.PointerValue | null;
+  Key: Uint8Array | Deno.PointerValue;
   /** u32 */
   Type: number;
   /** u32 */
   BufferSize: number;
   /** ptr */
-  Buffer: Deno.PointerValue | Uint8Array | null;
+  Buffer: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDEV_QUERY_PARAMETER = 24;
@@ -599,13 +599,13 @@ export function allocDEV_QUERY_PARAMETER(data?: Partial<DEV_QUERY_PARAMETER>): U
   const buf = new Uint8Array(sizeofDEV_QUERY_PARAMETER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Key !== undefined) view.setBigUint64(0, data.Key === null ? 0n : BigInt(util.toPointer(data.Key)), true);
+  if (data?.Key !== undefined) view.setBigUint64(0, data.Key === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Key))), true);
   // 0x08: u32
   if (data?.Type !== undefined) view.setUint32(8, Number(data.Type), true);
   // 0x0c: u32
   if (data?.BufferSize !== undefined) view.setUint32(12, Number(data.BufferSize), true);
   // 0x10: pointer
-  if (data?.Buffer !== undefined) view.setBigUint64(16, data.Buffer === null ? 0n : BigInt(util.toPointer(data.Buffer)), true);
+  if (data?.Buffer !== undefined) view.setBigUint64(16, data.Buffer === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Buffer))), true);
   return buf;
 }
 
@@ -620,9 +620,9 @@ export class DEV_QUERY_PARAMETERView {
   }
 
   // 0x00: pointer
-  get Key(): Uint8Array | Deno.PointerValue | null {
+  get Key(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -636,14 +636,14 @@ export class DEV_QUERY_PARAMETERView {
   }
 
   // 0x10: pointer
-  get Buffer(): Uint8Array | Deno.PointerValue | null {
+  get Buffer(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Key(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Key(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -657,8 +657,8 @@ export class DEV_QUERY_PARAMETERView {
   }
 
   // 0x10: pointer
-  set Buffer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set Buffer(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -782,30 +782,30 @@ export function DevCreateObjectQuery(
   ObjectType: DEV_OBJECT_TYPE /* Windows.Win32.Devices.DeviceQuery.DEV_OBJECT_TYPE */,
   QueryFlags: number /* u32 */,
   cRequestedProperties: number /* u32 */,
-  pRequestedProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pRequestedProperties: Deno.PointerValue | Uint8Array /* ptr */,
   cFilterExpressionCount: number /* u32 */,
-  pFilter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceQuery.PDEV_QUERY_RESULT_CALLBACK */,
-  pContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  phDevQuery: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_devices_query_l1_1_0_dll.DevCreateObjectQuery(ObjectType, QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cFilterExpressionCount, util.toPointer(pFilter), util.toPointer(pCallback), util.toPointer(pContext), util.toPointer(phDevQuery)));
+  pFilter: Deno.PointerValue | Uint8Array /* ptr */,
+  pCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.DeviceQuery.PDEV_QUERY_RESULT_CALLBACK */,
+  pContext: Deno.PointerValue | Uint8Array /* ptr */,
+  phDevQuery: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_devices_query_l1_1_0_dll.DevCreateObjectQuery(ObjectType, QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cFilterExpressionCount, util.toPointer(pFilter), util.toPointer(pCallback), util.toPointer(pContext), util.toPointer(phDevQuery));
 }
 
 export function DevCreateObjectQueryEx(
   ObjectType: DEV_OBJECT_TYPE /* Windows.Win32.Devices.DeviceQuery.DEV_OBJECT_TYPE */,
   QueryFlags: number /* u32 */,
   cRequestedProperties: number /* u32 */,
-  pRequestedProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pRequestedProperties: Deno.PointerValue | Uint8Array /* ptr */,
   cFilterExpressionCount: number /* u32 */,
-  pFilter: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pFilter: Deno.PointerValue | Uint8Array /* ptr */,
   cExtendedParameterCount: number /* u32 */,
-  pExtendedParameters: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceQuery.PDEV_QUERY_RESULT_CALLBACK */,
-  pContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  phDevQuery: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_devices_query_l1_1_1_dll.DevCreateObjectQueryEx(ObjectType, QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cFilterExpressionCount, util.toPointer(pFilter), cExtendedParameterCount, util.toPointer(pExtendedParameters), util.toPointer(pCallback), util.toPointer(pContext), util.toPointer(phDevQuery)));
+  pExtendedParameters: Deno.PointerValue | Uint8Array /* ptr */,
+  pCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.DeviceQuery.PDEV_QUERY_RESULT_CALLBACK */,
+  pContext: Deno.PointerValue | Uint8Array /* ptr */,
+  phDevQuery: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_devices_query_l1_1_1_dll.DevCreateObjectQueryEx(ObjectType, QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cFilterExpressionCount, util.toPointer(pFilter), cExtendedParameterCount, util.toPointer(pExtendedParameters), util.toPointer(pCallback), util.toPointer(pContext), util.toPointer(phDevQuery));
 }
 
 export function DevCreateObjectQueryFromId(
@@ -813,14 +813,14 @@ export function DevCreateObjectQueryFromId(
   pszObjectId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   QueryFlags: number /* u32 */,
   cRequestedProperties: number /* u32 */,
-  pRequestedProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pRequestedProperties: Deno.PointerValue | Uint8Array /* ptr */,
   cFilterExpressionCount: number /* u32 */,
-  pFilter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceQuery.PDEV_QUERY_RESULT_CALLBACK */,
-  pContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  phDevQuery: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_devices_query_l1_1_0_dll.DevCreateObjectQueryFromId(ObjectType, util.pwstrToFfi(pszObjectId), QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cFilterExpressionCount, util.toPointer(pFilter), util.toPointer(pCallback), util.toPointer(pContext), util.toPointer(phDevQuery)));
+  pFilter: Deno.PointerValue | Uint8Array /* ptr */,
+  pCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.DeviceQuery.PDEV_QUERY_RESULT_CALLBACK */,
+  pContext: Deno.PointerValue | Uint8Array /* ptr */,
+  phDevQuery: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_devices_query_l1_1_0_dll.DevCreateObjectQueryFromId(ObjectType, util.pwstrToFfi(pszObjectId), QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cFilterExpressionCount, util.toPointer(pFilter), util.toPointer(pCallback), util.toPointer(pContext), util.toPointer(phDevQuery));
 }
 
 export function DevCreateObjectQueryFromIdEx(
@@ -828,16 +828,16 @@ export function DevCreateObjectQueryFromIdEx(
   pszObjectId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   QueryFlags: number /* u32 */,
   cRequestedProperties: number /* u32 */,
-  pRequestedProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pRequestedProperties: Deno.PointerValue | Uint8Array /* ptr */,
   cFilterExpressionCount: number /* u32 */,
-  pFilter: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pFilter: Deno.PointerValue | Uint8Array /* ptr */,
   cExtendedParameterCount: number /* u32 */,
-  pExtendedParameters: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceQuery.PDEV_QUERY_RESULT_CALLBACK */,
-  pContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  phDevQuery: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_devices_query_l1_1_1_dll.DevCreateObjectQueryFromIdEx(ObjectType, util.pwstrToFfi(pszObjectId), QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cFilterExpressionCount, util.toPointer(pFilter), cExtendedParameterCount, util.toPointer(pExtendedParameters), util.toPointer(pCallback), util.toPointer(pContext), util.toPointer(phDevQuery)));
+  pExtendedParameters: Deno.PointerValue | Uint8Array /* ptr */,
+  pCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.DeviceQuery.PDEV_QUERY_RESULT_CALLBACK */,
+  pContext: Deno.PointerValue | Uint8Array /* ptr */,
+  phDevQuery: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_devices_query_l1_1_1_dll.DevCreateObjectQueryFromIdEx(ObjectType, util.pwstrToFfi(pszObjectId), QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cFilterExpressionCount, util.toPointer(pFilter), cExtendedParameterCount, util.toPointer(pExtendedParameters), util.toPointer(pCallback), util.toPointer(pContext), util.toPointer(phDevQuery));
 }
 
 export function DevCreateObjectQueryFromIds(
@@ -845,14 +845,14 @@ export function DevCreateObjectQueryFromIds(
   pszzObjectIds: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   QueryFlags: number /* u32 */,
   cRequestedProperties: number /* u32 */,
-  pRequestedProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pRequestedProperties: Deno.PointerValue | Uint8Array /* ptr */,
   cFilterExpressionCount: number /* u32 */,
-  pFilter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceQuery.PDEV_QUERY_RESULT_CALLBACK */,
-  pContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  phDevQuery: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_devices_query_l1_1_0_dll.DevCreateObjectQueryFromIds(ObjectType, util.pwstrToFfi(pszzObjectIds), QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cFilterExpressionCount, util.toPointer(pFilter), util.toPointer(pCallback), util.toPointer(pContext), util.toPointer(phDevQuery)));
+  pFilter: Deno.PointerValue | Uint8Array /* ptr */,
+  pCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.DeviceQuery.PDEV_QUERY_RESULT_CALLBACK */,
+  pContext: Deno.PointerValue | Uint8Array /* ptr */,
+  phDevQuery: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_devices_query_l1_1_0_dll.DevCreateObjectQueryFromIds(ObjectType, util.pwstrToFfi(pszzObjectIds), QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cFilterExpressionCount, util.toPointer(pFilter), util.toPointer(pCallback), util.toPointer(pContext), util.toPointer(phDevQuery));
 }
 
 export function DevCreateObjectQueryFromIdsEx(
@@ -860,20 +860,20 @@ export function DevCreateObjectQueryFromIdsEx(
   pszzObjectIds: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   QueryFlags: number /* u32 */,
   cRequestedProperties: number /* u32 */,
-  pRequestedProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pRequestedProperties: Deno.PointerValue | Uint8Array /* ptr */,
   cFilterExpressionCount: number /* u32 */,
-  pFilter: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pFilter: Deno.PointerValue | Uint8Array /* ptr */,
   cExtendedParameterCount: number /* u32 */,
-  pExtendedParameters: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Devices.DeviceQuery.PDEV_QUERY_RESULT_CALLBACK */,
-  pContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  phDevQuery: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_devices_query_l1_1_1_dll.DevCreateObjectQueryFromIdsEx(ObjectType, util.pwstrToFfi(pszzObjectIds), QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cFilterExpressionCount, util.toPointer(pFilter), cExtendedParameterCount, util.toPointer(pExtendedParameters), util.toPointer(pCallback), util.toPointer(pContext), util.toPointer(phDevQuery)));
+  pExtendedParameters: Deno.PointerValue | Uint8Array /* ptr */,
+  pCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.DeviceQuery.PDEV_QUERY_RESULT_CALLBACK */,
+  pContext: Deno.PointerValue | Uint8Array /* ptr */,
+  phDevQuery: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_devices_query_l1_1_1_dll.DevCreateObjectQueryFromIdsEx(ObjectType, util.pwstrToFfi(pszzObjectIds), QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cFilterExpressionCount, util.toPointer(pFilter), cExtendedParameterCount, util.toPointer(pExtendedParameters), util.toPointer(pCallback), util.toPointer(pContext), util.toPointer(phDevQuery));
 }
 
 export function DevCloseObjectQuery(
-  hDevQuery: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hDevQuery: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libapi_ms_win_devices_query_l1_1_0_dll.DevCloseObjectQuery(util.toPointer(hDevQuery));
 }
@@ -882,33 +882,33 @@ export function DevGetObjects(
   ObjectType: DEV_OBJECT_TYPE /* Windows.Win32.Devices.DeviceQuery.DEV_OBJECT_TYPE */,
   QueryFlags: number /* u32 */,
   cRequestedProperties: number /* u32 */,
-  pRequestedProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pRequestedProperties: Deno.PointerValue | Uint8Array /* ptr */,
   cFilterExpressionCount: number /* u32 */,
-  pFilter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcObjectCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppObjects: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_devices_query_l1_1_0_dll.DevGetObjects(ObjectType, QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cFilterExpressionCount, util.toPointer(pFilter), util.toPointer(pcObjectCount), util.toPointer(ppObjects)));
+  pFilter: Deno.PointerValue | Uint8Array /* ptr */,
+  pcObjectCount: Deno.PointerValue | Uint8Array /* ptr */,
+  ppObjects: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_devices_query_l1_1_0_dll.DevGetObjects(ObjectType, QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cFilterExpressionCount, util.toPointer(pFilter), util.toPointer(pcObjectCount), util.toPointer(ppObjects));
 }
 
 export function DevGetObjectsEx(
   ObjectType: DEV_OBJECT_TYPE /* Windows.Win32.Devices.DeviceQuery.DEV_OBJECT_TYPE */,
   QueryFlags: number /* u32 */,
   cRequestedProperties: number /* u32 */,
-  pRequestedProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pRequestedProperties: Deno.PointerValue | Uint8Array /* ptr */,
   cFilterExpressionCount: number /* u32 */,
-  pFilter: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pFilter: Deno.PointerValue | Uint8Array /* ptr */,
   cExtendedParameterCount: number /* u32 */,
-  pExtendedParameters: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcObjectCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppObjects: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_devices_query_l1_1_1_dll.DevGetObjectsEx(ObjectType, QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cFilterExpressionCount, util.toPointer(pFilter), cExtendedParameterCount, util.toPointer(pExtendedParameters), util.toPointer(pcObjectCount), util.toPointer(ppObjects)));
+  pExtendedParameters: Deno.PointerValue | Uint8Array /* ptr */,
+  pcObjectCount: Deno.PointerValue | Uint8Array /* ptr */,
+  ppObjects: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_devices_query_l1_1_1_dll.DevGetObjectsEx(ObjectType, QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cFilterExpressionCount, util.toPointer(pFilter), cExtendedParameterCount, util.toPointer(pExtendedParameters), util.toPointer(pcObjectCount), util.toPointer(ppObjects));
 }
 
 export function DevFreeObjects(
   cObjectCount: number /* u32 */,
-  pObjects: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pObjects: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libapi_ms_win_devices_query_l1_1_0_dll.DevFreeObjects(cObjectCount, util.toPointer(pObjects));
 }
@@ -918,11 +918,11 @@ export function DevGetObjectProperties(
   pszObjectId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   QueryFlags: number /* u32 */,
   cRequestedProperties: number /* u32 */,
-  pRequestedProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcPropertyCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_devices_query_l1_1_0_dll.DevGetObjectProperties(ObjectType, util.pwstrToFfi(pszObjectId), QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), util.toPointer(pcPropertyCount), util.toPointer(ppProperties)));
+  pRequestedProperties: Deno.PointerValue | Uint8Array /* ptr */,
+  pcPropertyCount: Deno.PointerValue | Uint8Array /* ptr */,
+  ppProperties: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_devices_query_l1_1_0_dll.DevGetObjectProperties(ObjectType, util.pwstrToFfi(pszObjectId), QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), util.toPointer(pcPropertyCount), util.toPointer(ppProperties));
 }
 
 export function DevGetObjectPropertiesEx(
@@ -930,29 +930,29 @@ export function DevGetObjectPropertiesEx(
   pszObjectId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   QueryFlags: number /* u32 */,
   cRequestedProperties: number /* u32 */,
-  pRequestedProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pRequestedProperties: Deno.PointerValue | Uint8Array /* ptr */,
   cExtendedParameterCount: number /* u32 */,
-  pExtendedParameters: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcPropertyCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libapi_ms_win_devices_query_l1_1_1_dll.DevGetObjectPropertiesEx(ObjectType, util.pwstrToFfi(pszObjectId), QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cExtendedParameterCount, util.toPointer(pExtendedParameters), util.toPointer(pcPropertyCount), util.toPointer(ppProperties)));
+  pExtendedParameters: Deno.PointerValue | Uint8Array /* ptr */,
+  pcPropertyCount: Deno.PointerValue | Uint8Array /* ptr */,
+  ppProperties: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libapi_ms_win_devices_query_l1_1_1_dll.DevGetObjectPropertiesEx(ObjectType, util.pwstrToFfi(pszObjectId), QueryFlags, cRequestedProperties, util.toPointer(pRequestedProperties), cExtendedParameterCount, util.toPointer(pExtendedParameters), util.toPointer(pcPropertyCount), util.toPointer(ppProperties));
 }
 
 export function DevFreeObjectProperties(
   cPropertyCount: number /* u32 */,
-  pProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pProperties: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libapi_ms_win_devices_query_l1_1_0_dll.DevFreeObjectProperties(cPropertyCount, util.toPointer(pProperties));
 }
 
 export function DevFindProperty(
-  pKey: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pKey: Deno.PointerValue | Uint8Array /* ptr */,
   Store: DEVPROPSTORE /* Windows.Win32.Devices.Properties.DEVPROPSTORE */,
   pszLocaleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cProperties: number /* u32 */,
-  pProperties: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* ptr */ {
-  return util.pointerFromFfi(libapi_ms_win_devices_query_l1_1_0_dll.DevFindProperty(util.toPointer(pKey), Store, util.pwstrToFfi(pszLocaleName), cProperties, util.toPointer(pProperties)));
+  pProperties: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* ptr */ {
+  return libapi_ms_win_devices_query_l1_1_0_dll.DevFindProperty(util.toPointer(pKey), Store, util.pwstrToFfi(pszLocaleName), cProperties, util.toPointer(pProperties));
 }
 

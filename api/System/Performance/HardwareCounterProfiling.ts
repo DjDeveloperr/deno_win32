@@ -99,7 +99,7 @@ export interface PERFORMANCE_DATA {
   /** u32 */
   Reserved: number;
   /** array */
-  HwCounters: Deno.PointerValue | null;
+  HwCounters: Deno.PointerValue;
 }
 
 export const sizeofPERFORMANCE_DATA = 40;
@@ -124,7 +124,7 @@ export function allocPERFORMANCE_DATA(data?: Partial<PERFORMANCE_DATA>): Uint8Ar
   // 0x1c: u32
   if (data?.Reserved !== undefined) view.setUint32(28, Number(data.Reserved), true);
   // 0x20: pointer
-  if (data?.HwCounters !== undefined) view.setBigUint64(32, data.HwCounters === null ? 0n : BigInt(util.toPointer(data.HwCounters)), true);
+  if (data?.HwCounters !== undefined) view.setBigUint64(32, data.HwCounters === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.HwCounters))), true);
   return buf;
 }
 
@@ -179,9 +179,9 @@ export class PERFORMANCE_DATAView {
   }
 
   // 0x20: pointer
-  get HwCounters(): Uint8Array | Deno.PointerValue | null {
+  get HwCounters(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u16
@@ -225,8 +225,8 @@ export class PERFORMANCE_DATAView {
   }
 
   // 0x20: pointer
-  set HwCounters(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set HwCounters(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -258,31 +258,31 @@ try {
 // Symbols
 
 export function EnableThreadProfiling(
-  ThreadHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  ThreadHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Flags: number /* u32 */,
   HardwareCounters: Deno.PointerValue /* u64 */,
-  PerformanceDataHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  PerformanceDataHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libKERNEL32_dll.EnableThreadProfiling(util.toPointer(ThreadHandle), Flags, HardwareCounters, util.toPointer(PerformanceDataHandle));
 }
 
 export function DisableThreadProfiling(
-  PerformanceDataHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  PerformanceDataHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
   return libKERNEL32_dll.DisableThreadProfiling(util.toPointer(PerformanceDataHandle));
 }
 
 export function QueryThreadProfiling(
-  ThreadHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  Enabled: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ThreadHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  Enabled: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libKERNEL32_dll.QueryThreadProfiling(util.toPointer(ThreadHandle), util.toPointer(Enabled));
 }
 
 export function ReadThreadProfilingData(
-  PerformanceDataHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  PerformanceDataHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Flags: number /* u32 */,
-  PerformanceData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  PerformanceData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libKERNEL32_dll.ReadThreadProfilingData(util.toPointer(PerformanceDataHandle), Flags, util.toPointer(PerformanceData));
 }

@@ -2145,7 +2145,7 @@ export const ENUM_UNKNOWN_CA = 5;
 
 // Structs
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.Security.Cryptography.Certificates.CSEDB_RSTMAPW (size: 16)
@@ -2165,12 +2165,12 @@ export function allocCSEDB_RSTMAPW(data?: Partial<CSEDB_RSTMAPW>): Uint8Array {
   // 0x00: buffer
   if (data?.pwszDatabaseName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pwszDatabaseName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: buffer
   if (data?.pwszNewDatabaseName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pwszNewDatabaseName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   return buf;
 }
@@ -2186,27 +2186,27 @@ export class CSEDB_RSTMAPWView {
   }
 
   // 0x00: buffer
-  get pwszDatabaseName(): Uint8Array | Deno.PointerValue | null {
+  get pwszDatabaseName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get pwszNewDatabaseName(): Uint8Array | Deno.PointerValue | null {
+  get pwszNewDatabaseName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set pwszDatabaseName(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszDatabaseName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: buffer
-  set pwszNewDatabaseName(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszNewDatabaseName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 }
 
@@ -2217,7 +2217,7 @@ export interface CERTTRANSBLOB {
   /** u32 */
   cb: number;
   /** ptr */
-  pb: Deno.PointerValue | Uint8Array | null;
+  pb: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofCERTTRANSBLOB = 16;
@@ -2229,7 +2229,7 @@ export function allocCERTTRANSBLOB(data?: Partial<CERTTRANSBLOB>): Uint8Array {
   if (data?.cb !== undefined) view.setUint32(0, Number(data.cb), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pb !== undefined) view.setBigUint64(8, data.pb === null ? 0n : BigInt(util.toPointer(data.pb)), true);
+  if (data?.pb !== undefined) view.setBigUint64(8, data.pb === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pb))), true);
   return buf;
 }
 
@@ -2251,9 +2251,9 @@ export class CERTTRANSBLOBView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pb(): Uint8Array | Deno.PointerValue | null {
+  get pb(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -2264,8 +2264,8 @@ export class CERTTRANSBLOBView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pb(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pb(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2280,7 +2280,7 @@ export interface CERTVIEWRESTRICTION {
   /** i32 */
   SortOrder: number;
   /** ptr */
-  pbValue: Deno.PointerValue | Uint8Array | null;
+  pbValue: Deno.PointerValue | Uint8Array;
   /** u32 */
   cbValue: number;
 }
@@ -2298,7 +2298,7 @@ export function allocCERTVIEWRESTRICTION(data?: Partial<CERTVIEWRESTRICTION>): U
   if (data?.SortOrder !== undefined) view.setInt32(8, Number(data.SortOrder), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.pbValue !== undefined) view.setBigUint64(16, data.pbValue === null ? 0n : BigInt(util.toPointer(data.pbValue)), true);
+  if (data?.pbValue !== undefined) view.setBigUint64(16, data.pbValue === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pbValue))), true);
   // 0x18: u32
   if (data?.cbValue !== undefined) view.setUint32(24, Number(data.cbValue), true);
   // 0x1c: pad4
@@ -2333,9 +2333,9 @@ export class CERTVIEWRESTRICTIONView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get pbValue(): Uint8Array | Deno.PointerValue | null {
+  get pbValue(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -2363,8 +2363,8 @@ export class CERTVIEWRESTRICTIONView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set pbValue(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pbValue(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -2666,217 +2666,217 @@ try {
 
 export function CertSrvIsServerOnlineW(
   pwszServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pfServerOnline: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcertadm_dll.CertSrvIsServerOnlineW(util.pwstrToFfi(pwszServerName), util.toPointer(pfServerOnline)));
+  pfServerOnline: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libcertadm_dll.CertSrvIsServerOnlineW(util.pwstrToFfi(pwszServerName), util.toPointer(pfServerOnline));
 }
 
 export function CertSrvBackupGetDynamicFileListW(
-  hbc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppwszzFileList: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcbSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcertadm_dll.CertSrvBackupGetDynamicFileListW(util.toPointer(hbc), util.toPointer(ppwszzFileList), util.toPointer(pcbSize)));
+  hbc: Deno.PointerValue | Uint8Array /* ptr */,
+  ppwszzFileList: Deno.PointerValue | Uint8Array /* ptr */,
+  pcbSize: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libcertadm_dll.CertSrvBackupGetDynamicFileListW(util.toPointer(hbc), util.toPointer(ppwszzFileList), util.toPointer(pcbSize));
 }
 
 export function CertSrvBackupPrepareW(
   pwszServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   grbitJet: number /* u32 */,
   dwBackupFlags: CSBACKUP_TYPE /* Windows.Win32.Security.Cryptography.Certificates.CSBACKUP_TYPE */,
-  phbc: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcertadm_dll.CertSrvBackupPrepareW(util.pwstrToFfi(pwszServerName), grbitJet, dwBackupFlags, util.toPointer(phbc)));
+  phbc: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libcertadm_dll.CertSrvBackupPrepareW(util.pwstrToFfi(pwszServerName), grbitJet, dwBackupFlags, util.toPointer(phbc));
 }
 
 export function CertSrvBackupGetDatabaseNamesW(
-  hbc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppwszzAttachmentInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcbSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcertadm_dll.CertSrvBackupGetDatabaseNamesW(util.toPointer(hbc), util.toPointer(ppwszzAttachmentInformation), util.toPointer(pcbSize)));
+  hbc: Deno.PointerValue | Uint8Array /* ptr */,
+  ppwszzAttachmentInformation: Deno.PointerValue | Uint8Array /* ptr */,
+  pcbSize: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libcertadm_dll.CertSrvBackupGetDatabaseNamesW(util.toPointer(hbc), util.toPointer(ppwszzAttachmentInformation), util.toPointer(pcbSize));
 }
 
 export function CertSrvBackupOpenFileW(
-  hbc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hbc: Deno.PointerValue | Uint8Array /* ptr */,
   pwszAttachmentName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cbReadHintSize: number /* u32 */,
-  pliFileSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcertadm_dll.CertSrvBackupOpenFileW(util.toPointer(hbc), util.pwstrToFfi(pwszAttachmentName), cbReadHintSize, util.toPointer(pliFileSize)));
+  pliFileSize: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libcertadm_dll.CertSrvBackupOpenFileW(util.toPointer(hbc), util.pwstrToFfi(pwszAttachmentName), cbReadHintSize, util.toPointer(pliFileSize));
 }
 
 export function CertSrvBackupRead(
-  hbc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pvBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hbc: Deno.PointerValue | Uint8Array /* ptr */,
+  pvBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   cbBuffer: number /* u32 */,
-  pcbRead: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcertadm_dll.CertSrvBackupRead(util.toPointer(hbc), util.toPointer(pvBuffer), cbBuffer, util.toPointer(pcbRead)));
+  pcbRead: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libcertadm_dll.CertSrvBackupRead(util.toPointer(hbc), util.toPointer(pvBuffer), cbBuffer, util.toPointer(pcbRead));
 }
 
 export function CertSrvBackupClose(
-  hbc: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcertadm_dll.CertSrvBackupClose(util.toPointer(hbc)));
+  hbc: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libcertadm_dll.CertSrvBackupClose(util.toPointer(hbc));
 }
 
 export function CertSrvBackupGetBackupLogsW(
-  hbc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppwszzBackupLogFiles: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcbSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcertadm_dll.CertSrvBackupGetBackupLogsW(util.toPointer(hbc), util.toPointer(ppwszzBackupLogFiles), util.toPointer(pcbSize)));
+  hbc: Deno.PointerValue | Uint8Array /* ptr */,
+  ppwszzBackupLogFiles: Deno.PointerValue | Uint8Array /* ptr */,
+  pcbSize: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libcertadm_dll.CertSrvBackupGetBackupLogsW(util.toPointer(hbc), util.toPointer(ppwszzBackupLogFiles), util.toPointer(pcbSize));
 }
 
 export function CertSrvBackupTruncateLogs(
-  hbc: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcertadm_dll.CertSrvBackupTruncateLogs(util.toPointer(hbc)));
+  hbc: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libcertadm_dll.CertSrvBackupTruncateLogs(util.toPointer(hbc));
 }
 
 export function CertSrvBackupEnd(
-  hbc: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcertadm_dll.CertSrvBackupEnd(util.toPointer(hbc)));
+  hbc: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libcertadm_dll.CertSrvBackupEnd(util.toPointer(hbc));
 }
 
 export function CertSrvBackupFree(
-  pv: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pv: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libcertadm_dll.CertSrvBackupFree(util.toPointer(pv));
 }
 
 export function CertSrvRestoreGetDatabaseLocationsW(
-  hbc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppwszzDatabaseLocationList: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcbSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcertadm_dll.CertSrvRestoreGetDatabaseLocationsW(util.toPointer(hbc), util.toPointer(ppwszzDatabaseLocationList), util.toPointer(pcbSize)));
+  hbc: Deno.PointerValue | Uint8Array /* ptr */,
+  ppwszzDatabaseLocationList: Deno.PointerValue | Uint8Array /* ptr */,
+  pcbSize: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libcertadm_dll.CertSrvRestoreGetDatabaseLocationsW(util.toPointer(hbc), util.toPointer(ppwszzDatabaseLocationList), util.toPointer(pcbSize));
 }
 
 export function CertSrvRestorePrepareW(
   pwszServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwRestoreFlags: number /* u32 */,
-  phbc: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcertadm_dll.CertSrvRestorePrepareW(util.pwstrToFfi(pwszServerName), dwRestoreFlags, util.toPointer(phbc)));
+  phbc: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libcertadm_dll.CertSrvRestorePrepareW(util.pwstrToFfi(pwszServerName), dwRestoreFlags, util.toPointer(phbc));
 }
 
 export function CertSrvRestoreRegisterW(
-  hbc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hbc: Deno.PointerValue | Uint8Array /* ptr */,
   pwszCheckPointFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pwszLogPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  rgrstmap: Deno.PointerValue | Uint8Array | null /* ptr */,
+  rgrstmap: Deno.PointerValue | Uint8Array /* ptr */,
   crstmap: number /* i32 */,
   pwszBackupLogPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   genLow: number /* u32 */,
   genHigh: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcertadm_dll.CertSrvRestoreRegisterW(util.toPointer(hbc), util.pwstrToFfi(pwszCheckPointFilePath), util.pwstrToFfi(pwszLogPath), util.toPointer(rgrstmap), crstmap, util.pwstrToFfi(pwszBackupLogPath), genLow, genHigh));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libcertadm_dll.CertSrvRestoreRegisterW(util.toPointer(hbc), util.pwstrToFfi(pwszCheckPointFilePath), util.pwstrToFfi(pwszLogPath), util.toPointer(rgrstmap), crstmap, util.pwstrToFfi(pwszBackupLogPath), genLow, genHigh);
 }
 
 export function CertSrvRestoreRegisterThroughFile(
-  hbc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hbc: Deno.PointerValue | Uint8Array /* ptr */,
   pwszCheckPointFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pwszLogPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  rgrstmap: Deno.PointerValue | Uint8Array | null /* ptr */,
+  rgrstmap: Deno.PointerValue | Uint8Array /* ptr */,
   crstmap: number /* i32 */,
   pwszBackupLogPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   genLow: number /* u32 */,
   genHigh: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcertadm_dll.CertSrvRestoreRegisterThroughFile(util.toPointer(hbc), util.pwstrToFfi(pwszCheckPointFilePath), util.pwstrToFfi(pwszLogPath), util.toPointer(rgrstmap), crstmap, util.pwstrToFfi(pwszBackupLogPath), genLow, genHigh));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libcertadm_dll.CertSrvRestoreRegisterThroughFile(util.toPointer(hbc), util.pwstrToFfi(pwszCheckPointFilePath), util.pwstrToFfi(pwszLogPath), util.toPointer(rgrstmap), crstmap, util.pwstrToFfi(pwszBackupLogPath), genLow, genHigh);
 }
 
 export function CertSrvRestoreRegisterComplete(
-  hbc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  hrRestoreState: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcertadm_dll.CertSrvRestoreRegisterComplete(util.toPointer(hbc), util.toPointer(hrRestoreState)));
+  hbc: Deno.PointerValue | Uint8Array /* ptr */,
+  hrRestoreState: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libcertadm_dll.CertSrvRestoreRegisterComplete(util.toPointer(hbc), util.toPointer(hrRestoreState));
 }
 
 export function CertSrvRestoreEnd(
-  hbc: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcertadm_dll.CertSrvRestoreEnd(util.toPointer(hbc)));
+  hbc: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libcertadm_dll.CertSrvRestoreEnd(util.toPointer(hbc));
 }
 
 export function CertSrvServerControlW(
   pwszServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwControlFlags: number /* u32 */,
-  pcbOut: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppbOut: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libcertadm_dll.CertSrvServerControlW(util.pwstrToFfi(pwszServerName), dwControlFlags, util.toPointer(pcbOut), util.toPointer(ppbOut)));
+  pcbOut: Deno.PointerValue | Uint8Array /* ptr */,
+  ppbOut: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libcertadm_dll.CertSrvServerControlW(util.pwstrToFfi(pwszServerName), dwControlFlags, util.toPointer(pcbOut), util.toPointer(ppbOut));
 }
 
 export function PstGetTrustAnchors(
-  pTargetName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pTargetName: Deno.PointerValue | Uint8Array /* ptr */,
   cCriteria: number /* u32 */,
-  rgpCriteria: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppTrustedIssuers: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
-  return util.pointerFromFfi(libcertpoleng_dll.PstGetTrustAnchors(util.toPointer(pTargetName), cCriteria, util.toPointer(rgpCriteria), util.toPointer(ppTrustedIssuers)));
+  rgpCriteria: Deno.PointerValue | Uint8Array /* ptr */,
+  ppTrustedIssuers: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
+  return libcertpoleng_dll.PstGetTrustAnchors(util.toPointer(pTargetName), cCriteria, util.toPointer(rgpCriteria), util.toPointer(ppTrustedIssuers));
 }
 
 export function PstGetTrustAnchorsEx(
-  pTargetName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pTargetName: Deno.PointerValue | Uint8Array /* ptr */,
   cCriteria: number /* u32 */,
-  rgpCriteria: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pCertContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppTrustedIssuers: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
-  return util.pointerFromFfi(libcertpoleng_dll.PstGetTrustAnchorsEx(util.toPointer(pTargetName), cCriteria, util.toPointer(rgpCriteria), util.toPointer(pCertContext), util.toPointer(ppTrustedIssuers)));
+  rgpCriteria: Deno.PointerValue | Uint8Array /* ptr */,
+  pCertContext: Deno.PointerValue | Uint8Array /* ptr */,
+  ppTrustedIssuers: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
+  return libcertpoleng_dll.PstGetTrustAnchorsEx(util.toPointer(pTargetName), cCriteria, util.toPointer(rgpCriteria), util.toPointer(pCertContext), util.toPointer(ppTrustedIssuers));
 }
 
 export function PstGetCertificateChain(
-  pCert: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pTrustedIssuers: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppCertChainContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
-  return util.pointerFromFfi(libcertpoleng_dll.PstGetCertificateChain(util.toPointer(pCert), util.toPointer(pTrustedIssuers), util.toPointer(ppCertChainContext)));
+  pCert: Deno.PointerValue | Uint8Array /* ptr */,
+  pTrustedIssuers: Deno.PointerValue | Uint8Array /* ptr */,
+  ppCertChainContext: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
+  return libcertpoleng_dll.PstGetCertificateChain(util.toPointer(pCert), util.toPointer(pTrustedIssuers), util.toPointer(ppCertChainContext));
 }
 
 export function PstGetCertificates(
-  pTargetName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pTargetName: Deno.PointerValue | Uint8Array /* ptr */,
   cCriteria: number /* u32 */,
-  rgpCriteria: Deno.PointerValue | Uint8Array | null /* ptr */,
+  rgpCriteria: Deno.PointerValue | Uint8Array /* ptr */,
   bIsClient: boolean /* Windows.Win32.Foundation.BOOL */,
-  pdwCertChainContextCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppCertChainContexts: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
-  return util.pointerFromFfi(libcertpoleng_dll.PstGetCertificates(util.toPointer(pTargetName), cCriteria, util.toPointer(rgpCriteria), util.boolToFfi(bIsClient), util.toPointer(pdwCertChainContextCount), util.toPointer(ppCertChainContexts)));
+  pdwCertChainContextCount: Deno.PointerValue | Uint8Array /* ptr */,
+  ppCertChainContexts: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
+  return libcertpoleng_dll.PstGetCertificates(util.toPointer(pTargetName), cCriteria, util.toPointer(rgpCriteria), util.boolToFfi(bIsClient), util.toPointer(pdwCertChainContextCount), util.toPointer(ppCertChainContexts));
 }
 
 export function PstAcquirePrivateKey(
-  pCert: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
-  return util.pointerFromFfi(libcertpoleng_dll.PstAcquirePrivateKey(util.toPointer(pCert)));
+  pCert: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
+  return libcertpoleng_dll.PstAcquirePrivateKey(util.toPointer(pCert));
 }
 
 export function PstValidate(
-  pTargetName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pTargetName: Deno.PointerValue | Uint8Array /* ptr */,
   bIsClient: boolean /* Windows.Win32.Foundation.BOOL */,
-  pRequestedIssuancePolicy: Deno.PointerValue | Uint8Array | null /* ptr */,
-  phAdditionalCertStore: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pCert: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pProvGUID: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
-  return util.pointerFromFfi(libcertpoleng_dll.PstValidate(util.toPointer(pTargetName), util.boolToFfi(bIsClient), util.toPointer(pRequestedIssuancePolicy), util.toPointer(phAdditionalCertStore), util.toPointer(pCert), util.toPointer(pProvGUID)));
+  pRequestedIssuancePolicy: Deno.PointerValue | Uint8Array /* ptr */,
+  phAdditionalCertStore: Deno.PointerValue | Uint8Array /* ptr */,
+  pCert: Deno.PointerValue | Uint8Array /* ptr */,
+  pProvGUID: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
+  return libcertpoleng_dll.PstValidate(util.toPointer(pTargetName), util.boolToFfi(bIsClient), util.toPointer(pRequestedIssuancePolicy), util.toPointer(phAdditionalCertStore), util.toPointer(pCert), util.toPointer(pProvGUID));
 }
 
 export function PstMapCertificate(
-  pCert: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pTokenInformationType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppTokenInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
-  return util.pointerFromFfi(libcertpoleng_dll.PstMapCertificate(util.toPointer(pCert), util.toPointer(pTokenInformationType), util.toPointer(ppTokenInformation)));
+  pCert: Deno.PointerValue | Uint8Array /* ptr */,
+  pTokenInformationType: Deno.PointerValue | Uint8Array /* ptr */,
+  ppTokenInformation: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
+  return libcertpoleng_dll.PstMapCertificate(util.toPointer(pCert), util.toPointer(pTokenInformationType), util.toPointer(ppTokenInformation));
 }
 
 export function PstGetUserNameForCertificate(
-  pCertContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  UserName: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.NTSTATUS */ {
-  return util.pointerFromFfi(libcertpoleng_dll.PstGetUserNameForCertificate(util.toPointer(pCertContext), util.toPointer(UserName)));
+  pCertContext: Deno.PointerValue | Uint8Array /* ptr */,
+  UserName: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
+  return libcertpoleng_dll.PstGetUserNameForCertificate(util.toPointer(pCertContext), util.toPointer(UserName));
 }
 

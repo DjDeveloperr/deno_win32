@@ -377,7 +377,7 @@ export class BG_FILE_PROGRESSView {
   // 0x14: pad4
 }
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.Networking.BackgroundIntelligentTransferService.BG_FILE_INFO (size: 16)
@@ -397,12 +397,12 @@ export function allocBG_FILE_INFO(data?: Partial<BG_FILE_INFO>): Uint8Array {
   // 0x00: buffer
   if (data?.RemoteName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.RemoteName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: buffer
   if (data?.LocalName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.LocalName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   return buf;
 }
@@ -418,27 +418,27 @@ export class BG_FILE_INFOView {
   }
 
   // 0x00: buffer
-  get RemoteName(): Uint8Array | Deno.PointerValue | null {
+  get RemoteName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get LocalName(): Uint8Array | Deno.PointerValue | null {
+  get LocalName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set RemoteName(value: Uint8Array | Deno.PointerValue | null) {
+  set RemoteName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: buffer
-  set LocalName(value: Uint8Array | Deno.PointerValue | null) {
+  set LocalName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 }
 
@@ -581,11 +581,11 @@ export class FILETIMEView {
  */
 export interface BG_JOB_TIMES {
   /** Windows.Win32.Foundation.FILETIME */
-  CreationTime: Uint8Array | Deno.PointerValue | null;
+  CreationTime: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.FILETIME */
-  ModificationTime: Uint8Array | Deno.PointerValue | null;
+  ModificationTime: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.FILETIME */
-  TransferCompletionTime: Uint8Array | Deno.PointerValue | null;
+  TransferCompletionTime: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofBG_JOB_TIMES = 24;
@@ -594,11 +594,11 @@ export function allocBG_JOB_TIMES(data?: Partial<BG_JOB_TIMES>): Uint8Array {
   const buf = new Uint8Array(sizeofBG_JOB_TIMES);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.CreationTime !== undefined) view.setBigUint64(0, data.CreationTime === null ? 0n : BigInt(util.toPointer(data.CreationTime)), true);
+  if (data?.CreationTime !== undefined) view.setBigUint64(0, data.CreationTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.CreationTime))), true);
   // 0x08: pointer
-  if (data?.ModificationTime !== undefined) view.setBigUint64(8, data.ModificationTime === null ? 0n : BigInt(util.toPointer(data.ModificationTime)), true);
+  if (data?.ModificationTime !== undefined) view.setBigUint64(8, data.ModificationTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ModificationTime))), true);
   // 0x10: pointer
-  if (data?.TransferCompletionTime !== undefined) view.setBigUint64(16, data.TransferCompletionTime === null ? 0n : BigInt(util.toPointer(data.TransferCompletionTime)), true);
+  if (data?.TransferCompletionTime !== undefined) view.setBigUint64(16, data.TransferCompletionTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.TransferCompletionTime))), true);
   return buf;
 }
 
@@ -613,36 +613,36 @@ export class BG_JOB_TIMESView {
   }
 
   // 0x00: pointer
-  get CreationTime(): Uint8Array | Deno.PointerValue | null {
+  get CreationTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get ModificationTime(): Uint8Array | Deno.PointerValue | null {
+  get ModificationTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get TransferCompletionTime(): Uint8Array | Deno.PointerValue | null {
+  get TransferCompletionTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set CreationTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set CreationTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set ModificationTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ModificationTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set TransferCompletionTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set TransferCompletionTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -717,12 +717,12 @@ export function allocBG_BASIC_CREDENTIALS(data?: Partial<BG_BASIC_CREDENTIALS>):
   // 0x00: buffer
   if (data?.UserName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.UserName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: buffer
   if (data?.Password !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.Password);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   return buf;
 }
@@ -738,27 +738,27 @@ export class BG_BASIC_CREDENTIALSView {
   }
 
   // 0x00: buffer
-  get UserName(): Uint8Array | Deno.PointerValue | null {
+  get UserName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get Password(): Uint8Array | Deno.PointerValue | null {
+  get Password(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set UserName(value: Uint8Array | Deno.PointerValue | null) {
+  set UserName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: buffer
-  set Password(value: Uint8Array | Deno.PointerValue | null) {
+  set Password(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 }
 
@@ -767,7 +767,7 @@ export class BG_BASIC_CREDENTIALSView {
  */
 export interface BG_AUTH_CREDENTIALS_UNION {
   /** Windows.Win32.Networking.BackgroundIntelligentTransferService.BG_BASIC_CREDENTIALS */
-  Basic: Uint8Array | Deno.PointerValue | null;
+  Basic: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofBG_AUTH_CREDENTIALS_UNION = 8;
@@ -776,7 +776,7 @@ export function allocBG_AUTH_CREDENTIALS_UNION(data?: Partial<BG_AUTH_CREDENTIAL
   const buf = new Uint8Array(sizeofBG_AUTH_CREDENTIALS_UNION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Basic !== undefined) view.setBigUint64(0, data.Basic === null ? 0n : BigInt(util.toPointer(data.Basic)), true);
+  if (data?.Basic !== undefined) view.setBigUint64(0, data.Basic === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Basic))), true);
   return buf;
 }
 
@@ -791,14 +791,14 @@ export class BG_AUTH_CREDENTIALS_UNIONView {
   }
 
   // 0x00: pointer
-  get Basic(): Uint8Array | Deno.PointerValue | null {
+  get Basic(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Basic(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Basic(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -811,7 +811,7 @@ export interface BG_AUTH_CREDENTIALS {
   /** Windows.Win32.Networking.BackgroundIntelligentTransferService.BG_AUTH_SCHEME */
   Scheme: BG_AUTH_SCHEME;
   /** Windows.Win32.Networking.BackgroundIntelligentTransferService.BG_AUTH_CREDENTIALS_UNION */
-  Credentials: Uint8Array | Deno.PointerValue | null;
+  Credentials: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofBG_AUTH_CREDENTIALS = 16;
@@ -824,7 +824,7 @@ export function allocBG_AUTH_CREDENTIALS(data?: Partial<BG_AUTH_CREDENTIALS>): U
   // 0x04: i32
   if (data?.Scheme !== undefined) view.setInt32(4, Number(data.Scheme), true);
   // 0x08: pointer
-  if (data?.Credentials !== undefined) view.setBigUint64(8, data.Credentials === null ? 0n : BigInt(util.toPointer(data.Credentials)), true);
+  if (data?.Credentials !== undefined) view.setBigUint64(8, data.Credentials === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Credentials))), true);
   return buf;
 }
 
@@ -849,9 +849,9 @@ export class BG_AUTH_CREDENTIALSView {
   }
 
   // 0x08: pointer
-  get Credentials(): Uint8Array | Deno.PointerValue | null {
+  get Credentials(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -865,8 +865,8 @@ export class BG_AUTH_CREDENTIALSView {
   }
 
   // 0x08: pointer
-  set Credentials(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Credentials(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -930,7 +930,7 @@ export interface BITS_JOB_PROPERTY_VALUE {
   /** u32 */
   Dword: number;
   /** System.Guid */
-  ClsID: Uint8Array | Deno.PointerValue | null;
+  ClsID: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOL */
   Enable: boolean;
   /** u64 */
@@ -948,7 +948,7 @@ export function allocBITS_JOB_PROPERTY_VALUE(data?: Partial<BITS_JOB_PROPERTY_VA
   if (data?.Dword !== undefined) view.setUint32(0, Number(data.Dword), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.ClsID !== undefined) view.setBigUint64(8, data.ClsID === null ? 0n : BigInt(util.toPointer(data.ClsID)), true);
+  if (data?.ClsID !== undefined) view.setBigUint64(8, data.ClsID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ClsID))), true);
   // 0x10: i32
   if (data?.Enable !== undefined) view.setInt32(16, Number(data.Enable), true);
   // 0x14: pad4
@@ -978,9 +978,9 @@ export class BITS_JOB_PROPERTY_VALUEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get ClsID(): Uint8Array | Deno.PointerValue | null {
+  get ClsID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i32
@@ -1010,8 +1010,8 @@ export class BITS_JOB_PROPERTY_VALUEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set ClsID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ClsID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: i32
@@ -1050,7 +1050,7 @@ export function allocBITS_FILE_PROPERTY_VALUE(data?: Partial<BITS_FILE_PROPERTY_
   // 0x00: buffer
   if (data?.String !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.String);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   return buf;
 }
@@ -1066,28 +1066,28 @@ export class BITS_FILE_PROPERTY_VALUEView {
   }
 
   // 0x00: buffer
-  get String(): Uint8Array | Deno.PointerValue | null {
+  get String(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set String(value: Uint8Array | Deno.PointerValue | null) {
+  set String(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 }
 
-export type BSTR = Deno.PointerValue | Uint8Array | null;
+export type BSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.Networking.BackgroundIntelligentTransferService.FILESETINFO (size: 24)
  */
 export interface FILESETINFO {
   /** Windows.Win32.Foundation.BSTR */
-  bstrRemoteFile: Uint8Array | Deno.PointerValue | null;
+  bstrRemoteFile: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BSTR */
-  bstrLocalFile: Uint8Array | Deno.PointerValue | null;
+  bstrLocalFile: Uint8Array | Deno.PointerValue;
   /** u32 */
   dwSizeHint: number;
 }
@@ -1098,9 +1098,9 @@ export function allocFILESETINFO(data?: Partial<FILESETINFO>): Uint8Array {
   const buf = new Uint8Array(sizeofFILESETINFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.bstrRemoteFile !== undefined) view.setBigUint64(0, data.bstrRemoteFile === null ? 0n : BigInt(util.toPointer(data.bstrRemoteFile)), true);
+  if (data?.bstrRemoteFile !== undefined) view.setBigUint64(0, data.bstrRemoteFile === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.bstrRemoteFile))), true);
   // 0x08: pointer
-  if (data?.bstrLocalFile !== undefined) view.setBigUint64(8, data.bstrLocalFile === null ? 0n : BigInt(util.toPointer(data.bstrLocalFile)), true);
+  if (data?.bstrLocalFile !== undefined) view.setBigUint64(8, data.bstrLocalFile === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.bstrLocalFile))), true);
   // 0x10: u32
   if (data?.dwSizeHint !== undefined) view.setUint32(16, Number(data.dwSizeHint), true);
   // 0x14: pad4
@@ -1118,15 +1118,15 @@ export class FILESETINFOView {
   }
 
   // 0x00: pointer
-  get bstrRemoteFile(): Uint8Array | Deno.PointerValue | null {
+  get bstrRemoteFile(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get bstrLocalFile(): Uint8Array | Deno.PointerValue | null {
+  get bstrLocalFile(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -1137,13 +1137,13 @@ export class FILESETINFOView {
   // 0x14: pad4
 
   // 0x00: pointer
-  set bstrRemoteFile(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set bstrRemoteFile(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set bstrLocalFile(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set bstrLocalFile(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32

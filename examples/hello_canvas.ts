@@ -1,4 +1,4 @@
-import { createCanvas } from "https://deno.land/x/skia_canvas@0.2.0/mod.ts";
+import { createCanvas } from "https://deno.land/x/skia_canvas@0.5.2/mod.ts";
 import * as Wm from "../api/UI/WindowsAndMessaging.ts";
 import * as Gfx from "../api/Graphics/OpenGL.ts";
 import * as Gdi from "../api/Graphics/Gdi.ts";
@@ -95,7 +95,7 @@ function glInit(hWnd: Deno.PointerValue) {
   const wglGetSwapIntervalEXT = Gfx.wglGetProcAddress("wglGetSwapIntervalEXT");
   if (wglSwapIntervalEXT && wglGetSwapIntervalEXT) {
     new Deno.UnsafeFnPointer(
-      BigInt(wglSwapIntervalEXT),
+      wglSwapIntervalEXT,
       {
         parameters: ["i32"],
         result: "void",
@@ -104,7 +104,7 @@ function glInit(hWnd: Deno.PointerValue) {
     console.log(
       "Enabled VSync",
       new Deno.UnsafeFnPointer(
-        BigInt(wglGetSwapIntervalEXT),
+        wglGetSwapIntervalEXT,
         {
           parameters: [],
           result: "i32",
@@ -180,18 +180,20 @@ function glDraw(hWnd: Deno.PointerValue) {
 const cb = new Deno.UnsafeCallback(
   {
     parameters: ["pointer", "u32", "pointer", "pointer"],
-    result: "i32",
+    result: "pointer",
   } as const,
   (hWnd, msg, wParam, lParam) => {
     switch (msg) {
       case Wm.WM_SIZE: {
-        Gfx.glViewport(0, 0, Number(lParam) & 0xffff, Number(lParam) >> 16);
+        const lParamInt = Number(Deno.UnsafePointer.value(lParam));
+        Gfx.glViewport(0, 0, lParamInt & 0xffff, lParamInt >> 16);
         Wm.PostMessageA(hWnd, Wm.WM_PAINT, null, null);
-        return 0;
+        return null;
       }
 
       case Wm.WM_KEYDOWN: {
-        switch (wParam) {
+        const wParamInt = Number(Deno.UnsafePointer.value(wParam));
+        switch (wParamInt) {
           case 0x25: {
             x -= 10;
             break;
@@ -212,7 +214,7 @@ const cb = new Deno.UnsafeCallback(
             break;
           }
         }
-        return 0;
+        return null;
       }
 
       case Wm.WM_CLOSE: {
@@ -220,13 +222,11 @@ const cb = new Deno.UnsafeCallback(
         Deno.exit(0);
       }
     }
-    return Number(
-      Wm.DefWindowProcA(
-        hWnd,
-        msg,
-        wParam,
-        lParam,
-      ),
+    return Wm.DefWindowProcA(
+      hWnd,
+      msg,
+      wParam,
+      lParam,
     );
   },
 );

@@ -350,25 +350,25 @@ export const VSS_PROTECTION_FAULT_MOUNT_DURING_CLUSTER_OFFLINE = 16;
  */
 export interface VSS_SNAPSHOT_PROP {
   /** System.Guid */
-  m_SnapshotId: Uint8Array | Deno.PointerValue | null;
+  m_SnapshotId: Uint8Array | Deno.PointerValue;
   /** System.Guid */
-  m_SnapshotSetId: Uint8Array | Deno.PointerValue | null;
+  m_SnapshotSetId: Uint8Array | Deno.PointerValue;
   /** i32 */
   m_lSnapshotsCount: number;
   /** ptr */
-  m_pwszSnapshotDeviceObject: Deno.PointerValue | Uint8Array | null;
+  m_pwszSnapshotDeviceObject: Deno.PointerValue | Uint8Array;
   /** ptr */
-  m_pwszOriginalVolumeName: Deno.PointerValue | Uint8Array | null;
+  m_pwszOriginalVolumeName: Deno.PointerValue | Uint8Array;
   /** ptr */
-  m_pwszOriginatingMachine: Deno.PointerValue | Uint8Array | null;
+  m_pwszOriginatingMachine: Deno.PointerValue | Uint8Array;
   /** ptr */
-  m_pwszServiceMachine: Deno.PointerValue | Uint8Array | null;
+  m_pwszServiceMachine: Deno.PointerValue | Uint8Array;
   /** ptr */
-  m_pwszExposedName: Deno.PointerValue | Uint8Array | null;
+  m_pwszExposedName: Deno.PointerValue | Uint8Array;
   /** ptr */
-  m_pwszExposedPath: Deno.PointerValue | Uint8Array | null;
+  m_pwszExposedPath: Deno.PointerValue | Uint8Array;
   /** System.Guid */
-  m_ProviderId: Uint8Array | Deno.PointerValue | null;
+  m_ProviderId: Uint8Array | Deno.PointerValue;
   /** i32 */
   m_lSnapshotAttributes: number;
   /** i64 */
@@ -383,26 +383,26 @@ export function allocVSS_SNAPSHOT_PROP(data?: Partial<VSS_SNAPSHOT_PROP>): Uint8
   const buf = new Uint8Array(sizeofVSS_SNAPSHOT_PROP);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.m_SnapshotId !== undefined) view.setBigUint64(0, data.m_SnapshotId === null ? 0n : BigInt(util.toPointer(data.m_SnapshotId)), true);
+  if (data?.m_SnapshotId !== undefined) view.setBigUint64(0, data.m_SnapshotId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.m_SnapshotId))), true);
   // 0x08: pointer
-  if (data?.m_SnapshotSetId !== undefined) view.setBigUint64(8, data.m_SnapshotSetId === null ? 0n : BigInt(util.toPointer(data.m_SnapshotSetId)), true);
+  if (data?.m_SnapshotSetId !== undefined) view.setBigUint64(8, data.m_SnapshotSetId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.m_SnapshotSetId))), true);
   // 0x10: i32
   if (data?.m_lSnapshotsCount !== undefined) view.setInt32(16, Number(data.m_lSnapshotsCount), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.m_pwszSnapshotDeviceObject !== undefined) view.setBigUint64(24, data.m_pwszSnapshotDeviceObject === null ? 0n : BigInt(util.toPointer(data.m_pwszSnapshotDeviceObject)), true);
+  if (data?.m_pwszSnapshotDeviceObject !== undefined) view.setBigUint64(24, data.m_pwszSnapshotDeviceObject === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.m_pwszSnapshotDeviceObject))), true);
   // 0x20: pointer
-  if (data?.m_pwszOriginalVolumeName !== undefined) view.setBigUint64(32, data.m_pwszOriginalVolumeName === null ? 0n : BigInt(util.toPointer(data.m_pwszOriginalVolumeName)), true);
+  if (data?.m_pwszOriginalVolumeName !== undefined) view.setBigUint64(32, data.m_pwszOriginalVolumeName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.m_pwszOriginalVolumeName))), true);
   // 0x28: pointer
-  if (data?.m_pwszOriginatingMachine !== undefined) view.setBigUint64(40, data.m_pwszOriginatingMachine === null ? 0n : BigInt(util.toPointer(data.m_pwszOriginatingMachine)), true);
+  if (data?.m_pwszOriginatingMachine !== undefined) view.setBigUint64(40, data.m_pwszOriginatingMachine === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.m_pwszOriginatingMachine))), true);
   // 0x30: pointer
-  if (data?.m_pwszServiceMachine !== undefined) view.setBigUint64(48, data.m_pwszServiceMachine === null ? 0n : BigInt(util.toPointer(data.m_pwszServiceMachine)), true);
+  if (data?.m_pwszServiceMachine !== undefined) view.setBigUint64(48, data.m_pwszServiceMachine === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.m_pwszServiceMachine))), true);
   // 0x38: pointer
-  if (data?.m_pwszExposedName !== undefined) view.setBigUint64(56, data.m_pwszExposedName === null ? 0n : BigInt(util.toPointer(data.m_pwszExposedName)), true);
+  if (data?.m_pwszExposedName !== undefined) view.setBigUint64(56, data.m_pwszExposedName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.m_pwszExposedName))), true);
   // 0x40: pointer
-  if (data?.m_pwszExposedPath !== undefined) view.setBigUint64(64, data.m_pwszExposedPath === null ? 0n : BigInt(util.toPointer(data.m_pwszExposedPath)), true);
+  if (data?.m_pwszExposedPath !== undefined) view.setBigUint64(64, data.m_pwszExposedPath === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.m_pwszExposedPath))), true);
   // 0x48: pointer
-  if (data?.m_ProviderId !== undefined) view.setBigUint64(72, data.m_ProviderId === null ? 0n : BigInt(util.toPointer(data.m_ProviderId)), true);
+  if (data?.m_ProviderId !== undefined) view.setBigUint64(72, data.m_ProviderId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.m_ProviderId))), true);
   // 0x50: i32
   if (data?.m_lSnapshotAttributes !== undefined) view.setInt32(80, Number(data.m_lSnapshotAttributes), true);
   // 0x54: pad4
@@ -425,15 +425,15 @@ export class VSS_SNAPSHOT_PROPView {
   }
 
   // 0x00: pointer
-  get m_SnapshotId(): Uint8Array | Deno.PointerValue | null {
+  get m_SnapshotId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get m_SnapshotSetId(): Uint8Array | Deno.PointerValue | null {
+  get m_SnapshotSetId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i32
@@ -444,45 +444,45 @@ export class VSS_SNAPSHOT_PROPView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get m_pwszSnapshotDeviceObject(): Uint8Array | Deno.PointerValue | null {
+  get m_pwszSnapshotDeviceObject(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get m_pwszOriginalVolumeName(): Uint8Array | Deno.PointerValue | null {
+  get m_pwszOriginalVolumeName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get m_pwszOriginatingMachine(): Uint8Array | Deno.PointerValue | null {
+  get m_pwszOriginatingMachine(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get m_pwszServiceMachine(): Uint8Array | Deno.PointerValue | null {
+  get m_pwszServiceMachine(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get m_pwszExposedName(): Uint8Array | Deno.PointerValue | null {
+  get m_pwszExposedName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get m_pwszExposedPath(): Uint8Array | Deno.PointerValue | null {
+  get m_pwszExposedPath(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: pointer
-  get m_ProviderId(): Uint8Array | Deno.PointerValue | null {
+  get m_ProviderId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: i32
@@ -505,13 +505,13 @@ export class VSS_SNAPSHOT_PROPView {
   // 0x64: pad4
 
   // 0x00: pointer
-  set m_SnapshotId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set m_SnapshotId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set m_SnapshotSetId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set m_SnapshotSetId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: i32
@@ -522,38 +522,38 @@ export class VSS_SNAPSHOT_PROPView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set m_pwszSnapshotDeviceObject(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set m_pwszSnapshotDeviceObject(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set m_pwszOriginalVolumeName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set m_pwszOriginalVolumeName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set m_pwszOriginatingMachine(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set m_pwszOriginatingMachine(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set m_pwszServiceMachine(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set m_pwszServiceMachine(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set m_pwszExposedName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set m_pwszExposedName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set m_pwszExposedPath(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set m_pwszExposedPath(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: pointer
-  set m_ProviderId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set m_ProviderId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x50: i32
@@ -581,17 +581,17 @@ export class VSS_SNAPSHOT_PROPView {
  */
 export interface VSS_PROVIDER_PROP {
   /** System.Guid */
-  m_ProviderId: Uint8Array | Deno.PointerValue | null;
+  m_ProviderId: Uint8Array | Deno.PointerValue;
   /** ptr */
-  m_pwszProviderName: Deno.PointerValue | Uint8Array | null;
+  m_pwszProviderName: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Storage.Vss.VSS_PROVIDER_TYPE */
   m_eProviderType: VSS_PROVIDER_TYPE;
   /** ptr */
-  m_pwszProviderVersion: Deno.PointerValue | Uint8Array | null;
+  m_pwszProviderVersion: Deno.PointerValue | Uint8Array;
   /** System.Guid */
-  m_ProviderVersionId: Uint8Array | Deno.PointerValue | null;
+  m_ProviderVersionId: Uint8Array | Deno.PointerValue;
   /** System.Guid */
-  m_ClassId: Uint8Array | Deno.PointerValue | null;
+  m_ClassId: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofVSS_PROVIDER_PROP = 48;
@@ -600,18 +600,18 @@ export function allocVSS_PROVIDER_PROP(data?: Partial<VSS_PROVIDER_PROP>): Uint8
   const buf = new Uint8Array(sizeofVSS_PROVIDER_PROP);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.m_ProviderId !== undefined) view.setBigUint64(0, data.m_ProviderId === null ? 0n : BigInt(util.toPointer(data.m_ProviderId)), true);
+  if (data?.m_ProviderId !== undefined) view.setBigUint64(0, data.m_ProviderId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.m_ProviderId))), true);
   // 0x08: pointer
-  if (data?.m_pwszProviderName !== undefined) view.setBigUint64(8, data.m_pwszProviderName === null ? 0n : BigInt(util.toPointer(data.m_pwszProviderName)), true);
+  if (data?.m_pwszProviderName !== undefined) view.setBigUint64(8, data.m_pwszProviderName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.m_pwszProviderName))), true);
   // 0x10: i32
   if (data?.m_eProviderType !== undefined) view.setInt32(16, Number(data.m_eProviderType), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.m_pwszProviderVersion !== undefined) view.setBigUint64(24, data.m_pwszProviderVersion === null ? 0n : BigInt(util.toPointer(data.m_pwszProviderVersion)), true);
+  if (data?.m_pwszProviderVersion !== undefined) view.setBigUint64(24, data.m_pwszProviderVersion === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.m_pwszProviderVersion))), true);
   // 0x20: pointer
-  if (data?.m_ProviderVersionId !== undefined) view.setBigUint64(32, data.m_ProviderVersionId === null ? 0n : BigInt(util.toPointer(data.m_ProviderVersionId)), true);
+  if (data?.m_ProviderVersionId !== undefined) view.setBigUint64(32, data.m_ProviderVersionId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.m_ProviderVersionId))), true);
   // 0x28: pointer
-  if (data?.m_ClassId !== undefined) view.setBigUint64(40, data.m_ClassId === null ? 0n : BigInt(util.toPointer(data.m_ClassId)), true);
+  if (data?.m_ClassId !== undefined) view.setBigUint64(40, data.m_ClassId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.m_ClassId))), true);
   return buf;
 }
 
@@ -626,15 +626,15 @@ export class VSS_PROVIDER_PROPView {
   }
 
   // 0x00: pointer
-  get m_ProviderId(): Uint8Array | Deno.PointerValue | null {
+  get m_ProviderId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get m_pwszProviderName(): Uint8Array | Deno.PointerValue | null {
+  get m_pwszProviderName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i32
@@ -645,31 +645,31 @@ export class VSS_PROVIDER_PROPView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get m_pwszProviderVersion(): Uint8Array | Deno.PointerValue | null {
+  get m_pwszProviderVersion(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get m_ProviderVersionId(): Uint8Array | Deno.PointerValue | null {
+  get m_ProviderVersionId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get m_ClassId(): Uint8Array | Deno.PointerValue | null {
+  get m_ClassId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set m_ProviderId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set m_ProviderId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set m_pwszProviderName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set m_pwszProviderName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: i32
@@ -680,18 +680,18 @@ export class VSS_PROVIDER_PROPView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set m_pwszProviderVersion(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set m_pwszProviderVersion(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set m_ProviderVersionId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set m_ProviderVersionId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set m_ClassId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set m_ClassId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -700,9 +700,9 @@ export class VSS_PROVIDER_PROPView {
  */
 export interface VSS_OBJECT_UNION {
   /** Windows.Win32.Storage.Vss.VSS_SNAPSHOT_PROP */
-  Snap: Uint8Array | Deno.PointerValue | null;
+  Snap: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Vss.VSS_PROVIDER_PROP */
-  Prov: Uint8Array | Deno.PointerValue | null;
+  Prov: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofVSS_OBJECT_UNION = 16;
@@ -711,9 +711,9 @@ export function allocVSS_OBJECT_UNION(data?: Partial<VSS_OBJECT_UNION>): Uint8Ar
   const buf = new Uint8Array(sizeofVSS_OBJECT_UNION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Snap !== undefined) view.setBigUint64(0, data.Snap === null ? 0n : BigInt(util.toPointer(data.Snap)), true);
+  if (data?.Snap !== undefined) view.setBigUint64(0, data.Snap === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Snap))), true);
   // 0x08: pointer
-  if (data?.Prov !== undefined) view.setBigUint64(8, data.Prov === null ? 0n : BigInt(util.toPointer(data.Prov)), true);
+  if (data?.Prov !== undefined) view.setBigUint64(8, data.Prov === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Prov))), true);
   return buf;
 }
 
@@ -728,25 +728,25 @@ export class VSS_OBJECT_UNIONView {
   }
 
   // 0x00: pointer
-  get Snap(): Uint8Array | Deno.PointerValue | null {
+  get Snap(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get Prov(): Uint8Array | Deno.PointerValue | null {
+  get Prov(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Snap(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Snap(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set Prov(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Prov(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -757,7 +757,7 @@ export interface VSS_OBJECT_PROP {
   /** Windows.Win32.Storage.Vss.VSS_OBJECT_TYPE */
   Type: VSS_OBJECT_TYPE;
   /** Windows.Win32.Storage.Vss.VSS_OBJECT_UNION */
-  Obj: Uint8Array | Deno.PointerValue | null;
+  Obj: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofVSS_OBJECT_PROP = 16;
@@ -769,7 +769,7 @@ export function allocVSS_OBJECT_PROP(data?: Partial<VSS_OBJECT_PROP>): Uint8Arra
   if (data?.Type !== undefined) view.setInt32(0, Number(data.Type), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Obj !== undefined) view.setBigUint64(8, data.Obj === null ? 0n : BigInt(util.toPointer(data.Obj)), true);
+  if (data?.Obj !== undefined) view.setBigUint64(8, data.Obj === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Obj))), true);
   return buf;
 }
 
@@ -791,9 +791,9 @@ export class VSS_OBJECT_PROPView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Obj(): Uint8Array | Deno.PointerValue | null {
+  get Obj(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -804,8 +804,8 @@ export class VSS_OBJECT_PROPView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Obj(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Obj(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -814,9 +814,9 @@ export class VSS_OBJECT_PROPView {
  */
 export interface VSS_VOLUME_PROP {
   /** ptr */
-  m_pwszVolumeName: Deno.PointerValue | Uint8Array | null;
+  m_pwszVolumeName: Deno.PointerValue | Uint8Array;
   /** ptr */
-  m_pwszVolumeDisplayName: Deno.PointerValue | Uint8Array | null;
+  m_pwszVolumeDisplayName: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofVSS_VOLUME_PROP = 16;
@@ -825,9 +825,9 @@ export function allocVSS_VOLUME_PROP(data?: Partial<VSS_VOLUME_PROP>): Uint8Arra
   const buf = new Uint8Array(sizeofVSS_VOLUME_PROP);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.m_pwszVolumeName !== undefined) view.setBigUint64(0, data.m_pwszVolumeName === null ? 0n : BigInt(util.toPointer(data.m_pwszVolumeName)), true);
+  if (data?.m_pwszVolumeName !== undefined) view.setBigUint64(0, data.m_pwszVolumeName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.m_pwszVolumeName))), true);
   // 0x08: pointer
-  if (data?.m_pwszVolumeDisplayName !== undefined) view.setBigUint64(8, data.m_pwszVolumeDisplayName === null ? 0n : BigInt(util.toPointer(data.m_pwszVolumeDisplayName)), true);
+  if (data?.m_pwszVolumeDisplayName !== undefined) view.setBigUint64(8, data.m_pwszVolumeDisplayName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.m_pwszVolumeDisplayName))), true);
   return buf;
 }
 
@@ -842,25 +842,25 @@ export class VSS_VOLUME_PROPView {
   }
 
   // 0x00: pointer
-  get m_pwszVolumeName(): Uint8Array | Deno.PointerValue | null {
+  get m_pwszVolumeName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get m_pwszVolumeDisplayName(): Uint8Array | Deno.PointerValue | null {
+  get m_pwszVolumeDisplayName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set m_pwszVolumeName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set m_pwszVolumeName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set m_pwszVolumeDisplayName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set m_pwszVolumeDisplayName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -869,9 +869,9 @@ export class VSS_VOLUME_PROPView {
  */
 export interface VSS_DIFF_VOLUME_PROP {
   /** ptr */
-  m_pwszVolumeName: Deno.PointerValue | Uint8Array | null;
+  m_pwszVolumeName: Deno.PointerValue | Uint8Array;
   /** ptr */
-  m_pwszVolumeDisplayName: Deno.PointerValue | Uint8Array | null;
+  m_pwszVolumeDisplayName: Deno.PointerValue | Uint8Array;
   /** i64 */
   m_llVolumeFreeSpace: Deno.PointerValue;
   /** i64 */
@@ -884,9 +884,9 @@ export function allocVSS_DIFF_VOLUME_PROP(data?: Partial<VSS_DIFF_VOLUME_PROP>):
   const buf = new Uint8Array(sizeofVSS_DIFF_VOLUME_PROP);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.m_pwszVolumeName !== undefined) view.setBigUint64(0, data.m_pwszVolumeName === null ? 0n : BigInt(util.toPointer(data.m_pwszVolumeName)), true);
+  if (data?.m_pwszVolumeName !== undefined) view.setBigUint64(0, data.m_pwszVolumeName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.m_pwszVolumeName))), true);
   // 0x08: pointer
-  if (data?.m_pwszVolumeDisplayName !== undefined) view.setBigUint64(8, data.m_pwszVolumeDisplayName === null ? 0n : BigInt(util.toPointer(data.m_pwszVolumeDisplayName)), true);
+  if (data?.m_pwszVolumeDisplayName !== undefined) view.setBigUint64(8, data.m_pwszVolumeDisplayName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.m_pwszVolumeDisplayName))), true);
   // 0x10: i64
   if (data?.m_llVolumeFreeSpace !== undefined) view.setBigInt64(16, BigInt(data.m_llVolumeFreeSpace), true);
   // 0x18: i64
@@ -905,15 +905,15 @@ export class VSS_DIFF_VOLUME_PROPView {
   }
 
   // 0x00: pointer
-  get m_pwszVolumeName(): Uint8Array | Deno.PointerValue | null {
+  get m_pwszVolumeName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get m_pwszVolumeDisplayName(): Uint8Array | Deno.PointerValue | null {
+  get m_pwszVolumeDisplayName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i64
@@ -927,13 +927,13 @@ export class VSS_DIFF_VOLUME_PROPView {
   }
 
   // 0x00: pointer
-  set m_pwszVolumeName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set m_pwszVolumeName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set m_pwszVolumeDisplayName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set m_pwszVolumeDisplayName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: i64
@@ -952,9 +952,9 @@ export class VSS_DIFF_VOLUME_PROPView {
  */
 export interface VSS_DIFF_AREA_PROP {
   /** ptr */
-  m_pwszVolumeName: Deno.PointerValue | Uint8Array | null;
+  m_pwszVolumeName: Deno.PointerValue | Uint8Array;
   /** ptr */
-  m_pwszDiffAreaVolumeName: Deno.PointerValue | Uint8Array | null;
+  m_pwszDiffAreaVolumeName: Deno.PointerValue | Uint8Array;
   /** i64 */
   m_llMaximumDiffSpace: Deno.PointerValue;
   /** i64 */
@@ -969,9 +969,9 @@ export function allocVSS_DIFF_AREA_PROP(data?: Partial<VSS_DIFF_AREA_PROP>): Uin
   const buf = new Uint8Array(sizeofVSS_DIFF_AREA_PROP);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.m_pwszVolumeName !== undefined) view.setBigUint64(0, data.m_pwszVolumeName === null ? 0n : BigInt(util.toPointer(data.m_pwszVolumeName)), true);
+  if (data?.m_pwszVolumeName !== undefined) view.setBigUint64(0, data.m_pwszVolumeName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.m_pwszVolumeName))), true);
   // 0x08: pointer
-  if (data?.m_pwszDiffAreaVolumeName !== undefined) view.setBigUint64(8, data.m_pwszDiffAreaVolumeName === null ? 0n : BigInt(util.toPointer(data.m_pwszDiffAreaVolumeName)), true);
+  if (data?.m_pwszDiffAreaVolumeName !== undefined) view.setBigUint64(8, data.m_pwszDiffAreaVolumeName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.m_pwszDiffAreaVolumeName))), true);
   // 0x10: i64
   if (data?.m_llMaximumDiffSpace !== undefined) view.setBigInt64(16, BigInt(data.m_llMaximumDiffSpace), true);
   // 0x18: i64
@@ -992,15 +992,15 @@ export class VSS_DIFF_AREA_PROPView {
   }
 
   // 0x00: pointer
-  get m_pwszVolumeName(): Uint8Array | Deno.PointerValue | null {
+  get m_pwszVolumeName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get m_pwszDiffAreaVolumeName(): Uint8Array | Deno.PointerValue | null {
+  get m_pwszDiffAreaVolumeName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i64
@@ -1019,13 +1019,13 @@ export class VSS_DIFF_AREA_PROPView {
   }
 
   // 0x00: pointer
-  set m_pwszVolumeName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set m_pwszVolumeName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set m_pwszDiffAreaVolumeName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set m_pwszDiffAreaVolumeName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: i64
@@ -1049,11 +1049,11 @@ export class VSS_DIFF_AREA_PROPView {
  */
 export interface VSS_MGMT_OBJECT_UNION {
   /** Windows.Win32.Storage.Vss.VSS_VOLUME_PROP */
-  Vol: Uint8Array | Deno.PointerValue | null;
+  Vol: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Vss.VSS_DIFF_VOLUME_PROP */
-  DiffVol: Uint8Array | Deno.PointerValue | null;
+  DiffVol: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.Vss.VSS_DIFF_AREA_PROP */
-  DiffArea: Uint8Array | Deno.PointerValue | null;
+  DiffArea: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofVSS_MGMT_OBJECT_UNION = 24;
@@ -1062,11 +1062,11 @@ export function allocVSS_MGMT_OBJECT_UNION(data?: Partial<VSS_MGMT_OBJECT_UNION>
   const buf = new Uint8Array(sizeofVSS_MGMT_OBJECT_UNION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Vol !== undefined) view.setBigUint64(0, data.Vol === null ? 0n : BigInt(util.toPointer(data.Vol)), true);
+  if (data?.Vol !== undefined) view.setBigUint64(0, data.Vol === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Vol))), true);
   // 0x08: pointer
-  if (data?.DiffVol !== undefined) view.setBigUint64(8, data.DiffVol === null ? 0n : BigInt(util.toPointer(data.DiffVol)), true);
+  if (data?.DiffVol !== undefined) view.setBigUint64(8, data.DiffVol === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DiffVol))), true);
   // 0x10: pointer
-  if (data?.DiffArea !== undefined) view.setBigUint64(16, data.DiffArea === null ? 0n : BigInt(util.toPointer(data.DiffArea)), true);
+  if (data?.DiffArea !== undefined) view.setBigUint64(16, data.DiffArea === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DiffArea))), true);
   return buf;
 }
 
@@ -1081,36 +1081,36 @@ export class VSS_MGMT_OBJECT_UNIONView {
   }
 
   // 0x00: pointer
-  get Vol(): Uint8Array | Deno.PointerValue | null {
+  get Vol(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get DiffVol(): Uint8Array | Deno.PointerValue | null {
+  get DiffVol(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get DiffArea(): Uint8Array | Deno.PointerValue | null {
+  get DiffArea(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Vol(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Vol(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set DiffVol(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set DiffVol(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set DiffArea(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set DiffArea(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1121,7 +1121,7 @@ export interface VSS_MGMT_OBJECT_PROP {
   /** Windows.Win32.Storage.Vss.VSS_MGMT_OBJECT_TYPE */
   Type: VSS_MGMT_OBJECT_TYPE;
   /** Windows.Win32.Storage.Vss.VSS_MGMT_OBJECT_UNION */
-  Obj: Uint8Array | Deno.PointerValue | null;
+  Obj: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofVSS_MGMT_OBJECT_PROP = 16;
@@ -1133,7 +1133,7 @@ export function allocVSS_MGMT_OBJECT_PROP(data?: Partial<VSS_MGMT_OBJECT_PROP>):
   if (data?.Type !== undefined) view.setInt32(0, Number(data.Type), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Obj !== undefined) view.setBigUint64(8, data.Obj === null ? 0n : BigInt(util.toPointer(data.Obj)), true);
+  if (data?.Obj !== undefined) view.setBigUint64(8, data.Obj === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Obj))), true);
   return buf;
 }
 
@@ -1155,9 +1155,9 @@ export class VSS_MGMT_OBJECT_PROPView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Obj(): Uint8Array | Deno.PointerValue | null {
+  get Obj(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -1168,8 +1168,8 @@ export class VSS_MGMT_OBJECT_PROPView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Obj(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Obj(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1300,8 +1300,8 @@ try {
 // Symbols
 
 export function CreateVssExpressWriterInternal(
-  ppWriter: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libVSSAPI_dll.CreateVssExpressWriterInternal(util.toPointer(ppWriter)));
+  ppWriter: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libVSSAPI_dll.CreateVssExpressWriterInternal(util.toPointer(ppWriter));
 }
 

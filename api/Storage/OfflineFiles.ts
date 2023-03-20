@@ -307,7 +307,7 @@ try {
 
 export function OfflineFilesEnable(
   bEnable: boolean /* Windows.Win32.Foundation.BOOL */,
-  pbRebootRequired: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pbRebootRequired: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libCSCAPI_dll.OfflineFilesEnable(util.boolToFfi(bEnable), util.toPointer(pbRebootRequired));
 }
@@ -317,16 +317,16 @@ export function OfflineFilesStart(): number /* u32 */ {
 }
 
 export function OfflineFilesQueryStatus(
-  pbActive: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pbEnabled: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pbActive: Deno.PointerValue | Uint8Array /* ptr */,
+  pbEnabled: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libCSCAPI_dll.OfflineFilesQueryStatus(util.toPointer(pbActive), util.toPointer(pbEnabled));
 }
 
 export function OfflineFilesQueryStatusEx(
-  pbActive: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pbEnabled: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pbAvailable: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pbActive: Deno.PointerValue | Uint8Array /* ptr */,
+  pbEnabled: Deno.PointerValue | Uint8Array /* ptr */,
+  pbAvailable: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libCSCAPI_dll.OfflineFilesQueryStatusEx(util.toPointer(pbActive), util.toPointer(pbEnabled), util.toPointer(pbAvailable));
 }

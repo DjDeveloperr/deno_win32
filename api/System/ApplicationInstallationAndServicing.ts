@@ -1383,7 +1383,7 @@ export interface ACTIVATION_CONTEXT_COMPATIBILITY_INFORMATION {
   /** u32 */
   ElementCount: number;
   /** ptr */
-  Elements: Deno.PointerValue | Uint8Array | null;
+  Elements: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofACTIVATION_CONTEXT_COMPATIBILITY_INFORMATION = 16;
@@ -1395,7 +1395,7 @@ export function allocACTIVATION_CONTEXT_COMPATIBILITY_INFORMATION(data?: Partial
   if (data?.ElementCount !== undefined) view.setUint32(0, Number(data.ElementCount), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(util.toPointer(data.Elements)), true);
+  if (data?.Elements !== undefined) view.setBigUint64(8, data.Elements === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Elements))), true);
   return buf;
 }
 
@@ -1417,9 +1417,9 @@ export class ACTIVATION_CONTEXT_COMPATIBILITY_INFORMATIONView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Elements(): Uint8Array | Deno.PointerValue | null {
+  get Elements(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1430,8 +1430,8 @@ export class ACTIVATION_CONTEXT_COMPATIBILITY_INFORMATIONView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Elements(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Elements(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1442,7 +1442,7 @@ export type MSIHANDLE = number;
  */
 export interface PMSIHANDLE {
   /** Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */
-  m_h: Uint8Array | Deno.PointerValue | null;
+  m_h: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofPMSIHANDLE = 8;
@@ -1451,7 +1451,7 @@ export function allocPMSIHANDLE(data?: Partial<PMSIHANDLE>): Uint8Array {
   const buf = new Uint8Array(sizeofPMSIHANDLE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.m_h !== undefined) view.setBigUint64(0, data.m_h === null ? 0n : BigInt(util.toPointer(data.m_h)), true);
+  if (data?.m_h !== undefined) view.setBigUint64(0, data.m_h === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.m_h))), true);
   return buf;
 }
 
@@ -1466,18 +1466,18 @@ export class PMSIHANDLEView {
   }
 
   // 0x00: pointer
-  get m_h(): Uint8Array | Deno.PointerValue | null {
+  get m_h(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set m_h(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set m_h(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
-export type PSTR = Deno.PointerValue | Uint8Array | null;
+export type PSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.System.ApplicationInstallationAndServicing.MSIPATCHSEQUENCEINFOA (size: 24)
@@ -1501,7 +1501,7 @@ export function allocMSIPATCHSEQUENCEINFOA(data?: Partial<MSIPATCHSEQUENCEINFOA>
   // 0x00: buffer
   if (data?.szPatchData !== undefined) {
     (buf as any)._f0 = util.pstrToFfi(data.szPatchData);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: i32
   if (data?.ePatchDataType !== undefined) view.setInt32(8, Number(data.ePatchDataType), true);
@@ -1524,9 +1524,9 @@ export class MSIPATCHSEQUENCEINFOAView {
   }
 
   // 0x00: buffer
-  get szPatchData(): Uint8Array | Deno.PointerValue | null {
+  get szPatchData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: i32
@@ -1547,9 +1547,9 @@ export class MSIPATCHSEQUENCEINFOAView {
   // 0x14: pad4
 
   // 0x00: buffer
-  set szPatchData(value: Uint8Array | Deno.PointerValue | null) {
+  set szPatchData(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: i32
@@ -1570,7 +1570,7 @@ export class MSIPATCHSEQUENCEINFOAView {
   // 0x14: pad4
 }
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.System.ApplicationInstallationAndServicing.MSIPATCHSEQUENCEINFOW (size: 24)
@@ -1594,7 +1594,7 @@ export function allocMSIPATCHSEQUENCEINFOW(data?: Partial<MSIPATCHSEQUENCEINFOW>
   // 0x00: buffer
   if (data?.szPatchData !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.szPatchData);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: i32
   if (data?.ePatchDataType !== undefined) view.setInt32(8, Number(data.ePatchDataType), true);
@@ -1617,9 +1617,9 @@ export class MSIPATCHSEQUENCEINFOWView {
   }
 
   // 0x00: buffer
-  get szPatchData(): Uint8Array | Deno.PointerValue | null {
+  get szPatchData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: i32
@@ -1640,9 +1640,9 @@ export class MSIPATCHSEQUENCEINFOWView {
   // 0x14: pad4
 
   // 0x00: buffer
-  set szPatchData(value: Uint8Array | Deno.PointerValue | null) {
+  set szPatchData(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: i32
@@ -1670,7 +1670,7 @@ export interface MSIFILEHASHINFO {
   /** u32 */
   dwFileHashInfoSize: number;
   /** array */
-  dwData: Deno.PointerValue | null;
+  dwData: Deno.PointerValue;
 }
 
 export const sizeofMSIFILEHASHINFO = 16;
@@ -1682,7 +1682,7 @@ export function allocMSIFILEHASHINFO(data?: Partial<MSIFILEHASHINFO>): Uint8Arra
   if (data?.dwFileHashInfoSize !== undefined) view.setUint32(0, Number(data.dwFileHashInfoSize), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.dwData !== undefined) view.setBigUint64(8, data.dwData === null ? 0n : BigInt(util.toPointer(data.dwData)), true);
+  if (data?.dwData !== undefined) view.setBigUint64(8, data.dwData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.dwData))), true);
   return buf;
 }
 
@@ -1704,9 +1704,9 @@ export class MSIFILEHASHINFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get dwData(): Uint8Array | Deno.PointerValue | null {
+  get dwData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1717,8 +1717,8 @@ export class MSIFILEHASHINFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set dwData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set dwData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1796,7 +1796,7 @@ export function alloc_u_e__Struct(data?: Partial<_u_e__Struct>): Uint8Array {
   // 0x08: buffer
   if (data?.pwszName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pwszName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   return buf;
 }
@@ -1819,9 +1819,9 @@ export class _u_e__StructView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get pwszName(): Uint8Array | Deno.PointerValue | null {
+  get pwszName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1832,9 +1832,9 @@ export class _u_e__StructView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set pwszName(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 }
 
@@ -1843,9 +1843,9 @@ export class _u_e__StructView {
  */
 export interface ULARGE_INTEGER {
   /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** _u_e__Struct */
-  u: Uint8Array | Deno.PointerValue | null;
+  u: Uint8Array | Deno.PointerValue;
   /** u64 */
   QuadPart: Deno.PointerValue;
 }
@@ -1856,9 +1856,9 @@ export function allocULARGE_INTEGER(data?: Partial<ULARGE_INTEGER>): Uint8Array 
   const buf = new Uint8Array(sizeofULARGE_INTEGER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x08: pointer
-  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : BigInt(util.toPointer(data.u)), true);
+  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.u))), true);
   // 0x10: u64
   if (data?.QuadPart !== undefined) view.setBigUint64(16, BigInt(data.QuadPart), true);
   return buf;
@@ -1875,15 +1875,15 @@ export class ULARGE_INTEGERView {
   }
 
   // 0x00: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get u(): Uint8Array | Deno.PointerValue | null {
+  get u(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u64
@@ -1892,13 +1892,13 @@ export class ULARGE_INTEGERView {
   }
 
   // 0x00: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set u(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set u(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u64
@@ -1916,7 +1916,7 @@ export interface ASSEMBLY_INFO {
   /** u32 */
   dwAssemblyFlags: number;
   /** Windows.Win32.Foundation.ULARGE_INTEGER */
-  uliAssemblySizeInKB: Uint8Array | Deno.PointerValue | null;
+  uliAssemblySizeInKB: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   pszCurrentAssemblyPathBuf: string | null | Uint8Array | Uint16Array;
   /** u32 */
@@ -1933,11 +1933,11 @@ export function allocASSEMBLY_INFO(data?: Partial<ASSEMBLY_INFO>): Uint8Array {
   // 0x04: u32
   if (data?.dwAssemblyFlags !== undefined) view.setUint32(4, Number(data.dwAssemblyFlags), true);
   // 0x08: pointer
-  if (data?.uliAssemblySizeInKB !== undefined) view.setBigUint64(8, data.uliAssemblySizeInKB === null ? 0n : BigInt(util.toPointer(data.uliAssemblySizeInKB)), true);
+  if (data?.uliAssemblySizeInKB !== undefined) view.setBigUint64(8, data.uliAssemblySizeInKB === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.uliAssemblySizeInKB))), true);
   // 0x10: buffer
   if (data?.pszCurrentAssemblyPathBuf !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pszCurrentAssemblyPathBuf);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: u32
   if (data?.cchBuf !== undefined) view.setUint32(24, Number(data.cchBuf), true);
@@ -1966,15 +1966,15 @@ export class ASSEMBLY_INFOView {
   }
 
   // 0x08: pointer
-  get uliAssemblySizeInKB(): Uint8Array | Deno.PointerValue | null {
+  get uliAssemblySizeInKB(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get pszCurrentAssemblyPathBuf(): Uint8Array | Deno.PointerValue | null {
+  get pszCurrentAssemblyPathBuf(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -1995,14 +1995,14 @@ export class ASSEMBLY_INFOView {
   }
 
   // 0x08: pointer
-  set uliAssemblySizeInKB(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set uliAssemblySizeInKB(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: buffer
-  set pszCurrentAssemblyPathBuf(value: Uint8Array | Deno.PointerValue | null) {
+  set pszCurrentAssemblyPathBuf(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: u32
@@ -2022,7 +2022,7 @@ export interface FUSION_INSTALL_REFERENCE {
   /** u32 */
   dwFlags: number;
   /** System.Guid */
-  guidScheme: Uint8Array | Deno.PointerValue | null;
+  guidScheme: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   szIdentifier: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
@@ -2039,16 +2039,16 @@ export function allocFUSION_INSTALL_REFERENCE(data?: Partial<FUSION_INSTALL_REFE
   // 0x04: u32
   if (data?.dwFlags !== undefined) view.setUint32(4, Number(data.dwFlags), true);
   // 0x08: pointer
-  if (data?.guidScheme !== undefined) view.setBigUint64(8, data.guidScheme === null ? 0n : BigInt(util.toPointer(data.guidScheme)), true);
+  if (data?.guidScheme !== undefined) view.setBigUint64(8, data.guidScheme === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.guidScheme))), true);
   // 0x10: buffer
   if (data?.szIdentifier !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.szIdentifier);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.szNonCannonicalData !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.szNonCannonicalData);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   return buf;
 }
@@ -2074,21 +2074,21 @@ export class FUSION_INSTALL_REFERENCEView {
   }
 
   // 0x08: pointer
-  get guidScheme(): Uint8Array | Deno.PointerValue | null {
+  get guidScheme(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get szIdentifier(): Uint8Array | Deno.PointerValue | null {
+  get szIdentifier(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get szNonCannonicalData(): Uint8Array | Deno.PointerValue | null {
+  get szNonCannonicalData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -2102,20 +2102,20 @@ export class FUSION_INSTALL_REFERENCEView {
   }
 
   // 0x08: pointer
-  set guidScheme(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set guidScheme(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: buffer
-  set szIdentifier(value: Uint8Array | Deno.PointerValue | null) {
+  set szIdentifier(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set szNonCannonicalData(value: Uint8Array | Deno.PointerValue | null) {
+  set szNonCannonicalData(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 }
 
@@ -2124,7 +2124,7 @@ export class FUSION_INSTALL_REFERENCEView {
  */
 export interface PROTECTED_FILE_DATA {
   /** array */
-  FileName: Deno.PointerValue | null;
+  FileName: Deno.PointerValue;
   /** u32 */
   FileNumber: number;
 }
@@ -2135,7 +2135,7 @@ export function allocPROTECTED_FILE_DATA(data?: Partial<PROTECTED_FILE_DATA>): U
   const buf = new Uint8Array(sizeofPROTECTED_FILE_DATA);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.FileName !== undefined) view.setBigUint64(0, data.FileName === null ? 0n : BigInt(util.toPointer(data.FileName)), true);
+  if (data?.FileName !== undefined) view.setBigUint64(0, data.FileName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.FileName))), true);
   // 0x08: u32
   if (data?.FileNumber !== undefined) view.setUint32(8, Number(data.FileNumber), true);
   // 0x0c: pad4
@@ -2153,9 +2153,9 @@ export class PROTECTED_FILE_DATAView {
   }
 
   // 0x00: pointer
-  get FileName(): Uint8Array | Deno.PointerValue | null {
+  get FileName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -2166,8 +2166,8 @@ export class PROTECTED_FILE_DATAView {
   // 0x0c: pad4
 
   // 0x00: pointer
-  set FileName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set FileName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -2183,7 +2183,7 @@ export class PROTECTED_FILE_DATAView {
  */
 export interface PM_APPTASKTYPE {
   /** System.Guid */
-  ProductID: Uint8Array | Deno.PointerValue | null;
+  ProductID: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.ApplicationInstallationAndServicing.PM_TASK_TYPE */
   TaskType: PM_TASK_TYPE;
 }
@@ -2194,7 +2194,7 @@ export function allocPM_APPTASKTYPE(data?: Partial<PM_APPTASKTYPE>): Uint8Array 
   const buf = new Uint8Array(sizeofPM_APPTASKTYPE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ProductID !== undefined) view.setBigUint64(0, data.ProductID === null ? 0n : BigInt(util.toPointer(data.ProductID)), true);
+  if (data?.ProductID !== undefined) view.setBigUint64(0, data.ProductID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ProductID))), true);
   // 0x08: i32
   if (data?.TaskType !== undefined) view.setInt32(8, Number(data.TaskType), true);
   // 0x0c: pad4
@@ -2212,9 +2212,9 @@ export class PM_APPTASKTYPEView {
   }
 
   // 0x00: pointer
-  get ProductID(): Uint8Array | Deno.PointerValue | null {
+  get ProductID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: i32
@@ -2225,8 +2225,8 @@ export class PM_APPTASKTYPEView {
   // 0x0c: pad4
 
   // 0x00: pointer
-  set ProductID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ProductID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: i32
@@ -2237,16 +2237,16 @@ export class PM_APPTASKTYPEView {
   // 0x0c: pad4
 }
 
-export type BSTR = Deno.PointerValue | Uint8Array | null;
+export type BSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.System.ApplicationInstallationAndServicing.PM_EXTENSIONCONSUMER (size: 16)
  */
 export interface PM_EXTENSIONCONSUMER {
   /** System.Guid */
-  ConsumerPID: Uint8Array | Deno.PointerValue | null;
+  ConsumerPID: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BSTR */
-  ExtensionID: Uint8Array | Deno.PointerValue | null;
+  ExtensionID: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofPM_EXTENSIONCONSUMER = 16;
@@ -2255,9 +2255,9 @@ export function allocPM_EXTENSIONCONSUMER(data?: Partial<PM_EXTENSIONCONSUMER>):
   const buf = new Uint8Array(sizeofPM_EXTENSIONCONSUMER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ConsumerPID !== undefined) view.setBigUint64(0, data.ConsumerPID === null ? 0n : BigInt(util.toPointer(data.ConsumerPID)), true);
+  if (data?.ConsumerPID !== undefined) view.setBigUint64(0, data.ConsumerPID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ConsumerPID))), true);
   // 0x08: pointer
-  if (data?.ExtensionID !== undefined) view.setBigUint64(8, data.ExtensionID === null ? 0n : BigInt(util.toPointer(data.ExtensionID)), true);
+  if (data?.ExtensionID !== undefined) view.setBigUint64(8, data.ExtensionID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ExtensionID))), true);
   return buf;
 }
 
@@ -2272,25 +2272,25 @@ export class PM_EXTENSIONCONSUMERView {
   }
 
   // 0x00: pointer
-  get ConsumerPID(): Uint8Array | Deno.PointerValue | null {
+  get ConsumerPID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get ExtensionID(): Uint8Array | Deno.PointerValue | null {
+  get ExtensionID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ConsumerPID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ConsumerPID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set ExtensionID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ExtensionID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2299,9 +2299,9 @@ export class PM_EXTENSIONCONSUMERView {
  */
 export interface PM_BSATASKID {
   /** System.Guid */
-  ProductID: Uint8Array | Deno.PointerValue | null;
+  ProductID: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BSTR */
-  TaskID: Uint8Array | Deno.PointerValue | null;
+  TaskID: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofPM_BSATASKID = 16;
@@ -2310,9 +2310,9 @@ export function allocPM_BSATASKID(data?: Partial<PM_BSATASKID>): Uint8Array {
   const buf = new Uint8Array(sizeofPM_BSATASKID);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ProductID !== undefined) view.setBigUint64(0, data.ProductID === null ? 0n : BigInt(util.toPointer(data.ProductID)), true);
+  if (data?.ProductID !== undefined) view.setBigUint64(0, data.ProductID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ProductID))), true);
   // 0x08: pointer
-  if (data?.TaskID !== undefined) view.setBigUint64(8, data.TaskID === null ? 0n : BigInt(util.toPointer(data.TaskID)), true);
+  if (data?.TaskID !== undefined) view.setBigUint64(8, data.TaskID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.TaskID))), true);
   return buf;
 }
 
@@ -2327,25 +2327,25 @@ export class PM_BSATASKIDView {
   }
 
   // 0x00: pointer
-  get ProductID(): Uint8Array | Deno.PointerValue | null {
+  get ProductID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get TaskID(): Uint8Array | Deno.PointerValue | null {
+  get TaskID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ProductID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ProductID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set TaskID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set TaskID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2354,9 +2354,9 @@ export class PM_BSATASKIDView {
  */
 export interface PM_BWTASKID {
   /** System.Guid */
-  ProductID: Uint8Array | Deno.PointerValue | null;
+  ProductID: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BSTR */
-  TaskID: Uint8Array | Deno.PointerValue | null;
+  TaskID: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofPM_BWTASKID = 16;
@@ -2365,9 +2365,9 @@ export function allocPM_BWTASKID(data?: Partial<PM_BWTASKID>): Uint8Array {
   const buf = new Uint8Array(sizeofPM_BWTASKID);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ProductID !== undefined) view.setBigUint64(0, data.ProductID === null ? 0n : BigInt(util.toPointer(data.ProductID)), true);
+  if (data?.ProductID !== undefined) view.setBigUint64(0, data.ProductID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ProductID))), true);
   // 0x08: pointer
-  if (data?.TaskID !== undefined) view.setBigUint64(8, data.TaskID === null ? 0n : BigInt(util.toPointer(data.TaskID)), true);
+  if (data?.TaskID !== undefined) view.setBigUint64(8, data.TaskID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.TaskID))), true);
   return buf;
 }
 
@@ -2382,25 +2382,25 @@ export class PM_BWTASKIDView {
   }
 
   // 0x00: pointer
-  get ProductID(): Uint8Array | Deno.PointerValue | null {
+  get ProductID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get TaskID(): Uint8Array | Deno.PointerValue | null {
+  get TaskID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ProductID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ProductID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set TaskID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set TaskID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2419,29 +2419,29 @@ export interface _FilterParameter_e__Union {
   /** Windows.Win32.System.ApplicationInstallationAndServicing.PM_TASK_TYPE */
   Tasktype: PM_TASK_TYPE;
   /** System.Guid */
-  TaskProductID: Uint8Array | Deno.PointerValue | null;
+  TaskProductID: Uint8Array | Deno.PointerValue;
   /** System.Guid */
-  TileProductID: Uint8Array | Deno.PointerValue | null;
+  TileProductID: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.ApplicationInstallationAndServicing.PM_APPTASKTYPE */
-  AppTaskType: Uint8Array | Deno.PointerValue | null;
+  AppTaskType: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.ApplicationInstallationAndServicing.PM_EXTENSIONCONSUMER */
-  Consumer: Uint8Array | Deno.PointerValue | null;
+  Consumer: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.ApplicationInstallationAndServicing.PM_BSATASKID */
-  BSATask: Uint8Array | Deno.PointerValue | null;
+  BSATask: Uint8Array | Deno.PointerValue;
   /** System.Guid */
-  BSAProductID: Uint8Array | Deno.PointerValue | null;
+  BSAProductID: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.ApplicationInstallationAndServicing.PM_BWTASKID */
-  BWTask: Uint8Array | Deno.PointerValue | null;
+  BWTask: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BSTR */
-  ProtocolName: Uint8Array | Deno.PointerValue | null;
+  ProtocolName: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BSTR */
-  FileType: Uint8Array | Deno.PointerValue | null;
+  FileType: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BSTR */
-  ContentType: Uint8Array | Deno.PointerValue | null;
+  ContentType: Uint8Array | Deno.PointerValue;
   /** System.Guid */
-  AppSupportedFileExtPID: Uint8Array | Deno.PointerValue | null;
+  AppSupportedFileExtPID: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BSTR */
-  ShareTargetFileType: Uint8Array | Deno.PointerValue | null;
+  ShareTargetFileType: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeof_FilterParameter_e__Union = 120;
@@ -2461,29 +2461,29 @@ export function alloc_FilterParameter_e__Union(data?: Partial<_FilterParameter_e
   if (data?.Tasktype !== undefined) view.setInt32(16, Number(data.Tasktype), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.TaskProductID !== undefined) view.setBigUint64(24, data.TaskProductID === null ? 0n : BigInt(util.toPointer(data.TaskProductID)), true);
+  if (data?.TaskProductID !== undefined) view.setBigUint64(24, data.TaskProductID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.TaskProductID))), true);
   // 0x20: pointer
-  if (data?.TileProductID !== undefined) view.setBigUint64(32, data.TileProductID === null ? 0n : BigInt(util.toPointer(data.TileProductID)), true);
+  if (data?.TileProductID !== undefined) view.setBigUint64(32, data.TileProductID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.TileProductID))), true);
   // 0x28: pointer
-  if (data?.AppTaskType !== undefined) view.setBigUint64(40, data.AppTaskType === null ? 0n : BigInt(util.toPointer(data.AppTaskType)), true);
+  if (data?.AppTaskType !== undefined) view.setBigUint64(40, data.AppTaskType === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.AppTaskType))), true);
   // 0x30: pointer
-  if (data?.Consumer !== undefined) view.setBigUint64(48, data.Consumer === null ? 0n : BigInt(util.toPointer(data.Consumer)), true);
+  if (data?.Consumer !== undefined) view.setBigUint64(48, data.Consumer === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Consumer))), true);
   // 0x38: pointer
-  if (data?.BSATask !== undefined) view.setBigUint64(56, data.BSATask === null ? 0n : BigInt(util.toPointer(data.BSATask)), true);
+  if (data?.BSATask !== undefined) view.setBigUint64(56, data.BSATask === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BSATask))), true);
   // 0x40: pointer
-  if (data?.BSAProductID !== undefined) view.setBigUint64(64, data.BSAProductID === null ? 0n : BigInt(util.toPointer(data.BSAProductID)), true);
+  if (data?.BSAProductID !== undefined) view.setBigUint64(64, data.BSAProductID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BSAProductID))), true);
   // 0x48: pointer
-  if (data?.BWTask !== undefined) view.setBigUint64(72, data.BWTask === null ? 0n : BigInt(util.toPointer(data.BWTask)), true);
+  if (data?.BWTask !== undefined) view.setBigUint64(72, data.BWTask === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BWTask))), true);
   // 0x50: pointer
-  if (data?.ProtocolName !== undefined) view.setBigUint64(80, data.ProtocolName === null ? 0n : BigInt(util.toPointer(data.ProtocolName)), true);
+  if (data?.ProtocolName !== undefined) view.setBigUint64(80, data.ProtocolName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ProtocolName))), true);
   // 0x58: pointer
-  if (data?.FileType !== undefined) view.setBigUint64(88, data.FileType === null ? 0n : BigInt(util.toPointer(data.FileType)), true);
+  if (data?.FileType !== undefined) view.setBigUint64(88, data.FileType === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.FileType))), true);
   // 0x60: pointer
-  if (data?.ContentType !== undefined) view.setBigUint64(96, data.ContentType === null ? 0n : BigInt(util.toPointer(data.ContentType)), true);
+  if (data?.ContentType !== undefined) view.setBigUint64(96, data.ContentType === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ContentType))), true);
   // 0x68: pointer
-  if (data?.AppSupportedFileExtPID !== undefined) view.setBigUint64(104, data.AppSupportedFileExtPID === null ? 0n : BigInt(util.toPointer(data.AppSupportedFileExtPID)), true);
+  if (data?.AppSupportedFileExtPID !== undefined) view.setBigUint64(104, data.AppSupportedFileExtPID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.AppSupportedFileExtPID))), true);
   // 0x70: pointer
-  if (data?.ShareTargetFileType !== undefined) view.setBigUint64(112, data.ShareTargetFileType === null ? 0n : BigInt(util.toPointer(data.ShareTargetFileType)), true);
+  if (data?.ShareTargetFileType !== undefined) view.setBigUint64(112, data.ShareTargetFileType === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ShareTargetFileType))), true);
   return buf;
 }
 
@@ -2525,75 +2525,75 @@ export class _FilterParameter_e__UnionView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get TaskProductID(): Uint8Array | Deno.PointerValue | null {
+  get TaskProductID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get TileProductID(): Uint8Array | Deno.PointerValue | null {
+  get TileProductID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get AppTaskType(): Uint8Array | Deno.PointerValue | null {
+  get AppTaskType(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get Consumer(): Uint8Array | Deno.PointerValue | null {
+  get Consumer(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get BSATask(): Uint8Array | Deno.PointerValue | null {
+  get BSATask(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get BSAProductID(): Uint8Array | Deno.PointerValue | null {
+  get BSAProductID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: pointer
-  get BWTask(): Uint8Array | Deno.PointerValue | null {
+  get BWTask(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: pointer
-  get ProtocolName(): Uint8Array | Deno.PointerValue | null {
+  get ProtocolName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x58: pointer
-  get FileType(): Uint8Array | Deno.PointerValue | null {
+  get FileType(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x60: pointer
-  get ContentType(): Uint8Array | Deno.PointerValue | null {
+  get ContentType(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(96, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x68: pointer
-  get AppSupportedFileExtPID(): Uint8Array | Deno.PointerValue | null {
+  get AppSupportedFileExtPID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(104, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x70: pointer
-  get ShareTargetFileType(): Uint8Array | Deno.PointerValue | null {
+  get ShareTargetFileType(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(112, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -2624,63 +2624,63 @@ export class _FilterParameter_e__UnionView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set TaskProductID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set TaskProductID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set TileProductID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set TileProductID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set AppTaskType(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set AppTaskType(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set Consumer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set Consumer(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set BSATask(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set BSATask(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set BSAProductID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set BSAProductID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: pointer
-  set BWTask(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set BWTask(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x50: pointer
-  set ProtocolName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set ProtocolName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x58: pointer
-  set FileType(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  set FileType(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x60: pointer
-  set ContentType(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(96, BigInt(util.toPointer(value)), true);
+  set ContentType(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(96, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x68: pointer
-  set AppSupportedFileExtPID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(104, BigInt(util.toPointer(value)), true);
+  set AppSupportedFileExtPID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(104, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x70: pointer
-  set ShareTargetFileType(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(112, BigInt(util.toPointer(value)), true);
+  set ShareTargetFileType(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(112, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2691,7 +2691,7 @@ export interface PM_ENUM_FILTER {
   /** i32 */
   FilterType: number;
   /** _FilterParameter_e__Union */
-  FilterParameter: Uint8Array | Deno.PointerValue | null;
+  FilterParameter: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofPM_ENUM_FILTER = 16;
@@ -2703,7 +2703,7 @@ export function allocPM_ENUM_FILTER(data?: Partial<PM_ENUM_FILTER>): Uint8Array 
   if (data?.FilterType !== undefined) view.setInt32(0, Number(data.FilterType), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.FilterParameter !== undefined) view.setBigUint64(8, data.FilterParameter === null ? 0n : BigInt(util.toPointer(data.FilterParameter)), true);
+  if (data?.FilterParameter !== undefined) view.setBigUint64(8, data.FilterParameter === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.FilterParameter))), true);
   return buf;
 }
 
@@ -2725,9 +2725,9 @@ export class PM_ENUM_FILTERView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get FilterParameter(): Uint8Array | Deno.PointerValue | null {
+  get FilterParameter(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -2738,8 +2738,8 @@ export class PM_ENUM_FILTERView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set FilterParameter(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set FilterParameter(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2752,17 +2752,17 @@ export interface PM_STARTAPPBLOB {
   /** u32 */
   cbSize: number;
   /** System.Guid */
-  ProductID: Uint8Array | Deno.PointerValue | null;
+  ProductID: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BSTR */
-  AppTitle: Uint8Array | Deno.PointerValue | null;
+  AppTitle: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BSTR */
-  IconPath: Uint8Array | Deno.PointerValue | null;
+  IconPath: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOL */
   IsUninstallable: boolean;
   /** Windows.Win32.System.ApplicationInstallationAndServicing.PM_APPLICATION_INSTALL_TYPE */
   AppInstallType: PM_APPLICATION_INSTALL_TYPE;
   /** System.Guid */
-  InstanceID: Uint8Array | Deno.PointerValue | null;
+  InstanceID: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.ApplicationInstallationAndServicing.PM_APPLICATION_STATE */
   State: PM_APPLICATION_STATE;
   /** Windows.Win32.Foundation.BOOL */
@@ -2782,17 +2782,17 @@ export function allocPM_STARTAPPBLOB(data?: Partial<PM_STARTAPPBLOB>): Uint8Arra
   if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.ProductID !== undefined) view.setBigUint64(8, data.ProductID === null ? 0n : BigInt(util.toPointer(data.ProductID)), true);
+  if (data?.ProductID !== undefined) view.setBigUint64(8, data.ProductID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ProductID))), true);
   // 0x10: pointer
-  if (data?.AppTitle !== undefined) view.setBigUint64(16, data.AppTitle === null ? 0n : BigInt(util.toPointer(data.AppTitle)), true);
+  if (data?.AppTitle !== undefined) view.setBigUint64(16, data.AppTitle === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.AppTitle))), true);
   // 0x18: pointer
-  if (data?.IconPath !== undefined) view.setBigUint64(24, data.IconPath === null ? 0n : BigInt(util.toPointer(data.IconPath)), true);
+  if (data?.IconPath !== undefined) view.setBigUint64(24, data.IconPath === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.IconPath))), true);
   // 0x20: i32
   if (data?.IsUninstallable !== undefined) view.setInt32(32, Number(data.IsUninstallable), true);
   // 0x24: i32
   if (data?.AppInstallType !== undefined) view.setInt32(36, Number(data.AppInstallType), true);
   // 0x28: pointer
-  if (data?.InstanceID !== undefined) view.setBigUint64(40, data.InstanceID === null ? 0n : BigInt(util.toPointer(data.InstanceID)), true);
+  if (data?.InstanceID !== undefined) view.setBigUint64(40, data.InstanceID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InstanceID))), true);
   // 0x30: i32
   if (data?.State !== undefined) view.setInt32(48, Number(data.State), true);
   // 0x34: i32
@@ -2823,21 +2823,21 @@ export class PM_STARTAPPBLOBView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get ProductID(): Uint8Array | Deno.PointerValue | null {
+  get ProductID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get AppTitle(): Uint8Array | Deno.PointerValue | null {
+  get AppTitle(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get IconPath(): Uint8Array | Deno.PointerValue | null {
+  get IconPath(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: i32
@@ -2851,9 +2851,9 @@ export class PM_STARTAPPBLOBView {
   }
 
   // 0x28: pointer
-  get InstanceID(): Uint8Array | Deno.PointerValue | null {
+  get InstanceID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: i32
@@ -2886,18 +2886,18 @@ export class PM_STARTAPPBLOBView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set ProductID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ProductID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set AppTitle(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set AppTitle(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set IconPath(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set IconPath(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: i32
@@ -2911,8 +2911,8 @@ export class PM_STARTAPPBLOBView {
   }
 
   // 0x28: pointer
-  set InstanceID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set InstanceID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: i32
@@ -2943,9 +2943,9 @@ export class PM_STARTAPPBLOBView {
  */
 export interface PM_INVOCATIONINFO {
   /** Windows.Win32.Foundation.BSTR */
-  URIBaseOrAUMID: Uint8Array | Deno.PointerValue | null;
+  URIBaseOrAUMID: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BSTR */
-  URIFragmentOrArgs: Uint8Array | Deno.PointerValue | null;
+  URIFragmentOrArgs: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofPM_INVOCATIONINFO = 16;
@@ -2954,9 +2954,9 @@ export function allocPM_INVOCATIONINFO(data?: Partial<PM_INVOCATIONINFO>): Uint8
   const buf = new Uint8Array(sizeofPM_INVOCATIONINFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.URIBaseOrAUMID !== undefined) view.setBigUint64(0, data.URIBaseOrAUMID === null ? 0n : BigInt(util.toPointer(data.URIBaseOrAUMID)), true);
+  if (data?.URIBaseOrAUMID !== undefined) view.setBigUint64(0, data.URIBaseOrAUMID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.URIBaseOrAUMID))), true);
   // 0x08: pointer
-  if (data?.URIFragmentOrArgs !== undefined) view.setBigUint64(8, data.URIFragmentOrArgs === null ? 0n : BigInt(util.toPointer(data.URIFragmentOrArgs)), true);
+  if (data?.URIFragmentOrArgs !== undefined) view.setBigUint64(8, data.URIFragmentOrArgs === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.URIFragmentOrArgs))), true);
   return buf;
 }
 
@@ -2971,25 +2971,25 @@ export class PM_INVOCATIONINFOView {
   }
 
   // 0x00: pointer
-  get URIBaseOrAUMID(): Uint8Array | Deno.PointerValue | null {
+  get URIBaseOrAUMID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get URIFragmentOrArgs(): Uint8Array | Deno.PointerValue | null {
+  get URIFragmentOrArgs(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set URIBaseOrAUMID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set URIBaseOrAUMID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set URIFragmentOrArgs(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set URIFragmentOrArgs(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3000,13 +3000,13 @@ export interface PM_STARTTILEBLOB {
   /** u32 */
   cbSize: number;
   /** System.Guid */
-  ProductID: Uint8Array | Deno.PointerValue | null;
+  ProductID: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BSTR */
-  TileID: Uint8Array | Deno.PointerValue | null;
+  TileID: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.ApplicationInstallationAndServicing.TILE_TEMPLATE_TYPE */
   TemplateType: TILE_TEMPLATE_TYPE;
   /** array */
-  HubPosition: Deno.PointerValue | null;
+  HubPosition: Deno.PointerValue;
   /** u32 */
   HubVisibilityBitmask: number;
   /** Windows.Win32.Foundation.BOOL */
@@ -3014,7 +3014,7 @@ export interface PM_STARTTILEBLOB {
   /** Windows.Win32.System.ApplicationInstallationAndServicing.PM_STARTTILE_TYPE */
   TileType: PM_STARTTILE_TYPE;
   /** ptr */
-  pbPropBlob: Deno.PointerValue | Uint8Array | null;
+  pbPropBlob: Deno.PointerValue | Uint8Array;
   /** u32 */
   cbPropBlob: number;
   /** Windows.Win32.Foundation.BOOL */
@@ -3022,7 +3022,7 @@ export interface PM_STARTTILEBLOB {
   /** Windows.Win32.Foundation.BOOL */
   IsModern: boolean;
   /** Windows.Win32.System.ApplicationInstallationAndServicing.PM_INVOCATIONINFO */
-  InvocationInfo: Uint8Array | Deno.PointerValue | null;
+  InvocationInfo: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofPM_STARTTILEBLOB = 88;
@@ -3034,14 +3034,14 @@ export function allocPM_STARTTILEBLOB(data?: Partial<PM_STARTTILEBLOB>): Uint8Ar
   if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.ProductID !== undefined) view.setBigUint64(8, data.ProductID === null ? 0n : BigInt(util.toPointer(data.ProductID)), true);
+  if (data?.ProductID !== undefined) view.setBigUint64(8, data.ProductID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ProductID))), true);
   // 0x10: pointer
-  if (data?.TileID !== undefined) view.setBigUint64(16, data.TileID === null ? 0n : BigInt(util.toPointer(data.TileID)), true);
+  if (data?.TileID !== undefined) view.setBigUint64(16, data.TileID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.TileID))), true);
   // 0x18: i32
   if (data?.TemplateType !== undefined) view.setInt32(24, Number(data.TemplateType), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.HubPosition !== undefined) view.setBigUint64(32, data.HubPosition === null ? 0n : BigInt(util.toPointer(data.HubPosition)), true);
+  if (data?.HubPosition !== undefined) view.setBigUint64(32, data.HubPosition === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.HubPosition))), true);
   // 0x28: u32
   if (data?.HubVisibilityBitmask !== undefined) view.setUint32(40, Number(data.HubVisibilityBitmask), true);
   // 0x2c: i32
@@ -3050,7 +3050,7 @@ export function allocPM_STARTTILEBLOB(data?: Partial<PM_STARTTILEBLOB>): Uint8Ar
   if (data?.TileType !== undefined) view.setInt32(48, Number(data.TileType), true);
   // 0x34: pad4
   // 0x38: pointer
-  if (data?.pbPropBlob !== undefined) view.setBigUint64(56, data.pbPropBlob === null ? 0n : BigInt(util.toPointer(data.pbPropBlob)), true);
+  if (data?.pbPropBlob !== undefined) view.setBigUint64(56, data.pbPropBlob === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pbPropBlob))), true);
   // 0x40: u32
   if (data?.cbPropBlob !== undefined) view.setUint32(64, Number(data.cbPropBlob), true);
   // 0x44: i32
@@ -3059,7 +3059,7 @@ export function allocPM_STARTTILEBLOB(data?: Partial<PM_STARTTILEBLOB>): Uint8Ar
   if (data?.IsModern !== undefined) view.setInt32(72, Number(data.IsModern), true);
   // 0x4c: pad4
   // 0x50: pointer
-  if (data?.InvocationInfo !== undefined) view.setBigUint64(80, data.InvocationInfo === null ? 0n : BigInt(util.toPointer(data.InvocationInfo)), true);
+  if (data?.InvocationInfo !== undefined) view.setBigUint64(80, data.InvocationInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InvocationInfo))), true);
   return buf;
 }
 
@@ -3081,15 +3081,15 @@ export class PM_STARTTILEBLOBView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get ProductID(): Uint8Array | Deno.PointerValue | null {
+  get ProductID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get TileID(): Uint8Array | Deno.PointerValue | null {
+  get TileID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: i32
@@ -3100,9 +3100,9 @@ export class PM_STARTTILEBLOBView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get HubPosition(): Uint8Array | Deno.PointerValue | null {
+  get HubPosition(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -3123,9 +3123,9 @@ export class PM_STARTTILEBLOBView {
   // 0x34: pad4
 
   // 0x38: pointer
-  get pbPropBlob(): Uint8Array | Deno.PointerValue | null {
+  get pbPropBlob(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: u32
@@ -3146,9 +3146,9 @@ export class PM_STARTTILEBLOBView {
   // 0x4c: pad4
 
   // 0x50: pointer
-  get InvocationInfo(): Uint8Array | Deno.PointerValue | null {
+  get InvocationInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -3159,13 +3159,13 @@ export class PM_STARTTILEBLOBView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set ProductID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ProductID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set TileID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set TileID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: i32
@@ -3176,8 +3176,8 @@ export class PM_STARTTILEBLOBView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set HubPosition(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set HubPosition(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u32
@@ -3198,8 +3198,8 @@ export class PM_STARTTILEBLOBView {
   // 0x34: pad4
 
   // 0x38: pointer
-  set pbPropBlob(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set pbPropBlob(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: u32
@@ -3220,8 +3220,8 @@ export class PM_STARTTILEBLOBView {
   // 0x4c: pad4
 
   // 0x50: pointer
-  set InvocationInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set InvocationInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3230,13 +3230,13 @@ export class PM_STARTTILEBLOBView {
  */
 export interface PM_INSTALLINFO {
   /** System.Guid */
-  ProductID: Uint8Array | Deno.PointerValue | null;
+  ProductID: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BSTR */
-  PackagePath: Uint8Array | Deno.PointerValue | null;
+  PackagePath: Uint8Array | Deno.PointerValue;
   /** System.Guid */
-  InstanceID: Uint8Array | Deno.PointerValue | null;
+  InstanceID: Uint8Array | Deno.PointerValue;
   /** ptr */
-  pbLicense: Deno.PointerValue | Uint8Array | null;
+  pbLicense: Deno.PointerValue | Uint8Array;
   /** u32 */
   cbLicense: number;
   /** Windows.Win32.Foundation.BOOL */
@@ -3244,9 +3244,9 @@ export interface PM_INSTALLINFO {
   /** u32 */
   DeploymentOptions: number;
   /** System.Guid */
-  OfferID: Uint8Array | Deno.PointerValue | null;
+  OfferID: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BSTR */
-  MarketplaceAppVersion: Uint8Array | Deno.PointerValue | null;
+  MarketplaceAppVersion: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofPM_INSTALLINFO = 64;
@@ -3255,13 +3255,13 @@ export function allocPM_INSTALLINFO(data?: Partial<PM_INSTALLINFO>): Uint8Array 
   const buf = new Uint8Array(sizeofPM_INSTALLINFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ProductID !== undefined) view.setBigUint64(0, data.ProductID === null ? 0n : BigInt(util.toPointer(data.ProductID)), true);
+  if (data?.ProductID !== undefined) view.setBigUint64(0, data.ProductID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ProductID))), true);
   // 0x08: pointer
-  if (data?.PackagePath !== undefined) view.setBigUint64(8, data.PackagePath === null ? 0n : BigInt(util.toPointer(data.PackagePath)), true);
+  if (data?.PackagePath !== undefined) view.setBigUint64(8, data.PackagePath === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.PackagePath))), true);
   // 0x10: pointer
-  if (data?.InstanceID !== undefined) view.setBigUint64(16, data.InstanceID === null ? 0n : BigInt(util.toPointer(data.InstanceID)), true);
+  if (data?.InstanceID !== undefined) view.setBigUint64(16, data.InstanceID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InstanceID))), true);
   // 0x18: pointer
-  if (data?.pbLicense !== undefined) view.setBigUint64(24, data.pbLicense === null ? 0n : BigInt(util.toPointer(data.pbLicense)), true);
+  if (data?.pbLicense !== undefined) view.setBigUint64(24, data.pbLicense === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pbLicense))), true);
   // 0x20: u32
   if (data?.cbLicense !== undefined) view.setUint32(32, Number(data.cbLicense), true);
   // 0x24: i32
@@ -3270,9 +3270,9 @@ export function allocPM_INSTALLINFO(data?: Partial<PM_INSTALLINFO>): Uint8Array 
   if (data?.DeploymentOptions !== undefined) view.setUint32(40, Number(data.DeploymentOptions), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.OfferID !== undefined) view.setBigUint64(48, data.OfferID === null ? 0n : BigInt(util.toPointer(data.OfferID)), true);
+  if (data?.OfferID !== undefined) view.setBigUint64(48, data.OfferID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OfferID))), true);
   // 0x38: pointer
-  if (data?.MarketplaceAppVersion !== undefined) view.setBigUint64(56, data.MarketplaceAppVersion === null ? 0n : BigInt(util.toPointer(data.MarketplaceAppVersion)), true);
+  if (data?.MarketplaceAppVersion !== undefined) view.setBigUint64(56, data.MarketplaceAppVersion === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.MarketplaceAppVersion))), true);
   return buf;
 }
 
@@ -3287,27 +3287,27 @@ export class PM_INSTALLINFOView {
   }
 
   // 0x00: pointer
-  get ProductID(): Uint8Array | Deno.PointerValue | null {
+  get ProductID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get PackagePath(): Uint8Array | Deno.PointerValue | null {
+  get PackagePath(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get InstanceID(): Uint8Array | Deno.PointerValue | null {
+  get InstanceID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get pbLicense(): Uint8Array | Deno.PointerValue | null {
+  get pbLicense(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -3328,35 +3328,35 @@ export class PM_INSTALLINFOView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  get OfferID(): Uint8Array | Deno.PointerValue | null {
+  get OfferID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get MarketplaceAppVersion(): Uint8Array | Deno.PointerValue | null {
+  get MarketplaceAppVersion(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ProductID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ProductID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set PackagePath(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set PackagePath(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set InstanceID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set InstanceID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set pbLicense(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set pbLicense(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -3377,13 +3377,13 @@ export class PM_INSTALLINFOView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  set OfferID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set OfferID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set MarketplaceAppVersion(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set MarketplaceAppVersion(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3392,17 +3392,17 @@ export class PM_INSTALLINFOView {
  */
 export interface PM_UPDATEINFO_LEGACY {
   /** System.Guid */
-  ProductID: Uint8Array | Deno.PointerValue | null;
+  ProductID: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BSTR */
-  PackagePath: Uint8Array | Deno.PointerValue | null;
+  PackagePath: Uint8Array | Deno.PointerValue;
   /** System.Guid */
-  InstanceID: Uint8Array | Deno.PointerValue | null;
+  InstanceID: Uint8Array | Deno.PointerValue;
   /** ptr */
-  pbLicense: Deno.PointerValue | Uint8Array | null;
+  pbLicense: Deno.PointerValue | Uint8Array;
   /** u32 */
   cbLicense: number;
   /** Windows.Win32.Foundation.BSTR */
-  MarketplaceAppVersion: Uint8Array | Deno.PointerValue | null;
+  MarketplaceAppVersion: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofPM_UPDATEINFO_LEGACY = 48;
@@ -3411,18 +3411,18 @@ export function allocPM_UPDATEINFO_LEGACY(data?: Partial<PM_UPDATEINFO_LEGACY>):
   const buf = new Uint8Array(sizeofPM_UPDATEINFO_LEGACY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ProductID !== undefined) view.setBigUint64(0, data.ProductID === null ? 0n : BigInt(util.toPointer(data.ProductID)), true);
+  if (data?.ProductID !== undefined) view.setBigUint64(0, data.ProductID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ProductID))), true);
   // 0x08: pointer
-  if (data?.PackagePath !== undefined) view.setBigUint64(8, data.PackagePath === null ? 0n : BigInt(util.toPointer(data.PackagePath)), true);
+  if (data?.PackagePath !== undefined) view.setBigUint64(8, data.PackagePath === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.PackagePath))), true);
   // 0x10: pointer
-  if (data?.InstanceID !== undefined) view.setBigUint64(16, data.InstanceID === null ? 0n : BigInt(util.toPointer(data.InstanceID)), true);
+  if (data?.InstanceID !== undefined) view.setBigUint64(16, data.InstanceID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InstanceID))), true);
   // 0x18: pointer
-  if (data?.pbLicense !== undefined) view.setBigUint64(24, data.pbLicense === null ? 0n : BigInt(util.toPointer(data.pbLicense)), true);
+  if (data?.pbLicense !== undefined) view.setBigUint64(24, data.pbLicense === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pbLicense))), true);
   // 0x20: u32
   if (data?.cbLicense !== undefined) view.setUint32(32, Number(data.cbLicense), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.MarketplaceAppVersion !== undefined) view.setBigUint64(40, data.MarketplaceAppVersion === null ? 0n : BigInt(util.toPointer(data.MarketplaceAppVersion)), true);
+  if (data?.MarketplaceAppVersion !== undefined) view.setBigUint64(40, data.MarketplaceAppVersion === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.MarketplaceAppVersion))), true);
   return buf;
 }
 
@@ -3437,27 +3437,27 @@ export class PM_UPDATEINFO_LEGACYView {
   }
 
   // 0x00: pointer
-  get ProductID(): Uint8Array | Deno.PointerValue | null {
+  get ProductID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get PackagePath(): Uint8Array | Deno.PointerValue | null {
+  get PackagePath(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get InstanceID(): Uint8Array | Deno.PointerValue | null {
+  get InstanceID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get pbLicense(): Uint8Array | Deno.PointerValue | null {
+  get pbLicense(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -3468,29 +3468,29 @@ export class PM_UPDATEINFO_LEGACYView {
   // 0x24: pad4
 
   // 0x28: pointer
-  get MarketplaceAppVersion(): Uint8Array | Deno.PointerValue | null {
+  get MarketplaceAppVersion(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ProductID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ProductID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set PackagePath(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set PackagePath(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set InstanceID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set InstanceID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set pbLicense(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set pbLicense(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -3501,8 +3501,8 @@ export class PM_UPDATEINFO_LEGACYView {
   // 0x24: pad4
 
   // 0x28: pointer
-  set MarketplaceAppVersion(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set MarketplaceAppVersion(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3511,17 +3511,17 @@ export class PM_UPDATEINFO_LEGACYView {
  */
 export interface PM_UPDATEINFO {
   /** System.Guid */
-  ProductID: Uint8Array | Deno.PointerValue | null;
+  ProductID: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BSTR */
-  PackagePath: Uint8Array | Deno.PointerValue | null;
+  PackagePath: Uint8Array | Deno.PointerValue;
   /** System.Guid */
-  InstanceID: Uint8Array | Deno.PointerValue | null;
+  InstanceID: Uint8Array | Deno.PointerValue;
   /** ptr */
-  pbLicense: Deno.PointerValue | Uint8Array | null;
+  pbLicense: Deno.PointerValue | Uint8Array;
   /** u32 */
   cbLicense: number;
   /** Windows.Win32.Foundation.BSTR */
-  MarketplaceAppVersion: Uint8Array | Deno.PointerValue | null;
+  MarketplaceAppVersion: Uint8Array | Deno.PointerValue;
   /** u32 */
   DeploymentOptions: number;
 }
@@ -3532,18 +3532,18 @@ export function allocPM_UPDATEINFO(data?: Partial<PM_UPDATEINFO>): Uint8Array {
   const buf = new Uint8Array(sizeofPM_UPDATEINFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ProductID !== undefined) view.setBigUint64(0, data.ProductID === null ? 0n : BigInt(util.toPointer(data.ProductID)), true);
+  if (data?.ProductID !== undefined) view.setBigUint64(0, data.ProductID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ProductID))), true);
   // 0x08: pointer
-  if (data?.PackagePath !== undefined) view.setBigUint64(8, data.PackagePath === null ? 0n : BigInt(util.toPointer(data.PackagePath)), true);
+  if (data?.PackagePath !== undefined) view.setBigUint64(8, data.PackagePath === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.PackagePath))), true);
   // 0x10: pointer
-  if (data?.InstanceID !== undefined) view.setBigUint64(16, data.InstanceID === null ? 0n : BigInt(util.toPointer(data.InstanceID)), true);
+  if (data?.InstanceID !== undefined) view.setBigUint64(16, data.InstanceID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InstanceID))), true);
   // 0x18: pointer
-  if (data?.pbLicense !== undefined) view.setBigUint64(24, data.pbLicense === null ? 0n : BigInt(util.toPointer(data.pbLicense)), true);
+  if (data?.pbLicense !== undefined) view.setBigUint64(24, data.pbLicense === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pbLicense))), true);
   // 0x20: u32
   if (data?.cbLicense !== undefined) view.setUint32(32, Number(data.cbLicense), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.MarketplaceAppVersion !== undefined) view.setBigUint64(40, data.MarketplaceAppVersion === null ? 0n : BigInt(util.toPointer(data.MarketplaceAppVersion)), true);
+  if (data?.MarketplaceAppVersion !== undefined) view.setBigUint64(40, data.MarketplaceAppVersion === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.MarketplaceAppVersion))), true);
   // 0x30: u32
   if (data?.DeploymentOptions !== undefined) view.setUint32(48, Number(data.DeploymentOptions), true);
   // 0x34: pad4
@@ -3561,27 +3561,27 @@ export class PM_UPDATEINFOView {
   }
 
   // 0x00: pointer
-  get ProductID(): Uint8Array | Deno.PointerValue | null {
+  get ProductID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get PackagePath(): Uint8Array | Deno.PointerValue | null {
+  get PackagePath(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get InstanceID(): Uint8Array | Deno.PointerValue | null {
+  get InstanceID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get pbLicense(): Uint8Array | Deno.PointerValue | null {
+  get pbLicense(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -3592,9 +3592,9 @@ export class PM_UPDATEINFOView {
   // 0x24: pad4
 
   // 0x28: pointer
-  get MarketplaceAppVersion(): Uint8Array | Deno.PointerValue | null {
+  get MarketplaceAppVersion(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: u32
@@ -3605,23 +3605,23 @@ export class PM_UPDATEINFOView {
   // 0x34: pad4
 
   // 0x00: pointer
-  set ProductID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ProductID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set PackagePath(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set PackagePath(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set InstanceID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set InstanceID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set pbLicense(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set pbLicense(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -3632,8 +3632,8 @@ export class PM_UPDATEINFOView {
   // 0x24: pad4
 
   // 0x28: pointer
-  set MarketplaceAppVersion(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set MarketplaceAppVersion(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: u32
@@ -3780,11 +3780,11 @@ export interface PATCH_OLD_FILE_INFO_A {
   /** u32 */
   IgnoreRangeCount: number;
   /** ptr */
-  IgnoreRangeArray: Deno.PointerValue | Uint8Array | null;
+  IgnoreRangeArray: Deno.PointerValue | Uint8Array;
   /** u32 */
   RetainRangeCount: number;
   /** ptr */
-  RetainRangeArray: Deno.PointerValue | Uint8Array | null;
+  RetainRangeArray: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofPATCH_OLD_FILE_INFO_A = 48;
@@ -3798,18 +3798,18 @@ export function allocPATCH_OLD_FILE_INFO_A(data?: Partial<PATCH_OLD_FILE_INFO_A>
   // 0x08: buffer
   if (data?.OldFileName !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.OldFileName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: u32
   if (data?.IgnoreRangeCount !== undefined) view.setUint32(16, Number(data.IgnoreRangeCount), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.IgnoreRangeArray !== undefined) view.setBigUint64(24, data.IgnoreRangeArray === null ? 0n : BigInt(util.toPointer(data.IgnoreRangeArray)), true);
+  if (data?.IgnoreRangeArray !== undefined) view.setBigUint64(24, data.IgnoreRangeArray === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.IgnoreRangeArray))), true);
   // 0x20: u32
   if (data?.RetainRangeCount !== undefined) view.setUint32(32, Number(data.RetainRangeCount), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.RetainRangeArray !== undefined) view.setBigUint64(40, data.RetainRangeArray === null ? 0n : BigInt(util.toPointer(data.RetainRangeArray)), true);
+  if (data?.RetainRangeArray !== undefined) view.setBigUint64(40, data.RetainRangeArray === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.RetainRangeArray))), true);
   return buf;
 }
 
@@ -3831,9 +3831,9 @@ export class PATCH_OLD_FILE_INFO_AView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get OldFileName(): Uint8Array | Deno.PointerValue | null {
+  get OldFileName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -3844,9 +3844,9 @@ export class PATCH_OLD_FILE_INFO_AView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get IgnoreRangeArray(): Uint8Array | Deno.PointerValue | null {
+  get IgnoreRangeArray(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -3857,9 +3857,9 @@ export class PATCH_OLD_FILE_INFO_AView {
   // 0x24: pad4
 
   // 0x28: pointer
-  get RetainRangeArray(): Uint8Array | Deno.PointerValue | null {
+  get RetainRangeArray(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -3870,9 +3870,9 @@ export class PATCH_OLD_FILE_INFO_AView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set OldFileName(value: Uint8Array | Deno.PointerValue | null) {
+  set OldFileName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: u32
@@ -3883,8 +3883,8 @@ export class PATCH_OLD_FILE_INFO_AView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set IgnoreRangeArray(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set IgnoreRangeArray(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -3895,8 +3895,8 @@ export class PATCH_OLD_FILE_INFO_AView {
   // 0x24: pad4
 
   // 0x28: pointer
-  set RetainRangeArray(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set RetainRangeArray(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3911,11 +3911,11 @@ export interface PATCH_OLD_FILE_INFO_W {
   /** u32 */
   IgnoreRangeCount: number;
   /** ptr */
-  IgnoreRangeArray: Deno.PointerValue | Uint8Array | null;
+  IgnoreRangeArray: Deno.PointerValue | Uint8Array;
   /** u32 */
   RetainRangeCount: number;
   /** ptr */
-  RetainRangeArray: Deno.PointerValue | Uint8Array | null;
+  RetainRangeArray: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofPATCH_OLD_FILE_INFO_W = 48;
@@ -3929,18 +3929,18 @@ export function allocPATCH_OLD_FILE_INFO_W(data?: Partial<PATCH_OLD_FILE_INFO_W>
   // 0x08: buffer
   if (data?.OldFileName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.OldFileName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: u32
   if (data?.IgnoreRangeCount !== undefined) view.setUint32(16, Number(data.IgnoreRangeCount), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.IgnoreRangeArray !== undefined) view.setBigUint64(24, data.IgnoreRangeArray === null ? 0n : BigInt(util.toPointer(data.IgnoreRangeArray)), true);
+  if (data?.IgnoreRangeArray !== undefined) view.setBigUint64(24, data.IgnoreRangeArray === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.IgnoreRangeArray))), true);
   // 0x20: u32
   if (data?.RetainRangeCount !== undefined) view.setUint32(32, Number(data.RetainRangeCount), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.RetainRangeArray !== undefined) view.setBigUint64(40, data.RetainRangeArray === null ? 0n : BigInt(util.toPointer(data.RetainRangeArray)), true);
+  if (data?.RetainRangeArray !== undefined) view.setBigUint64(40, data.RetainRangeArray === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.RetainRangeArray))), true);
   return buf;
 }
 
@@ -3962,9 +3962,9 @@ export class PATCH_OLD_FILE_INFO_WView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get OldFileName(): Uint8Array | Deno.PointerValue | null {
+  get OldFileName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -3975,9 +3975,9 @@ export class PATCH_OLD_FILE_INFO_WView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get IgnoreRangeArray(): Uint8Array | Deno.PointerValue | null {
+  get IgnoreRangeArray(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -3988,9 +3988,9 @@ export class PATCH_OLD_FILE_INFO_WView {
   // 0x24: pad4
 
   // 0x28: pointer
-  get RetainRangeArray(): Uint8Array | Deno.PointerValue | null {
+  get RetainRangeArray(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -4001,9 +4001,9 @@ export class PATCH_OLD_FILE_INFO_WView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set OldFileName(value: Uint8Array | Deno.PointerValue | null) {
+  set OldFileName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: u32
@@ -4014,8 +4014,8 @@ export class PATCH_OLD_FILE_INFO_WView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set IgnoreRangeArray(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set IgnoreRangeArray(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -4026,8 +4026,8 @@ export class PATCH_OLD_FILE_INFO_WView {
   // 0x24: pad4
 
   // 0x28: pointer
-  set RetainRangeArray(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set RetainRangeArray(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4040,15 +4040,15 @@ export interface PATCH_OLD_FILE_INFO_H {
   /** u32 */
   SizeOfThisStruct: number;
   /** Windows.Win32.Foundation.HANDLE */
-  OldFileHandle: Uint8Array | Deno.PointerValue | null;
+  OldFileHandle: Uint8Array | Deno.PointerValue;
   /** u32 */
   IgnoreRangeCount: number;
   /** ptr */
-  IgnoreRangeArray: Deno.PointerValue | Uint8Array | null;
+  IgnoreRangeArray: Deno.PointerValue | Uint8Array;
   /** u32 */
   RetainRangeCount: number;
   /** ptr */
-  RetainRangeArray: Deno.PointerValue | Uint8Array | null;
+  RetainRangeArray: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofPATCH_OLD_FILE_INFO_H = 48;
@@ -4060,17 +4060,17 @@ export function allocPATCH_OLD_FILE_INFO_H(data?: Partial<PATCH_OLD_FILE_INFO_H>
   if (data?.SizeOfThisStruct !== undefined) view.setUint32(0, Number(data.SizeOfThisStruct), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.OldFileHandle !== undefined) view.setBigUint64(8, data.OldFileHandle === null ? 0n : BigInt(util.toPointer(data.OldFileHandle)), true);
+  if (data?.OldFileHandle !== undefined) view.setBigUint64(8, data.OldFileHandle === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OldFileHandle))), true);
   // 0x10: u32
   if (data?.IgnoreRangeCount !== undefined) view.setUint32(16, Number(data.IgnoreRangeCount), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.IgnoreRangeArray !== undefined) view.setBigUint64(24, data.IgnoreRangeArray === null ? 0n : BigInt(util.toPointer(data.IgnoreRangeArray)), true);
+  if (data?.IgnoreRangeArray !== undefined) view.setBigUint64(24, data.IgnoreRangeArray === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.IgnoreRangeArray))), true);
   // 0x20: u32
   if (data?.RetainRangeCount !== undefined) view.setUint32(32, Number(data.RetainRangeCount), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.RetainRangeArray !== undefined) view.setBigUint64(40, data.RetainRangeArray === null ? 0n : BigInt(util.toPointer(data.RetainRangeArray)), true);
+  if (data?.RetainRangeArray !== undefined) view.setBigUint64(40, data.RetainRangeArray === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.RetainRangeArray))), true);
   return buf;
 }
 
@@ -4092,9 +4092,9 @@ export class PATCH_OLD_FILE_INFO_HView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get OldFileHandle(): Uint8Array | Deno.PointerValue | null {
+  get OldFileHandle(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -4105,9 +4105,9 @@ export class PATCH_OLD_FILE_INFO_HView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get IgnoreRangeArray(): Uint8Array | Deno.PointerValue | null {
+  get IgnoreRangeArray(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -4118,9 +4118,9 @@ export class PATCH_OLD_FILE_INFO_HView {
   // 0x24: pad4
 
   // 0x28: pointer
-  get RetainRangeArray(): Uint8Array | Deno.PointerValue | null {
+  get RetainRangeArray(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -4131,8 +4131,8 @@ export class PATCH_OLD_FILE_INFO_HView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set OldFileHandle(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set OldFileHandle(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -4143,8 +4143,8 @@ export class PATCH_OLD_FILE_INFO_HView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set IgnoreRangeArray(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set IgnoreRangeArray(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -4155,8 +4155,8 @@ export class PATCH_OLD_FILE_INFO_HView {
   // 0x24: pad4
 
   // 0x28: pointer
-  set RetainRangeArray(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set RetainRangeArray(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4165,9 +4165,9 @@ export class PATCH_OLD_FILE_INFO_HView {
  */
 export interface _Anonymous_e__Union {
   /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** array */
-  X: Deno.PointerValue | null;
+  X: Deno.PointerValue;
 }
 
 export const sizeof_Anonymous_e__Union = 16;
@@ -4176,9 +4176,9 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   const buf = new Uint8Array(sizeof_Anonymous_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x08: pointer
-  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.X))), true);
   return buf;
 }
 
@@ -4193,25 +4193,25 @@ export class _Anonymous_e__UnionView {
   }
 
   // 0x00: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get X(): Uint8Array | Deno.PointerValue | null {
+  get X(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set X(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set X(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4222,15 +4222,15 @@ export interface PATCH_OLD_FILE_INFO {
   /** u32 */
   SizeOfThisStruct: number;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** u32 */
   IgnoreRangeCount: number;
   /** ptr */
-  IgnoreRangeArray: Deno.PointerValue | Uint8Array | null;
+  IgnoreRangeArray: Deno.PointerValue | Uint8Array;
   /** u32 */
   RetainRangeCount: number;
   /** ptr */
-  RetainRangeArray: Deno.PointerValue | Uint8Array | null;
+  RetainRangeArray: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofPATCH_OLD_FILE_INFO = 48;
@@ -4242,17 +4242,17 @@ export function allocPATCH_OLD_FILE_INFO(data?: Partial<PATCH_OLD_FILE_INFO>): U
   if (data?.SizeOfThisStruct !== undefined) view.setUint32(0, Number(data.SizeOfThisStruct), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x10: u32
   if (data?.IgnoreRangeCount !== undefined) view.setUint32(16, Number(data.IgnoreRangeCount), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.IgnoreRangeArray !== undefined) view.setBigUint64(24, data.IgnoreRangeArray === null ? 0n : BigInt(util.toPointer(data.IgnoreRangeArray)), true);
+  if (data?.IgnoreRangeArray !== undefined) view.setBigUint64(24, data.IgnoreRangeArray === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.IgnoreRangeArray))), true);
   // 0x20: u32
   if (data?.RetainRangeCount !== undefined) view.setUint32(32, Number(data.RetainRangeCount), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.RetainRangeArray !== undefined) view.setBigUint64(40, data.RetainRangeArray === null ? 0n : BigInt(util.toPointer(data.RetainRangeArray)), true);
+  if (data?.RetainRangeArray !== undefined) view.setBigUint64(40, data.RetainRangeArray === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.RetainRangeArray))), true);
   return buf;
 }
 
@@ -4274,9 +4274,9 @@ export class PATCH_OLD_FILE_INFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -4287,9 +4287,9 @@ export class PATCH_OLD_FILE_INFOView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get IgnoreRangeArray(): Uint8Array | Deno.PointerValue | null {
+  get IgnoreRangeArray(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -4300,9 +4300,9 @@ export class PATCH_OLD_FILE_INFOView {
   // 0x24: pad4
 
   // 0x28: pointer
-  get RetainRangeArray(): Uint8Array | Deno.PointerValue | null {
+  get RetainRangeArray(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -4313,8 +4313,8 @@ export class PATCH_OLD_FILE_INFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -4325,8 +4325,8 @@ export class PATCH_OLD_FILE_INFOView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set IgnoreRangeArray(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set IgnoreRangeArray(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -4337,8 +4337,8 @@ export class PATCH_OLD_FILE_INFOView {
   // 0x24: pad4
 
   // 0x28: pointer
-  set RetainRangeArray(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set RetainRangeArray(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4349,7 +4349,7 @@ export interface PATCH_INTERLEAVE_MAP {
   /** u32 */
   CountRanges: number;
   /** array */
-  Range: Deno.PointerValue | null;
+  Range: Deno.PointerValue;
 }
 
 export const sizeofPATCH_INTERLEAVE_MAP = 16;
@@ -4361,7 +4361,7 @@ export function allocPATCH_INTERLEAVE_MAP(data?: Partial<PATCH_INTERLEAVE_MAP>):
   if (data?.CountRanges !== undefined) view.setUint32(0, Number(data.CountRanges), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Range !== undefined) view.setBigUint64(8, data.Range === null ? 0n : BigInt(util.toPointer(data.Range)), true);
+  if (data?.Range !== undefined) view.setBigUint64(8, data.Range === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Range))), true);
   return buf;
 }
 
@@ -4383,9 +4383,9 @@ export class PATCH_INTERLEAVE_MAPView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Range(): Uint8Array | Deno.PointerValue | null {
+  get Range(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -4396,8 +4396,8 @@ export class PATCH_INTERLEAVE_MAPView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Range(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Range(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4412,15 +4412,15 @@ export interface PATCH_OPTION_DATA {
   /** Windows.Win32.Foundation.PSTR */
   NewFileSymbolPath: string | null | Uint8Array;
   /** ptr */
-  OldFileSymbolPathArray: Deno.PointerValue | Uint8Array | null;
+  OldFileSymbolPathArray: Deno.PointerValue | Uint8Array;
   /** u32 */
   ExtendedOptionFlags: number;
   /** Windows.Win32.System.ApplicationInstallationAndServicing.PPATCH_SYMLOAD_CALLBACK */
-  SymLoadCallback: Uint8Array | Deno.PointerValue | null;
+  SymLoadCallback: Uint8Array | Deno.PointerValue;
   /** ptr */
-  SymLoadContext: Deno.PointerValue | Uint8Array | null;
+  SymLoadContext: Deno.PointerValue | Uint8Array;
   /** ptr */
-  InterleaveMapArray: Deno.PointerValue | Uint8Array | null;
+  InterleaveMapArray: Deno.PointerValue | Uint8Array;
   /** u32 */
   MaxLzxWindowSize: number;
 }
@@ -4437,19 +4437,19 @@ export function allocPATCH_OPTION_DATA(data?: Partial<PATCH_OPTION_DATA>): Uint8
   // 0x08: buffer
   if (data?.NewFileSymbolPath !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.NewFileSymbolPath);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: pointer
-  if (data?.OldFileSymbolPathArray !== undefined) view.setBigUint64(16, data.OldFileSymbolPathArray === null ? 0n : BigInt(util.toPointer(data.OldFileSymbolPathArray)), true);
+  if (data?.OldFileSymbolPathArray !== undefined) view.setBigUint64(16, data.OldFileSymbolPathArray === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.OldFileSymbolPathArray))), true);
   // 0x18: u32
   if (data?.ExtendedOptionFlags !== undefined) view.setUint32(24, Number(data.ExtendedOptionFlags), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.SymLoadCallback !== undefined) view.setBigUint64(32, data.SymLoadCallback === null ? 0n : BigInt(util.toPointer(data.SymLoadCallback)), true);
+  if (data?.SymLoadCallback !== undefined) view.setBigUint64(32, data.SymLoadCallback === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.SymLoadCallback))), true);
   // 0x28: pointer
-  if (data?.SymLoadContext !== undefined) view.setBigUint64(40, data.SymLoadContext === null ? 0n : BigInt(util.toPointer(data.SymLoadContext)), true);
+  if (data?.SymLoadContext !== undefined) view.setBigUint64(40, data.SymLoadContext === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.SymLoadContext))), true);
   // 0x30: pointer
-  if (data?.InterleaveMapArray !== undefined) view.setBigUint64(48, data.InterleaveMapArray === null ? 0n : BigInt(util.toPointer(data.InterleaveMapArray)), true);
+  if (data?.InterleaveMapArray !== undefined) view.setBigUint64(48, data.InterleaveMapArray === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InterleaveMapArray))), true);
   // 0x38: u32
   if (data?.MaxLzxWindowSize !== undefined) view.setUint32(56, Number(data.MaxLzxWindowSize), true);
   // 0x3c: pad4
@@ -4477,15 +4477,15 @@ export class PATCH_OPTION_DATAView {
   }
 
   // 0x08: buffer
-  get NewFileSymbolPath(): Uint8Array | Deno.PointerValue | null {
+  get NewFileSymbolPath(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get OldFileSymbolPathArray(): Uint8Array | Deno.PointerValue | null {
+  get OldFileSymbolPathArray(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -4496,21 +4496,21 @@ export class PATCH_OPTION_DATAView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get SymLoadCallback(): Uint8Array | Deno.PointerValue | null {
+  get SymLoadCallback(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get SymLoadContext(): Uint8Array | Deno.PointerValue | null {
+  get SymLoadContext(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get InterleaveMapArray(): Uint8Array | Deno.PointerValue | null {
+  get InterleaveMapArray(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: u32
@@ -4531,14 +4531,14 @@ export class PATCH_OPTION_DATAView {
   }
 
   // 0x08: buffer
-  set NewFileSymbolPath(value: Uint8Array | Deno.PointerValue | null) {
+  set NewFileSymbolPath(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: pointer
-  set OldFileSymbolPathArray(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set OldFileSymbolPathArray(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -4549,18 +4549,18 @@ export class PATCH_OPTION_DATAView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set SymLoadCallback(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set SymLoadCallback(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set SymLoadContext(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set SymLoadContext(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set InterleaveMapArray(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set InterleaveMapArray(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: u32
@@ -4576,7 +4576,7 @@ export class PATCH_OPTION_DATAView {
  */
 export interface DELTA_INPUT {
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** usize */
   uSize: Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOL */
@@ -4589,7 +4589,7 @@ export function allocDELTA_INPUT(data?: Partial<DELTA_INPUT>): Uint8Array {
   const buf = new Uint8Array(sizeofDELTA_INPUT);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x08: usize
   if (data?.uSize !== undefined) view.setBigUint64(8, BigInt(data.uSize), true);
   // 0x10: i32
@@ -4609,9 +4609,9 @@ export class DELTA_INPUTView {
   }
 
   // 0x00: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: usize
@@ -4627,8 +4627,8 @@ export class DELTA_INPUTView {
   // 0x14: pad4
 
   // 0x00: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: usize
@@ -4649,7 +4649,7 @@ export class DELTA_INPUTView {
  */
 export interface DELTA_OUTPUT {
   /** ptr */
-  lpStart: Deno.PointerValue | Uint8Array | null;
+  lpStart: Deno.PointerValue | Uint8Array;
   /** usize */
   uSize: Deno.PointerValue;
 }
@@ -4660,7 +4660,7 @@ export function allocDELTA_OUTPUT(data?: Partial<DELTA_OUTPUT>): Uint8Array {
   const buf = new Uint8Array(sizeofDELTA_OUTPUT);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.lpStart !== undefined) view.setBigUint64(0, data.lpStart === null ? 0n : BigInt(util.toPointer(data.lpStart)), true);
+  if (data?.lpStart !== undefined) view.setBigUint64(0, data.lpStart === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpStart))), true);
   // 0x08: usize
   if (data?.uSize !== undefined) view.setBigUint64(8, BigInt(data.uSize), true);
   return buf;
@@ -4677,9 +4677,9 @@ export class DELTA_OUTPUTView {
   }
 
   // 0x00: pointer
-  get lpStart(): Uint8Array | Deno.PointerValue | null {
+  get lpStart(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: usize
@@ -4688,8 +4688,8 @@ export class DELTA_OUTPUTView {
   }
 
   // 0x00: pointer
-  set lpStart(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set lpStart(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: usize
@@ -4705,7 +4705,7 @@ export interface DELTA_HASH {
   /** u32 */
   HashSize: number;
   /** array */
-  HashValue: Deno.PointerValue | null;
+  HashValue: Deno.PointerValue;
 }
 
 export const sizeofDELTA_HASH = 16;
@@ -4717,7 +4717,7 @@ export function allocDELTA_HASH(data?: Partial<DELTA_HASH>): Uint8Array {
   if (data?.HashSize !== undefined) view.setUint32(0, Number(data.HashSize), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.HashValue !== undefined) view.setBigUint64(8, data.HashValue === null ? 0n : BigInt(util.toPointer(data.HashValue)), true);
+  if (data?.HashValue !== undefined) view.setBigUint64(8, data.HashValue === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.HashValue))), true);
   return buf;
 }
 
@@ -4739,9 +4739,9 @@ export class DELTA_HASHView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get HashValue(): Uint8Array | Deno.PointerValue | null {
+  get HashValue(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -4752,8 +4752,8 @@ export class DELTA_HASHView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set HashValue(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set HashValue(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4823,11 +4823,11 @@ export interface DELTA_HEADER_INFO {
   /** usize */
   TargetSize: Deno.PointerValue;
   /** Windows.Win32.Foundation.FILETIME */
-  TargetFileTime: Uint8Array | Deno.PointerValue | null;
+  TargetFileTime: Uint8Array | Deno.PointerValue;
   /** u32 */
   TargetHashAlgId: number;
   /** Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_HASH */
-  TargetHash: Uint8Array | Deno.PointerValue | null;
+  TargetHash: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDELTA_HEADER_INFO = 56;
@@ -4844,12 +4844,12 @@ export function allocDELTA_HEADER_INFO(data?: Partial<DELTA_HEADER_INFO>): Uint8
   // 0x18: usize
   if (data?.TargetSize !== undefined) view.setBigUint64(24, BigInt(data.TargetSize), true);
   // 0x20: pointer
-  if (data?.TargetFileTime !== undefined) view.setBigUint64(32, data.TargetFileTime === null ? 0n : BigInt(util.toPointer(data.TargetFileTime)), true);
+  if (data?.TargetFileTime !== undefined) view.setBigUint64(32, data.TargetFileTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.TargetFileTime))), true);
   // 0x28: u32
   if (data?.TargetHashAlgId !== undefined) view.setUint32(40, Number(data.TargetHashAlgId), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.TargetHash !== undefined) view.setBigUint64(48, data.TargetHash === null ? 0n : BigInt(util.toPointer(data.TargetHash)), true);
+  if (data?.TargetHash !== undefined) view.setBigUint64(48, data.TargetHash === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.TargetHash))), true);
   return buf;
 }
 
@@ -4884,9 +4884,9 @@ export class DELTA_HEADER_INFOView {
   }
 
   // 0x20: pointer
-  get TargetFileTime(): Uint8Array | Deno.PointerValue | null {
+  get TargetFileTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -4897,9 +4897,9 @@ export class DELTA_HEADER_INFOView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  get TargetHash(): Uint8Array | Deno.PointerValue | null {
+  get TargetHash(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i64
@@ -4923,8 +4923,8 @@ export class DELTA_HEADER_INFOView {
   }
 
   // 0x20: pointer
-  set TargetFileTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set TargetFileTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u32
@@ -4935,8 +4935,8 @@ export class DELTA_HEADER_INFOView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  set TargetHash(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set TargetHash(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -5024,12 +5024,12 @@ export function allocASSEMBLY_FILE_DETAILED_INFORMATION(data?: Partial<ASSEMBLY_
   // 0x10: buffer
   if (data?.lpFileName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.lpFileName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.lpFilePath !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.lpFilePath);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   return buf;
 }
@@ -5062,15 +5062,15 @@ export class ASSEMBLY_FILE_DETAILED_INFORMATIONView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  get lpFileName(): Uint8Array | Deno.PointerValue | null {
+  get lpFileName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get lpFilePath(): Uint8Array | Deno.PointerValue | null {
+  get lpFilePath(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -5091,15 +5091,15 @@ export class ASSEMBLY_FILE_DETAILED_INFORMATIONView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  set lpFileName(value: Uint8Array | Deno.PointerValue | null) {
+  set lpFileName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set lpFilePath(value: Uint8Array | Deno.PointerValue | null) {
+  set lpFilePath(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 }
 
@@ -5108,9 +5108,9 @@ export class ASSEMBLY_FILE_DETAILED_INFORMATIONView {
  */
 export interface LARGE_INTEGER {
   /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** _u_e__Struct */
-  u: Uint8Array | Deno.PointerValue | null;
+  u: Uint8Array | Deno.PointerValue;
   /** i64 */
   QuadPart: Deno.PointerValue;
 }
@@ -5121,9 +5121,9 @@ export function allocLARGE_INTEGER(data?: Partial<LARGE_INTEGER>): Uint8Array {
   const buf = new Uint8Array(sizeofLARGE_INTEGER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x08: pointer
-  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : BigInt(util.toPointer(data.u)), true);
+  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.u))), true);
   // 0x10: i64
   if (data?.QuadPart !== undefined) view.setBigInt64(16, BigInt(data.QuadPart), true);
   return buf;
@@ -5140,15 +5140,15 @@ export class LARGE_INTEGERView {
   }
 
   // 0x00: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get u(): Uint8Array | Deno.PointerValue | null {
+  get u(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i64
@@ -5157,13 +5157,13 @@ export class LARGE_INTEGERView {
   }
 
   // 0x00: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set u(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set u(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: i64
@@ -5185,13 +5185,13 @@ export interface ACTIVATION_CONTEXT_ASSEMBLY_DETAILED_INFORMATION {
   /** u32 */
   ulManifestPathLength: number;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  liManifestLastWriteTime: Uint8Array | Deno.PointerValue | null;
+  liManifestLastWriteTime: Uint8Array | Deno.PointerValue;
   /** u32 */
   ulPolicyPathType: number;
   /** u32 */
   ulPolicyPathLength: number;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
-  liPolicyLastWriteTime: Uint8Array | Deno.PointerValue | null;
+  liPolicyLastWriteTime: Uint8Array | Deno.PointerValue;
   /** u32 */
   ulMetadataSatelliteRosterIndex: number;
   /** u32 */
@@ -5230,13 +5230,13 @@ export function allocACTIVATION_CONTEXT_ASSEMBLY_DETAILED_INFORMATION(data?: Par
   // 0x0c: u32
   if (data?.ulManifestPathLength !== undefined) view.setUint32(12, Number(data.ulManifestPathLength), true);
   // 0x10: pointer
-  if (data?.liManifestLastWriteTime !== undefined) view.setBigUint64(16, data.liManifestLastWriteTime === null ? 0n : BigInt(util.toPointer(data.liManifestLastWriteTime)), true);
+  if (data?.liManifestLastWriteTime !== undefined) view.setBigUint64(16, data.liManifestLastWriteTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.liManifestLastWriteTime))), true);
   // 0x18: u32
   if (data?.ulPolicyPathType !== undefined) view.setUint32(24, Number(data.ulPolicyPathType), true);
   // 0x1c: u32
   if (data?.ulPolicyPathLength !== undefined) view.setUint32(28, Number(data.ulPolicyPathLength), true);
   // 0x20: pointer
-  if (data?.liPolicyLastWriteTime !== undefined) view.setBigUint64(32, data.liPolicyLastWriteTime === null ? 0n : BigInt(util.toPointer(data.liPolicyLastWriteTime)), true);
+  if (data?.liPolicyLastWriteTime !== undefined) view.setBigUint64(32, data.liPolicyLastWriteTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.liPolicyLastWriteTime))), true);
   // 0x28: u32
   if (data?.ulMetadataSatelliteRosterIndex !== undefined) view.setUint32(40, Number(data.ulMetadataSatelliteRosterIndex), true);
   // 0x2c: u32
@@ -5252,22 +5252,22 @@ export function allocACTIVATION_CONTEXT_ASSEMBLY_DETAILED_INFORMATION(data?: Par
   // 0x40: buffer
   if (data?.lpAssemblyEncodedAssemblyIdentity !== undefined) {
     (buf as any)._f64 = util.pwstrToFfi(data.lpAssemblyEncodedAssemblyIdentity);
-    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f64)), true);
+    view.setBigUint64(64, (buf as any)._f64 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f64))), true);
   }
   // 0x48: buffer
   if (data?.lpAssemblyManifestPath !== undefined) {
     (buf as any)._f72 = util.pwstrToFfi(data.lpAssemblyManifestPath);
-    view.setBigUint64(72, (buf as any)._f72 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f72)), true);
+    view.setBigUint64(72, (buf as any)._f72 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f72))), true);
   }
   // 0x50: buffer
   if (data?.lpAssemblyPolicyPath !== undefined) {
     (buf as any)._f80 = util.pwstrToFfi(data.lpAssemblyPolicyPath);
-    view.setBigUint64(80, (buf as any)._f80 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f80)), true);
+    view.setBigUint64(80, (buf as any)._f80 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f80))), true);
   }
   // 0x58: buffer
   if (data?.lpAssemblyDirectoryName !== undefined) {
     (buf as any)._f88 = util.pwstrToFfi(data.lpAssemblyDirectoryName);
-    view.setBigUint64(88, (buf as any)._f88 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f88)), true);
+    view.setBigUint64(88, (buf as any)._f88 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f88))), true);
   }
   // 0x60: u32
   if (data?.ulFileCount !== undefined) view.setUint32(96, Number(data.ulFileCount), true);
@@ -5306,9 +5306,9 @@ export class ACTIVATION_CONTEXT_ASSEMBLY_DETAILED_INFORMATIONView {
   }
 
   // 0x10: pointer
-  get liManifestLastWriteTime(): Uint8Array | Deno.PointerValue | null {
+  get liManifestLastWriteTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -5322,9 +5322,9 @@ export class ACTIVATION_CONTEXT_ASSEMBLY_DETAILED_INFORMATIONView {
   }
 
   // 0x20: pointer
-  get liPolicyLastWriteTime(): Uint8Array | Deno.PointerValue | null {
+  get liPolicyLastWriteTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -5358,27 +5358,27 @@ export class ACTIVATION_CONTEXT_ASSEMBLY_DETAILED_INFORMATIONView {
   }
 
   // 0x40: buffer
-  get lpAssemblyEncodedAssemblyIdentity(): Uint8Array | Deno.PointerValue | null {
+  get lpAssemblyEncodedAssemblyIdentity(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: buffer
-  get lpAssemblyManifestPath(): Uint8Array | Deno.PointerValue | null {
+  get lpAssemblyManifestPath(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: buffer
-  get lpAssemblyPolicyPath(): Uint8Array | Deno.PointerValue | null {
+  get lpAssemblyPolicyPath(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x58: buffer
-  get lpAssemblyDirectoryName(): Uint8Array | Deno.PointerValue | null {
+  get lpAssemblyDirectoryName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x60: u32
@@ -5409,8 +5409,8 @@ export class ACTIVATION_CONTEXT_ASSEMBLY_DETAILED_INFORMATIONView {
   }
 
   // 0x10: pointer
-  set liManifestLastWriteTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set liManifestLastWriteTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -5424,8 +5424,8 @@ export class ACTIVATION_CONTEXT_ASSEMBLY_DETAILED_INFORMATIONView {
   }
 
   // 0x20: pointer
-  set liPolicyLastWriteTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set liPolicyLastWriteTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u32
@@ -5459,27 +5459,27 @@ export class ACTIVATION_CONTEXT_ASSEMBLY_DETAILED_INFORMATIONView {
   }
 
   // 0x40: buffer
-  set lpAssemblyEncodedAssemblyIdentity(value: Uint8Array | Deno.PointerValue | null) {
+  set lpAssemblyEncodedAssemblyIdentity(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f64 = value;
-    this.view.setBigUint64(64, BigInt(util.toPointer((this.buf as any)._f64)), true);
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f64))), true);
   }
 
   // 0x48: buffer
-  set lpAssemblyManifestPath(value: Uint8Array | Deno.PointerValue | null) {
+  set lpAssemblyManifestPath(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f72 = value;
-    this.view.setBigUint64(72, BigInt(util.toPointer((this.buf as any)._f72)), true);
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f72))), true);
   }
 
   // 0x50: buffer
-  set lpAssemblyPolicyPath(value: Uint8Array | Deno.PointerValue | null) {
+  set lpAssemblyPolicyPath(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f80 = value;
-    this.view.setBigUint64(80, BigInt(util.toPointer((this.buf as any)._f80)), true);
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f80))), true);
   }
 
   // 0x58: buffer
-  set lpAssemblyDirectoryName(value: Uint8Array | Deno.PointerValue | null) {
+  set lpAssemblyDirectoryName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f88 = value;
-    this.view.setBigUint64(88, BigInt(util.toPointer((this.buf as any)._f88)), true);
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f88))), true);
   }
 
   // 0x60: u32
@@ -5567,7 +5567,7 @@ export class ACTIVATION_CONTEXT_RUN_LEVEL_INFORMATIONView {
  */
 export interface COMPATIBILITY_CONTEXT_ELEMENT {
   /** System.Guid */
-  Id: Uint8Array | Deno.PointerValue | null;
+  Id: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.ApplicationInstallationAndServicing.ACTCTX_COMPATIBILITY_ELEMENT_TYPE */
   Type: ACTCTX_COMPATIBILITY_ELEMENT_TYPE;
   /** u64 */
@@ -5580,7 +5580,7 @@ export function allocCOMPATIBILITY_CONTEXT_ELEMENT(data?: Partial<COMPATIBILITY_
   const buf = new Uint8Array(sizeofCOMPATIBILITY_CONTEXT_ELEMENT);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Id !== undefined) view.setBigUint64(0, data.Id === null ? 0n : BigInt(util.toPointer(data.Id)), true);
+  if (data?.Id !== undefined) view.setBigUint64(0, data.Id === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Id))), true);
   // 0x08: i32
   if (data?.Type !== undefined) view.setInt32(8, Number(data.Type), true);
   // 0x0c: pad4
@@ -5600,9 +5600,9 @@ export class COMPATIBILITY_CONTEXT_ELEMENTView {
   }
 
   // 0x00: pointer
-  get Id(): Uint8Array | Deno.PointerValue | null {
+  get Id(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: i32
@@ -5618,8 +5618,8 @@ export class COMPATIBILITY_CONTEXT_ELEMENTView {
   }
 
   // 0x00: pointer
-  set Id(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Id(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: i32
@@ -5692,17 +5692,17 @@ export function allocACTIVATION_CONTEXT_DETAILED_INFORMATION(data?: Partial<ACTI
   // 0x28: buffer
   if (data?.lpRootManifestPath !== undefined) {
     (buf as any)._f40 = util.pwstrToFfi(data.lpRootManifestPath);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f40))), true);
   }
   // 0x30: buffer
   if (data?.lpRootConfigurationPath !== undefined) {
     (buf as any)._f48 = util.pwstrToFfi(data.lpRootConfigurationPath);
-    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
+    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f48))), true);
   }
   // 0x38: buffer
   if (data?.lpAppDirPath !== undefined) {
     (buf as any)._f56 = util.pwstrToFfi(data.lpAppDirPath);
-    view.setBigUint64(56, (buf as any)._f56 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f56)), true);
+    view.setBigUint64(56, (buf as any)._f56 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f56))), true);
   }
   return buf;
 }
@@ -5765,21 +5765,21 @@ export class ACTIVATION_CONTEXT_DETAILED_INFORMATIONView {
   // 0x24: pad4
 
   // 0x28: buffer
-  get lpRootManifestPath(): Uint8Array | Deno.PointerValue | null {
+  get lpRootManifestPath(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: buffer
-  get lpRootConfigurationPath(): Uint8Array | Deno.PointerValue | null {
+  get lpRootConfigurationPath(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: buffer
-  get lpAppDirPath(): Uint8Array | Deno.PointerValue | null {
+  get lpAppDirPath(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -5830,21 +5830,21 @@ export class ACTIVATION_CONTEXT_DETAILED_INFORMATIONView {
   // 0x24: pad4
 
   // 0x28: buffer
-  set lpRootManifestPath(value: Uint8Array | Deno.PointerValue | null) {
+  set lpRootManifestPath(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f40))), true);
   }
 
   // 0x30: buffer
-  set lpRootConfigurationPath(value: Uint8Array | Deno.PointerValue | null) {
+  set lpRootConfigurationPath(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f48 = value;
-    this.view.setBigUint64(48, BigInt(util.toPointer((this.buf as any)._f48)), true);
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f48))), true);
   }
 
   // 0x38: buffer
-  set lpAppDirPath(value: Uint8Array | Deno.PointerValue | null) {
+  set lpAppDirPath(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f56 = value;
-    this.view.setBigUint64(56, BigInt(util.toPointer((this.buf as any)._f56)), true);
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f56))), true);
   }
 }
 
@@ -5871,7 +5871,7 @@ export interface ACTCTXA {
   /** Windows.Win32.Foundation.PSTR */
   lpApplicationName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.HINSTANCE */
-  hModule: Uint8Array | Deno.PointerValue | null;
+  hModule: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofACTCTXA = 56;
@@ -5886,7 +5886,7 @@ export function allocACTCTXA(data?: Partial<ACTCTXA>): Uint8Array {
   // 0x08: buffer
   if (data?.lpSource !== undefined) {
     (buf as any)._f8 = util.pstrToFfi(data.lpSource);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: u16
   if (data?.wProcessorArchitecture !== undefined) view.setUint16(16, Number(data.wProcessorArchitecture), true);
@@ -5896,20 +5896,20 @@ export function allocACTCTXA(data?: Partial<ACTCTXA>): Uint8Array {
   // 0x18: buffer
   if (data?.lpAssemblyDirectory !== undefined) {
     (buf as any)._f24 = util.pstrToFfi(data.lpAssemblyDirectory);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: buffer
   if (data?.lpResourceName !== undefined) {
     (buf as any)._f32 = util.pstrToFfi(data.lpResourceName);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f32))), true);
   }
   // 0x28: buffer
   if (data?.lpApplicationName !== undefined) {
     (buf as any)._f40 = util.pstrToFfi(data.lpApplicationName);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f40))), true);
   }
   // 0x30: pointer
-  if (data?.hModule !== undefined) view.setBigUint64(48, data.hModule === null ? 0n : BigInt(util.toPointer(data.hModule)), true);
+  if (data?.hModule !== undefined) view.setBigUint64(48, data.hModule === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hModule))), true);
   return buf;
 }
 
@@ -5934,9 +5934,9 @@ export class ACTCTXAView {
   }
 
   // 0x08: buffer
-  get lpSource(): Uint8Array | Deno.PointerValue | null {
+  get lpSource(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u16
@@ -5952,27 +5952,27 @@ export class ACTCTXAView {
   // 0x14: pad4
 
   // 0x18: buffer
-  get lpAssemblyDirectory(): Uint8Array | Deno.PointerValue | null {
+  get lpAssemblyDirectory(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: buffer
-  get lpResourceName(): Uint8Array | Deno.PointerValue | null {
+  get lpResourceName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: buffer
-  get lpApplicationName(): Uint8Array | Deno.PointerValue | null {
+  get lpApplicationName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get hModule(): Uint8Array | Deno.PointerValue | null {
+  get hModule(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -5986,9 +5986,9 @@ export class ACTCTXAView {
   }
 
   // 0x08: buffer
-  set lpSource(value: Uint8Array | Deno.PointerValue | null) {
+  set lpSource(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: u16
@@ -6004,26 +6004,26 @@ export class ACTCTXAView {
   // 0x14: pad4
 
   // 0x18: buffer
-  set lpAssemblyDirectory(value: Uint8Array | Deno.PointerValue | null) {
+  set lpAssemblyDirectory(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: buffer
-  set lpResourceName(value: Uint8Array | Deno.PointerValue | null) {
+  set lpResourceName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f32))), true);
   }
 
   // 0x28: buffer
-  set lpApplicationName(value: Uint8Array | Deno.PointerValue | null) {
+  set lpApplicationName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f40))), true);
   }
 
   // 0x30: pointer
-  set hModule(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set hModule(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -6048,7 +6048,7 @@ export interface ACTCTXW {
   /** Windows.Win32.Foundation.PWSTR */
   lpApplicationName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.HINSTANCE */
-  hModule: Uint8Array | Deno.PointerValue | null;
+  hModule: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofACTCTXW = 56;
@@ -6063,7 +6063,7 @@ export function allocACTCTXW(data?: Partial<ACTCTXW>): Uint8Array {
   // 0x08: buffer
   if (data?.lpSource !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.lpSource);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: u16
   if (data?.wProcessorArchitecture !== undefined) view.setUint16(16, Number(data.wProcessorArchitecture), true);
@@ -6073,20 +6073,20 @@ export function allocACTCTXW(data?: Partial<ACTCTXW>): Uint8Array {
   // 0x18: buffer
   if (data?.lpAssemblyDirectory !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.lpAssemblyDirectory);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: buffer
   if (data?.lpResourceName !== undefined) {
     (buf as any)._f32 = util.pwstrToFfi(data.lpResourceName);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f32))), true);
   }
   // 0x28: buffer
   if (data?.lpApplicationName !== undefined) {
     (buf as any)._f40 = util.pwstrToFfi(data.lpApplicationName);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f40))), true);
   }
   // 0x30: pointer
-  if (data?.hModule !== undefined) view.setBigUint64(48, data.hModule === null ? 0n : BigInt(util.toPointer(data.hModule)), true);
+  if (data?.hModule !== undefined) view.setBigUint64(48, data.hModule === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hModule))), true);
   return buf;
 }
 
@@ -6111,9 +6111,9 @@ export class ACTCTXWView {
   }
 
   // 0x08: buffer
-  get lpSource(): Uint8Array | Deno.PointerValue | null {
+  get lpSource(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u16
@@ -6129,27 +6129,27 @@ export class ACTCTXWView {
   // 0x14: pad4
 
   // 0x18: buffer
-  get lpAssemblyDirectory(): Uint8Array | Deno.PointerValue | null {
+  get lpAssemblyDirectory(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: buffer
-  get lpResourceName(): Uint8Array | Deno.PointerValue | null {
+  get lpResourceName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: buffer
-  get lpApplicationName(): Uint8Array | Deno.PointerValue | null {
+  get lpApplicationName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get hModule(): Uint8Array | Deno.PointerValue | null {
+  get hModule(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -6163,9 +6163,9 @@ export class ACTCTXWView {
   }
 
   // 0x08: buffer
-  set lpSource(value: Uint8Array | Deno.PointerValue | null) {
+  set lpSource(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: u16
@@ -6181,26 +6181,26 @@ export class ACTCTXWView {
   // 0x14: pad4
 
   // 0x18: buffer
-  set lpAssemblyDirectory(value: Uint8Array | Deno.PointerValue | null) {
+  set lpAssemblyDirectory(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: buffer
-  set lpResourceName(value: Uint8Array | Deno.PointerValue | null) {
+  set lpResourceName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f32))), true);
   }
 
   // 0x28: buffer
-  set lpApplicationName(value: Uint8Array | Deno.PointerValue | null) {
+  set lpApplicationName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f40))), true);
   }
 
   // 0x30: pointer
-  set hModule(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set hModule(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -6209,13 +6209,13 @@ export class ACTCTXWView {
  */
 export interface ACTCTX_SECTION_KEYED_DATA_ASSEMBLY_METADATA {
   /** ptr */
-  lpInformation: Deno.PointerValue | Uint8Array | null;
+  lpInformation: Deno.PointerValue | Uint8Array;
   /** ptr */
-  lpSectionBase: Deno.PointerValue | Uint8Array | null;
+  lpSectionBase: Deno.PointerValue | Uint8Array;
   /** u32 */
   ulSectionLength: number;
   /** ptr */
-  lpSectionGlobalDataBase: Deno.PointerValue | Uint8Array | null;
+  lpSectionGlobalDataBase: Deno.PointerValue | Uint8Array;
   /** u32 */
   ulSectionGlobalDataLength: number;
 }
@@ -6226,14 +6226,14 @@ export function allocACTCTX_SECTION_KEYED_DATA_ASSEMBLY_METADATA(data?: Partial<
   const buf = new Uint8Array(sizeofACTCTX_SECTION_KEYED_DATA_ASSEMBLY_METADATA);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.lpInformation !== undefined) view.setBigUint64(0, data.lpInformation === null ? 0n : BigInt(util.toPointer(data.lpInformation)), true);
+  if (data?.lpInformation !== undefined) view.setBigUint64(0, data.lpInformation === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpInformation))), true);
   // 0x08: pointer
-  if (data?.lpSectionBase !== undefined) view.setBigUint64(8, data.lpSectionBase === null ? 0n : BigInt(util.toPointer(data.lpSectionBase)), true);
+  if (data?.lpSectionBase !== undefined) view.setBigUint64(8, data.lpSectionBase === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpSectionBase))), true);
   // 0x10: u32
   if (data?.ulSectionLength !== undefined) view.setUint32(16, Number(data.ulSectionLength), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.lpSectionGlobalDataBase !== undefined) view.setBigUint64(24, data.lpSectionGlobalDataBase === null ? 0n : BigInt(util.toPointer(data.lpSectionGlobalDataBase)), true);
+  if (data?.lpSectionGlobalDataBase !== undefined) view.setBigUint64(24, data.lpSectionGlobalDataBase === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpSectionGlobalDataBase))), true);
   // 0x20: u32
   if (data?.ulSectionGlobalDataLength !== undefined) view.setUint32(32, Number(data.ulSectionGlobalDataLength), true);
   // 0x24: pad4
@@ -6251,15 +6251,15 @@ export class ACTCTX_SECTION_KEYED_DATA_ASSEMBLY_METADATAView {
   }
 
   // 0x00: pointer
-  get lpInformation(): Uint8Array | Deno.PointerValue | null {
+  get lpInformation(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get lpSectionBase(): Uint8Array | Deno.PointerValue | null {
+  get lpSectionBase(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -6270,9 +6270,9 @@ export class ACTCTX_SECTION_KEYED_DATA_ASSEMBLY_METADATAView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get lpSectionGlobalDataBase(): Uint8Array | Deno.PointerValue | null {
+  get lpSectionGlobalDataBase(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -6283,13 +6283,13 @@ export class ACTCTX_SECTION_KEYED_DATA_ASSEMBLY_METADATAView {
   // 0x24: pad4
 
   // 0x00: pointer
-  set lpInformation(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set lpInformation(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set lpSectionBase(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set lpSectionBase(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -6300,8 +6300,8 @@ export class ACTCTX_SECTION_KEYED_DATA_ASSEMBLY_METADATAView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set lpSectionGlobalDataBase(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set lpSectionGlobalDataBase(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -6321,25 +6321,25 @@ export interface ACTCTX_SECTION_KEYED_DATA {
   /** u32 */
   ulDataFormatVersion: number;
   /** ptr */
-  lpData: Deno.PointerValue | Uint8Array | null;
+  lpData: Deno.PointerValue | Uint8Array;
   /** u32 */
   ulLength: number;
   /** ptr */
-  lpSectionGlobalData: Deno.PointerValue | Uint8Array | null;
+  lpSectionGlobalData: Deno.PointerValue | Uint8Array;
   /** u32 */
   ulSectionGlobalDataLength: number;
   /** ptr */
-  lpSectionBase: Deno.PointerValue | Uint8Array | null;
+  lpSectionBase: Deno.PointerValue | Uint8Array;
   /** u32 */
   ulSectionTotalLength: number;
   /** Windows.Win32.Foundation.HANDLE */
-  hActCtx: Uint8Array | Deno.PointerValue | null;
+  hActCtx: Uint8Array | Deno.PointerValue;
   /** u32 */
   ulAssemblyRosterIndex: number;
   /** u32 */
   ulFlags: number;
   /** Windows.Win32.System.WindowsProgramming.ACTCTX_SECTION_KEYED_DATA_ASSEMBLY_METADATA */
-  AssemblyMetadata: Uint8Array | Deno.PointerValue | null;
+  AssemblyMetadata: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofACTCTX_SECTION_KEYED_DATA = 80;
@@ -6352,28 +6352,28 @@ export function allocACTCTX_SECTION_KEYED_DATA(data?: Partial<ACTCTX_SECTION_KEY
   // 0x04: u32
   if (data?.ulDataFormatVersion !== undefined) view.setUint32(4, Number(data.ulDataFormatVersion), true);
   // 0x08: pointer
-  if (data?.lpData !== undefined) view.setBigUint64(8, data.lpData === null ? 0n : BigInt(util.toPointer(data.lpData)), true);
+  if (data?.lpData !== undefined) view.setBigUint64(8, data.lpData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpData))), true);
   // 0x10: u32
   if (data?.ulLength !== undefined) view.setUint32(16, Number(data.ulLength), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.lpSectionGlobalData !== undefined) view.setBigUint64(24, data.lpSectionGlobalData === null ? 0n : BigInt(util.toPointer(data.lpSectionGlobalData)), true);
+  if (data?.lpSectionGlobalData !== undefined) view.setBigUint64(24, data.lpSectionGlobalData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpSectionGlobalData))), true);
   // 0x20: u32
   if (data?.ulSectionGlobalDataLength !== undefined) view.setUint32(32, Number(data.ulSectionGlobalDataLength), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.lpSectionBase !== undefined) view.setBigUint64(40, data.lpSectionBase === null ? 0n : BigInt(util.toPointer(data.lpSectionBase)), true);
+  if (data?.lpSectionBase !== undefined) view.setBigUint64(40, data.lpSectionBase === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpSectionBase))), true);
   // 0x30: u32
   if (data?.ulSectionTotalLength !== undefined) view.setUint32(48, Number(data.ulSectionTotalLength), true);
   // 0x34: pad4
   // 0x38: pointer
-  if (data?.hActCtx !== undefined) view.setBigUint64(56, data.hActCtx === null ? 0n : BigInt(util.toPointer(data.hActCtx)), true);
+  if (data?.hActCtx !== undefined) view.setBigUint64(56, data.hActCtx === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hActCtx))), true);
   // 0x40: u32
   if (data?.ulAssemblyRosterIndex !== undefined) view.setUint32(64, Number(data.ulAssemblyRosterIndex), true);
   // 0x44: u32
   if (data?.ulFlags !== undefined) view.setUint32(68, Number(data.ulFlags), true);
   // 0x48: pointer
-  if (data?.AssemblyMetadata !== undefined) view.setBigUint64(72, data.AssemblyMetadata === null ? 0n : BigInt(util.toPointer(data.AssemblyMetadata)), true);
+  if (data?.AssemblyMetadata !== undefined) view.setBigUint64(72, data.AssemblyMetadata === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.AssemblyMetadata))), true);
   return buf;
 }
 
@@ -6398,9 +6398,9 @@ export class ACTCTX_SECTION_KEYED_DATAView {
   }
 
   // 0x08: pointer
-  get lpData(): Uint8Array | Deno.PointerValue | null {
+  get lpData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -6411,9 +6411,9 @@ export class ACTCTX_SECTION_KEYED_DATAView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get lpSectionGlobalData(): Uint8Array | Deno.PointerValue | null {
+  get lpSectionGlobalData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -6424,9 +6424,9 @@ export class ACTCTX_SECTION_KEYED_DATAView {
   // 0x24: pad4
 
   // 0x28: pointer
-  get lpSectionBase(): Uint8Array | Deno.PointerValue | null {
+  get lpSectionBase(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: u32
@@ -6437,9 +6437,9 @@ export class ACTCTX_SECTION_KEYED_DATAView {
   // 0x34: pad4
 
   // 0x38: pointer
-  get hActCtx(): Uint8Array | Deno.PointerValue | null {
+  get hActCtx(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: u32
@@ -6453,9 +6453,9 @@ export class ACTCTX_SECTION_KEYED_DATAView {
   }
 
   // 0x48: pointer
-  get AssemblyMetadata(): Uint8Array | Deno.PointerValue | null {
+  get AssemblyMetadata(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -6469,8 +6469,8 @@ export class ACTCTX_SECTION_KEYED_DATAView {
   }
 
   // 0x08: pointer
-  set lpData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set lpData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -6481,8 +6481,8 @@ export class ACTCTX_SECTION_KEYED_DATAView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set lpSectionGlobalData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set lpSectionGlobalData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -6493,8 +6493,8 @@ export class ACTCTX_SECTION_KEYED_DATAView {
   // 0x24: pad4
 
   // 0x28: pointer
-  set lpSectionBase(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set lpSectionBase(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: u32
@@ -6505,8 +6505,8 @@ export class ACTCTX_SECTION_KEYED_DATAView {
   // 0x34: pad4
 
   // 0x38: pointer
-  set hActCtx(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set hActCtx(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: u32
@@ -6520,8 +6520,8 @@ export class ACTCTX_SECTION_KEYED_DATAView {
   }
 
   // 0x48: pointer
-  set AssemblyMetadata(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set AssemblyMetadata(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -7852,7 +7852,7 @@ try {
 // Symbols
 
 export function MsiCloseHandle(
-  hAny: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hAny: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
 ): number /* u32 */ {
   return libmsi_dll.MsiCloseHandle(util.toPointer(hAny));
 }
@@ -7863,32 +7863,32 @@ export function MsiCloseAllHandles(): number /* u32 */ {
 
 export function MsiSetInternalUI(
   dwUILevel: INSTALLUILEVEL /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLUILEVEL */,
-  phWnd: Deno.PointerValue | Uint8Array | null /* ptr */,
+  phWnd: Deno.PointerValue | Uint8Array /* ptr */,
 ): INSTALLUILEVEL /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLUILEVEL */ {
   return libmsi_dll.MsiSetInternalUI(dwUILevel, util.toPointer(phWnd));
 }
 
 export function MsiSetExternalUIA(
-  puiHandler: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLUI_HANDLERA */,
+  puiHandler: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLUI_HANDLERA */,
   dwMessageFilter: number /* u32 */,
-  pvContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLUI_HANDLERA */ {
-  return util.pointerFromFfi(libmsi_dll.MsiSetExternalUIA(util.toPointer(puiHandler), dwMessageFilter, util.toPointer(pvContext)));
+  pvContext: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLUI_HANDLERA */ {
+  return libmsi_dll.MsiSetExternalUIA(util.toPointer(puiHandler), dwMessageFilter, util.toPointer(pvContext));
 }
 
 export function MsiSetExternalUIW(
-  puiHandler: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLUI_HANDLERW */,
+  puiHandler: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLUI_HANDLERW */,
   dwMessageFilter: number /* u32 */,
-  pvContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLUI_HANDLERW */ {
-  return util.pointerFromFfi(libmsi_dll.MsiSetExternalUIW(util.toPointer(puiHandler), dwMessageFilter, util.toPointer(pvContext)));
+  pvContext: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLUI_HANDLERW */ {
+  return libmsi_dll.MsiSetExternalUIW(util.toPointer(puiHandler), dwMessageFilter, util.toPointer(pvContext));
 }
 
 export function MsiSetExternalUIRecord(
-  puiHandler: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.PINSTALLUI_HANDLER_RECORD */,
+  puiHandler: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.PINSTALLUI_HANDLER_RECORD */,
   dwMessageFilter: number /* u32 */,
-  pvContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ppuiPrevHandler: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.PINSTALLUI_HANDLER_RECORD */,
+  pvContext: Deno.PointerValue | Uint8Array /* ptr */,
+  ppuiPrevHandler: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.PINSTALLUI_HANDLER_RECORD */,
 ): number /* u32 */ {
   return libmsi_dll.MsiSetExternalUIRecord(util.toPointer(puiHandler), dwMessageFilter, util.toPointer(pvContext), util.toPointer(ppuiPrevHandler));
 }
@@ -7925,7 +7925,7 @@ export function MsiGetProductInfoA(
   szProduct: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szAttribute: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpValueBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchValueBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchValueBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetProductInfoA(util.pstrToFfi(szProduct), util.pstrToFfi(szAttribute), util.pstrToFfi(lpValueBuf), util.toPointer(pcchValueBuf));
 }
@@ -7934,7 +7934,7 @@ export function MsiGetProductInfoW(
   szProduct: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szAttribute: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpValueBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchValueBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchValueBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetProductInfoW(util.pwstrToFfi(szProduct), util.pwstrToFfi(szAttribute), util.pwstrToFfi(lpValueBuf), util.toPointer(pcchValueBuf));
 }
@@ -7945,7 +7945,7 @@ export function MsiGetProductInfoExA(
   dwContext: MSIINSTALLCONTEXT /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIINSTALLCONTEXT */,
   szProperty: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetProductInfoExA(util.pstrToFfi(szProductCode), util.pstrToFfi(szUserSid), dwContext, util.pstrToFfi(szProperty), util.pstrToFfi(szValue), util.toPointer(pcchValue));
 }
@@ -7956,7 +7956,7 @@ export function MsiGetProductInfoExW(
   dwContext: MSIINSTALLCONTEXT /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIINSTALLCONTEXT */,
   szProperty: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetProductInfoExW(util.pwstrToFfi(szProductCode), util.pwstrToFfi(szUserSid), dwContext, util.pwstrToFfi(szProperty), util.pwstrToFfi(szValue), util.toPointer(pcchValue));
 }
@@ -8066,7 +8066,7 @@ export function MsiAdvertiseProductW(
 export function MsiProcessAdvertiseScriptA(
   szScriptFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szIconFolder: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  hRegData: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
+  hRegData: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
   fShortcuts: boolean /* Windows.Win32.Foundation.BOOL */,
   fRemoveItems: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
@@ -8076,7 +8076,7 @@ export function MsiProcessAdvertiseScriptA(
 export function MsiProcessAdvertiseScriptW(
   szScriptFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szIconFolder: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  hRegData: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
+  hRegData: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
   fShortcuts: boolean /* Windows.Win32.Foundation.BOOL */,
   fRemoveItems: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
@@ -8086,7 +8086,7 @@ export function MsiProcessAdvertiseScriptW(
 export function MsiAdvertiseScriptA(
   szScriptFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
-  phRegData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  phRegData: Deno.PointerValue | Uint8Array /* ptr */,
   fRemoveItems: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
   return libmsi_dll.MsiAdvertiseScriptA(util.pstrToFfi(szScriptFile), dwFlags, util.toPointer(phRegData), util.boolToFfi(fRemoveItems));
@@ -8095,7 +8095,7 @@ export function MsiAdvertiseScriptA(
 export function MsiAdvertiseScriptW(
   szScriptFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
-  phRegData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  phRegData: Deno.PointerValue | Uint8Array /* ptr */,
   fRemoveItems: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
   return libmsi_dll.MsiAdvertiseScriptW(util.pwstrToFfi(szScriptFile), dwFlags, util.toPointer(phRegData), util.boolToFfi(fRemoveItems));
@@ -8104,12 +8104,12 @@ export function MsiAdvertiseScriptW(
 export function MsiGetProductInfoFromScriptA(
   szScriptFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpProductBuf39: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  plgidLanguage: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pdwVersion: Deno.PointerValue | Uint8Array | null /* ptr */,
+  plgidLanguage: Deno.PointerValue | Uint8Array /* ptr */,
+  pdwVersion: Deno.PointerValue | Uint8Array /* ptr */,
   lpNameBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchNameBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchNameBuf: Deno.PointerValue | Uint8Array /* ptr */,
   lpPackageBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchPackageBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchPackageBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetProductInfoFromScriptA(util.pstrToFfi(szScriptFile), util.pstrToFfi(lpProductBuf39), util.toPointer(plgidLanguage), util.toPointer(pdwVersion), util.pstrToFfi(lpNameBuf), util.toPointer(pcchNameBuf), util.pstrToFfi(lpPackageBuf), util.toPointer(pcchPackageBuf));
 }
@@ -8117,12 +8117,12 @@ export function MsiGetProductInfoFromScriptA(
 export function MsiGetProductInfoFromScriptW(
   szScriptFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpProductBuf39: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  plgidLanguage: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pdwVersion: Deno.PointerValue | Uint8Array | null /* ptr */,
+  plgidLanguage: Deno.PointerValue | Uint8Array /* ptr */,
+  pdwVersion: Deno.PointerValue | Uint8Array /* ptr */,
   lpNameBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchNameBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchNameBuf: Deno.PointerValue | Uint8Array /* ptr */,
   lpPackageBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchPackageBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchPackageBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetProductInfoFromScriptW(util.pwstrToFfi(szScriptFile), util.pwstrToFfi(lpProductBuf39), util.toPointer(plgidLanguage), util.toPointer(pdwVersion), util.pwstrToFfi(lpNameBuf), util.toPointer(pcchNameBuf), util.pwstrToFfi(lpPackageBuf), util.toPointer(pcchPackageBuf));
 }
@@ -8144,11 +8144,11 @@ export function MsiGetProductCodeW(
 export function MsiGetUserInfoA(
   szProduct: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpUserNameBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchUserNameBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchUserNameBuf: Deno.PointerValue | Uint8Array /* ptr */,
   lpOrgNameBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchOrgNameBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchOrgNameBuf: Deno.PointerValue | Uint8Array /* ptr */,
   lpSerialBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchSerialBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchSerialBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): USERINFOSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.USERINFOSTATE */ {
   return libmsi_dll.MsiGetUserInfoA(util.pstrToFfi(szProduct), util.pstrToFfi(lpUserNameBuf), util.toPointer(pcchUserNameBuf), util.pstrToFfi(lpOrgNameBuf), util.toPointer(pcchOrgNameBuf), util.pstrToFfi(lpSerialBuf), util.toPointer(pcchSerialBuf));
 }
@@ -8156,11 +8156,11 @@ export function MsiGetUserInfoA(
 export function MsiGetUserInfoW(
   szProduct: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpUserNameBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchUserNameBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchUserNameBuf: Deno.PointerValue | Uint8Array /* ptr */,
   lpOrgNameBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchOrgNameBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchOrgNameBuf: Deno.PointerValue | Uint8Array /* ptr */,
   lpSerialBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchSerialBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchSerialBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): USERINFOSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.USERINFOSTATE */ {
   return libmsi_dll.MsiGetUserInfoW(util.pwstrToFfi(szProduct), util.pwstrToFfi(lpUserNameBuf), util.toPointer(pcchUserNameBuf), util.pwstrToFfi(lpOrgNameBuf), util.toPointer(pcchOrgNameBuf), util.pwstrToFfi(lpSerialBuf), util.toPointer(pcchSerialBuf));
 }
@@ -8199,7 +8199,7 @@ export function MsiGetPatchInfoA(
   szPatch: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szAttribute: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpValueBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchValueBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchValueBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetPatchInfoA(util.pstrToFfi(szPatch), util.pstrToFfi(szAttribute), util.pstrToFfi(lpValueBuf), util.toPointer(pcchValueBuf));
 }
@@ -8208,7 +8208,7 @@ export function MsiGetPatchInfoW(
   szPatch: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szAttribute: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpValueBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchValueBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchValueBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetPatchInfoW(util.pwstrToFfi(szPatch), util.pwstrToFfi(szAttribute), util.pwstrToFfi(lpValueBuf), util.toPointer(pcchValueBuf));
 }
@@ -8218,7 +8218,7 @@ export function MsiEnumPatchesA(
   iPatchIndex: number /* u32 */,
   lpPatchBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpTransformsBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchTransformsBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchTransformsBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiEnumPatchesA(util.pstrToFfi(szProduct), iPatchIndex, util.pstrToFfi(lpPatchBuf), util.pstrToFfi(lpTransformsBuf), util.toPointer(pcchTransformsBuf));
 }
@@ -8228,7 +8228,7 @@ export function MsiEnumPatchesW(
   iPatchIndex: number /* u32 */,
   lpPatchBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpTransformsBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchTransformsBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchTransformsBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiEnumPatchesW(util.pwstrToFfi(szProduct), iPatchIndex, util.pwstrToFfi(lpPatchBuf), util.pwstrToFfi(lpTransformsBuf), util.toPointer(pcchTransformsBuf));
 }
@@ -8255,7 +8255,7 @@ export function MsiExtractPatchXMLDataA(
   szPatchPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwReserved: number /* u32 */,
   szXMLData: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchXMLData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchXMLData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiExtractPatchXMLDataA(util.pstrToFfi(szPatchPath), dwReserved, util.pstrToFfi(szXMLData), util.toPointer(pcchXMLData));
 }
@@ -8264,7 +8264,7 @@ export function MsiExtractPatchXMLDataW(
   szPatchPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwReserved: number /* u32 */,
   szXMLData: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchXMLData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchXMLData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiExtractPatchXMLDataW(util.pwstrToFfi(szPatchPath), dwReserved, util.pwstrToFfi(szXMLData), util.toPointer(pcchXMLData));
 }
@@ -8276,7 +8276,7 @@ export function MsiGetPatchInfoExA(
   dwContext: MSIINSTALLCONTEXT /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIINSTALLCONTEXT */,
   szProperty: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetPatchInfoExA(util.pstrToFfi(szPatchCode), util.pstrToFfi(szProductCode), util.pstrToFfi(szUserSid), dwContext, util.pstrToFfi(szProperty), util.pstrToFfi(lpValue), util.toPointer(pcchValue));
 }
@@ -8288,7 +8288,7 @@ export function MsiGetPatchInfoExW(
   dwContext: MSIINSTALLCONTEXT /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIINSTALLCONTEXT */,
   szProperty: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetPatchInfoExW(util.pwstrToFfi(szPatchCode), util.pwstrToFfi(szProductCode), util.pwstrToFfi(szUserSid), dwContext, util.pwstrToFfi(szProperty), util.pwstrToFfi(lpValue), util.toPointer(pcchValue));
 }
@@ -8314,7 +8314,7 @@ export function MsiDeterminePatchSequenceA(
   szUserSid: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwContext: MSIINSTALLCONTEXT /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIINSTALLCONTEXT */,
   cPatchInfo: number /* u32 */,
-  pPatchInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pPatchInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiDeterminePatchSequenceA(util.pstrToFfi(szProductCode), util.pstrToFfi(szUserSid), dwContext, cPatchInfo, util.toPointer(pPatchInfo));
 }
@@ -8324,7 +8324,7 @@ export function MsiDeterminePatchSequenceW(
   szUserSid: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwContext: MSIINSTALLCONTEXT /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIINSTALLCONTEXT */,
   cPatchInfo: number /* u32 */,
-  pPatchInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pPatchInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiDeterminePatchSequenceW(util.pwstrToFfi(szProductCode), util.pwstrToFfi(szUserSid), dwContext, cPatchInfo, util.toPointer(pPatchInfo));
 }
@@ -8332,7 +8332,7 @@ export function MsiDeterminePatchSequenceW(
 export function MsiDetermineApplicablePatchesA(
   szProductPackagePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cPatchInfo: number /* u32 */,
-  pPatchInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pPatchInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiDetermineApplicablePatchesA(util.pstrToFfi(szProductPackagePath), cPatchInfo, util.toPointer(pPatchInfo));
 }
@@ -8340,7 +8340,7 @@ export function MsiDetermineApplicablePatchesA(
 export function MsiDetermineApplicablePatchesW(
   szProductPackagePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cPatchInfo: number /* u32 */,
-  pPatchInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pPatchInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiDetermineApplicablePatchesW(util.pwstrToFfi(szProductPackagePath), cPatchInfo, util.toPointer(pPatchInfo));
 }
@@ -8353,9 +8353,9 @@ export function MsiEnumPatchesExA(
   dwIndex: number /* u32 */,
   szPatchCode: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szTargetProductCode: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pdwTargetProductContext: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pdwTargetProductContext: Deno.PointerValue | Uint8Array /* ptr */,
   szTargetUserSid: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchTargetUserSid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchTargetUserSid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiEnumPatchesExA(util.pstrToFfi(szProductCode), util.pstrToFfi(szUserSid), dwContext, dwFilter, dwIndex, util.pstrToFfi(szPatchCode), util.pstrToFfi(szTargetProductCode), util.toPointer(pdwTargetProductContext), util.pstrToFfi(szTargetUserSid), util.toPointer(pcchTargetUserSid));
 }
@@ -8368,9 +8368,9 @@ export function MsiEnumPatchesExW(
   dwIndex: number /* u32 */,
   szPatchCode: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szTargetProductCode: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pdwTargetProductContext: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pdwTargetProductContext: Deno.PointerValue | Uint8Array /* ptr */,
   szTargetUserSid: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchTargetUserSid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchTargetUserSid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiEnumPatchesExW(util.pwstrToFfi(szProductCode), util.pwstrToFfi(szUserSid), dwContext, dwFilter, dwIndex, util.pwstrToFfi(szPatchCode), util.pwstrToFfi(szTargetProductCode), util.toPointer(pdwTargetProductContext), util.pwstrToFfi(szTargetUserSid), util.toPointer(pcchTargetUserSid));
 }
@@ -8394,7 +8394,7 @@ export function MsiQueryFeatureStateExA(
   szUserSid: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwContext: MSIINSTALLCONTEXT /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIINSTALLCONTEXT */,
   szFeature: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pdwState: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pdwState: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiQueryFeatureStateExA(util.pstrToFfi(szProductCode), util.pstrToFfi(szUserSid), dwContext, util.pstrToFfi(szFeature), util.toPointer(pdwState));
 }
@@ -8404,7 +8404,7 @@ export function MsiQueryFeatureStateExW(
   szUserSid: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwContext: MSIINSTALLCONTEXT /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIINSTALLCONTEXT */,
   szFeature: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pdwState: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pdwState: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiQueryFeatureStateExW(util.pwstrToFfi(szProductCode), util.pwstrToFfi(szUserSid), dwContext, util.pwstrToFfi(szFeature), util.toPointer(pdwState));
 }
@@ -8444,8 +8444,8 @@ export function MsiUseFeatureExW(
 export function MsiGetFeatureUsageA(
   szProduct: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szFeature: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pdwUseCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwDateUsed: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pdwUseCount: Deno.PointerValue | Uint8Array /* ptr */,
+  pwDateUsed: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetFeatureUsageA(util.pstrToFfi(szProduct), util.pstrToFfi(szFeature), util.toPointer(pdwUseCount), util.toPointer(pwDateUsed));
 }
@@ -8453,8 +8453,8 @@ export function MsiGetFeatureUsageA(
 export function MsiGetFeatureUsageW(
   szProduct: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szFeature: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pdwUseCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwDateUsed: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pdwUseCount: Deno.PointerValue | Uint8Array /* ptr */,
+  pwDateUsed: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetFeatureUsageW(util.pwstrToFfi(szProduct), util.pwstrToFfi(szFeature), util.toPointer(pdwUseCount), util.toPointer(pwDateUsed));
 }
@@ -8497,7 +8497,7 @@ export function MsiProvideComponentA(
   szComponent: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwInstallMode: INSTALLMODE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLMODE */,
   lpPathBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchPathBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchPathBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiProvideComponentA(util.pstrToFfi(szProduct), util.pstrToFfi(szFeature), util.pstrToFfi(szComponent), dwInstallMode, util.pstrToFfi(lpPathBuf), util.toPointer(pcchPathBuf));
 }
@@ -8508,7 +8508,7 @@ export function MsiProvideComponentW(
   szComponent: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwInstallMode: INSTALLMODE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLMODE */,
   lpPathBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchPathBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchPathBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiProvideComponentW(util.pwstrToFfi(szProduct), util.pwstrToFfi(szFeature), util.pwstrToFfi(szComponent), dwInstallMode, util.pwstrToFfi(lpPathBuf), util.toPointer(pcchPathBuf));
 }
@@ -8518,7 +8518,7 @@ export function MsiProvideQualifiedComponentA(
   szQualifier: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwInstallMode: INSTALLMODE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLMODE */,
   lpPathBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchPathBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchPathBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiProvideQualifiedComponentA(util.pstrToFfi(szCategory), util.pstrToFfi(szQualifier), dwInstallMode, util.pstrToFfi(lpPathBuf), util.toPointer(pcchPathBuf));
 }
@@ -8528,7 +8528,7 @@ export function MsiProvideQualifiedComponentW(
   szQualifier: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwInstallMode: INSTALLMODE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLMODE */,
   lpPathBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchPathBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchPathBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiProvideQualifiedComponentW(util.pwstrToFfi(szCategory), util.pwstrToFfi(szQualifier), dwInstallMode, util.pwstrToFfi(lpPathBuf), util.toPointer(pcchPathBuf));
 }
@@ -8541,7 +8541,7 @@ export function MsiProvideQualifiedComponentExA(
   dwUnused1: number /* u32 */,
   dwUnused2: number /* u32 */,
   lpPathBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchPathBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchPathBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiProvideQualifiedComponentExA(util.pstrToFfi(szCategory), util.pstrToFfi(szQualifier), dwInstallMode, util.pstrToFfi(szProduct), dwUnused1, dwUnused2, util.pstrToFfi(lpPathBuf), util.toPointer(pcchPathBuf));
 }
@@ -8554,7 +8554,7 @@ export function MsiProvideQualifiedComponentExW(
   dwUnused1: number /* u32 */,
   dwUnused2: number /* u32 */,
   lpPathBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchPathBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchPathBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiProvideQualifiedComponentExW(util.pwstrToFfi(szCategory), util.pwstrToFfi(szQualifier), dwInstallMode, util.pwstrToFfi(szProduct), dwUnused1, dwUnused2, util.pwstrToFfi(lpPathBuf), util.toPointer(pcchPathBuf));
 }
@@ -8563,7 +8563,7 @@ export function MsiGetComponentPathA(
   szProduct: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szComponent: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpPathBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */ {
   return libmsi_dll.MsiGetComponentPathA(util.pstrToFfi(szProduct), util.pstrToFfi(szComponent), util.pstrToFfi(lpPathBuf), util.toPointer(pcchBuf));
 }
@@ -8572,7 +8572,7 @@ export function MsiGetComponentPathW(
   szProduct: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szComponent: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpPathBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */ {
   return libmsi_dll.MsiGetComponentPathW(util.pwstrToFfi(szProduct), util.pwstrToFfi(szComponent), util.pwstrToFfi(lpPathBuf), util.toPointer(pcchBuf));
 }
@@ -8583,7 +8583,7 @@ export function MsiGetComponentPathExA(
   szUserSid: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwContext: MSIINSTALLCONTEXT /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIINSTALLCONTEXT */,
   lpOutPathBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchOutPathBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchOutPathBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */ {
   return libmsi_dll.MsiGetComponentPathExA(util.pstrToFfi(szProductCode), util.pstrToFfi(szComponentCode), util.pstrToFfi(szUserSid), dwContext, util.pstrToFfi(lpOutPathBuffer), util.toPointer(pcchOutPathBuffer));
 }
@@ -8594,7 +8594,7 @@ export function MsiGetComponentPathExW(
   szUserSid: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwContext: MSIINSTALLCONTEXT /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIINSTALLCONTEXT */,
   lpOutPathBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchOutPathBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchOutPathBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */ {
   return libmsi_dll.MsiGetComponentPathExW(util.pwstrToFfi(szProductCode), util.pwstrToFfi(szComponentCode), util.pwstrToFfi(szUserSid), dwContext, util.pwstrToFfi(lpOutPathBuffer), util.toPointer(pcchOutPathBuffer));
 }
@@ -8605,7 +8605,7 @@ export function MsiProvideAssemblyA(
   dwInstallMode: INSTALLMODE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLMODE */,
   dwAssemblyInfo: MSIASSEMBLYINFO /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIASSEMBLYINFO */,
   lpPathBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchPathBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchPathBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiProvideAssemblyA(util.pstrToFfi(szAssemblyName), util.pstrToFfi(szAppContext), dwInstallMode, dwAssemblyInfo, util.pstrToFfi(lpPathBuf), util.toPointer(pcchPathBuf));
 }
@@ -8616,7 +8616,7 @@ export function MsiProvideAssemblyW(
   dwInstallMode: INSTALLMODE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLMODE */,
   dwAssemblyInfo: MSIASSEMBLYINFO /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIASSEMBLYINFO */,
   lpPathBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchPathBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchPathBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiProvideAssemblyW(util.pwstrToFfi(szAssemblyName), util.pwstrToFfi(szAppContext), dwInstallMode, dwAssemblyInfo, util.pwstrToFfi(lpPathBuf), util.toPointer(pcchPathBuf));
 }
@@ -8626,7 +8626,7 @@ export function MsiQueryComponentStateA(
   szUserSid: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwContext: MSIINSTALLCONTEXT /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIINSTALLCONTEXT */,
   szComponentCode: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pdwState: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pdwState: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiQueryComponentStateA(util.pstrToFfi(szProductCode), util.pstrToFfi(szUserSid), dwContext, util.pstrToFfi(szComponentCode), util.toPointer(pdwState));
 }
@@ -8636,7 +8636,7 @@ export function MsiQueryComponentStateW(
   szUserSid: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwContext: MSIINSTALLCONTEXT /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIINSTALLCONTEXT */,
   szComponentCode: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pdwState: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pdwState: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiQueryComponentStateW(util.pwstrToFfi(szProductCode), util.pwstrToFfi(szUserSid), dwContext, util.pwstrToFfi(szComponentCode), util.toPointer(pdwState));
 }
@@ -8661,9 +8661,9 @@ export function MsiEnumProductsExA(
   dwContext: number /* u32 */,
   dwIndex: number /* u32 */,
   szInstalledProductCode: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pdwInstalledContext: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pdwInstalledContext: Deno.PointerValue | Uint8Array /* ptr */,
   szSid: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchSid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchSid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiEnumProductsExA(util.pstrToFfi(szProductCode), util.pstrToFfi(szUserSid), dwContext, dwIndex, util.pstrToFfi(szInstalledProductCode), util.toPointer(pdwInstalledContext), util.pstrToFfi(szSid), util.toPointer(pcchSid));
 }
@@ -8674,9 +8674,9 @@ export function MsiEnumProductsExW(
   dwContext: number /* u32 */,
   dwIndex: number /* u32 */,
   szInstalledProductCode: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pdwInstalledContext: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pdwInstalledContext: Deno.PointerValue | Uint8Array /* ptr */,
   szSid: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchSid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchSid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiEnumProductsExW(util.pwstrToFfi(szProductCode), util.pwstrToFfi(szUserSid), dwContext, dwIndex, util.pwstrToFfi(szInstalledProductCode), util.toPointer(pdwInstalledContext), util.pwstrToFfi(szSid), util.toPointer(pcchSid));
 }
@@ -8736,9 +8736,9 @@ export function MsiEnumComponentsExA(
   dwContext: number /* u32 */,
   dwIndex: number /* u32 */,
   szInstalledComponentCode: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pdwInstalledContext: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pdwInstalledContext: Deno.PointerValue | Uint8Array /* ptr */,
   szSid: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchSid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchSid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiEnumComponentsExA(util.pstrToFfi(szUserSid), dwContext, dwIndex, util.pstrToFfi(szInstalledComponentCode), util.toPointer(pdwInstalledContext), util.pstrToFfi(szSid), util.toPointer(pcchSid));
 }
@@ -8748,9 +8748,9 @@ export function MsiEnumComponentsExW(
   dwContext: number /* u32 */,
   dwIndex: number /* u32 */,
   szInstalledComponentCode: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pdwInstalledContext: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pdwInstalledContext: Deno.PointerValue | Uint8Array /* ptr */,
   szSid: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchSid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchSid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiEnumComponentsExW(util.pwstrToFfi(szUserSid), dwContext, dwIndex, util.pwstrToFfi(szInstalledComponentCode), util.toPointer(pdwInstalledContext), util.pwstrToFfi(szSid), util.toPointer(pcchSid));
 }
@@ -8777,9 +8777,9 @@ export function MsiEnumClientsExA(
   dwContext: MSIINSTALLCONTEXT /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIINSTALLCONTEXT */,
   dwProductIndex: number /* u32 */,
   szProductBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pdwInstalledContext: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pdwInstalledContext: Deno.PointerValue | Uint8Array /* ptr */,
   szSid: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchSid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchSid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiEnumClientsExA(util.pstrToFfi(szComponent), util.pstrToFfi(szUserSid), dwContext, dwProductIndex, util.pstrToFfi(szProductBuf), util.toPointer(pdwInstalledContext), util.pstrToFfi(szSid), util.toPointer(pcchSid));
 }
@@ -8790,9 +8790,9 @@ export function MsiEnumClientsExW(
   dwContext: MSIINSTALLCONTEXT /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIINSTALLCONTEXT */,
   dwProductIndex: number /* u32 */,
   szProductBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pdwInstalledContext: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pdwInstalledContext: Deno.PointerValue | Uint8Array /* ptr */,
   szSid: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchSid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchSid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiEnumClientsExW(util.pwstrToFfi(szComponent), util.pwstrToFfi(szUserSid), dwContext, dwProductIndex, util.pwstrToFfi(szProductBuf), util.toPointer(pdwInstalledContext), util.pwstrToFfi(szSid), util.toPointer(pcchSid));
 }
@@ -8801,9 +8801,9 @@ export function MsiEnumComponentQualifiersA(
   szComponent: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   iIndex: number /* u32 */,
   lpQualifierBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchQualifierBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchQualifierBuf: Deno.PointerValue | Uint8Array /* ptr */,
   lpApplicationDataBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchApplicationDataBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchApplicationDataBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiEnumComponentQualifiersA(util.pstrToFfi(szComponent), iIndex, util.pstrToFfi(lpQualifierBuf), util.toPointer(pcchQualifierBuf), util.pstrToFfi(lpApplicationDataBuf), util.toPointer(pcchApplicationDataBuf));
 }
@@ -8812,37 +8812,37 @@ export function MsiEnumComponentQualifiersW(
   szComponent: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   iIndex: number /* u32 */,
   lpQualifierBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchQualifierBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchQualifierBuf: Deno.PointerValue | Uint8Array /* ptr */,
   lpApplicationDataBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchApplicationDataBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchApplicationDataBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiEnumComponentQualifiersW(util.pwstrToFfi(szComponent), iIndex, util.pwstrToFfi(lpQualifierBuf), util.toPointer(pcchQualifierBuf), util.pwstrToFfi(lpApplicationDataBuf), util.toPointer(pcchApplicationDataBuf));
 }
 
 export function MsiOpenProductA(
   szProduct: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  hProduct: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hProduct: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiOpenProductA(util.pstrToFfi(szProduct), util.toPointer(hProduct));
 }
 
 export function MsiOpenProductW(
   szProduct: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  hProduct: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hProduct: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiOpenProductW(util.pwstrToFfi(szProduct), util.toPointer(hProduct));
 }
 
 export function MsiOpenPackageA(
   szPackagePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  hProduct: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hProduct: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiOpenPackageA(util.pstrToFfi(szPackagePath), util.toPointer(hProduct));
 }
 
 export function MsiOpenPackageW(
   szPackagePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  hProduct: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hProduct: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiOpenPackageW(util.pwstrToFfi(szPackagePath), util.toPointer(hProduct));
 }
@@ -8850,7 +8850,7 @@ export function MsiOpenPackageW(
 export function MsiOpenPackageExA(
   szPackagePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwOptions: number /* u32 */,
-  hProduct: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hProduct: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiOpenPackageExA(util.pstrToFfi(szPackagePath), dwOptions, util.toPointer(hProduct));
 }
@@ -8858,7 +8858,7 @@ export function MsiOpenPackageExA(
 export function MsiOpenPackageExW(
   szPackagePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwOptions: number /* u32 */,
-  hProduct: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hProduct: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiOpenPackageExW(util.pwstrToFfi(szPackagePath), dwOptions, util.toPointer(hProduct));
 }
@@ -8866,8 +8866,8 @@ export function MsiOpenPackageExW(
 export function MsiGetPatchFileListA(
   szProductCode: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szPatchPackages: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcFiles: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pphFileRecords: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcFiles: Deno.PointerValue | Uint8Array /* ptr */,
+  pphFileRecords: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetPatchFileListA(util.pstrToFfi(szProductCode), util.pstrToFfi(szPatchPackages), util.toPointer(pcFiles), util.toPointer(pphFileRecords));
 }
@@ -8875,26 +8875,26 @@ export function MsiGetPatchFileListA(
 export function MsiGetPatchFileListW(
   szProductCode: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szPatchPackages: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcFiles: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pphFileRecords: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcFiles: Deno.PointerValue | Uint8Array /* ptr */,
+  pphFileRecords: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetPatchFileListW(util.pwstrToFfi(szProductCode), util.pwstrToFfi(szPatchPackages), util.toPointer(pcFiles), util.toPointer(pphFileRecords));
 }
 
 export function MsiGetProductPropertyA(
-  hProduct: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hProduct: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szProperty: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpValueBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchValueBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchValueBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetProductPropertyA(util.toPointer(hProduct), util.pstrToFfi(szProperty), util.pstrToFfi(lpValueBuf), util.toPointer(pcchValueBuf));
 }
 
 export function MsiGetProductPropertyW(
-  hProduct: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hProduct: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szProperty: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpValueBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchValueBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchValueBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetProductPropertyW(util.toPointer(hProduct), util.pwstrToFfi(szProperty), util.pwstrToFfi(lpValueBuf), util.toPointer(pcchValueBuf));
 }
@@ -8912,25 +8912,25 @@ export function MsiVerifyPackageW(
 }
 
 export function MsiGetFeatureInfoA(
-  hProduct: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hProduct: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szFeature: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  lpAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpAttributes: Deno.PointerValue | Uint8Array /* ptr */,
   lpTitleBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchTitleBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchTitleBuf: Deno.PointerValue | Uint8Array /* ptr */,
   lpHelpBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchHelpBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchHelpBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetFeatureInfoA(util.toPointer(hProduct), util.pstrToFfi(szFeature), util.toPointer(lpAttributes), util.pstrToFfi(lpTitleBuf), util.toPointer(pcchTitleBuf), util.pstrToFfi(lpHelpBuf), util.toPointer(pcchHelpBuf));
 }
 
 export function MsiGetFeatureInfoW(
-  hProduct: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hProduct: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szFeature: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  lpAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpAttributes: Deno.PointerValue | Uint8Array /* ptr */,
   lpTitleBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchTitleBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchTitleBuf: Deno.PointerValue | Uint8Array /* ptr */,
   lpHelpBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchHelpBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchHelpBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetFeatureInfoW(util.toPointer(hProduct), util.pwstrToFfi(szFeature), util.toPointer(lpAttributes), util.pwstrToFfi(lpTitleBuf), util.toPointer(pcchTitleBuf), util.pwstrToFfi(lpHelpBuf), util.toPointer(pcchHelpBuf));
 }
@@ -8968,7 +8968,7 @@ export function MsiInstallMissingFileW(
 export function MsiLocateComponentA(
   szComponent: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpPathBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */ {
   return libmsi_dll.MsiLocateComponentA(util.pstrToFfi(szComponent), util.pstrToFfi(lpPathBuf), util.toPointer(pcchBuf));
 }
@@ -8976,7 +8976,7 @@ export function MsiLocateComponentA(
 export function MsiLocateComponentW(
   szComponent: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpPathBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */ {
   return libmsi_dll.MsiLocateComponentW(util.pwstrToFfi(szComponent), util.pwstrToFfi(lpPathBuf), util.toPointer(pcchBuf));
 }
@@ -9182,7 +9182,7 @@ export function MsiSourceListGetInfoA(
   dwOptions: number /* u32 */,
   szProperty: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiSourceListGetInfoA(util.pstrToFfi(szProductCodeOrPatchCode), util.pstrToFfi(szUserSid), dwContext, dwOptions, util.pstrToFfi(szProperty), util.pstrToFfi(szValue), util.toPointer(pcchValue));
 }
@@ -9194,7 +9194,7 @@ export function MsiSourceListGetInfoW(
   dwOptions: number /* u32 */,
   szProperty: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiSourceListGetInfoW(util.pwstrToFfi(szProductCodeOrPatchCode), util.pwstrToFfi(szUserSid), dwContext, dwOptions, util.pwstrToFfi(szProperty), util.pwstrToFfi(szValue), util.toPointer(pcchValue));
 }
@@ -9206,7 +9206,7 @@ export function MsiSourceListEnumSourcesA(
   dwOptions: number /* u32 */,
   dwIndex: number /* u32 */,
   szSource: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchSource: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchSource: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiSourceListEnumSourcesA(util.pstrToFfi(szProductCodeOrPatchCode), util.pstrToFfi(szUserSid), dwContext, dwOptions, dwIndex, util.pstrToFfi(szSource), util.toPointer(pcchSource));
 }
@@ -9218,7 +9218,7 @@ export function MsiSourceListEnumSourcesW(
   dwOptions: number /* u32 */,
   dwIndex: number /* u32 */,
   szSource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchSource: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchSource: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiSourceListEnumSourcesW(util.pwstrToFfi(szProductCodeOrPatchCode), util.pwstrToFfi(szUserSid), dwContext, dwOptions, dwIndex, util.pwstrToFfi(szSource), util.toPointer(pcchSource));
 }
@@ -9229,11 +9229,11 @@ export function MsiSourceListEnumMediaDisksA(
   dwContext: MSIINSTALLCONTEXT /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIINSTALLCONTEXT */,
   dwOptions: number /* u32 */,
   dwIndex: number /* u32 */,
-  pdwDiskId: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pdwDiskId: Deno.PointerValue | Uint8Array /* ptr */,
   szVolumeLabel: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchVolumeLabel: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchVolumeLabel: Deno.PointerValue | Uint8Array /* ptr */,
   szDiskPrompt: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchDiskPrompt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchDiskPrompt: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiSourceListEnumMediaDisksA(util.pstrToFfi(szProductCodeOrPatchCode), util.pstrToFfi(szUserSid), dwContext, dwOptions, dwIndex, util.toPointer(pdwDiskId), util.pstrToFfi(szVolumeLabel), util.toPointer(pcchVolumeLabel), util.pstrToFfi(szDiskPrompt), util.toPointer(pcchDiskPrompt));
 }
@@ -9244,11 +9244,11 @@ export function MsiSourceListEnumMediaDisksW(
   dwContext: MSIINSTALLCONTEXT /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIINSTALLCONTEXT */,
   dwOptions: number /* u32 */,
   dwIndex: number /* u32 */,
-  pdwDiskId: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pdwDiskId: Deno.PointerValue | Uint8Array /* ptr */,
   szVolumeLabel: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchVolumeLabel: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchVolumeLabel: Deno.PointerValue | Uint8Array /* ptr */,
   szDiskPrompt: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchDiskPrompt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchDiskPrompt: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiSourceListEnumMediaDisksW(util.pwstrToFfi(szProductCodeOrPatchCode), util.pwstrToFfi(szUserSid), dwContext, dwOptions, dwIndex, util.toPointer(pdwDiskId), util.pwstrToFfi(szVolumeLabel), util.toPointer(pcchVolumeLabel), util.pwstrToFfi(szDiskPrompt), util.toPointer(pcchDiskPrompt));
 }
@@ -9256,9 +9256,9 @@ export function MsiSourceListEnumMediaDisksW(
 export function MsiGetFileVersionA(
   szFilePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpVersionBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchVersionBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchVersionBuf: Deno.PointerValue | Uint8Array /* ptr */,
   lpLangBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchLangBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchLangBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetFileVersionA(util.pstrToFfi(szFilePath), util.pstrToFfi(lpVersionBuf), util.toPointer(pcchVersionBuf), util.pstrToFfi(lpLangBuf), util.toPointer(pcchLangBuf));
 }
@@ -9266,9 +9266,9 @@ export function MsiGetFileVersionA(
 export function MsiGetFileVersionW(
   szFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpVersionBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchVersionBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchVersionBuf: Deno.PointerValue | Uint8Array /* ptr */,
   lpLangBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchLangBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchLangBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetFileVersionW(util.pwstrToFfi(szFilePath), util.pwstrToFfi(lpVersionBuf), util.toPointer(pcchVersionBuf), util.pwstrToFfi(lpLangBuf), util.toPointer(pcchLangBuf));
 }
@@ -9276,7 +9276,7 @@ export function MsiGetFileVersionW(
 export function MsiGetFileHashA(
   szFilePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwOptions: number /* u32 */,
-  pHash: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pHash: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetFileHashA(util.pstrToFfi(szFilePath), dwOptions, util.toPointer(pHash));
 }
@@ -9284,7 +9284,7 @@ export function MsiGetFileHashA(
 export function MsiGetFileHashW(
   szFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwOptions: number /* u32 */,
-  pHash: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pHash: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetFileHashW(util.pwstrToFfi(szFilePath), dwOptions, util.toPointer(pHash));
 }
@@ -9292,21 +9292,21 @@ export function MsiGetFileHashW(
 export function MsiGetFileSignatureInformationA(
   szSignedObjectPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
-  ppcCertContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pbHashData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcbHashData: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsi_dll.MsiGetFileSignatureInformationA(util.pstrToFfi(szSignedObjectPath), dwFlags, util.toPointer(ppcCertContext), util.toPointer(pbHashData), util.toPointer(pcbHashData)));
+  ppcCertContext: Deno.PointerValue | Uint8Array /* ptr */,
+  pbHashData: Deno.PointerValue | Uint8Array /* ptr */,
+  pcbHashData: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsi_dll.MsiGetFileSignatureInformationA(util.pstrToFfi(szSignedObjectPath), dwFlags, util.toPointer(ppcCertContext), util.toPointer(pbHashData), util.toPointer(pcbHashData));
 }
 
 export function MsiGetFileSignatureInformationW(
   szSignedObjectPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
-  ppcCertContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pbHashData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcbHashData: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsi_dll.MsiGetFileSignatureInformationW(util.pwstrToFfi(szSignedObjectPath), dwFlags, util.toPointer(ppcCertContext), util.toPointer(pbHashData), util.toPointer(pcbHashData)));
+  ppcCertContext: Deno.PointerValue | Uint8Array /* ptr */,
+  pbHashData: Deno.PointerValue | Uint8Array /* ptr */,
+  pcbHashData: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsi_dll.MsiGetFileSignatureInformationW(util.pwstrToFfi(szSignedObjectPath), dwFlags, util.toPointer(ppcCertContext), util.toPointer(pbHashData), util.toPointer(pcbHashData));
 }
 
 export function MsiGetShortcutTargetA(
@@ -9329,14 +9329,14 @@ export function MsiGetShortcutTargetW(
 
 export function MsiIsProductElevatedA(
   szProduct: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pfElevated: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pfElevated: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiIsProductElevatedA(util.pstrToFfi(szProduct), util.toPointer(pfElevated));
 }
 
 export function MsiIsProductElevatedW(
   szProduct: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pfElevated: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pfElevated: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiIsProductElevatedW(util.pwstrToFfi(szProduct), util.toPointer(pfElevated));
 }
@@ -9358,8 +9358,8 @@ export function MsiNotifySidChangeW(
 export function MsiBeginTransactionA(
   szName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwTransactionAttributes: number /* u32 */,
-  phTransactionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  phChangeOfOwnerEvent: Deno.PointerValue | Uint8Array | null /* ptr */,
+  phTransactionHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  phChangeOfOwnerEvent: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiBeginTransactionA(util.pstrToFfi(szName), dwTransactionAttributes, util.toPointer(phTransactionHandle), util.toPointer(phChangeOfOwnerEvent));
 }
@@ -9367,8 +9367,8 @@ export function MsiBeginTransactionA(
 export function MsiBeginTransactionW(
   szName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwTransactionAttributes: number /* u32 */,
-  phTransactionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  phChangeOfOwnerEvent: Deno.PointerValue | Uint8Array | null /* ptr */,
+  phTransactionHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  phChangeOfOwnerEvent: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiBeginTransactionW(util.pwstrToFfi(szName), dwTransactionAttributes, util.toPointer(phTransactionHandle), util.toPointer(phChangeOfOwnerEvent));
 }
@@ -9380,184 +9380,184 @@ export function MsiEndTransaction(
 }
 
 export function MsiJoinTransaction(
-  hTransactionHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hTransactionHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   dwTransactionAttributes: number /* u32 */,
-  phChangeOfOwnerEvent: Deno.PointerValue | Uint8Array | null /* ptr */,
+  phChangeOfOwnerEvent: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiJoinTransaction(util.toPointer(hTransactionHandle), dwTransactionAttributes, util.toPointer(phChangeOfOwnerEvent));
 }
 
 export function MsiDatabaseOpenViewA(
-  hDatabase: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hDatabase: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szQuery: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  phView: Deno.PointerValue | Uint8Array | null /* ptr */,
+  phView: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiDatabaseOpenViewA(util.toPointer(hDatabase), util.pstrToFfi(szQuery), util.toPointer(phView));
 }
 
 export function MsiDatabaseOpenViewW(
-  hDatabase: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hDatabase: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szQuery: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  phView: Deno.PointerValue | Uint8Array | null /* ptr */,
+  phView: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiDatabaseOpenViewW(util.toPointer(hDatabase), util.pwstrToFfi(szQuery), util.toPointer(phView));
 }
 
 export function MsiViewGetErrorA(
-  hView: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hView: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szColumnNameBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): MSIDBERROR /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIDBERROR */ {
   return libmsi_dll.MsiViewGetErrorA(util.toPointer(hView), util.pstrToFfi(szColumnNameBuffer), util.toPointer(pcchBuf));
 }
 
 export function MsiViewGetErrorW(
-  hView: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hView: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szColumnNameBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): MSIDBERROR /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIDBERROR */ {
   return libmsi_dll.MsiViewGetErrorW(util.toPointer(hView), util.pwstrToFfi(szColumnNameBuffer), util.toPointer(pcchBuf));
 }
 
 export function MsiViewExecute(
-  hView: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
-  hRecord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hView: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hRecord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
 ): number /* u32 */ {
   return libmsi_dll.MsiViewExecute(util.toPointer(hView), util.toPointer(hRecord));
 }
 
 export function MsiViewFetch(
-  hView: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
-  phRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hView: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  phRecord: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiViewFetch(util.toPointer(hView), util.toPointer(phRecord));
 }
 
 export function MsiViewModify(
-  hView: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hView: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   eModifyMode: MSIMODIFY /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIMODIFY */,
-  hRecord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hRecord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
 ): number /* u32 */ {
   return libmsi_dll.MsiViewModify(util.toPointer(hView), eModifyMode, util.toPointer(hRecord));
 }
 
 export function MsiViewGetColumnInfo(
-  hView: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hView: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   eColumnInfo: MSICOLINFO /* Windows.Win32.System.ApplicationInstallationAndServicing.MSICOLINFO */,
-  phRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
+  phRecord: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiViewGetColumnInfo(util.toPointer(hView), eColumnInfo, util.toPointer(phRecord));
 }
 
 export function MsiViewClose(
-  hView: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hView: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
 ): number /* u32 */ {
   return libmsi_dll.MsiViewClose(util.toPointer(hView));
 }
 
 export function MsiDatabaseGetPrimaryKeysA(
-  hDatabase: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hDatabase: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szTableName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  phRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
+  phRecord: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiDatabaseGetPrimaryKeysA(util.toPointer(hDatabase), util.pstrToFfi(szTableName), util.toPointer(phRecord));
 }
 
 export function MsiDatabaseGetPrimaryKeysW(
-  hDatabase: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hDatabase: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szTableName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  phRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
+  phRecord: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiDatabaseGetPrimaryKeysW(util.toPointer(hDatabase), util.pwstrToFfi(szTableName), util.toPointer(phRecord));
 }
 
 export function MsiDatabaseIsTablePersistentA(
-  hDatabase: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hDatabase: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szTableName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): MSICONDITION /* Windows.Win32.System.ApplicationInstallationAndServicing.MSICONDITION */ {
   return libmsi_dll.MsiDatabaseIsTablePersistentA(util.toPointer(hDatabase), util.pstrToFfi(szTableName));
 }
 
 export function MsiDatabaseIsTablePersistentW(
-  hDatabase: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hDatabase: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szTableName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): MSICONDITION /* Windows.Win32.System.ApplicationInstallationAndServicing.MSICONDITION */ {
   return libmsi_dll.MsiDatabaseIsTablePersistentW(util.toPointer(hDatabase), util.pwstrToFfi(szTableName));
 }
 
 export function MsiGetSummaryInformationA(
-  hDatabase: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hDatabase: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szDatabasePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   uiUpdateCount: number /* u32 */,
-  phSummaryInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  phSummaryInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetSummaryInformationA(util.toPointer(hDatabase), util.pstrToFfi(szDatabasePath), uiUpdateCount, util.toPointer(phSummaryInfo));
 }
 
 export function MsiGetSummaryInformationW(
-  hDatabase: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hDatabase: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szDatabasePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   uiUpdateCount: number /* u32 */,
-  phSummaryInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  phSummaryInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetSummaryInformationW(util.toPointer(hDatabase), util.pwstrToFfi(szDatabasePath), uiUpdateCount, util.toPointer(phSummaryInfo));
 }
 
 export function MsiSummaryInfoGetPropertyCount(
-  hSummaryInfo: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
-  puiPropertyCount: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hSummaryInfo: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  puiPropertyCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiSummaryInfoGetPropertyCount(util.toPointer(hSummaryInfo), util.toPointer(puiPropertyCount));
 }
 
 export function MsiSummaryInfoSetPropertyA(
-  hSummaryInfo: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hSummaryInfo: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   uiProperty: number /* u32 */,
   uiDataType: number /* u32 */,
   iValue: number /* i32 */,
-  pftValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pftValue: Deno.PointerValue | Uint8Array /* ptr */,
   szValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libmsi_dll.MsiSummaryInfoSetPropertyA(util.toPointer(hSummaryInfo), uiProperty, uiDataType, iValue, util.toPointer(pftValue), util.pstrToFfi(szValue));
 }
 
 export function MsiSummaryInfoSetPropertyW(
-  hSummaryInfo: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hSummaryInfo: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   uiProperty: number /* u32 */,
   uiDataType: number /* u32 */,
   iValue: number /* i32 */,
-  pftValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pftValue: Deno.PointerValue | Uint8Array /* ptr */,
   szValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libmsi_dll.MsiSummaryInfoSetPropertyW(util.toPointer(hSummaryInfo), uiProperty, uiDataType, iValue, util.toPointer(pftValue), util.pwstrToFfi(szValue));
 }
 
 export function MsiSummaryInfoGetPropertyA(
-  hSummaryInfo: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hSummaryInfo: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   uiProperty: number /* u32 */,
-  puiDataType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  piValue: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pftValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puiDataType: Deno.PointerValue | Uint8Array /* ptr */,
+  piValue: Deno.PointerValue | Uint8Array /* ptr */,
+  pftValue: Deno.PointerValue | Uint8Array /* ptr */,
   szValueBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchValueBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchValueBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiSummaryInfoGetPropertyA(util.toPointer(hSummaryInfo), uiProperty, util.toPointer(puiDataType), util.toPointer(piValue), util.toPointer(pftValue), util.pstrToFfi(szValueBuf), util.toPointer(pcchValueBuf));
 }
 
 export function MsiSummaryInfoGetPropertyW(
-  hSummaryInfo: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hSummaryInfo: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   uiProperty: number /* u32 */,
-  puiDataType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  piValue: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pftValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puiDataType: Deno.PointerValue | Uint8Array /* ptr */,
+  piValue: Deno.PointerValue | Uint8Array /* ptr */,
+  pftValue: Deno.PointerValue | Uint8Array /* ptr */,
   szValueBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchValueBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchValueBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiSummaryInfoGetPropertyW(util.toPointer(hSummaryInfo), uiProperty, util.toPointer(puiDataType), util.toPointer(piValue), util.toPointer(pftValue), util.pwstrToFfi(szValueBuf), util.toPointer(pcchValueBuf));
 }
 
 export function MsiSummaryInfoPersist(
-  hSummaryInfo: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hSummaryInfo: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
 ): number /* u32 */ {
   return libmsi_dll.MsiSummaryInfoPersist(util.toPointer(hSummaryInfo));
 }
@@ -9565,7 +9565,7 @@ export function MsiSummaryInfoPersist(
 export function MsiOpenDatabaseA(
   szDatabasePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szPersist: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  phDatabase: Deno.PointerValue | Uint8Array | null /* ptr */,
+  phDatabase: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiOpenDatabaseA(util.pstrToFfi(szDatabasePath), util.pstrToFfi(szPersist), util.toPointer(phDatabase));
 }
@@ -9573,13 +9573,13 @@ export function MsiOpenDatabaseA(
 export function MsiOpenDatabaseW(
   szDatabasePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szPersist: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  phDatabase: Deno.PointerValue | Uint8Array | null /* ptr */,
+  phDatabase: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiOpenDatabaseW(util.pwstrToFfi(szDatabasePath), util.pwstrToFfi(szPersist), util.toPointer(phDatabase));
 }
 
 export function MsiDatabaseImportA(
-  hDatabase: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hDatabase: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szFolderPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
@@ -9587,7 +9587,7 @@ export function MsiDatabaseImportA(
 }
 
 export function MsiDatabaseImportW(
-  hDatabase: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hDatabase: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szFolderPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
@@ -9595,7 +9595,7 @@ export function MsiDatabaseImportW(
 }
 
 export function MsiDatabaseExportA(
-  hDatabase: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hDatabase: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szTableName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szFolderPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
@@ -9604,7 +9604,7 @@ export function MsiDatabaseExportA(
 }
 
 export function MsiDatabaseExportW(
-  hDatabase: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hDatabase: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szTableName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szFolderPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
@@ -9613,24 +9613,24 @@ export function MsiDatabaseExportW(
 }
 
 export function MsiDatabaseMergeA(
-  hDatabase: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
-  hDatabaseMerge: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hDatabase: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hDatabaseMerge: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szTableName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libmsi_dll.MsiDatabaseMergeA(util.toPointer(hDatabase), util.toPointer(hDatabaseMerge), util.pstrToFfi(szTableName));
 }
 
 export function MsiDatabaseMergeW(
-  hDatabase: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
-  hDatabaseMerge: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hDatabase: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hDatabaseMerge: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szTableName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libmsi_dll.MsiDatabaseMergeW(util.toPointer(hDatabase), util.toPointer(hDatabaseMerge), util.pwstrToFfi(szTableName));
 }
 
 export function MsiDatabaseGenerateTransformA(
-  hDatabase: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
-  hDatabaseReference: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hDatabase: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hDatabaseReference: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szTransformFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   iReserved1: number /* i32 */,
   iReserved2: number /* i32 */,
@@ -9639,8 +9639,8 @@ export function MsiDatabaseGenerateTransformA(
 }
 
 export function MsiDatabaseGenerateTransformW(
-  hDatabase: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
-  hDatabaseReference: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hDatabase: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hDatabaseReference: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szTransformFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   iReserved1: number /* i32 */,
   iReserved2: number /* i32 */,
@@ -9649,7 +9649,7 @@ export function MsiDatabaseGenerateTransformW(
 }
 
 export function MsiDatabaseApplyTransformA(
-  hDatabase: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hDatabase: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szTransformFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   iErrorConditions: MSITRANSFORM_ERROR /* Windows.Win32.System.ApplicationInstallationAndServicing.MSITRANSFORM_ERROR */,
 ): number /* u32 */ {
@@ -9657,7 +9657,7 @@ export function MsiDatabaseApplyTransformA(
 }
 
 export function MsiDatabaseApplyTransformW(
-  hDatabase: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hDatabase: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szTransformFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   iErrorConditions: MSITRANSFORM_ERROR /* Windows.Win32.System.ApplicationInstallationAndServicing.MSITRANSFORM_ERROR */,
 ): number /* u32 */ {
@@ -9665,8 +9665,8 @@ export function MsiDatabaseApplyTransformW(
 }
 
 export function MsiCreateTransformSummaryInfoA(
-  hDatabase: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
-  hDatabaseReference: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hDatabase: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hDatabaseReference: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szTransformFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   iErrorConditions: MSITRANSFORM_ERROR /* Windows.Win32.System.ApplicationInstallationAndServicing.MSITRANSFORM_ERROR */,
   iValidation: MSITRANSFORM_VALIDATE /* Windows.Win32.System.ApplicationInstallationAndServicing.MSITRANSFORM_VALIDATE */,
@@ -9675,8 +9675,8 @@ export function MsiCreateTransformSummaryInfoA(
 }
 
 export function MsiCreateTransformSummaryInfoW(
-  hDatabase: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
-  hDatabaseReference: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hDatabase: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hDatabaseReference: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szTransformFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   iErrorConditions: MSITRANSFORM_ERROR /* Windows.Win32.System.ApplicationInstallationAndServicing.MSITRANSFORM_ERROR */,
   iValidation: MSITRANSFORM_VALIDATE /* Windows.Win32.System.ApplicationInstallationAndServicing.MSITRANSFORM_VALIDATE */,
@@ -9685,39 +9685,39 @@ export function MsiCreateTransformSummaryInfoW(
 }
 
 export function MsiDatabaseCommit(
-  hDatabase: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hDatabase: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
 ): number /* u32 */ {
   return libmsi_dll.MsiDatabaseCommit(util.toPointer(hDatabase));
 }
 
 export function MsiGetDatabaseState(
-  hDatabase: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hDatabase: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
 ): MSIDBSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIDBSTATE */ {
   return libmsi_dll.MsiGetDatabaseState(util.toPointer(hDatabase));
 }
 
 export function MsiCreateRecord(
   cParams: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */ {
-  return util.pointerFromFfi(libmsi_dll.MsiCreateRecord(cParams));
+): Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */ {
+  return libmsi_dll.MsiCreateRecord(cParams);
 }
 
 export function MsiRecordIsNull(
-  hRecord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hRecord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   iField: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmsi_dll.MsiRecordIsNull(util.toPointer(hRecord), iField));
 }
 
 export function MsiRecordDataSize(
-  hRecord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hRecord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   iField: number /* u32 */,
 ): number /* u32 */ {
   return libmsi_dll.MsiRecordDataSize(util.toPointer(hRecord), iField);
 }
 
 export function MsiRecordSetInteger(
-  hRecord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hRecord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   iField: number /* u32 */,
   iValue: number /* i32 */,
 ): number /* u32 */ {
@@ -9725,7 +9725,7 @@ export function MsiRecordSetInteger(
 }
 
 export function MsiRecordSetStringA(
-  hRecord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hRecord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   iField: number /* u32 */,
   szValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
@@ -9733,7 +9733,7 @@ export function MsiRecordSetStringA(
 }
 
 export function MsiRecordSetStringW(
-  hRecord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hRecord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   iField: number /* u32 */,
   szValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
@@ -9741,38 +9741,38 @@ export function MsiRecordSetStringW(
 }
 
 export function MsiRecordGetInteger(
-  hRecord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hRecord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   iField: number /* u32 */,
 ): number /* i32 */ {
   return libmsi_dll.MsiRecordGetInteger(util.toPointer(hRecord), iField);
 }
 
 export function MsiRecordGetStringA(
-  hRecord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hRecord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   iField: number /* u32 */,
   szValueBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchValueBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchValueBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiRecordGetStringA(util.toPointer(hRecord), iField, util.pstrToFfi(szValueBuf), util.toPointer(pcchValueBuf));
 }
 
 export function MsiRecordGetStringW(
-  hRecord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hRecord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   iField: number /* u32 */,
   szValueBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchValueBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchValueBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiRecordGetStringW(util.toPointer(hRecord), iField, util.pwstrToFfi(szValueBuf), util.toPointer(pcchValueBuf));
 }
 
 export function MsiRecordGetFieldCount(
-  hRecord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hRecord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
 ): number /* u32 */ {
   return libmsi_dll.MsiRecordGetFieldCount(util.toPointer(hRecord));
 }
 
 export function MsiRecordSetStreamA(
-  hRecord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hRecord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   iField: number /* u32 */,
   szFilePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
@@ -9780,7 +9780,7 @@ export function MsiRecordSetStreamA(
 }
 
 export function MsiRecordSetStreamW(
-  hRecord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hRecord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   iField: number /* u32 */,
   szFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
@@ -9788,28 +9788,28 @@ export function MsiRecordSetStreamW(
 }
 
 export function MsiRecordReadStream(
-  hRecord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hRecord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   iField: number /* u32 */,
   szDataBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcbDataBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbDataBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiRecordReadStream(util.toPointer(hRecord), iField, util.pstrToFfi(szDataBuf), util.toPointer(pcbDataBuf));
 }
 
 export function MsiRecordClearData(
-  hRecord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hRecord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
 ): number /* u32 */ {
   return libmsi_dll.MsiRecordClearData(util.toPointer(hRecord));
 }
 
 export function MsiGetActiveDatabase(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
-): Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */ {
-  return util.pointerFromFfi(libmsi_dll.MsiGetActiveDatabase(util.toPointer(hInstall)));
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+): Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */ {
+  return libmsi_dll.MsiGetActiveDatabase(util.toPointer(hInstall));
 }
 
 export function MsiSetPropertyA(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
@@ -9817,7 +9817,7 @@ export function MsiSetPropertyA(
 }
 
 export function MsiSetPropertyW(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
@@ -9825,38 +9825,38 @@ export function MsiSetPropertyW(
 }
 
 export function MsiGetPropertyA(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szValueBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchValueBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchValueBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetPropertyA(util.toPointer(hInstall), util.pstrToFfi(szName), util.pstrToFfi(szValueBuf), util.toPointer(pcchValueBuf));
 }
 
 export function MsiGetPropertyW(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szValueBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchValueBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchValueBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetPropertyW(util.toPointer(hInstall), util.pwstrToFfi(szName), util.pwstrToFfi(szValueBuf), util.toPointer(pcchValueBuf));
 }
 
 export function MsiGetLanguage(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
 ): number /* u16 */ {
   return libmsi_dll.MsiGetLanguage(util.toPointer(hInstall));
 }
 
 export function MsiGetMode(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   eRunMode: MSIRUNMODE /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIRUNMODE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmsi_dll.MsiGetMode(util.toPointer(hInstall), eRunMode));
 }
 
 export function MsiSetMode(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   eRunMode: MSIRUNMODE /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIRUNMODE */,
   fState: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
@@ -9864,39 +9864,39 @@ export function MsiSetMode(
 }
 
 export function MsiFormatRecordA(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
-  hRecord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hRecord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szResultBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchResultBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchResultBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiFormatRecordA(util.toPointer(hInstall), util.toPointer(hRecord), util.pstrToFfi(szResultBuf), util.toPointer(pcchResultBuf));
 }
 
 export function MsiFormatRecordW(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
-  hRecord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hRecord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szResultBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchResultBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchResultBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiFormatRecordW(util.toPointer(hInstall), util.toPointer(hRecord), util.pwstrToFfi(szResultBuf), util.toPointer(pcchResultBuf));
 }
 
 export function MsiDoActionA(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szAction: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libmsi_dll.MsiDoActionA(util.toPointer(hInstall), util.pstrToFfi(szAction));
 }
 
 export function MsiDoActionW(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szAction: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libmsi_dll.MsiDoActionW(util.toPointer(hInstall), util.pwstrToFfi(szAction));
 }
 
 export function MsiSequenceA(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szTable: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   iSequenceMode: number /* i32 */,
 ): number /* u32 */ {
@@ -9904,7 +9904,7 @@ export function MsiSequenceA(
 }
 
 export function MsiSequenceW(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szTable: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   iSequenceMode: number /* i32 */,
 ): number /* u32 */ {
@@ -9912,47 +9912,47 @@ export function MsiSequenceW(
 }
 
 export function MsiProcessMessage(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   eMessageType: INSTALLMESSAGE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLMESSAGE */,
-  hRecord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hRecord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
 ): number /* i32 */ {
   return libmsi_dll.MsiProcessMessage(util.toPointer(hInstall), eMessageType, util.toPointer(hRecord));
 }
 
 export function MsiEvaluateConditionA(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szCondition: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): MSICONDITION /* Windows.Win32.System.ApplicationInstallationAndServicing.MSICONDITION */ {
   return libmsi_dll.MsiEvaluateConditionA(util.toPointer(hInstall), util.pstrToFfi(szCondition));
 }
 
 export function MsiEvaluateConditionW(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szCondition: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): MSICONDITION /* Windows.Win32.System.ApplicationInstallationAndServicing.MSICONDITION */ {
   return libmsi_dll.MsiEvaluateConditionW(util.toPointer(hInstall), util.pwstrToFfi(szCondition));
 }
 
 export function MsiGetFeatureStateA(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szFeature: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  piInstalled: Deno.PointerValue | Uint8Array | null /* ptr */,
-  piAction: Deno.PointerValue | Uint8Array | null /* ptr */,
+  piInstalled: Deno.PointerValue | Uint8Array /* ptr */,
+  piAction: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetFeatureStateA(util.toPointer(hInstall), util.pstrToFfi(szFeature), util.toPointer(piInstalled), util.toPointer(piAction));
 }
 
 export function MsiGetFeatureStateW(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szFeature: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  piInstalled: Deno.PointerValue | Uint8Array | null /* ptr */,
-  piAction: Deno.PointerValue | Uint8Array | null /* ptr */,
+  piInstalled: Deno.PointerValue | Uint8Array /* ptr */,
+  piAction: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetFeatureStateW(util.toPointer(hInstall), util.pwstrToFfi(szFeature), util.toPointer(piInstalled), util.toPointer(piAction));
 }
 
 export function MsiSetFeatureStateA(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szFeature: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   iState: INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */,
 ): number /* u32 */ {
@@ -9960,7 +9960,7 @@ export function MsiSetFeatureStateA(
 }
 
 export function MsiSetFeatureStateW(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szFeature: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   iState: INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */,
 ): number /* u32 */ {
@@ -9968,7 +9968,7 @@ export function MsiSetFeatureStateW(
 }
 
 export function MsiSetFeatureAttributesA(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szFeature: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwAttributes: number /* u32 */,
 ): number /* u32 */ {
@@ -9976,7 +9976,7 @@ export function MsiSetFeatureAttributesA(
 }
 
 export function MsiSetFeatureAttributesW(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szFeature: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwAttributes: number /* u32 */,
 ): number /* u32 */ {
@@ -9984,25 +9984,25 @@ export function MsiSetFeatureAttributesW(
 }
 
 export function MsiGetComponentStateA(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szComponent: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  piInstalled: Deno.PointerValue | Uint8Array | null /* ptr */,
-  piAction: Deno.PointerValue | Uint8Array | null /* ptr */,
+  piInstalled: Deno.PointerValue | Uint8Array /* ptr */,
+  piAction: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetComponentStateA(util.toPointer(hInstall), util.pstrToFfi(szComponent), util.toPointer(piInstalled), util.toPointer(piAction));
 }
 
 export function MsiGetComponentStateW(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szComponent: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  piInstalled: Deno.PointerValue | Uint8Array | null /* ptr */,
-  piAction: Deno.PointerValue | Uint8Array | null /* ptr */,
+  piInstalled: Deno.PointerValue | Uint8Array /* ptr */,
+  piAction: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetComponentStateW(util.toPointer(hInstall), util.pwstrToFfi(szComponent), util.toPointer(piInstalled), util.toPointer(piAction));
 }
 
 export function MsiSetComponentStateA(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szComponent: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   iState: INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */,
 ): number /* u32 */ {
@@ -10010,7 +10010,7 @@ export function MsiSetComponentStateA(
 }
 
 export function MsiSetComponentStateW(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szComponent: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   iState: INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */,
 ): number /* u32 */ {
@@ -10018,112 +10018,112 @@ export function MsiSetComponentStateW(
 }
 
 export function MsiGetFeatureCostA(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szFeature: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   iCostTree: MSICOSTTREE /* Windows.Win32.System.ApplicationInstallationAndServicing.MSICOSTTREE */,
   iState: INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */,
-  piCost: Deno.PointerValue | Uint8Array | null /* ptr */,
+  piCost: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetFeatureCostA(util.toPointer(hInstall), util.pstrToFfi(szFeature), iCostTree, iState, util.toPointer(piCost));
 }
 
 export function MsiGetFeatureCostW(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szFeature: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   iCostTree: MSICOSTTREE /* Windows.Win32.System.ApplicationInstallationAndServicing.MSICOSTTREE */,
   iState: INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */,
-  piCost: Deno.PointerValue | Uint8Array | null /* ptr */,
+  piCost: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetFeatureCostW(util.toPointer(hInstall), util.pwstrToFfi(szFeature), iCostTree, iState, util.toPointer(piCost));
 }
 
 export function MsiEnumComponentCostsA(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szComponent: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwIndex: number /* u32 */,
   iState: INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */,
   szDriveBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchDriveBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
-  piCost: Deno.PointerValue | Uint8Array | null /* ptr */,
-  piTempCost: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchDriveBuf: Deno.PointerValue | Uint8Array /* ptr */,
+  piCost: Deno.PointerValue | Uint8Array /* ptr */,
+  piTempCost: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiEnumComponentCostsA(util.toPointer(hInstall), util.pstrToFfi(szComponent), dwIndex, iState, util.pstrToFfi(szDriveBuf), util.toPointer(pcchDriveBuf), util.toPointer(piCost), util.toPointer(piTempCost));
 }
 
 export function MsiEnumComponentCostsW(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szComponent: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwIndex: number /* u32 */,
   iState: INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */,
   szDriveBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchDriveBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
-  piCost: Deno.PointerValue | Uint8Array | null /* ptr */,
-  piTempCost: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchDriveBuf: Deno.PointerValue | Uint8Array /* ptr */,
+  piCost: Deno.PointerValue | Uint8Array /* ptr */,
+  piTempCost: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiEnumComponentCostsW(util.toPointer(hInstall), util.pwstrToFfi(szComponent), dwIndex, iState, util.pwstrToFfi(szDriveBuf), util.toPointer(pcchDriveBuf), util.toPointer(piCost), util.toPointer(piTempCost));
 }
 
 export function MsiSetInstallLevel(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   iInstallLevel: number /* i32 */,
 ): number /* u32 */ {
   return libmsi_dll.MsiSetInstallLevel(util.toPointer(hInstall), iInstallLevel);
 }
 
 export function MsiGetFeatureValidStatesA(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szFeature: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  lpInstallStates: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpInstallStates: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetFeatureValidStatesA(util.toPointer(hInstall), util.pstrToFfi(szFeature), util.toPointer(lpInstallStates));
 }
 
 export function MsiGetFeatureValidStatesW(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szFeature: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  lpInstallStates: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpInstallStates: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetFeatureValidStatesW(util.toPointer(hInstall), util.pwstrToFfi(szFeature), util.toPointer(lpInstallStates));
 }
 
 export function MsiGetSourcePathA(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szFolder: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szPathBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchPathBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchPathBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetSourcePathA(util.toPointer(hInstall), util.pstrToFfi(szFolder), util.pstrToFfi(szPathBuf), util.toPointer(pcchPathBuf));
 }
 
 export function MsiGetSourcePathW(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szFolder: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szPathBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchPathBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchPathBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetSourcePathW(util.toPointer(hInstall), util.pwstrToFfi(szFolder), util.pwstrToFfi(szPathBuf), util.toPointer(pcchPathBuf));
 }
 
 export function MsiGetTargetPathA(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szFolder: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szPathBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcchPathBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchPathBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetTargetPathA(util.toPointer(hInstall), util.pstrToFfi(szFolder), util.pstrToFfi(szPathBuf), util.toPointer(pcchPathBuf));
 }
 
 export function MsiGetTargetPathW(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szFolder: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szPathBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchPathBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchPathBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiGetTargetPathW(util.toPointer(hInstall), util.pwstrToFfi(szFolder), util.pwstrToFfi(szPathBuf), util.toPointer(pcchPathBuf));
 }
 
 export function MsiSetTargetPathA(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szFolder: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szFolderPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
@@ -10131,7 +10131,7 @@ export function MsiSetTargetPathA(
 }
 
 export function MsiSetTargetPathW(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szFolder: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szFolderPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
@@ -10139,34 +10139,34 @@ export function MsiSetTargetPathW(
 }
 
 export function MsiVerifyDiskSpace(
-  hInstall: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
 ): number /* u32 */ {
   return libmsi_dll.MsiVerifyDiskSpace(util.toPointer(hInstall));
 }
 
 export function MsiEnableUIPreview(
-  hDatabase: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
-  phPreview: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hDatabase: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  phPreview: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libmsi_dll.MsiEnableUIPreview(util.toPointer(hDatabase), util.toPointer(phPreview));
 }
 
 export function MsiPreviewDialogA(
-  hPreview: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hPreview: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szDialogName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
   return libmsi_dll.MsiPreviewDialogA(util.toPointer(hPreview), util.pstrToFfi(szDialogName));
 }
 
 export function MsiPreviewDialogW(
-  hPreview: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hPreview: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szDialogName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libmsi_dll.MsiPreviewDialogW(util.toPointer(hPreview), util.pwstrToFfi(szDialogName));
 }
 
 export function MsiPreviewBillboardA(
-  hPreview: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hPreview: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szControlName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szBillboard: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
@@ -10174,33 +10174,33 @@ export function MsiPreviewBillboardA(
 }
 
 export function MsiPreviewBillboardW(
-  hPreview: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
+  hPreview: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szControlName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szBillboard: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libmsi_dll.MsiPreviewBillboardW(util.toPointer(hPreview), util.pwstrToFfi(szControlName), util.pwstrToFfi(szBillboard));
 }
 
-export function MsiGetLastErrorRecord(): Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */ {
-  return util.pointerFromFfi(libmsi_dll.MsiGetLastErrorRecord());
+export function MsiGetLastErrorRecord(): Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */ {
+  return libmsi_dll.MsiGetLastErrorRecord();
 }
 
 export function SfcGetNextProtectedFile(
-  RpcHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  ProtFileData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  RpcHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  ProtFileData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libsfc_dll.SfcGetNextProtectedFile(util.toPointer(RpcHandle), util.toPointer(ProtFileData)));
 }
 
 export function SfcIsFileProtected(
-  RpcHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  RpcHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ProtFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libsfc_dll.SfcIsFileProtected(util.toPointer(RpcHandle), util.pwstrToFfi(ProtFileName)));
 }
 
 export function SfcIsKeyProtected(
-  KeyHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Registry.HKEY */,
+  KeyHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
   SubKeyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   KeySam: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -10220,7 +10220,7 @@ export function CreatePatchFileA(
   NewFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   PatchFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   OptionFlags: number /* u32 */,
-  OptionData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OptionData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmspatchc_dll.CreatePatchFileA(util.pstrToFfi(OldFileName), util.pstrToFfi(NewFileName), util.pstrToFfi(PatchFileName), OptionFlags, util.toPointer(OptionData)));
 }
@@ -10230,56 +10230,56 @@ export function CreatePatchFileW(
   NewFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   PatchFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   OptionFlags: number /* u32 */,
-  OptionData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OptionData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmspatchc_dll.CreatePatchFileW(util.pwstrToFfi(OldFileName), util.pwstrToFfi(NewFileName), util.pwstrToFfi(PatchFileName), OptionFlags, util.toPointer(OptionData)));
 }
 
 export function CreatePatchFileByHandles(
-  OldFileHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  NewFileHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  PatchFileHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  OldFileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  NewFileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  PatchFileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   OptionFlags: number /* u32 */,
-  OptionData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OptionData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmspatchc_dll.CreatePatchFileByHandles(util.toPointer(OldFileHandle), util.toPointer(NewFileHandle), util.toPointer(PatchFileHandle), OptionFlags, util.toPointer(OptionData)));
 }
 
 export function CreatePatchFileExA(
   OldFileCount: number /* u32 */,
-  OldFileInfoArray: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OldFileInfoArray: Deno.PointerValue | Uint8Array /* ptr */,
   NewFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   PatchFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   OptionFlags: number /* u32 */,
-  OptionData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ProgressCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.PPATCH_PROGRESS_CALLBACK */,
-  CallbackContext: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OptionData: Deno.PointerValue | Uint8Array /* ptr */,
+  ProgressCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.PPATCH_PROGRESS_CALLBACK */,
+  CallbackContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmspatchc_dll.CreatePatchFileExA(OldFileCount, util.toPointer(OldFileInfoArray), util.pstrToFfi(NewFileName), util.pstrToFfi(PatchFileName), OptionFlags, util.toPointer(OptionData), util.toPointer(ProgressCallback), util.toPointer(CallbackContext)));
 }
 
 export function CreatePatchFileExW(
   OldFileCount: number /* u32 */,
-  OldFileInfoArray: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OldFileInfoArray: Deno.PointerValue | Uint8Array /* ptr */,
   NewFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   PatchFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   OptionFlags: number /* u32 */,
-  OptionData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ProgressCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.PPATCH_PROGRESS_CALLBACK */,
-  CallbackContext: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OptionData: Deno.PointerValue | Uint8Array /* ptr */,
+  ProgressCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.PPATCH_PROGRESS_CALLBACK */,
+  CallbackContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmspatchc_dll.CreatePatchFileExW(OldFileCount, util.toPointer(OldFileInfoArray), util.pwstrToFfi(NewFileName), util.pwstrToFfi(PatchFileName), OptionFlags, util.toPointer(OptionData), util.toPointer(ProgressCallback), util.toPointer(CallbackContext)));
 }
 
 export function CreatePatchFileByHandlesEx(
   OldFileCount: number /* u32 */,
-  OldFileInfoArray: Deno.PointerValue | Uint8Array | null /* ptr */,
-  NewFileHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  PatchFileHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  OldFileInfoArray: Deno.PointerValue | Uint8Array /* ptr */,
+  NewFileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  PatchFileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   OptionFlags: number /* u32 */,
-  OptionData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ProgressCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.PPATCH_PROGRESS_CALLBACK */,
-  CallbackContext: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OptionData: Deno.PointerValue | Uint8Array /* ptr */,
+  ProgressCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.PPATCH_PROGRESS_CALLBACK */,
+  CallbackContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmspatchc_dll.CreatePatchFileByHandlesEx(OldFileCount, util.toPointer(OldFileInfoArray), util.toPointer(NewFileHandle), util.toPointer(PatchFileHandle), OptionFlags, util.toPointer(OptionData), util.toPointer(ProgressCallback), util.toPointer(CallbackContext)));
 }
@@ -10299,8 +10299,8 @@ export function ExtractPatchHeaderToFileW(
 }
 
 export function ExtractPatchHeaderToFileByHandles(
-  PatchFileHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  PatchHeaderFileHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  PatchFileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  PatchHeaderFileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmspatchc_dll.ExtractPatchHeaderToFileByHandles(util.toPointer(PatchFileHandle), util.toPointer(PatchHeaderFileHandle)));
 }
@@ -10322,19 +10322,19 @@ export function TestApplyPatchToFileW(
 }
 
 export function TestApplyPatchToFileByHandles(
-  PatchFileHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  OldFileHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  PatchFileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  OldFileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ApplyOptionFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmspatcha_dll.TestApplyPatchToFileByHandles(util.toPointer(PatchFileHandle), util.toPointer(OldFileHandle), ApplyOptionFlags));
 }
 
 export function TestApplyPatchToFileByBuffers(
-  PatchFileBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  PatchFileBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   PatchFileSize: number /* u32 */,
-  OldFileBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OldFileBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   OldFileSize: number /* u32 */,
-  NewFileSize: Deno.PointerValue | Uint8Array | null /* ptr */,
+  NewFileSize: Deno.PointerValue | Uint8Array /* ptr */,
   ApplyOptionFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmspatcha_dll.TestApplyPatchToFileByBuffers(util.toPointer(PatchFileBuffer), PatchFileSize, util.toPointer(OldFileBuffer), OldFileSize, util.toPointer(NewFileSize), ApplyOptionFlags));
@@ -10359,9 +10359,9 @@ export function ApplyPatchToFileW(
 }
 
 export function ApplyPatchToFileByHandles(
-  PatchFileHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  OldFileHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  NewFileHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  PatchFileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  OldFileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  NewFileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ApplyOptionFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmspatcha_dll.ApplyPatchToFileByHandles(util.toPointer(PatchFileHandle), util.toPointer(OldFileHandle), util.toPointer(NewFileHandle), ApplyOptionFlags));
@@ -10372,8 +10372,8 @@ export function ApplyPatchToFileExA(
   OldFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   NewFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ApplyOptionFlags: number /* u32 */,
-  ProgressCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.PPATCH_PROGRESS_CALLBACK */,
-  CallbackContext: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ProgressCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.PPATCH_PROGRESS_CALLBACK */,
+  CallbackContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmspatcha_dll.ApplyPatchToFileExA(util.pstrToFfi(PatchFileName), util.pstrToFfi(OldFileName), util.pstrToFfi(NewFileName), ApplyOptionFlags, util.toPointer(ProgressCallback), util.toPointer(CallbackContext)));
 }
@@ -10383,35 +10383,35 @@ export function ApplyPatchToFileExW(
   OldFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   NewFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ApplyOptionFlags: number /* u32 */,
-  ProgressCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.PPATCH_PROGRESS_CALLBACK */,
-  CallbackContext: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ProgressCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.PPATCH_PROGRESS_CALLBACK */,
+  CallbackContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmspatcha_dll.ApplyPatchToFileExW(util.pwstrToFfi(PatchFileName), util.pwstrToFfi(OldFileName), util.pwstrToFfi(NewFileName), ApplyOptionFlags, util.toPointer(ProgressCallback), util.toPointer(CallbackContext)));
 }
 
 export function ApplyPatchToFileByHandlesEx(
-  PatchFileHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  OldFileHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  NewFileHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  PatchFileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  OldFileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  NewFileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ApplyOptionFlags: number /* u32 */,
-  ProgressCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.PPATCH_PROGRESS_CALLBACK */,
-  CallbackContext: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ProgressCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.PPATCH_PROGRESS_CALLBACK */,
+  CallbackContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmspatcha_dll.ApplyPatchToFileByHandlesEx(util.toPointer(PatchFileHandle), util.toPointer(OldFileHandle), util.toPointer(NewFileHandle), ApplyOptionFlags, util.toPointer(ProgressCallback), util.toPointer(CallbackContext)));
 }
 
 export function ApplyPatchToFileByBuffers(
-  PatchFileMapped: Deno.PointerValue | Uint8Array | null /* ptr */,
+  PatchFileMapped: Deno.PointerValue | Uint8Array /* ptr */,
   PatchFileSize: number /* u32 */,
-  OldFileMapped: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OldFileMapped: Deno.PointerValue | Uint8Array /* ptr */,
   OldFileSize: number /* u32 */,
-  NewFileBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  NewFileBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   NewFileBufferSize: number /* u32 */,
-  NewFileActualSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  NewFileTime: Deno.PointerValue | Uint8Array | null /* ptr */,
+  NewFileActualSize: Deno.PointerValue | Uint8Array /* ptr */,
+  NewFileTime: Deno.PointerValue | Uint8Array /* ptr */,
   ApplyOptionFlags: number /* u32 */,
-  ProgressCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.PPATCH_PROGRESS_CALLBACK */,
-  CallbackContext: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ProgressCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.PPATCH_PROGRESS_CALLBACK */,
+  CallbackContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmspatcha_dll.ApplyPatchToFileByBuffers(util.toPointer(PatchFileMapped), PatchFileSize, util.toPointer(OldFileMapped), OldFileSize, util.toPointer(NewFileBuffer), NewFileBufferSize, util.toPointer(NewFileActualSize), util.toPointer(NewFileTime), ApplyOptionFlags, util.toPointer(ProgressCallback), util.toPointer(CallbackContext)));
 }
@@ -10419,11 +10419,11 @@ export function ApplyPatchToFileByBuffers(
 export function GetFilePatchSignatureA(
   FileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   OptionFlags: number /* u32 */,
-  OptionData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OptionData: Deno.PointerValue | Uint8Array /* ptr */,
   IgnoreRangeCount: number /* u32 */,
-  IgnoreRangeArray: Deno.PointerValue | Uint8Array | null /* ptr */,
+  IgnoreRangeArray: Deno.PointerValue | Uint8Array /* ptr */,
   RetainRangeCount: number /* u32 */,
-  RetainRangeArray: Deno.PointerValue | Uint8Array | null /* ptr */,
+  RetainRangeArray: Deno.PointerValue | Uint8Array /* ptr */,
   SignatureBufferSize: number /* u32 */,
   SignatureBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -10433,11 +10433,11 @@ export function GetFilePatchSignatureA(
 export function GetFilePatchSignatureW(
   FileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   OptionFlags: number /* u32 */,
-  OptionData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OptionData: Deno.PointerValue | Uint8Array /* ptr */,
   IgnoreRangeCount: number /* u32 */,
-  IgnoreRangeArray: Deno.PointerValue | Uint8Array | null /* ptr */,
+  IgnoreRangeArray: Deno.PointerValue | Uint8Array /* ptr */,
   RetainRangeCount: number /* u32 */,
-  RetainRangeArray: Deno.PointerValue | Uint8Array | null /* ptr */,
+  RetainRangeArray: Deno.PointerValue | Uint8Array /* ptr */,
   SignatureBufferSize: number /* u32 */,
   SignatureBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -10445,13 +10445,13 @@ export function GetFilePatchSignatureW(
 }
 
 export function GetFilePatchSignatureByHandle(
-  FileHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  FileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   OptionFlags: number /* u32 */,
-  OptionData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OptionData: Deno.PointerValue | Uint8Array /* ptr */,
   IgnoreRangeCount: number /* u32 */,
-  IgnoreRangeArray: Deno.PointerValue | Uint8Array | null /* ptr */,
+  IgnoreRangeArray: Deno.PointerValue | Uint8Array /* ptr */,
   RetainRangeCount: number /* u32 */,
-  RetainRangeArray: Deno.PointerValue | Uint8Array | null /* ptr */,
+  RetainRangeArray: Deno.PointerValue | Uint8Array /* ptr */,
   SignatureBufferSize: number /* u32 */,
   SignatureBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -10459,14 +10459,14 @@ export function GetFilePatchSignatureByHandle(
 }
 
 export function GetFilePatchSignatureByBuffer(
-  FileBufferWritable: Deno.PointerValue | Uint8Array | null /* ptr */,
+  FileBufferWritable: Deno.PointerValue | Uint8Array /* ptr */,
   FileSize: number /* u32 */,
   OptionFlags: number /* u32 */,
-  OptionData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OptionData: Deno.PointerValue | Uint8Array /* ptr */,
   IgnoreRangeCount: number /* u32 */,
-  IgnoreRangeArray: Deno.PointerValue | Uint8Array | null /* ptr */,
+  IgnoreRangeArray: Deno.PointerValue | Uint8Array /* ptr */,
   RetainRangeCount: number /* u32 */,
-  RetainRangeArray: Deno.PointerValue | Uint8Array | null /* ptr */,
+  RetainRangeArray: Deno.PointerValue | Uint8Array /* ptr */,
   SignatureBufferSize: number /* u32 */,
   SignatureBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -10474,66 +10474,66 @@ export function GetFilePatchSignatureByBuffer(
 }
 
 export function NormalizeFileForPatchSignature(
-  FileBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  FileBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   FileSize: number /* u32 */,
   OptionFlags: number /* u32 */,
-  OptionData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  OptionData: Deno.PointerValue | Uint8Array /* ptr */,
   NewFileCoffBase: number /* u32 */,
   NewFileCoffTime: number /* u32 */,
   IgnoreRangeCount: number /* u32 */,
-  IgnoreRangeArray: Deno.PointerValue | Uint8Array | null /* ptr */,
+  IgnoreRangeArray: Deno.PointerValue | Uint8Array /* ptr */,
   RetainRangeCount: number /* u32 */,
-  RetainRangeArray: Deno.PointerValue | Uint8Array | null /* ptr */,
+  RetainRangeArray: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libmspatcha_dll.NormalizeFileForPatchSignature(util.toPointer(FileBuffer), FileSize, OptionFlags, util.toPointer(OptionData), NewFileCoffBase, NewFileCoffTime, IgnoreRangeCount, util.toPointer(IgnoreRangeArray), RetainRangeCount, util.toPointer(RetainRangeArray));
 }
 
 export function GetDeltaInfoB(
-  Delta: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
-  lpHeaderInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Delta: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
+  lpHeaderInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmsdelta_dll.GetDeltaInfoB(util.toPointer(Delta), util.toPointer(lpHeaderInfo)));
 }
 
 export function GetDeltaInfoA(
   lpDeltaName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  lpHeaderInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpHeaderInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmsdelta_dll.GetDeltaInfoA(util.pstrToFfi(lpDeltaName), util.toPointer(lpHeaderInfo)));
 }
 
 export function GetDeltaInfoW(
   lpDeltaName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  lpHeaderInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpHeaderInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmsdelta_dll.GetDeltaInfoW(util.pwstrToFfi(lpDeltaName), util.toPointer(lpHeaderInfo)));
 }
 
 export function ApplyDeltaGetReverseB(
   ApplyFlags: Deno.PointerValue /* i64 */,
-  Source: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
-  Delta: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
-  lpReverseFileTime: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpTarget: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpTargetReverse: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Source: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
+  Delta: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
+  lpReverseFileTime: Deno.PointerValue | Uint8Array /* ptr */,
+  lpTarget: Deno.PointerValue | Uint8Array /* ptr */,
+  lpTargetReverse: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmsdelta_dll.ApplyDeltaGetReverseB(ApplyFlags, util.toPointer(Source), util.toPointer(Delta), util.toPointer(lpReverseFileTime), util.toPointer(lpTarget), util.toPointer(lpTargetReverse)));
 }
 
 export function ApplyDeltaB(
   ApplyFlags: Deno.PointerValue /* i64 */,
-  Source: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
-  Delta: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
-  lpTarget: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Source: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
+  Delta: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
+  lpTarget: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmsdelta_dll.ApplyDeltaB(ApplyFlags, util.toPointer(Source), util.toPointer(Delta), util.toPointer(lpTarget)));
 }
 
 export function ApplyDeltaProvidedB(
   ApplyFlags: Deno.PointerValue /* i64 */,
-  Source: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
-  Delta: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
-  lpTarget: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Source: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
+  Delta: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
+  lpTarget: Deno.PointerValue | Uint8Array /* ptr */,
   uTargetSize: Deno.PointerValue /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmsdelta_dll.ApplyDeltaProvidedB(ApplyFlags, util.toPointer(Source), util.toPointer(Delta), util.toPointer(lpTarget), uTargetSize));
@@ -10561,14 +10561,14 @@ export function CreateDeltaB(
   FileTypeSet: Deno.PointerValue /* i64 */,
   SetFlags: Deno.PointerValue /* i64 */,
   ResetFlags: Deno.PointerValue /* i64 */,
-  Source: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
-  Target: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
-  SourceOptions: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
-  TargetOptions: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
-  GlobalOptions: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
-  lpTargetFileTime: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Source: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
+  Target: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
+  SourceOptions: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
+  TargetOptions: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
+  GlobalOptions: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
+  lpTargetFileTime: Deno.PointerValue | Uint8Array /* ptr */,
   HashAlgId: number /* u32 */,
-  lpDelta: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpDelta: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmsdelta_dll.CreateDeltaB(FileTypeSet, SetFlags, ResetFlags, util.toPointer(Source), util.toPointer(Target), util.toPointer(SourceOptions), util.toPointer(TargetOptions), util.toPointer(GlobalOptions), util.toPointer(lpTargetFileTime), HashAlgId, util.toPointer(lpDelta)));
 }
@@ -10581,8 +10581,8 @@ export function CreateDeltaA(
   lpTargetName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpSourceOptionsName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpTargetOptionsName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  GlobalOptions: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
-  lpTargetFileTime: Deno.PointerValue | Uint8Array | null /* ptr */,
+  GlobalOptions: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
+  lpTargetFileTime: Deno.PointerValue | Uint8Array /* ptr */,
   HashAlgId: number /* u32 */,
   lpDeltaName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -10597,8 +10597,8 @@ export function CreateDeltaW(
   lpTargetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpSourceOptionsName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpTargetOptionsName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  GlobalOptions: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
-  lpTargetFileTime: Deno.PointerValue | Uint8Array | null /* ptr */,
+  GlobalOptions: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
+  lpTargetFileTime: Deno.PointerValue | Uint8Array /* ptr */,
   HashAlgId: number /* u32 */,
   lpDeltaName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -10608,8 +10608,8 @@ export function CreateDeltaW(
 export function GetDeltaSignatureB(
   FileTypeSet: Deno.PointerValue /* i64 */,
   HashAlgId: number /* u32 */,
-  Source: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
-  lpHash: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Source: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
+  lpHash: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmsdelta_dll.GetDeltaSignatureB(FileTypeSet, HashAlgId, util.toPointer(Source), util.toPointer(lpHash)));
 }
@@ -10618,7 +10618,7 @@ export function GetDeltaSignatureA(
   FileTypeSet: Deno.PointerValue /* i64 */,
   HashAlgId: number /* u32 */,
   lpSourceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  lpHash: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpHash: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmsdelta_dll.GetDeltaSignatureA(FileTypeSet, HashAlgId, util.pstrToFfi(lpSourceName), util.toPointer(lpHash)));
 }
@@ -10627,7 +10627,7 @@ export function GetDeltaSignatureW(
   FileTypeSet: Deno.PointerValue /* i64 */,
   HashAlgId: number /* u32 */,
   lpSourceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  lpHash: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpHash: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmsdelta_dll.GetDeltaSignatureW(FileTypeSet, HashAlgId, util.pwstrToFfi(lpSourceName), util.toPointer(lpHash)));
 }
@@ -10635,52 +10635,52 @@ export function GetDeltaSignatureW(
 export function DeltaNormalizeProvidedB(
   FileTypeSet: Deno.PointerValue /* i64 */,
   NormalizeFlags: Deno.PointerValue /* i64 */,
-  NormalizeOptions: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
-  lpSource: Deno.PointerValue | Uint8Array | null /* ptr */,
+  NormalizeOptions: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
+  lpSource: Deno.PointerValue | Uint8Array /* ptr */,
   uSourceSize: Deno.PointerValue /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmsdelta_dll.DeltaNormalizeProvidedB(FileTypeSet, NormalizeFlags, util.toPointer(NormalizeOptions), util.toPointer(lpSource), uSourceSize));
 }
 
 export function DeltaFree(
-  lpMemory: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpMemory: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmsdelta_dll.DeltaFree(util.toPointer(lpMemory)));
 }
 
 export function CreateActCtxA(
-  pActCtx: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libKERNEL32_dll.CreateActCtxA(util.toPointer(pActCtx)));
+  pActCtx: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
+  return libKERNEL32_dll.CreateActCtxA(util.toPointer(pActCtx));
 }
 
 export function CreateActCtxW(
-  pActCtx: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libKERNEL32_dll.CreateActCtxW(util.toPointer(pActCtx)));
+  pActCtx: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
+  return libKERNEL32_dll.CreateActCtxW(util.toPointer(pActCtx));
 }
 
 export function AddRefActCtx(
-  hActCtx: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hActCtx: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): void /* void */ {
   return libKERNEL32_dll.AddRefActCtx(util.toPointer(hActCtx));
 }
 
 export function ReleaseActCtx(
-  hActCtx: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hActCtx: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): void /* void */ {
   return libKERNEL32_dll.ReleaseActCtx(util.toPointer(hActCtx));
 }
 
 export function ZombifyActCtx(
-  hActCtx: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hActCtx: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.ZombifyActCtx(util.toPointer(hActCtx)));
 }
 
 export function ActivateActCtx(
-  hActCtx: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpCookie: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hActCtx: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpCookie: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.ActivateActCtx(util.toPointer(hActCtx), util.toPointer(lpCookie)));
 }
@@ -10693,61 +10693,61 @@ export function DeactivateActCtx(
 }
 
 export function GetCurrentActCtx(
-  lphActCtx: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lphActCtx: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetCurrentActCtx(util.toPointer(lphActCtx)));
 }
 
 export function FindActCtxSectionStringA(
   dwFlags: number /* u32 */,
-  lpExtensionGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpExtensionGuid: Deno.PointerValue | Uint8Array /* ptr */,
   ulSectionId: number /* u32 */,
   lpStringToFind: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  ReturnedData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ReturnedData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.FindActCtxSectionStringA(dwFlags, util.toPointer(lpExtensionGuid), ulSectionId, util.pstrToFfi(lpStringToFind), util.toPointer(ReturnedData)));
 }
 
 export function FindActCtxSectionStringW(
   dwFlags: number /* u32 */,
-  lpExtensionGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpExtensionGuid: Deno.PointerValue | Uint8Array /* ptr */,
   ulSectionId: number /* u32 */,
   lpStringToFind: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ReturnedData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ReturnedData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.FindActCtxSectionStringW(dwFlags, util.toPointer(lpExtensionGuid), ulSectionId, util.pwstrToFfi(lpStringToFind), util.toPointer(ReturnedData)));
 }
 
 export function FindActCtxSectionGuid(
   dwFlags: number /* u32 */,
-  lpExtensionGuid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpExtensionGuid: Deno.PointerValue | Uint8Array /* ptr */,
   ulSectionId: number /* u32 */,
-  lpGuidToFind: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ReturnedData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpGuidToFind: Deno.PointerValue | Uint8Array /* ptr */,
+  ReturnedData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.FindActCtxSectionGuid(dwFlags, util.toPointer(lpExtensionGuid), ulSectionId, util.toPointer(lpGuidToFind), util.toPointer(ReturnedData)));
 }
 
 export function QueryActCtxW(
   dwFlags: number /* u32 */,
-  hActCtx: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  pvSubInstance: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hActCtx: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  pvSubInstance: Deno.PointerValue | Uint8Array /* ptr */,
   ulInfoClass: number /* u32 */,
-  pvBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pvBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   cbBuffer: Deno.PointerValue /* usize */,
-  pcbWrittenOrRequired: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbWrittenOrRequired: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.QueryActCtxW(dwFlags, util.toPointer(hActCtx), util.toPointer(pvSubInstance), ulInfoClass, util.toPointer(pvBuffer), cbBuffer, util.toPointer(pcbWrittenOrRequired)));
 }
 
 export function QueryActCtxSettingsW(
   dwFlags: number /* u32 */,
-  hActCtx: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hActCtx: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   settingsNameSpace: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   settingName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pvBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwBuffer: Deno.PointerValue /* usize */,
-  pdwWrittenOrRequired: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pdwWrittenOrRequired: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.QueryActCtxSettingsW(dwFlags, util.toPointer(hActCtx), util.pwstrToFfi(settingsNameSpace), util.pwstrToFfi(settingName), util.pwstrToFfi(pvBuffer), dwBuffer, util.toPointer(pdwWrittenOrRequired)));
 }

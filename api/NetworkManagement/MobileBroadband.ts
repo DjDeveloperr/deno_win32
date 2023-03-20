@@ -230,7 +230,7 @@ export const MBN_DEVICE_SERVICES_CAPABLE_INTERFACE_REMOVAL = 1;
 
 // Structs
 
-export type BSTR = Deno.PointerValue | Uint8Array | null;
+export type BSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.NetworkManagement.MobileBroadband.MBN_INTERFACE_CAPS (size: 80)
@@ -243,25 +243,25 @@ export interface MBN_INTERFACE_CAPS {
   /** u32 */
   dataClass: number;
   /** Windows.Win32.Foundation.BSTR */
-  customDataClass: Uint8Array | Deno.PointerValue | null;
+  customDataClass: Uint8Array | Deno.PointerValue;
   /** u32 */
   gsmBandClass: number;
   /** u32 */
   cdmaBandClass: number;
   /** Windows.Win32.Foundation.BSTR */
-  customBandClass: Uint8Array | Deno.PointerValue | null;
+  customBandClass: Uint8Array | Deno.PointerValue;
   /** u32 */
   smsCaps: number;
   /** u32 */
   controlCaps: number;
   /** Windows.Win32.Foundation.BSTR */
-  deviceID: Uint8Array | Deno.PointerValue | null;
+  deviceID: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BSTR */
-  manufacturer: Uint8Array | Deno.PointerValue | null;
+  manufacturer: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BSTR */
-  model: Uint8Array | Deno.PointerValue | null;
+  model: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BSTR */
-  firmwareInfo: Uint8Array | Deno.PointerValue | null;
+  firmwareInfo: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofMBN_INTERFACE_CAPS = 80;
@@ -277,25 +277,25 @@ export function allocMBN_INTERFACE_CAPS(data?: Partial<MBN_INTERFACE_CAPS>): Uin
   if (data?.dataClass !== undefined) view.setUint32(8, Number(data.dataClass), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.customDataClass !== undefined) view.setBigUint64(16, data.customDataClass === null ? 0n : BigInt(util.toPointer(data.customDataClass)), true);
+  if (data?.customDataClass !== undefined) view.setBigUint64(16, data.customDataClass === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.customDataClass))), true);
   // 0x18: u32
   if (data?.gsmBandClass !== undefined) view.setUint32(24, Number(data.gsmBandClass), true);
   // 0x1c: u32
   if (data?.cdmaBandClass !== undefined) view.setUint32(28, Number(data.cdmaBandClass), true);
   // 0x20: pointer
-  if (data?.customBandClass !== undefined) view.setBigUint64(32, data.customBandClass === null ? 0n : BigInt(util.toPointer(data.customBandClass)), true);
+  if (data?.customBandClass !== undefined) view.setBigUint64(32, data.customBandClass === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.customBandClass))), true);
   // 0x28: u32
   if (data?.smsCaps !== undefined) view.setUint32(40, Number(data.smsCaps), true);
   // 0x2c: u32
   if (data?.controlCaps !== undefined) view.setUint32(44, Number(data.controlCaps), true);
   // 0x30: pointer
-  if (data?.deviceID !== undefined) view.setBigUint64(48, data.deviceID === null ? 0n : BigInt(util.toPointer(data.deviceID)), true);
+  if (data?.deviceID !== undefined) view.setBigUint64(48, data.deviceID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.deviceID))), true);
   // 0x38: pointer
-  if (data?.manufacturer !== undefined) view.setBigUint64(56, data.manufacturer === null ? 0n : BigInt(util.toPointer(data.manufacturer)), true);
+  if (data?.manufacturer !== undefined) view.setBigUint64(56, data.manufacturer === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.manufacturer))), true);
   // 0x40: pointer
-  if (data?.model !== undefined) view.setBigUint64(64, data.model === null ? 0n : BigInt(util.toPointer(data.model)), true);
+  if (data?.model !== undefined) view.setBigUint64(64, data.model === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.model))), true);
   // 0x48: pointer
-  if (data?.firmwareInfo !== undefined) view.setBigUint64(72, data.firmwareInfo === null ? 0n : BigInt(util.toPointer(data.firmwareInfo)), true);
+  if (data?.firmwareInfo !== undefined) view.setBigUint64(72, data.firmwareInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.firmwareInfo))), true);
   return buf;
 }
 
@@ -327,9 +327,9 @@ export class MBN_INTERFACE_CAPSView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get customDataClass(): Uint8Array | Deno.PointerValue | null {
+  get customDataClass(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -343,9 +343,9 @@ export class MBN_INTERFACE_CAPSView {
   }
 
   // 0x20: pointer
-  get customBandClass(): Uint8Array | Deno.PointerValue | null {
+  get customBandClass(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -359,27 +359,27 @@ export class MBN_INTERFACE_CAPSView {
   }
 
   // 0x30: pointer
-  get deviceID(): Uint8Array | Deno.PointerValue | null {
+  get deviceID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get manufacturer(): Uint8Array | Deno.PointerValue | null {
+  get manufacturer(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get model(): Uint8Array | Deno.PointerValue | null {
+  get model(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: pointer
-  get firmwareInfo(): Uint8Array | Deno.PointerValue | null {
+  get firmwareInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -400,8 +400,8 @@ export class MBN_INTERFACE_CAPSView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set customDataClass(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set customDataClass(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -415,8 +415,8 @@ export class MBN_INTERFACE_CAPSView {
   }
 
   // 0x20: pointer
-  set customBandClass(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set customBandClass(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u32
@@ -430,23 +430,23 @@ export class MBN_INTERFACE_CAPSView {
   }
 
   // 0x30: pointer
-  set deviceID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set deviceID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set manufacturer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set manufacturer(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set model(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set model(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: pointer
-  set firmwareInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set firmwareInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -455,11 +455,11 @@ export class MBN_INTERFACE_CAPSView {
  */
 export interface MBN_PROVIDER {
   /** Windows.Win32.Foundation.BSTR */
-  providerID: Uint8Array | Deno.PointerValue | null;
+  providerID: Uint8Array | Deno.PointerValue;
   /** u32 */
   providerState: number;
   /** Windows.Win32.Foundation.BSTR */
-  providerName: Uint8Array | Deno.PointerValue | null;
+  providerName: Uint8Array | Deno.PointerValue;
   /** u32 */
   dataClass: number;
 }
@@ -470,12 +470,12 @@ export function allocMBN_PROVIDER(data?: Partial<MBN_PROVIDER>): Uint8Array {
   const buf = new Uint8Array(sizeofMBN_PROVIDER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.providerID !== undefined) view.setBigUint64(0, data.providerID === null ? 0n : BigInt(util.toPointer(data.providerID)), true);
+  if (data?.providerID !== undefined) view.setBigUint64(0, data.providerID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.providerID))), true);
   // 0x08: u32
   if (data?.providerState !== undefined) view.setUint32(8, Number(data.providerState), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.providerName !== undefined) view.setBigUint64(16, data.providerName === null ? 0n : BigInt(util.toPointer(data.providerName)), true);
+  if (data?.providerName !== undefined) view.setBigUint64(16, data.providerName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.providerName))), true);
   // 0x18: u32
   if (data?.dataClass !== undefined) view.setUint32(24, Number(data.dataClass), true);
   // 0x1c: pad4
@@ -493,9 +493,9 @@ export class MBN_PROVIDERView {
   }
 
   // 0x00: pointer
-  get providerID(): Uint8Array | Deno.PointerValue | null {
+  get providerID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -506,9 +506,9 @@ export class MBN_PROVIDERView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get providerName(): Uint8Array | Deno.PointerValue | null {
+  get providerName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -519,8 +519,8 @@ export class MBN_PROVIDERView {
   // 0x1c: pad4
 
   // 0x00: pointer
-  set providerID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set providerID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -531,8 +531,8 @@ export class MBN_PROVIDERView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set providerName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set providerName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -548,7 +548,7 @@ export class MBN_PROVIDERView {
  */
 export interface MBN_PROVIDER2 {
   /** Windows.Win32.NetworkManagement.MobileBroadband.MBN_PROVIDER */
-  provider: Uint8Array | Deno.PointerValue | null;
+  provider: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.MobileBroadband.MBN_CELLULAR_CLASS */
   cellularClass: MBN_CELLULAR_CLASS;
   /** u32 */
@@ -563,7 +563,7 @@ export function allocMBN_PROVIDER2(data?: Partial<MBN_PROVIDER2>): Uint8Array {
   const buf = new Uint8Array(sizeofMBN_PROVIDER2);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.provider !== undefined) view.setBigUint64(0, data.provider === null ? 0n : BigInt(util.toPointer(data.provider)), true);
+  if (data?.provider !== undefined) view.setBigUint64(0, data.provider === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.provider))), true);
   // 0x08: i32
   if (data?.cellularClass !== undefined) view.setInt32(8, Number(data.cellularClass), true);
   // 0x0c: u32
@@ -585,9 +585,9 @@ export class MBN_PROVIDER2View {
   }
 
   // 0x00: pointer
-  get provider(): Uint8Array | Deno.PointerValue | null {
+  get provider(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: i32
@@ -608,8 +608,8 @@ export class MBN_PROVIDER2View {
   // 0x14: pad4
 
   // 0x00: pointer
-  set provider(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set provider(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: i32
@@ -711,11 +711,11 @@ export interface MBN_CONTEXT {
   /** Windows.Win32.NetworkManagement.MobileBroadband.MBN_CONTEXT_TYPE */
   contextType: MBN_CONTEXT_TYPE;
   /** Windows.Win32.Foundation.BSTR */
-  accessString: Uint8Array | Deno.PointerValue | null;
+  accessString: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BSTR */
-  userName: Uint8Array | Deno.PointerValue | null;
+  userName: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BSTR */
-  password: Uint8Array | Deno.PointerValue | null;
+  password: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.MobileBroadband.MBN_COMPRESSION */
   compression: MBN_COMPRESSION;
   /** Windows.Win32.NetworkManagement.MobileBroadband.MBN_AUTH_PROTOCOL */
@@ -732,11 +732,11 @@ export function allocMBN_CONTEXT(data?: Partial<MBN_CONTEXT>): Uint8Array {
   // 0x04: i32
   if (data?.contextType !== undefined) view.setInt32(4, Number(data.contextType), true);
   // 0x08: pointer
-  if (data?.accessString !== undefined) view.setBigUint64(8, data.accessString === null ? 0n : BigInt(util.toPointer(data.accessString)), true);
+  if (data?.accessString !== undefined) view.setBigUint64(8, data.accessString === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.accessString))), true);
   // 0x10: pointer
-  if (data?.userName !== undefined) view.setBigUint64(16, data.userName === null ? 0n : BigInt(util.toPointer(data.userName)), true);
+  if (data?.userName !== undefined) view.setBigUint64(16, data.userName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.userName))), true);
   // 0x18: pointer
-  if (data?.password !== undefined) view.setBigUint64(24, data.password === null ? 0n : BigInt(util.toPointer(data.password)), true);
+  if (data?.password !== undefined) view.setBigUint64(24, data.password === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.password))), true);
   // 0x20: i32
   if (data?.compression !== undefined) view.setInt32(32, Number(data.compression), true);
   // 0x24: i32
@@ -765,21 +765,21 @@ export class MBN_CONTEXTView {
   }
 
   // 0x08: pointer
-  get accessString(): Uint8Array | Deno.PointerValue | null {
+  get accessString(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get userName(): Uint8Array | Deno.PointerValue | null {
+  get userName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get password(): Uint8Array | Deno.PointerValue | null {
+  get password(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: i32
@@ -803,18 +803,18 @@ export class MBN_CONTEXTView {
   }
 
   // 0x08: pointer
-  set accessString(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set accessString(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set userName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set userName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set password(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set password(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: i32
@@ -939,7 +939,7 @@ export class MBN_SMS_STATUS_INFOView {
  */
 export interface MBN_DEVICE_SERVICE {
   /** Windows.Win32.Foundation.BSTR */
-  deviceServiceID: Uint8Array | Deno.PointerValue | null;
+  deviceServiceID: Uint8Array | Deno.PointerValue;
   /** i16 */
   dataWriteSupported: number;
   /** i16 */
@@ -952,7 +952,7 @@ export function allocMBN_DEVICE_SERVICE(data?: Partial<MBN_DEVICE_SERVICE>): Uin
   const buf = new Uint8Array(sizeofMBN_DEVICE_SERVICE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.deviceServiceID !== undefined) view.setBigUint64(0, data.deviceServiceID === null ? 0n : BigInt(util.toPointer(data.deviceServiceID)), true);
+  if (data?.deviceServiceID !== undefined) view.setBigUint64(0, data.deviceServiceID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.deviceServiceID))), true);
   // 0x08: i16
   if (data?.dataWriteSupported !== undefined) view.setInt16(8, Number(data.dataWriteSupported), true);
   // 0x0a: i16
@@ -972,9 +972,9 @@ export class MBN_DEVICE_SERVICEView {
   }
 
   // 0x00: pointer
-  get deviceServiceID(): Uint8Array | Deno.PointerValue | null {
+  get deviceServiceID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: i16
@@ -990,8 +990,8 @@ export class MBN_DEVICE_SERVICEView {
   // 0x0c: pad4
 
   // 0x00: pointer
-  set deviceServiceID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set deviceServiceID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: i16

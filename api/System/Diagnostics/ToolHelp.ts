@@ -123,7 +123,7 @@ export interface HEAPENTRY32 {
   /** usize */
   dwSize: Deno.PointerValue;
   /** Windows.Win32.Foundation.HANDLE */
-  hHandle: Uint8Array | Deno.PointerValue | null;
+  hHandle: Uint8Array | Deno.PointerValue;
   /** usize */
   dwAddress: Deno.PointerValue;
   /** usize */
@@ -148,7 +148,7 @@ export function allocHEAPENTRY32(data?: Partial<HEAPENTRY32>): Uint8Array {
   // 0x00: usize
   if (data?.dwSize !== undefined) view.setBigUint64(0, BigInt(data.dwSize), true);
   // 0x08: pointer
-  if (data?.hHandle !== undefined) view.setBigUint64(8, data.hHandle === null ? 0n : BigInt(util.toPointer(data.hHandle)), true);
+  if (data?.hHandle !== undefined) view.setBigUint64(8, data.hHandle === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hHandle))), true);
   // 0x10: usize
   if (data?.dwAddress !== undefined) view.setBigUint64(16, BigInt(data.dwAddress), true);
   // 0x18: usize
@@ -182,9 +182,9 @@ export class HEAPENTRY32View {
   }
 
   // 0x08: pointer
-  get hHandle(): Uint8Array | Deno.PointerValue | null {
+  get hHandle(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: usize
@@ -228,8 +228,8 @@ export class HEAPENTRY32View {
   }
 
   // 0x08: pointer
-  set hHandle(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set hHandle(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: usize
@@ -291,7 +291,7 @@ export interface PROCESSENTRY32W {
   /** u32 */
   dwFlags: number;
   /** array */
-  szExeFile: Deno.PointerValue | null;
+  szExeFile: Deno.PointerValue;
 }
 
 export const sizeofPROCESSENTRY32W = 56;
@@ -320,7 +320,7 @@ export function allocPROCESSENTRY32W(data?: Partial<PROCESSENTRY32W>): Uint8Arra
   if (data?.dwFlags !== undefined) view.setUint32(40, Number(data.dwFlags), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.szExeFile !== undefined) view.setBigUint64(48, data.szExeFile === null ? 0n : BigInt(util.toPointer(data.szExeFile)), true);
+  if (data?.szExeFile !== undefined) view.setBigUint64(48, data.szExeFile === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.szExeFile))), true);
   return buf;
 }
 
@@ -384,9 +384,9 @@ export class PROCESSENTRY32WView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  get szExeFile(): Uint8Array | Deno.PointerValue | null {
+  get szExeFile(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -439,8 +439,8 @@ export class PROCESSENTRY32WView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  set szExeFile(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set szExeFile(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -467,7 +467,7 @@ export interface PROCESSENTRY32 {
   /** u32 */
   dwFlags: number;
   /** array */
-  szExeFile: Deno.PointerValue | null;
+  szExeFile: Deno.PointerValue;
 }
 
 export const sizeofPROCESSENTRY32 = 56;
@@ -496,7 +496,7 @@ export function allocPROCESSENTRY32(data?: Partial<PROCESSENTRY32>): Uint8Array 
   if (data?.dwFlags !== undefined) view.setUint32(40, Number(data.dwFlags), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.szExeFile !== undefined) view.setBigUint64(48, data.szExeFile === null ? 0n : BigInt(util.toPointer(data.szExeFile)), true);
+  if (data?.szExeFile !== undefined) view.setBigUint64(48, data.szExeFile === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.szExeFile))), true);
   return buf;
 }
 
@@ -560,9 +560,9 @@ export class PROCESSENTRY32View {
   // 0x2c: pad4
 
   // 0x30: pointer
-  get szExeFile(): Uint8Array | Deno.PointerValue | null {
+  get szExeFile(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -615,8 +615,8 @@ export class PROCESSENTRY32View {
   // 0x2c: pad4
 
   // 0x30: pointer
-  set szExeFile(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set szExeFile(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -765,15 +765,15 @@ export interface MODULEENTRY32W {
   /** u32 */
   ProccntUsage: number;
   /** ptr */
-  modBaseAddr: Deno.PointerValue | Uint8Array | null;
+  modBaseAddr: Deno.PointerValue | Uint8Array;
   /** u32 */
   modBaseSize: number;
   /** Windows.Win32.Foundation.HINSTANCE */
-  hModule: Uint8Array | Deno.PointerValue | null;
+  hModule: Uint8Array | Deno.PointerValue;
   /** array */
-  szModule: Deno.PointerValue | null;
+  szModule: Deno.PointerValue;
   /** array */
-  szExePath: Deno.PointerValue | null;
+  szExePath: Deno.PointerValue;
 }
 
 export const sizeofMODULEENTRY32W = 64;
@@ -793,16 +793,16 @@ export function allocMODULEENTRY32W(data?: Partial<MODULEENTRY32W>): Uint8Array 
   if (data?.ProccntUsage !== undefined) view.setUint32(16, Number(data.ProccntUsage), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.modBaseAddr !== undefined) view.setBigUint64(24, data.modBaseAddr === null ? 0n : BigInt(util.toPointer(data.modBaseAddr)), true);
+  if (data?.modBaseAddr !== undefined) view.setBigUint64(24, data.modBaseAddr === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.modBaseAddr))), true);
   // 0x20: u32
   if (data?.modBaseSize !== undefined) view.setUint32(32, Number(data.modBaseSize), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.hModule !== undefined) view.setBigUint64(40, data.hModule === null ? 0n : BigInt(util.toPointer(data.hModule)), true);
+  if (data?.hModule !== undefined) view.setBigUint64(40, data.hModule === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hModule))), true);
   // 0x30: pointer
-  if (data?.szModule !== undefined) view.setBigUint64(48, data.szModule === null ? 0n : BigInt(util.toPointer(data.szModule)), true);
+  if (data?.szModule !== undefined) view.setBigUint64(48, data.szModule === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.szModule))), true);
   // 0x38: pointer
-  if (data?.szExePath !== undefined) view.setBigUint64(56, data.szExePath === null ? 0n : BigInt(util.toPointer(data.szExePath)), true);
+  if (data?.szExePath !== undefined) view.setBigUint64(56, data.szExePath === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.szExePath))), true);
   return buf;
 }
 
@@ -844,9 +844,9 @@ export class MODULEENTRY32WView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get modBaseAddr(): Uint8Array | Deno.PointerValue | null {
+  get modBaseAddr(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -857,21 +857,21 @@ export class MODULEENTRY32WView {
   // 0x24: pad4
 
   // 0x28: pointer
-  get hModule(): Uint8Array | Deno.PointerValue | null {
+  get hModule(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get szModule(): Uint8Array | Deno.PointerValue | null {
+  get szModule(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get szExePath(): Uint8Array | Deno.PointerValue | null {
+  get szExePath(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -902,8 +902,8 @@ export class MODULEENTRY32WView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set modBaseAddr(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set modBaseAddr(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -914,18 +914,18 @@ export class MODULEENTRY32WView {
   // 0x24: pad4
 
   // 0x28: pointer
-  set hModule(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set hModule(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set szModule(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set szModule(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set szExePath(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set szExePath(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -944,15 +944,15 @@ export interface MODULEENTRY32 {
   /** u32 */
   ProccntUsage: number;
   /** ptr */
-  modBaseAddr: Deno.PointerValue | Uint8Array | null;
+  modBaseAddr: Deno.PointerValue | Uint8Array;
   /** u32 */
   modBaseSize: number;
   /** Windows.Win32.Foundation.HINSTANCE */
-  hModule: Uint8Array | Deno.PointerValue | null;
+  hModule: Uint8Array | Deno.PointerValue;
   /** array */
-  szModule: Deno.PointerValue | null;
+  szModule: Deno.PointerValue;
   /** array */
-  szExePath: Deno.PointerValue | null;
+  szExePath: Deno.PointerValue;
 }
 
 export const sizeofMODULEENTRY32 = 64;
@@ -972,16 +972,16 @@ export function allocMODULEENTRY32(data?: Partial<MODULEENTRY32>): Uint8Array {
   if (data?.ProccntUsage !== undefined) view.setUint32(16, Number(data.ProccntUsage), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.modBaseAddr !== undefined) view.setBigUint64(24, data.modBaseAddr === null ? 0n : BigInt(util.toPointer(data.modBaseAddr)), true);
+  if (data?.modBaseAddr !== undefined) view.setBigUint64(24, data.modBaseAddr === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.modBaseAddr))), true);
   // 0x20: u32
   if (data?.modBaseSize !== undefined) view.setUint32(32, Number(data.modBaseSize), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.hModule !== undefined) view.setBigUint64(40, data.hModule === null ? 0n : BigInt(util.toPointer(data.hModule)), true);
+  if (data?.hModule !== undefined) view.setBigUint64(40, data.hModule === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hModule))), true);
   // 0x30: pointer
-  if (data?.szModule !== undefined) view.setBigUint64(48, data.szModule === null ? 0n : BigInt(util.toPointer(data.szModule)), true);
+  if (data?.szModule !== undefined) view.setBigUint64(48, data.szModule === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.szModule))), true);
   // 0x38: pointer
-  if (data?.szExePath !== undefined) view.setBigUint64(56, data.szExePath === null ? 0n : BigInt(util.toPointer(data.szExePath)), true);
+  if (data?.szExePath !== undefined) view.setBigUint64(56, data.szExePath === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.szExePath))), true);
   return buf;
 }
 
@@ -1023,9 +1023,9 @@ export class MODULEENTRY32View {
   // 0x14: pad4
 
   // 0x18: pointer
-  get modBaseAddr(): Uint8Array | Deno.PointerValue | null {
+  get modBaseAddr(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -1036,21 +1036,21 @@ export class MODULEENTRY32View {
   // 0x24: pad4
 
   // 0x28: pointer
-  get hModule(): Uint8Array | Deno.PointerValue | null {
+  get hModule(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get szModule(): Uint8Array | Deno.PointerValue | null {
+  get szModule(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get szExePath(): Uint8Array | Deno.PointerValue | null {
+  get szExePath(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1081,8 +1081,8 @@ export class MODULEENTRY32View {
   // 0x14: pad4
 
   // 0x18: pointer
-  set modBaseAddr(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set modBaseAddr(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -1093,18 +1093,18 @@ export class MODULEENTRY32View {
   // 0x24: pad4
 
   // 0x28: pointer
-  set hModule(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set hModule(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set szModule(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set szModule(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set szExePath(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set szExePath(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1186,26 +1186,26 @@ try {
 export function CreateToolhelp32Snapshot(
   dwFlags: CREATE_TOOLHELP_SNAPSHOT_FLAGS /* Windows.Win32.System.Diagnostics.ToolHelp.CREATE_TOOLHELP_SNAPSHOT_FLAGS */,
   th32ProcessID: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libKERNEL32_dll.CreateToolhelp32Snapshot(dwFlags, th32ProcessID));
+): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
+  return libKERNEL32_dll.CreateToolhelp32Snapshot(dwFlags, th32ProcessID);
 }
 
 export function Heap32ListFirst(
-  hSnapshot: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lphl: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hSnapshot: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lphl: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.Heap32ListFirst(util.toPointer(hSnapshot), util.toPointer(lphl)));
 }
 
 export function Heap32ListNext(
-  hSnapshot: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lphl: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hSnapshot: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lphl: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.Heap32ListNext(util.toPointer(hSnapshot), util.toPointer(lphl)));
 }
 
 export function Heap32First(
-  lphe: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lphe: Deno.PointerValue | Uint8Array /* ptr */,
   th32ProcessID: number /* u32 */,
   th32HeapID: Deno.PointerValue /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -1213,87 +1213,87 @@ export function Heap32First(
 }
 
 export function Heap32Next(
-  lphe: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lphe: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.Heap32Next(util.toPointer(lphe)));
 }
 
 export function Toolhelp32ReadProcessMemory(
   th32ProcessID: number /* u32 */,
-  lpBaseAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpBaseAddress: Deno.PointerValue | Uint8Array /* ptr */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   cbRead: Deno.PointerValue /* usize */,
-  lpNumberOfBytesRead: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpNumberOfBytesRead: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.Toolhelp32ReadProcessMemory(th32ProcessID, util.toPointer(lpBaseAddress), util.toPointer(lpBuffer), cbRead, util.toPointer(lpNumberOfBytesRead)));
 }
 
 export function Process32FirstW(
-  hSnapshot: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lppe: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hSnapshot: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lppe: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.Process32FirstW(util.toPointer(hSnapshot), util.toPointer(lppe)));
 }
 
 export function Process32NextW(
-  hSnapshot: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lppe: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hSnapshot: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lppe: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.Process32NextW(util.toPointer(hSnapshot), util.toPointer(lppe)));
 }
 
 export function Process32First(
-  hSnapshot: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lppe: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hSnapshot: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lppe: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.Process32First(util.toPointer(hSnapshot), util.toPointer(lppe)));
 }
 
 export function Process32Next(
-  hSnapshot: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lppe: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hSnapshot: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lppe: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.Process32Next(util.toPointer(hSnapshot), util.toPointer(lppe)));
 }
 
 export function Thread32First(
-  hSnapshot: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpte: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hSnapshot: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpte: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.Thread32First(util.toPointer(hSnapshot), util.toPointer(lpte)));
 }
 
 export function Thread32Next(
-  hSnapshot: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpte: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hSnapshot: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpte: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.Thread32Next(util.toPointer(hSnapshot), util.toPointer(lpte)));
 }
 
 export function Module32FirstW(
-  hSnapshot: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpme: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hSnapshot: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpme: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.Module32FirstW(util.toPointer(hSnapshot), util.toPointer(lpme)));
 }
 
 export function Module32NextW(
-  hSnapshot: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpme: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hSnapshot: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpme: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.Module32NextW(util.toPointer(hSnapshot), util.toPointer(lpme)));
 }
 
 export function Module32First(
-  hSnapshot: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpme: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hSnapshot: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpme: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.Module32First(util.toPointer(hSnapshot), util.toPointer(lpme)));
 }
 
 export function Module32Next(
-  hSnapshot: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpme: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hSnapshot: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpme: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.Module32Next(util.toPointer(hSnapshot), util.toPointer(lpme)));
 }

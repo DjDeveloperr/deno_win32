@@ -394,11 +394,11 @@ export class CIEXYZView {
  */
 export interface CIEXYZTRIPLE {
   /** Windows.Win32.Graphics.Gdi.CIEXYZ */
-  ciexyzRed: Uint8Array | Deno.PointerValue | null;
+  ciexyzRed: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Gdi.CIEXYZ */
-  ciexyzGreen: Uint8Array | Deno.PointerValue | null;
+  ciexyzGreen: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Gdi.CIEXYZ */
-  ciexyzBlue: Uint8Array | Deno.PointerValue | null;
+  ciexyzBlue: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofCIEXYZTRIPLE = 24;
@@ -407,11 +407,11 @@ export function allocCIEXYZTRIPLE(data?: Partial<CIEXYZTRIPLE>): Uint8Array {
   const buf = new Uint8Array(sizeofCIEXYZTRIPLE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ciexyzRed !== undefined) view.setBigUint64(0, data.ciexyzRed === null ? 0n : BigInt(util.toPointer(data.ciexyzRed)), true);
+  if (data?.ciexyzRed !== undefined) view.setBigUint64(0, data.ciexyzRed === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ciexyzRed))), true);
   // 0x08: pointer
-  if (data?.ciexyzGreen !== undefined) view.setBigUint64(8, data.ciexyzGreen === null ? 0n : BigInt(util.toPointer(data.ciexyzGreen)), true);
+  if (data?.ciexyzGreen !== undefined) view.setBigUint64(8, data.ciexyzGreen === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ciexyzGreen))), true);
   // 0x10: pointer
-  if (data?.ciexyzBlue !== undefined) view.setBigUint64(16, data.ciexyzBlue === null ? 0n : BigInt(util.toPointer(data.ciexyzBlue)), true);
+  if (data?.ciexyzBlue !== undefined) view.setBigUint64(16, data.ciexyzBlue === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ciexyzBlue))), true);
   return buf;
 }
 
@@ -426,36 +426,36 @@ export class CIEXYZTRIPLEView {
   }
 
   // 0x00: pointer
-  get ciexyzRed(): Uint8Array | Deno.PointerValue | null {
+  get ciexyzRed(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get ciexyzGreen(): Uint8Array | Deno.PointerValue | null {
+  get ciexyzGreen(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ciexyzBlue(): Uint8Array | Deno.PointerValue | null {
+  get ciexyzBlue(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ciexyzRed(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ciexyzRed(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set ciexyzGreen(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ciexyzGreen(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ciexyzBlue(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ciexyzBlue(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -474,7 +474,7 @@ export interface LOGCOLORSPACEA {
   /** i32 */
   lcsIntent: number;
   /** Windows.Win32.Graphics.Gdi.CIEXYZTRIPLE */
-  lcsEndpoints: Uint8Array | Deno.PointerValue | null;
+  lcsEndpoints: Uint8Array | Deno.PointerValue;
   /** u32 */
   lcsGammaRed: number;
   /** u32 */
@@ -482,7 +482,7 @@ export interface LOGCOLORSPACEA {
   /** u32 */
   lcsGammaBlue: number;
   /** array */
-  lcsFilename: Deno.PointerValue | null;
+  lcsFilename: Deno.PointerValue;
 }
 
 export const sizeofLOGCOLORSPACEA = 56;
@@ -502,7 +502,7 @@ export function allocLOGCOLORSPACEA(data?: Partial<LOGCOLORSPACEA>): Uint8Array 
   if (data?.lcsIntent !== undefined) view.setInt32(16, Number(data.lcsIntent), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.lcsEndpoints !== undefined) view.setBigUint64(24, data.lcsEndpoints === null ? 0n : BigInt(util.toPointer(data.lcsEndpoints)), true);
+  if (data?.lcsEndpoints !== undefined) view.setBigUint64(24, data.lcsEndpoints === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lcsEndpoints))), true);
   // 0x20: u32
   if (data?.lcsGammaRed !== undefined) view.setUint32(32, Number(data.lcsGammaRed), true);
   // 0x24: u32
@@ -511,7 +511,7 @@ export function allocLOGCOLORSPACEA(data?: Partial<LOGCOLORSPACEA>): Uint8Array 
   if (data?.lcsGammaBlue !== undefined) view.setUint32(40, Number(data.lcsGammaBlue), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.lcsFilename !== undefined) view.setBigUint64(48, data.lcsFilename === null ? 0n : BigInt(util.toPointer(data.lcsFilename)), true);
+  if (data?.lcsFilename !== undefined) view.setBigUint64(48, data.lcsFilename === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lcsFilename))), true);
   return buf;
 }
 
@@ -553,9 +553,9 @@ export class LOGCOLORSPACEAView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get lcsEndpoints(): Uint8Array | Deno.PointerValue | null {
+  get lcsEndpoints(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -576,9 +576,9 @@ export class LOGCOLORSPACEAView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  get lcsFilename(): Uint8Array | Deno.PointerValue | null {
+  get lcsFilename(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -609,8 +609,8 @@ export class LOGCOLORSPACEAView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set lcsEndpoints(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set lcsEndpoints(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -631,8 +631,8 @@ export class LOGCOLORSPACEAView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  set lcsFilename(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set lcsFilename(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -651,7 +651,7 @@ export interface LOGCOLORSPACEW {
   /** i32 */
   lcsIntent: number;
   /** Windows.Win32.Graphics.Gdi.CIEXYZTRIPLE */
-  lcsEndpoints: Uint8Array | Deno.PointerValue | null;
+  lcsEndpoints: Uint8Array | Deno.PointerValue;
   /** u32 */
   lcsGammaRed: number;
   /** u32 */
@@ -659,7 +659,7 @@ export interface LOGCOLORSPACEW {
   /** u32 */
   lcsGammaBlue: number;
   /** array */
-  lcsFilename: Deno.PointerValue | null;
+  lcsFilename: Deno.PointerValue;
 }
 
 export const sizeofLOGCOLORSPACEW = 56;
@@ -679,7 +679,7 @@ export function allocLOGCOLORSPACEW(data?: Partial<LOGCOLORSPACEW>): Uint8Array 
   if (data?.lcsIntent !== undefined) view.setInt32(16, Number(data.lcsIntent), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.lcsEndpoints !== undefined) view.setBigUint64(24, data.lcsEndpoints === null ? 0n : BigInt(util.toPointer(data.lcsEndpoints)), true);
+  if (data?.lcsEndpoints !== undefined) view.setBigUint64(24, data.lcsEndpoints === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lcsEndpoints))), true);
   // 0x20: u32
   if (data?.lcsGammaRed !== undefined) view.setUint32(32, Number(data.lcsGammaRed), true);
   // 0x24: u32
@@ -688,7 +688,7 @@ export function allocLOGCOLORSPACEW(data?: Partial<LOGCOLORSPACEW>): Uint8Array 
   if (data?.lcsGammaBlue !== undefined) view.setUint32(40, Number(data.lcsGammaBlue), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.lcsFilename !== undefined) view.setBigUint64(48, data.lcsFilename === null ? 0n : BigInt(util.toPointer(data.lcsFilename)), true);
+  if (data?.lcsFilename !== undefined) view.setBigUint64(48, data.lcsFilename === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lcsFilename))), true);
   return buf;
 }
 
@@ -730,9 +730,9 @@ export class LOGCOLORSPACEWView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get lcsEndpoints(): Uint8Array | Deno.PointerValue | null {
+  get lcsEndpoints(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -753,9 +753,9 @@ export class LOGCOLORSPACEWView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  get lcsFilename(): Uint8Array | Deno.PointerValue | null {
+  get lcsFilename(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -786,8 +786,8 @@ export class LOGCOLORSPACEWView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set lcsEndpoints(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set lcsEndpoints(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -808,8 +808,8 @@ export class LOGCOLORSPACEWView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  set lcsFilename(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set lcsFilename(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -871,11 +871,11 @@ export class EMRView {
  */
 export interface EMRCREATECOLORSPACE {
   /** Windows.Win32.Graphics.Gdi.EMR */
-  emr: Uint8Array | Deno.PointerValue | null;
+  emr: Uint8Array | Deno.PointerValue;
   /** u32 */
   ihCS: number;
   /** Windows.Win32.UI.ColorSystem.LOGCOLORSPACEA */
-  lcs: Uint8Array | Deno.PointerValue | null;
+  lcs: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofEMRCREATECOLORSPACE = 24;
@@ -884,12 +884,12 @@ export function allocEMRCREATECOLORSPACE(data?: Partial<EMRCREATECOLORSPACE>): U
   const buf = new Uint8Array(sizeofEMRCREATECOLORSPACE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.emr !== undefined) view.setBigUint64(0, data.emr === null ? 0n : BigInt(util.toPointer(data.emr)), true);
+  if (data?.emr !== undefined) view.setBigUint64(0, data.emr === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.emr))), true);
   // 0x08: u32
   if (data?.ihCS !== undefined) view.setUint32(8, Number(data.ihCS), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.lcs !== undefined) view.setBigUint64(16, data.lcs === null ? 0n : BigInt(util.toPointer(data.lcs)), true);
+  if (data?.lcs !== undefined) view.setBigUint64(16, data.lcs === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lcs))), true);
   return buf;
 }
 
@@ -904,9 +904,9 @@ export class EMRCREATECOLORSPACEView {
   }
 
   // 0x00: pointer
-  get emr(): Uint8Array | Deno.PointerValue | null {
+  get emr(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -917,14 +917,14 @@ export class EMRCREATECOLORSPACEView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get lcs(): Uint8Array | Deno.PointerValue | null {
+  get lcs(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set emr(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set emr(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -935,8 +935,8 @@ export class EMRCREATECOLORSPACEView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set lcs(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set lcs(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -945,17 +945,17 @@ export class EMRCREATECOLORSPACEView {
  */
 export interface EMRCREATECOLORSPACEW {
   /** Windows.Win32.Graphics.Gdi.EMR */
-  emr: Uint8Array | Deno.PointerValue | null;
+  emr: Uint8Array | Deno.PointerValue;
   /** u32 */
   ihCS: number;
   /** Windows.Win32.UI.ColorSystem.LOGCOLORSPACEW */
-  lcs: Uint8Array | Deno.PointerValue | null;
+  lcs: Uint8Array | Deno.PointerValue;
   /** u32 */
   dwFlags: number;
   /** u32 */
   cbData: number;
   /** array */
-  Data: Deno.PointerValue | null;
+  Data: Deno.PointerValue;
 }
 
 export const sizeofEMRCREATECOLORSPACEW = 40;
@@ -964,18 +964,18 @@ export function allocEMRCREATECOLORSPACEW(data?: Partial<EMRCREATECOLORSPACEW>):
   const buf = new Uint8Array(sizeofEMRCREATECOLORSPACEW);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.emr !== undefined) view.setBigUint64(0, data.emr === null ? 0n : BigInt(util.toPointer(data.emr)), true);
+  if (data?.emr !== undefined) view.setBigUint64(0, data.emr === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.emr))), true);
   // 0x08: u32
   if (data?.ihCS !== undefined) view.setUint32(8, Number(data.ihCS), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.lcs !== undefined) view.setBigUint64(16, data.lcs === null ? 0n : BigInt(util.toPointer(data.lcs)), true);
+  if (data?.lcs !== undefined) view.setBigUint64(16, data.lcs === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lcs))), true);
   // 0x18: u32
   if (data?.dwFlags !== undefined) view.setUint32(24, Number(data.dwFlags), true);
   // 0x1c: u32
   if (data?.cbData !== undefined) view.setUint32(28, Number(data.cbData), true);
   // 0x20: pointer
-  if (data?.Data !== undefined) view.setBigUint64(32, data.Data === null ? 0n : BigInt(util.toPointer(data.Data)), true);
+  if (data?.Data !== undefined) view.setBigUint64(32, data.Data === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Data))), true);
   return buf;
 }
 
@@ -990,9 +990,9 @@ export class EMRCREATECOLORSPACEWView {
   }
 
   // 0x00: pointer
-  get emr(): Uint8Array | Deno.PointerValue | null {
+  get emr(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -1003,9 +1003,9 @@ export class EMRCREATECOLORSPACEWView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get lcs(): Uint8Array | Deno.PointerValue | null {
+  get lcs(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -1019,14 +1019,14 @@ export class EMRCREATECOLORSPACEWView {
   }
 
   // 0x20: pointer
-  get Data(): Uint8Array | Deno.PointerValue | null {
+  get Data(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set emr(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set emr(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -1037,8 +1037,8 @@ export class EMRCREATECOLORSPACEWView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set lcs(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set lcs(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -1052,8 +1052,8 @@ export class EMRCREATECOLORSPACEWView {
   }
 
   // 0x20: pointer
-  set Data(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set Data(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1278,7 +1278,7 @@ export class JabColorFView {
  */
 export interface GamutShellTriangle {
   /** array */
-  aVertexIndex: Deno.PointerValue | null;
+  aVertexIndex: Deno.PointerValue;
 }
 
 export const sizeofGamutShellTriangle = 8;
@@ -1287,7 +1287,7 @@ export function allocGamutShellTriangle(data?: Partial<GamutShellTriangle>): Uin
   const buf = new Uint8Array(sizeofGamutShellTriangle);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.aVertexIndex !== undefined) view.setBigUint64(0, data.aVertexIndex === null ? 0n : BigInt(util.toPointer(data.aVertexIndex)), true);
+  if (data?.aVertexIndex !== undefined) view.setBigUint64(0, data.aVertexIndex === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.aVertexIndex))), true);
   return buf;
 }
 
@@ -1302,14 +1302,14 @@ export class GamutShellTriangleView {
   }
 
   // 0x00: pointer
-  get aVertexIndex(): Uint8Array | Deno.PointerValue | null {
+  get aVertexIndex(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set aVertexIndex(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set aVertexIndex(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1326,9 +1326,9 @@ export interface GamutShell {
   /** u32 */
   cTriangles: number;
   /** ptr */
-  pVertices: Deno.PointerValue | Uint8Array | null;
+  pVertices: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pTriangles: Deno.PointerValue | Uint8Array | null;
+  pTriangles: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofGamutShell = 32;
@@ -1345,9 +1345,9 @@ export function allocGamutShell(data?: Partial<GamutShell>): Uint8Array {
   // 0x0c: u32
   if (data?.cTriangles !== undefined) view.setUint32(12, Number(data.cTriangles), true);
   // 0x10: pointer
-  if (data?.pVertices !== undefined) view.setBigUint64(16, data.pVertices === null ? 0n : BigInt(util.toPointer(data.pVertices)), true);
+  if (data?.pVertices !== undefined) view.setBigUint64(16, data.pVertices === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pVertices))), true);
   // 0x18: pointer
-  if (data?.pTriangles !== undefined) view.setBigUint64(24, data.pTriangles === null ? 0n : BigInt(util.toPointer(data.pTriangles)), true);
+  if (data?.pTriangles !== undefined) view.setBigUint64(24, data.pTriangles === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pTriangles))), true);
   return buf;
 }
 
@@ -1382,15 +1382,15 @@ export class GamutShellView {
   }
 
   // 0x10: pointer
-  get pVertices(): Uint8Array | Deno.PointerValue | null {
+  get pVertices(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get pTriangles(): Uint8Array | Deno.PointerValue | null {
+  get pTriangles(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: f32
@@ -1414,13 +1414,13 @@ export class GamutShellView {
   }
 
   // 0x10: pointer
-  set pVertices(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pVertices(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set pTriangles(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set pTriangles(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1429,21 +1429,21 @@ export class GamutShellView {
  */
 export interface PrimaryJabColors {
   /** Windows.Win32.UI.ColorSystem.JabColorF */
-  red: Uint8Array | Deno.PointerValue | null;
+  red: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.ColorSystem.JabColorF */
-  yellow: Uint8Array | Deno.PointerValue | null;
+  yellow: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.ColorSystem.JabColorF */
-  green: Uint8Array | Deno.PointerValue | null;
+  green: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.ColorSystem.JabColorF */
-  cyan: Uint8Array | Deno.PointerValue | null;
+  cyan: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.ColorSystem.JabColorF */
-  blue: Uint8Array | Deno.PointerValue | null;
+  blue: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.ColorSystem.JabColorF */
-  magenta: Uint8Array | Deno.PointerValue | null;
+  magenta: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.ColorSystem.JabColorF */
-  black: Uint8Array | Deno.PointerValue | null;
+  black: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.ColorSystem.JabColorF */
-  white: Uint8Array | Deno.PointerValue | null;
+  white: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofPrimaryJabColors = 64;
@@ -1452,21 +1452,21 @@ export function allocPrimaryJabColors(data?: Partial<PrimaryJabColors>): Uint8Ar
   const buf = new Uint8Array(sizeofPrimaryJabColors);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.red !== undefined) view.setBigUint64(0, data.red === null ? 0n : BigInt(util.toPointer(data.red)), true);
+  if (data?.red !== undefined) view.setBigUint64(0, data.red === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.red))), true);
   // 0x08: pointer
-  if (data?.yellow !== undefined) view.setBigUint64(8, data.yellow === null ? 0n : BigInt(util.toPointer(data.yellow)), true);
+  if (data?.yellow !== undefined) view.setBigUint64(8, data.yellow === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.yellow))), true);
   // 0x10: pointer
-  if (data?.green !== undefined) view.setBigUint64(16, data.green === null ? 0n : BigInt(util.toPointer(data.green)), true);
+  if (data?.green !== undefined) view.setBigUint64(16, data.green === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.green))), true);
   // 0x18: pointer
-  if (data?.cyan !== undefined) view.setBigUint64(24, data.cyan === null ? 0n : BigInt(util.toPointer(data.cyan)), true);
+  if (data?.cyan !== undefined) view.setBigUint64(24, data.cyan === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.cyan))), true);
   // 0x20: pointer
-  if (data?.blue !== undefined) view.setBigUint64(32, data.blue === null ? 0n : BigInt(util.toPointer(data.blue)), true);
+  if (data?.blue !== undefined) view.setBigUint64(32, data.blue === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.blue))), true);
   // 0x28: pointer
-  if (data?.magenta !== undefined) view.setBigUint64(40, data.magenta === null ? 0n : BigInt(util.toPointer(data.magenta)), true);
+  if (data?.magenta !== undefined) view.setBigUint64(40, data.magenta === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.magenta))), true);
   // 0x30: pointer
-  if (data?.black !== undefined) view.setBigUint64(48, data.black === null ? 0n : BigInt(util.toPointer(data.black)), true);
+  if (data?.black !== undefined) view.setBigUint64(48, data.black === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.black))), true);
   // 0x38: pointer
-  if (data?.white !== undefined) view.setBigUint64(56, data.white === null ? 0n : BigInt(util.toPointer(data.white)), true);
+  if (data?.white !== undefined) view.setBigUint64(56, data.white === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.white))), true);
   return buf;
 }
 
@@ -1481,91 +1481,91 @@ export class PrimaryJabColorsView {
   }
 
   // 0x00: pointer
-  get red(): Uint8Array | Deno.PointerValue | null {
+  get red(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get yellow(): Uint8Array | Deno.PointerValue | null {
+  get yellow(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get green(): Uint8Array | Deno.PointerValue | null {
+  get green(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get cyan(): Uint8Array | Deno.PointerValue | null {
+  get cyan(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get blue(): Uint8Array | Deno.PointerValue | null {
+  get blue(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get magenta(): Uint8Array | Deno.PointerValue | null {
+  get magenta(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get black(): Uint8Array | Deno.PointerValue | null {
+  get black(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get white(): Uint8Array | Deno.PointerValue | null {
+  get white(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set red(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set red(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set yellow(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set yellow(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set green(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set green(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set cyan(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set cyan(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set blue(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set blue(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set magenta(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set magenta(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set black(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set black(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set white(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set white(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1574,21 +1574,21 @@ export class PrimaryJabColorsView {
  */
 export interface PrimaryXYZColors {
   /** Windows.Win32.UI.ColorSystem.XYZColorF */
-  red: Uint8Array | Deno.PointerValue | null;
+  red: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.ColorSystem.XYZColorF */
-  yellow: Uint8Array | Deno.PointerValue | null;
+  yellow: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.ColorSystem.XYZColorF */
-  green: Uint8Array | Deno.PointerValue | null;
+  green: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.ColorSystem.XYZColorF */
-  cyan: Uint8Array | Deno.PointerValue | null;
+  cyan: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.ColorSystem.XYZColorF */
-  blue: Uint8Array | Deno.PointerValue | null;
+  blue: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.ColorSystem.XYZColorF */
-  magenta: Uint8Array | Deno.PointerValue | null;
+  magenta: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.ColorSystem.XYZColorF */
-  black: Uint8Array | Deno.PointerValue | null;
+  black: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.ColorSystem.XYZColorF */
-  white: Uint8Array | Deno.PointerValue | null;
+  white: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofPrimaryXYZColors = 64;
@@ -1597,21 +1597,21 @@ export function allocPrimaryXYZColors(data?: Partial<PrimaryXYZColors>): Uint8Ar
   const buf = new Uint8Array(sizeofPrimaryXYZColors);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.red !== undefined) view.setBigUint64(0, data.red === null ? 0n : BigInt(util.toPointer(data.red)), true);
+  if (data?.red !== undefined) view.setBigUint64(0, data.red === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.red))), true);
   // 0x08: pointer
-  if (data?.yellow !== undefined) view.setBigUint64(8, data.yellow === null ? 0n : BigInt(util.toPointer(data.yellow)), true);
+  if (data?.yellow !== undefined) view.setBigUint64(8, data.yellow === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.yellow))), true);
   // 0x10: pointer
-  if (data?.green !== undefined) view.setBigUint64(16, data.green === null ? 0n : BigInt(util.toPointer(data.green)), true);
+  if (data?.green !== undefined) view.setBigUint64(16, data.green === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.green))), true);
   // 0x18: pointer
-  if (data?.cyan !== undefined) view.setBigUint64(24, data.cyan === null ? 0n : BigInt(util.toPointer(data.cyan)), true);
+  if (data?.cyan !== undefined) view.setBigUint64(24, data.cyan === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.cyan))), true);
   // 0x20: pointer
-  if (data?.blue !== undefined) view.setBigUint64(32, data.blue === null ? 0n : BigInt(util.toPointer(data.blue)), true);
+  if (data?.blue !== undefined) view.setBigUint64(32, data.blue === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.blue))), true);
   // 0x28: pointer
-  if (data?.magenta !== undefined) view.setBigUint64(40, data.magenta === null ? 0n : BigInt(util.toPointer(data.magenta)), true);
+  if (data?.magenta !== undefined) view.setBigUint64(40, data.magenta === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.magenta))), true);
   // 0x30: pointer
-  if (data?.black !== undefined) view.setBigUint64(48, data.black === null ? 0n : BigInt(util.toPointer(data.black)), true);
+  if (data?.black !== undefined) view.setBigUint64(48, data.black === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.black))), true);
   // 0x38: pointer
-  if (data?.white !== undefined) view.setBigUint64(56, data.white === null ? 0n : BigInt(util.toPointer(data.white)), true);
+  if (data?.white !== undefined) view.setBigUint64(56, data.white === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.white))), true);
   return buf;
 }
 
@@ -1626,91 +1626,91 @@ export class PrimaryXYZColorsView {
   }
 
   // 0x00: pointer
-  get red(): Uint8Array | Deno.PointerValue | null {
+  get red(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get yellow(): Uint8Array | Deno.PointerValue | null {
+  get yellow(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get green(): Uint8Array | Deno.PointerValue | null {
+  get green(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get cyan(): Uint8Array | Deno.PointerValue | null {
+  get cyan(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get blue(): Uint8Array | Deno.PointerValue | null {
+  get blue(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get magenta(): Uint8Array | Deno.PointerValue | null {
+  get magenta(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get black(): Uint8Array | Deno.PointerValue | null {
+  get black(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get white(): Uint8Array | Deno.PointerValue | null {
+  get white(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set red(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set red(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set yellow(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set yellow(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set green(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set green(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set cyan(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set cyan(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set blue(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set blue(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set magenta(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set magenta(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set black(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set black(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set white(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set white(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1719,17 +1719,17 @@ export class PrimaryXYZColorsView {
  */
 export interface GamutBoundaryDescription {
   /** ptr */
-  pPrimaries: Deno.PointerValue | Uint8Array | null;
+  pPrimaries: Deno.PointerValue | Uint8Array;
   /** u32 */
   cNeutralSamples: number;
   /** ptr */
-  pNeutralSamples: Deno.PointerValue | Uint8Array | null;
+  pNeutralSamples: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pReferenceShell: Deno.PointerValue | Uint8Array | null;
+  pReferenceShell: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pPlausibleShell: Deno.PointerValue | Uint8Array | null;
+  pPlausibleShell: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pPossibleShell: Deno.PointerValue | Uint8Array | null;
+  pPossibleShell: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofGamutBoundaryDescription = 48;
@@ -1738,18 +1738,18 @@ export function allocGamutBoundaryDescription(data?: Partial<GamutBoundaryDescri
   const buf = new Uint8Array(sizeofGamutBoundaryDescription);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pPrimaries !== undefined) view.setBigUint64(0, data.pPrimaries === null ? 0n : BigInt(util.toPointer(data.pPrimaries)), true);
+  if (data?.pPrimaries !== undefined) view.setBigUint64(0, data.pPrimaries === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pPrimaries))), true);
   // 0x08: u32
   if (data?.cNeutralSamples !== undefined) view.setUint32(8, Number(data.cNeutralSamples), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.pNeutralSamples !== undefined) view.setBigUint64(16, data.pNeutralSamples === null ? 0n : BigInt(util.toPointer(data.pNeutralSamples)), true);
+  if (data?.pNeutralSamples !== undefined) view.setBigUint64(16, data.pNeutralSamples === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pNeutralSamples))), true);
   // 0x18: pointer
-  if (data?.pReferenceShell !== undefined) view.setBigUint64(24, data.pReferenceShell === null ? 0n : BigInt(util.toPointer(data.pReferenceShell)), true);
+  if (data?.pReferenceShell !== undefined) view.setBigUint64(24, data.pReferenceShell === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pReferenceShell))), true);
   // 0x20: pointer
-  if (data?.pPlausibleShell !== undefined) view.setBigUint64(32, data.pPlausibleShell === null ? 0n : BigInt(util.toPointer(data.pPlausibleShell)), true);
+  if (data?.pPlausibleShell !== undefined) view.setBigUint64(32, data.pPlausibleShell === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pPlausibleShell))), true);
   // 0x28: pointer
-  if (data?.pPossibleShell !== undefined) view.setBigUint64(40, data.pPossibleShell === null ? 0n : BigInt(util.toPointer(data.pPossibleShell)), true);
+  if (data?.pPossibleShell !== undefined) view.setBigUint64(40, data.pPossibleShell === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pPossibleShell))), true);
   return buf;
 }
 
@@ -1764,9 +1764,9 @@ export class GamutBoundaryDescriptionView {
   }
 
   // 0x00: pointer
-  get pPrimaries(): Uint8Array | Deno.PointerValue | null {
+  get pPrimaries(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -1777,32 +1777,32 @@ export class GamutBoundaryDescriptionView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get pNeutralSamples(): Uint8Array | Deno.PointerValue | null {
+  get pNeutralSamples(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get pReferenceShell(): Uint8Array | Deno.PointerValue | null {
+  get pReferenceShell(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get pPlausibleShell(): Uint8Array | Deno.PointerValue | null {
+  get pPlausibleShell(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get pPossibleShell(): Uint8Array | Deno.PointerValue | null {
+  get pPossibleShell(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set pPrimaries(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pPrimaries(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -1813,23 +1813,23 @@ export class GamutBoundaryDescriptionView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set pNeutralSamples(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pNeutralSamples(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set pReferenceShell(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set pReferenceShell(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set pPlausibleShell(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set pPlausibleShell(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set pPossibleShell(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set pPossibleShell(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1899,9 +1899,9 @@ export interface NAMED_PROFILE_INFO {
   /** u32 */
   dwCountDevCoordinates: number;
   /** array */
-  szPrefix: Deno.PointerValue | null;
+  szPrefix: Deno.PointerValue;
   /** array */
-  szSuffix: Deno.PointerValue | null;
+  szSuffix: Deno.PointerValue;
 }
 
 export const sizeofNAMED_PROFILE_INFO = 32;
@@ -1917,9 +1917,9 @@ export function allocNAMED_PROFILE_INFO(data?: Partial<NAMED_PROFILE_INFO>): Uin
   if (data?.dwCountDevCoordinates !== undefined) view.setUint32(8, Number(data.dwCountDevCoordinates), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.szPrefix !== undefined) view.setBigUint64(16, data.szPrefix === null ? 0n : BigInt(util.toPointer(data.szPrefix)), true);
+  if (data?.szPrefix !== undefined) view.setBigUint64(16, data.szPrefix === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.szPrefix))), true);
   // 0x18: pointer
-  if (data?.szSuffix !== undefined) view.setBigUint64(24, data.szSuffix === null ? 0n : BigInt(util.toPointer(data.szSuffix)), true);
+  if (data?.szSuffix !== undefined) view.setBigUint64(24, data.szSuffix === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.szSuffix))), true);
   return buf;
 }
 
@@ -1951,15 +1951,15 @@ export class NAMED_PROFILE_INFOView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get szPrefix(): Uint8Array | Deno.PointerValue | null {
+  get szPrefix(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get szSuffix(): Uint8Array | Deno.PointerValue | null {
+  get szSuffix(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1980,13 +1980,13 @@ export class NAMED_PROFILE_INFOView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set szPrefix(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set szPrefix(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set szSuffix(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set szSuffix(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2524,7 +2524,7 @@ export class NAMEDCOLORView {
  */
 export interface HiFiCOLOR {
   /** array */
-  channel: Deno.PointerValue | null;
+  channel: Deno.PointerValue;
 }
 
 export const sizeofHiFiCOLOR = 8;
@@ -2533,7 +2533,7 @@ export function allocHiFiCOLOR(data?: Partial<HiFiCOLOR>): Uint8Array {
   const buf = new Uint8Array(sizeofHiFiCOLOR);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.channel !== undefined) view.setBigUint64(0, data.channel === null ? 0n : BigInt(util.toPointer(data.channel)), true);
+  if (data?.channel !== undefined) view.setBigUint64(0, data.channel === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.channel))), true);
   return buf;
 }
 
@@ -2548,14 +2548,14 @@ export class HiFiCOLORView {
   }
 
   // 0x00: pointer
-  get channel(): Uint8Array | Deno.PointerValue | null {
+  get channel(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set channel(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set channel(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2617,25 +2617,25 @@ export class _Anonymous_e__StructView {
  */
 export interface COLOR {
   /** Windows.Win32.UI.ColorSystem.GRAYCOLOR */
-  gray: Uint8Array | Deno.PointerValue | null;
+  gray: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.ColorSystem.RGBCOLOR */
-  rgb: Uint8Array | Deno.PointerValue | null;
+  rgb: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.ColorSystem.CMYKCOLOR */
-  cmyk: Uint8Array | Deno.PointerValue | null;
+  cmyk: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.ColorSystem.XYZCOLOR */
-  XYZ: Uint8Array | Deno.PointerValue | null;
+  XYZ: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.ColorSystem.YxyCOLOR */
-  Yxy: Uint8Array | Deno.PointerValue | null;
+  Yxy: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.ColorSystem.LabCOLOR */
-  Lab: Uint8Array | Deno.PointerValue | null;
+  Lab: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.ColorSystem.GENERIC3CHANNEL */
-  gen3ch: Uint8Array | Deno.PointerValue | null;
+  gen3ch: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.ColorSystem.NAMEDCOLOR */
-  named: Uint8Array | Deno.PointerValue | null;
+  named: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.ColorSystem.HiFiCOLOR */
-  hifi: Uint8Array | Deno.PointerValue | null;
+  hifi: Uint8Array | Deno.PointerValue;
   /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofCOLOR = 80;
@@ -2644,25 +2644,25 @@ export function allocCOLOR(data?: Partial<COLOR>): Uint8Array {
   const buf = new Uint8Array(sizeofCOLOR);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.gray !== undefined) view.setBigUint64(0, data.gray === null ? 0n : BigInt(util.toPointer(data.gray)), true);
+  if (data?.gray !== undefined) view.setBigUint64(0, data.gray === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.gray))), true);
   // 0x08: pointer
-  if (data?.rgb !== undefined) view.setBigUint64(8, data.rgb === null ? 0n : BigInt(util.toPointer(data.rgb)), true);
+  if (data?.rgb !== undefined) view.setBigUint64(8, data.rgb === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgb))), true);
   // 0x10: pointer
-  if (data?.cmyk !== undefined) view.setBigUint64(16, data.cmyk === null ? 0n : BigInt(util.toPointer(data.cmyk)), true);
+  if (data?.cmyk !== undefined) view.setBigUint64(16, data.cmyk === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.cmyk))), true);
   // 0x18: pointer
-  if (data?.XYZ !== undefined) view.setBigUint64(24, data.XYZ === null ? 0n : BigInt(util.toPointer(data.XYZ)), true);
+  if (data?.XYZ !== undefined) view.setBigUint64(24, data.XYZ === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.XYZ))), true);
   // 0x20: pointer
-  if (data?.Yxy !== undefined) view.setBigUint64(32, data.Yxy === null ? 0n : BigInt(util.toPointer(data.Yxy)), true);
+  if (data?.Yxy !== undefined) view.setBigUint64(32, data.Yxy === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Yxy))), true);
   // 0x28: pointer
-  if (data?.Lab !== undefined) view.setBigUint64(40, data.Lab === null ? 0n : BigInt(util.toPointer(data.Lab)), true);
+  if (data?.Lab !== undefined) view.setBigUint64(40, data.Lab === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Lab))), true);
   // 0x30: pointer
-  if (data?.gen3ch !== undefined) view.setBigUint64(48, data.gen3ch === null ? 0n : BigInt(util.toPointer(data.gen3ch)), true);
+  if (data?.gen3ch !== undefined) view.setBigUint64(48, data.gen3ch === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.gen3ch))), true);
   // 0x38: pointer
-  if (data?.named !== undefined) view.setBigUint64(56, data.named === null ? 0n : BigInt(util.toPointer(data.named)), true);
+  if (data?.named !== undefined) view.setBigUint64(56, data.named === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.named))), true);
   // 0x40: pointer
-  if (data?.hifi !== undefined) view.setBigUint64(64, data.hifi === null ? 0n : BigInt(util.toPointer(data.hifi)), true);
+  if (data?.hifi !== undefined) view.setBigUint64(64, data.hifi === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hifi))), true);
   // 0x48: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(72, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(72, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -2677,113 +2677,113 @@ export class COLORView {
   }
 
   // 0x00: pointer
-  get gray(): Uint8Array | Deno.PointerValue | null {
+  get gray(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get rgb(): Uint8Array | Deno.PointerValue | null {
+  get rgb(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get cmyk(): Uint8Array | Deno.PointerValue | null {
+  get cmyk(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get XYZ(): Uint8Array | Deno.PointerValue | null {
+  get XYZ(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get Yxy(): Uint8Array | Deno.PointerValue | null {
+  get Yxy(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get Lab(): Uint8Array | Deno.PointerValue | null {
+  get Lab(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get gen3ch(): Uint8Array | Deno.PointerValue | null {
+  get gen3ch(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get named(): Uint8Array | Deno.PointerValue | null {
+  get named(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get hifi(): Uint8Array | Deno.PointerValue | null {
+  get hifi(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set gray(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set gray(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set rgb(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set rgb(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set cmyk(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set cmyk(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set XYZ(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set XYZ(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set Yxy(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set Yxy(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set Lab(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set Lab(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set gen3ch(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set gen3ch(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set named(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set named(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set hifi(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set hifi(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2804,7 +2804,7 @@ export interface PROFILEHEADER {
   /** u32 */
   phConnectionSpace: number;
   /** array */
-  phDateTime: Deno.PointerValue | null;
+  phDateTime: Deno.PointerValue;
   /** u32 */
   phSignature: number;
   /** u32 */
@@ -2816,15 +2816,15 @@ export interface PROFILEHEADER {
   /** u32 */
   phModel: number;
   /** array */
-  phAttributes: Deno.PointerValue | null;
+  phAttributes: Deno.PointerValue;
   /** u32 */
   phRenderingIntent: number;
   /** Windows.Win32.Graphics.Gdi.CIEXYZ */
-  phIlluminant: Uint8Array | Deno.PointerValue | null;
+  phIlluminant: Uint8Array | Deno.PointerValue;
   /** u32 */
   phCreator: number;
   /** array */
-  phReserved: Deno.PointerValue | null;
+  phReserved: Deno.PointerValue;
 }
 
 export const sizeofPROFILEHEADER = 96;
@@ -2845,7 +2845,7 @@ export function allocPROFILEHEADER(data?: Partial<PROFILEHEADER>): Uint8Array {
   // 0x14: u32
   if (data?.phConnectionSpace !== undefined) view.setUint32(20, Number(data.phConnectionSpace), true);
   // 0x18: pointer
-  if (data?.phDateTime !== undefined) view.setBigUint64(24, data.phDateTime === null ? 0n : BigInt(util.toPointer(data.phDateTime)), true);
+  if (data?.phDateTime !== undefined) view.setBigUint64(24, data.phDateTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.phDateTime))), true);
   // 0x20: u32
   if (data?.phSignature !== undefined) view.setUint32(32, Number(data.phSignature), true);
   // 0x24: u32
@@ -2858,17 +2858,17 @@ export function allocPROFILEHEADER(data?: Partial<PROFILEHEADER>): Uint8Array {
   if (data?.phModel !== undefined) view.setUint32(48, Number(data.phModel), true);
   // 0x34: pad4
   // 0x38: pointer
-  if (data?.phAttributes !== undefined) view.setBigUint64(56, data.phAttributes === null ? 0n : BigInt(util.toPointer(data.phAttributes)), true);
+  if (data?.phAttributes !== undefined) view.setBigUint64(56, data.phAttributes === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.phAttributes))), true);
   // 0x40: u32
   if (data?.phRenderingIntent !== undefined) view.setUint32(64, Number(data.phRenderingIntent), true);
   // 0x44: pad4
   // 0x48: pointer
-  if (data?.phIlluminant !== undefined) view.setBigUint64(72, data.phIlluminant === null ? 0n : BigInt(util.toPointer(data.phIlluminant)), true);
+  if (data?.phIlluminant !== undefined) view.setBigUint64(72, data.phIlluminant === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.phIlluminant))), true);
   // 0x50: u32
   if (data?.phCreator !== undefined) view.setUint32(80, Number(data.phCreator), true);
   // 0x54: pad4
   // 0x58: pointer
-  if (data?.phReserved !== undefined) view.setBigUint64(88, data.phReserved === null ? 0n : BigInt(util.toPointer(data.phReserved)), true);
+  if (data?.phReserved !== undefined) view.setBigUint64(88, data.phReserved === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.phReserved))), true);
   return buf;
 }
 
@@ -2913,9 +2913,9 @@ export class PROFILEHEADERView {
   }
 
   // 0x18: pointer
-  get phDateTime(): Uint8Array | Deno.PointerValue | null {
+  get phDateTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -2946,9 +2946,9 @@ export class PROFILEHEADERView {
   // 0x34: pad4
 
   // 0x38: pointer
-  get phAttributes(): Uint8Array | Deno.PointerValue | null {
+  get phAttributes(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: u32
@@ -2959,9 +2959,9 @@ export class PROFILEHEADERView {
   // 0x44: pad4
 
   // 0x48: pointer
-  get phIlluminant(): Uint8Array | Deno.PointerValue | null {
+  get phIlluminant(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: u32
@@ -2972,9 +2972,9 @@ export class PROFILEHEADERView {
   // 0x54: pad4
 
   // 0x58: pointer
-  get phReserved(): Uint8Array | Deno.PointerValue | null {
+  get phReserved(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -3008,8 +3008,8 @@ export class PROFILEHEADERView {
   }
 
   // 0x18: pointer
-  set phDateTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set phDateTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -3040,8 +3040,8 @@ export class PROFILEHEADERView {
   // 0x34: pad4
 
   // 0x38: pointer
-  set phAttributes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set phAttributes(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: u32
@@ -3052,8 +3052,8 @@ export class PROFILEHEADERView {
   // 0x44: pad4
 
   // 0x48: pointer
-  set phIlluminant(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set phIlluminant(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x50: u32
@@ -3064,8 +3064,8 @@ export class PROFILEHEADERView {
   // 0x54: pad4
 
   // 0x58: pointer
-  set phReserved(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  set phReserved(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3076,7 +3076,7 @@ export interface PROFILE {
   /** u32 */
   dwType: number;
   /** ptr */
-  pProfileData: Deno.PointerValue | Uint8Array | null;
+  pProfileData: Deno.PointerValue | Uint8Array;
   /** u32 */
   cbDataSize: number;
 }
@@ -3090,7 +3090,7 @@ export function allocPROFILE(data?: Partial<PROFILE>): Uint8Array {
   if (data?.dwType !== undefined) view.setUint32(0, Number(data.dwType), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pProfileData !== undefined) view.setBigUint64(8, data.pProfileData === null ? 0n : BigInt(util.toPointer(data.pProfileData)), true);
+  if (data?.pProfileData !== undefined) view.setBigUint64(8, data.pProfileData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pProfileData))), true);
   // 0x10: u32
   if (data?.cbDataSize !== undefined) view.setUint32(16, Number(data.cbDataSize), true);
   // 0x14: pad4
@@ -3115,9 +3115,9 @@ export class PROFILEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pProfileData(): Uint8Array | Deno.PointerValue | null {
+  get pProfileData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -3135,8 +3135,8 @@ export class PROFILEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pProfileData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pProfileData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -3147,7 +3147,7 @@ export class PROFILEView {
   // 0x14: pad4
 }
 
-export type PSTR = Deno.PointerValue | Uint8Array | null;
+export type PSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.UI.ColorSystem.ENUMTYPEA (size: 104)
@@ -3166,7 +3166,7 @@ export interface ENUMTYPEA {
   /** u32 */
   dwDitheringMode: number;
   /** array */
-  dwResolution: Deno.PointerValue | null;
+  dwResolution: Deno.PointerValue;
   /** u32 */
   dwCMMType: number;
   /** u32 */
@@ -3186,7 +3186,7 @@ export interface ENUMTYPEA {
   /** u32 */
   dwModel: number;
   /** array */
-  dwAttributes: Deno.PointerValue | null;
+  dwAttributes: Deno.PointerValue;
   /** u32 */
   dwRenderingIntent: number;
   /** u32 */
@@ -3210,14 +3210,14 @@ export function allocENUMTYPEA(data?: Partial<ENUMTYPEA>): Uint8Array {
   // 0x10: buffer
   if (data?.pDeviceName !== undefined) {
     (buf as any)._f16 = util.pstrToFfi(data.pDeviceName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: u32
   if (data?.dwMediaType !== undefined) view.setUint32(24, Number(data.dwMediaType), true);
   // 0x1c: u32
   if (data?.dwDitheringMode !== undefined) view.setUint32(28, Number(data.dwDitheringMode), true);
   // 0x20: pointer
-  if (data?.dwResolution !== undefined) view.setBigUint64(32, data.dwResolution === null ? 0n : BigInt(util.toPointer(data.dwResolution)), true);
+  if (data?.dwResolution !== undefined) view.setBigUint64(32, data.dwResolution === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.dwResolution))), true);
   // 0x28: u32
   if (data?.dwCMMType !== undefined) view.setUint32(40, Number(data.dwCMMType), true);
   // 0x2c: u32
@@ -3238,7 +3238,7 @@ export function allocENUMTYPEA(data?: Partial<ENUMTYPEA>): Uint8Array {
   if (data?.dwModel !== undefined) view.setUint32(72, Number(data.dwModel), true);
   // 0x4c: pad4
   // 0x50: pointer
-  if (data?.dwAttributes !== undefined) view.setBigUint64(80, data.dwAttributes === null ? 0n : BigInt(util.toPointer(data.dwAttributes)), true);
+  if (data?.dwAttributes !== undefined) view.setBigUint64(80, data.dwAttributes === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.dwAttributes))), true);
   // 0x58: u32
   if (data?.dwRenderingIntent !== undefined) view.setUint32(88, Number(data.dwRenderingIntent), true);
   // 0x5c: u32
@@ -3277,9 +3277,9 @@ export class ENUMTYPEAView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  get pDeviceName(): Uint8Array | Deno.PointerValue | null {
+  get pDeviceName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -3293,9 +3293,9 @@ export class ENUMTYPEAView {
   }
 
   // 0x20: pointer
-  get dwResolution(): Uint8Array | Deno.PointerValue | null {
+  get dwResolution(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -3346,9 +3346,9 @@ export class ENUMTYPEAView {
   // 0x4c: pad4
 
   // 0x50: pointer
-  get dwAttributes(): Uint8Array | Deno.PointerValue | null {
+  get dwAttributes(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x58: u32
@@ -3386,9 +3386,9 @@ export class ENUMTYPEAView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  set pDeviceName(value: Uint8Array | Deno.PointerValue | null) {
+  set pDeviceName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: u32
@@ -3402,8 +3402,8 @@ export class ENUMTYPEAView {
   }
 
   // 0x20: pointer
-  set dwResolution(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set dwResolution(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u32
@@ -3454,8 +3454,8 @@ export class ENUMTYPEAView {
   // 0x4c: pad4
 
   // 0x50: pointer
-  set dwAttributes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set dwAttributes(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x58: u32
@@ -3476,7 +3476,7 @@ export class ENUMTYPEAView {
   // 0x64: pad4
 }
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.UI.ColorSystem.ENUMTYPEW (size: 104)
@@ -3495,7 +3495,7 @@ export interface ENUMTYPEW {
   /** u32 */
   dwDitheringMode: number;
   /** array */
-  dwResolution: Deno.PointerValue | null;
+  dwResolution: Deno.PointerValue;
   /** u32 */
   dwCMMType: number;
   /** u32 */
@@ -3515,7 +3515,7 @@ export interface ENUMTYPEW {
   /** u32 */
   dwModel: number;
   /** array */
-  dwAttributes: Deno.PointerValue | null;
+  dwAttributes: Deno.PointerValue;
   /** u32 */
   dwRenderingIntent: number;
   /** u32 */
@@ -3539,14 +3539,14 @@ export function allocENUMTYPEW(data?: Partial<ENUMTYPEW>): Uint8Array {
   // 0x10: buffer
   if (data?.pDeviceName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pDeviceName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: u32
   if (data?.dwMediaType !== undefined) view.setUint32(24, Number(data.dwMediaType), true);
   // 0x1c: u32
   if (data?.dwDitheringMode !== undefined) view.setUint32(28, Number(data.dwDitheringMode), true);
   // 0x20: pointer
-  if (data?.dwResolution !== undefined) view.setBigUint64(32, data.dwResolution === null ? 0n : BigInt(util.toPointer(data.dwResolution)), true);
+  if (data?.dwResolution !== undefined) view.setBigUint64(32, data.dwResolution === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.dwResolution))), true);
   // 0x28: u32
   if (data?.dwCMMType !== undefined) view.setUint32(40, Number(data.dwCMMType), true);
   // 0x2c: u32
@@ -3567,7 +3567,7 @@ export function allocENUMTYPEW(data?: Partial<ENUMTYPEW>): Uint8Array {
   if (data?.dwModel !== undefined) view.setUint32(72, Number(data.dwModel), true);
   // 0x4c: pad4
   // 0x50: pointer
-  if (data?.dwAttributes !== undefined) view.setBigUint64(80, data.dwAttributes === null ? 0n : BigInt(util.toPointer(data.dwAttributes)), true);
+  if (data?.dwAttributes !== undefined) view.setBigUint64(80, data.dwAttributes === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.dwAttributes))), true);
   // 0x58: u32
   if (data?.dwRenderingIntent !== undefined) view.setUint32(88, Number(data.dwRenderingIntent), true);
   // 0x5c: u32
@@ -3606,9 +3606,9 @@ export class ENUMTYPEWView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  get pDeviceName(): Uint8Array | Deno.PointerValue | null {
+  get pDeviceName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -3622,9 +3622,9 @@ export class ENUMTYPEWView {
   }
 
   // 0x20: pointer
-  get dwResolution(): Uint8Array | Deno.PointerValue | null {
+  get dwResolution(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -3675,9 +3675,9 @@ export class ENUMTYPEWView {
   // 0x4c: pad4
 
   // 0x50: pointer
-  get dwAttributes(): Uint8Array | Deno.PointerValue | null {
+  get dwAttributes(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x58: u32
@@ -3715,9 +3715,9 @@ export class ENUMTYPEWView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  set pDeviceName(value: Uint8Array | Deno.PointerValue | null) {
+  set pDeviceName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: u32
@@ -3731,8 +3731,8 @@ export class ENUMTYPEWView {
   }
 
   // 0x20: pointer
-  set dwResolution(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set dwResolution(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u32
@@ -3783,8 +3783,8 @@ export class ENUMTYPEWView {
   // 0x4c: pad4
 
   // 0x50: pointer
-  set dwAttributes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set dwAttributes(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x58: u32
@@ -3820,7 +3820,7 @@ export interface COLORMATCHSETUPW {
   /** u32 */
   dwFlags: number;
   /** Windows.Win32.Foundation.HWND */
-  hwndOwner: Deno.PointerValue | null;
+  hwndOwner: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   pSourceName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
@@ -3844,13 +3844,13 @@ export interface COLORMATCHSETUPW {
   /** u32 */
   ccTargetProfile: number;
   /** Windows.Win32.UI.WindowsAndMessaging.DLGPROC */
-  lpfnHook: Uint8Array | Deno.PointerValue | null;
+  lpfnHook: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LPARAM */
-  lParam: Uint8Array | Deno.PointerValue | null;
+  lParam: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.ColorSystem.PCMSCALLBACKW */
-  lpfnApplyCallback: Uint8Array | Deno.PointerValue | null;
+  lpfnApplyCallback: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LPARAM */
-  lParamApplyCallback: Uint8Array | Deno.PointerValue | null;
+  lParamApplyCallback: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofCOLORMATCHSETUPW = 136;
@@ -3866,21 +3866,21 @@ export function allocCOLORMATCHSETUPW(data?: Partial<COLORMATCHSETUPW>): Uint8Ar
   if (data?.dwFlags !== undefined) view.setUint32(8, Number(data.dwFlags), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.hwndOwner !== undefined) view.setBigUint64(16, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
+  if (data?.hwndOwner !== undefined) view.setBigUint64(16, data.hwndOwner === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hwndOwner))), true);
   // 0x18: buffer
   if (data?.pSourceName !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.pSourceName);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: buffer
   if (data?.pDisplayName !== undefined) {
     (buf as any)._f32 = util.pwstrToFfi(data.pDisplayName);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f32))), true);
   }
   // 0x28: buffer
   if (data?.pPrinterName !== undefined) {
     (buf as any)._f40 = util.pwstrToFfi(data.pPrinterName);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f40))), true);
   }
   // 0x30: u32
   if (data?.dwRenderIntent !== undefined) view.setUint32(48, Number(data.dwRenderIntent), true);
@@ -3889,7 +3889,7 @@ export function allocCOLORMATCHSETUPW(data?: Partial<COLORMATCHSETUPW>): Uint8Ar
   // 0x38: buffer
   if (data?.pMonitorProfile !== undefined) {
     (buf as any)._f56 = util.pwstrToFfi(data.pMonitorProfile);
-    view.setBigUint64(56, (buf as any)._f56 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f56)), true);
+    view.setBigUint64(56, (buf as any)._f56 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f56))), true);
   }
   // 0x40: u32
   if (data?.ccMonitorProfile !== undefined) view.setUint32(64, Number(data.ccMonitorProfile), true);
@@ -3897,7 +3897,7 @@ export function allocCOLORMATCHSETUPW(data?: Partial<COLORMATCHSETUPW>): Uint8Ar
   // 0x48: buffer
   if (data?.pPrinterProfile !== undefined) {
     (buf as any)._f72 = util.pwstrToFfi(data.pPrinterProfile);
-    view.setBigUint64(72, (buf as any)._f72 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f72)), true);
+    view.setBigUint64(72, (buf as any)._f72 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f72))), true);
   }
   // 0x50: u32
   if (data?.ccPrinterProfile !== undefined) view.setUint32(80, Number(data.ccPrinterProfile), true);
@@ -3905,19 +3905,19 @@ export function allocCOLORMATCHSETUPW(data?: Partial<COLORMATCHSETUPW>): Uint8Ar
   // 0x58: buffer
   if (data?.pTargetProfile !== undefined) {
     (buf as any)._f88 = util.pwstrToFfi(data.pTargetProfile);
-    view.setBigUint64(88, (buf as any)._f88 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f88)), true);
+    view.setBigUint64(88, (buf as any)._f88 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f88))), true);
   }
   // 0x60: u32
   if (data?.ccTargetProfile !== undefined) view.setUint32(96, Number(data.ccTargetProfile), true);
   // 0x64: pad4
   // 0x68: pointer
-  if (data?.lpfnHook !== undefined) view.setBigUint64(104, data.lpfnHook === null ? 0n : BigInt(util.toPointer(data.lpfnHook)), true);
+  if (data?.lpfnHook !== undefined) view.setBigUint64(104, data.lpfnHook === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpfnHook))), true);
   // 0x70: pointer
-  if (data?.lParam !== undefined) view.setBigUint64(112, data.lParam === null ? 0n : BigInt(util.toPointer(data.lParam)), true);
+  if (data?.lParam !== undefined) view.setBigUint64(112, data.lParam === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lParam))), true);
   // 0x78: pointer
-  if (data?.lpfnApplyCallback !== undefined) view.setBigUint64(120, data.lpfnApplyCallback === null ? 0n : BigInt(util.toPointer(data.lpfnApplyCallback)), true);
+  if (data?.lpfnApplyCallback !== undefined) view.setBigUint64(120, data.lpfnApplyCallback === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpfnApplyCallback))), true);
   // 0x80: pointer
-  if (data?.lParamApplyCallback !== undefined) view.setBigUint64(128, data.lParamApplyCallback === null ? 0n : BigInt(util.toPointer(data.lParamApplyCallback)), true);
+  if (data?.lParamApplyCallback !== undefined) view.setBigUint64(128, data.lParamApplyCallback === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lParamApplyCallback))), true);
   return buf;
 }
 
@@ -3949,27 +3949,27 @@ export class COLORMATCHSETUPWView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get hwndOwner(): Uint8Array | Deno.PointerValue | null {
+  get hwndOwner(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get pSourceName(): Uint8Array | Deno.PointerValue | null {
+  get pSourceName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: buffer
-  get pDisplayName(): Uint8Array | Deno.PointerValue | null {
+  get pDisplayName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: buffer
-  get pPrinterName(): Uint8Array | Deno.PointerValue | null {
+  get pPrinterName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: u32
@@ -3983,9 +3983,9 @@ export class COLORMATCHSETUPWView {
   }
 
   // 0x38: buffer
-  get pMonitorProfile(): Uint8Array | Deno.PointerValue | null {
+  get pMonitorProfile(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: u32
@@ -3996,9 +3996,9 @@ export class COLORMATCHSETUPWView {
   // 0x44: pad4
 
   // 0x48: buffer
-  get pPrinterProfile(): Uint8Array | Deno.PointerValue | null {
+  get pPrinterProfile(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: u32
@@ -4009,9 +4009,9 @@ export class COLORMATCHSETUPWView {
   // 0x54: pad4
 
   // 0x58: buffer
-  get pTargetProfile(): Uint8Array | Deno.PointerValue | null {
+  get pTargetProfile(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x60: u32
@@ -4022,27 +4022,27 @@ export class COLORMATCHSETUPWView {
   // 0x64: pad4
 
   // 0x68: pointer
-  get lpfnHook(): Uint8Array | Deno.PointerValue | null {
+  get lpfnHook(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(104, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x70: pointer
-  get lParam(): Uint8Array | Deno.PointerValue | null {
+  get lParam(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(112, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x78: pointer
-  get lpfnApplyCallback(): Uint8Array | Deno.PointerValue | null {
+  get lpfnApplyCallback(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(120, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x80: pointer
-  get lParamApplyCallback(): Uint8Array | Deno.PointerValue | null {
+  get lParamApplyCallback(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(128, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -4063,26 +4063,26 @@ export class COLORMATCHSETUPWView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set hwndOwner(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set hwndOwner(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: buffer
-  set pSourceName(value: Uint8Array | Deno.PointerValue | null) {
+  set pSourceName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: buffer
-  set pDisplayName(value: Uint8Array | Deno.PointerValue | null) {
+  set pDisplayName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f32))), true);
   }
 
   // 0x28: buffer
-  set pPrinterName(value: Uint8Array | Deno.PointerValue | null) {
+  set pPrinterName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f40))), true);
   }
 
   // 0x30: u32
@@ -4096,9 +4096,9 @@ export class COLORMATCHSETUPWView {
   }
 
   // 0x38: buffer
-  set pMonitorProfile(value: Uint8Array | Deno.PointerValue | null) {
+  set pMonitorProfile(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f56 = value;
-    this.view.setBigUint64(56, BigInt(util.toPointer((this.buf as any)._f56)), true);
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f56))), true);
   }
 
   // 0x40: u32
@@ -4109,9 +4109,9 @@ export class COLORMATCHSETUPWView {
   // 0x44: pad4
 
   // 0x48: buffer
-  set pPrinterProfile(value: Uint8Array | Deno.PointerValue | null) {
+  set pPrinterProfile(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f72 = value;
-    this.view.setBigUint64(72, BigInt(util.toPointer((this.buf as any)._f72)), true);
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f72))), true);
   }
 
   // 0x50: u32
@@ -4122,9 +4122,9 @@ export class COLORMATCHSETUPWView {
   // 0x54: pad4
 
   // 0x58: buffer
-  set pTargetProfile(value: Uint8Array | Deno.PointerValue | null) {
+  set pTargetProfile(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f88 = value;
-    this.view.setBigUint64(88, BigInt(util.toPointer((this.buf as any)._f88)), true);
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f88))), true);
   }
 
   // 0x60: u32
@@ -4135,23 +4135,23 @@ export class COLORMATCHSETUPWView {
   // 0x64: pad4
 
   // 0x68: pointer
-  set lpfnHook(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(104, BigInt(util.toPointer(value)), true);
+  set lpfnHook(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(104, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x70: pointer
-  set lParam(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(112, BigInt(util.toPointer(value)), true);
+  set lParam(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(112, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x78: pointer
-  set lpfnApplyCallback(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(120, BigInt(util.toPointer(value)), true);
+  set lpfnApplyCallback(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(120, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x80: pointer
-  set lParamApplyCallback(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(128, BigInt(util.toPointer(value)), true);
+  set lParamApplyCallback(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(128, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4166,7 +4166,7 @@ export interface COLORMATCHSETUPA {
   /** u32 */
   dwFlags: number;
   /** Windows.Win32.Foundation.HWND */
-  hwndOwner: Deno.PointerValue | null;
+  hwndOwner: Deno.PointerValue;
   /** Windows.Win32.Foundation.PSTR */
   pSourceName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
@@ -4190,13 +4190,13 @@ export interface COLORMATCHSETUPA {
   /** u32 */
   ccTargetProfile: number;
   /** Windows.Win32.UI.WindowsAndMessaging.DLGPROC */
-  lpfnHook: Uint8Array | Deno.PointerValue | null;
+  lpfnHook: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LPARAM */
-  lParam: Uint8Array | Deno.PointerValue | null;
+  lParam: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.ColorSystem.PCMSCALLBACKA */
-  lpfnApplyCallback: Uint8Array | Deno.PointerValue | null;
+  lpfnApplyCallback: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LPARAM */
-  lParamApplyCallback: Uint8Array | Deno.PointerValue | null;
+  lParamApplyCallback: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofCOLORMATCHSETUPA = 136;
@@ -4212,21 +4212,21 @@ export function allocCOLORMATCHSETUPA(data?: Partial<COLORMATCHSETUPA>): Uint8Ar
   if (data?.dwFlags !== undefined) view.setUint32(8, Number(data.dwFlags), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.hwndOwner !== undefined) view.setBigUint64(16, data.hwndOwner === null ? 0n : BigInt(util.toPointer(data.hwndOwner)), true);
+  if (data?.hwndOwner !== undefined) view.setBigUint64(16, data.hwndOwner === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hwndOwner))), true);
   // 0x18: buffer
   if (data?.pSourceName !== undefined) {
     (buf as any)._f24 = util.pstrToFfi(data.pSourceName);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: buffer
   if (data?.pDisplayName !== undefined) {
     (buf as any)._f32 = util.pstrToFfi(data.pDisplayName);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f32))), true);
   }
   // 0x28: buffer
   if (data?.pPrinterName !== undefined) {
     (buf as any)._f40 = util.pstrToFfi(data.pPrinterName);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f40))), true);
   }
   // 0x30: u32
   if (data?.dwRenderIntent !== undefined) view.setUint32(48, Number(data.dwRenderIntent), true);
@@ -4235,7 +4235,7 @@ export function allocCOLORMATCHSETUPA(data?: Partial<COLORMATCHSETUPA>): Uint8Ar
   // 0x38: buffer
   if (data?.pMonitorProfile !== undefined) {
     (buf as any)._f56 = util.pstrToFfi(data.pMonitorProfile);
-    view.setBigUint64(56, (buf as any)._f56 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f56)), true);
+    view.setBigUint64(56, (buf as any)._f56 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f56))), true);
   }
   // 0x40: u32
   if (data?.ccMonitorProfile !== undefined) view.setUint32(64, Number(data.ccMonitorProfile), true);
@@ -4243,7 +4243,7 @@ export function allocCOLORMATCHSETUPA(data?: Partial<COLORMATCHSETUPA>): Uint8Ar
   // 0x48: buffer
   if (data?.pPrinterProfile !== undefined) {
     (buf as any)._f72 = util.pstrToFfi(data.pPrinterProfile);
-    view.setBigUint64(72, (buf as any)._f72 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f72)), true);
+    view.setBigUint64(72, (buf as any)._f72 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f72))), true);
   }
   // 0x50: u32
   if (data?.ccPrinterProfile !== undefined) view.setUint32(80, Number(data.ccPrinterProfile), true);
@@ -4251,19 +4251,19 @@ export function allocCOLORMATCHSETUPA(data?: Partial<COLORMATCHSETUPA>): Uint8Ar
   // 0x58: buffer
   if (data?.pTargetProfile !== undefined) {
     (buf as any)._f88 = util.pstrToFfi(data.pTargetProfile);
-    view.setBigUint64(88, (buf as any)._f88 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f88)), true);
+    view.setBigUint64(88, (buf as any)._f88 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f88))), true);
   }
   // 0x60: u32
   if (data?.ccTargetProfile !== undefined) view.setUint32(96, Number(data.ccTargetProfile), true);
   // 0x64: pad4
   // 0x68: pointer
-  if (data?.lpfnHook !== undefined) view.setBigUint64(104, data.lpfnHook === null ? 0n : BigInt(util.toPointer(data.lpfnHook)), true);
+  if (data?.lpfnHook !== undefined) view.setBigUint64(104, data.lpfnHook === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpfnHook))), true);
   // 0x70: pointer
-  if (data?.lParam !== undefined) view.setBigUint64(112, data.lParam === null ? 0n : BigInt(util.toPointer(data.lParam)), true);
+  if (data?.lParam !== undefined) view.setBigUint64(112, data.lParam === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lParam))), true);
   // 0x78: pointer
-  if (data?.lpfnApplyCallback !== undefined) view.setBigUint64(120, data.lpfnApplyCallback === null ? 0n : BigInt(util.toPointer(data.lpfnApplyCallback)), true);
+  if (data?.lpfnApplyCallback !== undefined) view.setBigUint64(120, data.lpfnApplyCallback === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lpfnApplyCallback))), true);
   // 0x80: pointer
-  if (data?.lParamApplyCallback !== undefined) view.setBigUint64(128, data.lParamApplyCallback === null ? 0n : BigInt(util.toPointer(data.lParamApplyCallback)), true);
+  if (data?.lParamApplyCallback !== undefined) view.setBigUint64(128, data.lParamApplyCallback === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.lParamApplyCallback))), true);
   return buf;
 }
 
@@ -4295,27 +4295,27 @@ export class COLORMATCHSETUPAView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get hwndOwner(): Uint8Array | Deno.PointerValue | null {
+  get hwndOwner(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get pSourceName(): Uint8Array | Deno.PointerValue | null {
+  get pSourceName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: buffer
-  get pDisplayName(): Uint8Array | Deno.PointerValue | null {
+  get pDisplayName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: buffer
-  get pPrinterName(): Uint8Array | Deno.PointerValue | null {
+  get pPrinterName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: u32
@@ -4329,9 +4329,9 @@ export class COLORMATCHSETUPAView {
   }
 
   // 0x38: buffer
-  get pMonitorProfile(): Uint8Array | Deno.PointerValue | null {
+  get pMonitorProfile(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: u32
@@ -4342,9 +4342,9 @@ export class COLORMATCHSETUPAView {
   // 0x44: pad4
 
   // 0x48: buffer
-  get pPrinterProfile(): Uint8Array | Deno.PointerValue | null {
+  get pPrinterProfile(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: u32
@@ -4355,9 +4355,9 @@ export class COLORMATCHSETUPAView {
   // 0x54: pad4
 
   // 0x58: buffer
-  get pTargetProfile(): Uint8Array | Deno.PointerValue | null {
+  get pTargetProfile(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x60: u32
@@ -4368,27 +4368,27 @@ export class COLORMATCHSETUPAView {
   // 0x64: pad4
 
   // 0x68: pointer
-  get lpfnHook(): Uint8Array | Deno.PointerValue | null {
+  get lpfnHook(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(104, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x70: pointer
-  get lParam(): Uint8Array | Deno.PointerValue | null {
+  get lParam(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(112, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x78: pointer
-  get lpfnApplyCallback(): Uint8Array | Deno.PointerValue | null {
+  get lpfnApplyCallback(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(120, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x80: pointer
-  get lParamApplyCallback(): Uint8Array | Deno.PointerValue | null {
+  get lParamApplyCallback(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(128, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -4409,26 +4409,26 @@ export class COLORMATCHSETUPAView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set hwndOwner(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set hwndOwner(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: buffer
-  set pSourceName(value: Uint8Array | Deno.PointerValue | null) {
+  set pSourceName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: buffer
-  set pDisplayName(value: Uint8Array | Deno.PointerValue | null) {
+  set pDisplayName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f32))), true);
   }
 
   // 0x28: buffer
-  set pPrinterName(value: Uint8Array | Deno.PointerValue | null) {
+  set pPrinterName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f40))), true);
   }
 
   // 0x30: u32
@@ -4442,9 +4442,9 @@ export class COLORMATCHSETUPAView {
   }
 
   // 0x38: buffer
-  set pMonitorProfile(value: Uint8Array | Deno.PointerValue | null) {
+  set pMonitorProfile(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f56 = value;
-    this.view.setBigUint64(56, BigInt(util.toPointer((this.buf as any)._f56)), true);
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f56))), true);
   }
 
   // 0x40: u32
@@ -4455,9 +4455,9 @@ export class COLORMATCHSETUPAView {
   // 0x44: pad4
 
   // 0x48: buffer
-  set pPrinterProfile(value: Uint8Array | Deno.PointerValue | null) {
+  set pPrinterProfile(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f72 = value;
-    this.view.setBigUint64(72, BigInt(util.toPointer((this.buf as any)._f72)), true);
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f72))), true);
   }
 
   // 0x50: u32
@@ -4468,9 +4468,9 @@ export class COLORMATCHSETUPAView {
   // 0x54: pad4
 
   // 0x58: buffer
-  set pTargetProfile(value: Uint8Array | Deno.PointerValue | null) {
+  set pTargetProfile(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f88 = value;
-    this.view.setBigUint64(88, BigInt(util.toPointer((this.buf as any)._f88)), true);
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f88))), true);
   }
 
   // 0x60: u32
@@ -4481,23 +4481,23 @@ export class COLORMATCHSETUPAView {
   // 0x64: pad4
 
   // 0x68: pointer
-  set lpfnHook(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(104, BigInt(util.toPointer(value)), true);
+  set lpfnHook(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(104, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x70: pointer
-  set lParam(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(112, BigInt(util.toPointer(value)), true);
+  set lParam(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(112, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x78: pointer
-  set lpfnApplyCallback(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(120, BigInt(util.toPointer(value)), true);
+  set lpfnApplyCallback(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(120, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x80: pointer
-  set lParamApplyCallback(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(128, BigInt(util.toPointer(value)), true);
+  set lParamApplyCallback(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(128, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -5224,132 +5224,132 @@ try {
 // Symbols
 
 export function SetICMMode(
-  hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
+  hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   mode: ICM_MODE /* Windows.Win32.UI.ColorSystem.ICM_MODE */,
 ): number /* i32 */ {
   return libGDI32_dll.SetICMMode(util.toPointer(hdc), mode);
 }
 
 export function CheckColorsInGamut(
-  hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  lpRGBTriple: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dlpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
+  lpRGBTriple: Deno.PointerValue | Uint8Array /* ptr */,
+  dlpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   nCount: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libGDI32_dll.CheckColorsInGamut(util.toPointer(hdc), util.toPointer(lpRGBTriple), util.toPointer(dlpBuffer), nCount));
 }
 
 export function GetColorSpace(
-  hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-): Deno.PointerValue | null /* Windows.Win32.UI.ColorSystem.HCOLORSPACE */ {
-  return util.pointerFromFfi(libGDI32_dll.GetColorSpace(util.toPointer(hdc)));
+  hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
+): Deno.PointerValue /* Windows.Win32.UI.ColorSystem.HCOLORSPACE */ {
+  return libGDI32_dll.GetColorSpace(util.toPointer(hdc));
 }
 
 export function GetLogColorSpaceA(
-  hColorSpace: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.ColorSystem.HCOLORSPACE */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hColorSpace: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.ColorSystem.HCOLORSPACE */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   nSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libGDI32_dll.GetLogColorSpaceA(util.toPointer(hColorSpace), util.toPointer(lpBuffer), nSize));
 }
 
 export function GetLogColorSpaceW(
-  hColorSpace: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.ColorSystem.HCOLORSPACE */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hColorSpace: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.ColorSystem.HCOLORSPACE */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   nSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libGDI32_dll.GetLogColorSpaceW(util.toPointer(hColorSpace), util.toPointer(lpBuffer), nSize));
 }
 
 export function CreateColorSpaceA(
-  lplcs: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.UI.ColorSystem.HCOLORSPACE */ {
-  return util.pointerFromFfi(libGDI32_dll.CreateColorSpaceA(util.toPointer(lplcs)));
+  lplcs: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.UI.ColorSystem.HCOLORSPACE */ {
+  return libGDI32_dll.CreateColorSpaceA(util.toPointer(lplcs));
 }
 
 export function CreateColorSpaceW(
-  lplcs: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.UI.ColorSystem.HCOLORSPACE */ {
-  return util.pointerFromFfi(libGDI32_dll.CreateColorSpaceW(util.toPointer(lplcs)));
+  lplcs: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.UI.ColorSystem.HCOLORSPACE */ {
+  return libGDI32_dll.CreateColorSpaceW(util.toPointer(lplcs));
 }
 
 export function SetColorSpace(
-  hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  hcs: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.ColorSystem.HCOLORSPACE */,
-): Deno.PointerValue | null /* Windows.Win32.UI.ColorSystem.HCOLORSPACE */ {
-  return util.pointerFromFfi(libGDI32_dll.SetColorSpace(util.toPointer(hdc), util.toPointer(hcs)));
+  hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
+  hcs: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.ColorSystem.HCOLORSPACE */,
+): Deno.PointerValue /* Windows.Win32.UI.ColorSystem.HCOLORSPACE */ {
+  return libGDI32_dll.SetColorSpace(util.toPointer(hdc), util.toPointer(hcs));
 }
 
 export function DeleteColorSpace(
-  hcs: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.ColorSystem.HCOLORSPACE */,
+  hcs: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.ColorSystem.HCOLORSPACE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libGDI32_dll.DeleteColorSpace(util.toPointer(hcs)));
 }
 
 export function GetICMProfileA(
-  hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  pBufSize: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
+  pBufSize: Deno.PointerValue | Uint8Array /* ptr */,
   pszFilename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libGDI32_dll.GetICMProfileA(util.toPointer(hdc), util.toPointer(pBufSize), util.pstrToFfi(pszFilename)));
 }
 
 export function GetICMProfileW(
-  hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  pBufSize: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
+  pBufSize: Deno.PointerValue | Uint8Array /* ptr */,
   pszFilename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libGDI32_dll.GetICMProfileW(util.toPointer(hdc), util.toPointer(pBufSize), util.pwstrToFfi(pszFilename)));
 }
 
 export function SetICMProfileA(
-  hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
+  hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   lpFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libGDI32_dll.SetICMProfileA(util.toPointer(hdc), util.pstrToFfi(lpFileName)));
 }
 
 export function SetICMProfileW(
-  hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
+  hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   lpFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libGDI32_dll.SetICMProfileW(util.toPointer(hdc), util.pwstrToFfi(lpFileName)));
 }
 
 export function GetDeviceGammaRamp(
-  hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  lpRamp: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
+  lpRamp: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libGDI32_dll.GetDeviceGammaRamp(util.toPointer(hdc), util.toPointer(lpRamp)));
 }
 
 export function SetDeviceGammaRamp(
-  hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  lpRamp: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
+  lpRamp: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libGDI32_dll.SetDeviceGammaRamp(util.toPointer(hdc), util.toPointer(lpRamp)));
 }
 
 export function ColorMatchToTarget(
-  hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  hdcTarget: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
+  hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
+  hdcTarget: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   action: COLOR_MATCH_TO_TARGET_ACTION /* Windows.Win32.UI.ColorSystem.COLOR_MATCH_TO_TARGET_ACTION */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libGDI32_dll.ColorMatchToTarget(util.toPointer(hdc), util.toPointer(hdcTarget), action));
 }
 
 export function EnumICMProfilesA(
-  hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  proc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.ColorSystem.ICMENUMPROCA */,
-  param2: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
+  hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
+  proc: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.ColorSystem.ICMENUMPROCA */,
+  param2: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): number /* i32 */ {
   return libGDI32_dll.EnumICMProfilesA(util.toPointer(hdc), util.toPointer(proc), util.toPointer(param2));
 }
 
 export function EnumICMProfilesW(
-  hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  proc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.ColorSystem.ICMENUMPROCW */,
-  param2: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
+  hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
+  proc: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.ColorSystem.ICMENUMPROCW */,
+  param2: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): number /* i32 */ {
   return libGDI32_dll.EnumICMProfilesW(util.toPointer(hdc), util.toPointer(proc), util.toPointer(param2));
 }
@@ -5373,8 +5373,8 @@ export function UpdateICMRegKeyW(
 }
 
 export function ColorCorrectPalette(
-  hdc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HDC */,
-  hPal: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Gdi.HPALETTE */,
+  hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
+  hPal: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HPALETTE */,
   deFirst: number /* u32 */,
   num: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -5382,7 +5382,7 @@ export function ColorCorrectPalette(
 }
 
 export function OpenColorProfileA(
-  pProfile: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pProfile: Deno.PointerValue | Uint8Array /* ptr */,
   dwDesiredAccess: number /* u32 */,
   dwShareMode: number /* u32 */,
   dwCreationMode: number /* u32 */,
@@ -5391,7 +5391,7 @@ export function OpenColorProfileA(
 }
 
 export function OpenColorProfileW(
-  pProfile: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pProfile: Deno.PointerValue | Uint8Array /* ptr */,
   dwDesiredAccess: number /* u32 */,
   dwShareMode: number /* u32 */,
   dwCreationMode: number /* u32 */,
@@ -5407,43 +5407,43 @@ export function CloseColorProfile(
 
 export function GetColorProfileFromHandle(
   hProfile: Deno.PointerValue /* isize */,
-  pProfile: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcbProfile: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pProfile: Deno.PointerValue | Uint8Array /* ptr */,
+  pcbProfile: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.GetColorProfileFromHandle(hProfile, util.toPointer(pProfile), util.toPointer(pcbProfile)));
 }
 
 export function IsColorProfileValid(
   hProfile: Deno.PointerValue /* isize */,
-  pbValid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pbValid: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.IsColorProfileValid(hProfile, util.toPointer(pbValid)));
 }
 
 export function CreateProfileFromLogColorSpaceA(
-  pLogColorSpace: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pProfile: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pLogColorSpace: Deno.PointerValue | Uint8Array /* ptr */,
+  pProfile: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.CreateProfileFromLogColorSpaceA(util.toPointer(pLogColorSpace), util.toPointer(pProfile)));
 }
 
 export function CreateProfileFromLogColorSpaceW(
-  pLogColorSpace: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pProfile: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pLogColorSpace: Deno.PointerValue | Uint8Array /* ptr */,
+  pProfile: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.CreateProfileFromLogColorSpaceW(util.toPointer(pLogColorSpace), util.toPointer(pProfile)));
 }
 
 export function GetCountColorProfileElements(
   hProfile: Deno.PointerValue /* isize */,
-  pnElementCount: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pnElementCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.GetCountColorProfileElements(hProfile, util.toPointer(pnElementCount)));
 }
 
 export function GetColorProfileHeader(
   hProfile: Deno.PointerValue /* isize */,
-  pHeader: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pHeader: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.GetColorProfileHeader(hProfile, util.toPointer(pHeader)));
 }
@@ -5451,7 +5451,7 @@ export function GetColorProfileHeader(
 export function GetColorProfileElementTag(
   hProfile: Deno.PointerValue /* isize */,
   dwIndex: number /* u32 */,
-  pTag: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pTag: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.GetColorProfileElementTag(hProfile, dwIndex, util.toPointer(pTag)));
 }
@@ -5459,7 +5459,7 @@ export function GetColorProfileElementTag(
 export function IsColorProfileTagPresent(
   hProfile: Deno.PointerValue /* isize */,
   tag: number /* u32 */,
-  pbPresent: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pbPresent: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.IsColorProfileTagPresent(hProfile, tag, util.toPointer(pbPresent)));
 }
@@ -5468,16 +5468,16 @@ export function GetColorProfileElement(
   hProfile: Deno.PointerValue /* isize */,
   tag: number /* u32 */,
   dwOffset: number /* u32 */,
-  pcbElement: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pElement: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pbReference: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbElement: Deno.PointerValue | Uint8Array /* ptr */,
+  pElement: Deno.PointerValue | Uint8Array /* ptr */,
+  pbReference: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.GetColorProfileElement(hProfile, tag, dwOffset, util.toPointer(pcbElement), util.toPointer(pElement), util.toPointer(pbReference)));
 }
 
 export function SetColorProfileHeader(
   hProfile: Deno.PointerValue /* isize */,
-  pHeader: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pHeader: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.SetColorProfileHeader(hProfile, util.toPointer(pHeader)));
 }
@@ -5494,8 +5494,8 @@ export function SetColorProfileElement(
   hProfile: Deno.PointerValue /* isize */,
   tag: number /* u32 */,
   dwOffset: number /* u32 */,
-  pcbElement: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pElement: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbElement: Deno.PointerValue | Uint8Array /* ptr */,
+  pElement: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.SetColorProfileElement(hProfile, tag, dwOffset, util.toPointer(pcbElement), util.toPointer(pElement)));
 }
@@ -5512,9 +5512,9 @@ export function GetPS2ColorSpaceArray(
   hProfile: Deno.PointerValue /* isize */,
   dwIntent: number /* u32 */,
   dwCSAType: number /* u32 */,
-  pPS2ColorSpaceArray: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcbPS2ColorSpaceArray: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pbBinary: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pPS2ColorSpaceArray: Deno.PointerValue | Uint8Array /* ptr */,
+  pcbPS2ColorSpaceArray: Deno.PointerValue | Uint8Array /* ptr */,
+  pbBinary: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.GetPS2ColorSpaceArray(hProfile, dwIntent, dwCSAType, util.toPointer(pPS2ColorSpaceArray), util.toPointer(pcbPS2ColorSpaceArray), util.toPointer(pbBinary)));
 }
@@ -5522,8 +5522,8 @@ export function GetPS2ColorSpaceArray(
 export function GetPS2ColorRenderingIntent(
   hProfile: Deno.PointerValue /* isize */,
   dwIntent: number /* u32 */,
-  pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcbPS2ColorRenderingIntent: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  pcbPS2ColorRenderingIntent: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.GetPS2ColorRenderingIntent(hProfile, dwIntent, util.toPointer(pBuffer), util.toPointer(pcbPS2ColorRenderingIntent)));
 }
@@ -5531,24 +5531,24 @@ export function GetPS2ColorRenderingIntent(
 export function GetPS2ColorRenderingDictionary(
   hProfile: Deno.PointerValue /* isize */,
   dwIntent: number /* u32 */,
-  pPS2ColorRenderingDictionary: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcbPS2ColorRenderingDictionary: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pbBinary: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pPS2ColorRenderingDictionary: Deno.PointerValue | Uint8Array /* ptr */,
+  pcbPS2ColorRenderingDictionary: Deno.PointerValue | Uint8Array /* ptr */,
+  pbBinary: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.GetPS2ColorRenderingDictionary(hProfile, dwIntent, util.toPointer(pPS2ColorRenderingDictionary), util.toPointer(pcbPS2ColorRenderingDictionary), util.toPointer(pbBinary)));
 }
 
 export function GetNamedProfileInfo(
   hProfile: Deno.PointerValue /* isize */,
-  pNamedProfileInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pNamedProfileInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.GetNamedProfileInfo(hProfile, util.toPointer(pNamedProfileInfo)));
 }
 
 export function ConvertColorNameToIndex(
   hProfile: Deno.PointerValue /* isize */,
-  paColorName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  paIndex: Deno.PointerValue | Uint8Array | null /* ptr */,
+  paColorName: Deno.PointerValue | Uint8Array /* ptr */,
+  paIndex: Deno.PointerValue | Uint8Array /* ptr */,
   dwCount: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.ConvertColorNameToIndex(hProfile, util.toPointer(paColorName), util.toPointer(paIndex), dwCount));
@@ -5556,27 +5556,27 @@ export function ConvertColorNameToIndex(
 
 export function ConvertIndexToColorName(
   hProfile: Deno.PointerValue /* isize */,
-  paIndex: Deno.PointerValue | Uint8Array | null /* ptr */,
-  paColorName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  paIndex: Deno.PointerValue | Uint8Array /* ptr */,
+  paColorName: Deno.PointerValue | Uint8Array /* ptr */,
   dwCount: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.ConvertIndexToColorName(hProfile, util.toPointer(paIndex), util.toPointer(paColorName), dwCount));
 }
 
 export function CreateDeviceLinkProfile(
-  hProfile: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hProfile: Deno.PointerValue | Uint8Array /* ptr */,
   nProfiles: number /* u32 */,
-  padwIntent: Deno.PointerValue | Uint8Array | null /* ptr */,
+  padwIntent: Deno.PointerValue | Uint8Array /* ptr */,
   nIntents: number /* u32 */,
   dwFlags: number /* u32 */,
-  pProfileData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pProfileData: Deno.PointerValue | Uint8Array /* ptr */,
   indexPreferredCMM: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.CreateDeviceLinkProfile(util.toPointer(hProfile), nProfiles, util.toPointer(padwIntent), nIntents, dwFlags, util.toPointer(pProfileData), indexPreferredCMM));
 }
 
 export function CreateColorTransformA(
-  pLogColorSpace: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pLogColorSpace: Deno.PointerValue | Uint8Array /* ptr */,
   hDestProfile: Deno.PointerValue /* isize */,
   hTargetProfile: Deno.PointerValue /* isize */,
   dwFlags: number /* u32 */,
@@ -5585,7 +5585,7 @@ export function CreateColorTransformA(
 }
 
 export function CreateColorTransformW(
-  pLogColorSpace: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pLogColorSpace: Deno.PointerValue | Uint8Array /* ptr */,
   hDestProfile: Deno.PointerValue /* isize */,
   hTargetProfile: Deno.PointerValue /* isize */,
   dwFlags: number /* u32 */,
@@ -5594,9 +5594,9 @@ export function CreateColorTransformW(
 }
 
 export function CreateMultiProfileTransform(
-  pahProfiles: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pahProfiles: Deno.PointerValue | Uint8Array /* ptr */,
   nProfiles: number /* u32 */,
-  padwIntent: Deno.PointerValue | Uint8Array | null /* ptr */,
+  padwIntent: Deno.PointerValue | Uint8Array /* ptr */,
   nIntents: number /* u32 */,
   dwFlags: number /* u32 */,
   indexPreferredCMM: number /* u32 */,
@@ -5612,40 +5612,40 @@ export function DeleteColorTransform(
 
 export function TranslateBitmapBits(
   hColorTransform: Deno.PointerValue /* isize */,
-  pSrcBits: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSrcBits: Deno.PointerValue | Uint8Array /* ptr */,
   bmInput: BMFORMAT /* Windows.Win32.UI.ColorSystem.BMFORMAT */,
   dwWidth: number /* u32 */,
   dwHeight: number /* u32 */,
   dwInputStride: number /* u32 */,
-  pDestBits: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pDestBits: Deno.PointerValue | Uint8Array /* ptr */,
   bmOutput: BMFORMAT /* Windows.Win32.UI.ColorSystem.BMFORMAT */,
   dwOutputStride: number /* u32 */,
-  pfnCallBack: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.ColorSystem.LPBMCALLBACKFN */,
-  ulCallbackData: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
+  pfnCallBack: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.ColorSystem.LPBMCALLBACKFN */,
+  ulCallbackData: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.TranslateBitmapBits(hColorTransform, util.toPointer(pSrcBits), bmInput, dwWidth, dwHeight, dwInputStride, util.toPointer(pDestBits), bmOutput, dwOutputStride, util.toPointer(pfnCallBack), util.toPointer(ulCallbackData)));
 }
 
 export function CheckBitmapBits(
   hColorTransform: Deno.PointerValue /* isize */,
-  pSrcBits: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pSrcBits: Deno.PointerValue | Uint8Array /* ptr */,
   bmInput: BMFORMAT /* Windows.Win32.UI.ColorSystem.BMFORMAT */,
   dwWidth: number /* u32 */,
   dwHeight: number /* u32 */,
   dwStride: number /* u32 */,
-  paResult: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfnCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.ColorSystem.LPBMCALLBACKFN */,
-  lpCallbackData: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
+  paResult: Deno.PointerValue | Uint8Array /* ptr */,
+  pfnCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.ColorSystem.LPBMCALLBACKFN */,
+  lpCallbackData: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.CheckBitmapBits(hColorTransform, util.toPointer(pSrcBits), bmInput, dwWidth, dwHeight, dwStride, util.toPointer(paResult), util.toPointer(pfnCallback), util.toPointer(lpCallbackData)));
 }
 
 export function TranslateColors(
   hColorTransform: Deno.PointerValue /* isize */,
-  paInputColors: Deno.PointerValue | Uint8Array | null /* ptr */,
+  paInputColors: Deno.PointerValue | Uint8Array /* ptr */,
   nColors: number /* u32 */,
   ctInput: COLORTYPE /* Windows.Win32.UI.ColorSystem.COLORTYPE */,
-  paOutputColors: Deno.PointerValue | Uint8Array | null /* ptr */,
+  paOutputColors: Deno.PointerValue | Uint8Array /* ptr */,
   ctOutput: COLORTYPE /* Windows.Win32.UI.ColorSystem.COLORTYPE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.TranslateColors(hColorTransform, util.toPointer(paInputColors), nColors, ctInput, util.toPointer(paOutputColors), ctOutput));
@@ -5653,10 +5653,10 @@ export function TranslateColors(
 
 export function CheckColors(
   hColorTransform: Deno.PointerValue /* isize */,
-  paInputColors: Deno.PointerValue | Uint8Array | null /* ptr */,
+  paInputColors: Deno.PointerValue | Uint8Array /* ptr */,
   nColors: number /* u32 */,
   ctInput: COLORTYPE /* Windows.Win32.UI.ColorSystem.COLORTYPE */,
-  paResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  paResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.CheckColors(hColorTransform, util.toPointer(paInputColors), nColors, ctInput, util.toPointer(paResult)));
 }
@@ -5707,7 +5707,7 @@ export function SelectCMM(
 export function GetColorDirectoryA(
   pMachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pdwSize: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pdwSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.GetColorDirectoryA(util.pstrToFfi(pMachineName), util.pstrToFfi(pBuffer), util.toPointer(pdwSize)));
 }
@@ -5715,7 +5715,7 @@ export function GetColorDirectoryA(
 export function GetColorDirectoryW(
   pMachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pdwSize: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pdwSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.GetColorDirectoryW(util.pwstrToFfi(pMachineName), util.pwstrToFfi(pBuffer), util.toPointer(pdwSize)));
 }
@@ -5752,20 +5752,20 @@ export function UninstallColorProfileW(
 
 export function EnumColorProfilesA(
   pMachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pEnumRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pEnumerationBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pdwSizeOfEnumerationBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pnProfiles: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pEnumRecord: Deno.PointerValue | Uint8Array /* ptr */,
+  pEnumerationBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  pdwSizeOfEnumerationBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  pnProfiles: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.EnumColorProfilesA(util.pstrToFfi(pMachineName), util.toPointer(pEnumRecord), util.toPointer(pEnumerationBuffer), util.toPointer(pdwSizeOfEnumerationBuffer), util.toPointer(pnProfiles)));
 }
 
 export function EnumColorProfilesW(
   pMachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pEnumRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pEnumerationBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pdwSizeOfEnumerationBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pnProfiles: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pEnumRecord: Deno.PointerValue | Uint8Array /* ptr */,
+  pEnumerationBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  pdwSizeOfEnumerationBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  pnProfiles: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.EnumColorProfilesW(util.pwstrToFfi(pMachineName), util.toPointer(pEnumRecord), util.toPointer(pEnumerationBuffer), util.toPointer(pdwSizeOfEnumerationBuffer), util.toPointer(pnProfiles)));
 }
@@ -5790,7 +5790,7 @@ export function GetStandardColorSpaceProfileA(
   pMachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwSCS: number /* u32 */,
   pBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  pcbSize: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.GetStandardColorSpaceProfileA(util.pstrToFfi(pMachineName), dwSCS, util.pstrToFfi(pBuffer), util.toPointer(pcbSize)));
 }
@@ -5799,7 +5799,7 @@ export function GetStandardColorSpaceProfileW(
   pMachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwSCS: number /* u32 */,
   pBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcbSize: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.GetStandardColorSpaceProfileW(util.pwstrToFfi(pMachineName), dwSCS, util.pwstrToFfi(pBuffer), util.toPointer(pcbSize)));
 }
@@ -5837,13 +5837,13 @@ export function DisassociateColorProfileFromDeviceW(
 }
 
 export function SetupColorMatchingW(
-  pcms: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcms: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libICMUI_dll.SetupColorMatchingW(util.toPointer(pcms)));
 }
 
 export function SetupColorMatchingA(
-  pcms: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcms: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libICMUI_dll.SetupColorMatchingA(util.toPointer(pcms)));
 }
@@ -5866,18 +5866,18 @@ export function WcsDisassociateColorProfileFromDevice(
 
 export function WcsEnumColorProfilesSize(
   scope: WCS_PROFILE_MANAGEMENT_SCOPE /* Windows.Win32.UI.ColorSystem.WCS_PROFILE_MANAGEMENT_SCOPE */,
-  pEnumRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pdwSize: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pEnumRecord: Deno.PointerValue | Uint8Array /* ptr */,
+  pdwSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.WcsEnumColorProfilesSize(scope, util.toPointer(pEnumRecord), util.toPointer(pdwSize)));
 }
 
 export function WcsEnumColorProfiles(
   scope: WCS_PROFILE_MANAGEMENT_SCOPE /* Windows.Win32.UI.ColorSystem.WCS_PROFILE_MANAGEMENT_SCOPE */,
-  pEnumRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pEnumRecord: Deno.PointerValue | Uint8Array /* ptr */,
+  pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   dwSize: number /* u32 */,
-  pnProfiles: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pnProfiles: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.WcsEnumColorProfiles(scope, util.toPointer(pEnumRecord), util.toPointer(pBuffer), dwSize, util.toPointer(pnProfiles)));
 }
@@ -5888,7 +5888,7 @@ export function WcsGetDefaultColorProfileSize(
   cptColorProfileType: COLORPROFILETYPE /* Windows.Win32.UI.ColorSystem.COLORPROFILETYPE */,
   cpstColorProfileSubType: COLORPROFILESUBTYPE /* Windows.Win32.UI.ColorSystem.COLORPROFILESUBTYPE */,
   dwProfileID: number /* u32 */,
-  pcbProfileName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbProfileName: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.WcsGetDefaultColorProfileSize(scope, util.pwstrToFfi(pDeviceName), cptColorProfileType, cpstColorProfileSubType, dwProfileID, util.toPointer(pcbProfileName)));
 }
@@ -5925,7 +5925,7 @@ export function WcsSetDefaultRenderingIntent(
 
 export function WcsGetDefaultRenderingIntent(
   scope: WCS_PROFILE_MANAGEMENT_SCOPE /* Windows.Win32.UI.ColorSystem.WCS_PROFILE_MANAGEMENT_SCOPE */,
-  pdwRenderingIntent: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pdwRenderingIntent: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.WcsGetDefaultRenderingIntent(scope, util.toPointer(pdwRenderingIntent)));
 }
@@ -5933,7 +5933,7 @@ export function WcsGetDefaultRenderingIntent(
 export function WcsGetUsePerUserProfiles(
   pDeviceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwDeviceClass: number /* u32 */,
-  pUsePerUserProfiles: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pUsePerUserProfiles: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.WcsGetUsePerUserProfiles(util.pwstrToFfi(pDeviceName), dwDeviceClass, util.toPointer(pUsePerUserProfiles)));
 }
@@ -5952,11 +5952,11 @@ export function WcsTranslateColors(
   nInputChannels: number /* u32 */,
   cdtInput: COLORDATATYPE /* Windows.Win32.UI.ColorSystem.COLORDATATYPE */,
   cbInput: number /* u32 */,
-  pInputData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pInputData: Deno.PointerValue | Uint8Array /* ptr */,
   nOutputChannels: number /* u32 */,
   cdtOutput: COLORDATATYPE /* Windows.Win32.UI.ColorSystem.COLORDATATYPE */,
   cbOutput: number /* u32 */,
-  pOutputData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pOutputData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.WcsTranslateColors(hColorTransform, nColors, nInputChannels, cdtInput, cbInput, util.toPointer(pInputData), nOutputChannels, cdtOutput, cbOutput, util.toPointer(pOutputData)));
 }
@@ -5967,40 +5967,40 @@ export function WcsCheckColors(
   nInputChannels: number /* u32 */,
   cdtInput: COLORDATATYPE /* Windows.Win32.UI.ColorSystem.COLORDATATYPE */,
   cbInput: number /* u32 */,
-  pInputData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  paResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pInputData: Deno.PointerValue | Uint8Array /* ptr */,
+  paResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.WcsCheckColors(hColorTransform, nColors, nInputChannels, cdtInput, cbInput, util.toPointer(pInputData), util.toPointer(paResult)));
 }
 
 export function CMCheckColors(
   hcmTransform: Deno.PointerValue /* isize */,
-  lpaInputColors: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpaInputColors: Deno.PointerValue | Uint8Array /* ptr */,
   nColors: number /* u32 */,
   ctInput: COLORTYPE /* Windows.Win32.UI.ColorSystem.COLORTYPE */,
-  lpaResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpaResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libICM32_dll.CMCheckColors(hcmTransform, util.toPointer(lpaInputColors), nColors, ctInput, util.toPointer(lpaResult)));
 }
 
 export function CMCheckRGBs(
   hcmTransform: Deno.PointerValue /* isize */,
-  lpSrcBits: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpSrcBits: Deno.PointerValue | Uint8Array /* ptr */,
   bmInput: BMFORMAT /* Windows.Win32.UI.ColorSystem.BMFORMAT */,
   dwWidth: number /* u32 */,
   dwHeight: number /* u32 */,
   dwStride: number /* u32 */,
-  lpaResult: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfnCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.ColorSystem.LPBMCALLBACKFN */,
-  ulCallbackData: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
+  lpaResult: Deno.PointerValue | Uint8Array /* ptr */,
+  pfnCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.ColorSystem.LPBMCALLBACKFN */,
+  ulCallbackData: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libICM32_dll.CMCheckRGBs(hcmTransform, util.toPointer(lpSrcBits), bmInput, dwWidth, dwHeight, dwStride, util.toPointer(lpaResult), util.toPointer(pfnCallback), util.toPointer(ulCallbackData)));
 }
 
 export function CMConvertColorNameToIndex(
   hProfile: Deno.PointerValue /* isize */,
-  paColorName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  paIndex: Deno.PointerValue | Uint8Array | null /* ptr */,
+  paColorName: Deno.PointerValue | Uint8Array /* ptr */,
+  paIndex: Deno.PointerValue | Uint8Array /* ptr */,
   dwCount: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libICM32_dll.CMConvertColorNameToIndex(hProfile, util.toPointer(paColorName), util.toPointer(paIndex), dwCount));
@@ -6008,28 +6008,28 @@ export function CMConvertColorNameToIndex(
 
 export function CMConvertIndexToColorName(
   hProfile: Deno.PointerValue /* isize */,
-  paIndex: Deno.PointerValue | Uint8Array | null /* ptr */,
-  paColorName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  paIndex: Deno.PointerValue | Uint8Array /* ptr */,
+  paColorName: Deno.PointerValue | Uint8Array /* ptr */,
   dwCount: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libICM32_dll.CMConvertIndexToColorName(hProfile, util.toPointer(paIndex), util.toPointer(paColorName), dwCount));
 }
 
 export function CMCreateDeviceLinkProfile(
-  pahProfiles: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pahProfiles: Deno.PointerValue | Uint8Array /* ptr */,
   nProfiles: number /* u32 */,
-  padwIntents: Deno.PointerValue | Uint8Array | null /* ptr */,
+  padwIntents: Deno.PointerValue | Uint8Array /* ptr */,
   nIntents: number /* u32 */,
   dwFlags: number /* u32 */,
-  lpProfileData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpProfileData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libICM32_dll.CMCreateDeviceLinkProfile(util.toPointer(pahProfiles), nProfiles, util.toPointer(padwIntents), nIntents, dwFlags, util.toPointer(lpProfileData)));
 }
 
 export function CMCreateMultiProfileTransform(
-  pahProfiles: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pahProfiles: Deno.PointerValue | Uint8Array /* ptr */,
   nProfiles: number /* u32 */,
-  padwIntents: Deno.PointerValue | Uint8Array | null /* ptr */,
+  padwIntents: Deno.PointerValue | Uint8Array /* ptr */,
   nIntents: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* isize */ {
@@ -6037,32 +6037,32 @@ export function CMCreateMultiProfileTransform(
 }
 
 export function CMCreateProfileW(
-  lpColorSpace: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpProfileData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpColorSpace: Deno.PointerValue | Uint8Array /* ptr */,
+  lpProfileData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libICM32_dll.CMCreateProfileW(util.toPointer(lpColorSpace), util.toPointer(lpProfileData)));
 }
 
 export function CMCreateTransform(
-  lpColorSpace: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpDevCharacter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpTargetDevCharacter: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpColorSpace: Deno.PointerValue | Uint8Array /* ptr */,
+  lpDevCharacter: Deno.PointerValue | Uint8Array /* ptr */,
+  lpTargetDevCharacter: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* isize */ {
   return libICM32_dll.CMCreateTransform(util.toPointer(lpColorSpace), util.toPointer(lpDevCharacter), util.toPointer(lpTargetDevCharacter));
 }
 
 export function CMCreateTransformW(
-  lpColorSpace: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpDevCharacter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpTargetDevCharacter: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpColorSpace: Deno.PointerValue | Uint8Array /* ptr */,
+  lpDevCharacter: Deno.PointerValue | Uint8Array /* ptr */,
+  lpTargetDevCharacter: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* isize */ {
   return libICM32_dll.CMCreateTransformW(util.toPointer(lpColorSpace), util.toPointer(lpDevCharacter), util.toPointer(lpTargetDevCharacter));
 }
 
 export function CMCreateTransformExt(
-  lpColorSpace: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpDevCharacter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpTargetDevCharacter: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpColorSpace: Deno.PointerValue | Uint8Array /* ptr */,
+  lpDevCharacter: Deno.PointerValue | Uint8Array /* ptr */,
+  lpTargetDevCharacter: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* isize */ {
   return libICM32_dll.CMCreateTransformExt(util.toPointer(lpColorSpace), util.toPointer(lpDevCharacter), util.toPointer(lpTargetDevCharacter), dwFlags);
@@ -6070,24 +6070,24 @@ export function CMCreateTransformExt(
 
 export function CMCheckColorsInGamut(
   hcmTransform: Deno.PointerValue /* isize */,
-  lpaRGBTriple: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpaResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpaRGBTriple: Deno.PointerValue | Uint8Array /* ptr */,
+  lpaResult: Deno.PointerValue | Uint8Array /* ptr */,
   nCount: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libICM32_dll.CMCheckColorsInGamut(hcmTransform, util.toPointer(lpaRGBTriple), util.toPointer(lpaResult), nCount));
 }
 
 export function CMCreateProfile(
-  lpColorSpace: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpProfileData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpColorSpace: Deno.PointerValue | Uint8Array /* ptr */,
+  lpProfileData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libICM32_dll.CMCreateProfile(util.toPointer(lpColorSpace), util.toPointer(lpProfileData)));
 }
 
 export function CMTranslateRGB(
   hcmTransform: Deno.PointerValue /* isize */,
-  ColorRef: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.COLORREF */,
-  lpColorRef: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ColorRef: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.COLORREF */,
+  lpColorRef: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libICM32_dll.CMTranslateRGB(hcmTransform, util.toPointer(ColorRef), util.toPointer(lpColorRef), dwFlags));
@@ -6095,12 +6095,12 @@ export function CMTranslateRGB(
 
 export function CMTranslateRGBs(
   hcmTransform: Deno.PointerValue /* isize */,
-  lpSrcBits: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpSrcBits: Deno.PointerValue | Uint8Array /* ptr */,
   bmInput: BMFORMAT /* Windows.Win32.UI.ColorSystem.BMFORMAT */,
   dwWidth: number /* u32 */,
   dwHeight: number /* u32 */,
   dwStride: number /* u32 */,
-  lpDestBits: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpDestBits: Deno.PointerValue | Uint8Array /* ptr */,
   bmOutput: BMFORMAT /* Windows.Win32.UI.ColorSystem.BMFORMAT */,
   dwTranslateDirection: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -6108,9 +6108,9 @@ export function CMTranslateRGBs(
 }
 
 export function CMCreateTransformExtW(
-  lpColorSpace: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpDevCharacter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpTargetDevCharacter: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpColorSpace: Deno.PointerValue | Uint8Array /* ptr */,
+  lpDevCharacter: Deno.PointerValue | Uint8Array /* ptr */,
+  lpTargetDevCharacter: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* isize */ {
   return libICM32_dll.CMCreateTransformExtW(util.toPointer(lpColorSpace), util.toPointer(lpDevCharacter), util.toPointer(lpTargetDevCharacter), dwFlags);
@@ -6130,24 +6130,24 @@ export function CMGetInfo(
 
 export function CMGetNamedProfileInfo(
   hProfile: Deno.PointerValue /* isize */,
-  pNamedProfileInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pNamedProfileInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libICM32_dll.CMGetNamedProfileInfo(hProfile, util.toPointer(pNamedProfileInfo)));
 }
 
 export function CMIsProfileValid(
   hProfile: Deno.PointerValue /* isize */,
-  lpbValid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpbValid: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libICM32_dll.CMIsProfileValid(hProfile, util.toPointer(lpbValid)));
 }
 
 export function CMTranslateColors(
   hcmTransform: Deno.PointerValue /* isize */,
-  lpaInputColors: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpaInputColors: Deno.PointerValue | Uint8Array /* ptr */,
   nColors: number /* u32 */,
   ctInput: COLORTYPE /* Windows.Win32.UI.ColorSystem.COLORTYPE */,
-  lpaOutputColors: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpaOutputColors: Deno.PointerValue | Uint8Array /* ptr */,
   ctOutput: COLORTYPE /* Windows.Win32.UI.ColorSystem.COLORTYPE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libICM32_dll.CMTranslateColors(hcmTransform, util.toPointer(lpaInputColors), nColors, ctInput, util.toPointer(lpaOutputColors), ctOutput));
@@ -6155,24 +6155,24 @@ export function CMTranslateColors(
 
 export function CMTranslateRGBsExt(
   hcmTransform: Deno.PointerValue /* isize */,
-  lpSrcBits: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpSrcBits: Deno.PointerValue | Uint8Array /* ptr */,
   bmInput: BMFORMAT /* Windows.Win32.UI.ColorSystem.BMFORMAT */,
   dwWidth: number /* u32 */,
   dwHeight: number /* u32 */,
   dwInputStride: number /* u32 */,
-  lpDestBits: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpDestBits: Deno.PointerValue | Uint8Array /* ptr */,
   bmOutput: BMFORMAT /* Windows.Win32.UI.ColorSystem.BMFORMAT */,
   dwOutputStride: number /* u32 */,
-  lpfnCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.ColorSystem.LPBMCALLBACKFN */,
-  ulCallbackData: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LPARAM */,
+  lpfnCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.ColorSystem.LPBMCALLBACKFN */,
+  ulCallbackData: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libICM32_dll.CMTranslateRGBsExt(hcmTransform, util.toPointer(lpSrcBits), bmInput, dwWidth, dwHeight, dwInputStride, util.toPointer(lpDestBits), bmOutput, dwOutputStride, util.toPointer(lpfnCallback), util.toPointer(ulCallbackData)));
 }
 
 export function WcsOpenColorProfileA(
-  pCDMPProfile: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pCAMPProfile: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pGMMPProfile: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pCDMPProfile: Deno.PointerValue | Uint8Array /* ptr */,
+  pCAMPProfile: Deno.PointerValue | Uint8Array /* ptr */,
+  pGMMPProfile: Deno.PointerValue | Uint8Array /* ptr */,
   dwDesireAccess: number /* u32 */,
   dwShareMode: number /* u32 */,
   dwCreationMode: number /* u32 */,
@@ -6182,9 +6182,9 @@ export function WcsOpenColorProfileA(
 }
 
 export function WcsOpenColorProfileW(
-  pCDMPProfile: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pCAMPProfile: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pGMMPProfile: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pCDMPProfile: Deno.PointerValue | Uint8Array /* ptr */,
+  pCAMPProfile: Deno.PointerValue | Uint8Array /* ptr */,
+  pGMMPProfile: Deno.PointerValue | Uint8Array /* ptr */,
   dwDesireAccess: number /* u32 */,
   dwShareMode: number /* u32 */,
   dwCreationMode: number /* u32 */,
@@ -6201,7 +6201,7 @@ export function WcsCreateIccProfile(
 }
 
 export function WcsGetCalibrationManagementState(
-  pbIsEnabled: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pbIsEnabled: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.WcsGetCalibrationManagementState(util.toPointer(pbIsEnabled)));
 }
@@ -6215,22 +6215,22 @@ export function WcsSetCalibrationManagementState(
 export function ColorProfileAddDisplayAssociation(
   scope: WCS_PROFILE_MANAGEMENT_SCOPE /* Windows.Win32.UI.ColorSystem.WCS_PROFILE_MANAGEMENT_SCOPE */,
   profileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  targetAdapterID: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LUID */,
+  targetAdapterID: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LUID */,
   sourceID: number /* u32 */,
   setAsDefault: boolean /* Windows.Win32.Foundation.BOOL */,
   associateAsAdvancedColor: boolean /* Windows.Win32.Foundation.BOOL */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmscms_dll.ColorProfileAddDisplayAssociation(scope, util.pwstrToFfi(profileName), util.toPointer(targetAdapterID), sourceID, util.boolToFfi(setAsDefault), util.boolToFfi(associateAsAdvancedColor)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmscms_dll.ColorProfileAddDisplayAssociation(scope, util.pwstrToFfi(profileName), util.toPointer(targetAdapterID), sourceID, util.boolToFfi(setAsDefault), util.boolToFfi(associateAsAdvancedColor));
 }
 
 export function ColorProfileRemoveDisplayAssociation(
   scope: WCS_PROFILE_MANAGEMENT_SCOPE /* Windows.Win32.UI.ColorSystem.WCS_PROFILE_MANAGEMENT_SCOPE */,
   profileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  targetAdapterID: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LUID */,
+  targetAdapterID: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LUID */,
   sourceID: number /* u32 */,
   dissociateAdvancedColor: boolean /* Windows.Win32.Foundation.BOOL */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmscms_dll.ColorProfileRemoveDisplayAssociation(scope, util.pwstrToFfi(profileName), util.toPointer(targetAdapterID), sourceID, util.boolToFfi(dissociateAdvancedColor)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmscms_dll.ColorProfileRemoveDisplayAssociation(scope, util.pwstrToFfi(profileName), util.toPointer(targetAdapterID), sourceID, util.boolToFfi(dissociateAdvancedColor));
 }
 
 export function ColorProfileSetDisplayDefaultAssociation(
@@ -6238,38 +6238,38 @@ export function ColorProfileSetDisplayDefaultAssociation(
   profileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   profileType: COLORPROFILETYPE /* Windows.Win32.UI.ColorSystem.COLORPROFILETYPE */,
   profileSubType: COLORPROFILESUBTYPE /* Windows.Win32.UI.ColorSystem.COLORPROFILESUBTYPE */,
-  targetAdapterID: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LUID */,
+  targetAdapterID: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LUID */,
   sourceID: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmscms_dll.ColorProfileSetDisplayDefaultAssociation(scope, util.pwstrToFfi(profileName), profileType, profileSubType, util.toPointer(targetAdapterID), sourceID));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmscms_dll.ColorProfileSetDisplayDefaultAssociation(scope, util.pwstrToFfi(profileName), profileType, profileSubType, util.toPointer(targetAdapterID), sourceID);
 }
 
 export function ColorProfileGetDisplayList(
   scope: WCS_PROFILE_MANAGEMENT_SCOPE /* Windows.Win32.UI.ColorSystem.WCS_PROFILE_MANAGEMENT_SCOPE */,
-  targetAdapterID: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LUID */,
+  targetAdapterID: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LUID */,
   sourceID: number /* u32 */,
-  profileList: Deno.PointerValue | Uint8Array | null /* ptr */,
-  profileCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmscms_dll.ColorProfileGetDisplayList(scope, util.toPointer(targetAdapterID), sourceID, util.toPointer(profileList), util.toPointer(profileCount)));
+  profileList: Deno.PointerValue | Uint8Array /* ptr */,
+  profileCount: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmscms_dll.ColorProfileGetDisplayList(scope, util.toPointer(targetAdapterID), sourceID, util.toPointer(profileList), util.toPointer(profileCount));
 }
 
 export function ColorProfileGetDisplayDefault(
   scope: WCS_PROFILE_MANAGEMENT_SCOPE /* Windows.Win32.UI.ColorSystem.WCS_PROFILE_MANAGEMENT_SCOPE */,
-  targetAdapterID: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LUID */,
+  targetAdapterID: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LUID */,
   sourceID: number /* u32 */,
   profileType: COLORPROFILETYPE /* Windows.Win32.UI.ColorSystem.COLORPROFILETYPE */,
   profileSubType: COLORPROFILESUBTYPE /* Windows.Win32.UI.ColorSystem.COLORPROFILESUBTYPE */,
-  profileName: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmscms_dll.ColorProfileGetDisplayDefault(scope, util.toPointer(targetAdapterID), sourceID, profileType, profileSubType, util.toPointer(profileName)));
+  profileName: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmscms_dll.ColorProfileGetDisplayDefault(scope, util.toPointer(targetAdapterID), sourceID, profileType, profileSubType, util.toPointer(profileName));
 }
 
 export function ColorProfileGetDisplayUserScope(
-  targetAdapterID: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.LUID */,
+  targetAdapterID: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LUID */,
   sourceID: number /* u32 */,
-  scope: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmscms_dll.ColorProfileGetDisplayUserScope(util.toPointer(targetAdapterID), sourceID, util.toPointer(scope)));
+  scope: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmscms_dll.ColorProfileGetDisplayUserScope(util.toPointer(targetAdapterID), sourceID, util.toPointer(scope));
 }
 

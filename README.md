@@ -13,7 +13,7 @@ Fast and complete Win32 API bindings for Deno using FFI.
 import {
   MB_OKCANCEL,
   MessageBoxA,
-} from "https://win32.deno.dev/0.3.0/UI.WindowsAndMessaging";
+} from "https://win32.deno.dev/0.4.0/UI.WindowsAndMessaging";
 
 const result = MessageBoxA(
   null,
@@ -68,4 +68,4 @@ sure to run these commands before committing.
 
 Apache-2.0. Check [LICENSE](LICENSE) for more details.
 
-Copyright 2022 © DjDeveloperr
+Copyright 2022-2023 © DjDeveloperr

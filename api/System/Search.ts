@@ -4509,7 +4509,7 @@ export interface DBVECTOR {
   /** usize */
   size: Deno.PointerValue;
   /** ptr */
-  ptr: Deno.PointerValue | Uint8Array | null;
+  ptr: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDBVECTOR = 16;
@@ -4520,7 +4520,7 @@ export function allocDBVECTOR(data?: Partial<DBVECTOR>): Uint8Array {
   // 0x00: usize
   if (data?.size !== undefined) view.setBigUint64(0, BigInt(data.size), true);
   // 0x08: pointer
-  if (data?.ptr !== undefined) view.setBigUint64(8, data.ptr === null ? 0n : BigInt(util.toPointer(data.ptr)), true);
+  if (data?.ptr !== undefined) view.setBigUint64(8, data.ptr === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ptr))), true);
   return buf;
 }
 
@@ -4540,9 +4540,9 @@ export class DBVECTORView {
   }
 
   // 0x08: pointer
-  get ptr(): Uint8Array | Deno.PointerValue | null {
+  get ptr(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: usize
@@ -4551,8 +4551,8 @@ export class DBVECTORView {
   }
 
   // 0x08: pointer
-  set ptr(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ptr(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4684,9 +4684,9 @@ export class DBTIMESTAMPView {
  */
 export interface _uGuid_e__Union {
   /** System.Guid */
-  guid: Uint8Array | Deno.PointerValue | null;
+  guid: Uint8Array | Deno.PointerValue;
   /** ptr */
-  pguid: Deno.PointerValue | Uint8Array | null;
+  pguid: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeof_uGuid_e__Union = 16;
@@ -4695,9 +4695,9 @@ export function alloc_uGuid_e__Union(data?: Partial<_uGuid_e__Union>): Uint8Arra
   const buf = new Uint8Array(sizeof_uGuid_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.guid !== undefined) view.setBigUint64(0, data.guid === null ? 0n : BigInt(util.toPointer(data.guid)), true);
+  if (data?.guid !== undefined) view.setBigUint64(0, data.guid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.guid))), true);
   // 0x08: pointer
-  if (data?.pguid !== undefined) view.setBigUint64(8, data.pguid === null ? 0n : BigInt(util.toPointer(data.pguid)), true);
+  if (data?.pguid !== undefined) view.setBigUint64(8, data.pguid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pguid))), true);
   return buf;
 }
 
@@ -4712,29 +4712,29 @@ export class _uGuid_e__UnionView {
   }
 
   // 0x00: pointer
-  get guid(): Uint8Array | Deno.PointerValue | null {
+  get guid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get pguid(): Uint8Array | Deno.PointerValue | null {
+  get pguid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set guid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set guid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set pguid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pguid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * _uName_e__Union (size: 16)
@@ -4754,7 +4754,7 @@ export function alloc_uName_e__Union(data?: Partial<_uName_e__Union>): Uint8Arra
   // 0x00: buffer
   if (data?.pwszName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pwszName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: u32
   if (data?.ulPropid !== undefined) view.setUint32(8, Number(data.ulPropid), true);
@@ -4773,9 +4773,9 @@ export class _uName_e__UnionView {
   }
 
   // 0x00: buffer
-  get pwszName(): Uint8Array | Deno.PointerValue | null {
+  get pwszName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -4786,9 +4786,9 @@ export class _uName_e__UnionView {
   // 0x0c: pad4
 
   // 0x00: buffer
-  set pwszName(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: u32
@@ -4804,11 +4804,11 @@ export class _uName_e__UnionView {
  */
 export interface DBID {
   /** _uGuid_e__Union */
-  uGuid: Uint8Array | Deno.PointerValue | null;
+  uGuid: Uint8Array | Deno.PointerValue;
   /** u32 */
   eKind: number;
   /** _uName_e__Union */
-  uName: Uint8Array | Deno.PointerValue | null;
+  uName: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDBID = 24;
@@ -4817,12 +4817,12 @@ export function allocDBID(data?: Partial<DBID>): Uint8Array {
   const buf = new Uint8Array(sizeofDBID);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.uGuid !== undefined) view.setBigUint64(0, data.uGuid === null ? 0n : BigInt(util.toPointer(data.uGuid)), true);
+  if (data?.uGuid !== undefined) view.setBigUint64(0, data.uGuid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.uGuid))), true);
   // 0x08: u32
   if (data?.eKind !== undefined) view.setUint32(8, Number(data.eKind), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.uName !== undefined) view.setBigUint64(16, data.uName === null ? 0n : BigInt(util.toPointer(data.uName)), true);
+  if (data?.uName !== undefined) view.setBigUint64(16, data.uName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.uName))), true);
   return buf;
 }
 
@@ -4837,9 +4837,9 @@ export class DBIDView {
   }
 
   // 0x00: pointer
-  get uGuid(): Uint8Array | Deno.PointerValue | null {
+  get uGuid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -4850,14 +4850,14 @@ export class DBIDView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get uName(): Uint8Array | Deno.PointerValue | null {
+  get uName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set uGuid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set uGuid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -4868,8 +4868,8 @@ export class DBIDView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set uName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set uName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4878,9 +4878,9 @@ export class DBIDView {
  */
 export interface SEC_OBJECT_ELEMENT {
   /** System.Guid */
-  guidObjectType: Uint8Array | Deno.PointerValue | null;
+  guidObjectType: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.IndexServer.DBID */
-  ObjectID: Uint8Array | Deno.PointerValue | null;
+  ObjectID: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofSEC_OBJECT_ELEMENT = 16;
@@ -4889,9 +4889,9 @@ export function allocSEC_OBJECT_ELEMENT(data?: Partial<SEC_OBJECT_ELEMENT>): Uin
   const buf = new Uint8Array(sizeofSEC_OBJECT_ELEMENT);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.guidObjectType !== undefined) view.setBigUint64(0, data.guidObjectType === null ? 0n : BigInt(util.toPointer(data.guidObjectType)), true);
+  if (data?.guidObjectType !== undefined) view.setBigUint64(0, data.guidObjectType === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.guidObjectType))), true);
   // 0x08: pointer
-  if (data?.ObjectID !== undefined) view.setBigUint64(8, data.ObjectID === null ? 0n : BigInt(util.toPointer(data.ObjectID)), true);
+  if (data?.ObjectID !== undefined) view.setBigUint64(8, data.ObjectID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ObjectID))), true);
   return buf;
 }
 
@@ -4906,25 +4906,25 @@ export class SEC_OBJECT_ELEMENTView {
   }
 
   // 0x00: pointer
-  get guidObjectType(): Uint8Array | Deno.PointerValue | null {
+  get guidObjectType(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get ObjectID(): Uint8Array | Deno.PointerValue | null {
+  get ObjectID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set guidObjectType(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set guidObjectType(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set ObjectID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ObjectID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4935,7 +4935,7 @@ export interface SEC_OBJECT {
   /** u32 */
   cObjects: number;
   /** ptr */
-  prgObjects: Deno.PointerValue | Uint8Array | null;
+  prgObjects: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofSEC_OBJECT = 16;
@@ -4947,7 +4947,7 @@ export function allocSEC_OBJECT(data?: Partial<SEC_OBJECT>): Uint8Array {
   if (data?.cObjects !== undefined) view.setUint32(0, Number(data.cObjects), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.prgObjects !== undefined) view.setBigUint64(8, data.prgObjects === null ? 0n : BigInt(util.toPointer(data.prgObjects)), true);
+  if (data?.prgObjects !== undefined) view.setBigUint64(8, data.prgObjects === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.prgObjects))), true);
   return buf;
 }
 
@@ -4969,9 +4969,9 @@ export class SEC_OBJECTView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get prgObjects(): Uint8Array | Deno.PointerValue | null {
+  get prgObjects(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -4982,8 +4982,8 @@ export class SEC_OBJECTView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set prgObjects(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set prgObjects(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4992,11 +4992,11 @@ export class SEC_OBJECTView {
  */
 export interface DBIMPLICITSESSION {
   /** Windows.Win32.System.Com.IUnknown */
-  pUnkOuter: Uint8Array | Deno.PointerValue | null;
+  pUnkOuter: Uint8Array | Deno.PointerValue;
   /** ptr */
-  piid: Deno.PointerValue | Uint8Array | null;
+  piid: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.System.Com.IUnknown */
-  pSession: Uint8Array | Deno.PointerValue | null;
+  pSession: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDBIMPLICITSESSION = 24;
@@ -5005,11 +5005,11 @@ export function allocDBIMPLICITSESSION(data?: Partial<DBIMPLICITSESSION>): Uint8
   const buf = new Uint8Array(sizeofDBIMPLICITSESSION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pUnkOuter !== undefined) view.setBigUint64(0, data.pUnkOuter === null ? 0n : BigInt(util.toPointer(data.pUnkOuter)), true);
+  if (data?.pUnkOuter !== undefined) view.setBigUint64(0, data.pUnkOuter === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pUnkOuter))), true);
   // 0x08: pointer
-  if (data?.piid !== undefined) view.setBigUint64(8, data.piid === null ? 0n : BigInt(util.toPointer(data.piid)), true);
+  if (data?.piid !== undefined) view.setBigUint64(8, data.piid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.piid))), true);
   // 0x10: pointer
-  if (data?.pSession !== undefined) view.setBigUint64(16, data.pSession === null ? 0n : BigInt(util.toPointer(data.pSession)), true);
+  if (data?.pSession !== undefined) view.setBigUint64(16, data.pSession === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pSession))), true);
   return buf;
 }
 
@@ -5024,36 +5024,36 @@ export class DBIMPLICITSESSIONView {
   }
 
   // 0x00: pointer
-  get pUnkOuter(): Uint8Array | Deno.PointerValue | null {
+  get pUnkOuter(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get piid(): Uint8Array | Deno.PointerValue | null {
+  get piid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get pSession(): Uint8Array | Deno.PointerValue | null {
+  get pSession(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set pUnkOuter(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pUnkOuter(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set piid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set piid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set pSession(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pSession(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -5064,7 +5064,7 @@ export interface DBOBJECT {
   /** u32 */
   dwFlags: number;
   /** System.Guid */
-  iid: Uint8Array | Deno.PointerValue | null;
+  iid: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDBOBJECT = 16;
@@ -5076,7 +5076,7 @@ export function allocDBOBJECT(data?: Partial<DBOBJECT>): Uint8Array {
   if (data?.dwFlags !== undefined) view.setUint32(0, Number(data.dwFlags), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.iid !== undefined) view.setBigUint64(8, data.iid === null ? 0n : BigInt(util.toPointer(data.iid)), true);
+  if (data?.iid !== undefined) view.setBigUint64(8, data.iid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.iid))), true);
   return buf;
 }
 
@@ -5098,9 +5098,9 @@ export class DBOBJECTView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get iid(): Uint8Array | Deno.PointerValue | null {
+  get iid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -5111,8 +5111,8 @@ export class DBOBJECTView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set iid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set iid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -5121,7 +5121,7 @@ export class DBOBJECTView {
  */
 export interface DBBINDEXT {
   /** ptr */
-  pExtension: Deno.PointerValue | Uint8Array | null;
+  pExtension: Deno.PointerValue | Uint8Array;
   /** usize */
   ulExtension: Deno.PointerValue;
 }
@@ -5132,7 +5132,7 @@ export function allocDBBINDEXT(data?: Partial<DBBINDEXT>): Uint8Array {
   const buf = new Uint8Array(sizeofDBBINDEXT);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pExtension !== undefined) view.setBigUint64(0, data.pExtension === null ? 0n : BigInt(util.toPointer(data.pExtension)), true);
+  if (data?.pExtension !== undefined) view.setBigUint64(0, data.pExtension === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pExtension))), true);
   // 0x08: usize
   if (data?.ulExtension !== undefined) view.setBigUint64(8, BigInt(data.ulExtension), true);
   return buf;
@@ -5149,9 +5149,9 @@ export class DBBINDEXTView {
   }
 
   // 0x00: pointer
-  get pExtension(): Uint8Array | Deno.PointerValue | null {
+  get pExtension(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: usize
@@ -5160,8 +5160,8 @@ export class DBBINDEXTView {
   }
 
   // 0x00: pointer
-  set pExtension(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pExtension(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: usize
@@ -5183,11 +5183,11 @@ export interface DBBINDING {
   /** usize */
   obStatus: Deno.PointerValue;
   /** Windows.Win32.System.Com.ITypeInfo */
-  pTypeInfo: Uint8Array | Deno.PointerValue | null;
+  pTypeInfo: Uint8Array | Deno.PointerValue;
   /** ptr */
-  pObject: Deno.PointerValue | Uint8Array | null;
+  pObject: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pBindExt: Deno.PointerValue | Uint8Array | null;
+  pBindExt: Deno.PointerValue | Uint8Array;
   /** u32 */
   dwPart: number;
   /** u32 */
@@ -5220,11 +5220,11 @@ export function allocDBBINDING(data?: Partial<DBBINDING>): Uint8Array {
   // 0x18: usize
   if (data?.obStatus !== undefined) view.setBigUint64(24, BigInt(data.obStatus), true);
   // 0x20: pointer
-  if (data?.pTypeInfo !== undefined) view.setBigUint64(32, data.pTypeInfo === null ? 0n : BigInt(util.toPointer(data.pTypeInfo)), true);
+  if (data?.pTypeInfo !== undefined) view.setBigUint64(32, data.pTypeInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pTypeInfo))), true);
   // 0x28: pointer
-  if (data?.pObject !== undefined) view.setBigUint64(40, data.pObject === null ? 0n : BigInt(util.toPointer(data.pObject)), true);
+  if (data?.pObject !== undefined) view.setBigUint64(40, data.pObject === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pObject))), true);
   // 0x30: pointer
-  if (data?.pBindExt !== undefined) view.setBigUint64(48, data.pBindExt === null ? 0n : BigInt(util.toPointer(data.pBindExt)), true);
+  if (data?.pBindExt !== undefined) view.setBigUint64(48, data.pBindExt === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pBindExt))), true);
   // 0x38: u32
   if (data?.dwPart !== undefined) view.setUint32(56, Number(data.dwPart), true);
   // 0x3c: u32
@@ -5276,21 +5276,21 @@ export class DBBINDINGView {
   }
 
   // 0x20: pointer
-  get pTypeInfo(): Uint8Array | Deno.PointerValue | null {
+  get pTypeInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get pObject(): Uint8Array | Deno.PointerValue | null {
+  get pObject(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get pBindExt(): Uint8Array | Deno.PointerValue | null {
+  get pBindExt(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: u32
@@ -5356,18 +5356,18 @@ export class DBBINDINGView {
   }
 
   // 0x20: pointer
-  set pTypeInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set pTypeInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set pObject(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set pObject(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set pBindExt(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set pBindExt(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: u32
@@ -5424,7 +5424,7 @@ export interface DBFAILUREINFO {
   /** usize */
   iColumn: Deno.PointerValue;
   /** Windows.Win32.Foundation.HRESULT */
-  failure: Uint8Array | Deno.PointerValue | null;
+  failure: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDBFAILUREINFO = 24;
@@ -5437,7 +5437,7 @@ export function allocDBFAILUREINFO(data?: Partial<DBFAILUREINFO>): Uint8Array {
   // 0x08: usize
   if (data?.iColumn !== undefined) view.setBigUint64(8, BigInt(data.iColumn), true);
   // 0x10: pointer
-  if (data?.failure !== undefined) view.setBigUint64(16, data.failure === null ? 0n : BigInt(util.toPointer(data.failure)), true);
+  if (data?.failure !== undefined) view.setBigUint64(16, data.failure === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.failure))), true);
   return buf;
 }
 
@@ -5462,9 +5462,9 @@ export class DBFAILUREINFOView {
   }
 
   // 0x10: pointer
-  get failure(): Uint8Array | Deno.PointerValue | null {
+  get failure(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: usize
@@ -5478,8 +5478,8 @@ export class DBFAILUREINFOView {
   }
 
   // 0x10: pointer
-  set failure(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set failure(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -5490,7 +5490,7 @@ export interface DBCOLUMNINFO {
   /** Windows.Win32.Foundation.PWSTR */
   pwszName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Com.ITypeInfo */
-  pTypeInfo: Uint8Array | Deno.PointerValue | null;
+  pTypeInfo: Uint8Array | Deno.PointerValue;
   /** usize */
   iOrdinal: Deno.PointerValue;
   /** u32 */
@@ -5504,7 +5504,7 @@ export interface DBCOLUMNINFO {
   /** u8 */
   bScale: number;
   /** Windows.Win32.Storage.IndexServer.DBID */
-  columnid: Uint8Array | Deno.PointerValue | null;
+  columnid: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDBCOLUMNINFO = 56;
@@ -5515,10 +5515,10 @@ export function allocDBCOLUMNINFO(data?: Partial<DBCOLUMNINFO>): Uint8Array {
   // 0x00: buffer
   if (data?.pwszName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pwszName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: pointer
-  if (data?.pTypeInfo !== undefined) view.setBigUint64(8, data.pTypeInfo === null ? 0n : BigInt(util.toPointer(data.pTypeInfo)), true);
+  if (data?.pTypeInfo !== undefined) view.setBigUint64(8, data.pTypeInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pTypeInfo))), true);
   // 0x10: usize
   if (data?.iOrdinal !== undefined) view.setBigUint64(16, BigInt(data.iOrdinal), true);
   // 0x18: u32
@@ -5534,7 +5534,7 @@ export function allocDBCOLUMNINFO(data?: Partial<DBCOLUMNINFO>): Uint8Array {
   if (data?.bScale !== undefined) view.setUint8(43, Number(data.bScale));
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.columnid !== undefined) view.setBigUint64(48, data.columnid === null ? 0n : BigInt(util.toPointer(data.columnid)), true);
+  if (data?.columnid !== undefined) view.setBigUint64(48, data.columnid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.columnid))), true);
   return buf;
 }
 
@@ -5549,15 +5549,15 @@ export class DBCOLUMNINFOView {
   }
 
   // 0x00: buffer
-  get pwszName(): Uint8Array | Deno.PointerValue | null {
+  get pwszName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get pTypeInfo(): Uint8Array | Deno.PointerValue | null {
+  get pTypeInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: usize
@@ -5595,20 +5595,20 @@ export class DBCOLUMNINFOView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  get columnid(): Uint8Array | Deno.PointerValue | null {
+  get columnid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set pwszName(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: pointer
-  set pTypeInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pTypeInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: usize
@@ -5646,8 +5646,8 @@ export class DBCOLUMNINFOView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  set columnid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set columnid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -5656,11 +5656,11 @@ export class DBCOLUMNINFOView {
  */
 export interface DBPARAMS {
   /** ptr */
-  pData: Deno.PointerValue | Uint8Array | null;
+  pData: Deno.PointerValue | Uint8Array;
   /** usize */
   cParamSets: Deno.PointerValue;
   /** Windows.Win32.System.Search.HACCESSOR */
-  hAccessor: Uint8Array | Deno.PointerValue | null;
+  hAccessor: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDBPARAMS = 24;
@@ -5669,11 +5669,11 @@ export function allocDBPARAMS(data?: Partial<DBPARAMS>): Uint8Array {
   const buf = new Uint8Array(sizeofDBPARAMS);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pData !== undefined) view.setBigUint64(0, data.pData === null ? 0n : BigInt(util.toPointer(data.pData)), true);
+  if (data?.pData !== undefined) view.setBigUint64(0, data.pData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pData))), true);
   // 0x08: usize
   if (data?.cParamSets !== undefined) view.setBigUint64(8, BigInt(data.cParamSets), true);
   // 0x10: pointer
-  if (data?.hAccessor !== undefined) view.setBigUint64(16, data.hAccessor === null ? 0n : BigInt(util.toPointer(data.hAccessor)), true);
+  if (data?.hAccessor !== undefined) view.setBigUint64(16, data.hAccessor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hAccessor))), true);
   return buf;
 }
 
@@ -5688,9 +5688,9 @@ export class DBPARAMSView {
   }
 
   // 0x00: pointer
-  get pData(): Uint8Array | Deno.PointerValue | null {
+  get pData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: usize
@@ -5699,14 +5699,14 @@ export class DBPARAMSView {
   }
 
   // 0x10: pointer
-  get hAccessor(): Uint8Array | Deno.PointerValue | null {
+  get hAccessor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set pData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: usize
@@ -5715,8 +5715,8 @@ export class DBPARAMSView {
   }
 
   // 0x10: pointer
-  set hAccessor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set hAccessor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -5731,7 +5731,7 @@ export interface DBPARAMINFO {
   /** Windows.Win32.Foundation.PWSTR */
   pwszName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Com.ITypeInfo */
-  pTypeInfo: Uint8Array | Deno.PointerValue | null;
+  pTypeInfo: Uint8Array | Deno.PointerValue;
   /** usize */
   ulParamSize: Deno.PointerValue;
   /** u16 */
@@ -5755,10 +5755,10 @@ export function allocDBPARAMINFO(data?: Partial<DBPARAMINFO>): Uint8Array {
   // 0x10: buffer
   if (data?.pwszName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pwszName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: pointer
-  if (data?.pTypeInfo !== undefined) view.setBigUint64(24, data.pTypeInfo === null ? 0n : BigInt(util.toPointer(data.pTypeInfo)), true);
+  if (data?.pTypeInfo !== undefined) view.setBigUint64(24, data.pTypeInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pTypeInfo))), true);
   // 0x20: usize
   if (data?.ulParamSize !== undefined) view.setBigUint64(32, BigInt(data.ulParamSize), true);
   // 0x28: u16
@@ -5794,15 +5794,15 @@ export class DBPARAMINFOView {
   }
 
   // 0x10: buffer
-  get pwszName(): Uint8Array | Deno.PointerValue | null {
+  get pwszName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get pTypeInfo(): Uint8Array | Deno.PointerValue | null {
+  get pTypeInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: usize
@@ -5840,14 +5840,14 @@ export class DBPARAMINFOView {
   }
 
   // 0x10: buffer
-  set pwszName(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: pointer
-  set pTypeInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set pTypeInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: usize
@@ -5878,11 +5878,11 @@ export class DBPARAMINFOView {
  */
 export interface DBPROPIDSET {
   /** ptr */
-  rgPropertyIDs: Deno.PointerValue | Uint8Array | null;
+  rgPropertyIDs: Deno.PointerValue | Uint8Array;
   /** u32 */
   cPropertyIDs: number;
   /** System.Guid */
-  guidPropertySet: Uint8Array | Deno.PointerValue | null;
+  guidPropertySet: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDBPROPIDSET = 24;
@@ -5891,12 +5891,12 @@ export function allocDBPROPIDSET(data?: Partial<DBPROPIDSET>): Uint8Array {
   const buf = new Uint8Array(sizeofDBPROPIDSET);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.rgPropertyIDs !== undefined) view.setBigUint64(0, data.rgPropertyIDs === null ? 0n : BigInt(util.toPointer(data.rgPropertyIDs)), true);
+  if (data?.rgPropertyIDs !== undefined) view.setBigUint64(0, data.rgPropertyIDs === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgPropertyIDs))), true);
   // 0x08: u32
   if (data?.cPropertyIDs !== undefined) view.setUint32(8, Number(data.cPropertyIDs), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.guidPropertySet !== undefined) view.setBigUint64(16, data.guidPropertySet === null ? 0n : BigInt(util.toPointer(data.guidPropertySet)), true);
+  if (data?.guidPropertySet !== undefined) view.setBigUint64(16, data.guidPropertySet === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.guidPropertySet))), true);
   return buf;
 }
 
@@ -5911,9 +5911,9 @@ export class DBPROPIDSETView {
   }
 
   // 0x00: pointer
-  get rgPropertyIDs(): Uint8Array | Deno.PointerValue | null {
+  get rgPropertyIDs(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -5924,14 +5924,14 @@ export class DBPROPIDSETView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get guidPropertySet(): Uint8Array | Deno.PointerValue | null {
+  get guidPropertySet(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set rgPropertyIDs(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set rgPropertyIDs(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -5942,8 +5942,8 @@ export class DBPROPIDSETView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set guidPropertySet(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set guidPropertySet(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -6005,9 +6005,9 @@ export class _Anonymous_e__StructView {
  */
 export interface _Anonymous_e__Union {
   /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** array */
-  X: Deno.PointerValue | null;
+  X: Deno.PointerValue;
 }
 
 export const sizeof_Anonymous_e__Union = 16;
@@ -6016,9 +6016,9 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   const buf = new Uint8Array(sizeof_Anonymous_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x08: pointer
-  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.X))), true);
   return buf;
 }
 
@@ -6033,25 +6033,25 @@ export class _Anonymous_e__UnionView {
   }
 
   // 0x00: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get X(): Uint8Array | Deno.PointerValue | null {
+  get X(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set X(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set X(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -6060,7 +6060,7 @@ export class _Anonymous_e__UnionView {
  */
 export interface VARIANT {
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofVARIANT = 8;
@@ -6069,7 +6069,7 @@ export function allocVARIANT(data?: Partial<VARIANT>): Uint8Array {
   const buf = new Uint8Array(sizeofVARIANT);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -6084,14 +6084,14 @@ export class VARIANTView {
   }
 
   // 0x00: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -6108,7 +6108,7 @@ export interface DBPROPINFO {
   /** Windows.Win32.System.Com.VARENUM */
   vtType: VARENUM;
   /** Windows.Win32.System.Com.VARIANT */
-  vValues: Uint8Array | Deno.PointerValue | null;
+  vValues: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDBPROPINFO = 32;
@@ -6119,7 +6119,7 @@ export function allocDBPROPINFO(data?: Partial<DBPROPINFO>): Uint8Array {
   // 0x00: buffer
   if (data?.pwszDescription !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pwszDescription);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: u32
   if (data?.dwPropertyID !== undefined) view.setUint32(8, Number(data.dwPropertyID), true);
@@ -6129,7 +6129,7 @@ export function allocDBPROPINFO(data?: Partial<DBPROPINFO>): Uint8Array {
   if (data?.vtType !== undefined) view.setUint16(16, Number(data.vtType), true);
   // 0x12: pad6
   // 0x18: pointer
-  if (data?.vValues !== undefined) view.setBigUint64(24, data.vValues === null ? 0n : BigInt(util.toPointer(data.vValues)), true);
+  if (data?.vValues !== undefined) view.setBigUint64(24, data.vValues === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.vValues))), true);
   return buf;
 }
 
@@ -6144,9 +6144,9 @@ export class DBPROPINFOView {
   }
 
   // 0x00: buffer
-  get pwszDescription(): Uint8Array | Deno.PointerValue | null {
+  get pwszDescription(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -6167,15 +6167,15 @@ export class DBPROPINFOView {
   // 0x12: pad6
 
   // 0x18: pointer
-  get vValues(): Uint8Array | Deno.PointerValue | null {
+  get vValues(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set pwszDescription(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszDescription(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: u32
@@ -6196,8 +6196,8 @@ export class DBPROPINFOView {
   // 0x12: pad6
 
   // 0x18: pointer
-  set vValues(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set vValues(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -6206,11 +6206,11 @@ export class DBPROPINFOView {
  */
 export interface DBPROPINFOSET {
   /** ptr */
-  rgPropertyInfos: Deno.PointerValue | Uint8Array | null;
+  rgPropertyInfos: Deno.PointerValue | Uint8Array;
   /** u32 */
   cPropertyInfos: number;
   /** System.Guid */
-  guidPropertySet: Uint8Array | Deno.PointerValue | null;
+  guidPropertySet: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDBPROPINFOSET = 24;
@@ -6219,12 +6219,12 @@ export function allocDBPROPINFOSET(data?: Partial<DBPROPINFOSET>): Uint8Array {
   const buf = new Uint8Array(sizeofDBPROPINFOSET);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.rgPropertyInfos !== undefined) view.setBigUint64(0, data.rgPropertyInfos === null ? 0n : BigInt(util.toPointer(data.rgPropertyInfos)), true);
+  if (data?.rgPropertyInfos !== undefined) view.setBigUint64(0, data.rgPropertyInfos === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgPropertyInfos))), true);
   // 0x08: u32
   if (data?.cPropertyInfos !== undefined) view.setUint32(8, Number(data.cPropertyInfos), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.guidPropertySet !== undefined) view.setBigUint64(16, data.guidPropertySet === null ? 0n : BigInt(util.toPointer(data.guidPropertySet)), true);
+  if (data?.guidPropertySet !== undefined) view.setBigUint64(16, data.guidPropertySet === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.guidPropertySet))), true);
   return buf;
 }
 
@@ -6239,9 +6239,9 @@ export class DBPROPINFOSETView {
   }
 
   // 0x00: pointer
-  get rgPropertyInfos(): Uint8Array | Deno.PointerValue | null {
+  get rgPropertyInfos(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -6252,14 +6252,14 @@ export class DBPROPINFOSETView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get guidPropertySet(): Uint8Array | Deno.PointerValue | null {
+  get guidPropertySet(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set rgPropertyInfos(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set rgPropertyInfos(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -6270,8 +6270,8 @@ export class DBPROPINFOSETView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set guidPropertySet(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set guidPropertySet(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -6286,9 +6286,9 @@ export interface DBPROP {
   /** u32 */
   dwStatus: number;
   /** Windows.Win32.Storage.IndexServer.DBID */
-  colid: Uint8Array | Deno.PointerValue | null;
+  colid: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Com.VARIANT */
-  vValue: Uint8Array | Deno.PointerValue | null;
+  vValue: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDBPROP = 32;
@@ -6304,9 +6304,9 @@ export function allocDBPROP(data?: Partial<DBPROP>): Uint8Array {
   if (data?.dwStatus !== undefined) view.setUint32(8, Number(data.dwStatus), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.colid !== undefined) view.setBigUint64(16, data.colid === null ? 0n : BigInt(util.toPointer(data.colid)), true);
+  if (data?.colid !== undefined) view.setBigUint64(16, data.colid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.colid))), true);
   // 0x18: pointer
-  if (data?.vValue !== undefined) view.setBigUint64(24, data.vValue === null ? 0n : BigInt(util.toPointer(data.vValue)), true);
+  if (data?.vValue !== undefined) view.setBigUint64(24, data.vValue === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.vValue))), true);
   return buf;
 }
 
@@ -6338,15 +6338,15 @@ export class DBPROPView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get colid(): Uint8Array | Deno.PointerValue | null {
+  get colid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get vValue(): Uint8Array | Deno.PointerValue | null {
+  get vValue(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -6367,13 +6367,13 @@ export class DBPROPView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set colid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set colid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set vValue(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set vValue(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -6382,11 +6382,11 @@ export class DBPROPView {
  */
 export interface DBPROPSET {
   /** ptr */
-  rgProperties: Deno.PointerValue | Uint8Array | null;
+  rgProperties: Deno.PointerValue | Uint8Array;
   /** u32 */
   cProperties: number;
   /** System.Guid */
-  guidPropertySet: Uint8Array | Deno.PointerValue | null;
+  guidPropertySet: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDBPROPSET = 24;
@@ -6395,12 +6395,12 @@ export function allocDBPROPSET(data?: Partial<DBPROPSET>): Uint8Array {
   const buf = new Uint8Array(sizeofDBPROPSET);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.rgProperties !== undefined) view.setBigUint64(0, data.rgProperties === null ? 0n : BigInt(util.toPointer(data.rgProperties)), true);
+  if (data?.rgProperties !== undefined) view.setBigUint64(0, data.rgProperties === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgProperties))), true);
   // 0x08: u32
   if (data?.cProperties !== undefined) view.setUint32(8, Number(data.cProperties), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.guidPropertySet !== undefined) view.setBigUint64(16, data.guidPropertySet === null ? 0n : BigInt(util.toPointer(data.guidPropertySet)), true);
+  if (data?.guidPropertySet !== undefined) view.setBigUint64(16, data.guidPropertySet === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.guidPropertySet))), true);
   return buf;
 }
 
@@ -6415,9 +6415,9 @@ export class DBPROPSETView {
   }
 
   // 0x00: pointer
-  get rgProperties(): Uint8Array | Deno.PointerValue | null {
+  get rgProperties(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -6428,14 +6428,14 @@ export class DBPROPSETView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get guidPropertySet(): Uint8Array | Deno.PointerValue | null {
+  get guidPropertySet(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set rgProperties(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set rgProperties(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -6446,8 +6446,8 @@ export class DBPROPSETView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set guidPropertySet(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set guidPropertySet(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -6456,7 +6456,7 @@ export class DBPROPSETView {
  */
 export interface DBINDEXCOLUMNDESC {
   /** ptr */
-  pColumnID: Deno.PointerValue | Uint8Array | null;
+  pColumnID: Deno.PointerValue | Uint8Array;
   /** u32 */
   eIndexColOrder: number;
 }
@@ -6467,7 +6467,7 @@ export function allocDBINDEXCOLUMNDESC(data?: Partial<DBINDEXCOLUMNDESC>): Uint8
   const buf = new Uint8Array(sizeofDBINDEXCOLUMNDESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pColumnID !== undefined) view.setBigUint64(0, data.pColumnID === null ? 0n : BigInt(util.toPointer(data.pColumnID)), true);
+  if (data?.pColumnID !== undefined) view.setBigUint64(0, data.pColumnID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pColumnID))), true);
   // 0x08: u32
   if (data?.eIndexColOrder !== undefined) view.setUint32(8, Number(data.eIndexColOrder), true);
   // 0x0c: pad4
@@ -6485,9 +6485,9 @@ export class DBINDEXCOLUMNDESCView {
   }
 
   // 0x00: pointer
-  get pColumnID(): Uint8Array | Deno.PointerValue | null {
+  get pColumnID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -6498,8 +6498,8 @@ export class DBINDEXCOLUMNDESCView {
   // 0x0c: pad4
 
   // 0x00: pointer
-  set pColumnID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pColumnID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -6517,17 +6517,17 @@ export interface DBCOLUMNDESC {
   /** Windows.Win32.Foundation.PWSTR */
   pwszTypeName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Com.ITypeInfo */
-  pTypeInfo: Uint8Array | Deno.PointerValue | null;
+  pTypeInfo: Uint8Array | Deno.PointerValue;
   /** ptr */
-  rgPropertySets: Deno.PointerValue | Uint8Array | null;
+  rgPropertySets: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pclsid: Deno.PointerValue | Uint8Array | null;
+  pclsid: Deno.PointerValue | Uint8Array;
   /** u32 */
   cPropertySets: number;
   /** usize */
   ulColumnSize: Deno.PointerValue;
   /** Windows.Win32.Storage.IndexServer.DBID */
-  dbcid: Uint8Array | Deno.PointerValue | null;
+  dbcid: Uint8Array | Deno.PointerValue;
   /** u16 */
   wType: number;
   /** u8 */
@@ -6544,21 +6544,21 @@ export function allocDBCOLUMNDESC(data?: Partial<DBCOLUMNDESC>): Uint8Array {
   // 0x00: buffer
   if (data?.pwszTypeName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pwszTypeName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: pointer
-  if (data?.pTypeInfo !== undefined) view.setBigUint64(8, data.pTypeInfo === null ? 0n : BigInt(util.toPointer(data.pTypeInfo)), true);
+  if (data?.pTypeInfo !== undefined) view.setBigUint64(8, data.pTypeInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pTypeInfo))), true);
   // 0x10: pointer
-  if (data?.rgPropertySets !== undefined) view.setBigUint64(16, data.rgPropertySets === null ? 0n : BigInt(util.toPointer(data.rgPropertySets)), true);
+  if (data?.rgPropertySets !== undefined) view.setBigUint64(16, data.rgPropertySets === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgPropertySets))), true);
   // 0x18: pointer
-  if (data?.pclsid !== undefined) view.setBigUint64(24, data.pclsid === null ? 0n : BigInt(util.toPointer(data.pclsid)), true);
+  if (data?.pclsid !== undefined) view.setBigUint64(24, data.pclsid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pclsid))), true);
   // 0x20: u32
   if (data?.cPropertySets !== undefined) view.setUint32(32, Number(data.cPropertySets), true);
   // 0x24: pad4
   // 0x28: usize
   if (data?.ulColumnSize !== undefined) view.setBigUint64(40, BigInt(data.ulColumnSize), true);
   // 0x30: pointer
-  if (data?.dbcid !== undefined) view.setBigUint64(48, data.dbcid === null ? 0n : BigInt(util.toPointer(data.dbcid)), true);
+  if (data?.dbcid !== undefined) view.setBigUint64(48, data.dbcid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.dbcid))), true);
   // 0x38: u16
   if (data?.wType !== undefined) view.setUint16(56, Number(data.wType), true);
   // 0x3a: u8
@@ -6580,27 +6580,27 @@ export class DBCOLUMNDESCView {
   }
 
   // 0x00: buffer
-  get pwszTypeName(): Uint8Array | Deno.PointerValue | null {
+  get pwszTypeName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get pTypeInfo(): Uint8Array | Deno.PointerValue | null {
+  get pTypeInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get rgPropertySets(): Uint8Array | Deno.PointerValue | null {
+  get rgPropertySets(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get pclsid(): Uint8Array | Deno.PointerValue | null {
+  get pclsid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -6616,9 +6616,9 @@ export class DBCOLUMNDESCView {
   }
 
   // 0x30: pointer
-  get dbcid(): Uint8Array | Deno.PointerValue | null {
+  get dbcid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: u16
@@ -6639,24 +6639,24 @@ export class DBCOLUMNDESCView {
   // 0x3c: pad4
 
   // 0x00: buffer
-  set pwszTypeName(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszTypeName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: pointer
-  set pTypeInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pTypeInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set rgPropertySets(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set rgPropertySets(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set pclsid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set pclsid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -6672,8 +6672,8 @@ export class DBCOLUMNDESCView {
   }
 
   // 0x30: pointer
-  set dbcid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set dbcid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: u16
@@ -6699,9 +6699,9 @@ export class DBCOLUMNDESCView {
  */
 export interface DBCOLUMNACCESS {
   /** ptr */
-  pData: Deno.PointerValue | Uint8Array | null;
+  pData: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Storage.IndexServer.DBID */
-  columnid: Uint8Array | Deno.PointerValue | null;
+  columnid: Uint8Array | Deno.PointerValue;
   /** usize */
   cbDataLen: Deno.PointerValue;
   /** u32 */
@@ -6724,9 +6724,9 @@ export function allocDBCOLUMNACCESS(data?: Partial<DBCOLUMNACCESS>): Uint8Array 
   const buf = new Uint8Array(sizeofDBCOLUMNACCESS);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pData !== undefined) view.setBigUint64(0, data.pData === null ? 0n : BigInt(util.toPointer(data.pData)), true);
+  if (data?.pData !== undefined) view.setBigUint64(0, data.pData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pData))), true);
   // 0x08: pointer
-  if (data?.columnid !== undefined) view.setBigUint64(8, data.columnid === null ? 0n : BigInt(util.toPointer(data.columnid)), true);
+  if (data?.columnid !== undefined) view.setBigUint64(8, data.columnid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.columnid))), true);
   // 0x10: usize
   if (data?.cbDataLen !== undefined) view.setBigUint64(16, BigInt(data.cbDataLen), true);
   // 0x18: u32
@@ -6757,15 +6757,15 @@ export class DBCOLUMNACCESSView {
   }
 
   // 0x00: pointer
-  get pData(): Uint8Array | Deno.PointerValue | null {
+  get pData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get columnid(): Uint8Array | Deno.PointerValue | null {
+  get columnid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: usize
@@ -6808,13 +6808,13 @@ export class DBCOLUMNACCESSView {
   // 0x34: pad4
 
   // 0x00: pointer
-  set pData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set columnid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set columnid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: usize
@@ -6862,19 +6862,19 @@ export class DBCOLUMNACCESSView {
  */
 export interface DBCONSTRAINTDESC {
   /** ptr */
-  pConstraintID: Deno.PointerValue | Uint8Array | null;
+  pConstraintID: Deno.PointerValue | Uint8Array;
   /** u32 */
   ConstraintType: number;
   /** usize */
   cColumns: Deno.PointerValue;
   /** ptr */
-  rgColumnList: Deno.PointerValue | Uint8Array | null;
+  rgColumnList: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pReferencedTableID: Deno.PointerValue | Uint8Array | null;
+  pReferencedTableID: Deno.PointerValue | Uint8Array;
   /** usize */
   cForeignKeyColumns: Deno.PointerValue;
   /** ptr */
-  rgForeignKeyColumnList: Deno.PointerValue | Uint8Array | null;
+  rgForeignKeyColumnList: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.PWSTR */
   pwszConstraintText: string | null | Uint8Array | Uint16Array;
   /** u32 */
@@ -6888,7 +6888,7 @@ export interface DBCONSTRAINTDESC {
   /** usize */
   cReserved: Deno.PointerValue;
   /** ptr */
-  rgReserved: Deno.PointerValue | Uint8Array | null;
+  rgReserved: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofDBCONSTRAINTDESC = 96;
@@ -6897,24 +6897,24 @@ export function allocDBCONSTRAINTDESC(data?: Partial<DBCONSTRAINTDESC>): Uint8Ar
   const buf = new Uint8Array(sizeofDBCONSTRAINTDESC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pConstraintID !== undefined) view.setBigUint64(0, data.pConstraintID === null ? 0n : BigInt(util.toPointer(data.pConstraintID)), true);
+  if (data?.pConstraintID !== undefined) view.setBigUint64(0, data.pConstraintID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pConstraintID))), true);
   // 0x08: u32
   if (data?.ConstraintType !== undefined) view.setUint32(8, Number(data.ConstraintType), true);
   // 0x0c: pad4
   // 0x10: usize
   if (data?.cColumns !== undefined) view.setBigUint64(16, BigInt(data.cColumns), true);
   // 0x18: pointer
-  if (data?.rgColumnList !== undefined) view.setBigUint64(24, data.rgColumnList === null ? 0n : BigInt(util.toPointer(data.rgColumnList)), true);
+  if (data?.rgColumnList !== undefined) view.setBigUint64(24, data.rgColumnList === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgColumnList))), true);
   // 0x20: pointer
-  if (data?.pReferencedTableID !== undefined) view.setBigUint64(32, data.pReferencedTableID === null ? 0n : BigInt(util.toPointer(data.pReferencedTableID)), true);
+  if (data?.pReferencedTableID !== undefined) view.setBigUint64(32, data.pReferencedTableID === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pReferencedTableID))), true);
   // 0x28: usize
   if (data?.cForeignKeyColumns !== undefined) view.setBigUint64(40, BigInt(data.cForeignKeyColumns), true);
   // 0x30: pointer
-  if (data?.rgForeignKeyColumnList !== undefined) view.setBigUint64(48, data.rgForeignKeyColumnList === null ? 0n : BigInt(util.toPointer(data.rgForeignKeyColumnList)), true);
+  if (data?.rgForeignKeyColumnList !== undefined) view.setBigUint64(48, data.rgForeignKeyColumnList === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgForeignKeyColumnList))), true);
   // 0x38: buffer
   if (data?.pwszConstraintText !== undefined) {
     (buf as any)._f56 = util.pwstrToFfi(data.pwszConstraintText);
-    view.setBigUint64(56, (buf as any)._f56 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f56)), true);
+    view.setBigUint64(56, (buf as any)._f56 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f56))), true);
   }
   // 0x40: u32
   if (data?.UpdateRule !== undefined) view.setUint32(64, Number(data.UpdateRule), true);
@@ -6927,7 +6927,7 @@ export function allocDBCONSTRAINTDESC(data?: Partial<DBCONSTRAINTDESC>): Uint8Ar
   // 0x50: usize
   if (data?.cReserved !== undefined) view.setBigUint64(80, BigInt(data.cReserved), true);
   // 0x58: pointer
-  if (data?.rgReserved !== undefined) view.setBigUint64(88, data.rgReserved === null ? 0n : BigInt(util.toPointer(data.rgReserved)), true);
+  if (data?.rgReserved !== undefined) view.setBigUint64(88, data.rgReserved === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgReserved))), true);
   return buf;
 }
 
@@ -6942,9 +6942,9 @@ export class DBCONSTRAINTDESCView {
   }
 
   // 0x00: pointer
-  get pConstraintID(): Uint8Array | Deno.PointerValue | null {
+  get pConstraintID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -6960,15 +6960,15 @@ export class DBCONSTRAINTDESCView {
   }
 
   // 0x18: pointer
-  get rgColumnList(): Uint8Array | Deno.PointerValue | null {
+  get rgColumnList(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get pReferencedTableID(): Uint8Array | Deno.PointerValue | null {
+  get pReferencedTableID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: usize
@@ -6977,15 +6977,15 @@ export class DBCONSTRAINTDESCView {
   }
 
   // 0x30: pointer
-  get rgForeignKeyColumnList(): Uint8Array | Deno.PointerValue | null {
+  get rgForeignKeyColumnList(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: buffer
-  get pwszConstraintText(): Uint8Array | Deno.PointerValue | null {
+  get pwszConstraintText(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: u32
@@ -7014,14 +7014,14 @@ export class DBCONSTRAINTDESCView {
   }
 
   // 0x58: pointer
-  get rgReserved(): Uint8Array | Deno.PointerValue | null {
+  get rgReserved(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set pConstraintID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pConstraintID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -7037,13 +7037,13 @@ export class DBCONSTRAINTDESCView {
   }
 
   // 0x18: pointer
-  set rgColumnList(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set rgColumnList(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set pReferencedTableID(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set pReferencedTableID(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: usize
@@ -7052,14 +7052,14 @@ export class DBCONSTRAINTDESCView {
   }
 
   // 0x30: pointer
-  set rgForeignKeyColumnList(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set rgForeignKeyColumnList(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: buffer
-  set pwszConstraintText(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszConstraintText(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f56 = value;
-    this.view.setBigUint64(56, BigInt(util.toPointer((this.buf as any)._f56)), true);
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f56))), true);
   }
 
   // 0x40: u32
@@ -7088,8 +7088,8 @@ export class DBCONSTRAINTDESCView {
   }
 
   // 0x58: pointer
-  set rgReserved(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(88, BigInt(util.toPointer(value)), true);
+  set rgReserved(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -7106,9 +7106,9 @@ export interface MDAXISINFO {
   /** usize */
   cCoordinates: Deno.PointerValue;
   /** ptr */
-  rgcColumns: Deno.PointerValue | Uint8Array | null;
+  rgcColumns: Deno.PointerValue | Uint8Array;
   /** ptr */
-  rgpwszDimensionNames: Deno.PointerValue | Uint8Array | null;
+  rgpwszDimensionNames: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofMDAXISINFO = 48;
@@ -7125,9 +7125,9 @@ export function allocMDAXISINFO(data?: Partial<MDAXISINFO>): Uint8Array {
   // 0x18: usize
   if (data?.cCoordinates !== undefined) view.setBigUint64(24, BigInt(data.cCoordinates), true);
   // 0x20: pointer
-  if (data?.rgcColumns !== undefined) view.setBigUint64(32, data.rgcColumns === null ? 0n : BigInt(util.toPointer(data.rgcColumns)), true);
+  if (data?.rgcColumns !== undefined) view.setBigUint64(32, data.rgcColumns === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgcColumns))), true);
   // 0x28: pointer
-  if (data?.rgpwszDimensionNames !== undefined) view.setBigUint64(40, data.rgpwszDimensionNames === null ? 0n : BigInt(util.toPointer(data.rgpwszDimensionNames)), true);
+  if (data?.rgpwszDimensionNames !== undefined) view.setBigUint64(40, data.rgpwszDimensionNames === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgpwszDimensionNames))), true);
   return buf;
 }
 
@@ -7162,15 +7162,15 @@ export class MDAXISINFOView {
   }
 
   // 0x20: pointer
-  get rgcColumns(): Uint8Array | Deno.PointerValue | null {
+  get rgcColumns(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get rgpwszDimensionNames(): Uint8Array | Deno.PointerValue | null {
+  get rgpwszDimensionNames(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: usize
@@ -7194,13 +7194,13 @@ export class MDAXISINFOView {
   }
 
   // 0x20: pointer
-  set rgcColumns(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set rgcColumns(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set rgpwszDimensionNames(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set rgpwszDimensionNames(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -7209,33 +7209,33 @@ export class MDAXISINFOView {
  */
 export interface RMTPACK {
   /** Windows.Win32.System.Com.ISequentialStream */
-  pISeqStream: Uint8Array | Deno.PointerValue | null;
+  pISeqStream: Uint8Array | Deno.PointerValue;
   /** u32 */
   cbData: number;
   /** u32 */
   cBSTR: number;
   /** ptr */
-  rgBSTR: Deno.PointerValue | Uint8Array | null;
+  rgBSTR: Deno.PointerValue | Uint8Array;
   /** u32 */
   cVARIANT: number;
   /** ptr */
-  rgVARIANT: Deno.PointerValue | Uint8Array | null;
+  rgVARIANT: Deno.PointerValue | Uint8Array;
   /** u32 */
   cIDISPATCH: number;
   /** ptr */
-  rgIDISPATCH: Deno.PointerValue | Uint8Array | null;
+  rgIDISPATCH: Deno.PointerValue | Uint8Array;
   /** u32 */
   cIUNKNOWN: number;
   /** ptr */
-  rgIUNKNOWN: Deno.PointerValue | Uint8Array | null;
+  rgIUNKNOWN: Deno.PointerValue | Uint8Array;
   /** u32 */
   cPROPVARIANT: number;
   /** ptr */
-  rgPROPVARIANT: Deno.PointerValue | Uint8Array | null;
+  rgPROPVARIANT: Deno.PointerValue | Uint8Array;
   /** u32 */
   cArray: number;
   /** ptr */
-  rgArray: Deno.PointerValue | Uint8Array | null;
+  rgArray: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofRMTPACK = 104;
@@ -7244,38 +7244,38 @@ export function allocRMTPACK(data?: Partial<RMTPACK>): Uint8Array {
   const buf = new Uint8Array(sizeofRMTPACK);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pISeqStream !== undefined) view.setBigUint64(0, data.pISeqStream === null ? 0n : BigInt(util.toPointer(data.pISeqStream)), true);
+  if (data?.pISeqStream !== undefined) view.setBigUint64(0, data.pISeqStream === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pISeqStream))), true);
   // 0x08: u32
   if (data?.cbData !== undefined) view.setUint32(8, Number(data.cbData), true);
   // 0x0c: u32
   if (data?.cBSTR !== undefined) view.setUint32(12, Number(data.cBSTR), true);
   // 0x10: pointer
-  if (data?.rgBSTR !== undefined) view.setBigUint64(16, data.rgBSTR === null ? 0n : BigInt(util.toPointer(data.rgBSTR)), true);
+  if (data?.rgBSTR !== undefined) view.setBigUint64(16, data.rgBSTR === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgBSTR))), true);
   // 0x18: u32
   if (data?.cVARIANT !== undefined) view.setUint32(24, Number(data.cVARIANT), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.rgVARIANT !== undefined) view.setBigUint64(32, data.rgVARIANT === null ? 0n : BigInt(util.toPointer(data.rgVARIANT)), true);
+  if (data?.rgVARIANT !== undefined) view.setBigUint64(32, data.rgVARIANT === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgVARIANT))), true);
   // 0x28: u32
   if (data?.cIDISPATCH !== undefined) view.setUint32(40, Number(data.cIDISPATCH), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.rgIDISPATCH !== undefined) view.setBigUint64(48, data.rgIDISPATCH === null ? 0n : BigInt(util.toPointer(data.rgIDISPATCH)), true);
+  if (data?.rgIDISPATCH !== undefined) view.setBigUint64(48, data.rgIDISPATCH === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgIDISPATCH))), true);
   // 0x38: u32
   if (data?.cIUNKNOWN !== undefined) view.setUint32(56, Number(data.cIUNKNOWN), true);
   // 0x3c: pad4
   // 0x40: pointer
-  if (data?.rgIUNKNOWN !== undefined) view.setBigUint64(64, data.rgIUNKNOWN === null ? 0n : BigInt(util.toPointer(data.rgIUNKNOWN)), true);
+  if (data?.rgIUNKNOWN !== undefined) view.setBigUint64(64, data.rgIUNKNOWN === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgIUNKNOWN))), true);
   // 0x48: u32
   if (data?.cPROPVARIANT !== undefined) view.setUint32(72, Number(data.cPROPVARIANT), true);
   // 0x4c: pad4
   // 0x50: pointer
-  if (data?.rgPROPVARIANT !== undefined) view.setBigUint64(80, data.rgPROPVARIANT === null ? 0n : BigInt(util.toPointer(data.rgPROPVARIANT)), true);
+  if (data?.rgPROPVARIANT !== undefined) view.setBigUint64(80, data.rgPROPVARIANT === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgPROPVARIANT))), true);
   // 0x58: u32
   if (data?.cArray !== undefined) view.setUint32(88, Number(data.cArray), true);
   // 0x5c: pad4
   // 0x60: pointer
-  if (data?.rgArray !== undefined) view.setBigUint64(96, data.rgArray === null ? 0n : BigInt(util.toPointer(data.rgArray)), true);
+  if (data?.rgArray !== undefined) view.setBigUint64(96, data.rgArray === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rgArray))), true);
   return buf;
 }
 
@@ -7290,9 +7290,9 @@ export class RMTPACKView {
   }
 
   // 0x00: pointer
-  get pISeqStream(): Uint8Array | Deno.PointerValue | null {
+  get pISeqStream(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -7306,9 +7306,9 @@ export class RMTPACKView {
   }
 
   // 0x10: pointer
-  get rgBSTR(): Uint8Array | Deno.PointerValue | null {
+  get rgBSTR(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -7319,9 +7319,9 @@ export class RMTPACKView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get rgVARIANT(): Uint8Array | Deno.PointerValue | null {
+  get rgVARIANT(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -7332,9 +7332,9 @@ export class RMTPACKView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  get rgIDISPATCH(): Uint8Array | Deno.PointerValue | null {
+  get rgIDISPATCH(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: u32
@@ -7345,9 +7345,9 @@ export class RMTPACKView {
   // 0x3c: pad4
 
   // 0x40: pointer
-  get rgIUNKNOWN(): Uint8Array | Deno.PointerValue | null {
+  get rgIUNKNOWN(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: u32
@@ -7358,9 +7358,9 @@ export class RMTPACKView {
   // 0x4c: pad4
 
   // 0x50: pointer
-  get rgPROPVARIANT(): Uint8Array | Deno.PointerValue | null {
+  get rgPROPVARIANT(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x58: u32
@@ -7371,14 +7371,14 @@ export class RMTPACKView {
   // 0x5c: pad4
 
   // 0x60: pointer
-  get rgArray(): Uint8Array | Deno.PointerValue | null {
+  get rgArray(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(96, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set pISeqStream(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pISeqStream(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -7392,8 +7392,8 @@ export class RMTPACKView {
   }
 
   // 0x10: pointer
-  set rgBSTR(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set rgBSTR(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -7404,8 +7404,8 @@ export class RMTPACKView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set rgVARIANT(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set rgVARIANT(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u32
@@ -7416,8 +7416,8 @@ export class RMTPACKView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  set rgIDISPATCH(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set rgIDISPATCH(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: u32
@@ -7428,8 +7428,8 @@ export class RMTPACKView {
   // 0x3c: pad4
 
   // 0x40: pointer
-  set rgIUNKNOWN(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set rgIUNKNOWN(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: u32
@@ -7440,8 +7440,8 @@ export class RMTPACKView {
   // 0x4c: pad4
 
   // 0x50: pointer
-  set rgPROPVARIANT(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set rgPROPVARIANT(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x58: u32
@@ -7452,8 +7452,8 @@ export class RMTPACKView {
   // 0x5c: pad4
 
   // 0x60: pointer
-  set rgArray(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(96, BigInt(util.toPointer(value)), true);
+  set rgArray(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(96, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -7483,12 +7483,12 @@ export function allocDBPARAMBINDINFO(data?: Partial<DBPARAMBINDINFO>): Uint8Arra
   // 0x00: buffer
   if (data?.pwszDataSourceType !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pwszDataSourceType);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: buffer
   if (data?.pwszName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pwszName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: usize
   if (data?.ulParamSize !== undefined) view.setBigUint64(16, BigInt(data.ulParamSize), true);
@@ -7513,15 +7513,15 @@ export class DBPARAMBINDINFOView {
   }
 
   // 0x00: buffer
-  get pwszDataSourceType(): Uint8Array | Deno.PointerValue | null {
+  get pwszDataSourceType(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get pwszName(): Uint8Array | Deno.PointerValue | null {
+  get pwszName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: usize
@@ -7547,15 +7547,15 @@ export class DBPARAMBINDINFOView {
   // 0x1e: pad2
 
   // 0x00: buffer
-  set pwszDataSourceType(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszDataSourceType(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: buffer
-  set pwszName(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: usize
@@ -7609,17 +7609,17 @@ export function allocDBLITERALINFO(data?: Partial<DBLITERALINFO>): Uint8Array {
   // 0x00: buffer
   if (data?.pwszLiteralValue !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pwszLiteralValue);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: buffer
   if (data?.pwszInvalidChars !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pwszInvalidChars);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.pwszInvalidStartingChars !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pwszInvalidStartingChars);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: u32
   if (data?.lt !== undefined) view.setUint32(24, Number(data.lt), true);
@@ -7642,21 +7642,21 @@ export class DBLITERALINFOView {
   }
 
   // 0x00: buffer
-  get pwszLiteralValue(): Uint8Array | Deno.PointerValue | null {
+  get pwszLiteralValue(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get pwszInvalidChars(): Uint8Array | Deno.PointerValue | null {
+  get pwszInvalidChars(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get pwszInvalidStartingChars(): Uint8Array | Deno.PointerValue | null {
+  get pwszInvalidStartingChars(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -7677,21 +7677,21 @@ export class DBLITERALINFOView {
   // 0x24: pad4
 
   // 0x00: buffer
-  set pwszLiteralValue(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszLiteralValue(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: buffer
-  set pwszInvalidChars(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszInvalidChars(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set pwszInvalidStartingChars(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszInvalidStartingChars(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: u32
@@ -7717,13 +7717,13 @@ export class DBLITERALINFOView {
  */
 export interface ERRORINFO {
   /** Windows.Win32.Foundation.HRESULT */
-  hrError: Uint8Array | Deno.PointerValue | null;
+  hrError: Uint8Array | Deno.PointerValue;
   /** u32 */
   dwMinor: number;
   /** System.Guid */
-  clsid: Uint8Array | Deno.PointerValue | null;
+  clsid: Uint8Array | Deno.PointerValue;
   /** System.Guid */
-  iid: Uint8Array | Deno.PointerValue | null;
+  iid: Uint8Array | Deno.PointerValue;
   /** i32 */
   dispid: number;
 }
@@ -7734,14 +7734,14 @@ export function allocERRORINFO(data?: Partial<ERRORINFO>): Uint8Array {
   const buf = new Uint8Array(sizeofERRORINFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.hrError !== undefined) view.setBigUint64(0, data.hrError === null ? 0n : BigInt(util.toPointer(data.hrError)), true);
+  if (data?.hrError !== undefined) view.setBigUint64(0, data.hrError === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hrError))), true);
   // 0x08: u32
   if (data?.dwMinor !== undefined) view.setUint32(8, Number(data.dwMinor), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.clsid !== undefined) view.setBigUint64(16, data.clsid === null ? 0n : BigInt(util.toPointer(data.clsid)), true);
+  if (data?.clsid !== undefined) view.setBigUint64(16, data.clsid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.clsid))), true);
   // 0x18: pointer
-  if (data?.iid !== undefined) view.setBigUint64(24, data.iid === null ? 0n : BigInt(util.toPointer(data.iid)), true);
+  if (data?.iid !== undefined) view.setBigUint64(24, data.iid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.iid))), true);
   // 0x20: i32
   if (data?.dispid !== undefined) view.setInt32(32, Number(data.dispid), true);
   // 0x24: pad4
@@ -7759,9 +7759,9 @@ export class ERRORINFOView {
   }
 
   // 0x00: pointer
-  get hrError(): Uint8Array | Deno.PointerValue | null {
+  get hrError(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -7772,15 +7772,15 @@ export class ERRORINFOView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get clsid(): Uint8Array | Deno.PointerValue | null {
+  get clsid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get iid(): Uint8Array | Deno.PointerValue | null {
+  get iid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: i32
@@ -7791,8 +7791,8 @@ export class ERRORINFOView {
   // 0x24: pad4
 
   // 0x00: pointer
-  set hrError(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set hrError(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -7803,13 +7803,13 @@ export class ERRORINFOView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set clsid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set clsid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set iid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set iid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: i32
@@ -7983,7 +7983,7 @@ export class DBCOSTView {
  */
 export interface TEXT_SOURCE {
   /** Windows.Win32.System.Search.PFNFILLTEXTBUFFER */
-  pfnFillTextBuffer: Uint8Array | Deno.PointerValue | null;
+  pfnFillTextBuffer: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   awcBuffer: string | null | Uint8Array | Uint16Array;
   /** u32 */
@@ -7998,11 +7998,11 @@ export function allocTEXT_SOURCE(data?: Partial<TEXT_SOURCE>): Uint8Array {
   const buf = new Uint8Array(sizeofTEXT_SOURCE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pfnFillTextBuffer !== undefined) view.setBigUint64(0, data.pfnFillTextBuffer === null ? 0n : BigInt(util.toPointer(data.pfnFillTextBuffer)), true);
+  if (data?.pfnFillTextBuffer !== undefined) view.setBigUint64(0, data.pfnFillTextBuffer === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pfnFillTextBuffer))), true);
   // 0x08: buffer
   if (data?.awcBuffer !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.awcBuffer);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: u32
   if (data?.iEnd !== undefined) view.setUint32(16, Number(data.iEnd), true);
@@ -8022,15 +8022,15 @@ export class TEXT_SOURCEView {
   }
 
   // 0x00: pointer
-  get pfnFillTextBuffer(): Uint8Array | Deno.PointerValue | null {
+  get pfnFillTextBuffer(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get awcBuffer(): Uint8Array | Deno.PointerValue | null {
+  get awcBuffer(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -8044,14 +8044,14 @@ export class TEXT_SOURCEView {
   }
 
   // 0x00: pointer
-  set pfnFillTextBuffer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pfnFillTextBuffer(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: buffer
-  set awcBuffer(value: Uint8Array | Deno.PointerValue | null) {
+  set awcBuffer(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: u32
@@ -8074,7 +8074,7 @@ export interface FILTERED_DATA_SOURCES {
   /** Windows.Win32.Foundation.PWSTR */
   pwcsMime: string | null | Uint8Array | Uint16Array;
   /** ptr */
-  pClsid: Deno.PointerValue | Uint8Array | null;
+  pClsid: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.PWSTR */
   pwcsOverride: string | null | Uint8Array | Uint16Array;
 }
@@ -8087,19 +8087,19 @@ export function allocFILTERED_DATA_SOURCES(data?: Partial<FILTERED_DATA_SOURCES>
   // 0x00: buffer
   if (data?.pwcsExtension !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pwcsExtension);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: buffer
   if (data?.pwcsMime !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pwcsMime);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: pointer
-  if (data?.pClsid !== undefined) view.setBigUint64(16, data.pClsid === null ? 0n : BigInt(util.toPointer(data.pClsid)), true);
+  if (data?.pClsid !== undefined) view.setBigUint64(16, data.pClsid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pClsid))), true);
   // 0x18: buffer
   if (data?.pwcsOverride !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.pwcsOverride);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   return buf;
 }
@@ -8115,50 +8115,50 @@ export class FILTERED_DATA_SOURCESView {
   }
 
   // 0x00: buffer
-  get pwcsExtension(): Uint8Array | Deno.PointerValue | null {
+  get pwcsExtension(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get pwcsMime(): Uint8Array | Deno.PointerValue | null {
+  get pwcsMime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get pClsid(): Uint8Array | Deno.PointerValue | null {
+  get pClsid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get pwcsOverride(): Uint8Array | Deno.PointerValue | null {
+  get pwcsOverride(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set pwcsExtension(value: Uint8Array | Deno.PointerValue | null) {
+  set pwcsExtension(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: buffer
-  set pwcsMime(value: Uint8Array | Deno.PointerValue | null) {
+  set pwcsMime(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: pointer
-  set pClsid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pClsid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: buffer
-  set pwcsOverride(value: Uint8Array | Deno.PointerValue | null) {
+  set pwcsOverride(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 }
 
@@ -8173,7 +8173,7 @@ export interface DB_NUMERIC {
   /** u8 */
   sign: number;
   /** array */
-  val: Deno.PointerValue | null;
+  val: Deno.PointerValue;
 }
 
 export const sizeofDB_NUMERIC = 16;
@@ -8189,7 +8189,7 @@ export function allocDB_NUMERIC(data?: Partial<DB_NUMERIC>): Uint8Array {
   if (data?.sign !== undefined) view.setUint8(2, Number(data.sign));
   // 0x03: pad5
   // 0x08: pointer
-  if (data?.val !== undefined) view.setBigUint64(8, data.val === null ? 0n : BigInt(util.toPointer(data.val)), true);
+  if (data?.val !== undefined) view.setBigUint64(8, data.val === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.val))), true);
   return buf;
 }
 
@@ -8221,9 +8221,9 @@ export class DB_NUMERICView {
   // 0x03: pad5
 
   // 0x08: pointer
-  get val(): Uint8Array | Deno.PointerValue | null {
+  get val(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u8
@@ -8244,8 +8244,8 @@ export class DB_NUMERICView {
   // 0x03: pad5
 
   // 0x08: pointer
-  set val(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set val(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -8404,7 +8404,7 @@ export interface DB_VARNUMERIC {
   /** u8 */
   sign: number;
   /** array */
-  val: Deno.PointerValue | null;
+  val: Deno.PointerValue;
 }
 
 export const sizeofDB_VARNUMERIC = 16;
@@ -8420,7 +8420,7 @@ export function allocDB_VARNUMERIC(data?: Partial<DB_VARNUMERIC>): Uint8Array {
   if (data?.sign !== undefined) view.setUint8(2, Number(data.sign));
   // 0x03: pad5
   // 0x08: pointer
-  if (data?.val !== undefined) view.setBigUint64(8, data.val === null ? 0n : BigInt(util.toPointer(data.val)), true);
+  if (data?.val !== undefined) view.setBigUint64(8, data.val === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.val))), true);
   return buf;
 }
 
@@ -8452,9 +8452,9 @@ export class DB_VARNUMERICView {
   // 0x03: pad5
 
   // 0x08: pointer
-  get val(): Uint8Array | Deno.PointerValue | null {
+  get val(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u8
@@ -8475,8 +8475,8 @@ export class DB_VARNUMERICView {
   // 0x03: pad5
 
   // 0x08: pointer
-  set val(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set val(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -8636,7 +8636,7 @@ export function allocPROXY_INFO(data?: Partial<PROXY_INFO>): Uint8Array {
   // 0x08: buffer
   if (data?.pcwszUserAgent !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pcwszUserAgent);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: i32
   if (data?.paUseProxy !== undefined) view.setInt32(16, Number(data.paUseProxy), true);
@@ -8648,12 +8648,12 @@ export function allocPROXY_INFO(data?: Partial<PROXY_INFO>): Uint8Array {
   // 0x20: buffer
   if (data?.pcwszProxyName !== undefined) {
     (buf as any)._f32 = util.pwstrToFfi(data.pcwszProxyName);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f32))), true);
   }
   // 0x28: buffer
   if (data?.pcwszBypassList !== undefined) {
     (buf as any)._f40 = util.pwstrToFfi(data.pcwszBypassList);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f40))), true);
   }
   return buf;
 }
@@ -8676,9 +8676,9 @@ export class PROXY_INFOView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get pcwszUserAgent(): Uint8Array | Deno.PointerValue | null {
+  get pcwszUserAgent(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i32
@@ -8699,15 +8699,15 @@ export class PROXY_INFOView {
   // 0x1c: pad4
 
   // 0x20: buffer
-  get pcwszProxyName(): Uint8Array | Deno.PointerValue | null {
+  get pcwszProxyName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: buffer
-  get pcwszBypassList(): Uint8Array | Deno.PointerValue | null {
+  get pcwszBypassList(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -8718,9 +8718,9 @@ export class PROXY_INFOView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set pcwszUserAgent(value: Uint8Array | Deno.PointerValue | null) {
+  set pcwszUserAgent(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: i32
@@ -8741,15 +8741,15 @@ export class PROXY_INFOView {
   // 0x1c: pad4
 
   // 0x20: buffer
-  set pcwszProxyName(value: Uint8Array | Deno.PointerValue | null) {
+  set pcwszProxyName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f32))), true);
   }
 
   // 0x28: buffer
-  set pcwszBypassList(value: Uint8Array | Deno.PointerValue | null) {
+  set pcwszBypassList(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f40))), true);
   }
 }
 
@@ -8779,12 +8779,12 @@ export function allocAUTHENTICATION_INFO(data?: Partial<AUTHENTICATION_INFO>): U
   // 0x08: buffer
   if (data?.pcwszUser !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pcwszUser);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.pcwszPassword !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pcwszPassword);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   return buf;
 }
@@ -8810,15 +8810,15 @@ export class AUTHENTICATION_INFOView {
   }
 
   // 0x08: buffer
-  get pcwszUser(): Uint8Array | Deno.PointerValue | null {
+  get pcwszUser(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get pcwszPassword(): Uint8Array | Deno.PointerValue | null {
+  get pcwszPassword(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -8832,15 +8832,15 @@ export class AUTHENTICATION_INFOView {
   }
 
   // 0x08: buffer
-  set pcwszUser(value: Uint8Array | Deno.PointerValue | null) {
+  set pcwszUser(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set pcwszPassword(value: Uint8Array | Deno.PointerValue | null) {
+  set pcwszPassword(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 }
 
@@ -8904,7 +8904,7 @@ export interface INCREMENTAL_ACCESS_INFO {
   /** u32 */
   dwSize: number;
   /** Windows.Win32.Foundation.FILETIME */
-  ftLastModifiedTime: Uint8Array | Deno.PointerValue | null;
+  ftLastModifiedTime: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofINCREMENTAL_ACCESS_INFO = 16;
@@ -8916,7 +8916,7 @@ export function allocINCREMENTAL_ACCESS_INFO(data?: Partial<INCREMENTAL_ACCESS_I
   if (data?.dwSize !== undefined) view.setUint32(0, Number(data.dwSize), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.ftLastModifiedTime !== undefined) view.setBigUint64(8, data.ftLastModifiedTime === null ? 0n : BigInt(util.toPointer(data.ftLastModifiedTime)), true);
+  if (data?.ftLastModifiedTime !== undefined) view.setBigUint64(8, data.ftLastModifiedTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ftLastModifiedTime))), true);
   return buf;
 }
 
@@ -8938,9 +8938,9 @@ export class INCREMENTAL_ACCESS_INFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get ftLastModifiedTime(): Uint8Array | Deno.PointerValue | null {
+  get ftLastModifiedTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -8951,8 +8951,8 @@ export class INCREMENTAL_ACCESS_INFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set ftLastModifiedTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ftLastModifiedTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -8983,22 +8983,22 @@ export function allocITEM_INFO(data?: Partial<ITEM_INFO>): Uint8Array {
   // 0x08: buffer
   if (data?.pcwszFromEMail !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pcwszFromEMail);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.pcwszApplicationName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pcwszApplicationName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.pcwszCatalogName !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.pcwszCatalogName);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: buffer
   if (data?.pcwszContentClass !== undefined) {
     (buf as any)._f32 = util.pwstrToFfi(data.pcwszContentClass);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f32))), true);
   }
   return buf;
 }
@@ -9021,27 +9021,27 @@ export class ITEM_INFOView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get pcwszFromEMail(): Uint8Array | Deno.PointerValue | null {
+  get pcwszFromEMail(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get pcwszApplicationName(): Uint8Array | Deno.PointerValue | null {
+  get pcwszApplicationName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get pcwszCatalogName(): Uint8Array | Deno.PointerValue | null {
+  get pcwszCatalogName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: buffer
-  get pcwszContentClass(): Uint8Array | Deno.PointerValue | null {
+  get pcwszContentClass(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -9052,27 +9052,27 @@ export class ITEM_INFOView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set pcwszFromEMail(value: Uint8Array | Deno.PointerValue | null) {
+  set pcwszFromEMail(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set pcwszApplicationName(value: Uint8Array | Deno.PointerValue | null) {
+  set pcwszApplicationName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set pcwszCatalogName(value: Uint8Array | Deno.PointerValue | null) {
+  set pcwszCatalogName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: buffer
-  set pcwszContentClass(value: Uint8Array | Deno.PointerValue | null) {
+  set pcwszContentClass(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f32))), true);
   }
 }
 
@@ -9085,7 +9085,7 @@ export interface SEARCH_ITEM_CHANGE {
   /** Windows.Win32.System.Search.SEARCH_NOTIFICATION_PRIORITY */
   Priority: SEARCH_NOTIFICATION_PRIORITY;
   /** ptr */
-  pUserData: Deno.PointerValue | Uint8Array | null;
+  pUserData: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.PWSTR */
   lpwszURL: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
@@ -9102,16 +9102,16 @@ export function allocSEARCH_ITEM_CHANGE(data?: Partial<SEARCH_ITEM_CHANGE>): Uin
   // 0x04: i32
   if (data?.Priority !== undefined) view.setInt32(4, Number(data.Priority), true);
   // 0x08: pointer
-  if (data?.pUserData !== undefined) view.setBigUint64(8, data.pUserData === null ? 0n : BigInt(util.toPointer(data.pUserData)), true);
+  if (data?.pUserData !== undefined) view.setBigUint64(8, data.pUserData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pUserData))), true);
   // 0x10: buffer
   if (data?.lpwszURL !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.lpwszURL);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.lpwszOldURL !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.lpwszOldURL);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   return buf;
 }
@@ -9137,21 +9137,21 @@ export class SEARCH_ITEM_CHANGEView {
   }
 
   // 0x08: pointer
-  get pUserData(): Uint8Array | Deno.PointerValue | null {
+  get pUserData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get lpwszURL(): Uint8Array | Deno.PointerValue | null {
+  get lpwszURL(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get lpwszOldURL(): Uint8Array | Deno.PointerValue | null {
+  get lpwszOldURL(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -9165,20 +9165,20 @@ export class SEARCH_ITEM_CHANGEView {
   }
 
   // 0x08: pointer
-  set pUserData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pUserData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: buffer
-  set lpwszURL(value: Uint8Array | Deno.PointerValue | null) {
+  set lpwszURL(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set lpwszOldURL(value: Uint8Array | Deno.PointerValue | null) {
+  set lpwszOldURL(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 }
 
@@ -9207,12 +9207,12 @@ export function allocSEARCH_ITEM_PERSISTENT_CHANGE(data?: Partial<SEARCH_ITEM_PE
   // 0x08: buffer
   if (data?.URL !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.URL);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.OldURL !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.OldURL);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: i32
   if (data?.Priority !== undefined) view.setInt32(24, Number(data.Priority), true);
@@ -9238,15 +9238,15 @@ export class SEARCH_ITEM_PERSISTENT_CHANGEView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get URL(): Uint8Array | Deno.PointerValue | null {
+  get URL(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get OldURL(): Uint8Array | Deno.PointerValue | null {
+  get OldURL(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: i32
@@ -9264,15 +9264,15 @@ export class SEARCH_ITEM_PERSISTENT_CHANGEView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set URL(value: Uint8Array | Deno.PointerValue | null) {
+  set URL(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set OldURL(value: Uint8Array | Deno.PointerValue | null) {
+  set OldURL(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: i32
@@ -9290,7 +9290,7 @@ export interface SEARCH_ITEM_INDEXING_STATUS {
   /** u32 */
   dwDocID: number;
   /** Windows.Win32.Foundation.HRESULT */
-  hrIndexingStatus: Uint8Array | Deno.PointerValue | null;
+  hrIndexingStatus: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofSEARCH_ITEM_INDEXING_STATUS = 16;
@@ -9302,7 +9302,7 @@ export function allocSEARCH_ITEM_INDEXING_STATUS(data?: Partial<SEARCH_ITEM_INDE
   if (data?.dwDocID !== undefined) view.setUint32(0, Number(data.dwDocID), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.hrIndexingStatus !== undefined) view.setBigUint64(8, data.hrIndexingStatus === null ? 0n : BigInt(util.toPointer(data.hrIndexingStatus)), true);
+  if (data?.hrIndexingStatus !== undefined) view.setBigUint64(8, data.hrIndexingStatus === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.hrIndexingStatus))), true);
   return buf;
 }
 
@@ -9324,9 +9324,9 @@ export class SEARCH_ITEM_INDEXING_STATUSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get hrIndexingStatus(): Uint8Array | Deno.PointerValue | null {
+  get hrIndexingStatus(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -9337,8 +9337,8 @@ export class SEARCH_ITEM_INDEXING_STATUSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set hrIndexingStatus(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set hrIndexingStatus(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -9347,7 +9347,7 @@ export class SEARCH_ITEM_INDEXING_STATUSView {
  */
 export interface PROPVARIANT {
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofPROPVARIANT = 8;
@@ -9356,7 +9356,7 @@ export function allocPROPVARIANT(data?: Partial<PROPVARIANT>): Uint8Array {
   const buf = new Uint8Array(sizeofPROPVARIANT);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -9371,14 +9371,14 @@ export class PROPVARIANTView {
   }
 
   // 0x00: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -9387,7 +9387,7 @@ export class PROPVARIANTView {
  */
 export interface SEARCH_COLUMN_PROPERTIES {
   /** Windows.Win32.System.Com.StructuredStorage.PROPVARIANT */
-  Value: Uint8Array | Deno.PointerValue | null;
+  Value: Uint8Array | Deno.PointerValue;
   /** u32 */
   lcid: number;
 }
@@ -9398,7 +9398,7 @@ export function allocSEARCH_COLUMN_PROPERTIES(data?: Partial<SEARCH_COLUMN_PROPE
   const buf = new Uint8Array(sizeofSEARCH_COLUMN_PROPERTIES);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Value !== undefined) view.setBigUint64(0, data.Value === null ? 0n : BigInt(util.toPointer(data.Value)), true);
+  if (data?.Value !== undefined) view.setBigUint64(0, data.Value === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Value))), true);
   // 0x08: u32
   if (data?.lcid !== undefined) view.setUint32(8, Number(data.lcid), true);
   // 0x0c: pad4
@@ -9416,9 +9416,9 @@ export class SEARCH_COLUMN_PROPERTIESView {
   }
 
   // 0x00: pointer
-  get Value(): Uint8Array | Deno.PointerValue | null {
+  get Value(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -9429,8 +9429,8 @@ export class SEARCH_COLUMN_PROPERTIESView {
   // 0x0c: pad4
 
   // 0x00: pointer
-  set Value(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Value(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -9446,7 +9446,7 @@ export class SEARCH_COLUMN_PROPERTIESView {
  */
 export interface ITEMPROP {
   /** Windows.Win32.System.Com.VARIANT */
-  variantValue: Uint8Array | Deno.PointerValue | null;
+  variantValue: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   pwszName: string | null | Uint8Array | Uint16Array;
 }
@@ -9457,11 +9457,11 @@ export function allocITEMPROP(data?: Partial<ITEMPROP>): Uint8Array {
   const buf = new Uint8Array(sizeofITEMPROP);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.variantValue !== undefined) view.setBigUint64(0, data.variantValue === null ? 0n : BigInt(util.toPointer(data.variantValue)), true);
+  if (data?.variantValue !== undefined) view.setBigUint64(0, data.variantValue === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.variantValue))), true);
   // 0x08: buffer
   if (data?.pwszName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pwszName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   return buf;
 }
@@ -9477,26 +9477,26 @@ export class ITEMPROPView {
   }
 
   // 0x00: pointer
-  get variantValue(): Uint8Array | Deno.PointerValue | null {
+  get variantValue(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get pwszName(): Uint8Array | Deno.PointerValue | null {
+  get pwszName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set variantValue(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set variantValue(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: buffer
-  set pwszName(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 }
 
@@ -9511,9 +9511,9 @@ export interface SUBSCRIPTIONITEMINFO {
   /** u32 */
   dwPriority: number;
   /** System.Guid */
-  ScheduleGroup: Uint8Array | Deno.PointerValue | null;
+  ScheduleGroup: Uint8Array | Deno.PointerValue;
   /** System.Guid */
-  clsidAgent: Uint8Array | Deno.PointerValue | null;
+  clsidAgent: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofSUBSCRIPTIONITEMINFO = 32;
@@ -9529,9 +9529,9 @@ export function allocSUBSCRIPTIONITEMINFO(data?: Partial<SUBSCRIPTIONITEMINFO>):
   if (data?.dwPriority !== undefined) view.setUint32(8, Number(data.dwPriority), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.ScheduleGroup !== undefined) view.setBigUint64(16, data.ScheduleGroup === null ? 0n : BigInt(util.toPointer(data.ScheduleGroup)), true);
+  if (data?.ScheduleGroup !== undefined) view.setBigUint64(16, data.ScheduleGroup === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ScheduleGroup))), true);
   // 0x18: pointer
-  if (data?.clsidAgent !== undefined) view.setBigUint64(24, data.clsidAgent === null ? 0n : BigInt(util.toPointer(data.clsidAgent)), true);
+  if (data?.clsidAgent !== undefined) view.setBigUint64(24, data.clsidAgent === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.clsidAgent))), true);
   return buf;
 }
 
@@ -9563,15 +9563,15 @@ export class SUBSCRIPTIONITEMINFOView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get ScheduleGroup(): Uint8Array | Deno.PointerValue | null {
+  get ScheduleGroup(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get clsidAgent(): Uint8Array | Deno.PointerValue | null {
+  get clsidAgent(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -9592,17 +9592,17 @@ export class SUBSCRIPTIONITEMINFOView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set ScheduleGroup(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ScheduleGroup(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set clsidAgent(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set clsidAgent(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
-export type BSTR = Deno.PointerValue | Uint8Array | null;
+export type BSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.System.Search.SUBSCRIPTIONINFO (size: 104)
@@ -9615,9 +9615,9 @@ export interface SUBSCRIPTIONINFO {
   /** Windows.Win32.System.Search.SUBSCRIPTIONSCHEDULE */
   schedule: SUBSCRIPTIONSCHEDULE;
   /** System.Guid */
-  customGroupCookie: Uint8Array | Deno.PointerValue | null;
+  customGroupCookie: Uint8Array | Deno.PointerValue;
   /** ptr */
-  pTrigger: Deno.PointerValue | Uint8Array | null;
+  pTrigger: Deno.PointerValue | Uint8Array;
   /** u32 */
   dwRecurseLevels: number;
   /** u32 */
@@ -9633,11 +9633,11 @@ export interface SUBSCRIPTIONINFO {
   /** u32 */
   fChannelFlags: number;
   /** Windows.Win32.Foundation.BSTR */
-  bstrUserName: Uint8Array | Deno.PointerValue | null;
+  bstrUserName: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BSTR */
-  bstrPassword: Uint8Array | Deno.PointerValue | null;
+  bstrPassword: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BSTR */
-  bstrFriendlyName: Uint8Array | Deno.PointerValue | null;
+  bstrFriendlyName: Uint8Array | Deno.PointerValue;
   /** u32 */
   dwMaxSizeKB: number;
   /** Windows.Win32.System.Search.SUBSCRIPTIONTYPE */
@@ -9661,9 +9661,9 @@ export function allocSUBSCRIPTIONINFO(data?: Partial<SUBSCRIPTIONINFO>): Uint8Ar
   if (data?.schedule !== undefined) view.setInt32(8, Number(data.schedule), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.customGroupCookie !== undefined) view.setBigUint64(16, data.customGroupCookie === null ? 0n : BigInt(util.toPointer(data.customGroupCookie)), true);
+  if (data?.customGroupCookie !== undefined) view.setBigUint64(16, data.customGroupCookie === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.customGroupCookie))), true);
   // 0x18: pointer
-  if (data?.pTrigger !== undefined) view.setBigUint64(24, data.pTrigger === null ? 0n : BigInt(util.toPointer(data.pTrigger)), true);
+  if (data?.pTrigger !== undefined) view.setBigUint64(24, data.pTrigger === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pTrigger))), true);
   // 0x20: u32
   if (data?.dwRecurseLevels !== undefined) view.setUint32(32, Number(data.dwRecurseLevels), true);
   // 0x24: u32
@@ -9680,11 +9680,11 @@ export function allocSUBSCRIPTIONINFO(data?: Partial<SUBSCRIPTIONINFO>): Uint8Ar
   if (data?.fChannelFlags !== undefined) view.setUint32(56, Number(data.fChannelFlags), true);
   // 0x3c: pad4
   // 0x40: pointer
-  if (data?.bstrUserName !== undefined) view.setBigUint64(64, data.bstrUserName === null ? 0n : BigInt(util.toPointer(data.bstrUserName)), true);
+  if (data?.bstrUserName !== undefined) view.setBigUint64(64, data.bstrUserName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.bstrUserName))), true);
   // 0x48: pointer
-  if (data?.bstrPassword !== undefined) view.setBigUint64(72, data.bstrPassword === null ? 0n : BigInt(util.toPointer(data.bstrPassword)), true);
+  if (data?.bstrPassword !== undefined) view.setBigUint64(72, data.bstrPassword === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.bstrPassword))), true);
   // 0x50: pointer
-  if (data?.bstrFriendlyName !== undefined) view.setBigUint64(80, data.bstrFriendlyName === null ? 0n : BigInt(util.toPointer(data.bstrFriendlyName)), true);
+  if (data?.bstrFriendlyName !== undefined) view.setBigUint64(80, data.bstrFriendlyName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.bstrFriendlyName))), true);
   // 0x58: u32
   if (data?.dwMaxSizeKB !== undefined) view.setUint32(88, Number(data.dwMaxSizeKB), true);
   // 0x5c: i32
@@ -9724,15 +9724,15 @@ export class SUBSCRIPTIONINFOView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get customGroupCookie(): Uint8Array | Deno.PointerValue | null {
+  get customGroupCookie(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get pTrigger(): Uint8Array | Deno.PointerValue | null {
+  get pTrigger(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -9773,21 +9773,21 @@ export class SUBSCRIPTIONINFOView {
   // 0x3c: pad4
 
   // 0x40: pointer
-  get bstrUserName(): Uint8Array | Deno.PointerValue | null {
+  get bstrUserName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: pointer
-  get bstrPassword(): Uint8Array | Deno.PointerValue | null {
+  get bstrPassword(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(72, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x50: pointer
-  get bstrFriendlyName(): Uint8Array | Deno.PointerValue | null {
+  get bstrFriendlyName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x58: u32
@@ -9828,13 +9828,13 @@ export class SUBSCRIPTIONINFOView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set customGroupCookie(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set customGroupCookie(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set pTrigger(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set pTrigger(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -9875,18 +9875,18 @@ export class SUBSCRIPTIONINFOView {
   // 0x3c: pad4
 
   // 0x40: pointer
-  set bstrUserName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set bstrUserName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: pointer
-  set bstrPassword(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(72, BigInt(util.toPointer(value)), true);
+  set bstrPassword(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(72, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x50: pointer
-  set bstrFriendlyName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(80, BigInt(util.toPointer(value)), true);
+  set bstrFriendlyName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x58: u32
@@ -9917,7 +9917,7 @@ export interface DCINFO {
   /** u32 */
   eInfoType: number;
   /** Windows.Win32.System.Com.VARIANT */
-  vData: Uint8Array | Deno.PointerValue | null;
+  vData: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDCINFO = 16;
@@ -9929,7 +9929,7 @@ export function allocDCINFO(data?: Partial<DCINFO>): Uint8Array {
   if (data?.eInfoType !== undefined) view.setUint32(0, Number(data.eInfoType), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.vData !== undefined) view.setBigUint64(8, data.vData === null ? 0n : BigInt(util.toPointer(data.vData)), true);
+  if (data?.vData !== undefined) view.setBigUint64(8, data.vData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.vData))), true);
   return buf;
 }
 
@@ -9951,9 +9951,9 @@ export class DCINFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get vData(): Uint8Array | Deno.PointerValue | null {
+  get vData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -9964,8 +9964,8 @@ export class DCINFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set vData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set vData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -10043,7 +10043,7 @@ export interface KAGGETDIAG {
   /** u32 */
   ulSize: number;
   /** Windows.Win32.System.Com.VARIANT */
-  vDiagInfo: Uint8Array | Deno.PointerValue | null;
+  vDiagInfo: Uint8Array | Deno.PointerValue;
   /** i16 */
   sDiagField: number;
 }
@@ -10057,7 +10057,7 @@ export function allocKAGGETDIAG(data?: Partial<KAGGETDIAG>): Uint8Array {
   if (data?.ulSize !== undefined) view.setUint32(0, Number(data.ulSize), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.vDiagInfo !== undefined) view.setBigUint64(8, data.vDiagInfo === null ? 0n : BigInt(util.toPointer(data.vDiagInfo)), true);
+  if (data?.vDiagInfo !== undefined) view.setBigUint64(8, data.vDiagInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.vDiagInfo))), true);
   // 0x10: i16
   if (data?.sDiagField !== undefined) view.setInt16(16, Number(data.sDiagField), true);
   // 0x12: pad6
@@ -10082,9 +10082,9 @@ export class KAGGETDIAGView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get vDiagInfo(): Uint8Array | Deno.PointerValue | null {
+  get vDiagInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i16
@@ -10102,8 +10102,8 @@ export class KAGGETDIAGView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set vDiagInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set vDiagInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: i16
@@ -10539,9 +10539,9 @@ export class SQL_DAY_SECOND_STRUCTView {
  */
 export interface _intval_e__Union {
   /** Windows.Win32.System.Search.SQL_YEAR_MONTH_STRUCT */
-  year_month: Uint8Array | Deno.PointerValue | null;
+  year_month: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Search.SQL_DAY_SECOND_STRUCT */
-  day_second: Uint8Array | Deno.PointerValue | null;
+  day_second: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeof_intval_e__Union = 16;
@@ -10550,9 +10550,9 @@ export function alloc_intval_e__Union(data?: Partial<_intval_e__Union>): Uint8Ar
   const buf = new Uint8Array(sizeof_intval_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.year_month !== undefined) view.setBigUint64(0, data.year_month === null ? 0n : BigInt(util.toPointer(data.year_month)), true);
+  if (data?.year_month !== undefined) view.setBigUint64(0, data.year_month === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.year_month))), true);
   // 0x08: pointer
-  if (data?.day_second !== undefined) view.setBigUint64(8, data.day_second === null ? 0n : BigInt(util.toPointer(data.day_second)), true);
+  if (data?.day_second !== undefined) view.setBigUint64(8, data.day_second === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.day_second))), true);
   return buf;
 }
 
@@ -10567,25 +10567,25 @@ export class _intval_e__UnionView {
   }
 
   // 0x00: pointer
-  get year_month(): Uint8Array | Deno.PointerValue | null {
+  get year_month(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get day_second(): Uint8Array | Deno.PointerValue | null {
+  get day_second(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set year_month(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set year_month(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set day_second(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set day_second(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -10598,7 +10598,7 @@ export interface SQL_INTERVAL_STRUCT {
   /** i16 */
   interval_sign: number;
   /** _intval_e__Union */
-  intval: Uint8Array | Deno.PointerValue | null;
+  intval: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofSQL_INTERVAL_STRUCT = 16;
@@ -10612,7 +10612,7 @@ export function allocSQL_INTERVAL_STRUCT(data?: Partial<SQL_INTERVAL_STRUCT>): U
   if (data?.interval_sign !== undefined) view.setInt16(4, Number(data.interval_sign), true);
   // 0x06: pad2
   // 0x08: pointer
-  if (data?.intval !== undefined) view.setBigUint64(8, data.intval === null ? 0n : BigInt(util.toPointer(data.intval)), true);
+  if (data?.intval !== undefined) view.setBigUint64(8, data.intval === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.intval))), true);
   return buf;
 }
 
@@ -10639,9 +10639,9 @@ export class SQL_INTERVAL_STRUCTView {
   // 0x06: pad2
 
   // 0x08: pointer
-  get intval(): Uint8Array | Deno.PointerValue | null {
+  get intval(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -10657,8 +10657,8 @@ export class SQL_INTERVAL_STRUCTView {
   // 0x06: pad2
 
   // 0x08: pointer
-  set intval(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set intval(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -10673,7 +10673,7 @@ export interface SQL_NUMERIC_STRUCT {
   /** u8 */
   sign: number;
   /** array */
-  val: Deno.PointerValue | null;
+  val: Deno.PointerValue;
 }
 
 export const sizeofSQL_NUMERIC_STRUCT = 16;
@@ -10689,7 +10689,7 @@ export function allocSQL_NUMERIC_STRUCT(data?: Partial<SQL_NUMERIC_STRUCT>): Uin
   if (data?.sign !== undefined) view.setUint8(2, Number(data.sign));
   // 0x03: pad5
   // 0x08: pointer
-  if (data?.val !== undefined) view.setBigUint64(8, data.val === null ? 0n : BigInt(util.toPointer(data.val)), true);
+  if (data?.val !== undefined) view.setBigUint64(8, data.val === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.val))), true);
   return buf;
 }
 
@@ -10721,9 +10721,9 @@ export class SQL_NUMERIC_STRUCTView {
   // 0x03: pad5
 
   // 0x08: pointer
-  get val(): Uint8Array | Deno.PointerValue | null {
+  get val(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u8
@@ -10744,8 +10744,8 @@ export class SQL_NUMERIC_STRUCTView {
   // 0x03: pad5
 
   // 0x08: pointer
-  set val(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set val(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -10756,7 +10756,7 @@ export interface DBVARYCHAR {
   /** i16 */
   len: number;
   /** array */
-  str: Deno.PointerValue | null;
+  str: Deno.PointerValue;
 }
 
 export const sizeofDBVARYCHAR = 16;
@@ -10768,7 +10768,7 @@ export function allocDBVARYCHAR(data?: Partial<DBVARYCHAR>): Uint8Array {
   if (data?.len !== undefined) view.setInt16(0, Number(data.len), true);
   // 0x02: pad6
   // 0x08: pointer
-  if (data?.str !== undefined) view.setBigUint64(8, data.str === null ? 0n : BigInt(util.toPointer(data.str)), true);
+  if (data?.str !== undefined) view.setBigUint64(8, data.str === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.str))), true);
   return buf;
 }
 
@@ -10790,9 +10790,9 @@ export class DBVARYCHARView {
   // 0x02: pad6
 
   // 0x08: pointer
-  get str(): Uint8Array | Deno.PointerValue | null {
+  get str(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i16
@@ -10803,8 +10803,8 @@ export class DBVARYCHARView {
   // 0x02: pad6
 
   // 0x08: pointer
-  set str(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set str(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -10815,7 +10815,7 @@ export interface DBVARYBIN {
   /** i16 */
   len: number;
   /** array */
-  array: Deno.PointerValue | null;
+  array: Deno.PointerValue;
 }
 
 export const sizeofDBVARYBIN = 16;
@@ -10827,7 +10827,7 @@ export function allocDBVARYBIN(data?: Partial<DBVARYBIN>): Uint8Array {
   if (data?.len !== undefined) view.setInt16(0, Number(data.len), true);
   // 0x02: pad6
   // 0x08: pointer
-  if (data?.array !== undefined) view.setBigUint64(8, data.array === null ? 0n : BigInt(util.toPointer(data.array)), true);
+  if (data?.array !== undefined) view.setBigUint64(8, data.array === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.array))), true);
   return buf;
 }
 
@@ -10849,9 +10849,9 @@ export class DBVARYBINView {
   // 0x02: pad6
 
   // 0x08: pointer
-  get array(): Uint8Array | Deno.PointerValue | null {
+  get array(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i16
@@ -10862,8 +10862,8 @@ export class DBVARYBINView {
   // 0x02: pad6
 
   // 0x08: pointer
-  set array(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set array(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -11533,7 +11533,7 @@ export class SQLPERFView {
  */
 export interface NOTRESTRICTION {
   /** ptr */
-  pRes: Deno.PointerValue | Uint8Array | null;
+  pRes: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofNOTRESTRICTION = 8;
@@ -11542,7 +11542,7 @@ export function allocNOTRESTRICTION(data?: Partial<NOTRESTRICTION>): Uint8Array 
   const buf = new Uint8Array(sizeofNOTRESTRICTION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pRes !== undefined) view.setBigUint64(0, data.pRes === null ? 0n : BigInt(util.toPointer(data.pRes)), true);
+  if (data?.pRes !== undefined) view.setBigUint64(0, data.pRes === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pRes))), true);
   return buf;
 }
 
@@ -11557,14 +11557,14 @@ export class NOTRESTRICTIONView {
   }
 
   // 0x00: pointer
-  get pRes(): Uint8Array | Deno.PointerValue | null {
+  get pRes(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set pRes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pRes(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -11575,7 +11575,7 @@ export interface NODERESTRICTION {
   /** u32 */
   cRes: number;
   /** ptr */
-  paRes: Deno.PointerValue | Uint8Array | null;
+  paRes: Deno.PointerValue | Uint8Array;
   /** u32 */
   reserved: number;
 }
@@ -11589,7 +11589,7 @@ export function allocNODERESTRICTION(data?: Partial<NODERESTRICTION>): Uint8Arra
   if (data?.cRes !== undefined) view.setUint32(0, Number(data.cRes), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.paRes !== undefined) view.setBigUint64(8, data.paRes === null ? 0n : BigInt(util.toPointer(data.paRes)), true);
+  if (data?.paRes !== undefined) view.setBigUint64(8, data.paRes === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.paRes))), true);
   // 0x10: u32
   if (data?.reserved !== undefined) view.setUint32(16, Number(data.reserved), true);
   // 0x14: pad4
@@ -11614,9 +11614,9 @@ export class NODERESTRICTIONView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get paRes(): Uint8Array | Deno.PointerValue | null {
+  get paRes(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -11634,8 +11634,8 @@ export class NODERESTRICTIONView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set paRes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set paRes(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -11651,7 +11651,7 @@ export class NODERESTRICTIONView {
  */
 export interface VECTORRESTRICTION {
   /** Windows.Win32.System.Search.NODERESTRICTION */
-  Node: Uint8Array | Deno.PointerValue | null;
+  Node: Uint8Array | Deno.PointerValue;
   /** u32 */
   RankMethod: number;
 }
@@ -11662,7 +11662,7 @@ export function allocVECTORRESTRICTION(data?: Partial<VECTORRESTRICTION>): Uint8
   const buf = new Uint8Array(sizeofVECTORRESTRICTION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Node !== undefined) view.setBigUint64(0, data.Node === null ? 0n : BigInt(util.toPointer(data.Node)), true);
+  if (data?.Node !== undefined) view.setBigUint64(0, data.Node === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Node))), true);
   // 0x08: u32
   if (data?.RankMethod !== undefined) view.setUint32(8, Number(data.RankMethod), true);
   // 0x0c: pad4
@@ -11680,9 +11680,9 @@ export class VECTORRESTRICTIONView {
   }
 
   // 0x00: pointer
-  get Node(): Uint8Array | Deno.PointerValue | null {
+  get Node(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -11693,8 +11693,8 @@ export class VECTORRESTRICTIONView {
   // 0x0c: pad4
 
   // 0x00: pointer
-  set Node(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Node(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -11712,7 +11712,7 @@ export interface PROPSPEC {
   /** Windows.Win32.System.Com.StructuredStorage.PROPSPEC_KIND */
   ulKind: PROPSPEC_KIND;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofPROPSPEC = 16;
@@ -11724,7 +11724,7 @@ export function allocPROPSPEC(data?: Partial<PROPSPEC>): Uint8Array {
   if (data?.ulKind !== undefined) view.setUint32(0, Number(data.ulKind), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -11746,9 +11746,9 @@ export class PROPSPECView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -11759,8 +11759,8 @@ export class PROPSPECView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -11769,9 +11769,9 @@ export class PROPSPECView {
  */
 export interface FULLPROPSPEC {
   /** System.Guid */
-  guidPropSet: Uint8Array | Deno.PointerValue | null;
+  guidPropSet: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Com.StructuredStorage.PROPSPEC */
-  psProperty: Uint8Array | Deno.PointerValue | null;
+  psProperty: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofFULLPROPSPEC = 16;
@@ -11780,9 +11780,9 @@ export function allocFULLPROPSPEC(data?: Partial<FULLPROPSPEC>): Uint8Array {
   const buf = new Uint8Array(sizeofFULLPROPSPEC);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.guidPropSet !== undefined) view.setBigUint64(0, data.guidPropSet === null ? 0n : BigInt(util.toPointer(data.guidPropSet)), true);
+  if (data?.guidPropSet !== undefined) view.setBigUint64(0, data.guidPropSet === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.guidPropSet))), true);
   // 0x08: pointer
-  if (data?.psProperty !== undefined) view.setBigUint64(8, data.psProperty === null ? 0n : BigInt(util.toPointer(data.psProperty)), true);
+  if (data?.psProperty !== undefined) view.setBigUint64(8, data.psProperty === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.psProperty))), true);
   return buf;
 }
 
@@ -11797,25 +11797,25 @@ export class FULLPROPSPECView {
   }
 
   // 0x00: pointer
-  get guidPropSet(): Uint8Array | Deno.PointerValue | null {
+  get guidPropSet(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get psProperty(): Uint8Array | Deno.PointerValue | null {
+  get psProperty(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set guidPropSet(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set guidPropSet(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set psProperty(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set psProperty(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -11824,7 +11824,7 @@ export class FULLPROPSPECView {
  */
 export interface CONTENTRESTRICTION {
   /** Windows.Win32.Storage.IndexServer.FULLPROPSPEC */
-  prop: Uint8Array | Deno.PointerValue | null;
+  prop: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   pwcsPhrase: string | null | Uint8Array | Uint16Array;
   /** u32 */
@@ -11839,11 +11839,11 @@ export function allocCONTENTRESTRICTION(data?: Partial<CONTENTRESTRICTION>): Uin
   const buf = new Uint8Array(sizeofCONTENTRESTRICTION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.prop !== undefined) view.setBigUint64(0, data.prop === null ? 0n : BigInt(util.toPointer(data.prop)), true);
+  if (data?.prop !== undefined) view.setBigUint64(0, data.prop === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.prop))), true);
   // 0x08: buffer
   if (data?.pwcsPhrase !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pwcsPhrase);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: u32
   if (data?.lcid !== undefined) view.setUint32(16, Number(data.lcid), true);
@@ -11863,15 +11863,15 @@ export class CONTENTRESTRICTIONView {
   }
 
   // 0x00: pointer
-  get prop(): Uint8Array | Deno.PointerValue | null {
+  get prop(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get pwcsPhrase(): Uint8Array | Deno.PointerValue | null {
+  get pwcsPhrase(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -11885,14 +11885,14 @@ export class CONTENTRESTRICTIONView {
   }
 
   // 0x00: pointer
-  set prop(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set prop(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: buffer
-  set pwcsPhrase(value: Uint8Array | Deno.PointerValue | null) {
+  set pwcsPhrase(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: u32
@@ -11911,7 +11911,7 @@ export class CONTENTRESTRICTIONView {
  */
 export interface NATLANGUAGERESTRICTION {
   /** Windows.Win32.Storage.IndexServer.FULLPROPSPEC */
-  prop: Uint8Array | Deno.PointerValue | null;
+  prop: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
   pwcsPhrase: string | null | Uint8Array | Uint16Array;
   /** u32 */
@@ -11924,11 +11924,11 @@ export function allocNATLANGUAGERESTRICTION(data?: Partial<NATLANGUAGERESTRICTIO
   const buf = new Uint8Array(sizeofNATLANGUAGERESTRICTION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.prop !== undefined) view.setBigUint64(0, data.prop === null ? 0n : BigInt(util.toPointer(data.prop)), true);
+  if (data?.prop !== undefined) view.setBigUint64(0, data.prop === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.prop))), true);
   // 0x08: buffer
   if (data?.pwcsPhrase !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pwcsPhrase);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: u32
   if (data?.lcid !== undefined) view.setUint32(16, Number(data.lcid), true);
@@ -11947,15 +11947,15 @@ export class NATLANGUAGERESTRICTIONView {
   }
 
   // 0x00: pointer
-  get prop(): Uint8Array | Deno.PointerValue | null {
+  get prop(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get pwcsPhrase(): Uint8Array | Deno.PointerValue | null {
+  get pwcsPhrase(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -11966,14 +11966,14 @@ export class NATLANGUAGERESTRICTIONView {
   // 0x14: pad4
 
   // 0x00: pointer
-  set prop(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set prop(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: buffer
-  set pwcsPhrase(value: Uint8Array | Deno.PointerValue | null) {
+  set pwcsPhrase(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: u32
@@ -11991,9 +11991,9 @@ export interface PROPERTYRESTRICTION {
   /** u32 */
   rel: number;
   /** Windows.Win32.Storage.IndexServer.FULLPROPSPEC */
-  prop: Uint8Array | Deno.PointerValue | null;
+  prop: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Com.StructuredStorage.PROPVARIANT */
-  prval: Uint8Array | Deno.PointerValue | null;
+  prval: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofPROPERTYRESTRICTION = 24;
@@ -12005,9 +12005,9 @@ export function allocPROPERTYRESTRICTION(data?: Partial<PROPERTYRESTRICTION>): U
   if (data?.rel !== undefined) view.setUint32(0, Number(data.rel), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.prop !== undefined) view.setBigUint64(8, data.prop === null ? 0n : BigInt(util.toPointer(data.prop)), true);
+  if (data?.prop !== undefined) view.setBigUint64(8, data.prop === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.prop))), true);
   // 0x10: pointer
-  if (data?.prval !== undefined) view.setBigUint64(16, data.prval === null ? 0n : BigInt(util.toPointer(data.prval)), true);
+  if (data?.prval !== undefined) view.setBigUint64(16, data.prval === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.prval))), true);
   return buf;
 }
 
@@ -12029,15 +12029,15 @@ export class PROPERTYRESTRICTIONView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get prop(): Uint8Array | Deno.PointerValue | null {
+  get prop(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get prval(): Uint8Array | Deno.PointerValue | null {
+  get prval(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -12048,13 +12048,13 @@ export class PROPERTYRESTRICTIONView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set prop(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set prop(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set prval(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set prval(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12063,21 +12063,21 @@ export class PROPERTYRESTRICTIONView {
  */
 export interface _URes {
   /** Windows.Win32.System.Search.NODERESTRICTION */
-  ar: Uint8Array | Deno.PointerValue | null;
+  ar: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Search.NODERESTRICTION */
-  orRestriction: Uint8Array | Deno.PointerValue | null;
+  orRestriction: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Search.NODERESTRICTION */
-  pxr: Uint8Array | Deno.PointerValue | null;
+  pxr: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Search.VECTORRESTRICTION */
-  vr: Uint8Array | Deno.PointerValue | null;
+  vr: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Search.NOTRESTRICTION */
-  nr: Uint8Array | Deno.PointerValue | null;
+  nr: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Search.CONTENTRESTRICTION */
-  cr: Uint8Array | Deno.PointerValue | null;
+  cr: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Search.NATLANGUAGERESTRICTION */
-  nlr: Uint8Array | Deno.PointerValue | null;
+  nlr: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Search.PROPERTYRESTRICTION */
-  pr: Uint8Array | Deno.PointerValue | null;
+  pr: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeof_URes = 64;
@@ -12086,21 +12086,21 @@ export function alloc_URes(data?: Partial<_URes>): Uint8Array {
   const buf = new Uint8Array(sizeof_URes);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ar !== undefined) view.setBigUint64(0, data.ar === null ? 0n : BigInt(util.toPointer(data.ar)), true);
+  if (data?.ar !== undefined) view.setBigUint64(0, data.ar === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ar))), true);
   // 0x08: pointer
-  if (data?.orRestriction !== undefined) view.setBigUint64(8, data.orRestriction === null ? 0n : BigInt(util.toPointer(data.orRestriction)), true);
+  if (data?.orRestriction !== undefined) view.setBigUint64(8, data.orRestriction === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.orRestriction))), true);
   // 0x10: pointer
-  if (data?.pxr !== undefined) view.setBigUint64(16, data.pxr === null ? 0n : BigInt(util.toPointer(data.pxr)), true);
+  if (data?.pxr !== undefined) view.setBigUint64(16, data.pxr === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pxr))), true);
   // 0x18: pointer
-  if (data?.vr !== undefined) view.setBigUint64(24, data.vr === null ? 0n : BigInt(util.toPointer(data.vr)), true);
+  if (data?.vr !== undefined) view.setBigUint64(24, data.vr === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.vr))), true);
   // 0x20: pointer
-  if (data?.nr !== undefined) view.setBigUint64(32, data.nr === null ? 0n : BigInt(util.toPointer(data.nr)), true);
+  if (data?.nr !== undefined) view.setBigUint64(32, data.nr === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.nr))), true);
   // 0x28: pointer
-  if (data?.cr !== undefined) view.setBigUint64(40, data.cr === null ? 0n : BigInt(util.toPointer(data.cr)), true);
+  if (data?.cr !== undefined) view.setBigUint64(40, data.cr === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.cr))), true);
   // 0x30: pointer
-  if (data?.nlr !== undefined) view.setBigUint64(48, data.nlr === null ? 0n : BigInt(util.toPointer(data.nlr)), true);
+  if (data?.nlr !== undefined) view.setBigUint64(48, data.nlr === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.nlr))), true);
   // 0x38: pointer
-  if (data?.pr !== undefined) view.setBigUint64(56, data.pr === null ? 0n : BigInt(util.toPointer(data.pr)), true);
+  if (data?.pr !== undefined) view.setBigUint64(56, data.pr === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pr))), true);
   return buf;
 }
 
@@ -12115,91 +12115,91 @@ export class _UResView {
   }
 
   // 0x00: pointer
-  get ar(): Uint8Array | Deno.PointerValue | null {
+  get ar(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get orRestriction(): Uint8Array | Deno.PointerValue | null {
+  get orRestriction(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get pxr(): Uint8Array | Deno.PointerValue | null {
+  get pxr(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get vr(): Uint8Array | Deno.PointerValue | null {
+  get vr(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get nr(): Uint8Array | Deno.PointerValue | null {
+  get nr(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get cr(): Uint8Array | Deno.PointerValue | null {
+  get cr(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get nlr(): Uint8Array | Deno.PointerValue | null {
+  get nlr(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get pr(): Uint8Array | Deno.PointerValue | null {
+  get pr(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set ar(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ar(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set orRestriction(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set orRestriction(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set pxr(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pxr(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set vr(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set vr(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set nr(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set nr(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set cr(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set cr(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set nlr(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set nlr(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set pr(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set pr(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12212,7 +12212,7 @@ export interface RESTRICTION {
   /** u32 */
   weight: number;
   /** _URes */
-  res: Uint8Array | Deno.PointerValue | null;
+  res: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofRESTRICTION = 16;
@@ -12225,7 +12225,7 @@ export function allocRESTRICTION(data?: Partial<RESTRICTION>): Uint8Array {
   // 0x04: u32
   if (data?.weight !== undefined) view.setUint32(4, Number(data.weight), true);
   // 0x08: pointer
-  if (data?.res !== undefined) view.setBigUint64(8, data.res === null ? 0n : BigInt(util.toPointer(data.res)), true);
+  if (data?.res !== undefined) view.setBigUint64(8, data.res === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.res))), true);
   return buf;
 }
 
@@ -12250,9 +12250,9 @@ export class RESTRICTIONView {
   }
 
   // 0x08: pointer
-  get res(): Uint8Array | Deno.PointerValue | null {
+  get res(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -12266,8 +12266,8 @@ export class RESTRICTIONView {
   }
 
   // 0x08: pointer
-  set res(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set res(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12278,7 +12278,7 @@ export interface COLUMNSET {
   /** u32 */
   cCol: number;
   /** ptr */
-  aCol: Deno.PointerValue | Uint8Array | null;
+  aCol: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofCOLUMNSET = 16;
@@ -12290,7 +12290,7 @@ export function allocCOLUMNSET(data?: Partial<COLUMNSET>): Uint8Array {
   if (data?.cCol !== undefined) view.setUint32(0, Number(data.cCol), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.aCol !== undefined) view.setBigUint64(8, data.aCol === null ? 0n : BigInt(util.toPointer(data.aCol)), true);
+  if (data?.aCol !== undefined) view.setBigUint64(8, data.aCol === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.aCol))), true);
   return buf;
 }
 
@@ -12312,9 +12312,9 @@ export class COLUMNSETView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get aCol(): Uint8Array | Deno.PointerValue | null {
+  get aCol(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -12325,8 +12325,8 @@ export class COLUMNSETView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set aCol(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set aCol(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12335,7 +12335,7 @@ export class COLUMNSETView {
  */
 export interface SORTKEY {
   /** Windows.Win32.Storage.IndexServer.FULLPROPSPEC */
-  propColumn: Uint8Array | Deno.PointerValue | null;
+  propColumn: Uint8Array | Deno.PointerValue;
   /** u32 */
   dwOrder: number;
   /** u32 */
@@ -12348,7 +12348,7 @@ export function allocSORTKEY(data?: Partial<SORTKEY>): Uint8Array {
   const buf = new Uint8Array(sizeofSORTKEY);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.propColumn !== undefined) view.setBigUint64(0, data.propColumn === null ? 0n : BigInt(util.toPointer(data.propColumn)), true);
+  if (data?.propColumn !== undefined) view.setBigUint64(0, data.propColumn === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.propColumn))), true);
   // 0x08: u32
   if (data?.dwOrder !== undefined) view.setUint32(8, Number(data.dwOrder), true);
   // 0x0c: u32
@@ -12367,9 +12367,9 @@ export class SORTKEYView {
   }
 
   // 0x00: pointer
-  get propColumn(): Uint8Array | Deno.PointerValue | null {
+  get propColumn(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -12383,8 +12383,8 @@ export class SORTKEYView {
   }
 
   // 0x00: pointer
-  set propColumn(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set propColumn(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -12405,7 +12405,7 @@ export interface SORTSET {
   /** u32 */
   cCol: number;
   /** ptr */
-  aCol: Deno.PointerValue | Uint8Array | null;
+  aCol: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofSORTSET = 16;
@@ -12417,7 +12417,7 @@ export function allocSORTSET(data?: Partial<SORTSET>): Uint8Array {
   if (data?.cCol !== undefined) view.setUint32(0, Number(data.cCol), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.aCol !== undefined) view.setBigUint64(8, data.aCol === null ? 0n : BigInt(util.toPointer(data.aCol)), true);
+  if (data?.aCol !== undefined) view.setBigUint64(8, data.aCol === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.aCol))), true);
   return buf;
 }
 
@@ -12439,9 +12439,9 @@ export class SORTSETView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get aCol(): Uint8Array | Deno.PointerValue | null {
+  get aCol(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -12452,8 +12452,8 @@ export class SORTSETView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set aCol(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set aCol(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12517,7 +12517,7 @@ export interface RANGECATEGORIZE {
   /** u32 */
   cRange: number;
   /** ptr */
-  aRangeBegin: Deno.PointerValue | Uint8Array | null;
+  aRangeBegin: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofRANGECATEGORIZE = 16;
@@ -12529,7 +12529,7 @@ export function allocRANGECATEGORIZE(data?: Partial<RANGECATEGORIZE>): Uint8Arra
   if (data?.cRange !== undefined) view.setUint32(0, Number(data.cRange), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.aRangeBegin !== undefined) view.setBigUint64(8, data.aRangeBegin === null ? 0n : BigInt(util.toPointer(data.aRangeBegin)), true);
+  if (data?.aRangeBegin !== undefined) view.setBigUint64(8, data.aRangeBegin === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.aRangeBegin))), true);
   return buf;
 }
 
@@ -12551,9 +12551,9 @@ export class RANGECATEGORIZEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get aRangeBegin(): Uint8Array | Deno.PointerValue | null {
+  get aRangeBegin(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -12564,8 +12564,8 @@ export class RANGECATEGORIZEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set aRangeBegin(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set aRangeBegin(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12576,9 +12576,9 @@ export interface CATEGORIZATION {
   /** u32 */
   ulCatType: number;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Search.COLUMNSET */
-  csColumns: Uint8Array | Deno.PointerValue | null;
+  csColumns: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofCATEGORIZATION = 24;
@@ -12590,9 +12590,9 @@ export function allocCATEGORIZATION(data?: Partial<CATEGORIZATION>): Uint8Array 
   if (data?.ulCatType !== undefined) view.setUint32(0, Number(data.ulCatType), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x10: pointer
-  if (data?.csColumns !== undefined) view.setBigUint64(16, data.csColumns === null ? 0n : BigInt(util.toPointer(data.csColumns)), true);
+  if (data?.csColumns !== undefined) view.setBigUint64(16, data.csColumns === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.csColumns))), true);
   return buf;
 }
 
@@ -12614,15 +12614,15 @@ export class CATEGORIZATIONView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get csColumns(): Uint8Array | Deno.PointerValue | null {
+  get csColumns(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -12633,13 +12633,13 @@ export class CATEGORIZATIONView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set csColumns(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set csColumns(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12650,7 +12650,7 @@ export interface CATEGORIZATIONSET {
   /** u32 */
   cCat: number;
   /** ptr */
-  aCat: Deno.PointerValue | Uint8Array | null;
+  aCat: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofCATEGORIZATIONSET = 16;
@@ -12662,7 +12662,7 @@ export function allocCATEGORIZATIONSET(data?: Partial<CATEGORIZATIONSET>): Uint8
   if (data?.cCat !== undefined) view.setUint32(0, Number(data.cCat), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.aCat !== undefined) view.setBigUint64(8, data.aCat === null ? 0n : BigInt(util.toPointer(data.aCat)), true);
+  if (data?.aCat !== undefined) view.setBigUint64(8, data.aCat === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.aCat))), true);
   return buf;
 }
 
@@ -12684,9 +12684,9 @@ export class CATEGORIZATIONSETView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get aCat(): Uint8Array | Deno.PointerValue | null {
+  get aCat(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -12697,8 +12697,8 @@ export class CATEGORIZATIONSETView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set aCat(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set aCat(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12713,15 +12713,15 @@ export interface _Anonymous1_e__Union {
   /** usize */
   u: Deno.PointerValue;
   /** ptr */
-  psid: Deno.PointerValue | Uint8Array | null;
+  psid: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pguid: Deno.PointerValue | Uint8Array | null;
+  pguid: Deno.PointerValue | Uint8Array;
   /** u32 */
   LogonId_LowPart: number;
   /** ptr */
-  pObjectTypes: Deno.PointerValue | Uint8Array | null;
+  pObjectTypes: Deno.PointerValue | Uint8Array;
   /** ptr */
-  pIpAddress: Deno.PointerValue | Uint8Array | null;
+  pIpAddress: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeof_Anonymous1_e__Union = 64;
@@ -12734,21 +12734,21 @@ export function alloc_Anonymous1_e__Union(data?: Partial<_Anonymous1_e__Union>):
   // 0x08: buffer
   if (data?.String !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.String);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: usize
   if (data?.u !== undefined) view.setBigUint64(16, BigInt(data.u), true);
   // 0x18: pointer
-  if (data?.psid !== undefined) view.setBigUint64(24, data.psid === null ? 0n : BigInt(util.toPointer(data.psid)), true);
+  if (data?.psid !== undefined) view.setBigUint64(24, data.psid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.psid))), true);
   // 0x20: pointer
-  if (data?.pguid !== undefined) view.setBigUint64(32, data.pguid === null ? 0n : BigInt(util.toPointer(data.pguid)), true);
+  if (data?.pguid !== undefined) view.setBigUint64(32, data.pguid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pguid))), true);
   // 0x28: u32
   if (data?.LogonId_LowPart !== undefined) view.setUint32(40, Number(data.LogonId_LowPart), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.pObjectTypes !== undefined) view.setBigUint64(48, data.pObjectTypes === null ? 0n : BigInt(util.toPointer(data.pObjectTypes)), true);
+  if (data?.pObjectTypes !== undefined) view.setBigUint64(48, data.pObjectTypes === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pObjectTypes))), true);
   // 0x38: pointer
-  if (data?.pIpAddress !== undefined) view.setBigUint64(56, data.pIpAddress === null ? 0n : BigInt(util.toPointer(data.pIpAddress)), true);
+  if (data?.pIpAddress !== undefined) view.setBigUint64(56, data.pIpAddress === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pIpAddress))), true);
   return buf;
 }
 
@@ -12768,9 +12768,9 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x08: buffer
-  get String(): Uint8Array | Deno.PointerValue | null {
+  get String(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: usize
@@ -12779,15 +12779,15 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x18: pointer
-  get psid(): Uint8Array | Deno.PointerValue | null {
+  get psid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get pguid(): Uint8Array | Deno.PointerValue | null {
+  get pguid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -12798,15 +12798,15 @@ export class _Anonymous1_e__UnionView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  get pObjectTypes(): Uint8Array | Deno.PointerValue | null {
+  get pObjectTypes(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get pIpAddress(): Uint8Array | Deno.PointerValue | null {
+  get pIpAddress(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: usize
@@ -12815,9 +12815,9 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x08: buffer
-  set String(value: Uint8Array | Deno.PointerValue | null) {
+  set String(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: usize
@@ -12826,13 +12826,13 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x18: pointer
-  set psid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set psid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set pguid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set pguid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u32
@@ -12843,13 +12843,13 @@ export class _Anonymous1_e__UnionView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  set pObjectTypes(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set pObjectTypes(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set pIpAddress(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set pIpAddress(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -12916,13 +12916,13 @@ export class _Anonymous2_e__UnionView {
  */
 export interface ODBC_VS_ARGS {
   /** ptr */
-  pguidEvent: Deno.PointerValue | Uint8Array | null;
+  pguidEvent: Deno.PointerValue | Uint8Array;
   /** u32 */
   dwFlags: number;
   /** _Anonymous1_e__Union */
-  Anonymous1: Uint8Array | Deno.PointerValue | null;
+  Anonymous1: Uint8Array | Deno.PointerValue;
   /** _Anonymous2_e__Union */
-  Anonymous2: Uint8Array | Deno.PointerValue | null;
+  Anonymous2: Uint8Array | Deno.PointerValue;
   /** i16 */
   RetCode: number;
 }
@@ -12933,14 +12933,14 @@ export function allocODBC_VS_ARGS(data?: Partial<ODBC_VS_ARGS>): Uint8Array {
   const buf = new Uint8Array(sizeofODBC_VS_ARGS);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pguidEvent !== undefined) view.setBigUint64(0, data.pguidEvent === null ? 0n : BigInt(util.toPointer(data.pguidEvent)), true);
+  if (data?.pguidEvent !== undefined) view.setBigUint64(0, data.pguidEvent === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pguidEvent))), true);
   // 0x08: u32
   if (data?.dwFlags !== undefined) view.setUint32(8, Number(data.dwFlags), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.Anonymous1 !== undefined) view.setBigUint64(16, data.Anonymous1 === null ? 0n : BigInt(util.toPointer(data.Anonymous1)), true);
+  if (data?.Anonymous1 !== undefined) view.setBigUint64(16, data.Anonymous1 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous1))), true);
   // 0x18: pointer
-  if (data?.Anonymous2 !== undefined) view.setBigUint64(24, data.Anonymous2 === null ? 0n : BigInt(util.toPointer(data.Anonymous2)), true);
+  if (data?.Anonymous2 !== undefined) view.setBigUint64(24, data.Anonymous2 === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous2))), true);
   // 0x20: i16
   if (data?.RetCode !== undefined) view.setInt16(32, Number(data.RetCode), true);
   // 0x22: pad6
@@ -12958,9 +12958,9 @@ export class ODBC_VS_ARGSView {
   }
 
   // 0x00: pointer
-  get pguidEvent(): Uint8Array | Deno.PointerValue | null {
+  get pguidEvent(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -12971,15 +12971,15 @@ export class ODBC_VS_ARGSView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get Anonymous1(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous1(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get Anonymous2(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous2(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: i16
@@ -12990,8 +12990,8 @@ export class ODBC_VS_ARGSView {
   // 0x22: pad6
 
   // 0x00: pointer
-  set pguidEvent(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pguidEvent(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -13002,13 +13002,13 @@ export class ODBC_VS_ARGSView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set Anonymous1(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set Anonymous1(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set Anonymous2(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set Anonymous2(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: i16
@@ -13030,7 +13030,7 @@ export interface SSVARIANT {
   /** u32 */
   dwReserved2: number;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofSSVARIANT = 24;
@@ -13046,7 +13046,7 @@ export function allocSSVARIANT(data?: Partial<SSVARIANT>): Uint8Array {
   if (data?.dwReserved2 !== undefined) view.setUint32(6, Number(data.dwReserved2), true);
   // 0x0a: pad6
   // 0x10: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(16, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -13078,9 +13078,9 @@ export class SSVARIANTView {
   // 0x0a: pad6
 
   // 0x10: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u16
@@ -13101,8 +13101,8 @@ export class SSVARIANTView {
   // 0x0a: pad6
 
   // 0x10: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -13134,17 +13134,17 @@ export function allocSSERRORINFO(data?: Partial<SSERRORINFO>): Uint8Array {
   // 0x00: buffer
   if (data?.pwszMessage !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.pwszMessage);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: buffer
   if (data?.pwszServer !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pwszServer);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.pwszProcedure !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.pwszProcedure);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: i32
   if (data?.lNative !== undefined) view.setInt32(24, Number(data.lNative), true);
@@ -13168,21 +13168,21 @@ export class SSERRORINFOView {
   }
 
   // 0x00: buffer
-  get pwszMessage(): Uint8Array | Deno.PointerValue | null {
+  get pwszMessage(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get pwszServer(): Uint8Array | Deno.PointerValue | null {
+  get pwszServer(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get pwszProcedure(): Uint8Array | Deno.PointerValue | null {
+  get pwszProcedure(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: i32
@@ -13206,21 +13206,21 @@ export class SSERRORINFOView {
   }
 
   // 0x00: buffer
-  set pwszMessage(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszMessage(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: buffer
-  set pwszServer(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszServer(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set pwszProcedure(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszProcedure(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: i32
@@ -13244,7 +13244,7 @@ export class SSERRORINFOView {
   }
 }
 
-export type PSTR = Deno.PointerValue | Uint8Array | null;
+export type PSTR = Deno.PointerValue | Uint8Array;
 
 export type HANDLE = Deno.PointerValue;
 
@@ -13987,57 +13987,57 @@ try {
 // Symbols
 
 export function SQLBindCol(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array /* ptr */,
   ColumnNumber: number /* u16 */,
   TargetType: number /* i16 */,
-  TargetValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  TargetValue: Deno.PointerValue | Uint8Array /* ptr */,
   BufferLength: number /* i32 */,
-  StrLen_or_Ind: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StrLen_or_Ind: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLBindCol(util.toPointer(StatementHandle), ColumnNumber, TargetType, util.toPointer(TargetValue), BufferLength, util.toPointer(StrLen_or_Ind));
 }
 
 export function SQLBindParam(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array /* ptr */,
   ParameterNumber: number /* u16 */,
   ValueType: number /* i16 */,
   ParameterType: number /* i16 */,
   LengthPrecision: number /* u32 */,
   ParameterScale: number /* i16 */,
-  ParameterValue: Deno.PointerValue | Uint8Array | null /* ptr */,
-  StrLen_or_Ind: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ParameterValue: Deno.PointerValue | Uint8Array /* ptr */,
+  StrLen_or_Ind: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLBindParam(util.toPointer(StatementHandle), ParameterNumber, ValueType, ParameterType, LengthPrecision, ParameterScale, util.toPointer(ParameterValue), util.toPointer(StrLen_or_Ind));
 }
 
 export function SQLColAttribute(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array /* ptr */,
   ColumnNumber: number /* u16 */,
   FieldIdentifier: number /* u16 */,
-  CharacterAttribute: Deno.PointerValue | Uint8Array | null /* ptr */,
+  CharacterAttribute: Deno.PointerValue | Uint8Array /* ptr */,
   BufferLength: number /* i16 */,
-  StringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  NumericAttribute: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StringLength: Deno.PointerValue | Uint8Array /* ptr */,
+  NumericAttribute: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLColAttribute(util.toPointer(StatementHandle), ColumnNumber, FieldIdentifier, util.toPointer(CharacterAttribute), BufferLength, util.toPointer(StringLength), util.toPointer(NumericAttribute));
 }
 
 export function SQLDescribeCol(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array /* ptr */,
   ColumnNumber: number /* u16 */,
-  ColumnName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ColumnName: Deno.PointerValue | Uint8Array /* ptr */,
   BufferLength: number /* i16 */,
-  NameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  DataType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ColumnSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  DecimalDigits: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Nullable: Deno.PointerValue | Uint8Array | null /* ptr */,
+  NameLength: Deno.PointerValue | Uint8Array /* ptr */,
+  DataType: Deno.PointerValue | Uint8Array /* ptr */,
+  ColumnSize: Deno.PointerValue | Uint8Array /* ptr */,
+  DecimalDigits: Deno.PointerValue | Uint8Array /* ptr */,
+  Nullable: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLDescribeCol(util.toPointer(StatementHandle), ColumnNumber, util.toPointer(ColumnName), BufferLength, util.toPointer(NameLength), util.toPointer(DataType), util.toPointer(ColumnSize), util.toPointer(DecimalDigits), util.toPointer(Nullable));
 }
 
 export function SQLFetchScroll(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array /* ptr */,
   FetchOrientation: number /* i16 */,
   FetchOffset: number /* i32 */,
 ): number /* i16 */ {
@@ -14045,49 +14045,49 @@ export function SQLFetchScroll(
 }
 
 export function SQLGetData(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array /* ptr */,
   ColumnNumber: number /* u16 */,
   TargetType: number /* i16 */,
-  TargetValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  TargetValue: Deno.PointerValue | Uint8Array /* ptr */,
   BufferLength: number /* i32 */,
-  StrLen_or_IndPtr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StrLen_or_IndPtr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLGetData(util.toPointer(StatementHandle), ColumnNumber, TargetType, util.toPointer(TargetValue), BufferLength, util.toPointer(StrLen_or_IndPtr));
 }
 
 export function SQLGetDescRec(
-  DescriptorHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DescriptorHandle: Deno.PointerValue | Uint8Array /* ptr */,
   RecNumber: number /* i16 */,
-  Name: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Name: Deno.PointerValue | Uint8Array /* ptr */,
   BufferLength: number /* i16 */,
-  StringLengthPtr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  TypePtr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SubTypePtr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  LengthPtr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  PrecisionPtr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ScalePtr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  NullablePtr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StringLengthPtr: Deno.PointerValue | Uint8Array /* ptr */,
+  TypePtr: Deno.PointerValue | Uint8Array /* ptr */,
+  SubTypePtr: Deno.PointerValue | Uint8Array /* ptr */,
+  LengthPtr: Deno.PointerValue | Uint8Array /* ptr */,
+  PrecisionPtr: Deno.PointerValue | Uint8Array /* ptr */,
+  ScalePtr: Deno.PointerValue | Uint8Array /* ptr */,
+  NullablePtr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLGetDescRec(util.toPointer(DescriptorHandle), RecNumber, util.toPointer(Name), BufferLength, util.toPointer(StringLengthPtr), util.toPointer(TypePtr), util.toPointer(SubTypePtr), util.toPointer(LengthPtr), util.toPointer(PrecisionPtr), util.toPointer(ScalePtr), util.toPointer(NullablePtr));
 }
 
 export function SQLPutData(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Data: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  Data: Deno.PointerValue | Uint8Array /* ptr */,
   StrLen_or_Ind: number /* i32 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLPutData(util.toPointer(StatementHandle), util.toPointer(Data), StrLen_or_Ind);
 }
 
 export function SQLRowCount(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  RowCount: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  RowCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLRowCount(util.toPointer(StatementHandle), util.toPointer(RowCount));
 }
 
 export function SQLSetConnectOption(
-  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ConnectionHandle: Deno.PointerValue | Uint8Array /* ptr */,
   Option: number /* u16 */,
   Value: number /* u32 */,
 ): number /* i16 */ {
@@ -14095,35 +14095,35 @@ export function SQLSetConnectOption(
 }
 
 export function SQLSetDescRec(
-  DescriptorHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DescriptorHandle: Deno.PointerValue | Uint8Array /* ptr */,
   RecNumber: number /* i16 */,
   Type: number /* i16 */,
   SubType: number /* i16 */,
   Length: number /* i32 */,
   Precision: number /* i16 */,
   Scale: number /* i16 */,
-  Data: Deno.PointerValue | Uint8Array | null /* ptr */,
-  StringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Indicator: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Data: Deno.PointerValue | Uint8Array /* ptr */,
+  StringLength: Deno.PointerValue | Uint8Array /* ptr */,
+  Indicator: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLSetDescRec(util.toPointer(DescriptorHandle), RecNumber, Type, SubType, Length, Precision, Scale, util.toPointer(Data), util.toPointer(StringLength), util.toPointer(Indicator));
 }
 
 export function SQLSetParam(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array /* ptr */,
   ParameterNumber: number /* u16 */,
   ValueType: number /* i16 */,
   ParameterType: number /* i16 */,
   LengthPrecision: number /* u32 */,
   ParameterScale: number /* i16 */,
-  ParameterValue: Deno.PointerValue | Uint8Array | null /* ptr */,
-  StrLen_or_Ind: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ParameterValue: Deno.PointerValue | Uint8Array /* ptr */,
+  StrLen_or_Ind: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLSetParam(util.toPointer(StatementHandle), ParameterNumber, ValueType, ParameterType, LengthPrecision, ParameterScale, util.toPointer(ParameterValue), util.toPointer(StrLen_or_Ind));
 }
 
 export function SQLSetStmtOption(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array /* ptr */,
   Option: number /* u16 */,
   Value: number /* u32 */,
 ): number /* i16 */ {
@@ -14131,48 +14131,48 @@ export function SQLSetStmtOption(
 }
 
 export function SQLColAttributes(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
   icol: number /* u16 */,
   fDescType: number /* u16 */,
-  rgbDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  rgbDesc: Deno.PointerValue | Uint8Array /* ptr */,
   cbDescMax: number /* i16 */,
-  pcbDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbDesc: Deno.PointerValue | Uint8Array /* ptr */,
+  pfDesc: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLColAttributes(util.toPointer(hstmt), icol, fDescType, util.toPointer(rgbDesc), cbDescMax, util.toPointer(pcbDesc), util.toPointer(pfDesc));
 }
 
 export function SQLDescribeParam(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
   ipar: number /* u16 */,
-  pfSqlType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcbParamDef: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pibScale: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfNullable: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pfSqlType: Deno.PointerValue | Uint8Array /* ptr */,
+  pcbParamDef: Deno.PointerValue | Uint8Array /* ptr */,
+  pibScale: Deno.PointerValue | Uint8Array /* ptr */,
+  pfNullable: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLDescribeParam(util.toPointer(hstmt), ipar, util.toPointer(pfSqlType), util.toPointer(pcbParamDef), util.toPointer(pibScale), util.toPointer(pfNullable));
 }
 
 export function SQLExtendedFetch(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
   fFetchType: number /* u16 */,
   irow: number /* i32 */,
-  pcrow: Deno.PointerValue | Uint8Array | null /* ptr */,
-  rgfRowStatus: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcrow: Deno.PointerValue | Uint8Array /* ptr */,
+  rgfRowStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLExtendedFetch(util.toPointer(hstmt), fFetchType, irow, util.toPointer(pcrow), util.toPointer(rgfRowStatus));
 }
 
 export function SQLParamOptions(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
   crow: number /* u32 */,
-  pirow: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pirow: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLParamOptions(util.toPointer(hstmt), crow, util.toPointer(pirow));
 }
 
 export function SQLSetPos(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
   irow: number /* u16 */,
   fOption: number /* u16 */,
   fLock: number /* u16 */,
@@ -14181,22 +14181,22 @@ export function SQLSetPos(
 }
 
 export function SQLBindParameter(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
   ipar: number /* u16 */,
   fParamType: number /* i16 */,
   fCType: number /* i16 */,
   fSqlType: number /* i16 */,
   cbColDef: number /* u32 */,
   ibScale: number /* i16 */,
-  rgbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  rgbValue: Deno.PointerValue | Uint8Array /* ptr */,
   cbValueMax: number /* i32 */,
-  pcbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLBindParameter(util.toPointer(hstmt), ipar, fParamType, fCType, fSqlType, cbColDef, ibScale, util.toPointer(rgbValue), cbValueMax, util.toPointer(pcbValue));
 }
 
 export function SQLSetScrollOptions(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
   fConcurrency: number /* u16 */,
   crowKeyset: number /* i32 */,
   crowRowset: number /* u16 */,
@@ -14205,61 +14205,61 @@ export function SQLSetScrollOptions(
 }
 
 export function SQLColAttributeW(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
   iCol: number /* u16 */,
   iField: number /* u16 */,
-  pCharAttr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pCharAttr: Deno.PointerValue | Uint8Array /* ptr */,
   cbDescMax: number /* i16 */,
-  pcbCharAttr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pNumAttr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbCharAttr: Deno.PointerValue | Uint8Array /* ptr */,
+  pNumAttr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLColAttributeW(util.toPointer(hstmt), iCol, iField, util.toPointer(pCharAttr), cbDescMax, util.toPointer(pcbCharAttr), util.toPointer(pNumAttr));
 }
 
 export function SQLColAttributesW(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
   icol: number /* u16 */,
   fDescType: number /* u16 */,
-  rgbDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  rgbDesc: Deno.PointerValue | Uint8Array /* ptr */,
   cbDescMax: number /* i16 */,
-  pcbDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbDesc: Deno.PointerValue | Uint8Array /* ptr */,
+  pfDesc: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLColAttributesW(util.toPointer(hstmt), icol, fDescType, util.toPointer(rgbDesc), cbDescMax, util.toPointer(pcbDesc), util.toPointer(pfDesc));
 }
 
 export function SQLDescribeColW(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
   icol: number /* u16 */,
-  szColName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szColName: Deno.PointerValue | Uint8Array /* ptr */,
   cchColNameMax: number /* i16 */,
-  pcchColName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfSqlType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcbColDef: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pibScale: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfNullable: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchColName: Deno.PointerValue | Uint8Array /* ptr */,
+  pfSqlType: Deno.PointerValue | Uint8Array /* ptr */,
+  pcbColDef: Deno.PointerValue | Uint8Array /* ptr */,
+  pibScale: Deno.PointerValue | Uint8Array /* ptr */,
+  pfNullable: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLDescribeColW(util.toPointer(hstmt), icol, util.toPointer(szColName), cchColNameMax, util.toPointer(pcchColName), util.toPointer(pfSqlType), util.toPointer(pcbColDef), util.toPointer(pibScale), util.toPointer(pfNullable));
 }
 
 export function SQLGetDescRecW(
-  hdesc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdesc: Deno.PointerValue | Uint8Array /* ptr */,
   iRecord: number /* i16 */,
-  szName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szName: Deno.PointerValue | Uint8Array /* ptr */,
   cchNameMax: number /* i16 */,
-  pcchName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfSubType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pPrecision: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pScale: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pNullable: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchName: Deno.PointerValue | Uint8Array /* ptr */,
+  pfType: Deno.PointerValue | Uint8Array /* ptr */,
+  pfSubType: Deno.PointerValue | Uint8Array /* ptr */,
+  pLength: Deno.PointerValue | Uint8Array /* ptr */,
+  pPrecision: Deno.PointerValue | Uint8Array /* ptr */,
+  pScale: Deno.PointerValue | Uint8Array /* ptr */,
+  pNullable: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLGetDescRecW(util.toPointer(hdesc), iRecord, util.toPointer(szName), cchNameMax, util.toPointer(pcchName), util.toPointer(pfType), util.toPointer(pfSubType), util.toPointer(pLength), util.toPointer(pPrecision), util.toPointer(pScale), util.toPointer(pNullable));
 }
 
 export function SQLSetConnectOptionW(
-  hdbc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdbc: Deno.PointerValue | Uint8Array /* ptr */,
   fOption: number /* u16 */,
   vParam: number /* u32 */,
 ): number /* i16 */ {
@@ -14267,61 +14267,61 @@ export function SQLSetConnectOptionW(
 }
 
 export function SQLColAttributeA(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
   iCol: number /* i16 */,
   iField: number /* i16 */,
-  pCharAttr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pCharAttr: Deno.PointerValue | Uint8Array /* ptr */,
   cbCharAttrMax: number /* i16 */,
-  pcbCharAttr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pNumAttr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbCharAttr: Deno.PointerValue | Uint8Array /* ptr */,
+  pNumAttr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLColAttributeA(util.toPointer(hstmt), iCol, iField, util.toPointer(pCharAttr), cbCharAttrMax, util.toPointer(pcbCharAttr), util.toPointer(pNumAttr));
 }
 
 export function SQLColAttributesA(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
   icol: number /* u16 */,
   fDescType: number /* u16 */,
-  rgbDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  rgbDesc: Deno.PointerValue | Uint8Array /* ptr */,
   cbDescMax: number /* i16 */,
-  pcbDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbDesc: Deno.PointerValue | Uint8Array /* ptr */,
+  pfDesc: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLColAttributesA(util.toPointer(hstmt), icol, fDescType, util.toPointer(rgbDesc), cbDescMax, util.toPointer(pcbDesc), util.toPointer(pfDesc));
 }
 
 export function SQLDescribeColA(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
   icol: number /* u16 */,
-  szColName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szColName: Deno.PointerValue | Uint8Array /* ptr */,
   cbColNameMax: number /* i16 */,
-  pcbColName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfSqlType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcbColDef: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pibScale: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfNullable: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbColName: Deno.PointerValue | Uint8Array /* ptr */,
+  pfSqlType: Deno.PointerValue | Uint8Array /* ptr */,
+  pcbColDef: Deno.PointerValue | Uint8Array /* ptr */,
+  pibScale: Deno.PointerValue | Uint8Array /* ptr */,
+  pfNullable: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLDescribeColA(util.toPointer(hstmt), icol, util.toPointer(szColName), cbColNameMax, util.toPointer(pcbColName), util.toPointer(pfSqlType), util.toPointer(pcbColDef), util.toPointer(pibScale), util.toPointer(pfNullable));
 }
 
 export function SQLGetDescRecA(
-  hdesc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdesc: Deno.PointerValue | Uint8Array /* ptr */,
   iRecord: number /* i16 */,
-  szName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szName: Deno.PointerValue | Uint8Array /* ptr */,
   cbNameMax: number /* i16 */,
-  pcbName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfSubType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pLength: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pPrecision: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pScale: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pNullable: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbName: Deno.PointerValue | Uint8Array /* ptr */,
+  pfType: Deno.PointerValue | Uint8Array /* ptr */,
+  pfSubType: Deno.PointerValue | Uint8Array /* ptr */,
+  pLength: Deno.PointerValue | Uint8Array /* ptr */,
+  pPrecision: Deno.PointerValue | Uint8Array /* ptr */,
+  pScale: Deno.PointerValue | Uint8Array /* ptr */,
+  pNullable: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLGetDescRecA(util.toPointer(hdesc), iRecord, util.toPointer(szName), cbNameMax, util.toPointer(pcbName), util.toPointer(pfType), util.toPointer(pfSubType), util.toPointer(pLength), util.toPointer(pPrecision), util.toPointer(pScale), util.toPointer(pNullable));
 }
 
 export function SQLSetConnectOptionA(
-  hdbc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdbc: Deno.PointerValue | Uint8Array /* ptr */,
   fOption: number /* u16 */,
   vParam: number /* u32 */,
 ): number /* i16 */ {
@@ -14329,61 +14329,61 @@ export function SQLSetConnectOptionA(
 }
 
 export function SQLAllocConnect(
-  EnvironmentHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  EnvironmentHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  ConnectionHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLAllocConnect(util.toPointer(EnvironmentHandle), util.toPointer(ConnectionHandle));
 }
 
 export function SQLAllocEnv(
-  EnvironmentHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  EnvironmentHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLAllocEnv(util.toPointer(EnvironmentHandle));
 }
 
 export function SQLAllocHandle(
   HandleType: number /* i16 */,
-  InputHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  OutputHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  InputHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  OutputHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLAllocHandle(HandleType, util.toPointer(InputHandle), util.toPointer(OutputHandle));
 }
 
 export function SQLAllocStmt(
-  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ConnectionHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLAllocStmt(util.toPointer(ConnectionHandle), util.toPointer(StatementHandle));
 }
 
 export function SQLCancel(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLCancel(util.toPointer(StatementHandle));
 }
 
 export function SQLCancelHandle(
   HandleType: number /* i16 */,
-  InputHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  InputHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLCancelHandle(HandleType, util.toPointer(InputHandle));
 }
 
 export function SQLCloseCursor(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLCloseCursor(util.toPointer(StatementHandle));
 }
 
 export function SQLColumns(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  CatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  CatalogName: Deno.PointerValue | Uint8Array /* ptr */,
   NameLength1: number /* i16 */,
-  SchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SchemaName: Deno.PointerValue | Uint8Array /* ptr */,
   NameLength2: number /* i16 */,
-  TableName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  TableName: Deno.PointerValue | Uint8Array /* ptr */,
   NameLength3: number /* i16 */,
-  ColumnName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ColumnName: Deno.PointerValue | Uint8Array /* ptr */,
   NameLength4: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLColumns(util.toPointer(StatementHandle), util.toPointer(CatalogName), NameLength1, util.toPointer(SchemaName), NameLength2, util.toPointer(TableName), NameLength3, util.toPointer(ColumnName), NameLength4);
@@ -14391,308 +14391,308 @@ export function SQLColumns(
 
 export function SQLCompleteAsync(
   HandleType: number /* i16 */,
-  Handle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  AsyncRetCodePtr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Handle: Deno.PointerValue | Uint8Array /* ptr */,
+  AsyncRetCodePtr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLCompleteAsync(HandleType, util.toPointer(Handle), util.toPointer(AsyncRetCodePtr));
 }
 
 export function SQLConnect(
-  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ServerName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ConnectionHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  ServerName: Deno.PointerValue | Uint8Array /* ptr */,
   NameLength1: number /* i16 */,
-  UserName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  UserName: Deno.PointerValue | Uint8Array /* ptr */,
   NameLength2: number /* i16 */,
-  Authentication: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Authentication: Deno.PointerValue | Uint8Array /* ptr */,
   NameLength3: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLConnect(util.toPointer(ConnectionHandle), util.toPointer(ServerName), NameLength1, util.toPointer(UserName), NameLength2, util.toPointer(Authentication), NameLength3);
 }
 
 export function SQLCopyDesc(
-  SourceDescHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  TargetDescHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SourceDescHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  TargetDescHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLCopyDesc(util.toPointer(SourceDescHandle), util.toPointer(TargetDescHandle));
 }
 
 export function SQLDataSources(
-  EnvironmentHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  EnvironmentHandle: Deno.PointerValue | Uint8Array /* ptr */,
   Direction: number /* u16 */,
-  ServerName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ServerName: Deno.PointerValue | Uint8Array /* ptr */,
   BufferLength1: number /* i16 */,
-  NameLength1Ptr: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Description: Deno.PointerValue | Uint8Array | null /* ptr */,
+  NameLength1Ptr: Deno.PointerValue | Uint8Array /* ptr */,
+  Description: Deno.PointerValue | Uint8Array /* ptr */,
   BufferLength2: number /* i16 */,
-  NameLength2Ptr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  NameLength2Ptr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLDataSources(util.toPointer(EnvironmentHandle), Direction, util.toPointer(ServerName), BufferLength1, util.toPointer(NameLength1Ptr), util.toPointer(Description), BufferLength2, util.toPointer(NameLength2Ptr));
 }
 
 export function SQLDisconnect(
-  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ConnectionHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLDisconnect(util.toPointer(ConnectionHandle));
 }
 
 export function SQLEndTran(
   HandleType: number /* i16 */,
-  Handle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Handle: Deno.PointerValue | Uint8Array /* ptr */,
   CompletionType: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLEndTran(HandleType, util.toPointer(Handle), CompletionType);
 }
 
 export function SQLError(
-  EnvironmentHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Sqlstate: Deno.PointerValue | Uint8Array | null /* ptr */,
-  NativeError: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MessageText: Deno.PointerValue | Uint8Array | null /* ptr */,
+  EnvironmentHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  ConnectionHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  Sqlstate: Deno.PointerValue | Uint8Array /* ptr */,
+  NativeError: Deno.PointerValue | Uint8Array /* ptr */,
+  MessageText: Deno.PointerValue | Uint8Array /* ptr */,
   BufferLength: number /* i16 */,
-  TextLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  TextLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLError(util.toPointer(EnvironmentHandle), util.toPointer(ConnectionHandle), util.toPointer(StatementHandle), util.toPointer(Sqlstate), util.toPointer(NativeError), util.toPointer(MessageText), BufferLength, util.toPointer(TextLength));
 }
 
 export function SQLExecDirect(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  StatementText: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  StatementText: Deno.PointerValue | Uint8Array /* ptr */,
   TextLength: number /* i32 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLExecDirect(util.toPointer(StatementHandle), util.toPointer(StatementText), TextLength);
 }
 
 export function SQLExecute(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLExecute(util.toPointer(StatementHandle));
 }
 
 export function SQLFetch(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLFetch(util.toPointer(StatementHandle));
 }
 
 export function SQLFreeConnect(
-  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ConnectionHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLFreeConnect(util.toPointer(ConnectionHandle));
 }
 
 export function SQLFreeEnv(
-  EnvironmentHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  EnvironmentHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLFreeEnv(util.toPointer(EnvironmentHandle));
 }
 
 export function SQLFreeHandle(
   HandleType: number /* i16 */,
-  Handle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLFreeHandle(HandleType, util.toPointer(Handle));
 }
 
 export function SQLFreeStmt(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array /* ptr */,
   Option: number /* u16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLFreeStmt(util.toPointer(StatementHandle), Option);
 }
 
 export function SQLGetConnectAttr(
-  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ConnectionHandle: Deno.PointerValue | Uint8Array /* ptr */,
   Attribute: number /* i32 */,
-  Value: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Value: Deno.PointerValue | Uint8Array /* ptr */,
   BufferLength: number /* i32 */,
-  StringLengthPtr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StringLengthPtr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLGetConnectAttr(util.toPointer(ConnectionHandle), Attribute, util.toPointer(Value), BufferLength, util.toPointer(StringLengthPtr));
 }
 
 export function SQLGetConnectOption(
-  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ConnectionHandle: Deno.PointerValue | Uint8Array /* ptr */,
   Option: number /* u16 */,
-  Value: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Value: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLGetConnectOption(util.toPointer(ConnectionHandle), Option, util.toPointer(Value));
 }
 
 export function SQLGetCursorName(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  CursorName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  CursorName: Deno.PointerValue | Uint8Array /* ptr */,
   BufferLength: number /* i16 */,
-  NameLengthPtr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  NameLengthPtr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLGetCursorName(util.toPointer(StatementHandle), util.toPointer(CursorName), BufferLength, util.toPointer(NameLengthPtr));
 }
 
 export function SQLGetDescField(
-  DescriptorHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DescriptorHandle: Deno.PointerValue | Uint8Array /* ptr */,
   RecNumber: number /* i16 */,
   FieldIdentifier: number /* i16 */,
-  Value: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Value: Deno.PointerValue | Uint8Array /* ptr */,
   BufferLength: number /* i32 */,
-  StringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StringLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLGetDescField(util.toPointer(DescriptorHandle), RecNumber, FieldIdentifier, util.toPointer(Value), BufferLength, util.toPointer(StringLength));
 }
 
 export function SQLGetDiagField(
   HandleType: number /* i16 */,
-  Handle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Handle: Deno.PointerValue | Uint8Array /* ptr */,
   RecNumber: number /* i16 */,
   DiagIdentifier: number /* i16 */,
-  DiagInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DiagInfo: Deno.PointerValue | Uint8Array /* ptr */,
   BufferLength: number /* i16 */,
-  StringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StringLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLGetDiagField(HandleType, util.toPointer(Handle), RecNumber, DiagIdentifier, util.toPointer(DiagInfo), BufferLength, util.toPointer(StringLength));
 }
 
 export function SQLGetDiagRec(
   HandleType: number /* i16 */,
-  Handle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Handle: Deno.PointerValue | Uint8Array /* ptr */,
   RecNumber: number /* i16 */,
-  Sqlstate: Deno.PointerValue | Uint8Array | null /* ptr */,
-  NativeError: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MessageText: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Sqlstate: Deno.PointerValue | Uint8Array /* ptr */,
+  NativeError: Deno.PointerValue | Uint8Array /* ptr */,
+  MessageText: Deno.PointerValue | Uint8Array /* ptr */,
   BufferLength: number /* i16 */,
-  TextLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  TextLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLGetDiagRec(HandleType, util.toPointer(Handle), RecNumber, util.toPointer(Sqlstate), util.toPointer(NativeError), util.toPointer(MessageText), BufferLength, util.toPointer(TextLength));
 }
 
 export function SQLGetEnvAttr(
-  EnvironmentHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  EnvironmentHandle: Deno.PointerValue | Uint8Array /* ptr */,
   Attribute: number /* i32 */,
-  Value: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Value: Deno.PointerValue | Uint8Array /* ptr */,
   BufferLength: number /* i32 */,
-  StringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StringLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLGetEnvAttr(util.toPointer(EnvironmentHandle), Attribute, util.toPointer(Value), BufferLength, util.toPointer(StringLength));
 }
 
 export function SQLGetFunctions(
-  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ConnectionHandle: Deno.PointerValue | Uint8Array /* ptr */,
   FunctionId: number /* u16 */,
-  Supported: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Supported: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLGetFunctions(util.toPointer(ConnectionHandle), FunctionId, util.toPointer(Supported));
 }
 
 export function SQLGetInfo(
-  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ConnectionHandle: Deno.PointerValue | Uint8Array /* ptr */,
   InfoType: number /* u16 */,
-  InfoValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  InfoValue: Deno.PointerValue | Uint8Array /* ptr */,
   BufferLength: number /* i16 */,
-  StringLengthPtr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StringLengthPtr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLGetInfo(util.toPointer(ConnectionHandle), InfoType, util.toPointer(InfoValue), BufferLength, util.toPointer(StringLengthPtr));
 }
 
 export function SQLGetStmtAttr(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array /* ptr */,
   Attribute: number /* i32 */,
-  Value: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Value: Deno.PointerValue | Uint8Array /* ptr */,
   BufferLength: number /* i32 */,
-  StringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StringLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLGetStmtAttr(util.toPointer(StatementHandle), Attribute, util.toPointer(Value), BufferLength, util.toPointer(StringLength));
 }
 
 export function SQLGetStmtOption(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array /* ptr */,
   Option: number /* u16 */,
-  Value: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Value: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLGetStmtOption(util.toPointer(StatementHandle), Option, util.toPointer(Value));
 }
 
 export function SQLGetTypeInfo(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array /* ptr */,
   DataType: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLGetTypeInfo(util.toPointer(StatementHandle), DataType);
 }
 
 export function SQLNumResultCols(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ColumnCount: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  ColumnCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLNumResultCols(util.toPointer(StatementHandle), util.toPointer(ColumnCount));
 }
 
 export function SQLParamData(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Value: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  Value: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLParamData(util.toPointer(StatementHandle), util.toPointer(Value));
 }
 
 export function SQLPrepare(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  StatementText: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  StatementText: Deno.PointerValue | Uint8Array /* ptr */,
   TextLength: number /* i32 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLPrepare(util.toPointer(StatementHandle), util.toPointer(StatementText), TextLength);
 }
 
 export function SQLSetConnectAttr(
-  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ConnectionHandle: Deno.PointerValue | Uint8Array /* ptr */,
   Attribute: number /* i32 */,
-  Value: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Value: Deno.PointerValue | Uint8Array /* ptr */,
   StringLength: number /* i32 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLSetConnectAttr(util.toPointer(ConnectionHandle), Attribute, util.toPointer(Value), StringLength);
 }
 
 export function SQLSetCursorName(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  CursorName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  CursorName: Deno.PointerValue | Uint8Array /* ptr */,
   NameLength: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLSetCursorName(util.toPointer(StatementHandle), util.toPointer(CursorName), NameLength);
 }
 
 export function SQLSetDescField(
-  DescriptorHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DescriptorHandle: Deno.PointerValue | Uint8Array /* ptr */,
   RecNumber: number /* i16 */,
   FieldIdentifier: number /* i16 */,
-  Value: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Value: Deno.PointerValue | Uint8Array /* ptr */,
   BufferLength: number /* i32 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLSetDescField(util.toPointer(DescriptorHandle), RecNumber, FieldIdentifier, util.toPointer(Value), BufferLength);
 }
 
 export function SQLSetEnvAttr(
-  EnvironmentHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  EnvironmentHandle: Deno.PointerValue | Uint8Array /* ptr */,
   Attribute: number /* i32 */,
-  Value: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Value: Deno.PointerValue | Uint8Array /* ptr */,
   StringLength: number /* i32 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLSetEnvAttr(util.toPointer(EnvironmentHandle), Attribute, util.toPointer(Value), StringLength);
 }
 
 export function SQLSetStmtAttr(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array /* ptr */,
   Attribute: number /* i32 */,
-  Value: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Value: Deno.PointerValue | Uint8Array /* ptr */,
   StringLength: number /* i32 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLSetStmtAttr(util.toPointer(StatementHandle), Attribute, util.toPointer(Value), StringLength);
 }
 
 export function SQLSpecialColumns(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array /* ptr */,
   IdentifierType: number /* u16 */,
-  CatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  CatalogName: Deno.PointerValue | Uint8Array /* ptr */,
   NameLength1: number /* i16 */,
-  SchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SchemaName: Deno.PointerValue | Uint8Array /* ptr */,
   NameLength2: number /* i16 */,
-  TableName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  TableName: Deno.PointerValue | Uint8Array /* ptr */,
   NameLength3: number /* i16 */,
   Scope: number /* u16 */,
   Nullable: number /* u16 */,
@@ -14701,12 +14701,12 @@ export function SQLSpecialColumns(
 }
 
 export function SQLStatistics(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  CatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  CatalogName: Deno.PointerValue | Uint8Array /* ptr */,
   NameLength1: number /* i16 */,
-  SchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SchemaName: Deno.PointerValue | Uint8Array /* ptr */,
   NameLength2: number /* i16 */,
-  TableName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  TableName: Deno.PointerValue | Uint8Array /* ptr */,
   NameLength3: number /* i16 */,
   Unique: number /* u16 */,
   Reserved: number /* u16 */,
@@ -14715,39 +14715,39 @@ export function SQLStatistics(
 }
 
 export function SQLTables(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  CatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  CatalogName: Deno.PointerValue | Uint8Array /* ptr */,
   NameLength1: number /* i16 */,
-  SchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  SchemaName: Deno.PointerValue | Uint8Array /* ptr */,
   NameLength2: number /* i16 */,
-  TableName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  TableName: Deno.PointerValue | Uint8Array /* ptr */,
   NameLength3: number /* i16 */,
-  TableType: Deno.PointerValue | Uint8Array | null /* ptr */,
+  TableType: Deno.PointerValue | Uint8Array /* ptr */,
   NameLength4: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLTables(util.toPointer(StatementHandle), util.toPointer(CatalogName), NameLength1, util.toPointer(SchemaName), NameLength2, util.toPointer(TableName), NameLength3, util.toPointer(TableType), NameLength4);
 }
 
 export function SQLTransact(
-  EnvironmentHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ConnectionHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  EnvironmentHandle: Deno.PointerValue | Uint8Array /* ptr */,
+  ConnectionHandle: Deno.PointerValue | Uint8Array /* ptr */,
   CompletionType: number /* u16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLTransact(util.toPointer(EnvironmentHandle), util.toPointer(ConnectionHandle), CompletionType);
 }
 
 export function bcp_batch(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libodbcbcp_dll.bcp_batch(util.toPointer(param0));
 }
 
 export function bcp_bind(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
   param2: number /* i32 */,
   param3: number /* i32 */,
-  param4: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param4: Deno.PointerValue | Uint8Array /* ptr */,
   param5: number /* i32 */,
   param6: number /* i32 */,
   param7: number /* i32 */,
@@ -14756,12 +14756,12 @@ export function bcp_bind(
 }
 
 export function bcp_colfmt(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* i32 */,
   param2: number /* u8 */,
   param3: number /* i32 */,
   param4: number /* i32 */,
-  param5: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param5: Deno.PointerValue | Uint8Array /* ptr */,
   param6: number /* i32 */,
   param7: number /* i32 */,
 ): number /* i16 */ {
@@ -14769,7 +14769,7 @@ export function bcp_colfmt(
 }
 
 export function bcp_collen(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* i32 */,
   param2: number /* i32 */,
 ): number /* i16 */ {
@@ -14777,54 +14777,54 @@ export function bcp_collen(
 }
 
 export function bcp_colptr(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
   param2: number /* i32 */,
 ): number /* i16 */ {
   return libodbcbcp_dll.bcp_colptr(util.toPointer(param0), util.toPointer(param1), param2);
 }
 
 export function bcp_columns(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* i32 */,
 ): number /* i16 */ {
   return libodbcbcp_dll.bcp_columns(util.toPointer(param0), param1);
 }
 
 export function bcp_control(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* i32 */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libodbcbcp_dll.bcp_control(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function bcp_done(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libodbcbcp_dll.bcp_done(util.toPointer(param0));
 }
 
 export function bcp_exec(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
-  param1: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
+  param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libodbcbcp_dll.bcp_exec(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function bcp_getcolfmt(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* i32 */,
   param2: number /* i32 */,
-  param3: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param3: Deno.PointerValue | Uint8Array /* ptr */,
   param4: number /* i32 */,
-  param5: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param5: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libodbcbcp_dll.bcp_getcolfmt(util.toPointer(param0), param1, param2, util.toPointer(param3), param4, util.toPointer(param5));
 }
 
 export function bcp_initA(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param3: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
@@ -14834,7 +14834,7 @@ export function bcp_initA(
 }
 
 export function bcp_initW(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param3: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
@@ -14844,52 +14844,52 @@ export function bcp_initW(
 }
 
 export function bcp_moretext(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* i32 */,
-  param2: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libodbcbcp_dll.bcp_moretext(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function bcp_readfmtA(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i16 */ {
   return libodbcbcp_dll.bcp_readfmtA(util.toPointer(param0), util.pstrToFfi(param1));
 }
 
 export function bcp_readfmtW(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i16 */ {
   return libodbcbcp_dll.bcp_readfmtW(util.toPointer(param0), util.pwstrToFfi(param1));
 }
 
 export function bcp_sendrow(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libodbcbcp_dll.bcp_sendrow(util.toPointer(param0));
 }
 
 export function bcp_setcolfmt(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: number /* i32 */,
   param2: number /* i32 */,
-  param3: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param3: Deno.PointerValue | Uint8Array /* ptr */,
   param4: number /* i32 */,
 ): number /* i16 */ {
   return libodbcbcp_dll.bcp_setcolfmt(util.toPointer(param0), param1, param2, util.toPointer(param3), param4);
 }
 
 export function bcp_writefmtA(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i16 */ {
   return libodbcbcp_dll.bcp_writefmtA(util.toPointer(param0), util.pstrToFfi(param1));
 }
 
 export function bcp_writefmtW(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i16 */ {
   return libodbcbcp_dll.bcp_writefmtW(util.toPointer(param0), util.pwstrToFfi(param1));
@@ -14908,13 +14908,13 @@ export function dbprtypeW(
 }
 
 export function SQLLinkedServers(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libodbcbcp_dll.SQLLinkedServers(util.toPointer(param0));
 }
 
 export function SQLLinkedCatalogsA(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param2: number /* i16 */,
 ): number /* i16 */ {
@@ -14922,7 +14922,7 @@ export function SQLLinkedCatalogsA(
 }
 
 export function SQLLinkedCatalogsW(
-  param0: Deno.PointerValue | Uint8Array | null /* ptr */,
+  param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param2: number /* i16 */,
 ): number /* i16 */ {
@@ -14932,178 +14932,178 @@ export function SQLLinkedCatalogsW(
 export function SQLInitEnumServers(
   pwchServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pwchInstanceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libodbcbcp_dll.SQLInitEnumServers(util.pwstrToFfi(pwchServerName), util.pwstrToFfi(pwchInstanceName)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
+  return libodbcbcp_dll.SQLInitEnumServers(util.pwstrToFfi(pwchServerName), util.pwstrToFfi(pwchInstanceName));
 }
 
 export function SQLGetNextEnumeration(
-  hEnumHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  prgEnumData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  piEnumLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hEnumHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  prgEnumData: Deno.PointerValue | Uint8Array /* ptr */,
+  piEnumLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libodbcbcp_dll.SQLGetNextEnumeration(util.toPointer(hEnumHandle), util.toPointer(prgEnumData), util.toPointer(piEnumLength));
 }
 
 export function SQLCloseEnumServers(
-  hEnumHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hEnumHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* i16 */ {
   return libodbcbcp_dll.SQLCloseEnumServers(util.toPointer(hEnumHandle));
 }
 
 export function SQLDriverConnect(
-  hdbc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdbc: Deno.PointerValue | Uint8Array /* ptr */,
   hwnd: Deno.PointerValue /* isize */,
-  szConnStrIn: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szConnStrIn: Deno.PointerValue | Uint8Array /* ptr */,
   cchConnStrIn: number /* i16 */,
-  szConnStrOut: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szConnStrOut: Deno.PointerValue | Uint8Array /* ptr */,
   cchConnStrOutMax: number /* i16 */,
-  pcchConnStrOut: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchConnStrOut: Deno.PointerValue | Uint8Array /* ptr */,
   fDriverCompletion: number /* u16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLDriverConnect(util.toPointer(hdbc), hwnd, util.toPointer(szConnStrIn), cchConnStrIn, util.toPointer(szConnStrOut), cchConnStrOutMax, util.toPointer(pcchConnStrOut), fDriverCompletion);
 }
 
 export function SQLBrowseConnect(
-  hdbc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szConnStrIn: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdbc: Deno.PointerValue | Uint8Array /* ptr */,
+  szConnStrIn: Deno.PointerValue | Uint8Array /* ptr */,
   cchConnStrIn: number /* i16 */,
-  szConnStrOut: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szConnStrOut: Deno.PointerValue | Uint8Array /* ptr */,
   cchConnStrOutMax: number /* i16 */,
-  pcchConnStrOut: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchConnStrOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLBrowseConnect(util.toPointer(hdbc), util.toPointer(szConnStrIn), cchConnStrIn, util.toPointer(szConnStrOut), cchConnStrOutMax, util.toPointer(pcchConnStrOut));
 }
 
 export function SQLBulkOperations(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array /* ptr */,
   Operation: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLBulkOperations(util.toPointer(StatementHandle), Operation);
 }
 
 export function SQLColumnPrivileges(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szCatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  szCatalogName: Deno.PointerValue | Uint8Array /* ptr */,
   cchCatalogName: number /* i16 */,
-  szSchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szSchemaName: Deno.PointerValue | Uint8Array /* ptr */,
   cchSchemaName: number /* i16 */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
   cchTableName: number /* i16 */,
-  szColumnName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szColumnName: Deno.PointerValue | Uint8Array /* ptr */,
   cchColumnName: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLColumnPrivileges(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szTableName), cchTableName, util.toPointer(szColumnName), cchColumnName);
 }
 
 export function SQLForeignKeys(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szPkCatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  szPkCatalogName: Deno.PointerValue | Uint8Array /* ptr */,
   cchPkCatalogName: number /* i16 */,
-  szPkSchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szPkSchemaName: Deno.PointerValue | Uint8Array /* ptr */,
   cchPkSchemaName: number /* i16 */,
-  szPkTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szPkTableName: Deno.PointerValue | Uint8Array /* ptr */,
   cchPkTableName: number /* i16 */,
-  szFkCatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szFkCatalogName: Deno.PointerValue | Uint8Array /* ptr */,
   cchFkCatalogName: number /* i16 */,
-  szFkSchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szFkSchemaName: Deno.PointerValue | Uint8Array /* ptr */,
   cchFkSchemaName: number /* i16 */,
-  szFkTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szFkTableName: Deno.PointerValue | Uint8Array /* ptr */,
   cchFkTableName: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLForeignKeys(util.toPointer(hstmt), util.toPointer(szPkCatalogName), cchPkCatalogName, util.toPointer(szPkSchemaName), cchPkSchemaName, util.toPointer(szPkTableName), cchPkTableName, util.toPointer(szFkCatalogName), cchFkCatalogName, util.toPointer(szFkSchemaName), cchFkSchemaName, util.toPointer(szFkTableName), cchFkTableName);
 }
 
 export function SQLMoreResults(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLMoreResults(util.toPointer(hstmt));
 }
 
 export function SQLNativeSql(
-  hdbc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szSqlStrIn: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdbc: Deno.PointerValue | Uint8Array /* ptr */,
+  szSqlStrIn: Deno.PointerValue | Uint8Array /* ptr */,
   cchSqlStrIn: number /* i32 */,
-  szSqlStr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szSqlStr: Deno.PointerValue | Uint8Array /* ptr */,
   cchSqlStrMax: number /* i32 */,
-  pcbSqlStr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbSqlStr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLNativeSql(util.toPointer(hdbc), util.toPointer(szSqlStrIn), cchSqlStrIn, util.toPointer(szSqlStr), cchSqlStrMax, util.toPointer(pcbSqlStr));
 }
 
 export function SQLNumParams(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcpar: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  pcpar: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLNumParams(util.toPointer(hstmt), util.toPointer(pcpar));
 }
 
 export function SQLPrimaryKeys(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szCatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  szCatalogName: Deno.PointerValue | Uint8Array /* ptr */,
   cchCatalogName: number /* i16 */,
-  szSchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szSchemaName: Deno.PointerValue | Uint8Array /* ptr */,
   cchSchemaName: number /* i16 */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
   cchTableName: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLPrimaryKeys(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szTableName), cchTableName);
 }
 
 export function SQLProcedureColumns(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szCatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  szCatalogName: Deno.PointerValue | Uint8Array /* ptr */,
   cchCatalogName: number /* i16 */,
-  szSchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szSchemaName: Deno.PointerValue | Uint8Array /* ptr */,
   cchSchemaName: number /* i16 */,
-  szProcName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szProcName: Deno.PointerValue | Uint8Array /* ptr */,
   cchProcName: number /* i16 */,
-  szColumnName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szColumnName: Deno.PointerValue | Uint8Array /* ptr */,
   cchColumnName: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLProcedureColumns(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szProcName), cchProcName, util.toPointer(szColumnName), cchColumnName);
 }
 
 export function SQLProcedures(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szCatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  szCatalogName: Deno.PointerValue | Uint8Array /* ptr */,
   cchCatalogName: number /* i16 */,
-  szSchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szSchemaName: Deno.PointerValue | Uint8Array /* ptr */,
   cchSchemaName: number /* i16 */,
-  szProcName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szProcName: Deno.PointerValue | Uint8Array /* ptr */,
   cchProcName: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLProcedures(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szProcName), cchProcName);
 }
 
 export function SQLTablePrivileges(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szCatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  szCatalogName: Deno.PointerValue | Uint8Array /* ptr */,
   cchCatalogName: number /* i16 */,
-  szSchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szSchemaName: Deno.PointerValue | Uint8Array /* ptr */,
   cchSchemaName: number /* i16 */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
   cchTableName: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLTablePrivileges(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szTableName), cchTableName);
 }
 
 export function SQLDrivers(
-  henv: Deno.PointerValue | Uint8Array | null /* ptr */,
+  henv: Deno.PointerValue | Uint8Array /* ptr */,
   fDirection: number /* u16 */,
-  szDriverDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szDriverDesc: Deno.PointerValue | Uint8Array /* ptr */,
   cchDriverDescMax: number /* i16 */,
-  pcchDriverDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szDriverAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchDriverDesc: Deno.PointerValue | Uint8Array /* ptr */,
+  szDriverAttributes: Deno.PointerValue | Uint8Array /* ptr */,
   cchDrvrAttrMax: number /* i16 */,
-  pcchDrvrAttr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchDrvrAttr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLDrivers(util.toPointer(henv), fDirection, util.toPointer(szDriverDesc), cchDriverDescMax, util.toPointer(pcchDriverDesc), util.toPointer(szDriverAttributes), cchDrvrAttrMax, util.toPointer(pcchDrvrAttr));
 }
 
 export function SQLAllocHandleStd(
   fHandleType: number /* i16 */,
-  hInput: Deno.PointerValue | Uint8Array | null /* ptr */,
-  phOutput: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hInput: Deno.PointerValue | Uint8Array /* ptr */,
+  phOutput: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLAllocHandleStd(fHandleType, util.toPointer(hInput), util.toPointer(phOutput));
 }
@@ -15119,175 +15119,175 @@ export function ODBCGetTryWaitValue(): number /* u32 */ {
 }
 
 export function SQLConnectW(
-  hdbc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szDSN: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdbc: Deno.PointerValue | Uint8Array /* ptr */,
+  szDSN: Deno.PointerValue | Uint8Array /* ptr */,
   cchDSN: number /* i16 */,
-  szUID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szUID: Deno.PointerValue | Uint8Array /* ptr */,
   cchUID: number /* i16 */,
-  szAuthStr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szAuthStr: Deno.PointerValue | Uint8Array /* ptr */,
   cchAuthStr: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLConnectW(util.toPointer(hdbc), util.toPointer(szDSN), cchDSN, util.toPointer(szUID), cchUID, util.toPointer(szAuthStr), cchAuthStr);
 }
 
 export function SQLErrorW(
-  henv: Deno.PointerValue | Uint8Array | null /* ptr */,
-  hdbc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  wszSqlState: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfNativeError: Deno.PointerValue | Uint8Array | null /* ptr */,
-  wszErrorMsg: Deno.PointerValue | Uint8Array | null /* ptr */,
+  henv: Deno.PointerValue | Uint8Array /* ptr */,
+  hdbc: Deno.PointerValue | Uint8Array /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  wszSqlState: Deno.PointerValue | Uint8Array /* ptr */,
+  pfNativeError: Deno.PointerValue | Uint8Array /* ptr */,
+  wszErrorMsg: Deno.PointerValue | Uint8Array /* ptr */,
   cchErrorMsgMax: number /* i16 */,
-  pcchErrorMsg: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchErrorMsg: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLErrorW(util.toPointer(henv), util.toPointer(hdbc), util.toPointer(hstmt), util.toPointer(wszSqlState), util.toPointer(pfNativeError), util.toPointer(wszErrorMsg), cchErrorMsgMax, util.toPointer(pcchErrorMsg));
 }
 
 export function SQLExecDirectW(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szSqlStr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  szSqlStr: Deno.PointerValue | Uint8Array /* ptr */,
   TextLength: number /* i32 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLExecDirectW(util.toPointer(hstmt), util.toPointer(szSqlStr), TextLength);
 }
 
 export function SQLGetConnectAttrW(
-  hdbc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdbc: Deno.PointerValue | Uint8Array /* ptr */,
   fAttribute: number /* i32 */,
-  rgbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  rgbValue: Deno.PointerValue | Uint8Array /* ptr */,
   cbValueMax: number /* i32 */,
-  pcbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLGetConnectAttrW(util.toPointer(hdbc), fAttribute, util.toPointer(rgbValue), cbValueMax, util.toPointer(pcbValue));
 }
 
 export function SQLGetCursorNameW(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szCursor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  szCursor: Deno.PointerValue | Uint8Array /* ptr */,
   cchCursorMax: number /* i16 */,
-  pcchCursor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchCursor: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLGetCursorNameW(util.toPointer(hstmt), util.toPointer(szCursor), cchCursorMax, util.toPointer(pcchCursor));
 }
 
 export function SQLSetDescFieldW(
-  DescriptorHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  DescriptorHandle: Deno.PointerValue | Uint8Array /* ptr */,
   RecNumber: number /* i16 */,
   FieldIdentifier: number /* i16 */,
-  Value: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Value: Deno.PointerValue | Uint8Array /* ptr */,
   BufferLength: number /* i32 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLSetDescFieldW(util.toPointer(DescriptorHandle), RecNumber, FieldIdentifier, util.toPointer(Value), BufferLength);
 }
 
 export function SQLGetDescFieldW(
-  hdesc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdesc: Deno.PointerValue | Uint8Array /* ptr */,
   iRecord: number /* i16 */,
   iField: number /* i16 */,
-  rgbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  rgbValue: Deno.PointerValue | Uint8Array /* ptr */,
   cbBufferLength: number /* i32 */,
-  StringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StringLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLGetDescFieldW(util.toPointer(hdesc), iRecord, iField, util.toPointer(rgbValue), cbBufferLength, util.toPointer(StringLength));
 }
 
 export function SQLGetDiagFieldW(
   fHandleType: number /* i16 */,
-  handle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  handle: Deno.PointerValue | Uint8Array /* ptr */,
   iRecord: number /* i16 */,
   fDiagField: number /* i16 */,
-  rgbDiagInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  rgbDiagInfo: Deno.PointerValue | Uint8Array /* ptr */,
   cbBufferLength: number /* i16 */,
-  pcbStringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbStringLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLGetDiagFieldW(fHandleType, util.toPointer(handle), iRecord, fDiagField, util.toPointer(rgbDiagInfo), cbBufferLength, util.toPointer(pcbStringLength));
 }
 
 export function SQLGetDiagRecW(
   fHandleType: number /* i16 */,
-  handle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  handle: Deno.PointerValue | Uint8Array /* ptr */,
   iRecord: number /* i16 */,
-  szSqlState: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfNativeError: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szErrorMsg: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szSqlState: Deno.PointerValue | Uint8Array /* ptr */,
+  pfNativeError: Deno.PointerValue | Uint8Array /* ptr */,
+  szErrorMsg: Deno.PointerValue | Uint8Array /* ptr */,
   cchErrorMsgMax: number /* i16 */,
-  pcchErrorMsg: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchErrorMsg: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLGetDiagRecW(fHandleType, util.toPointer(handle), iRecord, util.toPointer(szSqlState), util.toPointer(pfNativeError), util.toPointer(szErrorMsg), cchErrorMsgMax, util.toPointer(pcchErrorMsg));
 }
 
 export function SQLPrepareW(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szSqlStr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  szSqlStr: Deno.PointerValue | Uint8Array /* ptr */,
   cchSqlStr: number /* i32 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLPrepareW(util.toPointer(hstmt), util.toPointer(szSqlStr), cchSqlStr);
 }
 
 export function SQLSetConnectAttrW(
-  hdbc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdbc: Deno.PointerValue | Uint8Array /* ptr */,
   fAttribute: number /* i32 */,
-  rgbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  rgbValue: Deno.PointerValue | Uint8Array /* ptr */,
   cbValue: number /* i32 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLSetConnectAttrW(util.toPointer(hdbc), fAttribute, util.toPointer(rgbValue), cbValue);
 }
 
 export function SQLSetCursorNameW(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szCursor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  szCursor: Deno.PointerValue | Uint8Array /* ptr */,
   cchCursor: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLSetCursorNameW(util.toPointer(hstmt), util.toPointer(szCursor), cchCursor);
 }
 
 export function SQLColumnsW(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szCatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  szCatalogName: Deno.PointerValue | Uint8Array /* ptr */,
   cchCatalogName: number /* i16 */,
-  szSchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szSchemaName: Deno.PointerValue | Uint8Array /* ptr */,
   cchSchemaName: number /* i16 */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
   cchTableName: number /* i16 */,
-  szColumnName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szColumnName: Deno.PointerValue | Uint8Array /* ptr */,
   cchColumnName: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLColumnsW(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szTableName), cchTableName, util.toPointer(szColumnName), cchColumnName);
 }
 
 export function SQLGetConnectOptionW(
-  hdbc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdbc: Deno.PointerValue | Uint8Array /* ptr */,
   fOption: number /* u16 */,
-  pvParam: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pvParam: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLGetConnectOptionW(util.toPointer(hdbc), fOption, util.toPointer(pvParam));
 }
 
 export function SQLGetInfoW(
-  hdbc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdbc: Deno.PointerValue | Uint8Array /* ptr */,
   fInfoType: number /* u16 */,
-  rgbInfoValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  rgbInfoValue: Deno.PointerValue | Uint8Array /* ptr */,
   cbInfoValueMax: number /* i16 */,
-  pcbInfoValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbInfoValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLGetInfoW(util.toPointer(hdbc), fInfoType, util.toPointer(rgbInfoValue), cbInfoValueMax, util.toPointer(pcbInfoValue));
 }
 
 export function SQLGetTypeInfoW(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array /* ptr */,
   DataType: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLGetTypeInfoW(util.toPointer(StatementHandle), DataType);
 }
 
 export function SQLSpecialColumnsW(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
   fColType: number /* u16 */,
-  szCatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szCatalogName: Deno.PointerValue | Uint8Array /* ptr */,
   cchCatalogName: number /* i16 */,
-  szSchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szSchemaName: Deno.PointerValue | Uint8Array /* ptr */,
   cchSchemaName: number /* i16 */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
   cchTableName: number /* i16 */,
   fScope: number /* u16 */,
   fNullable: number /* u16 */,
@@ -15296,12 +15296,12 @@ export function SQLSpecialColumnsW(
 }
 
 export function SQLStatisticsW(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szCatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  szCatalogName: Deno.PointerValue | Uint8Array /* ptr */,
   cchCatalogName: number /* i16 */,
-  szSchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szSchemaName: Deno.PointerValue | Uint8Array /* ptr */,
   cchSchemaName: number /* i16 */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
   cchTableName: number /* i16 */,
   fUnique: number /* u16 */,
   fAccuracy: number /* u16 */,
@@ -15310,351 +15310,351 @@ export function SQLStatisticsW(
 }
 
 export function SQLTablesW(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szCatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  szCatalogName: Deno.PointerValue | Uint8Array /* ptr */,
   cchCatalogName: number /* i16 */,
-  szSchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szSchemaName: Deno.PointerValue | Uint8Array /* ptr */,
   cchSchemaName: number /* i16 */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
   cchTableName: number /* i16 */,
-  szTableType: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szTableType: Deno.PointerValue | Uint8Array /* ptr */,
   cchTableType: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLTablesW(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szTableName), cchTableName, util.toPointer(szTableType), cchTableType);
 }
 
 export function SQLDataSourcesW(
-  henv: Deno.PointerValue | Uint8Array | null /* ptr */,
+  henv: Deno.PointerValue | Uint8Array /* ptr */,
   fDirection: number /* u16 */,
-  szDSN: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szDSN: Deno.PointerValue | Uint8Array /* ptr */,
   cchDSNMax: number /* i16 */,
-  pcchDSN: Deno.PointerValue | Uint8Array | null /* ptr */,
-  wszDescription: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchDSN: Deno.PointerValue | Uint8Array /* ptr */,
+  wszDescription: Deno.PointerValue | Uint8Array /* ptr */,
   cchDescriptionMax: number /* i16 */,
-  pcchDescription: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchDescription: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLDataSourcesW(util.toPointer(henv), fDirection, util.toPointer(szDSN), cchDSNMax, util.toPointer(pcchDSN), util.toPointer(wszDescription), cchDescriptionMax, util.toPointer(pcchDescription));
 }
 
 export function SQLDriverConnectW(
-  hdbc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdbc: Deno.PointerValue | Uint8Array /* ptr */,
   hwnd: Deno.PointerValue /* isize */,
-  szConnStrIn: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szConnStrIn: Deno.PointerValue | Uint8Array /* ptr */,
   cchConnStrIn: number /* i16 */,
-  szConnStrOut: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szConnStrOut: Deno.PointerValue | Uint8Array /* ptr */,
   cchConnStrOutMax: number /* i16 */,
-  pcchConnStrOut: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchConnStrOut: Deno.PointerValue | Uint8Array /* ptr */,
   fDriverCompletion: number /* u16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLDriverConnectW(util.toPointer(hdbc), hwnd, util.toPointer(szConnStrIn), cchConnStrIn, util.toPointer(szConnStrOut), cchConnStrOutMax, util.toPointer(pcchConnStrOut), fDriverCompletion);
 }
 
 export function SQLBrowseConnectW(
-  hdbc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szConnStrIn: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdbc: Deno.PointerValue | Uint8Array /* ptr */,
+  szConnStrIn: Deno.PointerValue | Uint8Array /* ptr */,
   cchConnStrIn: number /* i16 */,
-  szConnStrOut: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szConnStrOut: Deno.PointerValue | Uint8Array /* ptr */,
   cchConnStrOutMax: number /* i16 */,
-  pcchConnStrOut: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchConnStrOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLBrowseConnectW(util.toPointer(hdbc), util.toPointer(szConnStrIn), cchConnStrIn, util.toPointer(szConnStrOut), cchConnStrOutMax, util.toPointer(pcchConnStrOut));
 }
 
 export function SQLColumnPrivilegesW(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szCatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  szCatalogName: Deno.PointerValue | Uint8Array /* ptr */,
   cchCatalogName: number /* i16 */,
-  szSchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szSchemaName: Deno.PointerValue | Uint8Array /* ptr */,
   cchSchemaName: number /* i16 */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
   cchTableName: number /* i16 */,
-  szColumnName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szColumnName: Deno.PointerValue | Uint8Array /* ptr */,
   cchColumnName: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLColumnPrivilegesW(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szTableName), cchTableName, util.toPointer(szColumnName), cchColumnName);
 }
 
 export function SQLGetStmtAttrW(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
   fAttribute: number /* i32 */,
-  rgbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  rgbValue: Deno.PointerValue | Uint8Array /* ptr */,
   cbValueMax: number /* i32 */,
-  pcbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLGetStmtAttrW(util.toPointer(hstmt), fAttribute, util.toPointer(rgbValue), cbValueMax, util.toPointer(pcbValue));
 }
 
 export function SQLSetStmtAttrW(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
   fAttribute: number /* i32 */,
-  rgbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  rgbValue: Deno.PointerValue | Uint8Array /* ptr */,
   cbValueMax: number /* i32 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLSetStmtAttrW(util.toPointer(hstmt), fAttribute, util.toPointer(rgbValue), cbValueMax);
 }
 
 export function SQLForeignKeysW(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szPkCatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  szPkCatalogName: Deno.PointerValue | Uint8Array /* ptr */,
   cchPkCatalogName: number /* i16 */,
-  szPkSchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szPkSchemaName: Deno.PointerValue | Uint8Array /* ptr */,
   cchPkSchemaName: number /* i16 */,
-  szPkTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szPkTableName: Deno.PointerValue | Uint8Array /* ptr */,
   cchPkTableName: number /* i16 */,
-  szFkCatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szFkCatalogName: Deno.PointerValue | Uint8Array /* ptr */,
   cchFkCatalogName: number /* i16 */,
-  szFkSchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szFkSchemaName: Deno.PointerValue | Uint8Array /* ptr */,
   cchFkSchemaName: number /* i16 */,
-  szFkTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szFkTableName: Deno.PointerValue | Uint8Array /* ptr */,
   cchFkTableName: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLForeignKeysW(util.toPointer(hstmt), util.toPointer(szPkCatalogName), cchPkCatalogName, util.toPointer(szPkSchemaName), cchPkSchemaName, util.toPointer(szPkTableName), cchPkTableName, util.toPointer(szFkCatalogName), cchFkCatalogName, util.toPointer(szFkSchemaName), cchFkSchemaName, util.toPointer(szFkTableName), cchFkTableName);
 }
 
 export function SQLNativeSqlW(
-  hdbc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szSqlStrIn: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdbc: Deno.PointerValue | Uint8Array /* ptr */,
+  szSqlStrIn: Deno.PointerValue | Uint8Array /* ptr */,
   cchSqlStrIn: number /* i32 */,
-  szSqlStr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szSqlStr: Deno.PointerValue | Uint8Array /* ptr */,
   cchSqlStrMax: number /* i32 */,
-  pcchSqlStr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchSqlStr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLNativeSqlW(util.toPointer(hdbc), util.toPointer(szSqlStrIn), cchSqlStrIn, util.toPointer(szSqlStr), cchSqlStrMax, util.toPointer(pcchSqlStr));
 }
 
 export function SQLPrimaryKeysW(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szCatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  szCatalogName: Deno.PointerValue | Uint8Array /* ptr */,
   cchCatalogName: number /* i16 */,
-  szSchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szSchemaName: Deno.PointerValue | Uint8Array /* ptr */,
   cchSchemaName: number /* i16 */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
   cchTableName: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLPrimaryKeysW(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szTableName), cchTableName);
 }
 
 export function SQLProcedureColumnsW(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szCatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  szCatalogName: Deno.PointerValue | Uint8Array /* ptr */,
   cchCatalogName: number /* i16 */,
-  szSchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szSchemaName: Deno.PointerValue | Uint8Array /* ptr */,
   cchSchemaName: number /* i16 */,
-  szProcName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szProcName: Deno.PointerValue | Uint8Array /* ptr */,
   cchProcName: number /* i16 */,
-  szColumnName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szColumnName: Deno.PointerValue | Uint8Array /* ptr */,
   cchColumnName: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLProcedureColumnsW(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szProcName), cchProcName, util.toPointer(szColumnName), cchColumnName);
 }
 
 export function SQLProceduresW(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szCatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  szCatalogName: Deno.PointerValue | Uint8Array /* ptr */,
   cchCatalogName: number /* i16 */,
-  szSchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szSchemaName: Deno.PointerValue | Uint8Array /* ptr */,
   cchSchemaName: number /* i16 */,
-  szProcName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szProcName: Deno.PointerValue | Uint8Array /* ptr */,
   cchProcName: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLProceduresW(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szProcName), cchProcName);
 }
 
 export function SQLTablePrivilegesW(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szCatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  szCatalogName: Deno.PointerValue | Uint8Array /* ptr */,
   cchCatalogName: number /* i16 */,
-  szSchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szSchemaName: Deno.PointerValue | Uint8Array /* ptr */,
   cchSchemaName: number /* i16 */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
   cchTableName: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLTablePrivilegesW(util.toPointer(hstmt), util.toPointer(szCatalogName), cchCatalogName, util.toPointer(szSchemaName), cchSchemaName, util.toPointer(szTableName), cchTableName);
 }
 
 export function SQLDriversW(
-  henv: Deno.PointerValue | Uint8Array | null /* ptr */,
+  henv: Deno.PointerValue | Uint8Array /* ptr */,
   fDirection: number /* u16 */,
-  szDriverDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szDriverDesc: Deno.PointerValue | Uint8Array /* ptr */,
   cchDriverDescMax: number /* i16 */,
-  pcchDriverDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szDriverAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchDriverDesc: Deno.PointerValue | Uint8Array /* ptr */,
+  szDriverAttributes: Deno.PointerValue | Uint8Array /* ptr */,
   cchDrvrAttrMax: number /* i16 */,
-  pcchDrvrAttr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcchDrvrAttr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLDriversW(util.toPointer(henv), fDirection, util.toPointer(szDriverDesc), cchDriverDescMax, util.toPointer(pcchDriverDesc), util.toPointer(szDriverAttributes), cchDrvrAttrMax, util.toPointer(pcchDrvrAttr));
 }
 
 export function SQLConnectA(
-  hdbc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szDSN: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdbc: Deno.PointerValue | Uint8Array /* ptr */,
+  szDSN: Deno.PointerValue | Uint8Array /* ptr */,
   cbDSN: number /* i16 */,
-  szUID: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szUID: Deno.PointerValue | Uint8Array /* ptr */,
   cbUID: number /* i16 */,
-  szAuthStr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szAuthStr: Deno.PointerValue | Uint8Array /* ptr */,
   cbAuthStr: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLConnectA(util.toPointer(hdbc), util.toPointer(szDSN), cbDSN, util.toPointer(szUID), cbUID, util.toPointer(szAuthStr), cbAuthStr);
 }
 
 export function SQLErrorA(
-  henv: Deno.PointerValue | Uint8Array | null /* ptr */,
-  hdbc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szSqlState: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfNativeError: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szErrorMsg: Deno.PointerValue | Uint8Array | null /* ptr */,
+  henv: Deno.PointerValue | Uint8Array /* ptr */,
+  hdbc: Deno.PointerValue | Uint8Array /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  szSqlState: Deno.PointerValue | Uint8Array /* ptr */,
+  pfNativeError: Deno.PointerValue | Uint8Array /* ptr */,
+  szErrorMsg: Deno.PointerValue | Uint8Array /* ptr */,
   cbErrorMsgMax: number /* i16 */,
-  pcbErrorMsg: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbErrorMsg: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLErrorA(util.toPointer(henv), util.toPointer(hdbc), util.toPointer(hstmt), util.toPointer(szSqlState), util.toPointer(pfNativeError), util.toPointer(szErrorMsg), cbErrorMsgMax, util.toPointer(pcbErrorMsg));
 }
 
 export function SQLExecDirectA(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szSqlStr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  szSqlStr: Deno.PointerValue | Uint8Array /* ptr */,
   cbSqlStr: number /* i32 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLExecDirectA(util.toPointer(hstmt), util.toPointer(szSqlStr), cbSqlStr);
 }
 
 export function SQLGetConnectAttrA(
-  hdbc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdbc: Deno.PointerValue | Uint8Array /* ptr */,
   fAttribute: number /* i32 */,
-  rgbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  rgbValue: Deno.PointerValue | Uint8Array /* ptr */,
   cbValueMax: number /* i32 */,
-  pcbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLGetConnectAttrA(util.toPointer(hdbc), fAttribute, util.toPointer(rgbValue), cbValueMax, util.toPointer(pcbValue));
 }
 
 export function SQLGetCursorNameA(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szCursor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  szCursor: Deno.PointerValue | Uint8Array /* ptr */,
   cbCursorMax: number /* i16 */,
-  pcbCursor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbCursor: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLGetCursorNameA(util.toPointer(hstmt), util.toPointer(szCursor), cbCursorMax, util.toPointer(pcbCursor));
 }
 
 export function SQLGetDescFieldA(
-  hdesc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdesc: Deno.PointerValue | Uint8Array /* ptr */,
   iRecord: number /* i16 */,
   iField: number /* i16 */,
-  rgbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  rgbValue: Deno.PointerValue | Uint8Array /* ptr */,
   cbBufferLength: number /* i32 */,
-  StringLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StringLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLGetDescFieldA(util.toPointer(hdesc), iRecord, iField, util.toPointer(rgbValue), cbBufferLength, util.toPointer(StringLength));
 }
 
 export function SQLGetDiagFieldA(
   fHandleType: number /* i16 */,
-  handle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  handle: Deno.PointerValue | Uint8Array /* ptr */,
   iRecord: number /* i16 */,
   fDiagField: number /* i16 */,
-  rgbDiagInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  rgbDiagInfo: Deno.PointerValue | Uint8Array /* ptr */,
   cbDiagInfoMax: number /* i16 */,
-  pcbDiagInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbDiagInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLGetDiagFieldA(fHandleType, util.toPointer(handle), iRecord, fDiagField, util.toPointer(rgbDiagInfo), cbDiagInfoMax, util.toPointer(pcbDiagInfo));
 }
 
 export function SQLGetDiagRecA(
   fHandleType: number /* i16 */,
-  handle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  handle: Deno.PointerValue | Uint8Array /* ptr */,
   iRecord: number /* i16 */,
-  szSqlState: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfNativeError: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szErrorMsg: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szSqlState: Deno.PointerValue | Uint8Array /* ptr */,
+  pfNativeError: Deno.PointerValue | Uint8Array /* ptr */,
+  szErrorMsg: Deno.PointerValue | Uint8Array /* ptr */,
   cbErrorMsgMax: number /* i16 */,
-  pcbErrorMsg: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbErrorMsg: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLGetDiagRecA(fHandleType, util.toPointer(handle), iRecord, util.toPointer(szSqlState), util.toPointer(pfNativeError), util.toPointer(szErrorMsg), cbErrorMsgMax, util.toPointer(pcbErrorMsg));
 }
 
 export function SQLGetStmtAttrA(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
   fAttribute: number /* i32 */,
-  rgbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  rgbValue: Deno.PointerValue | Uint8Array /* ptr */,
   cbValueMax: number /* i32 */,
-  pcbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLGetStmtAttrA(util.toPointer(hstmt), fAttribute, util.toPointer(rgbValue), cbValueMax, util.toPointer(pcbValue));
 }
 
 export function SQLGetTypeInfoA(
-  StatementHandle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StatementHandle: Deno.PointerValue | Uint8Array /* ptr */,
   DataType: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLGetTypeInfoA(util.toPointer(StatementHandle), DataType);
 }
 
 export function SQLPrepareA(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szSqlStr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  szSqlStr: Deno.PointerValue | Uint8Array /* ptr */,
   cbSqlStr: number /* i32 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLPrepareA(util.toPointer(hstmt), util.toPointer(szSqlStr), cbSqlStr);
 }
 
 export function SQLSetConnectAttrA(
-  hdbc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdbc: Deno.PointerValue | Uint8Array /* ptr */,
   fAttribute: number /* i32 */,
-  rgbValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  rgbValue: Deno.PointerValue | Uint8Array /* ptr */,
   cbValue: number /* i32 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLSetConnectAttrA(util.toPointer(hdbc), fAttribute, util.toPointer(rgbValue), cbValue);
 }
 
 export function SQLSetCursorNameA(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szCursor: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  szCursor: Deno.PointerValue | Uint8Array /* ptr */,
   cbCursor: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLSetCursorNameA(util.toPointer(hstmt), util.toPointer(szCursor), cbCursor);
 }
 
 export function SQLColumnsA(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szCatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  szCatalogName: Deno.PointerValue | Uint8Array /* ptr */,
   cbCatalogName: number /* i16 */,
-  szSchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szSchemaName: Deno.PointerValue | Uint8Array /* ptr */,
   cbSchemaName: number /* i16 */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
   cbTableName: number /* i16 */,
-  szColumnName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szColumnName: Deno.PointerValue | Uint8Array /* ptr */,
   cbColumnName: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLColumnsA(util.toPointer(hstmt), util.toPointer(szCatalogName), cbCatalogName, util.toPointer(szSchemaName), cbSchemaName, util.toPointer(szTableName), cbTableName, util.toPointer(szColumnName), cbColumnName);
 }
 
 export function SQLGetConnectOptionA(
-  hdbc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdbc: Deno.PointerValue | Uint8Array /* ptr */,
   fOption: number /* u16 */,
-  pvParam: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pvParam: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLGetConnectOptionA(util.toPointer(hdbc), fOption, util.toPointer(pvParam));
 }
 
 export function SQLGetInfoA(
-  hdbc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdbc: Deno.PointerValue | Uint8Array /* ptr */,
   fInfoType: number /* u16 */,
-  rgbInfoValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  rgbInfoValue: Deno.PointerValue | Uint8Array /* ptr */,
   cbInfoValueMax: number /* i16 */,
-  pcbInfoValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbInfoValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLGetInfoA(util.toPointer(hdbc), fInfoType, util.toPointer(rgbInfoValue), cbInfoValueMax, util.toPointer(pcbInfoValue));
 }
 
 export function SQLSpecialColumnsA(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
   fColType: number /* u16 */,
-  szCatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szCatalogName: Deno.PointerValue | Uint8Array /* ptr */,
   cbCatalogName: number /* i16 */,
-  szSchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szSchemaName: Deno.PointerValue | Uint8Array /* ptr */,
   cbSchemaName: number /* i16 */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
   cbTableName: number /* i16 */,
   fScope: number /* u16 */,
   fNullable: number /* u16 */,
@@ -15663,12 +15663,12 @@ export function SQLSpecialColumnsA(
 }
 
 export function SQLStatisticsA(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szCatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  szCatalogName: Deno.PointerValue | Uint8Array /* ptr */,
   cbCatalogName: number /* i16 */,
-  szSchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szSchemaName: Deno.PointerValue | Uint8Array /* ptr */,
   cbSchemaName: number /* i16 */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
   cbTableName: number /* i16 */,
   fUnique: number /* u16 */,
   fAccuracy: number /* u16 */,
@@ -15677,158 +15677,158 @@ export function SQLStatisticsA(
 }
 
 export function SQLTablesA(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szCatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  szCatalogName: Deno.PointerValue | Uint8Array /* ptr */,
   cbCatalogName: number /* i16 */,
-  szSchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szSchemaName: Deno.PointerValue | Uint8Array /* ptr */,
   cbSchemaName: number /* i16 */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
   cbTableName: number /* i16 */,
-  szTableType: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szTableType: Deno.PointerValue | Uint8Array /* ptr */,
   cbTableType: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLTablesA(util.toPointer(hstmt), util.toPointer(szCatalogName), cbCatalogName, util.toPointer(szSchemaName), cbSchemaName, util.toPointer(szTableName), cbTableName, util.toPointer(szTableType), cbTableType);
 }
 
 export function SQLDataSourcesA(
-  henv: Deno.PointerValue | Uint8Array | null /* ptr */,
+  henv: Deno.PointerValue | Uint8Array /* ptr */,
   fDirection: number /* u16 */,
-  szDSN: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szDSN: Deno.PointerValue | Uint8Array /* ptr */,
   cbDSNMax: number /* i16 */,
-  pcbDSN: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szDescription: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbDSN: Deno.PointerValue | Uint8Array /* ptr */,
+  szDescription: Deno.PointerValue | Uint8Array /* ptr */,
   cbDescriptionMax: number /* i16 */,
-  pcbDescription: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbDescription: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLDataSourcesA(util.toPointer(henv), fDirection, util.toPointer(szDSN), cbDSNMax, util.toPointer(pcbDSN), util.toPointer(szDescription), cbDescriptionMax, util.toPointer(pcbDescription));
 }
 
 export function SQLDriverConnectA(
-  hdbc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdbc: Deno.PointerValue | Uint8Array /* ptr */,
   hwnd: Deno.PointerValue /* isize */,
-  szConnStrIn: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szConnStrIn: Deno.PointerValue | Uint8Array /* ptr */,
   cbConnStrIn: number /* i16 */,
-  szConnStrOut: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szConnStrOut: Deno.PointerValue | Uint8Array /* ptr */,
   cbConnStrOutMax: number /* i16 */,
-  pcbConnStrOut: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbConnStrOut: Deno.PointerValue | Uint8Array /* ptr */,
   fDriverCompletion: number /* u16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLDriverConnectA(util.toPointer(hdbc), hwnd, util.toPointer(szConnStrIn), cbConnStrIn, util.toPointer(szConnStrOut), cbConnStrOutMax, util.toPointer(pcbConnStrOut), fDriverCompletion);
 }
 
 export function SQLBrowseConnectA(
-  hdbc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szConnStrIn: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdbc: Deno.PointerValue | Uint8Array /* ptr */,
+  szConnStrIn: Deno.PointerValue | Uint8Array /* ptr */,
   cbConnStrIn: number /* i16 */,
-  szConnStrOut: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szConnStrOut: Deno.PointerValue | Uint8Array /* ptr */,
   cbConnStrOutMax: number /* i16 */,
-  pcbConnStrOut: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbConnStrOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLBrowseConnectA(util.toPointer(hdbc), util.toPointer(szConnStrIn), cbConnStrIn, util.toPointer(szConnStrOut), cbConnStrOutMax, util.toPointer(pcbConnStrOut));
 }
 
 export function SQLColumnPrivilegesA(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szCatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  szCatalogName: Deno.PointerValue | Uint8Array /* ptr */,
   cbCatalogName: number /* i16 */,
-  szSchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szSchemaName: Deno.PointerValue | Uint8Array /* ptr */,
   cbSchemaName: number /* i16 */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
   cbTableName: number /* i16 */,
-  szColumnName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szColumnName: Deno.PointerValue | Uint8Array /* ptr */,
   cbColumnName: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLColumnPrivilegesA(util.toPointer(hstmt), util.toPointer(szCatalogName), cbCatalogName, util.toPointer(szSchemaName), cbSchemaName, util.toPointer(szTableName), cbTableName, util.toPointer(szColumnName), cbColumnName);
 }
 
 export function SQLForeignKeysA(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szPkCatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  szPkCatalogName: Deno.PointerValue | Uint8Array /* ptr */,
   cbPkCatalogName: number /* i16 */,
-  szPkSchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szPkSchemaName: Deno.PointerValue | Uint8Array /* ptr */,
   cbPkSchemaName: number /* i16 */,
-  szPkTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szPkTableName: Deno.PointerValue | Uint8Array /* ptr */,
   cbPkTableName: number /* i16 */,
-  szFkCatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szFkCatalogName: Deno.PointerValue | Uint8Array /* ptr */,
   cbFkCatalogName: number /* i16 */,
-  szFkSchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szFkSchemaName: Deno.PointerValue | Uint8Array /* ptr */,
   cbFkSchemaName: number /* i16 */,
-  szFkTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szFkTableName: Deno.PointerValue | Uint8Array /* ptr */,
   cbFkTableName: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLForeignKeysA(util.toPointer(hstmt), util.toPointer(szPkCatalogName), cbPkCatalogName, util.toPointer(szPkSchemaName), cbPkSchemaName, util.toPointer(szPkTableName), cbPkTableName, util.toPointer(szFkCatalogName), cbFkCatalogName, util.toPointer(szFkSchemaName), cbFkSchemaName, util.toPointer(szFkTableName), cbFkTableName);
 }
 
 export function SQLNativeSqlA(
-  hdbc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szSqlStrIn: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hdbc: Deno.PointerValue | Uint8Array /* ptr */,
+  szSqlStrIn: Deno.PointerValue | Uint8Array /* ptr */,
   cbSqlStrIn: number /* i32 */,
-  szSqlStr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szSqlStr: Deno.PointerValue | Uint8Array /* ptr */,
   cbSqlStrMax: number /* i32 */,
-  pcbSqlStr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbSqlStr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLNativeSqlA(util.toPointer(hdbc), util.toPointer(szSqlStrIn), cbSqlStrIn, util.toPointer(szSqlStr), cbSqlStrMax, util.toPointer(pcbSqlStr));
 }
 
 export function SQLPrimaryKeysA(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szCatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  szCatalogName: Deno.PointerValue | Uint8Array /* ptr */,
   cbCatalogName: number /* i16 */,
-  szSchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szSchemaName: Deno.PointerValue | Uint8Array /* ptr */,
   cbSchemaName: number /* i16 */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
   cbTableName: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLPrimaryKeysA(util.toPointer(hstmt), util.toPointer(szCatalogName), cbCatalogName, util.toPointer(szSchemaName), cbSchemaName, util.toPointer(szTableName), cbTableName);
 }
 
 export function SQLProcedureColumnsA(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szCatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  szCatalogName: Deno.PointerValue | Uint8Array /* ptr */,
   cbCatalogName: number /* i16 */,
-  szSchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szSchemaName: Deno.PointerValue | Uint8Array /* ptr */,
   cbSchemaName: number /* i16 */,
-  szProcName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szProcName: Deno.PointerValue | Uint8Array /* ptr */,
   cbProcName: number /* i16 */,
-  szColumnName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szColumnName: Deno.PointerValue | Uint8Array /* ptr */,
   cbColumnName: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLProcedureColumnsA(util.toPointer(hstmt), util.toPointer(szCatalogName), cbCatalogName, util.toPointer(szSchemaName), cbSchemaName, util.toPointer(szProcName), cbProcName, util.toPointer(szColumnName), cbColumnName);
 }
 
 export function SQLProceduresA(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szCatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  szCatalogName: Deno.PointerValue | Uint8Array /* ptr */,
   cbCatalogName: number /* i16 */,
-  szSchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szSchemaName: Deno.PointerValue | Uint8Array /* ptr */,
   cbSchemaName: number /* i16 */,
-  szProcName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szProcName: Deno.PointerValue | Uint8Array /* ptr */,
   cbProcName: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLProceduresA(util.toPointer(hstmt), util.toPointer(szCatalogName), cbCatalogName, util.toPointer(szSchemaName), cbSchemaName, util.toPointer(szProcName), cbProcName);
 }
 
 export function SQLTablePrivilegesA(
-  hstmt: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szCatalogName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hstmt: Deno.PointerValue | Uint8Array /* ptr */,
+  szCatalogName: Deno.PointerValue | Uint8Array /* ptr */,
   cbCatalogName: number /* i16 */,
-  szSchemaName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szSchemaName: Deno.PointerValue | Uint8Array /* ptr */,
   cbSchemaName: number /* i16 */,
-  szTableName: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szTableName: Deno.PointerValue | Uint8Array /* ptr */,
   cbTableName: number /* i16 */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLTablePrivilegesA(util.toPointer(hstmt), util.toPointer(szCatalogName), cbCatalogName, util.toPointer(szSchemaName), cbSchemaName, util.toPointer(szTableName), cbTableName);
 }
 
 export function SQLDriversA(
-  henv: Deno.PointerValue | Uint8Array | null /* ptr */,
+  henv: Deno.PointerValue | Uint8Array /* ptr */,
   fDirection: number /* u16 */,
-  szDriverDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
+  szDriverDesc: Deno.PointerValue | Uint8Array /* ptr */,
   cbDriverDescMax: number /* i16 */,
-  pcbDriverDesc: Deno.PointerValue | Uint8Array | null /* ptr */,
-  szDriverAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbDriverDesc: Deno.PointerValue | Uint8Array /* ptr */,
+  szDriverAttributes: Deno.PointerValue | Uint8Array /* ptr */,
   cbDrvrAttrMax: number /* i16 */,
-  pcbDrvrAttr: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcbDrvrAttr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i16 */ {
   return libODBC32_dll.SQLDriversA(util.toPointer(henv), fDirection, util.toPointer(szDriverDesc), cbDriverDescMax, util.toPointer(pcbDriverDesc), util.toPointer(szDriverAttributes), cbDrvrAttrMax, util.toPointer(pcbDrvrAttr));
 }

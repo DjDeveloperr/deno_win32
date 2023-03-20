@@ -650,7 +650,7 @@ export class _Anonymous_e__StructView {
   }
 }
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * _u_e__Struct (size: 16)
@@ -673,7 +673,7 @@ export function alloc_u_e__Struct(data?: Partial<_u_e__Struct>): Uint8Array {
   // 0x08: buffer
   if (data?.pwszName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.pwszName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   return buf;
 }
@@ -696,9 +696,9 @@ export class _u_e__StructView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get pwszName(): Uint8Array | Deno.PointerValue | null {
+  get pwszName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -709,9 +709,9 @@ export class _u_e__StructView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set pwszName(value: Uint8Array | Deno.PointerValue | null) {
+  set pwszName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 }
 
@@ -720,9 +720,9 @@ export class _u_e__StructView {
  */
 export interface ULARGE_INTEGER {
   /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** _u_e__Struct */
-  u: Uint8Array | Deno.PointerValue | null;
+  u: Uint8Array | Deno.PointerValue;
   /** u64 */
   QuadPart: Deno.PointerValue;
 }
@@ -733,9 +733,9 @@ export function allocULARGE_INTEGER(data?: Partial<ULARGE_INTEGER>): Uint8Array 
   const buf = new Uint8Array(sizeofULARGE_INTEGER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x08: pointer
-  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : BigInt(util.toPointer(data.u)), true);
+  if (data?.u !== undefined) view.setBigUint64(8, data.u === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.u))), true);
   // 0x10: u64
   if (data?.QuadPart !== undefined) view.setBigUint64(16, BigInt(data.QuadPart), true);
   return buf;
@@ -752,15 +752,15 @@ export class ULARGE_INTEGERView {
   }
 
   // 0x00: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get u(): Uint8Array | Deno.PointerValue | null {
+  get u(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u64
@@ -769,13 +769,13 @@ export class ULARGE_INTEGERView {
   }
 
   // 0x00: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set u(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set u(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u64
@@ -791,13 +791,13 @@ export type BOOL = number;
  */
 export interface WICBitmapPattern {
   /** Windows.Win32.Foundation.ULARGE_INTEGER */
-  Position: Uint8Array | Deno.PointerValue | null;
+  Position: Uint8Array | Deno.PointerValue;
   /** u32 */
   Length: number;
   /** ptr */
-  Pattern: Deno.PointerValue | Uint8Array | null;
+  Pattern: Deno.PointerValue | Uint8Array;
   /** ptr */
-  Mask: Deno.PointerValue | Uint8Array | null;
+  Mask: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.BOOL */
   EndOfStream: boolean;
 }
@@ -808,14 +808,14 @@ export function allocWICBitmapPattern(data?: Partial<WICBitmapPattern>): Uint8Ar
   const buf = new Uint8Array(sizeofWICBitmapPattern);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Position !== undefined) view.setBigUint64(0, data.Position === null ? 0n : BigInt(util.toPointer(data.Position)), true);
+  if (data?.Position !== undefined) view.setBigUint64(0, data.Position === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Position))), true);
   // 0x08: u32
   if (data?.Length !== undefined) view.setUint32(8, Number(data.Length), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.Pattern !== undefined) view.setBigUint64(16, data.Pattern === null ? 0n : BigInt(util.toPointer(data.Pattern)), true);
+  if (data?.Pattern !== undefined) view.setBigUint64(16, data.Pattern === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Pattern))), true);
   // 0x18: pointer
-  if (data?.Mask !== undefined) view.setBigUint64(24, data.Mask === null ? 0n : BigInt(util.toPointer(data.Mask)), true);
+  if (data?.Mask !== undefined) view.setBigUint64(24, data.Mask === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Mask))), true);
   // 0x20: i32
   if (data?.EndOfStream !== undefined) view.setInt32(32, Number(data.EndOfStream), true);
   // 0x24: pad4
@@ -833,9 +833,9 @@ export class WICBitmapPatternView {
   }
 
   // 0x00: pointer
-  get Position(): Uint8Array | Deno.PointerValue | null {
+  get Position(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -846,15 +846,15 @@ export class WICBitmapPatternView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get Pattern(): Uint8Array | Deno.PointerValue | null {
+  get Pattern(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get Mask(): Uint8Array | Deno.PointerValue | null {
+  get Mask(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: i32
@@ -865,8 +865,8 @@ export class WICBitmapPatternView {
   // 0x24: pad4
 
   // 0x00: pointer
-  set Position(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Position(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -877,13 +877,13 @@ export class WICBitmapPatternView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set Pattern(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set Pattern(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set Mask(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set Mask(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: i32
@@ -952,7 +952,7 @@ export class D2D1_PIXEL_FORMATView {
  */
 export interface WICImageParameters {
   /** Windows.Win32.Graphics.Direct2D.Common.D2D1_PIXEL_FORMAT */
-  PixelFormat: Uint8Array | Deno.PointerValue | null;
+  PixelFormat: Uint8Array | Deno.PointerValue;
   /** f32 */
   DpiX: number;
   /** f32 */
@@ -973,7 +973,7 @@ export function allocWICImageParameters(data?: Partial<WICImageParameters>): Uin
   const buf = new Uint8Array(sizeofWICImageParameters);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.PixelFormat !== undefined) view.setBigUint64(0, data.PixelFormat === null ? 0n : BigInt(util.toPointer(data.PixelFormat)), true);
+  if (data?.PixelFormat !== undefined) view.setBigUint64(0, data.PixelFormat === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.PixelFormat))), true);
   // 0x08: f32
   if (data?.DpiX !== undefined) view.setFloat32(8, Number(data.DpiX), true);
   // 0x0c: f32
@@ -1000,9 +1000,9 @@ export class WICImageParametersView {
   }
 
   // 0x00: pointer
-  get PixelFormat(): Uint8Array | Deno.PointerValue | null {
+  get PixelFormat(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: f32
@@ -1036,8 +1036,8 @@ export class WICImageParametersView {
   }
 
   // 0x00: pointer
-  set PixelFormat(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set PixelFormat(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: f32
@@ -1076,7 +1076,7 @@ export class WICImageParametersView {
  */
 export interface WICBitmapPlaneDescription {
   /** System.Guid */
-  Format: Uint8Array | Deno.PointerValue | null;
+  Format: Uint8Array | Deno.PointerValue;
   /** u32 */
   Width: number;
   /** u32 */
@@ -1089,7 +1089,7 @@ export function allocWICBitmapPlaneDescription(data?: Partial<WICBitmapPlaneDesc
   const buf = new Uint8Array(sizeofWICBitmapPlaneDescription);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Format !== undefined) view.setBigUint64(0, data.Format === null ? 0n : BigInt(util.toPointer(data.Format)), true);
+  if (data?.Format !== undefined) view.setBigUint64(0, data.Format === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Format))), true);
   // 0x08: u32
   if (data?.Width !== undefined) view.setUint32(8, Number(data.Width), true);
   // 0x0c: u32
@@ -1108,9 +1108,9 @@ export class WICBitmapPlaneDescriptionView {
   }
 
   // 0x00: pointer
-  get Format(): Uint8Array | Deno.PointerValue | null {
+  get Format(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -1124,8 +1124,8 @@ export class WICBitmapPlaneDescriptionView {
   }
 
   // 0x00: pointer
-  set Format(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Format(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -1144,9 +1144,9 @@ export class WICBitmapPlaneDescriptionView {
  */
 export interface WICBitmapPlane {
   /** System.Guid */
-  Format: Uint8Array | Deno.PointerValue | null;
+  Format: Uint8Array | Deno.PointerValue;
   /** ptr */
-  pbBuffer: Deno.PointerValue | Uint8Array | null;
+  pbBuffer: Deno.PointerValue | Uint8Array;
   /** u32 */
   cbStride: number;
   /** u32 */
@@ -1159,9 +1159,9 @@ export function allocWICBitmapPlane(data?: Partial<WICBitmapPlane>): Uint8Array 
   const buf = new Uint8Array(sizeofWICBitmapPlane);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Format !== undefined) view.setBigUint64(0, data.Format === null ? 0n : BigInt(util.toPointer(data.Format)), true);
+  if (data?.Format !== undefined) view.setBigUint64(0, data.Format === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Format))), true);
   // 0x08: pointer
-  if (data?.pbBuffer !== undefined) view.setBigUint64(8, data.pbBuffer === null ? 0n : BigInt(util.toPointer(data.pbBuffer)), true);
+  if (data?.pbBuffer !== undefined) view.setBigUint64(8, data.pbBuffer === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pbBuffer))), true);
   // 0x10: u32
   if (data?.cbStride !== undefined) view.setUint32(16, Number(data.cbStride), true);
   // 0x14: u32
@@ -1180,15 +1180,15 @@ export class WICBitmapPlaneView {
   }
 
   // 0x00: pointer
-  get Format(): Uint8Array | Deno.PointerValue | null {
+  get Format(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get pbBuffer(): Uint8Array | Deno.PointerValue | null {
+  get pbBuffer(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -1202,13 +1202,13 @@ export class WICBitmapPlaneView {
   }
 
   // 0x00: pointer
-  set Format(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Format(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set pbBuffer(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pbBuffer(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -1838,7 +1838,7 @@ export interface WICRawToneCurve {
   /** u32 */
   cPoints: number;
   /** array */
-  aPoints: Deno.PointerValue | null;
+  aPoints: Deno.PointerValue;
 }
 
 export const sizeofWICRawToneCurve = 16;
@@ -1850,7 +1850,7 @@ export function allocWICRawToneCurve(data?: Partial<WICRawToneCurve>): Uint8Arra
   if (data?.cPoints !== undefined) view.setUint32(0, Number(data.cPoints), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.aPoints !== undefined) view.setBigUint64(8, data.aPoints === null ? 0n : BigInt(util.toPointer(data.aPoints)), true);
+  if (data?.aPoints !== undefined) view.setBigUint64(8, data.aPoints === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.aPoints))), true);
   return buf;
 }
 
@@ -1872,9 +1872,9 @@ export class WICRawToneCurveView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get aPoints(): Uint8Array | Deno.PointerValue | null {
+  get aPoints(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1885,8 +1885,8 @@ export class WICRawToneCurveView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set aPoints(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set aPoints(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2113,15 +2113,15 @@ export class WICDdsFormatInfoView {
  */
 export interface WICMetadataPattern {
   /** Windows.Win32.Foundation.ULARGE_INTEGER */
-  Position: Uint8Array | Deno.PointerValue | null;
+  Position: Uint8Array | Deno.PointerValue;
   /** u32 */
   Length: number;
   /** ptr */
-  Pattern: Deno.PointerValue | Uint8Array | null;
+  Pattern: Deno.PointerValue | Uint8Array;
   /** ptr */
-  Mask: Deno.PointerValue | Uint8Array | null;
+  Mask: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.ULARGE_INTEGER */
-  DataOffset: Uint8Array | Deno.PointerValue | null;
+  DataOffset: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofWICMetadataPattern = 40;
@@ -2130,16 +2130,16 @@ export function allocWICMetadataPattern(data?: Partial<WICMetadataPattern>): Uin
   const buf = new Uint8Array(sizeofWICMetadataPattern);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Position !== undefined) view.setBigUint64(0, data.Position === null ? 0n : BigInt(util.toPointer(data.Position)), true);
+  if (data?.Position !== undefined) view.setBigUint64(0, data.Position === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Position))), true);
   // 0x08: u32
   if (data?.Length !== undefined) view.setUint32(8, Number(data.Length), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.Pattern !== undefined) view.setBigUint64(16, data.Pattern === null ? 0n : BigInt(util.toPointer(data.Pattern)), true);
+  if (data?.Pattern !== undefined) view.setBigUint64(16, data.Pattern === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Pattern))), true);
   // 0x18: pointer
-  if (data?.Mask !== undefined) view.setBigUint64(24, data.Mask === null ? 0n : BigInt(util.toPointer(data.Mask)), true);
+  if (data?.Mask !== undefined) view.setBigUint64(24, data.Mask === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Mask))), true);
   // 0x20: pointer
-  if (data?.DataOffset !== undefined) view.setBigUint64(32, data.DataOffset === null ? 0n : BigInt(util.toPointer(data.DataOffset)), true);
+  if (data?.DataOffset !== undefined) view.setBigUint64(32, data.DataOffset === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DataOffset))), true);
   return buf;
 }
 
@@ -2154,9 +2154,9 @@ export class WICMetadataPatternView {
   }
 
   // 0x00: pointer
-  get Position(): Uint8Array | Deno.PointerValue | null {
+  get Position(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -2167,26 +2167,26 @@ export class WICMetadataPatternView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get Pattern(): Uint8Array | Deno.PointerValue | null {
+  get Pattern(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get Mask(): Uint8Array | Deno.PointerValue | null {
+  get Mask(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get DataOffset(): Uint8Array | Deno.PointerValue | null {
+  get DataOffset(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Position(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Position(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -2197,18 +2197,18 @@ export class WICMetadataPatternView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set Pattern(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set Pattern(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set Mask(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set Mask(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set DataOffset(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set DataOffset(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2217,13 +2217,13 @@ export class WICMetadataPatternView {
  */
 export interface WICMetadataHeader {
   /** Windows.Win32.Foundation.ULARGE_INTEGER */
-  Position: Uint8Array | Deno.PointerValue | null;
+  Position: Uint8Array | Deno.PointerValue;
   /** u32 */
   Length: number;
   /** ptr */
-  Header: Deno.PointerValue | Uint8Array | null;
+  Header: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.ULARGE_INTEGER */
-  DataOffset: Uint8Array | Deno.PointerValue | null;
+  DataOffset: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofWICMetadataHeader = 32;
@@ -2232,14 +2232,14 @@ export function allocWICMetadataHeader(data?: Partial<WICMetadataHeader>): Uint8
   const buf = new Uint8Array(sizeofWICMetadataHeader);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Position !== undefined) view.setBigUint64(0, data.Position === null ? 0n : BigInt(util.toPointer(data.Position)), true);
+  if (data?.Position !== undefined) view.setBigUint64(0, data.Position === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Position))), true);
   // 0x08: u32
   if (data?.Length !== undefined) view.setUint32(8, Number(data.Length), true);
   // 0x0c: pad4
   // 0x10: pointer
-  if (data?.Header !== undefined) view.setBigUint64(16, data.Header === null ? 0n : BigInt(util.toPointer(data.Header)), true);
+  if (data?.Header !== undefined) view.setBigUint64(16, data.Header === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Header))), true);
   // 0x18: pointer
-  if (data?.DataOffset !== undefined) view.setBigUint64(24, data.DataOffset === null ? 0n : BigInt(util.toPointer(data.DataOffset)), true);
+  if (data?.DataOffset !== undefined) view.setBigUint64(24, data.DataOffset === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.DataOffset))), true);
   return buf;
 }
 
@@ -2254,9 +2254,9 @@ export class WICMetadataHeaderView {
   }
 
   // 0x00: pointer
-  get Position(): Uint8Array | Deno.PointerValue | null {
+  get Position(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -2267,20 +2267,20 @@ export class WICMetadataHeaderView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  get Header(): Uint8Array | Deno.PointerValue | null {
+  get Header(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get DataOffset(): Uint8Array | Deno.PointerValue | null {
+  get DataOffset(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Position(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Position(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -2291,13 +2291,13 @@ export class WICMetadataHeaderView {
   // 0x0c: pad4
 
   // 0x10: pointer
-  set Header(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set Header(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set DataOffset(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set DataOffset(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -2351,87 +2351,87 @@ try {
 // Symbols
 
 export function WICConvertBitmapSource(
-  dstFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pISrc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Imaging.IWICBitmapSource */,
-  ppIDst: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWindowsCodecs_dll.WICConvertBitmapSource(util.toPointer(dstFormat), util.toPointer(pISrc), util.toPointer(ppIDst)));
+  dstFormat: Deno.PointerValue | Uint8Array /* ptr */,
+  pISrc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Imaging.IWICBitmapSource */,
+  ppIDst: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWindowsCodecs_dll.WICConvertBitmapSource(util.toPointer(dstFormat), util.toPointer(pISrc), util.toPointer(ppIDst));
 }
 
 export function WICCreateBitmapFromSection(
   width: number /* u32 */,
   height: number /* u32 */,
-  pixelFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
-  hSection: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  pixelFormat: Deno.PointerValue | Uint8Array /* ptr */,
+  hSection: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   stride: number /* u32 */,
   offset: number /* u32 */,
-  ppIBitmap: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWindowsCodecs_dll.WICCreateBitmapFromSection(width, height, util.toPointer(pixelFormat), util.toPointer(hSection), stride, offset, util.toPointer(ppIBitmap)));
+  ppIBitmap: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWindowsCodecs_dll.WICCreateBitmapFromSection(width, height, util.toPointer(pixelFormat), util.toPointer(hSection), stride, offset, util.toPointer(ppIBitmap));
 }
 
 export function WICCreateBitmapFromSectionEx(
   width: number /* u32 */,
   height: number /* u32 */,
-  pixelFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
-  hSection: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  pixelFormat: Deno.PointerValue | Uint8Array /* ptr */,
+  hSection: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   stride: number /* u32 */,
   offset: number /* u32 */,
   desiredAccessLevel: WICSectionAccessLevel /* Windows.Win32.Graphics.Imaging.WICSectionAccessLevel */,
-  ppIBitmap: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWindowsCodecs_dll.WICCreateBitmapFromSectionEx(width, height, util.toPointer(pixelFormat), util.toPointer(hSection), stride, offset, desiredAccessLevel, util.toPointer(ppIBitmap)));
+  ppIBitmap: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWindowsCodecs_dll.WICCreateBitmapFromSectionEx(width, height, util.toPointer(pixelFormat), util.toPointer(hSection), stride, offset, desiredAccessLevel, util.toPointer(ppIBitmap));
 }
 
 export function WICMapGuidToShortName(
-  guid: Deno.PointerValue | Uint8Array | null /* ptr */,
+  guid: Deno.PointerValue | Uint8Array /* ptr */,
   cchName: number /* u32 */,
   wzName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchActual: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWindowsCodecs_dll.WICMapGuidToShortName(util.toPointer(guid), cchName, util.pwstrToFfi(wzName), util.toPointer(pcchActual)));
+  pcchActual: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWindowsCodecs_dll.WICMapGuidToShortName(util.toPointer(guid), cchName, util.pwstrToFfi(wzName), util.toPointer(pcchActual));
 }
 
 export function WICMapShortNameToGuid(
   wzName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pguid: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWindowsCodecs_dll.WICMapShortNameToGuid(util.pwstrToFfi(wzName), util.toPointer(pguid)));
+  pguid: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWindowsCodecs_dll.WICMapShortNameToGuid(util.pwstrToFfi(wzName), util.toPointer(pguid));
 }
 
 export function WICMapSchemaToName(
-  guidMetadataFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
+  guidMetadataFormat: Deno.PointerValue | Uint8Array /* ptr */,
   pwzSchema: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchName: number /* u32 */,
   wzName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcchActual: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWindowsCodecs_dll.WICMapSchemaToName(util.toPointer(guidMetadataFormat), util.pwstrToFfi(pwzSchema), cchName, util.pwstrToFfi(wzName), util.toPointer(pcchActual)));
+  pcchActual: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWindowsCodecs_dll.WICMapSchemaToName(util.toPointer(guidMetadataFormat), util.pwstrToFfi(pwzSchema), cchName, util.pwstrToFfi(wzName), util.toPointer(pcchActual));
 }
 
 export function WICMatchMetadataContent(
-  guidContainerFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pguidVendor: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pIStream: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IStream */,
-  pguidMetadataFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWindowsCodecs_dll.WICMatchMetadataContent(util.toPointer(guidContainerFormat), util.toPointer(pguidVendor), util.toPointer(pIStream), util.toPointer(pguidMetadataFormat)));
+  guidContainerFormat: Deno.PointerValue | Uint8Array /* ptr */,
+  pguidVendor: Deno.PointerValue | Uint8Array /* ptr */,
+  pIStream: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IStream */,
+  pguidMetadataFormat: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWindowsCodecs_dll.WICMatchMetadataContent(util.toPointer(guidContainerFormat), util.toPointer(pguidVendor), util.toPointer(pIStream), util.toPointer(pguidMetadataFormat));
 }
 
 export function WICSerializeMetadataContent(
-  guidContainerFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pIWriter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Imaging.IWICMetadataWriter */,
+  guidContainerFormat: Deno.PointerValue | Uint8Array /* ptr */,
+  pIWriter: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Imaging.IWICMetadataWriter */,
   dwPersistOptions: number /* u32 */,
-  pIStream: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IStream */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWindowsCodecs_dll.WICSerializeMetadataContent(util.toPointer(guidContainerFormat), util.toPointer(pIWriter), dwPersistOptions, util.toPointer(pIStream)));
+  pIStream: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IStream */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWindowsCodecs_dll.WICSerializeMetadataContent(util.toPointer(guidContainerFormat), util.toPointer(pIWriter), dwPersistOptions, util.toPointer(pIStream));
 }
 
 export function WICGetMetadataContentSize(
-  guidContainerFormat: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pIWriter: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Imaging.IWICMetadataWriter */,
-  pcbSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWindowsCodecs_dll.WICGetMetadataContentSize(util.toPointer(guidContainerFormat), util.toPointer(pIWriter), util.toPointer(pcbSize)));
+  guidContainerFormat: Deno.PointerValue | Uint8Array /* ptr */,
+  pIWriter: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Imaging.IWICMetadataWriter */,
+  pcbSize: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWindowsCodecs_dll.WICGetMetadataContentSize(util.toPointer(guidContainerFormat), util.toPointer(pIWriter), util.toPointer(pcbSize));
 }
 

@@ -130,7 +130,7 @@ export interface NLM_USAGE_DATA {
   /** u32 */
   UsageInMegabytes: number;
   /** Windows.Win32.Foundation.FILETIME */
-  LastSyncTime: Uint8Array | Deno.PointerValue | null;
+  LastSyncTime: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofNLM_USAGE_DATA = 16;
@@ -142,7 +142,7 @@ export function allocNLM_USAGE_DATA(data?: Partial<NLM_USAGE_DATA>): Uint8Array 
   if (data?.UsageInMegabytes !== undefined) view.setUint32(0, Number(data.UsageInMegabytes), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.LastSyncTime !== undefined) view.setBigUint64(8, data.LastSyncTime === null ? 0n : BigInt(util.toPointer(data.LastSyncTime)), true);
+  if (data?.LastSyncTime !== undefined) view.setBigUint64(8, data.LastSyncTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.LastSyncTime))), true);
   return buf;
 }
 
@@ -164,9 +164,9 @@ export class NLM_USAGE_DATAView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get LastSyncTime(): Uint8Array | Deno.PointerValue | null {
+  get LastSyncTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -177,8 +177,8 @@ export class NLM_USAGE_DATAView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set LastSyncTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set LastSyncTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -187,9 +187,9 @@ export class NLM_USAGE_DATAView {
  */
 export interface NLM_DATAPLAN_STATUS {
   /** System.Guid */
-  InterfaceGuid: Uint8Array | Deno.PointerValue | null;
+  InterfaceGuid: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Networking.NetworkListManager.NLM_USAGE_DATA */
-  UsageData: Uint8Array | Deno.PointerValue | null;
+  UsageData: Uint8Array | Deno.PointerValue;
   /** u32 */
   DataLimitInMegabytes: number;
   /** u32 */
@@ -197,7 +197,7 @@ export interface NLM_DATAPLAN_STATUS {
   /** u32 */
   OutboundBandwidthInKbps: number;
   /** Windows.Win32.Foundation.FILETIME */
-  NextBillingCycle: Uint8Array | Deno.PointerValue | null;
+  NextBillingCycle: Uint8Array | Deno.PointerValue;
   /** u32 */
   MaxTransferSizeInMegabytes: number;
   /** u32 */
@@ -210,9 +210,9 @@ export function allocNLM_DATAPLAN_STATUS(data?: Partial<NLM_DATAPLAN_STATUS>): U
   const buf = new Uint8Array(sizeofNLM_DATAPLAN_STATUS);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.InterfaceGuid !== undefined) view.setBigUint64(0, data.InterfaceGuid === null ? 0n : BigInt(util.toPointer(data.InterfaceGuid)), true);
+  if (data?.InterfaceGuid !== undefined) view.setBigUint64(0, data.InterfaceGuid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.InterfaceGuid))), true);
   // 0x08: pointer
-  if (data?.UsageData !== undefined) view.setBigUint64(8, data.UsageData === null ? 0n : BigInt(util.toPointer(data.UsageData)), true);
+  if (data?.UsageData !== undefined) view.setBigUint64(8, data.UsageData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.UsageData))), true);
   // 0x10: u32
   if (data?.DataLimitInMegabytes !== undefined) view.setUint32(16, Number(data.DataLimitInMegabytes), true);
   // 0x14: u32
@@ -221,7 +221,7 @@ export function allocNLM_DATAPLAN_STATUS(data?: Partial<NLM_DATAPLAN_STATUS>): U
   if (data?.OutboundBandwidthInKbps !== undefined) view.setUint32(24, Number(data.OutboundBandwidthInKbps), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.NextBillingCycle !== undefined) view.setBigUint64(32, data.NextBillingCycle === null ? 0n : BigInt(util.toPointer(data.NextBillingCycle)), true);
+  if (data?.NextBillingCycle !== undefined) view.setBigUint64(32, data.NextBillingCycle === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.NextBillingCycle))), true);
   // 0x28: u32
   if (data?.MaxTransferSizeInMegabytes !== undefined) view.setUint32(40, Number(data.MaxTransferSizeInMegabytes), true);
   // 0x2c: u32
@@ -240,15 +240,15 @@ export class NLM_DATAPLAN_STATUSView {
   }
 
   // 0x00: pointer
-  get InterfaceGuid(): Uint8Array | Deno.PointerValue | null {
+  get InterfaceGuid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get UsageData(): Uint8Array | Deno.PointerValue | null {
+  get UsageData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -269,9 +269,9 @@ export class NLM_DATAPLAN_STATUSView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get NextBillingCycle(): Uint8Array | Deno.PointerValue | null {
+  get NextBillingCycle(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -285,13 +285,13 @@ export class NLM_DATAPLAN_STATUSView {
   }
 
   // 0x00: pointer
-  set InterfaceGuid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set InterfaceGuid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set UsageData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set UsageData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -312,8 +312,8 @@ export class NLM_DATAPLAN_STATUSView {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set NextBillingCycle(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set NextBillingCycle(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u32
@@ -332,7 +332,7 @@ export class NLM_DATAPLAN_STATUSView {
  */
 export interface NLM_SOCKADDR {
   /** array */
-  data: Deno.PointerValue | null;
+  data: Deno.PointerValue;
 }
 
 export const sizeofNLM_SOCKADDR = 8;
@@ -341,7 +341,7 @@ export function allocNLM_SOCKADDR(data?: Partial<NLM_SOCKADDR>): Uint8Array {
   const buf = new Uint8Array(sizeofNLM_SOCKADDR);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.data !== undefined) view.setBigUint64(0, data.data === null ? 0n : BigInt(util.toPointer(data.data)), true);
+  if (data?.data !== undefined) view.setBigUint64(0, data.data === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.data))), true);
   return buf;
 }
 
@@ -356,14 +356,14 @@ export class NLM_SOCKADDRView {
   }
 
   // 0x00: pointer
-  get data(): Uint8Array | Deno.PointerValue | null {
+  get data(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set data(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set data(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -372,7 +372,7 @@ export class NLM_SOCKADDRView {
  */
 export interface NLM_SIMULATED_PROFILE_INFO {
   /** array */
-  ProfileName: Deno.PointerValue | null;
+  ProfileName: Deno.PointerValue;
   /** Windows.Win32.Networking.NetworkListManager.NLM_CONNECTION_COST */
   cost: NLM_CONNECTION_COST;
   /** u32 */
@@ -387,7 +387,7 @@ export function allocNLM_SIMULATED_PROFILE_INFO(data?: Partial<NLM_SIMULATED_PRO
   const buf = new Uint8Array(sizeofNLM_SIMULATED_PROFILE_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.ProfileName !== undefined) view.setBigUint64(0, data.ProfileName === null ? 0n : BigInt(util.toPointer(data.ProfileName)), true);
+  if (data?.ProfileName !== undefined) view.setBigUint64(0, data.ProfileName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ProfileName))), true);
   // 0x08: i32
   if (data?.cost !== undefined) view.setInt32(8, Number(data.cost), true);
   // 0x0c: u32
@@ -409,9 +409,9 @@ export class NLM_SIMULATED_PROFILE_INFOView {
   }
 
   // 0x00: pointer
-  get ProfileName(): Uint8Array | Deno.PointerValue | null {
+  get ProfileName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: i32
@@ -432,8 +432,8 @@ export class NLM_SIMULATED_PROFILE_INFOView {
   // 0x14: pad4
 
   // 0x00: pointer
-  set ProfileName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set ProfileName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: i32

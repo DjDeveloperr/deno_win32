@@ -14,7 +14,7 @@ export const LicenseKeyAlreadyExists = 4;
 
 // Structs
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 export type HRESULT = number;
 
@@ -38,17 +38,17 @@ try {
 export function RegisterLicenseKeyWithExpiration(
   licenseKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   validityInDays: number /* u32 */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liblicenseprotection_dll.RegisterLicenseKeyWithExpiration(util.pwstrToFfi(licenseKey), validityInDays, util.toPointer(status)));
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liblicenseprotection_dll.RegisterLicenseKeyWithExpiration(util.pwstrToFfi(licenseKey), validityInDays, util.toPointer(status));
 }
 
 export function ValidateLicenseKeyProtection(
   licenseKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  notValidBefore: Deno.PointerValue | Uint8Array | null /* ptr */,
-  notValidAfter: Deno.PointerValue | Uint8Array | null /* ptr */,
-  status: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(liblicenseprotection_dll.ValidateLicenseKeyProtection(util.pwstrToFfi(licenseKey), util.toPointer(notValidBefore), util.toPointer(notValidAfter), util.toPointer(status)));
+  notValidBefore: Deno.PointerValue | Uint8Array /* ptr */,
+  notValidAfter: Deno.PointerValue | Uint8Array /* ptr */,
+  status: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return liblicenseprotection_dll.ValidateLicenseKeyProtection(util.pwstrToFfi(licenseKey), util.toPointer(notValidBefore), util.toPointer(notValidAfter), util.toPointer(status));
 }
 

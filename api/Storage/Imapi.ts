@@ -623,7 +623,7 @@ export interface SPropAttrArray {
   /** u32 */
   cValues: number;
   /** array */
-  aPropAttr: Deno.PointerValue | null;
+  aPropAttr: Deno.PointerValue;
 }
 
 export const sizeofSPropAttrArray = 16;
@@ -635,7 +635,7 @@ export function allocSPropAttrArray(data?: Partial<SPropAttrArray>): Uint8Array 
   if (data?.cValues !== undefined) view.setUint32(0, Number(data.cValues), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.aPropAttr !== undefined) view.setBigUint64(8, data.aPropAttr === null ? 0n : BigInt(util.toPointer(data.aPropAttr)), true);
+  if (data?.aPropAttr !== undefined) view.setBigUint64(8, data.aPropAttr === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.aPropAttr))), true);
   return buf;
 }
 
@@ -657,9 +657,9 @@ export class SPropAttrArrayView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get aPropAttr(): Uint8Array | Deno.PointerValue | null {
+  get aPropAttr(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -670,8 +670,8 @@ export class SPropAttrArrayView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set aPropAttr(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set aPropAttr(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -680,7 +680,7 @@ export class SPropAttrArrayView {
  */
 export interface IMMP_MPV_STORE_DRIVER_HANDLE {
   /** System.Guid */
-  guidSignature: Uint8Array | Deno.PointerValue | null;
+  guidSignature: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofIMMP_MPV_STORE_DRIVER_HANDLE = 8;
@@ -689,7 +689,7 @@ export function allocIMMP_MPV_STORE_DRIVER_HANDLE(data?: Partial<IMMP_MPV_STORE_
   const buf = new Uint8Array(sizeofIMMP_MPV_STORE_DRIVER_HANDLE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.guidSignature !== undefined) view.setBigUint64(0, data.guidSignature === null ? 0n : BigInt(util.toPointer(data.guidSignature)), true);
+  if (data?.guidSignature !== undefined) view.setBigUint64(0, data.guidSignature === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.guidSignature))), true);
   return buf;
 }
 
@@ -704,14 +704,14 @@ export class IMMP_MPV_STORE_DRIVER_HANDLEView {
   }
 
   // 0x00: pointer
-  get guidSignature(): Uint8Array | Deno.PointerValue | null {
+  get guidSignature(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set guidSignature(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set guidSignature(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -720,7 +720,7 @@ export class IMMP_MPV_STORE_DRIVER_HANDLEView {
  */
 export interface tagIMMPID_GUIDLIST_ITEM {
   /** ptr */
-  pguid: Deno.PointerValue | Uint8Array | null;
+  pguid: Deno.PointerValue | Uint8Array;
   /** u32 */
   dwStart: number;
   /** u32 */
@@ -733,7 +733,7 @@ export function allocTagIMMPID_GUIDLIST_ITEM(data?: Partial<tagIMMPID_GUIDLIST_I
   const buf = new Uint8Array(sizeofTagIMMPID_GUIDLIST_ITEM);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.pguid !== undefined) view.setBigUint64(0, data.pguid === null ? 0n : BigInt(util.toPointer(data.pguid)), true);
+  if (data?.pguid !== undefined) view.setBigUint64(0, data.pguid === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pguid))), true);
   // 0x08: u32
   if (data?.dwStart !== undefined) view.setUint32(8, Number(data.dwStart), true);
   // 0x0c: u32
@@ -752,9 +752,9 @@ export class tagIMMPID_GUIDLIST_ITEMView {
   }
 
   // 0x00: pointer
-  get pguid(): Uint8Array | Deno.PointerValue | null {
+  get pguid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -768,8 +768,8 @@ export class tagIMMPID_GUIDLIST_ITEMView {
   }
 
   // 0x00: pointer
-  set pguid(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set pguid(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -819,50 +819,50 @@ try {
 // Symbols
 
 export function OpenIMsgSession(
-  lpMalloc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IMalloc */,
+  lpMalloc: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IMalloc */,
   ulFlags: number /* u32 */,
-  lppMsgSess: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lppMsgSess: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libMAPI32_dll.OpenIMsgSession(util.toPointer(lpMalloc), ulFlags, util.toPointer(lppMsgSess));
 }
 
 export function CloseIMsgSession(
-  lpMsgSess: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpMsgSess: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libMAPI32_dll.CloseIMsgSession(util.toPointer(lpMsgSess));
 }
 
 export function OpenIMsgOnIStg(
-  lpMsgSess: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpAllocateBuffer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.AddressBook.LPALLOCATEBUFFER */,
-  lpAllocateMore: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.AddressBook.LPALLOCATEMORE */,
-  lpFreeBuffer: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.AddressBook.LPFREEBUFFER */,
-  lpMalloc: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.IMalloc */,
-  lpMapiSup: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpStg: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
-  lpfMsgCallRelease: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpMsgSess: Deno.PointerValue | Uint8Array /* ptr */,
+  lpAllocateBuffer: Uint8Array | Deno.PointerValue /* Windows.Win32.System.AddressBook.LPALLOCATEBUFFER */,
+  lpAllocateMore: Uint8Array | Deno.PointerValue /* Windows.Win32.System.AddressBook.LPALLOCATEMORE */,
+  lpFreeBuffer: Uint8Array | Deno.PointerValue /* Windows.Win32.System.AddressBook.LPFREEBUFFER */,
+  lpMalloc: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IMalloc */,
+  lpMapiSup: Deno.PointerValue | Uint8Array /* ptr */,
+  lpStg: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
+  lpfMsgCallRelease: Deno.PointerValue | Uint8Array /* ptr */,
   ulCallerData: number /* u32 */,
   ulFlags: number /* u32 */,
-  lppMsg: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lppMsg: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libMAPI32_dll.OpenIMsgOnIStg(util.toPointer(lpMsgSess), util.toPointer(lpAllocateBuffer), util.toPointer(lpAllocateMore), util.toPointer(lpFreeBuffer), util.toPointer(lpMalloc), util.toPointer(lpMapiSup), util.toPointer(lpStg), util.toPointer(lpfMsgCallRelease), ulCallerData, ulFlags, util.toPointer(lppMsg));
 }
 
 export function GetAttribIMsgOnIStg(
-  lpObject: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpPropTagArray: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lppPropAttrArray: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMAPI32_dll.GetAttribIMsgOnIStg(util.toPointer(lpObject), util.toPointer(lpPropTagArray), util.toPointer(lppPropAttrArray)));
+  lpObject: Deno.PointerValue | Uint8Array /* ptr */,
+  lpPropTagArray: Deno.PointerValue | Uint8Array /* ptr */,
+  lppPropAttrArray: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libMAPI32_dll.GetAttribIMsgOnIStg(util.toPointer(lpObject), util.toPointer(lpPropTagArray), util.toPointer(lppPropAttrArray));
 }
 
 export function SetAttribIMsgOnIStg(
-  lpObject: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpPropTags: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpPropAttrs: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lppPropProblems: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libMAPI32_dll.SetAttribIMsgOnIStg(util.toPointer(lpObject), util.toPointer(lpPropTags), util.toPointer(lpPropAttrs), util.toPointer(lppPropProblems)));
+  lpObject: Deno.PointerValue | Uint8Array /* ptr */,
+  lpPropTags: Deno.PointerValue | Uint8Array /* ptr */,
+  lpPropAttrs: Deno.PointerValue | Uint8Array /* ptr */,
+  lppPropProblems: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libMAPI32_dll.SetAttribIMsgOnIStg(util.toPointer(lpObject), util.toPointer(lpPropTags), util.toPointer(lpPropAttrs), util.toPointer(lppPropProblems));
 }
 
 export function MapStorageSCode(

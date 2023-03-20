@@ -12,7 +12,7 @@ export const AllUserData = 2;
 
 // Structs
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 export type BOOL = number;
 
@@ -33,11 +33,11 @@ export interface DIAGNOSTIC_DATA_RECORD {
   /** Windows.Win32.Foundation.PWSTR */
   producerName: string | null | Uint8Array | Uint16Array;
   /** ptr */
-  privacyTags: Deno.PointerValue | Uint8Array | null;
+  privacyTags: Deno.PointerValue | Uint8Array;
   /** u32 */
   privacyTagCount: number;
   /** ptr */
-  categoryIds: Deno.PointerValue | Uint8Array | null;
+  categoryIds: Deno.PointerValue | Uint8Array;
   /** u32 */
   categoryIdCount: number;
   /** Windows.Win32.Foundation.BOOL */
@@ -64,25 +64,25 @@ export function allocDIAGNOSTIC_DATA_RECORD(data?: Partial<DIAGNOSTIC_DATA_RECOR
   // 0x18: buffer
   if (data?.fullEventName !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.fullEventName);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: buffer
   if (data?.providerGroupGuid !== undefined) {
     (buf as any)._f32 = util.pwstrToFfi(data.providerGroupGuid);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f32))), true);
   }
   // 0x28: buffer
   if (data?.producerName !== undefined) {
     (buf as any)._f40 = util.pwstrToFfi(data.producerName);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f40))), true);
   }
   // 0x30: pointer
-  if (data?.privacyTags !== undefined) view.setBigUint64(48, data.privacyTags === null ? 0n : BigInt(util.toPointer(data.privacyTags)), true);
+  if (data?.privacyTags !== undefined) view.setBigUint64(48, data.privacyTags === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.privacyTags))), true);
   // 0x38: u32
   if (data?.privacyTagCount !== undefined) view.setUint32(56, Number(data.privacyTagCount), true);
   // 0x3c: pad4
   // 0x40: pointer
-  if (data?.categoryIds !== undefined) view.setBigUint64(64, data.categoryIds === null ? 0n : BigInt(util.toPointer(data.categoryIds)), true);
+  if (data?.categoryIds !== undefined) view.setBigUint64(64, data.categoryIds === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.categoryIds))), true);
   // 0x48: u32
   if (data?.categoryIdCount !== undefined) view.setUint32(72, Number(data.categoryIdCount), true);
   // 0x4c: i32
@@ -90,17 +90,17 @@ export function allocDIAGNOSTIC_DATA_RECORD(data?: Partial<DIAGNOSTIC_DATA_RECOR
   // 0x50: buffer
   if (data?.extra1 !== undefined) {
     (buf as any)._f80 = util.pwstrToFfi(data.extra1);
-    view.setBigUint64(80, (buf as any)._f80 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f80)), true);
+    view.setBigUint64(80, (buf as any)._f80 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f80))), true);
   }
   // 0x58: buffer
   if (data?.extra2 !== undefined) {
     (buf as any)._f88 = util.pwstrToFfi(data.extra2);
-    view.setBigUint64(88, (buf as any)._f88 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f88)), true);
+    view.setBigUint64(88, (buf as any)._f88 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f88))), true);
   }
   // 0x60: buffer
   if (data?.extra3 !== undefined) {
     (buf as any)._f96 = util.pwstrToFfi(data.extra3);
-    view.setBigUint64(96, (buf as any)._f96 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f96)), true);
+    view.setBigUint64(96, (buf as any)._f96 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f96))), true);
   }
   return buf;
 }
@@ -131,27 +131,27 @@ export class DIAGNOSTIC_DATA_RECORDView {
   }
 
   // 0x18: buffer
-  get fullEventName(): Uint8Array | Deno.PointerValue | null {
+  get fullEventName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: buffer
-  get providerGroupGuid(): Uint8Array | Deno.PointerValue | null {
+  get providerGroupGuid(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: buffer
-  get producerName(): Uint8Array | Deno.PointerValue | null {
+  get producerName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get privacyTags(): Uint8Array | Deno.PointerValue | null {
+  get privacyTags(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: u32
@@ -162,9 +162,9 @@ export class DIAGNOSTIC_DATA_RECORDView {
   // 0x3c: pad4
 
   // 0x40: pointer
-  get categoryIds(): Uint8Array | Deno.PointerValue | null {
+  get categoryIds(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: u32
@@ -178,21 +178,21 @@ export class DIAGNOSTIC_DATA_RECORDView {
   }
 
   // 0x50: buffer
-  get extra1(): Uint8Array | Deno.PointerValue | null {
+  get extra1(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x58: buffer
-  get extra2(): Uint8Array | Deno.PointerValue | null {
+  get extra2(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x60: buffer
-  get extra3(): Uint8Array | Deno.PointerValue | null {
+  get extra3(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(96, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i64
@@ -211,26 +211,26 @@ export class DIAGNOSTIC_DATA_RECORDView {
   }
 
   // 0x18: buffer
-  set fullEventName(value: Uint8Array | Deno.PointerValue | null) {
+  set fullEventName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: buffer
-  set providerGroupGuid(value: Uint8Array | Deno.PointerValue | null) {
+  set providerGroupGuid(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f32))), true);
   }
 
   // 0x28: buffer
-  set producerName(value: Uint8Array | Deno.PointerValue | null) {
+  set producerName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f40))), true);
   }
 
   // 0x30: pointer
-  set privacyTags(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set privacyTags(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: u32
@@ -241,8 +241,8 @@ export class DIAGNOSTIC_DATA_RECORDView {
   // 0x3c: pad4
 
   // 0x40: pointer
-  set categoryIds(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set categoryIds(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: u32
@@ -256,21 +256,21 @@ export class DIAGNOSTIC_DATA_RECORDView {
   }
 
   // 0x50: buffer
-  set extra1(value: Uint8Array | Deno.PointerValue | null) {
+  set extra1(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f80 = value;
-    this.view.setBigUint64(80, BigInt(util.toPointer((this.buf as any)._f80)), true);
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f80))), true);
   }
 
   // 0x58: buffer
-  set extra2(value: Uint8Array | Deno.PointerValue | null) {
+  set extra2(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f88 = value;
-    this.view.setBigUint64(88, BigInt(util.toPointer((this.buf as any)._f88)), true);
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f88))), true);
   }
 
   // 0x60: buffer
-  set extra3(value: Uint8Array | Deno.PointerValue | null) {
+  set extra3(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f96 = value;
-    this.view.setBigUint64(96, BigInt(util.toPointer((this.buf as any)._f96)), true);
+    this.view.setBigUint64(96, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f96))), true);
   }
 }
 
@@ -279,17 +279,17 @@ export class DIAGNOSTIC_DATA_RECORDView {
  */
 export interface DIAGNOSTIC_DATA_SEARCH_CRITERIA {
   /** ptr */
-  producerNames: Deno.PointerValue | Uint8Array | null;
+  producerNames: Deno.PointerValue | Uint8Array;
   /** u32 */
   producerNameCount: number;
   /** Windows.Win32.Foundation.PWSTR */
   textToMatch: string | null | Uint8Array | Uint16Array;
   /** ptr */
-  categoryIds: Deno.PointerValue | Uint8Array | null;
+  categoryIds: Deno.PointerValue | Uint8Array;
   /** u32 */
   categoryIdCount: number;
   /** ptr */
-  privacyTags: Deno.PointerValue | Uint8Array | null;
+  privacyTags: Deno.PointerValue | Uint8Array;
   /** u32 */
   privacyTagCount: number;
   /** Windows.Win32.Foundation.BOOL */
@@ -302,22 +302,22 @@ export function allocDIAGNOSTIC_DATA_SEARCH_CRITERIA(data?: Partial<DIAGNOSTIC_D
   const buf = new Uint8Array(sizeofDIAGNOSTIC_DATA_SEARCH_CRITERIA);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.producerNames !== undefined) view.setBigUint64(0, data.producerNames === null ? 0n : BigInt(util.toPointer(data.producerNames)), true);
+  if (data?.producerNames !== undefined) view.setBigUint64(0, data.producerNames === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.producerNames))), true);
   // 0x08: u32
   if (data?.producerNameCount !== undefined) view.setUint32(8, Number(data.producerNameCount), true);
   // 0x0c: pad4
   // 0x10: buffer
   if (data?.textToMatch !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.textToMatch);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: pointer
-  if (data?.categoryIds !== undefined) view.setBigUint64(24, data.categoryIds === null ? 0n : BigInt(util.toPointer(data.categoryIds)), true);
+  if (data?.categoryIds !== undefined) view.setBigUint64(24, data.categoryIds === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.categoryIds))), true);
   // 0x20: u32
   if (data?.categoryIdCount !== undefined) view.setUint32(32, Number(data.categoryIdCount), true);
   // 0x24: pad4
   // 0x28: pointer
-  if (data?.privacyTags !== undefined) view.setBigUint64(40, data.privacyTags === null ? 0n : BigInt(util.toPointer(data.privacyTags)), true);
+  if (data?.privacyTags !== undefined) view.setBigUint64(40, data.privacyTags === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.privacyTags))), true);
   // 0x30: u32
   if (data?.privacyTagCount !== undefined) view.setUint32(48, Number(data.privacyTagCount), true);
   // 0x34: i32
@@ -336,9 +336,9 @@ export class DIAGNOSTIC_DATA_SEARCH_CRITERIAView {
   }
 
   // 0x00: pointer
-  get producerNames(): Uint8Array | Deno.PointerValue | null {
+  get producerNames(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -349,15 +349,15 @@ export class DIAGNOSTIC_DATA_SEARCH_CRITERIAView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  get textToMatch(): Uint8Array | Deno.PointerValue | null {
+  get textToMatch(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get categoryIds(): Uint8Array | Deno.PointerValue | null {
+  get categoryIds(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -368,9 +368,9 @@ export class DIAGNOSTIC_DATA_SEARCH_CRITERIAView {
   // 0x24: pad4
 
   // 0x28: pointer
-  get privacyTags(): Uint8Array | Deno.PointerValue | null {
+  get privacyTags(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: u32
@@ -384,8 +384,8 @@ export class DIAGNOSTIC_DATA_SEARCH_CRITERIAView {
   }
 
   // 0x00: pointer
-  set producerNames(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set producerNames(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -396,14 +396,14 @@ export class DIAGNOSTIC_DATA_SEARCH_CRITERIAView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  set textToMatch(value: Uint8Array | Deno.PointerValue | null) {
+  set textToMatch(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: pointer
-  set categoryIds(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set categoryIds(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -414,8 +414,8 @@ export class DIAGNOSTIC_DATA_SEARCH_CRITERIAView {
   // 0x24: pad4
 
   // 0x28: pointer
-  set privacyTags(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set privacyTags(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: u32
@@ -452,12 +452,12 @@ export function allocDIAGNOSTIC_DATA_EVENT_TAG_DESCRIPTION(data?: Partial<DIAGNO
   // 0x08: buffer
   if (data?.name !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.name);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.description !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.description);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   return buf;
 }
@@ -480,15 +480,15 @@ export class DIAGNOSTIC_DATA_EVENT_TAG_DESCRIPTIONView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get name(): Uint8Array | Deno.PointerValue | null {
+  get name(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get description(): Uint8Array | Deno.PointerValue | null {
+  get description(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -499,15 +499,15 @@ export class DIAGNOSTIC_DATA_EVENT_TAG_DESCRIPTIONView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set name(value: Uint8Array | Deno.PointerValue | null) {
+  set name(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set description(value: Uint8Array | Deno.PointerValue | null) {
+  set description(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 }
 
@@ -527,7 +527,7 @@ export function allocDIAGNOSTIC_DATA_EVENT_PRODUCER_DESCRIPTION(data?: Partial<D
   // 0x00: buffer
   if (data?.name !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.name);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   return buf;
 }
@@ -543,15 +543,15 @@ export class DIAGNOSTIC_DATA_EVENT_PRODUCER_DESCRIPTIONView {
   }
 
   // 0x00: buffer
-  get name(): Uint8Array | Deno.PointerValue | null {
+  get name(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: buffer
-  set name(value: Uint8Array | Deno.PointerValue | null) {
+  set name(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 }
 
@@ -576,7 +576,7 @@ export function allocDIAGNOSTIC_DATA_EVENT_CATEGORY_DESCRIPTION(data?: Partial<D
   // 0x08: buffer
   if (data?.name !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.name);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   return buf;
 }
@@ -599,9 +599,9 @@ export class DIAGNOSTIC_DATA_EVENT_CATEGORY_DESCRIPTIONView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get name(): Uint8Array | Deno.PointerValue | null {
+  get name(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -612,9 +612,9 @@ export class DIAGNOSTIC_DATA_EVENT_CATEGORY_DESCRIPTIONView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set name(value: Uint8Array | Deno.PointerValue | null) {
+  set name(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 }
 
@@ -693,12 +693,12 @@ export function allocDIAGNOSTIC_DATA_EVENT_BINARY_STATS(data?: Partial<DIAGNOSTI
   // 0x00: buffer
   if (data?.moduleName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.moduleName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: buffer
   if (data?.friendlyModuleName !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.friendlyModuleName);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: u32
   if (data?.eventCount !== undefined) view.setUint32(16, Number(data.eventCount), true);
@@ -719,15 +719,15 @@ export class DIAGNOSTIC_DATA_EVENT_BINARY_STATSView {
   }
 
   // 0x00: buffer
-  get moduleName(): Uint8Array | Deno.PointerValue | null {
+  get moduleName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get friendlyModuleName(): Uint8Array | Deno.PointerValue | null {
+  get friendlyModuleName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -743,15 +743,15 @@ export class DIAGNOSTIC_DATA_EVENT_BINARY_STATSView {
   }
 
   // 0x00: buffer
-  set moduleName(value: Uint8Array | Deno.PointerValue | null) {
+  set moduleName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: buffer
-  set friendlyModuleName(value: Uint8Array | Deno.PointerValue | null) {
+  set friendlyModuleName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: u32
@@ -944,9 +944,9 @@ export class DIAGNOSTIC_DATA_EVENT_TRANSCRIPT_CONFIGURATIONView {
  */
 export interface DIAGNOSTIC_REPORT_PARAMETER {
   /** array */
-  name: Deno.PointerValue | null;
+  name: Deno.PointerValue;
   /** array */
-  value: Deno.PointerValue | null;
+  value: Deno.PointerValue;
 }
 
 export const sizeofDIAGNOSTIC_REPORT_PARAMETER = 16;
@@ -955,9 +955,9 @@ export function allocDIAGNOSTIC_REPORT_PARAMETER(data?: Partial<DIAGNOSTIC_REPOR
   const buf = new Uint8Array(sizeofDIAGNOSTIC_REPORT_PARAMETER);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.name !== undefined) view.setBigUint64(0, data.name === null ? 0n : BigInt(util.toPointer(data.name)), true);
+  if (data?.name !== undefined) view.setBigUint64(0, data.name === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.name))), true);
   // 0x08: pointer
-  if (data?.value !== undefined) view.setBigUint64(8, data.value === null ? 0n : BigInt(util.toPointer(data.value)), true);
+  if (data?.value !== undefined) view.setBigUint64(8, data.value === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.value))), true);
   return buf;
 }
 
@@ -972,25 +972,25 @@ export class DIAGNOSTIC_REPORT_PARAMETERView {
   }
 
   // 0x00: pointer
-  get name(): Uint8Array | Deno.PointerValue | null {
+  get name(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get value(): Uint8Array | Deno.PointerValue | null {
+  get value(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set name(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set name(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set value(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set value(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -999,9 +999,9 @@ export class DIAGNOSTIC_REPORT_PARAMETERView {
  */
 export interface DIAGNOSTIC_REPORT_SIGNATURE {
   /** array */
-  eventName: Deno.PointerValue | null;
+  eventName: Deno.PointerValue;
   /** array */
-  parameters: Deno.PointerValue | null;
+  parameters: Deno.PointerValue;
 }
 
 export const sizeofDIAGNOSTIC_REPORT_SIGNATURE = 16;
@@ -1010,9 +1010,9 @@ export function allocDIAGNOSTIC_REPORT_SIGNATURE(data?: Partial<DIAGNOSTIC_REPOR
   const buf = new Uint8Array(sizeofDIAGNOSTIC_REPORT_SIGNATURE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.eventName !== undefined) view.setBigUint64(0, data.eventName === null ? 0n : BigInt(util.toPointer(data.eventName)), true);
+  if (data?.eventName !== undefined) view.setBigUint64(0, data.eventName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.eventName))), true);
   // 0x08: pointer
-  if (data?.parameters !== undefined) view.setBigUint64(8, data.parameters === null ? 0n : BigInt(util.toPointer(data.parameters)), true);
+  if (data?.parameters !== undefined) view.setBigUint64(8, data.parameters === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.parameters))), true);
   return buf;
 }
 
@@ -1027,25 +1027,25 @@ export class DIAGNOSTIC_REPORT_SIGNATUREView {
   }
 
   // 0x00: pointer
-  get eventName(): Uint8Array | Deno.PointerValue | null {
+  get eventName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get parameters(): Uint8Array | Deno.PointerValue | null {
+  get parameters(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set eventName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set eventName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set parameters(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set parameters(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1107,13 +1107,13 @@ export class FILETIMEView {
  */
 export interface DIAGNOSTIC_REPORT_DATA {
   /** Windows.Win32.Security.DiagnosticDataQuery.DIAGNOSTIC_REPORT_SIGNATURE */
-  signature: Uint8Array | Deno.PointerValue | null;
+  signature: Uint8Array | Deno.PointerValue;
   /** System.Guid */
-  bucketId: Uint8Array | Deno.PointerValue | null;
+  bucketId: Uint8Array | Deno.PointerValue;
   /** System.Guid */
-  reportId: Uint8Array | Deno.PointerValue | null;
+  reportId: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.FILETIME */
-  creationTime: Uint8Array | Deno.PointerValue | null;
+  creationTime: Uint8Array | Deno.PointerValue;
   /** u64 */
   sizeInBytes: Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
@@ -1121,9 +1121,9 @@ export interface DIAGNOSTIC_REPORT_DATA {
   /** u32 */
   reportStatus: number;
   /** System.Guid */
-  reportIntegratorId: Uint8Array | Deno.PointerValue | null;
+  reportIntegratorId: Uint8Array | Deno.PointerValue;
   /** ptr */
-  fileNames: Deno.PointerValue | Uint8Array | null;
+  fileNames: Deno.PointerValue | Uint8Array;
   /** u32 */
   fileCount: number;
   /** Windows.Win32.Foundation.PWSTR */
@@ -1148,61 +1148,61 @@ export function allocDIAGNOSTIC_REPORT_DATA(data?: Partial<DIAGNOSTIC_REPORT_DAT
   const buf = new Uint8Array(sizeofDIAGNOSTIC_REPORT_DATA);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.signature !== undefined) view.setBigUint64(0, data.signature === null ? 0n : BigInt(util.toPointer(data.signature)), true);
+  if (data?.signature !== undefined) view.setBigUint64(0, data.signature === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.signature))), true);
   // 0x08: pointer
-  if (data?.bucketId !== undefined) view.setBigUint64(8, data.bucketId === null ? 0n : BigInt(util.toPointer(data.bucketId)), true);
+  if (data?.bucketId !== undefined) view.setBigUint64(8, data.bucketId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.bucketId))), true);
   // 0x10: pointer
-  if (data?.reportId !== undefined) view.setBigUint64(16, data.reportId === null ? 0n : BigInt(util.toPointer(data.reportId)), true);
+  if (data?.reportId !== undefined) view.setBigUint64(16, data.reportId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.reportId))), true);
   // 0x18: pointer
-  if (data?.creationTime !== undefined) view.setBigUint64(24, data.creationTime === null ? 0n : BigInt(util.toPointer(data.creationTime)), true);
+  if (data?.creationTime !== undefined) view.setBigUint64(24, data.creationTime === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.creationTime))), true);
   // 0x20: u64
   if (data?.sizeInBytes !== undefined) view.setBigUint64(32, BigInt(data.sizeInBytes), true);
   // 0x28: buffer
   if (data?.cabId !== undefined) {
     (buf as any)._f40 = util.pwstrToFfi(data.cabId);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f40))), true);
   }
   // 0x30: u32
   if (data?.reportStatus !== undefined) view.setUint32(48, Number(data.reportStatus), true);
   // 0x34: pad4
   // 0x38: pointer
-  if (data?.reportIntegratorId !== undefined) view.setBigUint64(56, data.reportIntegratorId === null ? 0n : BigInt(util.toPointer(data.reportIntegratorId)), true);
+  if (data?.reportIntegratorId !== undefined) view.setBigUint64(56, data.reportIntegratorId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.reportIntegratorId))), true);
   // 0x40: pointer
-  if (data?.fileNames !== undefined) view.setBigUint64(64, data.fileNames === null ? 0n : BigInt(util.toPointer(data.fileNames)), true);
+  if (data?.fileNames !== undefined) view.setBigUint64(64, data.fileNames === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fileNames))), true);
   // 0x48: u32
   if (data?.fileCount !== undefined) view.setUint32(72, Number(data.fileCount), true);
   // 0x4c: pad4
   // 0x50: buffer
   if (data?.friendlyEventName !== undefined) {
     (buf as any)._f80 = util.pwstrToFfi(data.friendlyEventName);
-    view.setBigUint64(80, (buf as any)._f80 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f80)), true);
+    view.setBigUint64(80, (buf as any)._f80 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f80))), true);
   }
   // 0x58: buffer
   if (data?.applicationName !== undefined) {
     (buf as any)._f88 = util.pwstrToFfi(data.applicationName);
-    view.setBigUint64(88, (buf as any)._f88 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f88)), true);
+    view.setBigUint64(88, (buf as any)._f88 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f88))), true);
   }
   // 0x60: buffer
   if (data?.applicationPath !== undefined) {
     (buf as any)._f96 = util.pwstrToFfi(data.applicationPath);
-    view.setBigUint64(96, (buf as any)._f96 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f96)), true);
+    view.setBigUint64(96, (buf as any)._f96 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f96))), true);
   }
   // 0x68: buffer
   if (data?.description !== undefined) {
     (buf as any)._f104 = util.pwstrToFfi(data.description);
-    view.setBigUint64(104, (buf as any)._f104 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f104)), true);
+    view.setBigUint64(104, (buf as any)._f104 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f104))), true);
   }
   // 0x70: buffer
   if (data?.bucketIdString !== undefined) {
     (buf as any)._f112 = util.pwstrToFfi(data.bucketIdString);
-    view.setBigUint64(112, (buf as any)._f112 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f112)), true);
+    view.setBigUint64(112, (buf as any)._f112 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f112))), true);
   }
   // 0x78: u64
   if (data?.legacyBucketId !== undefined) view.setBigUint64(120, BigInt(data.legacyBucketId), true);
   // 0x80: buffer
   if (data?.reportKey !== undefined) {
     (buf as any)._f128 = util.pwstrToFfi(data.reportKey);
-    view.setBigUint64(128, (buf as any)._f128 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f128)), true);
+    view.setBigUint64(128, (buf as any)._f128 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f128))), true);
   }
   return buf;
 }
@@ -1218,27 +1218,27 @@ export class DIAGNOSTIC_REPORT_DATAView {
   }
 
   // 0x00: pointer
-  get signature(): Uint8Array | Deno.PointerValue | null {
+  get signature(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get bucketId(): Uint8Array | Deno.PointerValue | null {
+  get bucketId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get reportId(): Uint8Array | Deno.PointerValue | null {
+  get reportId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get creationTime(): Uint8Array | Deno.PointerValue | null {
+  get creationTime(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u64
@@ -1247,9 +1247,9 @@ export class DIAGNOSTIC_REPORT_DATAView {
   }
 
   // 0x28: buffer
-  get cabId(): Uint8Array | Deno.PointerValue | null {
+  get cabId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: u32
@@ -1260,15 +1260,15 @@ export class DIAGNOSTIC_REPORT_DATAView {
   // 0x34: pad4
 
   // 0x38: pointer
-  get reportIntegratorId(): Uint8Array | Deno.PointerValue | null {
+  get reportIntegratorId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: pointer
-  get fileNames(): Uint8Array | Deno.PointerValue | null {
+  get fileNames(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(64, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x48: u32
@@ -1279,33 +1279,33 @@ export class DIAGNOSTIC_REPORT_DATAView {
   // 0x4c: pad4
 
   // 0x50: buffer
-  get friendlyEventName(): Uint8Array | Deno.PointerValue | null {
+  get friendlyEventName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(80, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x58: buffer
-  get applicationName(): Uint8Array | Deno.PointerValue | null {
+  get applicationName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(88, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x60: buffer
-  get applicationPath(): Uint8Array | Deno.PointerValue | null {
+  get applicationPath(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(96, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x68: buffer
-  get description(): Uint8Array | Deno.PointerValue | null {
+  get description(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(104, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x70: buffer
-  get bucketIdString(): Uint8Array | Deno.PointerValue | null {
+  get bucketIdString(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(112, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x78: u64
@@ -1314,29 +1314,29 @@ export class DIAGNOSTIC_REPORT_DATAView {
   }
 
   // 0x80: buffer
-  get reportKey(): Uint8Array | Deno.PointerValue | null {
+  get reportKey(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(128, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set signature(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set signature(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set bucketId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set bucketId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set reportId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set reportId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set creationTime(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set creationTime(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u64
@@ -1345,9 +1345,9 @@ export class DIAGNOSTIC_REPORT_DATAView {
   }
 
   // 0x28: buffer
-  set cabId(value: Uint8Array | Deno.PointerValue | null) {
+  set cabId(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f40))), true);
   }
 
   // 0x30: u32
@@ -1358,13 +1358,13 @@ export class DIAGNOSTIC_REPORT_DATAView {
   // 0x34: pad4
 
   // 0x38: pointer
-  set reportIntegratorId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set reportIntegratorId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x40: pointer
-  set fileNames(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(64, BigInt(util.toPointer(value)), true);
+  set fileNames(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(64, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x48: u32
@@ -1375,33 +1375,33 @@ export class DIAGNOSTIC_REPORT_DATAView {
   // 0x4c: pad4
 
   // 0x50: buffer
-  set friendlyEventName(value: Uint8Array | Deno.PointerValue | null) {
+  set friendlyEventName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f80 = value;
-    this.view.setBigUint64(80, BigInt(util.toPointer((this.buf as any)._f80)), true);
+    this.view.setBigUint64(80, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f80))), true);
   }
 
   // 0x58: buffer
-  set applicationName(value: Uint8Array | Deno.PointerValue | null) {
+  set applicationName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f88 = value;
-    this.view.setBigUint64(88, BigInt(util.toPointer((this.buf as any)._f88)), true);
+    this.view.setBigUint64(88, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f88))), true);
   }
 
   // 0x60: buffer
-  set applicationPath(value: Uint8Array | Deno.PointerValue | null) {
+  set applicationPath(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f96 = value;
-    this.view.setBigUint64(96, BigInt(util.toPointer((this.buf as any)._f96)), true);
+    this.view.setBigUint64(96, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f96))), true);
   }
 
   // 0x68: buffer
-  set description(value: Uint8Array | Deno.PointerValue | null) {
+  set description(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f104 = value;
-    this.view.setBigUint64(104, BigInt(util.toPointer((this.buf as any)._f104)), true);
+    this.view.setBigUint64(104, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f104))), true);
   }
 
   // 0x70: buffer
-  set bucketIdString(value: Uint8Array | Deno.PointerValue | null) {
+  set bucketIdString(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f112 = value;
-    this.view.setBigUint64(112, BigInt(util.toPointer((this.buf as any)._f112)), true);
+    this.view.setBigUint64(112, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f112))), true);
   }
 
   // 0x78: u64
@@ -1410,9 +1410,9 @@ export class DIAGNOSTIC_REPORT_DATAView {
   }
 
   // 0x80: buffer
-  set reportKey(value: Uint8Array | Deno.PointerValue | null) {
+  set reportKey(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f128 = value;
-    this.view.setBigUint64(128, BigInt(util.toPointer((this.buf as any)._f128)), true);
+    this.view.setBigUint64(128, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f128))), true);
   }
 }
 
@@ -1581,273 +1581,273 @@ try {
 
 export function DdqCreateSession(
   accessLevel: DdqAccessLevel /* Windows.Win32.Security.DiagnosticDataQuery.DdqAccessLevel */,
-  hSession: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqCreateSession(accessLevel, util.toPointer(hSession)));
+  hSession: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqCreateSession(accessLevel, util.toPointer(hSession));
 }
 
 export function DdqCloseSession(
-  hSession: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqCloseSession(util.toPointer(hSession)));
+  hSession: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqCloseSession(util.toPointer(hSession));
 }
 
 export function DdqGetSessionAccessLevel(
-  hSession: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
-  accessLevel: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqGetSessionAccessLevel(util.toPointer(hSession), util.toPointer(accessLevel)));
+  hSession: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
+  accessLevel: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqGetSessionAccessLevel(util.toPointer(hSession), util.toPointer(accessLevel));
 }
 
 export function DdqGetDiagnosticDataAccessLevelAllowed(
-  accessLevel: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqGetDiagnosticDataAccessLevelAllowed(util.toPointer(accessLevel)));
+  accessLevel: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticDataAccessLevelAllowed(util.toPointer(accessLevel));
 }
 
 export function DdqGetDiagnosticRecordStats(
-  hSession: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
-  searchCriteria: Deno.PointerValue | Uint8Array | null /* ptr */,
-  recordCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  minRowId: Deno.PointerValue | Uint8Array | null /* ptr */,
-  maxRowId: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordStats(util.toPointer(hSession), util.toPointer(searchCriteria), util.toPointer(recordCount), util.toPointer(minRowId), util.toPointer(maxRowId)));
+  hSession: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
+  searchCriteria: Deno.PointerValue | Uint8Array /* ptr */,
+  recordCount: Deno.PointerValue | Uint8Array /* ptr */,
+  minRowId: Deno.PointerValue | Uint8Array /* ptr */,
+  maxRowId: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordStats(util.toPointer(hSession), util.toPointer(searchCriteria), util.toPointer(recordCount), util.toPointer(minRowId), util.toPointer(maxRowId));
 }
 
 export function DdqGetDiagnosticRecordPayload(
-  hSession: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
+  hSession: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
   rowId: Deno.PointerValue /* i64 */,
-  payload: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordPayload(util.toPointer(hSession), rowId, util.toPointer(payload)));
+  payload: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordPayload(util.toPointer(hSession), rowId, util.toPointer(payload));
 }
 
 export function DdqGetDiagnosticRecordLocaleTags(
-  hSession: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
+  hSession: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
   locale: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  hTagDescription: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordLocaleTags(util.toPointer(hSession), util.pwstrToFfi(locale), util.toPointer(hTagDescription)));
+  hTagDescription: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordLocaleTags(util.toPointer(hSession), util.pwstrToFfi(locale), util.toPointer(hTagDescription));
 }
 
 export function DdqFreeDiagnosticRecordLocaleTags(
-  hTagDescription: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_EVENT_TAG_DESCRIPTION */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqFreeDiagnosticRecordLocaleTags(util.toPointer(hTagDescription)));
+  hTagDescription: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_EVENT_TAG_DESCRIPTION */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqFreeDiagnosticRecordLocaleTags(util.toPointer(hTagDescription));
 }
 
 export function DdqGetDiagnosticRecordLocaleTagAtIndex(
-  hTagDescription: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_EVENT_TAG_DESCRIPTION */,
+  hTagDescription: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_EVENT_TAG_DESCRIPTION */,
   index: number /* u32 */,
-  tagDescription: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordLocaleTagAtIndex(util.toPointer(hTagDescription), index, util.toPointer(tagDescription)));
+  tagDescription: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordLocaleTagAtIndex(util.toPointer(hTagDescription), index, util.toPointer(tagDescription));
 }
 
 export function DdqGetDiagnosticRecordLocaleTagCount(
-  hTagDescription: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_EVENT_TAG_DESCRIPTION */,
-  tagDescriptionCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordLocaleTagCount(util.toPointer(hTagDescription), util.toPointer(tagDescriptionCount)));
+  hTagDescription: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_EVENT_TAG_DESCRIPTION */,
+  tagDescriptionCount: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordLocaleTagCount(util.toPointer(hTagDescription), util.toPointer(tagDescriptionCount));
 }
 
 export function DdqGetDiagnosticRecordProducers(
-  hSession: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
-  hProducerDescription: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordProducers(util.toPointer(hSession), util.toPointer(hProducerDescription)));
+  hSession: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
+  hProducerDescription: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordProducers(util.toPointer(hSession), util.toPointer(hProducerDescription));
 }
 
 export function DdqFreeDiagnosticRecordProducers(
-  hProducerDescription: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_EVENT_PRODUCER_DESCRIPTION */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqFreeDiagnosticRecordProducers(util.toPointer(hProducerDescription)));
+  hProducerDescription: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_EVENT_PRODUCER_DESCRIPTION */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqFreeDiagnosticRecordProducers(util.toPointer(hProducerDescription));
 }
 
 export function DdqGetDiagnosticRecordProducerAtIndex(
-  hProducerDescription: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_EVENT_PRODUCER_DESCRIPTION */,
+  hProducerDescription: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_EVENT_PRODUCER_DESCRIPTION */,
   index: number /* u32 */,
-  producerDescription: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordProducerAtIndex(util.toPointer(hProducerDescription), index, util.toPointer(producerDescription)));
+  producerDescription: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordProducerAtIndex(util.toPointer(hProducerDescription), index, util.toPointer(producerDescription));
 }
 
 export function DdqGetDiagnosticRecordProducerCount(
-  hProducerDescription: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_EVENT_PRODUCER_DESCRIPTION */,
-  producerDescriptionCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordProducerCount(util.toPointer(hProducerDescription), util.toPointer(producerDescriptionCount)));
+  hProducerDescription: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_EVENT_PRODUCER_DESCRIPTION */,
+  producerDescriptionCount: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordProducerCount(util.toPointer(hProducerDescription), util.toPointer(producerDescriptionCount));
 }
 
 export function DdqGetDiagnosticRecordProducerCategories(
-  hSession: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
+  hSession: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
   producerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  hCategoryDescription: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordProducerCategories(util.toPointer(hSession), util.pwstrToFfi(producerName), util.toPointer(hCategoryDescription)));
+  hCategoryDescription: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordProducerCategories(util.toPointer(hSession), util.pwstrToFfi(producerName), util.toPointer(hCategoryDescription));
 }
 
 export function DdqFreeDiagnosticRecordProducerCategories(
-  hCategoryDescription: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_EVENT_CATEGORY_DESCRIPTION */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqFreeDiagnosticRecordProducerCategories(util.toPointer(hCategoryDescription)));
+  hCategoryDescription: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_EVENT_CATEGORY_DESCRIPTION */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqFreeDiagnosticRecordProducerCategories(util.toPointer(hCategoryDescription));
 }
 
 export function DdqGetDiagnosticRecordCategoryAtIndex(
-  hCategoryDescription: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_EVENT_CATEGORY_DESCRIPTION */,
+  hCategoryDescription: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_EVENT_CATEGORY_DESCRIPTION */,
   index: number /* u32 */,
-  categoryDescription: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordCategoryAtIndex(util.toPointer(hCategoryDescription), index, util.toPointer(categoryDescription)));
+  categoryDescription: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordCategoryAtIndex(util.toPointer(hCategoryDescription), index, util.toPointer(categoryDescription));
 }
 
 export function DdqGetDiagnosticRecordCategoryCount(
-  hCategoryDescription: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_EVENT_CATEGORY_DESCRIPTION */,
-  categoryDescriptionCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordCategoryCount(util.toPointer(hCategoryDescription), util.toPointer(categoryDescriptionCount)));
+  hCategoryDescription: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_EVENT_CATEGORY_DESCRIPTION */,
+  categoryDescriptionCount: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordCategoryCount(util.toPointer(hCategoryDescription), util.toPointer(categoryDescriptionCount));
 }
 
 export function DdqIsDiagnosticRecordSampledIn(
-  hSession: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
-  providerGroup: Deno.PointerValue | Uint8Array | null /* ptr */,
-  providerId: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hSession: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
+  providerGroup: Deno.PointerValue | Uint8Array /* ptr */,
+  providerId: Deno.PointerValue | Uint8Array /* ptr */,
   providerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  eventId: Deno.PointerValue | Uint8Array | null /* ptr */,
+  eventId: Deno.PointerValue | Uint8Array /* ptr */,
   eventName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  eventVersion: Deno.PointerValue | Uint8Array | null /* ptr */,
-  eventKeywords: Deno.PointerValue | Uint8Array | null /* ptr */,
-  isSampledIn: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqIsDiagnosticRecordSampledIn(util.toPointer(hSession), util.toPointer(providerGroup), util.toPointer(providerId), util.pwstrToFfi(providerName), util.toPointer(eventId), util.pwstrToFfi(eventName), util.toPointer(eventVersion), util.toPointer(eventKeywords), util.toPointer(isSampledIn)));
+  eventVersion: Deno.PointerValue | Uint8Array /* ptr */,
+  eventKeywords: Deno.PointerValue | Uint8Array /* ptr */,
+  isSampledIn: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqIsDiagnosticRecordSampledIn(util.toPointer(hSession), util.toPointer(providerGroup), util.toPointer(providerId), util.pwstrToFfi(providerName), util.toPointer(eventId), util.pwstrToFfi(eventName), util.toPointer(eventVersion), util.toPointer(eventKeywords), util.toPointer(isSampledIn));
 }
 
 export function DdqGetDiagnosticRecordPage(
-  hSession: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
-  searchCriteria: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hSession: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
+  searchCriteria: Deno.PointerValue | Uint8Array /* ptr */,
   offset: number /* u32 */,
   pageRecordCount: number /* u32 */,
   baseRowId: Deno.PointerValue /* i64 */,
-  hRecord: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordPage(util.toPointer(hSession), util.toPointer(searchCriteria), offset, pageRecordCount, baseRowId, util.toPointer(hRecord)));
+  hRecord: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordPage(util.toPointer(hSession), util.toPointer(searchCriteria), offset, pageRecordCount, baseRowId, util.toPointer(hRecord));
 }
 
 export function DdqFreeDiagnosticRecordPage(
-  hRecord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_RECORD */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqFreeDiagnosticRecordPage(util.toPointer(hRecord)));
+  hRecord: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_RECORD */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqFreeDiagnosticRecordPage(util.toPointer(hRecord));
 }
 
 export function DdqGetDiagnosticRecordAtIndex(
-  hRecord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_RECORD */,
+  hRecord: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_RECORD */,
   index: number /* u32 */,
-  record: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordAtIndex(util.toPointer(hRecord), index, util.toPointer(record)));
+  record: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordAtIndex(util.toPointer(hRecord), index, util.toPointer(record));
 }
 
 export function DdqGetDiagnosticRecordCount(
-  hRecord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_RECORD */,
-  recordCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordCount(util.toPointer(hRecord), util.toPointer(recordCount)));
+  hRecord: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_RECORD */,
+  recordCount: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordCount(util.toPointer(hRecord), util.toPointer(recordCount));
 }
 
 export function DdqGetDiagnosticReportStoreReportCount(
-  hSession: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
+  hSession: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
   reportStoreType: number /* u32 */,
-  reportCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqGetDiagnosticReportStoreReportCount(util.toPointer(hSession), reportStoreType, util.toPointer(reportCount)));
+  reportCount: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticReportStoreReportCount(util.toPointer(hSession), reportStoreType, util.toPointer(reportCount));
 }
 
 export function DdqCancelDiagnosticRecordOperation(
-  hSession: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqCancelDiagnosticRecordOperation(util.toPointer(hSession)));
+  hSession: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqCancelDiagnosticRecordOperation(util.toPointer(hSession));
 }
 
 export function DdqGetDiagnosticReport(
-  hSession: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
+  hSession: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
   reportStoreType: number /* u32 */,
-  hReport: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqGetDiagnosticReport(util.toPointer(hSession), reportStoreType, util.toPointer(hReport)));
+  hReport: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticReport(util.toPointer(hSession), reportStoreType, util.toPointer(hReport));
 }
 
 export function DdqFreeDiagnosticReport(
-  hReport: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_REPORT */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqFreeDiagnosticReport(util.toPointer(hReport)));
+  hReport: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_REPORT */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqFreeDiagnosticReport(util.toPointer(hReport));
 }
 
 export function DdqGetDiagnosticReportAtIndex(
-  hReport: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_REPORT */,
+  hReport: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_REPORT */,
   index: number /* u32 */,
-  report: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqGetDiagnosticReportAtIndex(util.toPointer(hReport), index, util.toPointer(report)));
+  report: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticReportAtIndex(util.toPointer(hReport), index, util.toPointer(report));
 }
 
 export function DdqGetDiagnosticReportCount(
-  hReport: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_REPORT */,
-  reportCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqGetDiagnosticReportCount(util.toPointer(hReport), util.toPointer(reportCount)));
+  hReport: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_REPORT */,
+  reportCount: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticReportCount(util.toPointer(hReport), util.toPointer(reportCount));
 }
 
 export function DdqExtractDiagnosticReport(
-  hSession: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
+  hSession: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
   reportStoreType: number /* u32 */,
   reportKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   destinationPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqExtractDiagnosticReport(util.toPointer(hSession), reportStoreType, util.pwstrToFfi(reportKey), util.pwstrToFfi(destinationPath)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqExtractDiagnosticReport(util.toPointer(hSession), reportStoreType, util.pwstrToFfi(reportKey), util.pwstrToFfi(destinationPath));
 }
 
 export function DdqGetDiagnosticRecordTagDistribution(
-  hSession: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
-  producerNames: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hSession: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
+  producerNames: Deno.PointerValue | Uint8Array /* ptr */,
   producerNameCount: number /* u32 */,
-  tagStats: Deno.PointerValue | Uint8Array | null /* ptr */,
-  statCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordTagDistribution(util.toPointer(hSession), util.toPointer(producerNames), producerNameCount, util.toPointer(tagStats), util.toPointer(statCount)));
+  tagStats: Deno.PointerValue | Uint8Array /* ptr */,
+  statCount: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordTagDistribution(util.toPointer(hSession), util.toPointer(producerNames), producerNameCount, util.toPointer(tagStats), util.toPointer(statCount));
 }
 
 export function DdqGetDiagnosticRecordBinaryDistribution(
-  hSession: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
-  producerNames: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hSession: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
+  producerNames: Deno.PointerValue | Uint8Array /* ptr */,
   producerNameCount: number /* u32 */,
   topNBinaries: number /* u32 */,
-  binaryStats: Deno.PointerValue | Uint8Array | null /* ptr */,
-  statCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordBinaryDistribution(util.toPointer(hSession), util.toPointer(producerNames), producerNameCount, topNBinaries, util.toPointer(binaryStats), util.toPointer(statCount)));
+  binaryStats: Deno.PointerValue | Uint8Array /* ptr */,
+  statCount: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordBinaryDistribution(util.toPointer(hSession), util.toPointer(producerNames), producerNameCount, topNBinaries, util.toPointer(binaryStats), util.toPointer(statCount));
 }
 
 export function DdqGetDiagnosticRecordSummary(
-  hSession: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
-  producerNames: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hSession: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
+  producerNames: Deno.PointerValue | Uint8Array /* ptr */,
   producerNameCount: number /* u32 */,
-  generalStats: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordSummary(util.toPointer(hSession), util.toPointer(producerNames), producerNameCount, util.toPointer(generalStats)));
+  generalStats: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordSummary(util.toPointer(hSession), util.toPointer(producerNames), producerNameCount, util.toPointer(generalStats));
 }
 
 export function DdqSetTranscriptConfiguration(
-  hSession: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
-  desiredConfig: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqSetTranscriptConfiguration(util.toPointer(hSession), util.toPointer(desiredConfig)));
+  hSession: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
+  desiredConfig: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqSetTranscriptConfiguration(util.toPointer(hSession), util.toPointer(desiredConfig));
 }
 
 export function DdqGetTranscriptConfiguration(
-  hSession: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
-  currentConfig: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDiagnosticDataQuery_dll.DdqGetTranscriptConfiguration(util.toPointer(hSession), util.toPointer(currentConfig)));
+  hSession: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
+  currentConfig: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDiagnosticDataQuery_dll.DdqGetTranscriptConfiguration(util.toPointer(hSession), util.toPointer(currentConfig));
 }
 

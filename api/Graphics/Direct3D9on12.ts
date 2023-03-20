@@ -16,9 +16,9 @@ export interface D3D9ON12_ARGS {
   /** Windows.Win32.Foundation.BOOL */
   Enable9On12: boolean;
   /** Windows.Win32.System.Com.IUnknown */
-  pD3D12Device: Uint8Array | Deno.PointerValue | null;
+  pD3D12Device: Uint8Array | Deno.PointerValue;
   /** array */
-  ppD3D12Queues: Deno.PointerValue | null;
+  ppD3D12Queues: Deno.PointerValue;
   /** u32 */
   NumQueues: number;
   /** u32 */
@@ -34,9 +34,9 @@ export function allocD3D9ON12_ARGS(data?: Partial<D3D9ON12_ARGS>): Uint8Array {
   if (data?.Enable9On12 !== undefined) view.setInt32(0, Number(data.Enable9On12), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.pD3D12Device !== undefined) view.setBigUint64(8, data.pD3D12Device === null ? 0n : BigInt(util.toPointer(data.pD3D12Device)), true);
+  if (data?.pD3D12Device !== undefined) view.setBigUint64(8, data.pD3D12Device === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pD3D12Device))), true);
   // 0x10: pointer
-  if (data?.ppD3D12Queues !== undefined) view.setBigUint64(16, data.ppD3D12Queues === null ? 0n : BigInt(util.toPointer(data.ppD3D12Queues)), true);
+  if (data?.ppD3D12Queues !== undefined) view.setBigUint64(16, data.ppD3D12Queues === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ppD3D12Queues))), true);
   // 0x18: u32
   if (data?.NumQueues !== undefined) view.setUint32(24, Number(data.NumQueues), true);
   // 0x1c: u32
@@ -62,15 +62,15 @@ export class D3D9ON12_ARGSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get pD3D12Device(): Uint8Array | Deno.PointerValue | null {
+  get pD3D12Device(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get ppD3D12Queues(): Uint8Array | Deno.PointerValue | null {
+  get ppD3D12Queues(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -91,13 +91,13 @@ export class D3D9ON12_ARGSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set pD3D12Device(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pD3D12Device(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set ppD3D12Queues(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set ppD3D12Queues(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -132,18 +132,18 @@ try {
 
 export function Direct3DCreate9On12Ex(
   SDKVersion: number /* u32 */,
-  pOverrideList: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pOverrideList: Deno.PointerValue | Uint8Array /* ptr */,
   NumOverrideEntries: number /* u32 */,
-  ppOutputInterface: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libd3d9_dll.Direct3DCreate9On12Ex(SDKVersion, util.toPointer(pOverrideList), NumOverrideEntries, util.toPointer(ppOutputInterface)));
+  ppOutputInterface: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libd3d9_dll.Direct3DCreate9On12Ex(SDKVersion, util.toPointer(pOverrideList), NumOverrideEntries, util.toPointer(ppOutputInterface));
 }
 
 export function Direct3DCreate9On12(
   SDKVersion: number /* u32 */,
-  pOverrideList: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pOverrideList: Deno.PointerValue | Uint8Array /* ptr */,
   NumOverrideEntries: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Graphics.Direct3D9.IDirect3D9 */ {
-  return util.pointerFromFfi(libd3d9_dll.Direct3DCreate9On12(SDKVersion, util.toPointer(pOverrideList), NumOverrideEntries));
+): Deno.PointerValue /* Windows.Win32.Graphics.Direct3D9.IDirect3D9 */ {
+  return libd3d9_dll.Direct3DCreate9On12(SDKVersion, util.toPointer(pOverrideList), NumOverrideEntries);
 }
 

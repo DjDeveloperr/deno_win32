@@ -3417,7 +3417,7 @@ export interface VIRTUAL_STORAGE_TYPE {
   /** u32 */
   DeviceId: number;
   /** System.Guid */
-  VendorId: Uint8Array | Deno.PointerValue | null;
+  VendorId: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofVIRTUAL_STORAGE_TYPE = 16;
@@ -3429,7 +3429,7 @@ export function allocVIRTUAL_STORAGE_TYPE(data?: Partial<VIRTUAL_STORAGE_TYPE>):
   if (data?.DeviceId !== undefined) view.setUint32(0, Number(data.DeviceId), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.VendorId !== undefined) view.setBigUint64(8, data.VendorId === null ? 0n : BigInt(util.toPointer(data.VendorId)), true);
+  if (data?.VendorId !== undefined) view.setBigUint64(8, data.VendorId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.VendorId))), true);
   return buf;
 }
 
@@ -3451,9 +3451,9 @@ export class VIRTUAL_STORAGE_TYPEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get VendorId(): Uint8Array | Deno.PointerValue | null {
+  get VendorId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -3464,8 +3464,8 @@ export class VIRTUAL_STORAGE_TYPEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set VendorId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set VendorId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3527,9 +3527,9 @@ export class _Anonymous_e__StructView {
  */
 export interface _Anonymous_e__Union {
   /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** array */
-  X: Deno.PointerValue | null;
+  X: Deno.PointerValue;
 }
 
 export const sizeof_Anonymous_e__Union = 16;
@@ -3538,9 +3538,9 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   const buf = new Uint8Array(sizeof_Anonymous_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x08: pointer
-  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.X))), true);
   return buf;
 }
 
@@ -3555,25 +3555,25 @@ export class _Anonymous_e__UnionView {
   }
 
   // 0x00: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get X(): Uint8Array | Deno.PointerValue | null {
+  get X(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set X(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set X(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3584,7 +3584,7 @@ export interface OPEN_VIRTUAL_DISK_PARAMETERS {
   /** Windows.Win32.Storage.Vhd.OPEN_VIRTUAL_DISK_VERSION */
   Version: OPEN_VIRTUAL_DISK_VERSION;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofOPEN_VIRTUAL_DISK_PARAMETERS = 16;
@@ -3596,7 +3596,7 @@ export function allocOPEN_VIRTUAL_DISK_PARAMETERS(data?: Partial<OPEN_VIRTUAL_DI
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -3618,9 +3618,9 @@ export class OPEN_VIRTUAL_DISK_PARAMETERSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -3631,8 +3631,8 @@ export class OPEN_VIRTUAL_DISK_PARAMETERSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3643,7 +3643,7 @@ export interface CREATE_VIRTUAL_DISK_PARAMETERS {
   /** Windows.Win32.Storage.Vhd.CREATE_VIRTUAL_DISK_VERSION */
   Version: CREATE_VIRTUAL_DISK_VERSION;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofCREATE_VIRTUAL_DISK_PARAMETERS = 16;
@@ -3655,7 +3655,7 @@ export function allocCREATE_VIRTUAL_DISK_PARAMETERS(data?: Partial<CREATE_VIRTUA
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -3677,9 +3677,9 @@ export class CREATE_VIRTUAL_DISK_PARAMETERSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -3690,8 +3690,8 @@ export class CREATE_VIRTUAL_DISK_PARAMETERSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3702,7 +3702,7 @@ export interface ATTACH_VIRTUAL_DISK_PARAMETERS {
   /** Windows.Win32.Storage.Vhd.ATTACH_VIRTUAL_DISK_VERSION */
   Version: ATTACH_VIRTUAL_DISK_VERSION;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofATTACH_VIRTUAL_DISK_PARAMETERS = 16;
@@ -3714,7 +3714,7 @@ export function allocATTACH_VIRTUAL_DISK_PARAMETERS(data?: Partial<ATTACH_VIRTUA
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -3736,9 +3736,9 @@ export class ATTACH_VIRTUAL_DISK_PARAMETERSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -3749,8 +3749,8 @@ export class ATTACH_VIRTUAL_DISK_PARAMETERSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -3763,7 +3763,7 @@ export interface STORAGE_DEPENDENCY_INFO_TYPE_1 {
   /** u32 */
   ProviderSpecificFlags: number;
   /** Windows.Win32.Storage.Vhd.VIRTUAL_STORAGE_TYPE */
-  VirtualStorageType: Uint8Array | Deno.PointerValue | null;
+  VirtualStorageType: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofSTORAGE_DEPENDENCY_INFO_TYPE_1 = 16;
@@ -3776,7 +3776,7 @@ export function allocSTORAGE_DEPENDENCY_INFO_TYPE_1(data?: Partial<STORAGE_DEPEN
   // 0x04: u32
   if (data?.ProviderSpecificFlags !== undefined) view.setUint32(4, Number(data.ProviderSpecificFlags), true);
   // 0x08: pointer
-  if (data?.VirtualStorageType !== undefined) view.setBigUint64(8, data.VirtualStorageType === null ? 0n : BigInt(util.toPointer(data.VirtualStorageType)), true);
+  if (data?.VirtualStorageType !== undefined) view.setBigUint64(8, data.VirtualStorageType === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.VirtualStorageType))), true);
   return buf;
 }
 
@@ -3801,9 +3801,9 @@ export class STORAGE_DEPENDENCY_INFO_TYPE_1View {
   }
 
   // 0x08: pointer
-  get VirtualStorageType(): Uint8Array | Deno.PointerValue | null {
+  get VirtualStorageType(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -3817,12 +3817,12 @@ export class STORAGE_DEPENDENCY_INFO_TYPE_1View {
   }
 
   // 0x08: pointer
-  set VirtualStorageType(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set VirtualStorageType(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.Storage.Vhd.STORAGE_DEPENDENCY_INFO_TYPE_2 (size: 56)
@@ -3833,7 +3833,7 @@ export interface STORAGE_DEPENDENCY_INFO_TYPE_2 {
   /** u32 */
   ProviderSpecificFlags: number;
   /** Windows.Win32.Storage.Vhd.VIRTUAL_STORAGE_TYPE */
-  VirtualStorageType: Uint8Array | Deno.PointerValue | null;
+  VirtualStorageType: Uint8Array | Deno.PointerValue;
   /** u32 */
   AncestorLevel: number;
   /** Windows.Win32.Foundation.PWSTR */
@@ -3856,29 +3856,29 @@ export function allocSTORAGE_DEPENDENCY_INFO_TYPE_2(data?: Partial<STORAGE_DEPEN
   // 0x04: u32
   if (data?.ProviderSpecificFlags !== undefined) view.setUint32(4, Number(data.ProviderSpecificFlags), true);
   // 0x08: pointer
-  if (data?.VirtualStorageType !== undefined) view.setBigUint64(8, data.VirtualStorageType === null ? 0n : BigInt(util.toPointer(data.VirtualStorageType)), true);
+  if (data?.VirtualStorageType !== undefined) view.setBigUint64(8, data.VirtualStorageType === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.VirtualStorageType))), true);
   // 0x10: u32
   if (data?.AncestorLevel !== undefined) view.setUint32(16, Number(data.AncestorLevel), true);
   // 0x14: pad4
   // 0x18: buffer
   if (data?.DependencyDeviceName !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.DependencyDeviceName);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: buffer
   if (data?.HostVolumeName !== undefined) {
     (buf as any)._f32 = util.pwstrToFfi(data.HostVolumeName);
-    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f32)), true);
+    view.setBigUint64(32, (buf as any)._f32 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f32))), true);
   }
   // 0x28: buffer
   if (data?.DependentVolumeName !== undefined) {
     (buf as any)._f40 = util.pwstrToFfi(data.DependentVolumeName);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f40))), true);
   }
   // 0x30: buffer
   if (data?.DependentVolumeRelativePath !== undefined) {
     (buf as any)._f48 = util.pwstrToFfi(data.DependentVolumeRelativePath);
-    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f48)), true);
+    view.setBigUint64(48, (buf as any)._f48 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f48))), true);
   }
   return buf;
 }
@@ -3904,9 +3904,9 @@ export class STORAGE_DEPENDENCY_INFO_TYPE_2View {
   }
 
   // 0x08: pointer
-  get VirtualStorageType(): Uint8Array | Deno.PointerValue | null {
+  get VirtualStorageType(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -3917,27 +3917,27 @@ export class STORAGE_DEPENDENCY_INFO_TYPE_2View {
   // 0x14: pad4
 
   // 0x18: buffer
-  get DependencyDeviceName(): Uint8Array | Deno.PointerValue | null {
+  get DependencyDeviceName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: buffer
-  get HostVolumeName(): Uint8Array | Deno.PointerValue | null {
+  get HostVolumeName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: buffer
-  get DependentVolumeName(): Uint8Array | Deno.PointerValue | null {
+  get DependentVolumeName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: buffer
-  get DependentVolumeRelativePath(): Uint8Array | Deno.PointerValue | null {
+  get DependentVolumeRelativePath(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -3951,8 +3951,8 @@ export class STORAGE_DEPENDENCY_INFO_TYPE_2View {
   }
 
   // 0x08: pointer
-  set VirtualStorageType(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set VirtualStorageType(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -3963,27 +3963,27 @@ export class STORAGE_DEPENDENCY_INFO_TYPE_2View {
   // 0x14: pad4
 
   // 0x18: buffer
-  set DependencyDeviceName(value: Uint8Array | Deno.PointerValue | null) {
+  set DependencyDeviceName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: buffer
-  set HostVolumeName(value: Uint8Array | Deno.PointerValue | null) {
+  set HostVolumeName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f32 = value;
-    this.view.setBigUint64(32, BigInt(util.toPointer((this.buf as any)._f32)), true);
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f32))), true);
   }
 
   // 0x28: buffer
-  set DependentVolumeName(value: Uint8Array | Deno.PointerValue | null) {
+  set DependentVolumeName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f40))), true);
   }
 
   // 0x30: buffer
-  set DependentVolumeRelativePath(value: Uint8Array | Deno.PointerValue | null) {
+  set DependentVolumeRelativePath(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f48 = value;
-    this.view.setBigUint64(48, BigInt(util.toPointer((this.buf as any)._f48)), true);
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f48))), true);
   }
 }
 
@@ -3996,7 +3996,7 @@ export interface STORAGE_DEPENDENCY_INFO {
   /** u32 */
   NumberEntries: number;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofSTORAGE_DEPENDENCY_INFO = 16;
@@ -4009,7 +4009,7 @@ export function allocSTORAGE_DEPENDENCY_INFO(data?: Partial<STORAGE_DEPENDENCY_I
   // 0x04: u32
   if (data?.NumberEntries !== undefined) view.setUint32(4, Number(data.NumberEntries), true);
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -4034,9 +4034,9 @@ export class STORAGE_DEPENDENCY_INFOView {
   }
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -4050,8 +4050,8 @@ export class STORAGE_DEPENDENCY_INFOView {
   }
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4062,7 +4062,7 @@ export interface GET_VIRTUAL_DISK_INFO {
   /** Windows.Win32.Storage.Vhd.GET_VIRTUAL_DISK_INFO_VERSION */
   Version: GET_VIRTUAL_DISK_INFO_VERSION;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofGET_VIRTUAL_DISK_INFO = 16;
@@ -4074,7 +4074,7 @@ export function allocGET_VIRTUAL_DISK_INFO(data?: Partial<GET_VIRTUAL_DISK_INFO>
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -4096,9 +4096,9 @@ export class GET_VIRTUAL_DISK_INFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -4109,8 +4109,8 @@ export class GET_VIRTUAL_DISK_INFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4121,7 +4121,7 @@ export interface SET_VIRTUAL_DISK_INFO {
   /** Windows.Win32.Storage.Vhd.SET_VIRTUAL_DISK_INFO_VERSION */
   Version: SET_VIRTUAL_DISK_INFO_VERSION;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofSET_VIRTUAL_DISK_INFO = 16;
@@ -4133,7 +4133,7 @@ export function allocSET_VIRTUAL_DISK_INFO(data?: Partial<SET_VIRTUAL_DISK_INFO>
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -4155,9 +4155,9 @@ export class SET_VIRTUAL_DISK_INFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -4168,8 +4168,8 @@ export class SET_VIRTUAL_DISK_INFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4252,7 +4252,7 @@ export interface COMPACT_VIRTUAL_DISK_PARAMETERS {
   /** Windows.Win32.Storage.Vhd.COMPACT_VIRTUAL_DISK_VERSION */
   Version: COMPACT_VIRTUAL_DISK_VERSION;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofCOMPACT_VIRTUAL_DISK_PARAMETERS = 16;
@@ -4264,7 +4264,7 @@ export function allocCOMPACT_VIRTUAL_DISK_PARAMETERS(data?: Partial<COMPACT_VIRT
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -4286,9 +4286,9 @@ export class COMPACT_VIRTUAL_DISK_PARAMETERSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -4299,8 +4299,8 @@ export class COMPACT_VIRTUAL_DISK_PARAMETERSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4311,7 +4311,7 @@ export interface MERGE_VIRTUAL_DISK_PARAMETERS {
   /** Windows.Win32.Storage.Vhd.MERGE_VIRTUAL_DISK_VERSION */
   Version: MERGE_VIRTUAL_DISK_VERSION;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofMERGE_VIRTUAL_DISK_PARAMETERS = 16;
@@ -4323,7 +4323,7 @@ export function allocMERGE_VIRTUAL_DISK_PARAMETERS(data?: Partial<MERGE_VIRTUAL_
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -4345,9 +4345,9 @@ export class MERGE_VIRTUAL_DISK_PARAMETERSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -4358,8 +4358,8 @@ export class MERGE_VIRTUAL_DISK_PARAMETERSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4370,7 +4370,7 @@ export interface EXPAND_VIRTUAL_DISK_PARAMETERS {
   /** Windows.Win32.Storage.Vhd.EXPAND_VIRTUAL_DISK_VERSION */
   Version: EXPAND_VIRTUAL_DISK_VERSION;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofEXPAND_VIRTUAL_DISK_PARAMETERS = 16;
@@ -4382,7 +4382,7 @@ export function allocEXPAND_VIRTUAL_DISK_PARAMETERS(data?: Partial<EXPAND_VIRTUA
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -4404,9 +4404,9 @@ export class EXPAND_VIRTUAL_DISK_PARAMETERSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -4417,8 +4417,8 @@ export class EXPAND_VIRTUAL_DISK_PARAMETERSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4429,7 +4429,7 @@ export interface RESIZE_VIRTUAL_DISK_PARAMETERS {
   /** Windows.Win32.Storage.Vhd.RESIZE_VIRTUAL_DISK_VERSION */
   Version: RESIZE_VIRTUAL_DISK_VERSION;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofRESIZE_VIRTUAL_DISK_PARAMETERS = 16;
@@ -4441,7 +4441,7 @@ export function allocRESIZE_VIRTUAL_DISK_PARAMETERS(data?: Partial<RESIZE_VIRTUA
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -4463,9 +4463,9 @@ export class RESIZE_VIRTUAL_DISK_PARAMETERSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -4476,8 +4476,8 @@ export class RESIZE_VIRTUAL_DISK_PARAMETERSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4488,7 +4488,7 @@ export interface MIRROR_VIRTUAL_DISK_PARAMETERS {
   /** Windows.Win32.Storage.Vhd.MIRROR_VIRTUAL_DISK_VERSION */
   Version: MIRROR_VIRTUAL_DISK_VERSION;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofMIRROR_VIRTUAL_DISK_PARAMETERS = 16;
@@ -4500,7 +4500,7 @@ export function allocMIRROR_VIRTUAL_DISK_PARAMETERS(data?: Partial<MIRROR_VIRTUA
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -4522,9 +4522,9 @@ export class MIRROR_VIRTUAL_DISK_PARAMETERSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -4535,8 +4535,8 @@ export class MIRROR_VIRTUAL_DISK_PARAMETERSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4614,7 +4614,7 @@ export interface TAKE_SNAPSHOT_VHDSET_PARAMETERS {
   /** Windows.Win32.Storage.Vhd.TAKE_SNAPSHOT_VHDSET_VERSION */
   Version: TAKE_SNAPSHOT_VHDSET_VERSION;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofTAKE_SNAPSHOT_VHDSET_PARAMETERS = 16;
@@ -4626,7 +4626,7 @@ export function allocTAKE_SNAPSHOT_VHDSET_PARAMETERS(data?: Partial<TAKE_SNAPSHO
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -4648,9 +4648,9 @@ export class TAKE_SNAPSHOT_VHDSET_PARAMETERSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -4661,8 +4661,8 @@ export class TAKE_SNAPSHOT_VHDSET_PARAMETERSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4673,7 +4673,7 @@ export interface DELETE_SNAPSHOT_VHDSET_PARAMETERS {
   /** Windows.Win32.Storage.Vhd.DELETE_SNAPSHOT_VHDSET_VERSION */
   Version: DELETE_SNAPSHOT_VHDSET_VERSION;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDELETE_SNAPSHOT_VHDSET_PARAMETERS = 16;
@@ -4685,7 +4685,7 @@ export function allocDELETE_SNAPSHOT_VHDSET_PARAMETERS(data?: Partial<DELETE_SNA
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -4707,9 +4707,9 @@ export class DELETE_SNAPSHOT_VHDSET_PARAMETERSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -4720,8 +4720,8 @@ export class DELETE_SNAPSHOT_VHDSET_PARAMETERSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4732,7 +4732,7 @@ export interface MODIFY_VHDSET_PARAMETERS {
   /** Windows.Win32.Storage.Vhd.MODIFY_VHDSET_VERSION */
   Version: MODIFY_VHDSET_VERSION;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofMODIFY_VHDSET_PARAMETERS = 16;
@@ -4744,7 +4744,7 @@ export function allocMODIFY_VHDSET_PARAMETERS(data?: Partial<MODIFY_VHDSET_PARAM
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -4766,9 +4766,9 @@ export class MODIFY_VHDSET_PARAMETERSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -4779,8 +4779,8 @@ export class MODIFY_VHDSET_PARAMETERSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4791,7 +4791,7 @@ export interface APPLY_SNAPSHOT_VHDSET_PARAMETERS {
   /** Windows.Win32.Storage.Vhd.APPLY_SNAPSHOT_VHDSET_VERSION */
   Version: APPLY_SNAPSHOT_VHDSET_VERSION;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofAPPLY_SNAPSHOT_VHDSET_PARAMETERS = 16;
@@ -4803,7 +4803,7 @@ export function allocAPPLY_SNAPSHOT_VHDSET_PARAMETERS(data?: Partial<APPLY_SNAPS
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -4825,9 +4825,9 @@ export class APPLY_SNAPSHOT_VHDSET_PARAMETERSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -4838,8 +4838,8 @@ export class APPLY_SNAPSHOT_VHDSET_PARAMETERSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4850,7 +4850,7 @@ export interface RAW_SCSI_VIRTUAL_DISK_PARAMETERS {
   /** Windows.Win32.Storage.Vhd.RAW_SCSI_VIRTUAL_DISK_VERSION */
   Version: RAW_SCSI_VIRTUAL_DISK_VERSION;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofRAW_SCSI_VIRTUAL_DISK_PARAMETERS = 16;
@@ -4862,7 +4862,7 @@ export function allocRAW_SCSI_VIRTUAL_DISK_PARAMETERS(data?: Partial<RAW_SCSI_VI
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -4884,9 +4884,9 @@ export class RAW_SCSI_VIRTUAL_DISK_PARAMETERSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -4897,8 +4897,8 @@ export class RAW_SCSI_VIRTUAL_DISK_PARAMETERSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4909,7 +4909,7 @@ export interface RAW_SCSI_VIRTUAL_DISK_RESPONSE {
   /** Windows.Win32.Storage.Vhd.RAW_SCSI_VIRTUAL_DISK_VERSION */
   Version: RAW_SCSI_VIRTUAL_DISK_VERSION;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofRAW_SCSI_VIRTUAL_DISK_RESPONSE = 16;
@@ -4921,7 +4921,7 @@ export function allocRAW_SCSI_VIRTUAL_DISK_RESPONSE(data?: Partial<RAW_SCSI_VIRT
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -4943,9 +4943,9 @@ export class RAW_SCSI_VIRTUAL_DISK_RESPONSEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -4956,8 +4956,8 @@ export class RAW_SCSI_VIRTUAL_DISK_RESPONSEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4968,7 +4968,7 @@ export interface FORK_VIRTUAL_DISK_PARAMETERS {
   /** Windows.Win32.Storage.Vhd.FORK_VIRTUAL_DISK_VERSION */
   Version: FORK_VIRTUAL_DISK_VERSION;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofFORK_VIRTUAL_DISK_PARAMETERS = 16;
@@ -4980,7 +4980,7 @@ export function allocFORK_VIRTUAL_DISK_PARAMETERS(data?: Partial<FORK_VIRTUAL_DI
   if (data?.Version !== undefined) view.setInt32(0, Number(data.Version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -5002,9 +5002,9 @@ export class FORK_VIRTUAL_DISK_PARAMETERSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -5015,12 +5015,12 @@ export class FORK_VIRTUAL_DISK_PARAMETERSView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
-export type PSECURITY_DESCRIPTOR = Deno.PointerValue | Uint8Array | null;
+export type PSECURITY_DESCRIPTOR = Deno.PointerValue | Uint8Array;
 
 export type HANDLE = Deno.PointerValue;
 
@@ -5150,43 +5150,43 @@ try {
 // Symbols
 
 export function OpenVirtualDisk(
-  VirtualStorageType: Deno.PointerValue | Uint8Array | null /* ptr */,
+  VirtualStorageType: Deno.PointerValue | Uint8Array /* ptr */,
   Path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   VirtualDiskAccessMask: VIRTUAL_DISK_ACCESS_MASK /* Windows.Win32.Storage.Vhd.VIRTUAL_DISK_ACCESS_MASK */,
   Flags: OPEN_VIRTUAL_DISK_FLAG /* Windows.Win32.Storage.Vhd.OPEN_VIRTUAL_DISK_FLAG */,
-  Parameters: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Handle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Parameters: Deno.PointerValue | Uint8Array /* ptr */,
+  Handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libVirtDisk_dll.OpenVirtualDisk(util.toPointer(VirtualStorageType), util.pwstrToFfi(Path), VirtualDiskAccessMask, Flags, util.toPointer(Parameters), util.toPointer(Handle));
 }
 
 export function CreateVirtualDisk(
-  VirtualStorageType: Deno.PointerValue | Uint8Array | null /* ptr */,
+  VirtualStorageType: Deno.PointerValue | Uint8Array /* ptr */,
   Path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   VirtualDiskAccessMask: VIRTUAL_DISK_ACCESS_MASK /* Windows.Win32.Storage.Vhd.VIRTUAL_DISK_ACCESS_MASK */,
-  SecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
+  SecurityDescriptor: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   Flags: CREATE_VIRTUAL_DISK_FLAG /* Windows.Win32.Storage.Vhd.CREATE_VIRTUAL_DISK_FLAG */,
   ProviderSpecificFlags: number /* u32 */,
-  Parameters: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Handle: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Parameters: Deno.PointerValue | Uint8Array /* ptr */,
+  Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
+  Handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libVirtDisk_dll.CreateVirtualDisk(util.toPointer(VirtualStorageType), util.pwstrToFfi(Path), VirtualDiskAccessMask, util.toPointer(SecurityDescriptor), Flags, ProviderSpecificFlags, util.toPointer(Parameters), util.toPointer(Overlapped), util.toPointer(Handle));
 }
 
 export function AttachVirtualDisk(
-  VirtualDiskHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  SecurityDescriptor: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
+  VirtualDiskHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  SecurityDescriptor: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   Flags: ATTACH_VIRTUAL_DISK_FLAG /* Windows.Win32.Storage.Vhd.ATTACH_VIRTUAL_DISK_FLAG */,
   ProviderSpecificFlags: number /* u32 */,
-  Parameters: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Parameters: Deno.PointerValue | Uint8Array /* ptr */,
+  Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libVirtDisk_dll.AttachVirtualDisk(util.toPointer(VirtualDiskHandle), util.toPointer(SecurityDescriptor), Flags, ProviderSpecificFlags, util.toPointer(Parameters), util.toPointer(Overlapped));
 }
 
 export function DetachVirtualDisk(
-  VirtualDiskHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  VirtualDiskHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Flags: DETACH_VIRTUAL_DISK_FLAG /* Windows.Win32.Storage.Vhd.DETACH_VIRTUAL_DISK_FLAG */,
   ProviderSpecificFlags: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
@@ -5194,210 +5194,210 @@ export function DetachVirtualDisk(
 }
 
 export function GetVirtualDiskPhysicalPath(
-  VirtualDiskHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  DiskPathSizeInBytes: Deno.PointerValue | Uint8Array | null /* ptr */,
+  VirtualDiskHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  DiskPathSizeInBytes: Deno.PointerValue | Uint8Array /* ptr */,
   DiskPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libVirtDisk_dll.GetVirtualDiskPhysicalPath(util.toPointer(VirtualDiskHandle), util.toPointer(DiskPathSizeInBytes), util.pwstrToFfi(DiskPath));
 }
 
 export function GetAllAttachedVirtualDiskPhysicalPaths(
-  PathsBufferSizeInBytes: Deno.PointerValue | Uint8Array | null /* ptr */,
+  PathsBufferSizeInBytes: Deno.PointerValue | Uint8Array /* ptr */,
   PathsBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libVirtDisk_dll.GetAllAttachedVirtualDiskPhysicalPaths(util.toPointer(PathsBufferSizeInBytes), util.pwstrToFfi(PathsBuffer));
 }
 
 export function GetStorageDependencyInformation(
-  ObjectHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  ObjectHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Flags: GET_STORAGE_DEPENDENCY_FLAG /* Windows.Win32.Storage.Vhd.GET_STORAGE_DEPENDENCY_FLAG */,
   StorageDependencyInfoSize: number /* u32 */,
-  StorageDependencyInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SizeUsed: Deno.PointerValue | Uint8Array | null /* ptr */,
+  StorageDependencyInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  SizeUsed: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libVirtDisk_dll.GetStorageDependencyInformation(util.toPointer(ObjectHandle), Flags, StorageDependencyInfoSize, util.toPointer(StorageDependencyInfo), util.toPointer(SizeUsed));
 }
 
 export function GetVirtualDiskInformation(
-  VirtualDiskHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  VirtualDiskInfoSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  VirtualDiskInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  SizeUsed: Deno.PointerValue | Uint8Array | null /* ptr */,
+  VirtualDiskHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  VirtualDiskInfoSize: Deno.PointerValue | Uint8Array /* ptr */,
+  VirtualDiskInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  SizeUsed: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libVirtDisk_dll.GetVirtualDiskInformation(util.toPointer(VirtualDiskHandle), util.toPointer(VirtualDiskInfoSize), util.toPointer(VirtualDiskInfo), util.toPointer(SizeUsed));
 }
 
 export function SetVirtualDiskInformation(
-  VirtualDiskHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  VirtualDiskInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  VirtualDiskHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  VirtualDiskInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libVirtDisk_dll.SetVirtualDiskInformation(util.toPointer(VirtualDiskHandle), util.toPointer(VirtualDiskInfo));
 }
 
 export function EnumerateVirtualDiskMetadata(
-  VirtualDiskHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  NumberOfItems: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Items: Deno.PointerValue | Uint8Array | null /* ptr */,
+  VirtualDiskHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  NumberOfItems: Deno.PointerValue | Uint8Array /* ptr */,
+  Items: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libVirtDisk_dll.EnumerateVirtualDiskMetadata(util.toPointer(VirtualDiskHandle), util.toPointer(NumberOfItems), util.toPointer(Items));
 }
 
 export function GetVirtualDiskMetadata(
-  VirtualDiskHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  Item: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MetaDataSize: Deno.PointerValue | Uint8Array | null /* ptr */,
-  MetaData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  VirtualDiskHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  Item: Deno.PointerValue | Uint8Array /* ptr */,
+  MetaDataSize: Deno.PointerValue | Uint8Array /* ptr */,
+  MetaData: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libVirtDisk_dll.GetVirtualDiskMetadata(util.toPointer(VirtualDiskHandle), util.toPointer(Item), util.toPointer(MetaDataSize), util.toPointer(MetaData));
 }
 
 export function SetVirtualDiskMetadata(
-  VirtualDiskHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  Item: Deno.PointerValue | Uint8Array | null /* ptr */,
+  VirtualDiskHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  Item: Deno.PointerValue | Uint8Array /* ptr */,
   MetaDataSize: number /* u32 */,
-  MetaData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  MetaData: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libVirtDisk_dll.SetVirtualDiskMetadata(util.toPointer(VirtualDiskHandle), util.toPointer(Item), MetaDataSize, util.toPointer(MetaData));
 }
 
 export function DeleteVirtualDiskMetadata(
-  VirtualDiskHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  Item: Deno.PointerValue | Uint8Array | null /* ptr */,
+  VirtualDiskHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  Item: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libVirtDisk_dll.DeleteVirtualDiskMetadata(util.toPointer(VirtualDiskHandle), util.toPointer(Item));
 }
 
 export function GetVirtualDiskOperationProgress(
-  VirtualDiskHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Progress: Deno.PointerValue | Uint8Array | null /* ptr */,
+  VirtualDiskHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
+  Progress: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libVirtDisk_dll.GetVirtualDiskOperationProgress(util.toPointer(VirtualDiskHandle), util.toPointer(Overlapped), util.toPointer(Progress));
 }
 
 export function CompactVirtualDisk(
-  VirtualDiskHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  VirtualDiskHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Flags: COMPACT_VIRTUAL_DISK_FLAG /* Windows.Win32.Storage.Vhd.COMPACT_VIRTUAL_DISK_FLAG */,
-  Parameters: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Parameters: Deno.PointerValue | Uint8Array /* ptr */,
+  Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libVirtDisk_dll.CompactVirtualDisk(util.toPointer(VirtualDiskHandle), Flags, util.toPointer(Parameters), util.toPointer(Overlapped));
 }
 
 export function MergeVirtualDisk(
-  VirtualDiskHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  VirtualDiskHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Flags: MERGE_VIRTUAL_DISK_FLAG /* Windows.Win32.Storage.Vhd.MERGE_VIRTUAL_DISK_FLAG */,
-  Parameters: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Parameters: Deno.PointerValue | Uint8Array /* ptr */,
+  Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libVirtDisk_dll.MergeVirtualDisk(util.toPointer(VirtualDiskHandle), Flags, util.toPointer(Parameters), util.toPointer(Overlapped));
 }
 
 export function ExpandVirtualDisk(
-  VirtualDiskHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  VirtualDiskHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Flags: EXPAND_VIRTUAL_DISK_FLAG /* Windows.Win32.Storage.Vhd.EXPAND_VIRTUAL_DISK_FLAG */,
-  Parameters: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Parameters: Deno.PointerValue | Uint8Array /* ptr */,
+  Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libVirtDisk_dll.ExpandVirtualDisk(util.toPointer(VirtualDiskHandle), Flags, util.toPointer(Parameters), util.toPointer(Overlapped));
 }
 
 export function ResizeVirtualDisk(
-  VirtualDiskHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  VirtualDiskHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Flags: RESIZE_VIRTUAL_DISK_FLAG /* Windows.Win32.Storage.Vhd.RESIZE_VIRTUAL_DISK_FLAG */,
-  Parameters: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Parameters: Deno.PointerValue | Uint8Array /* ptr */,
+  Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libVirtDisk_dll.ResizeVirtualDisk(util.toPointer(VirtualDiskHandle), Flags, util.toPointer(Parameters), util.toPointer(Overlapped));
 }
 
 export function MirrorVirtualDisk(
-  VirtualDiskHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  VirtualDiskHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Flags: MIRROR_VIRTUAL_DISK_FLAG /* Windows.Win32.Storage.Vhd.MIRROR_VIRTUAL_DISK_FLAG */,
-  Parameters: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Parameters: Deno.PointerValue | Uint8Array /* ptr */,
+  Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libVirtDisk_dll.MirrorVirtualDisk(util.toPointer(VirtualDiskHandle), Flags, util.toPointer(Parameters), util.toPointer(Overlapped));
 }
 
 export function BreakMirrorVirtualDisk(
-  VirtualDiskHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  VirtualDiskHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libVirtDisk_dll.BreakMirrorVirtualDisk(util.toPointer(VirtualDiskHandle));
 }
 
 export function AddVirtualDiskParent(
-  VirtualDiskHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  VirtualDiskHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ParentPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libVirtDisk_dll.AddVirtualDiskParent(util.toPointer(VirtualDiskHandle), util.pwstrToFfi(ParentPath));
 }
 
 export function QueryChangesVirtualDisk(
-  VirtualDiskHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  VirtualDiskHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ChangeTrackingId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ByteOffset: Deno.PointerValue /* u64 */,
   ByteLength: Deno.PointerValue /* u64 */,
   Flags: QUERY_CHANGES_VIRTUAL_DISK_FLAG /* Windows.Win32.Storage.Vhd.QUERY_CHANGES_VIRTUAL_DISK_FLAG */,
-  Ranges: Deno.PointerValue | Uint8Array | null /* ptr */,
-  RangeCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-  ProcessedLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Ranges: Deno.PointerValue | Uint8Array /* ptr */,
+  RangeCount: Deno.PointerValue | Uint8Array /* ptr */,
+  ProcessedLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libVirtDisk_dll.QueryChangesVirtualDisk(util.toPointer(VirtualDiskHandle), util.pwstrToFfi(ChangeTrackingId), ByteOffset, ByteLength, Flags, util.toPointer(Ranges), util.toPointer(RangeCount), util.toPointer(ProcessedLength));
 }
 
 export function TakeSnapshotVhdSet(
-  VirtualDiskHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  Parameters: Deno.PointerValue | Uint8Array | null /* ptr */,
+  VirtualDiskHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  Parameters: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: TAKE_SNAPSHOT_VHDSET_FLAG /* Windows.Win32.Storage.Vhd.TAKE_SNAPSHOT_VHDSET_FLAG */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libVirtDisk_dll.TakeSnapshotVhdSet(util.toPointer(VirtualDiskHandle), util.toPointer(Parameters), Flags);
 }
 
 export function DeleteSnapshotVhdSet(
-  VirtualDiskHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  Parameters: Deno.PointerValue | Uint8Array | null /* ptr */,
+  VirtualDiskHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  Parameters: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: DELETE_SNAPSHOT_VHDSET_FLAG /* Windows.Win32.Storage.Vhd.DELETE_SNAPSHOT_VHDSET_FLAG */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libVirtDisk_dll.DeleteSnapshotVhdSet(util.toPointer(VirtualDiskHandle), util.toPointer(Parameters), Flags);
 }
 
 export function ModifyVhdSet(
-  VirtualDiskHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  Parameters: Deno.PointerValue | Uint8Array | null /* ptr */,
+  VirtualDiskHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  Parameters: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: MODIFY_VHDSET_FLAG /* Windows.Win32.Storage.Vhd.MODIFY_VHDSET_FLAG */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libVirtDisk_dll.ModifyVhdSet(util.toPointer(VirtualDiskHandle), util.toPointer(Parameters), Flags);
 }
 
 export function ApplySnapshotVhdSet(
-  VirtualDiskHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  Parameters: Deno.PointerValue | Uint8Array | null /* ptr */,
+  VirtualDiskHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  Parameters: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: APPLY_SNAPSHOT_VHDSET_FLAG /* Windows.Win32.Storage.Vhd.APPLY_SNAPSHOT_VHDSET_FLAG */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libVirtDisk_dll.ApplySnapshotVhdSet(util.toPointer(VirtualDiskHandle), util.toPointer(Parameters), Flags);
 }
 
 export function RawSCSIVirtualDisk(
-  VirtualDiskHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  Parameters: Deno.PointerValue | Uint8Array | null /* ptr */,
+  VirtualDiskHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  Parameters: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: RAW_SCSI_VIRTUAL_DISK_FLAG /* Windows.Win32.Storage.Vhd.RAW_SCSI_VIRTUAL_DISK_FLAG */,
-  Response: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Response: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libVirtDisk_dll.RawSCSIVirtualDisk(util.toPointer(VirtualDiskHandle), util.toPointer(Parameters), Flags, util.toPointer(Response));
 }
 
 export function ForkVirtualDisk(
-  VirtualDiskHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  VirtualDiskHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Flags: FORK_VIRTUAL_DISK_FLAG /* Windows.Win32.Storage.Vhd.FORK_VIRTUAL_DISK_FLAG */,
-  Parameters: Deno.PointerValue | Uint8Array | null /* ptr */,
-  Overlapped: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Parameters: Deno.PointerValue | Uint8Array /* ptr */,
+  Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libVirtDisk_dll.ForkVirtualDisk(util.toPointer(VirtualDiskHandle), Flags, util.toPointer(Parameters), util.toPointer(Overlapped));
 }
 
 export function CompleteForkVirtualDisk(
-  VirtualDiskHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  VirtualDiskHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libVirtDisk_dll.CompleteForkVirtualDisk(util.toPointer(VirtualDiskHandle));
 }

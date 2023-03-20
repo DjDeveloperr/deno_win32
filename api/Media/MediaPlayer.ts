@@ -852,9 +852,9 @@ export const wmpsdlsCancelled = 4;
  */
 export interface TimedLevel {
   /** array */
-  frequency: Deno.PointerValue | null;
+  frequency: Deno.PointerValue;
   /** array */
-  waveform: Deno.PointerValue | null;
+  waveform: Deno.PointerValue;
   /** i32 */
   state: number;
   /** i64 */
@@ -867,9 +867,9 @@ export function allocTimedLevel(data?: Partial<TimedLevel>): Uint8Array {
   const buf = new Uint8Array(sizeofTimedLevel);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.frequency !== undefined) view.setBigUint64(0, data.frequency === null ? 0n : BigInt(util.toPointer(data.frequency)), true);
+  if (data?.frequency !== undefined) view.setBigUint64(0, data.frequency === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.frequency))), true);
   // 0x08: pointer
-  if (data?.waveform !== undefined) view.setBigUint64(8, data.waveform === null ? 0n : BigInt(util.toPointer(data.waveform)), true);
+  if (data?.waveform !== undefined) view.setBigUint64(8, data.waveform === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.waveform))), true);
   // 0x10: i32
   if (data?.state !== undefined) view.setInt32(16, Number(data.state), true);
   // 0x14: pad4
@@ -889,15 +889,15 @@ export class TimedLevelView {
   }
 
   // 0x00: pointer
-  get frequency(): Uint8Array | Deno.PointerValue | null {
+  get frequency(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get waveform(): Uint8Array | Deno.PointerValue | null {
+  get waveform(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: i32
@@ -913,13 +913,13 @@ export class TimedLevelView {
   }
 
   // 0x00: pointer
-  set frequency(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set frequency(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set waveform(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set waveform(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: i32
@@ -935,7 +935,7 @@ export class TimedLevelView {
   }
 }
 
-export type BSTR = Deno.PointerValue | Uint8Array | null;
+export type BSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.Media.MediaPlayer.WMPContextMenuInfo (size: 24)
@@ -944,9 +944,9 @@ export interface WMPContextMenuInfo {
   /** u32 */
   dwID: number;
   /** Windows.Win32.Foundation.BSTR */
-  bstrMenuText: Uint8Array | Deno.PointerValue | null;
+  bstrMenuText: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BSTR */
-  bstrHelpText: Uint8Array | Deno.PointerValue | null;
+  bstrHelpText: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofWMPContextMenuInfo = 24;
@@ -958,9 +958,9 @@ export function allocWMPContextMenuInfo(data?: Partial<WMPContextMenuInfo>): Uin
   if (data?.dwID !== undefined) view.setUint32(0, Number(data.dwID), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.bstrMenuText !== undefined) view.setBigUint64(8, data.bstrMenuText === null ? 0n : BigInt(util.toPointer(data.bstrMenuText)), true);
+  if (data?.bstrMenuText !== undefined) view.setBigUint64(8, data.bstrMenuText === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.bstrMenuText))), true);
   // 0x10: pointer
-  if (data?.bstrHelpText !== undefined) view.setBigUint64(16, data.bstrHelpText === null ? 0n : BigInt(util.toPointer(data.bstrHelpText)), true);
+  if (data?.bstrHelpText !== undefined) view.setBigUint64(16, data.bstrHelpText === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.bstrHelpText))), true);
   return buf;
 }
 
@@ -982,15 +982,15 @@ export class WMPContextMenuInfoView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get bstrMenuText(): Uint8Array | Deno.PointerValue | null {
+  get bstrMenuText(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get bstrHelpText(): Uint8Array | Deno.PointerValue | null {
+  get bstrHelpText(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1001,13 +1001,13 @@ export class WMPContextMenuInfoView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set bstrMenuText(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set bstrMenuText(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set bstrHelpText(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set bstrHelpText(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1079,7 +1079,7 @@ export interface WMP_WMDM_METADATA_ROUND_TRIP_DEVICE2PC {
   /** u32 */
   dwFlags: number;
   /** array */
-  wsObjectPathnameList: Deno.PointerValue | null;
+  wsObjectPathnameList: Deno.PointerValue;
 }
 
 export const sizeofWMP_WMDM_METADATA_ROUND_TRIP_DEVICE2PC = 32;
@@ -1099,7 +1099,7 @@ export function allocWMP_WMDM_METADATA_ROUND_TRIP_DEVICE2PC(data?: Partial<WMP_W
   if (data?.dwFlags !== undefined) view.setUint32(16, Number(data.dwFlags), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.wsObjectPathnameList !== undefined) view.setBigUint64(24, data.wsObjectPathnameList === null ? 0n : BigInt(util.toPointer(data.wsObjectPathnameList)), true);
+  if (data?.wsObjectPathnameList !== undefined) view.setBigUint64(24, data.wsObjectPathnameList === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.wsObjectPathnameList))), true);
   return buf;
 }
 
@@ -1141,9 +1141,9 @@ export class WMP_WMDM_METADATA_ROUND_TRIP_DEVICE2PCView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get wsObjectPathnameList(): Uint8Array | Deno.PointerValue | null {
+  get wsObjectPathnameList(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1174,8 +1174,8 @@ export class WMP_WMDM_METADATA_ROUND_TRIP_DEVICE2PCView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set wsObjectPathnameList(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set wsObjectPathnameList(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 

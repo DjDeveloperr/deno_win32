@@ -53,9 +53,9 @@ export const SceSvcInternalUse = 3;
  */
 export interface SCESVC_CONFIGURATION_LINE {
   /** ptr */
-  Key: Deno.PointerValue | Uint8Array | null;
+  Key: Deno.PointerValue | Uint8Array;
   /** ptr */
-  Value: Deno.PointerValue | Uint8Array | null;
+  Value: Deno.PointerValue | Uint8Array;
   /** u32 */
   ValueLen: number;
 }
@@ -66,9 +66,9 @@ export function allocSCESVC_CONFIGURATION_LINE(data?: Partial<SCESVC_CONFIGURATI
   const buf = new Uint8Array(sizeofSCESVC_CONFIGURATION_LINE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Key !== undefined) view.setBigUint64(0, data.Key === null ? 0n : BigInt(util.toPointer(data.Key)), true);
+  if (data?.Key !== undefined) view.setBigUint64(0, data.Key === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Key))), true);
   // 0x08: pointer
-  if (data?.Value !== undefined) view.setBigUint64(8, data.Value === null ? 0n : BigInt(util.toPointer(data.Value)), true);
+  if (data?.Value !== undefined) view.setBigUint64(8, data.Value === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Value))), true);
   // 0x10: u32
   if (data?.ValueLen !== undefined) view.setUint32(16, Number(data.ValueLen), true);
   // 0x14: pad4
@@ -86,15 +86,15 @@ export class SCESVC_CONFIGURATION_LINEView {
   }
 
   // 0x00: pointer
-  get Key(): Uint8Array | Deno.PointerValue | null {
+  get Key(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get Value(): Uint8Array | Deno.PointerValue | null {
+  get Value(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -105,13 +105,13 @@ export class SCESVC_CONFIGURATION_LINEView {
   // 0x14: pad4
 
   // 0x00: pointer
-  set Key(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Key(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set Value(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Value(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -129,7 +129,7 @@ export interface SCESVC_CONFIGURATION_INFO {
   /** u32 */
   Count: number;
   /** ptr */
-  Lines: Deno.PointerValue | Uint8Array | null;
+  Lines: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofSCESVC_CONFIGURATION_INFO = 16;
@@ -141,7 +141,7 @@ export function allocSCESVC_CONFIGURATION_INFO(data?: Partial<SCESVC_CONFIGURATI
   if (data?.Count !== undefined) view.setUint32(0, Number(data.Count), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Lines !== undefined) view.setBigUint64(8, data.Lines === null ? 0n : BigInt(util.toPointer(data.Lines)), true);
+  if (data?.Lines !== undefined) view.setBigUint64(8, data.Lines === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Lines))), true);
   return buf;
 }
 
@@ -163,9 +163,9 @@ export class SCESVC_CONFIGURATION_INFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Lines(): Uint8Array | Deno.PointerValue | null {
+  get Lines(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -176,8 +176,8 @@ export class SCESVC_CONFIGURATION_INFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Lines(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Lines(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -186,9 +186,9 @@ export class SCESVC_CONFIGURATION_INFOView {
  */
 export interface SCESVC_ANALYSIS_LINE {
   /** ptr */
-  Key: Deno.PointerValue | Uint8Array | null;
+  Key: Deno.PointerValue | Uint8Array;
   /** ptr */
-  Value: Deno.PointerValue | Uint8Array | null;
+  Value: Deno.PointerValue | Uint8Array;
   /** u32 */
   ValueLen: number;
 }
@@ -199,9 +199,9 @@ export function allocSCESVC_ANALYSIS_LINE(data?: Partial<SCESVC_ANALYSIS_LINE>):
   const buf = new Uint8Array(sizeofSCESVC_ANALYSIS_LINE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Key !== undefined) view.setBigUint64(0, data.Key === null ? 0n : BigInt(util.toPointer(data.Key)), true);
+  if (data?.Key !== undefined) view.setBigUint64(0, data.Key === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Key))), true);
   // 0x08: pointer
-  if (data?.Value !== undefined) view.setBigUint64(8, data.Value === null ? 0n : BigInt(util.toPointer(data.Value)), true);
+  if (data?.Value !== undefined) view.setBigUint64(8, data.Value === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Value))), true);
   // 0x10: u32
   if (data?.ValueLen !== undefined) view.setUint32(16, Number(data.ValueLen), true);
   // 0x14: pad4
@@ -219,15 +219,15 @@ export class SCESVC_ANALYSIS_LINEView {
   }
 
   // 0x00: pointer
-  get Key(): Uint8Array | Deno.PointerValue | null {
+  get Key(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get Value(): Uint8Array | Deno.PointerValue | null {
+  get Value(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -238,13 +238,13 @@ export class SCESVC_ANALYSIS_LINEView {
   // 0x14: pad4
 
   // 0x00: pointer
-  set Key(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Key(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set Value(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Value(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -262,7 +262,7 @@ export interface SCESVC_ANALYSIS_INFO {
   /** u32 */
   Count: number;
   /** ptr */
-  Lines: Deno.PointerValue | Uint8Array | null;
+  Lines: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofSCESVC_ANALYSIS_INFO = 16;
@@ -274,7 +274,7 @@ export function allocSCESVC_ANALYSIS_INFO(data?: Partial<SCESVC_ANALYSIS_INFO>):
   if (data?.Count !== undefined) view.setUint32(0, Number(data.Count), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Lines !== undefined) view.setBigUint64(8, data.Lines === null ? 0n : BigInt(util.toPointer(data.Lines)), true);
+  if (data?.Lines !== undefined) view.setBigUint64(8, data.Lines === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Lines))), true);
   return buf;
 }
 
@@ -296,9 +296,9 @@ export class SCESVC_ANALYSIS_INFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Lines(): Uint8Array | Deno.PointerValue | null {
+  get Lines(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -309,8 +309,8 @@ export class SCESVC_ANALYSIS_INFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Lines(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Lines(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -319,15 +319,15 @@ export class SCESVC_ANALYSIS_INFOView {
  */
 export interface SCESVC_CALLBACK_INFO {
   /** ptr */
-  sceHandle: Deno.PointerValue | Uint8Array | null;
+  sceHandle: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Security.ConfigurationSnapin.PFSCE_QUERY_INFO */
-  pfQueryInfo: Uint8Array | Deno.PointerValue | null;
+  pfQueryInfo: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Security.ConfigurationSnapin.PFSCE_SET_INFO */
-  pfSetInfo: Uint8Array | Deno.PointerValue | null;
+  pfSetInfo: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Security.ConfigurationSnapin.PFSCE_FREE_INFO */
-  pfFreeInfo: Uint8Array | Deno.PointerValue | null;
+  pfFreeInfo: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Security.ConfigurationSnapin.PFSCE_LOG_INFO */
-  pfLogInfo: Uint8Array | Deno.PointerValue | null;
+  pfLogInfo: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofSCESVC_CALLBACK_INFO = 40;
@@ -336,15 +336,15 @@ export function allocSCESVC_CALLBACK_INFO(data?: Partial<SCESVC_CALLBACK_INFO>):
   const buf = new Uint8Array(sizeofSCESVC_CALLBACK_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.sceHandle !== undefined) view.setBigUint64(0, data.sceHandle === null ? 0n : BigInt(util.toPointer(data.sceHandle)), true);
+  if (data?.sceHandle !== undefined) view.setBigUint64(0, data.sceHandle === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.sceHandle))), true);
   // 0x08: pointer
-  if (data?.pfQueryInfo !== undefined) view.setBigUint64(8, data.pfQueryInfo === null ? 0n : BigInt(util.toPointer(data.pfQueryInfo)), true);
+  if (data?.pfQueryInfo !== undefined) view.setBigUint64(8, data.pfQueryInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pfQueryInfo))), true);
   // 0x10: pointer
-  if (data?.pfSetInfo !== undefined) view.setBigUint64(16, data.pfSetInfo === null ? 0n : BigInt(util.toPointer(data.pfSetInfo)), true);
+  if (data?.pfSetInfo !== undefined) view.setBigUint64(16, data.pfSetInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pfSetInfo))), true);
   // 0x18: pointer
-  if (data?.pfFreeInfo !== undefined) view.setBigUint64(24, data.pfFreeInfo === null ? 0n : BigInt(util.toPointer(data.pfFreeInfo)), true);
+  if (data?.pfFreeInfo !== undefined) view.setBigUint64(24, data.pfFreeInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pfFreeInfo))), true);
   // 0x20: pointer
-  if (data?.pfLogInfo !== undefined) view.setBigUint64(32, data.pfLogInfo === null ? 0n : BigInt(util.toPointer(data.pfLogInfo)), true);
+  if (data?.pfLogInfo !== undefined) view.setBigUint64(32, data.pfLogInfo === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pfLogInfo))), true);
   return buf;
 }
 
@@ -359,58 +359,58 @@ export class SCESVC_CALLBACK_INFOView {
   }
 
   // 0x00: pointer
-  get sceHandle(): Uint8Array | Deno.PointerValue | null {
+  get sceHandle(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get pfQueryInfo(): Uint8Array | Deno.PointerValue | null {
+  get pfQueryInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get pfSetInfo(): Uint8Array | Deno.PointerValue | null {
+  get pfSetInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get pfFreeInfo(): Uint8Array | Deno.PointerValue | null {
+  get pfFreeInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get pfLogInfo(): Uint8Array | Deno.PointerValue | null {
+  get pfLogInfo(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set sceHandle(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set sceHandle(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set pfQueryInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set pfQueryInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set pfSetInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set pfSetInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set pfFreeInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set pfFreeInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set pfLogInfo(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set pfLogInfo(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 

@@ -240,7 +240,7 @@ export interface XINPUT_STATE {
   /** u32 */
   dwPacketNumber: number;
   /** Windows.Win32.UI.Input.XboxController.XINPUT_GAMEPAD */
-  Gamepad: Uint8Array | Deno.PointerValue | null;
+  Gamepad: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofXINPUT_STATE = 16;
@@ -252,7 +252,7 @@ export function allocXINPUT_STATE(data?: Partial<XINPUT_STATE>): Uint8Array {
   if (data?.dwPacketNumber !== undefined) view.setUint32(0, Number(data.dwPacketNumber), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Gamepad !== undefined) view.setBigUint64(8, data.Gamepad === null ? 0n : BigInt(util.toPointer(data.Gamepad)), true);
+  if (data?.Gamepad !== undefined) view.setBigUint64(8, data.Gamepad === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Gamepad))), true);
   return buf;
 }
 
@@ -274,9 +274,9 @@ export class XINPUT_STATEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Gamepad(): Uint8Array | Deno.PointerValue | null {
+  get Gamepad(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -287,8 +287,8 @@ export class XINPUT_STATEView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Gamepad(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Gamepad(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -361,9 +361,9 @@ export interface XINPUT_CAPABILITIES {
   /** Windows.Win32.UI.Input.XboxController.XINPUT_CAPABILITIES_FLAGS */
   Flags: XINPUT_CAPABILITIES_FLAGS;
   /** Windows.Win32.UI.Input.XboxController.XINPUT_GAMEPAD */
-  Gamepad: Uint8Array | Deno.PointerValue | null;
+  Gamepad: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.Input.XboxController.XINPUT_VIBRATION */
-  Vibration: Uint8Array | Deno.PointerValue | null;
+  Vibration: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofXINPUT_CAPABILITIES = 32;
@@ -379,9 +379,9 @@ export function allocXINPUT_CAPABILITIES(data?: Partial<XINPUT_CAPABILITIES>): U
   if (data?.Flags !== undefined) view.setUint16(8, Number(data.Flags), true);
   // 0x0a: pad6
   // 0x10: pointer
-  if (data?.Gamepad !== undefined) view.setBigUint64(16, data.Gamepad === null ? 0n : BigInt(util.toPointer(data.Gamepad)), true);
+  if (data?.Gamepad !== undefined) view.setBigUint64(16, data.Gamepad === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Gamepad))), true);
   // 0x18: pointer
-  if (data?.Vibration !== undefined) view.setBigUint64(24, data.Vibration === null ? 0n : BigInt(util.toPointer(data.Vibration)), true);
+  if (data?.Vibration !== undefined) view.setBigUint64(24, data.Vibration === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Vibration))), true);
   return buf;
 }
 
@@ -413,15 +413,15 @@ export class XINPUT_CAPABILITIESView {
   // 0x0a: pad6
 
   // 0x10: pointer
-  get Gamepad(): Uint8Array | Deno.PointerValue | null {
+  get Gamepad(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get Vibration(): Uint8Array | Deno.PointerValue | null {
+  get Vibration(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -442,13 +442,13 @@ export class XINPUT_CAPABILITIESView {
   // 0x0a: pad6
 
   // 0x10: pointer
-  set Gamepad(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set Gamepad(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set Vibration(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set Vibration(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -512,7 +512,7 @@ export interface XINPUT_KEYSTROKE {
   /** Windows.Win32.UI.Input.XboxController.XINPUT_VIRTUAL_KEY */
   VirtualKey: XINPUT_VIRTUAL_KEY;
   /** char */
-  Unicode: Uint8Array | Deno.PointerValue | null;
+  Unicode: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.Input.XboxController.XINPUT_KEYSTROKE_FLAGS */
   Flags: XINPUT_KEYSTROKE_FLAGS;
   /** u8 */
@@ -530,7 +530,7 @@ export function allocXINPUT_KEYSTROKE(data?: Partial<XINPUT_KEYSTROKE>): Uint8Ar
   if (data?.VirtualKey !== undefined) view.setUint16(0, Number(data.VirtualKey), true);
   // 0x02: pad6
   // 0x08: pointer
-  if (data?.Unicode !== undefined) view.setBigUint64(8, data.Unicode === null ? 0n : BigInt(util.toPointer(data.Unicode)), true);
+  if (data?.Unicode !== undefined) view.setBigUint64(8, data.Unicode === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Unicode))), true);
   // 0x10: u16
   if (data?.Flags !== undefined) view.setUint16(16, Number(data.Flags), true);
   // 0x12: u8
@@ -559,9 +559,9 @@ export class XINPUT_KEYSTROKEView {
   // 0x02: pad6
 
   // 0x08: pointer
-  get Unicode(): Uint8Array | Deno.PointerValue | null {
+  get Unicode(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u16
@@ -589,8 +589,8 @@ export class XINPUT_KEYSTROKEView {
   // 0x02: pad6
 
   // 0x08: pointer
-  set Unicode(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Unicode(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u16
@@ -613,7 +613,7 @@ export class XINPUT_KEYSTROKEView {
 
 export type BOOL = number;
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 // Native Libraries
 
@@ -654,14 +654,14 @@ try {
 
 export function XInputGetState(
   dwUserIndex: number /* u32 */,
-  pState: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pState: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libxinput1_4_dll.XInputGetState(dwUserIndex, util.toPointer(pState));
 }
 
 export function XInputSetState(
   dwUserIndex: number /* u32 */,
-  pVibration: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pVibration: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libxinput1_4_dll.XInputSetState(dwUserIndex, util.toPointer(pVibration));
 }
@@ -669,7 +669,7 @@ export function XInputSetState(
 export function XInputGetCapabilities(
   dwUserIndex: number /* u32 */,
   dwFlags: XINPUT_FLAG /* Windows.Win32.UI.Input.XboxController.XINPUT_FLAG */,
-  pCapabilities: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pCapabilities: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libxinput1_4_dll.XInputGetCapabilities(dwUserIndex, dwFlags, util.toPointer(pCapabilities));
 }
@@ -683,9 +683,9 @@ export function XInputEnable(
 export function XInputGetAudioDeviceIds(
   dwUserIndex: number /* u32 */,
   pRenderDeviceId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pRenderCount: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pRenderCount: Deno.PointerValue | Uint8Array /* ptr */,
   pCaptureDeviceId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pCaptureCount: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pCaptureCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libxinput1_4_dll.XInputGetAudioDeviceIds(dwUserIndex, util.pwstrToFfi(pRenderDeviceId), util.toPointer(pRenderCount), util.pwstrToFfi(pCaptureDeviceId), util.toPointer(pCaptureCount));
 }
@@ -693,7 +693,7 @@ export function XInputGetAudioDeviceIds(
 export function XInputGetBatteryInformation(
   dwUserIndex: number /* u32 */,
   devType: BATTERY_DEVTYPE /* Windows.Win32.UI.Input.XboxController.BATTERY_DEVTYPE */,
-  pBatteryInformation: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pBatteryInformation: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libxinput1_4_dll.XInputGetBatteryInformation(dwUserIndex, devType, util.toPointer(pBatteryInformation));
 }
@@ -701,7 +701,7 @@ export function XInputGetBatteryInformation(
 export function XInputGetKeystroke(
   dwUserIndex: number /* u32 */,
   dwReserved: number /* u32 */,
-  pKeystroke: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pKeystroke: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libxinput1_4_dll.XInputGetKeystroke(dwUserIndex, dwReserved, util.toPointer(pKeystroke));
 }

@@ -149,9 +149,9 @@ export class _Anonymous_e__StructView {
  */
 export interface _Anonymous_e__Union {
   /** _Anonymous_e__Struct */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
   /** array */
-  X: Deno.PointerValue | null;
+  X: Deno.PointerValue;
 }
 
 export const sizeof_Anonymous_e__Union = 16;
@@ -160,9 +160,9 @@ export function alloc_Anonymous_e__Union(data?: Partial<_Anonymous_e__Union>): U
   const buf = new Uint8Array(sizeof_Anonymous_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(0, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   // 0x08: pointer
-  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(util.toPointer(data.X)), true);
+  if (data?.X !== undefined) view.setBigUint64(8, data.X === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.X))), true);
   return buf;
 }
 
@@ -177,25 +177,25 @@ export class _Anonymous_e__UnionView {
   }
 
   // 0x00: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get X(): Uint8Array | Deno.PointerValue | null {
+  get X(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set X(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set X(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -206,7 +206,7 @@ export interface TBS_CONTEXT_PARAMS2 {
   /** u32 */
   version: number;
   /** _Anonymous_e__Union */
-  Anonymous: Uint8Array | Deno.PointerValue | null;
+  Anonymous: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofTBS_CONTEXT_PARAMS2 = 16;
@@ -218,7 +218,7 @@ export function allocTBS_CONTEXT_PARAMS2(data?: Partial<TBS_CONTEXT_PARAMS2>): U
   if (data?.version !== undefined) view.setUint32(0, Number(data.version), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(util.toPointer(data.Anonymous)), true);
+  if (data?.Anonymous !== undefined) view.setBigUint64(8, data.Anonymous === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Anonymous))), true);
   return buf;
 }
 
@@ -240,9 +240,9 @@ export class TBS_CONTEXT_PARAMS2View {
   // 0x04: pad4
 
   // 0x08: pointer
-  get Anonymous(): Uint8Array | Deno.PointerValue | null {
+  get Anonymous(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -253,8 +253,8 @@ export class TBS_CONTEXT_PARAMS2View {
   // 0x04: pad4
 
   // 0x08: pointer
-  set Anonymous(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Anonymous(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -265,7 +265,7 @@ export interface TPM_WNF_PROVISIONING {
   /** u32 */
   status: number;
   /** array */
-  message: Deno.PointerValue | null;
+  message: Deno.PointerValue;
 }
 
 export const sizeofTPM_WNF_PROVISIONING = 16;
@@ -277,7 +277,7 @@ export function allocTPM_WNF_PROVISIONING(data?: Partial<TPM_WNF_PROVISIONING>):
   if (data?.status !== undefined) view.setUint32(0, Number(data.status), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.message !== undefined) view.setBigUint64(8, data.message === null ? 0n : BigInt(util.toPointer(data.message)), true);
+  if (data?.message !== undefined) view.setBigUint64(8, data.message === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.message))), true);
   return buf;
 }
 
@@ -299,9 +299,9 @@ export class TPM_WNF_PROVISIONINGView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get message(): Uint8Array | Deno.PointerValue | null {
+  get message(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -312,8 +312,8 @@ export class TPM_WNF_PROVISIONINGView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set message(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set message(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -400,7 +400,7 @@ export class TPM_DEVICE_INFOView {
 
 export type HRESULT = number;
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 // Native Libraries
 
@@ -464,66 +464,66 @@ try {
 // Symbols
 
 export function Tbsi_Context_Create(
-  pContextParams: Deno.PointerValue | Uint8Array | null /* ptr */,
-  phContext: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pContextParams: Deno.PointerValue | Uint8Array /* ptr */,
+  phContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libtbs_dll.Tbsi_Context_Create(util.toPointer(pContextParams), util.toPointer(phContext));
 }
 
 export function Tbsip_Context_Close(
-  hContext: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libtbs_dll.Tbsip_Context_Close(util.toPointer(hContext));
 }
 
 export function Tbsip_Submit_Command(
-  hContext: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hContext: Deno.PointerValue | Uint8Array /* ptr */,
   Locality: TBS_COMMAND_LOCALITY /* Windows.Win32.System.TpmBaseServices.TBS_COMMAND_LOCALITY */,
   Priority: TBS_COMMAND_PRIORITY /* Windows.Win32.System.TpmBaseServices.TBS_COMMAND_PRIORITY */,
-  pabCommand: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pabCommand: Deno.PointerValue | Uint8Array /* ptr */,
   cbCommand: number /* u32 */,
-  pabResult: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcbResult: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pabResult: Deno.PointerValue | Uint8Array /* ptr */,
+  pcbResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libtbs_dll.Tbsip_Submit_Command(util.toPointer(hContext), Locality, Priority, util.toPointer(pabCommand), cbCommand, util.toPointer(pabResult), util.toPointer(pcbResult));
 }
 
 export function Tbsip_Cancel_Commands(
-  hContext: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libtbs_dll.Tbsip_Cancel_Commands(util.toPointer(hContext));
 }
 
 export function Tbsi_Physical_Presence_Command(
-  hContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pabInput: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hContext: Deno.PointerValue | Uint8Array /* ptr */,
+  pabInput: Deno.PointerValue | Uint8Array /* ptr */,
   cbInput: number /* u32 */,
-  pabOutput: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcbOutput: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pabOutput: Deno.PointerValue | Uint8Array /* ptr */,
+  pcbOutput: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libtbs_dll.Tbsi_Physical_Presence_Command(util.toPointer(hContext), util.toPointer(pabInput), cbInput, util.toPointer(pabOutput), util.toPointer(pcbOutput));
 }
 
 export function Tbsi_Get_TCG_Log(
-  hContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pOutputBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pOutputBufLen: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hContext: Deno.PointerValue | Uint8Array /* ptr */,
+  pOutputBuf: Deno.PointerValue | Uint8Array /* ptr */,
+  pOutputBufLen: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libtbs_dll.Tbsi_Get_TCG_Log(util.toPointer(hContext), util.toPointer(pOutputBuf), util.toPointer(pOutputBufLen));
 }
 
 export function Tbsi_GetDeviceInfo(
   Size: number /* u32 */,
-  Info: Deno.PointerValue | Uint8Array | null /* ptr */,
+  Info: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libtbs_dll.Tbsi_GetDeviceInfo(Size, util.toPointer(Info));
 }
 
 export function Tbsi_Get_OwnerAuth(
-  hContext: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hContext: Deno.PointerValue | Uint8Array /* ptr */,
   ownerauthType: number /* u32 */,
-  pOutputBuf: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pOutputBufLen: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pOutputBuf: Deno.PointerValue | Uint8Array /* ptr */,
+  pOutputBufLen: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libtbs_dll.Tbsi_Get_OwnerAuth(util.toPointer(hContext), ownerauthType, util.toPointer(pOutputBuf), util.toPointer(pOutputBufLen));
 }
@@ -533,21 +533,21 @@ export function Tbsi_Revoke_Attestation(): number /* u32 */ {
 }
 
 export function GetDeviceID(
-  pbWindowsAIK: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pbWindowsAIK: Deno.PointerValue | Uint8Array /* ptr */,
   cbWindowsAIK: number /* u32 */,
-  pcbResult: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfProtectedByTPM: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libtbs_dll.GetDeviceID(util.toPointer(pbWindowsAIK), cbWindowsAIK, util.toPointer(pcbResult), util.toPointer(pfProtectedByTPM)));
+  pcbResult: Deno.PointerValue | Uint8Array /* ptr */,
+  pfProtectedByTPM: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libtbs_dll.GetDeviceID(util.toPointer(pbWindowsAIK), cbWindowsAIK, util.toPointer(pcbResult), util.toPointer(pfProtectedByTPM));
 }
 
 export function GetDeviceIDString(
   pszWindowsAIK: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchWindowsAIK: number /* u32 */,
-  pcchResult: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfProtectedByTPM: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libtbs_dll.GetDeviceIDString(util.pwstrToFfi(pszWindowsAIK), cchWindowsAIK, util.toPointer(pcchResult), util.toPointer(pfProtectedByTPM)));
+  pcchResult: Deno.PointerValue | Uint8Array /* ptr */,
+  pfProtectedByTPM: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libtbs_dll.GetDeviceIDString(util.pwstrToFfi(pszWindowsAIK), cchWindowsAIK, util.toPointer(pcchResult), util.toPointer(pfProtectedByTPM));
 }
 
 export function Tbsi_Create_Windows_Key(
@@ -558,8 +558,8 @@ export function Tbsi_Create_Windows_Key(
 
 export function Tbsi_Get_TCG_Log_Ex(
   logType: number /* u32 */,
-  pbOutput: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcbOutput: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pbOutput: Deno.PointerValue | Uint8Array /* ptr */,
+  pcbOutput: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libtbs_dll.Tbsi_Get_TCG_Log_Ex(logType, util.toPointer(pbOutput), util.toPointer(pcbOutput));
 }

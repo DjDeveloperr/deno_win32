@@ -1320,7 +1320,7 @@ export class DWRITE_FONT_FEATUREView {
  */
 export interface DWRITE_TYPOGRAPHIC_FEATURES {
   /** ptr */
-  features: Deno.PointerValue | Uint8Array | null;
+  features: Deno.PointerValue | Uint8Array;
   /** u32 */
   featureCount: number;
 }
@@ -1331,7 +1331,7 @@ export function allocDWRITE_TYPOGRAPHIC_FEATURES(data?: Partial<DWRITE_TYPOGRAPH
   const buf = new Uint8Array(sizeofDWRITE_TYPOGRAPHIC_FEATURES);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.features !== undefined) view.setBigUint64(0, data.features === null ? 0n : BigInt(util.toPointer(data.features)), true);
+  if (data?.features !== undefined) view.setBigUint64(0, data.features === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.features))), true);
   // 0x08: u32
   if (data?.featureCount !== undefined) view.setUint32(8, Number(data.featureCount), true);
   // 0x0c: pad4
@@ -1349,9 +1349,9 @@ export class DWRITE_TYPOGRAPHIC_FEATURESView {
   }
 
   // 0x00: pointer
-  get features(): Uint8Array | Deno.PointerValue | null {
+  get features(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -1362,8 +1362,8 @@ export class DWRITE_TYPOGRAPHIC_FEATURESView {
   // 0x0c: pad4
 
   // 0x00: pointer
-  set features(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set features(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -1643,17 +1643,17 @@ export type BOOL = number;
  */
 export interface DWRITE_GLYPH_RUN {
   /** Windows.Win32.Graphics.DirectWrite.IDWriteFontFace */
-  fontFace: Uint8Array | Deno.PointerValue | null;
+  fontFace: Uint8Array | Deno.PointerValue;
   /** f32 */
   fontEmSize: number;
   /** u32 */
   glyphCount: number;
   /** ptr */
-  glyphIndices: Deno.PointerValue | Uint8Array | null;
+  glyphIndices: Deno.PointerValue | Uint8Array;
   /** ptr */
-  glyphAdvances: Deno.PointerValue | Uint8Array | null;
+  glyphAdvances: Deno.PointerValue | Uint8Array;
   /** ptr */
-  glyphOffsets: Deno.PointerValue | Uint8Array | null;
+  glyphOffsets: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.BOOL */
   isSideways: boolean;
   /** u32 */
@@ -1666,17 +1666,17 @@ export function allocDWRITE_GLYPH_RUN(data?: Partial<DWRITE_GLYPH_RUN>): Uint8Ar
   const buf = new Uint8Array(sizeofDWRITE_GLYPH_RUN);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.fontFace !== undefined) view.setBigUint64(0, data.fontFace === null ? 0n : BigInt(util.toPointer(data.fontFace)), true);
+  if (data?.fontFace !== undefined) view.setBigUint64(0, data.fontFace === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.fontFace))), true);
   // 0x08: f32
   if (data?.fontEmSize !== undefined) view.setFloat32(8, Number(data.fontEmSize), true);
   // 0x0c: u32
   if (data?.glyphCount !== undefined) view.setUint32(12, Number(data.glyphCount), true);
   // 0x10: pointer
-  if (data?.glyphIndices !== undefined) view.setBigUint64(16, data.glyphIndices === null ? 0n : BigInt(util.toPointer(data.glyphIndices)), true);
+  if (data?.glyphIndices !== undefined) view.setBigUint64(16, data.glyphIndices === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.glyphIndices))), true);
   // 0x18: pointer
-  if (data?.glyphAdvances !== undefined) view.setBigUint64(24, data.glyphAdvances === null ? 0n : BigInt(util.toPointer(data.glyphAdvances)), true);
+  if (data?.glyphAdvances !== undefined) view.setBigUint64(24, data.glyphAdvances === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.glyphAdvances))), true);
   // 0x20: pointer
-  if (data?.glyphOffsets !== undefined) view.setBigUint64(32, data.glyphOffsets === null ? 0n : BigInt(util.toPointer(data.glyphOffsets)), true);
+  if (data?.glyphOffsets !== undefined) view.setBigUint64(32, data.glyphOffsets === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.glyphOffsets))), true);
   // 0x28: i32
   if (data?.isSideways !== undefined) view.setInt32(40, Number(data.isSideways), true);
   // 0x2c: u32
@@ -1695,9 +1695,9 @@ export class DWRITE_GLYPH_RUNView {
   }
 
   // 0x00: pointer
-  get fontFace(): Uint8Array | Deno.PointerValue | null {
+  get fontFace(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: f32
@@ -1711,21 +1711,21 @@ export class DWRITE_GLYPH_RUNView {
   }
 
   // 0x10: pointer
-  get glyphIndices(): Uint8Array | Deno.PointerValue | null {
+  get glyphIndices(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get glyphAdvances(): Uint8Array | Deno.PointerValue | null {
+  get glyphAdvances(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get glyphOffsets(): Uint8Array | Deno.PointerValue | null {
+  get glyphOffsets(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: i32
@@ -1739,8 +1739,8 @@ export class DWRITE_GLYPH_RUNView {
   }
 
   // 0x00: pointer
-  set fontFace(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set fontFace(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: f32
@@ -1754,18 +1754,18 @@ export class DWRITE_GLYPH_RUNView {
   }
 
   // 0x10: pointer
-  set glyphIndices(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set glyphIndices(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set glyphAdvances(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set glyphAdvances(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set glyphOffsets(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set glyphOffsets(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: i32
@@ -1779,7 +1779,7 @@ export class DWRITE_GLYPH_RUNView {
   }
 }
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.Graphics.DirectWrite.DWRITE_GLYPH_RUN_DESCRIPTION (size: 40)
@@ -1792,7 +1792,7 @@ export interface DWRITE_GLYPH_RUN_DESCRIPTION {
   /** u32 */
   stringLength: number;
   /** ptr */
-  clusterMap: Deno.PointerValue | Uint8Array | null;
+  clusterMap: Deno.PointerValue | Uint8Array;
   /** u32 */
   textPosition: number;
 }
@@ -1805,18 +1805,18 @@ export function allocDWRITE_GLYPH_RUN_DESCRIPTION(data?: Partial<DWRITE_GLYPH_RU
   // 0x00: buffer
   if (data?.localeName !== undefined) {
     (buf as any)._f0 = util.pwstrToFfi(data.localeName);
-    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f0)), true);
+    view.setBigUint64(0, (buf as any)._f0 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f0))), true);
   }
   // 0x08: buffer
   if (data?.string !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.string);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: u32
   if (data?.stringLength !== undefined) view.setUint32(16, Number(data.stringLength), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.clusterMap !== undefined) view.setBigUint64(24, data.clusterMap === null ? 0n : BigInt(util.toPointer(data.clusterMap)), true);
+  if (data?.clusterMap !== undefined) view.setBigUint64(24, data.clusterMap === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.clusterMap))), true);
   // 0x20: u32
   if (data?.textPosition !== undefined) view.setUint32(32, Number(data.textPosition), true);
   // 0x24: pad4
@@ -1834,15 +1834,15 @@ export class DWRITE_GLYPH_RUN_DESCRIPTIONView {
   }
 
   // 0x00: buffer
-  get localeName(): Uint8Array | Deno.PointerValue | null {
+  get localeName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: buffer
-  get string(): Uint8Array | Deno.PointerValue | null {
+  get string(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -1853,9 +1853,9 @@ export class DWRITE_GLYPH_RUN_DESCRIPTIONView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get clusterMap(): Uint8Array | Deno.PointerValue | null {
+  get clusterMap(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -1866,15 +1866,15 @@ export class DWRITE_GLYPH_RUN_DESCRIPTIONView {
   // 0x24: pad4
 
   // 0x00: buffer
-  set localeName(value: Uint8Array | Deno.PointerValue | null) {
+  set localeName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f0 = value;
-    this.view.setBigUint64(0, BigInt(util.toPointer((this.buf as any)._f0)), true);
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f0))), true);
   }
 
   // 0x08: buffer
-  set string(value: Uint8Array | Deno.PointerValue | null) {
+  set string(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: u32
@@ -1885,8 +1885,8 @@ export class DWRITE_GLYPH_RUN_DESCRIPTIONView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set clusterMap(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set clusterMap(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -1939,7 +1939,7 @@ export function allocDWRITE_UNDERLINE(data?: Partial<DWRITE_UNDERLINE>): Uint8Ar
   // 0x18: buffer
   if (data?.localeName !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.localeName);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: i32
   if (data?.measuringMode !== undefined) view.setInt32(32, Number(data.measuringMode), true);
@@ -1988,9 +1988,9 @@ export class DWRITE_UNDERLINEView {
   }
 
   // 0x18: buffer
-  get localeName(): Uint8Array | Deno.PointerValue | null {
+  get localeName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: i32
@@ -2031,9 +2031,9 @@ export class DWRITE_UNDERLINEView {
   }
 
   // 0x18: buffer
-  set localeName(value: Uint8Array | Deno.PointerValue | null) {
+  set localeName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: i32
@@ -2083,7 +2083,7 @@ export function allocDWRITE_STRIKETHROUGH(data?: Partial<DWRITE_STRIKETHROUGH>):
   // 0x18: buffer
   if (data?.localeName !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.localeName);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: i32
   if (data?.measuringMode !== undefined) view.setInt32(32, Number(data.measuringMode), true);
@@ -2129,9 +2129,9 @@ export class DWRITE_STRIKETHROUGHView {
   // 0x14: pad4
 
   // 0x18: buffer
-  get localeName(): Uint8Array | Deno.PointerValue | null {
+  get localeName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: i32
@@ -2169,9 +2169,9 @@ export class DWRITE_STRIKETHROUGHView {
   // 0x14: pad4
 
   // 0x18: buffer
-  set localeName(value: Uint8Array | Deno.PointerValue | null) {
+  set localeName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: i32
@@ -2837,7 +2837,7 @@ export class DWRITE_HIT_TEST_METRICSView {
  */
 export interface DWRITE_FONT_METRICS1 {
   /** Windows.Win32.Graphics.DirectWrite.DWRITE_FONT_METRICS */
-  Base: Uint8Array | Deno.PointerValue | null;
+  Base: Uint8Array | Deno.PointerValue;
   /** i16 */
   glyphBoxLeft: number;
   /** i16 */
@@ -2872,7 +2872,7 @@ export function allocDWRITE_FONT_METRICS1(data?: Partial<DWRITE_FONT_METRICS1>):
   const buf = new Uint8Array(sizeofDWRITE_FONT_METRICS1);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Base))), true);
   // 0x08: i16
   if (data?.glyphBoxLeft !== undefined) view.setInt16(8, Number(data.glyphBoxLeft), true);
   // 0x0a: i16
@@ -2914,9 +2914,9 @@ export class DWRITE_FONT_METRICS1View {
   }
 
   // 0x00: pointer
-  get Base(): Uint8Array | Deno.PointerValue | null {
+  get Base(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: i16
@@ -2987,8 +2987,8 @@ export class DWRITE_FONT_METRICS1View {
   // 0x24: pad4
 
   // 0x00: pointer
-  set Base(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Base(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: i16
@@ -3816,17 +3816,17 @@ export class _symbol_e__StructView {
  */
 export interface DWRITE_PANOSE {
   /** array */
-  values: Deno.PointerValue | null;
+  values: Deno.PointerValue;
   /** u8 */
   familyKind: number;
   /** _text_e__Struct */
-  text: Uint8Array | Deno.PointerValue | null;
+  text: Uint8Array | Deno.PointerValue;
   /** _script_e__Struct */
-  script: Uint8Array | Deno.PointerValue | null;
+  script: Uint8Array | Deno.PointerValue;
   /** _decorative_e__Struct */
-  decorative: Uint8Array | Deno.PointerValue | null;
+  decorative: Uint8Array | Deno.PointerValue;
   /** _symbol_e__Struct */
-  symbol: Uint8Array | Deno.PointerValue | null;
+  symbol: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDWRITE_PANOSE = 48;
@@ -3835,18 +3835,18 @@ export function allocDWRITE_PANOSE(data?: Partial<DWRITE_PANOSE>): Uint8Array {
   const buf = new Uint8Array(sizeofDWRITE_PANOSE);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.values !== undefined) view.setBigUint64(0, data.values === null ? 0n : BigInt(util.toPointer(data.values)), true);
+  if (data?.values !== undefined) view.setBigUint64(0, data.values === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.values))), true);
   // 0x08: u8
   if (data?.familyKind !== undefined) view.setUint8(8, Number(data.familyKind));
   // 0x09: pad7
   // 0x10: pointer
-  if (data?.text !== undefined) view.setBigUint64(16, data.text === null ? 0n : BigInt(util.toPointer(data.text)), true);
+  if (data?.text !== undefined) view.setBigUint64(16, data.text === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.text))), true);
   // 0x18: pointer
-  if (data?.script !== undefined) view.setBigUint64(24, data.script === null ? 0n : BigInt(util.toPointer(data.script)), true);
+  if (data?.script !== undefined) view.setBigUint64(24, data.script === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.script))), true);
   // 0x20: pointer
-  if (data?.decorative !== undefined) view.setBigUint64(32, data.decorative === null ? 0n : BigInt(util.toPointer(data.decorative)), true);
+  if (data?.decorative !== undefined) view.setBigUint64(32, data.decorative === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.decorative))), true);
   // 0x28: pointer
-  if (data?.symbol !== undefined) view.setBigUint64(40, data.symbol === null ? 0n : BigInt(util.toPointer(data.symbol)), true);
+  if (data?.symbol !== undefined) view.setBigUint64(40, data.symbol === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.symbol))), true);
   return buf;
 }
 
@@ -3861,9 +3861,9 @@ export class DWRITE_PANOSEView {
   }
 
   // 0x00: pointer
-  get values(): Uint8Array | Deno.PointerValue | null {
+  get values(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u8
@@ -3874,32 +3874,32 @@ export class DWRITE_PANOSEView {
   // 0x09: pad7
 
   // 0x10: pointer
-  get text(): Uint8Array | Deno.PointerValue | null {
+  get text(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get script(): Uint8Array | Deno.PointerValue | null {
+  get script(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get decorative(): Uint8Array | Deno.PointerValue | null {
+  get decorative(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get symbol(): Uint8Array | Deno.PointerValue | null {
+  get symbol(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set values(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set values(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u8
@@ -3910,23 +3910,23 @@ export class DWRITE_PANOSEView {
   // 0x09: pad7
 
   // 0x10: pointer
-  set text(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set text(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set script(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set script(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set decorative(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set decorative(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set symbol(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set symbol(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -4169,7 +4169,7 @@ export class DWRITE_JUSTIFICATION_OPPORTUNITYView {
  */
 export interface DWRITE_TEXT_METRICS1 {
   /** Windows.Win32.Graphics.DirectWrite.DWRITE_TEXT_METRICS */
-  Base: Uint8Array | Deno.PointerValue | null;
+  Base: Uint8Array | Deno.PointerValue;
   /** f32 */
   heightIncludingTrailingWhitespace: number;
 }
@@ -4180,7 +4180,7 @@ export function allocDWRITE_TEXT_METRICS1(data?: Partial<DWRITE_TEXT_METRICS1>):
   const buf = new Uint8Array(sizeofDWRITE_TEXT_METRICS1);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Base))), true);
   // 0x08: f32
   if (data?.heightIncludingTrailingWhitespace !== undefined) view.setFloat32(8, Number(data.heightIncludingTrailingWhitespace), true);
   // 0x0c: pad4
@@ -4198,9 +4198,9 @@ export class DWRITE_TEXT_METRICS1View {
   }
 
   // 0x00: pointer
-  get Base(): Uint8Array | Deno.PointerValue | null {
+  get Base(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: f32
@@ -4211,8 +4211,8 @@ export class DWRITE_TEXT_METRICS1View {
   // 0x0c: pad4
 
   // 0x00: pointer
-  set Base(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Base(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: f32
@@ -4228,15 +4228,15 @@ export class DWRITE_TEXT_METRICS1View {
  */
 export interface DWRITE_COLOR_GLYPH_RUN {
   /** Windows.Win32.Graphics.DirectWrite.DWRITE_GLYPH_RUN */
-  glyphRun: Uint8Array | Deno.PointerValue | null;
+  glyphRun: Uint8Array | Deno.PointerValue;
   /** ptr */
-  glyphRunDescription: Deno.PointerValue | Uint8Array | null;
+  glyphRunDescription: Deno.PointerValue | Uint8Array;
   /** f32 */
   baselineOriginX: number;
   /** f32 */
   baselineOriginY: number;
   /** Windows.Win32.Graphics.DirectWrite.DWRITE_COLOR_F */
-  runColor: Uint8Array | Deno.PointerValue | null;
+  runColor: Uint8Array | Deno.PointerValue;
   /** u16 */
   paletteIndex: number;
 }
@@ -4247,15 +4247,15 @@ export function allocDWRITE_COLOR_GLYPH_RUN(data?: Partial<DWRITE_COLOR_GLYPH_RU
   const buf = new Uint8Array(sizeofDWRITE_COLOR_GLYPH_RUN);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.glyphRun !== undefined) view.setBigUint64(0, data.glyphRun === null ? 0n : BigInt(util.toPointer(data.glyphRun)), true);
+  if (data?.glyphRun !== undefined) view.setBigUint64(0, data.glyphRun === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.glyphRun))), true);
   // 0x08: pointer
-  if (data?.glyphRunDescription !== undefined) view.setBigUint64(8, data.glyphRunDescription === null ? 0n : BigInt(util.toPointer(data.glyphRunDescription)), true);
+  if (data?.glyphRunDescription !== undefined) view.setBigUint64(8, data.glyphRunDescription === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.glyphRunDescription))), true);
   // 0x10: f32
   if (data?.baselineOriginX !== undefined) view.setFloat32(16, Number(data.baselineOriginX), true);
   // 0x14: f32
   if (data?.baselineOriginY !== undefined) view.setFloat32(20, Number(data.baselineOriginY), true);
   // 0x18: pointer
-  if (data?.runColor !== undefined) view.setBigUint64(24, data.runColor === null ? 0n : BigInt(util.toPointer(data.runColor)), true);
+  if (data?.runColor !== undefined) view.setBigUint64(24, data.runColor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.runColor))), true);
   // 0x20: u16
   if (data?.paletteIndex !== undefined) view.setUint16(32, Number(data.paletteIndex), true);
   // 0x22: pad6
@@ -4273,15 +4273,15 @@ export class DWRITE_COLOR_GLYPH_RUNView {
   }
 
   // 0x00: pointer
-  get glyphRun(): Uint8Array | Deno.PointerValue | null {
+  get glyphRun(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get glyphRunDescription(): Uint8Array | Deno.PointerValue | null {
+  get glyphRunDescription(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: f32
@@ -4295,9 +4295,9 @@ export class DWRITE_COLOR_GLYPH_RUNView {
   }
 
   // 0x18: pointer
-  get runColor(): Uint8Array | Deno.PointerValue | null {
+  get runColor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u16
@@ -4308,13 +4308,13 @@ export class DWRITE_COLOR_GLYPH_RUNView {
   // 0x22: pad6
 
   // 0x00: pointer
-  set glyphRun(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set glyphRun(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set glyphRunDescription(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set glyphRunDescription(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: f32
@@ -4328,8 +4328,8 @@ export class DWRITE_COLOR_GLYPH_RUNView {
   }
 
   // 0x18: pointer
-  set runColor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set runColor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u16
@@ -4363,12 +4363,12 @@ export function allocDWRITE_FONT_PROPERTY(data?: Partial<DWRITE_FONT_PROPERTY>):
   // 0x08: buffer
   if (data?.propertyValue !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.propertyValue);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.localeName !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.localeName);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   return buf;
 }
@@ -4391,15 +4391,15 @@ export class DWRITE_FONT_PROPERTYView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get propertyValue(): Uint8Array | Deno.PointerValue | null {
+  get propertyValue(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get localeName(): Uint8Array | Deno.PointerValue | null {
+  get localeName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -4410,15 +4410,15 @@ export class DWRITE_FONT_PROPERTYView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set propertyValue(value: Uint8Array | Deno.PointerValue | null) {
+  set propertyValue(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set localeName(value: Uint8Array | Deno.PointerValue | null) {
+  set localeName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 }
 
@@ -4427,7 +4427,7 @@ export class DWRITE_FONT_PROPERTYView {
  */
 export interface DWRITE_LINE_METRICS1 {
   /** Windows.Win32.Graphics.DirectWrite.DWRITE_LINE_METRICS */
-  Base: Uint8Array | Deno.PointerValue | null;
+  Base: Uint8Array | Deno.PointerValue;
   /** f32 */
   leadingBefore: number;
   /** f32 */
@@ -4440,7 +4440,7 @@ export function allocDWRITE_LINE_METRICS1(data?: Partial<DWRITE_LINE_METRICS1>):
   const buf = new Uint8Array(sizeofDWRITE_LINE_METRICS1);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Base))), true);
   // 0x08: f32
   if (data?.leadingBefore !== undefined) view.setFloat32(8, Number(data.leadingBefore), true);
   // 0x0c: f32
@@ -4459,9 +4459,9 @@ export class DWRITE_LINE_METRICS1View {
   }
 
   // 0x00: pointer
-  get Base(): Uint8Array | Deno.PointerValue | null {
+  get Base(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: f32
@@ -4475,8 +4475,8 @@ export class DWRITE_LINE_METRICS1View {
   }
 
   // 0x00: pointer
-  set Base(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Base(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: f32
@@ -4595,7 +4595,7 @@ export class DWRITE_LINE_SPACINGView {
  */
 export interface DWRITE_COLOR_GLYPH_RUN1 {
   /** Windows.Win32.Graphics.DirectWrite.DWRITE_COLOR_GLYPH_RUN */
-  Base: Uint8Array | Deno.PointerValue | null;
+  Base: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.DirectWrite.DWRITE_GLYPH_IMAGE_FORMATS */
   glyphImageFormat: DWRITE_GLYPH_IMAGE_FORMATS;
   /** Windows.Win32.Graphics.DirectWrite.DWRITE_MEASURING_MODE */
@@ -4608,7 +4608,7 @@ export function allocDWRITE_COLOR_GLYPH_RUN1(data?: Partial<DWRITE_COLOR_GLYPH_R
   const buf = new Uint8Array(sizeofDWRITE_COLOR_GLYPH_RUN1);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(util.toPointer(data.Base)), true);
+  if (data?.Base !== undefined) view.setBigUint64(0, data.Base === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Base))), true);
   // 0x08: u32
   if (data?.glyphImageFormat !== undefined) view.setUint32(8, Number(data.glyphImageFormat), true);
   // 0x0c: i32
@@ -4627,9 +4627,9 @@ export class DWRITE_COLOR_GLYPH_RUN1View {
   }
 
   // 0x00: pointer
-  get Base(): Uint8Array | Deno.PointerValue | null {
+  get Base(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -4643,8 +4643,8 @@ export class DWRITE_COLOR_GLYPH_RUN1View {
   }
 
   // 0x00: pointer
-  set Base(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Base(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -4769,7 +4769,7 @@ export class POINTView {
  */
 export interface DWRITE_GLYPH_IMAGE_DATA {
   /** ptr */
-  imageData: Deno.PointerValue | Uint8Array | null;
+  imageData: Deno.PointerValue | Uint8Array;
   /** u32 */
   imageDataSize: number;
   /** u32 */
@@ -4777,15 +4777,15 @@ export interface DWRITE_GLYPH_IMAGE_DATA {
   /** u32 */
   pixelsPerEm: number;
   /** Windows.Win32.Graphics.Direct2D.Common.D2D_SIZE_U */
-  pixelSize: Uint8Array | Deno.PointerValue | null;
+  pixelSize: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.POINT */
-  horizontalLeftOrigin: Uint8Array | Deno.PointerValue | null;
+  horizontalLeftOrigin: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.POINT */
-  horizontalRightOrigin: Uint8Array | Deno.PointerValue | null;
+  horizontalRightOrigin: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.POINT */
-  verticalTopOrigin: Uint8Array | Deno.PointerValue | null;
+  verticalTopOrigin: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.POINT */
-  verticalBottomOrigin: Uint8Array | Deno.PointerValue | null;
+  verticalBottomOrigin: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofDWRITE_GLYPH_IMAGE_DATA = 64;
@@ -4794,7 +4794,7 @@ export function allocDWRITE_GLYPH_IMAGE_DATA(data?: Partial<DWRITE_GLYPH_IMAGE_D
   const buf = new Uint8Array(sizeofDWRITE_GLYPH_IMAGE_DATA);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.imageData !== undefined) view.setBigUint64(0, data.imageData === null ? 0n : BigInt(util.toPointer(data.imageData)), true);
+  if (data?.imageData !== undefined) view.setBigUint64(0, data.imageData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.imageData))), true);
   // 0x08: u32
   if (data?.imageDataSize !== undefined) view.setUint32(8, Number(data.imageDataSize), true);
   // 0x0c: u32
@@ -4803,15 +4803,15 @@ export function allocDWRITE_GLYPH_IMAGE_DATA(data?: Partial<DWRITE_GLYPH_IMAGE_D
   if (data?.pixelsPerEm !== undefined) view.setUint32(16, Number(data.pixelsPerEm), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.pixelSize !== undefined) view.setBigUint64(24, data.pixelSize === null ? 0n : BigInt(util.toPointer(data.pixelSize)), true);
+  if (data?.pixelSize !== undefined) view.setBigUint64(24, data.pixelSize === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pixelSize))), true);
   // 0x20: pointer
-  if (data?.horizontalLeftOrigin !== undefined) view.setBigUint64(32, data.horizontalLeftOrigin === null ? 0n : BigInt(util.toPointer(data.horizontalLeftOrigin)), true);
+  if (data?.horizontalLeftOrigin !== undefined) view.setBigUint64(32, data.horizontalLeftOrigin === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.horizontalLeftOrigin))), true);
   // 0x28: pointer
-  if (data?.horizontalRightOrigin !== undefined) view.setBigUint64(40, data.horizontalRightOrigin === null ? 0n : BigInt(util.toPointer(data.horizontalRightOrigin)), true);
+  if (data?.horizontalRightOrigin !== undefined) view.setBigUint64(40, data.horizontalRightOrigin === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.horizontalRightOrigin))), true);
   // 0x30: pointer
-  if (data?.verticalTopOrigin !== undefined) view.setBigUint64(48, data.verticalTopOrigin === null ? 0n : BigInt(util.toPointer(data.verticalTopOrigin)), true);
+  if (data?.verticalTopOrigin !== undefined) view.setBigUint64(48, data.verticalTopOrigin === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.verticalTopOrigin))), true);
   // 0x38: pointer
-  if (data?.verticalBottomOrigin !== undefined) view.setBigUint64(56, data.verticalBottomOrigin === null ? 0n : BigInt(util.toPointer(data.verticalBottomOrigin)), true);
+  if (data?.verticalBottomOrigin !== undefined) view.setBigUint64(56, data.verticalBottomOrigin === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.verticalBottomOrigin))), true);
   return buf;
 }
 
@@ -4826,9 +4826,9 @@ export class DWRITE_GLYPH_IMAGE_DATAView {
   }
 
   // 0x00: pointer
-  get imageData(): Uint8Array | Deno.PointerValue | null {
+  get imageData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -4849,38 +4849,38 @@ export class DWRITE_GLYPH_IMAGE_DATAView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get pixelSize(): Uint8Array | Deno.PointerValue | null {
+  get pixelSize(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get horizontalLeftOrigin(): Uint8Array | Deno.PointerValue | null {
+  get horizontalLeftOrigin(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get horizontalRightOrigin(): Uint8Array | Deno.PointerValue | null {
+  get horizontalRightOrigin(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: pointer
-  get verticalTopOrigin(): Uint8Array | Deno.PointerValue | null {
+  get verticalTopOrigin(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: pointer
-  get verticalBottomOrigin(): Uint8Array | Deno.PointerValue | null {
+  get verticalBottomOrigin(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set imageData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set imageData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -4901,28 +4901,28 @@ export class DWRITE_GLYPH_IMAGE_DATAView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set pixelSize(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set pixelSize(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set horizontalLeftOrigin(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set horizontalLeftOrigin(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set horizontalRightOrigin(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set horizontalRightOrigin(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: pointer
-  set verticalTopOrigin(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set verticalTopOrigin(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: pointer
-  set verticalBottomOrigin(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set verticalBottomOrigin(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -5121,9 +5121,9 @@ try {
 
 export function DWriteCreateFactory(
   factoryType: DWRITE_FACTORY_TYPE /* Windows.Win32.Graphics.DirectWrite.DWRITE_FACTORY_TYPE */,
-  iid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  factory: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libDWrite_dll.DWriteCreateFactory(factoryType, util.toPointer(iid), util.toPointer(factory)));
+  iid: Deno.PointerValue | Uint8Array /* ptr */,
+  factory: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libDWrite_dll.DWriteCreateFactory(factoryType, util.toPointer(iid), util.toPointer(factory));
 }
 

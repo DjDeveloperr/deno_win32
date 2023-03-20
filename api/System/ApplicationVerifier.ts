@@ -41,7 +41,7 @@ export interface AVRF_BACKTRACE_INFORMATION {
   /** u32 */
   Index: number;
   /** array */
-  ReturnAddresses: Deno.PointerValue | null;
+  ReturnAddresses: Deno.PointerValue;
 }
 
 export const sizeofAVRF_BACKTRACE_INFORMATION = 16;
@@ -54,7 +54,7 @@ export function allocAVRF_BACKTRACE_INFORMATION(data?: Partial<AVRF_BACKTRACE_IN
   // 0x04: u32
   if (data?.Index !== undefined) view.setUint32(4, Number(data.Index), true);
   // 0x08: pointer
-  if (data?.ReturnAddresses !== undefined) view.setBigUint64(8, data.ReturnAddresses === null ? 0n : BigInt(util.toPointer(data.ReturnAddresses)), true);
+  if (data?.ReturnAddresses !== undefined) view.setBigUint64(8, data.ReturnAddresses === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ReturnAddresses))), true);
   return buf;
 }
 
@@ -79,9 +79,9 @@ export class AVRF_BACKTRACE_INFORMATIONView {
   }
 
   // 0x08: pointer
-  get ReturnAddresses(): Uint8Array | Deno.PointerValue | null {
+  get ReturnAddresses(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -95,8 +95,8 @@ export class AVRF_BACKTRACE_INFORMATIONView {
   }
 
   // 0x08: pointer
-  set ReturnAddresses(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set ReturnAddresses(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -121,7 +121,7 @@ export interface AVRF_HEAP_ALLOCATION {
   /** u64 */
   HeapContext: Deno.PointerValue;
   /** ptr */
-  BackTraceInformation: Deno.PointerValue | Uint8Array | null;
+  BackTraceInformation: Deno.PointerValue | Uint8Array;
 }
 
 export const sizeofAVRF_HEAP_ALLOCATION = 64;
@@ -146,7 +146,7 @@ export function allocAVRF_HEAP_ALLOCATION(data?: Partial<AVRF_HEAP_ALLOCATION>):
   // 0x30: u64
   if (data?.HeapContext !== undefined) view.setBigUint64(48, BigInt(data.HeapContext), true);
   // 0x38: pointer
-  if (data?.BackTraceInformation !== undefined) view.setBigUint64(56, data.BackTraceInformation === null ? 0n : BigInt(util.toPointer(data.BackTraceInformation)), true);
+  if (data?.BackTraceInformation !== undefined) view.setBigUint64(56, data.BackTraceInformation === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BackTraceInformation))), true);
   return buf;
 }
 
@@ -201,9 +201,9 @@ export class AVRF_HEAP_ALLOCATIONView {
   }
 
   // 0x38: pointer
-  get BackTraceInformation(): Uint8Array | Deno.PointerValue | null {
+  get BackTraceInformation(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u64
@@ -247,8 +247,8 @@ export class AVRF_HEAP_ALLOCATIONView {
   }
 
   // 0x38: pointer
-  set BackTraceInformation(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set BackTraceInformation(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -267,7 +267,7 @@ export interface AVRF_HANDLE_OPERATION {
   /** u32 */
   Spare0: number;
   /** Windows.Win32.System.ApplicationVerifier.AVRF_BACKTRACE_INFORMATION */
-  BackTraceInformation: Uint8Array | Deno.PointerValue | null;
+  BackTraceInformation: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofAVRF_HANDLE_OPERATION = 32;
@@ -286,7 +286,7 @@ export function allocAVRF_HANDLE_OPERATION(data?: Partial<AVRF_HANDLE_OPERATION>
   // 0x14: u32
   if (data?.Spare0 !== undefined) view.setUint32(20, Number(data.Spare0), true);
   // 0x18: pointer
-  if (data?.BackTraceInformation !== undefined) view.setBigUint64(24, data.BackTraceInformation === null ? 0n : BigInt(util.toPointer(data.BackTraceInformation)), true);
+  if (data?.BackTraceInformation !== undefined) view.setBigUint64(24, data.BackTraceInformation === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BackTraceInformation))), true);
   return buf;
 }
 
@@ -326,9 +326,9 @@ export class AVRF_HANDLE_OPERATIONView {
   }
 
   // 0x18: pointer
-  get BackTraceInformation(): Uint8Array | Deno.PointerValue | null {
+  get BackTraceInformation(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u64
@@ -357,8 +357,8 @@ export class AVRF_HANDLE_OPERATIONView {
   }
 
   // 0x18: pointer
-  set BackTraceInformation(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set BackTraceInformation(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -378,11 +378,11 @@ try {
 // Symbols
 
 export function VerifierEnumerateResource(
-  Process: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  Process: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Flags: VERIFIER_ENUM_RESOURCE_FLAGS /* Windows.Win32.System.ApplicationVerifier.VERIFIER_ENUM_RESOURCE_FLAGS */,
   ResourceType: eAvrfResourceTypes /* Windows.Win32.System.ApplicationVerifier.eAvrfResourceTypes */,
-  ResourceCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.ApplicationVerifier.AVRF_RESOURCE_ENUMERATE_CALLBACK */,
-  EnumerationContext: Deno.PointerValue | Uint8Array | null /* ptr */,
+  ResourceCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationVerifier.AVRF_RESOURCE_ENUMERATE_CALLBACK */,
+  EnumerationContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libverifier_dll.VerifierEnumerateResource(util.toPointer(Process), Flags, ResourceType, util.toPointer(ResourceCallback), util.toPointer(EnumerationContext));
 }

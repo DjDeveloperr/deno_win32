@@ -113,7 +113,7 @@ export const DRM_DISTRIBUTION_POINT_REFERRAL_INFO = 2;
 
 // Structs
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.Data.RightsManagement.DRMID (size: 24)
@@ -138,12 +138,12 @@ export function allocDRMID(data?: Partial<DRMID>): Uint8Array {
   // 0x08: buffer
   if (data?.wszIDType !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.wszIDType);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.wszID !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.wszID);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   return buf;
 }
@@ -166,15 +166,15 @@ export class DRMIDView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get wszIDType(): Uint8Array | Deno.PointerValue | null {
+  get wszIDType(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get wszID(): Uint8Array | Deno.PointerValue | null {
+  get wszID(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -185,15 +185,15 @@ export class DRMIDView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set wszIDType(value: Uint8Array | Deno.PointerValue | null) {
+  set wszIDType(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set wszID(value: Uint8Array | Deno.PointerValue | null) {
+  set wszID(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 }
 
@@ -212,11 +212,11 @@ export interface DRMBOUNDLICENSEPARAMS {
   /** Windows.Win32.Foundation.PWSTR */
   wszRightsGroup: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Data.RightsManagement.DRMID */
-  idResource: Uint8Array | Deno.PointerValue | null;
+  idResource: Uint8Array | Deno.PointerValue;
   /** u32 */
   cAuthenticatorCount: number;
   /** ptr */
-  rghAuthenticators: Deno.PointerValue | Uint8Array | null;
+  rghAuthenticators: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.PWSTR */
   wszDefaultEnablingPrincipalCredentials: string | null | Uint8Array | Uint16Array;
   /** u32 */
@@ -238,24 +238,24 @@ export function allocDRMBOUNDLICENSEPARAMS(data?: Partial<DRMBOUNDLICENSEPARAMS>
   // 0x10: buffer
   if (data?.wszRightsRequested !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.wszRightsRequested);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: buffer
   if (data?.wszRightsGroup !== undefined) {
     (buf as any)._f24 = util.pwstrToFfi(data.wszRightsGroup);
-    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f24)), true);
+    view.setBigUint64(24, (buf as any)._f24 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f24))), true);
   }
   // 0x20: pointer
-  if (data?.idResource !== undefined) view.setBigUint64(32, data.idResource === null ? 0n : BigInt(util.toPointer(data.idResource)), true);
+  if (data?.idResource !== undefined) view.setBigUint64(32, data.idResource === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.idResource))), true);
   // 0x28: u32
   if (data?.cAuthenticatorCount !== undefined) view.setUint32(40, Number(data.cAuthenticatorCount), true);
   // 0x2c: pad4
   // 0x30: pointer
-  if (data?.rghAuthenticators !== undefined) view.setBigUint64(48, data.rghAuthenticators === null ? 0n : BigInt(util.toPointer(data.rghAuthenticators)), true);
+  if (data?.rghAuthenticators !== undefined) view.setBigUint64(48, data.rghAuthenticators === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.rghAuthenticators))), true);
   // 0x38: buffer
   if (data?.wszDefaultEnablingPrincipalCredentials !== undefined) {
     (buf as any)._f56 = util.pwstrToFfi(data.wszDefaultEnablingPrincipalCredentials);
-    view.setBigUint64(56, (buf as any)._f56 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f56)), true);
+    view.setBigUint64(56, (buf as any)._f56 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f56))), true);
   }
   // 0x40: u32
   if (data?.dwFlags !== undefined) view.setUint32(64, Number(data.dwFlags), true);
@@ -291,21 +291,21 @@ export class DRMBOUNDLICENSEPARAMSView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  get wszRightsRequested(): Uint8Array | Deno.PointerValue | null {
+  get wszRightsRequested(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: buffer
-  get wszRightsGroup(): Uint8Array | Deno.PointerValue | null {
+  get wszRightsGroup(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get idResource(): Uint8Array | Deno.PointerValue | null {
+  get idResource(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: u32
@@ -316,15 +316,15 @@ export class DRMBOUNDLICENSEPARAMSView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  get rghAuthenticators(): Uint8Array | Deno.PointerValue | null {
+  get rghAuthenticators(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(48, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x38: buffer
-  get wszDefaultEnablingPrincipalCredentials(): Uint8Array | Deno.PointerValue | null {
+  get wszDefaultEnablingPrincipalCredentials(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x40: u32
@@ -352,20 +352,20 @@ export class DRMBOUNDLICENSEPARAMSView {
   // 0x0c: pad4
 
   // 0x10: buffer
-  set wszRightsRequested(value: Uint8Array | Deno.PointerValue | null) {
+  set wszRightsRequested(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: buffer
-  set wszRightsGroup(value: Uint8Array | Deno.PointerValue | null) {
+  set wszRightsGroup(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f24 = value;
-    this.view.setBigUint64(24, BigInt(util.toPointer((this.buf as any)._f24)), true);
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f24))), true);
   }
 
   // 0x20: pointer
-  set idResource(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set idResource(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: u32
@@ -376,14 +376,14 @@ export class DRMBOUNDLICENSEPARAMSView {
   // 0x2c: pad4
 
   // 0x30: pointer
-  set rghAuthenticators(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(48, BigInt(util.toPointer(value)), true);
+  set rghAuthenticators(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(48, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x38: buffer
-  set wszDefaultEnablingPrincipalCredentials(value: Uint8Array | Deno.PointerValue | null) {
+  set wszDefaultEnablingPrincipalCredentials(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f56 = value;
-    this.view.setBigUint64(56, BigInt(util.toPointer((this.buf as any)._f56)), true);
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f56))), true);
   }
 
   // 0x40: u32
@@ -405,7 +405,7 @@ export interface DRM_LICENSE_ACQ_DATA {
   /** Windows.Win32.Foundation.PWSTR */
   wszLocalFilename: string | null | Uint8Array | Uint16Array;
   /** ptr */
-  pbPostData: Deno.PointerValue | Uint8Array | null;
+  pbPostData: Deno.PointerValue | Uint8Array;
   /** u32 */
   dwPostDataSize: number;
   /** Windows.Win32.Foundation.PWSTR */
@@ -423,22 +423,22 @@ export function allocDRM_LICENSE_ACQ_DATA(data?: Partial<DRM_LICENSE_ACQ_DATA>):
   // 0x08: buffer
   if (data?.wszURL !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.wszURL);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.wszLocalFilename !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.wszLocalFilename);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   // 0x18: pointer
-  if (data?.pbPostData !== undefined) view.setBigUint64(24, data.pbPostData === null ? 0n : BigInt(util.toPointer(data.pbPostData)), true);
+  if (data?.pbPostData !== undefined) view.setBigUint64(24, data.pbPostData === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.pbPostData))), true);
   // 0x20: u32
   if (data?.dwPostDataSize !== undefined) view.setUint32(32, Number(data.dwPostDataSize), true);
   // 0x24: pad4
   // 0x28: buffer
   if (data?.wszFriendlyName !== undefined) {
     (buf as any)._f40 = util.pwstrToFfi(data.wszFriendlyName);
-    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f40)), true);
+    view.setBigUint64(40, (buf as any)._f40 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f40))), true);
   }
   return buf;
 }
@@ -461,21 +461,21 @@ export class DRM_LICENSE_ACQ_DATAView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get wszURL(): Uint8Array | Deno.PointerValue | null {
+  get wszURL(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get wszLocalFilename(): Uint8Array | Deno.PointerValue | null {
+  get wszLocalFilename(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get pbPostData(): Uint8Array | Deno.PointerValue | null {
+  get pbPostData(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: u32
@@ -486,9 +486,9 @@ export class DRM_LICENSE_ACQ_DATAView {
   // 0x24: pad4
 
   // 0x28: buffer
-  get wszFriendlyName(): Uint8Array | Deno.PointerValue | null {
+  get wszFriendlyName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -499,20 +499,20 @@ export class DRM_LICENSE_ACQ_DATAView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set wszURL(value: Uint8Array | Deno.PointerValue | null) {
+  set wszURL(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set wszLocalFilename(value: Uint8Array | Deno.PointerValue | null) {
+  set wszLocalFilename(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 
   // 0x18: pointer
-  set pbPostData(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set pbPostData(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: u32
@@ -523,9 +523,9 @@ export class DRM_LICENSE_ACQ_DATAView {
   // 0x24: pad4
 
   // 0x28: buffer
-  set wszFriendlyName(value: Uint8Array | Deno.PointerValue | null) {
+  set wszFriendlyName(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f40 = value;
-    this.view.setBigUint64(40, BigInt(util.toPointer((this.buf as any)._f40)), true);
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f40))), true);
   }
 }
 
@@ -552,12 +552,12 @@ export function allocDRM_ACTSERV_INFO(data?: Partial<DRM_ACTSERV_INFO>): Uint8Ar
   // 0x08: buffer
   if (data?.wszPubKey !== undefined) {
     (buf as any)._f8 = util.pwstrToFfi(data.wszPubKey);
-    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f8)), true);
+    view.setBigUint64(8, (buf as any)._f8 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f8))), true);
   }
   // 0x10: buffer
   if (data?.wszURL !== undefined) {
     (buf as any)._f16 = util.pwstrToFfi(data.wszURL);
-    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f16)), true);
+    view.setBigUint64(16, (buf as any)._f16 === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f16))), true);
   }
   return buf;
 }
@@ -580,15 +580,15 @@ export class DRM_ACTSERV_INFOView {
   // 0x04: pad4
 
   // 0x08: buffer
-  get wszPubKey(): Uint8Array | Deno.PointerValue | null {
+  get wszPubKey(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: buffer
-  get wszURL(): Uint8Array | Deno.PointerValue | null {
+  get wszURL(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -599,15 +599,15 @@ export class DRM_ACTSERV_INFOView {
   // 0x04: pad4
 
   // 0x08: buffer
-  set wszPubKey(value: Uint8Array | Deno.PointerValue | null) {
+  set wszPubKey(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f8 = value;
-    this.view.setBigUint64(8, BigInt(util.toPointer((this.buf as any)._f8)), true);
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f8))), true);
   }
 
   // 0x10: buffer
-  set wszURL(value: Uint8Array | Deno.PointerValue | null) {
+  set wszURL(value: Uint8Array | Deno.PointerValue) {
     (this.buf as any)._f16 = value;
-    this.view.setBigUint64(16, BigInt(util.toPointer((this.buf as any)._f16)), true);
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f16))), true);
   }
 }
 
@@ -618,13 +618,13 @@ export interface DRM_CLIENT_VERSION_INFO {
   /** u32 */
   uStructVersion: number;
   /** array */
-  dwVersion: Deno.PointerValue | null;
+  dwVersion: Deno.PointerValue;
   /** array */
-  wszHierarchy: Deno.PointerValue | null;
+  wszHierarchy: Deno.PointerValue;
   /** array */
-  wszProductId: Deno.PointerValue | null;
+  wszProductId: Deno.PointerValue;
   /** array */
-  wszProductDescription: Deno.PointerValue | null;
+  wszProductDescription: Deno.PointerValue;
 }
 
 export const sizeofDRM_CLIENT_VERSION_INFO = 40;
@@ -636,13 +636,13 @@ export function allocDRM_CLIENT_VERSION_INFO(data?: Partial<DRM_CLIENT_VERSION_I
   if (data?.uStructVersion !== undefined) view.setUint32(0, Number(data.uStructVersion), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.dwVersion !== undefined) view.setBigUint64(8, data.dwVersion === null ? 0n : BigInt(util.toPointer(data.dwVersion)), true);
+  if (data?.dwVersion !== undefined) view.setBigUint64(8, data.dwVersion === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.dwVersion))), true);
   // 0x10: pointer
-  if (data?.wszHierarchy !== undefined) view.setBigUint64(16, data.wszHierarchy === null ? 0n : BigInt(util.toPointer(data.wszHierarchy)), true);
+  if (data?.wszHierarchy !== undefined) view.setBigUint64(16, data.wszHierarchy === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.wszHierarchy))), true);
   // 0x18: pointer
-  if (data?.wszProductId !== undefined) view.setBigUint64(24, data.wszProductId === null ? 0n : BigInt(util.toPointer(data.wszProductId)), true);
+  if (data?.wszProductId !== undefined) view.setBigUint64(24, data.wszProductId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.wszProductId))), true);
   // 0x20: pointer
-  if (data?.wszProductDescription !== undefined) view.setBigUint64(32, data.wszProductDescription === null ? 0n : BigInt(util.toPointer(data.wszProductDescription)), true);
+  if (data?.wszProductDescription !== undefined) view.setBigUint64(32, data.wszProductDescription === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.wszProductDescription))), true);
   return buf;
 }
 
@@ -664,27 +664,27 @@ export class DRM_CLIENT_VERSION_INFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get dwVersion(): Uint8Array | Deno.PointerValue | null {
+  get dwVersion(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get wszHierarchy(): Uint8Array | Deno.PointerValue | null {
+  get wszHierarchy(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get wszProductId(): Uint8Array | Deno.PointerValue | null {
+  get wszProductId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get wszProductDescription(): Uint8Array | Deno.PointerValue | null {
+  get wszProductDescription(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -695,23 +695,23 @@ export class DRM_CLIENT_VERSION_INFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set dwVersion(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set dwVersion(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set wszHierarchy(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set wszHierarchy(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set wszProductId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set wszProductId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set wszProductDescription(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set wszProductDescription(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1068,16 +1068,16 @@ try {
 
 export function DRMSetGlobalOptions(
   eGlobalOptions: DRMGLOBALOPTIONS /* Windows.Win32.Data.RightsManagement.DRMGLOBALOPTIONS */,
-  pvdata: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pvdata: Deno.PointerValue | Uint8Array /* ptr */,
   dwlen: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMSetGlobalOptions(eGlobalOptions, util.toPointer(pvdata), dwlen));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMSetGlobalOptions(eGlobalOptions, util.toPointer(pvdata), dwlen);
 }
 
 export function DRMGetClientVersion(
-  pDRMClientVersionInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMGetClientVersion(util.toPointer(pDRMClientVersionInfo)));
+  pDRMClientVersionInfo: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMGetClientVersion(util.toPointer(pDRMClientVersionInfo));
 }
 
 export function DRMInitEnvironment(
@@ -1086,10 +1086,10 @@ export function DRMInitEnvironment(
   wszSecurityProvider: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wszManifestCredentials: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wszMachineCredentials: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  phEnv: Deno.PointerValue | Uint8Array | null /* ptr */,
-  phDefaultLibrary: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMInitEnvironment(eSecurityProviderType, eSpecification, util.pwstrToFfi(wszSecurityProvider), util.pwstrToFfi(wszManifestCredentials), util.pwstrToFfi(wszMachineCredentials), util.toPointer(phEnv), util.toPointer(phDefaultLibrary)));
+  phEnv: Deno.PointerValue | Uint8Array /* ptr */,
+  phDefaultLibrary: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMInitEnvironment(eSecurityProviderType, eSpecification, util.pwstrToFfi(wszSecurityProvider), util.pwstrToFfi(wszManifestCredentials), util.pwstrToFfi(wszMachineCredentials), util.toPointer(phEnv), util.toPointer(phDefaultLibrary));
 }
 
 export function DRMLoadLibrary(
@@ -1097,98 +1097,98 @@ export function DRMLoadLibrary(
   eSpecification: DRMSPECTYPE /* Windows.Win32.Data.RightsManagement.DRMSPECTYPE */,
   wszLibraryProvider: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wszCredentials: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  phLibrary: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMLoadLibrary(hEnv, eSpecification, util.pwstrToFfi(wszLibraryProvider), util.pwstrToFfi(wszCredentials), util.toPointer(phLibrary)));
+  phLibrary: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMLoadLibrary(hEnv, eSpecification, util.pwstrToFfi(wszLibraryProvider), util.pwstrToFfi(wszCredentials), util.toPointer(phLibrary));
 }
 
 export function DRMCreateEnablingPrincipal(
   hEnv: number /* u32 */,
   hLibrary: number /* u32 */,
   wszObject: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pidPrincipal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pidPrincipal: Deno.PointerValue | Uint8Array /* ptr */,
   wszCredentials: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  phEnablingPrincipal: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMCreateEnablingPrincipal(hEnv, hLibrary, util.pwstrToFfi(wszObject), util.toPointer(pidPrincipal), util.pwstrToFfi(wszCredentials), util.toPointer(phEnablingPrincipal)));
+  phEnablingPrincipal: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMCreateEnablingPrincipal(hEnv, hLibrary, util.pwstrToFfi(wszObject), util.toPointer(pidPrincipal), util.pwstrToFfi(wszCredentials), util.toPointer(phEnablingPrincipal));
 }
 
 export function DRMCloseHandle(
   handle: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMCloseHandle(handle));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMCloseHandle(handle);
 }
 
 export function DRMCloseEnvironmentHandle(
   hEnv: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMCloseEnvironmentHandle(hEnv));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMCloseEnvironmentHandle(hEnv);
 }
 
 export function DRMDuplicateHandle(
   hToCopy: number /* u32 */,
-  phCopy: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMDuplicateHandle(hToCopy, util.toPointer(phCopy)));
+  phCopy: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMDuplicateHandle(hToCopy, util.toPointer(phCopy));
 }
 
 export function DRMDuplicateEnvironmentHandle(
   hToCopy: number /* u32 */,
-  phCopy: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMDuplicateEnvironmentHandle(hToCopy, util.toPointer(phCopy)));
+  phCopy: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMDuplicateEnvironmentHandle(hToCopy, util.toPointer(phCopy));
 }
 
 export function DRMRegisterRevocationList(
   hEnv: number /* u32 */,
   wszRevocationList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMRegisterRevocationList(hEnv, util.pwstrToFfi(wszRevocationList)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMRegisterRevocationList(hEnv, util.pwstrToFfi(wszRevocationList));
 }
 
 export function DRMCheckSecurity(
   hEnv: number /* u32 */,
   cLevel: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMCheckSecurity(hEnv, cLevel));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMCheckSecurity(hEnv, cLevel);
 }
 
 export function DRMRegisterContent(
   fRegister: boolean /* Windows.Win32.Foundation.BOOL */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMRegisterContent(util.boolToFfi(fRegister)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMRegisterContent(util.boolToFfi(fRegister));
 }
 
 export function DRMEncrypt(
   hCryptoProvider: number /* u32 */,
   iPosition: number /* u32 */,
   cNumInBytes: number /* u32 */,
-  pbInData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcNumOutBytes: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pbOutData: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMEncrypt(hCryptoProvider, iPosition, cNumInBytes, util.toPointer(pbInData), util.toPointer(pcNumOutBytes), util.toPointer(pbOutData)));
+  pbInData: Deno.PointerValue | Uint8Array /* ptr */,
+  pcNumOutBytes: Deno.PointerValue | Uint8Array /* ptr */,
+  pbOutData: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMEncrypt(hCryptoProvider, iPosition, cNumInBytes, util.toPointer(pbInData), util.toPointer(pcNumOutBytes), util.toPointer(pbOutData));
 }
 
 export function DRMDecrypt(
   hCryptoProvider: number /* u32 */,
   iPosition: number /* u32 */,
   cNumInBytes: number /* u32 */,
-  pbInData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcNumOutBytes: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pbOutData: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMDecrypt(hCryptoProvider, iPosition, cNumInBytes, util.toPointer(pbInData), util.toPointer(pcNumOutBytes), util.toPointer(pbOutData)));
+  pbInData: Deno.PointerValue | Uint8Array /* ptr */,
+  pcNumOutBytes: Deno.PointerValue | Uint8Array /* ptr */,
+  pbOutData: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMDecrypt(hCryptoProvider, iPosition, cNumInBytes, util.toPointer(pbInData), util.toPointer(pcNumOutBytes), util.toPointer(pbOutData));
 }
 
 export function DRMCreateBoundLicense(
   hEnv: number /* u32 */,
-  pParams: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pParams: Deno.PointerValue | Uint8Array /* ptr */,
   wszLicenseChain: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  phBoundLicense: Deno.PointerValue | Uint8Array | null /* ptr */,
-  phErrorLog: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMCreateBoundLicense(hEnv, util.toPointer(pParams), util.pwstrToFfi(wszLicenseChain), util.toPointer(phBoundLicense), util.toPointer(phErrorLog)));
+  phBoundLicense: Deno.PointerValue | Uint8Array /* ptr */,
+  phErrorLog: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMCreateBoundLicense(hEnv, util.toPointer(pParams), util.pwstrToFfi(wszLicenseChain), util.toPointer(phBoundLicense), util.toPointer(phErrorLog));
 }
 
 export function DRMCreateEnablingBitsDecryptor(
@@ -1196,9 +1196,9 @@ export function DRMCreateEnablingBitsDecryptor(
   wszRight: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hAuxLib: number /* u32 */,
   wszAuxPlug: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  phDecryptor: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMCreateEnablingBitsDecryptor(hBoundLicense, util.pwstrToFfi(wszRight), hAuxLib, util.pwstrToFfi(wszAuxPlug), util.toPointer(phDecryptor)));
+  phDecryptor: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMCreateEnablingBitsDecryptor(hBoundLicense, util.pwstrToFfi(wszRight), hAuxLib, util.pwstrToFfi(wszAuxPlug), util.toPointer(phDecryptor));
 }
 
 export function DRMCreateEnablingBitsEncryptor(
@@ -1206,120 +1206,120 @@ export function DRMCreateEnablingBitsEncryptor(
   wszRight: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hAuxLib: number /* u32 */,
   wszAuxPlug: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  phEncryptor: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMCreateEnablingBitsEncryptor(hBoundLicense, util.pwstrToFfi(wszRight), hAuxLib, util.pwstrToFfi(wszAuxPlug), util.toPointer(phEncryptor)));
+  phEncryptor: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMCreateEnablingBitsEncryptor(hBoundLicense, util.pwstrToFfi(wszRight), hAuxLib, util.pwstrToFfi(wszAuxPlug), util.toPointer(phEncryptor));
 }
 
 export function DRMAttest(
   hEnablingPrincipal: number /* u32 */,
   wszData: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   eType: DRMATTESTTYPE /* Windows.Win32.Data.RightsManagement.DRMATTESTTYPE */,
-  pcAttestedBlob: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcAttestedBlob: Deno.PointerValue | Uint8Array /* ptr */,
   wszAttestedBlob: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMAttest(hEnablingPrincipal, util.pwstrToFfi(wszData), eType, util.toPointer(pcAttestedBlob), util.pwstrToFfi(wszAttestedBlob)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMAttest(hEnablingPrincipal, util.pwstrToFfi(wszData), eType, util.toPointer(pcAttestedBlob), util.pwstrToFfi(wszAttestedBlob));
 }
 
 export function DRMGetTime(
   hEnv: number /* u32 */,
   eTimerIdType: DRMTIMETYPE /* Windows.Win32.Data.RightsManagement.DRMTIMETYPE */,
-  poTimeObject: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMGetTime(hEnv, eTimerIdType, util.toPointer(poTimeObject)));
+  poTimeObject: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMGetTime(hEnv, eTimerIdType, util.toPointer(poTimeObject));
 }
 
 export function DRMGetInfo(
   handle: number /* u32 */,
   wszAttribute: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  peEncoding: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pbBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMGetInfo(handle, util.pwstrToFfi(wszAttribute), util.toPointer(peEncoding), util.toPointer(pcBuffer), util.toPointer(pbBuffer)));
+  peEncoding: Deno.PointerValue | Uint8Array /* ptr */,
+  pcBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  pbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMGetInfo(handle, util.pwstrToFfi(wszAttribute), util.toPointer(peEncoding), util.toPointer(pcBuffer), util.toPointer(pbBuffer));
 }
 
 export function DRMGetEnvironmentInfo(
   handle: number /* u32 */,
   wszAttribute: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  peEncoding: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pbBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMGetEnvironmentInfo(handle, util.pwstrToFfi(wszAttribute), util.toPointer(peEncoding), util.toPointer(pcBuffer), util.toPointer(pbBuffer)));
+  peEncoding: Deno.PointerValue | Uint8Array /* ptr */,
+  pcBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  pbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMGetEnvironmentInfo(handle, util.pwstrToFfi(wszAttribute), util.toPointer(peEncoding), util.toPointer(pcBuffer), util.toPointer(pbBuffer));
 }
 
 export function DRMGetProcAddress(
   hLibrary: number /* u32 */,
   wszProcName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ppfnProcAddress: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMGetProcAddress(hLibrary, util.pwstrToFfi(wszProcName), util.toPointer(ppfnProcAddress)));
+  ppfnProcAddress: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMGetProcAddress(hLibrary, util.pwstrToFfi(wszProcName), util.toPointer(ppfnProcAddress));
 }
 
 export function DRMGetBoundLicenseObjectCount(
   hQueryRoot: number /* u32 */,
   wszSubObjectType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcSubObjects: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMGetBoundLicenseObjectCount(hQueryRoot, util.pwstrToFfi(wszSubObjectType), util.toPointer(pcSubObjects)));
+  pcSubObjects: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMGetBoundLicenseObjectCount(hQueryRoot, util.pwstrToFfi(wszSubObjectType), util.toPointer(pcSubObjects));
 }
 
 export function DRMGetBoundLicenseObject(
   hQueryRoot: number /* u32 */,
   wszSubObjectType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   iWhich: number /* u32 */,
-  phSubObject: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMGetBoundLicenseObject(hQueryRoot, util.pwstrToFfi(wszSubObjectType), iWhich, util.toPointer(phSubObject)));
+  phSubObject: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMGetBoundLicenseObject(hQueryRoot, util.pwstrToFfi(wszSubObjectType), iWhich, util.toPointer(phSubObject));
 }
 
 export function DRMGetBoundLicenseAttributeCount(
   hQueryRoot: number /* u32 */,
   wszAttribute: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMGetBoundLicenseAttributeCount(hQueryRoot, util.pwstrToFfi(wszAttribute), util.toPointer(pcAttributes)));
+  pcAttributes: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMGetBoundLicenseAttributeCount(hQueryRoot, util.pwstrToFfi(wszAttribute), util.toPointer(pcAttributes));
 }
 
 export function DRMGetBoundLicenseAttribute(
   hQueryRoot: number /* u32 */,
   wszAttribute: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   iWhich: number /* u32 */,
-  peEncoding: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pbBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMGetBoundLicenseAttribute(hQueryRoot, util.pwstrToFfi(wszAttribute), iWhich, util.toPointer(peEncoding), util.toPointer(pcBuffer), util.toPointer(pbBuffer)));
+  peEncoding: Deno.PointerValue | Uint8Array /* ptr */,
+  pcBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  pbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMGetBoundLicenseAttribute(hQueryRoot, util.pwstrToFfi(wszAttribute), iWhich, util.toPointer(peEncoding), util.toPointer(pcBuffer), util.toPointer(pbBuffer));
 }
 
 export function DRMCreateClientSession(
-  pfnCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Data.RightsManagement.DRMCALLBACK */,
+  pfnCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Data.RightsManagement.DRMCALLBACK */,
   uCallbackVersion: number /* u32 */,
   wszGroupIDProviderType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wszGroupID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  phClient: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMCreateClientSession(util.toPointer(pfnCallback), uCallbackVersion, util.pwstrToFfi(wszGroupIDProviderType), util.pwstrToFfi(wszGroupID), util.toPointer(phClient)));
+  phClient: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMCreateClientSession(util.toPointer(pfnCallback), uCallbackVersion, util.pwstrToFfi(wszGroupIDProviderType), util.pwstrToFfi(wszGroupID), util.toPointer(phClient));
 }
 
 export function DRMIsActivated(
   hClient: number /* u32 */,
   uFlags: number /* u32 */,
-  pActServInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMIsActivated(hClient, uFlags, util.toPointer(pActServInfo)));
+  pActServInfo: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMIsActivated(hClient, uFlags, util.toPointer(pActServInfo));
 }
 
 export function DRMActivate(
   hClient: number /* u32 */,
   uFlags: number /* u32 */,
   uLangID: number /* u32 */,
-  pActServInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pvContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-  hParentWnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMActivate(hClient, uFlags, uLangID, util.toPointer(pActServInfo), util.toPointer(pvContext), util.hwndToFfi(hParentWnd)));
+  pActServInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  pvContext: Deno.PointerValue | Uint8Array /* ptr */,
+  hParentWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMActivate(hClient, uFlags, uLangID, util.toPointer(pActServInfo), util.toPointer(pvContext), (hParentWnd));
 }
 
 export function DRMGetServiceLocation(
@@ -1327,10 +1327,10 @@ export function DRMGetServiceLocation(
   uServiceType: number /* u32 */,
   uServiceLocation: number /* u32 */,
   wszIssuanceLicense: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  puServiceURLLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puServiceURLLength: Deno.PointerValue | Uint8Array /* ptr */,
   wszServiceURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMGetServiceLocation(hClient, uServiceType, uServiceLocation, util.pwstrToFfi(wszIssuanceLicense), util.toPointer(puServiceURLLength), util.pwstrToFfi(wszServiceURL)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMGetServiceLocation(hClient, uServiceType, uServiceLocation, util.pwstrToFfi(wszIssuanceLicense), util.toPointer(puServiceURLLength), util.pwstrToFfi(wszServiceURL));
 }
 
 export function DRMCreateLicenseStorageSession(
@@ -1339,37 +1339,37 @@ export function DRMCreateLicenseStorageSession(
   hClient: number /* u32 */,
   uFlags: number /* u32 */,
   wszIssuanceLicense: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  phLicenseStorage: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMCreateLicenseStorageSession(hEnv, hDefaultLibrary, hClient, uFlags, util.pwstrToFfi(wszIssuanceLicense), util.toPointer(phLicenseStorage)));
+  phLicenseStorage: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMCreateLicenseStorageSession(hEnv, hDefaultLibrary, hClient, uFlags, util.pwstrToFfi(wszIssuanceLicense), util.toPointer(phLicenseStorage));
 }
 
 export function DRMAddLicense(
   hLicenseStorage: number /* u32 */,
   uFlags: number /* u32 */,
   wszLicense: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMAddLicense(hLicenseStorage, uFlags, util.pwstrToFfi(wszLicense)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMAddLicense(hLicenseStorage, uFlags, util.pwstrToFfi(wszLicense));
 }
 
 export function DRMAcquireAdvisories(
   hLicenseStorage: number /* u32 */,
   wszLicense: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wszURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pvContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMAcquireAdvisories(hLicenseStorage, util.pwstrToFfi(wszLicense), util.pwstrToFfi(wszURL), util.toPointer(pvContext)));
+  pvContext: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMAcquireAdvisories(hLicenseStorage, util.pwstrToFfi(wszLicense), util.pwstrToFfi(wszURL), util.toPointer(pvContext));
 }
 
 export function DRMEnumerateLicense(
   hSession: number /* u32 */,
   uFlags: number /* u32 */,
   uIndex: number /* u32 */,
-  pfSharedFlag: Deno.PointerValue | Uint8Array | null /* ptr */,
-  puCertificateDataLen: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pfSharedFlag: Deno.PointerValue | Uint8Array /* ptr */,
+  puCertificateDataLen: Deno.PointerValue | Uint8Array /* ptr */,
   wszCertificateData: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMEnumerateLicense(hSession, uFlags, uIndex, util.toPointer(pfSharedFlag), util.toPointer(puCertificateDataLen), util.pwstrToFfi(wszCertificateData)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMEnumerateLicense(hSession, uFlags, uIndex, util.toPointer(pfSharedFlag), util.toPointer(puCertificateDataLen), util.pwstrToFfi(wszCertificateData));
 }
 
 export function DRMAcquireLicense(
@@ -1379,193 +1379,193 @@ export function DRMAcquireLicense(
   wszRequestedRights: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wszCustomData: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wszURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pvContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMAcquireLicense(hSession, uFlags, util.pwstrToFfi(wszGroupIdentityCredential), util.pwstrToFfi(wszRequestedRights), util.pwstrToFfi(wszCustomData), util.pwstrToFfi(wszURL), util.toPointer(pvContext)));
+  pvContext: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMAcquireLicense(hSession, uFlags, util.pwstrToFfi(wszGroupIdentityCredential), util.pwstrToFfi(wszRequestedRights), util.pwstrToFfi(wszCustomData), util.pwstrToFfi(wszURL), util.toPointer(pvContext));
 }
 
 export function DRMDeleteLicense(
   hSession: number /* u32 */,
   wszLicenseId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMDeleteLicense(hSession, util.pwstrToFfi(wszLicenseId)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMDeleteLicense(hSession, util.pwstrToFfi(wszLicenseId));
 }
 
 export function DRMCloseSession(
   hSession: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMCloseSession(hSession));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMCloseSession(hSession);
 }
 
 export function DRMDuplicateSession(
   hSessionIn: number /* u32 */,
-  phSessionOut: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMDuplicateSession(hSessionIn, util.toPointer(phSessionOut)));
+  phSessionOut: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMDuplicateSession(hSessionIn, util.toPointer(phSessionOut));
 }
 
 export function DRMGetSecurityProvider(
   uFlags: number /* u32 */,
-  puTypeLen: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puTypeLen: Deno.PointerValue | Uint8Array /* ptr */,
   wszType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  puPathLen: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puPathLen: Deno.PointerValue | Uint8Array /* ptr */,
   wszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMGetSecurityProvider(uFlags, util.toPointer(puTypeLen), util.pwstrToFfi(wszType), util.toPointer(puPathLen), util.pwstrToFfi(wszPath)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMGetSecurityProvider(uFlags, util.toPointer(puTypeLen), util.pwstrToFfi(wszType), util.toPointer(puPathLen), util.pwstrToFfi(wszPath));
 }
 
 export function DRMEncode(
   wszAlgID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   uDataLen: number /* u32 */,
-  pbDecodedData: Deno.PointerValue | Uint8Array | null /* ptr */,
-  puEncodedStringLen: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pbDecodedData: Deno.PointerValue | Uint8Array /* ptr */,
+  puEncodedStringLen: Deno.PointerValue | Uint8Array /* ptr */,
   wszEncodedString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMEncode(util.pwstrToFfi(wszAlgID), uDataLen, util.toPointer(pbDecodedData), util.toPointer(puEncodedStringLen), util.pwstrToFfi(wszEncodedString)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMEncode(util.pwstrToFfi(wszAlgID), uDataLen, util.toPointer(pbDecodedData), util.toPointer(puEncodedStringLen), util.pwstrToFfi(wszEncodedString));
 }
 
 export function DRMDecode(
   wszAlgID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wszEncodedString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  puDecodedDataLen: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pbDecodedData: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMDecode(util.pwstrToFfi(wszAlgID), util.pwstrToFfi(wszEncodedString), util.toPointer(puDecodedDataLen), util.toPointer(pbDecodedData)));
+  puDecodedDataLen: Deno.PointerValue | Uint8Array /* ptr */,
+  pbDecodedData: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMDecode(util.pwstrToFfi(wszAlgID), util.pwstrToFfi(wszEncodedString), util.toPointer(puDecodedDataLen), util.toPointer(pbDecodedData));
 }
 
 export function DRMConstructCertificateChain(
   cCertificates: number /* u32 */,
-  rgwszCertificates: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcChain: Deno.PointerValue | Uint8Array | null /* ptr */,
+  rgwszCertificates: Deno.PointerValue | Uint8Array /* ptr */,
+  pcChain: Deno.PointerValue | Uint8Array /* ptr */,
   wszChain: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMConstructCertificateChain(cCertificates, util.toPointer(rgwszCertificates), util.toPointer(pcChain), util.pwstrToFfi(wszChain)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMConstructCertificateChain(cCertificates, util.toPointer(rgwszCertificates), util.toPointer(pcChain), util.pwstrToFfi(wszChain));
 }
 
 export function DRMParseUnboundLicense(
   wszCertificate: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  phQueryRoot: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMParseUnboundLicense(util.pwstrToFfi(wszCertificate), util.toPointer(phQueryRoot)));
+  phQueryRoot: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMParseUnboundLicense(util.pwstrToFfi(wszCertificate), util.toPointer(phQueryRoot));
 }
 
 export function DRMCloseQueryHandle(
   hQuery: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMCloseQueryHandle(hQuery));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMCloseQueryHandle(hQuery);
 }
 
 export function DRMGetUnboundLicenseObjectCount(
   hQueryRoot: number /* u32 */,
   wszSubObjectType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcSubObjects: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMGetUnboundLicenseObjectCount(hQueryRoot, util.pwstrToFfi(wszSubObjectType), util.toPointer(pcSubObjects)));
+  pcSubObjects: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMGetUnboundLicenseObjectCount(hQueryRoot, util.pwstrToFfi(wszSubObjectType), util.toPointer(pcSubObjects));
 }
 
 export function DRMGetUnboundLicenseObject(
   hQueryRoot: number /* u32 */,
   wszSubObjectType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   iIndex: number /* u32 */,
-  phSubQuery: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMGetUnboundLicenseObject(hQueryRoot, util.pwstrToFfi(wszSubObjectType), iIndex, util.toPointer(phSubQuery)));
+  phSubQuery: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMGetUnboundLicenseObject(hQueryRoot, util.pwstrToFfi(wszSubObjectType), iIndex, util.toPointer(phSubQuery));
 }
 
 export function DRMGetUnboundLicenseAttributeCount(
   hQueryRoot: number /* u32 */,
   wszAttributeType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMGetUnboundLicenseAttributeCount(hQueryRoot, util.pwstrToFfi(wszAttributeType), util.toPointer(pcAttributes)));
+  pcAttributes: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMGetUnboundLicenseAttributeCount(hQueryRoot, util.pwstrToFfi(wszAttributeType), util.toPointer(pcAttributes));
 }
 
 export function DRMGetUnboundLicenseAttribute(
   hQueryRoot: number /* u32 */,
   wszAttributeType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   iWhich: number /* u32 */,
-  peEncoding: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pbBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMGetUnboundLicenseAttribute(hQueryRoot, util.pwstrToFfi(wszAttributeType), iWhich, util.toPointer(peEncoding), util.toPointer(pcBuffer), util.toPointer(pbBuffer)));
+  peEncoding: Deno.PointerValue | Uint8Array /* ptr */,
+  pcBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  pbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMGetUnboundLicenseAttribute(hQueryRoot, util.pwstrToFfi(wszAttributeType), iWhich, util.toPointer(peEncoding), util.toPointer(pcBuffer), util.toPointer(pbBuffer));
 }
 
 export function DRMGetCertificateChainCount(
   wszChain: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcCertCount: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMGetCertificateChainCount(util.pwstrToFfi(wszChain), util.toPointer(pcCertCount)));
+  pcCertCount: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMGetCertificateChainCount(util.pwstrToFfi(wszChain), util.toPointer(pcCertCount));
 }
 
 export function DRMDeconstructCertificateChain(
   wszChain: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   iWhich: number /* u32 */,
-  pcCert: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcCert: Deno.PointerValue | Uint8Array /* ptr */,
   wszCert: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMDeconstructCertificateChain(util.pwstrToFfi(wszChain), iWhich, util.toPointer(pcCert), util.pwstrToFfi(wszCert)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMDeconstructCertificateChain(util.pwstrToFfi(wszChain), iWhich, util.toPointer(pcCert), util.pwstrToFfi(wszCert));
 }
 
 export function DRMVerify(
   wszData: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcAttestedData: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcAttestedData: Deno.PointerValue | Uint8Array /* ptr */,
   wszAttestedData: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  peType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pcPrincipal: Deno.PointerValue | Uint8Array | null /* ptr */,
+  peType: Deno.PointerValue | Uint8Array /* ptr */,
+  pcPrincipal: Deno.PointerValue | Uint8Array /* ptr */,
   wszPrincipal: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcManifest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pcManifest: Deno.PointerValue | Uint8Array /* ptr */,
   wszManifest: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMVerify(util.pwstrToFfi(wszData), util.toPointer(pcAttestedData), util.pwstrToFfi(wszAttestedData), util.toPointer(peType), util.toPointer(pcPrincipal), util.pwstrToFfi(wszPrincipal), util.toPointer(pcManifest), util.pwstrToFfi(wszManifest)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMVerify(util.pwstrToFfi(wszData), util.toPointer(pcAttestedData), util.pwstrToFfi(wszAttestedData), util.toPointer(peType), util.toPointer(pcPrincipal), util.pwstrToFfi(wszPrincipal), util.toPointer(pcManifest), util.pwstrToFfi(wszManifest));
 }
 
 export function DRMCreateUser(
   wszUserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wszUserId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wszUserIdType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  phUser: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMCreateUser(util.pwstrToFfi(wszUserName), util.pwstrToFfi(wszUserId), util.pwstrToFfi(wszUserIdType), util.toPointer(phUser)));
+  phUser: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMCreateUser(util.pwstrToFfi(wszUserName), util.pwstrToFfi(wszUserId), util.pwstrToFfi(wszUserIdType), util.toPointer(phUser));
 }
 
 export function DRMCreateRight(
   wszRightName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pstFrom: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pstUntil: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pstFrom: Deno.PointerValue | Uint8Array /* ptr */,
+  pstUntil: Deno.PointerValue | Uint8Array /* ptr */,
   cExtendedInfo: number /* u32 */,
-  pwszExtendedInfoName: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pwszExtendedInfoValue: Deno.PointerValue | Uint8Array | null /* ptr */,
-  phRight: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMCreateRight(util.pwstrToFfi(wszRightName), util.toPointer(pstFrom), util.toPointer(pstUntil), cExtendedInfo, util.toPointer(pwszExtendedInfoName), util.toPointer(pwszExtendedInfoValue), util.toPointer(phRight)));
+  pwszExtendedInfoName: Deno.PointerValue | Uint8Array /* ptr */,
+  pwszExtendedInfoValue: Deno.PointerValue | Uint8Array /* ptr */,
+  phRight: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMCreateRight(util.pwstrToFfi(wszRightName), util.toPointer(pstFrom), util.toPointer(pstUntil), cExtendedInfo, util.toPointer(pwszExtendedInfoName), util.toPointer(pwszExtendedInfoValue), util.toPointer(phRight));
 }
 
 export function DRMCreateIssuanceLicense(
-  pstTimeFrom: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pstTimeUntil: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pstTimeFrom: Deno.PointerValue | Uint8Array /* ptr */,
+  pstTimeUntil: Deno.PointerValue | Uint8Array /* ptr */,
   wszReferralInfoName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wszReferralInfoURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hOwner: number /* u32 */,
   wszIssuanceLicense: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hBoundLicense: number /* u32 */,
-  phIssuanceLicense: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMCreateIssuanceLicense(util.toPointer(pstTimeFrom), util.toPointer(pstTimeUntil), util.pwstrToFfi(wszReferralInfoName), util.pwstrToFfi(wszReferralInfoURL), hOwner, util.pwstrToFfi(wszIssuanceLicense), hBoundLicense, util.toPointer(phIssuanceLicense)));
+  phIssuanceLicense: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMCreateIssuanceLicense(util.toPointer(pstTimeFrom), util.toPointer(pstTimeUntil), util.pwstrToFfi(wszReferralInfoName), util.pwstrToFfi(wszReferralInfoURL), hOwner, util.pwstrToFfi(wszIssuanceLicense), hBoundLicense, util.toPointer(phIssuanceLicense));
 }
 
 export function DRMAddRightWithUser(
   hIssuanceLicense: number /* u32 */,
   hRight: number /* u32 */,
   hUser: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMAddRightWithUser(hIssuanceLicense, hRight, hUser));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMAddRightWithUser(hIssuanceLicense, hRight, hUser);
 }
 
 export function DRMClearAllRights(
   hIssuanceLicense: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMClearAllRights(hIssuanceLicense));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMClearAllRights(hIssuanceLicense);
 }
 
 export function DRMSetMetaData(
@@ -1576,8 +1576,8 @@ export function DRMSetMetaData(
   wszSKUIdType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wszContentType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wszContentName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMSetMetaData(hIssuanceLicense, util.pwstrToFfi(wszContentId), util.pwstrToFfi(wszContentIdType), util.pwstrToFfi(wszSKUId), util.pwstrToFfi(wszSKUIdType), util.pwstrToFfi(wszContentType), util.pwstrToFfi(wszContentName)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMSetMetaData(hIssuanceLicense, util.pwstrToFfi(wszContentId), util.pwstrToFfi(wszContentIdType), util.pwstrToFfi(wszSKUId), util.pwstrToFfi(wszSKUIdType), util.pwstrToFfi(wszContentType), util.pwstrToFfi(wszContentName));
 }
 
 export function DRMSetUsagePolicy(
@@ -1590,10 +1590,10 @@ export function DRMSetUsagePolicy(
   wszMaxVersion: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wszPublicKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wszDigestAlgorithm: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pbDigest: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pbDigest: Deno.PointerValue | Uint8Array /* ptr */,
   cbDigest: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMSetUsagePolicy(hIssuanceLicense, eUsagePolicyType, util.boolToFfi(fDelete), util.boolToFfi(fExclusion), util.pwstrToFfi(wszName), util.pwstrToFfi(wszMinVersion), util.pwstrToFfi(wszMaxVersion), util.pwstrToFfi(wszPublicKey), util.pwstrToFfi(wszDigestAlgorithm), util.toPointer(pbDigest), cbDigest));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMSetUsagePolicy(hIssuanceLicense, eUsagePolicyType, util.boolToFfi(fDelete), util.boolToFfi(fExclusion), util.pwstrToFfi(wszName), util.pwstrToFfi(wszMinVersion), util.pwstrToFfi(wszMaxVersion), util.pwstrToFfi(wszPublicKey), util.pwstrToFfi(wszDigestAlgorithm), util.toPointer(pbDigest), cbDigest);
 }
 
 export function DRMSetRevocationPoint(
@@ -1602,11 +1602,11 @@ export function DRMSetRevocationPoint(
   wszId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wszIdType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wszURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pstFrequency: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pstFrequency: Deno.PointerValue | Uint8Array /* ptr */,
   wszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wszPublicKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMSetRevocationPoint(hIssuanceLicense, util.boolToFfi(fDelete), util.pwstrToFfi(wszId), util.pwstrToFfi(wszIdType), util.pwstrToFfi(wszURL), util.toPointer(pstFrequency), util.pwstrToFfi(wszName), util.pwstrToFfi(wszPublicKey)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMSetRevocationPoint(hIssuanceLicense, util.boolToFfi(fDelete), util.pwstrToFfi(wszId), util.pwstrToFfi(wszIdType), util.pwstrToFfi(wszURL), util.toPointer(pstFrequency), util.pwstrToFfi(wszName), util.pwstrToFfi(wszPublicKey));
 }
 
 export function DRMSetApplicationSpecificData(
@@ -1614,8 +1614,8 @@ export function DRMSetApplicationSpecificData(
   fDelete: boolean /* Windows.Win32.Foundation.BOOL */,
   wszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wszValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMSetApplicationSpecificData(hIssuanceLicense, util.boolToFfi(fDelete), util.pwstrToFfi(wszName), util.pwstrToFfi(wszValue)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMSetApplicationSpecificData(hIssuanceLicense, util.boolToFfi(fDelete), util.pwstrToFfi(wszName), util.pwstrToFfi(wszValue));
 }
 
 export function DRMSetNameAndDescription(
@@ -1624,255 +1624,255 @@ export function DRMSetNameAndDescription(
   lcid: number /* u32 */,
   wszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wszDescription: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMSetNameAndDescription(hIssuanceLicense, util.boolToFfi(fDelete), lcid, util.pwstrToFfi(wszName), util.pwstrToFfi(wszDescription)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMSetNameAndDescription(hIssuanceLicense, util.boolToFfi(fDelete), lcid, util.pwstrToFfi(wszName), util.pwstrToFfi(wszDescription));
 }
 
 export function DRMSetIntervalTime(
   hIssuanceLicense: number /* u32 */,
   cDays: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMSetIntervalTime(hIssuanceLicense, cDays));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMSetIntervalTime(hIssuanceLicense, cDays);
 }
 
 export function DRMGetIssuanceLicenseTemplate(
   hIssuanceLicense: number /* u32 */,
-  puIssuanceLicenseTemplateLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puIssuanceLicenseTemplateLength: Deno.PointerValue | Uint8Array /* ptr */,
   wszIssuanceLicenseTemplate: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMGetIssuanceLicenseTemplate(hIssuanceLicense, util.toPointer(puIssuanceLicenseTemplateLength), util.pwstrToFfi(wszIssuanceLicenseTemplate)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMGetIssuanceLicenseTemplate(hIssuanceLicense, util.toPointer(puIssuanceLicenseTemplateLength), util.pwstrToFfi(wszIssuanceLicenseTemplate));
 }
 
 export function DRMGetSignedIssuanceLicense(
   hEnv: number /* u32 */,
   hIssuanceLicense: number /* u32 */,
   uFlags: number /* u32 */,
-  pbSymKey: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pbSymKey: Deno.PointerValue | Uint8Array /* ptr */,
   cbSymKey: number /* u32 */,
   wszSymKeyType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wszClientLicensorCertificate: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pfnCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Data.RightsManagement.DRMCALLBACK */,
+  pfnCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Data.RightsManagement.DRMCALLBACK */,
   wszURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pvContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMGetSignedIssuanceLicense(hEnv, hIssuanceLicense, uFlags, util.toPointer(pbSymKey), cbSymKey, util.pwstrToFfi(wszSymKeyType), util.pwstrToFfi(wszClientLicensorCertificate), util.toPointer(pfnCallback), util.pwstrToFfi(wszURL), util.toPointer(pvContext)));
+  pvContext: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMGetSignedIssuanceLicense(hEnv, hIssuanceLicense, uFlags, util.toPointer(pbSymKey), cbSymKey, util.pwstrToFfi(wszSymKeyType), util.pwstrToFfi(wszClientLicensorCertificate), util.toPointer(pfnCallback), util.pwstrToFfi(wszURL), util.toPointer(pvContext));
 }
 
 export function DRMGetSignedIssuanceLicenseEx(
   hEnv: number /* u32 */,
   hIssuanceLicense: number /* u32 */,
   uFlags: number /* u32 */,
-  pbSymKey: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pbSymKey: Deno.PointerValue | Uint8Array /* ptr */,
   cbSymKey: number /* u32 */,
   wszSymKeyType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
   hEnablingPrincipal: number /* u32 */,
   hBoundLicenseCLC: number /* u32 */,
-  pfnCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Data.RightsManagement.DRMCALLBACK */,
-  pvContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMGetSignedIssuanceLicenseEx(hEnv, hIssuanceLicense, uFlags, util.toPointer(pbSymKey), cbSymKey, util.pwstrToFfi(wszSymKeyType), util.toPointer(pvReserved), hEnablingPrincipal, hBoundLicenseCLC, util.toPointer(pfnCallback), util.toPointer(pvContext)));
+  pfnCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Data.RightsManagement.DRMCALLBACK */,
+  pvContext: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMGetSignedIssuanceLicenseEx(hEnv, hIssuanceLicense, uFlags, util.toPointer(pbSymKey), cbSymKey, util.pwstrToFfi(wszSymKeyType), util.toPointer(pvReserved), hEnablingPrincipal, hBoundLicenseCLC, util.toPointer(pfnCallback), util.toPointer(pvContext));
 }
 
 export function DRMClosePubHandle(
   hPub: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMClosePubHandle(hPub));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMClosePubHandle(hPub);
 }
 
 export function DRMDuplicatePubHandle(
   hPubIn: number /* u32 */,
-  phPubOut: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMDuplicatePubHandle(hPubIn, util.toPointer(phPubOut)));
+  phPubOut: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMDuplicatePubHandle(hPubIn, util.toPointer(phPubOut));
 }
 
 export function DRMGetUserInfo(
   hUser: number /* u32 */,
-  puUserNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puUserNameLength: Deno.PointerValue | Uint8Array /* ptr */,
   wszUserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  puUserIdLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puUserIdLength: Deno.PointerValue | Uint8Array /* ptr */,
   wszUserId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  puUserIdTypeLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puUserIdTypeLength: Deno.PointerValue | Uint8Array /* ptr */,
   wszUserIdType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMGetUserInfo(hUser, util.toPointer(puUserNameLength), util.pwstrToFfi(wszUserName), util.toPointer(puUserIdLength), util.pwstrToFfi(wszUserId), util.toPointer(puUserIdTypeLength), util.pwstrToFfi(wszUserIdType)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMGetUserInfo(hUser, util.toPointer(puUserNameLength), util.pwstrToFfi(wszUserName), util.toPointer(puUserIdLength), util.pwstrToFfi(wszUserId), util.toPointer(puUserIdTypeLength), util.pwstrToFfi(wszUserIdType));
 }
 
 export function DRMGetRightInfo(
   hRight: number /* u32 */,
-  puRightNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puRightNameLength: Deno.PointerValue | Uint8Array /* ptr */,
   wszRightName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pstFrom: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pstUntil: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMGetRightInfo(hRight, util.toPointer(puRightNameLength), util.pwstrToFfi(wszRightName), util.toPointer(pstFrom), util.toPointer(pstUntil)));
+  pstFrom: Deno.PointerValue | Uint8Array /* ptr */,
+  pstUntil: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMGetRightInfo(hRight, util.toPointer(puRightNameLength), util.pwstrToFfi(wszRightName), util.toPointer(pstFrom), util.toPointer(pstUntil));
 }
 
 export function DRMGetRightExtendedInfo(
   hRight: number /* u32 */,
   uIndex: number /* u32 */,
-  puExtendedInfoNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puExtendedInfoNameLength: Deno.PointerValue | Uint8Array /* ptr */,
   wszExtendedInfoName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  puExtendedInfoValueLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puExtendedInfoValueLength: Deno.PointerValue | Uint8Array /* ptr */,
   wszExtendedInfoValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMGetRightExtendedInfo(hRight, uIndex, util.toPointer(puExtendedInfoNameLength), util.pwstrToFfi(wszExtendedInfoName), util.toPointer(puExtendedInfoValueLength), util.pwstrToFfi(wszExtendedInfoValue)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMGetRightExtendedInfo(hRight, uIndex, util.toPointer(puExtendedInfoNameLength), util.pwstrToFfi(wszExtendedInfoName), util.toPointer(puExtendedInfoValueLength), util.pwstrToFfi(wszExtendedInfoValue));
 }
 
 export function DRMGetUsers(
   hIssuanceLicense: number /* u32 */,
   uIndex: number /* u32 */,
-  phUser: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMGetUsers(hIssuanceLicense, uIndex, util.toPointer(phUser)));
+  phUser: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMGetUsers(hIssuanceLicense, uIndex, util.toPointer(phUser));
 }
 
 export function DRMGetUserRights(
   hIssuanceLicense: number /* u32 */,
   hUser: number /* u32 */,
   uIndex: number /* u32 */,
-  phRight: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMGetUserRights(hIssuanceLicense, hUser, uIndex, util.toPointer(phRight)));
+  phRight: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMGetUserRights(hIssuanceLicense, hUser, uIndex, util.toPointer(phRight));
 }
 
 export function DRMGetMetaData(
   hIssuanceLicense: number /* u32 */,
-  puContentIdLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puContentIdLength: Deno.PointerValue | Uint8Array /* ptr */,
   wszContentId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  puContentIdTypeLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puContentIdTypeLength: Deno.PointerValue | Uint8Array /* ptr */,
   wszContentIdType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  puSKUIdLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puSKUIdLength: Deno.PointerValue | Uint8Array /* ptr */,
   wszSKUId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  puSKUIdTypeLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puSKUIdTypeLength: Deno.PointerValue | Uint8Array /* ptr */,
   wszSKUIdType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  puContentTypeLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puContentTypeLength: Deno.PointerValue | Uint8Array /* ptr */,
   wszContentType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  puContentNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puContentNameLength: Deno.PointerValue | Uint8Array /* ptr */,
   wszContentName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMGetMetaData(hIssuanceLicense, util.toPointer(puContentIdLength), util.pwstrToFfi(wszContentId), util.toPointer(puContentIdTypeLength), util.pwstrToFfi(wszContentIdType), util.toPointer(puSKUIdLength), util.pwstrToFfi(wszSKUId), util.toPointer(puSKUIdTypeLength), util.pwstrToFfi(wszSKUIdType), util.toPointer(puContentTypeLength), util.pwstrToFfi(wszContentType), util.toPointer(puContentNameLength), util.pwstrToFfi(wszContentName)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMGetMetaData(hIssuanceLicense, util.toPointer(puContentIdLength), util.pwstrToFfi(wszContentId), util.toPointer(puContentIdTypeLength), util.pwstrToFfi(wszContentIdType), util.toPointer(puSKUIdLength), util.pwstrToFfi(wszSKUId), util.toPointer(puSKUIdTypeLength), util.pwstrToFfi(wszSKUIdType), util.toPointer(puContentTypeLength), util.pwstrToFfi(wszContentType), util.toPointer(puContentNameLength), util.pwstrToFfi(wszContentName));
 }
 
 export function DRMGetApplicationSpecificData(
   hIssuanceLicense: number /* u32 */,
   uIndex: number /* u32 */,
-  puNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puNameLength: Deno.PointerValue | Uint8Array /* ptr */,
   wszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  puValueLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puValueLength: Deno.PointerValue | Uint8Array /* ptr */,
   wszValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMGetApplicationSpecificData(hIssuanceLicense, uIndex, util.toPointer(puNameLength), util.pwstrToFfi(wszName), util.toPointer(puValueLength), util.pwstrToFfi(wszValue)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMGetApplicationSpecificData(hIssuanceLicense, uIndex, util.toPointer(puNameLength), util.pwstrToFfi(wszName), util.toPointer(puValueLength), util.pwstrToFfi(wszValue));
 }
 
 export function DRMGetIssuanceLicenseInfo(
   hIssuanceLicense: number /* u32 */,
-  pstTimeFrom: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pstTimeUntil: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pstTimeFrom: Deno.PointerValue | Uint8Array /* ptr */,
+  pstTimeUntil: Deno.PointerValue | Uint8Array /* ptr */,
   uFlags: number /* u32 */,
-  puDistributionPointNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puDistributionPointNameLength: Deno.PointerValue | Uint8Array /* ptr */,
   wszDistributionPointName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  puDistributionPointURLLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puDistributionPointURLLength: Deno.PointerValue | Uint8Array /* ptr */,
   wszDistributionPointURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  phOwner: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfOfficial: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMGetIssuanceLicenseInfo(hIssuanceLicense, util.toPointer(pstTimeFrom), util.toPointer(pstTimeUntil), uFlags, util.toPointer(puDistributionPointNameLength), util.pwstrToFfi(wszDistributionPointName), util.toPointer(puDistributionPointURLLength), util.pwstrToFfi(wszDistributionPointURL), util.toPointer(phOwner), util.toPointer(pfOfficial)));
+  phOwner: Deno.PointerValue | Uint8Array /* ptr */,
+  pfOfficial: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMGetIssuanceLicenseInfo(hIssuanceLicense, util.toPointer(pstTimeFrom), util.toPointer(pstTimeUntil), uFlags, util.toPointer(puDistributionPointNameLength), util.pwstrToFfi(wszDistributionPointName), util.toPointer(puDistributionPointURLLength), util.pwstrToFfi(wszDistributionPointURL), util.toPointer(phOwner), util.toPointer(pfOfficial));
 }
 
 export function DRMGetRevocationPoint(
   hIssuanceLicense: number /* u32 */,
-  puIdLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puIdLength: Deno.PointerValue | Uint8Array /* ptr */,
   wszId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  puIdTypeLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puIdTypeLength: Deno.PointerValue | Uint8Array /* ptr */,
   wszIdType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  puURLLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puURLLength: Deno.PointerValue | Uint8Array /* ptr */,
   wszRL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pstFrequency: Deno.PointerValue | Uint8Array | null /* ptr */,
-  puNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pstFrequency: Deno.PointerValue | Uint8Array /* ptr */,
+  puNameLength: Deno.PointerValue | Uint8Array /* ptr */,
   wszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  puPublicKeyLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puPublicKeyLength: Deno.PointerValue | Uint8Array /* ptr */,
   wszPublicKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMGetRevocationPoint(hIssuanceLicense, util.toPointer(puIdLength), util.pwstrToFfi(wszId), util.toPointer(puIdTypeLength), util.pwstrToFfi(wszIdType), util.toPointer(puURLLength), util.pwstrToFfi(wszRL), util.toPointer(pstFrequency), util.toPointer(puNameLength), util.pwstrToFfi(wszName), util.toPointer(puPublicKeyLength), util.pwstrToFfi(wszPublicKey)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMGetRevocationPoint(hIssuanceLicense, util.toPointer(puIdLength), util.pwstrToFfi(wszId), util.toPointer(puIdTypeLength), util.pwstrToFfi(wszIdType), util.toPointer(puURLLength), util.pwstrToFfi(wszRL), util.toPointer(pstFrequency), util.toPointer(puNameLength), util.pwstrToFfi(wszName), util.toPointer(puPublicKeyLength), util.pwstrToFfi(wszPublicKey));
 }
 
 export function DRMGetUsagePolicy(
   hIssuanceLicense: number /* u32 */,
   uIndex: number /* u32 */,
-  peUsagePolicyType: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pfExclusion: Deno.PointerValue | Uint8Array | null /* ptr */,
-  puNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  peUsagePolicyType: Deno.PointerValue | Uint8Array /* ptr */,
+  pfExclusion: Deno.PointerValue | Uint8Array /* ptr */,
+  puNameLength: Deno.PointerValue | Uint8Array /* ptr */,
   wszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  puMinVersionLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puMinVersionLength: Deno.PointerValue | Uint8Array /* ptr */,
   wszMinVersion: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  puMaxVersionLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puMaxVersionLength: Deno.PointerValue | Uint8Array /* ptr */,
   wszMaxVersion: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  puPublicKeyLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puPublicKeyLength: Deno.PointerValue | Uint8Array /* ptr */,
   wszPublicKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  puDigestAlgorithmLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puDigestAlgorithmLength: Deno.PointerValue | Uint8Array /* ptr */,
   wszDigestAlgorithm: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pcbDigest: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pbDigest: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMGetUsagePolicy(hIssuanceLicense, uIndex, util.toPointer(peUsagePolicyType), util.toPointer(pfExclusion), util.toPointer(puNameLength), util.pwstrToFfi(wszName), util.toPointer(puMinVersionLength), util.pwstrToFfi(wszMinVersion), util.toPointer(puMaxVersionLength), util.pwstrToFfi(wszMaxVersion), util.toPointer(puPublicKeyLength), util.pwstrToFfi(wszPublicKey), util.toPointer(puDigestAlgorithmLength), util.pwstrToFfi(wszDigestAlgorithm), util.toPointer(pcbDigest), util.toPointer(pbDigest)));
+  pcbDigest: Deno.PointerValue | Uint8Array /* ptr */,
+  pbDigest: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMGetUsagePolicy(hIssuanceLicense, uIndex, util.toPointer(peUsagePolicyType), util.toPointer(pfExclusion), util.toPointer(puNameLength), util.pwstrToFfi(wszName), util.toPointer(puMinVersionLength), util.pwstrToFfi(wszMinVersion), util.toPointer(puMaxVersionLength), util.pwstrToFfi(wszMaxVersion), util.toPointer(puPublicKeyLength), util.pwstrToFfi(wszPublicKey), util.toPointer(puDigestAlgorithmLength), util.pwstrToFfi(wszDigestAlgorithm), util.toPointer(pcbDigest), util.toPointer(pbDigest));
 }
 
 export function DRMGetNameAndDescription(
   hIssuanceLicense: number /* u32 */,
   uIndex: number /* u32 */,
-  pulcid: Deno.PointerValue | Uint8Array | null /* ptr */,
-  puNameLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pulcid: Deno.PointerValue | Uint8Array /* ptr */,
+  puNameLength: Deno.PointerValue | Uint8Array /* ptr */,
   wszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  puDescriptionLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puDescriptionLength: Deno.PointerValue | Uint8Array /* ptr */,
   wszDescription: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMGetNameAndDescription(hIssuanceLicense, uIndex, util.toPointer(pulcid), util.toPointer(puNameLength), util.pwstrToFfi(wszName), util.toPointer(puDescriptionLength), util.pwstrToFfi(wszDescription)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMGetNameAndDescription(hIssuanceLicense, uIndex, util.toPointer(pulcid), util.toPointer(puNameLength), util.pwstrToFfi(wszName), util.toPointer(puDescriptionLength), util.pwstrToFfi(wszDescription));
 }
 
 export function DRMGetOwnerLicense(
   hIssuanceLicense: number /* u32 */,
-  puOwnerLicenseLength: Deno.PointerValue | Uint8Array | null /* ptr */,
+  puOwnerLicenseLength: Deno.PointerValue | Uint8Array /* ptr */,
   wszOwnerLicense: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMGetOwnerLicense(hIssuanceLicense, util.toPointer(puOwnerLicenseLength), util.pwstrToFfi(wszOwnerLicense)));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMGetOwnerLicense(hIssuanceLicense, util.toPointer(puOwnerLicenseLength), util.pwstrToFfi(wszOwnerLicense));
 }
 
 export function DRMGetIntervalTime(
   hIssuanceLicense: number /* u32 */,
-  pcDays: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMGetIntervalTime(hIssuanceLicense, util.toPointer(pcDays)));
+  pcDays: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMGetIntervalTime(hIssuanceLicense, util.toPointer(pcDays));
 }
 
-export function DRMRepair(): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMRepair());
+export function DRMRepair(): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMRepair();
 }
 
 export function DRMRegisterProtectedWindow(
   hEnv: number /* u32 */,
-  hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMRegisterProtectedWindow(hEnv, util.hwndToFfi(hwnd)));
+  hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMRegisterProtectedWindow(hEnv, (hwnd));
 }
 
 export function DRMIsWindowProtected(
-  hwnd: Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */,
-  pfProtected: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMIsWindowProtected(util.hwndToFfi(hwnd), util.toPointer(pfProtected)));
+  hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
+  pfProtected: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMIsWindowProtected((hwnd), util.toPointer(pfProtected));
 }
 
 export function DRMAcquireIssuanceLicenseTemplate(
   hClient: number /* u32 */,
   uFlags: number /* u32 */,
-  pvReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
   cTemplates: number /* u32 */,
-  pwszTemplateIds: Deno.PointerValue | Uint8Array | null /* ptr */,
+  pwszTemplateIds: Deno.PointerValue | Uint8Array /* ptr */,
   wszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  pvContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libmsdrm_dll.DRMAcquireIssuanceLicenseTemplate(hClient, uFlags, util.toPointer(pvReserved), cTemplates, util.toPointer(pwszTemplateIds), util.pwstrToFfi(wszUrl), util.toPointer(pvContext)));
+  pvContext: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libmsdrm_dll.DRMAcquireIssuanceLicenseTemplate(hClient, uFlags, util.toPointer(pvReserved), cTemplates, util.toPointer(pwszTemplateIds), util.pwstrToFfi(wszUrl), util.toPointer(pvContext));
 }
 

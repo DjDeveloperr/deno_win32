@@ -9,7 +9,7 @@ import * as util from "../../util.ts";
  */
 export interface PERCEPTION_PAYLOAD_FIELD {
   /** System.Guid */
-  FieldId: Uint8Array | Deno.PointerValue | null;
+  FieldId: Uint8Array | Deno.PointerValue;
   /** u32 */
   OffsetInBytes: number;
   /** u32 */
@@ -22,7 +22,7 @@ export function allocPERCEPTION_PAYLOAD_FIELD(data?: Partial<PERCEPTION_PAYLOAD_
   const buf = new Uint8Array(sizeofPERCEPTION_PAYLOAD_FIELD);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.FieldId !== undefined) view.setBigUint64(0, data.FieldId === null ? 0n : BigInt(util.toPointer(data.FieldId)), true);
+  if (data?.FieldId !== undefined) view.setBigUint64(0, data.FieldId === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.FieldId))), true);
   // 0x08: u32
   if (data?.OffsetInBytes !== undefined) view.setUint32(8, Number(data.OffsetInBytes), true);
   // 0x0c: u32
@@ -41,9 +41,9 @@ export class PERCEPTION_PAYLOAD_FIELDView {
   }
 
   // 0x00: pointer
-  get FieldId(): Uint8Array | Deno.PointerValue | null {
+  get FieldId(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -57,8 +57,8 @@ export class PERCEPTION_PAYLOAD_FIELDView {
   }
 
   // 0x00: pointer
-  set FieldId(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set FieldId(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32

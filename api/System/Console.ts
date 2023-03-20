@@ -244,7 +244,7 @@ export type CHAR = number;
  */
 export interface _uChar_e__Union {
   /** char */
-  UnicodeChar: Uint8Array | Deno.PointerValue | null;
+  UnicodeChar: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.CHAR */
   AsciiChar: string | number;
 }
@@ -255,7 +255,7 @@ export function alloc_uChar_e__Union(data?: Partial<_uChar_e__Union>): Uint8Arra
   const buf = new Uint8Array(sizeof_uChar_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.UnicodeChar !== undefined) view.setBigUint64(0, data.UnicodeChar === null ? 0n : BigInt(util.toPointer(data.UnicodeChar)), true);
+  if (data?.UnicodeChar !== undefined) view.setBigUint64(0, data.UnicodeChar === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.UnicodeChar))), true);
   // 0x08: u8
   if (data?.AsciiChar !== undefined) view.setUint8(8, Number(data.AsciiChar));
   // 0x09: pad7
@@ -273,9 +273,9 @@ export class _uChar_e__UnionView {
   }
 
   // 0x00: pointer
-  get UnicodeChar(): Uint8Array | Deno.PointerValue | null {
+  get UnicodeChar(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u8
@@ -286,8 +286,8 @@ export class _uChar_e__UnionView {
   // 0x09: pad7
 
   // 0x00: pointer
-  set UnicodeChar(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set UnicodeChar(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u8
@@ -311,7 +311,7 @@ export interface KEY_EVENT_RECORD {
   /** u16 */
   wVirtualScanCode: number;
   /** _uChar_e__Union */
-  uChar: Uint8Array | Deno.PointerValue | null;
+  uChar: Uint8Array | Deno.PointerValue;
   /** u32 */
   dwControlKeyState: number;
 }
@@ -331,7 +331,7 @@ export function allocKEY_EVENT_RECORD(data?: Partial<KEY_EVENT_RECORD>): Uint8Ar
   if (data?.wVirtualScanCode !== undefined) view.setUint16(8, Number(data.wVirtualScanCode), true);
   // 0x0a: pad6
   // 0x10: pointer
-  if (data?.uChar !== undefined) view.setBigUint64(16, data.uChar === null ? 0n : BigInt(util.toPointer(data.uChar)), true);
+  if (data?.uChar !== undefined) view.setBigUint64(16, data.uChar === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.uChar))), true);
   // 0x18: u32
   if (data?.dwControlKeyState !== undefined) view.setUint32(24, Number(data.dwControlKeyState), true);
   // 0x1c: pad4
@@ -371,9 +371,9 @@ export class KEY_EVENT_RECORDView {
   // 0x0a: pad6
 
   // 0x10: pointer
-  get uChar(): Uint8Array | Deno.PointerValue | null {
+  get uChar(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u32
@@ -406,8 +406,8 @@ export class KEY_EVENT_RECORDView {
   // 0x0a: pad6
 
   // 0x10: pointer
-  set uChar(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set uChar(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u32
@@ -423,7 +423,7 @@ export class KEY_EVENT_RECORDView {
  */
 export interface MOUSE_EVENT_RECORD {
   /** Windows.Win32.System.Console.COORD */
-  dwMousePosition: Uint8Array | Deno.PointerValue | null;
+  dwMousePosition: Uint8Array | Deno.PointerValue;
   /** u32 */
   dwButtonState: number;
   /** u32 */
@@ -438,7 +438,7 @@ export function allocMOUSE_EVENT_RECORD(data?: Partial<MOUSE_EVENT_RECORD>): Uin
   const buf = new Uint8Array(sizeofMOUSE_EVENT_RECORD);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.dwMousePosition !== undefined) view.setBigUint64(0, data.dwMousePosition === null ? 0n : BigInt(util.toPointer(data.dwMousePosition)), true);
+  if (data?.dwMousePosition !== undefined) view.setBigUint64(0, data.dwMousePosition === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.dwMousePosition))), true);
   // 0x08: u32
   if (data?.dwButtonState !== undefined) view.setUint32(8, Number(data.dwButtonState), true);
   // 0x0c: u32
@@ -460,9 +460,9 @@ export class MOUSE_EVENT_RECORDView {
   }
 
   // 0x00: pointer
-  get dwMousePosition(): Uint8Array | Deno.PointerValue | null {
+  get dwMousePosition(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -483,8 +483,8 @@ export class MOUSE_EVENT_RECORDView {
   // 0x14: pad4
 
   // 0x00: pointer
-  set dwMousePosition(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set dwMousePosition(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -510,7 +510,7 @@ export class MOUSE_EVENT_RECORDView {
  */
 export interface WINDOW_BUFFER_SIZE_RECORD {
   /** Windows.Win32.System.Console.COORD */
-  dwSize: Uint8Array | Deno.PointerValue | null;
+  dwSize: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofWINDOW_BUFFER_SIZE_RECORD = 8;
@@ -519,7 +519,7 @@ export function allocWINDOW_BUFFER_SIZE_RECORD(data?: Partial<WINDOW_BUFFER_SIZE
   const buf = new Uint8Array(sizeofWINDOW_BUFFER_SIZE_RECORD);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.dwSize !== undefined) view.setBigUint64(0, data.dwSize === null ? 0n : BigInt(util.toPointer(data.dwSize)), true);
+  if (data?.dwSize !== undefined) view.setBigUint64(0, data.dwSize === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.dwSize))), true);
   return buf;
 }
 
@@ -534,14 +534,14 @@ export class WINDOW_BUFFER_SIZE_RECORDView {
   }
 
   // 0x00: pointer
-  get dwSize(): Uint8Array | Deno.PointerValue | null {
+  get dwSize(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set dwSize(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set dwSize(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -638,15 +638,15 @@ export class FOCUS_EVENT_RECORDView {
  */
 export interface _Event_e__Union {
   /** Windows.Win32.System.Console.KEY_EVENT_RECORD */
-  KeyEvent: Uint8Array | Deno.PointerValue | null;
+  KeyEvent: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Console.MOUSE_EVENT_RECORD */
-  MouseEvent: Uint8Array | Deno.PointerValue | null;
+  MouseEvent: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Console.WINDOW_BUFFER_SIZE_RECORD */
-  WindowBufferSizeEvent: Uint8Array | Deno.PointerValue | null;
+  WindowBufferSizeEvent: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Console.MENU_EVENT_RECORD */
-  MenuEvent: Uint8Array | Deno.PointerValue | null;
+  MenuEvent: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Console.FOCUS_EVENT_RECORD */
-  FocusEvent: Uint8Array | Deno.PointerValue | null;
+  FocusEvent: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeof_Event_e__Union = 40;
@@ -655,15 +655,15 @@ export function alloc_Event_e__Union(data?: Partial<_Event_e__Union>): Uint8Arra
   const buf = new Uint8Array(sizeof_Event_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.KeyEvent !== undefined) view.setBigUint64(0, data.KeyEvent === null ? 0n : BigInt(util.toPointer(data.KeyEvent)), true);
+  if (data?.KeyEvent !== undefined) view.setBigUint64(0, data.KeyEvent === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.KeyEvent))), true);
   // 0x08: pointer
-  if (data?.MouseEvent !== undefined) view.setBigUint64(8, data.MouseEvent === null ? 0n : BigInt(util.toPointer(data.MouseEvent)), true);
+  if (data?.MouseEvent !== undefined) view.setBigUint64(8, data.MouseEvent === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.MouseEvent))), true);
   // 0x10: pointer
-  if (data?.WindowBufferSizeEvent !== undefined) view.setBigUint64(16, data.WindowBufferSizeEvent === null ? 0n : BigInt(util.toPointer(data.WindowBufferSizeEvent)), true);
+  if (data?.WindowBufferSizeEvent !== undefined) view.setBigUint64(16, data.WindowBufferSizeEvent === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.WindowBufferSizeEvent))), true);
   // 0x18: pointer
-  if (data?.MenuEvent !== undefined) view.setBigUint64(24, data.MenuEvent === null ? 0n : BigInt(util.toPointer(data.MenuEvent)), true);
+  if (data?.MenuEvent !== undefined) view.setBigUint64(24, data.MenuEvent === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.MenuEvent))), true);
   // 0x20: pointer
-  if (data?.FocusEvent !== undefined) view.setBigUint64(32, data.FocusEvent === null ? 0n : BigInt(util.toPointer(data.FocusEvent)), true);
+  if (data?.FocusEvent !== undefined) view.setBigUint64(32, data.FocusEvent === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.FocusEvent))), true);
   return buf;
 }
 
@@ -678,58 +678,58 @@ export class _Event_e__UnionView {
   }
 
   // 0x00: pointer
-  get KeyEvent(): Uint8Array | Deno.PointerValue | null {
+  get KeyEvent(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get MouseEvent(): Uint8Array | Deno.PointerValue | null {
+  get MouseEvent(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get WindowBufferSizeEvent(): Uint8Array | Deno.PointerValue | null {
+  get WindowBufferSizeEvent(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get MenuEvent(): Uint8Array | Deno.PointerValue | null {
+  get MenuEvent(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get FocusEvent(): Uint8Array | Deno.PointerValue | null {
+  get FocusEvent(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set KeyEvent(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set KeyEvent(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set MouseEvent(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set MouseEvent(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set WindowBufferSizeEvent(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set WindowBufferSizeEvent(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set MenuEvent(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set MenuEvent(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set FocusEvent(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set FocusEvent(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -740,7 +740,7 @@ export interface INPUT_RECORD {
   /** u16 */
   EventType: number;
   /** _Event_e__Union */
-  Event: Uint8Array | Deno.PointerValue | null;
+  Event: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofINPUT_RECORD = 16;
@@ -752,7 +752,7 @@ export function allocINPUT_RECORD(data?: Partial<INPUT_RECORD>): Uint8Array {
   if (data?.EventType !== undefined) view.setUint16(0, Number(data.EventType), true);
   // 0x02: pad6
   // 0x08: pointer
-  if (data?.Event !== undefined) view.setBigUint64(8, data.Event === null ? 0n : BigInt(util.toPointer(data.Event)), true);
+  if (data?.Event !== undefined) view.setBigUint64(8, data.Event === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Event))), true);
   return buf;
 }
 
@@ -774,9 +774,9 @@ export class INPUT_RECORDView {
   // 0x02: pad6
 
   // 0x08: pointer
-  get Event(): Uint8Array | Deno.PointerValue | null {
+  get Event(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u16
@@ -787,8 +787,8 @@ export class INPUT_RECORDView {
   // 0x02: pad6
 
   // 0x08: pointer
-  set Event(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set Event(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -797,7 +797,7 @@ export class INPUT_RECORDView {
  */
 export interface _Char_e__Union {
   /** char */
-  UnicodeChar: Uint8Array | Deno.PointerValue | null;
+  UnicodeChar: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.CHAR */
   AsciiChar: string | number;
 }
@@ -808,7 +808,7 @@ export function alloc_Char_e__Union(data?: Partial<_Char_e__Union>): Uint8Array 
   const buf = new Uint8Array(sizeof_Char_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.UnicodeChar !== undefined) view.setBigUint64(0, data.UnicodeChar === null ? 0n : BigInt(util.toPointer(data.UnicodeChar)), true);
+  if (data?.UnicodeChar !== undefined) view.setBigUint64(0, data.UnicodeChar === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.UnicodeChar))), true);
   // 0x08: u8
   if (data?.AsciiChar !== undefined) view.setUint8(8, Number(data.AsciiChar));
   // 0x09: pad7
@@ -826,9 +826,9 @@ export class _Char_e__UnionView {
   }
 
   // 0x00: pointer
-  get UnicodeChar(): Uint8Array | Deno.PointerValue | null {
+  get UnicodeChar(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u8
@@ -839,8 +839,8 @@ export class _Char_e__UnionView {
   // 0x09: pad7
 
   // 0x00: pointer
-  set UnicodeChar(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set UnicodeChar(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u8
@@ -856,7 +856,7 @@ export class _Char_e__UnionView {
  */
 export interface CHAR_INFO {
   /** _Char_e__Union */
-  Char: Uint8Array | Deno.PointerValue | null;
+  Char: Uint8Array | Deno.PointerValue;
   /** u16 */
   Attributes: number;
 }
@@ -867,7 +867,7 @@ export function allocCHAR_INFO(data?: Partial<CHAR_INFO>): Uint8Array {
   const buf = new Uint8Array(sizeofCHAR_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Char !== undefined) view.setBigUint64(0, data.Char === null ? 0n : BigInt(util.toPointer(data.Char)), true);
+  if (data?.Char !== undefined) view.setBigUint64(0, data.Char === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Char))), true);
   // 0x08: u16
   if (data?.Attributes !== undefined) view.setUint16(8, Number(data.Attributes), true);
   // 0x0a: pad6
@@ -885,9 +885,9 @@ export class CHAR_INFOView {
   }
 
   // 0x00: pointer
-  get Char(): Uint8Array | Deno.PointerValue | null {
+  get Char(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u16
@@ -898,8 +898,8 @@ export class CHAR_INFOView {
   // 0x0a: pad6
 
   // 0x00: pointer
-  set Char(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Char(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u16
@@ -917,7 +917,7 @@ export interface CONSOLE_FONT_INFO {
   /** u32 */
   nFont: number;
   /** Windows.Win32.System.Console.COORD */
-  dwFontSize: Uint8Array | Deno.PointerValue | null;
+  dwFontSize: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofCONSOLE_FONT_INFO = 16;
@@ -929,7 +929,7 @@ export function allocCONSOLE_FONT_INFO(data?: Partial<CONSOLE_FONT_INFO>): Uint8
   if (data?.nFont !== undefined) view.setUint32(0, Number(data.nFont), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.dwFontSize !== undefined) view.setBigUint64(8, data.dwFontSize === null ? 0n : BigInt(util.toPointer(data.dwFontSize)), true);
+  if (data?.dwFontSize !== undefined) view.setBigUint64(8, data.dwFontSize === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.dwFontSize))), true);
   return buf;
 }
 
@@ -951,9 +951,9 @@ export class CONSOLE_FONT_INFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get dwFontSize(): Uint8Array | Deno.PointerValue | null {
+  get dwFontSize(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -964,8 +964,8 @@ export class CONSOLE_FONT_INFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set dwFontSize(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set dwFontSize(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1108,15 +1108,15 @@ export class CONSOLE_CURSOR_INFOView {
  */
 export interface CONSOLE_SCREEN_BUFFER_INFO {
   /** Windows.Win32.System.Console.COORD */
-  dwSize: Uint8Array | Deno.PointerValue | null;
+  dwSize: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Console.COORD */
-  dwCursorPosition: Uint8Array | Deno.PointerValue | null;
+  dwCursorPosition: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Console.CONSOLE_CHARACTER_ATTRIBUTES */
   wAttributes: CONSOLE_CHARACTER_ATTRIBUTES;
   /** Windows.Win32.System.Console.SMALL_RECT */
-  srWindow: Uint8Array | Deno.PointerValue | null;
+  srWindow: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Console.COORD */
-  dwMaximumWindowSize: Uint8Array | Deno.PointerValue | null;
+  dwMaximumWindowSize: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofCONSOLE_SCREEN_BUFFER_INFO = 40;
@@ -1125,16 +1125,16 @@ export function allocCONSOLE_SCREEN_BUFFER_INFO(data?: Partial<CONSOLE_SCREEN_BU
   const buf = new Uint8Array(sizeofCONSOLE_SCREEN_BUFFER_INFO);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.dwSize !== undefined) view.setBigUint64(0, data.dwSize === null ? 0n : BigInt(util.toPointer(data.dwSize)), true);
+  if (data?.dwSize !== undefined) view.setBigUint64(0, data.dwSize === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.dwSize))), true);
   // 0x08: pointer
-  if (data?.dwCursorPosition !== undefined) view.setBigUint64(8, data.dwCursorPosition === null ? 0n : BigInt(util.toPointer(data.dwCursorPosition)), true);
+  if (data?.dwCursorPosition !== undefined) view.setBigUint64(8, data.dwCursorPosition === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.dwCursorPosition))), true);
   // 0x10: u16
   if (data?.wAttributes !== undefined) view.setUint16(16, Number(data.wAttributes), true);
   // 0x12: pad6
   // 0x18: pointer
-  if (data?.srWindow !== undefined) view.setBigUint64(24, data.srWindow === null ? 0n : BigInt(util.toPointer(data.srWindow)), true);
+  if (data?.srWindow !== undefined) view.setBigUint64(24, data.srWindow === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.srWindow))), true);
   // 0x20: pointer
-  if (data?.dwMaximumWindowSize !== undefined) view.setBigUint64(32, data.dwMaximumWindowSize === null ? 0n : BigInt(util.toPointer(data.dwMaximumWindowSize)), true);
+  if (data?.dwMaximumWindowSize !== undefined) view.setBigUint64(32, data.dwMaximumWindowSize === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.dwMaximumWindowSize))), true);
   return buf;
 }
 
@@ -1149,15 +1149,15 @@ export class CONSOLE_SCREEN_BUFFER_INFOView {
   }
 
   // 0x00: pointer
-  get dwSize(): Uint8Array | Deno.PointerValue | null {
+  get dwSize(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get dwCursorPosition(): Uint8Array | Deno.PointerValue | null {
+  get dwCursorPosition(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u16
@@ -1168,25 +1168,25 @@ export class CONSOLE_SCREEN_BUFFER_INFOView {
   // 0x12: pad6
 
   // 0x18: pointer
-  get srWindow(): Uint8Array | Deno.PointerValue | null {
+  get srWindow(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x20: pointer
-  get dwMaximumWindowSize(): Uint8Array | Deno.PointerValue | null {
+  get dwMaximumWindowSize(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set dwSize(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set dwSize(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set dwCursorPosition(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set dwCursorPosition(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u16
@@ -1197,13 +1197,13 @@ export class CONSOLE_SCREEN_BUFFER_INFOView {
   // 0x12: pad6
 
   // 0x18: pointer
-  set srWindow(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set srWindow(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x20: pointer
-  set dwMaximumWindowSize(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set dwMaximumWindowSize(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1214,21 +1214,21 @@ export interface CONSOLE_SCREEN_BUFFER_INFOEX {
   /** u32 */
   cbSize: number;
   /** Windows.Win32.System.Console.COORD */
-  dwSize: Uint8Array | Deno.PointerValue | null;
+  dwSize: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Console.COORD */
-  dwCursorPosition: Uint8Array | Deno.PointerValue | null;
+  dwCursorPosition: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Console.CONSOLE_CHARACTER_ATTRIBUTES */
   wAttributes: CONSOLE_CHARACTER_ATTRIBUTES;
   /** Windows.Win32.System.Console.SMALL_RECT */
-  srWindow: Uint8Array | Deno.PointerValue | null;
+  srWindow: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Console.COORD */
-  dwMaximumWindowSize: Uint8Array | Deno.PointerValue | null;
+  dwMaximumWindowSize: Uint8Array | Deno.PointerValue;
   /** u16 */
   wPopupAttributes: number;
   /** Windows.Win32.Foundation.BOOL */
   bFullscreenSupported: boolean;
   /** array */
-  ColorTable: Deno.PointerValue | null;
+  ColorTable: Deno.PointerValue;
 }
 
 export const sizeofCONSOLE_SCREEN_BUFFER_INFOEX = 64;
@@ -1240,23 +1240,23 @@ export function allocCONSOLE_SCREEN_BUFFER_INFOEX(data?: Partial<CONSOLE_SCREEN_
   if (data?.cbSize !== undefined) view.setUint32(0, Number(data.cbSize), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.dwSize !== undefined) view.setBigUint64(8, data.dwSize === null ? 0n : BigInt(util.toPointer(data.dwSize)), true);
+  if (data?.dwSize !== undefined) view.setBigUint64(8, data.dwSize === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.dwSize))), true);
   // 0x10: pointer
-  if (data?.dwCursorPosition !== undefined) view.setBigUint64(16, data.dwCursorPosition === null ? 0n : BigInt(util.toPointer(data.dwCursorPosition)), true);
+  if (data?.dwCursorPosition !== undefined) view.setBigUint64(16, data.dwCursorPosition === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.dwCursorPosition))), true);
   // 0x18: u16
   if (data?.wAttributes !== undefined) view.setUint16(24, Number(data.wAttributes), true);
   // 0x1a: pad6
   // 0x20: pointer
-  if (data?.srWindow !== undefined) view.setBigUint64(32, data.srWindow === null ? 0n : BigInt(util.toPointer(data.srWindow)), true);
+  if (data?.srWindow !== undefined) view.setBigUint64(32, data.srWindow === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.srWindow))), true);
   // 0x28: pointer
-  if (data?.dwMaximumWindowSize !== undefined) view.setBigUint64(40, data.dwMaximumWindowSize === null ? 0n : BigInt(util.toPointer(data.dwMaximumWindowSize)), true);
+  if (data?.dwMaximumWindowSize !== undefined) view.setBigUint64(40, data.dwMaximumWindowSize === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.dwMaximumWindowSize))), true);
   // 0x30: u16
   if (data?.wPopupAttributes !== undefined) view.setUint16(48, Number(data.wPopupAttributes), true);
   // 0x32: i32
   if (data?.bFullscreenSupported !== undefined) view.setInt32(50, Number(data.bFullscreenSupported), true);
   // 0x36: pad2
   // 0x38: pointer
-  if (data?.ColorTable !== undefined) view.setBigUint64(56, data.ColorTable === null ? 0n : BigInt(util.toPointer(data.ColorTable)), true);
+  if (data?.ColorTable !== undefined) view.setBigUint64(56, data.ColorTable === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.ColorTable))), true);
   return buf;
 }
 
@@ -1278,15 +1278,15 @@ export class CONSOLE_SCREEN_BUFFER_INFOEXView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get dwSize(): Uint8Array | Deno.PointerValue | null {
+  get dwSize(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get dwCursorPosition(): Uint8Array | Deno.PointerValue | null {
+  get dwCursorPosition(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: u16
@@ -1297,15 +1297,15 @@ export class CONSOLE_SCREEN_BUFFER_INFOEXView {
   // 0x1a: pad6
 
   // 0x20: pointer
-  get srWindow(): Uint8Array | Deno.PointerValue | null {
+  get srWindow(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x28: pointer
-  get dwMaximumWindowSize(): Uint8Array | Deno.PointerValue | null {
+  get dwMaximumWindowSize(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(40, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x30: u16
@@ -1321,9 +1321,9 @@ export class CONSOLE_SCREEN_BUFFER_INFOEXView {
   // 0x36: pad2
 
   // 0x38: pointer
-  get ColorTable(): Uint8Array | Deno.PointerValue | null {
+  get ColorTable(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(56, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1334,13 +1334,13 @@ export class CONSOLE_SCREEN_BUFFER_INFOEXView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set dwSize(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set dwSize(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set dwCursorPosition(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set dwCursorPosition(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: u16
@@ -1351,13 +1351,13 @@ export class CONSOLE_SCREEN_BUFFER_INFOEXView {
   // 0x1a: pad6
 
   // 0x20: pointer
-  set srWindow(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set srWindow(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x28: pointer
-  set dwMaximumWindowSize(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(40, BigInt(util.toPointer(value)), true);
+  set dwMaximumWindowSize(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(40, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x30: u16
@@ -1373,8 +1373,8 @@ export class CONSOLE_SCREEN_BUFFER_INFOEXView {
   // 0x36: pad2
 
   // 0x38: pointer
-  set ColorTable(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(56, BigInt(util.toPointer(value)), true);
+  set ColorTable(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(56, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1387,13 +1387,13 @@ export interface CONSOLE_FONT_INFOEX {
   /** u32 */
   nFont: number;
   /** Windows.Win32.System.Console.COORD */
-  dwFontSize: Uint8Array | Deno.PointerValue | null;
+  dwFontSize: Uint8Array | Deno.PointerValue;
   /** u32 */
   FontFamily: number;
   /** u32 */
   FontWeight: number;
   /** array */
-  FaceName: Deno.PointerValue | null;
+  FaceName: Deno.PointerValue;
 }
 
 export const sizeofCONSOLE_FONT_INFOEX = 32;
@@ -1406,13 +1406,13 @@ export function allocCONSOLE_FONT_INFOEX(data?: Partial<CONSOLE_FONT_INFOEX>): U
   // 0x04: u32
   if (data?.nFont !== undefined) view.setUint32(4, Number(data.nFont), true);
   // 0x08: pointer
-  if (data?.dwFontSize !== undefined) view.setBigUint64(8, data.dwFontSize === null ? 0n : BigInt(util.toPointer(data.dwFontSize)), true);
+  if (data?.dwFontSize !== undefined) view.setBigUint64(8, data.dwFontSize === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.dwFontSize))), true);
   // 0x10: u32
   if (data?.FontFamily !== undefined) view.setUint32(16, Number(data.FontFamily), true);
   // 0x14: u32
   if (data?.FontWeight !== undefined) view.setUint32(20, Number(data.FontWeight), true);
   // 0x18: pointer
-  if (data?.FaceName !== undefined) view.setBigUint64(24, data.FaceName === null ? 0n : BigInt(util.toPointer(data.FaceName)), true);
+  if (data?.FaceName !== undefined) view.setBigUint64(24, data.FaceName === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.FaceName))), true);
   return buf;
 }
 
@@ -1437,9 +1437,9 @@ export class CONSOLE_FONT_INFOEXView {
   }
 
   // 0x08: pointer
-  get dwFontSize(): Uint8Array | Deno.PointerValue | null {
+  get dwFontSize(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: u32
@@ -1453,9 +1453,9 @@ export class CONSOLE_FONT_INFOEXView {
   }
 
   // 0x18: pointer
-  get FaceName(): Uint8Array | Deno.PointerValue | null {
+  get FaceName(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1469,8 +1469,8 @@ export class CONSOLE_FONT_INFOEXView {
   }
 
   // 0x08: pointer
-  set dwFontSize(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set dwFontSize(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: u32
@@ -1484,8 +1484,8 @@ export class CONSOLE_FONT_INFOEXView {
   }
 
   // 0x18: pointer
-  set FaceName(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set FaceName(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1496,9 +1496,9 @@ export interface CONSOLE_SELECTION_INFO {
   /** u32 */
   dwFlags: number;
   /** Windows.Win32.System.Console.COORD */
-  dwSelectionAnchor: Uint8Array | Deno.PointerValue | null;
+  dwSelectionAnchor: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Console.SMALL_RECT */
-  srSelection: Uint8Array | Deno.PointerValue | null;
+  srSelection: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofCONSOLE_SELECTION_INFO = 24;
@@ -1510,9 +1510,9 @@ export function allocCONSOLE_SELECTION_INFO(data?: Partial<CONSOLE_SELECTION_INF
   if (data?.dwFlags !== undefined) view.setUint32(0, Number(data.dwFlags), true);
   // 0x04: pad4
   // 0x08: pointer
-  if (data?.dwSelectionAnchor !== undefined) view.setBigUint64(8, data.dwSelectionAnchor === null ? 0n : BigInt(util.toPointer(data.dwSelectionAnchor)), true);
+  if (data?.dwSelectionAnchor !== undefined) view.setBigUint64(8, data.dwSelectionAnchor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.dwSelectionAnchor))), true);
   // 0x10: pointer
-  if (data?.srSelection !== undefined) view.setBigUint64(16, data.srSelection === null ? 0n : BigInt(util.toPointer(data.srSelection)), true);
+  if (data?.srSelection !== undefined) view.setBigUint64(16, data.srSelection === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.srSelection))), true);
   return buf;
 }
 
@@ -1534,15 +1534,15 @@ export class CONSOLE_SELECTION_INFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  get dwSelectionAnchor(): Uint8Array | Deno.PointerValue | null {
+  get dwSelectionAnchor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get srSelection(): Uint8Array | Deno.PointerValue | null {
+  get srSelection(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -1553,13 +1553,13 @@ export class CONSOLE_SELECTION_INFOView {
   // 0x04: pad4
 
   // 0x08: pointer
-  set dwSelectionAnchor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set dwSelectionAnchor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set srSelection(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set srSelection(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1648,9 +1648,9 @@ export type HANDLE = Deno.PointerValue;
 
 export type HRESULT = number;
 
-export type PSTR = Deno.PointerValue | Uint8Array | null;
+export type PSTR = Deno.PointerValue | Uint8Array;
 
-export type PWSTR = Deno.PointerValue | Uint8Array | null;
+export type PWSTR = Deno.PointerValue | Uint8Array;
 
 export type HWND = Deno.PointerValue;
 
@@ -2062,158 +2062,158 @@ export function GetConsoleOutputCP(): number /* u32 */ {
 }
 
 export function GetConsoleMode(
-  hConsoleHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpMode: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hConsoleHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpMode: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetConsoleMode(util.toPointer(hConsoleHandle), util.toPointer(lpMode)));
 }
 
 export function SetConsoleMode(
-  hConsoleHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hConsoleHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwMode: CONSOLE_MODE /* Windows.Win32.System.Console.CONSOLE_MODE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetConsoleMode(util.toPointer(hConsoleHandle), dwMode));
 }
 
 export function GetNumberOfConsoleInputEvents(
-  hConsoleInput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpNumberOfEvents: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hConsoleInput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpNumberOfEvents: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetNumberOfConsoleInputEvents(util.toPointer(hConsoleInput), util.toPointer(lpNumberOfEvents)));
 }
 
 export function ReadConsoleInputA(
-  hConsoleInput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hConsoleInput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   nLength: number /* u32 */,
-  lpNumberOfEventsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpNumberOfEventsRead: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.ReadConsoleInputA(util.toPointer(hConsoleInput), util.toPointer(lpBuffer), nLength, util.toPointer(lpNumberOfEventsRead)));
 }
 
 export function ReadConsoleInputW(
-  hConsoleInput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hConsoleInput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   nLength: number /* u32 */,
-  lpNumberOfEventsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpNumberOfEventsRead: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.ReadConsoleInputW(util.toPointer(hConsoleInput), util.toPointer(lpBuffer), nLength, util.toPointer(lpNumberOfEventsRead)));
 }
 
 export function PeekConsoleInputA(
-  hConsoleInput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hConsoleInput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   nLength: number /* u32 */,
-  lpNumberOfEventsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpNumberOfEventsRead: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.PeekConsoleInputA(util.toPointer(hConsoleInput), util.toPointer(lpBuffer), nLength, util.toPointer(lpNumberOfEventsRead)));
 }
 
 export function PeekConsoleInputW(
-  hConsoleInput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hConsoleInput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   nLength: number /* u32 */,
-  lpNumberOfEventsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpNumberOfEventsRead: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.PeekConsoleInputW(util.toPointer(hConsoleInput), util.toPointer(lpBuffer), nLength, util.toPointer(lpNumberOfEventsRead)));
 }
 
 export function ReadConsoleA(
-  hConsoleInput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hConsoleInput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   nNumberOfCharsToRead: number /* u32 */,
-  lpNumberOfCharsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pInputControl: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpNumberOfCharsRead: Deno.PointerValue | Uint8Array /* ptr */,
+  pInputControl: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.ReadConsoleA(util.toPointer(hConsoleInput), util.toPointer(lpBuffer), nNumberOfCharsToRead, util.toPointer(lpNumberOfCharsRead), util.toPointer(pInputControl)));
 }
 
 export function ReadConsoleW(
-  hConsoleInput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hConsoleInput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   nNumberOfCharsToRead: number /* u32 */,
-  lpNumberOfCharsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
-  pInputControl: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpNumberOfCharsRead: Deno.PointerValue | Uint8Array /* ptr */,
+  pInputControl: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.ReadConsoleW(util.toPointer(hConsoleInput), util.toPointer(lpBuffer), nNumberOfCharsToRead, util.toPointer(lpNumberOfCharsRead), util.toPointer(pInputControl)));
 }
 
 export function WriteConsoleA(
-  hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hConsoleOutput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   nNumberOfCharsToWrite: number /* u32 */,
-  lpNumberOfCharsWritten: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpNumberOfCharsWritten: Deno.PointerValue | Uint8Array /* ptr */,
+  lpReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.WriteConsoleA(util.toPointer(hConsoleOutput), util.toPointer(lpBuffer), nNumberOfCharsToWrite, util.toPointer(lpNumberOfCharsWritten), util.toPointer(lpReserved)));
 }
 
 export function WriteConsoleW(
-  hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hConsoleOutput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   nNumberOfCharsToWrite: number /* u32 */,
-  lpNumberOfCharsWritten: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpReserved: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpNumberOfCharsWritten: Deno.PointerValue | Uint8Array /* ptr */,
+  lpReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.WriteConsoleW(util.toPointer(hConsoleOutput), util.toPointer(lpBuffer), nNumberOfCharsToWrite, util.toPointer(lpNumberOfCharsWritten), util.toPointer(lpReserved)));
 }
 
 export function SetConsoleCtrlHandler(
-  HandlerRoutine: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.PHANDLER_ROUTINE */,
+  HandlerRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Console.PHANDLER_ROUTINE */,
   Add: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetConsoleCtrlHandler(util.toPointer(HandlerRoutine), util.boolToFfi(Add)));
 }
 
 export function CreatePseudoConsole(
-  size: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
-  hInput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  hOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  size: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Console.COORD */,
+  hInput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  hOutput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwFlags: number /* u32 */,
-  phPC: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libKERNEL32_dll.CreatePseudoConsole(util.toPointer(size), util.toPointer(hInput), util.toPointer(hOutput), dwFlags, util.toPointer(phPC)));
+  phPC: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libKERNEL32_dll.CreatePseudoConsole(util.toPointer(size), util.toPointer(hInput), util.toPointer(hOutput), dwFlags, util.toPointer(phPC));
 }
 
 export function ResizePseudoConsole(
-  hPC: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.HPCON */,
-  size: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libKERNEL32_dll.ResizePseudoConsole(util.toPointer(hPC), util.toPointer(size)));
+  hPC: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Console.HPCON */,
+  size: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Console.COORD */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libKERNEL32_dll.ResizePseudoConsole(util.toPointer(hPC), util.toPointer(size));
 }
 
 export function ClosePseudoConsole(
-  hPC: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.HPCON */,
+  hPC: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Console.HPCON */,
 ): void /* void */ {
   return libKERNEL32_dll.ClosePseudoConsole(util.toPointer(hPC));
 }
 
 export function FillConsoleOutputCharacterA(
-  hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hConsoleOutput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   cCharacter: string | number /* Windows.Win32.Foundation.CHAR */,
   nLength: number /* u32 */,
-  dwWriteCoord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
-  lpNumberOfCharsWritten: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dwWriteCoord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Console.COORD */,
+  lpNumberOfCharsWritten: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.FillConsoleOutputCharacterA(util.toPointer(hConsoleOutput), util.charToFfi(cCharacter), nLength, util.toPointer(dwWriteCoord), util.toPointer(lpNumberOfCharsWritten)));
 }
 
 export function FillConsoleOutputCharacterW(
-  hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  cCharacter: Uint8Array | Deno.PointerValue | null /* char */,
+  hConsoleOutput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  cCharacter: Uint8Array | Deno.PointerValue /* char */,
   nLength: number /* u32 */,
-  dwWriteCoord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
-  lpNumberOfCharsWritten: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dwWriteCoord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Console.COORD */,
+  lpNumberOfCharsWritten: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.FillConsoleOutputCharacterW(util.toPointer(hConsoleOutput), util.toPointer(cCharacter), nLength, util.toPointer(dwWriteCoord), util.toPointer(lpNumberOfCharsWritten)));
 }
 
 export function FillConsoleOutputAttribute(
-  hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hConsoleOutput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   wAttribute: number /* u16 */,
   nLength: number /* u32 */,
-  dwWriteCoord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
-  lpNumberOfAttrsWritten: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dwWriteCoord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Console.COORD */,
+  lpNumberOfAttrsWritten: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.FillConsoleOutputAttribute(util.toPointer(hConsoleOutput), wAttribute, nLength, util.toPointer(dwWriteCoord), util.toPointer(lpNumberOfAttrsWritten)));
 }
@@ -2228,21 +2228,21 @@ export function GenerateConsoleCtrlEvent(
 export function CreateConsoleScreenBuffer(
   dwDesiredAccess: number /* u32 */,
   dwShareMode: number /* u32 */,
-  lpSecurityAttributes: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpSecurityAttributes: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
-  lpScreenBufferData: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libKERNEL32_dll.CreateConsoleScreenBuffer(dwDesiredAccess, dwShareMode, util.toPointer(lpSecurityAttributes), dwFlags, util.toPointer(lpScreenBufferData)));
+  lpScreenBufferData: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
+  return libKERNEL32_dll.CreateConsoleScreenBuffer(dwDesiredAccess, dwShareMode, util.toPointer(lpSecurityAttributes), dwFlags, util.toPointer(lpScreenBufferData));
 }
 
 export function SetConsoleActiveScreenBuffer(
-  hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hConsoleOutput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetConsoleActiveScreenBuffer(util.toPointer(hConsoleOutput)));
 }
 
 export function FlushConsoleInputBuffer(
-  hConsoleInput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hConsoleInput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.FlushConsoleInputBuffer(util.toPointer(hConsoleInput)));
 }
@@ -2260,209 +2260,209 @@ export function SetConsoleOutputCP(
 }
 
 export function GetConsoleCursorInfo(
-  hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpConsoleCursorInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hConsoleOutput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpConsoleCursorInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetConsoleCursorInfo(util.toPointer(hConsoleOutput), util.toPointer(lpConsoleCursorInfo)));
 }
 
 export function SetConsoleCursorInfo(
-  hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpConsoleCursorInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hConsoleOutput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpConsoleCursorInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetConsoleCursorInfo(util.toPointer(hConsoleOutput), util.toPointer(lpConsoleCursorInfo)));
 }
 
 export function GetConsoleScreenBufferInfo(
-  hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpConsoleScreenBufferInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hConsoleOutput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpConsoleScreenBufferInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetConsoleScreenBufferInfo(util.toPointer(hConsoleOutput), util.toPointer(lpConsoleScreenBufferInfo)));
 }
 
 export function GetConsoleScreenBufferInfoEx(
-  hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpConsoleScreenBufferInfoEx: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hConsoleOutput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpConsoleScreenBufferInfoEx: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetConsoleScreenBufferInfoEx(util.toPointer(hConsoleOutput), util.toPointer(lpConsoleScreenBufferInfoEx)));
 }
 
 export function SetConsoleScreenBufferInfoEx(
-  hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpConsoleScreenBufferInfoEx: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hConsoleOutput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpConsoleScreenBufferInfoEx: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetConsoleScreenBufferInfoEx(util.toPointer(hConsoleOutput), util.toPointer(lpConsoleScreenBufferInfoEx)));
 }
 
 export function SetConsoleScreenBufferSize(
-  hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  dwSize: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
+  hConsoleOutput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  dwSize: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Console.COORD */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetConsoleScreenBufferSize(util.toPointer(hConsoleOutput), util.toPointer(dwSize)));
 }
 
 export function SetConsoleCursorPosition(
-  hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  dwCursorPosition: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
+  hConsoleOutput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  dwCursorPosition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Console.COORD */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetConsoleCursorPosition(util.toPointer(hConsoleOutput), util.toPointer(dwCursorPosition)));
 }
 
 export function GetLargestConsoleWindowSize(
-  hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-): Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */ {
-  return util.pointerFromFfi(libKERNEL32_dll.GetLargestConsoleWindowSize(util.toPointer(hConsoleOutput)));
+  hConsoleOutput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+): Deno.PointerValue /* Windows.Win32.System.Console.COORD */ {
+  return libKERNEL32_dll.GetLargestConsoleWindowSize(util.toPointer(hConsoleOutput));
 }
 
 export function SetConsoleTextAttribute(
-  hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hConsoleOutput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   wAttributes: CONSOLE_CHARACTER_ATTRIBUTES /* Windows.Win32.System.Console.CONSOLE_CHARACTER_ATTRIBUTES */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetConsoleTextAttribute(util.toPointer(hConsoleOutput), wAttributes));
 }
 
 export function SetConsoleWindowInfo(
-  hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hConsoleOutput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   bAbsolute: boolean /* Windows.Win32.Foundation.BOOL */,
-  lpConsoleWindow: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpConsoleWindow: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetConsoleWindowInfo(util.toPointer(hConsoleOutput), util.boolToFfi(bAbsolute), util.toPointer(lpConsoleWindow)));
 }
 
 export function WriteConsoleOutputCharacterA(
-  hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hConsoleOutput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lpCharacter: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nLength: number /* u32 */,
-  dwWriteCoord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
-  lpNumberOfCharsWritten: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dwWriteCoord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Console.COORD */,
+  lpNumberOfCharsWritten: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.WriteConsoleOutputCharacterA(util.toPointer(hConsoleOutput), util.pstrToFfi(lpCharacter), nLength, util.toPointer(dwWriteCoord), util.toPointer(lpNumberOfCharsWritten)));
 }
 
 export function WriteConsoleOutputCharacterW(
-  hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hConsoleOutput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lpCharacter: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nLength: number /* u32 */,
-  dwWriteCoord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
-  lpNumberOfCharsWritten: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dwWriteCoord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Console.COORD */,
+  lpNumberOfCharsWritten: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.WriteConsoleOutputCharacterW(util.toPointer(hConsoleOutput), util.pwstrToFfi(lpCharacter), nLength, util.toPointer(dwWriteCoord), util.toPointer(lpNumberOfCharsWritten)));
 }
 
 export function WriteConsoleOutputAttribute(
-  hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpAttribute: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hConsoleOutput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpAttribute: Deno.PointerValue | Uint8Array /* ptr */,
   nLength: number /* u32 */,
-  dwWriteCoord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
-  lpNumberOfAttrsWritten: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dwWriteCoord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Console.COORD */,
+  lpNumberOfAttrsWritten: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.WriteConsoleOutputAttribute(util.toPointer(hConsoleOutput), util.toPointer(lpAttribute), nLength, util.toPointer(dwWriteCoord), util.toPointer(lpNumberOfAttrsWritten)));
 }
 
 export function ReadConsoleOutputCharacterA(
-  hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hConsoleOutput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lpCharacter: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nLength: number /* u32 */,
-  dwReadCoord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
-  lpNumberOfCharsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dwReadCoord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Console.COORD */,
+  lpNumberOfCharsRead: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.ReadConsoleOutputCharacterA(util.toPointer(hConsoleOutput), util.pstrToFfi(lpCharacter), nLength, util.toPointer(dwReadCoord), util.toPointer(lpNumberOfCharsRead)));
 }
 
 export function ReadConsoleOutputCharacterW(
-  hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hConsoleOutput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lpCharacter: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nLength: number /* u32 */,
-  dwReadCoord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
-  lpNumberOfCharsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dwReadCoord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Console.COORD */,
+  lpNumberOfCharsRead: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.ReadConsoleOutputCharacterW(util.toPointer(hConsoleOutput), util.pwstrToFfi(lpCharacter), nLength, util.toPointer(dwReadCoord), util.toPointer(lpNumberOfCharsRead)));
 }
 
 export function ReadConsoleOutputAttribute(
-  hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpAttribute: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hConsoleOutput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpAttribute: Deno.PointerValue | Uint8Array /* ptr */,
   nLength: number /* u32 */,
-  dwReadCoord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
-  lpNumberOfAttrsRead: Deno.PointerValue | Uint8Array | null /* ptr */,
+  dwReadCoord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Console.COORD */,
+  lpNumberOfAttrsRead: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.ReadConsoleOutputAttribute(util.toPointer(hConsoleOutput), util.toPointer(lpAttribute), nLength, util.toPointer(dwReadCoord), util.toPointer(lpNumberOfAttrsRead)));
 }
 
 export function WriteConsoleInputA(
-  hConsoleInput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hConsoleInput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   nLength: number /* u32 */,
-  lpNumberOfEventsWritten: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpNumberOfEventsWritten: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.WriteConsoleInputA(util.toPointer(hConsoleInput), util.toPointer(lpBuffer), nLength, util.toPointer(lpNumberOfEventsWritten)));
 }
 
 export function WriteConsoleInputW(
-  hConsoleInput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hConsoleInput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   nLength: number /* u32 */,
-  lpNumberOfEventsWritten: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpNumberOfEventsWritten: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.WriteConsoleInputW(util.toPointer(hConsoleInput), util.toPointer(lpBuffer), nLength, util.toPointer(lpNumberOfEventsWritten)));
 }
 
 export function ScrollConsoleScreenBufferA(
-  hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpScrollRectangle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpClipRectangle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dwDestinationOrigin: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
-  lpFill: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hConsoleOutput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpScrollRectangle: Deno.PointerValue | Uint8Array /* ptr */,
+  lpClipRectangle: Deno.PointerValue | Uint8Array /* ptr */,
+  dwDestinationOrigin: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Console.COORD */,
+  lpFill: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.ScrollConsoleScreenBufferA(util.toPointer(hConsoleOutput), util.toPointer(lpScrollRectangle), util.toPointer(lpClipRectangle), util.toPointer(dwDestinationOrigin), util.toPointer(lpFill)));
 }
 
 export function ScrollConsoleScreenBufferW(
-  hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpScrollRectangle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  lpClipRectangle: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dwDestinationOrigin: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
-  lpFill: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hConsoleOutput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpScrollRectangle: Deno.PointerValue | Uint8Array /* ptr */,
+  lpClipRectangle: Deno.PointerValue | Uint8Array /* ptr */,
+  dwDestinationOrigin: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Console.COORD */,
+  lpFill: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.ScrollConsoleScreenBufferW(util.toPointer(hConsoleOutput), util.toPointer(lpScrollRectangle), util.toPointer(lpClipRectangle), util.toPointer(dwDestinationOrigin), util.toPointer(lpFill)));
 }
 
 export function WriteConsoleOutputA(
-  hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dwBufferSize: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
-  dwBufferCoord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
-  lpWriteRegion: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hConsoleOutput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  dwBufferSize: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Console.COORD */,
+  dwBufferCoord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Console.COORD */,
+  lpWriteRegion: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.WriteConsoleOutputA(util.toPointer(hConsoleOutput), util.toPointer(lpBuffer), util.toPointer(dwBufferSize), util.toPointer(dwBufferCoord), util.toPointer(lpWriteRegion)));
 }
 
 export function WriteConsoleOutputW(
-  hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dwBufferSize: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
-  dwBufferCoord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
-  lpWriteRegion: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hConsoleOutput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  dwBufferSize: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Console.COORD */,
+  dwBufferCoord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Console.COORD */,
+  lpWriteRegion: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.WriteConsoleOutputW(util.toPointer(hConsoleOutput), util.toPointer(lpBuffer), util.toPointer(dwBufferSize), util.toPointer(dwBufferCoord), util.toPointer(lpWriteRegion)));
 }
 
 export function ReadConsoleOutputA(
-  hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dwBufferSize: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
-  dwBufferCoord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
-  lpReadRegion: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hConsoleOutput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  dwBufferSize: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Console.COORD */,
+  dwBufferCoord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Console.COORD */,
+  lpReadRegion: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.ReadConsoleOutputA(util.toPointer(hConsoleOutput), util.toPointer(lpBuffer), util.toPointer(dwBufferSize), util.toPointer(dwBufferCoord), util.toPointer(lpReadRegion)));
 }
 
 export function ReadConsoleOutputW(
-  hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  lpBuffer: Deno.PointerValue | Uint8Array | null /* ptr */,
-  dwBufferSize: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
-  dwBufferCoord: Uint8Array | Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */,
-  lpReadRegion: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hConsoleOutput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
+  dwBufferSize: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Console.COORD */,
+  dwBufferCoord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Console.COORD */,
+  lpReadRegion: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.ReadConsoleOutputW(util.toPointer(hConsoleOutput), util.toPointer(lpBuffer), util.toPointer(dwBufferSize), util.toPointer(dwBufferCoord), util.toPointer(lpReadRegion)));
 }
@@ -2508,76 +2508,76 @@ export function SetConsoleTitleW(
 }
 
 export function GetNumberOfConsoleMouseButtons(
-  lpNumberOfMouseButtons: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpNumberOfMouseButtons: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetNumberOfConsoleMouseButtons(util.toPointer(lpNumberOfMouseButtons)));
 }
 
 export function GetConsoleFontSize(
-  hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hConsoleOutput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   nFont: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.System.Console.COORD */ {
-  return util.pointerFromFfi(libKERNEL32_dll.GetConsoleFontSize(util.toPointer(hConsoleOutput), nFont));
+): Deno.PointerValue /* Windows.Win32.System.Console.COORD */ {
+  return libKERNEL32_dll.GetConsoleFontSize(util.toPointer(hConsoleOutput), nFont);
 }
 
 export function GetCurrentConsoleFont(
-  hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hConsoleOutput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   bMaximumWindow: boolean /* Windows.Win32.Foundation.BOOL */,
-  lpConsoleCurrentFont: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpConsoleCurrentFont: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetCurrentConsoleFont(util.toPointer(hConsoleOutput), util.boolToFfi(bMaximumWindow), util.toPointer(lpConsoleCurrentFont)));
 }
 
 export function GetCurrentConsoleFontEx(
-  hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hConsoleOutput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   bMaximumWindow: boolean /* Windows.Win32.Foundation.BOOL */,
-  lpConsoleCurrentFontEx: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpConsoleCurrentFontEx: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetCurrentConsoleFontEx(util.toPointer(hConsoleOutput), util.boolToFfi(bMaximumWindow), util.toPointer(lpConsoleCurrentFontEx)));
 }
 
 export function SetCurrentConsoleFontEx(
-  hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hConsoleOutput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   bMaximumWindow: boolean /* Windows.Win32.Foundation.BOOL */,
-  lpConsoleCurrentFontEx: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpConsoleCurrentFontEx: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetCurrentConsoleFontEx(util.toPointer(hConsoleOutput), util.boolToFfi(bMaximumWindow), util.toPointer(lpConsoleCurrentFontEx)));
 }
 
 export function GetConsoleSelectionInfo(
-  lpConsoleSelectionInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpConsoleSelectionInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetConsoleSelectionInfo(util.toPointer(lpConsoleSelectionInfo)));
 }
 
 export function GetConsoleHistoryInfo(
-  lpConsoleHistoryInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpConsoleHistoryInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetConsoleHistoryInfo(util.toPointer(lpConsoleHistoryInfo)));
 }
 
 export function SetConsoleHistoryInfo(
-  lpConsoleHistoryInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpConsoleHistoryInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetConsoleHistoryInfo(util.toPointer(lpConsoleHistoryInfo)));
 }
 
 export function GetConsoleDisplayMode(
-  lpModeFlags: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpModeFlags: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetConsoleDisplayMode(util.toPointer(lpModeFlags)));
 }
 
 export function SetConsoleDisplayMode(
-  hConsoleOutput: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hConsoleOutput: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwFlags: number /* u32 */,
-  lpNewScreenBufferDimensions: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpNewScreenBufferDimensions: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetConsoleDisplayMode(util.toPointer(hConsoleOutput), dwFlags, util.toPointer(lpNewScreenBufferDimensions)));
 }
 
-export function GetConsoleWindow(): Deno.PointerValue | null /* Windows.Win32.Foundation.HWND */ {
-  return util.hwndFromFfi(libKERNEL32_dll.GetConsoleWindow());
+export function GetConsoleWindow(): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
+  return (libKERNEL32_dll.GetConsoleWindow());
 }
 
 export function AddConsoleAliasA(
@@ -2719,7 +2719,7 @@ export function GetConsoleCommandHistoryW(
 }
 
 export function GetConsoleProcessList(
-  lpdwProcessList: Deno.PointerValue | Uint8Array | null /* ptr */,
+  lpdwProcessList: Deno.PointerValue | Uint8Array /* ptr */,
   dwProcessCount: number /* u32 */,
 ): number /* u32 */ {
   return libKERNEL32_dll.GetConsoleProcessList(util.toPointer(lpdwProcessList), dwProcessCount);
@@ -2727,21 +2727,21 @@ export function GetConsoleProcessList(
 
 export function GetStdHandle(
   nStdHandle: STD_HANDLE /* Windows.Win32.System.Console.STD_HANDLE */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */ {
-  return util.pointerFromFfi(libKERNEL32_dll.GetStdHandle(nStdHandle));
+): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
+  return libKERNEL32_dll.GetStdHandle(nStdHandle);
 }
 
 export function SetStdHandle(
   nStdHandle: STD_HANDLE /* Windows.Win32.System.Console.STD_HANDLE */,
-  hHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
+  hHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetStdHandle(nStdHandle, util.toPointer(hHandle)));
 }
 
 export function SetStdHandleEx(
   nStdHandle: STD_HANDLE /* Windows.Win32.System.Console.STD_HANDLE */,
-  hHandle: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Foundation.HANDLE */,
-  phPrevValue: Deno.PointerValue | Uint8Array | null /* ptr */,
+  hHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
+  phPrevValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetStdHandleEx(nStdHandle, util.toPointer(hHandle), util.toPointer(phPrevValue)));
 }

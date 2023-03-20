@@ -78,11 +78,11 @@ const specialTypes: Record<string, {
   },
 
   "Windows.Win32.Foundation.HWND": {
-    jsType: "Deno.PointerValue | null",
-    jsRtype: "Deno.PointerValue | null",
+    jsType: "Deno.PointerValue",
+    jsRtype: "Deno.PointerValue",
     ffiType: "pointer",
-    toFfi: "util.hwndToFfi",
-    fromFfi: "util.hwndFromFfi",
+    toFfi: "",
+    fromFfi: "",
   },
 
   "Windows.Win32.Foundation.CHAR": {
@@ -112,17 +112,15 @@ function typeToJS(ty: string, result = false) {
     case "f64":
       return "number";
     case "bool":
-      return "boolean | number";
+      return result ? "boolean" : "boolean | number";
     case "string":
       return "string | Uint8Array | null";
     case "void":
       return "void";
     case "ptr":
-      return result
-        ? "Deno.PointerValue | null"
-        : "Deno.PointerValue | Uint8Array | null";
+      return result ? "Deno.PointerValue" : "Deno.PointerValue | Uint8Array";
     case "array":
-      return "Deno.PointerValue | null";
+      return "Deno.PointerValue";
     default:
       if (ty in enumCache) {
         return ty.split(".").pop()!;
@@ -130,9 +128,7 @@ function typeToJS(ty: string, result = false) {
       if (ty in specialTypes) {
         return result ? specialTypes[ty].jsRtype : specialTypes[ty].jsType;
       }
-      return result
-        ? "Deno.PointerValue | null"
-        : "Uint8Array | Deno.PointerValue | null";
+      return result ? "Deno.PointerValue" : "Uint8Array | Deno.PointerValue";
   }
 }
 
@@ -458,14 +454,14 @@ for (const api in win32) {
                 special ? (special.toFfi + "(") : ""
               }data.${field.name}${special ? ")" : ""};\n`;
               content +=
-                `    view.setBigUint64(${offset}, (buf as any)._f${offset} === null ? 0n : BigInt(Deno.UnsafePointer.of((buf as any)._f${offset})), true);\n`;
+                `    view.setBigUint64(${offset}, (buf as any)._f${offset} === null ? 0n : BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of((buf as any)._f${offset}))), true);\n`;
               content += "  }\n";
               break;
             }
 
             case "pointer": {
               content +=
-                `view.setBigUint64(${offset}, data.${field.name} === null ? 0n : BigInt(util.toPointer(data.${field.name})), true);\n`;
+                `view.setBigUint64(${offset}, data.${field.name} === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.${field.name}))), true);\n`;
               break;
             }
 
@@ -561,17 +557,16 @@ for (const api in win32) {
             }
 
             case "buffer": {
-              const special = specialTypes[fields[i][1]];
               content +=
                 `    const ptr = this.view.getBigUint64(${offset}, true);\n`;
-              content += `    return util.pointerFromFfi(ptr);\n`;
+              content += `    return Deno.UnsafePointer.create(ptr);\n`;
               break;
             }
 
             case "pointer": {
               content +=
                 `    const ptr = this.view.getBigUint64(${offset}, true);\n`;
-              content += `    return util.pointerFromFfi(ptr);\n`;
+              content += `    return Deno.UnsafePointer.create(ptr);\n`;
               break;
             }
 
@@ -664,13 +659,13 @@ for (const api in win32) {
               // Attach the buffer to the view so it doesn't get GC'd
               content += `    (this.buf as any)._f${offset} = value;\n`;
               content +=
-                `    this.view.setBigUint64(${offset}, BigInt(util.toPointer((this.buf as any)._f${offset})), true);\n`;
+                `    this.view.setBigUint64(${offset}, BigInt(Deno.UnsafePointer.value(util.toPointer((this.buf as any)._f${offset}))), true);\n`;
               break;
             }
 
             case "pointer": {
               content +=
-                `    this.view.setBigUint64(${offset}, BigInt(util.toPointer(value)), true);\n`;
+                `    this.view.setBigUint64(${offset}, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);\n`;
               break;
             }
 
@@ -763,11 +758,9 @@ for (const api in win32) {
     content += `export function ${name}${
       parameters.length ? `(\n  ${args}\n)` : "()"
     }: ${ret} /* ${result} */ {\n`;
-    content += `  return ${
-      retSpecial
-        ? `${retSpecial.fromFfi}(`
-        : (retFfi === "pointer" ? "util.pointerFromFfi(" : "")
-    }lib${jsify(dll)}.${name}(${
+    content += `  return ${retSpecial ? `${retSpecial.fromFfi}(` : ""}lib${
+      jsify(dll)
+    }.${name}(${
       parameters.map((e: [string, string]) => {
         const special = specialTypes[e[1]];
         if (special) {
@@ -779,16 +772,14 @@ for (const api in win32) {
         }
         return jsify(e[0]);
       }).join(", ")
-    })${retSpecial || retFfi === "pointer" ? ")" : ""};\n`;
+    })${retSpecial ? ")" : ""};\n`;
     content += `}\n\n`;
     if (asyncSymbols.includes(name)) {
       content += `export async function ${name}Async${
         parameters.length ? `(\n  ${args}\n)` : "()"
       }: Promise<${ret}> /* ${result} */ {\n`;
       content += `  return ${
-        retSpecial
-          ? `${retSpecial.fromFfi}(`
-          : (retFfi === "pointer" ? "util.pointerFromFfi(" : "")
+        retSpecial ? `${retSpecial.fromFfi}(` : ""
       }await lib${jsify(dll)}.${name}Async(${
         parameters.map((e: [string, string]) => {
           const special = specialTypes[e[1]];
@@ -801,7 +792,7 @@ for (const api in win32) {
           }
           return jsify(e[0]);
         }).join(", ")
-      })${retSpecial || retFfi === "pointer" ? ")" : ""};\n`;
+      })${retSpecial ? ")" : ""};\n`;
       content += `}\n\n`;
     }
   }

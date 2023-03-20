@@ -185,7 +185,7 @@ export interface DEDUP_CHUNK_INFO_HASH32 {
   /** u64 */
   ChunkSize: Deno.PointerValue;
   /** array */
-  HashVal: Deno.PointerValue | null;
+  HashVal: Deno.PointerValue;
 }
 
 export const sizeofDEDUP_CHUNK_INFO_HASH32 = 32;
@@ -201,7 +201,7 @@ export function allocDEDUP_CHUNK_INFO_HASH32(data?: Partial<DEDUP_CHUNK_INFO_HAS
   // 0x10: u64
   if (data?.ChunkSize !== undefined) view.setBigUint64(16, BigInt(data.ChunkSize), true);
   // 0x18: pointer
-  if (data?.HashVal !== undefined) view.setBigUint64(24, data.HashVal === null ? 0n : BigInt(util.toPointer(data.HashVal)), true);
+  if (data?.HashVal !== undefined) view.setBigUint64(24, data.HashVal === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.HashVal))), true);
   return buf;
 }
 
@@ -233,9 +233,9 @@ export class DEDUP_CHUNK_INFO_HASH32View {
   }
 
   // 0x18: pointer
-  get HashVal(): Uint8Array | Deno.PointerValue | null {
+  get HashVal(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: u32
@@ -256,8 +256,8 @@ export class DEDUP_CHUNK_INFO_HASH32View {
   }
 
   // 0x18: pointer
-  set HashVal(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set HashVal(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -266,7 +266,7 @@ export class DEDUP_CHUNK_INFO_HASH32View {
  */
 export interface DedupHash {
   /** array */
-  Hash: Deno.PointerValue | null;
+  Hash: Deno.PointerValue;
 }
 
 export const sizeofDedupHash = 8;
@@ -275,7 +275,7 @@ export function allocDedupHash(data?: Partial<DedupHash>): Uint8Array {
   const buf = new Uint8Array(sizeofDedupHash);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Hash !== undefined) view.setBigUint64(0, data.Hash === null ? 0n : BigInt(util.toPointer(data.Hash)), true);
+  if (data?.Hash !== undefined) view.setBigUint64(0, data.Hash === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Hash))), true);
   return buf;
 }
 
@@ -290,14 +290,14 @@ export class DedupHashView {
   }
 
   // 0x00: pointer
-  get Hash(): Uint8Array | Deno.PointerValue | null {
+  get Hash(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set Hash(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Hash(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -306,7 +306,7 @@ export class DedupHashView {
  */
 export interface DedupChunk {
   /** Windows.Win32.Storage.DataDeduplication.DedupHash */
-  Hash: Uint8Array | Deno.PointerValue | null;
+  Hash: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Storage.DataDeduplication.DedupChunkFlags */
   Flags: DedupChunkFlags;
   /** u32 */
@@ -321,7 +321,7 @@ export function allocDedupChunk(data?: Partial<DedupChunk>): Uint8Array {
   const buf = new Uint8Array(sizeofDedupChunk);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Hash !== undefined) view.setBigUint64(0, data.Hash === null ? 0n : BigInt(util.toPointer(data.Hash)), true);
+  if (data?.Hash !== undefined) view.setBigUint64(0, data.Hash === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Hash))), true);
   // 0x08: i32
   if (data?.Flags !== undefined) view.setInt32(8, Number(data.Flags), true);
   // 0x0c: u32
@@ -343,9 +343,9 @@ export class DedupChunkView {
   }
 
   // 0x00: pointer
-  get Hash(): Uint8Array | Deno.PointerValue | null {
+  get Hash(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: i32
@@ -366,8 +366,8 @@ export class DedupChunkView {
   // 0x14: pad4
 
   // 0x00: pointer
-  set Hash(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Hash(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: i32
@@ -393,7 +393,7 @@ export class DedupChunkView {
  */
 export interface DedupStreamEntry {
   /** Windows.Win32.Storage.DataDeduplication.DedupHash */
-  Hash: Uint8Array | Deno.PointerValue | null;
+  Hash: Uint8Array | Deno.PointerValue;
   /** u32 */
   LogicalSize: number;
   /** u64 */
@@ -406,7 +406,7 @@ export function allocDedupStreamEntry(data?: Partial<DedupStreamEntry>): Uint8Ar
   const buf = new Uint8Array(sizeofDedupStreamEntry);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Hash !== undefined) view.setBigUint64(0, data.Hash === null ? 0n : BigInt(util.toPointer(data.Hash)), true);
+  if (data?.Hash !== undefined) view.setBigUint64(0, data.Hash === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Hash))), true);
   // 0x08: u32
   if (data?.LogicalSize !== undefined) view.setUint32(8, Number(data.LogicalSize), true);
   // 0x0c: pad4
@@ -426,9 +426,9 @@ export class DedupStreamEntryView {
   }
 
   // 0x00: pointer
-  get Hash(): Uint8Array | Deno.PointerValue | null {
+  get Hash(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -444,8 +444,8 @@ export class DedupStreamEntryView {
   }
 
   // 0x00: pointer
-  set Hash(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Hash(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -461,14 +461,14 @@ export class DedupStreamEntryView {
   }
 }
 
-export type BSTR = Deno.PointerValue | Uint8Array | null;
+export type BSTR = Deno.PointerValue | Uint8Array;
 
 /**
  * Windows.Win32.Storage.DataDeduplication.DedupStream (size: 32)
  */
 export interface DedupStream {
   /** Windows.Win32.Foundation.BSTR */
-  Path: Uint8Array | Deno.PointerValue | null;
+  Path: Uint8Array | Deno.PointerValue;
   /** u64 */
   Offset: Deno.PointerValue;
   /** u64 */
@@ -483,7 +483,7 @@ export function allocDedupStream(data?: Partial<DedupStream>): Uint8Array {
   const buf = new Uint8Array(sizeofDedupStream);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.Path !== undefined) view.setBigUint64(0, data.Path === null ? 0n : BigInt(util.toPointer(data.Path)), true);
+  if (data?.Path !== undefined) view.setBigUint64(0, data.Path === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.Path))), true);
   // 0x08: u64
   if (data?.Offset !== undefined) view.setBigUint64(8, BigInt(data.Offset), true);
   // 0x10: u64
@@ -505,9 +505,9 @@ export class DedupStreamView {
   }
 
   // 0x00: pointer
-  get Path(): Uint8Array | Deno.PointerValue | null {
+  get Path(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u64
@@ -528,8 +528,8 @@ export class DedupStreamView {
   // 0x1c: pad4
 
   // 0x00: pointer
-  set Path(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set Path(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u64

@@ -305,11 +305,11 @@ export class MANIPULATION_VELOCITYView {
  */
 export interface INTERACTION_ARGUMENTS_MANIPULATION {
   /** Windows.Win32.UI.InteractionContext.MANIPULATION_TRANSFORM */
-  delta: Uint8Array | Deno.PointerValue | null;
+  delta: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.InteractionContext.MANIPULATION_TRANSFORM */
-  cumulative: Uint8Array | Deno.PointerValue | null;
+  cumulative: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.InteractionContext.MANIPULATION_VELOCITY */
-  velocity: Uint8Array | Deno.PointerValue | null;
+  velocity: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.InteractionContext.MANIPULATION_RAILS_STATE */
   railsState: MANIPULATION_RAILS_STATE;
 }
@@ -320,11 +320,11 @@ export function allocINTERACTION_ARGUMENTS_MANIPULATION(data?: Partial<INTERACTI
   const buf = new Uint8Array(sizeofINTERACTION_ARGUMENTS_MANIPULATION);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.delta !== undefined) view.setBigUint64(0, data.delta === null ? 0n : BigInt(util.toPointer(data.delta)), true);
+  if (data?.delta !== undefined) view.setBigUint64(0, data.delta === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.delta))), true);
   // 0x08: pointer
-  if (data?.cumulative !== undefined) view.setBigUint64(8, data.cumulative === null ? 0n : BigInt(util.toPointer(data.cumulative)), true);
+  if (data?.cumulative !== undefined) view.setBigUint64(8, data.cumulative === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.cumulative))), true);
   // 0x10: pointer
-  if (data?.velocity !== undefined) view.setBigUint64(16, data.velocity === null ? 0n : BigInt(util.toPointer(data.velocity)), true);
+  if (data?.velocity !== undefined) view.setBigUint64(16, data.velocity === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.velocity))), true);
   // 0x18: i32
   if (data?.railsState !== undefined) view.setInt32(24, Number(data.railsState), true);
   // 0x1c: pad4
@@ -342,21 +342,21 @@ export class INTERACTION_ARGUMENTS_MANIPULATIONView {
   }
 
   // 0x00: pointer
-  get delta(): Uint8Array | Deno.PointerValue | null {
+  get delta(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get cumulative(): Uint8Array | Deno.PointerValue | null {
+  get cumulative(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get velocity(): Uint8Array | Deno.PointerValue | null {
+  get velocity(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: i32
@@ -367,18 +367,18 @@ export class INTERACTION_ARGUMENTS_MANIPULATIONView {
   // 0x1c: pad4
 
   // 0x00: pointer
-  set delta(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set delta(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set cumulative(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set cumulative(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set velocity(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set velocity(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: i32
@@ -482,11 +482,11 @@ export class INTERACTION_ARGUMENTS_CROSS_SLIDEView {
  */
 export interface _arguments_e__Union {
   /** Windows.Win32.UI.InteractionContext.INTERACTION_ARGUMENTS_MANIPULATION */
-  manipulation: Uint8Array | Deno.PointerValue | null;
+  manipulation: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.InteractionContext.INTERACTION_ARGUMENTS_TAP */
-  tap: Uint8Array | Deno.PointerValue | null;
+  tap: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.InteractionContext.INTERACTION_ARGUMENTS_CROSS_SLIDE */
-  crossSlide: Uint8Array | Deno.PointerValue | null;
+  crossSlide: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeof_arguments_e__Union = 24;
@@ -495,11 +495,11 @@ export function alloc_arguments_e__Union(data?: Partial<_arguments_e__Union>): U
   const buf = new Uint8Array(sizeof_arguments_e__Union);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.manipulation !== undefined) view.setBigUint64(0, data.manipulation === null ? 0n : BigInt(util.toPointer(data.manipulation)), true);
+  if (data?.manipulation !== undefined) view.setBigUint64(0, data.manipulation === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.manipulation))), true);
   // 0x08: pointer
-  if (data?.tap !== undefined) view.setBigUint64(8, data.tap === null ? 0n : BigInt(util.toPointer(data.tap)), true);
+  if (data?.tap !== undefined) view.setBigUint64(8, data.tap === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.tap))), true);
   // 0x10: pointer
-  if (data?.crossSlide !== undefined) view.setBigUint64(16, data.crossSlide === null ? 0n : BigInt(util.toPointer(data.crossSlide)), true);
+  if (data?.crossSlide !== undefined) view.setBigUint64(16, data.crossSlide === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.crossSlide))), true);
   return buf;
 }
 
@@ -514,36 +514,36 @@ export class _arguments_e__UnionView {
   }
 
   // 0x00: pointer
-  get manipulation(): Uint8Array | Deno.PointerValue | null {
+  get manipulation(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: pointer
-  get tap(): Uint8Array | Deno.PointerValue | null {
+  get tap(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(8, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x10: pointer
-  get crossSlide(): Uint8Array | Deno.PointerValue | null {
+  get crossSlide(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set manipulation(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set manipulation(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: pointer
-  set tap(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(8, BigInt(util.toPointer(value)), true);
+  set tap(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(8, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x10: pointer
-  set crossSlide(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set crossSlide(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -562,7 +562,7 @@ export interface INTERACTION_CONTEXT_OUTPUT {
   /** f32 */
   y: number;
   /** _arguments_e__Union */
-  arguments__: Uint8Array | Deno.PointerValue | null;
+  arguments__: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofINTERACTION_CONTEXT_OUTPUT = 32;
@@ -582,7 +582,7 @@ export function allocINTERACTION_CONTEXT_OUTPUT(data?: Partial<INTERACTION_CONTE
   if (data?.y !== undefined) view.setFloat32(16, Number(data.y), true);
   // 0x14: pad4
   // 0x18: pointer
-  if (data?.arguments__ !== undefined) view.setBigUint64(24, data.arguments__ === null ? 0n : BigInt(util.toPointer(data.arguments__)), true);
+  if (data?.arguments__ !== undefined) view.setBigUint64(24, data.arguments__ === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.arguments__))), true);
   return buf;
 }
 
@@ -624,9 +624,9 @@ export class INTERACTION_CONTEXT_OUTPUTView {
   // 0x14: pad4
 
   // 0x18: pointer
-  get arguments__(): Uint8Array | Deno.PointerValue | null {
+  get arguments__(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -657,8 +657,8 @@ export class INTERACTION_CONTEXT_OUTPUTView {
   // 0x14: pad4
 
   // 0x18: pointer
-  set arguments__(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set arguments__(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -681,7 +681,7 @@ export interface INTERACTION_CONTEXT_OUTPUT2 {
   /** f32 */
   y: number;
   /** _arguments_e__Union */
-  arguments__: Uint8Array | Deno.PointerValue | null;
+  arguments__: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofINTERACTION_CONTEXT_OUTPUT2 = 40;
@@ -705,7 +705,7 @@ export function allocINTERACTION_CONTEXT_OUTPUT2(data?: Partial<INTERACTION_CONT
   if (data?.y !== undefined) view.setFloat32(24, Number(data.y), true);
   // 0x1c: pad4
   // 0x20: pointer
-  if (data?.arguments__ !== undefined) view.setBigUint64(32, data.arguments__ === null ? 0n : BigInt(util.toPointer(data.arguments__)), true);
+  if (data?.arguments__ !== undefined) view.setBigUint64(32, data.arguments__ === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.arguments__))), true);
   return buf;
 }
 
@@ -757,9 +757,9 @@ export class INTERACTION_CONTEXT_OUTPUT2View {
   // 0x1c: pad4
 
   // 0x20: pointer
-  get arguments__(): Uint8Array | Deno.PointerValue | null {
+  get arguments__(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(32, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: i32
@@ -800,8 +800,8 @@ export class INTERACTION_CONTEXT_OUTPUT2View {
   // 0x1c: pad4
 
   // 0x20: pointer
-  set arguments__(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(32, BigInt(util.toPointer(value)), true);
+  set arguments__(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(32, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -1043,230 +1043,230 @@ try {
 // Symbols
 
 export function CreateInteractionContext(
-  interactionContext: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput_dll.CreateInteractionContext(util.toPointer(interactionContext)));
+  interactionContext: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libNInput_dll.CreateInteractionContext(util.toPointer(interactionContext));
 }
 
 export function DestroyInteractionContext(
-  interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput_dll.DestroyInteractionContext(util.toPointer(interactionContext)));
+  interactionContext: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libNInput_dll.DestroyInteractionContext(util.toPointer(interactionContext));
 }
 
 export function RegisterOutputCallbackInteractionContext(
-  interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
-  outputCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.INTERACTION_CONTEXT_OUTPUT_CALLBACK */,
-  clientData: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput_dll.RegisterOutputCallbackInteractionContext(util.toPointer(interactionContext), util.toPointer(outputCallback), util.toPointer(clientData)));
+  interactionContext: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
+  outputCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.InteractionContext.INTERACTION_CONTEXT_OUTPUT_CALLBACK */,
+  clientData: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libNInput_dll.RegisterOutputCallbackInteractionContext(util.toPointer(interactionContext), util.toPointer(outputCallback), util.toPointer(clientData));
 }
 
 export function RegisterOutputCallbackInteractionContext2(
-  interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
-  outputCallback: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.INTERACTION_CONTEXT_OUTPUT_CALLBACK2 */,
-  clientData: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput_dll.RegisterOutputCallbackInteractionContext2(util.toPointer(interactionContext), util.toPointer(outputCallback), util.toPointer(clientData)));
+  interactionContext: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
+  outputCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.InteractionContext.INTERACTION_CONTEXT_OUTPUT_CALLBACK2 */,
+  clientData: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libNInput_dll.RegisterOutputCallbackInteractionContext2(util.toPointer(interactionContext), util.toPointer(outputCallback), util.toPointer(clientData));
 }
 
 export function SetInteractionConfigurationInteractionContext(
-  interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
+  interactionContext: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
   configurationCount: number /* u32 */,
-  configuration: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput_dll.SetInteractionConfigurationInteractionContext(util.toPointer(interactionContext), configurationCount, util.toPointer(configuration)));
+  configuration: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libNInput_dll.SetInteractionConfigurationInteractionContext(util.toPointer(interactionContext), configurationCount, util.toPointer(configuration));
 }
 
 export function GetInteractionConfigurationInteractionContext(
-  interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
+  interactionContext: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
   configurationCount: number /* u32 */,
-  configuration: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput_dll.GetInteractionConfigurationInteractionContext(util.toPointer(interactionContext), configurationCount, util.toPointer(configuration)));
+  configuration: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libNInput_dll.GetInteractionConfigurationInteractionContext(util.toPointer(interactionContext), configurationCount, util.toPointer(configuration));
 }
 
 export function SetPropertyInteractionContext(
-  interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
+  interactionContext: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
   contextProperty: INTERACTION_CONTEXT_PROPERTY /* Windows.Win32.UI.InteractionContext.INTERACTION_CONTEXT_PROPERTY */,
   value: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput_dll.SetPropertyInteractionContext(util.toPointer(interactionContext), contextProperty, value));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libNInput_dll.SetPropertyInteractionContext(util.toPointer(interactionContext), contextProperty, value);
 }
 
 export function GetPropertyInteractionContext(
-  interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
+  interactionContext: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
   contextProperty: INTERACTION_CONTEXT_PROPERTY /* Windows.Win32.UI.InteractionContext.INTERACTION_CONTEXT_PROPERTY */,
-  value: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput_dll.GetPropertyInteractionContext(util.toPointer(interactionContext), contextProperty, util.toPointer(value)));
+  value: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libNInput_dll.GetPropertyInteractionContext(util.toPointer(interactionContext), contextProperty, util.toPointer(value));
 }
 
 export function SetInertiaParameterInteractionContext(
-  interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
+  interactionContext: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
   inertiaParameter: INERTIA_PARAMETER /* Windows.Win32.UI.InteractionContext.INERTIA_PARAMETER */,
   value: number /* f32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput_dll.SetInertiaParameterInteractionContext(util.toPointer(interactionContext), inertiaParameter, value));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libNInput_dll.SetInertiaParameterInteractionContext(util.toPointer(interactionContext), inertiaParameter, value);
 }
 
 export function GetInertiaParameterInteractionContext(
-  interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
+  interactionContext: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
   inertiaParameter: INERTIA_PARAMETER /* Windows.Win32.UI.InteractionContext.INERTIA_PARAMETER */,
-  value: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput_dll.GetInertiaParameterInteractionContext(util.toPointer(interactionContext), inertiaParameter, util.toPointer(value)));
+  value: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libNInput_dll.GetInertiaParameterInteractionContext(util.toPointer(interactionContext), inertiaParameter, util.toPointer(value));
 }
 
 export function SetCrossSlideParametersInteractionContext(
-  interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
+  interactionContext: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
   parameterCount: number /* u32 */,
-  crossSlideParameters: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput_dll.SetCrossSlideParametersInteractionContext(util.toPointer(interactionContext), parameterCount, util.toPointer(crossSlideParameters)));
+  crossSlideParameters: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libNInput_dll.SetCrossSlideParametersInteractionContext(util.toPointer(interactionContext), parameterCount, util.toPointer(crossSlideParameters));
 }
 
 export function GetCrossSlideParameterInteractionContext(
-  interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
+  interactionContext: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
   threshold: CROSS_SLIDE_THRESHOLD /* Windows.Win32.UI.InteractionContext.CROSS_SLIDE_THRESHOLD */,
-  distance: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput_dll.GetCrossSlideParameterInteractionContext(util.toPointer(interactionContext), threshold, util.toPointer(distance)));
+  distance: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libNInput_dll.GetCrossSlideParameterInteractionContext(util.toPointer(interactionContext), threshold, util.toPointer(distance));
 }
 
 export function SetTapParameterInteractionContext(
-  interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
+  interactionContext: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
   parameter: TAP_PARAMETER /* Windows.Win32.UI.InteractionContext.TAP_PARAMETER */,
   value: number /* f32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput_dll.SetTapParameterInteractionContext(util.toPointer(interactionContext), parameter, value));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libNInput_dll.SetTapParameterInteractionContext(util.toPointer(interactionContext), parameter, value);
 }
 
 export function GetTapParameterInteractionContext(
-  interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
+  interactionContext: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
   parameter: TAP_PARAMETER /* Windows.Win32.UI.InteractionContext.TAP_PARAMETER */,
-  value: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput_dll.GetTapParameterInteractionContext(util.toPointer(interactionContext), parameter, util.toPointer(value)));
+  value: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libNInput_dll.GetTapParameterInteractionContext(util.toPointer(interactionContext), parameter, util.toPointer(value));
 }
 
 export function SetHoldParameterInteractionContext(
-  interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
+  interactionContext: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
   parameter: HOLD_PARAMETER /* Windows.Win32.UI.InteractionContext.HOLD_PARAMETER */,
   value: number /* f32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput_dll.SetHoldParameterInteractionContext(util.toPointer(interactionContext), parameter, value));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libNInput_dll.SetHoldParameterInteractionContext(util.toPointer(interactionContext), parameter, value);
 }
 
 export function GetHoldParameterInteractionContext(
-  interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
+  interactionContext: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
   parameter: HOLD_PARAMETER /* Windows.Win32.UI.InteractionContext.HOLD_PARAMETER */,
-  value: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput_dll.GetHoldParameterInteractionContext(util.toPointer(interactionContext), parameter, util.toPointer(value)));
+  value: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libNInput_dll.GetHoldParameterInteractionContext(util.toPointer(interactionContext), parameter, util.toPointer(value));
 }
 
 export function SetTranslationParameterInteractionContext(
-  interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
+  interactionContext: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
   parameter: TRANSLATION_PARAMETER /* Windows.Win32.UI.InteractionContext.TRANSLATION_PARAMETER */,
   value: number /* f32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput_dll.SetTranslationParameterInteractionContext(util.toPointer(interactionContext), parameter, value));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libNInput_dll.SetTranslationParameterInteractionContext(util.toPointer(interactionContext), parameter, value);
 }
 
 export function GetTranslationParameterInteractionContext(
-  interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
+  interactionContext: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
   parameter: TRANSLATION_PARAMETER /* Windows.Win32.UI.InteractionContext.TRANSLATION_PARAMETER */,
-  value: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput_dll.GetTranslationParameterInteractionContext(util.toPointer(interactionContext), parameter, util.toPointer(value)));
+  value: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libNInput_dll.GetTranslationParameterInteractionContext(util.toPointer(interactionContext), parameter, util.toPointer(value));
 }
 
 export function SetMouseWheelParameterInteractionContext(
-  interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
+  interactionContext: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
   parameter: MOUSE_WHEEL_PARAMETER /* Windows.Win32.UI.InteractionContext.MOUSE_WHEEL_PARAMETER */,
   value: number /* f32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput_dll.SetMouseWheelParameterInteractionContext(util.toPointer(interactionContext), parameter, value));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libNInput_dll.SetMouseWheelParameterInteractionContext(util.toPointer(interactionContext), parameter, value);
 }
 
 export function GetMouseWheelParameterInteractionContext(
-  interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
+  interactionContext: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
   parameter: MOUSE_WHEEL_PARAMETER /* Windows.Win32.UI.InteractionContext.MOUSE_WHEEL_PARAMETER */,
-  value: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput_dll.GetMouseWheelParameterInteractionContext(util.toPointer(interactionContext), parameter, util.toPointer(value)));
+  value: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libNInput_dll.GetMouseWheelParameterInteractionContext(util.toPointer(interactionContext), parameter, util.toPointer(value));
 }
 
 export function ResetInteractionContext(
-  interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput_dll.ResetInteractionContext(util.toPointer(interactionContext)));
+  interactionContext: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libNInput_dll.ResetInteractionContext(util.toPointer(interactionContext));
 }
 
 export function GetStateInteractionContext(
-  interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
-  pointerInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-  state: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput_dll.GetStateInteractionContext(util.toPointer(interactionContext), util.toPointer(pointerInfo), util.toPointer(state)));
+  interactionContext: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
+  pointerInfo: Deno.PointerValue | Uint8Array /* ptr */,
+  state: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libNInput_dll.GetStateInteractionContext(util.toPointer(interactionContext), util.toPointer(pointerInfo), util.toPointer(state));
 }
 
 export function AddPointerInteractionContext(
-  interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
+  interactionContext: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
   pointerId: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput_dll.AddPointerInteractionContext(util.toPointer(interactionContext), pointerId));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libNInput_dll.AddPointerInteractionContext(util.toPointer(interactionContext), pointerId);
 }
 
 export function RemovePointerInteractionContext(
-  interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
+  interactionContext: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
   pointerId: number /* u32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput_dll.RemovePointerInteractionContext(util.toPointer(interactionContext), pointerId));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libNInput_dll.RemovePointerInteractionContext(util.toPointer(interactionContext), pointerId);
 }
 
 export function ProcessPointerFramesInteractionContext(
-  interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
+  interactionContext: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
   entriesCount: number /* u32 */,
   pointerCount: number /* u32 */,
-  pointerInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput_dll.ProcessPointerFramesInteractionContext(util.toPointer(interactionContext), entriesCount, pointerCount, util.toPointer(pointerInfo)));
+  pointerInfo: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libNInput_dll.ProcessPointerFramesInteractionContext(util.toPointer(interactionContext), entriesCount, pointerCount, util.toPointer(pointerInfo));
 }
 
 export function BufferPointerPacketsInteractionContext(
-  interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
+  interactionContext: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
   entriesCount: number /* u32 */,
-  pointerInfo: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput_dll.BufferPointerPacketsInteractionContext(util.toPointer(interactionContext), entriesCount, util.toPointer(pointerInfo)));
+  pointerInfo: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libNInput_dll.BufferPointerPacketsInteractionContext(util.toPointer(interactionContext), entriesCount, util.toPointer(pointerInfo));
 }
 
 export function ProcessBufferedPacketsInteractionContext(
-  interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput_dll.ProcessBufferedPacketsInteractionContext(util.toPointer(interactionContext)));
+  interactionContext: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libNInput_dll.ProcessBufferedPacketsInteractionContext(util.toPointer(interactionContext));
 }
 
 export function ProcessInertiaInteractionContext(
-  interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput_dll.ProcessInertiaInteractionContext(util.toPointer(interactionContext)));
+  interactionContext: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libNInput_dll.ProcessInertiaInteractionContext(util.toPointer(interactionContext));
 }
 
 export function StopInteractionContext(
-  interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput_dll.StopInteractionContext(util.toPointer(interactionContext)));
+  interactionContext: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libNInput_dll.StopInteractionContext(util.toPointer(interactionContext));
 }
 
 export function SetPivotInteractionContext(
-  interactionContext: Uint8Array | Deno.PointerValue | null /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
+  interactionContext: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.InteractionContext.HINTERACTIONCONTEXT */,
   x: number /* f32 */,
   y: number /* f32 */,
   radius: number /* f32 */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libNInput_dll.SetPivotInteractionContext(util.toPointer(interactionContext), x, y, radius));
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libNInput_dll.SetPivotInteractionContext(util.toPointer(interactionContext), x, y, radius);
 }
 

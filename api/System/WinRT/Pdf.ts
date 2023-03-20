@@ -173,15 +173,15 @@ export type BOOLEAN = number;
  */
 export interface PDF_RENDER_PARAMS {
   /** Windows.Win32.Graphics.Direct2D.Common.D2D_RECT_F */
-  SourceRect: Uint8Array | Deno.PointerValue | null;
+  SourceRect: Uint8Array | Deno.PointerValue;
   /** u32 */
   DestinationWidth: number;
   /** u32 */
   DestinationHeight: number;
   /** Windows.Win32.Graphics.Direct2D.Common.D2D_COLOR_F */
-  BackgroundColor: Uint8Array | Deno.PointerValue | null;
+  BackgroundColor: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
-  IgnoreHighContrast: Uint8Array | Deno.PointerValue | null;
+  IgnoreHighContrast: Uint8Array | Deno.PointerValue;
 }
 
 export const sizeofPDF_RENDER_PARAMS = 32;
@@ -190,15 +190,15 @@ export function allocPDF_RENDER_PARAMS(data?: Partial<PDF_RENDER_PARAMS>): Uint8
   const buf = new Uint8Array(sizeofPDF_RENDER_PARAMS);
   const view = new DataView(buf.buffer);
   // 0x00: pointer
-  if (data?.SourceRect !== undefined) view.setBigUint64(0, data.SourceRect === null ? 0n : BigInt(util.toPointer(data.SourceRect)), true);
+  if (data?.SourceRect !== undefined) view.setBigUint64(0, data.SourceRect === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.SourceRect))), true);
   // 0x08: u32
   if (data?.DestinationWidth !== undefined) view.setUint32(8, Number(data.DestinationWidth), true);
   // 0x0c: u32
   if (data?.DestinationHeight !== undefined) view.setUint32(12, Number(data.DestinationHeight), true);
   // 0x10: pointer
-  if (data?.BackgroundColor !== undefined) view.setBigUint64(16, data.BackgroundColor === null ? 0n : BigInt(util.toPointer(data.BackgroundColor)), true);
+  if (data?.BackgroundColor !== undefined) view.setBigUint64(16, data.BackgroundColor === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.BackgroundColor))), true);
   // 0x18: pointer
-  if (data?.IgnoreHighContrast !== undefined) view.setBigUint64(24, data.IgnoreHighContrast === null ? 0n : BigInt(util.toPointer(data.IgnoreHighContrast)), true);
+  if (data?.IgnoreHighContrast !== undefined) view.setBigUint64(24, data.IgnoreHighContrast === null ? 0n : BigInt(Deno.UnsafePointer.value(util.toPointer(data.IgnoreHighContrast))), true);
   return buf;
 }
 
@@ -213,9 +213,9 @@ export class PDF_RENDER_PARAMSView {
   }
 
   // 0x00: pointer
-  get SourceRect(): Uint8Array | Deno.PointerValue | null {
+  get SourceRect(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(0, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x08: u32
@@ -229,20 +229,20 @@ export class PDF_RENDER_PARAMSView {
   }
 
   // 0x10: pointer
-  get BackgroundColor(): Uint8Array | Deno.PointerValue | null {
+  get BackgroundColor(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(16, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x18: pointer
-  get IgnoreHighContrast(): Uint8Array | Deno.PointerValue | null {
+  get IgnoreHighContrast(): Uint8Array | Deno.PointerValue {
     const ptr = this.view.getBigUint64(24, true);
-    return util.pointerFromFfi(ptr);
+    return Deno.UnsafePointer.create(ptr);
   }
 
   // 0x00: pointer
-  set SourceRect(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(0, BigInt(util.toPointer(value)), true);
+  set SourceRect(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(0, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x08: u32
@@ -256,13 +256,13 @@ export class PDF_RENDER_PARAMSView {
   }
 
   // 0x10: pointer
-  set BackgroundColor(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(16, BigInt(util.toPointer(value)), true);
+  set BackgroundColor(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(16, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 
   // 0x18: pointer
-  set IgnoreHighContrast(value: Uint8Array | Deno.PointerValue | null) {
-    this.view.setBigUint64(24, BigInt(util.toPointer(value)), true);
+  set IgnoreHighContrast(value: Uint8Array | Deno.PointerValue) {
+    this.view.setBigUint64(24, BigInt(Deno.UnsafePointer.value(util.toPointer(value))), true);
   }
 }
 
@@ -282,9 +282,9 @@ try {
 // Symbols
 
 export function PdfCreateRenderer(
-  pDevice: Uint8Array | Deno.PointerValue | null /* Windows.Win32.Graphics.Dxgi.IDXGIDevice */,
-  ppRenderer: Deno.PointerValue | Uint8Array | null /* ptr */,
-): Deno.PointerValue | null /* Windows.Win32.Foundation.HRESULT */ {
-  return util.pointerFromFfi(libWindows_Data_Pdf_dll.PdfCreateRenderer(util.toPointer(pDevice), util.toPointer(ppRenderer)));
+  pDevice: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Dxgi.IDXGIDevice */,
+  ppRenderer: Deno.PointerValue | Uint8Array /* ptr */,
+): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
+  return libWindows_Data_Pdf_dll.PdfCreateRenderer(util.toPointer(pDevice), util.toPointer(ppRenderer));
 }
 
