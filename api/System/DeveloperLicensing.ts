@@ -6,7 +6,7 @@ import * as util from "../../util.ts";
 
 export type HRESULT = number;
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 // Native Libraries
 

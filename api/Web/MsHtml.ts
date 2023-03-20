@@ -9345,7 +9345,7 @@ export class HTML_PAINT_XFORMView {
   }
 }
 
-export type HRGN = Deno.PointerValue;
+export type HRGN = bigint | number;
 
 /**
  * Windows.Win32.Web.MsHtml.HTML_PAINT_DRAW_INFO (size: 24)
@@ -9900,7 +9900,7 @@ export class STATURLView {
   // 0x34: pad4
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 export type PSTR = Deno.PointerValue | Uint8Array;
 
@@ -9908,11 +9908,11 @@ export type BOOL = number;
 
 export type HRESULT = number;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
-export type HINSTANCE = Deno.PointerValue;
+export type HINSTANCE = bigint | number;
 
-export type HBITMAP = Deno.PointerValue;
+export type HBITMAP = bigint | number;
 
 // Native Libraries
 
@@ -10136,7 +10136,7 @@ export function RatingObtainCancel(
 export function RatingObtainQuery(
   pszTargetUrl: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwUserData: number /* u32 */,
-  fCallback: Deno.PointerValue /* isize */,
+  fCallback: bigint | number /* isize */,
   phRatingObtainQuery: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libMSRATING_dll.RatingObtainQuery(util.pstrToFfi(pszTargetUrl), dwUserData, fCallback, util.toPointer(phRatingObtainQuery));
@@ -10145,7 +10145,7 @@ export function RatingObtainQuery(
 export function RatingObtainQueryW(
   pszTargetUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwUserData: number /* u32 */,
-  fCallback: Deno.PointerValue /* isize */,
+  fCallback: bigint | number /* isize */,
   phRatingObtainQuery: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libMSRATING_dll.RatingObtainQueryW(util.pwstrToFfi(pszTargetUrl), dwUserData, fCallback, util.toPointer(phRatingObtainQuery));

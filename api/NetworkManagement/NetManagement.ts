@@ -20878,7 +20878,7 @@ export interface USE_OPTION_PROPERTIES {
   /** ptr */
   pInfo: Deno.PointerValue | Uint8Array;
   /** usize */
-  Length: Deno.PointerValue;
+  Length: bigint | number;
 }
 
 export const sizeofUSE_OPTION_PROPERTIES = 24;
@@ -20920,7 +20920,7 @@ export class USE_OPTION_PROPERTIESView {
   }
 
   // 0x10: usize
-  get Length(): Deno.PointerValue {
+  get Length(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -20937,7 +20937,7 @@ export class USE_OPTION_PROPERTIESView {
   }
 
   // 0x10: usize
-  set Length(value: Deno.PointerValue) {
+  set Length(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -26925,7 +26925,7 @@ export class NETSETUP_PROVISIONING_PARAMSView {
  */
 export interface AT_INFO {
   /** usize */
-  JobTime: Deno.PointerValue;
+  JobTime: bigint | number;
   /** u32 */
   DaysOfMonth: number;
   /** u8 */
@@ -26969,7 +26969,7 @@ export class AT_INFOView {
   }
 
   // 0x00: usize
-  get JobTime(): Deno.PointerValue {
+  get JobTime(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -26997,7 +26997,7 @@ export class AT_INFOView {
   }
 
   // 0x00: usize
-  set JobTime(value: Deno.PointerValue) {
+  set JobTime(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -27032,7 +27032,7 @@ export interface AT_ENUM {
   /** u32 */
   JobId: number;
   /** usize */
-  JobTime: Deno.PointerValue;
+  JobTime: bigint | number;
   /** u32 */
   DaysOfMonth: number;
   /** u8 */
@@ -27086,7 +27086,7 @@ export class AT_ENUMView {
   // 0x04: pad4
 
   // 0x08: usize
-  get JobTime(): Deno.PointerValue {
+  get JobTime(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -27121,7 +27121,7 @@ export class AT_ENUMView {
   // 0x04: pad4
 
   // 0x08: usize
-  set JobTime(value: Deno.PointerValue) {
+  set JobTime(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -27935,7 +27935,7 @@ export type HRESULT = number;
 
 export type PSTR = Deno.PointerValue | Uint8Array;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 // Native Libraries
 

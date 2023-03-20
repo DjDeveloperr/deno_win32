@@ -110,7 +110,7 @@ export const XAML_REFERENCETRACKER_DISCONNECT_SUSPEND = 1;
  */
 export interface EventRegistrationToken {
   /** i64 */
-  value: Deno.PointerValue;
+  value: bigint | number;
 }
 
 export const sizeofEventRegistrationToken = 8;
@@ -134,12 +134,12 @@ export class EventRegistrationTokenView {
   }
 
   // 0x00: i64
-  get value(): Deno.PointerValue {
+  get value(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x00: i64
-  set value(value: Deno.PointerValue) {
+  set value(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 }
@@ -157,7 +157,7 @@ export interface HSTRING_HEADER {
   /** u32 */
   padding2: number;
   /** isize */
-  data: Deno.PointerValue;
+  data: bigint | number;
 }
 
 export const sizeofHSTRING_HEADER = 24;
@@ -209,7 +209,7 @@ export class HSTRING_HEADERView {
   }
 
   // 0x10: isize
-  get data(): Deno.PointerValue {
+  get data(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -234,18 +234,18 @@ export class HSTRING_HEADERView {
   }
 
   // 0x10: isize
-  set data(value: Deno.PointerValue) {
+  set data(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
 
-export type HSTRING = Deno.PointerValue;
+export type HSTRING = bigint | number;
 
-export type HSTRING_BUFFER = Deno.PointerValue;
+export type HSTRING_BUFFER = bigint | number;
 
-export type ROPARAMIIDHANDLE = Deno.PointerValue;
+export type ROPARAMIIDHANDLE = bigint | number;
 
-export type APARTMENT_SHUTDOWN_REGISTRATION_COOKIE = Deno.PointerValue;
+export type APARTMENT_SHUTDOWN_REGISTRATION_COOKIE = bigint | number;
 
 /**
  * Windows.Win32.System.WinRT.ServerInformation (size: 16)
@@ -256,7 +256,7 @@ export interface ServerInformation {
   /** u32 */
   dwServerTid: number;
   /** u64 */
-  ui64ServerAddress: Deno.PointerValue;
+  ui64ServerAddress: bigint | number;
 }
 
 export const sizeofServerInformation = 16;
@@ -294,7 +294,7 @@ export class ServerInformationView {
   }
 
   // 0x08: u64
-  get ui64ServerAddress(): Deno.PointerValue {
+  get ui64ServerAddress(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -309,7 +309,7 @@ export class ServerInformationView {
   }
 
   // 0x08: u64
-  set ui64ServerAddress(value: Deno.PointerValue) {
+  set ui64ServerAddress(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -1051,7 +1051,7 @@ try {
 
 export function CoDecodeProxy(
   dwClientPid: number /* u32 */,
-  ui64ProxyAddress: Deno.PointerValue /* u64 */,
+  ui64ProxyAddress: bigint | number /* u64 */,
   pServerInformation: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libOLE32_dll.CoDecodeProxy(dwClientPid, ui64ProxyAddress, util.toPointer(pServerInformation));
@@ -1264,7 +1264,7 @@ export function WindowsDeleteStringBuffer(
 }
 
 export function WindowsInspectString(
-  targetHString: Deno.PointerValue /* usize */,
+  targetHString: bigint | number /* usize */,
   machine: number /* u16 */,
   callback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.PINSPECT_HSTRING_CALLBACK */,
   context: Deno.PointerValue | Uint8Array /* ptr */,
@@ -1275,7 +1275,7 @@ export function WindowsInspectString(
 }
 
 export function WindowsInspectString2(
-  targetHString: Deno.PointerValue /* u64 */,
+  targetHString: bigint | number /* u64 */,
   machine: number /* u16 */,
   callback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.PINSPECT_HSTRING_CALLBACK2 */,
   context: Deno.PointerValue | Uint8Array /* ptr */,
@@ -1319,7 +1319,7 @@ export function RoRegisterActivationFactories(
 }
 
 export function RoRevokeActivationFactories(
-  cookie: Deno.PointerValue /* isize */,
+  cookie: bigint | number /* isize */,
 ): void /* void */ {
   return libapi_ms_win_core_winrt_l1_1_0_dll.RoRevokeActivationFactories(cookie);
 }
@@ -1452,7 +1452,7 @@ export function RoReportUnhandledError(
 }
 
 export function RoInspectThreadErrorInfo(
-  targetTebAddress: Deno.PointerValue /* usize */,
+  targetTebAddress: bigint | number /* usize */,
   machine: number /* u16 */,
   readMemoryCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.PINSPECT_MEMORY_CALLBACK */,
   context: Deno.PointerValue | Uint8Array /* ptr */,
@@ -1462,7 +1462,7 @@ export function RoInspectThreadErrorInfo(
 }
 
 export function RoInspectCapturedStackBackTrace(
-  targetErrorInfoAddress: Deno.PointerValue /* usize */,
+  targetErrorInfoAddress: bigint | number /* usize */,
   machine: number /* u16 */,
   readMemoryCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.PINSPECT_MEMORY_CALLBACK */,
   context: Deno.PointerValue | Uint8Array /* ptr */,

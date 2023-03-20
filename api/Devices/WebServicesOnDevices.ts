@@ -1889,7 +1889,7 @@ export class WSD_HANDLER_CONTEXTView {
 
 export type HRESULT = number;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.Devices.WebServicesOnDevices.WSD_SYNCHRONOUS_RESPONSE_CONTEXT (size: 32)
@@ -2948,11 +2948,11 @@ export class WSD_SOAP_FAULTView {
  */
 export interface WSD_APP_SEQUENCE {
   /** u64 */
-  InstanceId: Deno.PointerValue;
+  InstanceId: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   SequenceId: string | null | Uint8Array | Uint16Array;
   /** u64 */
-  MessageNumber: Deno.PointerValue;
+  MessageNumber: bigint | number;
 }
 
 export const sizeofWSD_APP_SEQUENCE = 24;
@@ -2983,7 +2983,7 @@ export class WSD_APP_SEQUENCEView {
   }
 
   // 0x00: u64
-  get InstanceId(): Deno.PointerValue {
+  get InstanceId(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -2994,12 +2994,12 @@ export class WSD_APP_SEQUENCEView {
   }
 
   // 0x10: u64
-  get MessageNumber(): Deno.PointerValue {
+  get MessageNumber(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x00: u64
-  set InstanceId(value: Deno.PointerValue) {
+  set InstanceId(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -3010,7 +3010,7 @@ export class WSD_APP_SEQUENCEView {
   }
 
   // 0x10: u64
-  set MessageNumber(value: Deno.PointerValue) {
+  set MessageNumber(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -3384,7 +3384,7 @@ export interface WSD_RESOLVE_MATCH {
   /** ptr */
   XAddrs: Deno.PointerValue | Uint8Array;
   /** u64 */
-  MetadataVersion: Deno.PointerValue;
+  MetadataVersion: bigint | number;
   /** ptr */
   Any: Deno.PointerValue | Uint8Array;
 }
@@ -3444,7 +3444,7 @@ export class WSD_RESOLVE_MATCHView {
   }
 
   // 0x20: u64
-  get MetadataVersion(): Deno.PointerValue {
+  get MetadataVersion(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -3475,7 +3475,7 @@ export class WSD_RESOLVE_MATCHView {
   }
 
   // 0x20: u64
-  set MetadataVersion(value: Deno.PointerValue) {
+  set MetadataVersion(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -3553,7 +3553,7 @@ export interface WSD_PROBE_MATCH {
   /** ptr */
   XAddrs: Deno.PointerValue | Uint8Array;
   /** u64 */
-  MetadataVersion: Deno.PointerValue;
+  MetadataVersion: bigint | number;
   /** ptr */
   Any: Deno.PointerValue | Uint8Array;
 }
@@ -3613,7 +3613,7 @@ export class WSD_PROBE_MATCHView {
   }
 
   // 0x20: u64
-  get MetadataVersion(): Deno.PointerValue {
+  get MetadataVersion(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -3644,7 +3644,7 @@ export class WSD_PROBE_MATCHView {
   }
 
   // 0x20: u64
-  set MetadataVersion(value: Deno.PointerValue) {
+  set MetadataVersion(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -4016,7 +4016,7 @@ export interface WSD_HELLO {
   /** ptr */
   XAddrs: Deno.PointerValue | Uint8Array;
   /** u64 */
-  MetadataVersion: Deno.PointerValue;
+  MetadataVersion: bigint | number;
   /** ptr */
   Any: Deno.PointerValue | Uint8Array;
 }
@@ -4076,7 +4076,7 @@ export class WSD_HELLOView {
   }
 
   // 0x20: u64
-  get MetadataVersion(): Deno.PointerValue {
+  get MetadataVersion(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -4107,7 +4107,7 @@ export class WSD_HELLOView {
   }
 
   // 0x20: u64
-  set MetadataVersion(value: Deno.PointerValue) {
+  set MetadataVersion(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -5914,7 +5914,7 @@ export function WSDGetConfigurationOption(
 
 export function WSDAllocateLinkedMemory(
   pParent: Deno.PointerValue | Uint8Array /* ptr */,
-  cbSize: Deno.PointerValue /* usize */,
+  cbSize: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
   return libwsdapi_dll.WSDAllocateLinkedMemory(util.toPointer(pParent), cbSize);
 }

@@ -1727,9 +1727,9 @@ export class MSIFILEHASHINFOView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -1755,22 +1755,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -1847,7 +1847,7 @@ export interface ULARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue;
   /** u64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: bigint | number;
 }
 
 export const sizeofULARGE_INTEGER = 24;
@@ -1887,7 +1887,7 @@ export class ULARGE_INTEGERView {
   }
 
   // 0x10: u64
-  get QuadPart(): Deno.PointerValue {
+  get QuadPart(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -1902,7 +1902,7 @@ export class ULARGE_INTEGERView {
   }
 
   // 0x10: u64
-  set QuadPart(value: Deno.PointerValue) {
+  set QuadPart(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -4031,7 +4031,7 @@ export class PATCH_OLD_FILE_INFO_WView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.System.ApplicationInstallationAndServicing.PATCH_OLD_FILE_INFO_H (size: 48)
@@ -4578,7 +4578,7 @@ export interface DELTA_INPUT {
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue;
   /** usize */
-  uSize: Deno.PointerValue;
+  uSize: bigint | number;
   /** Windows.Win32.Foundation.BOOL */
   Editable: boolean;
 }
@@ -4615,7 +4615,7 @@ export class DELTA_INPUTView {
   }
 
   // 0x08: usize
-  get uSize(): Deno.PointerValue {
+  get uSize(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -4632,7 +4632,7 @@ export class DELTA_INPUTView {
   }
 
   // 0x08: usize
-  set uSize(value: Deno.PointerValue) {
+  set uSize(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -4651,7 +4651,7 @@ export interface DELTA_OUTPUT {
   /** ptr */
   lpStart: Deno.PointerValue | Uint8Array;
   /** usize */
-  uSize: Deno.PointerValue;
+  uSize: bigint | number;
 }
 
 export const sizeofDELTA_OUTPUT = 16;
@@ -4683,7 +4683,7 @@ export class DELTA_OUTPUTView {
   }
 
   // 0x08: usize
-  get uSize(): Deno.PointerValue {
+  get uSize(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -4693,7 +4693,7 @@ export class DELTA_OUTPUTView {
   }
 
   // 0x08: usize
-  set uSize(value: Deno.PointerValue) {
+  set uSize(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -4815,13 +4815,13 @@ export class FILETIMEView {
  */
 export interface DELTA_HEADER_INFO {
   /** i64 */
-  FileTypeSet: Deno.PointerValue;
+  FileTypeSet: bigint | number;
   /** i64 */
-  FileType: Deno.PointerValue;
+  FileType: bigint | number;
   /** i64 */
-  Flags: Deno.PointerValue;
+  Flags: bigint | number;
   /** usize */
-  TargetSize: Deno.PointerValue;
+  TargetSize: bigint | number;
   /** Windows.Win32.Foundation.FILETIME */
   TargetFileTime: Uint8Array | Deno.PointerValue;
   /** u32 */
@@ -4864,22 +4864,22 @@ export class DELTA_HEADER_INFOView {
   }
 
   // 0x00: i64
-  get FileTypeSet(): Deno.PointerValue {
+  get FileTypeSet(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: i64
-  get FileType(): Deno.PointerValue {
+  get FileType(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: i64
-  get Flags(): Deno.PointerValue {
+  get Flags(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: usize
-  get TargetSize(): Deno.PointerValue {
+  get TargetSize(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -4903,22 +4903,22 @@ export class DELTA_HEADER_INFOView {
   }
 
   // 0x00: i64
-  set FileTypeSet(value: Deno.PointerValue) {
+  set FileTypeSet(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: i64
-  set FileType(value: Deno.PointerValue) {
+  set FileType(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: i64
-  set Flags(value: Deno.PointerValue) {
+  set Flags(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: usize
-  set TargetSize(value: Deno.PointerValue) {
+  set TargetSize(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -5112,7 +5112,7 @@ export interface LARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue;
   /** i64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: bigint | number;
 }
 
 export const sizeofLARGE_INTEGER = 24;
@@ -5152,7 +5152,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  get QuadPart(): Deno.PointerValue {
+  get QuadPart(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -5167,7 +5167,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  set QuadPart(value: Deno.PointerValue) {
+  set QuadPart(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -5571,7 +5571,7 @@ export interface COMPATIBILITY_CONTEXT_ELEMENT {
   /** Windows.Win32.System.ApplicationInstallationAndServicing.ACTCTX_COMPATIBILITY_ELEMENT_TYPE */
   Type: ACTCTX_COMPATIBILITY_ELEMENT_TYPE;
   /** u64 */
-  MaxVersionTested: Deno.PointerValue;
+  MaxVersionTested: bigint | number;
 }
 
 export const sizeofCOMPATIBILITY_CONTEXT_ELEMENT = 24;
@@ -5613,7 +5613,7 @@ export class COMPATIBILITY_CONTEXT_ELEMENTView {
   // 0x0c: pad4
 
   // 0x10: u64
-  get MaxVersionTested(): Deno.PointerValue {
+  get MaxVersionTested(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -5630,7 +5630,7 @@ export class COMPATIBILITY_CONTEXT_ELEMENTView {
   // 0x0c: pad4
 
   // 0x10: u64
-  set MaxVersionTested(value: Deno.PointerValue) {
+  set MaxVersionTested(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -5848,7 +5848,7 @@ export class ACTIVATION_CONTEXT_DETAILED_INFORMATIONView {
   }
 }
 
-export type HINSTANCE = Deno.PointerValue;
+export type HINSTANCE = bigint | number;
 
 /**
  * Windows.Win32.System.ApplicationInstallationAndServicing.ACTCTXA (size: 56)
@@ -6525,7 +6525,7 @@ export class ACTCTX_SECTION_KEYED_DATAView {
   }
 }
 
-export type HKEY = Deno.PointerValue;
+export type HKEY = bigint | number;
 
 export type HRESULT = number;
 
@@ -10510,7 +10510,7 @@ export function GetDeltaInfoW(
 }
 
 export function ApplyDeltaGetReverseB(
-  ApplyFlags: Deno.PointerValue /* i64 */,
+  ApplyFlags: bigint | number /* i64 */,
   Source: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
   Delta: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
   lpReverseFileTime: Deno.PointerValue | Uint8Array /* ptr */,
@@ -10521,7 +10521,7 @@ export function ApplyDeltaGetReverseB(
 }
 
 export function ApplyDeltaB(
-  ApplyFlags: Deno.PointerValue /* i64 */,
+  ApplyFlags: bigint | number /* i64 */,
   Source: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
   Delta: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
   lpTarget: Deno.PointerValue | Uint8Array /* ptr */,
@@ -10530,17 +10530,17 @@ export function ApplyDeltaB(
 }
 
 export function ApplyDeltaProvidedB(
-  ApplyFlags: Deno.PointerValue /* i64 */,
+  ApplyFlags: bigint | number /* i64 */,
   Source: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
   Delta: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
   lpTarget: Deno.PointerValue | Uint8Array /* ptr */,
-  uTargetSize: Deno.PointerValue /* usize */,
+  uTargetSize: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmsdelta_dll.ApplyDeltaProvidedB(ApplyFlags, util.toPointer(Source), util.toPointer(Delta), util.toPointer(lpTarget), uTargetSize));
 }
 
 export function ApplyDeltaA(
-  ApplyFlags: Deno.PointerValue /* i64 */,
+  ApplyFlags: bigint | number /* i64 */,
   lpSourceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpDeltaName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpTargetName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
@@ -10549,7 +10549,7 @@ export function ApplyDeltaA(
 }
 
 export function ApplyDeltaW(
-  ApplyFlags: Deno.PointerValue /* i64 */,
+  ApplyFlags: bigint | number /* i64 */,
   lpSourceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpDeltaName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpTargetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
@@ -10558,9 +10558,9 @@ export function ApplyDeltaW(
 }
 
 export function CreateDeltaB(
-  FileTypeSet: Deno.PointerValue /* i64 */,
-  SetFlags: Deno.PointerValue /* i64 */,
-  ResetFlags: Deno.PointerValue /* i64 */,
+  FileTypeSet: bigint | number /* i64 */,
+  SetFlags: bigint | number /* i64 */,
+  ResetFlags: bigint | number /* i64 */,
   Source: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
   Target: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
   SourceOptions: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
@@ -10574,9 +10574,9 @@ export function CreateDeltaB(
 }
 
 export function CreateDeltaA(
-  FileTypeSet: Deno.PointerValue /* i64 */,
-  SetFlags: Deno.PointerValue /* i64 */,
-  ResetFlags: Deno.PointerValue /* i64 */,
+  FileTypeSet: bigint | number /* i64 */,
+  SetFlags: bigint | number /* i64 */,
+  ResetFlags: bigint | number /* i64 */,
   lpSourceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpTargetName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpSourceOptionsName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
@@ -10590,9 +10590,9 @@ export function CreateDeltaA(
 }
 
 export function CreateDeltaW(
-  FileTypeSet: Deno.PointerValue /* i64 */,
-  SetFlags: Deno.PointerValue /* i64 */,
-  ResetFlags: Deno.PointerValue /* i64 */,
+  FileTypeSet: bigint | number /* i64 */,
+  SetFlags: bigint | number /* i64 */,
+  ResetFlags: bigint | number /* i64 */,
   lpSourceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpTargetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpSourceOptionsName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
@@ -10606,7 +10606,7 @@ export function CreateDeltaW(
 }
 
 export function GetDeltaSignatureB(
-  FileTypeSet: Deno.PointerValue /* i64 */,
+  FileTypeSet: bigint | number /* i64 */,
   HashAlgId: number /* u32 */,
   Source: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
   lpHash: Deno.PointerValue | Uint8Array /* ptr */,
@@ -10615,7 +10615,7 @@ export function GetDeltaSignatureB(
 }
 
 export function GetDeltaSignatureA(
-  FileTypeSet: Deno.PointerValue /* i64 */,
+  FileTypeSet: bigint | number /* i64 */,
   HashAlgId: number /* u32 */,
   lpSourceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpHash: Deno.PointerValue | Uint8Array /* ptr */,
@@ -10624,7 +10624,7 @@ export function GetDeltaSignatureA(
 }
 
 export function GetDeltaSignatureW(
-  FileTypeSet: Deno.PointerValue /* i64 */,
+  FileTypeSet: bigint | number /* i64 */,
   HashAlgId: number /* u32 */,
   lpSourceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpHash: Deno.PointerValue | Uint8Array /* ptr */,
@@ -10633,11 +10633,11 @@ export function GetDeltaSignatureW(
 }
 
 export function DeltaNormalizeProvidedB(
-  FileTypeSet: Deno.PointerValue /* i64 */,
-  NormalizeFlags: Deno.PointerValue /* i64 */,
+  FileTypeSet: bigint | number /* i64 */,
+  NormalizeFlags: bigint | number /* i64 */,
   NormalizeOptions: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
   lpSource: Deno.PointerValue | Uint8Array /* ptr */,
-  uSourceSize: Deno.PointerValue /* usize */,
+  uSourceSize: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmsdelta_dll.DeltaNormalizeProvidedB(FileTypeSet, NormalizeFlags, util.toPointer(NormalizeOptions), util.toPointer(lpSource), uSourceSize));
 }
@@ -10687,7 +10687,7 @@ export function ActivateActCtx(
 
 export function DeactivateActCtx(
   dwFlags: number /* u32 */,
-  ulCookie: Deno.PointerValue /* usize */,
+  ulCookie: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.DeactivateActCtx(dwFlags, ulCookie));
 }
@@ -10734,7 +10734,7 @@ export function QueryActCtxW(
   pvSubInstance: Deno.PointerValue | Uint8Array /* ptr */,
   ulInfoClass: number /* u32 */,
   pvBuffer: Deno.PointerValue | Uint8Array /* ptr */,
-  cbBuffer: Deno.PointerValue /* usize */,
+  cbBuffer: bigint | number /* usize */,
   pcbWrittenOrRequired: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.QueryActCtxW(dwFlags, util.toPointer(hActCtx), util.toPointer(pvSubInstance), ulInfoClass, util.toPointer(pvBuffer), cbBuffer, util.toPointer(pcbWrittenOrRequired)));
@@ -10746,7 +10746,7 @@ export function QueryActCtxSettingsW(
   settingsNameSpace: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   settingName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pvBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  dwBuffer: Deno.PointerValue /* usize */,
+  dwBuffer: bigint | number /* usize */,
   pdwWrittenOrRequired: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.QueryActCtxSettingsW(dwFlags, util.toPointer(hActCtx), util.pwstrToFfi(settingsNameSpace), util.pwstrToFfi(settingName), util.pwstrToFfi(pvBuffer), dwBuffer, util.toPointer(pdwWrittenOrRequired)));

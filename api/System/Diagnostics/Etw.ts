@@ -3909,13 +3909,13 @@ export const ERROR_QUERY_STORAGE_ERROR = 2151284737;
 
 // Structs
 
-export type TDH_HANDLE = Deno.PointerValue;
+export type TDH_HANDLE = bigint | number;
 
-export type PROCESSTRACE_HANDLE = Deno.PointerValue;
+export type PROCESSTRACE_HANDLE = bigint | number;
 
-export type CONTROLTRACE_HANDLE = Deno.PointerValue;
+export type CONTROLTRACE_HANDLE = bigint | number;
 
-export type RELOGSTREAM_HANDLE = Deno.PointerValue;
+export type RELOGSTREAM_HANDLE = bigint | number;
 
 export type PWSTR = Deno.PointerValue | Uint8Array;
 
@@ -3924,11 +3924,11 @@ export type PWSTR = Deno.PointerValue | Uint8Array;
  */
 export interface _Anonymous1_e__Union {
   /** usize */
-  Data0: Deno.PointerValue;
+  Data0: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   String: string | null | Uint8Array | Uint16Array;
   /** usize */
-  u: Deno.PointerValue;
+  u: bigint | number;
   /** ptr */
   psid: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -3980,7 +3980,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  get Data0(): Deno.PointerValue {
+  get Data0(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -3991,7 +3991,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  get u(): Deno.PointerValue {
+  get u(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -4027,7 +4027,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  set Data0(value: Deno.PointerValue) {
+  set Data0(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -4038,7 +4038,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  set u(value: Deno.PointerValue) {
+  set u(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -4075,7 +4075,7 @@ export class _Anonymous1_e__UnionView {
  */
 export interface _Anonymous2_e__Union {
   /** usize */
-  Data1: Deno.PointerValue;
+  Data1: bigint | number;
   /** i32 */
   LogonId_HighPart: number;
 }
@@ -4104,7 +4104,7 @@ export class _Anonymous2_e__UnionView {
   }
 
   // 0x00: usize
-  get Data1(): Deno.PointerValue {
+  get Data1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -4116,7 +4116,7 @@ export class _Anonymous2_e__UnionView {
   // 0x0c: pad4
 
   // 0x00: usize
-  set Data1(value: Deno.PointerValue) {
+  set Data1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -4312,9 +4312,9 @@ export class OFFSETINSTANCEDATAANDLENGTHView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -4340,22 +4340,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -5346,7 +5346,7 @@ export interface LARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue;
   /** i64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: bigint | number;
 }
 
 export const sizeofLARGE_INTEGER = 24;
@@ -5386,7 +5386,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  get QuadPart(): Deno.PointerValue {
+  get QuadPart(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -5401,7 +5401,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  set QuadPart(value: Deno.PointerValue) {
+  set QuadPart(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -5688,7 +5688,7 @@ export interface EVENT_INSTANCE_HEADER {
   /** Windows.Win32.Foundation.LARGE_INTEGER */
   TimeStamp: Uint8Array | Deno.PointerValue;
   /** u64 */
-  RegHandle: Deno.PointerValue;
+  RegHandle: bigint | number;
   /** u32 */
   InstanceId: number;
   /** u32 */
@@ -5696,7 +5696,7 @@ export interface EVENT_INSTANCE_HEADER {
   /** _Anonymous3_e__Union */
   Anonymous3: Uint8Array | Deno.PointerValue;
   /** u64 */
-  ParentRegHandle: Deno.PointerValue;
+  ParentRegHandle: bigint | number;
 }
 
 export const sizeofEVENT_INSTANCE_HEADER = 72;
@@ -5776,7 +5776,7 @@ export class EVENT_INSTANCE_HEADERView {
   }
 
   // 0x28: u64
-  get RegHandle(): Deno.PointerValue {
+  get RegHandle(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -5797,7 +5797,7 @@ export class EVENT_INSTANCE_HEADERView {
   }
 
   // 0x40: u64
-  get ParentRegHandle(): Deno.PointerValue {
+  get ParentRegHandle(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
@@ -5834,7 +5834,7 @@ export class EVENT_INSTANCE_HEADERView {
   }
 
   // 0x28: u64
-  set RegHandle(value: Deno.PointerValue) {
+  set RegHandle(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
@@ -5854,7 +5854,7 @@ export class EVENT_INSTANCE_HEADERView {
   }
 
   // 0x40: u64
-  set ParentRegHandle(value: Deno.PointerValue) {
+  set ParentRegHandle(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 }
@@ -5864,7 +5864,7 @@ export class EVENT_INSTANCE_HEADERView {
  */
 export interface MOF_FIELD {
   /** u64 */
-  DataPtr: Deno.PointerValue;
+  DataPtr: bigint | number;
   /** u32 */
   Length: number;
   /** u32 */
@@ -5896,7 +5896,7 @@ export class MOF_FIELDView {
   }
 
   // 0x00: u64
-  get DataPtr(): Deno.PointerValue {
+  get DataPtr(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -5911,7 +5911,7 @@ export class MOF_FIELDView {
   }
 
   // 0x00: u64
-  set DataPtr(value: Deno.PointerValue) {
+  set DataPtr(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -6818,9 +6818,9 @@ export interface TRACE_LOGFILE_HEADER64 {
   /** _Anonymous2_e__Union */
   Anonymous2: Uint8Array | Deno.PointerValue;
   /** u64 */
-  LoggerName: Deno.PointerValue;
+  LoggerName: bigint | number;
   /** u64 */
-  LogFileName: Deno.PointerValue;
+  LogFileName: bigint | number;
   /** Windows.Win32.System.Time.TIME_ZONE_INFORMATION */
   TimeZone: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
@@ -6946,12 +6946,12 @@ export class TRACE_LOGFILE_HEADER64View {
   }
 
   // 0x38: u64
-  get LoggerName(): Deno.PointerValue {
+  get LoggerName(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
   // 0x40: u64
-  get LogFileName(): Deno.PointerValue {
+  get LogFileName(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
@@ -7042,12 +7042,12 @@ export class TRACE_LOGFILE_HEADER64View {
   }
 
   // 0x38: u64
-  set LoggerName(value: Deno.PointerValue) {
+  set LoggerName(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
   // 0x40: u64
-  set LogFileName(value: Deno.PointerValue) {
+  set LogFileName(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
@@ -7082,7 +7082,7 @@ export class TRACE_LOGFILE_HEADER64View {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.System.Diagnostics.Etw.EVENT_INSTANCE_INFO (size: 16)
@@ -8021,9 +8021,9 @@ export interface TRACE_ENABLE_INFO {
   /** u32 */
   Reserved2: number;
   /** u64 */
-  MatchAnyKeyword: Deno.PointerValue;
+  MatchAnyKeyword: bigint | number;
   /** u64 */
-  MatchAllKeyword: Deno.PointerValue;
+  MatchAllKeyword: bigint | number;
 }
 
 export const sizeofTRACE_ENABLE_INFO = 32;
@@ -8091,12 +8091,12 @@ export class TRACE_ENABLE_INFOView {
   }
 
   // 0x10: u64
-  get MatchAnyKeyword(): Deno.PointerValue {
+  get MatchAnyKeyword(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get MatchAllKeyword(): Deno.PointerValue {
+  get MatchAllKeyword(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -8131,12 +8131,12 @@ export class TRACE_ENABLE_INFOView {
   }
 
   // 0x10: u64
-  set MatchAnyKeyword(value: Deno.PointerValue) {
+  set MatchAnyKeyword(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set MatchAllKeyword(value: Deno.PointerValue) {
+  set MatchAllKeyword(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 }
@@ -8288,7 +8288,7 @@ export interface PROFILE_SOURCE_INFO {
   /** u32 */
   MaxInterval: number;
   /** u64 */
-  Reserved: Deno.PointerValue;
+  Reserved: bigint | number;
   /** array */
   Description: Deno.PointerValue;
 }
@@ -8344,7 +8344,7 @@ export class PROFILE_SOURCE_INFOView {
   }
 
   // 0x10: u64
-  get Reserved(): Deno.PointerValue {
+  get Reserved(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -8375,7 +8375,7 @@ export class PROFILE_SOURCE_INFOView {
   }
 
   // 0x10: u64
-  set Reserved(value: Deno.PointerValue) {
+  set Reserved(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -8666,7 +8666,7 @@ export interface EVENT_TRACE_LOGFILEW {
   /** Windows.Win32.Foundation.PWSTR */
   LoggerName: string | null | Uint8Array | Uint16Array;
   /** i64 */
-  CurrentTime: Deno.PointerValue;
+  CurrentTime: bigint | number;
   /** u32 */
   BuffersRead: number;
   /** _Anonymous1_e__Union */
@@ -8759,7 +8759,7 @@ export class EVENT_TRACE_LOGFILEWView {
   }
 
   // 0x10: i64
-  get CurrentTime(): Deno.PointerValue {
+  get CurrentTime(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -8843,7 +8843,7 @@ export class EVENT_TRACE_LOGFILEWView {
   }
 
   // 0x10: i64
-  set CurrentTime(value: Deno.PointerValue) {
+  set CurrentTime(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
@@ -8920,7 +8920,7 @@ export interface EVENT_TRACE_LOGFILEA {
   /** Windows.Win32.Foundation.PSTR */
   LoggerName: string | null | Uint8Array;
   /** i64 */
-  CurrentTime: Deno.PointerValue;
+  CurrentTime: bigint | number;
   /** u32 */
   BuffersRead: number;
   /** _Anonymous1_e__Union */
@@ -9013,7 +9013,7 @@ export class EVENT_TRACE_LOGFILEAView {
   }
 
   // 0x10: i64
-  get CurrentTime(): Deno.PointerValue {
+  get CurrentTime(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -9097,7 +9097,7 @@ export class EVENT_TRACE_LOGFILEAView {
   }
 
   // 0x10: i64
-  set CurrentTime(value: Deno.PointerValue) {
+  set CurrentTime(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
@@ -9710,7 +9710,7 @@ export interface ETW_TRACE_PARTITION_INFORMATION {
   /** System.Guid */
   ParentId: Uint8Array | Deno.PointerValue;
   /** i64 */
-  QpcOffsetFromRoot: Deno.PointerValue;
+  QpcOffsetFromRoot: bigint | number;
   /** u32 */
   PartitionType: number;
 }
@@ -9755,7 +9755,7 @@ export class ETW_TRACE_PARTITION_INFORMATIONView {
   }
 
   // 0x10: i64
-  get QpcOffsetFromRoot(): Deno.PointerValue {
+  get QpcOffsetFromRoot(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -9777,7 +9777,7 @@ export class ETW_TRACE_PARTITION_INFORMATIONView {
   }
 
   // 0x10: i64
-  set QpcOffsetFromRoot(value: Deno.PointerValue) {
+  set QpcOffsetFromRoot(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
@@ -9794,7 +9794,7 @@ export class ETW_TRACE_PARTITION_INFORMATIONView {
  */
 export interface ETW_TRACE_PARTITION_INFORMATION_V2 {
   /** i64 */
-  QpcOffsetFromRoot: Deno.PointerValue;
+  QpcOffsetFromRoot: bigint | number;
   /** u32 */
   PartitionType: number;
   /** Windows.Win32.Foundation.PWSTR */
@@ -9837,7 +9837,7 @@ export class ETW_TRACE_PARTITION_INFORMATION_V2View {
   }
 
   // 0x00: i64
-  get QpcOffsetFromRoot(): Deno.PointerValue {
+  get QpcOffsetFromRoot(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
@@ -9861,7 +9861,7 @@ export class ETW_TRACE_PARTITION_INFORMATION_V2View {
   }
 
   // 0x00: i64
-  set QpcOffsetFromRoot(value: Deno.PointerValue) {
+  set QpcOffsetFromRoot(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
@@ -9890,7 +9890,7 @@ export class ETW_TRACE_PARTITION_INFORMATION_V2View {
  */
 export interface EVENT_DATA_DESCRIPTOR {
   /** u64 */
-  Ptr: Deno.PointerValue;
+  Ptr: bigint | number;
   /** u32 */
   Size: number;
   /** _Anonymous_e__Union */
@@ -9923,7 +9923,7 @@ export class EVENT_DATA_DESCRIPTORView {
   }
 
   // 0x00: u64
-  get Ptr(): Deno.PointerValue {
+  get Ptr(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -9941,7 +9941,7 @@ export class EVENT_DATA_DESCRIPTORView {
   }
 
   // 0x00: u64
-  set Ptr(value: Deno.PointerValue) {
+  set Ptr(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -9975,7 +9975,7 @@ export interface EVENT_DESCRIPTOR {
   /** u16 */
   Task: number;
   /** u64 */
-  Keyword: Deno.PointerValue;
+  Keyword: bigint | number;
 }
 
 export const sizeofEVENT_DESCRIPTOR = 16;
@@ -10041,7 +10041,7 @@ export class EVENT_DESCRIPTORView {
   }
 
   // 0x08: u64
-  get Keyword(): Deno.PointerValue {
+  get Keyword(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -10076,7 +10076,7 @@ export class EVENT_DESCRIPTORView {
   }
 
   // 0x08: u64
-  set Keyword(value: Deno.PointerValue) {
+  set Keyword(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -10086,7 +10086,7 @@ export class EVENT_DESCRIPTORView {
  */
 export interface EVENT_FILTER_DESCRIPTOR {
   /** u64 */
-  Ptr: Deno.PointerValue;
+  Ptr: bigint | number;
   /** u32 */
   Size: number;
   /** u32 */
@@ -10118,7 +10118,7 @@ export class EVENT_FILTER_DESCRIPTORView {
   }
 
   // 0x00: u64
-  get Ptr(): Deno.PointerValue {
+  get Ptr(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -10133,7 +10133,7 @@ export class EVENT_FILTER_DESCRIPTORView {
   }
 
   // 0x00: u64
-  set Ptr(value: Deno.PointerValue) {
+  set Ptr(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -10159,7 +10159,7 @@ export interface EVENT_FILTER_HEADER {
   /** array */
   Reserved: Deno.PointerValue;
   /** u64 */
-  InstanceId: Deno.PointerValue;
+  InstanceId: bigint | number;
   /** u32 */
   Size: number;
   /** u32 */
@@ -10216,7 +10216,7 @@ export class EVENT_FILTER_HEADERView {
   }
 
   // 0x10: u64
-  get InstanceId(): Deno.PointerValue {
+  get InstanceId(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -10248,7 +10248,7 @@ export class EVENT_FILTER_HEADERView {
   }
 
   // 0x10: u64
-  set InstanceId(value: Deno.PointerValue) {
+  set InstanceId(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -10356,9 +10356,9 @@ export class EVENT_FILTER_EVENT_IDView {
  */
 export interface EVENT_FILTER_EVENT_NAME {
   /** u64 */
-  MatchAnyKeyword: Deno.PointerValue;
+  MatchAnyKeyword: bigint | number;
   /** u64 */
-  MatchAllKeyword: Deno.PointerValue;
+  MatchAllKeyword: bigint | number;
   /** u8 */
   Level: number;
   /** Windows.Win32.Foundation.BOOLEAN */
@@ -10402,12 +10402,12 @@ export class EVENT_FILTER_EVENT_NAMEView {
   }
 
   // 0x00: u64
-  get MatchAnyKeyword(): Deno.PointerValue {
+  get MatchAnyKeyword(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get MatchAllKeyword(): Deno.PointerValue {
+  get MatchAllKeyword(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -10438,12 +10438,12 @@ export class EVENT_FILTER_EVENT_NAMEView {
   }
 
   // 0x00: u64
-  set MatchAnyKeyword(value: Deno.PointerValue) {
+  set MatchAnyKeyword(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set MatchAllKeyword(value: Deno.PointerValue) {
+  set MatchAllKeyword(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -10477,9 +10477,9 @@ export class EVENT_FILTER_EVENT_NAMEView {
  */
 export interface EVENT_FILTER_LEVEL_KW {
   /** u64 */
-  MatchAnyKeyword: Deno.PointerValue;
+  MatchAnyKeyword: bigint | number;
   /** u64 */
-  MatchAllKeyword: Deno.PointerValue;
+  MatchAllKeyword: bigint | number;
   /** u8 */
   Level: number;
   /** Windows.Win32.Foundation.BOOLEAN */
@@ -10514,12 +10514,12 @@ export class EVENT_FILTER_LEVEL_KWView {
   }
 
   // 0x00: u64
-  get MatchAnyKeyword(): Deno.PointerValue {
+  get MatchAnyKeyword(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get MatchAllKeyword(): Deno.PointerValue {
+  get MatchAllKeyword(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -10537,12 +10537,12 @@ export class EVENT_FILTER_LEVEL_KWView {
   }
 
   // 0x00: u64
-  set MatchAnyKeyword(value: Deno.PointerValue) {
+  set MatchAnyKeyword(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set MatchAllKeyword(value: Deno.PointerValue) {
+  set MatchAllKeyword(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -10572,7 +10572,7 @@ export interface EVENT_HEADER_EXTENDED_DATA_ITEM {
   /** u16 */
   DataSize: number;
   /** u64 */
-  DataPtr: Deno.PointerValue;
+  DataPtr: bigint | number;
 }
 
 export const sizeofEVENT_HEADER_EXTENDED_DATA_ITEM = 32;
@@ -10631,7 +10631,7 @@ export class EVENT_HEADER_EXTENDED_DATA_ITEMView {
   // 0x12: pad6
 
   // 0x18: u64
-  get DataPtr(): Deno.PointerValue {
+  get DataPtr(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -10660,7 +10660,7 @@ export class EVENT_HEADER_EXTENDED_DATA_ITEMView {
   // 0x12: pad6
 
   // 0x18: u64
-  set DataPtr(value: Deno.PointerValue) {
+  set DataPtr(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 }
@@ -10822,7 +10822,7 @@ export class EVENT_EXTENDED_ITEM_TS_IDView {
  */
 export interface EVENT_EXTENDED_ITEM_STACK_TRACE32 {
   /** u64 */
-  MatchId: Deno.PointerValue;
+  MatchId: bigint | number;
   /** array */
   Address: Deno.PointerValue;
 }
@@ -10850,7 +10850,7 @@ export class EVENT_EXTENDED_ITEM_STACK_TRACE32View {
   }
 
   // 0x00: u64
-  get MatchId(): Deno.PointerValue {
+  get MatchId(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -10861,7 +10861,7 @@ export class EVENT_EXTENDED_ITEM_STACK_TRACE32View {
   }
 
   // 0x00: u64
-  set MatchId(value: Deno.PointerValue) {
+  set MatchId(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -10876,7 +10876,7 @@ export class EVENT_EXTENDED_ITEM_STACK_TRACE32View {
  */
 export interface EVENT_EXTENDED_ITEM_STACK_TRACE64 {
   /** u64 */
-  MatchId: Deno.PointerValue;
+  MatchId: bigint | number;
   /** array */
   Address: Deno.PointerValue;
 }
@@ -10904,7 +10904,7 @@ export class EVENT_EXTENDED_ITEM_STACK_TRACE64View {
   }
 
   // 0x00: u64
-  get MatchId(): Deno.PointerValue {
+  get MatchId(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -10915,7 +10915,7 @@ export class EVENT_EXTENDED_ITEM_STACK_TRACE64View {
   }
 
   // 0x00: u64
-  set MatchId(value: Deno.PointerValue) {
+  set MatchId(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -10930,7 +10930,7 @@ export class EVENT_EXTENDED_ITEM_STACK_TRACE64View {
  */
 export interface EVENT_EXTENDED_ITEM_STACK_KEY32 {
   /** u64 */
-  MatchId: Deno.PointerValue;
+  MatchId: bigint | number;
   /** u32 */
   StackKey: number;
   /** u32 */
@@ -10962,7 +10962,7 @@ export class EVENT_EXTENDED_ITEM_STACK_KEY32View {
   }
 
   // 0x00: u64
-  get MatchId(): Deno.PointerValue {
+  get MatchId(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -10977,7 +10977,7 @@ export class EVENT_EXTENDED_ITEM_STACK_KEY32View {
   }
 
   // 0x00: u64
-  set MatchId(value: Deno.PointerValue) {
+  set MatchId(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -10997,9 +10997,9 @@ export class EVENT_EXTENDED_ITEM_STACK_KEY32View {
  */
 export interface EVENT_EXTENDED_ITEM_STACK_KEY64 {
   /** u64 */
-  MatchId: Deno.PointerValue;
+  MatchId: bigint | number;
   /** u64 */
-  StackKey: Deno.PointerValue;
+  StackKey: bigint | number;
 }
 
 export const sizeofEVENT_EXTENDED_ITEM_STACK_KEY64 = 16;
@@ -11025,22 +11025,22 @@ export class EVENT_EXTENDED_ITEM_STACK_KEY64View {
   }
 
   // 0x00: u64
-  get MatchId(): Deno.PointerValue {
+  get MatchId(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get StackKey(): Deno.PointerValue {
+  get StackKey(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set MatchId(value: Deno.PointerValue) {
+  set MatchId(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set StackKey(value: Deno.PointerValue) {
+  set StackKey(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -11050,7 +11050,7 @@ export class EVENT_EXTENDED_ITEM_STACK_KEY64View {
  */
 export interface EVENT_EXTENDED_ITEM_PEBS_INDEX {
   /** u64 */
-  PebsIndex: Deno.PointerValue;
+  PebsIndex: bigint | number;
 }
 
 export const sizeofEVENT_EXTENDED_ITEM_PEBS_INDEX = 8;
@@ -11074,12 +11074,12 @@ export class EVENT_EXTENDED_ITEM_PEBS_INDEXView {
   }
 
   // 0x00: u64
-  get PebsIndex(): Deno.PointerValue {
+  get PebsIndex(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: u64
-  set PebsIndex(value: Deno.PointerValue) {
+  set PebsIndex(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -11129,7 +11129,7 @@ export class EVENT_EXTENDED_ITEM_PMC_COUNTERSView {
  */
 export interface EVENT_EXTENDED_ITEM_PROCESS_START_KEY {
   /** u64 */
-  ProcessStartKey: Deno.PointerValue;
+  ProcessStartKey: bigint | number;
 }
 
 export const sizeofEVENT_EXTENDED_ITEM_PROCESS_START_KEY = 8;
@@ -11153,12 +11153,12 @@ export class EVENT_EXTENDED_ITEM_PROCESS_START_KEYView {
   }
 
   // 0x00: u64
-  get ProcessStartKey(): Deno.PointerValue {
+  get ProcessStartKey(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: u64
-  set ProcessStartKey(value: Deno.PointerValue) {
+  set ProcessStartKey(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -11168,7 +11168,7 @@ export class EVENT_EXTENDED_ITEM_PROCESS_START_KEYView {
  */
 export interface EVENT_EXTENDED_ITEM_EVENT_KEY {
   /** u64 */
-  Key: Deno.PointerValue;
+  Key: bigint | number;
 }
 
 export const sizeofEVENT_EXTENDED_ITEM_EVENT_KEY = 8;
@@ -11192,12 +11192,12 @@ export class EVENT_EXTENDED_ITEM_EVENT_KEYView {
   }
 
   // 0x00: u64
-  get Key(): Deno.PointerValue {
+  get Key(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: u64
-  set Key(value: Deno.PointerValue) {
+  set Key(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -12115,7 +12115,7 @@ export class TRACE_EVENT_INFOView {
  */
 export interface PROPERTY_DATA_DESCRIPTOR {
   /** u64 */
-  PropertyName: Deno.PointerValue;
+  PropertyName: bigint | number;
   /** u32 */
   ArrayIndex: number;
   /** u32 */
@@ -12147,7 +12147,7 @@ export class PROPERTY_DATA_DESCRIPTORView {
   }
 
   // 0x00: u64
-  get PropertyName(): Deno.PointerValue {
+  get PropertyName(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -12162,7 +12162,7 @@ export class PROPERTY_DATA_DESCRIPTORView {
   }
 
   // 0x00: u64
-  set PropertyName(value: Deno.PointerValue) {
+  set PropertyName(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -12383,7 +12383,7 @@ export interface PROVIDER_FIELD_INFO {
   /** u32 */
   DescriptionOffset: number;
   /** u64 */
-  Value: Deno.PointerValue;
+  Value: bigint | number;
 }
 
 export const sizeofPROVIDER_FIELD_INFO = 16;
@@ -12421,7 +12421,7 @@ export class PROVIDER_FIELD_INFOView {
   }
 
   // 0x08: u64
-  get Value(): Deno.PointerValue {
+  get Value(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -12436,7 +12436,7 @@ export class PROVIDER_FIELD_INFOView {
   }
 
   // 0x08: u64
-  set Value(value: Deno.PointerValue) {
+  set Value(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -12718,7 +12718,7 @@ export class PROVIDER_EVENT_INFOView {
  */
 export interface TDH_CONTEXT {
   /** u64 */
-  ParameterValue: Deno.PointerValue;
+  ParameterValue: bigint | number;
   /** Windows.Win32.System.Diagnostics.Etw.TDH_CONTEXT_TYPE */
   ParameterType: TDH_CONTEXT_TYPE;
   /** u32 */
@@ -12750,7 +12750,7 @@ export class TDH_CONTEXTView {
   }
 
   // 0x00: u64
-  get ParameterValue(): Deno.PointerValue {
+  get ParameterValue(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -12765,7 +12765,7 @@ export class TDH_CONTEXTView {
   }
 
   // 0x00: u64
-  set ParameterValue(value: Deno.PointerValue) {
+  set ParameterValue(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -13253,8 +13253,8 @@ export function EnableTraceEx(
   TraceHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Etw.CONTROLTRACE_HANDLE */,
   IsEnabled: number /* u32 */,
   Level: number /* u8 */,
-  MatchAnyKeyword: Deno.PointerValue /* u64 */,
-  MatchAllKeyword: Deno.PointerValue /* u64 */,
+  MatchAnyKeyword: bigint | number /* u64 */,
+  MatchAllKeyword: bigint | number /* u64 */,
   EnableProperty: number /* u32 */,
   EnableFilterDesc: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
@@ -13266,8 +13266,8 @@ export function EnableTraceEx2(
   ProviderId: Deno.PointerValue | Uint8Array /* ptr */,
   ControlCode: number /* u32 */,
   Level: number /* u8 */,
-  MatchAnyKeyword: Deno.PointerValue /* u64 */,
-  MatchAllKeyword: Deno.PointerValue /* u64 */,
+  MatchAnyKeyword: bigint | number /* u64 */,
+  MatchAllKeyword: bigint | number /* u64 */,
   Timeout: number /* u32 */,
   EnableParameters: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
@@ -13312,14 +13312,14 @@ export function CreateTraceInstanceId(
 }
 
 export function TraceEvent(
-  TraceHandle: Deno.PointerValue /* u64 */,
+  TraceHandle: bigint | number /* u64 */,
   EventTrace: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libADVAPI32_dll.TraceEvent(TraceHandle, util.toPointer(EventTrace));
 }
 
 export function TraceEventInstance(
-  TraceHandle: Deno.PointerValue /* u64 */,
+  TraceHandle: bigint | number /* u64 */,
   EventTrace: Deno.PointerValue | Uint8Array /* ptr */,
   InstInfo: Deno.PointerValue | Uint8Array /* ptr */,
   ParentInstInfo: Deno.PointerValue | Uint8Array /* ptr */,
@@ -13362,25 +13362,25 @@ export function EnumerateTraceGuids(
 }
 
 export function UnregisterTraceGuids(
-  RegistrationHandle: Deno.PointerValue /* u64 */,
+  RegistrationHandle: bigint | number /* u64 */,
 ): number /* u32 */ {
   return libADVAPI32_dll.UnregisterTraceGuids(RegistrationHandle);
 }
 
 export function GetTraceLoggerHandle(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
-): Deno.PointerValue /* u64 */ {
+): bigint | number /* u64 */ {
   return libADVAPI32_dll.GetTraceLoggerHandle(util.toPointer(Buffer));
 }
 
 export function GetTraceEnableLevel(
-  TraceHandle: Deno.PointerValue /* u64 */,
+  TraceHandle: bigint | number /* u64 */,
 ): number /* u8 */ {
   return libADVAPI32_dll.GetTraceEnableLevel(TraceHandle);
 }
 
 export function GetTraceEnableFlags(
-  TraceHandle: Deno.PointerValue /* u64 */,
+  TraceHandle: bigint | number /* u64 */,
 ): number /* u32 */ {
   return libADVAPI32_dll.GetTraceEnableFlags(TraceHandle);
 }
@@ -13438,7 +13438,7 @@ export function RemoveTraceCallback(
 }
 
 export function TraceMessage(
-  LoggerHandle: Deno.PointerValue /* u64 */,
+  LoggerHandle: bigint | number /* u64 */,
   MessageFlags: TRACE_MESSAGE_FLAGS /* Windows.Win32.System.Diagnostics.Etw.TRACE_MESSAGE_FLAGS */,
   MessageGuid: Deno.PointerValue | Uint8Array /* ptr */,
   MessageNumber: number /* u16 */,
@@ -13447,7 +13447,7 @@ export function TraceMessage(
 }
 
 export function TraceMessageVa(
-  LoggerHandle: Deno.PointerValue /* u64 */,
+  LoggerHandle: bigint | number /* u64 */,
   MessageFlags: TRACE_MESSAGE_FLAGS /* Windows.Win32.System.Diagnostics.Etw.TRACE_MESSAGE_FLAGS */,
   MessageGuid: Deno.PointerValue | Uint8Array /* ptr */,
   MessageNumber: number /* u16 */,
@@ -13466,13 +13466,13 @@ export function EventRegister(
 }
 
 export function EventUnregister(
-  RegHandle: Deno.PointerValue /* u64 */,
+  RegHandle: bigint | number /* u64 */,
 ): number /* u32 */ {
   return libADVAPI32_dll.EventUnregister(RegHandle);
 }
 
 export function EventSetInformation(
-  RegHandle: Deno.PointerValue /* u64 */,
+  RegHandle: bigint | number /* u64 */,
   InformationClass: EVENT_INFO_CLASS /* Windows.Win32.System.Diagnostics.Etw.EVENT_INFO_CLASS */,
   EventInformation: Deno.PointerValue | Uint8Array /* ptr */,
   InformationLength: number /* u32 */,
@@ -13481,22 +13481,22 @@ export function EventSetInformation(
 }
 
 export function EventEnabled(
-  RegHandle: Deno.PointerValue /* u64 */,
+  RegHandle: bigint | number /* u64 */,
   EventDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
   return libADVAPI32_dll.EventEnabled(RegHandle, util.toPointer(EventDescriptor));
 }
 
 export function EventProviderEnabled(
-  RegHandle: Deno.PointerValue /* u64 */,
+  RegHandle: bigint | number /* u64 */,
   Level: number /* u8 */,
-  Keyword: Deno.PointerValue /* u64 */,
+  Keyword: bigint | number /* u64 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
   return libADVAPI32_dll.EventProviderEnabled(RegHandle, Level, Keyword);
 }
 
 export function EventWrite(
-  RegHandle: Deno.PointerValue /* u64 */,
+  RegHandle: bigint | number /* u64 */,
   EventDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   UserDataCount: number /* u32 */,
   UserData: Deno.PointerValue | Uint8Array /* ptr */,
@@ -13505,7 +13505,7 @@ export function EventWrite(
 }
 
 export function EventWriteTransfer(
-  RegHandle: Deno.PointerValue /* u64 */,
+  RegHandle: bigint | number /* u64 */,
   EventDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   ActivityId: Deno.PointerValue | Uint8Array /* ptr */,
   RelatedActivityId: Deno.PointerValue | Uint8Array /* ptr */,
@@ -13516,9 +13516,9 @@ export function EventWriteTransfer(
 }
 
 export function EventWriteEx(
-  RegHandle: Deno.PointerValue /* u64 */,
+  RegHandle: bigint | number /* u64 */,
   EventDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
-  Filter: Deno.PointerValue /* u64 */,
+  Filter: bigint | number /* u64 */,
   Flags: number /* u32 */,
   ActivityId: Deno.PointerValue | Uint8Array /* ptr */,
   RelatedActivityId: Deno.PointerValue | Uint8Array /* ptr */,
@@ -13529,9 +13529,9 @@ export function EventWriteEx(
 }
 
 export function EventWriteString(
-  RegHandle: Deno.PointerValue /* u64 */,
+  RegHandle: bigint | number /* u64 */,
   Level: number /* u8 */,
-  Keyword: Deno.PointerValue /* u64 */,
+  Keyword: bigint | number /* u64 */,
   String: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
   return libADVAPI32_dll.EventWriteString(RegHandle, Level, Keyword, util.pwstrToFfi(String));
@@ -13660,7 +13660,7 @@ export function TdhEnumerateProvidersForDecodingSource(
 
 export function TdhQueryProviderFieldInformation(
   pGuid: Deno.PointerValue | Uint8Array /* ptr */,
-  EventFieldValue: Deno.PointerValue /* u64 */,
+  EventFieldValue: bigint | number /* u64 */,
   EventFieldType: EVENT_FIELD_TYPE /* Windows.Win32.System.Diagnostics.Etw.EVENT_FIELD_TYPE */,
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   pBufferSize: Deno.PointerValue | Uint8Array /* ptr */,

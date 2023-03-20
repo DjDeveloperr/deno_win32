@@ -394,7 +394,7 @@ export const TAG_DNS_CONNECTION_POLICY_TAG_WWWPT = 2;
 
 // Structs
 
-export type DnsContextHandle = Deno.PointerValue;
+export type DnsContextHandle = bigint | number;
 
 /**
  * Windows.Win32.NetworkManagement.Dns.IP6_ADDRESS (size: 32)
@@ -4869,7 +4869,7 @@ export interface DNS_TSIG_DATAW {
   /** ptr */
   pOtherData: Deno.PointerValue | Uint8Array;
   /** i64 */
-  i64CreateTime: Deno.PointerValue;
+  i64CreateTime: bigint | number;
   /** u16 */
   wFudgeTime: number;
   /** u16 */
@@ -4957,7 +4957,7 @@ export class DNS_TSIG_DATAWView {
   }
 
   // 0x20: i64
-  get i64CreateTime(): Deno.PointerValue {
+  get i64CreateTime(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
@@ -5020,7 +5020,7 @@ export class DNS_TSIG_DATAWView {
   }
 
   // 0x20: i64
-  set i64CreateTime(value: Deno.PointerValue) {
+  set i64CreateTime(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 
@@ -5075,7 +5075,7 @@ export interface DNS_TSIG_DATAA {
   /** ptr */
   pOtherData: Deno.PointerValue | Uint8Array;
   /** i64 */
-  i64CreateTime: Deno.PointerValue;
+  i64CreateTime: bigint | number;
   /** u16 */
   wFudgeTime: number;
   /** u16 */
@@ -5163,7 +5163,7 @@ export class DNS_TSIG_DATAAView {
   }
 
   // 0x20: i64
-  get i64CreateTime(): Deno.PointerValue {
+  get i64CreateTime(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
@@ -5226,7 +5226,7 @@ export class DNS_TSIG_DATAAView {
   }
 
   // 0x20: i64
-  set i64CreateTime(value: Deno.PointerValue) {
+  set i64CreateTime(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 
@@ -5654,9 +5654,9 @@ export class DNS_RECORD_FLAGSView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -5682,22 +5682,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -6537,7 +6537,7 @@ export interface DNS_QUERY_RESULT {
   /** i32 */
   QueryStatus: number;
   /** u64 */
-  QueryOptions: Deno.PointerValue;
+  QueryOptions: bigint | number;
   /** ptr */
   pQueryRecords: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -6583,7 +6583,7 @@ export class DNS_QUERY_RESULTView {
   }
 
   // 0x08: u64
-  get QueryOptions(): Deno.PointerValue {
+  get QueryOptions(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -6610,7 +6610,7 @@ export class DNS_QUERY_RESULTView {
   }
 
   // 0x08: u64
-  set QueryOptions(value: Deno.PointerValue) {
+  set QueryOptions(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -6636,7 +6636,7 @@ export interface DNS_QUERY_REQUEST {
   /** u16 */
   QueryType: number;
   /** u64 */
-  QueryOptions: Deno.PointerValue;
+  QueryOptions: bigint | number;
   /** ptr */
   pDnsServerList: Deno.PointerValue | Uint8Array;
   /** u32 */
@@ -6708,7 +6708,7 @@ export class DNS_QUERY_REQUESTView {
   // 0x12: pad6
 
   // 0x18: u64
-  get QueryOptions(): Deno.PointerValue {
+  get QueryOptions(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -6758,7 +6758,7 @@ export class DNS_QUERY_REQUESTView {
   // 0x12: pad6
 
   // 0x18: u64
-  set QueryOptions(value: Deno.PointerValue) {
+  set QueryOptions(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -6830,11 +6830,11 @@ export class DNS_QUERY_CANCELView {
  */
 export interface _Anonymous1_e__Union {
   /** usize */
-  Data0: Deno.PointerValue;
+  Data0: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   String: string | null | Uint8Array | Uint16Array;
   /** usize */
-  u: Deno.PointerValue;
+  u: bigint | number;
   /** ptr */
   psid: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -6886,7 +6886,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  get Data0(): Deno.PointerValue {
+  get Data0(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -6897,7 +6897,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  get u(): Deno.PointerValue {
+  get u(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -6933,7 +6933,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  set Data0(value: Deno.PointerValue) {
+  set Data0(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -6944,7 +6944,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  set u(value: Deno.PointerValue) {
+  set u(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -6981,7 +6981,7 @@ export class _Anonymous1_e__UnionView {
  */
 export interface _Anonymous2_e__Union {
   /** usize */
-  Data1: Deno.PointerValue;
+  Data1: bigint | number;
   /** i32 */
   LogonId_HighPart: number;
 }
@@ -7010,7 +7010,7 @@ export class _Anonymous2_e__UnionView {
   }
 
   // 0x00: usize
-  get Data1(): Deno.PointerValue {
+  get Data1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -7022,7 +7022,7 @@ export class _Anonymous2_e__UnionView {
   // 0x0c: pad4
 
   // 0x00: usize
-  set Data1(value: Deno.PointerValue) {
+  set Data1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -7041,7 +7041,7 @@ export interface DNS_CUSTOM_SERVER {
   /** u32 */
   dwServerType: number;
   /** u64 */
-  ullFlags: Deno.PointerValue;
+  ullFlags: bigint | number;
   /** _Anonymous1_e__Union */
   Anonymous1: Uint8Array | Deno.PointerValue;
   /** _Anonymous2_e__Union */
@@ -7083,7 +7083,7 @@ export class DNS_CUSTOM_SERVERView {
   // 0x04: pad4
 
   // 0x08: u64
-  get ullFlags(): Deno.PointerValue {
+  get ullFlags(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -7107,7 +7107,7 @@ export class DNS_CUSTOM_SERVERView {
   // 0x04: pad4
 
   // 0x08: u64
-  set ullFlags(value: Deno.PointerValue) {
+  set ullFlags(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -7133,7 +7133,7 @@ export interface DNS_QUERY_REQUEST3 {
   /** u16 */
   QueryType: number;
   /** u64 */
-  QueryOptions: Deno.PointerValue;
+  QueryOptions: bigint | number;
   /** ptr */
   pDnsServerList: Deno.PointerValue | Uint8Array;
   /** u32 */
@@ -7222,7 +7222,7 @@ export class DNS_QUERY_REQUEST3View {
   // 0x12: pad6
 
   // 0x18: u64
-  get QueryOptions(): Deno.PointerValue {
+  get QueryOptions(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -7295,7 +7295,7 @@ export class DNS_QUERY_REQUEST3View {
   // 0x12: pad6
 
   // 0x18: u64
-  set QueryOptions(value: Deno.PointerValue) {
+  set QueryOptions(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -7351,7 +7351,7 @@ export interface DNS_APPLICATION_SETTINGS {
   /** u32 */
   Version: number;
   /** u64 */
-  Flags: Deno.PointerValue;
+  Flags: bigint | number;
 }
 
 export const sizeofDNS_APPLICATION_SETTINGS = 16;
@@ -7385,7 +7385,7 @@ export class DNS_APPLICATION_SETTINGSView {
   // 0x04: pad4
 
   // 0x08: u64
-  get Flags(): Deno.PointerValue {
+  get Flags(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -7397,7 +7397,7 @@ export class DNS_APPLICATION_SETTINGSView {
   // 0x04: pad4
 
   // 0x08: u64
-  set Flags(value: Deno.PointerValue) {
+  set Flags(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -7618,7 +7618,7 @@ export class DNS_CONNECTION_PROXY_INFOView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.NetworkManagement.Dns.DNS_CONNECTION_PROXY_INFO_EX (size: 40)
@@ -8976,7 +8976,7 @@ export interface MDNS_QUERY_REQUEST {
   /** u16 */
   QueryType: number;
   /** u64 */
-  QueryOptions: Deno.PointerValue;
+  QueryOptions: bigint | number;
   /** u32 */
   InterfaceIndex: number;
   /** Windows.Win32.NetworkManagement.Dns.PMDNS_QUERY_CALLBACK */
@@ -9056,7 +9056,7 @@ export class MDNS_QUERY_REQUESTView {
   // 0x12: pad6
 
   // 0x18: u64
-  get QueryOptions(): Deno.PointerValue {
+  get QueryOptions(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -9113,7 +9113,7 @@ export class MDNS_QUERY_REQUESTView {
   // 0x12: pad6
 
   // 0x18: u64
-  set QueryOptions(value: Deno.PointerValue) {
+  set QueryOptions(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 

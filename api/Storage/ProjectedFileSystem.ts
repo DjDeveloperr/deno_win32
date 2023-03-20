@@ -71,18 +71,18 @@ export const PRJ_COMPLETE_COMMAND_TYPE_ENUMERATION = 2;
 
 // Structs
 
-export type PRJ_NAMESPACE_VIRTUALIZATION_CONTEXT = Deno.PointerValue;
+export type PRJ_NAMESPACE_VIRTUALIZATION_CONTEXT = bigint | number;
 
-export type PRJ_DIR_ENTRY_BUFFER_HANDLE = Deno.PointerValue;
+export type PRJ_DIR_ENTRY_BUFFER_HANDLE = bigint | number;
 
 /**
  * _Anonymous_e__Struct (size: 16)
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -108,22 +108,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -610,7 +610,7 @@ export interface LARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue;
   /** i64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: bigint | number;
 }
 
 export const sizeofLARGE_INTEGER = 24;
@@ -650,7 +650,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  get QuadPart(): Deno.PointerValue {
+  get QuadPart(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -665,7 +665,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  set QuadPart(value: Deno.PointerValue) {
+  set QuadPart(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -677,7 +677,7 @@ export interface PRJ_FILE_BASIC_INFO {
   /** Windows.Win32.Foundation.BOOLEAN */
   IsDirectory: Uint8Array | Deno.PointerValue;
   /** i64 */
-  FileSize: Deno.PointerValue;
+  FileSize: bigint | number;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
   CreationTime: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
@@ -730,7 +730,7 @@ export class PRJ_FILE_BASIC_INFOView {
   }
 
   // 0x08: i64
-  get FileSize(): Deno.PointerValue {
+  get FileSize(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -771,7 +771,7 @@ export class PRJ_FILE_BASIC_INFOView {
   }
 
   // 0x08: i64
-  set FileSize(value: Deno.PointerValue) {
+  set FileSize(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -1852,7 +1852,7 @@ export function PrjWriteFileData(
   namespaceVirtualizationContext: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.ProjectedFileSystem.PRJ_NAMESPACE_VIRTUALIZATION_CONTEXT */,
   dataStreamId: Deno.PointerValue | Uint8Array /* ptr */,
   buffer: Deno.PointerValue | Uint8Array /* ptr */,
-  byteOffset: Deno.PointerValue /* u64 */,
+  byteOffset: bigint | number /* u64 */,
   length: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libPROJECTEDFSLIB_dll.PrjWriteFileData(util.toPointer(namespaceVirtualizationContext), util.toPointer(dataStreamId), util.toPointer(buffer), byteOffset, length);
@@ -1867,7 +1867,7 @@ export function PrjGetOnDiskFileState(
 
 export function PrjAllocateAlignedBuffer(
   namespaceVirtualizationContext: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.ProjectedFileSystem.PRJ_NAMESPACE_VIRTUALIZATION_CONTEXT */,
-  size: Deno.PointerValue /* usize */,
+  size: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
   return libPROJECTEDFSLIB_dll.PrjAllocateAlignedBuffer(util.toPointer(namespaceVirtualizationContext), size);
 }

@@ -6294,7 +6294,7 @@ export class FAX_PRINT_INFOWView {
   }
 }
 
-export type HDC = Deno.PointerValue;
+export type HDC = bigint | number;
 
 /**
  * Windows.Win32.Devices.Fax.FAX_CONTEXT_INFOA (size: 24)
@@ -7042,9 +7042,9 @@ export interface FAX_ROUTE {
   /** u32 */
   JobId: number;
   /** u64 */
-  ElapsedTime: Deno.PointerValue;
+  ElapsedTime: bigint | number;
   /** u64 */
-  ReceiveTime: Deno.PointerValue;
+  ReceiveTime: bigint | number;
   /** u32 */
   PageCount: number;
   /** Windows.Win32.Foundation.PWSTR */
@@ -7152,12 +7152,12 @@ export class FAX_ROUTEView {
   }
 
   // 0x08: u64
-  get ElapsedTime(): Deno.PointerValue {
+  get ElapsedTime(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get ReceiveTime(): Deno.PointerValue {
+  get ReceiveTime(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -7241,12 +7241,12 @@ export class FAX_ROUTEView {
   }
 
   // 0x08: u64
-  set ElapsedTime(value: Deno.PointerValue) {
+  set ElapsedTime(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set ReceiveTime(value: Deno.PointerValue) {
+  set ReceiveTime(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -8087,9 +8087,9 @@ export class STI_DIAGView {
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.Devices.Fax.STISUBSCRIBE (size: 40)
@@ -8339,7 +8339,7 @@ export class STI_USD_CAPSView {
   }
 }
 
-export type HINSTANCE = Deno.PointerValue;
+export type HINSTANCE = bigint | number;
 
 export type HRESULT = number;
 
@@ -8968,7 +8968,7 @@ export function FaxSetRoutingInfoW(
 export function FaxInitializeEventQueue(
   FaxHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   CompletionPort: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  CompletionKey: Deno.PointerValue /* usize */,
+  CompletionKey: bigint | number /* usize */,
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   MessageStart: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {

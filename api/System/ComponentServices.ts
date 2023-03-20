@@ -386,11 +386,11 @@ export interface COMSVCSEVENTINFO {
   /** u32 */
   dwPid: number;
   /** i64 */
-  lTime: Deno.PointerValue;
+  lTime: bigint | number;
   /** i32 */
   lMicroTime: number;
   /** i64 */
-  perfCount: Deno.PointerValue;
+  perfCount: bigint | number;
   /** System.Guid */
   guidApp: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
@@ -444,7 +444,7 @@ export class COMSVCSEVENTINFOView {
   }
 
   // 0x08: i64
-  get lTime(): Deno.PointerValue {
+  get lTime(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -456,7 +456,7 @@ export class COMSVCSEVENTINFOView {
   // 0x14: pad4
 
   // 0x18: i64
-  get perfCount(): Deno.PointerValue {
+  get perfCount(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
@@ -483,7 +483,7 @@ export class COMSVCSEVENTINFOView {
   }
 
   // 0x08: i64
-  set lTime(value: Deno.PointerValue) {
+  set lTime(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -495,7 +495,7 @@ export class COMSVCSEVENTINFOView {
   // 0x14: pad4
 
   // 0x18: i64
-  set perfCount(value: Deno.PointerValue) {
+  set perfCount(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
@@ -518,7 +518,7 @@ export interface RECYCLE_INFO {
   /** System.Guid */
   guidCombaseProcessIdentifier: Uint8Array | Deno.PointerValue;
   /** i64 */
-  ProcessStartTime: Deno.PointerValue;
+  ProcessStartTime: bigint | number;
   /** u32 */
   dwRecycleLifetimeLimit: number;
   /** u32 */
@@ -563,7 +563,7 @@ export class RECYCLE_INFOView {
   }
 
   // 0x08: i64
-  get ProcessStartTime(): Deno.PointerValue {
+  get ProcessStartTime(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -590,7 +590,7 @@ export class RECYCLE_INFOView {
   }
 
   // 0x08: i64
-  set ProcessStartTime(value: Deno.PointerValue) {
+  set ProcessStartTime(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 

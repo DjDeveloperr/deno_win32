@@ -1760,18 +1760,18 @@ export const CRMREGFLAG_FAILIFINDOUBTSREMAIN = 16;
 
 // Structs
 
-export type CO_MTA_USAGE_COOKIE = Deno.PointerValue;
+export type CO_MTA_USAGE_COOKIE = bigint | number;
 
-export type CO_DEVICE_CATALOG_COOKIE = Deno.PointerValue;
+export type CO_DEVICE_CATALOG_COOKIE = bigint | number;
 
 /**
  * _Anonymous_e__Struct (size: 16)
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -1797,22 +1797,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -1824,7 +1824,7 @@ export interface CY {
   /** _Anonymous_e__Struct */
   Anonymous: Uint8Array | Deno.PointerValue;
   /** i64 */
-  int64: Deno.PointerValue;
+  int64: bigint | number;
 }
 
 export const sizeofCY = 16;
@@ -1856,7 +1856,7 @@ export class CYView {
   }
 
   // 0x08: i64
-  get int64(): Deno.PointerValue {
+  get int64(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -1866,7 +1866,7 @@ export class CYView {
   }
 
   // 0x08: i64
-  set int64(value: Deno.PointerValue) {
+  set int64(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -4015,7 +4015,7 @@ export interface ULARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue;
   /** u64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: bigint | number;
 }
 
 export const sizeofULARGE_INTEGER = 24;
@@ -4055,7 +4055,7 @@ export class ULARGE_INTEGERView {
   }
 
   // 0x10: u64
-  get QuadPart(): Deno.PointerValue {
+  get QuadPart(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -4070,7 +4070,7 @@ export class ULARGE_INTEGERView {
   }
 
   // 0x10: u64
-  set QuadPart(value: Deno.PointerValue) {
+  set QuadPart(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -5016,7 +5016,7 @@ export class BIND_OPTS2View {
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 /**
  * Windows.Win32.System.Com.BIND_OPTS3 (size: 16)
@@ -5949,7 +5949,7 @@ export interface LARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue;
   /** i64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: bigint | number;
 }
 
 export const sizeofLARGE_INTEGER = 24;
@@ -5989,7 +5989,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  get QuadPart(): Deno.PointerValue {
+  get QuadPart(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -6004,7 +6004,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  set QuadPart(value: Deno.PointerValue) {
+  set QuadPart(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -10534,7 +10534,7 @@ export class TYPEDESCView {
  */
 export interface IDLDESC {
   /** usize */
-  dwReserved: Deno.PointerValue;
+  dwReserved: bigint | number;
   /** Windows.Win32.System.Com.IDLFLAGS */
   wIDLFlags: IDLFLAGS;
 }
@@ -10563,7 +10563,7 @@ export class IDLDESCView {
   }
 
   // 0x00: usize
-  get dwReserved(): Deno.PointerValue {
+  get dwReserved(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -10575,7 +10575,7 @@ export class IDLDESCView {
   // 0x0a: pad6
 
   // 0x00: usize
-  set dwReserved(value: Deno.PointerValue) {
+  set dwReserved(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -11881,9 +11881,9 @@ export class CONNECTDATAView {
  */
 export interface OLESTREAMVTBL {
   /** isize */
-  Get: Deno.PointerValue;
+  Get: bigint | number;
   /** isize */
-  Put: Deno.PointerValue;
+  Put: bigint | number;
 }
 
 export const sizeofOLESTREAMVTBL = 16;
@@ -11909,22 +11909,22 @@ export class OLESTREAMVTBLView {
   }
 
   // 0x00: isize
-  get Get(): Deno.PointerValue {
+  get Get(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: isize
-  get Put(): Deno.PointerValue {
+  get Put(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x00: isize
-  set Get(value: Deno.PointerValue) {
+  set Get(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set Put(value: Deno.PointerValue) {
+  set Put(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -12098,11 +12098,11 @@ export interface COMSVCSEVENTINFO {
   /** u32 */
   dwPid: number;
   /** i64 */
-  lTime: Deno.PointerValue;
+  lTime: bigint | number;
   /** i32 */
   lMicroTime: number;
   /** i64 */
-  perfCount: Deno.PointerValue;
+  perfCount: bigint | number;
   /** System.Guid */
   guidApp: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
@@ -12156,7 +12156,7 @@ export class COMSVCSEVENTINFOView {
   }
 
   // 0x08: i64
-  get lTime(): Deno.PointerValue {
+  get lTime(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -12168,7 +12168,7 @@ export class COMSVCSEVENTINFOView {
   // 0x14: pad4
 
   // 0x18: i64
-  get perfCount(): Deno.PointerValue {
+  get perfCount(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
@@ -12195,7 +12195,7 @@ export class COMSVCSEVENTINFOView {
   }
 
   // 0x08: i64
-  set lTime(value: Deno.PointerValue) {
+  set lTime(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -12207,7 +12207,7 @@ export class COMSVCSEVENTINFOView {
   // 0x14: pad4
 
   // 0x18: i64
-  set perfCount(value: Deno.PointerValue) {
+  set perfCount(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
@@ -12230,7 +12230,7 @@ export interface RECYCLE_INFO {
   /** System.Guid */
   guidCombaseProcessIdentifier: Uint8Array | Deno.PointerValue;
   /** i64 */
-  ProcessStartTime: Deno.PointerValue;
+  ProcessStartTime: bigint | number;
   /** u32 */
   dwRecycleLifetimeLimit: number;
   /** u32 */
@@ -12275,7 +12275,7 @@ export class RECYCLE_INFOView {
   }
 
   // 0x08: i64
-  get ProcessStartTime(): Deno.PointerValue {
+  get ProcessStartTime(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -12302,7 +12302,7 @@ export class RECYCLE_INFOView {
   }
 
   // 0x08: i64
-  set ProcessStartTime(value: Deno.PointerValue) {
+  set ProcessStartTime(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -14111,7 +14111,7 @@ export class CrmLogRecordReadView {
   }
 }
 
-export type HINSTANCE = Deno.PointerValue;
+export type HINSTANCE = bigint | number;
 
 export type PSECURITY_DESCRIPTOR = Deno.PointerValue | Uint8Array;
 
@@ -15286,14 +15286,14 @@ export function CoInvalidateRemoteMachineBindings(
 }
 
 export function CoTaskMemAlloc(
-  cb: Deno.PointerValue /* usize */,
+  cb: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
   return libOLE32_dll.CoTaskMemAlloc(cb);
 }
 
 export function CoTaskMemRealloc(
   pv: Deno.PointerValue | Uint8Array /* ptr */,
-  cb: Deno.PointerValue /* usize */,
+  cb: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
   return libOLE32_dll.CoTaskMemRealloc(util.toPointer(pv), cb);
 }
@@ -15320,7 +15320,7 @@ export function CoRevokeDeviceCatalog(
 export function CreateUri(
   pwzURI: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: URI_CREATE_FLAGS /* Windows.Win32.System.Com.URI_CREATE_FLAGS */,
-  dwReserved: Deno.PointerValue /* usize */,
+  dwReserved: bigint | number /* usize */,
   ppURI: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libURLMON_dll.CreateUri(util.pwstrToFfi(pwzURI), dwFlags, dwReserved, util.toPointer(ppURI));
@@ -15330,7 +15330,7 @@ export function CreateUriWithFragment(
   pwzURI: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pwzFragment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
-  dwReserved: Deno.PointerValue /* usize */,
+  dwReserved: bigint | number /* usize */,
   ppURI: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libURLMON_dll.CreateUriWithFragment(util.pwstrToFfi(pwzURI), util.pwstrToFfi(pwzFragment), dwFlags, dwReserved, util.toPointer(ppURI));
@@ -15341,7 +15341,7 @@ export function CreateUriFromMultiByteString(
   dwEncodingFlags: number /* u32 */,
   dwCodePage: number /* u32 */,
   dwCreateFlags: number /* u32 */,
-  dwReserved: Deno.PointerValue /* usize */,
+  dwReserved: bigint | number /* usize */,
   ppUri: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return liburlmon_dll.CreateUriFromMultiByteString(util.pstrToFfi(pszANSIInputUri), dwEncodingFlags, dwCodePage, dwCreateFlags, dwReserved, util.toPointer(ppUri));
@@ -15350,7 +15350,7 @@ export function CreateUriFromMultiByteString(
 export function CreateIUriBuilder(
   pIUri: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUri */,
   dwFlags: number /* u32 */,
-  dwReserved: Deno.PointerValue /* usize */,
+  dwReserved: bigint | number /* usize */,
   ppIUriBuilder: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libURLMON_dll.CreateIUriBuilder(util.toPointer(pIUri), dwFlags, dwReserved, util.toPointer(ppIUriBuilder));

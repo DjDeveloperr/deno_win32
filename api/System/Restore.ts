@@ -49,7 +49,7 @@ export interface RESTOREPOINTINFOA {
   /** Windows.Win32.System.Restore.RESTOREPOINTINFO_TYPE */
   dwRestorePtType: RESTOREPOINTINFO_TYPE;
   /** i64 */
-  llSequenceNumber: Deno.PointerValue;
+  llSequenceNumber: bigint | number;
   /** array */
   szDescription: Deno.PointerValue;
 }
@@ -91,7 +91,7 @@ export class RESTOREPOINTINFOAView {
   }
 
   // 0x08: i64
-  get llSequenceNumber(): Deno.PointerValue {
+  get llSequenceNumber(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -112,7 +112,7 @@ export class RESTOREPOINTINFOAView {
   }
 
   // 0x08: i64
-  set llSequenceNumber(value: Deno.PointerValue) {
+  set llSequenceNumber(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -131,7 +131,7 @@ export interface RESTOREPOINTINFOW {
   /** Windows.Win32.System.Restore.RESTOREPOINTINFO_TYPE */
   dwRestorePtType: RESTOREPOINTINFO_TYPE;
   /** i64 */
-  llSequenceNumber: Deno.PointerValue;
+  llSequenceNumber: bigint | number;
   /** array */
   szDescription: Deno.PointerValue;
 }
@@ -173,7 +173,7 @@ export class RESTOREPOINTINFOWView {
   }
 
   // 0x08: i64
-  get llSequenceNumber(): Deno.PointerValue {
+  get llSequenceNumber(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -194,7 +194,7 @@ export class RESTOREPOINTINFOWView {
   }
 
   // 0x08: i64
-  set llSequenceNumber(value: Deno.PointerValue) {
+  set llSequenceNumber(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -366,7 +366,7 @@ export interface STATEMGRSTATUS {
   /** u32 */
   nStatus: number;
   /** i64 */
-  llSequenceNumber: Deno.PointerValue;
+  llSequenceNumber: bigint | number;
 }
 
 export const sizeofSTATEMGRSTATUS = 16;
@@ -400,7 +400,7 @@ export class STATEMGRSTATUSView {
   // 0x04: pad4
 
   // 0x08: i64
-  get llSequenceNumber(): Deno.PointerValue {
+  get llSequenceNumber(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -412,7 +412,7 @@ export class STATEMGRSTATUSView {
   // 0x04: pad4
 
   // 0x08: i64
-  set llSequenceNumber(value: Deno.PointerValue) {
+  set llSequenceNumber(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }

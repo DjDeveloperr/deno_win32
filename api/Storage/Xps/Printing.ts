@@ -252,7 +252,7 @@ export class PrintDocumentPackageStatusView {
 
 export type PWSTR = Deno.PointerValue | Uint8Array;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 // Native Libraries
 

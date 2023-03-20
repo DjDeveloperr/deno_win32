@@ -100,7 +100,7 @@ export interface HCN_PORT_RANGE_ENTRY {
   /** Windows.Win32.System.HostComputeNetwork.HCN_PORT_PROTOCOL */
   Protocol: HCN_PORT_PROTOCOL;
   /** u64 */
-  Priority: Deno.PointerValue;
+  Priority: bigint | number;
   /** u32 */
   ReservationType: number;
   /** u32 */
@@ -170,7 +170,7 @@ export class HCN_PORT_RANGE_ENTRYView {
   // 0x14: pad4
 
   // 0x18: u64
-  get Priority(): Deno.PointerValue {
+  get Priority(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -217,7 +217,7 @@ export class HCN_PORT_RANGE_ENTRYView {
   // 0x14: pad4
 
   // 0x18: u64
-  set Priority(value: Deno.PointerValue) {
+  set Priority(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -251,7 +251,7 @@ export type PWSTR = Deno.PointerValue | Uint8Array;
 
 export type HRESULT = number;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 // Native Libraries
 

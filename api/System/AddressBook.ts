@@ -1156,9 +1156,9 @@ export class SLPSTRArrayView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -1184,22 +1184,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -1211,7 +1211,7 @@ export interface CY {
   /** _Anonymous_e__Struct */
   Anonymous: Uint8Array | Deno.PointerValue;
   /** i64 */
-  int64: Deno.PointerValue;
+  int64: bigint | number;
 }
 
 export const sizeofCY = 16;
@@ -1243,7 +1243,7 @@ export class CYView {
   }
 
   // 0x08: i64
-  get int64(): Deno.PointerValue {
+  get int64(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -1253,7 +1253,7 @@ export class CYView {
   }
 
   // 0x08: i64
-  set int64(value: Deno.PointerValue) {
+  set int64(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -1387,7 +1387,7 @@ export interface LARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue;
   /** i64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: bigint | number;
 }
 
 export const sizeofLARGE_INTEGER = 24;
@@ -1427,7 +1427,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  get QuadPart(): Deno.PointerValue {
+  get QuadPart(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -1442,7 +1442,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  set QuadPart(value: Deno.PointerValue) {
+  set QuadPart(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -6607,7 +6607,7 @@ export class DTPAGEView {
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 /**
  * Windows.Win32.System.AddressBook.WAB_PARAM (size: 40)
@@ -7060,7 +7060,7 @@ export class NOTIFKEYView {
   }
 }
 
-export type HINSTANCE = Deno.PointerValue;
+export type HINSTANCE = bigint | number;
 
 // Native Libraries
 
@@ -7448,7 +7448,7 @@ export function HrAddColumnsEx(
   lpproptagColumnsNew: Deno.PointerValue | Uint8Array /* ptr */,
   lpAllocateBuffer: Uint8Array | Deno.PointerValue /* Windows.Win32.System.AddressBook.LPALLOCATEBUFFER */,
   lpFreeBuffer: Uint8Array | Deno.PointerValue /* Windows.Win32.System.AddressBook.LPFREEBUFFER */,
-  lpfnFilterColumns: Deno.PointerValue /* isize */,
+  lpfnFilterColumns: bigint | number /* isize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libMAPI32_dll.HrAddColumnsEx(util.toPointer(lptbl), util.toPointer(lpproptagColumnsNew), util.toPointer(lpAllocateBuffer), util.toPointer(lpFreeBuffer), lpfnFilterColumns);
 }

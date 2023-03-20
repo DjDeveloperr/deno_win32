@@ -63,7 +63,7 @@ export const UI_ANIMATION_TIMER_CLIENT_BUSY = 1;
 
 // Structs
 
-export type UI_ANIMATION_KEYFRAME = Deno.PointerValue;
+export type UI_ANIMATION_KEYFRAME = bigint | number;
 
 // Native Libraries
 

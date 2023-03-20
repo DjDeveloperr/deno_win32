@@ -86,7 +86,7 @@ export interface D3D_SHADER_DATA {
   /** ptr */
   pBytecode: Deno.PointerValue | Uint8Array;
   /** usize */
-  BytecodeLength: Deno.PointerValue;
+  BytecodeLength: bigint | number;
 }
 
 export const sizeofD3D_SHADER_DATA = 16;
@@ -118,7 +118,7 @@ export class D3D_SHADER_DATAView {
   }
 
   // 0x08: usize
-  get BytecodeLength(): Deno.PointerValue {
+  get BytecodeLength(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -128,7 +128,7 @@ export class D3D_SHADER_DATAView {
   }
 
   // 0x08: usize
-  set BytecodeLength(value: Deno.PointerValue) {
+  set BytecodeLength(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -267,7 +267,7 @@ export function D3DWriteBlobToFile(
 
 export function D3DCompile(
   pSrcData: Deno.PointerValue | Uint8Array /* ptr */,
-  SrcDataSize: Deno.PointerValue /* usize */,
+  SrcDataSize: bigint | number /* usize */,
   pSourceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pDefines: Deno.PointerValue | Uint8Array /* ptr */,
   pInclude: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Direct3D.ID3DInclude */,
@@ -283,7 +283,7 @@ export function D3DCompile(
 
 export function D3DCompile2(
   pSrcData: Deno.PointerValue | Uint8Array /* ptr */,
-  SrcDataSize: Deno.PointerValue /* usize */,
+  SrcDataSize: bigint | number /* usize */,
   pSourceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pDefines: Deno.PointerValue | Uint8Array /* ptr */,
   pInclude: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Direct3D.ID3DInclude */,
@@ -293,7 +293,7 @@ export function D3DCompile2(
   Flags2: number /* u32 */,
   SecondaryDataFlags: number /* u32 */,
   pSecondaryData: Deno.PointerValue | Uint8Array /* ptr */,
-  SecondaryDataSize: Deno.PointerValue /* usize */,
+  SecondaryDataSize: bigint | number /* usize */,
   ppCode: Deno.PointerValue | Uint8Array /* ptr */,
   ppErrorMsgs: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
@@ -316,7 +316,7 @@ export function D3DCompileFromFile(
 
 export function D3DPreprocess(
   pSrcData: Deno.PointerValue | Uint8Array /* ptr */,
-  SrcDataSize: Deno.PointerValue /* usize */,
+  SrcDataSize: bigint | number /* usize */,
   pSourceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pDefines: Deno.PointerValue | Uint8Array /* ptr */,
   pInclude: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Direct3D.ID3DInclude */,
@@ -328,7 +328,7 @@ export function D3DPreprocess(
 
 export function D3DGetDebugInfo(
   pSrcData: Deno.PointerValue | Uint8Array /* ptr */,
-  SrcDataSize: Deno.PointerValue /* usize */,
+  SrcDataSize: bigint | number /* usize */,
   ppDebugInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libD3DCOMPILER_47_dll.D3DGetDebugInfo(util.toPointer(pSrcData), SrcDataSize, util.toPointer(ppDebugInfo));
@@ -336,7 +336,7 @@ export function D3DGetDebugInfo(
 
 export function D3DReflect(
   pSrcData: Deno.PointerValue | Uint8Array /* ptr */,
-  SrcDataSize: Deno.PointerValue /* usize */,
+  SrcDataSize: bigint | number /* usize */,
   pInterface: Deno.PointerValue | Uint8Array /* ptr */,
   ppReflector: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
@@ -345,7 +345,7 @@ export function D3DReflect(
 
 export function D3DReflectLibrary(
   pSrcData: Deno.PointerValue | Uint8Array /* ptr */,
-  SrcDataSize: Deno.PointerValue /* usize */,
+  SrcDataSize: bigint | number /* usize */,
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppReflector: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
@@ -354,7 +354,7 @@ export function D3DReflectLibrary(
 
 export function D3DDisassemble(
   pSrcData: Deno.PointerValue | Uint8Array /* ptr */,
-  SrcDataSize: Deno.PointerValue /* usize */,
+  SrcDataSize: bigint | number /* usize */,
   Flags: number /* u32 */,
   szComments: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ppDisassembly: Deno.PointerValue | Uint8Array /* ptr */,
@@ -364,11 +364,11 @@ export function D3DDisassemble(
 
 export function D3DDisassembleRegion(
   pSrcData: Deno.PointerValue | Uint8Array /* ptr */,
-  SrcDataSize: Deno.PointerValue /* usize */,
+  SrcDataSize: bigint | number /* usize */,
   Flags: number /* u32 */,
   szComments: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  StartByteOffset: Deno.PointerValue /* usize */,
-  NumInsts: Deno.PointerValue /* usize */,
+  StartByteOffset: bigint | number /* usize */,
+  NumInsts: bigint | number /* usize */,
   pFinishByteOffset: Deno.PointerValue | Uint8Array /* ptr */,
   ppDisassembly: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
@@ -383,7 +383,7 @@ export function D3DCreateLinker(
 
 export function D3DLoadModule(
   pSrcData: Deno.PointerValue | Uint8Array /* ptr */,
-  cbSrcDataSize: Deno.PointerValue /* usize */,
+  cbSrcDataSize: bigint | number /* usize */,
   ppModule: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libD3DCOMPILER_47_dll.D3DLoadModule(util.toPointer(pSrcData), cbSrcDataSize, util.toPointer(ppModule));
@@ -398,10 +398,10 @@ export function D3DCreateFunctionLinkingGraph(
 
 export function D3DGetTraceInstructionOffsets(
   pSrcData: Deno.PointerValue | Uint8Array /* ptr */,
-  SrcDataSize: Deno.PointerValue /* usize */,
+  SrcDataSize: bigint | number /* usize */,
   Flags: number /* u32 */,
-  StartInstIndex: Deno.PointerValue /* usize */,
-  NumInsts: Deno.PointerValue /* usize */,
+  StartInstIndex: bigint | number /* usize */,
+  NumInsts: bigint | number /* usize */,
   pOffsets: Deno.PointerValue | Uint8Array /* ptr */,
   pTotalInsts: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
@@ -410,7 +410,7 @@ export function D3DGetTraceInstructionOffsets(
 
 export function D3DGetInputSignatureBlob(
   pSrcData: Deno.PointerValue | Uint8Array /* ptr */,
-  SrcDataSize: Deno.PointerValue /* usize */,
+  SrcDataSize: bigint | number /* usize */,
   ppSignatureBlob: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libD3DCOMPILER_47_dll.D3DGetInputSignatureBlob(util.toPointer(pSrcData), SrcDataSize, util.toPointer(ppSignatureBlob));
@@ -418,7 +418,7 @@ export function D3DGetInputSignatureBlob(
 
 export function D3DGetOutputSignatureBlob(
   pSrcData: Deno.PointerValue | Uint8Array /* ptr */,
-  SrcDataSize: Deno.PointerValue /* usize */,
+  SrcDataSize: bigint | number /* usize */,
   ppSignatureBlob: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libD3DCOMPILER_47_dll.D3DGetOutputSignatureBlob(util.toPointer(pSrcData), SrcDataSize, util.toPointer(ppSignatureBlob));
@@ -426,7 +426,7 @@ export function D3DGetOutputSignatureBlob(
 
 export function D3DGetInputAndOutputSignatureBlob(
   pSrcData: Deno.PointerValue | Uint8Array /* ptr */,
-  SrcDataSize: Deno.PointerValue /* usize */,
+  SrcDataSize: bigint | number /* usize */,
   ppSignatureBlob: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libD3DCOMPILER_47_dll.D3DGetInputAndOutputSignatureBlob(util.toPointer(pSrcData), SrcDataSize, util.toPointer(ppSignatureBlob));
@@ -434,7 +434,7 @@ export function D3DGetInputAndOutputSignatureBlob(
 
 export function D3DStripShader(
   pShaderBytecode: Deno.PointerValue | Uint8Array /* ptr */,
-  BytecodeLength: Deno.PointerValue /* usize */,
+  BytecodeLength: bigint | number /* usize */,
   uStripFlags: number /* u32 */,
   ppStrippedBlob: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
@@ -443,7 +443,7 @@ export function D3DStripShader(
 
 export function D3DGetBlobPart(
   pSrcData: Deno.PointerValue | Uint8Array /* ptr */,
-  SrcDataSize: Deno.PointerValue /* usize */,
+  SrcDataSize: bigint | number /* usize */,
   Part: D3D_BLOB_PART /* Windows.Win32.Graphics.Direct3D.Fxc.D3D_BLOB_PART */,
   Flags: number /* u32 */,
   ppPart: Deno.PointerValue | Uint8Array /* ptr */,
@@ -453,18 +453,18 @@ export function D3DGetBlobPart(
 
 export function D3DSetBlobPart(
   pSrcData: Deno.PointerValue | Uint8Array /* ptr */,
-  SrcDataSize: Deno.PointerValue /* usize */,
+  SrcDataSize: bigint | number /* usize */,
   Part: D3D_BLOB_PART /* Windows.Win32.Graphics.Direct3D.Fxc.D3D_BLOB_PART */,
   Flags: number /* u32 */,
   pPart: Deno.PointerValue | Uint8Array /* ptr */,
-  PartSize: Deno.PointerValue /* usize */,
+  PartSize: bigint | number /* usize */,
   ppNewShader: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libD3DCOMPILER_47_dll.D3DSetBlobPart(util.toPointer(pSrcData), SrcDataSize, Part, Flags, util.toPointer(pPart), PartSize, util.toPointer(ppNewShader));
 }
 
 export function D3DCreateBlob(
-  Size: Deno.PointerValue /* usize */,
+  Size: bigint | number /* usize */,
   ppBlob: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libD3DCOMPILER_47_dll.D3DCreateBlob(Size, util.toPointer(ppBlob));
@@ -481,7 +481,7 @@ export function D3DCompressShaders(
 
 export function D3DDecompressShaders(
   pSrcData: Deno.PointerValue | Uint8Array /* ptr */,
-  SrcDataSize: Deno.PointerValue /* usize */,
+  SrcDataSize: bigint | number /* usize */,
   uNumShaders: number /* u32 */,
   uStartIndex: number /* u32 */,
   pIndices: Deno.PointerValue | Uint8Array /* ptr */,

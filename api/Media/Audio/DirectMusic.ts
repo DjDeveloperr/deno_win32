@@ -2822,7 +2822,7 @@ export interface DMUS_EVENTHEADER {
   /** u32 */
   dwChannelGroup: number;
   /** i64 */
-  rtDelta: Deno.PointerValue;
+  rtDelta: bigint | number;
   /** u32 */
   dwFlags: number;
 }
@@ -2865,7 +2865,7 @@ export class DMUS_EVENTHEADERView {
   }
 
   // 0x08: i64
-  get rtDelta(): Deno.PointerValue {
+  get rtDelta(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -2887,7 +2887,7 @@ export class DMUS_EVENTHEADERView {
   }
 
   // 0x08: i64
-  set rtDelta(value: Deno.PointerValue) {
+  set rtDelta(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -4033,7 +4033,7 @@ export interface DMUS_VOICE_STATE {
   /** Windows.Win32.Foundation.BOOL */
   bExists: boolean;
   /** u64 */
-  spPosition: Deno.PointerValue;
+  spPosition: bigint | number;
 }
 
 export const sizeofDMUS_VOICE_STATE = 16;
@@ -4067,7 +4067,7 @@ export class DMUS_VOICE_STATEView {
   // 0x04: pad4
 
   // 0x08: u64
-  get spPosition(): Deno.PointerValue {
+  get spPosition(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -4079,7 +4079,7 @@ export class DMUS_VOICE_STATEView {
   // 0x04: pad4
 
   // 0x08: u64
-  set spPosition(value: Deno.PointerValue) {
+  set spPosition(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -5048,7 +5048,7 @@ export class MDEVICECAPSEXView {
   }
 }
 
-export type HMIDI = Deno.PointerValue;
+export type HMIDI = bigint | number;
 
 /**
  * Windows.Win32.Media.Audio.DirectMusic.MIDIOPENDESC (size: 48)
@@ -5057,11 +5057,11 @@ export interface MIDIOPENDESC {
   /** Windows.Win32.Media.Audio.HMIDI */
   hMidi: Uint8Array | Deno.PointerValue;
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** usize */
-  dwInstance: Deno.PointerValue;
+  dwInstance: bigint | number;
   /** usize */
-  dnDevNode: Deno.PointerValue;
+  dnDevNode: bigint | number;
   /** u32 */
   cIds: number;
   /** array */
@@ -5106,17 +5106,17 @@ export class MIDIOPENDESCView {
   }
 
   // 0x08: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: usize
-  get dwInstance(): Deno.PointerValue {
+  get dwInstance(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: usize
-  get dnDevNode(): Deno.PointerValue {
+  get dnDevNode(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -5139,17 +5139,17 @@ export class MIDIOPENDESCView {
   }
 
   // 0x08: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: usize
-  set dwInstance(value: Deno.PointerValue) {
+  set dwInstance(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: usize
-  set dnDevNode(value: Deno.PointerValue) {
+  set dnDevNode(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 

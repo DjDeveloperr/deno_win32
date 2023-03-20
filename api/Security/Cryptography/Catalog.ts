@@ -51,7 +51,7 @@ export const CRYPTCAT_ADDCATALOG_HARDLINK = 1;
 
 export type PWSTR = Deno.PointerValue | Uint8Array;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.Security.Cryptography.Catalog.CRYPTCATSTORE (size: 64)
@@ -64,7 +64,7 @@ export interface CRYPTCATSTORE {
   /** Windows.Win32.Foundation.PWSTR */
   pwszP7File: string | null | Uint8Array | Uint16Array;
   /** usize */
-  hProv: Deno.PointerValue;
+  hProv: bigint | number;
   /** u32 */
   dwEncodingType: number;
   /** Windows.Win32.Security.Cryptography.Catalog.CRYPTCAT_OPEN_FLAGS */
@@ -137,7 +137,7 @@ export class CRYPTCATSTOREView {
   }
 
   // 0x10: usize
-  get hProv(): Deno.PointerValue {
+  get hProv(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -192,7 +192,7 @@ export class CRYPTCATSTOREView {
   }
 
   // 0x10: usize
-  set hProv(value: Deno.PointerValue) {
+  set hProv(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -1038,7 +1038,7 @@ try {
 export function CryptCATOpen(
   pwszFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fdwOpenFlags: CRYPTCAT_OPEN_FLAGS /* Windows.Win32.Security.Cryptography.Catalog.CRYPTCAT_OPEN_FLAGS */,
-  hProv: Deno.PointerValue /* usize */,
+  hProv: bigint | number /* usize */,
   dwPublicVersion: CRYPTCAT_VERSION /* Windows.Win32.Security.Cryptography.Catalog.CRYPTCAT_VERSION */,
   dwEncodingType: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
@@ -1224,27 +1224,27 @@ export function CryptCATAdminAcquireContext2(
 }
 
 export function CryptCATAdminReleaseContext(
-  hCatAdmin: Deno.PointerValue /* isize */,
+  hCatAdmin: bigint | number /* isize */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWINTRUST_dll.CryptCATAdminReleaseContext(hCatAdmin, dwFlags));
 }
 
 export function CryptCATAdminReleaseCatalogContext(
-  hCatAdmin: Deno.PointerValue /* isize */,
-  hCatInfo: Deno.PointerValue /* isize */,
+  hCatAdmin: bigint | number /* isize */,
+  hCatInfo: bigint | number /* isize */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWINTRUST_dll.CryptCATAdminReleaseCatalogContext(hCatAdmin, hCatInfo, dwFlags));
 }
 
 export function CryptCATAdminEnumCatalogFromHash(
-  hCatAdmin: Deno.PointerValue /* isize */,
+  hCatAdmin: bigint | number /* isize */,
   pbHash: Deno.PointerValue | Uint8Array /* ptr */,
   cbHash: number /* u32 */,
   dwFlags: number /* u32 */,
   phPrevCatInfo: Deno.PointerValue | Uint8Array /* ptr */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libWINTRUST_dll.CryptCATAdminEnumCatalogFromHash(hCatAdmin, util.toPointer(pbHash), cbHash, dwFlags, util.toPointer(phPrevCatInfo));
 }
 
@@ -1258,7 +1258,7 @@ export function CryptCATAdminCalcHashFromFileHandle(
 }
 
 export function CryptCATAdminCalcHashFromFileHandle2(
-  hCatAdmin: Deno.PointerValue /* isize */,
+  hCatAdmin: bigint | number /* isize */,
   hFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pcbHash: Deno.PointerValue | Uint8Array /* ptr */,
   pbHash: Deno.PointerValue | Uint8Array /* ptr */,
@@ -1268,16 +1268,16 @@ export function CryptCATAdminCalcHashFromFileHandle2(
 }
 
 export function CryptCATAdminAddCatalog(
-  hCatAdmin: Deno.PointerValue /* isize */,
+  hCatAdmin: bigint | number /* isize */,
   pwszCatalogFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pwszSelectBaseName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libWINTRUST_dll.CryptCATAdminAddCatalog(hCatAdmin, util.pwstrToFfi(pwszCatalogFile), util.pwstrToFfi(pwszSelectBaseName), dwFlags);
 }
 
 export function CryptCATAdminRemoveCatalog(
-  hCatAdmin: Deno.PointerValue /* isize */,
+  hCatAdmin: bigint | number /* isize */,
   pwszCatalogFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -1285,7 +1285,7 @@ export function CryptCATAdminRemoveCatalog(
 }
 
 export function CryptCATCatalogInfoFromContext(
-  hCatInfo: Deno.PointerValue /* isize */,
+  hCatInfo: bigint | number /* isize */,
   psCatInfo: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -1293,7 +1293,7 @@ export function CryptCATCatalogInfoFromContext(
 }
 
 export function CryptCATAdminResolveCatalogPath(
-  hCatAdmin: Deno.PointerValue /* isize */,
+  hCatAdmin: bigint | number /* isize */,
   pwszCatalogFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   psCatInfo: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,

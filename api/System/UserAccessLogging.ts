@@ -13,7 +13,7 @@ export interface SOCKADDR_STORAGE {
   /** array */
   __ss_pad1: Deno.PointerValue;
   /** i64 */
-  __ss_align: Deno.PointerValue;
+  __ss_align: bigint | number;
   /** array */
   __ss_pad2: Deno.PointerValue;
 }
@@ -59,7 +59,7 @@ export class SOCKADDR_STORAGEView {
   }
 
   // 0x10: i64
-  get __ss_align(): Deno.PointerValue {
+  get __ss_align(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -82,7 +82,7 @@ export class SOCKADDR_STORAGEView {
   }
 
   // 0x10: i64
-  set __ss_align(value: Deno.PointerValue) {
+  set __ss_align(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 

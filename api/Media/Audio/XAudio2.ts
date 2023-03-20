@@ -1595,7 +1595,7 @@ export interface XAUDIO2_VOICE_STATE {
   /** u32 */
   BuffersQueued: number;
   /** u64 */
-  SamplesPlayed: Deno.PointerValue;
+  SamplesPlayed: bigint | number;
 }
 
 export const sizeofXAUDIO2_VOICE_STATE = 24;
@@ -1637,7 +1637,7 @@ export class XAUDIO2_VOICE_STATEView {
   // 0x0c: pad4
 
   // 0x10: u64
-  get SamplesPlayed(): Deno.PointerValue {
+  get SamplesPlayed(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -1654,7 +1654,7 @@ export class XAUDIO2_VOICE_STATEView {
   // 0x0c: pad4
 
   // 0x10: u64
-  set SamplesPlayed(value: Deno.PointerValue) {
+  set SamplesPlayed(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -1664,9 +1664,9 @@ export class XAUDIO2_VOICE_STATEView {
  */
 export interface XAUDIO2_PERFORMANCE_DATA {
   /** u64 */
-  AudioCyclesSinceLastQuery: Deno.PointerValue;
+  AudioCyclesSinceLastQuery: bigint | number;
   /** u64 */
-  TotalCyclesSinceLastQuery: Deno.PointerValue;
+  TotalCyclesSinceLastQuery: bigint | number;
   /** u32 */
   MinimumCyclesPerQuantum: number;
   /** u32 */
@@ -1740,12 +1740,12 @@ export class XAUDIO2_PERFORMANCE_DATAView {
   }
 
   // 0x00: u64
-  get AudioCyclesSinceLastQuery(): Deno.PointerValue {
+  get AudioCyclesSinceLastQuery(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get TotalCyclesSinceLastQuery(): Deno.PointerValue {
+  get TotalCyclesSinceLastQuery(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -1810,12 +1810,12 @@ export class XAUDIO2_PERFORMANCE_DATAView {
   }
 
   // 0x00: u64
-  set AudioCyclesSinceLastQuery(value: Deno.PointerValue) {
+  set AudioCyclesSinceLastQuery(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set TotalCyclesSinceLastQuery(value: Deno.PointerValue) {
+  set TotalCyclesSinceLastQuery(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 

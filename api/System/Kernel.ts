@@ -114,9 +114,9 @@ export class SLIST_ENTRYView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -142,22 +142,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -167,9 +167,9 @@ export class _Anonymous_e__StructView {
  */
 export interface _HeaderArm64_e__Struct {
   /** u64 */
-  _bitfield1: Deno.PointerValue;
+  _bitfield1: bigint | number;
   /** u64 */
-  _bitfield2: Deno.PointerValue;
+  _bitfield2: bigint | number;
 }
 
 export const sizeof_HeaderArm64_e__Struct = 16;
@@ -195,22 +195,22 @@ export class _HeaderArm64_e__StructView {
   }
 
   // 0x00: u64
-  get _bitfield1(): Deno.PointerValue {
+  get _bitfield1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get _bitfield2(): Deno.PointerValue {
+  get _bitfield2(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set _bitfield1(value: Deno.PointerValue) {
+  set _bitfield1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set _bitfield2(value: Deno.PointerValue) {
+  set _bitfield2(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -695,11 +695,11 @@ export type PWSTR = Deno.PointerValue | Uint8Array;
  */
 export interface _Anonymous1_e__Union {
   /** usize */
-  Data0: Deno.PointerValue;
+  Data0: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   String: string | null | Uint8Array | Uint16Array;
   /** usize */
-  u: Deno.PointerValue;
+  u: bigint | number;
   /** ptr */
   psid: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -751,7 +751,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  get Data0(): Deno.PointerValue {
+  get Data0(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -762,7 +762,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  get u(): Deno.PointerValue {
+  get u(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -798,7 +798,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  set Data0(value: Deno.PointerValue) {
+  set Data0(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -809,7 +809,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  set u(value: Deno.PointerValue) {
+  set u(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -846,7 +846,7 @@ export class _Anonymous1_e__UnionView {
  */
 export interface _Anonymous2_e__Union {
   /** usize */
-  Data1: Deno.PointerValue;
+  Data1: bigint | number;
   /** i32 */
   LogonId_HighPart: number;
 }
@@ -875,7 +875,7 @@ export class _Anonymous2_e__UnionView {
   }
 
   // 0x00: usize
-  get Data1(): Deno.PointerValue {
+  get Data1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -887,7 +887,7 @@ export class _Anonymous2_e__UnionView {
   // 0x0c: pad4
 
   // 0x00: usize
-  set Data1(value: Deno.PointerValue) {
+  set Data1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -1012,9 +1012,9 @@ export class LIST_ENTRY32View {
  */
 export interface LIST_ENTRY64 {
   /** u64 */
-  Flink: Deno.PointerValue;
+  Flink: bigint | number;
   /** u64 */
-  Blink: Deno.PointerValue;
+  Blink: bigint | number;
 }
 
 export const sizeofLIST_ENTRY64 = 16;
@@ -1040,22 +1040,22 @@ export class LIST_ENTRY64View {
   }
 
   // 0x00: u64
-  get Flink(): Deno.PointerValue {
+  get Flink(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Blink(): Deno.PointerValue {
+  get Blink(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Flink(value: Deno.PointerValue) {
+  set Flink(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Blink(value: Deno.PointerValue) {
+  set Blink(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -1220,7 +1220,7 @@ export interface STRING64 {
   /** u16 */
   MaximumLength: number;
   /** u64 */
-  Buffer: Deno.PointerValue;
+  Buffer: bigint | number;
 }
 
 export const sizeofSTRING64 = 16;
@@ -1261,7 +1261,7 @@ export class STRING64View {
   // 0x04: pad4
 
   // 0x08: u64
-  get Buffer(): Deno.PointerValue {
+  get Buffer(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -1278,7 +1278,7 @@ export class STRING64View {
   // 0x04: pad4
 
   // 0x08: u64
-  set Buffer(value: Deno.PointerValue) {
+  set Buffer(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -1290,15 +1290,15 @@ export interface OBJECT_ATTRIBUTES64 {
   /** u32 */
   Length: number;
   /** u64 */
-  RootDirectory: Deno.PointerValue;
+  RootDirectory: bigint | number;
   /** u64 */
-  ObjectName: Deno.PointerValue;
+  ObjectName: bigint | number;
   /** u32 */
   Attributes: number;
   /** u64 */
-  SecurityDescriptor: Deno.PointerValue;
+  SecurityDescriptor: bigint | number;
   /** u64 */
-  SecurityQualityOfService: Deno.PointerValue;
+  SecurityQualityOfService: bigint | number;
 }
 
 export const sizeofOBJECT_ATTRIBUTES64 = 48;
@@ -1341,12 +1341,12 @@ export class OBJECT_ATTRIBUTES64View {
   // 0x04: pad4
 
   // 0x08: u64
-  get RootDirectory(): Deno.PointerValue {
+  get RootDirectory(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get ObjectName(): Deno.PointerValue {
+  get ObjectName(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -1358,12 +1358,12 @@ export class OBJECT_ATTRIBUTES64View {
   // 0x1c: pad4
 
   // 0x20: u64
-  get SecurityDescriptor(): Deno.PointerValue {
+  get SecurityDescriptor(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: u64
-  get SecurityQualityOfService(): Deno.PointerValue {
+  get SecurityQualityOfService(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -1375,12 +1375,12 @@ export class OBJECT_ATTRIBUTES64View {
   // 0x04: pad4
 
   // 0x08: u64
-  set RootDirectory(value: Deno.PointerValue) {
+  set RootDirectory(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set ObjectName(value: Deno.PointerValue) {
+  set ObjectName(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -1392,12 +1392,12 @@ export class OBJECT_ATTRIBUTES64View {
   // 0x1c: pad4
 
   // 0x20: u64
-  set SecurityDescriptor(value: Deno.PointerValue) {
+  set SecurityDescriptor(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: u64
-  set SecurityQualityOfService(value: Deno.PointerValue) {
+  set SecurityQualityOfService(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 }

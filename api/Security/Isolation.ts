@@ -65,7 +65,7 @@ export class IsolatedAppLauncherTelemetryParametersView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 export type PSID = Deno.PointerValue | Uint8Array;
 

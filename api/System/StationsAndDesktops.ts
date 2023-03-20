@@ -33,9 +33,9 @@ export const DF_ALLOWOTHERACCOUNTHOOK = 1;
 
 // Structs
 
-export type HWINSTA = Deno.PointerValue;
+export type HWINSTA = bigint | number;
 
-export type HDESK = Deno.PointerValue;
+export type HDESK = bigint | number;
 
 export type BOOL = number;
 
@@ -111,7 +111,7 @@ export class USEROBJECTFLAGSView {
   // 0x0c: pad4
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 /**
  * Windows.Win32.Foundation.LUID (size: 8)
@@ -259,11 +259,11 @@ export type PSTR = Deno.PointerValue | Uint8Array;
 
 export type PWSTR = Deno.PointerValue | Uint8Array;
 
-export type LPARAM = Deno.PointerValue;
+export type LPARAM = bigint | number;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
-export type WPARAM = Deno.PointerValue;
+export type WPARAM = bigint | number;
 
 // Native Libraries
 

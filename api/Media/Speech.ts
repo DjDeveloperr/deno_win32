@@ -1166,9 +1166,9 @@ export const DISPID_SPCIdToPhone = 3;
 
 // Structs
 
-export type WPARAM = Deno.PointerValue;
+export type WPARAM = bigint | number;
 
-export type LPARAM = Deno.PointerValue;
+export type LPARAM = bigint | number;
 
 /**
  * Windows.Win32.Media.Speech.SPEVENT (size: 32)
@@ -1179,7 +1179,7 @@ export interface SPEVENT {
   /** u32 */
   ulStreamNum: number;
   /** u64 */
-  ullAudioStreamOffset: Deno.PointerValue;
+  ullAudioStreamOffset: bigint | number;
   /** Windows.Win32.Foundation.WPARAM */
   wParam: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LPARAM */
@@ -1225,7 +1225,7 @@ export class SPEVENTView {
   }
 
   // 0x08: u64
-  get ullAudioStreamOffset(): Deno.PointerValue {
+  get ullAudioStreamOffset(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -1252,7 +1252,7 @@ export class SPEVENTView {
   }
 
   // 0x08: u64
-  set ullAudioStreamOffset(value: Deno.PointerValue) {
+  set ullAudioStreamOffset(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -1276,7 +1276,7 @@ export interface SPSERIALIZEDEVENT {
   /** u32 */
   ulStreamNum: number;
   /** u64 */
-  ullAudioStreamOffset: Deno.PointerValue;
+  ullAudioStreamOffset: bigint | number;
   /** u32 */
   SerializedwParam: number;
   /** i32 */
@@ -1322,7 +1322,7 @@ export class SPSERIALIZEDEVENTView {
   }
 
   // 0x08: u64
-  get ullAudioStreamOffset(): Deno.PointerValue {
+  get ullAudioStreamOffset(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -1347,7 +1347,7 @@ export class SPSERIALIZEDEVENTView {
   }
 
   // 0x08: u64
-  set ullAudioStreamOffset(value: Deno.PointerValue) {
+  set ullAudioStreamOffset(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -1371,11 +1371,11 @@ export interface SPSERIALIZEDEVENT64 {
   /** u32 */
   ulStreamNum: number;
   /** u64 */
-  ullAudioStreamOffset: Deno.PointerValue;
+  ullAudioStreamOffset: bigint | number;
   /** u64 */
-  SerializedwParam: Deno.PointerValue;
+  SerializedwParam: bigint | number;
   /** i64 */
-  SerializedlParam: Deno.PointerValue;
+  SerializedlParam: bigint | number;
 }
 
 export const sizeofSPSERIALIZEDEVENT64 = 32;
@@ -1417,17 +1417,17 @@ export class SPSERIALIZEDEVENT64View {
   }
 
   // 0x08: u64
-  get ullAudioStreamOffset(): Deno.PointerValue {
+  get ullAudioStreamOffset(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get SerializedwParam(): Deno.PointerValue {
+  get SerializedwParam(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: i64
-  get SerializedlParam(): Deno.PointerValue {
+  get SerializedlParam(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
@@ -1442,17 +1442,17 @@ export class SPSERIALIZEDEVENT64View {
   }
 
   // 0x08: u64
-  set ullAudioStreamOffset(value: Deno.PointerValue) {
+  set ullAudioStreamOffset(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set SerializedwParam(value: Deno.PointerValue) {
+  set SerializedwParam(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: i64
-  set SerializedlParam(value: Deno.PointerValue) {
+  set SerializedlParam(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 }
@@ -1466,13 +1466,13 @@ export interface SPEVENTEX {
   /** u32 */
   ulStreamNum: number;
   /** u64 */
-  ullAudioStreamOffset: Deno.PointerValue;
+  ullAudioStreamOffset: bigint | number;
   /** Windows.Win32.Foundation.WPARAM */
   wParam: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LPARAM */
   lParam: Uint8Array | Deno.PointerValue;
   /** u64 */
-  ullAudioTimeOffset: Deno.PointerValue;
+  ullAudioTimeOffset: bigint | number;
 }
 
 export const sizeofSPEVENTEX = 40;
@@ -1516,7 +1516,7 @@ export class SPEVENTEXView {
   }
 
   // 0x08: u64
-  get ullAudioStreamOffset(): Deno.PointerValue {
+  get ullAudioStreamOffset(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -1533,7 +1533,7 @@ export class SPEVENTEXView {
   }
 
   // 0x20: u64
-  get ullAudioTimeOffset(): Deno.PointerValue {
+  get ullAudioTimeOffset(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -1548,7 +1548,7 @@ export class SPEVENTEXView {
   }
 
   // 0x08: u64
-  set ullAudioStreamOffset(value: Deno.PointerValue) {
+  set ullAudioStreamOffset(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -1563,7 +1563,7 @@ export class SPEVENTEXView {
   }
 
   // 0x20: u64
-  set ullAudioTimeOffset(value: Deno.PointerValue) {
+  set ullAudioTimeOffset(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 }
@@ -1573,9 +1573,9 @@ export class SPEVENTEXView {
  */
 export interface SPEVENTSOURCEINFO {
   /** u64 */
-  ullEventInterest: Deno.PointerValue;
+  ullEventInterest: bigint | number;
   /** u64 */
-  ullQueuedInterest: Deno.PointerValue;
+  ullQueuedInterest: bigint | number;
   /** u32 */
   ulCount: number;
 }
@@ -1606,12 +1606,12 @@ export class SPEVENTSOURCEINFOView {
   }
 
   // 0x00: u64
-  get ullEventInterest(): Deno.PointerValue {
+  get ullEventInterest(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get ullQueuedInterest(): Deno.PointerValue {
+  get ullQueuedInterest(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -1623,12 +1623,12 @@ export class SPEVENTSOURCEINFOView {
   // 0x14: pad4
 
   // 0x00: u64
-  set ullEventInterest(value: Deno.PointerValue) {
+  set ullEventInterest(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set ullQueuedInterest(value: Deno.PointerValue) {
+  set ullQueuedInterest(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -1651,9 +1651,9 @@ export interface SPAUDIOSTATUS {
   /** Windows.Win32.Media.Speech.SPAUDIOSTATE */
   State: SPAUDIOSTATE;
   /** u64 */
-  CurSeekPos: Deno.PointerValue;
+  CurSeekPos: bigint | number;
   /** u64 */
-  CurDevicePos: Deno.PointerValue;
+  CurDevicePos: bigint | number;
   /** u32 */
   dwAudioLevel: number;
   /** u32 */
@@ -1711,12 +1711,12 @@ export class SPAUDIOSTATUSView {
   // 0x0c: pad4
 
   // 0x10: u64
-  get CurSeekPos(): Deno.PointerValue {
+  get CurSeekPos(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get CurDevicePos(): Deno.PointerValue {
+  get CurDevicePos(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -1748,12 +1748,12 @@ export class SPAUDIOSTATUSView {
   // 0x0c: pad4
 
   // 0x10: u64
-  set CurSeekPos(value: Deno.PointerValue) {
+  set CurSeekPos(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set CurDevicePos(value: Deno.PointerValue) {
+  set CurDevicePos(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -2233,9 +2233,9 @@ export class SPPHRASERULEView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -2261,22 +2261,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -2780,11 +2780,11 @@ export interface SPPHRASE_50 {
   /** u16 */
   wHomophoneGroupId: number;
   /** u64 */
-  ullGrammarID: Deno.PointerValue;
+  ullGrammarID: bigint | number;
   /** u64 */
-  ftStartTime: Deno.PointerValue;
+  ftStartTime: bigint | number;
   /** u64 */
-  ullAudioStreamPosition: Deno.PointerValue;
+  ullAudioStreamPosition: bigint | number;
   /** u32 */
   ulAudioSizeBytes: number;
   /** u32 */
@@ -2880,17 +2880,17 @@ export class SPPHRASE_50View {
   }
 
   // 0x08: u64
-  get ullGrammarID(): Deno.PointerValue {
+  get ullGrammarID(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get ftStartTime(): Deno.PointerValue {
+  get ftStartTime(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get ullAudioStreamPosition(): Deno.PointerValue {
+  get ullAudioStreamPosition(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -2977,17 +2977,17 @@ export class SPPHRASE_50View {
   }
 
   // 0x08: u64
-  set ullGrammarID(value: Deno.PointerValue) {
+  set ullGrammarID(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set ftStartTime(value: Deno.PointerValue) {
+  set ftStartTime(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set ullAudioStreamPosition(value: Deno.PointerValue) {
+  set ullAudioStreamPosition(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -4501,11 +4501,11 @@ export interface SPRECORESULTTIMES {
   /** Windows.Win32.Foundation.FILETIME */
   ftStreamTime: Uint8Array | Deno.PointerValue;
   /** u64 */
-  ullLength: Deno.PointerValue;
+  ullLength: bigint | number;
   /** u32 */
   dwTickCount: number;
   /** u64 */
-  ullStart: Deno.PointerValue;
+  ullStart: bigint | number;
 }
 
 export const sizeofSPRECORESULTTIMES = 32;
@@ -4542,7 +4542,7 @@ export class SPRECORESULTTIMESView {
   }
 
   // 0x08: u64
-  get ullLength(): Deno.PointerValue {
+  get ullLength(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -4554,7 +4554,7 @@ export class SPRECORESULTTIMESView {
   // 0x14: pad4
 
   // 0x18: u64
-  get ullStart(): Deno.PointerValue {
+  get ullStart(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -4564,7 +4564,7 @@ export class SPRECORESULTTIMESView {
   }
 
   // 0x08: u64
-  set ullLength(value: Deno.PointerValue) {
+  set ullLength(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -4576,7 +4576,7 @@ export class SPRECORESULTTIMESView {
   // 0x14: pad4
 
   // 0x18: u64
-  set ullStart(value: Deno.PointerValue) {
+  set ullStart(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 }
@@ -4897,7 +4897,7 @@ export interface SPRECOGNIZERSTATUS {
   /** Windows.Win32.Media.Speech.SPAUDIOSTATUS */
   AudioStatus: Uint8Array | Deno.PointerValue;
   /** u64 */
-  ullRecognitionStreamPos: Deno.PointerValue;
+  ullRecognitionStreamPos: bigint | number;
   /** u32 */
   ulStreamNumber: number;
   /** u32 */
@@ -4909,7 +4909,7 @@ export interface SPRECOGNIZERSTATUS {
   /** array */
   aLangID: Deno.PointerValue;
   /** u64 */
-  ullRecognitionStreamTime: Deno.PointerValue;
+  ullRecognitionStreamTime: bigint | number;
 }
 
 export const sizeofSPRECOGNIZERSTATUS = 56;
@@ -4954,7 +4954,7 @@ export class SPRECOGNIZERSTATUSView {
   }
 
   // 0x08: u64
-  get ullRecognitionStreamPos(): Deno.PointerValue {
+  get ullRecognitionStreamPos(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -4988,7 +4988,7 @@ export class SPRECOGNIZERSTATUSView {
   }
 
   // 0x30: u64
-  get ullRecognitionStreamTime(): Deno.PointerValue {
+  get ullRecognitionStreamTime(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -4998,7 +4998,7 @@ export class SPRECOGNIZERSTATUSView {
   }
 
   // 0x08: u64
-  set ullRecognitionStreamPos(value: Deno.PointerValue) {
+  set ullRecognitionStreamPos(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -5030,7 +5030,7 @@ export class SPRECOGNIZERSTATUSView {
   }
 
   // 0x30: u64
-  set ullRecognitionStreamTime(value: Deno.PointerValue) {
+  set ullRecognitionStreamTime(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 }

@@ -2098,7 +2098,7 @@ export class HTTP_LOGGING_INFOView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.Networking.HttpServer.HTTP_BINDING_INFO (size: 16)
@@ -2219,9 +2219,9 @@ export class HTTP_PROTECTION_LEVEL_INFOView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -2247,22 +2247,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -2339,7 +2339,7 @@ export interface ULARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue;
   /** u64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: bigint | number;
 }
 
 export const sizeofULARGE_INTEGER = 24;
@@ -2379,7 +2379,7 @@ export class ULARGE_INTEGERView {
   }
 
   // 0x10: u64
-  get QuadPart(): Deno.PointerValue {
+  get QuadPart(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -2394,7 +2394,7 @@ export class ULARGE_INTEGERView {
   }
 
   // 0x10: u64
-  set QuadPart(value: Deno.PointerValue) {
+  set QuadPart(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -4293,7 +4293,7 @@ export class HTTP_SSL_PROTOCOL_INFOView {
  */
 export interface HTTP_REQUEST_SIZING_INFO {
   /** u64 */
-  Flags: Deno.PointerValue;
+  Flags: bigint | number;
   /** u32 */
   RequestIndex: number;
   /** u32 */
@@ -4329,7 +4329,7 @@ export class HTTP_REQUEST_SIZING_INFOView {
   }
 
   // 0x00: u64
-  get Flags(): Deno.PointerValue {
+  get Flags(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -4350,7 +4350,7 @@ export class HTTP_REQUEST_SIZING_INFOView {
   }
 
   // 0x00: u64
-  set Flags(value: Deno.PointerValue) {
+  set Flags(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -4746,11 +4746,11 @@ export interface HTTP_REQUEST_V1 {
   /** u32 */
   Flags: number;
   /** u64 */
-  ConnectionId: Deno.PointerValue;
+  ConnectionId: bigint | number;
   /** u64 */
-  RequestId: Deno.PointerValue;
+  RequestId: bigint | number;
   /** u64 */
-  UrlContext: Deno.PointerValue;
+  UrlContext: bigint | number;
   /** Windows.Win32.Networking.HttpServer.HTTP_VERSION */
   Version: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Networking.HttpServer.HTTP_VERB */
@@ -4770,13 +4770,13 @@ export interface HTTP_REQUEST_V1 {
   /** Windows.Win32.Networking.HttpServer.HTTP_REQUEST_HEADERS */
   Headers: Uint8Array | Deno.PointerValue;
   /** u64 */
-  BytesReceived: Deno.PointerValue;
+  BytesReceived: bigint | number;
   /** u16 */
   EntityChunkCount: number;
   /** ptr */
   pEntityChunks: Deno.PointerValue | Uint8Array;
   /** u64 */
-  RawConnectionId: Deno.PointerValue;
+  RawConnectionId: bigint | number;
   /** ptr */
   pSslInfo: Deno.PointerValue | Uint8Array;
 }
@@ -4851,17 +4851,17 @@ export class HTTP_REQUEST_V1View {
   // 0x04: pad4
 
   // 0x08: u64
-  get ConnectionId(): Deno.PointerValue {
+  get ConnectionId(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get RequestId(): Deno.PointerValue {
+  get RequestId(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get UrlContext(): Deno.PointerValue {
+  get UrlContext(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -4917,7 +4917,7 @@ export class HTTP_REQUEST_V1View {
   }
 
   // 0x58: u64
-  get BytesReceived(): Deno.PointerValue {
+  get BytesReceived(): bigint | number {
     return Number(this.view.getBigUint64(88, true));
   }
 
@@ -4935,7 +4935,7 @@ export class HTTP_REQUEST_V1View {
   }
 
   // 0x70: u64
-  get RawConnectionId(): Deno.PointerValue {
+  get RawConnectionId(): bigint | number {
     return Number(this.view.getBigUint64(112, true));
   }
 
@@ -4953,17 +4953,17 @@ export class HTTP_REQUEST_V1View {
   // 0x04: pad4
 
   // 0x08: u64
-  set ConnectionId(value: Deno.PointerValue) {
+  set ConnectionId(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set RequestId(value: Deno.PointerValue) {
+  set RequestId(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set UrlContext(value: Deno.PointerValue) {
+  set UrlContext(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -5015,7 +5015,7 @@ export class HTTP_REQUEST_V1View {
   }
 
   // 0x58: u64
-  set BytesReceived(value: Deno.PointerValue) {
+  set BytesReceived(value: bigint | number) {
     this.view.setBigUint64(88, BigInt(value), true);
   }
 
@@ -5032,7 +5032,7 @@ export class HTTP_REQUEST_V1View {
   }
 
   // 0x70: u64
-  set RawConnectionId(value: Deno.PointerValue) {
+  set RawConnectionId(value: bigint | number) {
     this.view.setBigUint64(112, BigInt(value), true);
   }
 
@@ -5665,7 +5665,7 @@ export interface SOCKADDR_STORAGE {
   /** array */
   __ss_pad1: Deno.PointerValue;
   /** i64 */
-  __ss_align: Deno.PointerValue;
+  __ss_align: bigint | number;
   /** array */
   __ss_pad2: Deno.PointerValue;
 }
@@ -5711,7 +5711,7 @@ export class SOCKADDR_STORAGEView {
   }
 
   // 0x10: i64
-  get __ss_align(): Deno.PointerValue {
+  get __ss_align(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -5734,7 +5734,7 @@ export class SOCKADDR_STORAGEView {
   }
 
   // 0x10: i64
-  set __ss_align(value: Deno.PointerValue) {
+  set __ss_align(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
@@ -6443,7 +6443,7 @@ export interface HTTP_SERVICE_CONFIG_SSL_PARAM_EX {
   /** Windows.Win32.Networking.HttpServer.HTTP_SSL_SERVICE_CONFIG_EX_PARAM_TYPE */
   ParamType: HTTP_SSL_SERVICE_CONFIG_EX_PARAM_TYPE;
   /** u64 */
-  Flags: Deno.PointerValue;
+  Flags: bigint | number;
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue;
 }
@@ -6481,7 +6481,7 @@ export class HTTP_SERVICE_CONFIG_SSL_PARAM_EXView {
   // 0x04: pad4
 
   // 0x08: u64
-  get Flags(): Deno.PointerValue {
+  get Flags(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -6499,7 +6499,7 @@ export class HTTP_SERVICE_CONFIG_SSL_PARAM_EXView {
   // 0x04: pad4
 
   // 0x08: u64
-  set Flags(value: Deno.PointerValue) {
+  set Flags(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -7731,7 +7731,7 @@ export class HTTP_SERVICE_CONFIG_CACHE_SETView {
  */
 export interface HTTP_QUERY_REQUEST_QUALIFIER_TCP {
   /** u64 */
-  Freshness: Deno.PointerValue;
+  Freshness: bigint | number;
 }
 
 export const sizeofHTTP_QUERY_REQUEST_QUALIFIER_TCP = 8;
@@ -7755,12 +7755,12 @@ export class HTTP_QUERY_REQUEST_QUALIFIER_TCPView {
   }
 
   // 0x00: u64
-  get Freshness(): Deno.PointerValue {
+  get Freshness(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: u64
-  set Freshness(value: Deno.PointerValue) {
+  set Freshness(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -7770,7 +7770,7 @@ export class HTTP_QUERY_REQUEST_QUALIFIER_TCPView {
  */
 export interface HTTP_QUERY_REQUEST_QUALIFIER_QUIC {
   /** u64 */
-  Freshness: Deno.PointerValue;
+  Freshness: bigint | number;
 }
 
 export const sizeofHTTP_QUERY_REQUEST_QUALIFIER_QUIC = 8;
@@ -7794,12 +7794,12 @@ export class HTTP_QUERY_REQUEST_QUALIFIER_QUICView {
   }
 
   // 0x00: u64
-  get Freshness(): Deno.PointerValue {
+  get Freshness(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: u64
-  set Freshness(value: Deno.PointerValue) {
+  set Freshness(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -7912,29 +7912,29 @@ export class HTTP_REQUEST_PROPERTY_STREAM_ERRORView {
  */
 export interface HTTP_WSK_API_TIMINGS {
   /** u64 */
-  ConnectCount: Deno.PointerValue;
+  ConnectCount: bigint | number;
   /** u64 */
-  ConnectSum: Deno.PointerValue;
+  ConnectSum: bigint | number;
   /** u64 */
-  DisconnectCount: Deno.PointerValue;
+  DisconnectCount: bigint | number;
   /** u64 */
-  DisconnectSum: Deno.PointerValue;
+  DisconnectSum: bigint | number;
   /** u64 */
-  SendCount: Deno.PointerValue;
+  SendCount: bigint | number;
   /** u64 */
-  SendSum: Deno.PointerValue;
+  SendSum: bigint | number;
   /** u64 */
-  ReceiveCount: Deno.PointerValue;
+  ReceiveCount: bigint | number;
   /** u64 */
-  ReceiveSum: Deno.PointerValue;
+  ReceiveSum: bigint | number;
   /** u64 */
-  ReleaseCount: Deno.PointerValue;
+  ReleaseCount: bigint | number;
   /** u64 */
-  ReleaseSum: Deno.PointerValue;
+  ReleaseSum: bigint | number;
   /** u64 */
-  ControlSocketCount: Deno.PointerValue;
+  ControlSocketCount: bigint | number;
   /** u64 */
-  ControlSocketSum: Deno.PointerValue;
+  ControlSocketSum: bigint | number;
 }
 
 export const sizeofHTTP_WSK_API_TIMINGS = 96;
@@ -7980,122 +7980,122 @@ export class HTTP_WSK_API_TIMINGSView {
   }
 
   // 0x00: u64
-  get ConnectCount(): Deno.PointerValue {
+  get ConnectCount(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get ConnectSum(): Deno.PointerValue {
+  get ConnectSum(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get DisconnectCount(): Deno.PointerValue {
+  get DisconnectCount(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get DisconnectSum(): Deno.PointerValue {
+  get DisconnectSum(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get SendCount(): Deno.PointerValue {
+  get SendCount(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: u64
-  get SendSum(): Deno.PointerValue {
+  get SendSum(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: u64
-  get ReceiveCount(): Deno.PointerValue {
+  get ReceiveCount(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: u64
-  get ReceiveSum(): Deno.PointerValue {
+  get ReceiveSum(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
   // 0x40: u64
-  get ReleaseCount(): Deno.PointerValue {
+  get ReleaseCount(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
   // 0x48: u64
-  get ReleaseSum(): Deno.PointerValue {
+  get ReleaseSum(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
   // 0x50: u64
-  get ControlSocketCount(): Deno.PointerValue {
+  get ControlSocketCount(): bigint | number {
     return Number(this.view.getBigUint64(80, true));
   }
 
   // 0x58: u64
-  get ControlSocketSum(): Deno.PointerValue {
+  get ControlSocketSum(): bigint | number {
     return Number(this.view.getBigUint64(88, true));
   }
 
   // 0x00: u64
-  set ConnectCount(value: Deno.PointerValue) {
+  set ConnectCount(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set ConnectSum(value: Deno.PointerValue) {
+  set ConnectSum(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set DisconnectCount(value: Deno.PointerValue) {
+  set DisconnectCount(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set DisconnectSum(value: Deno.PointerValue) {
+  set DisconnectSum(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set SendCount(value: Deno.PointerValue) {
+  set SendCount(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: u64
-  set SendSum(value: Deno.PointerValue) {
+  set SendSum(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: u64
-  set ReceiveCount(value: Deno.PointerValue) {
+  set ReceiveCount(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: u64
-  set ReceiveSum(value: Deno.PointerValue) {
+  set ReceiveSum(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
   // 0x40: u64
-  set ReleaseCount(value: Deno.PointerValue) {
+  set ReleaseCount(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
   // 0x48: u64
-  set ReleaseSum(value: Deno.PointerValue) {
+  set ReleaseSum(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
   // 0x50: u64
-  set ControlSocketCount(value: Deno.PointerValue) {
+  set ControlSocketCount(value: bigint | number) {
     this.view.setBigUint64(80, BigInt(value), true);
   }
 
   // 0x58: u64
-  set ControlSocketSum(value: Deno.PointerValue) {
+  set ControlSocketSum(value: bigint | number) {
     this.view.setBigUint64(88, BigInt(value), true);
   }
 }
@@ -8105,41 +8105,41 @@ export class HTTP_WSK_API_TIMINGSView {
  */
 export interface HTTP_QUIC_STREAM_API_TIMINGS {
   /** u64 */
-  OpenCount: Deno.PointerValue;
+  OpenCount: bigint | number;
   /** u64 */
-  OpenSum: Deno.PointerValue;
+  OpenSum: bigint | number;
   /** u64 */
-  CloseCount: Deno.PointerValue;
+  CloseCount: bigint | number;
   /** u64 */
-  CloseSum: Deno.PointerValue;
+  CloseSum: bigint | number;
   /** u64 */
-  StartCount: Deno.PointerValue;
+  StartCount: bigint | number;
   /** u64 */
-  StartSum: Deno.PointerValue;
+  StartSum: bigint | number;
   /** u64 */
-  ShutdownCount: Deno.PointerValue;
+  ShutdownCount: bigint | number;
   /** u64 */
-  ShutdownSum: Deno.PointerValue;
+  ShutdownSum: bigint | number;
   /** u64 */
-  SendCount: Deno.PointerValue;
+  SendCount: bigint | number;
   /** u64 */
-  SendSum: Deno.PointerValue;
+  SendSum: bigint | number;
   /** u64 */
-  ReceiveSetEnabledCount: Deno.PointerValue;
+  ReceiveSetEnabledCount: bigint | number;
   /** u64 */
-  ReceiveSetEnabledSum: Deno.PointerValue;
+  ReceiveSetEnabledSum: bigint | number;
   /** u64 */
-  GetParamCount: Deno.PointerValue;
+  GetParamCount: bigint | number;
   /** u64 */
-  GetParamSum: Deno.PointerValue;
+  GetParamSum: bigint | number;
   /** u64 */
-  SetParamCount: Deno.PointerValue;
+  SetParamCount: bigint | number;
   /** u64 */
-  SetParamSum: Deno.PointerValue;
+  SetParamSum: bigint | number;
   /** u64 */
-  SetCallbackHandlerCount: Deno.PointerValue;
+  SetCallbackHandlerCount: bigint | number;
   /** u64 */
-  SetCallbackHandlerSum: Deno.PointerValue;
+  SetCallbackHandlerSum: bigint | number;
 }
 
 export const sizeofHTTP_QUIC_STREAM_API_TIMINGS = 144;
@@ -8197,182 +8197,182 @@ export class HTTP_QUIC_STREAM_API_TIMINGSView {
   }
 
   // 0x00: u64
-  get OpenCount(): Deno.PointerValue {
+  get OpenCount(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get OpenSum(): Deno.PointerValue {
+  get OpenSum(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get CloseCount(): Deno.PointerValue {
+  get CloseCount(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get CloseSum(): Deno.PointerValue {
+  get CloseSum(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get StartCount(): Deno.PointerValue {
+  get StartCount(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: u64
-  get StartSum(): Deno.PointerValue {
+  get StartSum(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: u64
-  get ShutdownCount(): Deno.PointerValue {
+  get ShutdownCount(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: u64
-  get ShutdownSum(): Deno.PointerValue {
+  get ShutdownSum(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
   // 0x40: u64
-  get SendCount(): Deno.PointerValue {
+  get SendCount(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
   // 0x48: u64
-  get SendSum(): Deno.PointerValue {
+  get SendSum(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
   // 0x50: u64
-  get ReceiveSetEnabledCount(): Deno.PointerValue {
+  get ReceiveSetEnabledCount(): bigint | number {
     return Number(this.view.getBigUint64(80, true));
   }
 
   // 0x58: u64
-  get ReceiveSetEnabledSum(): Deno.PointerValue {
+  get ReceiveSetEnabledSum(): bigint | number {
     return Number(this.view.getBigUint64(88, true));
   }
 
   // 0x60: u64
-  get GetParamCount(): Deno.PointerValue {
+  get GetParamCount(): bigint | number {
     return Number(this.view.getBigUint64(96, true));
   }
 
   // 0x68: u64
-  get GetParamSum(): Deno.PointerValue {
+  get GetParamSum(): bigint | number {
     return Number(this.view.getBigUint64(104, true));
   }
 
   // 0x70: u64
-  get SetParamCount(): Deno.PointerValue {
+  get SetParamCount(): bigint | number {
     return Number(this.view.getBigUint64(112, true));
   }
 
   // 0x78: u64
-  get SetParamSum(): Deno.PointerValue {
+  get SetParamSum(): bigint | number {
     return Number(this.view.getBigUint64(120, true));
   }
 
   // 0x80: u64
-  get SetCallbackHandlerCount(): Deno.PointerValue {
+  get SetCallbackHandlerCount(): bigint | number {
     return Number(this.view.getBigUint64(128, true));
   }
 
   // 0x88: u64
-  get SetCallbackHandlerSum(): Deno.PointerValue {
+  get SetCallbackHandlerSum(): bigint | number {
     return Number(this.view.getBigUint64(136, true));
   }
 
   // 0x00: u64
-  set OpenCount(value: Deno.PointerValue) {
+  set OpenCount(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set OpenSum(value: Deno.PointerValue) {
+  set OpenSum(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set CloseCount(value: Deno.PointerValue) {
+  set CloseCount(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set CloseSum(value: Deno.PointerValue) {
+  set CloseSum(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set StartCount(value: Deno.PointerValue) {
+  set StartCount(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: u64
-  set StartSum(value: Deno.PointerValue) {
+  set StartSum(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: u64
-  set ShutdownCount(value: Deno.PointerValue) {
+  set ShutdownCount(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: u64
-  set ShutdownSum(value: Deno.PointerValue) {
+  set ShutdownSum(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
   // 0x40: u64
-  set SendCount(value: Deno.PointerValue) {
+  set SendCount(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
   // 0x48: u64
-  set SendSum(value: Deno.PointerValue) {
+  set SendSum(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
   // 0x50: u64
-  set ReceiveSetEnabledCount(value: Deno.PointerValue) {
+  set ReceiveSetEnabledCount(value: bigint | number) {
     this.view.setBigUint64(80, BigInt(value), true);
   }
 
   // 0x58: u64
-  set ReceiveSetEnabledSum(value: Deno.PointerValue) {
+  set ReceiveSetEnabledSum(value: bigint | number) {
     this.view.setBigUint64(88, BigInt(value), true);
   }
 
   // 0x60: u64
-  set GetParamCount(value: Deno.PointerValue) {
+  set GetParamCount(value: bigint | number) {
     this.view.setBigUint64(96, BigInt(value), true);
   }
 
   // 0x68: u64
-  set GetParamSum(value: Deno.PointerValue) {
+  set GetParamSum(value: bigint | number) {
     this.view.setBigUint64(104, BigInt(value), true);
   }
 
   // 0x70: u64
-  set SetParamCount(value: Deno.PointerValue) {
+  set SetParamCount(value: bigint | number) {
     this.view.setBigUint64(112, BigInt(value), true);
   }
 
   // 0x78: u64
-  set SetParamSum(value: Deno.PointerValue) {
+  set SetParamSum(value: bigint | number) {
     this.view.setBigUint64(120, BigInt(value), true);
   }
 
   // 0x80: u64
-  set SetCallbackHandlerCount(value: Deno.PointerValue) {
+  set SetCallbackHandlerCount(value: bigint | number) {
     this.view.setBigUint64(128, BigInt(value), true);
   }
 
   // 0x88: u64
-  set SetCallbackHandlerSum(value: Deno.PointerValue) {
+  set SetCallbackHandlerSum(value: bigint | number) {
     this.view.setBigUint64(136, BigInt(value), true);
   }
 }
@@ -8382,29 +8382,29 @@ export class HTTP_QUIC_STREAM_API_TIMINGSView {
  */
 export interface HTTP_QUIC_CONNECTION_API_TIMINGS {
   /** u64 */
-  OpenTime: Deno.PointerValue;
+  OpenTime: bigint | number;
   /** u64 */
-  CloseTime: Deno.PointerValue;
+  CloseTime: bigint | number;
   /** u64 */
-  StartTime: Deno.PointerValue;
+  StartTime: bigint | number;
   /** u64 */
-  ShutdownTime: Deno.PointerValue;
+  ShutdownTime: bigint | number;
   /** u64 */
-  SecConfigCreateTime: Deno.PointerValue;
+  SecConfigCreateTime: bigint | number;
   /** u64 */
-  SecConfigDeleteTime: Deno.PointerValue;
+  SecConfigDeleteTime: bigint | number;
   /** u64 */
-  GetParamCount: Deno.PointerValue;
+  GetParamCount: bigint | number;
   /** u64 */
-  GetParamSum: Deno.PointerValue;
+  GetParamSum: bigint | number;
   /** u64 */
-  SetParamCount: Deno.PointerValue;
+  SetParamCount: bigint | number;
   /** u64 */
-  SetParamSum: Deno.PointerValue;
+  SetParamSum: bigint | number;
   /** u64 */
-  SetCallbackHandlerCount: Deno.PointerValue;
+  SetCallbackHandlerCount: bigint | number;
   /** u64 */
-  SetCallbackHandlerSum: Deno.PointerValue;
+  SetCallbackHandlerSum: bigint | number;
   /** Windows.Win32.Networking.HttpServer.HTTP_QUIC_STREAM_API_TIMINGS */
   ControlStreamTimings: Uint8Array | Deno.PointerValue;
 }
@@ -8454,62 +8454,62 @@ export class HTTP_QUIC_CONNECTION_API_TIMINGSView {
   }
 
   // 0x00: u64
-  get OpenTime(): Deno.PointerValue {
+  get OpenTime(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get CloseTime(): Deno.PointerValue {
+  get CloseTime(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get StartTime(): Deno.PointerValue {
+  get StartTime(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get ShutdownTime(): Deno.PointerValue {
+  get ShutdownTime(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get SecConfigCreateTime(): Deno.PointerValue {
+  get SecConfigCreateTime(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: u64
-  get SecConfigDeleteTime(): Deno.PointerValue {
+  get SecConfigDeleteTime(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: u64
-  get GetParamCount(): Deno.PointerValue {
+  get GetParamCount(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: u64
-  get GetParamSum(): Deno.PointerValue {
+  get GetParamSum(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
   // 0x40: u64
-  get SetParamCount(): Deno.PointerValue {
+  get SetParamCount(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
   // 0x48: u64
-  get SetParamSum(): Deno.PointerValue {
+  get SetParamSum(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
   // 0x50: u64
-  get SetCallbackHandlerCount(): Deno.PointerValue {
+  get SetCallbackHandlerCount(): bigint | number {
     return Number(this.view.getBigUint64(80, true));
   }
 
   // 0x58: u64
-  get SetCallbackHandlerSum(): Deno.PointerValue {
+  get SetCallbackHandlerSum(): bigint | number {
     return Number(this.view.getBigUint64(88, true));
   }
 
@@ -8520,62 +8520,62 @@ export class HTTP_QUIC_CONNECTION_API_TIMINGSView {
   }
 
   // 0x00: u64
-  set OpenTime(value: Deno.PointerValue) {
+  set OpenTime(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set CloseTime(value: Deno.PointerValue) {
+  set CloseTime(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set StartTime(value: Deno.PointerValue) {
+  set StartTime(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set ShutdownTime(value: Deno.PointerValue) {
+  set ShutdownTime(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set SecConfigCreateTime(value: Deno.PointerValue) {
+  set SecConfigCreateTime(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: u64
-  set SecConfigDeleteTime(value: Deno.PointerValue) {
+  set SecConfigDeleteTime(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: u64
-  set GetParamCount(value: Deno.PointerValue) {
+  set GetParamCount(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: u64
-  set GetParamSum(value: Deno.PointerValue) {
+  set GetParamSum(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
   // 0x40: u64
-  set SetParamCount(value: Deno.PointerValue) {
+  set SetParamCount(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
   // 0x48: u64
-  set SetParamSum(value: Deno.PointerValue) {
+  set SetParamSum(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
   // 0x50: u64
-  set SetCallbackHandlerCount(value: Deno.PointerValue) {
+  set SetCallbackHandlerCount(value: bigint | number) {
     this.view.setBigUint64(80, BigInt(value), true);
   }
 
   // 0x58: u64
-  set SetCallbackHandlerSum(value: Deno.PointerValue) {
+  set SetCallbackHandlerSum(value: bigint | number) {
     this.view.setBigUint64(88, BigInt(value), true);
   }
 
@@ -8886,7 +8886,7 @@ export function HttpQueryRequestQueueProperty(
 
 export function HttpSetRequestProperty(
   RequestQueueHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  Id: Deno.PointerValue /* u64 */,
+  Id: bigint | number /* u64 */,
   PropertyId: HTTP_REQUEST_PROPERTY /* Windows.Win32.Networking.HttpServer.HTTP_REQUEST_PROPERTY */,
   Input: Deno.PointerValue | Uint8Array /* ptr */,
   InputPropertySize: number /* u32 */,
@@ -8903,7 +8903,7 @@ export function HttpShutdownRequestQueue(
 
 export function HttpReceiveClientCertificate(
   RequestQueueHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  ConnectionId: Deno.PointerValue /* u64 */,
+  ConnectionId: bigint | number /* u64 */,
   Flags: number /* u32 */,
   SslClientCertInfo: Deno.PointerValue | Uint8Array /* ptr */,
   SslClientCertInfoSize: number /* u32 */,
@@ -8922,13 +8922,13 @@ export function HttpCreateServerSession(
 }
 
 export function HttpCloseServerSession(
-  ServerSessionId: Deno.PointerValue /* u64 */,
+  ServerSessionId: bigint | number /* u64 */,
 ): number /* u32 */ {
   return libHTTPAPI_dll.HttpCloseServerSession(ServerSessionId);
 }
 
 export function HttpQueryServerSessionProperty(
-  ServerSessionId: Deno.PointerValue /* u64 */,
+  ServerSessionId: bigint | number /* u64 */,
   Property: HTTP_SERVER_PROPERTY /* Windows.Win32.Networking.HttpServer.HTTP_SERVER_PROPERTY */,
   PropertyInformation: Deno.PointerValue | Uint8Array /* ptr */,
   PropertyInformationLength: number /* u32 */,
@@ -8938,7 +8938,7 @@ export function HttpQueryServerSessionProperty(
 }
 
 export function HttpSetServerSessionProperty(
-  ServerSessionId: Deno.PointerValue /* u64 */,
+  ServerSessionId: bigint | number /* u64 */,
   Property: HTTP_SERVER_PROPERTY /* Windows.Win32.Networking.HttpServer.HTTP_SERVER_PROPERTY */,
   PropertyInformation: Deno.PointerValue | Uint8Array /* ptr */,
   PropertyInformationLength: number /* u32 */,
@@ -8962,7 +8962,7 @@ export function HttpRemoveUrl(
 }
 
 export function HttpCreateUrlGroup(
-  ServerSessionId: Deno.PointerValue /* u64 */,
+  ServerSessionId: bigint | number /* u64 */,
   pUrlGroupId: Deno.PointerValue | Uint8Array /* ptr */,
   Reserved: number /* u32 */,
 ): number /* u32 */ {
@@ -8970,22 +8970,22 @@ export function HttpCreateUrlGroup(
 }
 
 export function HttpCloseUrlGroup(
-  UrlGroupId: Deno.PointerValue /* u64 */,
+  UrlGroupId: bigint | number /* u64 */,
 ): number /* u32 */ {
   return libHTTPAPI_dll.HttpCloseUrlGroup(UrlGroupId);
 }
 
 export function HttpAddUrlToUrlGroup(
-  UrlGroupId: Deno.PointerValue /* u64 */,
+  UrlGroupId: bigint | number /* u64 */,
   pFullyQualifiedUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  UrlContext: Deno.PointerValue /* u64 */,
+  UrlContext: bigint | number /* u64 */,
   Reserved: number /* u32 */,
 ): number /* u32 */ {
   return libHTTPAPI_dll.HttpAddUrlToUrlGroup(UrlGroupId, util.pwstrToFfi(pFullyQualifiedUrl), UrlContext, Reserved);
 }
 
 export function HttpRemoveUrlFromUrlGroup(
-  UrlGroupId: Deno.PointerValue /* u64 */,
+  UrlGroupId: bigint | number /* u64 */,
   pFullyQualifiedUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
@@ -8993,7 +8993,7 @@ export function HttpRemoveUrlFromUrlGroup(
 }
 
 export function HttpSetUrlGroupProperty(
-  UrlGroupId: Deno.PointerValue /* u64 */,
+  UrlGroupId: bigint | number /* u64 */,
   Property: HTTP_SERVER_PROPERTY /* Windows.Win32.Networking.HttpServer.HTTP_SERVER_PROPERTY */,
   PropertyInformation: Deno.PointerValue | Uint8Array /* ptr */,
   PropertyInformationLength: number /* u32 */,
@@ -9002,7 +9002,7 @@ export function HttpSetUrlGroupProperty(
 }
 
 export function HttpQueryUrlGroupProperty(
-  UrlGroupId: Deno.PointerValue /* u64 */,
+  UrlGroupId: bigint | number /* u64 */,
   Property: HTTP_SERVER_PROPERTY /* Windows.Win32.Networking.HttpServer.HTTP_SERVER_PROPERTY */,
   PropertyInformation: Deno.PointerValue | Uint8Array /* ptr */,
   PropertyInformationLength: number /* u32 */,
@@ -9022,7 +9022,7 @@ export function HttpPrepareUrl(
 
 export function HttpReceiveHttpRequest(
   RequestQueueHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  RequestId: Deno.PointerValue /* u64 */,
+  RequestId: bigint | number /* u64 */,
   Flags: HTTP_RECEIVE_HTTP_REQUEST_FLAGS /* Windows.Win32.Networking.HttpServer.HTTP_RECEIVE_HTTP_REQUEST_FLAGS */,
   RequestBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   RequestBufferLength: number /* u32 */,
@@ -9034,7 +9034,7 @@ export function HttpReceiveHttpRequest(
 
 export function HttpReceiveRequestEntityBody(
   RequestQueueHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  RequestId: Deno.PointerValue /* u64 */,
+  RequestId: bigint | number /* u64 */,
   Flags: number /* u32 */,
   EntityBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   EntityBufferLength: number /* u32 */,
@@ -9046,7 +9046,7 @@ export function HttpReceiveRequestEntityBody(
 
 export function HttpSendHttpResponse(
   RequestQueueHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  RequestId: Deno.PointerValue /* u64 */,
+  RequestId: bigint | number /* u64 */,
   Flags: number /* u32 */,
   HttpResponse: Deno.PointerValue | Uint8Array /* ptr */,
   CachePolicy: Deno.PointerValue | Uint8Array /* ptr */,
@@ -9061,7 +9061,7 @@ export function HttpSendHttpResponse(
 
 export function HttpSendResponseEntityBody(
   RequestQueueHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  RequestId: Deno.PointerValue /* u64 */,
+  RequestId: bigint | number /* u64 */,
   Flags: number /* u32 */,
   EntityChunkCount: number /* u16 */,
   EntityChunks: Deno.PointerValue | Uint8Array /* ptr */,
@@ -9076,7 +9076,7 @@ export function HttpSendResponseEntityBody(
 
 export function HttpDeclarePush(
   RequestQueueHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  RequestId: Deno.PointerValue /* u64 */,
+  RequestId: bigint | number /* u64 */,
   Verb: HTTP_VERB /* Windows.Win32.Networking.HttpServer.HTTP_VERB */,
   Path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Query: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
@@ -9087,7 +9087,7 @@ export function HttpDeclarePush(
 
 export function HttpWaitForDisconnect(
   RequestQueueHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  ConnectionId: Deno.PointerValue /* u64 */,
+  ConnectionId: bigint | number /* u64 */,
   Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libHTTPAPI_dll.HttpWaitForDisconnect(util.toPointer(RequestQueueHandle), ConnectionId, util.toPointer(Overlapped));
@@ -9095,7 +9095,7 @@ export function HttpWaitForDisconnect(
 
 export function HttpWaitForDisconnectEx(
   RequestQueueHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  ConnectionId: Deno.PointerValue /* u64 */,
+  ConnectionId: bigint | number /* u64 */,
   Reserved: number /* u32 */,
   Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
@@ -9104,7 +9104,7 @@ export function HttpWaitForDisconnectEx(
 
 export function HttpCancelHttpRequest(
   RequestQueueHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  RequestId: Deno.PointerValue /* u64 */,
+  RequestId: bigint | number /* u64 */,
   Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libHTTPAPI_dll.HttpCancelHttpRequest(util.toPointer(RequestQueueHandle), RequestId, util.toPointer(Overlapped));
@@ -9126,8 +9126,8 @@ export function HttpIsFeatureSupported(
 export function HttpDelegateRequestEx(
   RequestQueueHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   DelegateQueueHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  RequestId: Deno.PointerValue /* u64 */,
-  DelegateUrlGroupId: Deno.PointerValue /* u64 */,
+  RequestId: bigint | number /* u64 */,
+  DelegateUrlGroupId: bigint | number /* u64 */,
   PropertyInfoSetSize: number /* u32 */,
   PropertyInfoSet: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {

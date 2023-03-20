@@ -705,16 +705,16 @@ export const PowerDeviceMaximum = 5;
 
 // Structs
 
-export type WHV_PARTITION_HANDLE = Deno.PointerValue;
+export type WHV_PARTITION_HANDLE = bigint | number;
 
 /**
  * _Anonymous_e__Struct (size: 16)
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -740,22 +740,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -767,7 +767,7 @@ export interface WHV_CAPABILITY_FEATURES {
   /** _Anonymous_e__Struct */
   Anonymous: Uint8Array | Deno.PointerValue;
   /** u64 */
-  AsUINT64: Deno.PointerValue;
+  AsUINT64: bigint | number;
 }
 
 export const sizeofWHV_CAPABILITY_FEATURES = 16;
@@ -799,7 +799,7 @@ export class WHV_CAPABILITY_FEATURESView {
   }
 
   // 0x08: u64
-  get AsUINT64(): Deno.PointerValue {
+  get AsUINT64(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -809,7 +809,7 @@ export class WHV_CAPABILITY_FEATURESView {
   }
 
   // 0x08: u64
-  set AsUINT64(value: Deno.PointerValue) {
+  set AsUINT64(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -821,7 +821,7 @@ export interface WHV_EXTENDED_VM_EXITS {
   /** _Anonymous_e__Struct */
   Anonymous: Uint8Array | Deno.PointerValue;
   /** u64 */
-  AsUINT64: Deno.PointerValue;
+  AsUINT64: bigint | number;
 }
 
 export const sizeofWHV_EXTENDED_VM_EXITS = 16;
@@ -853,7 +853,7 @@ export class WHV_EXTENDED_VM_EXITSView {
   }
 
   // 0x08: u64
-  get AsUINT64(): Deno.PointerValue {
+  get AsUINT64(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -863,7 +863,7 @@ export class WHV_EXTENDED_VM_EXITSView {
   }
 
   // 0x08: u64
-  set AsUINT64(value: Deno.PointerValue) {
+  set AsUINT64(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -875,7 +875,7 @@ export interface WHV_PROCESSOR_FEATURES {
   /** _Anonymous_e__Struct */
   Anonymous: Uint8Array | Deno.PointerValue;
   /** u64 */
-  AsUINT64: Deno.PointerValue;
+  AsUINT64: bigint | number;
 }
 
 export const sizeofWHV_PROCESSOR_FEATURES = 16;
@@ -907,7 +907,7 @@ export class WHV_PROCESSOR_FEATURESView {
   }
 
   // 0x08: u64
-  get AsUINT64(): Deno.PointerValue {
+  get AsUINT64(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -917,7 +917,7 @@ export class WHV_PROCESSOR_FEATURESView {
   }
 
   // 0x08: u64
-  set AsUINT64(value: Deno.PointerValue) {
+  set AsUINT64(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -929,7 +929,7 @@ export interface WHV_PROCESSOR_FEATURES1 {
   /** _Anonymous_e__Struct */
   Anonymous: Uint8Array | Deno.PointerValue;
   /** u64 */
-  AsUINT64: Deno.PointerValue;
+  AsUINT64: bigint | number;
 }
 
 export const sizeofWHV_PROCESSOR_FEATURES1 = 16;
@@ -961,7 +961,7 @@ export class WHV_PROCESSOR_FEATURES1View {
   }
 
   // 0x08: u64
-  get AsUINT64(): Deno.PointerValue {
+  get AsUINT64(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -971,7 +971,7 @@ export class WHV_PROCESSOR_FEATURES1View {
   }
 
   // 0x08: u64
-  set AsUINT64(value: Deno.PointerValue) {
+  set AsUINT64(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -1106,7 +1106,7 @@ export interface WHV_SYNTHETIC_PROCESSOR_FEATURES {
   /** _Anonymous_e__Struct */
   Anonymous: Uint8Array | Deno.PointerValue;
   /** u64 */
-  AsUINT64: Deno.PointerValue;
+  AsUINT64: bigint | number;
 }
 
 export const sizeofWHV_SYNTHETIC_PROCESSOR_FEATURES = 16;
@@ -1138,7 +1138,7 @@ export class WHV_SYNTHETIC_PROCESSOR_FEATURESView {
   }
 
   // 0x08: u64
-  get AsUINT64(): Deno.PointerValue {
+  get AsUINT64(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -1148,7 +1148,7 @@ export class WHV_SYNTHETIC_PROCESSOR_FEATURESView {
   }
 
   // 0x08: u64
-  set AsUINT64(value: Deno.PointerValue) {
+  set AsUINT64(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -1228,7 +1228,7 @@ export interface WHV_PROCESSOR_XSAVE_FEATURES {
   /** _Anonymous_e__Struct */
   Anonymous: Uint8Array | Deno.PointerValue;
   /** u64 */
-  AsUINT64: Deno.PointerValue;
+  AsUINT64: bigint | number;
 }
 
 export const sizeofWHV_PROCESSOR_XSAVE_FEATURES = 16;
@@ -1260,7 +1260,7 @@ export class WHV_PROCESSOR_XSAVE_FEATURESView {
   }
 
   // 0x08: u64
-  get AsUINT64(): Deno.PointerValue {
+  get AsUINT64(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -1270,7 +1270,7 @@ export class WHV_PROCESSOR_XSAVE_FEATURESView {
   }
 
   // 0x08: u64
-  set AsUINT64(value: Deno.PointerValue) {
+  set AsUINT64(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -1282,7 +1282,7 @@ export interface WHV_PROCESSOR_PERFMON_FEATURES {
   /** _Anonymous_e__Struct */
   Anonymous: Uint8Array | Deno.PointerValue;
   /** u64 */
-  AsUINT64: Deno.PointerValue;
+  AsUINT64: bigint | number;
 }
 
 export const sizeofWHV_PROCESSOR_PERFMON_FEATURES = 16;
@@ -1314,7 +1314,7 @@ export class WHV_PROCESSOR_PERFMON_FEATURESView {
   }
 
   // 0x08: u64
-  get AsUINT64(): Deno.PointerValue {
+  get AsUINT64(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -1324,7 +1324,7 @@ export class WHV_PROCESSOR_PERFMON_FEATURESView {
   }
 
   // 0x08: u64
-  set AsUINT64(value: Deno.PointerValue) {
+  set AsUINT64(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -1334,7 +1334,7 @@ export class WHV_PROCESSOR_PERFMON_FEATURESView {
  */
 export interface WHV_X64_MSR_EXIT_BITMAP {
   /** u64 */
-  AsUINT64: Deno.PointerValue;
+  AsUINT64: bigint | number;
   /** _Anonymous_e__Struct */
   Anonymous: Uint8Array | Deno.PointerValue;
 }
@@ -1362,7 +1362,7 @@ export class WHV_X64_MSR_EXIT_BITMAPView {
   }
 
   // 0x00: u64
-  get AsUINT64(): Deno.PointerValue {
+  get AsUINT64(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -1373,7 +1373,7 @@ export class WHV_X64_MSR_EXIT_BITMAPView {
   }
 
   // 0x00: u64
-  set AsUINT64(value: Deno.PointerValue) {
+  set AsUINT64(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -1388,9 +1388,9 @@ export class WHV_X64_MSR_EXIT_BITMAPView {
  */
 export interface WHV_MEMORY_RANGE_ENTRY {
   /** u64 */
-  GuestAddress: Deno.PointerValue;
+  GuestAddress: bigint | number;
   /** u64 */
-  SizeInBytes: Deno.PointerValue;
+  SizeInBytes: bigint | number;
 }
 
 export const sizeofWHV_MEMORY_RANGE_ENTRY = 16;
@@ -1416,22 +1416,22 @@ export class WHV_MEMORY_RANGE_ENTRYView {
   }
 
   // 0x00: u64
-  get GuestAddress(): Deno.PointerValue {
+  get GuestAddress(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get SizeInBytes(): Deno.PointerValue {
+  get SizeInBytes(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set GuestAddress(value: Deno.PointerValue) {
+  set GuestAddress(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set SizeInBytes(value: Deno.PointerValue) {
+  set SizeInBytes(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -1661,7 +1661,7 @@ export interface WHV_SCHEDULER_FEATURES {
   /** _Anonymous_e__Struct */
   Anonymous: Uint8Array | Deno.PointerValue;
   /** u64 */
-  AsUINT64: Deno.PointerValue;
+  AsUINT64: bigint | number;
 }
 
 export const sizeofWHV_SCHEDULER_FEATURES = 16;
@@ -1693,7 +1693,7 @@ export class WHV_SCHEDULER_FEATURESView {
   }
 
   // 0x08: u64
-  get AsUINT64(): Deno.PointerValue {
+  get AsUINT64(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -1703,7 +1703,7 @@ export class WHV_SCHEDULER_FEATURESView {
   }
 
   // 0x08: u64
-  set AsUINT64(value: Deno.PointerValue) {
+  set AsUINT64(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -1731,13 +1731,13 @@ export interface WHV_CAPABILITY {
   /** u8 */
   ProcessorClFlushSize: number;
   /** u64 */
-  ExceptionExitBitmap: Deno.PointerValue;
+  ExceptionExitBitmap: bigint | number;
   /** Windows.Win32.System.Hypervisor.WHV_X64_MSR_EXIT_BITMAP */
   X64MsrExitBitmap: Uint8Array | Deno.PointerValue;
   /** u64 */
-  ProcessorClockFrequency: Deno.PointerValue;
+  ProcessorClockFrequency: bigint | number;
   /** u64 */
-  InterruptClockFrequency: Deno.PointerValue;
+  InterruptClockFrequency: bigint | number;
   /** Windows.Win32.System.Hypervisor.WHV_PROCESSOR_FEATURES_BANKS */
   ProcessorFeaturesBanks: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Hypervisor.WHV_ADVISE_GPA_RANGE_POPULATE_FLAGS */
@@ -1857,7 +1857,7 @@ export class WHV_CAPABILITYView {
   // 0x39: pad7
 
   // 0x40: u64
-  get ExceptionExitBitmap(): Deno.PointerValue {
+  get ExceptionExitBitmap(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
@@ -1868,12 +1868,12 @@ export class WHV_CAPABILITYView {
   }
 
   // 0x50: u64
-  get ProcessorClockFrequency(): Deno.PointerValue {
+  get ProcessorClockFrequency(): bigint | number {
     return Number(this.view.getBigUint64(80, true));
   }
 
   // 0x58: u64
-  get InterruptClockFrequency(): Deno.PointerValue {
+  get InterruptClockFrequency(): bigint | number {
     return Number(this.view.getBigUint64(88, true));
   }
 
@@ -1954,7 +1954,7 @@ export class WHV_CAPABILITYView {
   // 0x39: pad7
 
   // 0x40: u64
-  set ExceptionExitBitmap(value: Deno.PointerValue) {
+  set ExceptionExitBitmap(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
@@ -1964,12 +1964,12 @@ export class WHV_CAPABILITYView {
   }
 
   // 0x50: u64
-  set ProcessorClockFrequency(value: Deno.PointerValue) {
+  set ProcessorClockFrequency(value: bigint | number) {
     this.view.setBigUint64(80, BigInt(value), true);
   }
 
   // 0x58: u64
-  set InterruptClockFrequency(value: Deno.PointerValue) {
+  set InterruptClockFrequency(value: bigint | number) {
     this.view.setBigUint64(88, BigInt(value), true);
   }
 
@@ -2414,7 +2414,7 @@ export interface WHV_PARTITION_PROPERTY {
   /** Windows.Win32.System.Hypervisor.WHV_MSR_ACTION */
   UnimplementedMsrAction: WHV_MSR_ACTION;
   /** u64 */
-  ExceptionExitBitmap: Deno.PointerValue;
+  ExceptionExitBitmap: bigint | number;
   /** Windows.Win32.System.Hypervisor.WHV_X64_LOCAL_APIC_EMULATION_MODE */
   LocalApicEmulationMode: WHV_X64_LOCAL_APIC_EMULATION_MODE;
   /** Windows.Win32.Foundation.BOOL */
@@ -2424,15 +2424,15 @@ export interface WHV_PARTITION_PROPERTY {
   /** Windows.Win32.System.Hypervisor.WHV_X64_MSR_EXIT_BITMAP */
   X64MsrExitBitmap: Uint8Array | Deno.PointerValue;
   /** u64 */
-  ProcessorClockFrequency: Deno.PointerValue;
+  ProcessorClockFrequency: bigint | number;
   /** u64 */
-  InterruptClockFrequency: Deno.PointerValue;
+  InterruptClockFrequency: bigint | number;
   /** Windows.Win32.Foundation.BOOL */
   ApicRemoteRead: boolean;
   /** Windows.Win32.System.Hypervisor.WHV_PROCESSOR_FEATURES_BANKS */
   ProcessorFeaturesBanks: Uint8Array | Deno.PointerValue;
   /** u64 */
-  ReferenceTime: Deno.PointerValue;
+  ReferenceTime: bigint | number;
   /** u16 */
   PrimaryNumaNode: number;
   /** u32 */
@@ -2442,7 +2442,7 @@ export interface WHV_PARTITION_PROPERTY {
   /** u32 */
   CpuWeight: number;
   /** u64 */
-  CpuGroupId: Deno.PointerValue;
+  CpuGroupId: bigint | number;
   /** u32 */
   ProcessorFrequencyCap: number;
   /** Windows.Win32.Foundation.BOOL */
@@ -2605,7 +2605,7 @@ export class WHV_PARTITION_PROPERTYView {
   // 0x4c: pad4
 
   // 0x50: u64
-  get ExceptionExitBitmap(): Deno.PointerValue {
+  get ExceptionExitBitmap(): bigint | number {
     return Number(this.view.getBigUint64(80, true));
   }
 
@@ -2633,12 +2633,12 @@ export class WHV_PARTITION_PROPERTYView {
   }
 
   // 0x70: u64
-  get ProcessorClockFrequency(): Deno.PointerValue {
+  get ProcessorClockFrequency(): bigint | number {
     return Number(this.view.getBigUint64(112, true));
   }
 
   // 0x78: u64
-  get InterruptClockFrequency(): Deno.PointerValue {
+  get InterruptClockFrequency(): bigint | number {
     return Number(this.view.getBigUint64(120, true));
   }
 
@@ -2656,7 +2656,7 @@ export class WHV_PARTITION_PROPERTYView {
   }
 
   // 0x90: u64
-  get ReferenceTime(): Deno.PointerValue {
+  get ReferenceTime(): bigint | number {
     return Number(this.view.getBigUint64(144, true));
   }
 
@@ -2683,7 +2683,7 @@ export class WHV_PARTITION_PROPERTYView {
   // 0xa6: pad2
 
   // 0xa8: u64
-  get CpuGroupId(): Deno.PointerValue {
+  get CpuGroupId(): bigint | number {
     return Number(this.view.getBigUint64(168, true));
   }
 
@@ -2770,7 +2770,7 @@ export class WHV_PARTITION_PROPERTYView {
   // 0x4c: pad4
 
   // 0x50: u64
-  set ExceptionExitBitmap(value: Deno.PointerValue) {
+  set ExceptionExitBitmap(value: bigint | number) {
     this.view.setBigUint64(80, BigInt(value), true);
   }
 
@@ -2797,12 +2797,12 @@ export class WHV_PARTITION_PROPERTYView {
   }
 
   // 0x70: u64
-  set ProcessorClockFrequency(value: Deno.PointerValue) {
+  set ProcessorClockFrequency(value: bigint | number) {
     this.view.setBigUint64(112, BigInt(value), true);
   }
 
   // 0x78: u64
-  set InterruptClockFrequency(value: Deno.PointerValue) {
+  set InterruptClockFrequency(value: bigint | number) {
     this.view.setBigUint64(120, BigInt(value), true);
   }
 
@@ -2819,7 +2819,7 @@ export class WHV_PARTITION_PROPERTYView {
   }
 
   // 0x90: u64
-  set ReferenceTime(value: Deno.PointerValue) {
+  set ReferenceTime(value: bigint | number) {
     this.view.setBigUint64(144, BigInt(value), true);
   }
 
@@ -2846,7 +2846,7 @@ export class WHV_PARTITION_PROPERTYView {
   // 0xa6: pad2
 
   // 0xa8: u64
-  set CpuGroupId(value: Deno.PointerValue) {
+  set CpuGroupId(value: bigint | number) {
     this.view.setBigUint64(168, BigInt(value), true);
   }
 
@@ -2971,7 +2971,7 @@ export class WHV_ADVISE_GPA_RANGEView {
  */
 export interface WHV_ACCESS_GPA_CONTROLS {
   /** u64 */
-  AsUINT64: Deno.PointerValue;
+  AsUINT64: bigint | number;
   /** _Anonymous_e__Struct */
   Anonymous: Uint8Array | Deno.PointerValue;
 }
@@ -2999,7 +2999,7 @@ export class WHV_ACCESS_GPA_CONTROLSView {
   }
 
   // 0x00: u64
-  get AsUINT64(): Deno.PointerValue {
+  get AsUINT64(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -3010,7 +3010,7 @@ export class WHV_ACCESS_GPA_CONTROLSView {
   }
 
   // 0x00: u64
-  set AsUINT64(value: Deno.PointerValue) {
+  set AsUINT64(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -3245,7 +3245,7 @@ export class WHV_X64_XMM_CONTROL_STATUS_REGISTERView {
  */
 export interface WHV_X64_SEGMENT_REGISTER {
   /** u64 */
-  Base: Deno.PointerValue;
+  Base: bigint | number;
   /** u32 */
   Limit: number;
   /** u16 */
@@ -3282,7 +3282,7 @@ export class WHV_X64_SEGMENT_REGISTERView {
   }
 
   // 0x00: u64
-  get Base(): Deno.PointerValue {
+  get Base(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -3305,7 +3305,7 @@ export class WHV_X64_SEGMENT_REGISTERView {
   }
 
   // 0x00: u64
-  set Base(value: Deno.PointerValue) {
+  set Base(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -3336,7 +3336,7 @@ export interface WHV_X64_TABLE_REGISTER {
   /** u16 */
   Limit: number;
   /** u64 */
-  Base: Deno.PointerValue;
+  Base: bigint | number;
 }
 
 export const sizeofWHV_X64_TABLE_REGISTER = 24;
@@ -3378,7 +3378,7 @@ export class WHV_X64_TABLE_REGISTERView {
   // 0x0a: pad6
 
   // 0x10: u64
-  get Base(): Deno.PointerValue {
+  get Base(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -3395,7 +3395,7 @@ export class WHV_X64_TABLE_REGISTERView {
   // 0x0a: pad6
 
   // 0x10: u64
-  set Base(value: Deno.PointerValue) {
+  set Base(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -3407,7 +3407,7 @@ export interface WHV_X64_INTERRUPT_STATE_REGISTER {
   /** _Anonymous_e__Struct */
   Anonymous: Uint8Array | Deno.PointerValue;
   /** u64 */
-  AsUINT64: Deno.PointerValue;
+  AsUINT64: bigint | number;
 }
 
 export const sizeofWHV_X64_INTERRUPT_STATE_REGISTER = 16;
@@ -3439,7 +3439,7 @@ export class WHV_X64_INTERRUPT_STATE_REGISTERView {
   }
 
   // 0x08: u64
-  get AsUINT64(): Deno.PointerValue {
+  get AsUINT64(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -3449,7 +3449,7 @@ export class WHV_X64_INTERRUPT_STATE_REGISTERView {
   }
 
   // 0x08: u64
-  set AsUINT64(value: Deno.PointerValue) {
+  set AsUINT64(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -3461,7 +3461,7 @@ export interface WHV_X64_PENDING_INTERRUPTION_REGISTER {
   /** _Anonymous_e__Struct */
   Anonymous: Uint8Array | Deno.PointerValue;
   /** u64 */
-  AsUINT64: Deno.PointerValue;
+  AsUINT64: bigint | number;
 }
 
 export const sizeofWHV_X64_PENDING_INTERRUPTION_REGISTER = 16;
@@ -3493,7 +3493,7 @@ export class WHV_X64_PENDING_INTERRUPTION_REGISTERView {
   }
 
   // 0x08: u64
-  get AsUINT64(): Deno.PointerValue {
+  get AsUINT64(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -3503,7 +3503,7 @@ export class WHV_X64_PENDING_INTERRUPTION_REGISTERView {
   }
 
   // 0x08: u64
-  set AsUINT64(value: Deno.PointerValue) {
+  set AsUINT64(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -3515,7 +3515,7 @@ export interface WHV_X64_DELIVERABILITY_NOTIFICATIONS_REGISTER {
   /** _Anonymous_e__Struct */
   Anonymous: Uint8Array | Deno.PointerValue;
   /** u64 */
-  AsUINT64: Deno.PointerValue;
+  AsUINT64: bigint | number;
 }
 
 export const sizeofWHV_X64_DELIVERABILITY_NOTIFICATIONS_REGISTER = 16;
@@ -3547,7 +3547,7 @@ export class WHV_X64_DELIVERABILITY_NOTIFICATIONS_REGISTERView {
   }
 
   // 0x08: u64
-  get AsUINT64(): Deno.PointerValue {
+  get AsUINT64(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -3557,7 +3557,7 @@ export class WHV_X64_DELIVERABILITY_NOTIFICATIONS_REGISTERView {
   }
 
   // 0x08: u64
-  set AsUINT64(value: Deno.PointerValue) {
+  set AsUINT64(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -3679,7 +3679,7 @@ export interface WHV_INTERNAL_ACTIVITY_REGISTER {
   /** _Anonymous_e__Struct */
   Anonymous: Uint8Array | Deno.PointerValue;
   /** u64 */
-  AsUINT64: Deno.PointerValue;
+  AsUINT64: bigint | number;
 }
 
 export const sizeofWHV_INTERNAL_ACTIVITY_REGISTER = 16;
@@ -3711,7 +3711,7 @@ export class WHV_INTERNAL_ACTIVITY_REGISTERView {
   }
 
   // 0x08: u64
-  get AsUINT64(): Deno.PointerValue {
+  get AsUINT64(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -3721,7 +3721,7 @@ export class WHV_INTERNAL_ACTIVITY_REGISTERView {
   }
 
   // 0x08: u64
-  set AsUINT64(value: Deno.PointerValue) {
+  set AsUINT64(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -3731,7 +3731,7 @@ export class WHV_INTERNAL_ACTIVITY_REGISTERView {
  */
 export interface WHV_X64_PENDING_DEBUG_EXCEPTION {
   /** u64 */
-  AsUINT64: Deno.PointerValue;
+  AsUINT64: bigint | number;
   /** _Anonymous_e__Struct */
   Anonymous: Uint8Array | Deno.PointerValue;
 }
@@ -3759,7 +3759,7 @@ export class WHV_X64_PENDING_DEBUG_EXCEPTIONView {
   }
 
   // 0x00: u64
-  get AsUINT64(): Deno.PointerValue {
+  get AsUINT64(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -3770,7 +3770,7 @@ export class WHV_X64_PENDING_DEBUG_EXCEPTIONView {
   }
 
   // 0x00: u64
-  set AsUINT64(value: Deno.PointerValue) {
+  set AsUINT64(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -3854,7 +3854,7 @@ export interface WHV_REGISTER_VALUE {
   /** Windows.Win32.System.Hypervisor.WHV_UINT128 */
   Reg128: Uint8Array | Deno.PointerValue;
   /** u64 */
-  Reg64: Deno.PointerValue;
+  Reg64: bigint | number;
   /** u32 */
   Reg32: number;
   /** u16 */
@@ -3947,7 +3947,7 @@ export class WHV_REGISTER_VALUEView {
   }
 
   // 0x08: u64
-  get Reg64(): Deno.PointerValue {
+  get Reg64(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -4046,7 +4046,7 @@ export class WHV_REGISTER_VALUEView {
   }
 
   // 0x08: u64
-  set Reg64(value: Deno.PointerValue) {
+  set Reg64(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -4202,9 +4202,9 @@ export interface WHV_VP_EXIT_CONTEXT {
   /** Windows.Win32.System.Hypervisor.WHV_X64_SEGMENT_REGISTER */
   Cs: Uint8Array | Deno.PointerValue;
   /** u64 */
-  Rip: Deno.PointerValue;
+  Rip: bigint | number;
   /** u64 */
-  Rflags: Deno.PointerValue;
+  Rflags: bigint | number;
 }
 
 export const sizeofWHV_VP_EXIT_CONTEXT = 40;
@@ -4270,12 +4270,12 @@ export class WHV_VP_EXIT_CONTEXTView {
   }
 
   // 0x18: u64
-  get Rip(): Deno.PointerValue {
+  get Rip(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get Rflags(): Deno.PointerValue {
+  get Rflags(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -4307,12 +4307,12 @@ export class WHV_VP_EXIT_CONTEXTView {
   }
 
   // 0x18: u64
-  set Rip(value: Deno.PointerValue) {
+  set Rip(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set Rflags(value: Deno.PointerValue) {
+  set Rflags(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 }
@@ -4389,9 +4389,9 @@ export interface WHV_MEMORY_ACCESS_CONTEXT {
   /** Windows.Win32.System.Hypervisor.WHV_MEMORY_ACCESS_INFO */
   AccessInfo: Uint8Array | Deno.PointerValue;
   /** u64 */
-  Gpa: Deno.PointerValue;
+  Gpa: bigint | number;
   /** u64 */
-  Gva: Deno.PointerValue;
+  Gva: bigint | number;
 }
 
 export const sizeofWHV_MEMORY_ACCESS_CONTEXT = 48;
@@ -4451,12 +4451,12 @@ export class WHV_MEMORY_ACCESS_CONTEXTView {
   }
 
   // 0x20: u64
-  get Gpa(): Deno.PointerValue {
+  get Gpa(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: u64
-  get Gva(): Deno.PointerValue {
+  get Gva(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -4483,12 +4483,12 @@ export class WHV_MEMORY_ACCESS_CONTEXTView {
   }
 
   // 0x20: u64
-  set Gpa(value: Deno.PointerValue) {
+  set Gpa(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: u64
-  set Gva(value: Deno.PointerValue) {
+  set Gva(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 }
@@ -4569,13 +4569,13 @@ export interface WHV_X64_IO_PORT_ACCESS_CONTEXT {
   /** array */
   Reserved2: Deno.PointerValue;
   /** u64 */
-  Rax: Deno.PointerValue;
+  Rax: bigint | number;
   /** u64 */
-  Rcx: Deno.PointerValue;
+  Rcx: bigint | number;
   /** u64 */
-  Rsi: Deno.PointerValue;
+  Rsi: bigint | number;
   /** u64 */
-  Rdi: Deno.PointerValue;
+  Rdi: bigint | number;
   /** Windows.Win32.System.Hypervisor.WHV_X64_SEGMENT_REGISTER */
   Ds: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.Hypervisor.WHV_X64_SEGMENT_REGISTER */
@@ -4665,22 +4665,22 @@ export class WHV_X64_IO_PORT_ACCESS_CONTEXTView {
   }
 
   // 0x30: u64
-  get Rax(): Deno.PointerValue {
+  get Rax(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: u64
-  get Rcx(): Deno.PointerValue {
+  get Rcx(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
   // 0x40: u64
-  get Rsi(): Deno.PointerValue {
+  get Rsi(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
   // 0x48: u64
-  get Rdi(): Deno.PointerValue {
+  get Rdi(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
@@ -4731,22 +4731,22 @@ export class WHV_X64_IO_PORT_ACCESS_CONTEXTView {
   }
 
   // 0x30: u64
-  set Rax(value: Deno.PointerValue) {
+  set Rax(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: u64
-  set Rcx(value: Deno.PointerValue) {
+  set Rcx(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
   // 0x40: u64
-  set Rsi(value: Deno.PointerValue) {
+  set Rsi(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
   // 0x48: u64
-  set Rdi(value: Deno.PointerValue) {
+  set Rdi(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
@@ -4829,9 +4829,9 @@ export interface WHV_X64_MSR_ACCESS_CONTEXT {
   /** u32 */
   MsrNumber: number;
   /** u64 */
-  Rax: Deno.PointerValue;
+  Rax: bigint | number;
   /** u64 */
-  Rdx: Deno.PointerValue;
+  Rdx: bigint | number;
 }
 
 export const sizeofWHV_X64_MSR_ACCESS_CONTEXT = 32;
@@ -4875,12 +4875,12 @@ export class WHV_X64_MSR_ACCESS_CONTEXTView {
   // 0x0c: pad4
 
   // 0x10: u64
-  get Rax(): Deno.PointerValue {
+  get Rax(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get Rdx(): Deno.PointerValue {
+  get Rdx(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -4897,12 +4897,12 @@ export class WHV_X64_MSR_ACCESS_CONTEXTView {
   // 0x0c: pad4
 
   // 0x10: u64
-  set Rax(value: Deno.PointerValue) {
+  set Rax(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set Rdx(value: Deno.PointerValue) {
+  set Rdx(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 }
@@ -4912,21 +4912,21 @@ export class WHV_X64_MSR_ACCESS_CONTEXTView {
  */
 export interface WHV_X64_CPUID_ACCESS_CONTEXT {
   /** u64 */
-  Rax: Deno.PointerValue;
+  Rax: bigint | number;
   /** u64 */
-  Rcx: Deno.PointerValue;
+  Rcx: bigint | number;
   /** u64 */
-  Rdx: Deno.PointerValue;
+  Rdx: bigint | number;
   /** u64 */
-  Rbx: Deno.PointerValue;
+  Rbx: bigint | number;
   /** u64 */
-  DefaultResultRax: Deno.PointerValue;
+  DefaultResultRax: bigint | number;
   /** u64 */
-  DefaultResultRcx: Deno.PointerValue;
+  DefaultResultRcx: bigint | number;
   /** u64 */
-  DefaultResultRdx: Deno.PointerValue;
+  DefaultResultRdx: bigint | number;
   /** u64 */
-  DefaultResultRbx: Deno.PointerValue;
+  DefaultResultRbx: bigint | number;
 }
 
 export const sizeofWHV_X64_CPUID_ACCESS_CONTEXT = 64;
@@ -4964,82 +4964,82 @@ export class WHV_X64_CPUID_ACCESS_CONTEXTView {
   }
 
   // 0x00: u64
-  get Rax(): Deno.PointerValue {
+  get Rax(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Rcx(): Deno.PointerValue {
+  get Rcx(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get Rdx(): Deno.PointerValue {
+  get Rdx(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get Rbx(): Deno.PointerValue {
+  get Rbx(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get DefaultResultRax(): Deno.PointerValue {
+  get DefaultResultRax(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: u64
-  get DefaultResultRcx(): Deno.PointerValue {
+  get DefaultResultRcx(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: u64
-  get DefaultResultRdx(): Deno.PointerValue {
+  get DefaultResultRdx(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: u64
-  get DefaultResultRbx(): Deno.PointerValue {
+  get DefaultResultRbx(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
   // 0x00: u64
-  set Rax(value: Deno.PointerValue) {
+  set Rax(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Rcx(value: Deno.PointerValue) {
+  set Rcx(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set Rdx(value: Deno.PointerValue) {
+  set Rdx(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set Rbx(value: Deno.PointerValue) {
+  set Rbx(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set DefaultResultRax(value: Deno.PointerValue) {
+  set DefaultResultRax(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: u64
-  set DefaultResultRcx(value: Deno.PointerValue) {
+  set DefaultResultRcx(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: u64
-  set DefaultResultRdx(value: Deno.PointerValue) {
+  set DefaultResultRdx(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: u64
-  set DefaultResultRbx(value: Deno.PointerValue) {
+  set DefaultResultRbx(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 }
@@ -5122,7 +5122,7 @@ export interface WHV_VP_EXCEPTION_CONTEXT {
   /** u32 */
   ErrorCode: number;
   /** u64 */
-  ExceptionParameter: Deno.PointerValue;
+  ExceptionParameter: bigint | number;
 }
 
 export const sizeofWHV_VP_EXCEPTION_CONTEXT = 64;
@@ -5208,7 +5208,7 @@ export class WHV_VP_EXCEPTION_CONTEXTView {
   // 0x34: pad4
 
   // 0x38: u64
-  get ExceptionParameter(): Deno.PointerValue {
+  get ExceptionParameter(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
@@ -5254,7 +5254,7 @@ export class WHV_VP_EXCEPTION_CONTEXTView {
   // 0x34: pad4
 
   // 0x38: u64
-  set ExceptionParameter(value: Deno.PointerValue) {
+  set ExceptionParameter(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 }
@@ -5268,7 +5268,7 @@ export interface WHV_X64_UNSUPPORTED_FEATURE_CONTEXT {
   /** u32 */
   Reserved: number;
   /** u64 */
-  FeatureParameter: Deno.PointerValue;
+  FeatureParameter: bigint | number;
 }
 
 export const sizeofWHV_X64_UNSUPPORTED_FEATURE_CONTEXT = 16;
@@ -5306,7 +5306,7 @@ export class WHV_X64_UNSUPPORTED_FEATURE_CONTEXTView {
   }
 
   // 0x08: u64
-  get FeatureParameter(): Deno.PointerValue {
+  get FeatureParameter(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -5321,7 +5321,7 @@ export class WHV_X64_UNSUPPORTED_FEATURE_CONTEXTView {
   }
 
   // 0x08: u64
-  set FeatureParameter(value: Deno.PointerValue) {
+  set FeatureParameter(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -5465,7 +5465,7 @@ export interface WHV_X64_RDTSC_INFO {
   /** _Anonymous_e__Struct */
   Anonymous: Uint8Array | Deno.PointerValue;
   /** u64 */
-  AsUINT64: Deno.PointerValue;
+  AsUINT64: bigint | number;
 }
 
 export const sizeofWHV_X64_RDTSC_INFO = 16;
@@ -5497,7 +5497,7 @@ export class WHV_X64_RDTSC_INFOView {
   }
 
   // 0x08: u64
-  get AsUINT64(): Deno.PointerValue {
+  get AsUINT64(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -5507,7 +5507,7 @@ export class WHV_X64_RDTSC_INFOView {
   }
 
   // 0x08: u64
-  set AsUINT64(value: Deno.PointerValue) {
+  set AsUINT64(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -5517,13 +5517,13 @@ export class WHV_X64_RDTSC_INFOView {
  */
 export interface WHV_X64_RDTSC_CONTEXT {
   /** u64 */
-  TscAux: Deno.PointerValue;
+  TscAux: bigint | number;
   /** u64 */
-  VirtualOffset: Deno.PointerValue;
+  VirtualOffset: bigint | number;
   /** u64 */
-  Tsc: Deno.PointerValue;
+  Tsc: bigint | number;
   /** u64 */
-  ReferenceTime: Deno.PointerValue;
+  ReferenceTime: bigint | number;
   /** Windows.Win32.System.Hypervisor.WHV_X64_RDTSC_INFO */
   RdtscInfo: Uint8Array | Deno.PointerValue;
 }
@@ -5557,22 +5557,22 @@ export class WHV_X64_RDTSC_CONTEXTView {
   }
 
   // 0x00: u64
-  get TscAux(): Deno.PointerValue {
+  get TscAux(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get VirtualOffset(): Deno.PointerValue {
+  get VirtualOffset(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get Tsc(): Deno.PointerValue {
+  get Tsc(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get ReferenceTime(): Deno.PointerValue {
+  get ReferenceTime(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -5583,22 +5583,22 @@ export class WHV_X64_RDTSC_CONTEXTView {
   }
 
   // 0x00: u64
-  set TscAux(value: Deno.PointerValue) {
+  set TscAux(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set VirtualOffset(value: Deno.PointerValue) {
+  set VirtualOffset(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set Tsc(value: Deno.PointerValue) {
+  set Tsc(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set ReferenceTime(value: Deno.PointerValue) {
+  set ReferenceTime(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -5613,7 +5613,7 @@ export class WHV_X64_RDTSC_CONTEXTView {
  */
 export interface WHV_X64_APIC_SMI_CONTEXT {
   /** u64 */
-  ApicIcr: Deno.PointerValue;
+  ApicIcr: bigint | number;
 }
 
 export const sizeofWHV_X64_APIC_SMI_CONTEXT = 8;
@@ -5637,12 +5637,12 @@ export class WHV_X64_APIC_SMI_CONTEXTView {
   }
 
   // 0x00: u64
-  get ApicIcr(): Deno.PointerValue {
+  get ApicIcr(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: u64
-  set ApicIcr(value: Deno.PointerValue) {
+  set ApicIcr(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -5652,21 +5652,21 @@ export class WHV_X64_APIC_SMI_CONTEXTView {
  */
 export interface WHV_HYPERCALL_CONTEXT {
   /** u64 */
-  Rax: Deno.PointerValue;
+  Rax: bigint | number;
   /** u64 */
-  Rbx: Deno.PointerValue;
+  Rbx: bigint | number;
   /** u64 */
-  Rcx: Deno.PointerValue;
+  Rcx: bigint | number;
   /** u64 */
-  Rdx: Deno.PointerValue;
+  Rdx: bigint | number;
   /** u64 */
-  R8: Deno.PointerValue;
+  R8: bigint | number;
   /** u64 */
-  Rsi: Deno.PointerValue;
+  Rsi: bigint | number;
   /** u64 */
-  Rdi: Deno.PointerValue;
+  Rdi: bigint | number;
   /** u64 */
-  Reserved0: Deno.PointerValue;
+  Reserved0: bigint | number;
   /** array */
   XmmRegisters: Deno.PointerValue;
   /** array */
@@ -5712,42 +5712,42 @@ export class WHV_HYPERCALL_CONTEXTView {
   }
 
   // 0x00: u64
-  get Rax(): Deno.PointerValue {
+  get Rax(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Rbx(): Deno.PointerValue {
+  get Rbx(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get Rcx(): Deno.PointerValue {
+  get Rcx(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get Rdx(): Deno.PointerValue {
+  get Rdx(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get R8(): Deno.PointerValue {
+  get R8(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: u64
-  get Rsi(): Deno.PointerValue {
+  get Rsi(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: u64
-  get Rdi(): Deno.PointerValue {
+  get Rdi(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: u64
-  get Reserved0(): Deno.PointerValue {
+  get Reserved0(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
@@ -5764,42 +5764,42 @@ export class WHV_HYPERCALL_CONTEXTView {
   }
 
   // 0x00: u64
-  set Rax(value: Deno.PointerValue) {
+  set Rax(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Rbx(value: Deno.PointerValue) {
+  set Rbx(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set Rcx(value: Deno.PointerValue) {
+  set Rcx(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set Rdx(value: Deno.PointerValue) {
+  set Rdx(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set R8(value: Deno.PointerValue) {
+  set R8(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: u64
-  set Rsi(value: Deno.PointerValue) {
+  set Rsi(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: u64
-  set Rdi(value: Deno.PointerValue) {
+  set Rdi(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: u64
-  set Reserved0(value: Deno.PointerValue) {
+  set Reserved0(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
@@ -5819,7 +5819,7 @@ export class WHV_HYPERCALL_CONTEXTView {
  */
 export interface WHV_X64_APIC_INIT_SIPI_CONTEXT {
   /** u64 */
-  ApicIcr: Deno.PointerValue;
+  ApicIcr: bigint | number;
 }
 
 export const sizeofWHV_X64_APIC_INIT_SIPI_CONTEXT = 8;
@@ -5843,12 +5843,12 @@ export class WHV_X64_APIC_INIT_SIPI_CONTEXTView {
   }
 
   // 0x00: u64
-  get ApicIcr(): Deno.PointerValue {
+  get ApicIcr(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: u64
-  set ApicIcr(value: Deno.PointerValue) {
+  set ApicIcr(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -5862,7 +5862,7 @@ export interface WHV_X64_APIC_WRITE_CONTEXT {
   /** u32 */
   Reserved: number;
   /** u64 */
-  WriteValue: Deno.PointerValue;
+  WriteValue: bigint | number;
 }
 
 export const sizeofWHV_X64_APIC_WRITE_CONTEXT = 16;
@@ -5900,7 +5900,7 @@ export class WHV_X64_APIC_WRITE_CONTEXTView {
   }
 
   // 0x08: u64
-  get WriteValue(): Deno.PointerValue {
+  get WriteValue(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -5915,7 +5915,7 @@ export class WHV_X64_APIC_WRITE_CONTEXTView {
   }
 
   // 0x08: u64
-  set WriteValue(value: Deno.PointerValue) {
+  set WriteValue(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -6008,7 +6008,7 @@ export class WHV_RUN_VP_EXIT_CONTEXTView {
  */
 export interface WHV_INTERRUPT_CONTROL {
   /** u64 */
-  _bitfield: Deno.PointerValue;
+  _bitfield: bigint | number;
   /** u32 */
   Destination: number;
   /** u32 */
@@ -6040,7 +6040,7 @@ export class WHV_INTERRUPT_CONTROLView {
   }
 
   // 0x00: u64
-  get _bitfield(): Deno.PointerValue {
+  get _bitfield(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -6055,7 +6055,7 @@ export class WHV_INTERRUPT_CONTROLView {
   }
 
   // 0x00: u64
-  set _bitfield(value: Deno.PointerValue) {
+  set _bitfield(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -6075,9 +6075,9 @@ export class WHV_INTERRUPT_CONTROLView {
  */
 export interface WHV_DOORBELL_MATCH_DATA {
   /** u64 */
-  GuestAddress: Deno.PointerValue;
+  GuestAddress: bigint | number;
   /** u64 */
-  Value: Deno.PointerValue;
+  Value: bigint | number;
   /** u32 */
   Length: number;
   /** u32 */
@@ -6111,12 +6111,12 @@ export class WHV_DOORBELL_MATCH_DATAView {
   }
 
   // 0x00: u64
-  get GuestAddress(): Deno.PointerValue {
+  get GuestAddress(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Value(): Deno.PointerValue {
+  get Value(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -6131,12 +6131,12 @@ export class WHV_DOORBELL_MATCH_DATAView {
   }
 
   // 0x00: u64
-  set GuestAddress(value: Deno.PointerValue) {
+  set GuestAddress(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Value(value: Deno.PointerValue) {
+  set Value(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -6156,11 +6156,11 @@ export class WHV_DOORBELL_MATCH_DATAView {
  */
 export interface WHV_PARTITION_MEMORY_COUNTERS {
   /** u64 */
-  Mapped4KPageCount: Deno.PointerValue;
+  Mapped4KPageCount: bigint | number;
   /** u64 */
-  Mapped2MPageCount: Deno.PointerValue;
+  Mapped2MPageCount: bigint | number;
   /** u64 */
-  Mapped1GPageCount: Deno.PointerValue;
+  Mapped1GPageCount: bigint | number;
 }
 
 export const sizeofWHV_PARTITION_MEMORY_COUNTERS = 24;
@@ -6188,32 +6188,32 @@ export class WHV_PARTITION_MEMORY_COUNTERSView {
   }
 
   // 0x00: u64
-  get Mapped4KPageCount(): Deno.PointerValue {
+  get Mapped4KPageCount(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Mapped2MPageCount(): Deno.PointerValue {
+  get Mapped2MPageCount(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get Mapped1GPageCount(): Deno.PointerValue {
+  get Mapped1GPageCount(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x00: u64
-  set Mapped4KPageCount(value: Deno.PointerValue) {
+  set Mapped4KPageCount(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Mapped2MPageCount(value: Deno.PointerValue) {
+  set Mapped2MPageCount(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set Mapped1GPageCount(value: Deno.PointerValue) {
+  set Mapped1GPageCount(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -6223,9 +6223,9 @@ export class WHV_PARTITION_MEMORY_COUNTERSView {
  */
 export interface WHV_PROCESSOR_RUNTIME_COUNTERS {
   /** u64 */
-  TotalRuntime100ns: Deno.PointerValue;
+  TotalRuntime100ns: bigint | number;
   /** u64 */
-  HypervisorRuntime100ns: Deno.PointerValue;
+  HypervisorRuntime100ns: bigint | number;
 }
 
 export const sizeofWHV_PROCESSOR_RUNTIME_COUNTERS = 16;
@@ -6251,22 +6251,22 @@ export class WHV_PROCESSOR_RUNTIME_COUNTERSView {
   }
 
   // 0x00: u64
-  get TotalRuntime100ns(): Deno.PointerValue {
+  get TotalRuntime100ns(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get HypervisorRuntime100ns(): Deno.PointerValue {
+  get HypervisorRuntime100ns(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set TotalRuntime100ns(value: Deno.PointerValue) {
+  set TotalRuntime100ns(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set HypervisorRuntime100ns(value: Deno.PointerValue) {
+  set HypervisorRuntime100ns(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -6276,9 +6276,9 @@ export class WHV_PROCESSOR_RUNTIME_COUNTERSView {
  */
 export interface WHV_PROCESSOR_INTERCEPT_COUNTER {
   /** u64 */
-  Count: Deno.PointerValue;
+  Count: bigint | number;
   /** u64 */
-  Time100ns: Deno.PointerValue;
+  Time100ns: bigint | number;
 }
 
 export const sizeofWHV_PROCESSOR_INTERCEPT_COUNTER = 16;
@@ -6304,22 +6304,22 @@ export class WHV_PROCESSOR_INTERCEPT_COUNTERView {
   }
 
   // 0x00: u64
-  get Count(): Deno.PointerValue {
+  get Count(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Time100ns(): Deno.PointerValue {
+  get Time100ns(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Count(value: Deno.PointerValue) {
+  set Count(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Time100ns(value: Deno.PointerValue) {
+  set Time100ns(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -6564,11 +6564,11 @@ export class WHV_PROCESSOR_INTERCEPT_COUNTERSView {
  */
 export interface WHV_PROCESSOR_EVENT_COUNTERS {
   /** u64 */
-  PageFaultCount: Deno.PointerValue;
+  PageFaultCount: bigint | number;
   /** u64 */
-  ExceptionCount: Deno.PointerValue;
+  ExceptionCount: bigint | number;
   /** u64 */
-  InterruptCount: Deno.PointerValue;
+  InterruptCount: bigint | number;
 }
 
 export const sizeofWHV_PROCESSOR_EVENT_COUNTERS = 24;
@@ -6596,32 +6596,32 @@ export class WHV_PROCESSOR_EVENT_COUNTERSView {
   }
 
   // 0x00: u64
-  get PageFaultCount(): Deno.PointerValue {
+  get PageFaultCount(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get ExceptionCount(): Deno.PointerValue {
+  get ExceptionCount(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get InterruptCount(): Deno.PointerValue {
+  get InterruptCount(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x00: u64
-  set PageFaultCount(value: Deno.PointerValue) {
+  set PageFaultCount(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set ExceptionCount(value: Deno.PointerValue) {
+  set ExceptionCount(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set InterruptCount(value: Deno.PointerValue) {
+  set InterruptCount(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -6631,15 +6631,15 @@ export class WHV_PROCESSOR_EVENT_COUNTERSView {
  */
 export interface WHV_PROCESSOR_APIC_COUNTERS {
   /** u64 */
-  MmioAccessCount: Deno.PointerValue;
+  MmioAccessCount: bigint | number;
   /** u64 */
-  EoiAccessCount: Deno.PointerValue;
+  EoiAccessCount: bigint | number;
   /** u64 */
-  TprAccessCount: Deno.PointerValue;
+  TprAccessCount: bigint | number;
   /** u64 */
-  SentIpiCount: Deno.PointerValue;
+  SentIpiCount: bigint | number;
   /** u64 */
-  SelfIpiCount: Deno.PointerValue;
+  SelfIpiCount: bigint | number;
 }
 
 export const sizeofWHV_PROCESSOR_APIC_COUNTERS = 40;
@@ -6671,52 +6671,52 @@ export class WHV_PROCESSOR_APIC_COUNTERSView {
   }
 
   // 0x00: u64
-  get MmioAccessCount(): Deno.PointerValue {
+  get MmioAccessCount(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get EoiAccessCount(): Deno.PointerValue {
+  get EoiAccessCount(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get TprAccessCount(): Deno.PointerValue {
+  get TprAccessCount(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get SentIpiCount(): Deno.PointerValue {
+  get SentIpiCount(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get SelfIpiCount(): Deno.PointerValue {
+  get SelfIpiCount(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x00: u64
-  set MmioAccessCount(value: Deno.PointerValue) {
+  set MmioAccessCount(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set EoiAccessCount(value: Deno.PointerValue) {
+  set EoiAccessCount(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set TprAccessCount(value: Deno.PointerValue) {
+  set TprAccessCount(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set SentIpiCount(value: Deno.PointerValue) {
+  set SentIpiCount(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set SelfIpiCount(value: Deno.PointerValue) {
+  set SelfIpiCount(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 }
@@ -6726,17 +6726,17 @@ export class WHV_PROCESSOR_APIC_COUNTERSView {
  */
 export interface WHV_PROCESSOR_SYNTHETIC_FEATURES_COUNTERS {
   /** u64 */
-  SyntheticInterruptsCount: Deno.PointerValue;
+  SyntheticInterruptsCount: bigint | number;
   /** u64 */
-  LongSpinWaitHypercallsCount: Deno.PointerValue;
+  LongSpinWaitHypercallsCount: bigint | number;
   /** u64 */
-  OtherHypercallsCount: Deno.PointerValue;
+  OtherHypercallsCount: bigint | number;
   /** u64 */
-  SyntheticInterruptHypercallsCount: Deno.PointerValue;
+  SyntheticInterruptHypercallsCount: bigint | number;
   /** u64 */
-  VirtualInterruptHypercallsCount: Deno.PointerValue;
+  VirtualInterruptHypercallsCount: bigint | number;
   /** u64 */
-  VirtualMmuHypercallsCount: Deno.PointerValue;
+  VirtualMmuHypercallsCount: bigint | number;
 }
 
 export const sizeofWHV_PROCESSOR_SYNTHETIC_FEATURES_COUNTERS = 48;
@@ -6770,62 +6770,62 @@ export class WHV_PROCESSOR_SYNTHETIC_FEATURES_COUNTERSView {
   }
 
   // 0x00: u64
-  get SyntheticInterruptsCount(): Deno.PointerValue {
+  get SyntheticInterruptsCount(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get LongSpinWaitHypercallsCount(): Deno.PointerValue {
+  get LongSpinWaitHypercallsCount(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get OtherHypercallsCount(): Deno.PointerValue {
+  get OtherHypercallsCount(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get SyntheticInterruptHypercallsCount(): Deno.PointerValue {
+  get SyntheticInterruptHypercallsCount(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get VirtualInterruptHypercallsCount(): Deno.PointerValue {
+  get VirtualInterruptHypercallsCount(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: u64
-  get VirtualMmuHypercallsCount(): Deno.PointerValue {
+  get VirtualMmuHypercallsCount(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x00: u64
-  set SyntheticInterruptsCount(value: Deno.PointerValue) {
+  set SyntheticInterruptsCount(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set LongSpinWaitHypercallsCount(value: Deno.PointerValue) {
+  set LongSpinWaitHypercallsCount(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set OtherHypercallsCount(value: Deno.PointerValue) {
+  set OtherHypercallsCount(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set SyntheticInterruptHypercallsCount(value: Deno.PointerValue) {
+  set SyntheticInterruptHypercallsCount(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set VirtualInterruptHypercallsCount(value: Deno.PointerValue) {
+  set VirtualInterruptHypercallsCount(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: u64
-  set VirtualMmuHypercallsCount(value: Deno.PointerValue) {
+  set VirtualMmuHypercallsCount(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 }
@@ -7273,9 +7273,9 @@ export interface WHV_VPCI_MMIO_MAPPING {
   /** Windows.Win32.System.Hypervisor.WHV_VPCI_MMIO_RANGE_FLAGS */
   Flags: WHV_VPCI_MMIO_RANGE_FLAGS;
   /** u64 */
-  SizeInBytes: Deno.PointerValue;
+  SizeInBytes: bigint | number;
   /** u64 */
-  OffsetInBytes: Deno.PointerValue;
+  OffsetInBytes: bigint | number;
   /** ptr */
   VirtualAddress: Deno.PointerValue | Uint8Array;
 }
@@ -7319,12 +7319,12 @@ export class WHV_VPCI_MMIO_MAPPINGView {
   }
 
   // 0x08: u64
-  get SizeInBytes(): Deno.PointerValue {
+  get SizeInBytes(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get OffsetInBytes(): Deno.PointerValue {
+  get OffsetInBytes(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -7345,12 +7345,12 @@ export class WHV_VPCI_MMIO_MAPPINGView {
   }
 
   // 0x08: u64
-  set SizeInBytes(value: Deno.PointerValue) {
+  set SizeInBytes(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set OffsetInBytes(value: Deno.PointerValue) {
+  set OffsetInBytes(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -7369,7 +7369,7 @@ export interface WHV_VPCI_DEVICE_REGISTER {
   /** u32 */
   SizeInBytes: number;
   /** u64 */
-  OffsetInBytes: Deno.PointerValue;
+  OffsetInBytes: bigint | number;
 }
 
 export const sizeofWHV_VPCI_DEVICE_REGISTER = 16;
@@ -7407,7 +7407,7 @@ export class WHV_VPCI_DEVICE_REGISTERView {
   }
 
   // 0x08: u64
-  get OffsetInBytes(): Deno.PointerValue {
+  get OffsetInBytes(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -7422,7 +7422,7 @@ export class WHV_VPCI_DEVICE_REGISTERView {
   }
 
   // 0x08: u64
-  set OffsetInBytes(value: Deno.PointerValue) {
+  set OffsetInBytes(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -7782,7 +7782,7 @@ export class WHV_EMULATOR_STATUSView {
  */
 export interface WHV_EMULATOR_MEMORY_ACCESS_INFO {
   /** u64 */
-  GpaAddress: Deno.PointerValue;
+  GpaAddress: bigint | number;
   /** u8 */
   Direction: number;
   /** u8 */
@@ -7819,7 +7819,7 @@ export class WHV_EMULATOR_MEMORY_ACCESS_INFOView {
   }
 
   // 0x00: u64
-  get GpaAddress(): Deno.PointerValue {
+  get GpaAddress(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -7842,7 +7842,7 @@ export class WHV_EMULATOR_MEMORY_ACCESS_INFOView {
   }
 
   // 0x00: u64
-  set GpaAddress(value: Deno.PointerValue) {
+  set GpaAddress(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -8260,9 +8260,9 @@ export class HVSOCKET_ADDRESS_INFOView {
  */
 export interface VM_GENCOUNTER {
   /** u64 */
-  GenerationCount: Deno.PointerValue;
+  GenerationCount: bigint | number;
   /** u64 */
-  GenerationCountHigh: Deno.PointerValue;
+  GenerationCountHigh: bigint | number;
 }
 
 export const sizeofVM_GENCOUNTER = 16;
@@ -8288,22 +8288,22 @@ export class VM_GENCOUNTERView {
   }
 
   // 0x00: u64
-  get GenerationCount(): Deno.PointerValue {
+  get GenerationCount(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get GenerationCountHigh(): Deno.PointerValue {
+  get GenerationCountHigh(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set GenerationCount(value: Deno.PointerValue) {
+  set GenerationCount(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set GenerationCountHigh(value: Deno.PointerValue) {
+  set GenerationCountHigh(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -8649,9 +8649,9 @@ export class HDV_PCI_DEVICE_INTERFACEView {
  */
 export interface GPA_MEMORY_CHUNK {
   /** u64 */
-  GuestPhysicalStartPageIndex: Deno.PointerValue;
+  GuestPhysicalStartPageIndex: bigint | number;
   /** u64 */
-  PageCount: Deno.PointerValue;
+  PageCount: bigint | number;
 }
 
 export const sizeofGPA_MEMORY_CHUNK = 16;
@@ -8677,22 +8677,22 @@ export class GPA_MEMORY_CHUNKView {
   }
 
   // 0x00: u64
-  get GuestPhysicalStartPageIndex(): Deno.PointerValue {
+  get GuestPhysicalStartPageIndex(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get PageCount(): Deno.PointerValue {
+  get PageCount(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set GuestPhysicalStartPageIndex(value: Deno.PointerValue) {
+  set GuestPhysicalStartPageIndex(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set PageCount(value: Deno.PointerValue) {
+  set PageCount(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -8702,7 +8702,7 @@ export class GPA_MEMORY_CHUNKView {
  */
 export interface _ClosedSource_e__Struct {
   /** u64 */
-  _bitfield: Deno.PointerValue;
+  _bitfield: bigint | number;
 }
 
 export const sizeof_ClosedSource_e__Struct = 8;
@@ -8726,12 +8726,12 @@ export class _ClosedSource_e__StructView {
   }
 
   // 0x00: u64
-  get _bitfield(): Deno.PointerValue {
+  get _bitfield(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: u64
-  set _bitfield(value: Deno.PointerValue) {
+  set _bitfield(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -8741,7 +8741,7 @@ export class _ClosedSource_e__StructView {
  */
 export interface _OpenSource_e__Struct {
   /** u64 */
-  _bitfield: Deno.PointerValue;
+  _bitfield: bigint | number;
 }
 
 export const sizeof_OpenSource_e__Struct = 8;
@@ -8765,12 +8765,12 @@ export class _OpenSource_e__StructView {
   }
 
   // 0x00: u64
-  get _bitfield(): Deno.PointerValue {
+  get _bitfield(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: u64
-  set _bitfield(value: Deno.PointerValue) {
+  set _bitfield(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -8780,7 +8780,7 @@ export class _OpenSource_e__StructView {
  */
 export interface GUEST_OS_INFO {
   /** u64 */
-  AsUINT64: Deno.PointerValue;
+  AsUINT64: bigint | number;
   /** _ClosedSource_e__Struct */
   ClosedSource: Uint8Array | Deno.PointerValue;
   /** _OpenSource_e__Struct */
@@ -8812,7 +8812,7 @@ export class GUEST_OS_INFOView {
   }
 
   // 0x00: u64
-  get AsUINT64(): Deno.PointerValue {
+  get AsUINT64(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -8829,7 +8829,7 @@ export class GUEST_OS_INFOView {
   }
 
   // 0x00: u64
-  set AsUINT64(value: Deno.PointerValue) {
+  set AsUINT64(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -8849,9 +8849,9 @@ export class GUEST_OS_INFOView {
  */
 export interface _Reg128_e__Struct {
   /** u64 */
-  Low64: Deno.PointerValue;
+  Low64: bigint | number;
   /** u64 */
-  High64: Deno.PointerValue;
+  High64: bigint | number;
 }
 
 export const sizeof_Reg128_e__Struct = 16;
@@ -8877,22 +8877,22 @@ export class _Reg128_e__StructView {
   }
 
   // 0x00: u64
-  get Low64(): Deno.PointerValue {
+  get Low64(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get High64(): Deno.PointerValue {
+  get High64(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Low64(value: Deno.PointerValue) {
+  set Low64(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set High64(value: Deno.PointerValue) {
+  set High64(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -8902,7 +8902,7 @@ export class _Reg128_e__StructView {
  */
 export interface _Segment_e__Struct {
   /** u64 */
-  Base: Deno.PointerValue;
+  Base: bigint | number;
   /** u32 */
   Limit: number;
   /** u16 */
@@ -8939,7 +8939,7 @@ export class _Segment_e__StructView {
   }
 
   // 0x00: u64
-  get Base(): Deno.PointerValue {
+  get Base(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -8962,7 +8962,7 @@ export class _Segment_e__StructView {
   }
 
   // 0x00: u64
-  set Base(value: Deno.PointerValue) {
+  set Base(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -8991,7 +8991,7 @@ export interface _Table_e__Struct {
   /** u16 */
   Limit: number;
   /** u64 */
-  Base: Deno.PointerValue;
+  Base: bigint | number;
 }
 
 export const sizeof_Table_e__Struct = 16;
@@ -9025,7 +9025,7 @@ export class _Table_e__StructView {
   // 0x02: pad6
 
   // 0x08: u64
-  get Base(): Deno.PointerValue {
+  get Base(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -9037,7 +9037,7 @@ export class _Table_e__StructView {
   // 0x02: pad6
 
   // 0x08: u64
-  set Base(value: Deno.PointerValue) {
+  set Base(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -9310,7 +9310,7 @@ export class _X64_e__UnionView {
  */
 export interface VIRTUAL_PROCESSOR_REGISTER {
   /** u64 */
-  Reg64: Deno.PointerValue;
+  Reg64: bigint | number;
   /** u32 */
   Reg32: number;
   /** u16 */
@@ -9355,7 +9355,7 @@ export class VIRTUAL_PROCESSOR_REGISTERView {
   }
 
   // 0x00: u64
-  get Reg64(): Deno.PointerValue {
+  get Reg64(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -9389,7 +9389,7 @@ export class VIRTUAL_PROCESSOR_REGISTERView {
   }
 
   // 0x00: u64
-  set Reg64(value: Deno.PointerValue) {
+  set Reg64(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -9430,7 +9430,7 @@ export interface DOS_IMAGE_INFO {
   /** Windows.Win32.Foundation.PSTR */
   PdbName: string | null | Uint8Array;
   /** u64 */
-  ImageBaseAddress: Deno.PointerValue;
+  ImageBaseAddress: bigint | number;
   /** u32 */
   ImageSize: number;
   /** u32 */
@@ -9473,7 +9473,7 @@ export class DOS_IMAGE_INFOView {
   }
 
   // 0x08: u64
-  get ImageBaseAddress(): Deno.PointerValue {
+  get ImageBaseAddress(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -9494,7 +9494,7 @@ export class DOS_IMAGE_INFOView {
   }
 
   // 0x08: u64
-  set ImageBaseAddress(value: Deno.PointerValue) {
+  set ImageBaseAddress(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -9570,9 +9570,9 @@ export class MODULE_INFOView {
 
 export type HRESULT = number;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
-export type HCS_SYSTEM = Deno.PointerValue;
+export type HCS_SYSTEM = bigint | number;
 
 export type PWSTR = Deno.PointerValue | Uint8Array;
 
@@ -10167,8 +10167,8 @@ export function WHvResumePartitionTime(
 export function WHvMapGpaRange(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
   SourceAddress: Deno.PointerValue | Uint8Array /* ptr */,
-  GuestAddress: Deno.PointerValue /* u64 */,
-  SizeInBytes: Deno.PointerValue /* u64 */,
+  GuestAddress: bigint | number /* u64 */,
+  SizeInBytes: bigint | number /* u64 */,
   Flags: WHV_MAP_GPA_RANGE_FLAGS /* Windows.Win32.System.Hypervisor.WHV_MAP_GPA_RANGE_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libWinHvPlatform_dll.WHvMapGpaRange(util.toPointer(Partition), util.toPointer(SourceAddress), GuestAddress, SizeInBytes, Flags);
@@ -10178,8 +10178,8 @@ export function WHvMapGpaRange2(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
   Process: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   SourceAddress: Deno.PointerValue | Uint8Array /* ptr */,
-  GuestAddress: Deno.PointerValue /* u64 */,
-  SizeInBytes: Deno.PointerValue /* u64 */,
+  GuestAddress: bigint | number /* u64 */,
+  SizeInBytes: bigint | number /* u64 */,
   Flags: WHV_MAP_GPA_RANGE_FLAGS /* Windows.Win32.System.Hypervisor.WHV_MAP_GPA_RANGE_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libWinHvPlatform_dll.WHvMapGpaRange2(util.toPointer(Partition), util.toPointer(Process), util.toPointer(SourceAddress), GuestAddress, SizeInBytes, Flags);
@@ -10187,8 +10187,8 @@ export function WHvMapGpaRange2(
 
 export function WHvUnmapGpaRange(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
-  GuestAddress: Deno.PointerValue /* u64 */,
-  SizeInBytes: Deno.PointerValue /* u64 */,
+  GuestAddress: bigint | number /* u64 */,
+  SizeInBytes: bigint | number /* u64 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libWinHvPlatform_dll.WHvUnmapGpaRange(util.toPointer(Partition), GuestAddress, SizeInBytes);
 }
@@ -10196,7 +10196,7 @@ export function WHvUnmapGpaRange(
 export function WHvTranslateGva(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
   VpIndex: number /* u32 */,
-  Gva: Deno.PointerValue /* u64 */,
+  Gva: bigint | number /* u64 */,
   TranslateFlags: WHV_TRANSLATE_GVA_FLAGS /* Windows.Win32.System.Hypervisor.WHV_TRANSLATE_GVA_FLAGS */,
   TranslationResult: Deno.PointerValue | Uint8Array /* ptr */,
   Gpa: Deno.PointerValue | Uint8Array /* ptr */,
@@ -10313,8 +10313,8 @@ export function WHvSetVirtualProcessorXsaveState(
 
 export function WHvQueryGpaRangeDirtyBitmap(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
-  GuestAddress: Deno.PointerValue /* u64 */,
-  RangeSizeInBytes: Deno.PointerValue /* u64 */,
+  GuestAddress: bigint | number /* u64 */,
+  RangeSizeInBytes: bigint | number /* u64 */,
   Bitmap: Deno.PointerValue | Uint8Array /* ptr */,
   BitmapSizeInBytes: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
@@ -10390,7 +10390,7 @@ export function WHvAdviseGpaRange(
 export function WHvReadGpaRange(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
   VpIndex: number /* u32 */,
-  GuestAddress: Deno.PointerValue /* u64 */,
+  GuestAddress: bigint | number /* u64 */,
   Controls: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_ACCESS_GPA_CONTROLS */,
   Data: Deno.PointerValue | Uint8Array /* ptr */,
   DataSizeInBytes: number /* u32 */,
@@ -10401,7 +10401,7 @@ export function WHvReadGpaRange(
 export function WHvWriteGpaRange(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
   VpIndex: number /* u32 */,
-  GuestAddress: Deno.PointerValue /* u64 */,
+  GuestAddress: bigint | number /* u64 */,
   Controls: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_ACCESS_GPA_CONTROLS */,
   Data: Deno.PointerValue | Uint8Array /* ptr */,
   DataSizeInBytes: number /* u32 */,
@@ -10450,7 +10450,7 @@ export function WHvAllocateVpciResource(
 
 export function WHvCreateVpciDevice(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
-  LogicalDeviceId: Deno.PointerValue /* u64 */,
+  LogicalDeviceId: bigint | number /* u64 */,
   VpciResource: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Flags: WHV_CREATE_VPCI_DEVICE_FLAGS /* Windows.Win32.System.Hypervisor.WHV_CREATE_VPCI_DEVICE_FLAGS */,
   NotificationEventHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
@@ -10460,14 +10460,14 @@ export function WHvCreateVpciDevice(
 
 export function WHvDeleteVpciDevice(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
-  LogicalDeviceId: Deno.PointerValue /* u64 */,
+  LogicalDeviceId: bigint | number /* u64 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libWinHvPlatform_dll.WHvDeleteVpciDevice(util.toPointer(Partition), LogicalDeviceId);
 }
 
 export function WHvGetVpciDeviceProperty(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
-  LogicalDeviceId: Deno.PointerValue /* u64 */,
+  LogicalDeviceId: bigint | number /* u64 */,
   PropertyCode: WHV_VPCI_DEVICE_PROPERTY_CODE /* Windows.Win32.System.Hypervisor.WHV_VPCI_DEVICE_PROPERTY_CODE */,
   PropertyBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   PropertyBufferSizeInBytes: number /* u32 */,
@@ -10478,7 +10478,7 @@ export function WHvGetVpciDeviceProperty(
 
 export function WHvGetVpciDeviceNotification(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
-  LogicalDeviceId: Deno.PointerValue /* u64 */,
+  LogicalDeviceId: bigint | number /* u64 */,
   Notification: Deno.PointerValue | Uint8Array /* ptr */,
   NotificationSizeInBytes: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
@@ -10487,7 +10487,7 @@ export function WHvGetVpciDeviceNotification(
 
 export function WHvMapVpciDeviceMmioRanges(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
-  LogicalDeviceId: Deno.PointerValue /* u64 */,
+  LogicalDeviceId: bigint | number /* u64 */,
   MappingCount: Deno.PointerValue | Uint8Array /* ptr */,
   Mappings: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
@@ -10496,14 +10496,14 @@ export function WHvMapVpciDeviceMmioRanges(
 
 export function WHvUnmapVpciDeviceMmioRanges(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
-  LogicalDeviceId: Deno.PointerValue /* u64 */,
+  LogicalDeviceId: bigint | number /* u64 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libWinHvPlatform_dll.WHvUnmapVpciDeviceMmioRanges(util.toPointer(Partition), LogicalDeviceId);
 }
 
 export function WHvSetVpciDevicePowerState(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
-  LogicalDeviceId: Deno.PointerValue /* u64 */,
+  LogicalDeviceId: bigint | number /* u64 */,
   PowerState: DEVICE_POWER_STATE /* Windows.Win32.System.Power.DEVICE_POWER_STATE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libWinHvPlatform_dll.WHvSetVpciDevicePowerState(util.toPointer(Partition), LogicalDeviceId, PowerState);
@@ -10511,7 +10511,7 @@ export function WHvSetVpciDevicePowerState(
 
 export function WHvReadVpciDeviceRegister(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
-  LogicalDeviceId: Deno.PointerValue /* u64 */,
+  LogicalDeviceId: bigint | number /* u64 */,
   Register: Deno.PointerValue | Uint8Array /* ptr */,
   Data: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
@@ -10520,7 +10520,7 @@ export function WHvReadVpciDeviceRegister(
 
 export function WHvWriteVpciDeviceRegister(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
-  LogicalDeviceId: Deno.PointerValue /* u64 */,
+  LogicalDeviceId: bigint | number /* u64 */,
   Register: Deno.PointerValue | Uint8Array /* ptr */,
   Data: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
@@ -10529,7 +10529,7 @@ export function WHvWriteVpciDeviceRegister(
 
 export function WHvMapVpciDeviceInterrupt(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
-  LogicalDeviceId: Deno.PointerValue /* u64 */,
+  LogicalDeviceId: bigint | number /* u64 */,
   Index: number /* u32 */,
   MessageCount: number /* u32 */,
   Target: Deno.PointerValue | Uint8Array /* ptr */,
@@ -10541,7 +10541,7 @@ export function WHvMapVpciDeviceInterrupt(
 
 export function WHvUnmapVpciDeviceInterrupt(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
-  LogicalDeviceId: Deno.PointerValue /* u64 */,
+  LogicalDeviceId: bigint | number /* u64 */,
   Index: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libWinHvPlatform_dll.WHvUnmapVpciDeviceInterrupt(util.toPointer(Partition), LogicalDeviceId, Index);
@@ -10549,8 +10549,8 @@ export function WHvUnmapVpciDeviceInterrupt(
 
 export function WHvRetargetVpciDeviceInterrupt(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
-  LogicalDeviceId: Deno.PointerValue /* u64 */,
-  MsiAddress: Deno.PointerValue /* u64 */,
+  LogicalDeviceId: bigint | number /* u64 */,
+  MsiAddress: bigint | number /* u64 */,
   MsiData: number /* u32 */,
   Target: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
@@ -10559,8 +10559,8 @@ export function WHvRetargetVpciDeviceInterrupt(
 
 export function WHvRequestVpciDeviceInterrupt(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
-  LogicalDeviceId: Deno.PointerValue /* u64 */,
-  MsiAddress: Deno.PointerValue /* u64 */,
+  LogicalDeviceId: bigint | number /* u64 */,
+  MsiAddress: bigint | number /* u64 */,
   MsiData: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libWinHvPlatform_dll.WHvRequestVpciDeviceInterrupt(util.toPointer(Partition), LogicalDeviceId, MsiAddress, MsiData);
@@ -10568,7 +10568,7 @@ export function WHvRequestVpciDeviceInterrupt(
 
 export function WHvGetVpciDeviceInterruptTarget(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
-  LogicalDeviceId: Deno.PointerValue /* u64 */,
+  LogicalDeviceId: bigint | number /* u64 */,
   Index: number /* u32 */,
   MultiMessageNumber: number /* u32 */,
   Target: Deno.PointerValue | Uint8Array /* ptr */,
@@ -10615,7 +10615,7 @@ export function WHvSetNotificationPortProperty(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
   PortHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PropertyCode: WHV_NOTIFICATION_PORT_PROPERTY_CODE /* Windows.Win32.System.Hypervisor.WHV_NOTIFICATION_PORT_PROPERTY_CODE */,
-  PropertyValue: Deno.PointerValue /* u64 */,
+  PropertyValue: bigint | number /* u64 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libWinHvPlatform_dll.WHvSetNotificationPortProperty(util.toPointer(Partition), util.toPointer(PortHandle), PropertyCode, PropertyValue);
 }
@@ -10649,7 +10649,7 @@ export function WHvGetVirtualProcessorCpuidOutput(
 
 export function WHvGetInterruptTargetVpSet(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
-  Destination: Deno.PointerValue /* u64 */,
+  Destination: bigint | number /* u64 */,
   DestinationMode: WHV_INTERRUPT_DESTINATION_MODE /* Windows.Win32.System.Hypervisor.WHV_INTERRUPT_DESTINATION_MODE */,
   TargetVps: Deno.PointerValue | Uint8Array /* ptr */,
   VpCount: number /* u32 */,
@@ -10744,7 +10744,7 @@ export function HdvCreateDeviceInstance(
 
 export function HdvReadGuestMemory(
   requestor: Deno.PointerValue | Uint8Array /* ptr */,
-  guestPhysicalAddress: Deno.PointerValue /* u64 */,
+  guestPhysicalAddress: bigint | number /* u64 */,
   byteCount: number /* u32 */,
   buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
@@ -10753,7 +10753,7 @@ export function HdvReadGuestMemory(
 
 export function HdvWriteGuestMemory(
   requestor: Deno.PointerValue | Uint8Array /* ptr */,
-  guestPhysicalAddress: Deno.PointerValue /* u64 */,
+  guestPhysicalAddress: bigint | number /* u64 */,
   byteCount: number /* u32 */,
   buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
@@ -10762,7 +10762,7 @@ export function HdvWriteGuestMemory(
 
 export function HdvCreateGuestMemoryAperture(
   requestor: Deno.PointerValue | Uint8Array /* ptr */,
-  guestPhysicalAddress: Deno.PointerValue /* u64 */,
+  guestPhysicalAddress: bigint | number /* u64 */,
   byteCount: number /* u32 */,
   writeProtected: boolean /* Windows.Win32.Foundation.BOOL */,
   mappedAddress: Deno.PointerValue | Uint8Array /* ptr */,
@@ -10779,7 +10779,7 @@ export function HdvDestroyGuestMemoryAperture(
 
 export function HdvDeliverGuestInterrupt(
   requestor: Deno.PointerValue | Uint8Array /* ptr */,
-  msiAddress: Deno.PointerValue /* u64 */,
+  msiAddress: bigint | number /* u64 */,
   msiData: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libvmdevicehost_dll.HdvDeliverGuestInterrupt(util.toPointer(requestor), msiAddress, msiData);
@@ -10788,9 +10788,9 @@ export function HdvDeliverGuestInterrupt(
 export function HdvRegisterDoorbell(
   requestor: Deno.PointerValue | Uint8Array /* ptr */,
   BarIndex: HDV_PCI_BAR_SELECTOR /* Windows.Win32.System.Hypervisor.HDV_PCI_BAR_SELECTOR */,
-  BarOffset: Deno.PointerValue /* u64 */,
-  TriggerValue: Deno.PointerValue /* u64 */,
-  Flags: Deno.PointerValue /* u64 */,
+  BarOffset: bigint | number /* u64 */,
+  TriggerValue: bigint | number /* u64 */,
+  Flags: bigint | number /* u64 */,
   DoorbellEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libvmdevicehost_dll.HdvRegisterDoorbell(util.toPointer(requestor), BarIndex, BarOffset, TriggerValue, Flags, util.toPointer(DoorbellEvent));
@@ -10799,9 +10799,9 @@ export function HdvRegisterDoorbell(
 export function HdvUnregisterDoorbell(
   requestor: Deno.PointerValue | Uint8Array /* ptr */,
   BarIndex: HDV_PCI_BAR_SELECTOR /* Windows.Win32.System.Hypervisor.HDV_PCI_BAR_SELECTOR */,
-  BarOffset: Deno.PointerValue /* u64 */,
-  TriggerValue: Deno.PointerValue /* u64 */,
-  Flags: Deno.PointerValue /* u64 */,
+  BarOffset: bigint | number /* u64 */,
+  TriggerValue: bigint | number /* u64 */,
+  Flags: bigint | number /* u64 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libvmdevicehost_dll.HdvUnregisterDoorbell(util.toPointer(requestor), BarIndex, BarOffset, TriggerValue, Flags);
 }
@@ -10809,11 +10809,11 @@ export function HdvUnregisterDoorbell(
 export function HdvCreateSectionBackedMmioRange(
   requestor: Deno.PointerValue | Uint8Array /* ptr */,
   barIndex: HDV_PCI_BAR_SELECTOR /* Windows.Win32.System.Hypervisor.HDV_PCI_BAR_SELECTOR */,
-  offsetInPages: Deno.PointerValue /* u64 */,
-  lengthInPages: Deno.PointerValue /* u64 */,
+  offsetInPages: bigint | number /* u64 */,
+  lengthInPages: bigint | number /* u64 */,
   MappingFlags: HDV_MMIO_MAPPING_FLAGS /* Windows.Win32.System.Hypervisor.HDV_MMIO_MAPPING_FLAGS */,
   sectionHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  sectionOffsetInPages: Deno.PointerValue /* u64 */,
+  sectionOffsetInPages: bigint | number /* u64 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libvmdevicehost_dll.HdvCreateSectionBackedMmioRange(util.toPointer(requestor), barIndex, offsetInPages, lengthInPages, MappingFlags, util.toPointer(sectionHandle), sectionOffsetInPages);
 }
@@ -10821,7 +10821,7 @@ export function HdvCreateSectionBackedMmioRange(
 export function HdvDestroySectionBackedMmioRange(
   requestor: Deno.PointerValue | Uint8Array /* ptr */,
   barIndex: HDV_PCI_BAR_SELECTOR /* Windows.Win32.System.Hypervisor.HDV_PCI_BAR_SELECTOR */,
-  offsetInPages: Deno.PointerValue /* u64 */,
+  offsetInPages: bigint | number /* u64 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libvmdevicehost_dll.HdvDestroySectionBackedMmioRange(util.toPointer(requestor), barIndex, offsetInPages);
 }
@@ -10992,7 +10992,7 @@ export function ForcePagingMode(
 
 export function ReadGuestPhysicalAddress(
   vmSavedStateDumpHandle: Deno.PointerValue | Uint8Array /* ptr */,
-  physicalAddress: Deno.PointerValue /* u64 */,
+  physicalAddress: bigint | number /* u64 */,
   buffer: Deno.PointerValue | Uint8Array /* ptr */,
   bufferSize: number /* u32 */,
   bytesRead: Deno.PointerValue | Uint8Array /* ptr */,
@@ -11003,7 +11003,7 @@ export function ReadGuestPhysicalAddress(
 export function GuestVirtualAddressToPhysicalAddress(
   vmSavedStateDumpHandle: Deno.PointerValue | Uint8Array /* ptr */,
   vpId: number /* u32 */,
-  virtualAddress: Deno.PointerValue /* u64 */,
+  virtualAddress: bigint | number /* u64 */,
   physicalAddress: Deno.PointerValue | Uint8Array /* ptr */,
   unmappedRegionSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
@@ -11021,7 +11021,7 @@ export function GetGuestPhysicalMemoryChunks(
 
 export function GuestPhysicalAddressToRawSavedMemoryOffset(
   vmSavedStateDumpHandle: Deno.PointerValue | Uint8Array /* ptr */,
-  physicalAddress: Deno.PointerValue /* u64 */,
+  physicalAddress: bigint | number /* u64 */,
   rawSavedMemoryOffset: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libVmSavedStateDumpProvider_dll.GuestPhysicalAddressToRawSavedMemoryOffset(util.toPointer(vmSavedStateDumpHandle), physicalAddress, util.toPointer(rawSavedMemoryOffset));
@@ -11029,7 +11029,7 @@ export function GuestPhysicalAddressToRawSavedMemoryOffset(
 
 export function ReadGuestRawSavedMemory(
   vmSavedStateDumpHandle: Deno.PointerValue | Uint8Array /* ptr */,
-  rawSavedMemoryOffset: Deno.PointerValue /* u64 */,
+  rawSavedMemoryOffset: bigint | number /* u64 */,
   buffer: Deno.PointerValue | Uint8Array /* ptr */,
   bufferSize: number /* u32 */,
   bytesRead: Deno.PointerValue | Uint8Array /* ptr */,
@@ -11046,7 +11046,7 @@ export function GetGuestRawSavedMemorySize(
 
 export function SetMemoryBlockCacheLimit(
   vmSavedStateDumpHandle: Deno.PointerValue | Uint8Array /* ptr */,
-  memoryBlockCacheLimit: Deno.PointerValue /* u64 */,
+  memoryBlockCacheLimit: bigint | number /* u64 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libVmSavedStateDumpProvider_dll.SetMemoryBlockCacheLimit(util.toPointer(vmSavedStateDumpHandle), memoryBlockCacheLimit);
 }
@@ -11061,7 +11061,7 @@ export function GetMemoryBlockCacheLimit(
 export function ApplyGuestMemoryFix(
   vmSavedStateDumpHandle: Deno.PointerValue | Uint8Array /* ptr */,
   vpId: number /* u32 */,
-  virtualAddress: Deno.PointerValue /* u64 */,
+  virtualAddress: bigint | number /* u64 */,
   fixBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   fixBufferSize: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
@@ -11099,7 +11099,7 @@ export function LoadSavedStateModuleSymbols(
   vmSavedStateDumpHandle: Deno.PointerValue | Uint8Array /* ptr */,
   imageName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   moduleName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  baseAddress: Deno.PointerValue /* u64 */,
+  baseAddress: bigint | number /* u64 */,
   sizeOfBase: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libVmSavedStateDumpProvider_dll.LoadSavedStateModuleSymbols(util.toPointer(vmSavedStateDumpHandle), util.pstrToFfi(imageName), util.pstrToFfi(moduleName), baseAddress, sizeOfBase);
@@ -11110,7 +11110,7 @@ export function LoadSavedStateModuleSymbolsEx(
   imageName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   imageTimestamp: number /* u32 */,
   moduleName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  baseAddress: Deno.PointerValue /* u64 */,
+  baseAddress: bigint | number /* u64 */,
   sizeOfBase: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libVmSavedStateDumpProvider_dll.LoadSavedStateModuleSymbolsEx(util.toPointer(vmSavedStateDumpHandle), util.pstrToFfi(imageName), imageTimestamp, util.pstrToFfi(moduleName), baseAddress, sizeOfBase);
@@ -11168,8 +11168,8 @@ export function GetSavedStateSymbolFieldInfo(
 export function ScanMemoryForDosImages(
   vmSavedStateDumpHandle: Deno.PointerValue | Uint8Array /* ptr */,
   vpId: number /* u32 */,
-  startAddress: Deno.PointerValue /* u64 */,
-  endAddress: Deno.PointerValue /* u64 */,
+  startAddress: bigint | number /* u64 */,
+  endAddress: bigint | number /* u64 */,
   callbackContext: Deno.PointerValue | Uint8Array /* ptr */,
   foundImageCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.FOUND_IMAGE_CALLBACK */,
   standaloneAddress: Deno.PointerValue | Uint8Array /* ptr */,

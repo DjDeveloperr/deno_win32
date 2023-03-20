@@ -1712,7 +1712,7 @@ export class DEVPROPKEYView {
  */
 export interface KSTIME {
   /** i64 */
-  Time: Deno.PointerValue;
+  Time: bigint | number;
   /** u32 */
   Numerator: number;
   /** u32 */
@@ -1744,7 +1744,7 @@ export class KSTIMEView {
   }
 
   // 0x00: i64
-  get Time(): Deno.PointerValue {
+  get Time(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
@@ -1759,7 +1759,7 @@ export class KSTIMEView {
   }
 
   // 0x00: i64
-  set Time(value: Deno.PointerValue) {
+  set Time(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
@@ -1785,7 +1785,7 @@ export interface KSSTREAM_HEADER {
   /** Windows.Win32.Media.KernelStreaming.KSTIME */
   PresentationTime: Uint8Array | Deno.PointerValue;
   /** i64 */
-  Duration: Deno.PointerValue;
+  Duration: bigint | number;
   /** u32 */
   FrameExtent: number;
   /** u32 */
@@ -1851,7 +1851,7 @@ export class KSSTREAM_HEADERView {
   }
 
   // 0x10: i64
-  get Duration(): Deno.PointerValue {
+  get Duration(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -1897,7 +1897,7 @@ export class KSSTREAM_HEADERView {
   }
 
   // 0x10: i64
-  set Duration(value: Deno.PointerValue) {
+  set Duration(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
@@ -1932,9 +1932,9 @@ export class KSSTREAM_HEADERView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -1960,22 +1960,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -3160,7 +3160,7 @@ export class KSPROPERTY_STEPPING_LONGView {
  */
 export interface KSPROPERTY_STEPPING_LONGLONG {
   /** u64 */
-  SteppingDelta: Deno.PointerValue;
+  SteppingDelta: bigint | number;
   /** Windows.Win32.Media.KernelStreaming.KSPROPERTY_BOUNDS_LONGLONG */
   Bounds: Uint8Array | Deno.PointerValue;
 }
@@ -3188,7 +3188,7 @@ export class KSPROPERTY_STEPPING_LONGLONGView {
   }
 
   // 0x00: u64
-  get SteppingDelta(): Deno.PointerValue {
+  get SteppingDelta(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -3199,7 +3199,7 @@ export class KSPROPERTY_STEPPING_LONGLONGView {
   }
 
   // 0x00: u64
-  set SteppingDelta(value: Deno.PointerValue) {
+  set SteppingDelta(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -3458,7 +3458,7 @@ export interface KSEVENT_TIME_MARK {
   /** Windows.Win32.Media.KernelStreaming.KSEVENTDATA */
   EventData: Uint8Array | Deno.PointerValue;
   /** i64 */
-  MarkTime: Deno.PointerValue;
+  MarkTime: bigint | number;
 }
 
 export const sizeofKSEVENT_TIME_MARK = 16;
@@ -3490,7 +3490,7 @@ export class KSEVENT_TIME_MARKView {
   }
 
   // 0x08: i64
-  get MarkTime(): Deno.PointerValue {
+  get MarkTime(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -3500,7 +3500,7 @@ export class KSEVENT_TIME_MARKView {
   }
 
   // 0x08: i64
-  set MarkTime(value: Deno.PointerValue) {
+  set MarkTime(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -3512,9 +3512,9 @@ export interface KSEVENT_TIME_INTERVAL {
   /** Windows.Win32.Media.KernelStreaming.KSEVENTDATA */
   EventData: Uint8Array | Deno.PointerValue;
   /** i64 */
-  TimeBase: Deno.PointerValue;
+  TimeBase: bigint | number;
   /** i64 */
-  Interval: Deno.PointerValue;
+  Interval: bigint | number;
 }
 
 export const sizeofKSEVENT_TIME_INTERVAL = 24;
@@ -3548,12 +3548,12 @@ export class KSEVENT_TIME_INTERVALView {
   }
 
   // 0x08: i64
-  get TimeBase(): Deno.PointerValue {
+  get TimeBase(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: i64
-  get Interval(): Deno.PointerValue {
+  get Interval(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -3563,12 +3563,12 @@ export class KSEVENT_TIME_INTERVALView {
   }
 
   // 0x08: i64
-  set TimeBase(value: Deno.PointerValue) {
+  set TimeBase(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: i64
-  set Interval(value: Deno.PointerValue) {
+  set Interval(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -3578,9 +3578,9 @@ export class KSEVENT_TIME_INTERVALView {
  */
 export interface KSINTERVAL {
   /** i64 */
-  TimeBase: Deno.PointerValue;
+  TimeBase: bigint | number;
   /** i64 */
-  Interval: Deno.PointerValue;
+  Interval: bigint | number;
 }
 
 export const sizeofKSINTERVAL = 16;
@@ -3606,22 +3606,22 @@ export class KSINTERVALView {
   }
 
   // 0x00: i64
-  get TimeBase(): Deno.PointerValue {
+  get TimeBase(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: i64
-  get Interval(): Deno.PointerValue {
+  get Interval(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x00: i64
-  set TimeBase(value: Deno.PointerValue) {
+  set TimeBase(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: i64
-  set Interval(value: Deno.PointerValue) {
+  set Interval(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -3744,9 +3744,9 @@ export class KSCOMPONENTIDView {
  */
 export interface KSPROPERTY_POSITIONS {
   /** i64 */
-  Current: Deno.PointerValue;
+  Current: bigint | number;
   /** i64 */
-  Stop: Deno.PointerValue;
+  Stop: bigint | number;
   /** Windows.Win32.Media.KernelStreaming.KS_SEEKING_FLAGS */
   CurrentFlags: KS_SEEKING_FLAGS;
   /** Windows.Win32.Media.KernelStreaming.KS_SEEKING_FLAGS */
@@ -3780,12 +3780,12 @@ export class KSPROPERTY_POSITIONSView {
   }
 
   // 0x00: i64
-  get Current(): Deno.PointerValue {
+  get Current(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: i64
-  get Stop(): Deno.PointerValue {
+  get Stop(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -3800,12 +3800,12 @@ export class KSPROPERTY_POSITIONSView {
   }
 
   // 0x00: i64
-  set Current(value: Deno.PointerValue) {
+  set Current(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: i64
-  set Stop(value: Deno.PointerValue) {
+  set Stop(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -3825,9 +3825,9 @@ export class KSPROPERTY_POSITIONSView {
  */
 export interface KSPROPERTY_MEDIAAVAILABLE {
   /** i64 */
-  Earliest: Deno.PointerValue;
+  Earliest: bigint | number;
   /** i64 */
-  Latest: Deno.PointerValue;
+  Latest: bigint | number;
 }
 
 export const sizeofKSPROPERTY_MEDIAAVAILABLE = 16;
@@ -3853,22 +3853,22 @@ export class KSPROPERTY_MEDIAAVAILABLEView {
   }
 
   // 0x00: i64
-  get Earliest(): Deno.PointerValue {
+  get Earliest(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: i64
-  get Latest(): Deno.PointerValue {
+  get Latest(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x00: i64
-  set Earliest(value: Deno.PointerValue) {
+  set Earliest(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: i64
-  set Latest(value: Deno.PointerValue) {
+  set Latest(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -3884,7 +3884,7 @@ export interface KSP_TIMEFORMAT {
   /** System.Guid */
   TargetFormat: Uint8Array | Deno.PointerValue;
   /** i64 */
-  Time: Deno.PointerValue;
+  Time: bigint | number;
 }
 
 export const sizeofKSP_TIMEFORMAT = 32;
@@ -3932,7 +3932,7 @@ export class KSP_TIMEFORMATView {
   }
 
   // 0x18: i64
-  get Time(): Deno.PointerValue {
+  get Time(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
@@ -3952,7 +3952,7 @@ export class KSP_TIMEFORMATView {
   }
 
   // 0x18: i64
-  set Time(value: Deno.PointerValue) {
+  set Time(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 }
@@ -4454,7 +4454,7 @@ export interface KSDATAFORMAT {
   /** _Anonymous_e__Struct */
   Anonymous: Uint8Array | Deno.PointerValue;
   /** i64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
 }
 
 export const sizeofKSDATAFORMAT = 16;
@@ -4486,7 +4486,7 @@ export class KSDATAFORMATView {
   }
 
   // 0x08: i64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -4496,7 +4496,7 @@ export class KSDATAFORMATView {
   }
 
   // 0x08: i64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -4569,7 +4569,7 @@ export class KSATTRIBUTEView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.Media.KernelStreaming.KSPIN_CONNECT (size: 40)
@@ -4750,11 +4750,11 @@ export type PWSTR = Deno.PointerValue | Uint8Array;
  */
 export interface _Anonymous1_e__Union {
   /** usize */
-  Data0: Deno.PointerValue;
+  Data0: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   String: string | null | Uint8Array | Uint16Array;
   /** usize */
-  u: Deno.PointerValue;
+  u: bigint | number;
   /** ptr */
   psid: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -4806,7 +4806,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  get Data0(): Deno.PointerValue {
+  get Data0(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -4817,7 +4817,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  get u(): Deno.PointerValue {
+  get u(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -4853,7 +4853,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  set Data0(value: Deno.PointerValue) {
+  set Data0(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -4864,7 +4864,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  set u(value: Deno.PointerValue) {
+  set u(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -4901,7 +4901,7 @@ export class _Anonymous1_e__UnionView {
  */
 export interface _Anonymous2_e__Union {
   /** usize */
-  Data1: Deno.PointerValue;
+  Data1: bigint | number;
   /** i32 */
   LogonId_HighPart: number;
 }
@@ -4930,7 +4930,7 @@ export class _Anonymous2_e__UnionView {
   }
 
   // 0x00: usize
-  get Data1(): Deno.PointerValue {
+  get Data1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -4942,7 +4942,7 @@ export class _Anonymous2_e__UnionView {
   // 0x0c: pad4
 
   // 0x00: usize
-  set Data1(value: Deno.PointerValue) {
+  set Data1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -6139,7 +6139,7 @@ export class KSQUALITY_MANAGERView {
  */
 export interface KSFRAMETIME {
   /** i64 */
-  Duration: Deno.PointerValue;
+  Duration: bigint | number;
   /** u32 */
   FrameFlags: number;
   /** u32 */
@@ -6171,7 +6171,7 @@ export class KSFRAMETIMEView {
   }
 
   // 0x00: i64
-  get Duration(): Deno.PointerValue {
+  get Duration(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
@@ -6186,7 +6186,7 @@ export class KSFRAMETIMEView {
   }
 
   // 0x00: i64
-  set Duration(value: Deno.PointerValue) {
+  set Duration(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
@@ -6206,9 +6206,9 @@ export class KSFRAMETIMEView {
  */
 export interface KSRATE {
   /** i64 */
-  PresentationStart: Deno.PointerValue;
+  PresentationStart: bigint | number;
   /** i64 */
-  Duration: Deno.PointerValue;
+  Duration: bigint | number;
   /** Windows.Win32.Media.KernelStreaming.KSIDENTIFIER */
   Interface: Uint8Array | Deno.PointerValue;
   /** i32 */
@@ -6246,12 +6246,12 @@ export class KSRATEView {
   }
 
   // 0x00: i64
-  get PresentationStart(): Deno.PointerValue {
+  get PresentationStart(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: i64
-  get Duration(): Deno.PointerValue {
+  get Duration(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -6272,12 +6272,12 @@ export class KSRATEView {
   }
 
   // 0x00: i64
-  set PresentationStart(value: Deno.PointerValue) {
+  set PresentationStart(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: i64
-  set Duration(value: Deno.PointerValue) {
+  set Duration(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -6401,9 +6401,9 @@ export class KSCLOCK_CREATEView {
  */
 export interface KSCORRELATED_TIME {
   /** i64 */
-  Time: Deno.PointerValue;
+  Time: bigint | number;
   /** i64 */
-  SystemTime: Deno.PointerValue;
+  SystemTime: bigint | number;
 }
 
 export const sizeofKSCORRELATED_TIME = 16;
@@ -6429,22 +6429,22 @@ export class KSCORRELATED_TIMEView {
   }
 
   // 0x00: i64
-  get Time(): Deno.PointerValue {
+  get Time(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: i64
-  get SystemTime(): Deno.PointerValue {
+  get SystemTime(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x00: i64
-  set Time(value: Deno.PointerValue) {
+  set Time(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: i64
-  set SystemTime(value: Deno.PointerValue) {
+  set SystemTime(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -6454,9 +6454,9 @@ export class KSCORRELATED_TIMEView {
  */
 export interface KSRESOLUTION {
   /** i64 */
-  Granularity: Deno.PointerValue;
+  Granularity: bigint | number;
   /** i64 */
-  Error: Deno.PointerValue;
+  Error: bigint | number;
 }
 
 export const sizeofKSRESOLUTION = 16;
@@ -6482,22 +6482,22 @@ export class KSRESOLUTIONView {
   }
 
   // 0x00: i64
-  get Granularity(): Deno.PointerValue {
+  get Granularity(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: i64
-  get Error(): Deno.PointerValue {
+  get Error(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x00: i64
-  set Granularity(value: Deno.PointerValue) {
+  set Granularity(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: i64
-  set Error(value: Deno.PointerValue) {
+  set Error(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -6511,7 +6511,7 @@ export interface KSQUALITY {
   /** u32 */
   Proportion: number;
   /** i64 */
-  DeltaTime: Deno.PointerValue;
+  DeltaTime: bigint | number;
 }
 
 export const sizeofKSQUALITY = 24;
@@ -6553,7 +6553,7 @@ export class KSQUALITYView {
   // 0x0c: pad4
 
   // 0x10: i64
-  get DeltaTime(): Deno.PointerValue {
+  get DeltaTime(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -6570,7 +6570,7 @@ export class KSQUALITYView {
   // 0x0c: pad4
 
   // 0x10: i64
-  set DeltaTime(value: Deno.PointerValue) {
+  set DeltaTime(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -6770,7 +6770,7 @@ export interface _combined_e__Struct {
   /** u32 */
   fHandle: number;
   /** u64 */
-  uPayload: Deno.PointerValue;
+  uPayload: bigint | number;
 }
 
 export const sizeof_combined_e__Struct = 16;
@@ -6808,7 +6808,7 @@ export class _combined_e__StructView {
   }
 
   // 0x08: u64
-  get uPayload(): Deno.PointerValue {
+  get uPayload(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -6823,7 +6823,7 @@ export class _combined_e__StructView {
   }
 
   // 0x08: u64
-  set uPayload(value: Deno.PointerValue) {
+  set uPayload(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -6943,9 +6943,9 @@ export class KSMULTIPLE_DATA_PROPView {
  */
 export interface KSAUDIO_POSITION {
   /** u64 */
-  PlayOffset: Deno.PointerValue;
+  PlayOffset: bigint | number;
   /** u64 */
-  WriteOffset: Deno.PointerValue;
+  WriteOffset: bigint | number;
 }
 
 export const sizeofKSAUDIO_POSITION = 16;
@@ -6971,22 +6971,22 @@ export class KSAUDIO_POSITIONView {
   }
 
   // 0x00: u64
-  get PlayOffset(): Deno.PointerValue {
+  get PlayOffset(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get WriteOffset(): Deno.PointerValue {
+  get WriteOffset(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set PlayOffset(value: Deno.PointerValue) {
+  set PlayOffset(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set WriteOffset(value: Deno.PointerValue) {
+  set WriteOffset(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -6996,9 +6996,9 @@ export class KSAUDIO_POSITIONView {
  */
 export interface KSAUDIO_PRESENTATION_POSITION {
   /** u64 */
-  u64PositionInBlocks: Deno.PointerValue;
+  u64PositionInBlocks: bigint | number;
   /** u64 */
-  u64QPCPosition: Deno.PointerValue;
+  u64QPCPosition: bigint | number;
 }
 
 export const sizeofKSAUDIO_PRESENTATION_POSITION = 16;
@@ -7024,22 +7024,22 @@ export class KSAUDIO_PRESENTATION_POSITIONView {
   }
 
   // 0x00: u64
-  get u64PositionInBlocks(): Deno.PointerValue {
+  get u64PositionInBlocks(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get u64QPCPosition(): Deno.PointerValue {
+  get u64QPCPosition(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set u64PositionInBlocks(value: Deno.PointerValue) {
+  set u64PositionInBlocks(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set u64QPCPosition(value: Deno.PointerValue) {
+  set u64QPCPosition(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -9405,9 +9405,9 @@ export interface KSRTAUDIO_HWREGISTER {
   /** u32 */
   Width: number;
   /** u64 */
-  Numerator: Deno.PointerValue;
+  Numerator: bigint | number;
   /** u64 */
-  Denominator: Deno.PointerValue;
+  Denominator: bigint | number;
   /** u32 */
   Accuracy: number;
 }
@@ -9456,12 +9456,12 @@ export class KSRTAUDIO_HWREGISTERView {
   // 0x0c: pad4
 
   // 0x10: u64
-  get Numerator(): Deno.PointerValue {
+  get Numerator(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get Denominator(): Deno.PointerValue {
+  get Denominator(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -9485,12 +9485,12 @@ export class KSRTAUDIO_HWREGISTERView {
   // 0x0c: pad4
 
   // 0x10: u64
-  set Numerator(value: Deno.PointerValue) {
+  set Numerator(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set Denominator(value: Deno.PointerValue) {
+  set Denominator(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -9511,9 +9511,9 @@ export interface KSRTAUDIO_HWREGISTER32 {
   /** u32 */
   Width: number;
   /** u64 */
-  Numerator: Deno.PointerValue;
+  Numerator: bigint | number;
   /** u64 */
-  Denominator: Deno.PointerValue;
+  Denominator: bigint | number;
   /** u32 */
   Accuracy: number;
 }
@@ -9558,12 +9558,12 @@ export class KSRTAUDIO_HWREGISTER32View {
   }
 
   // 0x08: u64
-  get Numerator(): Deno.PointerValue {
+  get Numerator(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get Denominator(): Deno.PointerValue {
+  get Denominator(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -9585,12 +9585,12 @@ export class KSRTAUDIO_HWREGISTER32View {
   }
 
   // 0x08: u64
-  set Numerator(value: Deno.PointerValue) {
+  set Numerator(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set Denominator(value: Deno.PointerValue) {
+  set Denominator(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -9725,7 +9725,7 @@ export interface KSRTAUDIO_GETREADPACKET_INFO {
   /** u32 */
   Flags: number;
   /** u64 */
-  PerformanceCounterValue: Deno.PointerValue;
+  PerformanceCounterValue: bigint | number;
   /** Windows.Win32.Foundation.BOOL */
   MoreData: boolean;
 }
@@ -9768,7 +9768,7 @@ export class KSRTAUDIO_GETREADPACKET_INFOView {
   }
 
   // 0x08: u64
-  get PerformanceCounterValue(): Deno.PointerValue {
+  get PerformanceCounterValue(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -9790,7 +9790,7 @@ export class KSRTAUDIO_GETREADPACKET_INFOView {
   }
 
   // 0x08: u64
-  set PerformanceCounterValue(value: Deno.PointerValue) {
+  set PerformanceCounterValue(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -10671,7 +10671,7 @@ export interface LARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue;
   /** i64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: bigint | number;
 }
 
 export const sizeofLARGE_INTEGER = 24;
@@ -10711,7 +10711,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  get QuadPart(): Deno.PointerValue {
+  get QuadPart(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -10726,7 +10726,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  set QuadPart(value: Deno.PointerValue) {
+  set QuadPart(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -11907,7 +11907,7 @@ export interface LOOPEDSTREAMING_POSITION_EVENT_DATA {
   /** Windows.Win32.Media.KernelStreaming.KSEVENTDATA */
   KsEventData: Uint8Array | Deno.PointerValue;
   /** u64 */
-  Position: Deno.PointerValue;
+  Position: bigint | number;
 }
 
 export const sizeofLOOPEDSTREAMING_POSITION_EVENT_DATA = 16;
@@ -11939,7 +11939,7 @@ export class LOOPEDSTREAMING_POSITION_EVENT_DATAView {
   }
 
   // 0x08: u64
-  get Position(): Deno.PointerValue {
+  get Position(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -11949,7 +11949,7 @@ export class LOOPEDSTREAMING_POSITION_EVENT_DATAView {
   }
 
   // 0x08: u64
-  set Position(value: Deno.PointerValue) {
+  set Position(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -13803,7 +13803,7 @@ export interface KS_VIDEOINFOHEADER {
   /** u32 */
   dwBitErrorRate: number;
   /** i64 */
-  AvgTimePerFrame: Deno.PointerValue;
+  AvgTimePerFrame: bigint | number;
   /** Windows.Win32.Media.KernelStreaming.KS_BITMAPINFOHEADER */
   bmiHeader: Uint8Array | Deno.PointerValue;
 }
@@ -13861,7 +13861,7 @@ export class KS_VIDEOINFOHEADERView {
   }
 
   // 0x18: i64
-  get AvgTimePerFrame(): Deno.PointerValue {
+  get AvgTimePerFrame(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
@@ -13892,7 +13892,7 @@ export class KS_VIDEOINFOHEADERView {
   }
 
   // 0x18: i64
-  set AvgTimePerFrame(value: Deno.PointerValue) {
+  set AvgTimePerFrame(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
@@ -13915,7 +13915,7 @@ export interface KS_VIDEOINFO {
   /** u32 */
   dwBitErrorRate: number;
   /** i64 */
-  AvgTimePerFrame: Deno.PointerValue;
+  AvgTimePerFrame: bigint | number;
   /** Windows.Win32.Media.KernelStreaming.KS_BITMAPINFOHEADER */
   bmiHeader: Uint8Array | Deno.PointerValue;
   /** _Anonymous_e__Union */
@@ -13977,7 +13977,7 @@ export class KS_VIDEOINFOView {
   }
 
   // 0x18: i64
-  get AvgTimePerFrame(): Deno.PointerValue {
+  get AvgTimePerFrame(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
@@ -14014,7 +14014,7 @@ export class KS_VIDEOINFOView {
   }
 
   // 0x18: i64
-  set AvgTimePerFrame(value: Deno.PointerValue) {
+  set AvgTimePerFrame(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
@@ -14226,7 +14226,7 @@ export interface KS_ANALOGVIDEOINFO {
   /** u32 */
   dwActiveHeight: number;
   /** i64 */
-  AvgTimePerFrame: Deno.PointerValue;
+  AvgTimePerFrame: bigint | number;
 }
 
 export const sizeofKS_ANALOGVIDEOINFO = 32;
@@ -14280,7 +14280,7 @@ export class KS_ANALOGVIDEOINFOView {
   }
 
   // 0x18: i64
-  get AvgTimePerFrame(): Deno.PointerValue {
+  get AvgTimePerFrame(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
@@ -14305,7 +14305,7 @@ export class KS_ANALOGVIDEOINFOView {
   }
 
   // 0x18: i64
-  set AvgTimePerFrame(value: Deno.PointerValue) {
+  set AvgTimePerFrame(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 }
@@ -14404,7 +14404,7 @@ export interface KS_VIDEOINFOHEADER2 {
   /** u32 */
   dwBitErrorRate: number;
   /** i64 */
-  AvgTimePerFrame: Deno.PointerValue;
+  AvgTimePerFrame: bigint | number;
   /** u32 */
   dwInterlaceFlags: number;
   /** u32 */
@@ -14487,7 +14487,7 @@ export class KS_VIDEOINFOHEADER2View {
   }
 
   // 0x18: i64
-  get AvgTimePerFrame(): Deno.PointerValue {
+  get AvgTimePerFrame(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
@@ -14551,7 +14551,7 @@ export class KS_VIDEOINFOHEADER2View {
   }
 
   // 0x18: i64
-  set AvgTimePerFrame(value: Deno.PointerValue) {
+  set AvgTimePerFrame(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
@@ -15926,9 +15926,9 @@ export interface KS_VIDEO_STREAM_CONFIG_CAPS {
   /** i32 */
   ShrinkTapsY: number;
   /** i64 */
-  MinFrameInterval: Deno.PointerValue;
+  MinFrameInterval: bigint | number;
   /** i64 */
-  MaxFrameInterval: Deno.PointerValue;
+  MaxFrameInterval: bigint | number;
   /** i32 */
   MinBitsPerSecond: number;
   /** i32 */
@@ -16090,12 +16090,12 @@ export class KS_VIDEO_STREAM_CONFIG_CAPSView {
   }
 
   // 0x60: i64
-  get MinFrameInterval(): Deno.PointerValue {
+  get MinFrameInterval(): bigint | number {
     return Number(this.view.getBigInt64(96, true));
   }
 
   // 0x68: i64
-  get MaxFrameInterval(): Deno.PointerValue {
+  get MaxFrameInterval(): bigint | number {
     return Number(this.view.getBigInt64(104, true));
   }
 
@@ -16197,12 +16197,12 @@ export class KS_VIDEO_STREAM_CONFIG_CAPSView {
   }
 
   // 0x60: i64
-  set MinFrameInterval(value: Deno.PointerValue) {
+  set MinFrameInterval(value: bigint | number) {
     this.view.setBigInt64(96, BigInt(value), true);
   }
 
   // 0x68: i64
-  set MaxFrameInterval(value: Deno.PointerValue) {
+  set MaxFrameInterval(value: bigint | number) {
     this.view.setBigInt64(104, BigInt(value), true);
   }
 
@@ -17566,7 +17566,7 @@ export interface CC_HW_FIELD {
   /** u32 */
   fieldFlags: number;
   /** i64 */
-  PictureNumber: Deno.PointerValue;
+  PictureNumber: bigint | number;
   /** array */
   Lines: Deno.PointerValue;
 }
@@ -17612,7 +17612,7 @@ export class CC_HW_FIELDView {
   // 0x0c: pad4
 
   // 0x10: i64
-  get PictureNumber(): Deno.PointerValue {
+  get PictureNumber(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -17635,7 +17635,7 @@ export class CC_HW_FIELDView {
   // 0x0c: pad4
 
   // 0x10: i64
-  set PictureNumber(value: Deno.PointerValue) {
+  set PictureNumber(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
@@ -17711,7 +17711,7 @@ export interface NABTS_BUFFER {
   /** Windows.Win32.Media.KernelStreaming.VBICODECFILTERING_SCANLINES */
   ScanlinesRequested: Uint8Array | Deno.PointerValue;
   /** i64 */
-  PictureNumber: Deno.PointerValue;
+  PictureNumber: bigint | number;
   /** array */
   NabtsLines: Deno.PointerValue;
 }
@@ -17747,7 +17747,7 @@ export class NABTS_BUFFERView {
   }
 
   // 0x08: i64
-  get PictureNumber(): Deno.PointerValue {
+  get PictureNumber(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -17763,7 +17763,7 @@ export class NABTS_BUFFERView {
   }
 
   // 0x08: i64
-  set PictureNumber(value: Deno.PointerValue) {
+  set PictureNumber(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -19088,9 +19088,9 @@ export class KSPROPERTY_VBICODECFILTERING_STATISTICS_CC_PIN_SView {
  */
 export interface VRAM_SURFACE_INFO {
   /** usize */
-  hSurface: Deno.PointerValue;
+  hSurface: bigint | number;
   /** i64 */
-  VramPhysicalAddress: Deno.PointerValue;
+  VramPhysicalAddress: bigint | number;
   /** u32 */
   cbCaptured: number;
   /** u32 */
@@ -19141,12 +19141,12 @@ export class VRAM_SURFACE_INFOView {
   }
 
   // 0x00: usize
-  get hSurface(): Deno.PointerValue {
+  get hSurface(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: i64
-  get VramPhysicalAddress(): Deno.PointerValue {
+  get VramPhysicalAddress(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -19184,12 +19184,12 @@ export class VRAM_SURFACE_INFOView {
   }
 
   // 0x00: usize
-  set hSurface(value: Deno.PointerValue) {
+  set hSurface(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: i64
-  set VramPhysicalAddress(value: Deno.PointerValue) {
+  set VramPhysicalAddress(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -19373,9 +19373,9 @@ export interface KS_FRAME_INFO {
   /** u32 */
   dwFrameFlags: number;
   /** i64 */
-  PictureNumber: Deno.PointerValue;
+  PictureNumber: bigint | number;
   /** i64 */
-  DropCount: Deno.PointerValue;
+  DropCount: bigint | number;
   /** Windows.Win32.Foundation.HANDLE */
   hDirectDraw: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.HANDLE */
@@ -19440,12 +19440,12 @@ export class KS_FRAME_INFOView {
   }
 
   // 0x08: i64
-  get PictureNumber(): Deno.PointerValue {
+  get PictureNumber(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: i64
-  get DropCount(): Deno.PointerValue {
+  get DropCount(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -19497,12 +19497,12 @@ export class KS_FRAME_INFOView {
   }
 
   // 0x08: i64
-  set PictureNumber(value: Deno.PointerValue) {
+  set PictureNumber(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: i64
-  set DropCount(value: Deno.PointerValue) {
+  set DropCount(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
@@ -19548,9 +19548,9 @@ export interface KS_VBI_FRAME_INFO {
   /** u32 */
   dwFrameFlags: number;
   /** i64 */
-  PictureNumber: Deno.PointerValue;
+  PictureNumber: bigint | number;
   /** i64 */
-  DropCount: Deno.PointerValue;
+  DropCount: bigint | number;
   /** u32 */
   dwSamplingFrequency: number;
   /** Windows.Win32.Media.KernelStreaming.KS_TVTUNER_CHANGE_INFO */
@@ -19603,12 +19603,12 @@ export class KS_VBI_FRAME_INFOView {
   }
 
   // 0x08: i64
-  get PictureNumber(): Deno.PointerValue {
+  get PictureNumber(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: i64
-  get DropCount(): Deno.PointerValue {
+  get DropCount(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -19642,12 +19642,12 @@ export class KS_VBI_FRAME_INFOView {
   }
 
   // 0x08: i64
-  set PictureNumber(value: Deno.PointerValue) {
+  set PictureNumber(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: i64
-  set DropCount(value: Deno.PointerValue) {
+  set DropCount(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
@@ -22913,9 +22913,9 @@ export interface KSCAMERA_EXTENDEDPROP_HEADER {
   /** u32 */
   Result: number;
   /** u64 */
-  Flags: Deno.PointerValue;
+  Flags: bigint | number;
   /** u64 */
-  Capability: Deno.PointerValue;
+  Capability: bigint | number;
 }
 
 export const sizeofKSCAMERA_EXTENDEDPROP_HEADER = 32;
@@ -22969,12 +22969,12 @@ export class KSCAMERA_EXTENDEDPROP_HEADERView {
   }
 
   // 0x10: u64
-  get Flags(): Deno.PointerValue {
+  get Flags(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get Capability(): Deno.PointerValue {
+  get Capability(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -22999,12 +22999,12 @@ export class KSCAMERA_EXTENDEDPROP_HEADERView {
   }
 
   // 0x10: u64
-  set Flags(value: Deno.PointerValue) {
+  set Flags(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set Capability(value: Deno.PointerValue) {
+  set Capability(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 }
@@ -23275,7 +23275,7 @@ export interface KSCAMERA_EXTENDEDPROP_VIDEOPROCSETTING {
   /** Windows.Win32.Media.KernelStreaming.KSCAMERA_EXTENDEDPROP_VALUE */
   VideoProc: Uint8Array | Deno.PointerValue;
   /** u64 */
-  Reserved: Deno.PointerValue;
+  Reserved: bigint | number;
 }
 
 export const sizeofKSCAMERA_EXTENDEDPROP_VIDEOPROCSETTING = 32;
@@ -23335,7 +23335,7 @@ export class KSCAMERA_EXTENDEDPROP_VIDEOPROCSETTINGView {
   }
 
   // 0x18: u64
-  get Reserved(): Deno.PointerValue {
+  get Reserved(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -23365,7 +23365,7 @@ export class KSCAMERA_EXTENDEDPROP_VIDEOPROCSETTINGView {
   }
 
   // 0x18: u64
-  set Reserved(value: Deno.PointerValue) {
+  set Reserved(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 }
@@ -23383,7 +23383,7 @@ export interface KSCAMERA_EXTENDEDPROP_EVCOMPENSATION {
   /** i32 */
   Value: number;
   /** u64 */
-  Reserved: Deno.PointerValue;
+  Reserved: bigint | number;
 }
 
 export const sizeofKSCAMERA_EXTENDEDPROP_EVCOMPENSATION = 24;
@@ -23435,7 +23435,7 @@ export class KSCAMERA_EXTENDEDPROP_EVCOMPENSATIONView {
   }
 
   // 0x10: u64
-  get Reserved(): Deno.PointerValue {
+  get Reserved(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -23460,7 +23460,7 @@ export class KSCAMERA_EXTENDEDPROP_EVCOMPENSATIONView {
   }
 
   // 0x10: u64
-  set Reserved(value: Deno.PointerValue) {
+  set Reserved(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -23880,9 +23880,9 @@ export interface KSCAMERA_METADATA_CAPTURESTATS {
   /** u32 */
   Reserved: number;
   /** u64 */
-  ExposureTime: Deno.PointerValue;
+  ExposureTime: bigint | number;
   /** u64 */
-  ExposureCompensationFlags: Deno.PointerValue;
+  ExposureCompensationFlags: bigint | number;
   /** i32 */
   ExposureCompensationValue: number;
   /** u32 */
@@ -23900,9 +23900,9 @@ export interface KSCAMERA_METADATA_CAPTURESTATS {
   /** u32 */
   ZoomFactor: number;
   /** u64 */
-  SceneMode: Deno.PointerValue;
+  SceneMode: bigint | number;
   /** u64 */
-  SensorFramerate: Deno.PointerValue;
+  SensorFramerate: bigint | number;
 }
 
 export const sizeofKSCAMERA_METADATA_CAPTURESTATS = 80;
@@ -23970,12 +23970,12 @@ export class KSCAMERA_METADATA_CAPTURESTATSView {
   }
 
   // 0x10: u64
-  get ExposureTime(): Deno.PointerValue {
+  get ExposureTime(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get ExposureCompensationFlags(): Deno.PointerValue {
+  get ExposureCompensationFlags(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -24020,12 +24020,12 @@ export class KSCAMERA_METADATA_CAPTURESTATSView {
   }
 
   // 0x40: u64
-  get SceneMode(): Deno.PointerValue {
+  get SceneMode(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
   // 0x48: u64
-  get SensorFramerate(): Deno.PointerValue {
+  get SensorFramerate(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
@@ -24045,12 +24045,12 @@ export class KSCAMERA_METADATA_CAPTURESTATSView {
   }
 
   // 0x10: u64
-  set ExposureTime(value: Deno.PointerValue) {
+  set ExposureTime(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set ExposureCompensationFlags(value: Deno.PointerValue) {
+  set ExposureCompensationFlags(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -24095,12 +24095,12 @@ export class KSCAMERA_METADATA_CAPTURESTATSView {
   }
 
   // 0x40: u64
-  set SceneMode(value: Deno.PointerValue) {
+  set SceneMode(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
   // 0x48: u64
-  set SensorFramerate(value: Deno.PointerValue) {
+  set SensorFramerate(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 }
@@ -24114,7 +24114,7 @@ export interface KSCAMERA_EXTENDEDPROP_ROI_CONFIGCAPSHEADER {
   /** u32 */
   ConfigCapCount: number;
   /** u64 */
-  Reserved: Deno.PointerValue;
+  Reserved: bigint | number;
 }
 
 export const sizeofKSCAMERA_EXTENDEDPROP_ROI_CONFIGCAPSHEADER = 16;
@@ -24152,7 +24152,7 @@ export class KSCAMERA_EXTENDEDPROP_ROI_CONFIGCAPSHEADERView {
   }
 
   // 0x08: u64
-  get Reserved(): Deno.PointerValue {
+  get Reserved(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -24167,7 +24167,7 @@ export class KSCAMERA_EXTENDEDPROP_ROI_CONFIGCAPSHEADERView {
   }
 
   // 0x08: u64
-  set Reserved(value: Deno.PointerValue) {
+  set Reserved(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -24181,7 +24181,7 @@ export interface KSCAMERA_EXTENDEDPROP_ROI_CONFIGCAPS {
   /** u32 */
   MaxNumberOfROIs: number;
   /** u64 */
-  Capability: Deno.PointerValue;
+  Capability: bigint | number;
 }
 
 export const sizeofKSCAMERA_EXTENDEDPROP_ROI_CONFIGCAPS = 16;
@@ -24219,7 +24219,7 @@ export class KSCAMERA_EXTENDEDPROP_ROI_CONFIGCAPSView {
   }
 
   // 0x08: u64
-  get Capability(): Deno.PointerValue {
+  get Capability(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -24234,7 +24234,7 @@ export class KSCAMERA_EXTENDEDPROP_ROI_CONFIGCAPSView {
   }
 
   // 0x08: u64
-  set Capability(value: Deno.PointerValue) {
+  set Capability(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -24248,7 +24248,7 @@ export interface KSCAMERA_EXTENDEDPROP_ROI_ISPCONTROLHEADER {
   /** u32 */
   ControlCount: number;
   /** u64 */
-  Reserved: Deno.PointerValue;
+  Reserved: bigint | number;
 }
 
 export const sizeofKSCAMERA_EXTENDEDPROP_ROI_ISPCONTROLHEADER = 16;
@@ -24286,7 +24286,7 @@ export class KSCAMERA_EXTENDEDPROP_ROI_ISPCONTROLHEADERView {
   }
 
   // 0x08: u64
-  get Reserved(): Deno.PointerValue {
+  get Reserved(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -24301,7 +24301,7 @@ export class KSCAMERA_EXTENDEDPROP_ROI_ISPCONTROLHEADERView {
   }
 
   // 0x08: u64
-  set Reserved(value: Deno.PointerValue) {
+  set Reserved(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -24394,7 +24394,7 @@ export interface KSCAMERA_EXTENDEDPROP_ROI_INFO {
   /** Windows.Win32.Foundation.RECT */
   Region: Uint8Array | Deno.PointerValue;
   /** u64 */
-  Flags: Deno.PointerValue;
+  Flags: bigint | number;
   /** i32 */
   Weight: number;
   /** i32 */
@@ -24434,7 +24434,7 @@ export class KSCAMERA_EXTENDEDPROP_ROI_INFOView {
   }
 
   // 0x08: u64
-  get Flags(): Deno.PointerValue {
+  get Flags(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -24454,7 +24454,7 @@ export class KSCAMERA_EXTENDEDPROP_ROI_INFOView {
   }
 
   // 0x08: u64
-  set Flags(value: Deno.PointerValue) {
+  set Flags(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -24476,7 +24476,7 @@ export interface KSCAMERA_EXTENDEDPROP_ROI_WHITEBALANCE {
   /** Windows.Win32.Media.KernelStreaming.KSCAMERA_EXTENDEDPROP_ROI_INFO */
   ROIInfo: Uint8Array | Deno.PointerValue;
   /** u64 */
-  Reserved: Deno.PointerValue;
+  Reserved: bigint | number;
 }
 
 export const sizeofKSCAMERA_EXTENDEDPROP_ROI_WHITEBALANCE = 16;
@@ -24508,7 +24508,7 @@ export class KSCAMERA_EXTENDEDPROP_ROI_WHITEBALANCEView {
   }
 
   // 0x08: u64
-  get Reserved(): Deno.PointerValue {
+  get Reserved(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -24518,7 +24518,7 @@ export class KSCAMERA_EXTENDEDPROP_ROI_WHITEBALANCEView {
   }
 
   // 0x08: u64
-  set Reserved(value: Deno.PointerValue) {
+  set Reserved(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -24530,7 +24530,7 @@ export interface KSCAMERA_EXTENDEDPROP_ROI_EXPOSURE {
   /** Windows.Win32.Media.KernelStreaming.KSCAMERA_EXTENDEDPROP_ROI_INFO */
   ROIInfo: Uint8Array | Deno.PointerValue;
   /** u64 */
-  Reserved: Deno.PointerValue;
+  Reserved: bigint | number;
 }
 
 export const sizeofKSCAMERA_EXTENDEDPROP_ROI_EXPOSURE = 16;
@@ -24562,7 +24562,7 @@ export class KSCAMERA_EXTENDEDPROP_ROI_EXPOSUREView {
   }
 
   // 0x08: u64
-  get Reserved(): Deno.PointerValue {
+  get Reserved(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -24572,7 +24572,7 @@ export class KSCAMERA_EXTENDEDPROP_ROI_EXPOSUREView {
   }
 
   // 0x08: u64
-  set Reserved(value: Deno.PointerValue) {
+  set Reserved(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -24584,7 +24584,7 @@ export interface KSCAMERA_EXTENDEDPROP_ROI_FOCUS {
   /** Windows.Win32.Media.KernelStreaming.KSCAMERA_EXTENDEDPROP_ROI_INFO */
   ROIInfo: Uint8Array | Deno.PointerValue;
   /** u64 */
-  Reserved: Deno.PointerValue;
+  Reserved: bigint | number;
 }
 
 export const sizeofKSCAMERA_EXTENDEDPROP_ROI_FOCUS = 16;
@@ -24616,7 +24616,7 @@ export class KSCAMERA_EXTENDEDPROP_ROI_FOCUSView {
   }
 
   // 0x08: u64
-  get Reserved(): Deno.PointerValue {
+  get Reserved(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -24626,7 +24626,7 @@ export class KSCAMERA_EXTENDEDPROP_ROI_FOCUSView {
   }
 
   // 0x08: u64
-  set Reserved(value: Deno.PointerValue) {
+  set Reserved(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -24640,7 +24640,7 @@ export interface KSCAMERA_PERFRAMESETTING_CAP_ITEM_HEADER {
   /** u32 */
   Type: number;
   /** u64 */
-  Flags: Deno.PointerValue;
+  Flags: bigint | number;
 }
 
 export const sizeofKSCAMERA_PERFRAMESETTING_CAP_ITEM_HEADER = 16;
@@ -24678,7 +24678,7 @@ export class KSCAMERA_PERFRAMESETTING_CAP_ITEM_HEADERView {
   }
 
   // 0x08: u64
-  get Flags(): Deno.PointerValue {
+  get Flags(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -24693,7 +24693,7 @@ export class KSCAMERA_PERFRAMESETTING_CAP_ITEM_HEADERView {
   }
 
   // 0x08: u64
-  set Flags(value: Deno.PointerValue) {
+  set Flags(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -24707,7 +24707,7 @@ export interface KSCAMERA_PERFRAMESETTING_CAP_HEADER {
   /** u32 */
   ItemCount: number;
   /** u64 */
-  Flags: Deno.PointerValue;
+  Flags: bigint | number;
 }
 
 export const sizeofKSCAMERA_PERFRAMESETTING_CAP_HEADER = 16;
@@ -24745,7 +24745,7 @@ export class KSCAMERA_PERFRAMESETTING_CAP_HEADERView {
   }
 
   // 0x08: u64
-  get Flags(): Deno.PointerValue {
+  get Flags(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -24760,7 +24760,7 @@ export class KSCAMERA_PERFRAMESETTING_CAP_HEADERView {
   }
 
   // 0x08: u64
-  set Flags(value: Deno.PointerValue) {
+  set Flags(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -24842,7 +24842,7 @@ export interface KSCAMERA_PERFRAMESETTING_ITEM_HEADER {
   /** u32 */
   Type: number;
   /** u64 */
-  Flags: Deno.PointerValue;
+  Flags: bigint | number;
 }
 
 export const sizeofKSCAMERA_PERFRAMESETTING_ITEM_HEADER = 16;
@@ -24880,7 +24880,7 @@ export class KSCAMERA_PERFRAMESETTING_ITEM_HEADERView {
   }
 
   // 0x08: u64
-  get Flags(): Deno.PointerValue {
+  get Flags(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -24895,7 +24895,7 @@ export class KSCAMERA_PERFRAMESETTING_ITEM_HEADERView {
   }
 
   // 0x08: u64
-  set Flags(value: Deno.PointerValue) {
+  set Flags(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -24992,7 +24992,7 @@ export interface KSCAMERA_PERFRAMESETTING_HEADER {
   /** System.Guid */
   Id: Uint8Array | Deno.PointerValue;
   /** u64 */
-  Flags: Deno.PointerValue;
+  Flags: bigint | number;
   /** u32 */
   LoopCount: number;
   /** u32 */
@@ -25046,7 +25046,7 @@ export class KSCAMERA_PERFRAMESETTING_HEADERView {
   }
 
   // 0x10: u64
-  get Flags(): Deno.PointerValue {
+  get Flags(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -25076,7 +25076,7 @@ export class KSCAMERA_PERFRAMESETTING_HEADERView {
   }
 
   // 0x10: u64
-  set Flags(value: Deno.PointerValue) {
+  set Flags(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -25813,7 +25813,7 @@ export interface KSCAMERA_PROFILE_MEDIAINFO {
   /** _MaxFrameRate_e__Struct */
   MaxFrameRate: Uint8Array | Deno.PointerValue;
   /** u64 */
-  Flags: Deno.PointerValue;
+  Flags: bigint | number;
   /** u32 */
   Data0: number;
   /** u32 */
@@ -25869,7 +25869,7 @@ export class KSCAMERA_PROFILE_MEDIAINFOView {
   }
 
   // 0x10: u64
-  get Flags(): Deno.PointerValue {
+  get Flags(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -25904,7 +25904,7 @@ export class KSCAMERA_PROFILE_MEDIAINFOView {
   }
 
   // 0x10: u64
-  set Flags(value: Deno.PointerValue) {
+  set Flags(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -28989,7 +28989,7 @@ export interface TIMECODE {
   /** _Anonymous_e__Struct */
   Anonymous: Uint8Array | Deno.PointerValue;
   /** u64 */
-  qw: Deno.PointerValue;
+  qw: bigint | number;
 }
 
 export const sizeofTIMECODE = 16;
@@ -29021,7 +29021,7 @@ export class TIMECODEView {
   }
 
   // 0x08: u64
-  get qw(): Deno.PointerValue {
+  get qw(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -29031,7 +29031,7 @@ export class TIMECODEView {
   }
 
   // 0x08: u64
-  set qw(value: Deno.PointerValue) {
+  set qw(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -29041,7 +29041,7 @@ export class TIMECODEView {
  */
 export interface TIMECODE_SAMPLE {
   /** i64 */
-  qwTick: Deno.PointerValue;
+  qwTick: bigint | number;
   /** Windows.Win32.Media.TIMECODE */
   timecode: Uint8Array | Deno.PointerValue;
   /** u32 */
@@ -29077,7 +29077,7 @@ export class TIMECODE_SAMPLEView {
   }
 
   // 0x00: i64
-  get qwTick(): Deno.PointerValue {
+  get qwTick(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
@@ -29098,7 +29098,7 @@ export class TIMECODE_SAMPLEView {
   }
 
   // 0x00: i64
-  set qwTick(value: Deno.PointerValue) {
+  set qwTick(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
@@ -30225,9 +30225,9 @@ export interface KSPROPERTY_VIDEOCONTROL_ACTUAL_FRAME_RATE_S {
   /** Windows.Win32.Foundation.SIZE */
   Dimensions: Uint8Array | Deno.PointerValue;
   /** i64 */
-  CurrentActualFrameRate: Deno.PointerValue;
+  CurrentActualFrameRate: bigint | number;
   /** i64 */
-  CurrentMaxAvailableFrameRate: Deno.PointerValue;
+  CurrentMaxAvailableFrameRate: bigint | number;
 }
 
 export const sizeofKSPROPERTY_VIDEOCONTROL_ACTUAL_FRAME_RATE_S = 40;
@@ -30283,12 +30283,12 @@ export class KSPROPERTY_VIDEOCONTROL_ACTUAL_FRAME_RATE_SView {
   }
 
   // 0x18: i64
-  get CurrentActualFrameRate(): Deno.PointerValue {
+  get CurrentActualFrameRate(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
   // 0x20: i64
-  get CurrentMaxAvailableFrameRate(): Deno.PointerValue {
+  get CurrentMaxAvailableFrameRate(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
@@ -30313,12 +30313,12 @@ export class KSPROPERTY_VIDEOCONTROL_ACTUAL_FRAME_RATE_SView {
   }
 
   // 0x18: i64
-  set CurrentActualFrameRate(value: Deno.PointerValue) {
+  set CurrentActualFrameRate(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
   // 0x20: i64
-  set CurrentMaxAvailableFrameRate(value: Deno.PointerValue) {
+  set CurrentMaxAvailableFrameRate(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 }
@@ -30413,9 +30413,9 @@ export interface KSPROPERTY_DROPPEDFRAMES_CURRENT_S {
   /** Windows.Win32.Media.KernelStreaming.KSIDENTIFIER */
   Property: Uint8Array | Deno.PointerValue;
   /** i64 */
-  PictureNumber: Deno.PointerValue;
+  PictureNumber: bigint | number;
   /** i64 */
-  DropCount: Deno.PointerValue;
+  DropCount: bigint | number;
   /** u32 */
   AverageFrameSize: number;
 }
@@ -30454,12 +30454,12 @@ export class KSPROPERTY_DROPPEDFRAMES_CURRENT_SView {
   }
 
   // 0x08: i64
-  get PictureNumber(): Deno.PointerValue {
+  get PictureNumber(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: i64
-  get DropCount(): Deno.PointerValue {
+  get DropCount(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -30476,12 +30476,12 @@ export class KSPROPERTY_DROPPEDFRAMES_CURRENT_SView {
   }
 
   // 0x08: i64
-  set PictureNumber(value: Deno.PointerValue) {
+  set PictureNumber(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: i64
-  set DropCount(value: Deno.PointerValue) {
+  set DropCount(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
@@ -31137,7 +31137,7 @@ export class KSGOP_USERDATAView {
  */
 export interface KS_AM_SimpleRateChange {
   /** i64 */
-  StartTime: Deno.PointerValue;
+  StartTime: bigint | number;
   /** i32 */
   Rate: number;
 }
@@ -31166,7 +31166,7 @@ export class KS_AM_SimpleRateChangeView {
   }
 
   // 0x00: i64
-  get StartTime(): Deno.PointerValue {
+  get StartTime(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
@@ -31178,7 +31178,7 @@ export class KS_AM_SimpleRateChangeView {
   // 0x0c: pad4
 
   // 0x00: i64
-  set StartTime(value: Deno.PointerValue) {
+  set StartTime(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
@@ -31195,7 +31195,7 @@ export class KS_AM_SimpleRateChangeView {
  */
 export interface KS_AM_ExactRateChange {
   /** i64 */
-  OutputZeroTime: Deno.PointerValue;
+  OutputZeroTime: bigint | number;
   /** i32 */
   Rate: number;
 }
@@ -31224,7 +31224,7 @@ export class KS_AM_ExactRateChangeView {
   }
 
   // 0x00: i64
-  get OutputZeroTime(): Deno.PointerValue {
+  get OutputZeroTime(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
@@ -31236,7 +31236,7 @@ export class KS_AM_ExactRateChangeView {
   // 0x0c: pad4
 
   // 0x00: i64
-  set OutputZeroTime(value: Deno.PointerValue) {
+  set OutputZeroTime(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
@@ -31774,7 +31774,7 @@ export interface KSAUDIOENGINE_VOLUMELEVEL {
   /** Windows.Win32.Media.KernelStreaming.AUDIO_CURVE_TYPE */
   CurveType: AUDIO_CURVE_TYPE;
   /** u64 */
-  CurveDuration: Deno.PointerValue;
+  CurveDuration: bigint | number;
 }
 
 export const sizeofKSAUDIOENGINE_VOLUMELEVEL = 16;
@@ -31812,7 +31812,7 @@ export class KSAUDIOENGINE_VOLUMELEVELView {
   }
 
   // 0x08: u64
-  get CurveDuration(): Deno.PointerValue {
+  get CurveDuration(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -31827,7 +31827,7 @@ export class KSAUDIOENGINE_VOLUMELEVELView {
   }
 
   // 0x08: u64
-  set CurveDuration(value: Deno.PointerValue) {
+  set CurveDuration(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -32167,11 +32167,11 @@ export class KSAUDIOMODULE_NOTIFICATIONView {
  */
 export interface OPTIMAL_WEIGHT_TOTALS {
   /** i64 */
-  MinTotalNominator: Deno.PointerValue;
+  MinTotalNominator: bigint | number;
   /** i64 */
-  MaxTotalNominator: Deno.PointerValue;
+  MaxTotalNominator: bigint | number;
   /** i64 */
-  TotalDenominator: Deno.PointerValue;
+  TotalDenominator: bigint | number;
 }
 
 export const sizeofOPTIMAL_WEIGHT_TOTALS = 24;
@@ -32199,32 +32199,32 @@ export class OPTIMAL_WEIGHT_TOTALSView {
   }
 
   // 0x00: i64
-  get MinTotalNominator(): Deno.PointerValue {
+  get MinTotalNominator(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: i64
-  get MaxTotalNominator(): Deno.PointerValue {
+  get MaxTotalNominator(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: i64
-  get TotalDenominator(): Deno.PointerValue {
+  get TotalDenominator(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x00: i64
-  set MinTotalNominator(value: Deno.PointerValue) {
+  set MinTotalNominator(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: i64
-  set MaxTotalNominator(value: Deno.PointerValue) {
+  set MaxTotalNominator(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: i64
-  set TotalDenominator(value: Deno.PointerValue) {
+  set TotalDenominator(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }

@@ -4931,9 +4931,9 @@ export class DWRITE_GLYPH_IMAGE_DATAView {
  */
 export interface DWRITE_FILE_FRAGMENT {
   /** u64 */
-  fileOffset: Deno.PointerValue;
+  fileOffset: bigint | number;
   /** u64 */
-  fragmentSize: Deno.PointerValue;
+  fragmentSize: bigint | number;
 }
 
 export const sizeofDWRITE_FILE_FRAGMENT = 16;
@@ -4959,22 +4959,22 @@ export class DWRITE_FILE_FRAGMENTView {
   }
 
   // 0x00: u64
-  get fileOffset(): Deno.PointerValue {
+  get fileOffset(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get fragmentSize(): Deno.PointerValue {
+  get fragmentSize(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set fileOffset(value: Deno.PointerValue) {
+  set fileOffset(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set fragmentSize(value: Deno.PointerValue) {
+  set fragmentSize(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }

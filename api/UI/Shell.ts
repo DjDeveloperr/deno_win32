@@ -7265,11 +7265,11 @@ export const ERROR_QUERY_STORAGE_ERROR = 2151284737;
 
 // Structs
 
-export type ShFindChangeNotificationHandle = Deno.PointerValue;
+export type ShFindChangeNotificationHandle = bigint | number;
 
-export type HDROP = Deno.PointerValue;
+export type HDROP = bigint | number;
 
-export type HPSXA = Deno.PointerValue;
+export type HPSXA = bigint | number;
 
 /**
  * Windows.Win32.UI.Shell.PropertiesSystem.PROPERTYKEY (size: 16)
@@ -7573,9 +7573,9 @@ export class ITEMIDLISTView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -7601,22 +7601,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -8155,7 +8155,7 @@ export class DRAGINFOWView {
   // 0x24: pad4
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 /**
  * Windows.Win32.Foundation.RECT (size: 16)
@@ -8238,7 +8238,7 @@ export class RECTView {
   }
 }
 
-export type LPARAM = Deno.PointerValue;
+export type LPARAM = bigint | number;
 
 /**
  * Windows.Win32.UI.Shell.APPBARDATA (size: 40)
@@ -8859,11 +8859,11 @@ export class SHNAMEMAPPINGWView {
   }
 }
 
-export type HINSTANCE = Deno.PointerValue;
+export type HINSTANCE = bigint | number;
 
-export type HKEY = Deno.PointerValue;
+export type HKEY = bigint | number;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.UI.Shell.SHELLEXECUTEINFOA (size: 112)
@@ -9730,9 +9730,9 @@ export interface SHQUERYRBINFO {
   /** u32 */
   cbSize: number;
   /** i64 */
-  i64Size: Deno.PointerValue;
+  i64Size: bigint | number;
   /** i64 */
-  i64NumItems: Deno.PointerValue;
+  i64NumItems: bigint | number;
 }
 
 export const sizeofSHQUERYRBINFO = 24;
@@ -9768,12 +9768,12 @@ export class SHQUERYRBINFOView {
   // 0x04: pad4
 
   // 0x08: i64
-  get i64Size(): Deno.PointerValue {
+  get i64Size(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: i64
-  get i64NumItems(): Deno.PointerValue {
+  get i64NumItems(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -9785,17 +9785,17 @@ export class SHQUERYRBINFOView {
   // 0x04: pad4
 
   // 0x08: i64
-  set i64Size(value: Deno.PointerValue) {
+  set i64Size(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: i64
-  set i64NumItems(value: Deno.PointerValue) {
+  set i64NumItems(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
 
-export type HICON = Deno.PointerValue;
+export type HICON = bigint | number;
 
 /**
  * Windows.Win32.UI.Shell.NOTIFYICONDATAA (size: 104)
@@ -10937,7 +10937,7 @@ export interface HELPINFO {
   /** Windows.Win32.Foundation.HANDLE */
   hItemHandle: Uint8Array | Deno.PointerValue;
   /** usize */
-  dwContextId: Deno.PointerValue;
+  dwContextId: bigint | number;
   /** Windows.Win32.Foundation.POINT */
   MousePos: Uint8Array | Deno.PointerValue;
 }
@@ -10997,7 +10997,7 @@ export class HELPINFOView {
   }
 
   // 0x18: usize
-  get dwContextId(): Deno.PointerValue {
+  get dwContextId(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -11030,7 +11030,7 @@ export class HELPINFOView {
   }
 
   // 0x18: usize
-  set dwContextId(value: Deno.PointerValue) {
+  set dwContextId(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -12879,7 +12879,7 @@ export class SIZEView {
   }
 }
 
-export type HBITMAP = Deno.PointerValue;
+export type HBITMAP = bigint | number;
 
 export type COLORREF = number;
 
@@ -13454,7 +13454,7 @@ export class DELEGATEITEMIDView {
   }
 }
 
-export type HMENU = Deno.PointerValue;
+export type HMENU = bigint | number;
 
 /**
  * Windows.Win32.UI.Shell.SMDATA (size: 80)
@@ -14070,7 +14070,7 @@ export class KNOWNFOLDER_DEFINITIONView {
   }
 }
 
-export type HACCEL = Deno.PointerValue;
+export type HACCEL = bigint | number;
 
 /**
  * Windows.Win32.UI.Shell.PREVIEWHANDLERFRAMEINFO (size: 16)
@@ -14213,7 +14213,7 @@ export class BANNER_NOTIFICATIONView {
   }
 }
 
-export type HIMAGELIST = Deno.PointerValue;
+export type HIMAGELIST = bigint | number;
 
 /**
  * Windows.Win32.UI.Shell.NSTCCUSTOMDRAW (size: 48)
@@ -20200,7 +20200,7 @@ export interface DLLVERSIONINFO2 {
   /** u32 */
   dwFlags: number;
   /** u64 */
-  ullVersion: Deno.PointerValue;
+  ullVersion: bigint | number;
 }
 
 export const sizeofDLLVERSIONINFO2 = 24;
@@ -20242,7 +20242,7 @@ export class DLLVERSIONINFO2View {
   // 0x0c: pad4
 
   // 0x10: u64
-  get ullVersion(): Deno.PointerValue {
+  get ullVersion(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -20259,7 +20259,7 @@ export class DLLVERSIONINFO2View {
   // 0x0c: pad4
 
   // 0x10: u64
-  set ullVersion(value: Deno.PointerValue) {
+  set ullVersion(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -20664,7 +20664,7 @@ export class APPINFODATAView {
  */
 export interface SLOWAPPINFO {
   /** u64 */
-  ullSize: Deno.PointerValue;
+  ullSize: bigint | number;
   /** Windows.Win32.Foundation.FILETIME */
   ftLastUsed: Uint8Array | Deno.PointerValue;
   /** i32 */
@@ -20704,7 +20704,7 @@ export class SLOWAPPINFOView {
   }
 
   // 0x00: u64
-  get ullSize(): Deno.PointerValue {
+  get ullSize(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -20728,7 +20728,7 @@ export class SLOWAPPINFOView {
   }
 
   // 0x00: u64
-  set ullSize(value: Deno.PointerValue) {
+  set ullSize(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -23223,7 +23223,7 @@ export class FOLDERSETDATAView {
   // 0x14: pad4
 }
 
-export type HMONITOR = Deno.PointerValue;
+export type HMONITOR = bigint | number;
 
 /**
  * Windows.Win32.UI.Shell.TOOLBARITEM (size: 40)
@@ -23344,7 +23344,7 @@ export interface CPLINFO {
   /** i32 */
   idInfo: number;
   /** isize */
-  lData: Deno.PointerValue;
+  lData: bigint | number;
 }
 
 export const sizeofCPLINFO = 24;
@@ -23392,7 +23392,7 @@ export class CPLINFOView {
   // 0x0c: pad4
 
   // 0x10: isize
-  get lData(): Deno.PointerValue {
+  get lData(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -23414,7 +23414,7 @@ export class CPLINFOView {
   // 0x0c: pad4
 
   // 0x10: isize
-  set lData(value: Deno.PointerValue) {
+  set lData(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -23430,7 +23430,7 @@ export interface NEWCPLINFOA {
   /** u32 */
   dwHelpContext: number;
   /** isize */
-  lData: Deno.PointerValue;
+  lData: bigint | number;
   /** Windows.Win32.UI.WindowsAndMessaging.HICON */
   hIcon: Uint8Array | Deno.PointerValue;
   /** array */
@@ -23494,7 +23494,7 @@ export class NEWCPLINFOAView {
   // 0x0c: pad4
 
   // 0x10: isize
-  get lData(): Deno.PointerValue {
+  get lData(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -23540,7 +23540,7 @@ export class NEWCPLINFOAView {
   // 0x0c: pad4
 
   // 0x10: isize
-  set lData(value: Deno.PointerValue) {
+  set lData(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
@@ -23576,7 +23576,7 @@ export interface NEWCPLINFOW {
   /** u32 */
   dwHelpContext: number;
   /** isize */
-  lData: Deno.PointerValue;
+  lData: bigint | number;
   /** Windows.Win32.UI.WindowsAndMessaging.HICON */
   hIcon: Uint8Array | Deno.PointerValue;
   /** array */
@@ -23640,7 +23640,7 @@ export class NEWCPLINFOWView {
   // 0x0c: pad4
 
   // 0x10: isize
-  get lData(): Deno.PointerValue {
+  get lData(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -23686,7 +23686,7 @@ export class NEWCPLINFOWView {
   // 0x0c: pad4
 
   // 0x10: isize
-  set lData(value: Deno.PointerValue) {
+  set lData(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
@@ -24427,13 +24427,13 @@ export class PROPPRGView {
 
 export type HRESULT = number;
 
-export type WPARAM = Deno.PointerValue;
+export type WPARAM = bigint | number;
 
-export type LRESULT = Deno.PointerValue;
+export type LRESULT = bigint | number;
 
-export type HDC = Deno.PointerValue;
+export type HDC = bigint | number;
 
-export type HPALETTE = Deno.PointerValue;
+export type HPALETTE = bigint | number;
 
 // Native Libraries
 
@@ -27374,8 +27374,8 @@ export function GetUserProfileDirectoryW(
 export function SetWindowSubclass(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pfnSubclass: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Shell.SUBCLASSPROC */,
-  uIdSubclass: Deno.PointerValue /* usize */,
-  dwRefData: Deno.PointerValue /* usize */,
+  uIdSubclass: bigint | number /* usize */,
+  dwRefData: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libCOMCTL32_dll.SetWindowSubclass((hWnd), util.toPointer(pfnSubclass), uIdSubclass, dwRefData));
 }
@@ -27383,7 +27383,7 @@ export function SetWindowSubclass(
 export function GetWindowSubclass(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pfnSubclass: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Shell.SUBCLASSPROC */,
-  uIdSubclass: Deno.PointerValue /* usize */,
+  uIdSubclass: bigint | number /* usize */,
   pdwRefData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libCOMCTL32_dll.GetWindowSubclass((hWnd), util.toPointer(pfnSubclass), uIdSubclass, util.toPointer(pdwRefData)));
@@ -27392,7 +27392,7 @@ export function GetWindowSubclass(
 export function RemoveWindowSubclass(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pfnSubclass: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Shell.SUBCLASSPROC */,
-  uIdSubclass: Deno.PointerValue /* usize */,
+  uIdSubclass: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libCOMCTL32_dll.RemoveWindowSubclass((hWnd), util.toPointer(pfnSubclass), uIdSubclass));
 }
@@ -27436,7 +27436,7 @@ export function WinHelpA(
   hWndMain: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   lpszHelp: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   uCommand: number /* u32 */,
-  dwData: Deno.PointerValue /* usize */,
+  dwData: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.WinHelpA((hWndMain), util.pstrToFfi(lpszHelp), uCommand, dwData));
 }
@@ -27445,7 +27445,7 @@ export function WinHelpW(
   hWndMain: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   lpszHelp: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   uCommand: number /* u32 */,
-  dwData: Deno.PointerValue /* usize */,
+  dwData: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.WinHelpW((hWndMain), util.pwstrToFfi(lpszHelp), uCommand, dwData));
 }
@@ -27728,7 +27728,7 @@ export function SHGetMalloc(
 }
 
 export function SHAlloc(
-  cb: Deno.PointerValue /* usize */,
+  cb: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
   return libSHELL32_dll.SHAlloc(cb);
 }
@@ -28904,7 +28904,7 @@ export function RegisterScaleChangeEvent(
 }
 
 export function UnregisterScaleChangeEvent(
-  dwCookie: Deno.PointerValue /* usize */,
+  dwCookie: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libapi_ms_win_shcore_scaling_l1_1_1_dll.UnregisterScaleChangeEvent(dwCookie);
 }
@@ -29076,7 +29076,7 @@ export function ExtractIconW(
 export function SHAppBarMessage(
   dwMessage: number /* u32 */,
   pData: Deno.PointerValue | Uint8Array /* ptr */,
-): Deno.PointerValue /* usize */ {
+): bigint | number /* usize */ {
   return libSHELL32_dll.SHAppBarMessage(dwMessage, util.toPointer(pData));
 }
 
@@ -29231,7 +29231,7 @@ export function SHGetFileInfoA(
   psfi: Deno.PointerValue | Uint8Array /* ptr */,
   cbFileInfo: number /* u32 */,
   uFlags: SHGFI_FLAGS /* Windows.Win32.UI.Shell.SHGFI_FLAGS */,
-): Deno.PointerValue /* usize */ {
+): bigint | number /* usize */ {
   return libSHELL32_dll.SHGetFileInfoA(util.pstrToFfi(pszPath), dwFileAttributes, util.toPointer(psfi), cbFileInfo, uFlags);
 }
 
@@ -29241,7 +29241,7 @@ export function SHGetFileInfoW(
   psfi: Deno.PointerValue | Uint8Array /* ptr */,
   cbFileInfo: number /* u32 */,
   uFlags: SHGFI_FLAGS /* Windows.Win32.UI.Shell.SHGFI_FLAGS */,
-): Deno.PointerValue /* usize */ {
+): bigint | number /* usize */ {
   return libSHELL32_dll.SHGetFileInfoW(util.pwstrToFfi(pszPath), dwFileAttributes, util.toPointer(psfi), cbFileInfo, uFlags);
 }
 
@@ -29548,7 +29548,7 @@ export function StrDupW(
 }
 
 export function StrFormatByteSizeEx(
-  ull: Deno.PointerValue /* u64 */,
+  ull: bigint | number /* u64 */,
   flags: SFBS_FLAGS /* Windows.Win32.UI.Shell.SFBS_FLAGS */,
   pszBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchBuf: number /* u32 */,
@@ -29565,7 +29565,7 @@ export function StrFormatByteSizeA(
 }
 
 export function StrFormatByteSize64A(
-  qdw: Deno.PointerValue /* i64 */,
+  qdw: bigint | number /* i64 */,
   pszBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchBuf: number /* u32 */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
@@ -29573,7 +29573,7 @@ export function StrFormatByteSize64A(
 }
 
 export function StrFormatByteSizeW(
-  qdw: Deno.PointerValue /* i64 */,
+  qdw: bigint | number /* i64 */,
   pszBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchBuf: number /* u32 */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
@@ -29581,7 +29581,7 @@ export function StrFormatByteSizeW(
 }
 
 export function StrFormatKBSizeW(
-  qdw: Deno.PointerValue /* i64 */,
+  qdw: bigint | number /* i64 */,
   pszBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchBuf: number /* u32 */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
@@ -29589,7 +29589,7 @@ export function StrFormatKBSizeW(
 }
 
 export function StrFormatKBSizeA(
-  qdw: Deno.PointerValue /* i64 */,
+  qdw: bigint | number /* i64 */,
   pszBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchBuf: number /* u32 */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
@@ -31368,7 +31368,7 @@ export function SHRegSetPathW(
 export function SHRegCreateUSKeyA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   samDesired: number /* u32 */,
-  hRelativeUSKey: Deno.PointerValue /* isize */,
+  hRelativeUSKey: bigint | number /* isize */,
   phNewUSKey: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
@@ -31378,7 +31378,7 @@ export function SHRegCreateUSKeyA(
 export function SHRegCreateUSKeyW(
   pwzPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   samDesired: number /* u32 */,
-  hRelativeUSKey: Deno.PointerValue /* isize */,
+  hRelativeUSKey: bigint | number /* isize */,
   phNewUSKey: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
@@ -31388,7 +31388,7 @@ export function SHRegCreateUSKeyW(
 export function SHRegOpenUSKeyA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   samDesired: number /* u32 */,
-  hRelativeUSKey: Deno.PointerValue /* isize */,
+  hRelativeUSKey: bigint | number /* isize */,
   phNewUSKey: Deno.PointerValue | Uint8Array /* ptr */,
   fIgnoreHKCU: boolean /* Windows.Win32.Foundation.BOOL */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
@@ -31398,7 +31398,7 @@ export function SHRegOpenUSKeyA(
 export function SHRegOpenUSKeyW(
   pwzPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   samDesired: number /* u32 */,
-  hRelativeUSKey: Deno.PointerValue /* isize */,
+  hRelativeUSKey: bigint | number /* isize */,
   phNewUSKey: Deno.PointerValue | Uint8Array /* ptr */,
   fIgnoreHKCU: boolean /* Windows.Win32.Foundation.BOOL */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
@@ -31406,7 +31406,7 @@ export function SHRegOpenUSKeyW(
 }
 
 export function SHRegQueryUSValueA(
-  hUSKey: Deno.PointerValue /* isize */,
+  hUSKey: bigint | number /* isize */,
   pszValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pdwType: Deno.PointerValue | Uint8Array /* ptr */,
   pvData: Deno.PointerValue | Uint8Array /* ptr */,
@@ -31419,7 +31419,7 @@ export function SHRegQueryUSValueA(
 }
 
 export function SHRegQueryUSValueW(
-  hUSKey: Deno.PointerValue /* isize */,
+  hUSKey: bigint | number /* isize */,
   pszValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pdwType: Deno.PointerValue | Uint8Array /* ptr */,
   pvData: Deno.PointerValue | Uint8Array /* ptr */,
@@ -31432,7 +31432,7 @@ export function SHRegQueryUSValueW(
 }
 
 export function SHRegWriteUSValueA(
-  hUSKey: Deno.PointerValue /* isize */,
+  hUSKey: bigint | number /* isize */,
   pszValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwType: number /* u32 */,
   pvData: Deno.PointerValue | Uint8Array /* ptr */,
@@ -31443,7 +31443,7 @@ export function SHRegWriteUSValueA(
 }
 
 export function SHRegWriteUSValueW(
-  hUSKey: Deno.PointerValue /* isize */,
+  hUSKey: bigint | number /* isize */,
   pwzValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwType: number /* u32 */,
   pvData: Deno.PointerValue | Uint8Array /* ptr */,
@@ -31454,7 +31454,7 @@ export function SHRegWriteUSValueW(
 }
 
 export function SHRegDeleteUSValueA(
-  hUSKey: Deno.PointerValue /* isize */,
+  hUSKey: bigint | number /* isize */,
   pszValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   delRegFlags: SHREGDEL_FLAGS /* Windows.Win32.UI.Shell.SHREGDEL_FLAGS */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
@@ -31462,7 +31462,7 @@ export function SHRegDeleteUSValueA(
 }
 
 export function SHRegDeleteUSValueW(
-  hUSKey: Deno.PointerValue /* isize */,
+  hUSKey: bigint | number /* isize */,
   pwzValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   delRegFlags: SHREGDEL_FLAGS /* Windows.Win32.UI.Shell.SHREGDEL_FLAGS */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
@@ -31470,7 +31470,7 @@ export function SHRegDeleteUSValueW(
 }
 
 export function SHRegDeleteEmptyUSKeyW(
-  hUSKey: Deno.PointerValue /* isize */,
+  hUSKey: bigint | number /* isize */,
   pwzSubKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   delRegFlags: SHREGDEL_FLAGS /* Windows.Win32.UI.Shell.SHREGDEL_FLAGS */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
@@ -31478,7 +31478,7 @@ export function SHRegDeleteEmptyUSKeyW(
 }
 
 export function SHRegDeleteEmptyUSKeyA(
-  hUSKey: Deno.PointerValue /* isize */,
+  hUSKey: bigint | number /* isize */,
   pszSubKey: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   delRegFlags: SHREGDEL_FLAGS /* Windows.Win32.UI.Shell.SHREGDEL_FLAGS */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
@@ -31486,7 +31486,7 @@ export function SHRegDeleteEmptyUSKeyA(
 }
 
 export function SHRegEnumUSKeyA(
-  hUSKey: Deno.PointerValue /* isize */,
+  hUSKey: bigint | number /* isize */,
   dwIndex: number /* u32 */,
   pszName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchName: Deno.PointerValue | Uint8Array /* ptr */,
@@ -31496,7 +31496,7 @@ export function SHRegEnumUSKeyA(
 }
 
 export function SHRegEnumUSKeyW(
-  hUSKey: Deno.PointerValue /* isize */,
+  hUSKey: bigint | number /* isize */,
   dwIndex: number /* u32 */,
   pwzName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchName: Deno.PointerValue | Uint8Array /* ptr */,
@@ -31506,7 +31506,7 @@ export function SHRegEnumUSKeyW(
 }
 
 export function SHRegEnumUSValueA(
-  hUSkey: Deno.PointerValue /* isize */,
+  hUSkey: bigint | number /* isize */,
   dwIndex: number /* u32 */,
   pszValueName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchValueName: Deno.PointerValue | Uint8Array /* ptr */,
@@ -31519,7 +31519,7 @@ export function SHRegEnumUSValueA(
 }
 
 export function SHRegEnumUSValueW(
-  hUSkey: Deno.PointerValue /* isize */,
+  hUSkey: bigint | number /* isize */,
   dwIndex: number /* u32 */,
   pszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchValueName: Deno.PointerValue | Uint8Array /* ptr */,
@@ -31532,7 +31532,7 @@ export function SHRegEnumUSValueW(
 }
 
 export function SHRegQueryInfoUSKeyA(
-  hUSKey: Deno.PointerValue /* isize */,
+  hUSKey: bigint | number /* isize */,
   pcSubKeys: Deno.PointerValue | Uint8Array /* ptr */,
   pcchMaxSubKeyLen: Deno.PointerValue | Uint8Array /* ptr */,
   pcValues: Deno.PointerValue | Uint8Array /* ptr */,
@@ -31543,7 +31543,7 @@ export function SHRegQueryInfoUSKeyA(
 }
 
 export function SHRegQueryInfoUSKeyW(
-  hUSKey: Deno.PointerValue /* isize */,
+  hUSKey: bigint | number /* isize */,
   pcSubKeys: Deno.PointerValue | Uint8Array /* ptr */,
   pcchMaxSubKeyLen: Deno.PointerValue | Uint8Array /* ptr */,
   pcValues: Deno.PointerValue | Uint8Array /* ptr */,
@@ -31554,7 +31554,7 @@ export function SHRegQueryInfoUSKeyW(
 }
 
 export function SHRegCloseUSKey(
-  hUSKey: Deno.PointerValue /* isize */,
+  hUSKey: bigint | number /* isize */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
   return libSHLWAPI_dll.SHRegCloseUSKey(hUSKey);
 }
@@ -32503,7 +32503,7 @@ export function PathCchIsRoot(
 
 export function PathCchAddBackslashEx(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  cchPath: Deno.PointerValue /* usize */,
+  cchPath: bigint | number /* usize */,
   ppszEnd: Deno.PointerValue | Uint8Array /* ptr */,
   pcchRemaining: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
@@ -32512,14 +32512,14 @@ export function PathCchAddBackslashEx(
 
 export function PathCchAddBackslash(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  cchPath: Deno.PointerValue /* usize */,
+  cchPath: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libapi_ms_win_core_path_l1_1_0_dll.PathCchAddBackslash(util.pwstrToFfi(pszPath), cchPath);
 }
 
 export function PathCchRemoveBackslashEx(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  cchPath: Deno.PointerValue /* usize */,
+  cchPath: bigint | number /* usize */,
   ppszEnd: Deno.PointerValue | Uint8Array /* ptr */,
   pcchRemaining: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
@@ -32528,7 +32528,7 @@ export function PathCchRemoveBackslashEx(
 
 export function PathCchRemoveBackslash(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  cchPath: Deno.PointerValue /* usize */,
+  cchPath: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libapi_ms_win_core_path_l1_1_0_dll.PathCchRemoveBackslash(util.pwstrToFfi(pszPath), cchPath);
 }
@@ -32542,21 +32542,21 @@ export function PathCchSkipRoot(
 
 export function PathCchStripToRoot(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  cchPath: Deno.PointerValue /* usize */,
+  cchPath: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libapi_ms_win_core_path_l1_1_0_dll.PathCchStripToRoot(util.pwstrToFfi(pszPath), cchPath);
 }
 
 export function PathCchRemoveFileSpec(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  cchPath: Deno.PointerValue /* usize */,
+  cchPath: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libapi_ms_win_core_path_l1_1_0_dll.PathCchRemoveFileSpec(util.pwstrToFfi(pszPath), cchPath);
 }
 
 export function PathCchFindExtension(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  cchPath: Deno.PointerValue /* usize */,
+  cchPath: bigint | number /* usize */,
   ppszExt: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libapi_ms_win_core_path_l1_1_0_dll.PathCchFindExtension(util.pwstrToFfi(pszPath), cchPath, util.toPointer(ppszExt));
@@ -32564,7 +32564,7 @@ export function PathCchFindExtension(
 
 export function PathCchAddExtension(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  cchPath: Deno.PointerValue /* usize */,
+  cchPath: bigint | number /* usize */,
   pszExt: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libapi_ms_win_core_path_l1_1_0_dll.PathCchAddExtension(util.pwstrToFfi(pszPath), cchPath, util.pwstrToFfi(pszExt));
@@ -32572,7 +32572,7 @@ export function PathCchAddExtension(
 
 export function PathCchRenameExtension(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  cchPath: Deno.PointerValue /* usize */,
+  cchPath: bigint | number /* usize */,
   pszExt: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libapi_ms_win_core_path_l1_1_0_dll.PathCchRenameExtension(util.pwstrToFfi(pszPath), cchPath, util.pwstrToFfi(pszExt));
@@ -32580,14 +32580,14 @@ export function PathCchRenameExtension(
 
 export function PathCchRemoveExtension(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  cchPath: Deno.PointerValue /* usize */,
+  cchPath: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libapi_ms_win_core_path_l1_1_0_dll.PathCchRemoveExtension(util.pwstrToFfi(pszPath), cchPath);
 }
 
 export function PathCchCanonicalizeEx(
   pszPathOut: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  cchPathOut: Deno.PointerValue /* usize */,
+  cchPathOut: bigint | number /* usize */,
   pszPathIn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: PATHCCH_OPTIONS /* Windows.Win32.UI.Shell.PATHCCH_OPTIONS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
@@ -32596,7 +32596,7 @@ export function PathCchCanonicalizeEx(
 
 export function PathCchCanonicalize(
   pszPathOut: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  cchPathOut: Deno.PointerValue /* usize */,
+  cchPathOut: bigint | number /* usize */,
   pszPathIn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libapi_ms_win_core_path_l1_1_0_dll.PathCchCanonicalize(util.pwstrToFfi(pszPathOut), cchPathOut, util.pwstrToFfi(pszPathIn));
@@ -32604,7 +32604,7 @@ export function PathCchCanonicalize(
 
 export function PathCchCombineEx(
   pszPathOut: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  cchPathOut: Deno.PointerValue /* usize */,
+  cchPathOut: bigint | number /* usize */,
   pszPathIn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszMore: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: PATHCCH_OPTIONS /* Windows.Win32.UI.Shell.PATHCCH_OPTIONS */,
@@ -32614,7 +32614,7 @@ export function PathCchCombineEx(
 
 export function PathCchCombine(
   pszPathOut: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  cchPathOut: Deno.PointerValue /* usize */,
+  cchPathOut: bigint | number /* usize */,
   pszPathIn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszMore: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
@@ -32623,7 +32623,7 @@ export function PathCchCombine(
 
 export function PathCchAppendEx(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  cchPath: Deno.PointerValue /* usize */,
+  cchPath: bigint | number /* usize */,
   pszMore: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: PATHCCH_OPTIONS /* Windows.Win32.UI.Shell.PATHCCH_OPTIONS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
@@ -32632,7 +32632,7 @@ export function PathCchAppendEx(
 
 export function PathCchAppend(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  cchPath: Deno.PointerValue /* usize */,
+  cchPath: bigint | number /* usize */,
   pszMore: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libapi_ms_win_core_path_l1_1_0_dll.PathCchAppend(util.pwstrToFfi(pszPath), cchPath, util.pwstrToFfi(pszMore));
@@ -32640,7 +32640,7 @@ export function PathCchAppend(
 
 export function PathCchStripPrefix(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  cchPath: Deno.PointerValue /* usize */,
+  cchPath: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libapi_ms_win_core_path_l1_1_0_dll.PathCchStripPrefix(util.pwstrToFfi(pszPath), cchPath);
 }

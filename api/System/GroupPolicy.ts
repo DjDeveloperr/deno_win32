@@ -211,11 +211,11 @@ export const GPHintOrganizationalUnit = 4;
 
 // Structs
 
-export type CriticalPolicySectionHandle = Deno.PointerValue;
+export type CriticalPolicySectionHandle = bigint | number;
 
 export type PSTR = Deno.PointerValue | Uint8Array;
 
-export type LPARAM = Deno.PointerValue;
+export type LPARAM = bigint | number;
 
 /**
  * Windows.Win32.System.GroupPolicy.GROUP_POLICY_OBJECTA (size: 96)
@@ -1781,7 +1781,7 @@ export class MANAGEDAPPLICATIONView {
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 /**
  * Windows.Win32.System.GroupPolicy.GPOBROWSEINFO (size: 72)
@@ -1993,7 +1993,7 @@ export class GPOBROWSEINFOView {
   // 0x44: pad4
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 export type PSID = Deno.PointerValue | Uint8Array;
 
@@ -2242,7 +2242,7 @@ export function GetAppliedGPOListW(
 
 export function ProcessGroupPolicyCompleted(
   extensionId: Deno.PointerValue | Uint8Array /* ptr */,
-  pAsyncHandle: Deno.PointerValue /* usize */,
+  pAsyncHandle: bigint | number /* usize */,
   dwStatus: number /* u32 */,
 ): number /* u32 */ {
   return libUSERENV_dll.ProcessGroupPolicyCompleted(util.toPointer(extensionId), pAsyncHandle, dwStatus);
@@ -2250,7 +2250,7 @@ export function ProcessGroupPolicyCompleted(
 
 export function ProcessGroupPolicyCompletedEx(
   extensionId: Deno.PointerValue | Uint8Array /* ptr */,
-  pAsyncHandle: Deno.PointerValue /* usize */,
+  pAsyncHandle: bigint | number /* usize */,
   dwStatus: number /* u32 */,
   RsopStatus: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */,
 ): number /* u32 */ {

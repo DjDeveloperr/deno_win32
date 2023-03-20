@@ -52,7 +52,7 @@ export const DXGI_COLOR_SPACE_CUSTOM = `-1`;
  */
 export interface SystemInterruptTime {
   /** u64 */
-  value: Deno.PointerValue;
+  value: bigint | number;
 }
 
 export const sizeofSystemInterruptTime = 8;
@@ -76,12 +76,12 @@ export class SystemInterruptTimeView {
   }
 
   // 0x00: u64
-  get value(): Deno.PointerValue {
+  get value(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: u64
-  set value(value: Deno.PointerValue) {
+  set value(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }

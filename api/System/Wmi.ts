@@ -1428,7 +1428,7 @@ export class EXCEPTION_DEBUG_INFOView {
   // 0x0c: pad4
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.System.Diagnostics.Debug.CREATE_THREAD_DEBUG_INFO (size: 24)
@@ -4239,9 +4239,9 @@ export interface MI_Value {
   /** i32 */
   sint32: number;
   /** u64 */
-  uint64: Deno.PointerValue;
+  uint64: bigint | number;
   /** i64 */
-  sint64: Deno.PointerValue;
+  sint64: bigint | number;
   /** f32 */
   real32: number;
   /** f64 */
@@ -4417,12 +4417,12 @@ export class MI_ValueView {
   // 0x0f: pad1
 
   // 0x10: u64
-  get uint64(): Deno.PointerValue {
+  get uint64(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: i64
-  get sint64(): Deno.PointerValue {
+  get sint64(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
@@ -4609,12 +4609,12 @@ export class MI_ValueView {
   // 0x0f: pad1
 
   // 0x10: u64
-  set uint64(value: Deno.PointerValue) {
+  set uint64(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: i64
-  set sint64(value: Deno.PointerValue) {
+  set sint64(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
@@ -5252,7 +5252,7 @@ export class MI_Uint32FieldView {
  */
 export interface MI_Sint64Field {
   /** i64 */
-  value: Deno.PointerValue;
+  value: bigint | number;
   /** u8 */
   exists: number;
   /** u8 */
@@ -5285,7 +5285,7 @@ export class MI_Sint64FieldView {
   }
 
   // 0x00: i64
-  get value(): Deno.PointerValue {
+  get value(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
@@ -5302,7 +5302,7 @@ export class MI_Sint64FieldView {
   // 0x0a: pad6
 
   // 0x00: i64
-  set value(value: Deno.PointerValue) {
+  set value(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
@@ -5324,7 +5324,7 @@ export class MI_Sint64FieldView {
  */
 export interface MI_Uint64Field {
   /** u64 */
-  value: Deno.PointerValue;
+  value: bigint | number;
   /** u8 */
   exists: number;
   /** u8 */
@@ -5357,7 +5357,7 @@ export class MI_Uint64FieldView {
   }
 
   // 0x00: u64
-  get value(): Deno.PointerValue {
+  get value(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -5374,7 +5374,7 @@ export class MI_Uint64FieldView {
   // 0x0a: pad6
 
   // 0x00: u64
-  set value(value: Deno.PointerValue) {
+  set value(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -7649,7 +7649,7 @@ export class MI_ConstUint32FieldView {
  */
 export interface MI_ConstSint64Field {
   /** i64 */
-  value: Deno.PointerValue;
+  value: bigint | number;
   /** u8 */
   exists: number;
   /** u8 */
@@ -7682,7 +7682,7 @@ export class MI_ConstSint64FieldView {
   }
 
   // 0x00: i64
-  get value(): Deno.PointerValue {
+  get value(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
@@ -7699,7 +7699,7 @@ export class MI_ConstSint64FieldView {
   // 0x0a: pad6
 
   // 0x00: i64
-  set value(value: Deno.PointerValue) {
+  set value(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
@@ -7721,7 +7721,7 @@ export class MI_ConstSint64FieldView {
  */
 export interface MI_ConstUint64Field {
   /** u64 */
-  value: Deno.PointerValue;
+  value: bigint | number;
   /** u8 */
   exists: number;
   /** u8 */
@@ -7754,7 +7754,7 @@ export class MI_ConstUint64FieldView {
   }
 
   // 0x00: u64
-  get value(): Deno.PointerValue {
+  get value(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -7771,7 +7771,7 @@ export class MI_ConstUint64FieldView {
   // 0x0a: pad6
 
   // 0x00: u64
-  set value(value: Deno.PointerValue) {
+  set value(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -9469,9 +9469,9 @@ export class MI_ConstInstanceAFieldView {
  */
 export interface MI_ServerFT {
   /** isize */
-  GetVersion: Deno.PointerValue;
+  GetVersion: bigint | number;
   /** isize */
-  GetSystemName: Deno.PointerValue;
+  GetSystemName: bigint | number;
 }
 
 export const sizeofMI_ServerFT = 16;
@@ -9497,22 +9497,22 @@ export class MI_ServerFTView {
   }
 
   // 0x00: isize
-  get GetVersion(): Deno.PointerValue {
+  get GetVersion(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: isize
-  get GetSystemName(): Deno.PointerValue {
+  get GetSystemName(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x00: isize
-  set GetVersion(value: Deno.PointerValue) {
+  set GetVersion(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set GetSystemName(value: Deno.PointerValue) {
+  set GetSystemName(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -9622,9 +9622,9 @@ export class MI_ServerView {
  */
 export interface MI_FilterFT {
   /** isize */
-  Evaluate: Deno.PointerValue;
+  Evaluate: bigint | number;
   /** isize */
-  GetExpression: Deno.PointerValue;
+  GetExpression: bigint | number;
 }
 
 export const sizeofMI_FilterFT = 16;
@@ -9650,22 +9650,22 @@ export class MI_FilterFTView {
   }
 
   // 0x00: isize
-  get Evaluate(): Deno.PointerValue {
+  get Evaluate(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: isize
-  get GetExpression(): Deno.PointerValue {
+  get GetExpression(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x00: isize
-  set Evaluate(value: Deno.PointerValue) {
+  set Evaluate(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set GetExpression(value: Deno.PointerValue) {
+  set GetExpression(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -9730,21 +9730,21 @@ export class MI_FilterView {
  */
 export interface MI_PropertySetFT {
   /** isize */
-  GetElementCount: Deno.PointerValue;
+  GetElementCount: bigint | number;
   /** isize */
-  ContainsElement: Deno.PointerValue;
+  ContainsElement: bigint | number;
   /** isize */
-  AddElement: Deno.PointerValue;
+  AddElement: bigint | number;
   /** isize */
-  GetElementAt: Deno.PointerValue;
+  GetElementAt: bigint | number;
   /** isize */
-  Clear: Deno.PointerValue;
+  Clear: bigint | number;
   /** isize */
-  Destruct: Deno.PointerValue;
+  Destruct: bigint | number;
   /** isize */
-  Delete: Deno.PointerValue;
+  Delete: bigint | number;
   /** isize */
-  Clone: Deno.PointerValue;
+  Clone: bigint | number;
 }
 
 export const sizeofMI_PropertySetFT = 64;
@@ -9782,82 +9782,82 @@ export class MI_PropertySetFTView {
   }
 
   // 0x00: isize
-  get GetElementCount(): Deno.PointerValue {
+  get GetElementCount(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: isize
-  get ContainsElement(): Deno.PointerValue {
+  get ContainsElement(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: isize
-  get AddElement(): Deno.PointerValue {
+  get AddElement(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get GetElementAt(): Deno.PointerValue {
+  get GetElementAt(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
   // 0x20: isize
-  get Clear(): Deno.PointerValue {
+  get Clear(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
   // 0x28: isize
-  get Destruct(): Deno.PointerValue {
+  get Destruct(): bigint | number {
     return Number(this.view.getBigInt64(40, true));
   }
 
   // 0x30: isize
-  get Delete(): Deno.PointerValue {
+  get Delete(): bigint | number {
     return Number(this.view.getBigInt64(48, true));
   }
 
   // 0x38: isize
-  get Clone(): Deno.PointerValue {
+  get Clone(): bigint | number {
     return Number(this.view.getBigInt64(56, true));
   }
 
   // 0x00: isize
-  set GetElementCount(value: Deno.PointerValue) {
+  set GetElementCount(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set ContainsElement(value: Deno.PointerValue) {
+  set ContainsElement(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: isize
-  set AddElement(value: Deno.PointerValue) {
+  set AddElement(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set GetElementAt(value: Deno.PointerValue) {
+  set GetElementAt(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
   // 0x20: isize
-  set Clear(value: Deno.PointerValue) {
+  set Clear(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 
   // 0x28: isize
-  set Destruct(value: Deno.PointerValue) {
+  set Destruct(value: bigint | number) {
     this.view.setBigInt64(40, BigInt(value), true);
   }
 
   // 0x30: isize
-  set Delete(value: Deno.PointerValue) {
+  set Delete(value: bigint | number) {
     this.view.setBigInt64(48, BigInt(value), true);
   }
 
   // 0x38: isize
-  set Clone(value: Deno.PointerValue) {
+  set Clone(value: bigint | number) {
     this.view.setBigInt64(56, BigInt(value), true);
   }
 }
@@ -11663,41 +11663,41 @@ export class MI_ModuleView {
  */
 export interface MI_InstanceFT {
   /** isize */
-  Clone: Deno.PointerValue;
+  Clone: bigint | number;
   /** isize */
-  Destruct: Deno.PointerValue;
+  Destruct: bigint | number;
   /** isize */
-  Delete: Deno.PointerValue;
+  Delete: bigint | number;
   /** isize */
-  IsA: Deno.PointerValue;
+  IsA: bigint | number;
   /** isize */
-  GetClassNameA: Deno.PointerValue;
+  GetClassNameA: bigint | number;
   /** isize */
-  SetNameSpace: Deno.PointerValue;
+  SetNameSpace: bigint | number;
   /** isize */
-  GetNameSpace: Deno.PointerValue;
+  GetNameSpace: bigint | number;
   /** isize */
-  GetElementCount: Deno.PointerValue;
+  GetElementCount: bigint | number;
   /** isize */
-  AddElement: Deno.PointerValue;
+  AddElement: bigint | number;
   /** isize */
-  SetElement: Deno.PointerValue;
+  SetElement: bigint | number;
   /** isize */
-  SetElementAt: Deno.PointerValue;
+  SetElementAt: bigint | number;
   /** isize */
-  GetElement: Deno.PointerValue;
+  GetElement: bigint | number;
   /** isize */
-  GetElementAt: Deno.PointerValue;
+  GetElementAt: bigint | number;
   /** isize */
-  ClearElement: Deno.PointerValue;
+  ClearElement: bigint | number;
   /** isize */
-  ClearElementAt: Deno.PointerValue;
+  ClearElementAt: bigint | number;
   /** isize */
-  GetServerName: Deno.PointerValue;
+  GetServerName: bigint | number;
   /** isize */
-  SetServerName: Deno.PointerValue;
+  SetServerName: bigint | number;
   /** isize */
-  GetClass: Deno.PointerValue;
+  GetClass: bigint | number;
 }
 
 export const sizeofMI_InstanceFT = 144;
@@ -11755,182 +11755,182 @@ export class MI_InstanceFTView {
   }
 
   // 0x00: isize
-  get Clone(): Deno.PointerValue {
+  get Clone(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: isize
-  get Destruct(): Deno.PointerValue {
+  get Destruct(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: isize
-  get Delete(): Deno.PointerValue {
+  get Delete(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get IsA(): Deno.PointerValue {
+  get IsA(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
   // 0x20: isize
-  get GetClassNameA(): Deno.PointerValue {
+  get GetClassNameA(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
   // 0x28: isize
-  get SetNameSpace(): Deno.PointerValue {
+  get SetNameSpace(): bigint | number {
     return Number(this.view.getBigInt64(40, true));
   }
 
   // 0x30: isize
-  get GetNameSpace(): Deno.PointerValue {
+  get GetNameSpace(): bigint | number {
     return Number(this.view.getBigInt64(48, true));
   }
 
   // 0x38: isize
-  get GetElementCount(): Deno.PointerValue {
+  get GetElementCount(): bigint | number {
     return Number(this.view.getBigInt64(56, true));
   }
 
   // 0x40: isize
-  get AddElement(): Deno.PointerValue {
+  get AddElement(): bigint | number {
     return Number(this.view.getBigInt64(64, true));
   }
 
   // 0x48: isize
-  get SetElement(): Deno.PointerValue {
+  get SetElement(): bigint | number {
     return Number(this.view.getBigInt64(72, true));
   }
 
   // 0x50: isize
-  get SetElementAt(): Deno.PointerValue {
+  get SetElementAt(): bigint | number {
     return Number(this.view.getBigInt64(80, true));
   }
 
   // 0x58: isize
-  get GetElement(): Deno.PointerValue {
+  get GetElement(): bigint | number {
     return Number(this.view.getBigInt64(88, true));
   }
 
   // 0x60: isize
-  get GetElementAt(): Deno.PointerValue {
+  get GetElementAt(): bigint | number {
     return Number(this.view.getBigInt64(96, true));
   }
 
   // 0x68: isize
-  get ClearElement(): Deno.PointerValue {
+  get ClearElement(): bigint | number {
     return Number(this.view.getBigInt64(104, true));
   }
 
   // 0x70: isize
-  get ClearElementAt(): Deno.PointerValue {
+  get ClearElementAt(): bigint | number {
     return Number(this.view.getBigInt64(112, true));
   }
 
   // 0x78: isize
-  get GetServerName(): Deno.PointerValue {
+  get GetServerName(): bigint | number {
     return Number(this.view.getBigInt64(120, true));
   }
 
   // 0x80: isize
-  get SetServerName(): Deno.PointerValue {
+  get SetServerName(): bigint | number {
     return Number(this.view.getBigInt64(128, true));
   }
 
   // 0x88: isize
-  get GetClass(): Deno.PointerValue {
+  get GetClass(): bigint | number {
     return Number(this.view.getBigInt64(136, true));
   }
 
   // 0x00: isize
-  set Clone(value: Deno.PointerValue) {
+  set Clone(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set Destruct(value: Deno.PointerValue) {
+  set Destruct(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: isize
-  set Delete(value: Deno.PointerValue) {
+  set Delete(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set IsA(value: Deno.PointerValue) {
+  set IsA(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
   // 0x20: isize
-  set GetClassNameA(value: Deno.PointerValue) {
+  set GetClassNameA(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 
   // 0x28: isize
-  set SetNameSpace(value: Deno.PointerValue) {
+  set SetNameSpace(value: bigint | number) {
     this.view.setBigInt64(40, BigInt(value), true);
   }
 
   // 0x30: isize
-  set GetNameSpace(value: Deno.PointerValue) {
+  set GetNameSpace(value: bigint | number) {
     this.view.setBigInt64(48, BigInt(value), true);
   }
 
   // 0x38: isize
-  set GetElementCount(value: Deno.PointerValue) {
+  set GetElementCount(value: bigint | number) {
     this.view.setBigInt64(56, BigInt(value), true);
   }
 
   // 0x40: isize
-  set AddElement(value: Deno.PointerValue) {
+  set AddElement(value: bigint | number) {
     this.view.setBigInt64(64, BigInt(value), true);
   }
 
   // 0x48: isize
-  set SetElement(value: Deno.PointerValue) {
+  set SetElement(value: bigint | number) {
     this.view.setBigInt64(72, BigInt(value), true);
   }
 
   // 0x50: isize
-  set SetElementAt(value: Deno.PointerValue) {
+  set SetElementAt(value: bigint | number) {
     this.view.setBigInt64(80, BigInt(value), true);
   }
 
   // 0x58: isize
-  set GetElement(value: Deno.PointerValue) {
+  set GetElement(value: bigint | number) {
     this.view.setBigInt64(88, BigInt(value), true);
   }
 
   // 0x60: isize
-  set GetElementAt(value: Deno.PointerValue) {
+  set GetElementAt(value: bigint | number) {
     this.view.setBigInt64(96, BigInt(value), true);
   }
 
   // 0x68: isize
-  set ClearElement(value: Deno.PointerValue) {
+  set ClearElement(value: bigint | number) {
     this.view.setBigInt64(104, BigInt(value), true);
   }
 
   // 0x70: isize
-  set ClearElementAt(value: Deno.PointerValue) {
+  set ClearElementAt(value: bigint | number) {
     this.view.setBigInt64(112, BigInt(value), true);
   }
 
   // 0x78: isize
-  set GetServerName(value: Deno.PointerValue) {
+  set GetServerName(value: bigint | number) {
     this.view.setBigInt64(120, BigInt(value), true);
   }
 
   // 0x80: isize
-  set SetServerName(value: Deno.PointerValue) {
+  set SetServerName(value: bigint | number) {
     this.view.setBigInt64(128, BigInt(value), true);
   }
 
   // 0x88: isize
-  set GetClass(value: Deno.PointerValue) {
+  set GetClass(value: bigint | number) {
     this.view.setBigInt64(136, BigInt(value), true);
   }
 }
@@ -11942,7 +11942,7 @@ export interface MI_InstanceExFT {
   /** Windows.Win32.System.Wmi.MI_InstanceFT */
   parent: Uint8Array | Deno.PointerValue;
   /** isize */
-  Normalize: Deno.PointerValue;
+  Normalize: bigint | number;
 }
 
 export const sizeofMI_InstanceExFT = 16;
@@ -11974,7 +11974,7 @@ export class MI_InstanceExFTView {
   }
 
   // 0x08: isize
-  get Normalize(): Deno.PointerValue {
+  get Normalize(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -11984,7 +11984,7 @@ export class MI_InstanceExFTView {
   }
 
   // 0x08: isize
-  set Normalize(value: Deno.PointerValue) {
+  set Normalize(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -12094,65 +12094,65 @@ export class MI_InstanceView {
  */
 export interface MI_ContextFT {
   /** isize */
-  PostResult: Deno.PointerValue;
+  PostResult: bigint | number;
   /** isize */
-  PostInstance: Deno.PointerValue;
+  PostInstance: bigint | number;
   /** isize */
-  PostIndication: Deno.PointerValue;
+  PostIndication: bigint | number;
   /** isize */
-  ConstructInstance: Deno.PointerValue;
+  ConstructInstance: bigint | number;
   /** isize */
-  ConstructParameters: Deno.PointerValue;
+  ConstructParameters: bigint | number;
   /** isize */
-  NewInstance: Deno.PointerValue;
+  NewInstance: bigint | number;
   /** isize */
-  NewDynamicInstance: Deno.PointerValue;
+  NewDynamicInstance: bigint | number;
   /** isize */
-  NewParameters: Deno.PointerValue;
+  NewParameters: bigint | number;
   /** isize */
-  Canceled: Deno.PointerValue;
+  Canceled: bigint | number;
   /** isize */
-  GetLocale: Deno.PointerValue;
+  GetLocale: bigint | number;
   /** isize */
-  RegisterCancel: Deno.PointerValue;
+  RegisterCancel: bigint | number;
   /** isize */
-  RequestUnload: Deno.PointerValue;
+  RequestUnload: bigint | number;
   /** isize */
-  RefuseUnload: Deno.PointerValue;
+  RefuseUnload: bigint | number;
   /** isize */
-  GetLocalSession: Deno.PointerValue;
+  GetLocalSession: bigint | number;
   /** isize */
-  SetStringOption: Deno.PointerValue;
+  SetStringOption: bigint | number;
   /** isize */
-  GetStringOption: Deno.PointerValue;
+  GetStringOption: bigint | number;
   /** isize */
-  GetNumberOption: Deno.PointerValue;
+  GetNumberOption: bigint | number;
   /** isize */
-  GetCustomOption: Deno.PointerValue;
+  GetCustomOption: bigint | number;
   /** isize */
-  GetCustomOptionCount: Deno.PointerValue;
+  GetCustomOptionCount: bigint | number;
   /** isize */
-  GetCustomOptionAt: Deno.PointerValue;
+  GetCustomOptionAt: bigint | number;
   /** isize */
-  WriteMessage: Deno.PointerValue;
+  WriteMessage: bigint | number;
   /** isize */
-  WriteProgress: Deno.PointerValue;
+  WriteProgress: bigint | number;
   /** isize */
-  WriteStreamParameter: Deno.PointerValue;
+  WriteStreamParameter: bigint | number;
   /** isize */
-  WriteCimError: Deno.PointerValue;
+  WriteCimError: bigint | number;
   /** isize */
-  PromptUser: Deno.PointerValue;
+  PromptUser: bigint | number;
   /** isize */
-  ShouldProcess: Deno.PointerValue;
+  ShouldProcess: bigint | number;
   /** isize */
-  ShouldContinue: Deno.PointerValue;
+  ShouldContinue: bigint | number;
   /** isize */
-  PostError: Deno.PointerValue;
+  PostError: bigint | number;
   /** isize */
-  PostCimError: Deno.PointerValue;
+  PostCimError: bigint | number;
   /** isize */
-  WriteError: Deno.PointerValue;
+  WriteError: bigint | number;
 }
 
 export const sizeofMI_ContextFT = 240;
@@ -12234,302 +12234,302 @@ export class MI_ContextFTView {
   }
 
   // 0x00: isize
-  get PostResult(): Deno.PointerValue {
+  get PostResult(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: isize
-  get PostInstance(): Deno.PointerValue {
+  get PostInstance(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: isize
-  get PostIndication(): Deno.PointerValue {
+  get PostIndication(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get ConstructInstance(): Deno.PointerValue {
+  get ConstructInstance(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
   // 0x20: isize
-  get ConstructParameters(): Deno.PointerValue {
+  get ConstructParameters(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
   // 0x28: isize
-  get NewInstance(): Deno.PointerValue {
+  get NewInstance(): bigint | number {
     return Number(this.view.getBigInt64(40, true));
   }
 
   // 0x30: isize
-  get NewDynamicInstance(): Deno.PointerValue {
+  get NewDynamicInstance(): bigint | number {
     return Number(this.view.getBigInt64(48, true));
   }
 
   // 0x38: isize
-  get NewParameters(): Deno.PointerValue {
+  get NewParameters(): bigint | number {
     return Number(this.view.getBigInt64(56, true));
   }
 
   // 0x40: isize
-  get Canceled(): Deno.PointerValue {
+  get Canceled(): bigint | number {
     return Number(this.view.getBigInt64(64, true));
   }
 
   // 0x48: isize
-  get GetLocale(): Deno.PointerValue {
+  get GetLocale(): bigint | number {
     return Number(this.view.getBigInt64(72, true));
   }
 
   // 0x50: isize
-  get RegisterCancel(): Deno.PointerValue {
+  get RegisterCancel(): bigint | number {
     return Number(this.view.getBigInt64(80, true));
   }
 
   // 0x58: isize
-  get RequestUnload(): Deno.PointerValue {
+  get RequestUnload(): bigint | number {
     return Number(this.view.getBigInt64(88, true));
   }
 
   // 0x60: isize
-  get RefuseUnload(): Deno.PointerValue {
+  get RefuseUnload(): bigint | number {
     return Number(this.view.getBigInt64(96, true));
   }
 
   // 0x68: isize
-  get GetLocalSession(): Deno.PointerValue {
+  get GetLocalSession(): bigint | number {
     return Number(this.view.getBigInt64(104, true));
   }
 
   // 0x70: isize
-  get SetStringOption(): Deno.PointerValue {
+  get SetStringOption(): bigint | number {
     return Number(this.view.getBigInt64(112, true));
   }
 
   // 0x78: isize
-  get GetStringOption(): Deno.PointerValue {
+  get GetStringOption(): bigint | number {
     return Number(this.view.getBigInt64(120, true));
   }
 
   // 0x80: isize
-  get GetNumberOption(): Deno.PointerValue {
+  get GetNumberOption(): bigint | number {
     return Number(this.view.getBigInt64(128, true));
   }
 
   // 0x88: isize
-  get GetCustomOption(): Deno.PointerValue {
+  get GetCustomOption(): bigint | number {
     return Number(this.view.getBigInt64(136, true));
   }
 
   // 0x90: isize
-  get GetCustomOptionCount(): Deno.PointerValue {
+  get GetCustomOptionCount(): bigint | number {
     return Number(this.view.getBigInt64(144, true));
   }
 
   // 0x98: isize
-  get GetCustomOptionAt(): Deno.PointerValue {
+  get GetCustomOptionAt(): bigint | number {
     return Number(this.view.getBigInt64(152, true));
   }
 
   // 0xa0: isize
-  get WriteMessage(): Deno.PointerValue {
+  get WriteMessage(): bigint | number {
     return Number(this.view.getBigInt64(160, true));
   }
 
   // 0xa8: isize
-  get WriteProgress(): Deno.PointerValue {
+  get WriteProgress(): bigint | number {
     return Number(this.view.getBigInt64(168, true));
   }
 
   // 0xb0: isize
-  get WriteStreamParameter(): Deno.PointerValue {
+  get WriteStreamParameter(): bigint | number {
     return Number(this.view.getBigInt64(176, true));
   }
 
   // 0xb8: isize
-  get WriteCimError(): Deno.PointerValue {
+  get WriteCimError(): bigint | number {
     return Number(this.view.getBigInt64(184, true));
   }
 
   // 0xc0: isize
-  get PromptUser(): Deno.PointerValue {
+  get PromptUser(): bigint | number {
     return Number(this.view.getBigInt64(192, true));
   }
 
   // 0xc8: isize
-  get ShouldProcess(): Deno.PointerValue {
+  get ShouldProcess(): bigint | number {
     return Number(this.view.getBigInt64(200, true));
   }
 
   // 0xd0: isize
-  get ShouldContinue(): Deno.PointerValue {
+  get ShouldContinue(): bigint | number {
     return Number(this.view.getBigInt64(208, true));
   }
 
   // 0xd8: isize
-  get PostError(): Deno.PointerValue {
+  get PostError(): bigint | number {
     return Number(this.view.getBigInt64(216, true));
   }
 
   // 0xe0: isize
-  get PostCimError(): Deno.PointerValue {
+  get PostCimError(): bigint | number {
     return Number(this.view.getBigInt64(224, true));
   }
 
   // 0xe8: isize
-  get WriteError(): Deno.PointerValue {
+  get WriteError(): bigint | number {
     return Number(this.view.getBigInt64(232, true));
   }
 
   // 0x00: isize
-  set PostResult(value: Deno.PointerValue) {
+  set PostResult(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set PostInstance(value: Deno.PointerValue) {
+  set PostInstance(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: isize
-  set PostIndication(value: Deno.PointerValue) {
+  set PostIndication(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set ConstructInstance(value: Deno.PointerValue) {
+  set ConstructInstance(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
   // 0x20: isize
-  set ConstructParameters(value: Deno.PointerValue) {
+  set ConstructParameters(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 
   // 0x28: isize
-  set NewInstance(value: Deno.PointerValue) {
+  set NewInstance(value: bigint | number) {
     this.view.setBigInt64(40, BigInt(value), true);
   }
 
   // 0x30: isize
-  set NewDynamicInstance(value: Deno.PointerValue) {
+  set NewDynamicInstance(value: bigint | number) {
     this.view.setBigInt64(48, BigInt(value), true);
   }
 
   // 0x38: isize
-  set NewParameters(value: Deno.PointerValue) {
+  set NewParameters(value: bigint | number) {
     this.view.setBigInt64(56, BigInt(value), true);
   }
 
   // 0x40: isize
-  set Canceled(value: Deno.PointerValue) {
+  set Canceled(value: bigint | number) {
     this.view.setBigInt64(64, BigInt(value), true);
   }
 
   // 0x48: isize
-  set GetLocale(value: Deno.PointerValue) {
+  set GetLocale(value: bigint | number) {
     this.view.setBigInt64(72, BigInt(value), true);
   }
 
   // 0x50: isize
-  set RegisterCancel(value: Deno.PointerValue) {
+  set RegisterCancel(value: bigint | number) {
     this.view.setBigInt64(80, BigInt(value), true);
   }
 
   // 0x58: isize
-  set RequestUnload(value: Deno.PointerValue) {
+  set RequestUnload(value: bigint | number) {
     this.view.setBigInt64(88, BigInt(value), true);
   }
 
   // 0x60: isize
-  set RefuseUnload(value: Deno.PointerValue) {
+  set RefuseUnload(value: bigint | number) {
     this.view.setBigInt64(96, BigInt(value), true);
   }
 
   // 0x68: isize
-  set GetLocalSession(value: Deno.PointerValue) {
+  set GetLocalSession(value: bigint | number) {
     this.view.setBigInt64(104, BigInt(value), true);
   }
 
   // 0x70: isize
-  set SetStringOption(value: Deno.PointerValue) {
+  set SetStringOption(value: bigint | number) {
     this.view.setBigInt64(112, BigInt(value), true);
   }
 
   // 0x78: isize
-  set GetStringOption(value: Deno.PointerValue) {
+  set GetStringOption(value: bigint | number) {
     this.view.setBigInt64(120, BigInt(value), true);
   }
 
   // 0x80: isize
-  set GetNumberOption(value: Deno.PointerValue) {
+  set GetNumberOption(value: bigint | number) {
     this.view.setBigInt64(128, BigInt(value), true);
   }
 
   // 0x88: isize
-  set GetCustomOption(value: Deno.PointerValue) {
+  set GetCustomOption(value: bigint | number) {
     this.view.setBigInt64(136, BigInt(value), true);
   }
 
   // 0x90: isize
-  set GetCustomOptionCount(value: Deno.PointerValue) {
+  set GetCustomOptionCount(value: bigint | number) {
     this.view.setBigInt64(144, BigInt(value), true);
   }
 
   // 0x98: isize
-  set GetCustomOptionAt(value: Deno.PointerValue) {
+  set GetCustomOptionAt(value: bigint | number) {
     this.view.setBigInt64(152, BigInt(value), true);
   }
 
   // 0xa0: isize
-  set WriteMessage(value: Deno.PointerValue) {
+  set WriteMessage(value: bigint | number) {
     this.view.setBigInt64(160, BigInt(value), true);
   }
 
   // 0xa8: isize
-  set WriteProgress(value: Deno.PointerValue) {
+  set WriteProgress(value: bigint | number) {
     this.view.setBigInt64(168, BigInt(value), true);
   }
 
   // 0xb0: isize
-  set WriteStreamParameter(value: Deno.PointerValue) {
+  set WriteStreamParameter(value: bigint | number) {
     this.view.setBigInt64(176, BigInt(value), true);
   }
 
   // 0xb8: isize
-  set WriteCimError(value: Deno.PointerValue) {
+  set WriteCimError(value: bigint | number) {
     this.view.setBigInt64(184, BigInt(value), true);
   }
 
   // 0xc0: isize
-  set PromptUser(value: Deno.PointerValue) {
+  set PromptUser(value: bigint | number) {
     this.view.setBigInt64(192, BigInt(value), true);
   }
 
   // 0xc8: isize
-  set ShouldProcess(value: Deno.PointerValue) {
+  set ShouldProcess(value: bigint | number) {
     this.view.setBigInt64(200, BigInt(value), true);
   }
 
   // 0xd0: isize
-  set ShouldContinue(value: Deno.PointerValue) {
+  set ShouldContinue(value: bigint | number) {
     this.view.setBigInt64(208, BigInt(value), true);
   }
 
   // 0xd8: isize
-  set PostError(value: Deno.PointerValue) {
+  set PostError(value: bigint | number) {
     this.view.setBigInt64(216, BigInt(value), true);
   }
 
   // 0xe0: isize
-  set PostCimError(value: Deno.PointerValue) {
+  set PostCimError(value: bigint | number) {
     this.view.setBigInt64(224, BigInt(value), true);
   }
 
   // 0xe8: isize
-  set WriteError(value: Deno.PointerValue) {
+  set WriteError(value: bigint | number) {
     this.view.setBigInt64(232, BigInt(value), true);
   }
 }
@@ -12594,11 +12594,11 @@ export class MI_ContextView {
  */
 export interface MI_QualifierSetFT {
   /** isize */
-  GetQualifierCount: Deno.PointerValue;
+  GetQualifierCount: bigint | number;
   /** isize */
-  GetQualifierAt: Deno.PointerValue;
+  GetQualifierAt: bigint | number;
   /** isize */
-  GetQualifier: Deno.PointerValue;
+  GetQualifier: bigint | number;
 }
 
 export const sizeofMI_QualifierSetFT = 24;
@@ -12626,32 +12626,32 @@ export class MI_QualifierSetFTView {
   }
 
   // 0x00: isize
-  get GetQualifierCount(): Deno.PointerValue {
+  get GetQualifierCount(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: isize
-  get GetQualifierAt(): Deno.PointerValue {
+  get GetQualifierAt(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: isize
-  get GetQualifier(): Deno.PointerValue {
+  get GetQualifier(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x00: isize
-  set GetQualifierCount(value: Deno.PointerValue) {
+  set GetQualifierCount(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set GetQualifierAt(value: Deno.PointerValue) {
+  set GetQualifierAt(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: isize
-  set GetQualifier(value: Deno.PointerValue) {
+  set GetQualifier(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -12661,9 +12661,9 @@ export class MI_QualifierSetFTView {
  */
 export interface MI_QualifierSet {
   /** u64 */
-  reserved1: Deno.PointerValue;
+  reserved1: bigint | number;
   /** isize */
-  reserved2: Deno.PointerValue;
+  reserved2: bigint | number;
   /** ptr */
   ft: Deno.PointerValue | Uint8Array;
 }
@@ -12693,12 +12693,12 @@ export class MI_QualifierSetView {
   }
 
   // 0x00: u64
-  get reserved1(): Deno.PointerValue {
+  get reserved1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: isize
-  get reserved2(): Deno.PointerValue {
+  get reserved2(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -12709,12 +12709,12 @@ export class MI_QualifierSetView {
   }
 
   // 0x00: u64
-  set reserved1(value: Deno.PointerValue) {
+  set reserved1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set reserved2(value: Deno.PointerValue) {
+  set reserved2(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -12729,13 +12729,13 @@ export class MI_QualifierSetView {
  */
 export interface MI_ParameterSetFT {
   /** isize */
-  GetMethodReturnType: Deno.PointerValue;
+  GetMethodReturnType: bigint | number;
   /** isize */
-  GetParameterCount: Deno.PointerValue;
+  GetParameterCount: bigint | number;
   /** isize */
-  GetParameterAt: Deno.PointerValue;
+  GetParameterAt: bigint | number;
   /** isize */
-  GetParameter: Deno.PointerValue;
+  GetParameter: bigint | number;
 }
 
 export const sizeofMI_ParameterSetFT = 32;
@@ -12765,42 +12765,42 @@ export class MI_ParameterSetFTView {
   }
 
   // 0x00: isize
-  get GetMethodReturnType(): Deno.PointerValue {
+  get GetMethodReturnType(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: isize
-  get GetParameterCount(): Deno.PointerValue {
+  get GetParameterCount(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: isize
-  get GetParameterAt(): Deno.PointerValue {
+  get GetParameterAt(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get GetParameter(): Deno.PointerValue {
+  get GetParameter(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
   // 0x00: isize
-  set GetMethodReturnType(value: Deno.PointerValue) {
+  set GetMethodReturnType(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set GetParameterCount(value: Deno.PointerValue) {
+  set GetParameterCount(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: isize
-  set GetParameterAt(value: Deno.PointerValue) {
+  set GetParameterAt(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set GetParameter(value: Deno.PointerValue) {
+  set GetParameter(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 }
@@ -12810,9 +12810,9 @@ export class MI_ParameterSetFTView {
  */
 export interface MI_ParameterSet {
   /** u64 */
-  reserved1: Deno.PointerValue;
+  reserved1: bigint | number;
   /** isize */
-  reserved2: Deno.PointerValue;
+  reserved2: bigint | number;
   /** ptr */
   ft: Deno.PointerValue | Uint8Array;
 }
@@ -12842,12 +12842,12 @@ export class MI_ParameterSetView {
   }
 
   // 0x00: u64
-  get reserved1(): Deno.PointerValue {
+  get reserved1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: isize
-  get reserved2(): Deno.PointerValue {
+  get reserved2(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -12858,12 +12858,12 @@ export class MI_ParameterSetView {
   }
 
   // 0x00: u64
-  set reserved1(value: Deno.PointerValue) {
+  set reserved1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set reserved2(value: Deno.PointerValue) {
+  set reserved2(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -12878,33 +12878,33 @@ export class MI_ParameterSetView {
  */
 export interface MI_ClassFT {
   /** isize */
-  GetClassNameA: Deno.PointerValue;
+  GetClassNameA: bigint | number;
   /** isize */
-  GetNameSpace: Deno.PointerValue;
+  GetNameSpace: bigint | number;
   /** isize */
-  GetServerName: Deno.PointerValue;
+  GetServerName: bigint | number;
   /** isize */
-  GetElementCount: Deno.PointerValue;
+  GetElementCount: bigint | number;
   /** isize */
-  GetElement: Deno.PointerValue;
+  GetElement: bigint | number;
   /** isize */
-  GetElementAt: Deno.PointerValue;
+  GetElementAt: bigint | number;
   /** isize */
-  GetClassQualifierSet: Deno.PointerValue;
+  GetClassQualifierSet: bigint | number;
   /** isize */
-  GetMethodCount: Deno.PointerValue;
+  GetMethodCount: bigint | number;
   /** isize */
-  GetMethodAt: Deno.PointerValue;
+  GetMethodAt: bigint | number;
   /** isize */
-  GetMethod: Deno.PointerValue;
+  GetMethod: bigint | number;
   /** isize */
-  GetParentClassName: Deno.PointerValue;
+  GetParentClassName: bigint | number;
   /** isize */
-  GetParentClass: Deno.PointerValue;
+  GetParentClass: bigint | number;
   /** isize */
-  Delete: Deno.PointerValue;
+  Delete: bigint | number;
   /** isize */
-  Clone: Deno.PointerValue;
+  Clone: bigint | number;
 }
 
 export const sizeofMI_ClassFT = 112;
@@ -12954,142 +12954,142 @@ export class MI_ClassFTView {
   }
 
   // 0x00: isize
-  get GetClassNameA(): Deno.PointerValue {
+  get GetClassNameA(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: isize
-  get GetNameSpace(): Deno.PointerValue {
+  get GetNameSpace(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: isize
-  get GetServerName(): Deno.PointerValue {
+  get GetServerName(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get GetElementCount(): Deno.PointerValue {
+  get GetElementCount(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
   // 0x20: isize
-  get GetElement(): Deno.PointerValue {
+  get GetElement(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
   // 0x28: isize
-  get GetElementAt(): Deno.PointerValue {
+  get GetElementAt(): bigint | number {
     return Number(this.view.getBigInt64(40, true));
   }
 
   // 0x30: isize
-  get GetClassQualifierSet(): Deno.PointerValue {
+  get GetClassQualifierSet(): bigint | number {
     return Number(this.view.getBigInt64(48, true));
   }
 
   // 0x38: isize
-  get GetMethodCount(): Deno.PointerValue {
+  get GetMethodCount(): bigint | number {
     return Number(this.view.getBigInt64(56, true));
   }
 
   // 0x40: isize
-  get GetMethodAt(): Deno.PointerValue {
+  get GetMethodAt(): bigint | number {
     return Number(this.view.getBigInt64(64, true));
   }
 
   // 0x48: isize
-  get GetMethod(): Deno.PointerValue {
+  get GetMethod(): bigint | number {
     return Number(this.view.getBigInt64(72, true));
   }
 
   // 0x50: isize
-  get GetParentClassName(): Deno.PointerValue {
+  get GetParentClassName(): bigint | number {
     return Number(this.view.getBigInt64(80, true));
   }
 
   // 0x58: isize
-  get GetParentClass(): Deno.PointerValue {
+  get GetParentClass(): bigint | number {
     return Number(this.view.getBigInt64(88, true));
   }
 
   // 0x60: isize
-  get Delete(): Deno.PointerValue {
+  get Delete(): bigint | number {
     return Number(this.view.getBigInt64(96, true));
   }
 
   // 0x68: isize
-  get Clone(): Deno.PointerValue {
+  get Clone(): bigint | number {
     return Number(this.view.getBigInt64(104, true));
   }
 
   // 0x00: isize
-  set GetClassNameA(value: Deno.PointerValue) {
+  set GetClassNameA(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set GetNameSpace(value: Deno.PointerValue) {
+  set GetNameSpace(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: isize
-  set GetServerName(value: Deno.PointerValue) {
+  set GetServerName(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set GetElementCount(value: Deno.PointerValue) {
+  set GetElementCount(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
   // 0x20: isize
-  set GetElement(value: Deno.PointerValue) {
+  set GetElement(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 
   // 0x28: isize
-  set GetElementAt(value: Deno.PointerValue) {
+  set GetElementAt(value: bigint | number) {
     this.view.setBigInt64(40, BigInt(value), true);
   }
 
   // 0x30: isize
-  set GetClassQualifierSet(value: Deno.PointerValue) {
+  set GetClassQualifierSet(value: bigint | number) {
     this.view.setBigInt64(48, BigInt(value), true);
   }
 
   // 0x38: isize
-  set GetMethodCount(value: Deno.PointerValue) {
+  set GetMethodCount(value: bigint | number) {
     this.view.setBigInt64(56, BigInt(value), true);
   }
 
   // 0x40: isize
-  set GetMethodAt(value: Deno.PointerValue) {
+  set GetMethodAt(value: bigint | number) {
     this.view.setBigInt64(64, BigInt(value), true);
   }
 
   // 0x48: isize
-  set GetMethod(value: Deno.PointerValue) {
+  set GetMethod(value: bigint | number) {
     this.view.setBigInt64(72, BigInt(value), true);
   }
 
   // 0x50: isize
-  set GetParentClassName(value: Deno.PointerValue) {
+  set GetParentClassName(value: bigint | number) {
     this.view.setBigInt64(80, BigInt(value), true);
   }
 
   // 0x58: isize
-  set GetParentClass(value: Deno.PointerValue) {
+  set GetParentClass(value: bigint | number) {
     this.view.setBigInt64(88, BigInt(value), true);
   }
 
   // 0x60: isize
-  set Delete(value: Deno.PointerValue) {
+  set Delete(value: bigint | number) {
     this.view.setBigInt64(96, BigInt(value), true);
   }
 
   // 0x68: isize
-  set Clone(value: Deno.PointerValue) {
+  set Clone(value: bigint | number) {
     this.view.setBigInt64(104, BigInt(value), true);
   }
 }
@@ -13361,9 +13361,9 @@ export interface MI_SessionCallbacks {
   /** ptr */
   callbackContext: Deno.PointerValue | Uint8Array;
   /** isize */
-  writeMessage: Deno.PointerValue;
+  writeMessage: bigint | number;
   /** isize */
-  writeError: Deno.PointerValue;
+  writeError: bigint | number;
 }
 
 export const sizeofMI_SessionCallbacks = 24;
@@ -13397,12 +13397,12 @@ export class MI_SessionCallbacksView {
   }
 
   // 0x08: isize
-  get writeMessage(): Deno.PointerValue {
+  get writeMessage(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: isize
-  get writeError(): Deno.PointerValue {
+  get writeError(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -13412,12 +13412,12 @@ export class MI_SessionCallbacksView {
   }
 
   // 0x08: isize
-  set writeMessage(value: Deno.PointerValue) {
+  set writeMessage(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: isize
-  set writeError(value: Deno.PointerValue) {
+  set writeError(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -13607,39 +13607,39 @@ export class MI_UserCredentialsView {
  */
 export interface MI_SubscriptionDeliveryOptionsFT {
   /** isize */
-  SetString: Deno.PointerValue;
+  SetString: bigint | number;
   /** isize */
-  SetNumber: Deno.PointerValue;
+  SetNumber: bigint | number;
   /** isize */
-  SetDateTime: Deno.PointerValue;
+  SetDateTime: bigint | number;
   /** isize */
-  SetInterval: Deno.PointerValue;
+  SetInterval: bigint | number;
   /** isize */
-  AddCredentials: Deno.PointerValue;
+  AddCredentials: bigint | number;
   /** isize */
-  Delete: Deno.PointerValue;
+  Delete: bigint | number;
   /** isize */
-  GetString: Deno.PointerValue;
+  GetString: bigint | number;
   /** isize */
-  GetNumber: Deno.PointerValue;
+  GetNumber: bigint | number;
   /** isize */
-  GetDateTime: Deno.PointerValue;
+  GetDateTime: bigint | number;
   /** isize */
-  GetInterval: Deno.PointerValue;
+  GetInterval: bigint | number;
   /** isize */
-  GetOptionCount: Deno.PointerValue;
+  GetOptionCount: bigint | number;
   /** isize */
-  GetOptionAt: Deno.PointerValue;
+  GetOptionAt: bigint | number;
   /** isize */
-  GetOption: Deno.PointerValue;
+  GetOption: bigint | number;
   /** isize */
-  GetCredentialsCount: Deno.PointerValue;
+  GetCredentialsCount: bigint | number;
   /** isize */
-  GetCredentialsAt: Deno.PointerValue;
+  GetCredentialsAt: bigint | number;
   /** isize */
-  GetCredentialsPasswordAt: Deno.PointerValue;
+  GetCredentialsPasswordAt: bigint | number;
   /** isize */
-  Clone: Deno.PointerValue;
+  Clone: bigint | number;
 }
 
 export const sizeofMI_SubscriptionDeliveryOptionsFT = 136;
@@ -13695,172 +13695,172 @@ export class MI_SubscriptionDeliveryOptionsFTView {
   }
 
   // 0x00: isize
-  get SetString(): Deno.PointerValue {
+  get SetString(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: isize
-  get SetNumber(): Deno.PointerValue {
+  get SetNumber(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: isize
-  get SetDateTime(): Deno.PointerValue {
+  get SetDateTime(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get SetInterval(): Deno.PointerValue {
+  get SetInterval(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
   // 0x20: isize
-  get AddCredentials(): Deno.PointerValue {
+  get AddCredentials(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
   // 0x28: isize
-  get Delete(): Deno.PointerValue {
+  get Delete(): bigint | number {
     return Number(this.view.getBigInt64(40, true));
   }
 
   // 0x30: isize
-  get GetString(): Deno.PointerValue {
+  get GetString(): bigint | number {
     return Number(this.view.getBigInt64(48, true));
   }
 
   // 0x38: isize
-  get GetNumber(): Deno.PointerValue {
+  get GetNumber(): bigint | number {
     return Number(this.view.getBigInt64(56, true));
   }
 
   // 0x40: isize
-  get GetDateTime(): Deno.PointerValue {
+  get GetDateTime(): bigint | number {
     return Number(this.view.getBigInt64(64, true));
   }
 
   // 0x48: isize
-  get GetInterval(): Deno.PointerValue {
+  get GetInterval(): bigint | number {
     return Number(this.view.getBigInt64(72, true));
   }
 
   // 0x50: isize
-  get GetOptionCount(): Deno.PointerValue {
+  get GetOptionCount(): bigint | number {
     return Number(this.view.getBigInt64(80, true));
   }
 
   // 0x58: isize
-  get GetOptionAt(): Deno.PointerValue {
+  get GetOptionAt(): bigint | number {
     return Number(this.view.getBigInt64(88, true));
   }
 
   // 0x60: isize
-  get GetOption(): Deno.PointerValue {
+  get GetOption(): bigint | number {
     return Number(this.view.getBigInt64(96, true));
   }
 
   // 0x68: isize
-  get GetCredentialsCount(): Deno.PointerValue {
+  get GetCredentialsCount(): bigint | number {
     return Number(this.view.getBigInt64(104, true));
   }
 
   // 0x70: isize
-  get GetCredentialsAt(): Deno.PointerValue {
+  get GetCredentialsAt(): bigint | number {
     return Number(this.view.getBigInt64(112, true));
   }
 
   // 0x78: isize
-  get GetCredentialsPasswordAt(): Deno.PointerValue {
+  get GetCredentialsPasswordAt(): bigint | number {
     return Number(this.view.getBigInt64(120, true));
   }
 
   // 0x80: isize
-  get Clone(): Deno.PointerValue {
+  get Clone(): bigint | number {
     return Number(this.view.getBigInt64(128, true));
   }
 
   // 0x00: isize
-  set SetString(value: Deno.PointerValue) {
+  set SetString(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set SetNumber(value: Deno.PointerValue) {
+  set SetNumber(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: isize
-  set SetDateTime(value: Deno.PointerValue) {
+  set SetDateTime(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set SetInterval(value: Deno.PointerValue) {
+  set SetInterval(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
   // 0x20: isize
-  set AddCredentials(value: Deno.PointerValue) {
+  set AddCredentials(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 
   // 0x28: isize
-  set Delete(value: Deno.PointerValue) {
+  set Delete(value: bigint | number) {
     this.view.setBigInt64(40, BigInt(value), true);
   }
 
   // 0x30: isize
-  set GetString(value: Deno.PointerValue) {
+  set GetString(value: bigint | number) {
     this.view.setBigInt64(48, BigInt(value), true);
   }
 
   // 0x38: isize
-  set GetNumber(value: Deno.PointerValue) {
+  set GetNumber(value: bigint | number) {
     this.view.setBigInt64(56, BigInt(value), true);
   }
 
   // 0x40: isize
-  set GetDateTime(value: Deno.PointerValue) {
+  set GetDateTime(value: bigint | number) {
     this.view.setBigInt64(64, BigInt(value), true);
   }
 
   // 0x48: isize
-  set GetInterval(value: Deno.PointerValue) {
+  set GetInterval(value: bigint | number) {
     this.view.setBigInt64(72, BigInt(value), true);
   }
 
   // 0x50: isize
-  set GetOptionCount(value: Deno.PointerValue) {
+  set GetOptionCount(value: bigint | number) {
     this.view.setBigInt64(80, BigInt(value), true);
   }
 
   // 0x58: isize
-  set GetOptionAt(value: Deno.PointerValue) {
+  set GetOptionAt(value: bigint | number) {
     this.view.setBigInt64(88, BigInt(value), true);
   }
 
   // 0x60: isize
-  set GetOption(value: Deno.PointerValue) {
+  set GetOption(value: bigint | number) {
     this.view.setBigInt64(96, BigInt(value), true);
   }
 
   // 0x68: isize
-  set GetCredentialsCount(value: Deno.PointerValue) {
+  set GetCredentialsCount(value: bigint | number) {
     this.view.setBigInt64(104, BigInt(value), true);
   }
 
   // 0x70: isize
-  set GetCredentialsAt(value: Deno.PointerValue) {
+  set GetCredentialsAt(value: bigint | number) {
     this.view.setBigInt64(112, BigInt(value), true);
   }
 
   // 0x78: isize
-  set GetCredentialsPasswordAt(value: Deno.PointerValue) {
+  set GetCredentialsPasswordAt(value: bigint | number) {
     this.view.setBigInt64(120, BigInt(value), true);
   }
 
   // 0x80: isize
-  set Clone(value: Deno.PointerValue) {
+  set Clone(value: bigint | number) {
     this.view.setBigInt64(128, BigInt(value), true);
   }
 }
@@ -13870,9 +13870,9 @@ export class MI_SubscriptionDeliveryOptionsFTView {
  */
 export interface MI_SubscriptionDeliveryOptions {
   /** u64 */
-  reserved1: Deno.PointerValue;
+  reserved1: bigint | number;
   /** isize */
-  reserved2: Deno.PointerValue;
+  reserved2: bigint | number;
   /** ptr */
   ft: Deno.PointerValue | Uint8Array;
 }
@@ -13902,12 +13902,12 @@ export class MI_SubscriptionDeliveryOptionsView {
   }
 
   // 0x00: u64
-  get reserved1(): Deno.PointerValue {
+  get reserved1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: isize
-  get reserved2(): Deno.PointerValue {
+  get reserved2(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -13918,12 +13918,12 @@ export class MI_SubscriptionDeliveryOptionsView {
   }
 
   // 0x00: u64
-  set reserved1(value: Deno.PointerValue) {
+  set reserved1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set reserved2(value: Deno.PointerValue) {
+  set reserved2(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -13938,9 +13938,9 @@ export class MI_SubscriptionDeliveryOptionsView {
  */
 export interface MI_Serializer {
   /** u64 */
-  reserved1: Deno.PointerValue;
+  reserved1: bigint | number;
   /** isize */
-  reserved2: Deno.PointerValue;
+  reserved2: bigint | number;
 }
 
 export const sizeofMI_Serializer = 16;
@@ -13966,22 +13966,22 @@ export class MI_SerializerView {
   }
 
   // 0x00: u64
-  get reserved1(): Deno.PointerValue {
+  get reserved1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: isize
-  get reserved2(): Deno.PointerValue {
+  get reserved2(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x00: u64
-  set reserved1(value: Deno.PointerValue) {
+  set reserved1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set reserved2(value: Deno.PointerValue) {
+  set reserved2(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -13991,9 +13991,9 @@ export class MI_SerializerView {
  */
 export interface MI_Deserializer {
   /** u64 */
-  reserved1: Deno.PointerValue;
+  reserved1: bigint | number;
   /** isize */
-  reserved2: Deno.PointerValue;
+  reserved2: bigint | number;
 }
 
 export const sizeofMI_Deserializer = 16;
@@ -14019,22 +14019,22 @@ export class MI_DeserializerView {
   }
 
   // 0x00: u64
-  get reserved1(): Deno.PointerValue {
+  get reserved1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: isize
-  get reserved2(): Deno.PointerValue {
+  get reserved2(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x00: u64
-  set reserved1(value: Deno.PointerValue) {
+  set reserved1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set reserved2(value: Deno.PointerValue) {
+  set reserved2(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -14044,11 +14044,11 @@ export class MI_DeserializerView {
  */
 export interface MI_SerializerFT {
   /** isize */
-  Close: Deno.PointerValue;
+  Close: bigint | number;
   /** isize */
-  SerializeClass: Deno.PointerValue;
+  SerializeClass: bigint | number;
   /** isize */
-  SerializeInstance: Deno.PointerValue;
+  SerializeInstance: bigint | number;
 }
 
 export const sizeofMI_SerializerFT = 24;
@@ -14076,32 +14076,32 @@ export class MI_SerializerFTView {
   }
 
   // 0x00: isize
-  get Close(): Deno.PointerValue {
+  get Close(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: isize
-  get SerializeClass(): Deno.PointerValue {
+  get SerializeClass(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: isize
-  get SerializeInstance(): Deno.PointerValue {
+  get SerializeInstance(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x00: isize
-  set Close(value: Deno.PointerValue) {
+  set Close(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set SerializeClass(value: Deno.PointerValue) {
+  set SerializeClass(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: isize
-  set SerializeInstance(value: Deno.PointerValue) {
+  set SerializeInstance(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -14111,17 +14111,17 @@ export class MI_SerializerFTView {
  */
 export interface MI_DeserializerFT {
   /** isize */
-  Close: Deno.PointerValue;
+  Close: bigint | number;
   /** isize */
-  DeserializeClass: Deno.PointerValue;
+  DeserializeClass: bigint | number;
   /** isize */
-  Class_GetClassName: Deno.PointerValue;
+  Class_GetClassName: bigint | number;
   /** isize */
-  Class_GetParentClassName: Deno.PointerValue;
+  Class_GetParentClassName: bigint | number;
   /** isize */
-  DeserializeInstance: Deno.PointerValue;
+  DeserializeInstance: bigint | number;
   /** isize */
-  Instance_GetClassName: Deno.PointerValue;
+  Instance_GetClassName: bigint | number;
 }
 
 export const sizeofMI_DeserializerFT = 48;
@@ -14155,62 +14155,62 @@ export class MI_DeserializerFTView {
   }
 
   // 0x00: isize
-  get Close(): Deno.PointerValue {
+  get Close(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: isize
-  get DeserializeClass(): Deno.PointerValue {
+  get DeserializeClass(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: isize
-  get Class_GetClassName(): Deno.PointerValue {
+  get Class_GetClassName(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get Class_GetParentClassName(): Deno.PointerValue {
+  get Class_GetParentClassName(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
   // 0x20: isize
-  get DeserializeInstance(): Deno.PointerValue {
+  get DeserializeInstance(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
   // 0x28: isize
-  get Instance_GetClassName(): Deno.PointerValue {
+  get Instance_GetClassName(): bigint | number {
     return Number(this.view.getBigInt64(40, true));
   }
 
   // 0x00: isize
-  set Close(value: Deno.PointerValue) {
+  set Close(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set DeserializeClass(value: Deno.PointerValue) {
+  set DeserializeClass(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: isize
-  set Class_GetClassName(value: Deno.PointerValue) {
+  set Class_GetClassName(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set Class_GetParentClassName(value: Deno.PointerValue) {
+  set Class_GetParentClassName(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
   // 0x20: isize
-  set DeserializeInstance(value: Deno.PointerValue) {
+  set DeserializeInstance(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 
   // 0x28: isize
-  set Instance_GetClassName(value: Deno.PointerValue) {
+  set Instance_GetClassName(value: bigint | number) {
     this.view.setBigInt64(40, BigInt(value), true);
   }
 }
@@ -14220,27 +14220,27 @@ export class MI_DeserializerFTView {
  */
 export interface MI_ApplicationFT {
   /** isize */
-  Close: Deno.PointerValue;
+  Close: bigint | number;
   /** isize */
-  NewSession: Deno.PointerValue;
+  NewSession: bigint | number;
   /** isize */
-  NewHostedProvider: Deno.PointerValue;
+  NewHostedProvider: bigint | number;
   /** isize */
-  NewInstance: Deno.PointerValue;
+  NewInstance: bigint | number;
   /** isize */
-  NewDestinationOptions: Deno.PointerValue;
+  NewDestinationOptions: bigint | number;
   /** isize */
-  NewOperationOptions: Deno.PointerValue;
+  NewOperationOptions: bigint | number;
   /** isize */
-  NewSubscriptionDeliveryOptions: Deno.PointerValue;
+  NewSubscriptionDeliveryOptions: bigint | number;
   /** isize */
-  NewSerializer: Deno.PointerValue;
+  NewSerializer: bigint | number;
   /** isize */
-  NewDeserializer: Deno.PointerValue;
+  NewDeserializer: bigint | number;
   /** isize */
-  NewInstanceFromClass: Deno.PointerValue;
+  NewInstanceFromClass: bigint | number;
   /** isize */
-  NewClass: Deno.PointerValue;
+  NewClass: bigint | number;
 }
 
 export const sizeofMI_ApplicationFT = 88;
@@ -14284,112 +14284,112 @@ export class MI_ApplicationFTView {
   }
 
   // 0x00: isize
-  get Close(): Deno.PointerValue {
+  get Close(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: isize
-  get NewSession(): Deno.PointerValue {
+  get NewSession(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: isize
-  get NewHostedProvider(): Deno.PointerValue {
+  get NewHostedProvider(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get NewInstance(): Deno.PointerValue {
+  get NewInstance(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
   // 0x20: isize
-  get NewDestinationOptions(): Deno.PointerValue {
+  get NewDestinationOptions(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
   // 0x28: isize
-  get NewOperationOptions(): Deno.PointerValue {
+  get NewOperationOptions(): bigint | number {
     return Number(this.view.getBigInt64(40, true));
   }
 
   // 0x30: isize
-  get NewSubscriptionDeliveryOptions(): Deno.PointerValue {
+  get NewSubscriptionDeliveryOptions(): bigint | number {
     return Number(this.view.getBigInt64(48, true));
   }
 
   // 0x38: isize
-  get NewSerializer(): Deno.PointerValue {
+  get NewSerializer(): bigint | number {
     return Number(this.view.getBigInt64(56, true));
   }
 
   // 0x40: isize
-  get NewDeserializer(): Deno.PointerValue {
+  get NewDeserializer(): bigint | number {
     return Number(this.view.getBigInt64(64, true));
   }
 
   // 0x48: isize
-  get NewInstanceFromClass(): Deno.PointerValue {
+  get NewInstanceFromClass(): bigint | number {
     return Number(this.view.getBigInt64(72, true));
   }
 
   // 0x50: isize
-  get NewClass(): Deno.PointerValue {
+  get NewClass(): bigint | number {
     return Number(this.view.getBigInt64(80, true));
   }
 
   // 0x00: isize
-  set Close(value: Deno.PointerValue) {
+  set Close(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set NewSession(value: Deno.PointerValue) {
+  set NewSession(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: isize
-  set NewHostedProvider(value: Deno.PointerValue) {
+  set NewHostedProvider(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set NewInstance(value: Deno.PointerValue) {
+  set NewInstance(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
   // 0x20: isize
-  set NewDestinationOptions(value: Deno.PointerValue) {
+  set NewDestinationOptions(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 
   // 0x28: isize
-  set NewOperationOptions(value: Deno.PointerValue) {
+  set NewOperationOptions(value: bigint | number) {
     this.view.setBigInt64(40, BigInt(value), true);
   }
 
   // 0x30: isize
-  set NewSubscriptionDeliveryOptions(value: Deno.PointerValue) {
+  set NewSubscriptionDeliveryOptions(value: bigint | number) {
     this.view.setBigInt64(48, BigInt(value), true);
   }
 
   // 0x38: isize
-  set NewSerializer(value: Deno.PointerValue) {
+  set NewSerializer(value: bigint | number) {
     this.view.setBigInt64(56, BigInt(value), true);
   }
 
   // 0x40: isize
-  set NewDeserializer(value: Deno.PointerValue) {
+  set NewDeserializer(value: bigint | number) {
     this.view.setBigInt64(64, BigInt(value), true);
   }
 
   // 0x48: isize
-  set NewInstanceFromClass(value: Deno.PointerValue) {
+  set NewInstanceFromClass(value: bigint | number) {
     this.view.setBigInt64(72, BigInt(value), true);
   }
 
   // 0x50: isize
-  set NewClass(value: Deno.PointerValue) {
+  set NewClass(value: bigint | number) {
     this.view.setBigInt64(80, BigInt(value), true);
   }
 }
@@ -14399,9 +14399,9 @@ export class MI_ApplicationFTView {
  */
 export interface MI_HostedProviderFT {
   /** isize */
-  Close: Deno.PointerValue;
+  Close: bigint | number;
   /** isize */
-  GetApplication: Deno.PointerValue;
+  GetApplication: bigint | number;
 }
 
 export const sizeofMI_HostedProviderFT = 16;
@@ -14427,22 +14427,22 @@ export class MI_HostedProviderFTView {
   }
 
   // 0x00: isize
-  get Close(): Deno.PointerValue {
+  get Close(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: isize
-  get GetApplication(): Deno.PointerValue {
+  get GetApplication(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x00: isize
-  set Close(value: Deno.PointerValue) {
+  set Close(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set GetApplication(value: Deno.PointerValue) {
+  set GetApplication(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -14452,35 +14452,35 @@ export class MI_HostedProviderFTView {
  */
 export interface MI_SessionFT {
   /** isize */
-  Close: Deno.PointerValue;
+  Close: bigint | number;
   /** isize */
-  GetApplication: Deno.PointerValue;
+  GetApplication: bigint | number;
   /** isize */
-  GetInstance: Deno.PointerValue;
+  GetInstance: bigint | number;
   /** isize */
-  ModifyInstance: Deno.PointerValue;
+  ModifyInstance: bigint | number;
   /** isize */
-  CreateInstance: Deno.PointerValue;
+  CreateInstance: bigint | number;
   /** isize */
-  DeleteInstance: Deno.PointerValue;
+  DeleteInstance: bigint | number;
   /** isize */
-  Invoke: Deno.PointerValue;
+  Invoke: bigint | number;
   /** isize */
-  EnumerateInstances: Deno.PointerValue;
+  EnumerateInstances: bigint | number;
   /** isize */
-  QueryInstances: Deno.PointerValue;
+  QueryInstances: bigint | number;
   /** isize */
-  AssociatorInstances: Deno.PointerValue;
+  AssociatorInstances: bigint | number;
   /** isize */
-  ReferenceInstances: Deno.PointerValue;
+  ReferenceInstances: bigint | number;
   /** isize */
-  Subscribe: Deno.PointerValue;
+  Subscribe: bigint | number;
   /** isize */
-  GetClass: Deno.PointerValue;
+  GetClass: bigint | number;
   /** isize */
-  EnumerateClasses: Deno.PointerValue;
+  EnumerateClasses: bigint | number;
   /** isize */
-  TestConnection: Deno.PointerValue;
+  TestConnection: bigint | number;
 }
 
 export const sizeofMI_SessionFT = 120;
@@ -14532,152 +14532,152 @@ export class MI_SessionFTView {
   }
 
   // 0x00: isize
-  get Close(): Deno.PointerValue {
+  get Close(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: isize
-  get GetApplication(): Deno.PointerValue {
+  get GetApplication(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: isize
-  get GetInstance(): Deno.PointerValue {
+  get GetInstance(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get ModifyInstance(): Deno.PointerValue {
+  get ModifyInstance(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
   // 0x20: isize
-  get CreateInstance(): Deno.PointerValue {
+  get CreateInstance(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
   // 0x28: isize
-  get DeleteInstance(): Deno.PointerValue {
+  get DeleteInstance(): bigint | number {
     return Number(this.view.getBigInt64(40, true));
   }
 
   // 0x30: isize
-  get Invoke(): Deno.PointerValue {
+  get Invoke(): bigint | number {
     return Number(this.view.getBigInt64(48, true));
   }
 
   // 0x38: isize
-  get EnumerateInstances(): Deno.PointerValue {
+  get EnumerateInstances(): bigint | number {
     return Number(this.view.getBigInt64(56, true));
   }
 
   // 0x40: isize
-  get QueryInstances(): Deno.PointerValue {
+  get QueryInstances(): bigint | number {
     return Number(this.view.getBigInt64(64, true));
   }
 
   // 0x48: isize
-  get AssociatorInstances(): Deno.PointerValue {
+  get AssociatorInstances(): bigint | number {
     return Number(this.view.getBigInt64(72, true));
   }
 
   // 0x50: isize
-  get ReferenceInstances(): Deno.PointerValue {
+  get ReferenceInstances(): bigint | number {
     return Number(this.view.getBigInt64(80, true));
   }
 
   // 0x58: isize
-  get Subscribe(): Deno.PointerValue {
+  get Subscribe(): bigint | number {
     return Number(this.view.getBigInt64(88, true));
   }
 
   // 0x60: isize
-  get GetClass(): Deno.PointerValue {
+  get GetClass(): bigint | number {
     return Number(this.view.getBigInt64(96, true));
   }
 
   // 0x68: isize
-  get EnumerateClasses(): Deno.PointerValue {
+  get EnumerateClasses(): bigint | number {
     return Number(this.view.getBigInt64(104, true));
   }
 
   // 0x70: isize
-  get TestConnection(): Deno.PointerValue {
+  get TestConnection(): bigint | number {
     return Number(this.view.getBigInt64(112, true));
   }
 
   // 0x00: isize
-  set Close(value: Deno.PointerValue) {
+  set Close(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set GetApplication(value: Deno.PointerValue) {
+  set GetApplication(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: isize
-  set GetInstance(value: Deno.PointerValue) {
+  set GetInstance(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set ModifyInstance(value: Deno.PointerValue) {
+  set ModifyInstance(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
   // 0x20: isize
-  set CreateInstance(value: Deno.PointerValue) {
+  set CreateInstance(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 
   // 0x28: isize
-  set DeleteInstance(value: Deno.PointerValue) {
+  set DeleteInstance(value: bigint | number) {
     this.view.setBigInt64(40, BigInt(value), true);
   }
 
   // 0x30: isize
-  set Invoke(value: Deno.PointerValue) {
+  set Invoke(value: bigint | number) {
     this.view.setBigInt64(48, BigInt(value), true);
   }
 
   // 0x38: isize
-  set EnumerateInstances(value: Deno.PointerValue) {
+  set EnumerateInstances(value: bigint | number) {
     this.view.setBigInt64(56, BigInt(value), true);
   }
 
   // 0x40: isize
-  set QueryInstances(value: Deno.PointerValue) {
+  set QueryInstances(value: bigint | number) {
     this.view.setBigInt64(64, BigInt(value), true);
   }
 
   // 0x48: isize
-  set AssociatorInstances(value: Deno.PointerValue) {
+  set AssociatorInstances(value: bigint | number) {
     this.view.setBigInt64(72, BigInt(value), true);
   }
 
   // 0x50: isize
-  set ReferenceInstances(value: Deno.PointerValue) {
+  set ReferenceInstances(value: bigint | number) {
     this.view.setBigInt64(80, BigInt(value), true);
   }
 
   // 0x58: isize
-  set Subscribe(value: Deno.PointerValue) {
+  set Subscribe(value: bigint | number) {
     this.view.setBigInt64(88, BigInt(value), true);
   }
 
   // 0x60: isize
-  set GetClass(value: Deno.PointerValue) {
+  set GetClass(value: bigint | number) {
     this.view.setBigInt64(96, BigInt(value), true);
   }
 
   // 0x68: isize
-  set EnumerateClasses(value: Deno.PointerValue) {
+  set EnumerateClasses(value: bigint | number) {
     this.view.setBigInt64(104, BigInt(value), true);
   }
 
   // 0x70: isize
-  set TestConnection(value: Deno.PointerValue) {
+  set TestConnection(value: bigint | number) {
     this.view.setBigInt64(112, BigInt(value), true);
   }
 }
@@ -14687,17 +14687,17 @@ export class MI_SessionFTView {
  */
 export interface MI_OperationFT {
   /** isize */
-  Close: Deno.PointerValue;
+  Close: bigint | number;
   /** isize */
-  Cancel: Deno.PointerValue;
+  Cancel: bigint | number;
   /** isize */
-  GetSession: Deno.PointerValue;
+  GetSession: bigint | number;
   /** isize */
-  GetInstance: Deno.PointerValue;
+  GetInstance: bigint | number;
   /** isize */
-  GetIndication: Deno.PointerValue;
+  GetIndication: bigint | number;
   /** isize */
-  GetClass: Deno.PointerValue;
+  GetClass: bigint | number;
 }
 
 export const sizeofMI_OperationFT = 48;
@@ -14731,62 +14731,62 @@ export class MI_OperationFTView {
   }
 
   // 0x00: isize
-  get Close(): Deno.PointerValue {
+  get Close(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: isize
-  get Cancel(): Deno.PointerValue {
+  get Cancel(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: isize
-  get GetSession(): Deno.PointerValue {
+  get GetSession(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get GetInstance(): Deno.PointerValue {
+  get GetInstance(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
   // 0x20: isize
-  get GetIndication(): Deno.PointerValue {
+  get GetIndication(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
   // 0x28: isize
-  get GetClass(): Deno.PointerValue {
+  get GetClass(): bigint | number {
     return Number(this.view.getBigInt64(40, true));
   }
 
   // 0x00: isize
-  set Close(value: Deno.PointerValue) {
+  set Close(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set Cancel(value: Deno.PointerValue) {
+  set Cancel(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: isize
-  set GetSession(value: Deno.PointerValue) {
+  set GetSession(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set GetInstance(value: Deno.PointerValue) {
+  set GetInstance(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
   // 0x20: isize
-  set GetIndication(value: Deno.PointerValue) {
+  set GetIndication(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 
   // 0x28: isize
-  set GetClass(value: Deno.PointerValue) {
+  set GetClass(value: bigint | number) {
     this.view.setBigInt64(40, BigInt(value), true);
   }
 }
@@ -14796,35 +14796,35 @@ export class MI_OperationFTView {
  */
 export interface MI_DestinationOptionsFT {
   /** isize */
-  Delete: Deno.PointerValue;
+  Delete: bigint | number;
   /** isize */
-  SetString: Deno.PointerValue;
+  SetString: bigint | number;
   /** isize */
-  SetNumber: Deno.PointerValue;
+  SetNumber: bigint | number;
   /** isize */
-  AddCredentials: Deno.PointerValue;
+  AddCredentials: bigint | number;
   /** isize */
-  GetString: Deno.PointerValue;
+  GetString: bigint | number;
   /** isize */
-  GetNumber: Deno.PointerValue;
+  GetNumber: bigint | number;
   /** isize */
-  GetOptionCount: Deno.PointerValue;
+  GetOptionCount: bigint | number;
   /** isize */
-  GetOptionAt: Deno.PointerValue;
+  GetOptionAt: bigint | number;
   /** isize */
-  GetOption: Deno.PointerValue;
+  GetOption: bigint | number;
   /** isize */
-  GetCredentialsCount: Deno.PointerValue;
+  GetCredentialsCount: bigint | number;
   /** isize */
-  GetCredentialsAt: Deno.PointerValue;
+  GetCredentialsAt: bigint | number;
   /** isize */
-  GetCredentialsPasswordAt: Deno.PointerValue;
+  GetCredentialsPasswordAt: bigint | number;
   /** isize */
-  Clone: Deno.PointerValue;
+  Clone: bigint | number;
   /** isize */
-  SetInterval: Deno.PointerValue;
+  SetInterval: bigint | number;
   /** isize */
-  GetInterval: Deno.PointerValue;
+  GetInterval: bigint | number;
 }
 
 export const sizeofMI_DestinationOptionsFT = 120;
@@ -14876,152 +14876,152 @@ export class MI_DestinationOptionsFTView {
   }
 
   // 0x00: isize
-  get Delete(): Deno.PointerValue {
+  get Delete(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: isize
-  get SetString(): Deno.PointerValue {
+  get SetString(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: isize
-  get SetNumber(): Deno.PointerValue {
+  get SetNumber(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get AddCredentials(): Deno.PointerValue {
+  get AddCredentials(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
   // 0x20: isize
-  get GetString(): Deno.PointerValue {
+  get GetString(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
   // 0x28: isize
-  get GetNumber(): Deno.PointerValue {
+  get GetNumber(): bigint | number {
     return Number(this.view.getBigInt64(40, true));
   }
 
   // 0x30: isize
-  get GetOptionCount(): Deno.PointerValue {
+  get GetOptionCount(): bigint | number {
     return Number(this.view.getBigInt64(48, true));
   }
 
   // 0x38: isize
-  get GetOptionAt(): Deno.PointerValue {
+  get GetOptionAt(): bigint | number {
     return Number(this.view.getBigInt64(56, true));
   }
 
   // 0x40: isize
-  get GetOption(): Deno.PointerValue {
+  get GetOption(): bigint | number {
     return Number(this.view.getBigInt64(64, true));
   }
 
   // 0x48: isize
-  get GetCredentialsCount(): Deno.PointerValue {
+  get GetCredentialsCount(): bigint | number {
     return Number(this.view.getBigInt64(72, true));
   }
 
   // 0x50: isize
-  get GetCredentialsAt(): Deno.PointerValue {
+  get GetCredentialsAt(): bigint | number {
     return Number(this.view.getBigInt64(80, true));
   }
 
   // 0x58: isize
-  get GetCredentialsPasswordAt(): Deno.PointerValue {
+  get GetCredentialsPasswordAt(): bigint | number {
     return Number(this.view.getBigInt64(88, true));
   }
 
   // 0x60: isize
-  get Clone(): Deno.PointerValue {
+  get Clone(): bigint | number {
     return Number(this.view.getBigInt64(96, true));
   }
 
   // 0x68: isize
-  get SetInterval(): Deno.PointerValue {
+  get SetInterval(): bigint | number {
     return Number(this.view.getBigInt64(104, true));
   }
 
   // 0x70: isize
-  get GetInterval(): Deno.PointerValue {
+  get GetInterval(): bigint | number {
     return Number(this.view.getBigInt64(112, true));
   }
 
   // 0x00: isize
-  set Delete(value: Deno.PointerValue) {
+  set Delete(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set SetString(value: Deno.PointerValue) {
+  set SetString(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: isize
-  set SetNumber(value: Deno.PointerValue) {
+  set SetNumber(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set AddCredentials(value: Deno.PointerValue) {
+  set AddCredentials(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
   // 0x20: isize
-  set GetString(value: Deno.PointerValue) {
+  set GetString(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 
   // 0x28: isize
-  set GetNumber(value: Deno.PointerValue) {
+  set GetNumber(value: bigint | number) {
     this.view.setBigInt64(40, BigInt(value), true);
   }
 
   // 0x30: isize
-  set GetOptionCount(value: Deno.PointerValue) {
+  set GetOptionCount(value: bigint | number) {
     this.view.setBigInt64(48, BigInt(value), true);
   }
 
   // 0x38: isize
-  set GetOptionAt(value: Deno.PointerValue) {
+  set GetOptionAt(value: bigint | number) {
     this.view.setBigInt64(56, BigInt(value), true);
   }
 
   // 0x40: isize
-  set GetOption(value: Deno.PointerValue) {
+  set GetOption(value: bigint | number) {
     this.view.setBigInt64(64, BigInt(value), true);
   }
 
   // 0x48: isize
-  set GetCredentialsCount(value: Deno.PointerValue) {
+  set GetCredentialsCount(value: bigint | number) {
     this.view.setBigInt64(72, BigInt(value), true);
   }
 
   // 0x50: isize
-  set GetCredentialsAt(value: Deno.PointerValue) {
+  set GetCredentialsAt(value: bigint | number) {
     this.view.setBigInt64(80, BigInt(value), true);
   }
 
   // 0x58: isize
-  set GetCredentialsPasswordAt(value: Deno.PointerValue) {
+  set GetCredentialsPasswordAt(value: bigint | number) {
     this.view.setBigInt64(88, BigInt(value), true);
   }
 
   // 0x60: isize
-  set Clone(value: Deno.PointerValue) {
+  set Clone(value: bigint | number) {
     this.view.setBigInt64(96, BigInt(value), true);
   }
 
   // 0x68: isize
-  set SetInterval(value: Deno.PointerValue) {
+  set SetInterval(value: bigint | number) {
     this.view.setBigInt64(104, BigInt(value), true);
   }
 
   // 0x70: isize
-  set GetInterval(value: Deno.PointerValue) {
+  set GetInterval(value: bigint | number) {
     this.view.setBigInt64(112, BigInt(value), true);
   }
 }
@@ -15031,31 +15031,31 @@ export class MI_DestinationOptionsFTView {
  */
 export interface MI_OperationOptionsFT {
   /** isize */
-  Delete: Deno.PointerValue;
+  Delete: bigint | number;
   /** isize */
-  SetString: Deno.PointerValue;
+  SetString: bigint | number;
   /** isize */
-  SetNumber: Deno.PointerValue;
+  SetNumber: bigint | number;
   /** isize */
-  SetCustomOption: Deno.PointerValue;
+  SetCustomOption: bigint | number;
   /** isize */
-  GetString: Deno.PointerValue;
+  GetString: bigint | number;
   /** isize */
-  GetNumber: Deno.PointerValue;
+  GetNumber: bigint | number;
   /** isize */
-  GetOptionCount: Deno.PointerValue;
+  GetOptionCount: bigint | number;
   /** isize */
-  GetOptionAt: Deno.PointerValue;
+  GetOptionAt: bigint | number;
   /** isize */
-  GetOption: Deno.PointerValue;
+  GetOption: bigint | number;
   /** isize */
-  GetEnabledChannels: Deno.PointerValue;
+  GetEnabledChannels: bigint | number;
   /** isize */
-  Clone: Deno.PointerValue;
+  Clone: bigint | number;
   /** isize */
-  SetInterval: Deno.PointerValue;
+  SetInterval: bigint | number;
   /** isize */
-  GetInterval: Deno.PointerValue;
+  GetInterval: bigint | number;
 }
 
 export const sizeofMI_OperationOptionsFT = 104;
@@ -15103,132 +15103,132 @@ export class MI_OperationOptionsFTView {
   }
 
   // 0x00: isize
-  get Delete(): Deno.PointerValue {
+  get Delete(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: isize
-  get SetString(): Deno.PointerValue {
+  get SetString(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: isize
-  get SetNumber(): Deno.PointerValue {
+  get SetNumber(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get SetCustomOption(): Deno.PointerValue {
+  get SetCustomOption(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
   // 0x20: isize
-  get GetString(): Deno.PointerValue {
+  get GetString(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
   // 0x28: isize
-  get GetNumber(): Deno.PointerValue {
+  get GetNumber(): bigint | number {
     return Number(this.view.getBigInt64(40, true));
   }
 
   // 0x30: isize
-  get GetOptionCount(): Deno.PointerValue {
+  get GetOptionCount(): bigint | number {
     return Number(this.view.getBigInt64(48, true));
   }
 
   // 0x38: isize
-  get GetOptionAt(): Deno.PointerValue {
+  get GetOptionAt(): bigint | number {
     return Number(this.view.getBigInt64(56, true));
   }
 
   // 0x40: isize
-  get GetOption(): Deno.PointerValue {
+  get GetOption(): bigint | number {
     return Number(this.view.getBigInt64(64, true));
   }
 
   // 0x48: isize
-  get GetEnabledChannels(): Deno.PointerValue {
+  get GetEnabledChannels(): bigint | number {
     return Number(this.view.getBigInt64(72, true));
   }
 
   // 0x50: isize
-  get Clone(): Deno.PointerValue {
+  get Clone(): bigint | number {
     return Number(this.view.getBigInt64(80, true));
   }
 
   // 0x58: isize
-  get SetInterval(): Deno.PointerValue {
+  get SetInterval(): bigint | number {
     return Number(this.view.getBigInt64(88, true));
   }
 
   // 0x60: isize
-  get GetInterval(): Deno.PointerValue {
+  get GetInterval(): bigint | number {
     return Number(this.view.getBigInt64(96, true));
   }
 
   // 0x00: isize
-  set Delete(value: Deno.PointerValue) {
+  set Delete(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set SetString(value: Deno.PointerValue) {
+  set SetString(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: isize
-  set SetNumber(value: Deno.PointerValue) {
+  set SetNumber(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set SetCustomOption(value: Deno.PointerValue) {
+  set SetCustomOption(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
   // 0x20: isize
-  set GetString(value: Deno.PointerValue) {
+  set GetString(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 
   // 0x28: isize
-  set GetNumber(value: Deno.PointerValue) {
+  set GetNumber(value: bigint | number) {
     this.view.setBigInt64(40, BigInt(value), true);
   }
 
   // 0x30: isize
-  set GetOptionCount(value: Deno.PointerValue) {
+  set GetOptionCount(value: bigint | number) {
     this.view.setBigInt64(48, BigInt(value), true);
   }
 
   // 0x38: isize
-  set GetOptionAt(value: Deno.PointerValue) {
+  set GetOptionAt(value: bigint | number) {
     this.view.setBigInt64(56, BigInt(value), true);
   }
 
   // 0x40: isize
-  set GetOption(value: Deno.PointerValue) {
+  set GetOption(value: bigint | number) {
     this.view.setBigInt64(64, BigInt(value), true);
   }
 
   // 0x48: isize
-  set GetEnabledChannels(value: Deno.PointerValue) {
+  set GetEnabledChannels(value: bigint | number) {
     this.view.setBigInt64(72, BigInt(value), true);
   }
 
   // 0x50: isize
-  set Clone(value: Deno.PointerValue) {
+  set Clone(value: bigint | number) {
     this.view.setBigInt64(80, BigInt(value), true);
   }
 
   // 0x58: isize
-  set SetInterval(value: Deno.PointerValue) {
+  set SetInterval(value: bigint | number) {
     this.view.setBigInt64(88, BigInt(value), true);
   }
 
   // 0x60: isize
-  set GetInterval(value: Deno.PointerValue) {
+  set GetInterval(value: bigint | number) {
     this.view.setBigInt64(96, BigInt(value), true);
   }
 }
@@ -15238,9 +15238,9 @@ export class MI_OperationOptionsFTView {
  */
 export interface MI_Application {
   /** u64 */
-  reserved1: Deno.PointerValue;
+  reserved1: bigint | number;
   /** isize */
-  reserved2: Deno.PointerValue;
+  reserved2: bigint | number;
   /** ptr */
   ft: Deno.PointerValue | Uint8Array;
 }
@@ -15270,12 +15270,12 @@ export class MI_ApplicationView {
   }
 
   // 0x00: u64
-  get reserved1(): Deno.PointerValue {
+  get reserved1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: isize
-  get reserved2(): Deno.PointerValue {
+  get reserved2(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -15286,12 +15286,12 @@ export class MI_ApplicationView {
   }
 
   // 0x00: u64
-  set reserved1(value: Deno.PointerValue) {
+  set reserved1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set reserved2(value: Deno.PointerValue) {
+  set reserved2(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -15306,9 +15306,9 @@ export class MI_ApplicationView {
  */
 export interface MI_Session {
   /** u64 */
-  reserved1: Deno.PointerValue;
+  reserved1: bigint | number;
   /** isize */
-  reserved2: Deno.PointerValue;
+  reserved2: bigint | number;
   /** ptr */
   ft: Deno.PointerValue | Uint8Array;
 }
@@ -15338,12 +15338,12 @@ export class MI_SessionView {
   }
 
   // 0x00: u64
-  get reserved1(): Deno.PointerValue {
+  get reserved1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: isize
-  get reserved2(): Deno.PointerValue {
+  get reserved2(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -15354,12 +15354,12 @@ export class MI_SessionView {
   }
 
   // 0x00: u64
-  set reserved1(value: Deno.PointerValue) {
+  set reserved1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set reserved2(value: Deno.PointerValue) {
+  set reserved2(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -15374,9 +15374,9 @@ export class MI_SessionView {
  */
 export interface MI_Operation {
   /** u64 */
-  reserved1: Deno.PointerValue;
+  reserved1: bigint | number;
   /** isize */
-  reserved2: Deno.PointerValue;
+  reserved2: bigint | number;
   /** ptr */
   ft: Deno.PointerValue | Uint8Array;
 }
@@ -15406,12 +15406,12 @@ export class MI_OperationView {
   }
 
   // 0x00: u64
-  get reserved1(): Deno.PointerValue {
+  get reserved1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: isize
-  get reserved2(): Deno.PointerValue {
+  get reserved2(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -15422,12 +15422,12 @@ export class MI_OperationView {
   }
 
   // 0x00: u64
-  set reserved1(value: Deno.PointerValue) {
+  set reserved1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set reserved2(value: Deno.PointerValue) {
+  set reserved2(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -15442,9 +15442,9 @@ export class MI_OperationView {
  */
 export interface MI_HostedProvider {
   /** u64 */
-  reserved1: Deno.PointerValue;
+  reserved1: bigint | number;
   /** isize */
-  reserved2: Deno.PointerValue;
+  reserved2: bigint | number;
   /** ptr */
   ft: Deno.PointerValue | Uint8Array;
 }
@@ -15474,12 +15474,12 @@ export class MI_HostedProviderView {
   }
 
   // 0x00: u64
-  get reserved1(): Deno.PointerValue {
+  get reserved1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: isize
-  get reserved2(): Deno.PointerValue {
+  get reserved2(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -15490,12 +15490,12 @@ export class MI_HostedProviderView {
   }
 
   // 0x00: u64
-  set reserved1(value: Deno.PointerValue) {
+  set reserved1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set reserved2(value: Deno.PointerValue) {
+  set reserved2(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -15510,9 +15510,9 @@ export class MI_HostedProviderView {
  */
 export interface MI_DestinationOptions {
   /** u64 */
-  reserved1: Deno.PointerValue;
+  reserved1: bigint | number;
   /** isize */
-  reserved2: Deno.PointerValue;
+  reserved2: bigint | number;
   /** ptr */
   ft: Deno.PointerValue | Uint8Array;
 }
@@ -15542,12 +15542,12 @@ export class MI_DestinationOptionsView {
   }
 
   // 0x00: u64
-  get reserved1(): Deno.PointerValue {
+  get reserved1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: isize
-  get reserved2(): Deno.PointerValue {
+  get reserved2(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -15558,12 +15558,12 @@ export class MI_DestinationOptionsView {
   }
 
   // 0x00: u64
-  set reserved1(value: Deno.PointerValue) {
+  set reserved1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set reserved2(value: Deno.PointerValue) {
+  set reserved2(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -15578,9 +15578,9 @@ export class MI_DestinationOptionsView {
  */
 export interface MI_OperationOptions {
   /** u64 */
-  reserved1: Deno.PointerValue;
+  reserved1: bigint | number;
   /** isize */
-  reserved2: Deno.PointerValue;
+  reserved2: bigint | number;
   /** ptr */
   ft: Deno.PointerValue | Uint8Array;
 }
@@ -15610,12 +15610,12 @@ export class MI_OperationOptionsView {
   }
 
   // 0x00: u64
-  get reserved1(): Deno.PointerValue {
+  get reserved1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: isize
-  get reserved2(): Deno.PointerValue {
+  get reserved2(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -15626,12 +15626,12 @@ export class MI_OperationOptionsView {
   }
 
   // 0x00: u64
-  set reserved1(value: Deno.PointerValue) {
+  set reserved1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set reserved2(value: Deno.PointerValue) {
+  set reserved2(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -15646,9 +15646,9 @@ export class MI_OperationOptionsView {
  */
 export interface MI_UtilitiesFT {
   /** isize */
-  MapErrorToMiErrorCategory: Deno.PointerValue;
+  MapErrorToMiErrorCategory: bigint | number;
   /** isize */
-  CimErrorFromErrorCode: Deno.PointerValue;
+  CimErrorFromErrorCode: bigint | number;
 }
 
 export const sizeofMI_UtilitiesFT = 16;
@@ -15674,22 +15674,22 @@ export class MI_UtilitiesFTView {
   }
 
   // 0x00: isize
-  get MapErrorToMiErrorCategory(): Deno.PointerValue {
+  get MapErrorToMiErrorCategory(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: isize
-  get CimErrorFromErrorCode(): Deno.PointerValue {
+  get CimErrorFromErrorCode(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x00: isize
-  set MapErrorToMiErrorCategory(value: Deno.PointerValue) {
+  set MapErrorToMiErrorCategory(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set CimErrorFromErrorCode(value: Deno.PointerValue) {
+  set CimErrorFromErrorCode(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -16024,9 +16024,9 @@ export interface SWbemRpnConst {
   /** f64 */
   m_dblVal: number;
   /** i64 */
-  m_lVal64: Deno.PointerValue;
+  m_lVal64: bigint | number;
   /** i64 */
-  m_uVal64: Deno.PointerValue;
+  m_uVal64: bigint | number;
 }
 
 export const sizeofSWbemRpnConst = 48;
@@ -16094,12 +16094,12 @@ export class SWbemRpnConstView {
   }
 
   // 0x20: i64
-  get m_lVal64(): Deno.PointerValue {
+  get m_lVal64(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
   // 0x28: i64
-  get m_uVal64(): Deno.PointerValue {
+  get m_uVal64(): bigint | number {
     return Number(this.view.getBigInt64(40, true));
   }
 
@@ -16132,12 +16132,12 @@ export class SWbemRpnConstView {
   }
 
   // 0x20: i64
-  set m_lVal64(value: Deno.PointerValue) {
+  set m_lVal64(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 
   // 0x28: i64
-  set m_uVal64(value: Deno.PointerValue) {
+  set m_uVal64(value: bigint | number) {
     this.view.setBigInt64(40, BigInt(value), true);
   }
 }
@@ -16440,7 +16440,7 @@ export interface SWbemRpnEncodedQuery {
   /** u32 */
   m_uTokenType: number;
   /** u64 */
-  m_uParsedFeatureMask: Deno.PointerValue;
+  m_uParsedFeatureMask: bigint | number;
   /** u32 */
   m_uDetectedArraySize: number;
   /** ptr */
@@ -16547,7 +16547,7 @@ export class SWbemRpnEncodedQueryView {
   }
 
   // 0x08: u64
-  get m_uParsedFeatureMask(): Deno.PointerValue {
+  get m_uParsedFeatureMask(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -16656,7 +16656,7 @@ export class SWbemRpnEncodedQueryView {
   }
 
   // 0x08: u64
-  set m_uParsedFeatureMask(value: Deno.PointerValue) {
+  set m_uParsedFeatureMask(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 

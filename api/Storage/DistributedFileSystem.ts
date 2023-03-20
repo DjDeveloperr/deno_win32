@@ -1863,7 +1863,7 @@ export interface DFS_INFO_50 {
   /** u32 */
   NamespaceMinorVersion: number;
   /** u64 */
-  NamespaceCapabilities: Deno.PointerValue;
+  NamespaceCapabilities: bigint | number;
 }
 
 export const sizeofDFS_INFO_50 = 16;
@@ -1901,7 +1901,7 @@ export class DFS_INFO_50View {
   }
 
   // 0x08: u64
-  get NamespaceCapabilities(): Deno.PointerValue {
+  get NamespaceCapabilities(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -1916,7 +1916,7 @@ export class DFS_INFO_50View {
   }
 
   // 0x08: u64
-  set NamespaceCapabilities(value: Deno.PointerValue) {
+  set NamespaceCapabilities(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -2736,13 +2736,13 @@ export interface DFS_SUPPORTED_NAMESPACE_VERSION_INFO {
   /** u32 */
   DomainDfsMinorVersion: number;
   /** u64 */
-  DomainDfsCapabilities: Deno.PointerValue;
+  DomainDfsCapabilities: bigint | number;
   /** u32 */
   StandaloneDfsMajorVersion: number;
   /** u32 */
   StandaloneDfsMinorVersion: number;
   /** u64 */
-  StandaloneDfsCapabilities: Deno.PointerValue;
+  StandaloneDfsCapabilities: bigint | number;
 }
 
 export const sizeofDFS_SUPPORTED_NAMESPACE_VERSION_INFO = 32;
@@ -2786,7 +2786,7 @@ export class DFS_SUPPORTED_NAMESPACE_VERSION_INFOView {
   }
 
   // 0x08: u64
-  get DomainDfsCapabilities(): Deno.PointerValue {
+  get DomainDfsCapabilities(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -2801,7 +2801,7 @@ export class DFS_SUPPORTED_NAMESPACE_VERSION_INFOView {
   }
 
   // 0x18: u64
-  get StandaloneDfsCapabilities(): Deno.PointerValue {
+  get StandaloneDfsCapabilities(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -2816,7 +2816,7 @@ export class DFS_SUPPORTED_NAMESPACE_VERSION_INFOView {
   }
 
   // 0x08: u64
-  set DomainDfsCapabilities(value: Deno.PointerValue) {
+  set DomainDfsCapabilities(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -2831,7 +2831,7 @@ export class DFS_SUPPORTED_NAMESPACE_VERSION_INFOView {
   }
 
   // 0x18: u64
-  set StandaloneDfsCapabilities(value: Deno.PointerValue) {
+  set StandaloneDfsCapabilities(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 }

@@ -5254,11 +5254,11 @@ export type PWSTR = Deno.PointerValue | Uint8Array;
  */
 export interface _Anonymous1_e__Union {
   /** usize */
-  Data0: Deno.PointerValue;
+  Data0: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   String: string | null | Uint8Array | Uint16Array;
   /** usize */
-  u: Deno.PointerValue;
+  u: bigint | number;
   /** ptr */
   psid: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -5310,7 +5310,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  get Data0(): Deno.PointerValue {
+  get Data0(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -5321,7 +5321,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  get u(): Deno.PointerValue {
+  get u(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -5357,7 +5357,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  set Data0(value: Deno.PointerValue) {
+  set Data0(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -5368,7 +5368,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  set u(value: Deno.PointerValue) {
+  set u(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -5405,7 +5405,7 @@ export class _Anonymous1_e__UnionView {
  */
 export interface _Anonymous2_e__Union {
   /** usize */
-  Data1: Deno.PointerValue;
+  Data1: bigint | number;
   /** i32 */
   LogonId_HighPart: number;
 }
@@ -5434,7 +5434,7 @@ export class _Anonymous2_e__UnionView {
   }
 
   // 0x00: usize
-  get Data1(): Deno.PointerValue {
+  get Data1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -5446,7 +5446,7 @@ export class _Anonymous2_e__UnionView {
   // 0x0c: pad4
 
   // 0x00: usize
-  set Data1(value: Deno.PointerValue) {
+  set Data1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -6142,9 +6142,9 @@ export class D3D11_TEX2DMS_ARRAY_SRVView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -6170,22 +6170,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -7926,7 +7926,7 @@ export class D3D11_QUERY_DESCView {
  */
 export interface D3D11_QUERY_DATA_TIMESTAMP_DISJOINT {
   /** u64 */
-  Frequency: Deno.PointerValue;
+  Frequency: bigint | number;
   /** Windows.Win32.Foundation.BOOL */
   Disjoint: boolean;
 }
@@ -7955,7 +7955,7 @@ export class D3D11_QUERY_DATA_TIMESTAMP_DISJOINTView {
   }
 
   // 0x00: u64
-  get Frequency(): Deno.PointerValue {
+  get Frequency(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -7967,7 +7967,7 @@ export class D3D11_QUERY_DATA_TIMESTAMP_DISJOINTView {
   // 0x0c: pad4
 
   // 0x00: u64
-  set Frequency(value: Deno.PointerValue) {
+  set Frequency(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -7984,27 +7984,27 @@ export class D3D11_QUERY_DATA_TIMESTAMP_DISJOINTView {
  */
 export interface D3D11_QUERY_DATA_PIPELINE_STATISTICS {
   /** u64 */
-  IAVertices: Deno.PointerValue;
+  IAVertices: bigint | number;
   /** u64 */
-  IAPrimitives: Deno.PointerValue;
+  IAPrimitives: bigint | number;
   /** u64 */
-  VSInvocations: Deno.PointerValue;
+  VSInvocations: bigint | number;
   /** u64 */
-  GSInvocations: Deno.PointerValue;
+  GSInvocations: bigint | number;
   /** u64 */
-  GSPrimitives: Deno.PointerValue;
+  GSPrimitives: bigint | number;
   /** u64 */
-  CInvocations: Deno.PointerValue;
+  CInvocations: bigint | number;
   /** u64 */
-  CPrimitives: Deno.PointerValue;
+  CPrimitives: bigint | number;
   /** u64 */
-  PSInvocations: Deno.PointerValue;
+  PSInvocations: bigint | number;
   /** u64 */
-  HSInvocations: Deno.PointerValue;
+  HSInvocations: bigint | number;
   /** u64 */
-  DSInvocations: Deno.PointerValue;
+  DSInvocations: bigint | number;
   /** u64 */
-  CSInvocations: Deno.PointerValue;
+  CSInvocations: bigint | number;
 }
 
 export const sizeofD3D11_QUERY_DATA_PIPELINE_STATISTICS = 88;
@@ -8048,112 +8048,112 @@ export class D3D11_QUERY_DATA_PIPELINE_STATISTICSView {
   }
 
   // 0x00: u64
-  get IAVertices(): Deno.PointerValue {
+  get IAVertices(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get IAPrimitives(): Deno.PointerValue {
+  get IAPrimitives(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get VSInvocations(): Deno.PointerValue {
+  get VSInvocations(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get GSInvocations(): Deno.PointerValue {
+  get GSInvocations(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get GSPrimitives(): Deno.PointerValue {
+  get GSPrimitives(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: u64
-  get CInvocations(): Deno.PointerValue {
+  get CInvocations(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: u64
-  get CPrimitives(): Deno.PointerValue {
+  get CPrimitives(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: u64
-  get PSInvocations(): Deno.PointerValue {
+  get PSInvocations(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
   // 0x40: u64
-  get HSInvocations(): Deno.PointerValue {
+  get HSInvocations(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
   // 0x48: u64
-  get DSInvocations(): Deno.PointerValue {
+  get DSInvocations(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
   // 0x50: u64
-  get CSInvocations(): Deno.PointerValue {
+  get CSInvocations(): bigint | number {
     return Number(this.view.getBigUint64(80, true));
   }
 
   // 0x00: u64
-  set IAVertices(value: Deno.PointerValue) {
+  set IAVertices(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set IAPrimitives(value: Deno.PointerValue) {
+  set IAPrimitives(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set VSInvocations(value: Deno.PointerValue) {
+  set VSInvocations(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set GSInvocations(value: Deno.PointerValue) {
+  set GSInvocations(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set GSPrimitives(value: Deno.PointerValue) {
+  set GSPrimitives(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: u64
-  set CInvocations(value: Deno.PointerValue) {
+  set CInvocations(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: u64
-  set CPrimitives(value: Deno.PointerValue) {
+  set CPrimitives(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: u64
-  set PSInvocations(value: Deno.PointerValue) {
+  set PSInvocations(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
   // 0x40: u64
-  set HSInvocations(value: Deno.PointerValue) {
+  set HSInvocations(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
   // 0x48: u64
-  set DSInvocations(value: Deno.PointerValue) {
+  set DSInvocations(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
   // 0x50: u64
-  set CSInvocations(value: Deno.PointerValue) {
+  set CSInvocations(value: bigint | number) {
     this.view.setBigUint64(80, BigInt(value), true);
   }
 }
@@ -8163,9 +8163,9 @@ export class D3D11_QUERY_DATA_PIPELINE_STATISTICSView {
  */
 export interface D3D11_QUERY_DATA_SO_STATISTICS {
   /** u64 */
-  NumPrimitivesWritten: Deno.PointerValue;
+  NumPrimitivesWritten: bigint | number;
   /** u64 */
-  PrimitivesStorageNeeded: Deno.PointerValue;
+  PrimitivesStorageNeeded: bigint | number;
 }
 
 export const sizeofD3D11_QUERY_DATA_SO_STATISTICS = 16;
@@ -8191,22 +8191,22 @@ export class D3D11_QUERY_DATA_SO_STATISTICSView {
   }
 
   // 0x00: u64
-  get NumPrimitivesWritten(): Deno.PointerValue {
+  get NumPrimitivesWritten(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get PrimitivesStorageNeeded(): Deno.PointerValue {
+  get PrimitivesStorageNeeded(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set NumPrimitivesWritten(value: Deno.PointerValue) {
+  set NumPrimitivesWritten(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set PrimitivesStorageNeeded(value: Deno.PointerValue) {
+  set PrimitivesStorageNeeded(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -10114,9 +10114,9 @@ export class D3D11_VIDEO_DECODER_CONFIGView {
  */
 export interface D3D11_AES_CTR_IV {
   /** u64 */
-  IV: Deno.PointerValue;
+  IV: bigint | number;
   /** u64 */
-  Count: Deno.PointerValue;
+  Count: bigint | number;
 }
 
 export const sizeofD3D11_AES_CTR_IV = 16;
@@ -10142,22 +10142,22 @@ export class D3D11_AES_CTR_IVView {
   }
 
   // 0x00: u64
-  get IV(): Deno.PointerValue {
+  get IV(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Count(): Deno.PointerValue {
+  get Count(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set IV(value: Deno.PointerValue) {
+  set IV(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Count(value: Deno.PointerValue) {
+  set Count(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -10860,7 +10860,7 @@ export interface D3D11_VIDEO_CONTENT_PROTECTION_CAPS {
   /** u32 */
   BlockAlignmentSize: number;
   /** u64 */
-  ProtectedMemorySize: Deno.PointerValue;
+  ProtectedMemorySize: bigint | number;
 }
 
 export const sizeofD3D11_VIDEO_CONTENT_PROTECTION_CAPS = 24;
@@ -10908,7 +10908,7 @@ export class D3D11_VIDEO_CONTENT_PROTECTION_CAPSView {
   // 0x0c: pad4
 
   // 0x10: u64
-  get ProtectedMemorySize(): Deno.PointerValue {
+  get ProtectedMemorySize(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -10930,7 +10930,7 @@ export class D3D11_VIDEO_CONTENT_PROTECTION_CAPSView {
   // 0x0c: pad4
 
   // 0x10: u64
-  set ProtectedMemorySize(value: Deno.PointerValue) {
+  set ProtectedMemorySize(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -11781,7 +11781,7 @@ export class D3D11_OMACView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.Graphics.Direct3D11.D3D11_AUTHENTICATED_QUERY_INPUT (size: 24)
@@ -12896,7 +12896,7 @@ export interface D3D11_AUTHENTICATED_QUERY_OUTPUT_ID_OUTPUT {
   /** u32 */
   OutputIDIndex: number;
   /** u64 */
-  OutputID: Deno.PointerValue;
+  OutputID: bigint | number;
 }
 
 export const sizeofD3D11_AUTHENTICATED_QUERY_OUTPUT_ID_OUTPUT = 40;
@@ -12954,7 +12954,7 @@ export class D3D11_AUTHENTICATED_QUERY_OUTPUT_ID_OUTPUTView {
   // 0x1c: pad4
 
   // 0x20: u64
-  get OutputID(): Deno.PointerValue {
+  get OutputID(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -12981,7 +12981,7 @@ export class D3D11_AUTHENTICATED_QUERY_OUTPUT_ID_OUTPUTView {
   // 0x1c: pad4
 
   // 0x20: u64
-  set OutputID(value: Deno.PointerValue) {
+  set OutputID(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 }
@@ -14296,7 +14296,7 @@ export interface D3D11_MESSAGE {
   /** ptr */
   pDescription: Deno.PointerValue | Uint8Array;
   /** usize */
-  DescriptionByteLength: Deno.PointerValue;
+  DescriptionByteLength: bigint | number;
 }
 
 export const sizeofD3D11_MESSAGE = 32;
@@ -14352,7 +14352,7 @@ export class D3D11_MESSAGEView {
   }
 
   // 0x18: usize
-  get DescriptionByteLength(): Deno.PointerValue {
+  get DescriptionByteLength(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -14379,7 +14379,7 @@ export class D3D11_MESSAGEView {
   }
 
   // 0x18: usize
-  set DescriptionByteLength(value: Deno.PointerValue) {
+  set DescriptionByteLength(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 }
@@ -15464,9 +15464,9 @@ export interface D3D11_KEY_EXCHANGE_HW_PROTECTION_OUTPUT_DATA {
   /** u32 */
   HWProtectionDataSize: number;
   /** u64 */
-  TransportTime: Deno.PointerValue;
+  TransportTime: bigint | number;
   /** u64 */
-  ExecutionTime: Deno.PointerValue;
+  ExecutionTime: bigint | number;
   /** array */
   pbOutput: Deno.PointerValue;
 }
@@ -15520,12 +15520,12 @@ export class D3D11_KEY_EXCHANGE_HW_PROTECTION_OUTPUT_DATAView {
   // 0x0c: pad4
 
   // 0x10: u64
-  get TransportTime(): Deno.PointerValue {
+  get TransportTime(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get ExecutionTime(): Deno.PointerValue {
+  get ExecutionTime(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -15553,12 +15553,12 @@ export class D3D11_KEY_EXCHANGE_HW_PROTECTION_OUTPUT_DATAView {
   // 0x0c: pad4
 
   // 0x10: u64
-  set TransportTime(value: Deno.PointerValue) {
+  set TransportTime(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set ExecutionTime(value: Deno.PointerValue) {
+  set ExecutionTime(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -19136,7 +19136,7 @@ export interface D3D11_FUNCTION_DESC {
   /** Windows.Win32.Graphics.Direct3D.D3D_FEATURE_LEVEL */
   MinFeatureLevel: D3D_FEATURE_LEVEL;
   /** u64 */
-  RequiredFeatureFlags: Deno.PointerValue;
+  RequiredFeatureFlags: bigint | number;
   /** Windows.Win32.Foundation.PSTR */
   Name: string | null | Uint8Array;
   /** i32 */
@@ -19382,7 +19382,7 @@ export class D3D11_FUNCTION_DESCView {
   // 0x74: pad4
 
   // 0x78: u64
-  get RequiredFeatureFlags(): Deno.PointerValue {
+  get RequiredFeatureFlags(): bigint | number {
     return Number(this.view.getBigUint64(120, true));
   }
 
@@ -19553,7 +19553,7 @@ export class D3D11_FUNCTION_DESCView {
   // 0x74: pad4
 
   // 0x78: u64
-  set RequiredFeatureFlags(value: Deno.PointerValue) {
+  set RequiredFeatureFlags(value: bigint | number) {
     this.view.setBigUint64(120, BigInt(value), true);
   }
 
@@ -19792,7 +19792,7 @@ export class D3D11_PARAMETER_DESCView {
  */
 export interface D3D11_VERTEX_SHADER_TRACE_DESC {
   /** u64 */
-  Invocation: Deno.PointerValue;
+  Invocation: bigint | number;
 }
 
 export const sizeofD3D11_VERTEX_SHADER_TRACE_DESC = 8;
@@ -19816,12 +19816,12 @@ export class D3D11_VERTEX_SHADER_TRACE_DESCView {
   }
 
   // 0x00: u64
-  get Invocation(): Deno.PointerValue {
+  get Invocation(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: u64
-  set Invocation(value: Deno.PointerValue) {
+  set Invocation(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -19831,7 +19831,7 @@ export class D3D11_VERTEX_SHADER_TRACE_DESCView {
  */
 export interface D3D11_HULL_SHADER_TRACE_DESC {
   /** u64 */
-  Invocation: Deno.PointerValue;
+  Invocation: bigint | number;
 }
 
 export const sizeofD3D11_HULL_SHADER_TRACE_DESC = 8;
@@ -19855,12 +19855,12 @@ export class D3D11_HULL_SHADER_TRACE_DESCView {
   }
 
   // 0x00: u64
-  get Invocation(): Deno.PointerValue {
+  get Invocation(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: u64
-  set Invocation(value: Deno.PointerValue) {
+  set Invocation(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -19870,7 +19870,7 @@ export class D3D11_HULL_SHADER_TRACE_DESCView {
  */
 export interface D3D11_DOMAIN_SHADER_TRACE_DESC {
   /** u64 */
-  Invocation: Deno.PointerValue;
+  Invocation: bigint | number;
 }
 
 export const sizeofD3D11_DOMAIN_SHADER_TRACE_DESC = 8;
@@ -19894,12 +19894,12 @@ export class D3D11_DOMAIN_SHADER_TRACE_DESCView {
   }
 
   // 0x00: u64
-  get Invocation(): Deno.PointerValue {
+  get Invocation(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: u64
-  set Invocation(value: Deno.PointerValue) {
+  set Invocation(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -19909,7 +19909,7 @@ export class D3D11_DOMAIN_SHADER_TRACE_DESCView {
  */
 export interface D3D11_GEOMETRY_SHADER_TRACE_DESC {
   /** u64 */
-  Invocation: Deno.PointerValue;
+  Invocation: bigint | number;
 }
 
 export const sizeofD3D11_GEOMETRY_SHADER_TRACE_DESC = 8;
@@ -19933,12 +19933,12 @@ export class D3D11_GEOMETRY_SHADER_TRACE_DESCView {
   }
 
   // 0x00: u64
-  get Invocation(): Deno.PointerValue {
+  get Invocation(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: u64
-  set Invocation(value: Deno.PointerValue) {
+  set Invocation(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -19948,13 +19948,13 @@ export class D3D11_GEOMETRY_SHADER_TRACE_DESCView {
  */
 export interface D3D11_PIXEL_SHADER_TRACE_DESC {
   /** u64 */
-  Invocation: Deno.PointerValue;
+  Invocation: bigint | number;
   /** i32 */
   X: number;
   /** i32 */
   Y: number;
   /** u64 */
-  SampleMask: Deno.PointerValue;
+  SampleMask: bigint | number;
 }
 
 export const sizeofD3D11_PIXEL_SHADER_TRACE_DESC = 24;
@@ -19984,7 +19984,7 @@ export class D3D11_PIXEL_SHADER_TRACE_DESCView {
   }
 
   // 0x00: u64
-  get Invocation(): Deno.PointerValue {
+  get Invocation(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -19999,12 +19999,12 @@ export class D3D11_PIXEL_SHADER_TRACE_DESCView {
   }
 
   // 0x10: u64
-  get SampleMask(): Deno.PointerValue {
+  get SampleMask(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x00: u64
-  set Invocation(value: Deno.PointerValue) {
+  set Invocation(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -20019,7 +20019,7 @@ export class D3D11_PIXEL_SHADER_TRACE_DESCView {
   }
 
   // 0x10: u64
-  set SampleMask(value: Deno.PointerValue) {
+  set SampleMask(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -20029,7 +20029,7 @@ export class D3D11_PIXEL_SHADER_TRACE_DESCView {
  */
 export interface D3D11_COMPUTE_SHADER_TRACE_DESC {
   /** u64 */
-  Invocation: Deno.PointerValue;
+  Invocation: bigint | number;
   /** array */
   ThreadIDInGroup: Deno.PointerValue;
   /** array */
@@ -20061,7 +20061,7 @@ export class D3D11_COMPUTE_SHADER_TRACE_DESCView {
   }
 
   // 0x00: u64
-  get Invocation(): Deno.PointerValue {
+  get Invocation(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -20078,7 +20078,7 @@ export class D3D11_COMPUTE_SHADER_TRACE_DESCView {
   }
 
   // 0x00: u64
-  set Invocation(value: Deno.PointerValue) {
+  set Invocation(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -20704,7 +20704,7 @@ export interface D3D11_TRACE_STEP {
   /** u32 */
   OpcodeType: number;
   /** u64 */
-  CurrentGlobalCycle: Deno.PointerValue;
+  CurrentGlobalCycle: bigint | number;
 }
 
 export const sizeofD3D11_TRACE_STEP = 24;
@@ -20770,7 +20770,7 @@ export class D3D11_TRACE_STEPView {
   }
 
   // 0x10: u64
-  get CurrentGlobalCycle(): Deno.PointerValue {
+  get CurrentGlobalCycle(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -20805,7 +20805,7 @@ export class D3D11_TRACE_STEPView {
   }
 
   // 0x10: u64
-  set CurrentGlobalCycle(value: Deno.PointerValue) {
+  set CurrentGlobalCycle(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -21071,7 +21071,7 @@ export class D3D11_RESOURCE_FLAGSView {
   }
 }
 
-export type HINSTANCE = Deno.PointerValue;
+export type HINSTANCE = bigint | number;
 
 // Native Libraries
 
@@ -21174,7 +21174,7 @@ export function D3D11CreateDeviceAndSwapChain(
 
 export function D3DDisassemble11Trace(
   pSrcData: Deno.PointerValue | Uint8Array /* ptr */,
-  SrcDataSize: Deno.PointerValue /* usize */,
+  SrcDataSize: bigint | number /* usize */,
   pTrace: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Direct3D11.ID3D11ShaderTrace */,
   StartStep: number /* u32 */,
   NumSteps: number /* u32 */,

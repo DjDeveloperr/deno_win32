@@ -19,7 +19,7 @@ export type BOOL = number;
 
 export type HRESULT = number;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 // Native Libraries
 

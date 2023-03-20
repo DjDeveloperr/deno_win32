@@ -5314,9 +5314,9 @@ export class TRUSTEE_ACCESSWView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -5342,22 +5342,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -5417,7 +5417,7 @@ export class _Anonymous_e__UnionView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.Security.Authorization.ACTRL_OVERLAPPED (size: 24)
@@ -6115,11 +6115,11 @@ export class AUDIT_IP_ADDRESSView {
  */
 export interface _Anonymous1_e__Union {
   /** usize */
-  Data0: Deno.PointerValue;
+  Data0: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   String: string | null | Uint8Array | Uint16Array;
   /** usize */
-  u: Deno.PointerValue;
+  u: bigint | number;
   /** ptr */
   psid: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -6171,7 +6171,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  get Data0(): Deno.PointerValue {
+  get Data0(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -6182,7 +6182,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  get u(): Deno.PointerValue {
+  get u(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -6218,7 +6218,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  set Data0(value: Deno.PointerValue) {
+  set Data0(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -6229,7 +6229,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  set u(value: Deno.PointerValue) {
+  set u(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -6266,7 +6266,7 @@ export class _Anonymous1_e__UnionView {
  */
 export interface _Anonymous2_e__Union {
   /** usize */
-  Data1: Deno.PointerValue;
+  Data1: bigint | number;
   /** i32 */
   LogonId_HighPart: number;
 }
@@ -6295,7 +6295,7 @@ export class _Anonymous2_e__UnionView {
   }
 
   // 0x00: usize
-  get Data1(): Deno.PointerValue {
+  get Data1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -6307,7 +6307,7 @@ export class _Anonymous2_e__UnionView {
   // 0x0c: pad4
 
   // 0x00: usize
-  set Data1(value: Deno.PointerValue) {
+  set Data1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -6684,7 +6684,7 @@ export interface AUTHZ_AUDIT_EVENT_TYPE_OLD {
   /** i32 */
   RefCount: number;
   /** usize */
-  hAudit: Deno.PointerValue;
+  hAudit: bigint | number;
   /** Windows.Win32.Foundation.LUID */
   LinkId: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Security.Authorization.AUTHZ_AUDIT_EVENT_TYPE_UNION */
@@ -6740,7 +6740,7 @@ export class AUTHZ_AUDIT_EVENT_TYPE_OLDView {
   // 0x0c: pad4
 
   // 0x10: usize
-  get hAudit(): Deno.PointerValue {
+  get hAudit(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -6774,7 +6774,7 @@ export class AUTHZ_AUDIT_EVENT_TYPE_OLDView {
   // 0x0c: pad4
 
   // 0x10: usize
-  set hAudit(value: Deno.PointerValue) {
+  set hAudit(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -7037,7 +7037,7 @@ export class AUTHZ_ACCESS_REPLYView {
  */
 export interface AUTHZ_SECURITY_ATTRIBUTE_FQBN_VALUE {
   /** u64 */
-  Version: Deno.PointerValue;
+  Version: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   pName: string | null | Uint8Array | Uint16Array;
 }
@@ -7068,7 +7068,7 @@ export class AUTHZ_SECURITY_ATTRIBUTE_FQBN_VALUEView {
   }
 
   // 0x00: u64
-  get Version(): Deno.PointerValue {
+  get Version(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -7079,7 +7079,7 @@ export class AUTHZ_SECURITY_ATTRIBUTE_FQBN_VALUEView {
   }
 
   // 0x00: u64
-  set Version(value: Deno.PointerValue) {
+  set Version(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -8038,7 +8038,7 @@ export class AUTHZ_SOURCE_SCHEMA_REGISTRATIONView {
   }
 }
 
-export type HINSTANCE = Deno.PointerValue;
+export type HINSTANCE = bigint | number;
 
 /**
  * Windows.Win32.Security.Authorization.UI.SI_OBJECT_INFO (size: 48)
@@ -8729,17 +8729,17 @@ export class EFFPERM_RESULT_LISTView {
   }
 }
 
-export type AUTHZ_ACCESS_CHECK_RESULTS_HANDLE = Deno.PointerValue;
+export type AUTHZ_ACCESS_CHECK_RESULTS_HANDLE = bigint | number;
 
-export type AUTHZ_CLIENT_CONTEXT_HANDLE = Deno.PointerValue;
+export type AUTHZ_CLIENT_CONTEXT_HANDLE = bigint | number;
 
-export type AUTHZ_RESOURCE_MANAGER_HANDLE = Deno.PointerValue;
+export type AUTHZ_RESOURCE_MANAGER_HANDLE = bigint | number;
 
-export type AUTHZ_AUDIT_EVENT_HANDLE = Deno.PointerValue;
+export type AUTHZ_AUDIT_EVENT_HANDLE = bigint | number;
 
-export type AUTHZ_AUDIT_EVENT_TYPE_HANDLE = Deno.PointerValue;
+export type AUTHZ_AUDIT_EVENT_TYPE_HANDLE = bigint | number;
 
-export type AUTHZ_SECURITY_EVENT_PROVIDER_HANDLE = Deno.PointerValue;
+export type AUTHZ_SECURITY_EVENT_PROVIDER_HANDLE = bigint | number;
 
 export type PSECURITY_DESCRIPTOR = Deno.PointerValue | Uint8Array;
 

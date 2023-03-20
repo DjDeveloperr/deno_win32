@@ -1492,7 +1492,7 @@ export class IMAGE_NOTEView {
   // 0x14: pad4
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.System.VirtualDosMachines.MODULEENTRY (size: 48)

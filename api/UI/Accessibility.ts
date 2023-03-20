@@ -922,15 +922,15 @@ export const PT_TOUCHPAD = 5;
 
 // Structs
 
-export type HWINEVENTHOOK = Deno.PointerValue;
+export type HWINEVENTHOOK = bigint | number;
 
-export type HUIANODE = Deno.PointerValue;
+export type HUIANODE = bigint | number;
 
-export type HUIAPATTERNOBJECT = Deno.PointerValue;
+export type HUIAPATTERNOBJECT = bigint | number;
 
-export type HUIATEXTRANGE = Deno.PointerValue;
+export type HUIATEXTRANGE = bigint | number;
 
-export type HUIAEVENT = Deno.PointerValue;
+export type HUIAEVENT = bigint | number;
 
 export type PWSTR = Deno.PointerValue | Uint8Array;
 
@@ -1145,9 +1145,9 @@ export class UiaPointView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -1173,22 +1173,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -4286,13 +4286,13 @@ export class TOGGLEKEYSView {
   }
 }
 
-export type WPARAM = Deno.PointerValue;
+export type WPARAM = bigint | number;
 
-export type LRESULT = Deno.PointerValue;
+export type LRESULT = bigint | number;
 
 export type HRESULT = number;
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 /**
  * Windows.Win32.Foundation.POINT (size: 8)
@@ -4347,9 +4347,9 @@ export class POINTView {
   }
 }
 
-export type LPARAM = Deno.PointerValue;
+export type LPARAM = bigint | number;
 
-export type HINSTANCE = Deno.PointerValue;
+export type HINSTANCE = bigint | number;
 
 // Native Libraries
 

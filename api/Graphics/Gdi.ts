@@ -2076,33 +2076,33 @@ export class MONITORINFOEXWView {
   }
 }
 
-export type HDC = Deno.PointerValue;
+export type HDC = bigint | number;
 
-export type CreatedHDC = Deno.PointerValue;
+export type CreatedHDC = bigint | number;
 
-export type HBITMAP = Deno.PointerValue;
+export type HBITMAP = bigint | number;
 
-export type HRGN = Deno.PointerValue;
+export type HRGN = bigint | number;
 
-export type HPEN = Deno.PointerValue;
+export type HPEN = bigint | number;
 
-export type HBRUSH = Deno.PointerValue;
+export type HBRUSH = bigint | number;
 
-export type HFONT = Deno.PointerValue;
+export type HFONT = bigint | number;
 
-export type HMETAFILE = Deno.PointerValue;
+export type HMETAFILE = bigint | number;
 
-export type HENHMETAFILE = Deno.PointerValue;
+export type HENHMETAFILE = bigint | number;
 
-export type HPALETTE = Deno.PointerValue;
+export type HPALETTE = bigint | number;
 
-export type HdcMetdataFileHandle = Deno.PointerValue;
+export type HdcMetdataFileHandle = bigint | number;
 
-export type HdcMetdataEnhFileHandle = Deno.PointerValue;
+export type HdcMetdataEnhFileHandle = bigint | number;
 
-export type HGDIOBJ = Deno.PointerValue;
+export type HGDIOBJ = bigint | number;
 
-export type HMONITOR = Deno.PointerValue;
+export type HMONITOR = bigint | number;
 
 /**
  * Windows.Win32.Graphics.Gdi.XFORM (size: 24)
@@ -6044,7 +6044,7 @@ export interface LOGBRUSH {
   /** Windows.Win32.Foundation.COLORREF */
   lbColor: Uint8Array | Deno.PointerValue;
   /** usize */
-  lbHatch: Deno.PointerValue;
+  lbHatch: bigint | number;
 }
 
 export const sizeofLOGBRUSH = 24;
@@ -6086,7 +6086,7 @@ export class LOGBRUSHView {
   }
 
   // 0x10: usize
-  get lbHatch(): Deno.PointerValue {
+  get lbHatch(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -6103,7 +6103,7 @@ export class LOGBRUSHView {
   }
 
   // 0x10: usize
-  set lbHatch(value: Deno.PointerValue) {
+  set lbHatch(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -6326,7 +6326,7 @@ export interface EXTLOGPEN {
   /** Windows.Win32.Foundation.COLORREF */
   elpColor: Uint8Array | Deno.PointerValue;
   /** usize */
-  elpHatch: Deno.PointerValue;
+  elpHatch: bigint | number;
   /** u32 */
   elpNumEntries: number;
   /** array */
@@ -6391,7 +6391,7 @@ export class EXTLOGPENView {
   }
 
   // 0x18: usize
-  get elpHatch(): Deno.PointerValue {
+  get elpHatch(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -6431,7 +6431,7 @@ export class EXTLOGPENView {
   }
 
   // 0x18: usize
-  set elpHatch(value: Deno.PointerValue) {
+  set elpHatch(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -8023,11 +8023,11 @@ export type PWSTR = Deno.PointerValue | Uint8Array;
  */
 export interface _Anonymous1_e__Union {
   /** usize */
-  Data0: Deno.PointerValue;
+  Data0: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   String: string | null | Uint8Array | Uint16Array;
   /** usize */
-  u: Deno.PointerValue;
+  u: bigint | number;
   /** ptr */
   psid: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -8079,7 +8079,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  get Data0(): Deno.PointerValue {
+  get Data0(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -8090,7 +8090,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  get u(): Deno.PointerValue {
+  get u(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -8126,7 +8126,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  set Data0(value: Deno.PointerValue) {
+  set Data0(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -8137,7 +8137,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  set u(value: Deno.PointerValue) {
+  set u(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -8174,7 +8174,7 @@ export class _Anonymous1_e__UnionView {
  */
 export interface _Anonymous2_e__Union {
   /** usize */
-  Data1: Deno.PointerValue;
+  Data1: bigint | number;
   /** i32 */
   LogonId_HighPart: number;
 }
@@ -8203,7 +8203,7 @@ export class _Anonymous2_e__UnionView {
   }
 
   // 0x00: usize
-  get Data1(): Deno.PointerValue {
+  get Data1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -8215,7 +8215,7 @@ export class _Anonymous2_e__UnionView {
   // 0x0c: pad4
 
   // 0x00: usize
-  set Data1(value: Deno.PointerValue) {
+  set Data1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -12709,7 +12709,7 @@ export class BLENDFUNCTIONView {
   // 0x04: pad4
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.Graphics.Gdi.DIBSECTION (size: 40)
@@ -21039,13 +21039,13 @@ export class DRAWTEXTPARAMSView {
   // 0x14: pad4
 }
 
-export type LPARAM = Deno.PointerValue;
+export type LPARAM = bigint | number;
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
-export type WPARAM = Deno.PointerValue;
+export type WPARAM = bigint | number;
 
-export type HINSTANCE = Deno.PointerValue;
+export type HINSTANCE = bigint | number;
 
 // Native Libraries
 
@@ -22845,7 +22845,7 @@ export function CreateDIBitmap(
 }
 
 export function CreateDIBPatternBrush(
-  h: Deno.PointerValue /* isize */,
+  h: bigint | number /* isize */,
   iUsage: DIB_USAGE /* Windows.Win32.Graphics.Gdi.DIB_USAGE */,
 ): Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HBRUSH */ {
   return libGDI32_dll.CreateDIBPatternBrush(h, iUsage);

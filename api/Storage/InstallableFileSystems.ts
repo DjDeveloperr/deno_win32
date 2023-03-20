@@ -138,17 +138,17 @@ export const InstanceAggregateStandardInformation = 3;
 
 // Structs
 
-export type HFILTER = Deno.PointerValue;
+export type HFILTER = bigint | number;
 
-export type HFILTER_INSTANCE = Deno.PointerValue;
+export type HFILTER_INSTANCE = bigint | number;
 
-export type FilterFindHandle = Deno.PointerValue;
+export type FilterFindHandle = bigint | number;
 
-export type FilterVolumeFindHandle = Deno.PointerValue;
+export type FilterVolumeFindHandle = bigint | number;
 
-export type FilterInstanceFindHandle = Deno.PointerValue;
+export type FilterInstanceFindHandle = bigint | number;
 
-export type FilterVolumeInstanceFindHandle = Deno.PointerValue;
+export type FilterVolumeInstanceFindHandle = bigint | number;
 
 /**
  * Windows.Win32.Storage.InstallableFileSystems.FILTER_FULL_INFORMATION (size: 24)
@@ -1181,7 +1181,7 @@ export interface FILTER_MESSAGE_HEADER {
   /** u32 */
   ReplyLength: number;
   /** u64 */
-  MessageId: Deno.PointerValue;
+  MessageId: bigint | number;
 }
 
 export const sizeofFILTER_MESSAGE_HEADER = 16;
@@ -1215,7 +1215,7 @@ export class FILTER_MESSAGE_HEADERView {
   // 0x04: pad4
 
   // 0x08: u64
-  get MessageId(): Deno.PointerValue {
+  get MessageId(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -1227,7 +1227,7 @@ export class FILTER_MESSAGE_HEADERView {
   // 0x04: pad4
 
   // 0x08: u64
-  set MessageId(value: Deno.PointerValue) {
+  set MessageId(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -1241,7 +1241,7 @@ export interface FILTER_REPLY_HEADER {
   /** Windows.Win32.Foundation.NTSTATUS */
   Status: Uint8Array | Deno.PointerValue;
   /** u64 */
-  MessageId: Deno.PointerValue;
+  MessageId: bigint | number;
 }
 
 export const sizeofFILTER_REPLY_HEADER = 16;
@@ -1273,7 +1273,7 @@ export class FILTER_REPLY_HEADERView {
   }
 
   // 0x08: u64
-  get MessageId(): Deno.PointerValue {
+  get MessageId(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -1283,7 +1283,7 @@ export class FILTER_REPLY_HEADERView {
   }
 
   // 0x08: u64
-  set MessageId(value: Deno.PointerValue) {
+  set MessageId(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -1292,7 +1292,7 @@ export type PWSTR = Deno.PointerValue | Uint8Array;
 
 export type HRESULT = number;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 // Native Libraries
 

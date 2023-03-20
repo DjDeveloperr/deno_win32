@@ -882,9 +882,9 @@ export class FWP_TOKEN_INFORMATIONView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -910,22 +910,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -1340,9 +1340,9 @@ export class FWPM_DISPLAY_DATA0View {
  */
 export interface IPSEC_VIRTUAL_IF_TUNNEL_INFO0 {
   /** u64 */
-  virtualIfTunnelId: Deno.PointerValue;
+  virtualIfTunnelId: bigint | number;
   /** u64 */
-  trafficSelectorId: Deno.PointerValue;
+  trafficSelectorId: bigint | number;
 }
 
 export const sizeofIPSEC_VIRTUAL_IF_TUNNEL_INFO0 = 16;
@@ -1368,22 +1368,22 @@ export class IPSEC_VIRTUAL_IF_TUNNEL_INFO0View {
   }
 
   // 0x00: u64
-  get virtualIfTunnelId(): Deno.PointerValue {
+  get virtualIfTunnelId(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get trafficSelectorId(): Deno.PointerValue {
+  get trafficSelectorId(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set virtualIfTunnelId(value: Deno.PointerValue) {
+  set virtualIfTunnelId(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set trafficSelectorId(value: Deno.PointerValue) {
+  set trafficSelectorId(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -1551,11 +1551,11 @@ export class IKEEXT_CERT_ROOT_CONFIG0View {
  */
 export interface _Anonymous1_e__Union {
   /** usize */
-  Data0: Deno.PointerValue;
+  Data0: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   String: string | null | Uint8Array | Uint16Array;
   /** usize */
-  u: Deno.PointerValue;
+  u: bigint | number;
   /** ptr */
   psid: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -1607,7 +1607,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  get Data0(): Deno.PointerValue {
+  get Data0(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -1618,7 +1618,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  get u(): Deno.PointerValue {
+  get u(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -1654,7 +1654,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  set Data0(value: Deno.PointerValue) {
+  set Data0(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -1665,7 +1665,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  set u(value: Deno.PointerValue) {
+  set u(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -1702,7 +1702,7 @@ export class _Anonymous1_e__UnionView {
  */
 export interface _Anonymous2_e__Union {
   /** usize */
-  Data1: Deno.PointerValue;
+  Data1: bigint | number;
   /** i32 */
   LogonId_HighPart: number;
 }
@@ -1731,7 +1731,7 @@ export class _Anonymous2_e__UnionView {
   }
 
   // 0x00: usize
-  get Data1(): Deno.PointerValue {
+  get Data1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -1743,7 +1743,7 @@ export class _Anonymous2_e__UnionView {
   // 0x0c: pad4
 
   // 0x00: usize
-  set Data1(value: Deno.PointerValue) {
+  set Data1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -5050,7 +5050,7 @@ export interface IKEEXT_TRAFFIC0 {
   /** _Anonymous2_e__Union */
   Anonymous2: Uint8Array | Deno.PointerValue;
   /** u64 */
-  authIpFilterId: Deno.PointerValue;
+  authIpFilterId: bigint | number;
 }
 
 export const sizeofIKEEXT_TRAFFIC0 = 32;
@@ -5100,7 +5100,7 @@ export class IKEEXT_TRAFFIC0View {
   }
 
   // 0x18: u64
-  get authIpFilterId(): Deno.PointerValue {
+  get authIpFilterId(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -5122,7 +5122,7 @@ export class IKEEXT_TRAFFIC0View {
   }
 
   // 0x18: u64
-  set authIpFilterId(value: Deno.PointerValue) {
+  set authIpFilterId(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 }
@@ -5132,9 +5132,9 @@ export class IKEEXT_TRAFFIC0View {
  */
 export interface IKEEXT_COOKIE_PAIR0 {
   /** u64 */
-  initiator: Deno.PointerValue;
+  initiator: bigint | number;
   /** u64 */
-  responder: Deno.PointerValue;
+  responder: bigint | number;
 }
 
 export const sizeofIKEEXT_COOKIE_PAIR0 = 16;
@@ -5160,22 +5160,22 @@ export class IKEEXT_COOKIE_PAIR0View {
   }
 
   // 0x00: u64
-  get initiator(): Deno.PointerValue {
+  get initiator(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get responder(): Deno.PointerValue {
+  get responder(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set initiator(value: Deno.PointerValue) {
+  set initiator(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set responder(value: Deno.PointerValue) {
+  set responder(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -5485,7 +5485,7 @@ export class IKEEXT_CREDENTIALS0View {
  */
 export interface IKEEXT_SA_DETAILS0 {
   /** u64 */
-  saId: Deno.PointerValue;
+  saId: bigint | number;
   /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IKEEXT_KEY_MODULE_TYPE */
   keyModuleType: IKEEXT_KEY_MODULE_TYPE;
   /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWP_IP_VERSION */
@@ -5503,7 +5503,7 @@ export interface IKEEXT_SA_DETAILS0 {
   /** System.Guid */
   ikePolicyKey: Uint8Array | Deno.PointerValue;
   /** u64 */
-  virtualIfTunnelId: Deno.PointerValue;
+  virtualIfTunnelId: bigint | number;
 }
 
 export const sizeofIKEEXT_SA_DETAILS0 = 72;
@@ -5545,7 +5545,7 @@ export class IKEEXT_SA_DETAILS0View {
   }
 
   // 0x00: u64
-  get saId(): Deno.PointerValue {
+  get saId(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -5596,12 +5596,12 @@ export class IKEEXT_SA_DETAILS0View {
   }
 
   // 0x40: u64
-  get virtualIfTunnelId(): Deno.PointerValue {
+  get virtualIfTunnelId(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
   // 0x00: u64
-  set saId(value: Deno.PointerValue) {
+  set saId(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -5646,7 +5646,7 @@ export class IKEEXT_SA_DETAILS0View {
   }
 
   // 0x40: u64
-  set virtualIfTunnelId(value: Deno.PointerValue) {
+  set virtualIfTunnelId(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 }
@@ -5927,7 +5927,7 @@ export class IKEEXT_CREDENTIALS1View {
  */
 export interface IKEEXT_SA_DETAILS1 {
   /** u64 */
-  saId: Deno.PointerValue;
+  saId: bigint | number;
   /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IKEEXT_KEY_MODULE_TYPE */
   keyModuleType: IKEEXT_KEY_MODULE_TYPE;
   /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWP_IP_VERSION */
@@ -5945,7 +5945,7 @@ export interface IKEEXT_SA_DETAILS1 {
   /** System.Guid */
   ikePolicyKey: Uint8Array | Deno.PointerValue;
   /** u64 */
-  virtualIfTunnelId: Deno.PointerValue;
+  virtualIfTunnelId: bigint | number;
   /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWP_BYTE_BLOB */
   correlationKey: Uint8Array | Deno.PointerValue;
 }
@@ -5991,7 +5991,7 @@ export class IKEEXT_SA_DETAILS1View {
   }
 
   // 0x00: u64
-  get saId(): Deno.PointerValue {
+  get saId(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -6042,7 +6042,7 @@ export class IKEEXT_SA_DETAILS1View {
   }
 
   // 0x40: u64
-  get virtualIfTunnelId(): Deno.PointerValue {
+  get virtualIfTunnelId(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
@@ -6053,7 +6053,7 @@ export class IKEEXT_SA_DETAILS1View {
   }
 
   // 0x00: u64
-  set saId(value: Deno.PointerValue) {
+  set saId(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -6098,7 +6098,7 @@ export class IKEEXT_SA_DETAILS1View {
   }
 
   // 0x40: u64
-  set virtualIfTunnelId(value: Deno.PointerValue) {
+  set virtualIfTunnelId(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
@@ -6295,7 +6295,7 @@ export class IKEEXT_CREDENTIALS2View {
  */
 export interface IKEEXT_SA_DETAILS2 {
   /** u64 */
-  saId: Deno.PointerValue;
+  saId: bigint | number;
   /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IKEEXT_KEY_MODULE_TYPE */
   keyModuleType: IKEEXT_KEY_MODULE_TYPE;
   /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWP_IP_VERSION */
@@ -6313,7 +6313,7 @@ export interface IKEEXT_SA_DETAILS2 {
   /** System.Guid */
   ikePolicyKey: Uint8Array | Deno.PointerValue;
   /** u64 */
-  virtualIfTunnelId: Deno.PointerValue;
+  virtualIfTunnelId: bigint | number;
   /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWP_BYTE_BLOB */
   correlationKey: Uint8Array | Deno.PointerValue;
 }
@@ -6359,7 +6359,7 @@ export class IKEEXT_SA_DETAILS2View {
   }
 
   // 0x00: u64
-  get saId(): Deno.PointerValue {
+  get saId(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -6410,7 +6410,7 @@ export class IKEEXT_SA_DETAILS2View {
   }
 
   // 0x40: u64
-  get virtualIfTunnelId(): Deno.PointerValue {
+  get virtualIfTunnelId(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
@@ -6421,7 +6421,7 @@ export class IKEEXT_SA_DETAILS2View {
   }
 
   // 0x00: u64
-  set saId(value: Deno.PointerValue) {
+  set saId(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -6466,7 +6466,7 @@ export class IKEEXT_SA_DETAILS2View {
   }
 
   // 0x40: u64
-  set virtualIfTunnelId(value: Deno.PointerValue) {
+  set virtualIfTunnelId(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
@@ -7817,7 +7817,7 @@ export interface IPSEC_TUNNEL_ENDPOINTS2 {
   /** _Anonymous2_e__Union */
   Anonymous2: Uint8Array | Deno.PointerValue;
   /** u64 */
-  localIfLuid: Deno.PointerValue;
+  localIfLuid: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   remoteFqdn: string | null | Uint8Array | Uint16Array;
   /** u32 */
@@ -7883,7 +7883,7 @@ export class IPSEC_TUNNEL_ENDPOINTS2View {
   }
 
   // 0x18: u64
-  get localIfLuid(): Deno.PointerValue {
+  get localIfLuid(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -7924,7 +7924,7 @@ export class IPSEC_TUNNEL_ENDPOINTS2View {
   }
 
   // 0x18: u64
-  set localIfLuid(value: Deno.PointerValue) {
+  set localIfLuid(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -7958,7 +7958,7 @@ export interface IPSEC_TUNNEL_ENDPOINTS1 {
   /** _Anonymous2_e__Union */
   Anonymous2: Uint8Array | Deno.PointerValue;
   /** u64 */
-  localIfLuid: Deno.PointerValue;
+  localIfLuid: bigint | number;
 }
 
 export const sizeofIPSEC_TUNNEL_ENDPOINTS1 = 32;
@@ -8008,7 +8008,7 @@ export class IPSEC_TUNNEL_ENDPOINTS1View {
   }
 
   // 0x18: u64
-  get localIfLuid(): Deno.PointerValue {
+  get localIfLuid(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -8030,7 +8030,7 @@ export class IPSEC_TUNNEL_ENDPOINTS1View {
   }
 
   // 0x18: u64
-  set localIfLuid(value: Deno.PointerValue) {
+  set localIfLuid(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 }
@@ -9340,17 +9340,17 @@ export class IPSEC_AGGREGATE_DROP_PACKET_STATISTICS1View {
  */
 export interface IPSEC_TRAFFIC_STATISTICS0 {
   /** u64 */
-  encryptedByteCount: Deno.PointerValue;
+  encryptedByteCount: bigint | number;
   /** u64 */
-  authenticatedAHByteCount: Deno.PointerValue;
+  authenticatedAHByteCount: bigint | number;
   /** u64 */
-  authenticatedESPByteCount: Deno.PointerValue;
+  authenticatedESPByteCount: bigint | number;
   /** u64 */
-  transportByteCount: Deno.PointerValue;
+  transportByteCount: bigint | number;
   /** u64 */
-  tunnelByteCount: Deno.PointerValue;
+  tunnelByteCount: bigint | number;
   /** u64 */
-  offloadByteCount: Deno.PointerValue;
+  offloadByteCount: bigint | number;
 }
 
 export const sizeofIPSEC_TRAFFIC_STATISTICS0 = 48;
@@ -9384,62 +9384,62 @@ export class IPSEC_TRAFFIC_STATISTICS0View {
   }
 
   // 0x00: u64
-  get encryptedByteCount(): Deno.PointerValue {
+  get encryptedByteCount(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get authenticatedAHByteCount(): Deno.PointerValue {
+  get authenticatedAHByteCount(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get authenticatedESPByteCount(): Deno.PointerValue {
+  get authenticatedESPByteCount(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get transportByteCount(): Deno.PointerValue {
+  get transportByteCount(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get tunnelByteCount(): Deno.PointerValue {
+  get tunnelByteCount(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: u64
-  get offloadByteCount(): Deno.PointerValue {
+  get offloadByteCount(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x00: u64
-  set encryptedByteCount(value: Deno.PointerValue) {
+  set encryptedByteCount(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set authenticatedAHByteCount(value: Deno.PointerValue) {
+  set authenticatedAHByteCount(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set authenticatedESPByteCount(value: Deno.PointerValue) {
+  set authenticatedESPByteCount(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set transportByteCount(value: Deno.PointerValue) {
+  set transportByteCount(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set tunnelByteCount(value: Deno.PointerValue) {
+  set tunnelByteCount(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: u64
-  set offloadByteCount(value: Deno.PointerValue) {
+  set offloadByteCount(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 }
@@ -9449,19 +9449,19 @@ export class IPSEC_TRAFFIC_STATISTICS0View {
  */
 export interface IPSEC_TRAFFIC_STATISTICS1 {
   /** u64 */
-  encryptedByteCount: Deno.PointerValue;
+  encryptedByteCount: bigint | number;
   /** u64 */
-  authenticatedAHByteCount: Deno.PointerValue;
+  authenticatedAHByteCount: bigint | number;
   /** u64 */
-  authenticatedESPByteCount: Deno.PointerValue;
+  authenticatedESPByteCount: bigint | number;
   /** u64 */
-  transportByteCount: Deno.PointerValue;
+  transportByteCount: bigint | number;
   /** u64 */
-  tunnelByteCount: Deno.PointerValue;
+  tunnelByteCount: bigint | number;
   /** u64 */
-  offloadByteCount: Deno.PointerValue;
+  offloadByteCount: bigint | number;
   /** u64 */
-  totalSuccessfulPackets: Deno.PointerValue;
+  totalSuccessfulPackets: bigint | number;
 }
 
 export const sizeofIPSEC_TRAFFIC_STATISTICS1 = 56;
@@ -9497,72 +9497,72 @@ export class IPSEC_TRAFFIC_STATISTICS1View {
   }
 
   // 0x00: u64
-  get encryptedByteCount(): Deno.PointerValue {
+  get encryptedByteCount(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get authenticatedAHByteCount(): Deno.PointerValue {
+  get authenticatedAHByteCount(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get authenticatedESPByteCount(): Deno.PointerValue {
+  get authenticatedESPByteCount(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get transportByteCount(): Deno.PointerValue {
+  get transportByteCount(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get tunnelByteCount(): Deno.PointerValue {
+  get tunnelByteCount(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: u64
-  get offloadByteCount(): Deno.PointerValue {
+  get offloadByteCount(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: u64
-  get totalSuccessfulPackets(): Deno.PointerValue {
+  get totalSuccessfulPackets(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x00: u64
-  set encryptedByteCount(value: Deno.PointerValue) {
+  set encryptedByteCount(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set authenticatedAHByteCount(value: Deno.PointerValue) {
+  set authenticatedAHByteCount(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set authenticatedESPByteCount(value: Deno.PointerValue) {
+  set authenticatedESPByteCount(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set transportByteCount(value: Deno.PointerValue) {
+  set transportByteCount(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set tunnelByteCount(value: Deno.PointerValue) {
+  set tunnelByteCount(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: u64
-  set offloadByteCount(value: Deno.PointerValue) {
+  set offloadByteCount(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: u64
-  set totalSuccessfulPackets(value: Deno.PointerValue) {
+  set totalSuccessfulPackets(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 }
@@ -10096,7 +10096,7 @@ export interface IPSEC_TOKEN0 {
   /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IPSEC_TOKEN_MODE */
   mode: IPSEC_TOKEN_MODE;
   /** u64 */
-  token: Deno.PointerValue;
+  token: bigint | number;
 }
 
 export const sizeofIPSEC_TOKEN0 = 24;
@@ -10144,7 +10144,7 @@ export class IPSEC_TOKEN0View {
   // 0x0c: pad4
 
   // 0x10: u64
-  get token(): Deno.PointerValue {
+  get token(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -10166,7 +10166,7 @@ export class IPSEC_TOKEN0View {
   // 0x0c: pad4
 
   // 0x10: u64
-  set token(value: Deno.PointerValue) {
+  set token(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -10184,9 +10184,9 @@ export interface IPSEC_ID0 {
   /** ptr */
   tokens: Deno.PointerValue | Uint8Array;
   /** u64 */
-  explicitCredentials: Deno.PointerValue;
+  explicitCredentials: bigint | number;
   /** u64 */
-  logonId: Deno.PointerValue;
+  logonId: bigint | number;
 }
 
 export const sizeofIPSEC_ID0 = 48;
@@ -10252,12 +10252,12 @@ export class IPSEC_ID0View {
   }
 
   // 0x20: u64
-  get explicitCredentials(): Deno.PointerValue {
+  get explicitCredentials(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: u64
-  get logonId(): Deno.PointerValue {
+  get logonId(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -10286,12 +10286,12 @@ export class IPSEC_ID0View {
   }
 
   // 0x20: u64
-  set explicitCredentials(value: Deno.PointerValue) {
+  set explicitCredentials(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: u64
-  set logonId(value: Deno.PointerValue) {
+  set logonId(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 }
@@ -10325,7 +10325,7 @@ export interface IPSEC_SA_BUNDLE0 {
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue;
   /** u64 */
-  mmSaId: Deno.PointerValue;
+  mmSaId: bigint | number;
   /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IPSEC_PFS_GROUP */
   pfsGroup: IPSEC_PFS_GROUP;
 }
@@ -10452,7 +10452,7 @@ export class IPSEC_SA_BUNDLE0View {
   }
 
   // 0x50: u64
-  get mmSaId(): Deno.PointerValue {
+  get mmSaId(): bigint | number {
     return Number(this.view.getBigUint64(80, true));
   }
 
@@ -10530,7 +10530,7 @@ export class IPSEC_SA_BUNDLE0View {
   }
 
   // 0x50: u64
-  set mmSaId(value: Deno.PointerValue) {
+  set mmSaId(value: bigint | number) {
     this.view.setBigUint64(80, BigInt(value), true);
   }
 
@@ -10571,13 +10571,13 @@ export interface IPSEC_SA_BUNDLE1 {
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue;
   /** u64 */
-  mmSaId: Deno.PointerValue;
+  mmSaId: bigint | number;
   /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IPSEC_PFS_GROUP */
   pfsGroup: IPSEC_PFS_GROUP;
   /** System.Guid */
   saLookupContext: Uint8Array | Deno.PointerValue;
   /** u64 */
-  qmFilterId: Deno.PointerValue;
+  qmFilterId: bigint | number;
 }
 
 export const sizeofIPSEC_SA_BUNDLE1 = 112;
@@ -10706,7 +10706,7 @@ export class IPSEC_SA_BUNDLE1View {
   }
 
   // 0x50: u64
-  get mmSaId(): Deno.PointerValue {
+  get mmSaId(): bigint | number {
     return Number(this.view.getBigUint64(80, true));
   }
 
@@ -10724,7 +10724,7 @@ export class IPSEC_SA_BUNDLE1View {
   }
 
   // 0x68: u64
-  get qmFilterId(): Deno.PointerValue {
+  get qmFilterId(): bigint | number {
     return Number(this.view.getBigUint64(104, true));
   }
 
@@ -10795,7 +10795,7 @@ export class IPSEC_SA_BUNDLE1View {
   }
 
   // 0x50: u64
-  set mmSaId(value: Deno.PointerValue) {
+  set mmSaId(value: bigint | number) {
     this.view.setBigUint64(80, BigInt(value), true);
   }
 
@@ -10812,7 +10812,7 @@ export class IPSEC_SA_BUNDLE1View {
   }
 
   // 0x68: u64
-  set qmFilterId(value: Deno.PointerValue) {
+  set qmFilterId(value: bigint | number) {
     this.view.setBigUint64(104, BigInt(value), true);
   }
 }
@@ -11024,7 +11024,7 @@ export interface IPSEC_TRAFFIC1 {
   /** u8 */
   ipProtocol: number;
   /** u64 */
-  localIfLuid: Deno.PointerValue;
+  localIfLuid: bigint | number;
   /** u32 */
   realIfProfileId: number;
 }
@@ -11121,7 +11121,7 @@ export class IPSEC_TRAFFIC1View {
   // 0x2d: pad3
 
   // 0x30: u64
-  get localIfLuid(): Deno.PointerValue {
+  get localIfLuid(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -11179,7 +11179,7 @@ export class IPSEC_TRAFFIC1View {
   // 0x2d: pad3
 
   // 0x30: u64
-  set localIfLuid(value: Deno.PointerValue) {
+  set localIfLuid(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
@@ -11673,7 +11673,7 @@ export class IPSEC_SA_DETAILS1View {
  */
 export interface IPSEC_SA_CONTEXT0 {
   /** u64 */
-  saContextId: Deno.PointerValue;
+  saContextId: bigint | number;
   /** ptr */
   inboundSa: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -11705,7 +11705,7 @@ export class IPSEC_SA_CONTEXT0View {
   }
 
   // 0x00: u64
-  get saContextId(): Deno.PointerValue {
+  get saContextId(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -11722,7 +11722,7 @@ export class IPSEC_SA_CONTEXT0View {
   }
 
   // 0x00: u64
-  set saContextId(value: Deno.PointerValue) {
+  set saContextId(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -11742,7 +11742,7 @@ export class IPSEC_SA_CONTEXT0View {
  */
 export interface IPSEC_SA_CONTEXT1 {
   /** u64 */
-  saContextId: Deno.PointerValue;
+  saContextId: bigint | number;
   /** ptr */
   inboundSa: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -11774,7 +11774,7 @@ export class IPSEC_SA_CONTEXT1View {
   }
 
   // 0x00: u64
-  get saContextId(): Deno.PointerValue {
+  get saContextId(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -11791,7 +11791,7 @@ export class IPSEC_SA_CONTEXT1View {
   }
 
   // 0x00: u64
-  set saContextId(value: Deno.PointerValue) {
+  set saContextId(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -11986,7 +11986,7 @@ export interface IPSEC_SA_CONTEXT_CHANGE0 {
   /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IPSEC_SA_CONTEXT_EVENT_TYPE0 */
   changeType: IPSEC_SA_CONTEXT_EVENT_TYPE0;
   /** u64 */
-  saContextId: Deno.PointerValue;
+  saContextId: bigint | number;
 }
 
 export const sizeofIPSEC_SA_CONTEXT_CHANGE0 = 16;
@@ -12020,7 +12020,7 @@ export class IPSEC_SA_CONTEXT_CHANGE0View {
   // 0x04: pad4
 
   // 0x08: u64
-  get saContextId(): Deno.PointerValue {
+  get saContextId(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -12032,7 +12032,7 @@ export class IPSEC_SA_CONTEXT_CHANGE0View {
   // 0x04: pad4
 
   // 0x08: u64
-  set saContextId(value: Deno.PointerValue) {
+  set saContextId(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -12482,41 +12482,41 @@ export class IPSEC_DOSP_OPTIONS0View {
  */
 export interface IPSEC_DOSP_STATISTICS0 {
   /** u64 */
-  totalStateEntriesCreated: Deno.PointerValue;
+  totalStateEntriesCreated: bigint | number;
   /** u64 */
-  currentStateEntries: Deno.PointerValue;
+  currentStateEntries: bigint | number;
   /** u64 */
-  totalInboundAllowedIPv6IPsecUnauthPkts: Deno.PointerValue;
+  totalInboundAllowedIPv6IPsecUnauthPkts: bigint | number;
   /** u64 */
-  totalInboundRatelimitDiscardedIPv6IPsecUnauthPkts: Deno.PointerValue;
+  totalInboundRatelimitDiscardedIPv6IPsecUnauthPkts: bigint | number;
   /** u64 */
-  totalInboundPerIPRatelimitDiscardedIPv6IPsecUnauthPkts: Deno.PointerValue;
+  totalInboundPerIPRatelimitDiscardedIPv6IPsecUnauthPkts: bigint | number;
   /** u64 */
-  totalInboundOtherDiscardedIPv6IPsecUnauthPkts: Deno.PointerValue;
+  totalInboundOtherDiscardedIPv6IPsecUnauthPkts: bigint | number;
   /** u64 */
-  totalInboundAllowedIPv6IPsecAuthPkts: Deno.PointerValue;
+  totalInboundAllowedIPv6IPsecAuthPkts: bigint | number;
   /** u64 */
-  totalInboundRatelimitDiscardedIPv6IPsecAuthPkts: Deno.PointerValue;
+  totalInboundRatelimitDiscardedIPv6IPsecAuthPkts: bigint | number;
   /** u64 */
-  totalInboundOtherDiscardedIPv6IPsecAuthPkts: Deno.PointerValue;
+  totalInboundOtherDiscardedIPv6IPsecAuthPkts: bigint | number;
   /** u64 */
-  totalInboundAllowedICMPv6Pkts: Deno.PointerValue;
+  totalInboundAllowedICMPv6Pkts: bigint | number;
   /** u64 */
-  totalInboundRatelimitDiscardedICMPv6Pkts: Deno.PointerValue;
+  totalInboundRatelimitDiscardedICMPv6Pkts: bigint | number;
   /** u64 */
-  totalInboundAllowedIPv6FilterExemptPkts: Deno.PointerValue;
+  totalInboundAllowedIPv6FilterExemptPkts: bigint | number;
   /** u64 */
-  totalInboundRatelimitDiscardedIPv6FilterExemptPkts: Deno.PointerValue;
+  totalInboundRatelimitDiscardedIPv6FilterExemptPkts: bigint | number;
   /** u64 */
-  totalInboundDiscardedIPv6FilterBlockPkts: Deno.PointerValue;
+  totalInboundDiscardedIPv6FilterBlockPkts: bigint | number;
   /** u64 */
-  totalInboundAllowedDefBlockExemptPkts: Deno.PointerValue;
+  totalInboundAllowedDefBlockExemptPkts: bigint | number;
   /** u64 */
-  totalInboundRatelimitDiscardedDefBlockExemptPkts: Deno.PointerValue;
+  totalInboundRatelimitDiscardedDefBlockExemptPkts: bigint | number;
   /** u64 */
-  totalInboundDiscardedDefBlockPkts: Deno.PointerValue;
+  totalInboundDiscardedDefBlockPkts: bigint | number;
   /** u64 */
-  currentInboundIPv6IPsecUnauthPerIPRateLimitQueues: Deno.PointerValue;
+  currentInboundIPv6IPsecUnauthPerIPRateLimitQueues: bigint | number;
 }
 
 export const sizeofIPSEC_DOSP_STATISTICS0 = 144;
@@ -12574,182 +12574,182 @@ export class IPSEC_DOSP_STATISTICS0View {
   }
 
   // 0x00: u64
-  get totalStateEntriesCreated(): Deno.PointerValue {
+  get totalStateEntriesCreated(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get currentStateEntries(): Deno.PointerValue {
+  get currentStateEntries(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get totalInboundAllowedIPv6IPsecUnauthPkts(): Deno.PointerValue {
+  get totalInboundAllowedIPv6IPsecUnauthPkts(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get totalInboundRatelimitDiscardedIPv6IPsecUnauthPkts(): Deno.PointerValue {
+  get totalInboundRatelimitDiscardedIPv6IPsecUnauthPkts(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get totalInboundPerIPRatelimitDiscardedIPv6IPsecUnauthPkts(): Deno.PointerValue {
+  get totalInboundPerIPRatelimitDiscardedIPv6IPsecUnauthPkts(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: u64
-  get totalInboundOtherDiscardedIPv6IPsecUnauthPkts(): Deno.PointerValue {
+  get totalInboundOtherDiscardedIPv6IPsecUnauthPkts(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: u64
-  get totalInboundAllowedIPv6IPsecAuthPkts(): Deno.PointerValue {
+  get totalInboundAllowedIPv6IPsecAuthPkts(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: u64
-  get totalInboundRatelimitDiscardedIPv6IPsecAuthPkts(): Deno.PointerValue {
+  get totalInboundRatelimitDiscardedIPv6IPsecAuthPkts(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
   // 0x40: u64
-  get totalInboundOtherDiscardedIPv6IPsecAuthPkts(): Deno.PointerValue {
+  get totalInboundOtherDiscardedIPv6IPsecAuthPkts(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
   // 0x48: u64
-  get totalInboundAllowedICMPv6Pkts(): Deno.PointerValue {
+  get totalInboundAllowedICMPv6Pkts(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
   // 0x50: u64
-  get totalInboundRatelimitDiscardedICMPv6Pkts(): Deno.PointerValue {
+  get totalInboundRatelimitDiscardedICMPv6Pkts(): bigint | number {
     return Number(this.view.getBigUint64(80, true));
   }
 
   // 0x58: u64
-  get totalInboundAllowedIPv6FilterExemptPkts(): Deno.PointerValue {
+  get totalInboundAllowedIPv6FilterExemptPkts(): bigint | number {
     return Number(this.view.getBigUint64(88, true));
   }
 
   // 0x60: u64
-  get totalInboundRatelimitDiscardedIPv6FilterExemptPkts(): Deno.PointerValue {
+  get totalInboundRatelimitDiscardedIPv6FilterExemptPkts(): bigint | number {
     return Number(this.view.getBigUint64(96, true));
   }
 
   // 0x68: u64
-  get totalInboundDiscardedIPv6FilterBlockPkts(): Deno.PointerValue {
+  get totalInboundDiscardedIPv6FilterBlockPkts(): bigint | number {
     return Number(this.view.getBigUint64(104, true));
   }
 
   // 0x70: u64
-  get totalInboundAllowedDefBlockExemptPkts(): Deno.PointerValue {
+  get totalInboundAllowedDefBlockExemptPkts(): bigint | number {
     return Number(this.view.getBigUint64(112, true));
   }
 
   // 0x78: u64
-  get totalInboundRatelimitDiscardedDefBlockExemptPkts(): Deno.PointerValue {
+  get totalInboundRatelimitDiscardedDefBlockExemptPkts(): bigint | number {
     return Number(this.view.getBigUint64(120, true));
   }
 
   // 0x80: u64
-  get totalInboundDiscardedDefBlockPkts(): Deno.PointerValue {
+  get totalInboundDiscardedDefBlockPkts(): bigint | number {
     return Number(this.view.getBigUint64(128, true));
   }
 
   // 0x88: u64
-  get currentInboundIPv6IPsecUnauthPerIPRateLimitQueues(): Deno.PointerValue {
+  get currentInboundIPv6IPsecUnauthPerIPRateLimitQueues(): bigint | number {
     return Number(this.view.getBigUint64(136, true));
   }
 
   // 0x00: u64
-  set totalStateEntriesCreated(value: Deno.PointerValue) {
+  set totalStateEntriesCreated(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set currentStateEntries(value: Deno.PointerValue) {
+  set currentStateEntries(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set totalInboundAllowedIPv6IPsecUnauthPkts(value: Deno.PointerValue) {
+  set totalInboundAllowedIPv6IPsecUnauthPkts(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set totalInboundRatelimitDiscardedIPv6IPsecUnauthPkts(value: Deno.PointerValue) {
+  set totalInboundRatelimitDiscardedIPv6IPsecUnauthPkts(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set totalInboundPerIPRatelimitDiscardedIPv6IPsecUnauthPkts(value: Deno.PointerValue) {
+  set totalInboundPerIPRatelimitDiscardedIPv6IPsecUnauthPkts(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: u64
-  set totalInboundOtherDiscardedIPv6IPsecUnauthPkts(value: Deno.PointerValue) {
+  set totalInboundOtherDiscardedIPv6IPsecUnauthPkts(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: u64
-  set totalInboundAllowedIPv6IPsecAuthPkts(value: Deno.PointerValue) {
+  set totalInboundAllowedIPv6IPsecAuthPkts(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: u64
-  set totalInboundRatelimitDiscardedIPv6IPsecAuthPkts(value: Deno.PointerValue) {
+  set totalInboundRatelimitDiscardedIPv6IPsecAuthPkts(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
   // 0x40: u64
-  set totalInboundOtherDiscardedIPv6IPsecAuthPkts(value: Deno.PointerValue) {
+  set totalInboundOtherDiscardedIPv6IPsecAuthPkts(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
   // 0x48: u64
-  set totalInboundAllowedICMPv6Pkts(value: Deno.PointerValue) {
+  set totalInboundAllowedICMPv6Pkts(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
   // 0x50: u64
-  set totalInboundRatelimitDiscardedICMPv6Pkts(value: Deno.PointerValue) {
+  set totalInboundRatelimitDiscardedICMPv6Pkts(value: bigint | number) {
     this.view.setBigUint64(80, BigInt(value), true);
   }
 
   // 0x58: u64
-  set totalInboundAllowedIPv6FilterExemptPkts(value: Deno.PointerValue) {
+  set totalInboundAllowedIPv6FilterExemptPkts(value: bigint | number) {
     this.view.setBigUint64(88, BigInt(value), true);
   }
 
   // 0x60: u64
-  set totalInboundRatelimitDiscardedIPv6FilterExemptPkts(value: Deno.PointerValue) {
+  set totalInboundRatelimitDiscardedIPv6FilterExemptPkts(value: bigint | number) {
     this.view.setBigUint64(96, BigInt(value), true);
   }
 
   // 0x68: u64
-  set totalInboundDiscardedIPv6FilterBlockPkts(value: Deno.PointerValue) {
+  set totalInboundDiscardedIPv6FilterBlockPkts(value: bigint | number) {
     this.view.setBigUint64(104, BigInt(value), true);
   }
 
   // 0x70: u64
-  set totalInboundAllowedDefBlockExemptPkts(value: Deno.PointerValue) {
+  set totalInboundAllowedDefBlockExemptPkts(value: bigint | number) {
     this.view.setBigUint64(112, BigInt(value), true);
   }
 
   // 0x78: u64
-  set totalInboundRatelimitDiscardedDefBlockExemptPkts(value: Deno.PointerValue) {
+  set totalInboundRatelimitDiscardedDefBlockExemptPkts(value: bigint | number) {
     this.view.setBigUint64(120, BigInt(value), true);
   }
 
   // 0x80: u64
-  set totalInboundDiscardedDefBlockPkts(value: Deno.PointerValue) {
+  set totalInboundDiscardedDefBlockPkts(value: bigint | number) {
     this.view.setBigUint64(128, BigInt(value), true);
   }
 
   // 0x88: u64
-  set currentInboundIPv6IPsecUnauthPerIPRateLimitQueues(value: Deno.PointerValue) {
+  set currentInboundIPv6IPsecUnauthPerIPRateLimitQueues(value: bigint | number) {
     this.view.setBigUint64(136, BigInt(value), true);
   }
 }
@@ -12763,9 +12763,9 @@ export interface IPSEC_DOSP_STATE0 {
   /** array */
   internalHostV6Addr: Deno.PointerValue;
   /** u64 */
-  totalInboundIPv6IPsecAuthPackets: Deno.PointerValue;
+  totalInboundIPv6IPsecAuthPackets: bigint | number;
   /** u64 */
-  totalOutboundIPv6IPsecAuthPackets: Deno.PointerValue;
+  totalOutboundIPv6IPsecAuthPackets: bigint | number;
   /** u32 */
   durationSecs: number;
 }
@@ -12812,12 +12812,12 @@ export class IPSEC_DOSP_STATE0View {
   }
 
   // 0x10: u64
-  get totalInboundIPv6IPsecAuthPackets(): Deno.PointerValue {
+  get totalInboundIPv6IPsecAuthPackets(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get totalOutboundIPv6IPsecAuthPackets(): Deno.PointerValue {
+  get totalOutboundIPv6IPsecAuthPackets(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -12839,12 +12839,12 @@ export class IPSEC_DOSP_STATE0View {
   }
 
   // 0x10: u64
-  set totalInboundIPv6IPsecAuthPackets(value: Deno.PointerValue) {
+  set totalInboundIPv6IPsecAuthPackets(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set totalOutboundIPv6IPsecAuthPackets(value: Deno.PointerValue) {
+  set totalOutboundIPv6IPsecAuthPackets(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -13161,7 +13161,7 @@ export class FWPM_SESSION0View {
  */
 export interface FWPM_SESSION_ENUM_TEMPLATE0 {
   /** u64 */
-  reserved: Deno.PointerValue;
+  reserved: bigint | number;
 }
 
 export const sizeofFWPM_SESSION_ENUM_TEMPLATE0 = 8;
@@ -13185,12 +13185,12 @@ export class FWPM_SESSION_ENUM_TEMPLATE0View {
   }
 
   // 0x00: u64
-  get reserved(): Deno.PointerValue {
+  get reserved(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: u64
-  set reserved(value: Deno.PointerValue) {
+  set reserved(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -13308,7 +13308,7 @@ export class FWPM_PROVIDER0View {
  */
 export interface FWPM_PROVIDER_ENUM_TEMPLATE0 {
   /** u64 */
-  reserved: Deno.PointerValue;
+  reserved: bigint | number;
 }
 
 export const sizeofFWPM_PROVIDER_ENUM_TEMPLATE0 = 8;
@@ -13332,12 +13332,12 @@ export class FWPM_PROVIDER_ENUM_TEMPLATE0View {
   }
 
   // 0x00: u64
-  get reserved(): Deno.PointerValue {
+  get reserved(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: u64
-  set reserved(value: Deno.PointerValue) {
+  set reserved(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -13612,7 +13612,7 @@ export interface FWPM_PROVIDER_CONTEXT0 {
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue;
   /** u64 */
-  providerContextId: Deno.PointerValue;
+  providerContextId: bigint | number;
 }
 
 export const sizeofFWPM_PROVIDER_CONTEXT0 = 64;
@@ -13696,7 +13696,7 @@ export class FWPM_PROVIDER_CONTEXT0View {
   }
 
   // 0x38: u64
-  get providerContextId(): Deno.PointerValue {
+  get providerContextId(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
@@ -13740,7 +13740,7 @@ export class FWPM_PROVIDER_CONTEXT0View {
   }
 
   // 0x38: u64
-  set providerContextId(value: Deno.PointerValue) {
+  set providerContextId(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 }
@@ -13764,7 +13764,7 @@ export interface FWPM_PROVIDER_CONTEXT1 {
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue;
   /** u64 */
-  providerContextId: Deno.PointerValue;
+  providerContextId: bigint | number;
 }
 
 export const sizeofFWPM_PROVIDER_CONTEXT1 = 64;
@@ -13848,7 +13848,7 @@ export class FWPM_PROVIDER_CONTEXT1View {
   }
 
   // 0x38: u64
-  get providerContextId(): Deno.PointerValue {
+  get providerContextId(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
@@ -13892,7 +13892,7 @@ export class FWPM_PROVIDER_CONTEXT1View {
   }
 
   // 0x38: u64
-  set providerContextId(value: Deno.PointerValue) {
+  set providerContextId(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 }
@@ -13916,7 +13916,7 @@ export interface FWPM_PROVIDER_CONTEXT2 {
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue;
   /** u64 */
-  providerContextId: Deno.PointerValue;
+  providerContextId: bigint | number;
 }
 
 export const sizeofFWPM_PROVIDER_CONTEXT2 = 64;
@@ -14000,7 +14000,7 @@ export class FWPM_PROVIDER_CONTEXT2View {
   }
 
   // 0x38: u64
-  get providerContextId(): Deno.PointerValue {
+  get providerContextId(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
@@ -14044,7 +14044,7 @@ export class FWPM_PROVIDER_CONTEXT2View {
   }
 
   // 0x38: u64
-  set providerContextId(value: Deno.PointerValue) {
+  set providerContextId(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 }
@@ -14068,7 +14068,7 @@ export interface FWPM_PROVIDER_CONTEXT3 {
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue;
   /** u64 */
-  providerContextId: Deno.PointerValue;
+  providerContextId: bigint | number;
 }
 
 export const sizeofFWPM_PROVIDER_CONTEXT3 = 64;
@@ -14152,7 +14152,7 @@ export class FWPM_PROVIDER_CONTEXT3View {
   }
 
   // 0x38: u64
-  get providerContextId(): Deno.PointerValue {
+  get providerContextId(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
@@ -14196,7 +14196,7 @@ export class FWPM_PROVIDER_CONTEXT3View {
   }
 
   // 0x38: u64
-  set providerContextId(value: Deno.PointerValue) {
+  set providerContextId(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 }
@@ -14269,7 +14269,7 @@ export interface FWPM_PROVIDER_CONTEXT_CHANGE0 {
   /** System.Guid */
   providerContextKey: Uint8Array | Deno.PointerValue;
   /** u64 */
-  providerContextId: Deno.PointerValue;
+  providerContextId: bigint | number;
 }
 
 export const sizeofFWPM_PROVIDER_CONTEXT_CHANGE0 = 24;
@@ -14311,7 +14311,7 @@ export class FWPM_PROVIDER_CONTEXT_CHANGE0View {
   }
 
   // 0x10: u64
-  get providerContextId(): Deno.PointerValue {
+  get providerContextId(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -14328,7 +14328,7 @@ export class FWPM_PROVIDER_CONTEXT_CHANGE0View {
   }
 
   // 0x10: u64
-  set providerContextId(value: Deno.PointerValue) {
+  set providerContextId(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -14908,7 +14908,7 @@ export class FWPM_LAYER0View {
  */
 export interface FWPM_LAYER_ENUM_TEMPLATE0 {
   /** u64 */
-  reserved: Deno.PointerValue;
+  reserved: bigint | number;
 }
 
 export const sizeofFWPM_LAYER_ENUM_TEMPLATE0 = 8;
@@ -14932,12 +14932,12 @@ export class FWPM_LAYER_ENUM_TEMPLATE0View {
   }
 
   // 0x00: u64
-  get reserved(): Deno.PointerValue {
+  get reserved(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: u64
-  set reserved(value: Deno.PointerValue) {
+  set reserved(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -15451,7 +15451,7 @@ export interface FWPM_FILTER0 {
   /** ptr */
   reserved: Deno.PointerValue | Uint8Array;
   /** u64 */
-  filterId: Deno.PointerValue;
+  filterId: bigint | number;
   /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWP_VALUE0 */
   effectiveWeight: Uint8Array | Deno.PointerValue;
 }
@@ -15587,7 +15587,7 @@ export class FWPM_FILTER0View {
   }
 
   // 0x68: u64
-  get filterId(): Deno.PointerValue {
+  get filterId(): bigint | number {
     return Number(this.view.getBigUint64(104, true));
   }
 
@@ -15667,7 +15667,7 @@ export class FWPM_FILTER0View {
   }
 
   // 0x68: u64
-  set filterId(value: Deno.PointerValue) {
+  set filterId(value: bigint | number) {
     this.view.setBigUint64(104, BigInt(value), true);
   }
 
@@ -15852,7 +15852,7 @@ export interface FWPM_FILTER_CHANGE0 {
   /** System.Guid */
   filterKey: Uint8Array | Deno.PointerValue;
   /** u64 */
-  filterId: Deno.PointerValue;
+  filterId: bigint | number;
 }
 
 export const sizeofFWPM_FILTER_CHANGE0 = 24;
@@ -15894,7 +15894,7 @@ export class FWPM_FILTER_CHANGE0View {
   }
 
   // 0x10: u64
-  get filterId(): Deno.PointerValue {
+  get filterId(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -15911,7 +15911,7 @@ export class FWPM_FILTER_CHANGE0View {
   }
 
   // 0x10: u64
-  set filterId(value: Deno.PointerValue) {
+  set filterId(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -16119,49 +16119,49 @@ export interface FWPM_STATISTICS0 {
   /** u32 */
   outboundActiveConnectionsV6: number;
   /** u64 */
-  reauthDirInbound: Deno.PointerValue;
+  reauthDirInbound: bigint | number;
   /** u64 */
-  reauthDirOutbound: Deno.PointerValue;
+  reauthDirOutbound: bigint | number;
   /** u64 */
-  reauthFamilyV4: Deno.PointerValue;
+  reauthFamilyV4: bigint | number;
   /** u64 */
-  reauthFamilyV6: Deno.PointerValue;
+  reauthFamilyV6: bigint | number;
   /** u64 */
-  reauthProtoOther: Deno.PointerValue;
+  reauthProtoOther: bigint | number;
   /** u64 */
-  reauthProtoIPv4: Deno.PointerValue;
+  reauthProtoIPv4: bigint | number;
   /** u64 */
-  reauthProtoIPv6: Deno.PointerValue;
+  reauthProtoIPv6: bigint | number;
   /** u64 */
-  reauthProtoICMP: Deno.PointerValue;
+  reauthProtoICMP: bigint | number;
   /** u64 */
-  reauthProtoICMP6: Deno.PointerValue;
+  reauthProtoICMP6: bigint | number;
   /** u64 */
-  reauthProtoUDP: Deno.PointerValue;
+  reauthProtoUDP: bigint | number;
   /** u64 */
-  reauthProtoTCP: Deno.PointerValue;
+  reauthProtoTCP: bigint | number;
   /** u64 */
-  reauthReasonPolicyChange: Deno.PointerValue;
+  reauthReasonPolicyChange: bigint | number;
   /** u64 */
-  reauthReasonNewArrivalInterface: Deno.PointerValue;
+  reauthReasonNewArrivalInterface: bigint | number;
   /** u64 */
-  reauthReasonNewNextHopInterface: Deno.PointerValue;
+  reauthReasonNewNextHopInterface: bigint | number;
   /** u64 */
-  reauthReasonProfileCrossing: Deno.PointerValue;
+  reauthReasonProfileCrossing: bigint | number;
   /** u64 */
-  reauthReasonClassifyCompletion: Deno.PointerValue;
+  reauthReasonClassifyCompletion: bigint | number;
   /** u64 */
-  reauthReasonIPSecPropertiesChanged: Deno.PointerValue;
+  reauthReasonIPSecPropertiesChanged: bigint | number;
   /** u64 */
-  reauthReasonMidStreamInspection: Deno.PointerValue;
+  reauthReasonMidStreamInspection: bigint | number;
   /** u64 */
-  reauthReasonSocketPropertyChanged: Deno.PointerValue;
+  reauthReasonSocketPropertyChanged: bigint | number;
   /** u64 */
-  reauthReasonNewInboundMCastBCastPacket: Deno.PointerValue;
+  reauthReasonNewInboundMCastBCastPacket: bigint | number;
   /** u64 */
-  reauthReasonEDPPolicyChanged: Deno.PointerValue;
+  reauthReasonEDPPolicyChanged: bigint | number;
   /** u64 */
-  reauthReasonProxyHandleChanged: Deno.PointerValue;
+  reauthReasonProxyHandleChanged: bigint | number;
 }
 
 export const sizeofFWPM_STATISTICS0 = 240;
@@ -16329,112 +16329,112 @@ export class FWPM_STATISTICS0View {
   }
 
   // 0x40: u64
-  get reauthDirInbound(): Deno.PointerValue {
+  get reauthDirInbound(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
   // 0x48: u64
-  get reauthDirOutbound(): Deno.PointerValue {
+  get reauthDirOutbound(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
   // 0x50: u64
-  get reauthFamilyV4(): Deno.PointerValue {
+  get reauthFamilyV4(): bigint | number {
     return Number(this.view.getBigUint64(80, true));
   }
 
   // 0x58: u64
-  get reauthFamilyV6(): Deno.PointerValue {
+  get reauthFamilyV6(): bigint | number {
     return Number(this.view.getBigUint64(88, true));
   }
 
   // 0x60: u64
-  get reauthProtoOther(): Deno.PointerValue {
+  get reauthProtoOther(): bigint | number {
     return Number(this.view.getBigUint64(96, true));
   }
 
   // 0x68: u64
-  get reauthProtoIPv4(): Deno.PointerValue {
+  get reauthProtoIPv4(): bigint | number {
     return Number(this.view.getBigUint64(104, true));
   }
 
   // 0x70: u64
-  get reauthProtoIPv6(): Deno.PointerValue {
+  get reauthProtoIPv6(): bigint | number {
     return Number(this.view.getBigUint64(112, true));
   }
 
   // 0x78: u64
-  get reauthProtoICMP(): Deno.PointerValue {
+  get reauthProtoICMP(): bigint | number {
     return Number(this.view.getBigUint64(120, true));
   }
 
   // 0x80: u64
-  get reauthProtoICMP6(): Deno.PointerValue {
+  get reauthProtoICMP6(): bigint | number {
     return Number(this.view.getBigUint64(128, true));
   }
 
   // 0x88: u64
-  get reauthProtoUDP(): Deno.PointerValue {
+  get reauthProtoUDP(): bigint | number {
     return Number(this.view.getBigUint64(136, true));
   }
 
   // 0x90: u64
-  get reauthProtoTCP(): Deno.PointerValue {
+  get reauthProtoTCP(): bigint | number {
     return Number(this.view.getBigUint64(144, true));
   }
 
   // 0x98: u64
-  get reauthReasonPolicyChange(): Deno.PointerValue {
+  get reauthReasonPolicyChange(): bigint | number {
     return Number(this.view.getBigUint64(152, true));
   }
 
   // 0xa0: u64
-  get reauthReasonNewArrivalInterface(): Deno.PointerValue {
+  get reauthReasonNewArrivalInterface(): bigint | number {
     return Number(this.view.getBigUint64(160, true));
   }
 
   // 0xa8: u64
-  get reauthReasonNewNextHopInterface(): Deno.PointerValue {
+  get reauthReasonNewNextHopInterface(): bigint | number {
     return Number(this.view.getBigUint64(168, true));
   }
 
   // 0xb0: u64
-  get reauthReasonProfileCrossing(): Deno.PointerValue {
+  get reauthReasonProfileCrossing(): bigint | number {
     return Number(this.view.getBigUint64(176, true));
   }
 
   // 0xb8: u64
-  get reauthReasonClassifyCompletion(): Deno.PointerValue {
+  get reauthReasonClassifyCompletion(): bigint | number {
     return Number(this.view.getBigUint64(184, true));
   }
 
   // 0xc0: u64
-  get reauthReasonIPSecPropertiesChanged(): Deno.PointerValue {
+  get reauthReasonIPSecPropertiesChanged(): bigint | number {
     return Number(this.view.getBigUint64(192, true));
   }
 
   // 0xc8: u64
-  get reauthReasonMidStreamInspection(): Deno.PointerValue {
+  get reauthReasonMidStreamInspection(): bigint | number {
     return Number(this.view.getBigUint64(200, true));
   }
 
   // 0xd0: u64
-  get reauthReasonSocketPropertyChanged(): Deno.PointerValue {
+  get reauthReasonSocketPropertyChanged(): bigint | number {
     return Number(this.view.getBigUint64(208, true));
   }
 
   // 0xd8: u64
-  get reauthReasonNewInboundMCastBCastPacket(): Deno.PointerValue {
+  get reauthReasonNewInboundMCastBCastPacket(): bigint | number {
     return Number(this.view.getBigUint64(216, true));
   }
 
   // 0xe0: u64
-  get reauthReasonEDPPolicyChanged(): Deno.PointerValue {
+  get reauthReasonEDPPolicyChanged(): bigint | number {
     return Number(this.view.getBigUint64(224, true));
   }
 
   // 0xe8: u64
-  get reauthReasonProxyHandleChanged(): Deno.PointerValue {
+  get reauthReasonProxyHandleChanged(): bigint | number {
     return Number(this.view.getBigUint64(232, true));
   }
 
@@ -16511,112 +16511,112 @@ export class FWPM_STATISTICS0View {
   }
 
   // 0x40: u64
-  set reauthDirInbound(value: Deno.PointerValue) {
+  set reauthDirInbound(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
   // 0x48: u64
-  set reauthDirOutbound(value: Deno.PointerValue) {
+  set reauthDirOutbound(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
   // 0x50: u64
-  set reauthFamilyV4(value: Deno.PointerValue) {
+  set reauthFamilyV4(value: bigint | number) {
     this.view.setBigUint64(80, BigInt(value), true);
   }
 
   // 0x58: u64
-  set reauthFamilyV6(value: Deno.PointerValue) {
+  set reauthFamilyV6(value: bigint | number) {
     this.view.setBigUint64(88, BigInt(value), true);
   }
 
   // 0x60: u64
-  set reauthProtoOther(value: Deno.PointerValue) {
+  set reauthProtoOther(value: bigint | number) {
     this.view.setBigUint64(96, BigInt(value), true);
   }
 
   // 0x68: u64
-  set reauthProtoIPv4(value: Deno.PointerValue) {
+  set reauthProtoIPv4(value: bigint | number) {
     this.view.setBigUint64(104, BigInt(value), true);
   }
 
   // 0x70: u64
-  set reauthProtoIPv6(value: Deno.PointerValue) {
+  set reauthProtoIPv6(value: bigint | number) {
     this.view.setBigUint64(112, BigInt(value), true);
   }
 
   // 0x78: u64
-  set reauthProtoICMP(value: Deno.PointerValue) {
+  set reauthProtoICMP(value: bigint | number) {
     this.view.setBigUint64(120, BigInt(value), true);
   }
 
   // 0x80: u64
-  set reauthProtoICMP6(value: Deno.PointerValue) {
+  set reauthProtoICMP6(value: bigint | number) {
     this.view.setBigUint64(128, BigInt(value), true);
   }
 
   // 0x88: u64
-  set reauthProtoUDP(value: Deno.PointerValue) {
+  set reauthProtoUDP(value: bigint | number) {
     this.view.setBigUint64(136, BigInt(value), true);
   }
 
   // 0x90: u64
-  set reauthProtoTCP(value: Deno.PointerValue) {
+  set reauthProtoTCP(value: bigint | number) {
     this.view.setBigUint64(144, BigInt(value), true);
   }
 
   // 0x98: u64
-  set reauthReasonPolicyChange(value: Deno.PointerValue) {
+  set reauthReasonPolicyChange(value: bigint | number) {
     this.view.setBigUint64(152, BigInt(value), true);
   }
 
   // 0xa0: u64
-  set reauthReasonNewArrivalInterface(value: Deno.PointerValue) {
+  set reauthReasonNewArrivalInterface(value: bigint | number) {
     this.view.setBigUint64(160, BigInt(value), true);
   }
 
   // 0xa8: u64
-  set reauthReasonNewNextHopInterface(value: Deno.PointerValue) {
+  set reauthReasonNewNextHopInterface(value: bigint | number) {
     this.view.setBigUint64(168, BigInt(value), true);
   }
 
   // 0xb0: u64
-  set reauthReasonProfileCrossing(value: Deno.PointerValue) {
+  set reauthReasonProfileCrossing(value: bigint | number) {
     this.view.setBigUint64(176, BigInt(value), true);
   }
 
   // 0xb8: u64
-  set reauthReasonClassifyCompletion(value: Deno.PointerValue) {
+  set reauthReasonClassifyCompletion(value: bigint | number) {
     this.view.setBigUint64(184, BigInt(value), true);
   }
 
   // 0xc0: u64
-  set reauthReasonIPSecPropertiesChanged(value: Deno.PointerValue) {
+  set reauthReasonIPSecPropertiesChanged(value: bigint | number) {
     this.view.setBigUint64(192, BigInt(value), true);
   }
 
   // 0xc8: u64
-  set reauthReasonMidStreamInspection(value: Deno.PointerValue) {
+  set reauthReasonMidStreamInspection(value: bigint | number) {
     this.view.setBigUint64(200, BigInt(value), true);
   }
 
   // 0xd0: u64
-  set reauthReasonSocketPropertyChanged(value: Deno.PointerValue) {
+  set reauthReasonSocketPropertyChanged(value: bigint | number) {
     this.view.setBigUint64(208, BigInt(value), true);
   }
 
   // 0xd8: u64
-  set reauthReasonNewInboundMCastBCastPacket(value: Deno.PointerValue) {
+  set reauthReasonNewInboundMCastBCastPacket(value: bigint | number) {
     this.view.setBigUint64(216, BigInt(value), true);
   }
 
   // 0xe0: u64
-  set reauthReasonEDPPolicyChanged(value: Deno.PointerValue) {
+  set reauthReasonEDPPolicyChanged(value: bigint | number) {
     this.view.setBigUint64(224, BigInt(value), true);
   }
 
   // 0xe8: u64
-  set reauthReasonProxyHandleChanged(value: Deno.PointerValue) {
+  set reauthReasonProxyHandleChanged(value: bigint | number) {
     this.view.setBigUint64(232, BigInt(value), true);
   }
 }
@@ -17323,7 +17323,7 @@ export interface FWPM_NET_EVENT_HEADER3 {
   /** Windows.Win32.Foundation.PWSTR */
   enterpriseId: string | null | Uint8Array | Uint16Array;
   /** u64 */
-  policyFlags: Deno.PointerValue;
+  policyFlags: bigint | number;
   /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWP_BYTE_BLOB */
   effectiveName: Uint8Array | Deno.PointerValue;
 }
@@ -17465,7 +17465,7 @@ export class FWPM_NET_EVENT_HEADER3View {
   }
 
   // 0x58: u64
-  get policyFlags(): Deno.PointerValue {
+  get policyFlags(): bigint | number {
     return Number(this.view.getBigUint64(88, true));
   }
 
@@ -17551,7 +17551,7 @@ export class FWPM_NET_EVENT_HEADER3View {
   }
 
   // 0x58: u64
-  set policyFlags(value: Deno.PointerValue) {
+  set policyFlags(value: bigint | number) {
     this.view.setBigUint64(88, BigInt(value), true);
   }
 
@@ -17582,9 +17582,9 @@ export interface FWPM_NET_EVENT_IKEEXT_MM_FAILURE0 {
   /** array */
   endCertHash: Deno.PointerValue;
   /** u64 */
-  mmId: Deno.PointerValue;
+  mmId: bigint | number;
   /** u64 */
-  mmFilterId: Deno.PointerValue;
+  mmFilterId: bigint | number;
 }
 
 export const sizeofFWPM_NET_EVENT_IKEEXT_MM_FAILURE0 = 56;
@@ -17670,12 +17670,12 @@ export class FWPM_NET_EVENT_IKEEXT_MM_FAILURE0View {
   }
 
   // 0x28: u64
-  get mmId(): Deno.PointerValue {
+  get mmId(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: u64
-  get mmFilterId(): Deno.PointerValue {
+  get mmFilterId(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -17722,12 +17722,12 @@ export class FWPM_NET_EVENT_IKEEXT_MM_FAILURE0View {
   }
 
   // 0x28: u64
-  set mmId(value: Deno.PointerValue) {
+  set mmId(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: u64
-  set mmFilterId(value: Deno.PointerValue) {
+  set mmFilterId(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 }
@@ -17753,9 +17753,9 @@ export interface FWPM_NET_EVENT_IKEEXT_MM_FAILURE1 {
   /** array */
   endCertHash: Deno.PointerValue;
   /** u64 */
-  mmId: Deno.PointerValue;
+  mmId: bigint | number;
   /** u64 */
-  mmFilterId: Deno.PointerValue;
+  mmFilterId: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   localPrincipalNameForAuth: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
@@ -17873,12 +17873,12 @@ export class FWPM_NET_EVENT_IKEEXT_MM_FAILURE1View {
   }
 
   // 0x28: u64
-  get mmId(): Deno.PointerValue {
+  get mmId(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: u64
-  get mmFilterId(): Deno.PointerValue {
+  get mmFilterId(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -17963,12 +17963,12 @@ export class FWPM_NET_EVENT_IKEEXT_MM_FAILURE1View {
   }
 
   // 0x28: u64
-  set mmId(value: Deno.PointerValue) {
+  set mmId(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: u64
-  set mmFilterId(value: Deno.PointerValue) {
+  set mmFilterId(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
@@ -18030,9 +18030,9 @@ export interface FWPM_NET_EVENT_IKEEXT_MM_FAILURE2 {
   /** array */
   endCertHash: Deno.PointerValue;
   /** u64 */
-  mmId: Deno.PointerValue;
+  mmId: bigint | number;
   /** u64 */
-  mmFilterId: Deno.PointerValue;
+  mmFilterId: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   localPrincipalNameForAuth: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
@@ -18154,12 +18154,12 @@ export class FWPM_NET_EVENT_IKEEXT_MM_FAILURE2View {
   }
 
   // 0x28: u64
-  get mmId(): Deno.PointerValue {
+  get mmId(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: u64
-  get mmFilterId(): Deno.PointerValue {
+  get mmFilterId(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -18250,12 +18250,12 @@ export class FWPM_NET_EVENT_IKEEXT_MM_FAILURE2View {
   }
 
   // 0x28: u64
-  set mmId(value: Deno.PointerValue) {
+  set mmId(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: u64
-  set mmFilterId(value: Deno.PointerValue) {
+  set mmFilterId(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
@@ -18322,7 +18322,7 @@ export interface FWPM_NET_EVENT_IKEEXT_QM_FAILURE0 {
   /** _Anonymous2_e__Union */
   Anonymous2: Uint8Array | Deno.PointerValue;
   /** u64 */
-  qmFilterId: Deno.PointerValue;
+  qmFilterId: bigint | number;
 }
 
 export const sizeofFWPM_NET_EVENT_IKEEXT_QM_FAILURE0 = 48;
@@ -18404,7 +18404,7 @@ export class FWPM_NET_EVENT_IKEEXT_QM_FAILURE0View {
   }
 
   // 0x28: u64
-  get qmFilterId(): Deno.PointerValue {
+  get qmFilterId(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -18449,7 +18449,7 @@ export class FWPM_NET_EVENT_IKEEXT_QM_FAILURE0View {
   }
 
   // 0x28: u64
-  set qmFilterId(value: Deno.PointerValue) {
+  set qmFilterId(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 }
@@ -18475,9 +18475,9 @@ export interface FWPM_NET_EVENT_IKEEXT_QM_FAILURE1 {
   /** _Anonymous2_e__Union */
   Anonymous2: Uint8Array | Deno.PointerValue;
   /** u64 */
-  qmFilterId: Deno.PointerValue;
+  qmFilterId: bigint | number;
   /** u64 */
-  mmSaLuid: Deno.PointerValue;
+  mmSaLuid: bigint | number;
   /** System.Guid */
   mmProviderContextKey: Uint8Array | Deno.PointerValue;
 }
@@ -18565,12 +18565,12 @@ export class FWPM_NET_EVENT_IKEEXT_QM_FAILURE1View {
   }
 
   // 0x28: u64
-  get qmFilterId(): Deno.PointerValue {
+  get qmFilterId(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: u64
-  get mmSaLuid(): Deno.PointerValue {
+  get mmSaLuid(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -18621,12 +18621,12 @@ export class FWPM_NET_EVENT_IKEEXT_QM_FAILURE1View {
   }
 
   // 0x28: u64
-  set qmFilterId(value: Deno.PointerValue) {
+  set qmFilterId(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: u64
-  set mmSaLuid(value: Deno.PointerValue) {
+  set mmSaLuid(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
@@ -18655,9 +18655,9 @@ export interface FWPM_NET_EVENT_IKEEXT_EM_FAILURE0 {
   /** array */
   endCertHash: Deno.PointerValue;
   /** u64 */
-  mmId: Deno.PointerValue;
+  mmId: bigint | number;
   /** u64 */
-  qmFilterId: Deno.PointerValue;
+  qmFilterId: bigint | number;
 }
 
 export const sizeofFWPM_NET_EVENT_IKEEXT_EM_FAILURE0 = 48;
@@ -18733,12 +18733,12 @@ export class FWPM_NET_EVENT_IKEEXT_EM_FAILURE0View {
   }
 
   // 0x20: u64
-  get mmId(): Deno.PointerValue {
+  get mmId(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: u64
-  get qmFilterId(): Deno.PointerValue {
+  get qmFilterId(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -18778,12 +18778,12 @@ export class FWPM_NET_EVENT_IKEEXT_EM_FAILURE0View {
   }
 
   // 0x20: u64
-  set mmId(value: Deno.PointerValue) {
+  set mmId(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: u64
-  set qmFilterId(value: Deno.PointerValue) {
+  set qmFilterId(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 }
@@ -18807,9 +18807,9 @@ export interface FWPM_NET_EVENT_IKEEXT_EM_FAILURE1 {
   /** array */
   endCertHash: Deno.PointerValue;
   /** u64 */
-  mmId: Deno.PointerValue;
+  mmId: bigint | number;
   /** u64 */
-  qmFilterId: Deno.PointerValue;
+  qmFilterId: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   localPrincipalNameForAuth: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
@@ -18922,12 +18922,12 @@ export class FWPM_NET_EVENT_IKEEXT_EM_FAILURE1View {
   }
 
   // 0x20: u64
-  get mmId(): Deno.PointerValue {
+  get mmId(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: u64
-  get qmFilterId(): Deno.PointerValue {
+  get qmFilterId(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -19012,12 +19012,12 @@ export class FWPM_NET_EVENT_IKEEXT_EM_FAILURE1View {
   }
 
   // 0x20: u64
-  set mmId(value: Deno.PointerValue) {
+  set mmId(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: u64
-  set qmFilterId(value: Deno.PointerValue) {
+  set qmFilterId(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
@@ -19070,7 +19070,7 @@ export class FWPM_NET_EVENT_IKEEXT_EM_FAILURE1View {
  */
 export interface FWPM_NET_EVENT_CLASSIFY_DROP0 {
   /** u64 */
-  filterId: Deno.PointerValue;
+  filterId: bigint | number;
   /** u16 */
   layerId: number;
 }
@@ -19099,7 +19099,7 @@ export class FWPM_NET_EVENT_CLASSIFY_DROP0View {
   }
 
   // 0x00: u64
-  get filterId(): Deno.PointerValue {
+  get filterId(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -19111,7 +19111,7 @@ export class FWPM_NET_EVENT_CLASSIFY_DROP0View {
   // 0x0a: pad6
 
   // 0x00: u64
-  set filterId(value: Deno.PointerValue) {
+  set filterId(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -19128,7 +19128,7 @@ export class FWPM_NET_EVENT_CLASSIFY_DROP0View {
  */
 export interface FWPM_NET_EVENT_CLASSIFY_DROP1 {
   /** u64 */
-  filterId: Deno.PointerValue;
+  filterId: bigint | number;
   /** u16 */
   layerId: number;
   /** u32 */
@@ -19177,7 +19177,7 @@ export class FWPM_NET_EVENT_CLASSIFY_DROP1View {
   }
 
   // 0x00: u64
-  get filterId(): Deno.PointerValue {
+  get filterId(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -19214,7 +19214,7 @@ export class FWPM_NET_EVENT_CLASSIFY_DROP1View {
   // 0x1e: pad2
 
   // 0x00: u64
-  set filterId(value: Deno.PointerValue) {
+  set filterId(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -19256,7 +19256,7 @@ export class FWPM_NET_EVENT_CLASSIFY_DROP1View {
  */
 export interface FWPM_NET_EVENT_CLASSIFY_DROP2 {
   /** u64 */
-  filterId: Deno.PointerValue;
+  filterId: bigint | number;
   /** u16 */
   layerId: number;
   /** u32 */
@@ -19317,7 +19317,7 @@ export class FWPM_NET_EVENT_CLASSIFY_DROP2View {
   }
 
   // 0x00: u64
-  get filterId(): Deno.PointerValue {
+  get filterId(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -19370,7 +19370,7 @@ export class FWPM_NET_EVENT_CLASSIFY_DROP2View {
   }
 
   // 0x00: u64
-  set filterId(value: Deno.PointerValue) {
+  set filterId(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -19443,9 +19443,9 @@ export interface FWPM_NET_EVENT_CLASSIFY_DROP_MAC0 {
   /** u16 */
   vlanTag: number;
   /** u64 */
-  ifLuid: Deno.PointerValue;
+  ifLuid: bigint | number;
   /** u64 */
-  filterId: Deno.PointerValue;
+  filterId: bigint | number;
   /** u16 */
   layerId: number;
   /** u32 */
@@ -19569,12 +19569,12 @@ export class FWPM_NET_EVENT_CLASSIFY_DROP_MAC0View {
   // 0x24: pad4
 
   // 0x28: u64
-  get ifLuid(): Deno.PointerValue {
+  get ifLuid(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: u64
-  get filterId(): Deno.PointerValue {
+  get filterId(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -19669,12 +19669,12 @@ export class FWPM_NET_EVENT_CLASSIFY_DROP_MAC0View {
   // 0x24: pad4
 
   // 0x28: u64
-  set ifLuid(value: Deno.PointerValue) {
+  set ifLuid(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: u64
-  set filterId(value: Deno.PointerValue) {
+  set filterId(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
@@ -19731,7 +19731,7 @@ export class FWPM_NET_EVENT_CLASSIFY_DROP_MAC0View {
  */
 export interface FWPM_NET_EVENT_CLASSIFY_ALLOW0 {
   /** u64 */
-  filterId: Deno.PointerValue;
+  filterId: bigint | number;
   /** u16 */
   layerId: number;
   /** u32 */
@@ -19780,7 +19780,7 @@ export class FWPM_NET_EVENT_CLASSIFY_ALLOW0View {
   }
 
   // 0x00: u64
-  get filterId(): Deno.PointerValue {
+  get filterId(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -19817,7 +19817,7 @@ export class FWPM_NET_EVENT_CLASSIFY_ALLOW0View {
   // 0x1e: pad2
 
   // 0x00: u64
-  set filterId(value: Deno.PointerValue) {
+  set filterId(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -19865,7 +19865,7 @@ export interface FWPM_NET_EVENT_IPSEC_KERNEL_DROP0 {
   /** u32 */
   spi: number;
   /** u64 */
-  filterId: Deno.PointerValue;
+  filterId: bigint | number;
   /** u16 */
   layerId: number;
 }
@@ -19918,7 +19918,7 @@ export class FWPM_NET_EVENT_IPSEC_KERNEL_DROP0View {
   // 0x0c: pad4
 
   // 0x10: u64
-  get filterId(): Deno.PointerValue {
+  get filterId(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -19947,7 +19947,7 @@ export class FWPM_NET_EVENT_IPSEC_KERNEL_DROP0View {
   // 0x0c: pad4
 
   // 0x10: u64
-  set filterId(value: Deno.PointerValue) {
+  set filterId(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -20068,7 +20068,7 @@ export interface FWPM_NET_EVENT_CAPABILITY_DROP0 {
   /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWPM_APPC_NETWORK_CAPABILITY_TYPE */
   networkCapabilityId: FWPM_APPC_NETWORK_CAPABILITY_TYPE;
   /** u64 */
-  filterId: Deno.PointerValue;
+  filterId: bigint | number;
   /** Windows.Win32.Foundation.BOOL */
   isLoopback: boolean;
 }
@@ -20107,7 +20107,7 @@ export class FWPM_NET_EVENT_CAPABILITY_DROP0View {
   // 0x04: pad4
 
   // 0x08: u64
-  get filterId(): Deno.PointerValue {
+  get filterId(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -20126,7 +20126,7 @@ export class FWPM_NET_EVENT_CAPABILITY_DROP0View {
   // 0x04: pad4
 
   // 0x08: u64
-  set filterId(value: Deno.PointerValue) {
+  set filterId(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -20145,7 +20145,7 @@ export interface FWPM_NET_EVENT_CAPABILITY_ALLOW0 {
   /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWPM_APPC_NETWORK_CAPABILITY_TYPE */
   networkCapabilityId: FWPM_APPC_NETWORK_CAPABILITY_TYPE;
   /** u64 */
-  filterId: Deno.PointerValue;
+  filterId: bigint | number;
   /** Windows.Win32.Foundation.BOOL */
   isLoopback: boolean;
 }
@@ -20184,7 +20184,7 @@ export class FWPM_NET_EVENT_CAPABILITY_ALLOW0View {
   // 0x04: pad4
 
   // 0x08: u64
-  get filterId(): Deno.PointerValue {
+  get filterId(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -20203,7 +20203,7 @@ export class FWPM_NET_EVENT_CAPABILITY_ALLOW0View {
   // 0x04: pad4
 
   // 0x08: u64
-  set filterId(value: Deno.PointerValue) {
+  set filterId(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -20998,7 +20998,7 @@ export class FWPM_SYSTEM_PORTS0View {
  */
 export interface FWPM_CONNECTION0 {
   /** u64 */
-  connectionId: Deno.PointerValue;
+  connectionId: bigint | number;
   /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWP_IP_VERSION */
   ipVersion: FWP_IP_VERSION;
   /** _Anonymous1_e__Union */
@@ -21018,11 +21018,11 @@ export interface FWPM_CONNECTION0 {
   /** Windows.Win32.NetworkManagement.WindowsFilteringPlatform.IKEEXT_CREDENTIAL2 */
   emPeer: Uint8Array | Deno.PointerValue;
   /** u64 */
-  bytesTransferredIn: Deno.PointerValue;
+  bytesTransferredIn: bigint | number;
   /** u64 */
-  bytesTransferredOut: Deno.PointerValue;
+  bytesTransferredOut: bigint | number;
   /** u64 */
-  bytesTransferredTotal: Deno.PointerValue;
+  bytesTransferredTotal: bigint | number;
   /** Windows.Win32.Foundation.FILETIME */
   startSysTime: Uint8Array | Deno.PointerValue;
 }
@@ -21075,7 +21075,7 @@ export class FWPM_CONNECTION0View {
   }
 
   // 0x00: u64
-  get connectionId(): Deno.PointerValue {
+  get connectionId(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -21133,17 +21133,17 @@ export class FWPM_CONNECTION0View {
   }
 
   // 0x48: u64
-  get bytesTransferredIn(): Deno.PointerValue {
+  get bytesTransferredIn(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
   // 0x50: u64
-  get bytesTransferredOut(): Deno.PointerValue {
+  get bytesTransferredOut(): bigint | number {
     return Number(this.view.getBigUint64(80, true));
   }
 
   // 0x58: u64
-  get bytesTransferredTotal(): Deno.PointerValue {
+  get bytesTransferredTotal(): bigint | number {
     return Number(this.view.getBigUint64(88, true));
   }
 
@@ -21154,7 +21154,7 @@ export class FWPM_CONNECTION0View {
   }
 
   // 0x00: u64
-  set connectionId(value: Deno.PointerValue) {
+  set connectionId(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -21206,17 +21206,17 @@ export class FWPM_CONNECTION0View {
   }
 
   // 0x48: u64
-  set bytesTransferredIn(value: Deno.PointerValue) {
+  set bytesTransferredIn(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
   // 0x50: u64
-  set bytesTransferredOut(value: Deno.PointerValue) {
+  set bytesTransferredOut(value: bigint | number) {
     this.view.setBigUint64(80, BigInt(value), true);
   }
 
   // 0x58: u64
-  set bytesTransferredTotal(value: Deno.PointerValue) {
+  set bytesTransferredTotal(value: bigint | number) {
     this.view.setBigUint64(88, BigInt(value), true);
   }
 
@@ -21231,7 +21231,7 @@ export class FWPM_CONNECTION0View {
  */
 export interface FWPM_CONNECTION_ENUM_TEMPLATE0 {
   /** u64 */
-  connectionId: Deno.PointerValue;
+  connectionId: bigint | number;
   /** u32 */
   flags: number;
 }
@@ -21260,7 +21260,7 @@ export class FWPM_CONNECTION_ENUM_TEMPLATE0View {
   }
 
   // 0x00: u64
-  get connectionId(): Deno.PointerValue {
+  get connectionId(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -21272,7 +21272,7 @@ export class FWPM_CONNECTION_ENUM_TEMPLATE0View {
   // 0x0c: pad4
 
   // 0x00: u64
-  set connectionId(value: Deno.PointerValue) {
+  set connectionId(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -21599,7 +21599,7 @@ export class IPSEC_KEY_MANAGER_CALLBACKS0View {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 export type PSECURITY_DESCRIPTOR = Deno.PointerValue | Uint8Array;
 
@@ -22597,7 +22597,7 @@ export function FwpmProviderContextAdd3(
 
 export function FwpmProviderContextDeleteById0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  id: Deno.PointerValue /* u64 */,
+  id: bigint | number /* u64 */,
 ): number /* u32 */ {
   return libfwpuclnt_dll.FwpmProviderContextDeleteById0(util.toPointer(engineHandle), id);
 }
@@ -22611,7 +22611,7 @@ export function FwpmProviderContextDeleteByKey0(
 
 export function FwpmProviderContextGetById0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  id: Deno.PointerValue /* u64 */,
+  id: bigint | number /* u64 */,
   providerContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libfwpuclnt_dll.FwpmProviderContextGetById0(util.toPointer(engineHandle), id, util.toPointer(providerContext));
@@ -22619,7 +22619,7 @@ export function FwpmProviderContextGetById0(
 
 export function FwpmProviderContextGetById1(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  id: Deno.PointerValue /* u64 */,
+  id: bigint | number /* u64 */,
   providerContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libfwpuclnt_dll.FwpmProviderContextGetById1(util.toPointer(engineHandle), id, util.toPointer(providerContext));
@@ -22627,7 +22627,7 @@ export function FwpmProviderContextGetById1(
 
 export function FwpmProviderContextGetById2(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  id: Deno.PointerValue /* u64 */,
+  id: bigint | number /* u64 */,
   providerContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libfwpuclnt_dll.FwpmProviderContextGetById2(util.toPointer(engineHandle), id, util.toPointer(providerContext));
@@ -22635,7 +22635,7 @@ export function FwpmProviderContextGetById2(
 
 export function FwpmProviderContextGetById3(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  id: Deno.PointerValue /* u64 */,
+  id: bigint | number /* u64 */,
   providerContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libfwpuclnt_dll.FwpmProviderContextGetById3(util.toPointer(engineHandle), id, util.toPointer(providerContext));
@@ -23067,7 +23067,7 @@ export function FwpmFilterAdd0(
 
 export function FwpmFilterDeleteById0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  id: Deno.PointerValue /* u64 */,
+  id: bigint | number /* u64 */,
 ): number /* u32 */ {
   return libfwpuclnt_dll.FwpmFilterDeleteById0(util.toPointer(engineHandle), id);
 }
@@ -23081,7 +23081,7 @@ export function FwpmFilterDeleteByKey0(
 
 export function FwpmFilterGetById0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  id: Deno.PointerValue /* u64 */,
+  id: bigint | number /* u64 */,
   filter: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libfwpuclnt_dll.FwpmFilterGetById0(util.toPointer(engineHandle), id, util.toPointer(filter));
@@ -23270,14 +23270,14 @@ export function IPsecSaContextCreate1(
 
 export function IPsecSaContextDeleteById0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  id: Deno.PointerValue /* u64 */,
+  id: bigint | number /* u64 */,
 ): number /* u32 */ {
   return libfwpuclnt_dll.IPsecSaContextDeleteById0(util.toPointer(engineHandle), id);
 }
 
 export function IPsecSaContextGetById0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  id: Deno.PointerValue /* u64 */,
+  id: bigint | number /* u64 */,
   saContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libfwpuclnt_dll.IPsecSaContextGetById0(util.toPointer(engineHandle), id, util.toPointer(saContext));
@@ -23285,7 +23285,7 @@ export function IPsecSaContextGetById0(
 
 export function IPsecSaContextGetById1(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  id: Deno.PointerValue /* u64 */,
+  id: bigint | number /* u64 */,
   saContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libfwpuclnt_dll.IPsecSaContextGetById1(util.toPointer(engineHandle), id, util.toPointer(saContext));
@@ -23293,7 +23293,7 @@ export function IPsecSaContextGetById1(
 
 export function IPsecSaContextGetSpi0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  id: Deno.PointerValue /* u64 */,
+  id: bigint | number /* u64 */,
   getSpi: Deno.PointerValue | Uint8Array /* ptr */,
   inboundSpi: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
@@ -23302,7 +23302,7 @@ export function IPsecSaContextGetSpi0(
 
 export function IPsecSaContextGetSpi1(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  id: Deno.PointerValue /* u64 */,
+  id: bigint | number /* u64 */,
   getSpi: Deno.PointerValue | Uint8Array /* ptr */,
   inboundSpi: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
@@ -23311,7 +23311,7 @@ export function IPsecSaContextGetSpi1(
 
 export function IPsecSaContextSetSpi0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  id: Deno.PointerValue /* u64 */,
+  id: bigint | number /* u64 */,
   getSpi: Deno.PointerValue | Uint8Array /* ptr */,
   inboundSpi: number /* u32 */,
 ): number /* u32 */ {
@@ -23320,7 +23320,7 @@ export function IPsecSaContextSetSpi0(
 
 export function IPsecSaContextAddInbound0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  id: Deno.PointerValue /* u64 */,
+  id: bigint | number /* u64 */,
   inboundBundle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libfwpuclnt_dll.IPsecSaContextAddInbound0(util.toPointer(engineHandle), id, util.toPointer(inboundBundle));
@@ -23328,7 +23328,7 @@ export function IPsecSaContextAddInbound0(
 
 export function IPsecSaContextAddOutbound0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  id: Deno.PointerValue /* u64 */,
+  id: bigint | number /* u64 */,
   outboundBundle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libfwpuclnt_dll.IPsecSaContextAddOutbound0(util.toPointer(engineHandle), id, util.toPointer(outboundBundle));
@@ -23336,7 +23336,7 @@ export function IPsecSaContextAddOutbound0(
 
 export function IPsecSaContextAddInbound1(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  id: Deno.PointerValue /* u64 */,
+  id: bigint | number /* u64 */,
   inboundBundle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libfwpuclnt_dll.IPsecSaContextAddInbound1(util.toPointer(engineHandle), id, util.toPointer(inboundBundle));
@@ -23344,7 +23344,7 @@ export function IPsecSaContextAddInbound1(
 
 export function IPsecSaContextAddOutbound1(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  id: Deno.PointerValue /* u64 */,
+  id: bigint | number /* u64 */,
   outboundBundle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libfwpuclnt_dll.IPsecSaContextAddOutbound1(util.toPointer(engineHandle), id, util.toPointer(outboundBundle));
@@ -23352,14 +23352,14 @@ export function IPsecSaContextAddOutbound1(
 
 export function IPsecSaContextExpire0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  id: Deno.PointerValue /* u64 */,
+  id: bigint | number /* u64 */,
 ): number /* u32 */ {
   return libfwpuclnt_dll.IPsecSaContextExpire0(util.toPointer(engineHandle), id);
 }
 
 export function IPsecSaContextUpdate0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  flags: Deno.PointerValue /* u64 */,
+  flags: bigint | number /* u64 */,
   newValues: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libfwpuclnt_dll.IPsecSaContextUpdate0(util.toPointer(engineHandle), flags, util.toPointer(newValues));
@@ -23603,14 +23603,14 @@ export function IkeextGetStatistics1(
 
 export function IkeextSaDeleteById0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  id: Deno.PointerValue /* u64 */,
+  id: bigint | number /* u64 */,
 ): number /* u32 */ {
   return libfwpuclnt_dll.IkeextSaDeleteById0(util.toPointer(engineHandle), id);
 }
 
 export function IkeextSaGetById0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  id: Deno.PointerValue /* u64 */,
+  id: bigint | number /* u64 */,
   sa: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libfwpuclnt_dll.IkeextSaGetById0(util.toPointer(engineHandle), id, util.toPointer(sa));
@@ -23618,7 +23618,7 @@ export function IkeextSaGetById0(
 
 export function IkeextSaGetById1(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  id: Deno.PointerValue /* u64 */,
+  id: bigint | number /* u64 */,
   saLookupContext: Deno.PointerValue | Uint8Array /* ptr */,
   sa: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
@@ -23627,7 +23627,7 @@ export function IkeextSaGetById1(
 
 export function IkeextSaGetById2(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  id: Deno.PointerValue /* u64 */,
+  id: bigint | number /* u64 */,
   saLookupContext: Deno.PointerValue | Uint8Array /* ptr */,
   sa: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
@@ -23906,7 +23906,7 @@ export function FwpmSystemPortsUnsubscribe0(
 
 export function FwpmConnectionGetById0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  id: Deno.PointerValue /* u64 */,
+  id: bigint | number /* u64 */,
   connection: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libfwpuclnt_dll.FwpmConnectionGetById0(util.toPointer(engineHandle), id, util.toPointer(connection));

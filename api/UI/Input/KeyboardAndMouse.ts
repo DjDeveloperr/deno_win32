@@ -2765,7 +2765,7 @@ export interface MOUSEMOVEPOINT {
   /** u32 */
   time: number;
   /** usize */
-  dwExtraInfo: Deno.PointerValue;
+  dwExtraInfo: bigint | number;
 }
 
 export const sizeofMOUSEMOVEPOINT = 24;
@@ -2813,7 +2813,7 @@ export class MOUSEMOVEPOINTView {
   // 0x0c: pad4
 
   // 0x10: usize
-  get dwExtraInfo(): Deno.PointerValue {
+  get dwExtraInfo(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -2835,12 +2835,12 @@ export class MOUSEMOVEPOINTView {
   // 0x0c: pad4
 
   // 0x10: usize
-  set dwExtraInfo(value: Deno.PointerValue) {
+  set dwExtraInfo(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 /**
  * Windows.Win32.UI.Input.KeyboardAndMouse.TRACKMOUSEEVENT (size: 24)
@@ -2944,7 +2944,7 @@ export interface MOUSEINPUT {
   /** u32 */
   time: number;
   /** usize */
-  dwExtraInfo: Deno.PointerValue;
+  dwExtraInfo: bigint | number;
 }
 
 export const sizeofMOUSEINPUT = 32;
@@ -3006,7 +3006,7 @@ export class MOUSEINPUTView {
   // 0x14: pad4
 
   // 0x18: usize
-  get dwExtraInfo(): Deno.PointerValue {
+  get dwExtraInfo(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -3038,7 +3038,7 @@ export class MOUSEINPUTView {
   // 0x14: pad4
 
   // 0x18: usize
-  set dwExtraInfo(value: Deno.PointerValue) {
+  set dwExtraInfo(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 }
@@ -3056,7 +3056,7 @@ export interface KEYBDINPUT {
   /** u32 */
   time: number;
   /** usize */
-  dwExtraInfo: Deno.PointerValue;
+  dwExtraInfo: bigint | number;
 }
 
 export const sizeofKEYBDINPUT = 24;
@@ -3111,7 +3111,7 @@ export class KEYBDINPUTView {
   // 0x0c: pad4
 
   // 0x10: usize
-  get dwExtraInfo(): Deno.PointerValue {
+  get dwExtraInfo(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -3138,7 +3138,7 @@ export class KEYBDINPUTView {
   // 0x0c: pad4
 
   // 0x10: usize
-  set dwExtraInfo(value: Deno.PointerValue) {
+  set dwExtraInfo(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -3215,9 +3215,9 @@ export class HARDWAREINPUTView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -3243,22 +3243,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -3434,7 +3434,7 @@ export type BOOL = number;
 
 export type PSTR = Deno.PointerValue | Uint8Array;
 
-export type HKL = Deno.PointerValue;
+export type HKL = bigint | number;
 
 export type CHAR = number;
 
@@ -3963,7 +3963,7 @@ export function keybd_event(
   bVk: number /* u8 */,
   bScan: number /* u8 */,
   dwFlags: KEYBD_EVENT_FLAGS /* Windows.Win32.UI.Input.KeyboardAndMouse.KEYBD_EVENT_FLAGS */,
-  dwExtraInfo: Deno.PointerValue /* usize */,
+  dwExtraInfo: bigint | number /* usize */,
 ): void /* void */ {
   return libUSER32_dll.keybd_event(bVk, bScan, dwFlags, dwExtraInfo);
 }
@@ -3973,7 +3973,7 @@ export function mouse_event(
   dx: number /* i32 */,
   dy: number /* i32 */,
   dwData: number /* u32 */,
-  dwExtraInfo: Deno.PointerValue /* usize */,
+  dwExtraInfo: bigint | number /* usize */,
 ): void /* void */ {
   return libUSER32_dll.mouse_event(dwFlags, dx, dy, dwData, dwExtraInfo);
 }

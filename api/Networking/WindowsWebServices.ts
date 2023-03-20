@@ -2104,7 +2104,7 @@ export interface WS_XML_INT64_TEXT {
   /** Windows.Win32.Networking.WindowsWebServices.WS_XML_TEXT */
   text: Uint8Array | Deno.PointerValue;
   /** i64 */
-  value: Deno.PointerValue;
+  value: bigint | number;
 }
 
 export const sizeofWS_XML_INT64_TEXT = 16;
@@ -2136,7 +2136,7 @@ export class WS_XML_INT64_TEXTView {
   }
 
   // 0x08: i64
-  get value(): Deno.PointerValue {
+  get value(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -2146,7 +2146,7 @@ export class WS_XML_INT64_TEXTView {
   }
 
   // 0x08: i64
-  set value(value: Deno.PointerValue) {
+  set value(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -2158,7 +2158,7 @@ export interface WS_XML_UINT64_TEXT {
   /** Windows.Win32.Networking.WindowsWebServices.WS_XML_TEXT */
   text: Uint8Array | Deno.PointerValue;
   /** u64 */
-  value: Deno.PointerValue;
+  value: bigint | number;
 }
 
 export const sizeofWS_XML_UINT64_TEXT = 16;
@@ -2190,7 +2190,7 @@ export class WS_XML_UINT64_TEXTView {
   }
 
   // 0x08: u64
-  get value(): Deno.PointerValue {
+  get value(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -2200,7 +2200,7 @@ export class WS_XML_UINT64_TEXTView {
   }
 
   // 0x08: u64
-  set value(value: Deno.PointerValue) {
+  set value(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -2325,11 +2325,11 @@ export type PWSTR = Deno.PointerValue | Uint8Array;
  */
 export interface _Anonymous1_e__Union {
   /** usize */
-  Data0: Deno.PointerValue;
+  Data0: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   String: string | null | Uint8Array | Uint16Array;
   /** usize */
-  u: Deno.PointerValue;
+  u: bigint | number;
   /** ptr */
   psid: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -2381,7 +2381,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  get Data0(): Deno.PointerValue {
+  get Data0(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -2392,7 +2392,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  get u(): Deno.PointerValue {
+  get u(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -2428,7 +2428,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  set Data0(value: Deno.PointerValue) {
+  set Data0(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -2439,7 +2439,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  set u(value: Deno.PointerValue) {
+  set u(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -2476,7 +2476,7 @@ export class _Anonymous1_e__UnionView {
  */
 export interface _Anonymous2_e__Union {
   /** usize */
-  Data1: Deno.PointerValue;
+  Data1: bigint | number;
   /** i32 */
   LogonId_HighPart: number;
 }
@@ -2505,7 +2505,7 @@ export class _Anonymous2_e__UnionView {
   }
 
   // 0x00: usize
-  get Data1(): Deno.PointerValue {
+  get Data1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -2517,7 +2517,7 @@ export class _Anonymous2_e__UnionView {
   // 0x0c: pad4
 
   // 0x00: usize
-  set Data1(value: Deno.PointerValue) {
+  set Data1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -2792,7 +2792,7 @@ export class WS_XML_UNIQUE_ID_TEXTView {
  */
 export interface WS_DATETIME {
   /** u64 */
-  ticks: Deno.PointerValue;
+  ticks: bigint | number;
   /** Windows.Win32.Networking.WindowsWebServices.WS_DATETIME_FORMAT */
   format: WS_DATETIME_FORMAT;
 }
@@ -2821,7 +2821,7 @@ export class WS_DATETIMEView {
   }
 
   // 0x00: u64
-  get ticks(): Deno.PointerValue {
+  get ticks(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -2833,7 +2833,7 @@ export class WS_DATETIMEView {
   // 0x0c: pad4
 
   // 0x00: u64
-  set ticks(value: Deno.PointerValue) {
+  set ticks(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -2905,7 +2905,7 @@ export class WS_XML_DATETIME_TEXTView {
  */
 export interface WS_TIMESPAN {
   /** i64 */
-  ticks: Deno.PointerValue;
+  ticks: bigint | number;
 }
 
 export const sizeofWS_TIMESPAN = 8;
@@ -2929,12 +2929,12 @@ export class WS_TIMESPANView {
   }
 
   // 0x00: i64
-  get ticks(): Deno.PointerValue {
+  get ticks(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x00: i64
-  set ticks(value: Deno.PointerValue) {
+  set ticks(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 }
@@ -9096,7 +9096,7 @@ export class WS_RAW_SYMMETRIC_SECURITY_KEY_HANDLEView {
   }
 }
 
-export type NCRYPT_KEY_HANDLE = Deno.PointerValue;
+export type NCRYPT_KEY_HANDLE = bigint | number;
 
 /**
  * Windows.Win32.Networking.WindowsWebServices.WS_NCRYPT_ASYMMETRIC_SECURITY_KEY_HANDLE (size: 16)
@@ -9160,7 +9160,7 @@ export interface WS_CAPI_ASYMMETRIC_SECURITY_KEY_HANDLE {
   /** Windows.Win32.Networking.WindowsWebServices.WS_SECURITY_KEY_HANDLE */
   keyHandle: Uint8Array | Deno.PointerValue;
   /** usize */
-  provider: Deno.PointerValue;
+  provider: bigint | number;
   /** u32 */
   keySpec: number;
 }
@@ -9197,7 +9197,7 @@ export class WS_CAPI_ASYMMETRIC_SECURITY_KEY_HANDLEView {
   }
 
   // 0x08: usize
-  get provider(): Deno.PointerValue {
+  get provider(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -9214,7 +9214,7 @@ export class WS_CAPI_ASYMMETRIC_SECURITY_KEY_HANDLEView {
   }
 
   // 0x08: usize
-  set provider(value: Deno.PointerValue) {
+  set provider(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -11760,9 +11760,9 @@ export class WS_UINT32_DESCRIPTIONView {
  */
 export interface WS_INT64_DESCRIPTION {
   /** i64 */
-  minValue: Deno.PointerValue;
+  minValue: bigint | number;
   /** i64 */
-  maxValue: Deno.PointerValue;
+  maxValue: bigint | number;
 }
 
 export const sizeofWS_INT64_DESCRIPTION = 16;
@@ -11788,22 +11788,22 @@ export class WS_INT64_DESCRIPTIONView {
   }
 
   // 0x00: i64
-  get minValue(): Deno.PointerValue {
+  get minValue(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: i64
-  get maxValue(): Deno.PointerValue {
+  get maxValue(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x00: i64
-  set minValue(value: Deno.PointerValue) {
+  set minValue(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: i64
-  set maxValue(value: Deno.PointerValue) {
+  set maxValue(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -11813,9 +11813,9 @@ export class WS_INT64_DESCRIPTIONView {
  */
 export interface WS_UINT64_DESCRIPTION {
   /** u64 */
-  minValue: Deno.PointerValue;
+  minValue: bigint | number;
   /** u64 */
-  maxValue: Deno.PointerValue;
+  maxValue: bigint | number;
 }
 
 export const sizeofWS_UINT64_DESCRIPTION = 16;
@@ -11841,22 +11841,22 @@ export class WS_UINT64_DESCRIPTIONView {
   }
 
   // 0x00: u64
-  get minValue(): Deno.PointerValue {
+  get minValue(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get maxValue(): Deno.PointerValue {
+  get maxValue(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set minValue(value: Deno.PointerValue) {
+  set minValue(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set maxValue(value: Deno.PointerValue) {
+  set maxValue(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -22339,7 +22339,7 @@ export class WEBAUTHN_ASSERTIONView {
 
 export type HRESULT = number;
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 // Native Libraries
 
@@ -24138,8 +24138,8 @@ export function WsGetFaultErrorDetail(
 }
 
 export function WsCreateHeap(
-  maxSize: Deno.PointerValue /* usize */,
-  trimSize: Deno.PointerValue /* usize */,
+  maxSize: bigint | number /* usize */,
+  trimSize: bigint | number /* usize */,
   properties: Deno.PointerValue | Uint8Array /* ptr */,
   propertyCount: number /* u32 */,
   heap: Deno.PointerValue | Uint8Array /* ptr */,
@@ -24150,7 +24150,7 @@ export function WsCreateHeap(
 
 export function WsAlloc(
   heap: Deno.PointerValue | Uint8Array /* ptr */,
-  size: Deno.PointerValue /* usize */,
+  size: bigint | number /* usize */,
   ptr: Deno.PointerValue | Uint8Array /* ptr */,
   error: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {

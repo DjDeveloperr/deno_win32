@@ -3349,7 +3349,7 @@ export const ERROR_QUERY_STORAGE_ERROR = 2151284737;
 
 // Structs
 
-export type NetEnumHandle = Deno.PointerValue;
+export type NetEnumHandle = bigint | number;
 
 export type PSTR = Deno.PointerValue | Uint8Array;
 
@@ -3669,7 +3669,7 @@ export class NETRESOURCEWView {
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 /**
  * Windows.Win32.NetworkManagement.WNet.CONNECTDLGSTRUCTA (size: 32)
@@ -4372,7 +4372,7 @@ export interface NETINFOSTRUCT {
   /** Windows.Win32.NetworkManagement.WNet.NETINFOSTRUCT_CHARACTERISTICS */
   dwCharacteristics: NETINFOSTRUCT_CHARACTERISTICS;
   /** usize */
-  dwHandle: Deno.PointerValue;
+  dwHandle: bigint | number;
   /** u16 */
   wNetType: number;
   /** u32 */
@@ -4437,7 +4437,7 @@ export class NETINFOSTRUCTView {
   }
 
   // 0x10: usize
-  get dwHandle(): Deno.PointerValue {
+  get dwHandle(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -4479,7 +4479,7 @@ export class NETINFOSTRUCTView {
   }
 
   // 0x10: usize
-  set dwHandle(value: Deno.PointerValue) {
+  set dwHandle(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -4836,7 +4836,7 @@ export class NOTIFYCANCELView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 // Native Libraries
 

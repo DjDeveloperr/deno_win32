@@ -65,7 +65,7 @@ export const SWDeviceLifetimeMax = 2;
 
 // Structs
 
-export type HSWDEVICE = Deno.PointerValue;
+export type HSWDEVICE = bigint | number;
 
 export type PWSTR = Deno.PointerValue | Uint8Array;
 

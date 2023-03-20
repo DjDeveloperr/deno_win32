@@ -253,7 +253,7 @@ export class UNCOMPRESSEDAUDIOFORMATView {
  */
 export interface APO_CONNECTION_PROPERTY {
   /** usize */
-  pBuffer: Deno.PointerValue;
+  pBuffer: bigint | number;
   /** u32 */
   u32ValidFrameCount: number;
   /** Windows.Win32.Media.Audio.Apo.APO_BUFFER_FLAGS */
@@ -290,7 +290,7 @@ export class APO_CONNECTION_PROPERTYView {
   }
 
   // 0x00: usize
-  get pBuffer(): Deno.PointerValue {
+  get pBuffer(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -312,7 +312,7 @@ export class APO_CONNECTION_PROPERTYView {
   // 0x14: pad4
 
   // 0x00: usize
-  set pBuffer(value: Deno.PointerValue) {
+  set pBuffer(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -341,7 +341,7 @@ export interface APO_CONNECTION_PROPERTY_V2 {
   /** Windows.Win32.Media.Audio.Apo.APO_CONNECTION_PROPERTY */
   property: Uint8Array | Deno.PointerValue;
   /** u64 */
-  u64QPCTime: Deno.PointerValue;
+  u64QPCTime: bigint | number;
 }
 
 export const sizeofAPO_CONNECTION_PROPERTY_V2 = 16;
@@ -373,7 +373,7 @@ export class APO_CONNECTION_PROPERTY_V2View {
   }
 
   // 0x08: u64
-  get u64QPCTime(): Deno.PointerValue {
+  get u64QPCTime(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -383,7 +383,7 @@ export class APO_CONNECTION_PROPERTY_V2View {
   }
 
   // 0x08: u64
-  set u64QPCTime(value: Deno.PointerValue) {
+  set u64QPCTime(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -395,7 +395,7 @@ export interface APO_CONNECTION_DESCRIPTOR {
   /** Windows.Win32.Media.Audio.Apo.APO_CONNECTION_BUFFER_TYPE */
   Type: APO_CONNECTION_BUFFER_TYPE;
   /** usize */
-  pBuffer: Deno.PointerValue;
+  pBuffer: bigint | number;
   /** u32 */
   u32MaxFrameCount: number;
   /** Windows.Win32.Media.Audio.Apo.IAudioMediaType */
@@ -443,7 +443,7 @@ export class APO_CONNECTION_DESCRIPTORView {
   // 0x04: pad4
 
   // 0x08: usize
-  get pBuffer(): Deno.PointerValue {
+  get pBuffer(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -475,7 +475,7 @@ export class APO_CONNECTION_DESCRIPTORView {
   // 0x04: pad4
 
   // 0x08: usize
-  set pBuffer(value: Deno.PointerValue) {
+  set pBuffer(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -1038,7 +1038,7 @@ export class APOInitSystemEffects2View {
   // 0x3c: pad4
 }
 
-export type LPARAM = Deno.PointerValue;
+export type LPARAM = bigint | number;
 
 export type PWSTR = Deno.PointerValue | Uint8Array;
 
@@ -1565,9 +1565,9 @@ export class AUDIO_SYSTEMEFFECTS_PROPERTY_CHANGE_NOTIFICATIONView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -1593,22 +1593,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }

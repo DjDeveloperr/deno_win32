@@ -814,13 +814,13 @@ export interface DHCPV6PrefixLeaseInformation {
   /** u32 */
   iaid: number;
   /** i64 */
-  T1: Deno.PointerValue;
+  T1: bigint | number;
   /** i64 */
-  T2: Deno.PointerValue;
+  T2: bigint | number;
   /** i64 */
-  MaxLeaseExpirationTime: Deno.PointerValue;
+  MaxLeaseExpirationTime: bigint | number;
   /** i64 */
-  LastRenewalTime: Deno.PointerValue;
+  LastRenewalTime: bigint | number;
   /** Windows.Win32.NetworkManagement.Dhcp.StatusCode */
   status: StatusCode;
   /** ptr */
@@ -892,22 +892,22 @@ export class DHCPV6PrefixLeaseInformationView {
   // 0x14: pad4
 
   // 0x18: i64
-  get T1(): Deno.PointerValue {
+  get T1(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
   // 0x20: i64
-  get T2(): Deno.PointerValue {
+  get T2(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
   // 0x28: i64
-  get MaxLeaseExpirationTime(): Deno.PointerValue {
+  get MaxLeaseExpirationTime(): bigint | number {
     return Number(this.view.getBigInt64(40, true));
   }
 
   // 0x30: i64
-  get LastRenewalTime(): Deno.PointerValue {
+  get LastRenewalTime(): bigint | number {
     return Number(this.view.getBigInt64(48, true));
   }
 
@@ -951,22 +951,22 @@ export class DHCPV6PrefixLeaseInformationView {
   // 0x14: pad4
 
   // 0x18: i64
-  set T1(value: Deno.PointerValue) {
+  set T1(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
   // 0x20: i64
-  set T2(value: Deno.PointerValue) {
+  set T2(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 
   // 0x28: i64
-  set MaxLeaseExpirationTime(value: Deno.PointerValue) {
+  set MaxLeaseExpirationTime(value: bigint | number) {
     this.view.setBigInt64(40, BigInt(value), true);
   }
 
   // 0x30: i64
-  set LastRenewalTime(value: Deno.PointerValue) {
+  set LastRenewalTime(value: bigint | number) {
     this.view.setBigInt64(48, BigInt(value), true);
   }
 
@@ -2290,9 +2290,9 @@ export interface DHCP_SUBNET_INFO_VQ {
   /** u32 */
   Reserved2: number;
   /** i64 */
-  Reserved3: Deno.PointerValue;
+  Reserved3: bigint | number;
   /** i64 */
-  Reserved4: Deno.PointerValue;
+  Reserved4: bigint | number;
 }
 
 export const sizeofDHCP_SUBNET_INFO_VQ = 64;
@@ -2390,12 +2390,12 @@ export class DHCP_SUBNET_INFO_VQView {
   }
 
   // 0x30: i64
-  get Reserved3(): Deno.PointerValue {
+  get Reserved3(): bigint | number {
     return Number(this.view.getBigInt64(48, true));
   }
 
   // 0x38: i64
-  get Reserved4(): Deno.PointerValue {
+  get Reserved4(): bigint | number {
     return Number(this.view.getBigInt64(56, true));
   }
 
@@ -2447,12 +2447,12 @@ export class DHCP_SUBNET_INFO_VQView {
   }
 
   // 0x30: i64
-  set Reserved3(value: Deno.PointerValue) {
+  set Reserved3(value: bigint | number) {
     this.view.setBigInt64(48, BigInt(value), true);
   }
 
   // 0x38: i64
-  set Reserved4(value: Deno.PointerValue) {
+  set Reserved4(value: bigint | number) {
     this.view.setBigInt64(56, BigInt(value), true);
   }
 }
@@ -2851,9 +2851,9 @@ export class DHCP_SUBNET_ELEMENT_INFO_ARRAYView {
  */
 export interface DHCP_IPV6_ADDRESS {
   /** u64 */
-  HighOrderBits: Deno.PointerValue;
+  HighOrderBits: bigint | number;
   /** u64 */
-  LowOrderBits: Deno.PointerValue;
+  LowOrderBits: bigint | number;
 }
 
 export const sizeofDHCP_IPV6_ADDRESS = 16;
@@ -2879,22 +2879,22 @@ export class DHCP_IPV6_ADDRESSView {
   }
 
   // 0x00: u64
-  get HighOrderBits(): Deno.PointerValue {
+  get HighOrderBits(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get LowOrderBits(): Deno.PointerValue {
+  get LowOrderBits(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set HighOrderBits(value: Deno.PointerValue) {
+  set HighOrderBits(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set LowOrderBits(value: Deno.PointerValue) {
+  set LowOrderBits(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -10050,9 +10050,9 @@ export class DHCPDS_SERVERSView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -10078,22 +10078,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -11551,11 +11551,11 @@ export interface SCOPE_MIB_INFO_V6 {
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */
   Subnet: Uint8Array | Deno.PointerValue;
   /** u64 */
-  NumAddressesInuse: Deno.PointerValue;
+  NumAddressesInuse: bigint | number;
   /** u64 */
-  NumAddressesFree: Deno.PointerValue;
+  NumAddressesFree: bigint | number;
   /** u64 */
-  NumPendingAdvertises: Deno.PointerValue;
+  NumPendingAdvertises: bigint | number;
 }
 
 export const sizeofSCOPE_MIB_INFO_V6 = 32;
@@ -11591,17 +11591,17 @@ export class SCOPE_MIB_INFO_V6View {
   }
 
   // 0x08: u64
-  get NumAddressesInuse(): Deno.PointerValue {
+  get NumAddressesInuse(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get NumAddressesFree(): Deno.PointerValue {
+  get NumAddressesFree(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get NumPendingAdvertises(): Deno.PointerValue {
+  get NumPendingAdvertises(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -11611,17 +11611,17 @@ export class SCOPE_MIB_INFO_V6View {
   }
 
   // 0x08: u64
-  set NumAddressesInuse(value: Deno.PointerValue) {
+  set NumAddressesInuse(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set NumAddressesFree(value: Deno.PointerValue) {
+  set NumAddressesFree(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set NumPendingAdvertises(value: Deno.PointerValue) {
+  set NumPendingAdvertises(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 }
@@ -13443,9 +13443,9 @@ export interface DHCPV6_STATELESS_SCOPE_STATS {
   /** Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */
   SubnetAddress: Uint8Array | Deno.PointerValue;
   /** u64 */
-  NumStatelessClientsAdded: Deno.PointerValue;
+  NumStatelessClientsAdded: bigint | number;
   /** u64 */
-  NumStatelessClientsRemoved: Deno.PointerValue;
+  NumStatelessClientsRemoved: bigint | number;
 }
 
 export const sizeofDHCPV6_STATELESS_SCOPE_STATS = 24;
@@ -13479,12 +13479,12 @@ export class DHCPV6_STATELESS_SCOPE_STATSView {
   }
 
   // 0x08: u64
-  get NumStatelessClientsAdded(): Deno.PointerValue {
+  get NumStatelessClientsAdded(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get NumStatelessClientsRemoved(): Deno.PointerValue {
+  get NumStatelessClientsRemoved(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -13494,12 +13494,12 @@ export class DHCPV6_STATELESS_SCOPE_STATSView {
   }
 
   // 0x08: u64
-  set NumStatelessClientsAdded(value: Deno.PointerValue) {
+  set NumStatelessClientsAdded(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set NumStatelessClientsRemoved(value: Deno.PointerValue) {
+  set NumStatelessClientsRemoved(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }

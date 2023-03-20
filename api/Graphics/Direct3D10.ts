@@ -3478,11 +3478,11 @@ export type PWSTR = Deno.PointerValue | Uint8Array;
  */
 export interface _Anonymous1_e__Union {
   /** usize */
-  Data0: Deno.PointerValue;
+  Data0: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   String: string | null | Uint8Array | Uint16Array;
   /** usize */
-  u: Deno.PointerValue;
+  u: bigint | number;
   /** ptr */
   psid: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -3534,7 +3534,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  get Data0(): Deno.PointerValue {
+  get Data0(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -3545,7 +3545,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  get u(): Deno.PointerValue {
+  get u(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -3581,7 +3581,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  set Data0(value: Deno.PointerValue) {
+  set Data0(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -3592,7 +3592,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  set u(value: Deno.PointerValue) {
+  set u(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -3629,7 +3629,7 @@ export class _Anonymous1_e__UnionView {
  */
 export interface _Anonymous2_e__Union {
   /** usize */
-  Data1: Deno.PointerValue;
+  Data1: bigint | number;
   /** i32 */
   LogonId_HighPart: number;
 }
@@ -3658,7 +3658,7 @@ export class _Anonymous2_e__UnionView {
   }
 
   // 0x00: usize
-  get Data1(): Deno.PointerValue {
+  get Data1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -3670,7 +3670,7 @@ export class _Anonymous2_e__UnionView {
   // 0x0c: pad4
 
   // 0x00: usize
-  set Data1(value: Deno.PointerValue) {
+  set Data1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -4213,9 +4213,9 @@ export class D3D10_TEX2DMS_ARRAY_SRVView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -4241,22 +4241,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -5534,7 +5534,7 @@ export class D3D10_QUERY_DESCView {
  */
 export interface D3D10_QUERY_DATA_TIMESTAMP_DISJOINT {
   /** u64 */
-  Frequency: Deno.PointerValue;
+  Frequency: bigint | number;
   /** Windows.Win32.Foundation.BOOL */
   Disjoint: boolean;
 }
@@ -5563,7 +5563,7 @@ export class D3D10_QUERY_DATA_TIMESTAMP_DISJOINTView {
   }
 
   // 0x00: u64
-  get Frequency(): Deno.PointerValue {
+  get Frequency(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -5575,7 +5575,7 @@ export class D3D10_QUERY_DATA_TIMESTAMP_DISJOINTView {
   // 0x0c: pad4
 
   // 0x00: u64
-  set Frequency(value: Deno.PointerValue) {
+  set Frequency(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -5592,21 +5592,21 @@ export class D3D10_QUERY_DATA_TIMESTAMP_DISJOINTView {
  */
 export interface D3D10_QUERY_DATA_PIPELINE_STATISTICS {
   /** u64 */
-  IAVertices: Deno.PointerValue;
+  IAVertices: bigint | number;
   /** u64 */
-  IAPrimitives: Deno.PointerValue;
+  IAPrimitives: bigint | number;
   /** u64 */
-  VSInvocations: Deno.PointerValue;
+  VSInvocations: bigint | number;
   /** u64 */
-  GSInvocations: Deno.PointerValue;
+  GSInvocations: bigint | number;
   /** u64 */
-  GSPrimitives: Deno.PointerValue;
+  GSPrimitives: bigint | number;
   /** u64 */
-  CInvocations: Deno.PointerValue;
+  CInvocations: bigint | number;
   /** u64 */
-  CPrimitives: Deno.PointerValue;
+  CPrimitives: bigint | number;
   /** u64 */
-  PSInvocations: Deno.PointerValue;
+  PSInvocations: bigint | number;
 }
 
 export const sizeofD3D10_QUERY_DATA_PIPELINE_STATISTICS = 64;
@@ -5644,82 +5644,82 @@ export class D3D10_QUERY_DATA_PIPELINE_STATISTICSView {
   }
 
   // 0x00: u64
-  get IAVertices(): Deno.PointerValue {
+  get IAVertices(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get IAPrimitives(): Deno.PointerValue {
+  get IAPrimitives(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get VSInvocations(): Deno.PointerValue {
+  get VSInvocations(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get GSInvocations(): Deno.PointerValue {
+  get GSInvocations(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get GSPrimitives(): Deno.PointerValue {
+  get GSPrimitives(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: u64
-  get CInvocations(): Deno.PointerValue {
+  get CInvocations(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: u64
-  get CPrimitives(): Deno.PointerValue {
+  get CPrimitives(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: u64
-  get PSInvocations(): Deno.PointerValue {
+  get PSInvocations(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
   // 0x00: u64
-  set IAVertices(value: Deno.PointerValue) {
+  set IAVertices(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set IAPrimitives(value: Deno.PointerValue) {
+  set IAPrimitives(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set VSInvocations(value: Deno.PointerValue) {
+  set VSInvocations(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set GSInvocations(value: Deno.PointerValue) {
+  set GSInvocations(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set GSPrimitives(value: Deno.PointerValue) {
+  set GSPrimitives(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: u64
-  set CInvocations(value: Deno.PointerValue) {
+  set CInvocations(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: u64
-  set CPrimitives(value: Deno.PointerValue) {
+  set CPrimitives(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: u64
-  set PSInvocations(value: Deno.PointerValue) {
+  set PSInvocations(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 }
@@ -5729,9 +5729,9 @@ export class D3D10_QUERY_DATA_PIPELINE_STATISTICSView {
  */
 export interface D3D10_QUERY_DATA_SO_STATISTICS {
   /** u64 */
-  NumPrimitivesWritten: Deno.PointerValue;
+  NumPrimitivesWritten: bigint | number;
   /** u64 */
-  PrimitivesStorageNeeded: Deno.PointerValue;
+  PrimitivesStorageNeeded: bigint | number;
 }
 
 export const sizeofD3D10_QUERY_DATA_SO_STATISTICS = 16;
@@ -5757,22 +5757,22 @@ export class D3D10_QUERY_DATA_SO_STATISTICSView {
   }
 
   // 0x00: u64
-  get NumPrimitivesWritten(): Deno.PointerValue {
+  get NumPrimitivesWritten(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get PrimitivesStorageNeeded(): Deno.PointerValue {
+  get PrimitivesStorageNeeded(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set NumPrimitivesWritten(value: Deno.PointerValue) {
+  set NumPrimitivesWritten(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set PrimitivesStorageNeeded(value: Deno.PointerValue) {
+  set PrimitivesStorageNeeded(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -5915,7 +5915,7 @@ export interface D3D10_MESSAGE {
   /** ptr */
   pDescription: Deno.PointerValue | Uint8Array;
   /** usize */
-  DescriptionByteLength: Deno.PointerValue;
+  DescriptionByteLength: bigint | number;
 }
 
 export const sizeofD3D10_MESSAGE = 32;
@@ -5971,7 +5971,7 @@ export class D3D10_MESSAGEView {
   }
 
   // 0x18: usize
-  get DescriptionByteLength(): Deno.PointerValue {
+  get DescriptionByteLength(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -5998,7 +5998,7 @@ export class D3D10_MESSAGEView {
   }
 
   // 0x18: usize
-  set DescriptionByteLength(value: Deno.PointerValue) {
+  set DescriptionByteLength(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 }
@@ -8062,7 +8062,7 @@ export interface D3D10_PASS_DESC {
   /** ptr */
   pIAInputSignature: Deno.PointerValue | Uint8Array;
   /** usize */
-  IAInputSignatureSize: Deno.PointerValue;
+  IAInputSignatureSize: bigint | number;
   /** u32 */
   StencilRef: number;
   /** u32 */
@@ -8127,7 +8127,7 @@ export class D3D10_PASS_DESCView {
   }
 
   // 0x18: usize
-  get IAInputSignatureSize(): Deno.PointerValue {
+  get IAInputSignatureSize(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -8166,7 +8166,7 @@ export class D3D10_PASS_DESCView {
   }
 
   // 0x18: usize
-  set IAInputSignatureSize(value: Deno.PointerValue) {
+  set IAInputSignatureSize(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -10249,7 +10249,7 @@ export class D3D10_SHADER_DEBUG_INFOView {
   // 0x54: pad4
 }
 
-export type HINSTANCE = Deno.PointerValue;
+export type HINSTANCE = bigint | number;
 
 export type HRESULT = number;
 
@@ -10408,7 +10408,7 @@ export function D3D10CreateDeviceAndSwapChain(
 }
 
 export function D3D10CreateBlob(
-  NumBytes: Deno.PointerValue /* usize */,
+  NumBytes: bigint | number /* usize */,
   ppBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libd3d10_dll.D3D10CreateBlob(NumBytes, util.toPointer(ppBuffer));
@@ -10416,7 +10416,7 @@ export function D3D10CreateBlob(
 
 export function D3D10CompileShader(
   pSrcData: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  SrcDataSize: Deno.PointerValue /* usize */,
+  SrcDataSize: bigint | number /* usize */,
   pFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pDefines: Deno.PointerValue | Uint8Array /* ptr */,
   pInclude: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Direct3D.ID3DInclude */,
@@ -10431,7 +10431,7 @@ export function D3D10CompileShader(
 
 export function D3D10DisassembleShader(
   pShader: Deno.PointerValue | Uint8Array /* ptr */,
-  BytecodeLength: Deno.PointerValue /* usize */,
+  BytecodeLength: bigint | number /* usize */,
   EnableColorCode: boolean /* Windows.Win32.Foundation.BOOL */,
   pComments: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ppDisassembly: Deno.PointerValue | Uint8Array /* ptr */,
@@ -10459,7 +10459,7 @@ export function D3D10GetGeometryShaderProfile(
 
 export function D3D10ReflectShader(
   pShaderBytecode: Deno.PointerValue | Uint8Array /* ptr */,
-  BytecodeLength: Deno.PointerValue /* usize */,
+  BytecodeLength: bigint | number /* usize */,
   ppReflector: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libd3d10_dll.D3D10ReflectShader(util.toPointer(pShaderBytecode), BytecodeLength, util.toPointer(ppReflector));
@@ -10467,7 +10467,7 @@ export function D3D10ReflectShader(
 
 export function D3D10PreprocessShader(
   pSrcData: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  SrcDataSize: Deno.PointerValue /* usize */,
+  SrcDataSize: bigint | number /* usize */,
   pFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pDefines: Deno.PointerValue | Uint8Array /* ptr */,
   pInclude: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Direct3D.ID3DInclude */,
@@ -10479,7 +10479,7 @@ export function D3D10PreprocessShader(
 
 export function D3D10GetInputSignatureBlob(
   pShaderBytecode: Deno.PointerValue | Uint8Array /* ptr */,
-  BytecodeLength: Deno.PointerValue /* usize */,
+  BytecodeLength: bigint | number /* usize */,
   ppSignatureBlob: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libd3d10_dll.D3D10GetInputSignatureBlob(util.toPointer(pShaderBytecode), BytecodeLength, util.toPointer(ppSignatureBlob));
@@ -10487,7 +10487,7 @@ export function D3D10GetInputSignatureBlob(
 
 export function D3D10GetOutputSignatureBlob(
   pShaderBytecode: Deno.PointerValue | Uint8Array /* ptr */,
-  BytecodeLength: Deno.PointerValue /* usize */,
+  BytecodeLength: bigint | number /* usize */,
   ppSignatureBlob: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libd3d10_dll.D3D10GetOutputSignatureBlob(util.toPointer(pShaderBytecode), BytecodeLength, util.toPointer(ppSignatureBlob));
@@ -10495,7 +10495,7 @@ export function D3D10GetOutputSignatureBlob(
 
 export function D3D10GetInputAndOutputSignatureBlob(
   pShaderBytecode: Deno.PointerValue | Uint8Array /* ptr */,
-  BytecodeLength: Deno.PointerValue /* usize */,
+  BytecodeLength: bigint | number /* usize */,
   ppSignatureBlob: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libd3d10_dll.D3D10GetInputAndOutputSignatureBlob(util.toPointer(pShaderBytecode), BytecodeLength, util.toPointer(ppSignatureBlob));
@@ -10503,7 +10503,7 @@ export function D3D10GetInputAndOutputSignatureBlob(
 
 export function D3D10GetShaderDebugInfo(
   pShaderBytecode: Deno.PointerValue | Uint8Array /* ptr */,
-  BytecodeLength: Deno.PointerValue /* usize */,
+  BytecodeLength: bigint | number /* usize */,
   ppDebugInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libd3d10_dll.D3D10GetShaderDebugInfo(util.toPointer(pShaderBytecode), BytecodeLength, util.toPointer(ppDebugInfo));
@@ -10581,7 +10581,7 @@ export function D3D10CreateStateBlock(
 
 export function D3D10CompileEffectFromMemory(
   pData: Deno.PointerValue | Uint8Array /* ptr */,
-  DataLength: Deno.PointerValue /* usize */,
+  DataLength: bigint | number /* usize */,
   pSrcFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pDefines: Deno.PointerValue | Uint8Array /* ptr */,
   pInclude: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Direct3D.ID3DInclude */,
@@ -10595,7 +10595,7 @@ export function D3D10CompileEffectFromMemory(
 
 export function D3D10CreateEffectFromMemory(
   pData: Deno.PointerValue | Uint8Array /* ptr */,
-  DataLength: Deno.PointerValue /* usize */,
+  DataLength: bigint | number /* usize */,
   FXFlags: number /* u32 */,
   pDevice: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Direct3D10.ID3D10Device */,
   pEffectPool: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Direct3D10.ID3D10EffectPool */,
@@ -10606,7 +10606,7 @@ export function D3D10CreateEffectFromMemory(
 
 export function D3D10CreateEffectPoolFromMemory(
   pData: Deno.PointerValue | Uint8Array /* ptr */,
-  DataLength: Deno.PointerValue /* usize */,
+  DataLength: bigint | number /* usize */,
   FXFlags: number /* u32 */,
   pDevice: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Direct3D10.ID3D10Device */,
   ppEffectPool: Deno.PointerValue | Uint8Array /* ptr */,

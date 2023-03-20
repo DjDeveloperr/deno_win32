@@ -156,13 +156,13 @@ export const frrvErrDoubleFault = 10;
 
 // Structs
 
-export type HREPORT = Deno.PointerValue;
+export type HREPORT = bigint | number;
 
-export type HREPORTSTORE = Deno.PointerValue;
+export type HREPORTSTORE = bigint | number;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 /**
  * Windows.Win32.System.ErrorReporting.WER_REPORT_INFORMATION (size: 64)
@@ -1795,9 +1795,9 @@ export class EXCEPTION_RECORDView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -1823,22 +1823,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -1909,9 +1909,9 @@ export interface CONTEXT {
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue;
   /** u64 */
-  Sp: Deno.PointerValue;
+  Sp: bigint | number;
   /** u64 */
-  Pc: Deno.PointerValue;
+  Pc: bigint | number;
   /** array */
   V: Deno.PointerValue;
   /** u32 */
@@ -1987,12 +1987,12 @@ export class CONTEXTView {
   }
 
   // 0x10: u64
-  get Sp(): Deno.PointerValue {
+  get Sp(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get Pc(): Deno.PointerValue {
+  get Pc(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -2052,12 +2052,12 @@ export class CONTEXTView {
   }
 
   // 0x10: u64
-  set Sp(value: Deno.PointerValue) {
+  set Sp(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set Pc(value: Deno.PointerValue) {
+  set Pc(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -2426,7 +2426,7 @@ export interface WER_REPORT_METADATA_V2 {
   /** Windows.Win32.Foundation.FILETIME */
   CreationTime: Uint8Array | Deno.PointerValue;
   /** u64 */
-  SizeInBytes: Deno.PointerValue;
+  SizeInBytes: bigint | number;
   /** array */
   CabId: Deno.PointerValue;
   /** u32 */
@@ -2510,7 +2510,7 @@ export class WER_REPORT_METADATA_V2View {
   }
 
   // 0x20: u64
-  get SizeInBytes(): Deno.PointerValue {
+  get SizeInBytes(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -2570,7 +2570,7 @@ export class WER_REPORT_METADATA_V2View {
   }
 
   // 0x20: u64
-  set SizeInBytes(value: Deno.PointerValue) {
+  set SizeInBytes(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -2621,7 +2621,7 @@ export interface WER_REPORT_METADATA_V3 {
   /** Windows.Win32.Foundation.FILETIME */
   CreationTime: Uint8Array | Deno.PointerValue;
   /** u64 */
-  SizeInBytes: Deno.PointerValue;
+  SizeInBytes: bigint | number;
   /** array */
   CabId: Deno.PointerValue;
   /** u32 */
@@ -2645,7 +2645,7 @@ export interface WER_REPORT_METADATA_V3 {
   /** array */
   BucketIdString: Deno.PointerValue;
   /** u64 */
-  LegacyBucketId: Deno.PointerValue;
+  LegacyBucketId: bigint | number;
 }
 
 export const sizeofWER_REPORT_METADATA_V3 = 128;
@@ -2729,7 +2729,7 @@ export class WER_REPORT_METADATA_V3View {
   }
 
   // 0x20: u64
-  get SizeInBytes(): Deno.PointerValue {
+  get SizeInBytes(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -2799,7 +2799,7 @@ export class WER_REPORT_METADATA_V3View {
   }
 
   // 0x78: u64
-  get LegacyBucketId(): Deno.PointerValue {
+  get LegacyBucketId(): bigint | number {
     return Number(this.view.getBigUint64(120, true));
   }
 
@@ -2824,7 +2824,7 @@ export class WER_REPORT_METADATA_V3View {
   }
 
   // 0x20: u64
-  set SizeInBytes(value: Deno.PointerValue) {
+  set SizeInBytes(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -2887,7 +2887,7 @@ export class WER_REPORT_METADATA_V3View {
   }
 
   // 0x78: u64
-  set LegacyBucketId(value: Deno.PointerValue) {
+  set LegacyBucketId(value: bigint | number) {
     this.view.setBigUint64(120, BigInt(value), true);
   }
 }
@@ -2905,7 +2905,7 @@ export interface WER_REPORT_METADATA_V1 {
   /** Windows.Win32.Foundation.FILETIME */
   CreationTime: Uint8Array | Deno.PointerValue;
   /** u64 */
-  SizeInBytes: Deno.PointerValue;
+  SizeInBytes: bigint | number;
 }
 
 export const sizeofWER_REPORT_METADATA_V1 = 40;
@@ -2961,7 +2961,7 @@ export class WER_REPORT_METADATA_V1View {
   }
 
   // 0x20: u64
-  get SizeInBytes(): Deno.PointerValue {
+  get SizeInBytes(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -2986,7 +2986,7 @@ export class WER_REPORT_METADATA_V1View {
   }
 
   // 0x20: u64
-  set SizeInBytes(value: Deno.PointerValue) {
+  set SizeInBytes(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 }

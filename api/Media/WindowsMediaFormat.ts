@@ -604,13 +604,13 @@ export class WM_STREAM_PRIORITY_RECORDView {
  */
 export interface WM_WRITER_STATISTICS {
   /** u64 */
-  qwSampleCount: Deno.PointerValue;
+  qwSampleCount: bigint | number;
   /** u64 */
-  qwByteCount: Deno.PointerValue;
+  qwByteCount: bigint | number;
   /** u64 */
-  qwDroppedSampleCount: Deno.PointerValue;
+  qwDroppedSampleCount: bigint | number;
   /** u64 */
-  qwDroppedByteCount: Deno.PointerValue;
+  qwDroppedByteCount: bigint | number;
   /** u32 */
   dwCurrentBitrate: number;
   /** u32 */
@@ -664,22 +664,22 @@ export class WM_WRITER_STATISTICSView {
   }
 
   // 0x00: u64
-  get qwSampleCount(): Deno.PointerValue {
+  get qwSampleCount(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get qwByteCount(): Deno.PointerValue {
+  get qwByteCount(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get qwDroppedSampleCount(): Deno.PointerValue {
+  get qwDroppedSampleCount(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get qwDroppedByteCount(): Deno.PointerValue {
+  get qwDroppedByteCount(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -714,22 +714,22 @@ export class WM_WRITER_STATISTICSView {
   }
 
   // 0x00: u64
-  set qwSampleCount(value: Deno.PointerValue) {
+  set qwSampleCount(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set qwByteCount(value: Deno.PointerValue) {
+  set qwByteCount(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set qwDroppedSampleCount(value: Deno.PointerValue) {
+  set qwDroppedSampleCount(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set qwDroppedByteCount(value: Deno.PointerValue) {
+  set qwDroppedByteCount(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -1021,13 +1021,13 @@ export interface WM_READER_CLIENTINFO {
   /** Windows.Win32.Foundation.PWSTR */
   wszBrowserWebPage: string | null | Uint8Array | Uint16Array;
   /** u64 */
-  qwReserved: Deno.PointerValue;
+  qwReserved: bigint | number;
   /** ptr */
   pReserved: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.PWSTR */
   wszHostExe: string | null | Uint8Array | Uint16Array;
   /** u64 */
-  qwHostVersion: Deno.PointerValue;
+  qwHostVersion: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   wszPlayerUserAgent: string | null | Uint8Array | Uint16Array;
 }
@@ -1110,7 +1110,7 @@ export class WM_READER_CLIENTINFOView {
   }
 
   // 0x20: u64
-  get qwReserved(): Deno.PointerValue {
+  get qwReserved(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -1127,7 +1127,7 @@ export class WM_READER_CLIENTINFOView {
   }
 
   // 0x38: u64
-  get qwHostVersion(): Deno.PointerValue {
+  get qwHostVersion(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
@@ -1163,7 +1163,7 @@ export class WM_READER_CLIENTINFOView {
   }
 
   // 0x20: u64
-  set qwReserved(value: Deno.PointerValue) {
+  set qwReserved(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -1179,7 +1179,7 @@ export class WM_READER_CLIENTINFOView {
   }
 
   // 0x38: u64
-  set qwHostVersion(value: Deno.PointerValue) {
+  set qwHostVersion(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
@@ -3600,7 +3600,7 @@ export interface WMVIDEOINFOHEADER {
   /** u32 */
   dwBitErrorRate: number;
   /** i64 */
-  AvgTimePerFrame: Deno.PointerValue;
+  AvgTimePerFrame: bigint | number;
   /** Windows.Win32.Graphics.Gdi.BITMAPINFOHEADER */
   bmiHeader: Uint8Array | Deno.PointerValue;
 }
@@ -3658,7 +3658,7 @@ export class WMVIDEOINFOHEADERView {
   }
 
   // 0x18: i64
-  get AvgTimePerFrame(): Deno.PointerValue {
+  get AvgTimePerFrame(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
@@ -3689,7 +3689,7 @@ export class WMVIDEOINFOHEADERView {
   }
 
   // 0x18: i64
-  set AvgTimePerFrame(value: Deno.PointerValue) {
+  set AvgTimePerFrame(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
@@ -3712,7 +3712,7 @@ export interface WMVIDEOINFOHEADER2 {
   /** u32 */
   dwBitErrorRate: number;
   /** i64 */
-  AvgTimePerFrame: Deno.PointerValue;
+  AvgTimePerFrame: bigint | number;
   /** u32 */
   dwInterlaceFlags: number;
   /** u32 */
@@ -3794,7 +3794,7 @@ export class WMVIDEOINFOHEADER2View {
   }
 
   // 0x18: i64
-  get AvgTimePerFrame(): Deno.PointerValue {
+  get AvgTimePerFrame(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
@@ -3855,7 +3855,7 @@ export class WMVIDEOINFOHEADER2View {
   }
 
   // 0x18: i64
-  set AvgTimePerFrame(value: Deno.PointerValue) {
+  set AvgTimePerFrame(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 

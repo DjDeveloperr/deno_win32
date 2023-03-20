@@ -1660,9 +1660,9 @@ export const FallbackIndexMax = 1;
 
 // Structs
 
-export type HWSAEVENT = Deno.PointerValue;
+export type HWSAEVENT = bigint | number;
 
-export type SOCKET = Deno.PointerValue;
+export type SOCKET = bigint | number;
 
 /**
  * Windows.Win32.Networking.WinSock.FLOWSPEC (size: 32)
@@ -2543,7 +2543,7 @@ export interface SOCKADDR_STORAGE {
   /** array */
   __ss_pad1: Deno.PointerValue;
   /** i64 */
-  __ss_align: Deno.PointerValue;
+  __ss_align: bigint | number;
   /** array */
   __ss_pad2: Deno.PointerValue;
 }
@@ -2589,7 +2589,7 @@ export class SOCKADDR_STORAGEView {
   }
 
   // 0x10: i64
-  get __ss_align(): Deno.PointerValue {
+  get __ss_align(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -2612,7 +2612,7 @@ export class SOCKADDR_STORAGEView {
   }
 
   // 0x10: i64
-  set __ss_align(value: Deno.PointerValue) {
+  set __ss_align(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
@@ -2631,7 +2631,7 @@ export interface SOCKADDR_STORAGE_XP {
   /** array */
   __ss_pad1: Deno.PointerValue;
   /** i64 */
-  __ss_align: Deno.PointerValue;
+  __ss_align: bigint | number;
   /** array */
   __ss_pad2: Deno.PointerValue;
 }
@@ -2677,7 +2677,7 @@ export class SOCKADDR_STORAGE_XPView {
   }
 
   // 0x10: i64
-  get __ss_align(): Deno.PointerValue {
+  get __ss_align(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -2700,7 +2700,7 @@ export class SOCKADDR_STORAGE_XPView {
   }
 
   // 0x10: i64
-  set __ss_align(value: Deno.PointerValue) {
+  set __ss_align(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
@@ -2860,9 +2860,9 @@ export class SOCKET_PROCESSOR_AFFINITYView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -2888,22 +2888,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -3360,7 +3360,7 @@ export class WSAMSGView {
  */
 export interface CMSGHDR {
   /** usize */
-  cmsg_len: Deno.PointerValue;
+  cmsg_len: bigint | number;
   /** i32 */
   cmsg_level: number;
   /** i32 */
@@ -3392,7 +3392,7 @@ export class CMSGHDRView {
   }
 
   // 0x00: usize
-  get cmsg_len(): Deno.PointerValue {
+  get cmsg_len(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -3407,7 +3407,7 @@ export class CMSGHDRView {
   }
 
   // 0x00: usize
-  set cmsg_len(value: Deno.PointerValue) {
+  set cmsg_len(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -3435,7 +3435,7 @@ export interface ADDRINFOA {
   /** i32 */
   ai_protocol: number;
   /** usize */
-  ai_addrlen: Deno.PointerValue;
+  ai_addrlen: bigint | number;
   /** Windows.Win32.Foundation.PSTR */
   ai_canonname: string | null | Uint8Array;
   /** ptr */
@@ -3502,7 +3502,7 @@ export class ADDRINFOAView {
   }
 
   // 0x10: usize
-  get ai_addrlen(): Deno.PointerValue {
+  get ai_addrlen(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -3545,7 +3545,7 @@ export class ADDRINFOAView {
   }
 
   // 0x10: usize
-  set ai_addrlen(value: Deno.PointerValue) {
+  set ai_addrlen(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -3581,7 +3581,7 @@ export interface ADDRINFOW {
   /** i32 */
   ai_protocol: number;
   /** usize */
-  ai_addrlen: Deno.PointerValue;
+  ai_addrlen: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   ai_canonname: string | null | Uint8Array | Uint16Array;
   /** ptr */
@@ -3648,7 +3648,7 @@ export class ADDRINFOWView {
   }
 
   // 0x10: usize
-  get ai_addrlen(): Deno.PointerValue {
+  get ai_addrlen(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -3691,7 +3691,7 @@ export class ADDRINFOWView {
   }
 
   // 0x10: usize
-  set ai_addrlen(value: Deno.PointerValue) {
+  set ai_addrlen(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -3725,7 +3725,7 @@ export interface ADDRINFOEXA {
   /** i32 */
   ai_protocol: number;
   /** usize */
-  ai_addrlen: Deno.PointerValue;
+  ai_addrlen: bigint | number;
   /** Windows.Win32.Foundation.PSTR */
   ai_canonname: string | null | Uint8Array;
   /** ptr */
@@ -3733,7 +3733,7 @@ export interface ADDRINFOEXA {
   /** ptr */
   ai_blob: Deno.PointerValue | Uint8Array;
   /** usize */
-  ai_bloblen: Deno.PointerValue;
+  ai_bloblen: bigint | number;
   /** ptr */
   ai_provider: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -3804,7 +3804,7 @@ export class ADDRINFOEXAView {
   }
 
   // 0x10: usize
-  get ai_addrlen(): Deno.PointerValue {
+  get ai_addrlen(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -3827,7 +3827,7 @@ export class ADDRINFOEXAView {
   }
 
   // 0x30: usize
-  get ai_bloblen(): Deno.PointerValue {
+  get ai_bloblen(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -3864,7 +3864,7 @@ export class ADDRINFOEXAView {
   }
 
   // 0x10: usize
-  set ai_addrlen(value: Deno.PointerValue) {
+  set ai_addrlen(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -3885,7 +3885,7 @@ export class ADDRINFOEXAView {
   }
 
   // 0x30: usize
-  set ai_bloblen(value: Deno.PointerValue) {
+  set ai_bloblen(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
@@ -3913,7 +3913,7 @@ export interface ADDRINFOEXW {
   /** i32 */
   ai_protocol: number;
   /** usize */
-  ai_addrlen: Deno.PointerValue;
+  ai_addrlen: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   ai_canonname: string | null | Uint8Array | Uint16Array;
   /** ptr */
@@ -3921,7 +3921,7 @@ export interface ADDRINFOEXW {
   /** ptr */
   ai_blob: Deno.PointerValue | Uint8Array;
   /** usize */
-  ai_bloblen: Deno.PointerValue;
+  ai_bloblen: bigint | number;
   /** ptr */
   ai_provider: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -3992,7 +3992,7 @@ export class ADDRINFOEXWView {
   }
 
   // 0x10: usize
-  get ai_addrlen(): Deno.PointerValue {
+  get ai_addrlen(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -4015,7 +4015,7 @@ export class ADDRINFOEXWView {
   }
 
   // 0x30: usize
-  get ai_bloblen(): Deno.PointerValue {
+  get ai_bloblen(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -4052,7 +4052,7 @@ export class ADDRINFOEXWView {
   }
 
   // 0x10: usize
-  set ai_addrlen(value: Deno.PointerValue) {
+  set ai_addrlen(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -4073,7 +4073,7 @@ export class ADDRINFOEXWView {
   }
 
   // 0x30: usize
-  set ai_bloblen(value: Deno.PointerValue) {
+  set ai_bloblen(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
@@ -4101,7 +4101,7 @@ export interface ADDRINFOEX2A {
   /** i32 */
   ai_protocol: number;
   /** usize */
-  ai_addrlen: Deno.PointerValue;
+  ai_addrlen: bigint | number;
   /** Windows.Win32.Foundation.PSTR */
   ai_canonname: string | null | Uint8Array;
   /** ptr */
@@ -4109,7 +4109,7 @@ export interface ADDRINFOEX2A {
   /** ptr */
   ai_blob: Deno.PointerValue | Uint8Array;
   /** usize */
-  ai_bloblen: Deno.PointerValue;
+  ai_bloblen: bigint | number;
   /** ptr */
   ai_provider: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -4192,7 +4192,7 @@ export class ADDRINFOEX2AView {
   }
 
   // 0x10: usize
-  get ai_addrlen(): Deno.PointerValue {
+  get ai_addrlen(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -4215,7 +4215,7 @@ export class ADDRINFOEX2AView {
   }
 
   // 0x30: usize
-  get ai_bloblen(): Deno.PointerValue {
+  get ai_bloblen(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -4265,7 +4265,7 @@ export class ADDRINFOEX2AView {
   }
 
   // 0x10: usize
-  set ai_addrlen(value: Deno.PointerValue) {
+  set ai_addrlen(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -4286,7 +4286,7 @@ export class ADDRINFOEX2AView {
   }
 
   // 0x30: usize
-  set ai_bloblen(value: Deno.PointerValue) {
+  set ai_bloblen(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
@@ -4327,7 +4327,7 @@ export interface ADDRINFOEX2W {
   /** i32 */
   ai_protocol: number;
   /** usize */
-  ai_addrlen: Deno.PointerValue;
+  ai_addrlen: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   ai_canonname: string | null | Uint8Array | Uint16Array;
   /** ptr */
@@ -4335,7 +4335,7 @@ export interface ADDRINFOEX2W {
   /** ptr */
   ai_blob: Deno.PointerValue | Uint8Array;
   /** usize */
-  ai_bloblen: Deno.PointerValue;
+  ai_bloblen: bigint | number;
   /** ptr */
   ai_provider: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -4418,7 +4418,7 @@ export class ADDRINFOEX2WView {
   }
 
   // 0x10: usize
-  get ai_addrlen(): Deno.PointerValue {
+  get ai_addrlen(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -4441,7 +4441,7 @@ export class ADDRINFOEX2WView {
   }
 
   // 0x30: usize
-  get ai_bloblen(): Deno.PointerValue {
+  get ai_bloblen(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -4491,7 +4491,7 @@ export class ADDRINFOEX2WView {
   }
 
   // 0x10: usize
-  set ai_addrlen(value: Deno.PointerValue) {
+  set ai_addrlen(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -4512,7 +4512,7 @@ export class ADDRINFOEX2WView {
   }
 
   // 0x30: usize
-  set ai_bloblen(value: Deno.PointerValue) {
+  set ai_bloblen(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
@@ -4553,7 +4553,7 @@ export interface ADDRINFOEX3 {
   /** i32 */
   ai_protocol: number;
   /** usize */
-  ai_addrlen: Deno.PointerValue;
+  ai_addrlen: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   ai_canonname: string | null | Uint8Array | Uint16Array;
   /** ptr */
@@ -4561,7 +4561,7 @@ export interface ADDRINFOEX3 {
   /** ptr */
   ai_blob: Deno.PointerValue | Uint8Array;
   /** usize */
-  ai_bloblen: Deno.PointerValue;
+  ai_bloblen: bigint | number;
   /** ptr */
   ai_provider: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -4649,7 +4649,7 @@ export class ADDRINFOEX3View {
   }
 
   // 0x10: usize
-  get ai_addrlen(): Deno.PointerValue {
+  get ai_addrlen(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -4672,7 +4672,7 @@ export class ADDRINFOEX3View {
   }
 
   // 0x30: usize
-  get ai_bloblen(): Deno.PointerValue {
+  get ai_bloblen(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -4729,7 +4729,7 @@ export class ADDRINFOEX3View {
   }
 
   // 0x10: usize
-  set ai_addrlen(value: Deno.PointerValue) {
+  set ai_addrlen(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -4750,7 +4750,7 @@ export class ADDRINFOEX3View {
   }
 
   // 0x30: usize
-  set ai_bloblen(value: Deno.PointerValue) {
+  set ai_bloblen(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
@@ -4785,7 +4785,7 @@ export class ADDRINFOEX3View {
   // 0x5c: pad4
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.Networking.WinSock.ADDRINFOEX4 (size: 104)
@@ -4800,7 +4800,7 @@ export interface ADDRINFOEX4 {
   /** i32 */
   ai_protocol: number;
   /** usize */
-  ai_addrlen: Deno.PointerValue;
+  ai_addrlen: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   ai_canonname: string | null | Uint8Array | Uint16Array;
   /** ptr */
@@ -4808,7 +4808,7 @@ export interface ADDRINFOEX4 {
   /** ptr */
   ai_blob: Deno.PointerValue | Uint8Array;
   /** usize */
-  ai_bloblen: Deno.PointerValue;
+  ai_bloblen: bigint | number;
   /** ptr */
   ai_provider: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -4900,7 +4900,7 @@ export class ADDRINFOEX4View {
   }
 
   // 0x10: usize
-  get ai_addrlen(): Deno.PointerValue {
+  get ai_addrlen(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -4923,7 +4923,7 @@ export class ADDRINFOEX4View {
   }
 
   // 0x30: usize
-  get ai_bloblen(): Deno.PointerValue {
+  get ai_bloblen(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -4986,7 +4986,7 @@ export class ADDRINFOEX4View {
   }
 
   // 0x10: usize
-  set ai_addrlen(value: Deno.PointerValue) {
+  set ai_addrlen(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -5007,7 +5007,7 @@ export class ADDRINFOEX4View {
   }
 
   // 0x30: usize
-  set ai_bloblen(value: Deno.PointerValue) {
+  set ai_bloblen(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
@@ -5060,7 +5060,7 @@ export interface ADDRINFOEX5 {
   /** i32 */
   ai_protocol: number;
   /** usize */
-  ai_addrlen: Deno.PointerValue;
+  ai_addrlen: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   ai_canonname: string | null | Uint8Array | Uint16Array;
   /** ptr */
@@ -5068,7 +5068,7 @@ export interface ADDRINFOEX5 {
   /** ptr */
   ai_blob: Deno.PointerValue | Uint8Array;
   /** usize */
-  ai_bloblen: Deno.PointerValue;
+  ai_bloblen: bigint | number;
   /** ptr */
   ai_provider: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -5165,7 +5165,7 @@ export class ADDRINFOEX5View {
   }
 
   // 0x10: usize
-  get ai_addrlen(): Deno.PointerValue {
+  get ai_addrlen(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -5188,7 +5188,7 @@ export class ADDRINFOEX5View {
   }
 
   // 0x30: usize
-  get ai_bloblen(): Deno.PointerValue {
+  get ai_bloblen(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -5258,7 +5258,7 @@ export class ADDRINFOEX5View {
   }
 
   // 0x10: usize
-  set ai_addrlen(value: Deno.PointerValue) {
+  set ai_addrlen(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -5279,7 +5279,7 @@ export class ADDRINFOEX5View {
   }
 
   // 0x30: usize
-  set ai_bloblen(value: Deno.PointerValue) {
+  set ai_bloblen(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
@@ -5333,7 +5333,7 @@ export interface ADDRINFO_DNS_SERVER {
   /** u32 */
   ai_servertype: number;
   /** u64 */
-  ai_flags: Deno.PointerValue;
+  ai_flags: bigint | number;
   /** u32 */
   ai_addrlen: number;
   /** ptr */
@@ -5380,7 +5380,7 @@ export class ADDRINFO_DNS_SERVERView {
   // 0x04: pad4
 
   // 0x08: u64
-  get ai_flags(): Deno.PointerValue {
+  get ai_flags(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -5411,7 +5411,7 @@ export class ADDRINFO_DNS_SERVERView {
   // 0x04: pad4
 
   // 0x08: u64
-  set ai_flags(value: Deno.PointerValue) {
+  set ai_flags(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -5446,7 +5446,7 @@ export interface ADDRINFOEX6 {
   /** i32 */
   ai_protocol: number;
   /** usize */
-  ai_addrlen: Deno.PointerValue;
+  ai_addrlen: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   ai_canonname: string | null | Uint8Array | Uint16Array;
   /** ptr */
@@ -5454,7 +5454,7 @@ export interface ADDRINFOEX6 {
   /** ptr */
   ai_blob: Deno.PointerValue | Uint8Array;
   /** usize */
-  ai_bloblen: Deno.PointerValue;
+  ai_bloblen: bigint | number;
   /** ptr */
   ai_provider: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -5474,7 +5474,7 @@ export interface ADDRINFOEX6 {
   /** ptr */
   ai_servers: Deno.PointerValue | Uint8Array;
   /** u64 */
-  ai_responseflags: Deno.PointerValue;
+  ai_responseflags: bigint | number;
 }
 
 export const sizeofADDRINFOEX6 = 128;
@@ -5562,7 +5562,7 @@ export class ADDRINFOEX6View {
   }
 
   // 0x10: usize
-  get ai_addrlen(): Deno.PointerValue {
+  get ai_addrlen(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -5585,7 +5585,7 @@ export class ADDRINFOEX6View {
   }
 
   // 0x30: usize
-  get ai_bloblen(): Deno.PointerValue {
+  get ai_bloblen(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -5644,7 +5644,7 @@ export class ADDRINFOEX6View {
   }
 
   // 0x78: u64
-  get ai_responseflags(): Deno.PointerValue {
+  get ai_responseflags(): bigint | number {
     return Number(this.view.getBigUint64(120, true));
   }
 
@@ -5669,7 +5669,7 @@ export class ADDRINFOEX6View {
   }
 
   // 0x10: usize
-  set ai_addrlen(value: Deno.PointerValue) {
+  set ai_addrlen(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -5690,7 +5690,7 @@ export class ADDRINFOEX6View {
   }
 
   // 0x30: usize
-  set ai_bloblen(value: Deno.PointerValue) {
+  set ai_bloblen(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
@@ -5745,7 +5745,7 @@ export class ADDRINFOEX6View {
   }
 
   // 0x78: u64
-  set ai_responseflags(value: Deno.PointerValue) {
+  set ai_responseflags(value: bigint | number) {
     this.view.setBigUint64(120, BigInt(value), true);
   }
 }
@@ -12498,31 +12498,31 @@ export class RM_SEND_WINDOWView {
  */
 export interface RM_SENDER_STATS {
   /** u64 */
-  DataBytesSent: Deno.PointerValue;
+  DataBytesSent: bigint | number;
   /** u64 */
-  TotalBytesSent: Deno.PointerValue;
+  TotalBytesSent: bigint | number;
   /** u64 */
-  NaksReceived: Deno.PointerValue;
+  NaksReceived: bigint | number;
   /** u64 */
-  NaksReceivedTooLate: Deno.PointerValue;
+  NaksReceivedTooLate: bigint | number;
   /** u64 */
-  NumOutstandingNaks: Deno.PointerValue;
+  NumOutstandingNaks: bigint | number;
   /** u64 */
-  NumNaksAfterRData: Deno.PointerValue;
+  NumNaksAfterRData: bigint | number;
   /** u64 */
-  RepairPacketsSent: Deno.PointerValue;
+  RepairPacketsSent: bigint | number;
   /** u64 */
-  BufferSpaceAvailable: Deno.PointerValue;
+  BufferSpaceAvailable: bigint | number;
   /** u64 */
-  TrailingEdgeSeqId: Deno.PointerValue;
+  TrailingEdgeSeqId: bigint | number;
   /** u64 */
-  LeadingEdgeSeqId: Deno.PointerValue;
+  LeadingEdgeSeqId: bigint | number;
   /** u64 */
-  RateKBitsPerSecOverall: Deno.PointerValue;
+  RateKBitsPerSecOverall: bigint | number;
   /** u64 */
-  RateKBitsPerSecLast: Deno.PointerValue;
+  RateKBitsPerSecLast: bigint | number;
   /** u64 */
-  TotalODataPacketsSent: Deno.PointerValue;
+  TotalODataPacketsSent: bigint | number;
 }
 
 export const sizeofRM_SENDER_STATS = 104;
@@ -12570,132 +12570,132 @@ export class RM_SENDER_STATSView {
   }
 
   // 0x00: u64
-  get DataBytesSent(): Deno.PointerValue {
+  get DataBytesSent(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get TotalBytesSent(): Deno.PointerValue {
+  get TotalBytesSent(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get NaksReceived(): Deno.PointerValue {
+  get NaksReceived(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get NaksReceivedTooLate(): Deno.PointerValue {
+  get NaksReceivedTooLate(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get NumOutstandingNaks(): Deno.PointerValue {
+  get NumOutstandingNaks(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: u64
-  get NumNaksAfterRData(): Deno.PointerValue {
+  get NumNaksAfterRData(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: u64
-  get RepairPacketsSent(): Deno.PointerValue {
+  get RepairPacketsSent(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: u64
-  get BufferSpaceAvailable(): Deno.PointerValue {
+  get BufferSpaceAvailable(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
   // 0x40: u64
-  get TrailingEdgeSeqId(): Deno.PointerValue {
+  get TrailingEdgeSeqId(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
   // 0x48: u64
-  get LeadingEdgeSeqId(): Deno.PointerValue {
+  get LeadingEdgeSeqId(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
   // 0x50: u64
-  get RateKBitsPerSecOverall(): Deno.PointerValue {
+  get RateKBitsPerSecOverall(): bigint | number {
     return Number(this.view.getBigUint64(80, true));
   }
 
   // 0x58: u64
-  get RateKBitsPerSecLast(): Deno.PointerValue {
+  get RateKBitsPerSecLast(): bigint | number {
     return Number(this.view.getBigUint64(88, true));
   }
 
   // 0x60: u64
-  get TotalODataPacketsSent(): Deno.PointerValue {
+  get TotalODataPacketsSent(): bigint | number {
     return Number(this.view.getBigUint64(96, true));
   }
 
   // 0x00: u64
-  set DataBytesSent(value: Deno.PointerValue) {
+  set DataBytesSent(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set TotalBytesSent(value: Deno.PointerValue) {
+  set TotalBytesSent(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set NaksReceived(value: Deno.PointerValue) {
+  set NaksReceived(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set NaksReceivedTooLate(value: Deno.PointerValue) {
+  set NaksReceivedTooLate(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set NumOutstandingNaks(value: Deno.PointerValue) {
+  set NumOutstandingNaks(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: u64
-  set NumNaksAfterRData(value: Deno.PointerValue) {
+  set NumNaksAfterRData(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: u64
-  set RepairPacketsSent(value: Deno.PointerValue) {
+  set RepairPacketsSent(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: u64
-  set BufferSpaceAvailable(value: Deno.PointerValue) {
+  set BufferSpaceAvailable(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
   // 0x40: u64
-  set TrailingEdgeSeqId(value: Deno.PointerValue) {
+  set TrailingEdgeSeqId(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
   // 0x48: u64
-  set LeadingEdgeSeqId(value: Deno.PointerValue) {
+  set LeadingEdgeSeqId(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
   // 0x50: u64
-  set RateKBitsPerSecOverall(value: Deno.PointerValue) {
+  set RateKBitsPerSecOverall(value: bigint | number) {
     this.view.setBigUint64(80, BigInt(value), true);
   }
 
   // 0x58: u64
-  set RateKBitsPerSecLast(value: Deno.PointerValue) {
+  set RateKBitsPerSecLast(value: bigint | number) {
     this.view.setBigUint64(88, BigInt(value), true);
   }
 
   // 0x60: u64
-  set TotalODataPacketsSent(value: Deno.PointerValue) {
+  set TotalODataPacketsSent(value: bigint | number) {
     this.view.setBigUint64(96, BigInt(value), true);
   }
 }
@@ -12705,41 +12705,41 @@ export class RM_SENDER_STATSView {
  */
 export interface RM_RECEIVER_STATS {
   /** u64 */
-  NumODataPacketsReceived: Deno.PointerValue;
+  NumODataPacketsReceived: bigint | number;
   /** u64 */
-  NumRDataPacketsReceived: Deno.PointerValue;
+  NumRDataPacketsReceived: bigint | number;
   /** u64 */
-  NumDuplicateDataPackets: Deno.PointerValue;
+  NumDuplicateDataPackets: bigint | number;
   /** u64 */
-  DataBytesReceived: Deno.PointerValue;
+  DataBytesReceived: bigint | number;
   /** u64 */
-  TotalBytesReceived: Deno.PointerValue;
+  TotalBytesReceived: bigint | number;
   /** u64 */
-  RateKBitsPerSecOverall: Deno.PointerValue;
+  RateKBitsPerSecOverall: bigint | number;
   /** u64 */
-  RateKBitsPerSecLast: Deno.PointerValue;
+  RateKBitsPerSecLast: bigint | number;
   /** u64 */
-  TrailingEdgeSeqId: Deno.PointerValue;
+  TrailingEdgeSeqId: bigint | number;
   /** u64 */
-  LeadingEdgeSeqId: Deno.PointerValue;
+  LeadingEdgeSeqId: bigint | number;
   /** u64 */
-  AverageSequencesInWindow: Deno.PointerValue;
+  AverageSequencesInWindow: bigint | number;
   /** u64 */
-  MinSequencesInWindow: Deno.PointerValue;
+  MinSequencesInWindow: bigint | number;
   /** u64 */
-  MaxSequencesInWindow: Deno.PointerValue;
+  MaxSequencesInWindow: bigint | number;
   /** u64 */
-  FirstNakSequenceNumber: Deno.PointerValue;
+  FirstNakSequenceNumber: bigint | number;
   /** u64 */
-  NumPendingNaks: Deno.PointerValue;
+  NumPendingNaks: bigint | number;
   /** u64 */
-  NumOutstandingNaks: Deno.PointerValue;
+  NumOutstandingNaks: bigint | number;
   /** u64 */
-  NumDataPacketsBuffered: Deno.PointerValue;
+  NumDataPacketsBuffered: bigint | number;
   /** u64 */
-  TotalSelectiveNaksSent: Deno.PointerValue;
+  TotalSelectiveNaksSent: bigint | number;
   /** u64 */
-  TotalParityNaksSent: Deno.PointerValue;
+  TotalParityNaksSent: bigint | number;
 }
 
 export const sizeofRM_RECEIVER_STATS = 144;
@@ -12797,182 +12797,182 @@ export class RM_RECEIVER_STATSView {
   }
 
   // 0x00: u64
-  get NumODataPacketsReceived(): Deno.PointerValue {
+  get NumODataPacketsReceived(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get NumRDataPacketsReceived(): Deno.PointerValue {
+  get NumRDataPacketsReceived(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get NumDuplicateDataPackets(): Deno.PointerValue {
+  get NumDuplicateDataPackets(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get DataBytesReceived(): Deno.PointerValue {
+  get DataBytesReceived(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get TotalBytesReceived(): Deno.PointerValue {
+  get TotalBytesReceived(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: u64
-  get RateKBitsPerSecOverall(): Deno.PointerValue {
+  get RateKBitsPerSecOverall(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: u64
-  get RateKBitsPerSecLast(): Deno.PointerValue {
+  get RateKBitsPerSecLast(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: u64
-  get TrailingEdgeSeqId(): Deno.PointerValue {
+  get TrailingEdgeSeqId(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
   // 0x40: u64
-  get LeadingEdgeSeqId(): Deno.PointerValue {
+  get LeadingEdgeSeqId(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
   // 0x48: u64
-  get AverageSequencesInWindow(): Deno.PointerValue {
+  get AverageSequencesInWindow(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
   // 0x50: u64
-  get MinSequencesInWindow(): Deno.PointerValue {
+  get MinSequencesInWindow(): bigint | number {
     return Number(this.view.getBigUint64(80, true));
   }
 
   // 0x58: u64
-  get MaxSequencesInWindow(): Deno.PointerValue {
+  get MaxSequencesInWindow(): bigint | number {
     return Number(this.view.getBigUint64(88, true));
   }
 
   // 0x60: u64
-  get FirstNakSequenceNumber(): Deno.PointerValue {
+  get FirstNakSequenceNumber(): bigint | number {
     return Number(this.view.getBigUint64(96, true));
   }
 
   // 0x68: u64
-  get NumPendingNaks(): Deno.PointerValue {
+  get NumPendingNaks(): bigint | number {
     return Number(this.view.getBigUint64(104, true));
   }
 
   // 0x70: u64
-  get NumOutstandingNaks(): Deno.PointerValue {
+  get NumOutstandingNaks(): bigint | number {
     return Number(this.view.getBigUint64(112, true));
   }
 
   // 0x78: u64
-  get NumDataPacketsBuffered(): Deno.PointerValue {
+  get NumDataPacketsBuffered(): bigint | number {
     return Number(this.view.getBigUint64(120, true));
   }
 
   // 0x80: u64
-  get TotalSelectiveNaksSent(): Deno.PointerValue {
+  get TotalSelectiveNaksSent(): bigint | number {
     return Number(this.view.getBigUint64(128, true));
   }
 
   // 0x88: u64
-  get TotalParityNaksSent(): Deno.PointerValue {
+  get TotalParityNaksSent(): bigint | number {
     return Number(this.view.getBigUint64(136, true));
   }
 
   // 0x00: u64
-  set NumODataPacketsReceived(value: Deno.PointerValue) {
+  set NumODataPacketsReceived(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set NumRDataPacketsReceived(value: Deno.PointerValue) {
+  set NumRDataPacketsReceived(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set NumDuplicateDataPackets(value: Deno.PointerValue) {
+  set NumDuplicateDataPackets(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set DataBytesReceived(value: Deno.PointerValue) {
+  set DataBytesReceived(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set TotalBytesReceived(value: Deno.PointerValue) {
+  set TotalBytesReceived(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: u64
-  set RateKBitsPerSecOverall(value: Deno.PointerValue) {
+  set RateKBitsPerSecOverall(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: u64
-  set RateKBitsPerSecLast(value: Deno.PointerValue) {
+  set RateKBitsPerSecLast(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: u64
-  set TrailingEdgeSeqId(value: Deno.PointerValue) {
+  set TrailingEdgeSeqId(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
   // 0x40: u64
-  set LeadingEdgeSeqId(value: Deno.PointerValue) {
+  set LeadingEdgeSeqId(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
   // 0x48: u64
-  set AverageSequencesInWindow(value: Deno.PointerValue) {
+  set AverageSequencesInWindow(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
   // 0x50: u64
-  set MinSequencesInWindow(value: Deno.PointerValue) {
+  set MinSequencesInWindow(value: bigint | number) {
     this.view.setBigUint64(80, BigInt(value), true);
   }
 
   // 0x58: u64
-  set MaxSequencesInWindow(value: Deno.PointerValue) {
+  set MaxSequencesInWindow(value: bigint | number) {
     this.view.setBigUint64(88, BigInt(value), true);
   }
 
   // 0x60: u64
-  set FirstNakSequenceNumber(value: Deno.PointerValue) {
+  set FirstNakSequenceNumber(value: bigint | number) {
     this.view.setBigUint64(96, BigInt(value), true);
   }
 
   // 0x68: u64
-  set NumPendingNaks(value: Deno.PointerValue) {
+  set NumPendingNaks(value: bigint | number) {
     this.view.setBigUint64(104, BigInt(value), true);
   }
 
   // 0x70: u64
-  set NumOutstandingNaks(value: Deno.PointerValue) {
+  set NumOutstandingNaks(value: bigint | number) {
     this.view.setBigUint64(112, BigInt(value), true);
   }
 
   // 0x78: u64
-  set NumDataPacketsBuffered(value: Deno.PointerValue) {
+  set NumDataPacketsBuffered(value: bigint | number) {
     this.view.setBigUint64(120, BigInt(value), true);
   }
 
   // 0x80: u64
-  set TotalSelectiveNaksSent(value: Deno.PointerValue) {
+  set TotalSelectiveNaksSent(value: bigint | number) {
     this.view.setBigUint64(128, BigInt(value), true);
   }
 
   // 0x88: u64
-  set TotalParityNaksSent(value: Deno.PointerValue) {
+  set TotalParityNaksSent(value: bigint | number) {
     this.view.setBigUint64(136, BigInt(value), true);
   }
 }
@@ -14534,9 +14534,9 @@ export class NL_INTERFACE_OFFLOAD_RODView {
  */
 export interface NL_PATH_BANDWIDTH_ROD {
   /** u64 */
-  Bandwidth: Deno.PointerValue;
+  Bandwidth: bigint | number;
   /** u64 */
-  Instability: Deno.PointerValue;
+  Instability: bigint | number;
   /** Windows.Win32.Foundation.BOOLEAN */
   BandwidthPeaked: Uint8Array | Deno.PointerValue;
 }
@@ -14566,12 +14566,12 @@ export class NL_PATH_BANDWIDTH_RODView {
   }
 
   // 0x00: u64
-  get Bandwidth(): Deno.PointerValue {
+  get Bandwidth(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Instability(): Deno.PointerValue {
+  get Instability(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -14582,12 +14582,12 @@ export class NL_PATH_BANDWIDTH_RODView {
   }
 
   // 0x00: u64
-  set Bandwidth(value: Deno.PointerValue) {
+  set Bandwidth(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Instability(value: Deno.PointerValue) {
+  set Instability(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -14700,9 +14700,9 @@ export class NL_NETWORK_CONNECTIVITY_HINTView {
  */
 export interface NL_BANDWIDTH_INFORMATION {
   /** u64 */
-  Bandwidth: Deno.PointerValue;
+  Bandwidth: bigint | number;
   /** u64 */
-  Instability: Deno.PointerValue;
+  Instability: bigint | number;
   /** Windows.Win32.Foundation.BOOLEAN */
   BandwidthPeaked: Uint8Array | Deno.PointerValue;
 }
@@ -14732,12 +14732,12 @@ export class NL_BANDWIDTH_INFORMATIONView {
   }
 
   // 0x00: u64
-  get Bandwidth(): Deno.PointerValue {
+  get Bandwidth(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Instability(): Deno.PointerValue {
+  get Instability(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -14748,12 +14748,12 @@ export class NL_BANDWIDTH_INFORMATIONView {
   }
 
   // 0x00: u64
-  set Bandwidth(value: Deno.PointerValue) {
+  set Bandwidth(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Instability(value: Deno.PointerValue) {
+  set Instability(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -15051,7 +15051,7 @@ export interface ASSOCIATE_NAMERES_CONTEXT_INPUT {
   /** Windows.Win32.Networking.WinSock.TRANSPORT_SETTING_ID */
   TransportSettingId: Uint8Array | Deno.PointerValue;
   /** u64 */
-  Handle: Deno.PointerValue;
+  Handle: bigint | number;
 }
 
 export const sizeofASSOCIATE_NAMERES_CONTEXT_INPUT = 16;
@@ -15083,7 +15083,7 @@ export class ASSOCIATE_NAMERES_CONTEXT_INPUTView {
   }
 
   // 0x08: u64
-  get Handle(): Deno.PointerValue {
+  get Handle(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -15093,7 +15093,7 @@ export class ASSOCIATE_NAMERES_CONTEXT_INPUTView {
   }
 
   // 0x08: u64
-  set Handle(value: Deno.PointerValue) {
+  set Handle(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -15417,7 +15417,7 @@ export interface TCP_INFO_v0 {
   /** u32 */
   Mss: number;
   /** u64 */
-  ConnectionTimeMs: Deno.PointerValue;
+  ConnectionTimeMs: bigint | number;
   /** Windows.Win32.Foundation.BOOLEAN */
   TimestampsEnabled: Uint8Array | Deno.PointerValue;
   /** u32 */
@@ -15435,9 +15435,9 @@ export interface TCP_INFO_v0 {
   /** u32 */
   RcvBuf: number;
   /** u64 */
-  BytesOut: Deno.PointerValue;
+  BytesOut: bigint | number;
   /** u64 */
-  BytesIn: Deno.PointerValue;
+  BytesIn: bigint | number;
   /** u32 */
   BytesReordered: number;
   /** u32 */
@@ -15521,7 +15521,7 @@ export class TCP_INFO_v0View {
   }
 
   // 0x08: u64
-  get ConnectionTimeMs(): Deno.PointerValue {
+  get ConnectionTimeMs(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -15569,12 +15569,12 @@ export class TCP_INFO_v0View {
   // 0x34: pad4
 
   // 0x38: u64
-  get BytesOut(): Deno.PointerValue {
+  get BytesOut(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
   // 0x40: u64
-  get BytesIn(): Deno.PointerValue {
+  get BytesIn(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
@@ -15621,7 +15621,7 @@ export class TCP_INFO_v0View {
   }
 
   // 0x08: u64
-  set ConnectionTimeMs(value: Deno.PointerValue) {
+  set ConnectionTimeMs(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -15668,12 +15668,12 @@ export class TCP_INFO_v0View {
   // 0x34: pad4
 
   // 0x38: u64
-  set BytesOut(value: Deno.PointerValue) {
+  set BytesOut(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
   // 0x40: u64
-  set BytesIn(value: Deno.PointerValue) {
+  set BytesIn(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
@@ -15719,7 +15719,7 @@ export interface TCP_INFO_v1 {
   /** u32 */
   Mss: number;
   /** u64 */
-  ConnectionTimeMs: Deno.PointerValue;
+  ConnectionTimeMs: bigint | number;
   /** Windows.Win32.Foundation.BOOLEAN */
   TimestampsEnabled: Uint8Array | Deno.PointerValue;
   /** u32 */
@@ -15737,9 +15737,9 @@ export interface TCP_INFO_v1 {
   /** u32 */
   RcvBuf: number;
   /** u64 */
-  BytesOut: Deno.PointerValue;
+  BytesOut: bigint | number;
   /** u64 */
-  BytesIn: Deno.PointerValue;
+  BytesIn: bigint | number;
   /** u32 */
   BytesReordered: number;
   /** u32 */
@@ -15757,19 +15757,19 @@ export interface TCP_INFO_v1 {
   /** u32 */
   SndLimTimeRwin: number;
   /** u64 */
-  SndLimBytesRwin: Deno.PointerValue;
+  SndLimBytesRwin: bigint | number;
   /** u32 */
   SndLimTransCwnd: number;
   /** u32 */
   SndLimTimeCwnd: number;
   /** u64 */
-  SndLimBytesCwnd: Deno.PointerValue;
+  SndLimBytesCwnd: bigint | number;
   /** u32 */
   SndLimTransSnd: number;
   /** u32 */
   SndLimTimeSnd: number;
   /** u64 */
-  SndLimBytesSnd: Deno.PointerValue;
+  SndLimBytesSnd: bigint | number;
 }
 
 export const sizeofTCP_INFO_v1 = 144;
@@ -15859,7 +15859,7 @@ export class TCP_INFO_v1View {
   }
 
   // 0x08: u64
-  get ConnectionTimeMs(): Deno.PointerValue {
+  get ConnectionTimeMs(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -15907,12 +15907,12 @@ export class TCP_INFO_v1View {
   // 0x34: pad4
 
   // 0x38: u64
-  get BytesOut(): Deno.PointerValue {
+  get BytesOut(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
   // 0x40: u64
-  get BytesIn(): Deno.PointerValue {
+  get BytesIn(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
@@ -15959,7 +15959,7 @@ export class TCP_INFO_v1View {
   // 0x65: pad3
 
   // 0x68: u64
-  get SndLimBytesRwin(): Deno.PointerValue {
+  get SndLimBytesRwin(): bigint | number {
     return Number(this.view.getBigUint64(104, true));
   }
 
@@ -15974,7 +15974,7 @@ export class TCP_INFO_v1View {
   }
 
   // 0x78: u64
-  get SndLimBytesCwnd(): Deno.PointerValue {
+  get SndLimBytesCwnd(): bigint | number {
     return Number(this.view.getBigUint64(120, true));
   }
 
@@ -15989,7 +15989,7 @@ export class TCP_INFO_v1View {
   }
 
   // 0x88: u64
-  get SndLimBytesSnd(): Deno.PointerValue {
+  get SndLimBytesSnd(): bigint | number {
     return Number(this.view.getBigUint64(136, true));
   }
 
@@ -16004,7 +16004,7 @@ export class TCP_INFO_v1View {
   }
 
   // 0x08: u64
-  set ConnectionTimeMs(value: Deno.PointerValue) {
+  set ConnectionTimeMs(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -16051,12 +16051,12 @@ export class TCP_INFO_v1View {
   // 0x34: pad4
 
   // 0x38: u64
-  set BytesOut(value: Deno.PointerValue) {
+  set BytesOut(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
   // 0x40: u64
-  set BytesIn(value: Deno.PointerValue) {
+  set BytesIn(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
@@ -16103,7 +16103,7 @@ export class TCP_INFO_v1View {
   // 0x65: pad3
 
   // 0x68: u64
-  set SndLimBytesRwin(value: Deno.PointerValue) {
+  set SndLimBytesRwin(value: bigint | number) {
     this.view.setBigUint64(104, BigInt(value), true);
   }
 
@@ -16118,7 +16118,7 @@ export class TCP_INFO_v1View {
   }
 
   // 0x78: u64
-  set SndLimBytesCwnd(value: Deno.PointerValue) {
+  set SndLimBytesCwnd(value: bigint | number) {
     this.view.setBigUint64(120, BigInt(value), true);
   }
 
@@ -16133,7 +16133,7 @@ export class TCP_INFO_v1View {
   }
 
   // 0x88: u64
-  set SndLimBytesSnd(value: Deno.PointerValue) {
+  set SndLimBytesSnd(value: bigint | number) {
     this.view.setBigUint64(136, BigInt(value), true);
   }
 }
@@ -16201,7 +16201,7 @@ export class INET_PORT_RANGEView {
  */
 export interface INET_PORT_RESERVATION_TOKEN {
   /** u64 */
-  Token: Deno.PointerValue;
+  Token: bigint | number;
 }
 
 export const sizeofINET_PORT_RESERVATION_TOKEN = 8;
@@ -16225,12 +16225,12 @@ export class INET_PORT_RESERVATION_TOKENView {
   }
 
   // 0x00: u64
-  get Token(): Deno.PointerValue {
+  get Token(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: u64
-  set Token(value: Deno.PointerValue) {
+  set Token(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -16404,7 +16404,7 @@ export interface SOCKET_SECURITY_SETTINGS_IPSEC {
   /** System.Guid */
   Reserved: Uint8Array | Deno.PointerValue;
   /** u64 */
-  Reserved2: Deno.PointerValue;
+  Reserved2: bigint | number;
   /** u32 */
   UserNameStringLen: number;
   /** u32 */
@@ -16493,7 +16493,7 @@ export class SOCKET_SECURITY_SETTINGS_IPSECView {
   }
 
   // 0x28: u64
-  get Reserved2(): Deno.PointerValue {
+  get Reserved2(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -16553,7 +16553,7 @@ export class SOCKET_SECURITY_SETTINGS_IPSECView {
   }
 
   // 0x28: u64
-  set Reserved2(value: Deno.PointerValue) {
+  set Reserved2(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
@@ -16866,9 +16866,9 @@ export interface SOCKET_SECURITY_QUERY_INFO {
   /** u32 */
   Flags: number;
   /** u64 */
-  PeerApplicationAccessTokenHandle: Deno.PointerValue;
+  PeerApplicationAccessTokenHandle: bigint | number;
   /** u64 */
-  PeerMachineAccessTokenHandle: Deno.PointerValue;
+  PeerMachineAccessTokenHandle: bigint | number;
 }
 
 export const sizeofSOCKET_SECURITY_QUERY_INFO = 24;
@@ -16908,12 +16908,12 @@ export class SOCKET_SECURITY_QUERY_INFOView {
   }
 
   // 0x08: u64
-  get PeerApplicationAccessTokenHandle(): Deno.PointerValue {
+  get PeerApplicationAccessTokenHandle(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get PeerMachineAccessTokenHandle(): Deno.PointerValue {
+  get PeerMachineAccessTokenHandle(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -16928,12 +16928,12 @@ export class SOCKET_SECURITY_QUERY_INFOView {
   }
 
   // 0x08: u64
-  set PeerApplicationAccessTokenHandle(value: Deno.PointerValue) {
+  set PeerApplicationAccessTokenHandle(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set PeerMachineAccessTokenHandle(value: Deno.PointerValue) {
+  set PeerMachineAccessTokenHandle(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -16947,13 +16947,13 @@ export interface SOCKET_SECURITY_QUERY_INFO_IPSEC2 {
   /** u32 */
   Flags: number;
   /** u64 */
-  PeerApplicationAccessTokenHandle: Deno.PointerValue;
+  PeerApplicationAccessTokenHandle: bigint | number;
   /** u64 */
-  PeerMachineAccessTokenHandle: Deno.PointerValue;
+  PeerMachineAccessTokenHandle: bigint | number;
   /** u64 */
-  MmSaId: Deno.PointerValue;
+  MmSaId: bigint | number;
   /** u64 */
-  QmSaId: Deno.PointerValue;
+  QmSaId: bigint | number;
   /** u32 */
   NegotiationWinerr: number;
   /** System.Guid */
@@ -17006,22 +17006,22 @@ export class SOCKET_SECURITY_QUERY_INFO_IPSEC2View {
   }
 
   // 0x08: u64
-  get PeerApplicationAccessTokenHandle(): Deno.PointerValue {
+  get PeerApplicationAccessTokenHandle(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get PeerMachineAccessTokenHandle(): Deno.PointerValue {
+  get PeerMachineAccessTokenHandle(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get MmSaId(): Deno.PointerValue {
+  get MmSaId(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get QmSaId(): Deno.PointerValue {
+  get QmSaId(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -17049,22 +17049,22 @@ export class SOCKET_SECURITY_QUERY_INFO_IPSEC2View {
   }
 
   // 0x08: u64
-  set PeerApplicationAccessTokenHandle(value: Deno.PointerValue) {
+  set PeerApplicationAccessTokenHandle(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set PeerMachineAccessTokenHandle(value: Deno.PointerValue) {
+  set PeerMachineAccessTokenHandle(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set MmSaId(value: Deno.PointerValue) {
+  set MmSaId(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set QmSaId(value: Deno.PointerValue) {
+  set QmSaId(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -17183,9 +17183,9 @@ export interface RIORESULT {
   /** u32 */
   BytesTransferred: number;
   /** u64 */
-  SocketContext: Deno.PointerValue;
+  SocketContext: bigint | number;
   /** u64 */
-  RequestContext: Deno.PointerValue;
+  RequestContext: bigint | number;
 }
 
 export const sizeofRIORESULT = 24;
@@ -17225,12 +17225,12 @@ export class RIORESULTView {
   }
 
   // 0x08: u64
-  get SocketContext(): Deno.PointerValue {
+  get SocketContext(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get RequestContext(): Deno.PointerValue {
+  get RequestContext(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -17245,12 +17245,12 @@ export class RIORESULTView {
   }
 
   // 0x08: u64
-  set SocketContext(value: Deno.PointerValue) {
+  set SocketContext(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set RequestContext(value: Deno.PointerValue) {
+  set RequestContext(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -19357,9 +19357,9 @@ export class _header_e__StructView {
  */
 export interface SDP_LARGE_INTEGER_16 {
   /** u64 */
-  LowPart: Deno.PointerValue;
+  LowPart: bigint | number;
   /** i64 */
-  HighPart: Deno.PointerValue;
+  HighPart: bigint | number;
 }
 
 export const sizeofSDP_LARGE_INTEGER_16 = 16;
@@ -19385,22 +19385,22 @@ export class SDP_LARGE_INTEGER_16View {
   }
 
   // 0x00: u64
-  get LowPart(): Deno.PointerValue {
+  get LowPart(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: i64
-  get HighPart(): Deno.PointerValue {
+  get HighPart(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x00: u64
-  set LowPart(value: Deno.PointerValue) {
+  set LowPart(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: i64
-  set HighPart(value: Deno.PointerValue) {
+  set HighPart(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -19412,9 +19412,9 @@ export type CHAR = number;
  */
 export interface SDP_ULARGE_INTEGER_16 {
   /** u64 */
-  LowPart: Deno.PointerValue;
+  LowPart: bigint | number;
   /** u64 */
-  HighPart: Deno.PointerValue;
+  HighPart: bigint | number;
 }
 
 export const sizeofSDP_ULARGE_INTEGER_16 = 16;
@@ -19440,22 +19440,22 @@ export class SDP_ULARGE_INTEGER_16View {
   }
 
   // 0x00: u64
-  get LowPart(): Deno.PointerValue {
+  get LowPart(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get HighPart(): Deno.PointerValue {
+  get HighPart(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set LowPart(value: Deno.PointerValue) {
+  set LowPart(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set HighPart(value: Deno.PointerValue) {
+  set HighPart(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -19703,7 +19703,7 @@ export interface _data_e__Union {
   /** Windows.Win32.Devices.Bluetooth.SDP_LARGE_INTEGER_16 */
   int128: Uint8Array | Deno.PointerValue;
   /** i64 */
-  int64: Deno.PointerValue;
+  int64: bigint | number;
   /** i32 */
   int32: number;
   /** i16 */
@@ -19713,7 +19713,7 @@ export interface _data_e__Union {
   /** Windows.Win32.Devices.Bluetooth.SDP_ULARGE_INTEGER_16 */
   uint128: Uint8Array | Deno.PointerValue;
   /** u64 */
-  uint64: Deno.PointerValue;
+  uint64: bigint | number;
   /** u32 */
   uint32: number;
   /** u16 */
@@ -19801,7 +19801,7 @@ export class _data_e__UnionView {
   }
 
   // 0x08: i64
-  get int64(): Deno.PointerValue {
+  get int64(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -19829,7 +19829,7 @@ export class _data_e__UnionView {
   }
 
   // 0x20: u64
-  get uint64(): Deno.PointerValue {
+  get uint64(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -19901,7 +19901,7 @@ export class _data_e__UnionView {
   }
 
   // 0x08: i64
-  set int64(value: Deno.PointerValue) {
+  set int64(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -19928,7 +19928,7 @@ export class _data_e__UnionView {
   }
 
   // 0x20: u64
-  set uint64(value: Deno.PointerValue) {
+  set uint64(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -20614,7 +20614,7 @@ export interface WSATHREADID {
   /** Windows.Win32.Foundation.HANDLE */
   ThreadHandle: Uint8Array | Deno.PointerValue;
   /** usize */
-  Reserved: Deno.PointerValue;
+  Reserved: bigint | number;
 }
 
 export const sizeofWSATHREADID = 16;
@@ -20646,7 +20646,7 @@ export class WSATHREADIDView {
   }
 
   // 0x08: usize
-  get Reserved(): Deno.PointerValue {
+  get Reserved(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -20656,7 +20656,7 @@ export class WSATHREADIDView {
   }
 
   // 0x08: usize
-  set Reserved(value: Deno.PointerValue) {
+  set Reserved(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -23881,7 +23881,7 @@ export class NETRESOURCE2WView {
   }
 }
 
-export type LPARAM = Deno.PointerValue;
+export type LPARAM = bigint | number;
 
 /**
  * Windows.Win32.Networking.WinSock.SERVICE_ASYNC_INFO (size: 24)
@@ -24594,7 +24594,7 @@ export interface DL_EUI64 {
   /** array */
   Byte: Deno.PointerValue;
   /** u64 */
-  Value: Deno.PointerValue;
+  Value: bigint | number;
   /** _Anonymous_e__Struct */
   Anonymous: Uint8Array | Deno.PointerValue;
 }
@@ -24630,7 +24630,7 @@ export class DL_EUI64View {
   }
 
   // 0x08: u64
-  get Value(): Deno.PointerValue {
+  get Value(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -24646,7 +24646,7 @@ export class DL_EUI64View {
   }
 
   // 0x08: u64
-  set Value(value: Deno.PointerValue) {
+  set Value(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -25323,11 +25323,11 @@ export class ICMP_MESSAGEView {
  */
 export interface _Anonymous1_e__Union {
   /** usize */
-  Data0: Deno.PointerValue;
+  Data0: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   String: string | null | Uint8Array | Uint16Array;
   /** usize */
-  u: Deno.PointerValue;
+  u: bigint | number;
   /** ptr */
   psid: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -25379,7 +25379,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  get Data0(): Deno.PointerValue {
+  get Data0(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -25390,7 +25390,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  get u(): Deno.PointerValue {
+  get u(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -25426,7 +25426,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  set Data0(value: Deno.PointerValue) {
+  set Data0(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -25437,7 +25437,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  set u(value: Deno.PointerValue) {
+  set u(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -25474,7 +25474,7 @@ export class _Anonymous1_e__UnionView {
  */
 export interface _Anonymous2_e__Union {
   /** usize */
-  Data1: Deno.PointerValue;
+  Data1: bigint | number;
   /** i32 */
   LogonId_HighPart: number;
 }
@@ -25503,7 +25503,7 @@ export class _Anonymous2_e__UnionView {
   }
 
   // 0x00: usize
-  get Data1(): Deno.PointerValue {
+  get Data1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -25515,7 +25515,7 @@ export class _Anonymous2_e__UnionView {
   // 0x0c: pad4
 
   // 0x00: usize
-  set Data1(value: Deno.PointerValue) {
+  set Data1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -29587,7 +29587,7 @@ export class DL_TEREDO_ADDRESS_PRVView {
  */
 export interface IPTLS_METADATA {
   /** u64 */
-  SequenceNumber: Deno.PointerValue;
+  SequenceNumber: bigint | number;
 }
 
 export const sizeofIPTLS_METADATA = 8;
@@ -29611,12 +29611,12 @@ export class IPTLS_METADATAView {
   }
 
   // 0x00: u64
-  get SequenceNumber(): Deno.PointerValue {
+  get SequenceNumber(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: u64
-  set SequenceNumber(value: Deno.PointerValue) {
+  set SequenceNumber(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -29694,7 +29694,7 @@ export class NPI_MODULEIDView {
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 // Native Libraries
 
@@ -30586,7 +30586,7 @@ export function WSCSetProviderInfo32(
   lpProviderId: Deno.PointerValue | Uint8Array /* ptr */,
   InfoType: WSC_PROVIDER_INFO_TYPE /* Windows.Win32.Networking.WinSock.WSC_PROVIDER_INFO_TYPE */,
   Info: Deno.PointerValue | Uint8Array /* ptr */,
-  InfoSize: Deno.PointerValue /* usize */,
+  InfoSize: bigint | number /* usize */,
   Flags: number /* u32 */,
   lpErrno: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
@@ -31046,7 +31046,7 @@ export function WSAAccept(
   addr: Deno.PointerValue | Uint8Array /* ptr */,
   addrlen: Deno.PointerValue | Uint8Array /* ptr */,
   lpfnCondition: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.WinSock.LPCONDITIONPROC */,
-  dwCallbackData: Deno.PointerValue /* usize */,
+  dwCallbackData: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Networking.WinSock.SOCKET */ {
   return libWS2_32_dll.WSAAccept(util.toPointer(s), util.toPointer(addr), util.toPointer(addrlen), util.toPointer(lpfnCondition), dwCallbackData);
 }
@@ -31839,7 +31839,7 @@ export function WSCSetProviderInfo(
   lpProviderId: Deno.PointerValue | Uint8Array /* ptr */,
   InfoType: WSC_PROVIDER_INFO_TYPE /* Windows.Win32.Networking.WinSock.WSC_PROVIDER_INFO_TYPE */,
   Info: Deno.PointerValue | Uint8Array /* ptr */,
-  InfoSize: Deno.PointerValue /* usize */,
+  InfoSize: bigint | number /* usize */,
   Flags: number /* u32 */,
   lpErrno: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
@@ -32228,7 +32228,7 @@ export function inet_ntop(
   Family: number /* i32 */,
   pAddr: Deno.PointerValue | Uint8Array /* ptr */,
   pStringBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  StringBufSize: Deno.PointerValue /* usize */,
+  StringBufSize: bigint | number /* usize */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libWS2_32_dll.inet_ntop(Family, util.toPointer(pAddr), util.pstrToFfi(pStringBuf), StringBufSize));
 }
@@ -32237,7 +32237,7 @@ export function InetNtopW(
   Family: number /* i32 */,
   pAddr: Deno.PointerValue | Uint8Array /* ptr */,
   pStringBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  StringBufSize: Deno.PointerValue /* usize */,
+  StringBufSize: bigint | number /* usize */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
   return util.pwstrFromFfi(libWS2_32_dll.InetNtopW(Family, util.toPointer(pAddr), util.pwstrToFfi(pStringBuf), StringBufSize));
 }

@@ -1866,9 +1866,9 @@ export class _wireBRECORDView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -1894,22 +1894,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -2721,9 +2721,9 @@ export class OBJECTDESCRIPTORView {
 
 export type BOOL = number;
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
-export type HACCEL = Deno.PointerValue;
+export type HACCEL = bigint | number;
 
 /**
  * Windows.Win32.System.Ole.OLEINPLACEFRAMEINFO (size: 32)
@@ -4183,7 +4183,7 @@ export class CADWORDView {
   }
 }
 
-export type HPALETTE = Deno.PointerValue;
+export type HPALETTE = bigint | number;
 
 /**
  * Windows.Win32.System.Ole.QACONTAINER (size: 112)
@@ -4772,7 +4772,7 @@ export interface CY {
   /** _Anonymous_e__Struct */
   Anonymous: Uint8Array | Deno.PointerValue;
   /** i64 */
-  int64: Deno.PointerValue;
+  int64: bigint | number;
 }
 
 export const sizeofCY = 16;
@@ -4804,7 +4804,7 @@ export class CYView {
   }
 
   // 0x08: i64
-  get int64(): Deno.PointerValue {
+  get int64(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -4814,7 +4814,7 @@ export class CYView {
   }
 
   // 0x08: i64
-  set int64(value: Deno.PointerValue) {
+  set int64(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -5324,11 +5324,11 @@ export class OLECMDTEXTView {
   }
 }
 
-export type LPARAM = Deno.PointerValue;
+export type LPARAM = bigint | number;
 
-export type HINSTANCE = Deno.PointerValue;
+export type HINSTANCE = bigint | number;
 
-export type HRSRC = Deno.PointerValue;
+export type HRSRC = bigint | number;
 
 /**
  * Windows.Win32.System.Ole.OLEUIINSERTOBJECTW (size: 160)
@@ -5377,7 +5377,7 @@ export interface OLEUIINSERTOBJECTW {
   /** i32 */
   sc: number;
   /** isize */
-  hMetaPict: Deno.PointerValue;
+  hMetaPict: bigint | number;
 }
 
 export const sizeofOLEUIINSERTOBJECTW = 160;
@@ -5578,7 +5578,7 @@ export class OLEUIINSERTOBJECTWView {
   // 0x94: pad4
 
   // 0x98: isize
-  get hMetaPict(): Deno.PointerValue {
+  get hMetaPict(): bigint | number {
     return Number(this.view.getBigInt64(152, true));
   }
 
@@ -5695,7 +5695,7 @@ export class OLEUIINSERTOBJECTWView {
   // 0x94: pad4
 
   // 0x98: isize
-  set hMetaPict(value: Deno.PointerValue) {
+  set hMetaPict(value: bigint | number) {
     this.view.setBigInt64(152, BigInt(value), true);
   }
 }
@@ -5749,7 +5749,7 @@ export interface OLEUIINSERTOBJECTA {
   /** i32 */
   sc: number;
   /** isize */
-  hMetaPict: Deno.PointerValue;
+  hMetaPict: bigint | number;
 }
 
 export const sizeofOLEUIINSERTOBJECTA = 160;
@@ -5950,7 +5950,7 @@ export class OLEUIINSERTOBJECTAView {
   // 0x94: pad4
 
   // 0x98: isize
-  get hMetaPict(): Deno.PointerValue {
+  get hMetaPict(): bigint | number {
     return Number(this.view.getBigInt64(152, true));
   }
 
@@ -6067,7 +6067,7 @@ export class OLEUIINSERTOBJECTAView {
   // 0x94: pad4
 
   // 0x98: isize
-  set hMetaPict(value: Deno.PointerValue) {
+  set hMetaPict(value: bigint | number) {
     this.view.setBigInt64(152, BigInt(value), true);
   }
 }
@@ -6431,7 +6431,7 @@ export interface OLEUIPASTESPECIALW {
   /** Windows.Win32.Foundation.BOOL */
   fLink: boolean;
   /** isize */
-  hMetaPict: Deno.PointerValue;
+  hMetaPict: bigint | number;
   /** Windows.Win32.Foundation.SIZE */
   sizel: Uint8Array | Deno.PointerValue;
 }
@@ -6605,7 +6605,7 @@ export class OLEUIPASTESPECIALWView {
   }
 
   // 0x78: isize
-  get hMetaPict(): Deno.PointerValue {
+  get hMetaPict(): bigint | number {
     return Number(this.view.getBigInt64(120, true));
   }
 
@@ -6710,7 +6710,7 @@ export class OLEUIPASTESPECIALWView {
   }
 
   // 0x78: isize
-  set hMetaPict(value: Deno.PointerValue) {
+  set hMetaPict(value: bigint | number) {
     this.view.setBigInt64(120, BigInt(value), true);
   }
 
@@ -6761,7 +6761,7 @@ export interface OLEUIPASTESPECIALA {
   /** Windows.Win32.Foundation.BOOL */
   fLink: boolean;
   /** isize */
-  hMetaPict: Deno.PointerValue;
+  hMetaPict: bigint | number;
   /** Windows.Win32.Foundation.SIZE */
   sizel: Uint8Array | Deno.PointerValue;
 }
@@ -6935,7 +6935,7 @@ export class OLEUIPASTESPECIALAView {
   }
 
   // 0x78: isize
-  get hMetaPict(): Deno.PointerValue {
+  get hMetaPict(): bigint | number {
     return Number(this.view.getBigInt64(120, true));
   }
 
@@ -7040,7 +7040,7 @@ export class OLEUIPASTESPECIALAView {
   }
 
   // 0x78: isize
-  set hMetaPict(value: Deno.PointerValue) {
+  set hMetaPict(value: bigint | number) {
     this.view.setBigInt64(120, BigInt(value), true);
   }
 
@@ -7435,7 +7435,7 @@ export interface OLEUICHANGEICONW {
   /** Windows.Win32.Foundation.HRSRC */
   hResource: Uint8Array | Deno.PointerValue;
   /** isize */
-  hMetaPict: Deno.PointerValue;
+  hMetaPict: bigint | number;
   /** System.Guid */
   clsid: Uint8Array | Deno.PointerValue;
   /** array */
@@ -7548,7 +7548,7 @@ export class OLEUICHANGEICONWView {
   }
 
   // 0x40: isize
-  get hMetaPict(): Deno.PointerValue {
+  get hMetaPict(): bigint | number {
     return Number(this.view.getBigInt64(64, true));
   }
 
@@ -7619,7 +7619,7 @@ export class OLEUICHANGEICONWView {
   }
 
   // 0x40: isize
-  set hMetaPict(value: Deno.PointerValue) {
+  set hMetaPict(value: bigint | number) {
     this.view.setBigInt64(64, BigInt(value), true);
   }
 
@@ -7664,7 +7664,7 @@ export interface OLEUICHANGEICONA {
   /** Windows.Win32.Foundation.HRSRC */
   hResource: Uint8Array | Deno.PointerValue;
   /** isize */
-  hMetaPict: Deno.PointerValue;
+  hMetaPict: bigint | number;
   /** System.Guid */
   clsid: Uint8Array | Deno.PointerValue;
   /** array */
@@ -7777,7 +7777,7 @@ export class OLEUICHANGEICONAView {
   }
 
   // 0x40: isize
-  get hMetaPict(): Deno.PointerValue {
+  get hMetaPict(): bigint | number {
     return Number(this.view.getBigInt64(64, true));
   }
 
@@ -7848,7 +7848,7 @@ export class OLEUICHANGEICONAView {
   }
 
   // 0x40: isize
-  set hMetaPict(value: Deno.PointerValue) {
+  set hMetaPict(value: bigint | number) {
     this.view.setBigInt64(64, BigInt(value), true);
   }
 
@@ -7907,7 +7907,7 @@ export interface OLEUICONVERTW {
   /** Windows.Win32.Foundation.BOOL */
   fIsLinkedObject: boolean;
   /** isize */
-  hMetaPict: Deno.PointerValue;
+  hMetaPict: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   lpszUserType: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.BOOL */
@@ -8091,7 +8091,7 @@ export class OLEUICONVERTWView {
   // 0x6a: pad6
 
   // 0x70: isize
-  get hMetaPict(): Deno.PointerValue {
+  get hMetaPict(): bigint | number {
     return Number(this.view.getBigInt64(112, true));
   }
 
@@ -8212,7 +8212,7 @@ export class OLEUICONVERTWView {
   // 0x6a: pad6
 
   // 0x70: isize
-  set hMetaPict(value: Deno.PointerValue) {
+  set hMetaPict(value: bigint | number) {
     this.view.setBigInt64(112, BigInt(value), true);
   }
 
@@ -8285,7 +8285,7 @@ export interface OLEUICONVERTA {
   /** Windows.Win32.Foundation.BOOL */
   fIsLinkedObject: boolean;
   /** isize */
-  hMetaPict: Deno.PointerValue;
+  hMetaPict: bigint | number;
   /** Windows.Win32.Foundation.PSTR */
   lpszUserType: string | null | Uint8Array;
   /** Windows.Win32.Foundation.BOOL */
@@ -8469,7 +8469,7 @@ export class OLEUICONVERTAView {
   // 0x6a: pad6
 
   // 0x70: isize
-  get hMetaPict(): Deno.PointerValue {
+  get hMetaPict(): bigint | number {
     return Number(this.view.getBigInt64(112, true));
   }
 
@@ -8590,7 +8590,7 @@ export class OLEUICONVERTAView {
   // 0x6a: pad6
 
   // 0x70: isize
-  set hMetaPict(value: Deno.PointerValue) {
+  set hMetaPict(value: bigint | number) {
     this.view.setBigInt64(112, BigInt(value), true);
   }
 
@@ -8626,7 +8626,7 @@ export class OLEUICONVERTAView {
   }
 }
 
-export type HTASK = Deno.PointerValue;
+export type HTASK = bigint | number;
 
 /**
  * Windows.Win32.System.Ole.OLEUIBUSYW (size: 80)
@@ -10824,15 +10824,15 @@ export type BSTR = Deno.PointerValue | Uint8Array;
 
 export type CHAR = number;
 
-export type HMENU = Deno.PointerValue;
+export type HMENU = bigint | number;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
-export type HDC = Deno.PointerValue;
+export type HDC = bigint | number;
 
-export type HICON = Deno.PointerValue;
+export type HICON = bigint | number;
 
-export type HCURSOR = Deno.PointerValue;
+export type HCURSOR = bigint | number;
 
 // Native Libraries
 
@@ -13016,7 +13016,7 @@ export function VarUI1FromI4(
 }
 
 export function VarUI1FromI8(
-  i64In: Deno.PointerValue /* i64 */,
+  i64In: bigint | number /* i64 */,
   pbOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libOLEAUT32_dll.VarUI1FromI8(i64In, util.toPointer(pbOut));
@@ -13096,7 +13096,7 @@ export function VarUI1FromUI4(
 }
 
 export function VarUI1FromUI8(
-  ui64In: Deno.PointerValue /* u64 */,
+  ui64In: bigint | number /* u64 */,
   pbOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libOLEAUT32_dll.VarUI1FromUI8(ui64In, util.toPointer(pbOut));
@@ -13124,7 +13124,7 @@ export function VarI2FromI4(
 }
 
 export function VarI2FromI8(
-  i64In: Deno.PointerValue /* i64 */,
+  i64In: bigint | number /* i64 */,
   psOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libOLEAUT32_dll.VarI2FromI8(i64In, util.toPointer(psOut));
@@ -13204,7 +13204,7 @@ export function VarI2FromUI4(
 }
 
 export function VarI2FromUI8(
-  ui64In: Deno.PointerValue /* u64 */,
+  ui64In: bigint | number /* u64 */,
   psOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libOLEAUT32_dll.VarI2FromUI8(ui64In, util.toPointer(psOut));
@@ -13232,7 +13232,7 @@ export function VarI4FromI2(
 }
 
 export function VarI4FromI8(
-  i64In: Deno.PointerValue /* i64 */,
+  i64In: bigint | number /* i64 */,
   plOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libOLEAUT32_dll.VarI4FromI8(i64In, util.toPointer(plOut));
@@ -13312,7 +13312,7 @@ export function VarI4FromUI4(
 }
 
 export function VarI4FromUI8(
-  ui64In: Deno.PointerValue /* u64 */,
+  ui64In: bigint | number /* u64 */,
   plOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libOLEAUT32_dll.VarI4FromUI8(ui64In, util.toPointer(plOut));
@@ -13413,7 +13413,7 @@ export function VarI8FromUI4(
 }
 
 export function VarI8FromUI8(
-  ui64In: Deno.PointerValue /* u64 */,
+  ui64In: bigint | number /* u64 */,
   pi64Out: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libOLEAUT32_dll.VarI8FromUI8(ui64In, util.toPointer(pi64Out));
@@ -13448,7 +13448,7 @@ export function VarR4FromI4(
 }
 
 export function VarR4FromI8(
-  i64In: Deno.PointerValue /* i64 */,
+  i64In: bigint | number /* i64 */,
   pfltOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libOLEAUT32_dll.VarR4FromI8(i64In, util.toPointer(pfltOut));
@@ -13521,7 +13521,7 @@ export function VarR4FromUI4(
 }
 
 export function VarR4FromUI8(
-  ui64In: Deno.PointerValue /* u64 */,
+  ui64In: bigint | number /* u64 */,
   pfltOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libOLEAUT32_dll.VarR4FromUI8(ui64In, util.toPointer(pfltOut));
@@ -13556,7 +13556,7 @@ export function VarR8FromI4(
 }
 
 export function VarR8FromI8(
-  i64In: Deno.PointerValue /* i64 */,
+  i64In: bigint | number /* i64 */,
   pdblOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libOLEAUT32_dll.VarR8FromI8(i64In, util.toPointer(pdblOut));
@@ -13629,7 +13629,7 @@ export function VarR8FromUI4(
 }
 
 export function VarR8FromUI8(
-  ui64In: Deno.PointerValue /* u64 */,
+  ui64In: bigint | number /* u64 */,
   pdblOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libOLEAUT32_dll.VarR8FromUI8(ui64In, util.toPointer(pdblOut));
@@ -13664,7 +13664,7 @@ export function VarDateFromI4(
 }
 
 export function VarDateFromI8(
-  i64In: Deno.PointerValue /* i64 */,
+  i64In: bigint | number /* i64 */,
   pdateOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libOLEAUT32_dll.VarDateFromI8(i64In, util.toPointer(pdateOut));
@@ -13737,7 +13737,7 @@ export function VarDateFromUI4(
 }
 
 export function VarDateFromUI8(
-  ui64In: Deno.PointerValue /* u64 */,
+  ui64In: bigint | number /* u64 */,
   pdateOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libOLEAUT32_dll.VarDateFromUI8(ui64In, util.toPointer(pdateOut));
@@ -13772,7 +13772,7 @@ export function VarCyFromI4(
 }
 
 export function VarCyFromI8(
-  i64In: Deno.PointerValue /* i64 */,
+  i64In: bigint | number /* i64 */,
   pcyOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libOLEAUT32_dll.VarCyFromI8(i64In, util.toPointer(pcyOut));
@@ -13845,7 +13845,7 @@ export function VarCyFromUI4(
 }
 
 export function VarCyFromUI8(
-  ui64In: Deno.PointerValue /* u64 */,
+  ui64In: bigint | number /* u64 */,
   pcyOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libOLEAUT32_dll.VarCyFromUI8(ui64In, util.toPointer(pcyOut));
@@ -13886,7 +13886,7 @@ export function VarBstrFromI4(
 }
 
 export function VarBstrFromI8(
-  i64In: Deno.PointerValue /* i64 */,
+  i64In: bigint | number /* i64 */,
   lcid: number /* u32 */,
   dwFlags: number /* u32 */,
   pbstrOut: Deno.PointerValue | Uint8Array /* ptr */,
@@ -13976,7 +13976,7 @@ export function VarBstrFromUI4(
 }
 
 export function VarBstrFromUI8(
-  ui64In: Deno.PointerValue /* u64 */,
+  ui64In: bigint | number /* u64 */,
   lcid: number /* u32 */,
   dwFlags: number /* u32 */,
   pbstrOut: Deno.PointerValue | Uint8Array /* ptr */,
@@ -14015,7 +14015,7 @@ export function VarBoolFromI4(
 }
 
 export function VarBoolFromI8(
-  i64In: Deno.PointerValue /* i64 */,
+  i64In: bigint | number /* i64 */,
   pboolOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libOLEAUT32_dll.VarBoolFromI8(i64In, util.toPointer(pboolOut));
@@ -14088,7 +14088,7 @@ export function VarBoolFromUI4(
 }
 
 export function VarBoolFromUI8(
-  i64In: Deno.PointerValue /* u64 */,
+  i64In: bigint | number /* u64 */,
   pboolOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libOLEAUT32_dll.VarBoolFromUI8(i64In, util.toPointer(pboolOut));
@@ -14123,7 +14123,7 @@ export function VarI1FromI4(
 }
 
 export function VarI1FromI8(
-  i64In: Deno.PointerValue /* i64 */,
+  i64In: bigint | number /* i64 */,
   pcOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libOLEAUT32_dll.VarI1FromI8(i64In, util.pstrToFfi(pcOut));
@@ -14196,7 +14196,7 @@ export function VarI1FromUI4(
 }
 
 export function VarI1FromUI8(
-  i64In: Deno.PointerValue /* u64 */,
+  i64In: bigint | number /* u64 */,
   pcOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libOLEAUT32_dll.VarI1FromUI8(i64In, util.pstrToFfi(pcOut));
@@ -14231,7 +14231,7 @@ export function VarUI2FromI4(
 }
 
 export function VarUI2FromI8(
-  i64In: Deno.PointerValue /* i64 */,
+  i64In: bigint | number /* i64 */,
   puiOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libOLEAUT32_dll.VarUI2FromI8(i64In, util.toPointer(puiOut));
@@ -14304,7 +14304,7 @@ export function VarUI2FromUI4(
 }
 
 export function VarUI2FromUI8(
-  i64In: Deno.PointerValue /* u64 */,
+  i64In: bigint | number /* u64 */,
   puiOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libOLEAUT32_dll.VarUI2FromUI8(i64In, util.toPointer(puiOut));
@@ -14339,7 +14339,7 @@ export function VarUI4FromI4(
 }
 
 export function VarUI4FromI8(
-  i64In: Deno.PointerValue /* i64 */,
+  i64In: bigint | number /* i64 */,
   plOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libOLEAUT32_dll.VarUI4FromI8(i64In, util.toPointer(plOut));
@@ -14412,7 +14412,7 @@ export function VarUI4FromUI2(
 }
 
 export function VarUI4FromUI8(
-  ui64In: Deno.PointerValue /* u64 */,
+  ui64In: bigint | number /* u64 */,
   plOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libOLEAUT32_dll.VarUI4FromUI8(ui64In, util.toPointer(plOut));
@@ -14440,7 +14440,7 @@ export function VarUI8FromI2(
 }
 
 export function VarUI8FromI8(
-  ui64In: Deno.PointerValue /* i64 */,
+  ui64In: bigint | number /* i64 */,
   pi64Out: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libOLEAUT32_dll.VarUI8FromI8(ui64In, util.toPointer(pi64Out));
@@ -14548,7 +14548,7 @@ export function VarDecFromI4(
 }
 
 export function VarDecFromI8(
-  i64In: Deno.PointerValue /* i64 */,
+  i64In: bigint | number /* i64 */,
   pdecOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libOLEAUT32_dll.VarDecFromI8(i64In, util.toPointer(pdecOut));
@@ -14628,7 +14628,7 @@ export function VarDecFromUI4(
 }
 
 export function VarDecFromUI8(
-  ui64In: Deno.PointerValue /* u64 */,
+  ui64In: bigint | number /* u64 */,
   pdecOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libOLEAUT32_dll.VarDecFromUI8(ui64In, util.toPointer(pdecOut));
@@ -14917,7 +14917,7 @@ export function VarCyMulI4(
 
 export function VarCyMulI8(
   cyLeft: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.CY */,
-  lRight: Deno.PointerValue /* i64 */,
+  lRight: bigint | number /* i64 */,
   pcyResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libOLEAUT32_dll.VarCyMulI8(util.toPointer(cyLeft), lRight, util.toPointer(pcyResult));
@@ -15305,7 +15305,7 @@ export function CreateStdDispatch(
 
 export function DispCallFunc(
   pvInstance: Deno.PointerValue | Uint8Array /* ptr */,
-  oVft: Deno.PointerValue /* usize */,
+  oVft: bigint | number /* usize */,
   cc: CALLCONV /* Windows.Win32.System.Com.CALLCONV */,
   vtReturn: VARENUM /* Windows.Win32.System.Com.VARENUM */,
   cActuals: number /* u32 */,
@@ -15695,12 +15695,12 @@ export function OleIsCurrentClipboard(
 export function OleCreateMenuDescriptor(
   hmenuCombined: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HMENU */,
   lpMenuWidths: Deno.PointerValue | Uint8Array /* ptr */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libOLE32_dll.OleCreateMenuDescriptor(util.toPointer(hmenuCombined), util.toPointer(lpMenuWidths));
 }
 
 export function OleSetMenuDescriptor(
-  holemenu: Deno.PointerValue /* isize */,
+  holemenu: bigint | number /* isize */,
   hwndFrame: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   hwndActiveObject: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   lpFrame: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Ole.IOleInPlaceFrame */,
@@ -15710,7 +15710,7 @@ export function OleSetMenuDescriptor(
 }
 
 export function OleDestroyMenuDescriptor(
-  holemenu: Deno.PointerValue /* isize */,
+  holemenu: bigint | number /* isize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libOLE32_dll.OleDestroyMenuDescriptor(holemenu);
 }
@@ -15804,7 +15804,7 @@ export function IsAccelerator(
 export function OleGetIconOfFile(
   lpszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fUseFileAsLabel: boolean /* Windows.Win32.Foundation.BOOL */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libole32_dll.OleGetIconOfFile(util.pwstrToFfi(lpszPath), util.boolToFfi(fUseFileAsLabel));
 }
 
@@ -15812,7 +15812,7 @@ export function OleGetIconOfClass(
   rclsid: Deno.PointerValue | Uint8Array /* ptr */,
   lpszLabel: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fUseTypeAsLabel: boolean /* Windows.Win32.Foundation.BOOL */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libOLE32_dll.OleGetIconOfClass(util.toPointer(rclsid), util.pwstrToFfi(lpszLabel), util.boolToFfi(fUseTypeAsLabel));
 }
 
@@ -15821,7 +15821,7 @@ export function OleMetafilePictFromIconAndLabel(
   lpszLabel: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpszSourceFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   iIconIndex: number /* u32 */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libole32_dll.OleMetafilePictFromIconAndLabel(util.toPointer(hIcon), util.pwstrToFfi(lpszLabel), util.pwstrToFfi(lpszSourceFile), iIconIndex);
 }
 

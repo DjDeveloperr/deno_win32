@@ -77,9 +77,9 @@ export class PERCEPTION_PAYLOAD_FIELDView {
  */
 export interface PERCEPTION_STATE_STREAM_TIMESTAMPS {
   /** i64 */
-  InputTimestampInQpcCounts: Deno.PointerValue;
+  InputTimestampInQpcCounts: bigint | number;
   /** i64 */
-  AvailableTimestampInQpcCounts: Deno.PointerValue;
+  AvailableTimestampInQpcCounts: bigint | number;
 }
 
 export const sizeofPERCEPTION_STATE_STREAM_TIMESTAMPS = 16;
@@ -105,22 +105,22 @@ export class PERCEPTION_STATE_STREAM_TIMESTAMPSView {
   }
 
   // 0x00: i64
-  get InputTimestampInQpcCounts(): Deno.PointerValue {
+  get InputTimestampInQpcCounts(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: i64
-  get AvailableTimestampInQpcCounts(): Deno.PointerValue {
+  get AvailableTimestampInQpcCounts(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x00: i64
-  set InputTimestampInQpcCounts(value: Deno.PointerValue) {
+  set InputTimestampInQpcCounts(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: i64
-  set AvailableTimestampInQpcCounts(value: Deno.PointerValue) {
+  set AvailableTimestampInQpcCounts(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }

@@ -269,7 +269,7 @@ export const PrintDocumentPackageCompletion_Failed = 3;
 
 // Structs
 
-export type HPTPROVIDER = Deno.PointerValue;
+export type HPTPROVIDER = bigint | number;
 
 /**
  * Windows.Win32.Foundation.POINT (size: 8)
@@ -1981,9 +1981,9 @@ export class PrintDocumentPackageStatusView {
   }
 }
 
-export type HDC = Deno.PointerValue;
+export type HDC = bigint | number;
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 // Native Libraries
 

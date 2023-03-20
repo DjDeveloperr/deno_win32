@@ -67,11 +67,11 @@ export const HcsCreateOptions_1 = 65536;
 
 // Structs
 
-export type HCS_OPERATION = Deno.PointerValue;
+export type HCS_OPERATION = bigint | number;
 
-export type HCS_SYSTEM = Deno.PointerValue;
+export type HCS_SYSTEM = bigint | number;
 
-export type HCS_PROCESS = Deno.PointerValue;
+export type HCS_PROCESS = bigint | number;
 
 export type PWSTR = Deno.PointerValue | Uint8Array;
 
@@ -153,7 +153,7 @@ export class HCS_EVENTView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.System.HostComputeSystem.HCS_PROCESS_INFORMATION (size: 32)
@@ -709,7 +709,7 @@ export function HcsGetOperationType(
 
 export function HcsGetOperationId(
   operation: Uint8Array | Deno.PointerValue /* Windows.Win32.System.HostComputeSystem.HCS_OPERATION */,
-): Deno.PointerValue /* u64 */ {
+): bigint | number /* u64 */ {
   return libcomputecore_dll.HcsGetOperationId(util.toPointer(operation));
 }
 

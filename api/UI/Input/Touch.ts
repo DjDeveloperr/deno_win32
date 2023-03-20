@@ -40,11 +40,11 @@ export const MANIPULATION_ALL = 15;
 
 // Structs
 
-export type HGESTUREINFO = Deno.PointerValue;
+export type HGESTUREINFO = bigint | number;
 
-export type HTOUCHINPUT = Deno.PointerValue;
+export type HTOUCHINPUT = bigint | number;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.UI.Input.Touch.TOUCHINPUT (size: 48)
@@ -65,7 +65,7 @@ export interface TOUCHINPUT {
   /** u32 */
   dwTime: number;
   /** usize */
-  dwExtraInfo: Deno.PointerValue;
+  dwExtraInfo: bigint | number;
   /** u32 */
   cxContact: number;
   /** u32 */
@@ -147,7 +147,7 @@ export class TOUCHINPUTView {
   }
 
   // 0x20: usize
-  get dwExtraInfo(): Deno.PointerValue {
+  get dwExtraInfo(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -197,7 +197,7 @@ export class TOUCHINPUTView {
   }
 
   // 0x20: usize
-  set dwExtraInfo(value: Deno.PointerValue) {
+  set dwExtraInfo(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -212,7 +212,7 @@ export class TOUCHINPUTView {
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 /**
  * Windows.Win32.Foundation.POINTS (size: 8)
@@ -291,7 +291,7 @@ export interface GESTUREINFO {
   /** u32 */
   dwSequenceID: number;
   /** u64 */
-  ullArguments: Deno.PointerValue;
+  ullArguments: bigint | number;
   /** u32 */
   cbExtraArgs: number;
 }
@@ -374,7 +374,7 @@ export class GESTUREINFOView {
   }
 
   // 0x28: u64
-  get ullArguments(): Deno.PointerValue {
+  get ullArguments(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -423,7 +423,7 @@ export class GESTUREINFOView {
   }
 
   // 0x28: u64
-  set ullArguments(value: Deno.PointerValue) {
+  set ullArguments(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 

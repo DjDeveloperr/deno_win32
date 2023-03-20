@@ -117,7 +117,7 @@ export const PT_TOUCHPAD = 5;
 
 // Structs
 
-export type HINTERACTIONCONTEXT = Deno.PointerValue;
+export type HINTERACTIONCONTEXT = bigint | number;
 
 /**
  * Windows.Win32.UI.InteractionContext.MANIPULATION_TRANSFORM (size: 24)

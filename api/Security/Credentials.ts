@@ -332,9 +332,9 @@ export class KeyCredentialManagerInfoView {
  */
 export interface SecHandle {
   /** usize */
-  dwLower: Deno.PointerValue;
+  dwLower: bigint | number;
   /** usize */
-  dwUpper: Deno.PointerValue;
+  dwUpper: bigint | number;
 }
 
 export const sizeofSecHandle = 16;
@@ -360,22 +360,22 @@ export class SecHandleView {
   }
 
   // 0x00: usize
-  get dwLower(): Deno.PointerValue {
+  get dwLower(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: usize
-  get dwUpper(): Deno.PointerValue {
+  get dwUpper(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: usize
-  set dwLower(value: Deno.PointerValue) {
+  set dwLower(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: usize
-  set dwUpper(value: Deno.PointerValue) {
+  set dwUpper(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -1617,9 +1617,9 @@ export class BINARY_BLOB_CREDENTIAL_INFOView {
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
-export type HBITMAP = Deno.PointerValue;
+export type HBITMAP = bigint | number;
 
 /**
  * Windows.Win32.Security.Credentials.CREDUI_INFOA (size: 40)
@@ -2003,9 +2003,9 @@ export class SCARD_T0_COMMANDView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -2031,22 +2031,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -3034,7 +3034,7 @@ export class OPENCARD_SEARCH_CRITERIAWView {
   }
 }
 
-export type HICON = Deno.PointerValue;
+export type HICON = bigint | number;
 
 /**
  * Windows.Win32.Security.Credentials.OPENCARDNAME_EXA (size: 128)
@@ -3043,7 +3043,7 @@ export interface OPENCARDNAME_EXA {
   /** u32 */
   dwStructSize: number;
   /** usize */
-  hSCardContext: Deno.PointerValue;
+  hSCardContext: bigint | number;
   /** Windows.Win32.Foundation.HWND */
   hwndOwner: Deno.PointerValue;
   /** u32 */
@@ -3075,7 +3075,7 @@ export interface OPENCARDNAME_EXA {
   /** u32 */
   dwActiveProtocol: number;
   /** usize */
-  hCardHandle: Deno.PointerValue;
+  hCardHandle: bigint | number;
 }
 
 export const sizeofOPENCARDNAME_EXA = 128;
@@ -3155,7 +3155,7 @@ export class OPENCARDNAME_EXAView {
   // 0x04: pad4
 
   // 0x08: usize
-  get hSCardContext(): Deno.PointerValue {
+  get hSCardContext(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -3248,7 +3248,7 @@ export class OPENCARDNAME_EXAView {
   }
 
   // 0x78: usize
-  get hCardHandle(): Deno.PointerValue {
+  get hCardHandle(): bigint | number {
     return Number(this.view.getBigUint64(120, true));
   }
 
@@ -3260,7 +3260,7 @@ export class OPENCARDNAME_EXAView {
   // 0x04: pad4
 
   // 0x08: usize
-  set hSCardContext(value: Deno.PointerValue) {
+  set hSCardContext(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -3348,7 +3348,7 @@ export class OPENCARDNAME_EXAView {
   }
 
   // 0x78: usize
-  set hCardHandle(value: Deno.PointerValue) {
+  set hCardHandle(value: bigint | number) {
     this.view.setBigUint64(120, BigInt(value), true);
   }
 }
@@ -3360,7 +3360,7 @@ export interface OPENCARDNAME_EXW {
   /** u32 */
   dwStructSize: number;
   /** usize */
-  hSCardContext: Deno.PointerValue;
+  hSCardContext: bigint | number;
   /** Windows.Win32.Foundation.HWND */
   hwndOwner: Deno.PointerValue;
   /** u32 */
@@ -3392,7 +3392,7 @@ export interface OPENCARDNAME_EXW {
   /** u32 */
   dwActiveProtocol: number;
   /** usize */
-  hCardHandle: Deno.PointerValue;
+  hCardHandle: bigint | number;
 }
 
 export const sizeofOPENCARDNAME_EXW = 128;
@@ -3472,7 +3472,7 @@ export class OPENCARDNAME_EXWView {
   // 0x04: pad4
 
   // 0x08: usize
-  get hSCardContext(): Deno.PointerValue {
+  get hSCardContext(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -3565,7 +3565,7 @@ export class OPENCARDNAME_EXWView {
   }
 
   // 0x78: usize
-  get hCardHandle(): Deno.PointerValue {
+  get hCardHandle(): bigint | number {
     return Number(this.view.getBigUint64(120, true));
   }
 
@@ -3577,7 +3577,7 @@ export class OPENCARDNAME_EXWView {
   // 0x04: pad4
 
   // 0x08: usize
-  set hSCardContext(value: Deno.PointerValue) {
+  set hSCardContext(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -3665,7 +3665,7 @@ export class OPENCARDNAME_EXWView {
   }
 
   // 0x78: usize
-  set hCardHandle(value: Deno.PointerValue) {
+  set hCardHandle(value: bigint | number) {
     this.view.setBigUint64(120, BigInt(value), true);
   }
 }
@@ -3847,7 +3847,7 @@ export interface OPENCARDNAMEA {
   /** Windows.Win32.Foundation.HWND */
   hwndOwner: Deno.PointerValue;
   /** usize */
-  hSCardContext: Deno.PointerValue;
+  hSCardContext: bigint | number;
   /** Windows.Win32.Foundation.PSTR */
   lpstrGroupNames: string | null | Uint8Array;
   /** u32 */
@@ -3887,7 +3887,7 @@ export interface OPENCARDNAMEA {
   /** Windows.Win32.Security.Credentials.LPOCNDSCPROC */
   lpfnDisconnect: Uint8Array | Deno.PointerValue;
   /** usize */
-  hCardHandle: Deno.PointerValue;
+  hCardHandle: bigint | number;
 }
 
 export const sizeofOPENCARDNAMEA = 176;
@@ -3991,7 +3991,7 @@ export class OPENCARDNAMEAView {
   }
 
   // 0x10: usize
-  get hSCardContext(): Deno.PointerValue {
+  get hSCardContext(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -4115,7 +4115,7 @@ export class OPENCARDNAMEAView {
   }
 
   // 0xa8: usize
-  get hCardHandle(): Deno.PointerValue {
+  get hCardHandle(): bigint | number {
     return Number(this.view.getBigUint64(168, true));
   }
 
@@ -4132,7 +4132,7 @@ export class OPENCARDNAMEAView {
   }
 
   // 0x10: usize
-  set hSCardContext(value: Deno.PointerValue) {
+  set hSCardContext(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -4251,7 +4251,7 @@ export class OPENCARDNAMEAView {
   }
 
   // 0xa8: usize
-  set hCardHandle(value: Deno.PointerValue) {
+  set hCardHandle(value: bigint | number) {
     this.view.setBigUint64(168, BigInt(value), true);
   }
 }
@@ -4265,7 +4265,7 @@ export interface OPENCARDNAMEW {
   /** Windows.Win32.Foundation.HWND */
   hwndOwner: Deno.PointerValue;
   /** usize */
-  hSCardContext: Deno.PointerValue;
+  hSCardContext: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   lpstrGroupNames: string | null | Uint8Array | Uint16Array;
   /** u32 */
@@ -4305,7 +4305,7 @@ export interface OPENCARDNAMEW {
   /** Windows.Win32.Security.Credentials.LPOCNDSCPROC */
   lpfnDisconnect: Uint8Array | Deno.PointerValue;
   /** usize */
-  hCardHandle: Deno.PointerValue;
+  hCardHandle: bigint | number;
 }
 
 export const sizeofOPENCARDNAMEW = 176;
@@ -4409,7 +4409,7 @@ export class OPENCARDNAMEWView {
   }
 
   // 0x10: usize
-  get hSCardContext(): Deno.PointerValue {
+  get hSCardContext(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -4533,7 +4533,7 @@ export class OPENCARDNAMEWView {
   }
 
   // 0xa8: usize
-  get hCardHandle(): Deno.PointerValue {
+  get hCardHandle(): bigint | number {
     return Number(this.view.getBigUint64(168, true));
   }
 
@@ -4550,7 +4550,7 @@ export class OPENCARDNAMEWView {
   }
 
   // 0x10: usize
-  set hSCardContext(value: Deno.PointerValue) {
+  set hSCardContext(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -4669,7 +4669,7 @@ export class OPENCARDNAMEWView {
   }
 
   // 0xa8: usize
-  set hCardHandle(value: Deno.PointerValue) {
+  set hCardHandle(value: bigint | number) {
     this.view.setBigUint64(168, BigInt(value), true);
   }
 }
@@ -4907,7 +4907,7 @@ export type HRESULT = number;
 
 export type BOOL = number;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 // Native Libraries
 
@@ -5932,19 +5932,19 @@ export function SCardEstablishContext(
 }
 
 export function SCardReleaseContext(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardReleaseContext(hContext);
 }
 
 export function SCardIsValidContext(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardIsValidContext(hContext);
 }
 
 export function SCardListReaderGroupsA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   mszGroups: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchGroups: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
@@ -5952,7 +5952,7 @@ export function SCardListReaderGroupsA(
 }
 
 export function SCardListReaderGroupsW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   mszGroups: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchGroups: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
@@ -5960,7 +5960,7 @@ export function SCardListReaderGroupsW(
 }
 
 export function SCardListReadersA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   mszGroups: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   mszReaders: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchReaders: Deno.PointerValue | Uint8Array /* ptr */,
@@ -5969,7 +5969,7 @@ export function SCardListReadersA(
 }
 
 export function SCardListReadersW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   mszGroups: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   mszReaders: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchReaders: Deno.PointerValue | Uint8Array /* ptr */,
@@ -5978,7 +5978,7 @@ export function SCardListReadersW(
 }
 
 export function SCardListCardsA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   pbAtr: Deno.PointerValue | Uint8Array /* ptr */,
   rgquidInterfaces: Deno.PointerValue | Uint8Array /* ptr */,
   cguidInterfaceCount: number /* u32 */,
@@ -5989,7 +5989,7 @@ export function SCardListCardsA(
 }
 
 export function SCardListCardsW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   pbAtr: Deno.PointerValue | Uint8Array /* ptr */,
   rgquidInterfaces: Deno.PointerValue | Uint8Array /* ptr */,
   cguidInterfaceCount: number /* u32 */,
@@ -6000,7 +6000,7 @@ export function SCardListCardsW(
 }
 
 export function SCardListInterfacesA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   szCard: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pguidInterfaces: Deno.PointerValue | Uint8Array /* ptr */,
   pcguidInterfaces: Deno.PointerValue | Uint8Array /* ptr */,
@@ -6009,7 +6009,7 @@ export function SCardListInterfacesA(
 }
 
 export function SCardListInterfacesW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   szCard: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pguidInterfaces: Deno.PointerValue | Uint8Array /* ptr */,
   pcguidInterfaces: Deno.PointerValue | Uint8Array /* ptr */,
@@ -6018,7 +6018,7 @@ export function SCardListInterfacesW(
 }
 
 export function SCardGetProviderIdA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   szCard: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pguidProviderId: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
@@ -6026,7 +6026,7 @@ export function SCardGetProviderIdA(
 }
 
 export function SCardGetProviderIdW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   szCard: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pguidProviderId: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
@@ -6034,7 +6034,7 @@ export function SCardGetProviderIdW(
 }
 
 export function SCardGetCardTypeProviderNameA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   szCardName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwProviderId: number /* u32 */,
   szProvider: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
@@ -6044,7 +6044,7 @@ export function SCardGetCardTypeProviderNameA(
 }
 
 export function SCardGetCardTypeProviderNameW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   szCardName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwProviderId: number /* u32 */,
   szProvider: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
@@ -6054,35 +6054,35 @@ export function SCardGetCardTypeProviderNameW(
 }
 
 export function SCardIntroduceReaderGroupA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   szGroupName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardIntroduceReaderGroupA(hContext, util.pstrToFfi(szGroupName));
 }
 
 export function SCardIntroduceReaderGroupW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   szGroupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardIntroduceReaderGroupW(hContext, util.pwstrToFfi(szGroupName));
 }
 
 export function SCardForgetReaderGroupA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   szGroupName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardForgetReaderGroupA(hContext, util.pstrToFfi(szGroupName));
 }
 
 export function SCardForgetReaderGroupW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   szGroupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardForgetReaderGroupW(hContext, util.pwstrToFfi(szGroupName));
 }
 
 export function SCardIntroduceReaderA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   szReaderName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szDeviceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
@@ -6090,7 +6090,7 @@ export function SCardIntroduceReaderA(
 }
 
 export function SCardIntroduceReaderW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   szReaderName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szDeviceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
@@ -6098,21 +6098,21 @@ export function SCardIntroduceReaderW(
 }
 
 export function SCardForgetReaderA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   szReaderName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardForgetReaderA(hContext, util.pstrToFfi(szReaderName));
 }
 
 export function SCardForgetReaderW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   szReaderName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardForgetReaderW(hContext, util.pwstrToFfi(szReaderName));
 }
 
 export function SCardAddReaderToGroupA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   szReaderName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szGroupName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
@@ -6120,7 +6120,7 @@ export function SCardAddReaderToGroupA(
 }
 
 export function SCardAddReaderToGroupW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   szReaderName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szGroupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
@@ -6128,7 +6128,7 @@ export function SCardAddReaderToGroupW(
 }
 
 export function SCardRemoveReaderFromGroupA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   szReaderName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szGroupName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
@@ -6136,7 +6136,7 @@ export function SCardRemoveReaderFromGroupA(
 }
 
 export function SCardRemoveReaderFromGroupW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   szReaderName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szGroupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
@@ -6144,7 +6144,7 @@ export function SCardRemoveReaderFromGroupW(
 }
 
 export function SCardIntroduceCardTypeA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   szCardName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pguidPrimaryProvider: Deno.PointerValue | Uint8Array /* ptr */,
   rgguidInterfaces: Deno.PointerValue | Uint8Array /* ptr */,
@@ -6157,7 +6157,7 @@ export function SCardIntroduceCardTypeA(
 }
 
 export function SCardIntroduceCardTypeW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   szCardName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pguidPrimaryProvider: Deno.PointerValue | Uint8Array /* ptr */,
   rgguidInterfaces: Deno.PointerValue | Uint8Array /* ptr */,
@@ -6170,7 +6170,7 @@ export function SCardIntroduceCardTypeW(
 }
 
 export function SCardSetCardTypeProviderNameA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   szCardName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwProviderId: number /* u32 */,
   szProvider: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
@@ -6179,7 +6179,7 @@ export function SCardSetCardTypeProviderNameA(
 }
 
 export function SCardSetCardTypeProviderNameW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   szCardName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwProviderId: number /* u32 */,
   szProvider: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
@@ -6188,21 +6188,21 @@ export function SCardSetCardTypeProviderNameW(
 }
 
 export function SCardForgetCardTypeA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   szCardName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardForgetCardTypeA(hContext, util.pstrToFfi(szCardName));
 }
 
 export function SCardForgetCardTypeW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   szCardName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardForgetCardTypeW(hContext, util.pwstrToFfi(szCardName));
 }
 
 export function SCardFreeMemory(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   pvMem: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardFreeMemory(hContext, util.toPointer(pvMem));
@@ -6217,7 +6217,7 @@ export function SCardReleaseStartedEvent(): void /* void */ {
 }
 
 export function SCardLocateCardsA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   mszCards: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   rgReaderStates: Deno.PointerValue | Uint8Array /* ptr */,
   cReaders: number /* u32 */,
@@ -6226,7 +6226,7 @@ export function SCardLocateCardsA(
 }
 
 export function SCardLocateCardsW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   mszCards: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   rgReaderStates: Deno.PointerValue | Uint8Array /* ptr */,
   cReaders: number /* u32 */,
@@ -6235,7 +6235,7 @@ export function SCardLocateCardsW(
 }
 
 export function SCardLocateCardsByATRA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   rgAtrMasks: Deno.PointerValue | Uint8Array /* ptr */,
   cAtrs: number /* u32 */,
   rgReaderStates: Deno.PointerValue | Uint8Array /* ptr */,
@@ -6245,7 +6245,7 @@ export function SCardLocateCardsByATRA(
 }
 
 export function SCardLocateCardsByATRW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   rgAtrMasks: Deno.PointerValue | Uint8Array /* ptr */,
   cAtrs: number /* u32 */,
   rgReaderStates: Deno.PointerValue | Uint8Array /* ptr */,
@@ -6255,7 +6255,7 @@ export function SCardLocateCardsByATRW(
 }
 
 export function SCardGetStatusChangeA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   dwTimeout: number /* u32 */,
   rgReaderStates: Deno.PointerValue | Uint8Array /* ptr */,
   cReaders: number /* u32 */,
@@ -6264,7 +6264,7 @@ export function SCardGetStatusChangeA(
 }
 
 export function SCardGetStatusChangeW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   dwTimeout: number /* u32 */,
   rgReaderStates: Deno.PointerValue | Uint8Array /* ptr */,
   cReaders: number /* u32 */,
@@ -6273,13 +6273,13 @@ export function SCardGetStatusChangeW(
 }
 
 export function SCardCancel(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardCancel(hContext);
 }
 
 export function SCardConnectA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   szReader: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwShareMode: number /* u32 */,
   dwPreferredProtocols: number /* u32 */,
@@ -6290,7 +6290,7 @@ export function SCardConnectA(
 }
 
 export function SCardConnectW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   szReader: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwShareMode: number /* u32 */,
   dwPreferredProtocols: number /* u32 */,
@@ -6301,7 +6301,7 @@ export function SCardConnectW(
 }
 
 export function SCardReconnect(
-  hCard: Deno.PointerValue /* usize */,
+  hCard: bigint | number /* usize */,
   dwShareMode: number /* u32 */,
   dwPreferredProtocols: number /* u32 */,
   dwInitialization: number /* u32 */,
@@ -6311,27 +6311,27 @@ export function SCardReconnect(
 }
 
 export function SCardDisconnect(
-  hCard: Deno.PointerValue /* usize */,
+  hCard: bigint | number /* usize */,
   dwDisposition: number /* u32 */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardDisconnect(hCard, dwDisposition);
 }
 
 export function SCardBeginTransaction(
-  hCard: Deno.PointerValue /* usize */,
+  hCard: bigint | number /* usize */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardBeginTransaction(hCard);
 }
 
 export function SCardEndTransaction(
-  hCard: Deno.PointerValue /* usize */,
+  hCard: bigint | number /* usize */,
   dwDisposition: number /* u32 */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardEndTransaction(hCard, dwDisposition);
 }
 
 export function SCardState(
-  hCard: Deno.PointerValue /* usize */,
+  hCard: bigint | number /* usize */,
   pdwState: Deno.PointerValue | Uint8Array /* ptr */,
   pdwProtocol: Deno.PointerValue | Uint8Array /* ptr */,
   pbAtr: Deno.PointerValue | Uint8Array /* ptr */,
@@ -6341,7 +6341,7 @@ export function SCardState(
 }
 
 export function SCardStatusA(
-  hCard: Deno.PointerValue /* usize */,
+  hCard: bigint | number /* usize */,
   mszReaderNames: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchReaderLen: Deno.PointerValue | Uint8Array /* ptr */,
   pdwState: Deno.PointerValue | Uint8Array /* ptr */,
@@ -6353,7 +6353,7 @@ export function SCardStatusA(
 }
 
 export function SCardStatusW(
-  hCard: Deno.PointerValue /* usize */,
+  hCard: bigint | number /* usize */,
   mszReaderNames: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchReaderLen: Deno.PointerValue | Uint8Array /* ptr */,
   pdwState: Deno.PointerValue | Uint8Array /* ptr */,
@@ -6365,7 +6365,7 @@ export function SCardStatusW(
 }
 
 export function SCardTransmit(
-  hCard: Deno.PointerValue /* usize */,
+  hCard: bigint | number /* usize */,
   pioSendPci: Deno.PointerValue | Uint8Array /* ptr */,
   pbSendBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   cbSendLength: number /* u32 */,
@@ -6377,14 +6377,14 @@ export function SCardTransmit(
 }
 
 export function SCardGetTransmitCount(
-  hCard: Deno.PointerValue /* usize */,
+  hCard: bigint | number /* usize */,
   pcTransmitCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardGetTransmitCount(hCard, util.toPointer(pcTransmitCount));
 }
 
 export function SCardControl(
-  hCard: Deno.PointerValue /* usize */,
+  hCard: bigint | number /* usize */,
   dwControlCode: number /* u32 */,
   lpInBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   cbInBufferSize: number /* u32 */,
@@ -6396,7 +6396,7 @@ export function SCardControl(
 }
 
 export function SCardGetAttrib(
-  hCard: Deno.PointerValue /* usize */,
+  hCard: bigint | number /* usize */,
   dwAttrId: number /* u32 */,
   pbAttr: Deno.PointerValue | Uint8Array /* ptr */,
   pcbAttrLen: Deno.PointerValue | Uint8Array /* ptr */,
@@ -6405,7 +6405,7 @@ export function SCardGetAttrib(
 }
 
 export function SCardSetAttrib(
-  hCard: Deno.PointerValue /* usize */,
+  hCard: bigint | number /* usize */,
   dwAttrId: number /* u32 */,
   pbAttr: Deno.PointerValue | Uint8Array /* ptr */,
   cbAttrLen: number /* u32 */,
@@ -6442,7 +6442,7 @@ export function SCardDlgExtendedError(): number /* i32 */ {
 }
 
 export function SCardReadCacheA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   CardIdentifier: Deno.PointerValue | Uint8Array /* ptr */,
   FreshnessCounter: number /* u32 */,
   LookupName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
@@ -6453,7 +6453,7 @@ export function SCardReadCacheA(
 }
 
 export function SCardReadCacheW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   CardIdentifier: Deno.PointerValue | Uint8Array /* ptr */,
   FreshnessCounter: number /* u32 */,
   LookupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
@@ -6464,7 +6464,7 @@ export function SCardReadCacheW(
 }
 
 export function SCardWriteCacheA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   CardIdentifier: Deno.PointerValue | Uint8Array /* ptr */,
   FreshnessCounter: number /* u32 */,
   LookupName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
@@ -6475,7 +6475,7 @@ export function SCardWriteCacheA(
 }
 
 export function SCardWriteCacheW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   CardIdentifier: Deno.PointerValue | Uint8Array /* ptr */,
   FreshnessCounter: number /* u32 */,
   LookupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
@@ -6486,7 +6486,7 @@ export function SCardWriteCacheW(
 }
 
 export function SCardGetReaderIconA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   szReaderName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pbIcon: Deno.PointerValue | Uint8Array /* ptr */,
   pcbIcon: Deno.PointerValue | Uint8Array /* ptr */,
@@ -6495,7 +6495,7 @@ export function SCardGetReaderIconA(
 }
 
 export function SCardGetReaderIconW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   szReaderName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pbIcon: Deno.PointerValue | Uint8Array /* ptr */,
   pcbIcon: Deno.PointerValue | Uint8Array /* ptr */,
@@ -6504,7 +6504,7 @@ export function SCardGetReaderIconW(
 }
 
 export function SCardGetDeviceTypeIdA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   szReaderName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pdwDeviceTypeId: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
@@ -6512,7 +6512,7 @@ export function SCardGetDeviceTypeIdA(
 }
 
 export function SCardGetDeviceTypeIdW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   szReaderName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pdwDeviceTypeId: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
@@ -6520,7 +6520,7 @@ export function SCardGetDeviceTypeIdW(
 }
 
 export function SCardGetReaderDeviceInstanceIdA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   szReaderName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szDeviceInstanceId: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchDeviceInstanceId: Deno.PointerValue | Uint8Array /* ptr */,
@@ -6529,7 +6529,7 @@ export function SCardGetReaderDeviceInstanceIdA(
 }
 
 export function SCardGetReaderDeviceInstanceIdW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   szReaderName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szDeviceInstanceId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchDeviceInstanceId: Deno.PointerValue | Uint8Array /* ptr */,
@@ -6538,7 +6538,7 @@ export function SCardGetReaderDeviceInstanceIdW(
 }
 
 export function SCardListReadersWithDeviceInstanceIdA(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   szDeviceInstanceId: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   mszReaders: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchReaders: Deno.PointerValue | Uint8Array /* ptr */,
@@ -6547,7 +6547,7 @@ export function SCardListReadersWithDeviceInstanceIdA(
 }
 
 export function SCardListReadersWithDeviceInstanceIdW(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   szDeviceInstanceId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   mszReaders: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchReaders: Deno.PointerValue | Uint8Array /* ptr */,
@@ -6556,7 +6556,7 @@ export function SCardListReadersWithDeviceInstanceIdW(
 }
 
 export function SCardAudit(
-  hContext: Deno.PointerValue /* usize */,
+  hContext: bigint | number /* usize */,
   dwEvent: number /* u32 */,
 ): number /* i32 */ {
   return libWinSCard_dll.SCardAudit(hContext, dwEvent);

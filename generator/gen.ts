@@ -107,7 +107,7 @@ function typeToJS(ty: string, result = false) {
     case "i64":
     case "isize":
     case "usize":
-      return "Deno.PointerValue";
+      return "bigint | number";
     case "f32":
     case "f64":
       return "number";

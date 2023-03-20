@@ -1125,9 +1125,9 @@ export class D3D9ON12_ARGSView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -1153,22 +1153,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -1247,7 +1247,7 @@ export interface LARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue;
   /** i64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: bigint | number;
 }
 
 export const sizeofLARGE_INTEGER = 24;
@@ -1287,7 +1287,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  get QuadPart(): Deno.PointerValue {
+  get QuadPart(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -1302,7 +1302,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  set QuadPart(value: Deno.PointerValue) {
+  set QuadPart(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -1487,9 +1487,9 @@ export class D3DADAPTER_IDENTIFIER9View {
  */
 export interface D3DMEMORYPRESSURE {
   /** u64 */
-  BytesEvictedFromProcess: Deno.PointerValue;
+  BytesEvictedFromProcess: bigint | number;
   /** u64 */
-  SizeOfInefficientAllocation: Deno.PointerValue;
+  SizeOfInefficientAllocation: bigint | number;
   /** u32 */
   LevelOfEfficiency: number;
 }
@@ -1520,12 +1520,12 @@ export class D3DMEMORYPRESSUREView {
   }
 
   // 0x00: u64
-  get BytesEvictedFromProcess(): Deno.PointerValue {
+  get BytesEvictedFromProcess(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get SizeOfInefficientAllocation(): Deno.PointerValue {
+  get SizeOfInefficientAllocation(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -1537,12 +1537,12 @@ export class D3DMEMORYPRESSUREView {
   // 0x14: pad4
 
   // 0x00: u64
-  set BytesEvictedFromProcess(value: Deno.PointerValue) {
+  set BytesEvictedFromProcess(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set SizeOfInefficientAllocation(value: Deno.PointerValue) {
+  set SizeOfInefficientAllocation(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -1696,7 +1696,7 @@ export class D3D_OMACView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 export type HRESULT = number;
 
@@ -1817,7 +1817,7 @@ export interface D3DAUTHENTICATEDCHANNEL_QUERYOUTPUTID_OUTPUT {
   /** u32 */
   OutputIDIndex: number;
   /** u64 */
-  OutputID: Deno.PointerValue;
+  OutputID: bigint | number;
 }
 
 export const sizeofD3DAUTHENTICATEDCHANNEL_QUERYOUTPUTID_OUTPUT = 40;
@@ -1875,7 +1875,7 @@ export class D3DAUTHENTICATEDCHANNEL_QUERYOUTPUTID_OUTPUTView {
   // 0x1c: pad4
 
   // 0x20: u64
-  get OutputID(): Deno.PointerValue {
+  get OutputID(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -1902,7 +1902,7 @@ export class D3DAUTHENTICATEDCHANNEL_QUERYOUTPUTID_OUTPUTView {
   // 0x1c: pad4
 
   // 0x20: u64
-  set OutputID(value: Deno.PointerValue) {
+  set OutputID(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 }
@@ -1912,9 +1912,9 @@ export class D3DAUTHENTICATEDCHANNEL_QUERYOUTPUTID_OUTPUTView {
  */
 export interface D3DAES_CTR_IV {
   /** u64 */
-  IV: Deno.PointerValue;
+  IV: bigint | number;
   /** u64 */
-  Count: Deno.PointerValue;
+  Count: bigint | number;
 }
 
 export const sizeofD3DAES_CTR_IV = 16;
@@ -1940,22 +1940,22 @@ export class D3DAES_CTR_IVView {
   }
 
   // 0x00: u64
-  get IV(): Deno.PointerValue {
+  get IV(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Count(): Deno.PointerValue {
+  get Count(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set IV(value: Deno.PointerValue) {
+  set IV(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Count(value: Deno.PointerValue) {
+  set Count(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -2872,7 +2872,7 @@ export class D3DDISPLAYMODEView {
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 /**
  * Windows.Win32.Graphics.Direct3D9.D3DDEVICE_CREATION_PARAMETERS (size: 24)

@@ -556,9 +556,9 @@ export class FDICABINETINFOView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -584,22 +584,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -750,7 +750,7 @@ export interface FDINOTIFICATION {
   /** ptr */
   pv: Deno.PointerValue | Uint8Array;
   /** isize */
-  hf: Deno.PointerValue;
+  hf: bigint | number;
   /** u16 */
   date: number;
   /** u16 */
@@ -853,7 +853,7 @@ export class FDINOTIFICATIONView {
   }
 
   // 0x28: isize
-  get hf(): Deno.PointerValue {
+  get hf(): bigint | number {
     return Number(this.view.getBigInt64(40, true));
   }
 
@@ -923,7 +923,7 @@ export class FDINOTIFICATIONView {
   }
 
   // 0x28: isize
-  set hf(value: Deno.PointerValue) {
+  set hf(value: bigint | number) {
     this.view.setBigInt64(40, BigInt(value), true);
   }
 
@@ -1082,7 +1082,7 @@ export function FDICreate(
 
 export function FDIIsCabinet(
   hfdi: Deno.PointerValue | Uint8Array /* ptr */,
-  hf: Deno.PointerValue /* isize */,
+  hf: bigint | number /* isize */,
   pfdici: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libCabinet_dll.FDIIsCabinet(util.toPointer(hfdi), hf, util.toPointer(pfdici)));

@@ -15,11 +15,11 @@ export const DSSI_NO_READONLY_MESSAGE = 64;
 
 export type PWSTR = Deno.PointerValue | Uint8Array;
 
-export type LPARAM = Deno.PointerValue;
+export type LPARAM = bigint | number;
 
 export type HRESULT = number;
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 // Native Libraries
 

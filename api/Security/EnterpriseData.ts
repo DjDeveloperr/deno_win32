@@ -19,7 +19,7 @@ export const SRPHOSTING_VERSION1 = 1;
 
 // Structs
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.Security.EnterpriseData.HTHREAD_NETWORK_CONTEXT (size: 16)

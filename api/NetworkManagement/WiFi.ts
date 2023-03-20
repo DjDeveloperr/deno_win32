@@ -2165,7 +2165,7 @@ export class DOT11_IV48_COUNTERView {
   // 0x06: pad2
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 export type BOOLEAN = number;
 
@@ -3772,7 +3772,7 @@ export interface DOT11_BSS_DESCRIPTION {
   /** u16 */
   usBeaconPeriod: number;
   /** u64 */
-  ullTimestamp: Deno.PointerValue;
+  ullTimestamp: bigint | number;
   /** u16 */
   usCapabilityInformation: number;
   /** u32 */
@@ -3844,7 +3844,7 @@ export class DOT11_BSS_DESCRIPTIONView {
   // 0x16: pad2
 
   // 0x18: u64
-  get ullTimestamp(): Deno.PointerValue {
+  get ullTimestamp(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -3891,7 +3891,7 @@ export class DOT11_BSS_DESCRIPTIONView {
   // 0x16: pad2
 
   // 0x18: u64
-  set ullTimestamp(value: Deno.PointerValue) {
+  set ullTimestamp(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -6022,9 +6022,9 @@ export class DOT11_RECV_SENSITIVITYView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -6050,22 +6050,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -7095,9 +7095,9 @@ export interface DOT11_BSS_ENTRY {
   /** u16 */
   usBeaconPeriod: number;
   /** u64 */
-  ullTimestamp: Deno.PointerValue;
+  ullTimestamp: bigint | number;
   /** u64 */
-  ullHostTimestamp: Deno.PointerValue;
+  ullHostTimestamp: bigint | number;
   /** u16 */
   usCapabilityInformation: number;
   /** u32 */
@@ -7204,12 +7204,12 @@ export class DOT11_BSS_ENTRYView {
   // 0x32: pad6
 
   // 0x38: u64
-  get ullTimestamp(): Deno.PointerValue {
+  get ullTimestamp(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
   // 0x40: u64
-  get ullHostTimestamp(): Deno.PointerValue {
+  get ullHostTimestamp(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
@@ -7278,12 +7278,12 @@ export class DOT11_BSS_ENTRYView {
   // 0x32: pad6
 
   // 0x38: u64
-  set ullTimestamp(value: Deno.PointerValue) {
+  set ullTimestamp(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
   // 0x40: u64
-  set ullHostTimestamp(value: Deno.PointerValue) {
+  set ullHostTimestamp(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
@@ -7633,41 +7633,41 @@ export class DOT11_PMKID_LISTView {
  */
 export interface DOT11_PHY_FRAME_STATISTICS {
   /** u64 */
-  ullTransmittedFrameCount: Deno.PointerValue;
+  ullTransmittedFrameCount: bigint | number;
   /** u64 */
-  ullMulticastTransmittedFrameCount: Deno.PointerValue;
+  ullMulticastTransmittedFrameCount: bigint | number;
   /** u64 */
-  ullFailedCount: Deno.PointerValue;
+  ullFailedCount: bigint | number;
   /** u64 */
-  ullRetryCount: Deno.PointerValue;
+  ullRetryCount: bigint | number;
   /** u64 */
-  ullMultipleRetryCount: Deno.PointerValue;
+  ullMultipleRetryCount: bigint | number;
   /** u64 */
-  ullMaxTXLifetimeExceededCount: Deno.PointerValue;
+  ullMaxTXLifetimeExceededCount: bigint | number;
   /** u64 */
-  ullTransmittedFragmentCount: Deno.PointerValue;
+  ullTransmittedFragmentCount: bigint | number;
   /** u64 */
-  ullRTSSuccessCount: Deno.PointerValue;
+  ullRTSSuccessCount: bigint | number;
   /** u64 */
-  ullRTSFailureCount: Deno.PointerValue;
+  ullRTSFailureCount: bigint | number;
   /** u64 */
-  ullACKFailureCount: Deno.PointerValue;
+  ullACKFailureCount: bigint | number;
   /** u64 */
-  ullReceivedFrameCount: Deno.PointerValue;
+  ullReceivedFrameCount: bigint | number;
   /** u64 */
-  ullMulticastReceivedFrameCount: Deno.PointerValue;
+  ullMulticastReceivedFrameCount: bigint | number;
   /** u64 */
-  ullPromiscuousReceivedFrameCount: Deno.PointerValue;
+  ullPromiscuousReceivedFrameCount: bigint | number;
   /** u64 */
-  ullMaxRXLifetimeExceededCount: Deno.PointerValue;
+  ullMaxRXLifetimeExceededCount: bigint | number;
   /** u64 */
-  ullFrameDuplicateCount: Deno.PointerValue;
+  ullFrameDuplicateCount: bigint | number;
   /** u64 */
-  ullReceivedFragmentCount: Deno.PointerValue;
+  ullReceivedFragmentCount: bigint | number;
   /** u64 */
-  ullPromiscuousReceivedFragmentCount: Deno.PointerValue;
+  ullPromiscuousReceivedFragmentCount: bigint | number;
   /** u64 */
-  ullFCSErrorCount: Deno.PointerValue;
+  ullFCSErrorCount: bigint | number;
 }
 
 export const sizeofDOT11_PHY_FRAME_STATISTICS = 144;
@@ -7725,182 +7725,182 @@ export class DOT11_PHY_FRAME_STATISTICSView {
   }
 
   // 0x00: u64
-  get ullTransmittedFrameCount(): Deno.PointerValue {
+  get ullTransmittedFrameCount(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get ullMulticastTransmittedFrameCount(): Deno.PointerValue {
+  get ullMulticastTransmittedFrameCount(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get ullFailedCount(): Deno.PointerValue {
+  get ullFailedCount(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get ullRetryCount(): Deno.PointerValue {
+  get ullRetryCount(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get ullMultipleRetryCount(): Deno.PointerValue {
+  get ullMultipleRetryCount(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: u64
-  get ullMaxTXLifetimeExceededCount(): Deno.PointerValue {
+  get ullMaxTXLifetimeExceededCount(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: u64
-  get ullTransmittedFragmentCount(): Deno.PointerValue {
+  get ullTransmittedFragmentCount(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: u64
-  get ullRTSSuccessCount(): Deno.PointerValue {
+  get ullRTSSuccessCount(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
   // 0x40: u64
-  get ullRTSFailureCount(): Deno.PointerValue {
+  get ullRTSFailureCount(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
   // 0x48: u64
-  get ullACKFailureCount(): Deno.PointerValue {
+  get ullACKFailureCount(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
   // 0x50: u64
-  get ullReceivedFrameCount(): Deno.PointerValue {
+  get ullReceivedFrameCount(): bigint | number {
     return Number(this.view.getBigUint64(80, true));
   }
 
   // 0x58: u64
-  get ullMulticastReceivedFrameCount(): Deno.PointerValue {
+  get ullMulticastReceivedFrameCount(): bigint | number {
     return Number(this.view.getBigUint64(88, true));
   }
 
   // 0x60: u64
-  get ullPromiscuousReceivedFrameCount(): Deno.PointerValue {
+  get ullPromiscuousReceivedFrameCount(): bigint | number {
     return Number(this.view.getBigUint64(96, true));
   }
 
   // 0x68: u64
-  get ullMaxRXLifetimeExceededCount(): Deno.PointerValue {
+  get ullMaxRXLifetimeExceededCount(): bigint | number {
     return Number(this.view.getBigUint64(104, true));
   }
 
   // 0x70: u64
-  get ullFrameDuplicateCount(): Deno.PointerValue {
+  get ullFrameDuplicateCount(): bigint | number {
     return Number(this.view.getBigUint64(112, true));
   }
 
   // 0x78: u64
-  get ullReceivedFragmentCount(): Deno.PointerValue {
+  get ullReceivedFragmentCount(): bigint | number {
     return Number(this.view.getBigUint64(120, true));
   }
 
   // 0x80: u64
-  get ullPromiscuousReceivedFragmentCount(): Deno.PointerValue {
+  get ullPromiscuousReceivedFragmentCount(): bigint | number {
     return Number(this.view.getBigUint64(128, true));
   }
 
   // 0x88: u64
-  get ullFCSErrorCount(): Deno.PointerValue {
+  get ullFCSErrorCount(): bigint | number {
     return Number(this.view.getBigUint64(136, true));
   }
 
   // 0x00: u64
-  set ullTransmittedFrameCount(value: Deno.PointerValue) {
+  set ullTransmittedFrameCount(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set ullMulticastTransmittedFrameCount(value: Deno.PointerValue) {
+  set ullMulticastTransmittedFrameCount(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set ullFailedCount(value: Deno.PointerValue) {
+  set ullFailedCount(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set ullRetryCount(value: Deno.PointerValue) {
+  set ullRetryCount(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set ullMultipleRetryCount(value: Deno.PointerValue) {
+  set ullMultipleRetryCount(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: u64
-  set ullMaxTXLifetimeExceededCount(value: Deno.PointerValue) {
+  set ullMaxTXLifetimeExceededCount(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: u64
-  set ullTransmittedFragmentCount(value: Deno.PointerValue) {
+  set ullTransmittedFragmentCount(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: u64
-  set ullRTSSuccessCount(value: Deno.PointerValue) {
+  set ullRTSSuccessCount(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
   // 0x40: u64
-  set ullRTSFailureCount(value: Deno.PointerValue) {
+  set ullRTSFailureCount(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
   // 0x48: u64
-  set ullACKFailureCount(value: Deno.PointerValue) {
+  set ullACKFailureCount(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
   // 0x50: u64
-  set ullReceivedFrameCount(value: Deno.PointerValue) {
+  set ullReceivedFrameCount(value: bigint | number) {
     this.view.setBigUint64(80, BigInt(value), true);
   }
 
   // 0x58: u64
-  set ullMulticastReceivedFrameCount(value: Deno.PointerValue) {
+  set ullMulticastReceivedFrameCount(value: bigint | number) {
     this.view.setBigUint64(88, BigInt(value), true);
   }
 
   // 0x60: u64
-  set ullPromiscuousReceivedFrameCount(value: Deno.PointerValue) {
+  set ullPromiscuousReceivedFrameCount(value: bigint | number) {
     this.view.setBigUint64(96, BigInt(value), true);
   }
 
   // 0x68: u64
-  set ullMaxRXLifetimeExceededCount(value: Deno.PointerValue) {
+  set ullMaxRXLifetimeExceededCount(value: bigint | number) {
     this.view.setBigUint64(104, BigInt(value), true);
   }
 
   // 0x70: u64
-  set ullFrameDuplicateCount(value: Deno.PointerValue) {
+  set ullFrameDuplicateCount(value: bigint | number) {
     this.view.setBigUint64(112, BigInt(value), true);
   }
 
   // 0x78: u64
-  set ullReceivedFragmentCount(value: Deno.PointerValue) {
+  set ullReceivedFragmentCount(value: bigint | number) {
     this.view.setBigUint64(120, BigInt(value), true);
   }
 
   // 0x80: u64
-  set ullPromiscuousReceivedFragmentCount(value: Deno.PointerValue) {
+  set ullPromiscuousReceivedFragmentCount(value: bigint | number) {
     this.view.setBigUint64(128, BigInt(value), true);
   }
 
   // 0x88: u64
-  set ullFCSErrorCount(value: Deno.PointerValue) {
+  set ullFCSErrorCount(value: bigint | number) {
     this.view.setBigUint64(136, BigInt(value), true);
   }
 }
@@ -7910,33 +7910,33 @@ export class DOT11_PHY_FRAME_STATISTICSView {
  */
 export interface DOT11_MAC_FRAME_STATISTICS {
   /** u64 */
-  ullTransmittedFrameCount: Deno.PointerValue;
+  ullTransmittedFrameCount: bigint | number;
   /** u64 */
-  ullReceivedFrameCount: Deno.PointerValue;
+  ullReceivedFrameCount: bigint | number;
   /** u64 */
-  ullTransmittedFailureFrameCount: Deno.PointerValue;
+  ullTransmittedFailureFrameCount: bigint | number;
   /** u64 */
-  ullReceivedFailureFrameCount: Deno.PointerValue;
+  ullReceivedFailureFrameCount: bigint | number;
   /** u64 */
-  ullWEPExcludedCount: Deno.PointerValue;
+  ullWEPExcludedCount: bigint | number;
   /** u64 */
-  ullTKIPLocalMICFailures: Deno.PointerValue;
+  ullTKIPLocalMICFailures: bigint | number;
   /** u64 */
-  ullTKIPReplays: Deno.PointerValue;
+  ullTKIPReplays: bigint | number;
   /** u64 */
-  ullTKIPICVErrorCount: Deno.PointerValue;
+  ullTKIPICVErrorCount: bigint | number;
   /** u64 */
-  ullCCMPReplays: Deno.PointerValue;
+  ullCCMPReplays: bigint | number;
   /** u64 */
-  ullCCMPDecryptErrors: Deno.PointerValue;
+  ullCCMPDecryptErrors: bigint | number;
   /** u64 */
-  ullWEPUndecryptableCount: Deno.PointerValue;
+  ullWEPUndecryptableCount: bigint | number;
   /** u64 */
-  ullWEPICVErrorCount: Deno.PointerValue;
+  ullWEPICVErrorCount: bigint | number;
   /** u64 */
-  ullDecryptSuccessCount: Deno.PointerValue;
+  ullDecryptSuccessCount: bigint | number;
   /** u64 */
-  ullDecryptFailureCount: Deno.PointerValue;
+  ullDecryptFailureCount: bigint | number;
 }
 
 export const sizeofDOT11_MAC_FRAME_STATISTICS = 112;
@@ -7986,142 +7986,142 @@ export class DOT11_MAC_FRAME_STATISTICSView {
   }
 
   // 0x00: u64
-  get ullTransmittedFrameCount(): Deno.PointerValue {
+  get ullTransmittedFrameCount(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get ullReceivedFrameCount(): Deno.PointerValue {
+  get ullReceivedFrameCount(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get ullTransmittedFailureFrameCount(): Deno.PointerValue {
+  get ullTransmittedFailureFrameCount(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get ullReceivedFailureFrameCount(): Deno.PointerValue {
+  get ullReceivedFailureFrameCount(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get ullWEPExcludedCount(): Deno.PointerValue {
+  get ullWEPExcludedCount(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: u64
-  get ullTKIPLocalMICFailures(): Deno.PointerValue {
+  get ullTKIPLocalMICFailures(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: u64
-  get ullTKIPReplays(): Deno.PointerValue {
+  get ullTKIPReplays(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: u64
-  get ullTKIPICVErrorCount(): Deno.PointerValue {
+  get ullTKIPICVErrorCount(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
   // 0x40: u64
-  get ullCCMPReplays(): Deno.PointerValue {
+  get ullCCMPReplays(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
   // 0x48: u64
-  get ullCCMPDecryptErrors(): Deno.PointerValue {
+  get ullCCMPDecryptErrors(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
   // 0x50: u64
-  get ullWEPUndecryptableCount(): Deno.PointerValue {
+  get ullWEPUndecryptableCount(): bigint | number {
     return Number(this.view.getBigUint64(80, true));
   }
 
   // 0x58: u64
-  get ullWEPICVErrorCount(): Deno.PointerValue {
+  get ullWEPICVErrorCount(): bigint | number {
     return Number(this.view.getBigUint64(88, true));
   }
 
   // 0x60: u64
-  get ullDecryptSuccessCount(): Deno.PointerValue {
+  get ullDecryptSuccessCount(): bigint | number {
     return Number(this.view.getBigUint64(96, true));
   }
 
   // 0x68: u64
-  get ullDecryptFailureCount(): Deno.PointerValue {
+  get ullDecryptFailureCount(): bigint | number {
     return Number(this.view.getBigUint64(104, true));
   }
 
   // 0x00: u64
-  set ullTransmittedFrameCount(value: Deno.PointerValue) {
+  set ullTransmittedFrameCount(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set ullReceivedFrameCount(value: Deno.PointerValue) {
+  set ullReceivedFrameCount(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set ullTransmittedFailureFrameCount(value: Deno.PointerValue) {
+  set ullTransmittedFailureFrameCount(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set ullReceivedFailureFrameCount(value: Deno.PointerValue) {
+  set ullReceivedFailureFrameCount(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set ullWEPExcludedCount(value: Deno.PointerValue) {
+  set ullWEPExcludedCount(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: u64
-  set ullTKIPLocalMICFailures(value: Deno.PointerValue) {
+  set ullTKIPLocalMICFailures(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: u64
-  set ullTKIPReplays(value: Deno.PointerValue) {
+  set ullTKIPReplays(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: u64
-  set ullTKIPICVErrorCount(value: Deno.PointerValue) {
+  set ullTKIPICVErrorCount(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
   // 0x40: u64
-  set ullCCMPReplays(value: Deno.PointerValue) {
+  set ullCCMPReplays(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
   // 0x48: u64
-  set ullCCMPDecryptErrors(value: Deno.PointerValue) {
+  set ullCCMPDecryptErrors(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
   // 0x50: u64
-  set ullWEPUndecryptableCount(value: Deno.PointerValue) {
+  set ullWEPUndecryptableCount(value: bigint | number) {
     this.view.setBigUint64(80, BigInt(value), true);
   }
 
   // 0x58: u64
-  set ullWEPICVErrorCount(value: Deno.PointerValue) {
+  set ullWEPICVErrorCount(value: bigint | number) {
     this.view.setBigUint64(88, BigInt(value), true);
   }
 
   // 0x60: u64
-  set ullDecryptSuccessCount(value: Deno.PointerValue) {
+  set ullDecryptSuccessCount(value: bigint | number) {
     this.view.setBigUint64(96, BigInt(value), true);
   }
 
   // 0x68: u64
-  set ullDecryptFailureCount(value: Deno.PointerValue) {
+  set ullDecryptFailureCount(value: bigint | number) {
     this.view.setBigUint64(104, BigInt(value), true);
   }
 }
@@ -8133,11 +8133,11 @@ export interface DOT11_STATISTICS {
   /** Windows.Win32.NetworkManagement.Ndis.NDIS_OBJECT_HEADER */
   Header: Uint8Array | Deno.PointerValue;
   /** u64 */
-  ullFourWayHandshakeFailures: Deno.PointerValue;
+  ullFourWayHandshakeFailures: bigint | number;
   /** u64 */
-  ullTKIPCounterMeasuresInvoked: Deno.PointerValue;
+  ullTKIPCounterMeasuresInvoked: bigint | number;
   /** u64 */
-  ullReserved: Deno.PointerValue;
+  ullReserved: bigint | number;
   /** Windows.Win32.NetworkManagement.WiFi.DOT11_MAC_FRAME_STATISTICS */
   MacUcastCounters: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.WiFi.DOT11_MAC_FRAME_STATISTICS */
@@ -8185,17 +8185,17 @@ export class DOT11_STATISTICSView {
   }
 
   // 0x08: u64
-  get ullFourWayHandshakeFailures(): Deno.PointerValue {
+  get ullFourWayHandshakeFailures(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get ullTKIPCounterMeasuresInvoked(): Deno.PointerValue {
+  get ullTKIPCounterMeasuresInvoked(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get ullReserved(): Deno.PointerValue {
+  get ullReserved(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -8223,17 +8223,17 @@ export class DOT11_STATISTICSView {
   }
 
   // 0x08: u64
-  set ullFourWayHandshakeFailures(value: Deno.PointerValue) {
+  set ullFourWayHandshakeFailures(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set ullTKIPCounterMeasuresInvoked(value: Deno.PointerValue) {
+  set ullTKIPCounterMeasuresInvoked(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set ullReserved(value: Deno.PointerValue) {
+  set ullReserved(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -9463,7 +9463,7 @@ export interface LARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue;
   /** i64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: bigint | number;
 }
 
 export const sizeofLARGE_INTEGER = 24;
@@ -9503,7 +9503,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  get QuadPart(): Deno.PointerValue {
+  get QuadPart(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -9518,7 +9518,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  set QuadPart(value: Deno.PointerValue) {
+  set QuadPart(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -9546,13 +9546,13 @@ export interface DOT11_ASSOCIATION_INFO_EX {
   /** Windows.Win32.Foundation.LARGE_INTEGER */
   liAssociationUpTime: Uint8Array | Deno.PointerValue;
   /** u64 */
-  ullNumOfTxPacketSuccesses: Deno.PointerValue;
+  ullNumOfTxPacketSuccesses: bigint | number;
   /** u64 */
-  ullNumOfTxPacketFailures: Deno.PointerValue;
+  ullNumOfTxPacketFailures: bigint | number;
   /** u64 */
-  ullNumOfRxPacketSuccesses: Deno.PointerValue;
+  ullNumOfRxPacketSuccesses: bigint | number;
   /** u64 */
-  ullNumOfRxPacketFailures: Deno.PointerValue;
+  ullNumOfRxPacketFailures: bigint | number;
 }
 
 export const sizeofDOT11_ASSOCIATION_INFO_EX = 88;
@@ -9655,22 +9655,22 @@ export class DOT11_ASSOCIATION_INFO_EXView {
   }
 
   // 0x38: u64
-  get ullNumOfTxPacketSuccesses(): Deno.PointerValue {
+  get ullNumOfTxPacketSuccesses(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
   // 0x40: u64
-  get ullNumOfTxPacketFailures(): Deno.PointerValue {
+  get ullNumOfTxPacketFailures(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
   // 0x48: u64
-  get ullNumOfRxPacketSuccesses(): Deno.PointerValue {
+  get ullNumOfRxPacketSuccesses(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
   // 0x50: u64
-  get ullNumOfRxPacketFailures(): Deno.PointerValue {
+  get ullNumOfRxPacketFailures(): bigint | number {
     return Number(this.view.getBigUint64(80, true));
   }
 
@@ -9724,22 +9724,22 @@ export class DOT11_ASSOCIATION_INFO_EXView {
   }
 
   // 0x38: u64
-  set ullNumOfTxPacketSuccesses(value: Deno.PointerValue) {
+  set ullNumOfTxPacketSuccesses(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
   // 0x40: u64
-  set ullNumOfTxPacketFailures(value: Deno.PointerValue) {
+  set ullNumOfTxPacketFailures(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
   // 0x48: u64
-  set ullNumOfRxPacketSuccesses(value: Deno.PointerValue) {
+  set ullNumOfRxPacketSuccesses(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
   // 0x50: u64
-  set ullNumOfRxPacketFailures(value: Deno.PointerValue) {
+  set ullNumOfRxPacketFailures(value: bigint | number) {
     this.view.setBigUint64(80, BigInt(value), true);
   }
 }
@@ -14262,7 +14262,7 @@ export interface DOT11_EXTSTA_RECV_CONTEXT {
   /** ptr */
   pvMediaSpecificInfo: Deno.PointerValue | Uint8Array;
   /** u64 */
-  ullTimestamp: Deno.PointerValue;
+  ullTimestamp: bigint | number;
 }
 
 export const sizeofDOT11_EXTSTA_RECV_CONTEXT = 48;
@@ -14354,7 +14354,7 @@ export class DOT11_EXTSTA_RECV_CONTEXTView {
   }
 
   // 0x28: u64
-  get ullTimestamp(): Deno.PointerValue {
+  get ullTimestamp(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -14406,7 +14406,7 @@ export class DOT11_EXTSTA_RECV_CONTEXTView {
   }
 
   // 0x28: u64
-  set ullTimestamp(value: Deno.PointerValue) {
+  set ullTimestamp(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 }
@@ -15863,17 +15863,17 @@ export class DOT11_ADDITIONAL_IEView {
  */
 export interface DOT11_PEER_STATISTICS {
   /** u64 */
-  ullDecryptSuccessCount: Deno.PointerValue;
+  ullDecryptSuccessCount: bigint | number;
   /** u64 */
-  ullDecryptFailureCount: Deno.PointerValue;
+  ullDecryptFailureCount: bigint | number;
   /** u64 */
-  ullTxPacketSuccessCount: Deno.PointerValue;
+  ullTxPacketSuccessCount: bigint | number;
   /** u64 */
-  ullTxPacketFailureCount: Deno.PointerValue;
+  ullTxPacketFailureCount: bigint | number;
   /** u64 */
-  ullRxPacketSuccessCount: Deno.PointerValue;
+  ullRxPacketSuccessCount: bigint | number;
   /** u64 */
-  ullRxPacketFailureCount: Deno.PointerValue;
+  ullRxPacketFailureCount: bigint | number;
 }
 
 export const sizeofDOT11_PEER_STATISTICS = 48;
@@ -15907,62 +15907,62 @@ export class DOT11_PEER_STATISTICSView {
   }
 
   // 0x00: u64
-  get ullDecryptSuccessCount(): Deno.PointerValue {
+  get ullDecryptSuccessCount(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get ullDecryptFailureCount(): Deno.PointerValue {
+  get ullDecryptFailureCount(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get ullTxPacketSuccessCount(): Deno.PointerValue {
+  get ullTxPacketSuccessCount(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get ullTxPacketFailureCount(): Deno.PointerValue {
+  get ullTxPacketFailureCount(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get ullRxPacketSuccessCount(): Deno.PointerValue {
+  get ullRxPacketSuccessCount(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: u64
-  get ullRxPacketFailureCount(): Deno.PointerValue {
+  get ullRxPacketFailureCount(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x00: u64
-  set ullDecryptSuccessCount(value: Deno.PointerValue) {
+  set ullDecryptSuccessCount(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set ullDecryptFailureCount(value: Deno.PointerValue) {
+  set ullDecryptFailureCount(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set ullTxPacketSuccessCount(value: Deno.PointerValue) {
+  set ullTxPacketSuccessCount(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set ullTxPacketFailureCount(value: Deno.PointerValue) {
+  set ullTxPacketFailureCount(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set ullRxPacketSuccessCount(value: Deno.PointerValue) {
+  set ullRxPacketSuccessCount(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: u64
-  set ullRxPacketFailureCount(value: Deno.PointerValue) {
+  set ullRxPacketFailureCount(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 }
@@ -20549,11 +20549,11 @@ export interface DOT11_WFD_DEVICE_ENTRY {
   /** u16 */
   usBeaconPeriod: number;
   /** u64 */
-  ullTimestamp: Deno.PointerValue;
+  ullTimestamp: bigint | number;
   /** u64 */
-  ullBeaconHostTimestamp: Deno.PointerValue;
+  ullBeaconHostTimestamp: bigint | number;
   /** u64 */
-  ullProbeResponseHostTimestamp: Deno.PointerValue;
+  ullProbeResponseHostTimestamp: bigint | number;
   /** u16 */
   usCapabilityInformation: number;
   /** u32 */
@@ -20670,17 +20670,17 @@ export class DOT11_WFD_DEVICE_ENTRYView {
   // 0x32: pad6
 
   // 0x38: u64
-  get ullTimestamp(): Deno.PointerValue {
+  get ullTimestamp(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
   // 0x40: u64
-  get ullBeaconHostTimestamp(): Deno.PointerValue {
+  get ullBeaconHostTimestamp(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
   // 0x48: u64
-  get ullProbeResponseHostTimestamp(): Deno.PointerValue {
+  get ullProbeResponseHostTimestamp(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
@@ -20758,17 +20758,17 @@ export class DOT11_WFD_DEVICE_ENTRYView {
   // 0x32: pad6
 
   // 0x38: u64
-  set ullTimestamp(value: Deno.PointerValue) {
+  set ullTimestamp(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
   // 0x40: u64
-  set ullBeaconHostTimestamp(value: Deno.PointerValue) {
+  set ullBeaconHostTimestamp(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
   // 0x48: u64
-  set ullProbeResponseHostTimestamp(value: Deno.PointerValue) {
+  set ullProbeResponseHostTimestamp(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
@@ -24930,9 +24930,9 @@ export interface WLAN_BSS_ENTRY {
   /** u16 */
   usBeaconPeriod: number;
   /** u64 */
-  ullTimestamp: Deno.PointerValue;
+  ullTimestamp: bigint | number;
   /** u64 */
-  ullHostTimestamp: Deno.PointerValue;
+  ullHostTimestamp: bigint | number;
   /** u16 */
   usCapabilityInformation: number;
   /** u32 */
@@ -25051,12 +25051,12 @@ export class WLAN_BSS_ENTRYView {
   // 0x32: pad6
 
   // 0x38: u64
-  get ullTimestamp(): Deno.PointerValue {
+  get ullTimestamp(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
   // 0x40: u64
-  get ullHostTimestamp(): Deno.PointerValue {
+  get ullHostTimestamp(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
@@ -25138,12 +25138,12 @@ export class WLAN_BSS_ENTRYView {
   // 0x32: pad6
 
   // 0x38: u64
-  set ullTimestamp(value: Deno.PointerValue) {
+  set ullTimestamp(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
   // 0x40: u64
-  set ullHostTimestamp(value: Deno.PointerValue) {
+  set ullHostTimestamp(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
@@ -27018,41 +27018,41 @@ export class WLAN_DEVICE_SERVICE_NOTIFICATION_DATAView {
  */
 export interface WLAN_PHY_FRAME_STATISTICS {
   /** u64 */
-  ullTransmittedFrameCount: Deno.PointerValue;
+  ullTransmittedFrameCount: bigint | number;
   /** u64 */
-  ullMulticastTransmittedFrameCount: Deno.PointerValue;
+  ullMulticastTransmittedFrameCount: bigint | number;
   /** u64 */
-  ullFailedCount: Deno.PointerValue;
+  ullFailedCount: bigint | number;
   /** u64 */
-  ullRetryCount: Deno.PointerValue;
+  ullRetryCount: bigint | number;
   /** u64 */
-  ullMultipleRetryCount: Deno.PointerValue;
+  ullMultipleRetryCount: bigint | number;
   /** u64 */
-  ullMaxTXLifetimeExceededCount: Deno.PointerValue;
+  ullMaxTXLifetimeExceededCount: bigint | number;
   /** u64 */
-  ullTransmittedFragmentCount: Deno.PointerValue;
+  ullTransmittedFragmentCount: bigint | number;
   /** u64 */
-  ullRTSSuccessCount: Deno.PointerValue;
+  ullRTSSuccessCount: bigint | number;
   /** u64 */
-  ullRTSFailureCount: Deno.PointerValue;
+  ullRTSFailureCount: bigint | number;
   /** u64 */
-  ullACKFailureCount: Deno.PointerValue;
+  ullACKFailureCount: bigint | number;
   /** u64 */
-  ullReceivedFrameCount: Deno.PointerValue;
+  ullReceivedFrameCount: bigint | number;
   /** u64 */
-  ullMulticastReceivedFrameCount: Deno.PointerValue;
+  ullMulticastReceivedFrameCount: bigint | number;
   /** u64 */
-  ullPromiscuousReceivedFrameCount: Deno.PointerValue;
+  ullPromiscuousReceivedFrameCount: bigint | number;
   /** u64 */
-  ullMaxRXLifetimeExceededCount: Deno.PointerValue;
+  ullMaxRXLifetimeExceededCount: bigint | number;
   /** u64 */
-  ullFrameDuplicateCount: Deno.PointerValue;
+  ullFrameDuplicateCount: bigint | number;
   /** u64 */
-  ullReceivedFragmentCount: Deno.PointerValue;
+  ullReceivedFragmentCount: bigint | number;
   /** u64 */
-  ullPromiscuousReceivedFragmentCount: Deno.PointerValue;
+  ullPromiscuousReceivedFragmentCount: bigint | number;
   /** u64 */
-  ullFCSErrorCount: Deno.PointerValue;
+  ullFCSErrorCount: bigint | number;
 }
 
 export const sizeofWLAN_PHY_FRAME_STATISTICS = 144;
@@ -27110,182 +27110,182 @@ export class WLAN_PHY_FRAME_STATISTICSView {
   }
 
   // 0x00: u64
-  get ullTransmittedFrameCount(): Deno.PointerValue {
+  get ullTransmittedFrameCount(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get ullMulticastTransmittedFrameCount(): Deno.PointerValue {
+  get ullMulticastTransmittedFrameCount(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get ullFailedCount(): Deno.PointerValue {
+  get ullFailedCount(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get ullRetryCount(): Deno.PointerValue {
+  get ullRetryCount(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get ullMultipleRetryCount(): Deno.PointerValue {
+  get ullMultipleRetryCount(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: u64
-  get ullMaxTXLifetimeExceededCount(): Deno.PointerValue {
+  get ullMaxTXLifetimeExceededCount(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: u64
-  get ullTransmittedFragmentCount(): Deno.PointerValue {
+  get ullTransmittedFragmentCount(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: u64
-  get ullRTSSuccessCount(): Deno.PointerValue {
+  get ullRTSSuccessCount(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
   // 0x40: u64
-  get ullRTSFailureCount(): Deno.PointerValue {
+  get ullRTSFailureCount(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
   // 0x48: u64
-  get ullACKFailureCount(): Deno.PointerValue {
+  get ullACKFailureCount(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
   // 0x50: u64
-  get ullReceivedFrameCount(): Deno.PointerValue {
+  get ullReceivedFrameCount(): bigint | number {
     return Number(this.view.getBigUint64(80, true));
   }
 
   // 0x58: u64
-  get ullMulticastReceivedFrameCount(): Deno.PointerValue {
+  get ullMulticastReceivedFrameCount(): bigint | number {
     return Number(this.view.getBigUint64(88, true));
   }
 
   // 0x60: u64
-  get ullPromiscuousReceivedFrameCount(): Deno.PointerValue {
+  get ullPromiscuousReceivedFrameCount(): bigint | number {
     return Number(this.view.getBigUint64(96, true));
   }
 
   // 0x68: u64
-  get ullMaxRXLifetimeExceededCount(): Deno.PointerValue {
+  get ullMaxRXLifetimeExceededCount(): bigint | number {
     return Number(this.view.getBigUint64(104, true));
   }
 
   // 0x70: u64
-  get ullFrameDuplicateCount(): Deno.PointerValue {
+  get ullFrameDuplicateCount(): bigint | number {
     return Number(this.view.getBigUint64(112, true));
   }
 
   // 0x78: u64
-  get ullReceivedFragmentCount(): Deno.PointerValue {
+  get ullReceivedFragmentCount(): bigint | number {
     return Number(this.view.getBigUint64(120, true));
   }
 
   // 0x80: u64
-  get ullPromiscuousReceivedFragmentCount(): Deno.PointerValue {
+  get ullPromiscuousReceivedFragmentCount(): bigint | number {
     return Number(this.view.getBigUint64(128, true));
   }
 
   // 0x88: u64
-  get ullFCSErrorCount(): Deno.PointerValue {
+  get ullFCSErrorCount(): bigint | number {
     return Number(this.view.getBigUint64(136, true));
   }
 
   // 0x00: u64
-  set ullTransmittedFrameCount(value: Deno.PointerValue) {
+  set ullTransmittedFrameCount(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set ullMulticastTransmittedFrameCount(value: Deno.PointerValue) {
+  set ullMulticastTransmittedFrameCount(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set ullFailedCount(value: Deno.PointerValue) {
+  set ullFailedCount(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set ullRetryCount(value: Deno.PointerValue) {
+  set ullRetryCount(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set ullMultipleRetryCount(value: Deno.PointerValue) {
+  set ullMultipleRetryCount(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: u64
-  set ullMaxTXLifetimeExceededCount(value: Deno.PointerValue) {
+  set ullMaxTXLifetimeExceededCount(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: u64
-  set ullTransmittedFragmentCount(value: Deno.PointerValue) {
+  set ullTransmittedFragmentCount(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: u64
-  set ullRTSSuccessCount(value: Deno.PointerValue) {
+  set ullRTSSuccessCount(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
   // 0x40: u64
-  set ullRTSFailureCount(value: Deno.PointerValue) {
+  set ullRTSFailureCount(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
   // 0x48: u64
-  set ullACKFailureCount(value: Deno.PointerValue) {
+  set ullACKFailureCount(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
   // 0x50: u64
-  set ullReceivedFrameCount(value: Deno.PointerValue) {
+  set ullReceivedFrameCount(value: bigint | number) {
     this.view.setBigUint64(80, BigInt(value), true);
   }
 
   // 0x58: u64
-  set ullMulticastReceivedFrameCount(value: Deno.PointerValue) {
+  set ullMulticastReceivedFrameCount(value: bigint | number) {
     this.view.setBigUint64(88, BigInt(value), true);
   }
 
   // 0x60: u64
-  set ullPromiscuousReceivedFrameCount(value: Deno.PointerValue) {
+  set ullPromiscuousReceivedFrameCount(value: bigint | number) {
     this.view.setBigUint64(96, BigInt(value), true);
   }
 
   // 0x68: u64
-  set ullMaxRXLifetimeExceededCount(value: Deno.PointerValue) {
+  set ullMaxRXLifetimeExceededCount(value: bigint | number) {
     this.view.setBigUint64(104, BigInt(value), true);
   }
 
   // 0x70: u64
-  set ullFrameDuplicateCount(value: Deno.PointerValue) {
+  set ullFrameDuplicateCount(value: bigint | number) {
     this.view.setBigUint64(112, BigInt(value), true);
   }
 
   // 0x78: u64
-  set ullReceivedFragmentCount(value: Deno.PointerValue) {
+  set ullReceivedFragmentCount(value: bigint | number) {
     this.view.setBigUint64(120, BigInt(value), true);
   }
 
   // 0x80: u64
-  set ullPromiscuousReceivedFragmentCount(value: Deno.PointerValue) {
+  set ullPromiscuousReceivedFragmentCount(value: bigint | number) {
     this.view.setBigUint64(128, BigInt(value), true);
   }
 
   // 0x88: u64
-  set ullFCSErrorCount(value: Deno.PointerValue) {
+  set ullFCSErrorCount(value: bigint | number) {
     this.view.setBigUint64(136, BigInt(value), true);
   }
 }
@@ -27295,29 +27295,29 @@ export class WLAN_PHY_FRAME_STATISTICSView {
  */
 export interface WLAN_MAC_FRAME_STATISTICS {
   /** u64 */
-  ullTransmittedFrameCount: Deno.PointerValue;
+  ullTransmittedFrameCount: bigint | number;
   /** u64 */
-  ullReceivedFrameCount: Deno.PointerValue;
+  ullReceivedFrameCount: bigint | number;
   /** u64 */
-  ullWEPExcludedCount: Deno.PointerValue;
+  ullWEPExcludedCount: bigint | number;
   /** u64 */
-  ullTKIPLocalMICFailures: Deno.PointerValue;
+  ullTKIPLocalMICFailures: bigint | number;
   /** u64 */
-  ullTKIPReplays: Deno.PointerValue;
+  ullTKIPReplays: bigint | number;
   /** u64 */
-  ullTKIPICVErrorCount: Deno.PointerValue;
+  ullTKIPICVErrorCount: bigint | number;
   /** u64 */
-  ullCCMPReplays: Deno.PointerValue;
+  ullCCMPReplays: bigint | number;
   /** u64 */
-  ullCCMPDecryptErrors: Deno.PointerValue;
+  ullCCMPDecryptErrors: bigint | number;
   /** u64 */
-  ullWEPUndecryptableCount: Deno.PointerValue;
+  ullWEPUndecryptableCount: bigint | number;
   /** u64 */
-  ullWEPICVErrorCount: Deno.PointerValue;
+  ullWEPICVErrorCount: bigint | number;
   /** u64 */
-  ullDecryptSuccessCount: Deno.PointerValue;
+  ullDecryptSuccessCount: bigint | number;
   /** u64 */
-  ullDecryptFailureCount: Deno.PointerValue;
+  ullDecryptFailureCount: bigint | number;
 }
 
 export const sizeofWLAN_MAC_FRAME_STATISTICS = 96;
@@ -27363,122 +27363,122 @@ export class WLAN_MAC_FRAME_STATISTICSView {
   }
 
   // 0x00: u64
-  get ullTransmittedFrameCount(): Deno.PointerValue {
+  get ullTransmittedFrameCount(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get ullReceivedFrameCount(): Deno.PointerValue {
+  get ullReceivedFrameCount(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get ullWEPExcludedCount(): Deno.PointerValue {
+  get ullWEPExcludedCount(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get ullTKIPLocalMICFailures(): Deno.PointerValue {
+  get ullTKIPLocalMICFailures(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get ullTKIPReplays(): Deno.PointerValue {
+  get ullTKIPReplays(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: u64
-  get ullTKIPICVErrorCount(): Deno.PointerValue {
+  get ullTKIPICVErrorCount(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: u64
-  get ullCCMPReplays(): Deno.PointerValue {
+  get ullCCMPReplays(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: u64
-  get ullCCMPDecryptErrors(): Deno.PointerValue {
+  get ullCCMPDecryptErrors(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
   // 0x40: u64
-  get ullWEPUndecryptableCount(): Deno.PointerValue {
+  get ullWEPUndecryptableCount(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
   // 0x48: u64
-  get ullWEPICVErrorCount(): Deno.PointerValue {
+  get ullWEPICVErrorCount(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
   // 0x50: u64
-  get ullDecryptSuccessCount(): Deno.PointerValue {
+  get ullDecryptSuccessCount(): bigint | number {
     return Number(this.view.getBigUint64(80, true));
   }
 
   // 0x58: u64
-  get ullDecryptFailureCount(): Deno.PointerValue {
+  get ullDecryptFailureCount(): bigint | number {
     return Number(this.view.getBigUint64(88, true));
   }
 
   // 0x00: u64
-  set ullTransmittedFrameCount(value: Deno.PointerValue) {
+  set ullTransmittedFrameCount(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set ullReceivedFrameCount(value: Deno.PointerValue) {
+  set ullReceivedFrameCount(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set ullWEPExcludedCount(value: Deno.PointerValue) {
+  set ullWEPExcludedCount(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set ullTKIPLocalMICFailures(value: Deno.PointerValue) {
+  set ullTKIPLocalMICFailures(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set ullTKIPReplays(value: Deno.PointerValue) {
+  set ullTKIPReplays(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: u64
-  set ullTKIPICVErrorCount(value: Deno.PointerValue) {
+  set ullTKIPICVErrorCount(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: u64
-  set ullCCMPReplays(value: Deno.PointerValue) {
+  set ullCCMPReplays(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: u64
-  set ullCCMPDecryptErrors(value: Deno.PointerValue) {
+  set ullCCMPDecryptErrors(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
   // 0x40: u64
-  set ullWEPUndecryptableCount(value: Deno.PointerValue) {
+  set ullWEPUndecryptableCount(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
   // 0x48: u64
-  set ullWEPICVErrorCount(value: Deno.PointerValue) {
+  set ullWEPICVErrorCount(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
   // 0x50: u64
-  set ullDecryptSuccessCount(value: Deno.PointerValue) {
+  set ullDecryptSuccessCount(value: bigint | number) {
     this.view.setBigUint64(80, BigInt(value), true);
   }
 
   // 0x58: u64
-  set ullDecryptFailureCount(value: Deno.PointerValue) {
+  set ullDecryptFailureCount(value: bigint | number) {
     this.view.setBigUint64(88, BigInt(value), true);
   }
 }
@@ -27488,11 +27488,11 @@ export class WLAN_MAC_FRAME_STATISTICSView {
  */
 export interface WLAN_STATISTICS {
   /** u64 */
-  ullFourWayHandshakeFailures: Deno.PointerValue;
+  ullFourWayHandshakeFailures: bigint | number;
   /** u64 */
-  ullTKIPCounterMeasuresInvoked: Deno.PointerValue;
+  ullTKIPCounterMeasuresInvoked: bigint | number;
   /** u64 */
-  ullReserved: Deno.PointerValue;
+  ullReserved: bigint | number;
   /** Windows.Win32.NetworkManagement.WiFi.WLAN_MAC_FRAME_STATISTICS */
   MacUcastCounters: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.WiFi.WLAN_MAC_FRAME_STATISTICS */
@@ -27537,17 +27537,17 @@ export class WLAN_STATISTICSView {
   }
 
   // 0x00: u64
-  get ullFourWayHandshakeFailures(): Deno.PointerValue {
+  get ullFourWayHandshakeFailures(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get ullTKIPCounterMeasuresInvoked(): Deno.PointerValue {
+  get ullTKIPCounterMeasuresInvoked(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get ullReserved(): Deno.PointerValue {
+  get ullReserved(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -27577,17 +27577,17 @@ export class WLAN_STATISTICSView {
   }
 
   // 0x00: u64
-  set ullFourWayHandshakeFailures(value: Deno.PointerValue) {
+  set ullFourWayHandshakeFailures(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set ullTKIPCounterMeasuresInvoked(value: Deno.PointerValue) {
+  set ullTKIPCounterMeasuresInvoked(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set ullReserved(value: Deno.PointerValue) {
+  set ullReserved(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -31238,7 +31238,7 @@ export class DOT11EXT_VIRTUAL_STATION_APISView {
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 // Native Libraries
 

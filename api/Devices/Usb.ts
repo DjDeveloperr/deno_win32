@@ -779,9 +779,9 @@ export class BM_REQUEST_TYPEView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -807,22 +807,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -5186,7 +5186,7 @@ export class USB_PORT_STATUS_AND_CHANGEView {
  */
 export interface USB_PORT_EXT_STATUS_AND_CHANGE {
   /** u64 */
-  AsUlong64: Deno.PointerValue;
+  AsUlong64: bigint | number;
   /** _Anonymous_e__Struct */
   Anonymous: Uint8Array | Deno.PointerValue;
 }
@@ -5214,7 +5214,7 @@ export class USB_PORT_EXT_STATUS_AND_CHANGEView {
   }
 
   // 0x00: u64
-  get AsUlong64(): Deno.PointerValue {
+  get AsUlong64(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -5225,7 +5225,7 @@ export class USB_PORT_EXT_STATUS_AND_CHANGEView {
   }
 
   // 0x00: u64
-  set AsUlong64(value: Deno.PointerValue) {
+  set AsUlong64(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -6094,7 +6094,7 @@ export interface LARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue;
   /** i64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: bigint | number;
 }
 
 export const sizeofLARGE_INTEGER = 24;
@@ -6134,7 +6134,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  get QuadPart(): Deno.PointerValue {
+  get QuadPart(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -6149,7 +6149,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  set QuadPart(value: Deno.PointerValue) {
+  set QuadPart(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -6175,7 +6175,7 @@ export interface USBD_ENDPOINT_OFFLOAD_INFORMATION {
   /** ptr */
   TransferSegmentVA: Deno.PointerValue | Uint8Array;
   /** usize */
-  TransferRingSize: Deno.PointerValue;
+  TransferRingSize: bigint | number;
   /** u32 */
   TransferRingInitialCycleBit: number;
   /** u32 */
@@ -6185,7 +6185,7 @@ export interface USBD_ENDPOINT_OFFLOAD_INFORMATION {
   /** ptr */
   EventRingSegmentVA: Deno.PointerValue | Uint8Array;
   /** usize */
-  EventRingSize: Deno.PointerValue;
+  EventRingSize: bigint | number;
   /** u32 */
   EventRingInitialCycleBit: number;
 }
@@ -6285,7 +6285,7 @@ export class USBD_ENDPOINT_OFFLOAD_INFORMATIONView {
   }
 
   // 0x28: usize
-  get TransferRingSize(): Deno.PointerValue {
+  get TransferRingSize(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -6312,7 +6312,7 @@ export class USBD_ENDPOINT_OFFLOAD_INFORMATIONView {
   }
 
   // 0x48: usize
-  get EventRingSize(): Deno.PointerValue {
+  get EventRingSize(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
@@ -6366,7 +6366,7 @@ export class USBD_ENDPOINT_OFFLOAD_INFORMATIONView {
   }
 
   // 0x28: usize
-  set TransferRingSize(value: Deno.PointerValue) {
+  set TransferRingSize(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
@@ -6391,7 +6391,7 @@ export class USBD_ENDPOINT_OFFLOAD_INFORMATIONView {
   }
 
   // 0x48: usize
-  set EventRingSize(value: Deno.PointerValue) {
+  set EventRingSize(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
@@ -12779,7 +12779,7 @@ export class WINUSB_SETUP_PACKETView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.Devices.Usb.USB_START_TRACKING_FOR_TIME_SYNC_INFORMATION (size: 16)

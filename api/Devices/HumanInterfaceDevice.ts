@@ -4116,9 +4116,9 @@ export class DIDATAFORMATView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -4144,22 +4144,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -4224,7 +4224,7 @@ export class _Anonymous_e__UnionView {
  */
 export interface DIACTIONA {
   /** usize */
-  uAppData: Deno.PointerValue;
+  uAppData: bigint | number;
   /** u32 */
   dwSemantic: number;
   /** u32 */
@@ -4272,7 +4272,7 @@ export class DIACTIONAView {
   }
 
   // 0x00: usize
-  get uAppData(): Deno.PointerValue {
+  get uAppData(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -4309,7 +4309,7 @@ export class DIACTIONAView {
   }
 
   // 0x00: usize
-  set uAppData(value: Deno.PointerValue) {
+  set uAppData(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -4349,7 +4349,7 @@ export class DIACTIONAView {
  */
 export interface DIACTIONW {
   /** usize */
-  uAppData: Deno.PointerValue;
+  uAppData: bigint | number;
   /** u32 */
   dwSemantic: number;
   /** u32 */
@@ -4397,7 +4397,7 @@ export class DIACTIONWView {
   }
 
   // 0x00: usize
-  get uAppData(): Deno.PointerValue {
+  get uAppData(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -4434,7 +4434,7 @@ export class DIACTIONWView {
   }
 
   // 0x00: usize
-  set uAppData(value: Deno.PointerValue) {
+  set uAppData(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -4469,7 +4469,7 @@ export class DIACTIONWView {
   }
 }
 
-export type HINSTANCE = Deno.PointerValue;
+export type HINSTANCE = bigint | number;
 
 /**
  * Windows.Win32.Foundation.FILETIME (size: 8)
@@ -5144,7 +5144,7 @@ export class DICOLORSETView {
 
 export type PSTR = Deno.PointerValue | Uint8Array;
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 /**
  * Windows.Win32.Devices.HumanInterfaceDevice.DICONFIGUREDEVICESPARAMSA (size: 56)
@@ -7038,7 +7038,7 @@ export interface DIPROPPOINTER {
   /** Windows.Win32.Devices.HumanInterfaceDevice.DIPROPHEADER */
   diph: Uint8Array | Deno.PointerValue;
   /** usize */
-  uData: Deno.PointerValue;
+  uData: bigint | number;
 }
 
 export const sizeofDIPROPPOINTER = 16;
@@ -7070,7 +7070,7 @@ export class DIPROPPOINTERView {
   }
 
   // 0x08: usize
-  get uData(): Deno.PointerValue {
+  get uData(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -7080,7 +7080,7 @@ export class DIPROPPOINTERView {
   }
 
   // 0x08: usize
-  set uData(value: Deno.PointerValue) {
+  set uData(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -7656,7 +7656,7 @@ export interface DIDEVICEOBJECTDATA {
   /** u32 */
   dwSequence: number;
   /** usize */
-  uAppData: Deno.PointerValue;
+  uAppData: bigint | number;
 }
 
 export const sizeofDIDEVICEOBJECTDATA = 24;
@@ -7708,7 +7708,7 @@ export class DIDEVICEOBJECTDATAView {
   }
 
   // 0x10: usize
-  get uAppData(): Deno.PointerValue {
+  get uAppData(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -7733,7 +7733,7 @@ export class DIDEVICEOBJECTDATAView {
   }
 
   // 0x10: usize
-  set uAppData(value: Deno.PointerValue) {
+  set uAppData(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -14273,7 +14273,7 @@ export type HRESULT = number;
 
 export type NTSTATUS = number;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 // Native Libraries
 
@@ -14499,7 +14499,7 @@ export function joyConfigChanged(
 }
 
 export function HidP_GetCaps(
-  PreparsedData: Deno.PointerValue /* isize */,
+  PreparsedData: bigint | number /* isize */,
   Capabilities: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
   return libHID_dll.HidP_GetCaps(PreparsedData, util.toPointer(Capabilities));
@@ -14508,7 +14508,7 @@ export function HidP_GetCaps(
 export function HidP_GetLinkCollectionNodes(
   LinkCollectionNodes: Deno.PointerValue | Uint8Array /* ptr */,
   LinkCollectionNodesLength: Deno.PointerValue | Uint8Array /* ptr */,
-  PreparsedData: Deno.PointerValue /* isize */,
+  PreparsedData: bigint | number /* isize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
   return libHID_dll.HidP_GetLinkCollectionNodes(util.toPointer(LinkCollectionNodes), util.toPointer(LinkCollectionNodesLength), PreparsedData);
 }
@@ -14520,7 +14520,7 @@ export function HidP_GetSpecificButtonCaps(
   Usage: number /* u16 */,
   ButtonCaps: Deno.PointerValue | Uint8Array /* ptr */,
   ButtonCapsLength: Deno.PointerValue | Uint8Array /* ptr */,
-  PreparsedData: Deno.PointerValue /* isize */,
+  PreparsedData: bigint | number /* isize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
   return libHID_dll.HidP_GetSpecificButtonCaps(ReportType, UsagePage, LinkCollection, Usage, util.toPointer(ButtonCaps), util.toPointer(ButtonCapsLength), PreparsedData);
 }
@@ -14529,7 +14529,7 @@ export function HidP_GetButtonCaps(
   ReportType: HIDP_REPORT_TYPE /* Windows.Win32.Devices.HumanInterfaceDevice.HIDP_REPORT_TYPE */,
   ButtonCaps: Deno.PointerValue | Uint8Array /* ptr */,
   ButtonCapsLength: Deno.PointerValue | Uint8Array /* ptr */,
-  PreparsedData: Deno.PointerValue /* isize */,
+  PreparsedData: bigint | number /* isize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
   return libHID_dll.HidP_GetButtonCaps(ReportType, util.toPointer(ButtonCaps), util.toPointer(ButtonCapsLength), PreparsedData);
 }
@@ -14541,7 +14541,7 @@ export function HidP_GetSpecificValueCaps(
   Usage: number /* u16 */,
   ValueCaps: Deno.PointerValue | Uint8Array /* ptr */,
   ValueCapsLength: Deno.PointerValue | Uint8Array /* ptr */,
-  PreparsedData: Deno.PointerValue /* isize */,
+  PreparsedData: bigint | number /* isize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
   return libHID_dll.HidP_GetSpecificValueCaps(ReportType, UsagePage, LinkCollection, Usage, util.toPointer(ValueCaps), util.toPointer(ValueCapsLength), PreparsedData);
 }
@@ -14550,7 +14550,7 @@ export function HidP_GetValueCaps(
   ReportType: HIDP_REPORT_TYPE /* Windows.Win32.Devices.HumanInterfaceDevice.HIDP_REPORT_TYPE */,
   ValueCaps: Deno.PointerValue | Uint8Array /* ptr */,
   ValueCapsLength: Deno.PointerValue | Uint8Array /* ptr */,
-  PreparsedData: Deno.PointerValue /* isize */,
+  PreparsedData: bigint | number /* isize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
   return libHID_dll.HidP_GetValueCaps(ReportType, util.toPointer(ValueCaps), util.toPointer(ValueCapsLength), PreparsedData);
 }
@@ -14558,7 +14558,7 @@ export function HidP_GetValueCaps(
 export function HidP_GetExtendedAttributes(
   ReportType: HIDP_REPORT_TYPE /* Windows.Win32.Devices.HumanInterfaceDevice.HIDP_REPORT_TYPE */,
   DataIndex: number /* u16 */,
-  PreparsedData: Deno.PointerValue /* isize */,
+  PreparsedData: bigint | number /* isize */,
   Attributes: Deno.PointerValue | Uint8Array /* ptr */,
   LengthAttributes: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
@@ -14568,7 +14568,7 @@ export function HidP_GetExtendedAttributes(
 export function HidP_InitializeReportForID(
   ReportType: HIDP_REPORT_TYPE /* Windows.Win32.Devices.HumanInterfaceDevice.HIDP_REPORT_TYPE */,
   ReportID: number /* u8 */,
-  PreparsedData: Deno.PointerValue /* isize */,
+  PreparsedData: bigint | number /* isize */,
   Report: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReportLength: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
@@ -14579,7 +14579,7 @@ export function HidP_SetData(
   ReportType: HIDP_REPORT_TYPE /* Windows.Win32.Devices.HumanInterfaceDevice.HIDP_REPORT_TYPE */,
   DataList: Deno.PointerValue | Uint8Array /* ptr */,
   DataLength: Deno.PointerValue | Uint8Array /* ptr */,
-  PreparsedData: Deno.PointerValue /* isize */,
+  PreparsedData: bigint | number /* isize */,
   Report: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReportLength: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
@@ -14590,7 +14590,7 @@ export function HidP_GetData(
   ReportType: HIDP_REPORT_TYPE /* Windows.Win32.Devices.HumanInterfaceDevice.HIDP_REPORT_TYPE */,
   DataList: Deno.PointerValue | Uint8Array /* ptr */,
   DataLength: Deno.PointerValue | Uint8Array /* ptr */,
-  PreparsedData: Deno.PointerValue /* isize */,
+  PreparsedData: bigint | number /* isize */,
   Report: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReportLength: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
@@ -14599,7 +14599,7 @@ export function HidP_GetData(
 
 export function HidP_MaxDataListLength(
   ReportType: HIDP_REPORT_TYPE /* Windows.Win32.Devices.HumanInterfaceDevice.HIDP_REPORT_TYPE */,
-  PreparsedData: Deno.PointerValue /* isize */,
+  PreparsedData: bigint | number /* isize */,
 ): number /* u32 */ {
   return libHID_dll.HidP_MaxDataListLength(ReportType, PreparsedData);
 }
@@ -14610,7 +14610,7 @@ export function HidP_SetUsages(
   LinkCollection: number /* u16 */,
   UsageList: Deno.PointerValue | Uint8Array /* ptr */,
   UsageLength: Deno.PointerValue | Uint8Array /* ptr */,
-  PreparsedData: Deno.PointerValue /* isize */,
+  PreparsedData: bigint | number /* isize */,
   Report: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReportLength: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
@@ -14623,7 +14623,7 @@ export function HidP_UnsetUsages(
   LinkCollection: number /* u16 */,
   UsageList: Deno.PointerValue | Uint8Array /* ptr */,
   UsageLength: Deno.PointerValue | Uint8Array /* ptr */,
-  PreparsedData: Deno.PointerValue /* isize */,
+  PreparsedData: bigint | number /* isize */,
   Report: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReportLength: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
@@ -14636,7 +14636,7 @@ export function HidP_GetUsages(
   LinkCollection: number /* u16 */,
   UsageList: Deno.PointerValue | Uint8Array /* ptr */,
   UsageLength: Deno.PointerValue | Uint8Array /* ptr */,
-  PreparsedData: Deno.PointerValue /* isize */,
+  PreparsedData: bigint | number /* isize */,
   Report: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReportLength: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
@@ -14648,7 +14648,7 @@ export function HidP_GetUsagesEx(
   LinkCollection: number /* u16 */,
   ButtonList: Deno.PointerValue | Uint8Array /* ptr */,
   UsageLength: Deno.PointerValue | Uint8Array /* ptr */,
-  PreparsedData: Deno.PointerValue /* isize */,
+  PreparsedData: bigint | number /* isize */,
   Report: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReportLength: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
@@ -14658,7 +14658,7 @@ export function HidP_GetUsagesEx(
 export function HidP_MaxUsageListLength(
   ReportType: HIDP_REPORT_TYPE /* Windows.Win32.Devices.HumanInterfaceDevice.HIDP_REPORT_TYPE */,
   UsagePage: number /* u16 */,
-  PreparsedData: Deno.PointerValue /* isize */,
+  PreparsedData: bigint | number /* isize */,
 ): number /* u32 */ {
   return libHID_dll.HidP_MaxUsageListLength(ReportType, UsagePage, PreparsedData);
 }
@@ -14669,7 +14669,7 @@ export function HidP_SetUsageValue(
   LinkCollection: number /* u16 */,
   Usage: number /* u16 */,
   UsageValue: number /* u32 */,
-  PreparsedData: Deno.PointerValue /* isize */,
+  PreparsedData: bigint | number /* isize */,
   Report: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReportLength: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
@@ -14682,7 +14682,7 @@ export function HidP_SetScaledUsageValue(
   LinkCollection: number /* u16 */,
   Usage: number /* u16 */,
   UsageValue: number /* i32 */,
-  PreparsedData: Deno.PointerValue /* isize */,
+  PreparsedData: bigint | number /* isize */,
   Report: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReportLength: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
@@ -14696,7 +14696,7 @@ export function HidP_SetUsageValueArray(
   Usage: number /* u16 */,
   UsageValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   UsageValueByteLength: number /* u16 */,
-  PreparsedData: Deno.PointerValue /* isize */,
+  PreparsedData: bigint | number /* isize */,
   Report: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReportLength: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
@@ -14709,7 +14709,7 @@ export function HidP_GetUsageValue(
   LinkCollection: number /* u16 */,
   Usage: number /* u16 */,
   UsageValue: Deno.PointerValue | Uint8Array /* ptr */,
-  PreparsedData: Deno.PointerValue /* isize */,
+  PreparsedData: bigint | number /* isize */,
   Report: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReportLength: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
@@ -14722,7 +14722,7 @@ export function HidP_GetScaledUsageValue(
   LinkCollection: number /* u16 */,
   Usage: number /* u16 */,
   UsageValue: Deno.PointerValue | Uint8Array /* ptr */,
-  PreparsedData: Deno.PointerValue /* isize */,
+  PreparsedData: bigint | number /* isize */,
   Report: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReportLength: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
@@ -14736,7 +14736,7 @@ export function HidP_GetUsageValueArray(
   Usage: number /* u16 */,
   UsageValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   UsageValueByteLength: number /* u16 */,
-  PreparsedData: Deno.PointerValue /* isize */,
+  PreparsedData: bigint | number /* isize */,
   Report: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReportLength: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
@@ -14760,7 +14760,7 @@ export function HidP_GetButtonArray(
   Usage: number /* u16 */,
   ButtonData: Deno.PointerValue | Uint8Array /* ptr */,
   ButtonDataLength: Deno.PointerValue | Uint8Array /* ptr */,
-  PreparsedData: Deno.PointerValue /* isize */,
+  PreparsedData: bigint | number /* isize */,
   Report: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReportLength: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
@@ -14774,7 +14774,7 @@ export function HidP_SetButtonArray(
   Usage: number /* u16 */,
   ButtonData: Deno.PointerValue | Uint8Array /* ptr */,
   ButtonDataLength: number /* u16 */,
-  PreparsedData: Deno.PointerValue /* isize */,
+  PreparsedData: bigint | number /* isize */,
   Report: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReportLength: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
@@ -14813,7 +14813,7 @@ export function HidD_GetPreparsedData(
 }
 
 export function HidD_FreePreparsedData(
-  PreparsedData: Deno.PointerValue /* isize */,
+  PreparsedData: bigint | number /* isize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
   return libHID_dll.HidD_FreePreparsedData(PreparsedData);
 }

@@ -48,7 +48,7 @@ export const WEB_SOCKET_INDICATE_RECEIVE_COMPLETE_ACTION = 4;
 
 // Structs
 
-export type WEB_SOCKET_HANDLE = Deno.PointerValue;
+export type WEB_SOCKET_HANDLE = bigint | number;
 
 /**
  * Windows.Win32.Networking.WebSocket.WEB_SOCKET_PROPERTY (size: 24)

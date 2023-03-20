@@ -372,7 +372,7 @@ export interface VSS_SNAPSHOT_PROP {
   /** i32 */
   m_lSnapshotAttributes: number;
   /** i64 */
-  m_tsCreationTimestamp: Deno.PointerValue;
+  m_tsCreationTimestamp: bigint | number;
   /** Windows.Win32.Storage.Vss.VSS_SNAPSHOT_STATE */
   m_eStatus: VSS_SNAPSHOT_STATE;
 }
@@ -493,7 +493,7 @@ export class VSS_SNAPSHOT_PROPView {
   // 0x54: pad4
 
   // 0x58: i64
-  get m_tsCreationTimestamp(): Deno.PointerValue {
+  get m_tsCreationTimestamp(): bigint | number {
     return Number(this.view.getBigInt64(88, true));
   }
 
@@ -564,7 +564,7 @@ export class VSS_SNAPSHOT_PROPView {
   // 0x54: pad4
 
   // 0x58: i64
-  set m_tsCreationTimestamp(value: Deno.PointerValue) {
+  set m_tsCreationTimestamp(value: bigint | number) {
     this.view.setBigInt64(88, BigInt(value), true);
   }
 
@@ -873,9 +873,9 @@ export interface VSS_DIFF_VOLUME_PROP {
   /** ptr */
   m_pwszVolumeDisplayName: Deno.PointerValue | Uint8Array;
   /** i64 */
-  m_llVolumeFreeSpace: Deno.PointerValue;
+  m_llVolumeFreeSpace: bigint | number;
   /** i64 */
-  m_llVolumeTotalSpace: Deno.PointerValue;
+  m_llVolumeTotalSpace: bigint | number;
 }
 
 export const sizeofVSS_DIFF_VOLUME_PROP = 32;
@@ -917,12 +917,12 @@ export class VSS_DIFF_VOLUME_PROPView {
   }
 
   // 0x10: i64
-  get m_llVolumeFreeSpace(): Deno.PointerValue {
+  get m_llVolumeFreeSpace(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: i64
-  get m_llVolumeTotalSpace(): Deno.PointerValue {
+  get m_llVolumeTotalSpace(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
@@ -937,12 +937,12 @@ export class VSS_DIFF_VOLUME_PROPView {
   }
 
   // 0x10: i64
-  set m_llVolumeFreeSpace(value: Deno.PointerValue) {
+  set m_llVolumeFreeSpace(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: i64
-  set m_llVolumeTotalSpace(value: Deno.PointerValue) {
+  set m_llVolumeTotalSpace(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 }
@@ -956,11 +956,11 @@ export interface VSS_DIFF_AREA_PROP {
   /** ptr */
   m_pwszDiffAreaVolumeName: Deno.PointerValue | Uint8Array;
   /** i64 */
-  m_llMaximumDiffSpace: Deno.PointerValue;
+  m_llMaximumDiffSpace: bigint | number;
   /** i64 */
-  m_llAllocatedDiffSpace: Deno.PointerValue;
+  m_llAllocatedDiffSpace: bigint | number;
   /** i64 */
-  m_llUsedDiffSpace: Deno.PointerValue;
+  m_llUsedDiffSpace: bigint | number;
 }
 
 export const sizeofVSS_DIFF_AREA_PROP = 40;
@@ -1004,17 +1004,17 @@ export class VSS_DIFF_AREA_PROPView {
   }
 
   // 0x10: i64
-  get m_llMaximumDiffSpace(): Deno.PointerValue {
+  get m_llMaximumDiffSpace(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: i64
-  get m_llAllocatedDiffSpace(): Deno.PointerValue {
+  get m_llAllocatedDiffSpace(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
   // 0x20: i64
-  get m_llUsedDiffSpace(): Deno.PointerValue {
+  get m_llUsedDiffSpace(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
@@ -1029,17 +1029,17 @@ export class VSS_DIFF_AREA_PROPView {
   }
 
   // 0x10: i64
-  set m_llMaximumDiffSpace(value: Deno.PointerValue) {
+  set m_llMaximumDiffSpace(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: i64
-  set m_llAllocatedDiffSpace(value: Deno.PointerValue) {
+  set m_llAllocatedDiffSpace(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
   // 0x20: i64
-  set m_llUsedDiffSpace(value: Deno.PointerValue) {
+  set m_llUsedDiffSpace(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 }

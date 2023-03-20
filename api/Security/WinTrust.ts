@@ -228,9 +228,9 @@ export const CCPI_RESULT_AUDIT = 3;
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -256,22 +256,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -331,7 +331,7 @@ export class _Anonymous_e__UnionView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 export type PWSTR = Deno.PointerValue | Uint8Array;
 
@@ -798,7 +798,7 @@ export interface WINTRUST_CATALOG_INFO {
   /** ptr */
   pcCatalogContext: Deno.PointerValue | Uint8Array;
   /** isize */
-  hCatAdmin: Deno.PointerValue;
+  hCatAdmin: bigint | number;
 }
 
 export const sizeofWINTRUST_CATALOG_INFO = 72;
@@ -903,7 +903,7 @@ export class WINTRUST_CATALOG_INFOView {
   }
 
   // 0x40: isize
-  get hCatAdmin(): Deno.PointerValue {
+  get hCatAdmin(): bigint | number {
     return Number(this.view.getBigInt64(64, true));
   }
 
@@ -958,7 +958,7 @@ export class WINTRUST_CATALOG_INFOView {
   }
 
   // 0x40: isize
-  set hCatAdmin(value: Deno.PointerValue) {
+  set hCatAdmin(value: bigint | number) {
     this.view.setBigInt64(64, BigInt(value), true);
   }
 }
@@ -1369,7 +1369,7 @@ export class WINTRUST_CERT_INFOView {
 
 export type BOOL = number;
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 export type PSTR = Deno.PointerValue | Uint8Array;
 
@@ -1441,7 +1441,7 @@ export interface CRYPT_PROVIDER_DATA {
   /** ptr */
   pgActionID: Deno.PointerValue | Uint8Array;
   /** usize */
-  hProv: Deno.PointerValue;
+  hProv: bigint | number;
   /** u32 */
   dwError: number;
   /** u32 */
@@ -1631,7 +1631,7 @@ export class CRYPT_PROVIDER_DATAView {
   }
 
   // 0x28: usize
-  get hProv(): Deno.PointerValue {
+  get hProv(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -1829,7 +1829,7 @@ export class CRYPT_PROVIDER_DATAView {
   }
 
   // 0x28: usize
-  set hProv(value: Deno.PointerValue) {
+  set hProv(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
@@ -5825,7 +5825,7 @@ export class WTD_GENERIC_CHAIN_POLICY_SIGNER_INFOView {
   }
 }
 
-export type HCERTCHAINENGINE = Deno.PointerValue;
+export type HCERTCHAINENGINE = bigint | number;
 
 /**
  * Windows.Win32.Security.WinTrust.WTD_GENERIC_CHAIN_POLICY_CREATE_INFO (size: 40)
@@ -6091,9 +6091,9 @@ export interface DRIVER_VER_INFO {
   /** u32 */
   cbStruct: number;
   /** usize */
-  dwReserved1: Deno.PointerValue;
+  dwReserved1: bigint | number;
   /** usize */
-  dwReserved2: Deno.PointerValue;
+  dwReserved2: bigint | number;
   /** u32 */
   dwPlatform: number;
   /** u32 */
@@ -6165,12 +6165,12 @@ export class DRIVER_VER_INFOView {
   // 0x04: pad4
 
   // 0x08: usize
-  get dwReserved1(): Deno.PointerValue {
+  get dwReserved1(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: usize
-  get dwReserved2(): Deno.PointerValue {
+  get dwReserved2(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -6232,12 +6232,12 @@ export class DRIVER_VER_INFOView {
   // 0x04: pad4
 
   // 0x08: usize
-  set dwReserved1(value: Deno.PointerValue) {
+  set dwReserved1(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: usize
-  set dwReserved2(value: Deno.PointerValue) {
+  set dwReserved2(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 

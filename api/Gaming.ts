@@ -117,7 +117,7 @@ export class GAMING_DEVICE_MODEL_INFORMATIONView {
 
 export type HRESULT = number;
 
-export type HSTRING = Deno.PointerValue;
+export type HSTRING = bigint | number;
 
 export type BOOL = number;
 
@@ -316,11 +316,11 @@ export function ShowGameInviteUI(
 export function ShowPlayerPickerUI(
   promptDisplayText: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
   xuids: Deno.PointerValue | Uint8Array /* ptr */,
-  xuidsCount: Deno.PointerValue /* usize */,
+  xuidsCount: bigint | number /* usize */,
   preSelectedXuids: Deno.PointerValue | Uint8Array /* ptr */,
-  preSelectedXuidsCount: Deno.PointerValue /* usize */,
-  minSelectionCount: Deno.PointerValue /* usize */,
-  maxSelectionCount: Deno.PointerValue /* usize */,
+  preSelectedXuidsCount: bigint | number /* usize */,
+  minSelectionCount: bigint | number /* usize */,
+  maxSelectionCount: bigint | number /* usize */,
   completionRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.Gaming.PlayerPickerUICompletionRoutine */,
   context: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
@@ -397,11 +397,11 @@ export function ShowPlayerPickerUIForUser(
   user: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.IInspectable */,
   promptDisplayText: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WinRT.HSTRING */,
   xuids: Deno.PointerValue | Uint8Array /* ptr */,
-  xuidsCount: Deno.PointerValue /* usize */,
+  xuidsCount: bigint | number /* usize */,
   preSelectedXuids: Deno.PointerValue | Uint8Array /* ptr */,
-  preSelectedXuidsCount: Deno.PointerValue /* usize */,
-  minSelectionCount: Deno.PointerValue /* usize */,
-  maxSelectionCount: Deno.PointerValue /* usize */,
+  preSelectedXuidsCount: bigint | number /* usize */,
+  minSelectionCount: bigint | number /* usize */,
+  maxSelectionCount: bigint | number /* usize */,
   completionRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.Gaming.PlayerPickerUICompletionRoutine */,
   context: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {

@@ -47,9 +47,9 @@ export const COMPOSITION_FRAME_ID_COMPLETED = 2;
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -75,22 +75,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -169,7 +169,7 @@ export interface LARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue;
   /** i64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: bigint | number;
 }
 
 export const sizeofLARGE_INTEGER = 24;
@@ -209,7 +209,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  get QuadPart(): Deno.PointerValue {
+  get QuadPart(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -224,7 +224,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  set QuadPart(value: Deno.PointerValue) {
+  set QuadPart(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -387,11 +387,11 @@ export class DCOMPOSITION_FRAME_STATISTICSView {
  */
 export interface COMPOSITION_FRAME_STATS {
   /** u64 */
-  startTime: Deno.PointerValue;
+  startTime: bigint | number;
   /** u64 */
-  targetTime: Deno.PointerValue;
+  targetTime: bigint | number;
   /** u64 */
-  framePeriod: Deno.PointerValue;
+  framePeriod: bigint | number;
 }
 
 export const sizeofCOMPOSITION_FRAME_STATS = 24;
@@ -419,32 +419,32 @@ export class COMPOSITION_FRAME_STATSView {
   }
 
   // 0x00: u64
-  get startTime(): Deno.PointerValue {
+  get startTime(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get targetTime(): Deno.PointerValue {
+  get targetTime(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get framePeriod(): Deno.PointerValue {
+  get framePeriod(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x00: u64
-  set startTime(value: Deno.PointerValue) {
+  set startTime(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set targetTime(value: Deno.PointerValue) {
+  set targetTime(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set framePeriod(value: Deno.PointerValue) {
+  set framePeriod(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -615,7 +615,7 @@ export interface COMPOSITION_STATS {
   /** u32 */
   virtualRefreshCount: number;
   /** u64 */
-  time: Deno.PointerValue;
+  time: bigint | number;
 }
 
 export const sizeofCOMPOSITION_STATS = 24;
@@ -663,7 +663,7 @@ export class COMPOSITION_STATSView {
   // 0x0c: pad4
 
   // 0x10: u64
-  get time(): Deno.PointerValue {
+  get time(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -685,7 +685,7 @@ export class COMPOSITION_STATSView {
   // 0x0c: pad4
 
   // 0x10: u64
-  set time(value: Deno.PointerValue) {
+  set time(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -697,9 +697,9 @@ export interface COMPOSITION_TARGET_STATS {
   /** u32 */
   outstandingPresents: number;
   /** u64 */
-  presentTime: Deno.PointerValue;
+  presentTime: bigint | number;
   /** u64 */
-  vblankDuration: Deno.PointerValue;
+  vblankDuration: bigint | number;
   /** Windows.Win32.Graphics.DirectComposition.COMPOSITION_STATS */
   presentedStats: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.DirectComposition.COMPOSITION_STATS */
@@ -743,12 +743,12 @@ export class COMPOSITION_TARGET_STATSView {
   // 0x04: pad4
 
   // 0x08: u64
-  get presentTime(): Deno.PointerValue {
+  get presentTime(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get vblankDuration(): Deno.PointerValue {
+  get vblankDuration(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -772,12 +772,12 @@ export class COMPOSITION_TARGET_STATSView {
   // 0x04: pad4
 
   // 0x08: u64
-  set presentTime(value: Deno.PointerValue) {
+  set presentTime(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set vblankDuration(value: Deno.PointerValue) {
+  set vblankDuration(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -866,7 +866,7 @@ export class DCompositionInkTrailPointView {
 
 export type HRESULT = number;
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 export type BOOL = number;
 
@@ -979,7 +979,7 @@ export function DCompositionGetFrameId(
 }
 
 export function DCompositionGetStatistics(
-  frameId: Deno.PointerValue /* u64 */,
+  frameId: bigint | number /* u64 */,
   frameStats: Deno.PointerValue | Uint8Array /* ptr */,
   targetIdCount: number /* u32 */,
   targetIds: Deno.PointerValue | Uint8Array /* ptr */,
@@ -989,7 +989,7 @@ export function DCompositionGetStatistics(
 }
 
 export function DCompositionGetTargetStatistics(
-  frameId: Deno.PointerValue /* u64 */,
+  frameId: bigint | number /* u64 */,
   targetId: Deno.PointerValue | Uint8Array /* ptr */,
   targetStats: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {

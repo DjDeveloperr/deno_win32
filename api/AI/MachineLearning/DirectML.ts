@@ -280,7 +280,7 @@ export interface DML_BUFFER_TENSOR_DESC {
   /** ptr */
   Strides: Deno.PointerValue | Uint8Array;
   /** u64 */
-  TotalTensorSizeInBytes: Deno.PointerValue;
+  TotalTensorSizeInBytes: bigint | number;
   /** u32 */
   GuaranteedBaseOffsetAlignment: number;
 }
@@ -349,7 +349,7 @@ export class DML_BUFFER_TENSOR_DESCView {
   }
 
   // 0x20: u64
-  get TotalTensorSizeInBytes(): Deno.PointerValue {
+  get TotalTensorSizeInBytes(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -388,7 +388,7 @@ export class DML_BUFFER_TENSOR_DESCView {
   }
 
   // 0x20: u64
-  set TotalTensorSizeInBytes(value: Deno.PointerValue) {
+  set TotalTensorSizeInBytes(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -584,9 +584,9 @@ export interface DML_SCALAR_UNION {
   /** u32 */
   UInt32: number;
   /** i64 */
-  Int64: Deno.PointerValue;
+  Int64: bigint | number;
   /** u64 */
-  UInt64: Deno.PointerValue;
+  UInt64: bigint | number;
   /** f32 */
   Float32: number;
   /** f64 */
@@ -674,12 +674,12 @@ export class DML_SCALAR_UNIONView {
   // 0x16: pad2
 
   // 0x18: i64
-  get Int64(): Deno.PointerValue {
+  get Int64(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
   // 0x20: u64
-  get UInt64(): Deno.PointerValue {
+  get UInt64(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -733,12 +733,12 @@ export class DML_SCALAR_UNIONView {
   // 0x16: pad2
 
   // 0x18: i64
-  set Int64(value: Deno.PointerValue) {
+  set Int64(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set UInt64(value: Deno.PointerValue) {
+  set UInt64(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -15360,7 +15360,7 @@ export class DML_FEATURE_DATA_FEATURE_LEVELSView {
  */
 export interface D3D12_CPU_DESCRIPTOR_HANDLE {
   /** usize */
-  ptr: Deno.PointerValue;
+  ptr: bigint | number;
 }
 
 export const sizeofD3D12_CPU_DESCRIPTOR_HANDLE = 8;
@@ -15384,12 +15384,12 @@ export class D3D12_CPU_DESCRIPTOR_HANDLEView {
   }
 
   // 0x00: usize
-  get ptr(): Deno.PointerValue {
+  get ptr(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: usize
-  set ptr(value: Deno.PointerValue) {
+  set ptr(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -15399,7 +15399,7 @@ export class D3D12_CPU_DESCRIPTOR_HANDLEView {
  */
 export interface D3D12_GPU_DESCRIPTOR_HANDLE {
   /** u64 */
-  ptr: Deno.PointerValue;
+  ptr: bigint | number;
 }
 
 export const sizeofD3D12_GPU_DESCRIPTOR_HANDLE = 8;
@@ -15423,12 +15423,12 @@ export class D3D12_GPU_DESCRIPTOR_HANDLEView {
   }
 
   // 0x00: u64
-  get ptr(): Deno.PointerValue {
+  get ptr(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: u64
-  set ptr(value: Deno.PointerValue) {
+  set ptr(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -15529,9 +15529,9 @@ export interface DML_BINDING_PROPERTIES {
   /** u32 */
   RequiredDescriptorCount: number;
   /** u64 */
-  TemporaryResourceSize: Deno.PointerValue;
+  TemporaryResourceSize: bigint | number;
   /** u64 */
-  PersistentResourceSize: Deno.PointerValue;
+  PersistentResourceSize: bigint | number;
 }
 
 export const sizeofDML_BINDING_PROPERTIES = 24;
@@ -15567,12 +15567,12 @@ export class DML_BINDING_PROPERTIESView {
   // 0x04: pad4
 
   // 0x08: u64
-  get TemporaryResourceSize(): Deno.PointerValue {
+  get TemporaryResourceSize(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get PersistentResourceSize(): Deno.PointerValue {
+  get PersistentResourceSize(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -15584,12 +15584,12 @@ export class DML_BINDING_PROPERTIESView {
   // 0x04: pad4
 
   // 0x08: u64
-  set TemporaryResourceSize(value: Deno.PointerValue) {
+  set TemporaryResourceSize(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set PersistentResourceSize(value: Deno.PointerValue) {
+  set PersistentResourceSize(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -15660,9 +15660,9 @@ export interface DML_BUFFER_BINDING {
   /** Windows.Win32.Graphics.Direct3D12.ID3D12Resource */
   Buffer: Uint8Array | Deno.PointerValue;
   /** u64 */
-  Offset: Deno.PointerValue;
+  Offset: bigint | number;
   /** u64 */
-  SizeInBytes: Deno.PointerValue;
+  SizeInBytes: bigint | number;
 }
 
 export const sizeofDML_BUFFER_BINDING = 24;
@@ -15696,12 +15696,12 @@ export class DML_BUFFER_BINDINGView {
   }
 
   // 0x08: u64
-  get Offset(): Deno.PointerValue {
+  get Offset(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get SizeInBytes(): Deno.PointerValue {
+  get SizeInBytes(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -15711,12 +15711,12 @@ export class DML_BUFFER_BINDINGView {
   }
 
   // 0x08: u64
-  set Offset(value: Deno.PointerValue) {
+  set Offset(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set SizeInBytes(value: Deno.PointerValue) {
+  set SizeInBytes(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }

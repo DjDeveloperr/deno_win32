@@ -4022,9 +4022,9 @@ export class LINEAGENTLISTView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -4050,22 +4050,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -4077,7 +4077,7 @@ export interface CY {
   /** _Anonymous_e__Struct */
   Anonymous: Uint8Array | Deno.PointerValue;
   /** i64 */
-  int64: Deno.PointerValue;
+  int64: bigint | number;
 }
 
 export const sizeofCY = 16;
@@ -4109,7 +4109,7 @@ export class CYView {
   }
 
   // 0x08: i64
-  get int64(): Deno.PointerValue {
+  get int64(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -4119,7 +4119,7 @@ export class CYView {
   }
 
   // 0x08: i64
-  set int64(value: Deno.PointerValue) {
+  set int64(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -9554,7 +9554,7 @@ export class LINEGENERATETONEView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * _Handles_e__Union (size: 16)
@@ -10309,13 +10309,13 @@ export interface LINEMESSAGE {
   /** u32 */
   dwMessageID: number;
   /** usize */
-  dwCallbackInstance: Deno.PointerValue;
+  dwCallbackInstance: bigint | number;
   /** usize */
-  dwParam1: Deno.PointerValue;
+  dwParam1: bigint | number;
   /** usize */
-  dwParam2: Deno.PointerValue;
+  dwParam2: bigint | number;
   /** usize */
-  dwParam3: Deno.PointerValue;
+  dwParam3: bigint | number;
 }
 
 export const sizeofLINEMESSAGE = 40;
@@ -10359,22 +10359,22 @@ export class LINEMESSAGEView {
   }
 
   // 0x08: usize
-  get dwCallbackInstance(): Deno.PointerValue {
+  get dwCallbackInstance(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: usize
-  get dwParam1(): Deno.PointerValue {
+  get dwParam1(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: usize
-  get dwParam2(): Deno.PointerValue {
+  get dwParam2(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: usize
-  get dwParam3(): Deno.PointerValue {
+  get dwParam3(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -10389,22 +10389,22 @@ export class LINEMESSAGEView {
   }
 
   // 0x08: usize
-  set dwCallbackInstance(value: Deno.PointerValue) {
+  set dwCallbackInstance(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: usize
-  set dwParam1(value: Deno.PointerValue) {
+  set dwParam1(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: usize
-  set dwParam2(value: Deno.PointerValue) {
+  set dwParam2(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: usize
-  set dwParam3(value: Deno.PointerValue) {
+  set dwParam3(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 }
@@ -11058,9 +11058,9 @@ export class LINEREQMAKECALLWView {
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
-export type WPARAM = Deno.PointerValue;
+export type WPARAM = bigint | number;
 
 /**
  * Windows.Win32.Devices.Tapi.LINEREQMEDIACALL (size: 72)
@@ -12874,13 +12874,13 @@ export interface PHONEMESSAGE {
   /** u32 */
   dwMessageID: number;
   /** usize */
-  dwCallbackInstance: Deno.PointerValue;
+  dwCallbackInstance: bigint | number;
   /** usize */
-  dwParam1: Deno.PointerValue;
+  dwParam1: bigint | number;
   /** usize */
-  dwParam2: Deno.PointerValue;
+  dwParam2: bigint | number;
   /** usize */
-  dwParam3: Deno.PointerValue;
+  dwParam3: bigint | number;
 }
 
 export const sizeofPHONEMESSAGE = 40;
@@ -12924,22 +12924,22 @@ export class PHONEMESSAGEView {
   }
 
   // 0x08: usize
-  get dwCallbackInstance(): Deno.PointerValue {
+  get dwCallbackInstance(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: usize
-  get dwParam1(): Deno.PointerValue {
+  get dwParam1(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: usize
-  get dwParam2(): Deno.PointerValue {
+  get dwParam2(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: usize
-  get dwParam3(): Deno.PointerValue {
+  get dwParam3(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -12954,22 +12954,22 @@ export class PHONEMESSAGEView {
   }
 
   // 0x08: usize
-  set dwCallbackInstance(value: Deno.PointerValue) {
+  set dwCallbackInstance(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: usize
-  set dwParam1(value: Deno.PointerValue) {
+  set dwParam1(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: usize
-  set dwParam2(value: Deno.PointerValue) {
+  set dwParam2(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: usize
-  set dwParam3(value: Deno.PointerValue) {
+  set dwParam3(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 }
@@ -14976,7 +14976,7 @@ export class NSIDView {
 
 export type PSTR = Deno.PointerValue | Uint8Array;
 
-export type HINSTANCE = Deno.PointerValue;
+export type HINSTANCE = bigint | number;
 
 export type HRESULT = number;
 
@@ -17073,7 +17073,7 @@ export function lineOpen(
   lphLine: Deno.PointerValue | Uint8Array /* ptr */,
   dwAPIVersion: number /* u32 */,
   dwExtVersion: number /* u32 */,
-  dwCallbackInstance: Deno.PointerValue /* usize */,
+  dwCallbackInstance: bigint | number /* usize */,
   dwPrivileges: number /* u32 */,
   dwMediaModes: number /* u32 */,
   lpCallParams: Deno.PointerValue | Uint8Array /* ptr */,
@@ -17087,7 +17087,7 @@ export function lineOpenA(
   lphLine: Deno.PointerValue | Uint8Array /* ptr */,
   dwAPIVersion: number /* u32 */,
   dwExtVersion: number /* u32 */,
-  dwCallbackInstance: Deno.PointerValue /* usize */,
+  dwCallbackInstance: bigint | number /* usize */,
   dwPrivileges: number /* u32 */,
   dwMediaModes: number /* u32 */,
   lpCallParams: Deno.PointerValue | Uint8Array /* ptr */,
@@ -17101,7 +17101,7 @@ export function lineOpenW(
   lphLine: Deno.PointerValue | Uint8Array /* ptr */,
   dwAPIVersion: number /* u32 */,
   dwExtVersion: number /* u32 */,
-  dwCallbackInstance: Deno.PointerValue /* usize */,
+  dwCallbackInstance: bigint | number /* usize */,
   dwPrivileges: number /* u32 */,
   dwMediaModes: number /* u32 */,
   lpCallParams: Deno.PointerValue | Uint8Array /* ptr */,
@@ -18008,7 +18008,7 @@ export function phoneOpen(
   lphPhone: Deno.PointerValue | Uint8Array /* ptr */,
   dwAPIVersion: number /* u32 */,
   dwExtVersion: number /* u32 */,
-  dwCallbackInstance: Deno.PointerValue /* usize */,
+  dwCallbackInstance: bigint | number /* usize */,
   dwPrivilege: number /* u32 */,
 ): number /* i32 */ {
   return libTAPI32_dll.phoneOpen(hPhoneApp, dwDeviceID, util.toPointer(lphPhone), dwAPIVersion, dwExtVersion, dwCallbackInstance, dwPrivilege);

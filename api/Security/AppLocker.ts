@@ -87,16 +87,16 @@ export const SaferIdentityTypeCertificate = 4;
 
 export type PWSTR = Deno.PointerValue | Uint8Array;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * _Anonymous_e__Struct (size: 16)
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -122,22 +122,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -214,7 +214,7 @@ export interface LARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue;
   /** i64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: bigint | number;
 }
 
 export const sizeofLARGE_INTEGER = 24;
@@ -254,7 +254,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  get QuadPart(): Deno.PointerValue {
+  get QuadPart(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -269,12 +269,12 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  set QuadPart(value: Deno.PointerValue) {
+  set QuadPart(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 /**
  * Windows.Win32.Security.AppLocker.SAFER_CODE_PROPERTIES_V1 (size: 88)
@@ -536,7 +536,7 @@ export interface SAFER_CODE_PROPERTIES_V2 {
   /** Windows.Win32.Foundation.PWSTR */
   PackageName: string | null | Uint8Array | Uint16Array;
   /** u64 */
-  PackageVersion: Deno.PointerValue;
+  PackageVersion: bigint | number;
   /** Windows.Win32.Foundation.BOOL */
   PackageIsFramework: boolean;
 }
@@ -703,7 +703,7 @@ export class SAFER_CODE_PROPERTIES_V2View {
   }
 
   // 0x70: u64
-  get PackageVersion(): Deno.PointerValue {
+  get PackageVersion(): bigint | number {
     return Number(this.view.getBigUint64(112, true));
   }
 
@@ -802,7 +802,7 @@ export class SAFER_CODE_PROPERTIES_V2View {
   }
 
   // 0x70: u64
-  set PackageVersion(value: Deno.PointerValue) {
+  set PackageVersion(value: bigint | number) {
     this.view.setBigUint64(112, BigInt(value), true);
   }
 
@@ -1361,7 +1361,7 @@ export class SAFER_URLZONE_IDENTIFICATIONView {
   }
 }
 
-export type SAFER_LEVEL_HANDLE = Deno.PointerValue;
+export type SAFER_LEVEL_HANDLE = bigint | number;
 
 export type BOOLEAN = number;
 

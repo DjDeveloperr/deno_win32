@@ -2811,7 +2811,7 @@ export interface WiaTransferParams {
   /** i32 */
   lPercentComplete: number;
   /** u64 */
-  ulTransferredBytes: Deno.PointerValue;
+  ulTransferredBytes: bigint | number;
   /** Windows.Win32.Foundation.HRESULT */
   hrErrorStatus: Uint8Array | Deno.PointerValue;
 }
@@ -2853,7 +2853,7 @@ export class WiaTransferParamsView {
   }
 
   // 0x08: u64
-  get ulTransferredBytes(): Deno.PointerValue {
+  get ulTransferredBytes(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -2874,7 +2874,7 @@ export class WiaTransferParamsView {
   }
 
   // 0x08: u64
-  set ulTransferredBytes(value: Deno.PointerValue) {
+  set ulTransferredBytes(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -2907,7 +2907,7 @@ export interface MINIDRV_TRANSFER_CONTEXT {
   /** i32 */
   tymed: number;
   /** isize */
-  hFile: Deno.PointerValue;
+  hFile: bigint | number;
   /** i32 */
   cbOffset: number;
   /** i32 */
@@ -2925,7 +2925,7 @@ export interface MINIDRV_TRANSFER_CONTEXT {
   /** Windows.Win32.Foundation.BOOL */
   bClassDrvAllocBuf: boolean;
   /** isize */
-  lClientAddress: Deno.PointerValue;
+  lClientAddress: bigint | number;
   /** Windows.Win32.Devices.ImageAcquisition.IWiaMiniDrvCallBack */
   pIWiaMiniDrvCallBack: Uint8Array | Deno.PointerValue;
   /** i32 */
@@ -3070,7 +3070,7 @@ export class MINIDRV_TRANSFER_CONTEXTView {
   // 0x2c: pad4
 
   // 0x30: isize
-  get hFile(): Deno.PointerValue {
+  get hFile(): bigint | number {
     return Number(this.view.getBigInt64(48, true));
   }
 
@@ -3117,7 +3117,7 @@ export class MINIDRV_TRANSFER_CONTEXTView {
   }
 
   // 0x60: isize
-  get lClientAddress(): Deno.PointerValue {
+  get lClientAddress(): bigint | number {
     return Number(this.view.getBigInt64(96, true));
   }
 
@@ -3214,7 +3214,7 @@ export class MINIDRV_TRANSFER_CONTEXTView {
   // 0x2c: pad4
 
   // 0x30: isize
-  set hFile(value: Deno.PointerValue) {
+  set hFile(value: bigint | number) {
     this.view.setBigInt64(48, BigInt(value), true);
   }
 
@@ -3259,7 +3259,7 @@ export class MINIDRV_TRANSFER_CONTEXTView {
   }
 
   // 0x60: isize
-  set lClientAddress(value: Deno.PointerValue) {
+  set lClientAddress(value: bigint | number) {
     this.view.setBigInt64(96, BigInt(value), true);
   }
 
@@ -4837,7 +4837,7 @@ export class WIAS_ENDORSER_INFOView {
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 /**
  * Windows.Win32.Devices.ImageAcquisition.DEVICEDIALOGDATA2 (size: 72)
@@ -5858,7 +5858,7 @@ export interface VAL {
   /** ptr */
   pScanInfo: Deno.PointerValue | Uint8Array;
   /** isize */
-  handle: Deno.PointerValue;
+  handle: bigint | number;
   /** ptr */
   ppButtonNames: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -5932,7 +5932,7 @@ export class VALView {
   }
 
   // 0x20: isize
-  get handle(): Deno.PointerValue {
+  get handle(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
@@ -5984,7 +5984,7 @@ export class VALView {
   }
 
   // 0x20: isize
-  set handle(value: Deno.PointerValue) {
+  set handle(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 

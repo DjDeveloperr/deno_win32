@@ -5856,33 +5856,33 @@ export const REG_QWORD_LITTLE_ENDIAN = 11;
 
 // Structs
 
-export type HCRYPTASYNC = Deno.PointerValue;
+export type HCRYPTASYNC = bigint | number;
 
-export type HCERTCHAINENGINE = Deno.PointerValue;
+export type HCERTCHAINENGINE = bigint | number;
 
-export type BCRYPT_ALG_HANDLE = Deno.PointerValue;
+export type BCRYPT_ALG_HANDLE = bigint | number;
 
-export type BCRYPT_KEY_HANDLE = Deno.PointerValue;
+export type BCRYPT_KEY_HANDLE = bigint | number;
 
-export type BCRYPT_HASH_HANDLE = Deno.PointerValue;
+export type BCRYPT_HASH_HANDLE = bigint | number;
 
-export type BCRYPT_SECRET_HANDLE = Deno.PointerValue;
+export type BCRYPT_SECRET_HANDLE = bigint | number;
 
-export type BCRYPT_HANDLE = Deno.PointerValue;
+export type BCRYPT_HANDLE = bigint | number;
 
-export type NCRYPT_HANDLE = Deno.PointerValue;
+export type NCRYPT_HANDLE = bigint | number;
 
-export type NCRYPT_PROV_HANDLE = Deno.PointerValue;
+export type NCRYPT_PROV_HANDLE = bigint | number;
 
-export type NCRYPT_KEY_HANDLE = Deno.PointerValue;
+export type NCRYPT_KEY_HANDLE = bigint | number;
 
-export type NCRYPT_HASH_HANDLE = Deno.PointerValue;
+export type NCRYPT_HASH_HANDLE = bigint | number;
 
-export type NCRYPT_SECRET_HANDLE = Deno.PointerValue;
+export type NCRYPT_SECRET_HANDLE = bigint | number;
 
-export type HCRYPTPROV_LEGACY = Deno.PointerValue;
+export type HCRYPTPROV_LEGACY = bigint | number;
 
-export type HCRYPTPROV_OR_NCRYPT_KEY_HANDLE = Deno.PointerValue;
+export type HCRYPTPROV_OR_NCRYPT_KEY_HANDLE = bigint | number;
 
 export type HCERTSTORE = Deno.PointerValue | Uint8Array;
 
@@ -6283,7 +6283,7 @@ export class CAINFOView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.Security.Cryptography.Catalog.CRYPTCATSTORE (size: 64)
@@ -6296,7 +6296,7 @@ export interface CRYPTCATSTORE {
   /** Windows.Win32.Foundation.PWSTR */
   pwszP7File: string | null | Uint8Array | Uint16Array;
   /** usize */
-  hProv: Deno.PointerValue;
+  hProv: bigint | number;
   /** u32 */
   dwEncodingType: number;
   /** Windows.Win32.Security.Cryptography.Catalog.CRYPTCAT_OPEN_FLAGS */
@@ -6369,7 +6369,7 @@ export class CRYPTCATSTOREView {
   }
 
   // 0x10: usize
-  get hProv(): Deno.PointerValue {
+  get hProv(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -6424,7 +6424,7 @@ export class CRYPTCATSTOREView {
   }
 
   // 0x10: usize
-  set hProv(value: Deno.PointerValue) {
+  set hProv(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -9150,7 +9150,7 @@ export interface BCRYPT_AUTHENTICATED_CIPHER_MODE_INFO {
   /** u32 */
   cbAAD: number;
   /** u64 */
-  cbData: Deno.PointerValue;
+  cbData: bigint | number;
   /** u32 */
   dwFlags: number;
 }
@@ -9269,7 +9269,7 @@ export class BCRYPT_AUTHENTICATED_CIPHER_MODE_INFOView {
   }
 
   // 0x48: u64
-  get cbData(): Deno.PointerValue {
+  get cbData(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
@@ -9342,7 +9342,7 @@ export class BCRYPT_AUTHENTICATED_CIPHER_MODE_INFOView {
   }
 
   // 0x48: u64
-  set cbData(value: Deno.PointerValue) {
+  set cbData(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
@@ -12419,7 +12419,7 @@ export interface NCRYPT_VSM_KEY_ATTESTATION_CLAIM_RESTRICTIONS {
   /** u32 */
   Version: number;
   /** u64 */
-  TrustletId: Deno.PointerValue;
+  TrustletId: bigint | number;
   /** u32 */
   MinSvn: number;
   /** u32 */
@@ -12469,7 +12469,7 @@ export class NCRYPT_VSM_KEY_ATTESTATION_CLAIM_RESTRICTIONSView {
   // 0x04: pad4
 
   // 0x08: u64
-  get TrustletId(): Deno.PointerValue {
+  get TrustletId(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -12501,7 +12501,7 @@ export class NCRYPT_VSM_KEY_ATTESTATION_CLAIM_RESTRICTIONSView {
   // 0x04: pad4
 
   // 0x08: u64
-  set TrustletId(value: Deno.PointerValue) {
+  set TrustletId(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -15032,7 +15032,7 @@ export class CRYPT_PKCS8_IMPORT_PARAMSView {
  */
 export interface CRYPT_PKCS8_EXPORT_PARAMS {
   /** usize */
-  hCryptProv: Deno.PointerValue;
+  hCryptProv: bigint | number;
   /** u32 */
   dwKeySpec: number;
   /** Windows.Win32.Foundation.PSTR */
@@ -15076,7 +15076,7 @@ export class CRYPT_PKCS8_EXPORT_PARAMSView {
   }
 
   // 0x00: usize
-  get hCryptProv(): Deno.PointerValue {
+  get hCryptProv(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -15106,7 +15106,7 @@ export class CRYPT_PKCS8_EXPORT_PARAMSView {
   }
 
   // 0x00: usize
-  set hCryptProv(value: Deno.PointerValue) {
+  set hCryptProv(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -17231,9 +17231,9 @@ export class CERT_OTHER_NAMEView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -17259,22 +17259,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -24899,7 +24899,7 @@ export interface CMSG_MAIL_LIST_RECIPIENT_ENCODE_INFO {
   /** ptr */
   pvKeyEncryptionAuxInfo: Deno.PointerValue | Uint8Array;
   /** usize */
-  hCryptProv: Deno.PointerValue;
+  hCryptProv: bigint | number;
   /** u32 */
   dwKeyChoice: number;
   /** _Anonymous_e__Union */
@@ -24970,7 +24970,7 @@ export class CMSG_MAIL_LIST_RECIPIENT_ENCODE_INFOView {
   }
 
   // 0x18: usize
-  get hCryptProv(): Deno.PointerValue {
+  get hCryptProv(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -25023,7 +25023,7 @@ export class CMSG_MAIL_LIST_RECIPIENT_ENCODE_INFOView {
   }
 
   // 0x18: usize
-  set hCryptProv(value: Deno.PointerValue) {
+  set hCryptProv(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -26795,7 +26795,7 @@ export interface CMSG_CTRL_MAIL_LIST_DECRYPT_PARA {
   /** u32 */
   cbSize: number;
   /** usize */
-  hCryptProv: Deno.PointerValue;
+  hCryptProv: bigint | number;
   /** ptr */
   pMailList: Deno.PointerValue | Uint8Array;
   /** u32 */
@@ -26845,7 +26845,7 @@ export class CMSG_CTRL_MAIL_LIST_DECRYPT_PARAView {
   // 0x04: pad4
 
   // 0x08: usize
-  get hCryptProv(): Deno.PointerValue {
+  get hCryptProv(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -26879,7 +26879,7 @@ export class CMSG_CTRL_MAIL_LIST_DECRYPT_PARAView {
   // 0x04: pad4
 
   // 0x08: usize
-  set hCryptProv(value: Deno.PointerValue) {
+  set hCryptProv(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -28704,11 +28704,11 @@ export class CRYPT_SMART_CARD_ROOT_INFOView {
  */
 export interface _Anonymous1_e__Union {
   /** usize */
-  Data0: Deno.PointerValue;
+  Data0: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   String: string | null | Uint8Array | Uint16Array;
   /** usize */
-  u: Deno.PointerValue;
+  u: bigint | number;
   /** ptr */
   psid: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -28760,7 +28760,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  get Data0(): Deno.PointerValue {
+  get Data0(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -28771,7 +28771,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  get u(): Deno.PointerValue {
+  get u(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -28807,7 +28807,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  set Data0(value: Deno.PointerValue) {
+  set Data0(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -28818,7 +28818,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  set u(value: Deno.PointerValue) {
+  set u(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -28855,7 +28855,7 @@ export class _Anonymous1_e__UnionView {
  */
 export interface _Anonymous2_e__Union {
   /** usize */
-  Data1: Deno.PointerValue;
+  Data1: bigint | number;
   /** i32 */
   LogonId_HighPart: number;
 }
@@ -28884,7 +28884,7 @@ export class _Anonymous2_e__UnionView {
   }
 
   // 0x00: usize
-  get Data1(): Deno.PointerValue {
+  get Data1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -28896,7 +28896,7 @@ export class _Anonymous2_e__UnionView {
   // 0x0c: pad4
 
   // 0x00: usize
-  set Data1(value: Deno.PointerValue) {
+  set Data1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -28963,7 +28963,7 @@ export class CERT_SYSTEM_STORE_RELOCATE_PARAView {
   }
 }
 
-export type HKEY = Deno.PointerValue;
+export type HKEY = bigint | number;
 
 /**
  * Windows.Win32.Security.Cryptography.CERT_REGISTRY_STORE_CLIENT_GPT_PARA (size: 16)
@@ -36644,7 +36644,7 @@ export class CRYPT_OBJECT_LOCATOR_PROVIDER_TABLEView {
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 /**
  * Windows.Win32.Security.Cryptography.CRYPTPROTECT_PROMPTSTRUCT (size: 24)
@@ -39765,7 +39765,7 @@ export interface INFORMATIONCARD_CRYPTO_HANDLE {
   /** Windows.Win32.Security.Cryptography.HandleType */
   type: HandleType;
   /** i64 */
-  expiration: Deno.PointerValue;
+  expiration: bigint | number;
   /** ptr */
   cryptoParameters: Deno.PointerValue | Uint8Array;
 }
@@ -39803,7 +39803,7 @@ export class INFORMATIONCARD_CRYPTO_HANDLEView {
   // 0x04: pad4
 
   // 0x08: i64
-  get expiration(): Deno.PointerValue {
+  get expiration(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -39821,7 +39821,7 @@ export class INFORMATIONCARD_CRYPTO_HANDLEView {
   // 0x04: pad4
 
   // 0x08: i64
-  set expiration(value: Deno.PointerValue) {
+  set expiration(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -40668,7 +40668,7 @@ export interface SIP_SUBJECTINFO {
   /** u32 */
   dwIntVersion: number;
   /** usize */
-  hProv: Deno.PointerValue;
+  hProv: bigint | number;
   /** Windows.Win32.Security.Cryptography.CRYPT_ALGORITHM_IDENTIFIER */
   DigestAlgorithm: Uint8Array | Deno.PointerValue;
   /** u32 */
@@ -40795,7 +40795,7 @@ export class SIP_SUBJECTINFOView {
   }
 
   // 0x30: usize
-  get hProv(): Deno.PointerValue {
+  get hProv(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -40894,7 +40894,7 @@ export class SIP_SUBJECTINFOView {
   }
 
   // 0x30: usize
-  set hProv(value: Deno.PointerValue) {
+  set hProv(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
@@ -41807,9 +41807,9 @@ export class MS_ADDINFO_CATALOGMEMBERView {
   }
 }
 
-export type HINSTANCE = Deno.PointerValue;
+export type HINSTANCE = bigint | number;
 
-export type LPARAM = Deno.PointerValue;
+export type LPARAM = bigint | number;
 
 /**
  * Windows.Win32.Security.Cryptography.UI.CERT_SELECT_STRUCT_A (size: 136)
@@ -41848,7 +41848,7 @@ export interface CERT_SELECT_STRUCT_A {
   /** u32 */
   dwHelpId: number;
   /** usize */
-  hprov: Deno.PointerValue;
+  hprov: bigint | number;
 }
 
 export const sizeofCERT_SELECT_STRUCT_A = 136;
@@ -42022,7 +42022,7 @@ export class CERT_SELECT_STRUCT_AView {
   // 0x7c: pad4
 
   // 0x80: usize
-  get hprov(): Deno.PointerValue {
+  get hprov(): bigint | number {
     return Number(this.view.getBigUint64(128, true));
   }
 
@@ -42121,7 +42121,7 @@ export class CERT_SELECT_STRUCT_AView {
   // 0x7c: pad4
 
   // 0x80: usize
-  set hprov(value: Deno.PointerValue) {
+  set hprov(value: bigint | number) {
     this.view.setBigUint64(128, BigInt(value), true);
   }
 }
@@ -42163,7 +42163,7 @@ export interface CERT_SELECT_STRUCT_W {
   /** u32 */
   dwHelpId: number;
   /** usize */
-  hprov: Deno.PointerValue;
+  hprov: bigint | number;
 }
 
 export const sizeofCERT_SELECT_STRUCT_W = 136;
@@ -42337,7 +42337,7 @@ export class CERT_SELECT_STRUCT_WView {
   // 0x7c: pad4
 
   // 0x80: usize
-  get hprov(): Deno.PointerValue {
+  get hprov(): bigint | number {
     return Number(this.view.getBigUint64(128, true));
   }
 
@@ -42436,7 +42436,7 @@ export class CERT_SELECT_STRUCT_WView {
   // 0x7c: pad4
 
   // 0x80: usize
-  set hprov(value: Deno.PointerValue) {
+  set hprov(value: bigint | number) {
     this.view.setBigUint64(128, BigInt(value), true);
   }
 }
@@ -42474,7 +42474,7 @@ export interface CERT_VIEWPROPERTIES_STRUCT_A {
   /** ptr */
   rghstoreTrust: Deno.PointerValue | Uint8Array;
   /** usize */
-  hprov: Deno.PointerValue;
+  hprov: bigint | number;
   /** Windows.Win32.Foundation.LPARAM */
   lCustData: Uint8Array | Deno.PointerValue;
   /** u32 */
@@ -42652,7 +42652,7 @@ export class CERT_VIEWPROPERTIES_STRUCT_AView {
   }
 
   // 0x68: usize
-  get hprov(): Deno.PointerValue {
+  get hprov(): bigint | number {
     return Number(this.view.getBigUint64(104, true));
   }
 
@@ -42778,7 +42778,7 @@ export class CERT_VIEWPROPERTIES_STRUCT_AView {
   }
 
   // 0x68: usize
-  set hprov(value: Deno.PointerValue) {
+  set hprov(value: bigint | number) {
     this.view.setBigUint64(104, BigInt(value), true);
   }
 
@@ -42856,7 +42856,7 @@ export interface CERT_VIEWPROPERTIES_STRUCT_W {
   /** ptr */
   rghstoreTrust: Deno.PointerValue | Uint8Array;
   /** usize */
-  hprov: Deno.PointerValue;
+  hprov: bigint | number;
   /** Windows.Win32.Foundation.LPARAM */
   lCustData: Uint8Array | Deno.PointerValue;
   /** u32 */
@@ -43034,7 +43034,7 @@ export class CERT_VIEWPROPERTIES_STRUCT_WView {
   }
 
   // 0x68: usize
-  get hprov(): Deno.PointerValue {
+  get hprov(): bigint | number {
     return Number(this.view.getBigUint64(104, true));
   }
 
@@ -43160,7 +43160,7 @@ export class CERT_VIEWPROPERTIES_STRUCT_WView {
   }
 
   // 0x68: usize
-  set hprov(value: Deno.PointerValue) {
+  set hprov(value: bigint | number) {
     this.view.setBigUint64(104, BigInt(value), true);
   }
 
@@ -43406,7 +43406,7 @@ export interface CERT_VERIFY_CERTIFICATE_TRUST {
   /** Windows.Win32.Foundation.PSTR */
   pszUsageOid: string | null | Uint8Array;
   /** usize */
-  hprov: Deno.PointerValue;
+  hprov: bigint | number;
   /** u32 */
   cRootStores: number;
   /** ptr */
@@ -43532,7 +43532,7 @@ export class CERT_VERIFY_CERTIFICATE_TRUSTView {
   }
 
   // 0x28: usize
-  get hprov(): Deno.PointerValue {
+  get hprov(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -43645,7 +43645,7 @@ export class CERT_VERIFY_CERTIFICATE_TRUSTView {
   }
 
   // 0x28: usize
-  set hprov(value: Deno.PointerValue) {
+  set hprov(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
@@ -45822,9 +45822,9 @@ export type HRESULT = number;
 
 export type PSID = Deno.PointerValue | Uint8Array;
 
-export type NCRYPT_DESCRIPTOR_HANDLE = Deno.PointerValue;
+export type NCRYPT_DESCRIPTOR_HANDLE = bigint | number;
 
-export type NCRYPT_STREAM_HANDLE = Deno.PointerValue;
+export type NCRYPT_STREAM_HANDLE = bigint | number;
 
 // Native Libraries
 
@@ -47479,14 +47479,14 @@ export function CryptAcquireContextW(
 }
 
 export function CryptReleaseContext(
-  hProv: Deno.PointerValue /* usize */,
+  hProv: bigint | number /* usize */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libADVAPI32_dll.CryptReleaseContext(hProv, dwFlags));
 }
 
 export function CryptGenKey(
-  hProv: Deno.PointerValue /* usize */,
+  hProv: bigint | number /* usize */,
   Algid: number /* u32 */,
   dwFlags: CRYPT_KEY_FLAGS /* Windows.Win32.Security.Cryptography.CRYPT_KEY_FLAGS */,
   phKey: Deno.PointerValue | Uint8Array /* ptr */,
@@ -47495,9 +47495,9 @@ export function CryptGenKey(
 }
 
 export function CryptDeriveKey(
-  hProv: Deno.PointerValue /* usize */,
+  hProv: bigint | number /* usize */,
   Algid: number /* u32 */,
-  hBaseData: Deno.PointerValue /* usize */,
+  hBaseData: bigint | number /* usize */,
   dwFlags: number /* u32 */,
   phKey: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -47505,13 +47505,13 @@ export function CryptDeriveKey(
 }
 
 export function CryptDestroyKey(
-  hKey: Deno.PointerValue /* usize */,
+  hKey: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libADVAPI32_dll.CryptDestroyKey(hKey));
 }
 
 export function CryptSetKeyParam(
-  hKey: Deno.PointerValue /* usize */,
+  hKey: bigint | number /* usize */,
   dwParam: CRYPT_KEY_PARAM_ID /* Windows.Win32.Security.Cryptography.CRYPT_KEY_PARAM_ID */,
   pbData: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
@@ -47520,7 +47520,7 @@ export function CryptSetKeyParam(
 }
 
 export function CryptGetKeyParam(
-  hKey: Deno.PointerValue /* usize */,
+  hKey: bigint | number /* usize */,
   dwParam: CRYPT_KEY_PARAM_ID /* Windows.Win32.Security.Cryptography.CRYPT_KEY_PARAM_ID */,
   pbData: Deno.PointerValue | Uint8Array /* ptr */,
   pdwDataLen: Deno.PointerValue | Uint8Array /* ptr */,
@@ -47530,7 +47530,7 @@ export function CryptGetKeyParam(
 }
 
 export function CryptSetHashParam(
-  hHash: Deno.PointerValue /* usize */,
+  hHash: bigint | number /* usize */,
   dwParam: CRYPT_SET_HASH_PARAM /* Windows.Win32.Security.Cryptography.CRYPT_SET_HASH_PARAM */,
   pbData: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
@@ -47539,7 +47539,7 @@ export function CryptSetHashParam(
 }
 
 export function CryptGetHashParam(
-  hHash: Deno.PointerValue /* usize */,
+  hHash: bigint | number /* usize */,
   dwParam: number /* u32 */,
   pbData: Deno.PointerValue | Uint8Array /* ptr */,
   pdwDataLen: Deno.PointerValue | Uint8Array /* ptr */,
@@ -47549,7 +47549,7 @@ export function CryptGetHashParam(
 }
 
 export function CryptSetProvParam(
-  hProv: Deno.PointerValue /* usize */,
+  hProv: bigint | number /* usize */,
   dwParam: CRYPT_SET_PROV_PARAM_ID /* Windows.Win32.Security.Cryptography.CRYPT_SET_PROV_PARAM_ID */,
   pbData: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
@@ -47558,7 +47558,7 @@ export function CryptSetProvParam(
 }
 
 export function CryptGetProvParam(
-  hProv: Deno.PointerValue /* usize */,
+  hProv: bigint | number /* usize */,
   dwParam: number /* u32 */,
   pbData: Deno.PointerValue | Uint8Array /* ptr */,
   pdwDataLen: Deno.PointerValue | Uint8Array /* ptr */,
@@ -47568,7 +47568,7 @@ export function CryptGetProvParam(
 }
 
 export function CryptGenRandom(
-  hProv: Deno.PointerValue /* usize */,
+  hProv: bigint | number /* usize */,
   dwLen: number /* u32 */,
   pbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -47576,7 +47576,7 @@ export function CryptGenRandom(
 }
 
 export function CryptGetUserKey(
-  hProv: Deno.PointerValue /* usize */,
+  hProv: bigint | number /* usize */,
   dwKeySpec: number /* u32 */,
   phUserKey: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -47584,8 +47584,8 @@ export function CryptGetUserKey(
 }
 
 export function CryptExportKey(
-  hKey: Deno.PointerValue /* usize */,
-  hExpKey: Deno.PointerValue /* usize */,
+  hKey: bigint | number /* usize */,
+  hExpKey: bigint | number /* usize */,
   dwBlobType: number /* u32 */,
   dwFlags: CRYPT_KEY_FLAGS /* Windows.Win32.Security.Cryptography.CRYPT_KEY_FLAGS */,
   pbData: Deno.PointerValue | Uint8Array /* ptr */,
@@ -47595,10 +47595,10 @@ export function CryptExportKey(
 }
 
 export function CryptImportKey(
-  hProv: Deno.PointerValue /* usize */,
+  hProv: bigint | number /* usize */,
   pbData: Deno.PointerValue | Uint8Array /* ptr */,
   dwDataLen: number /* u32 */,
-  hPubKey: Deno.PointerValue /* usize */,
+  hPubKey: bigint | number /* usize */,
   dwFlags: CRYPT_KEY_FLAGS /* Windows.Win32.Security.Cryptography.CRYPT_KEY_FLAGS */,
   phKey: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -47606,8 +47606,8 @@ export function CryptImportKey(
 }
 
 export function CryptEncrypt(
-  hKey: Deno.PointerValue /* usize */,
-  hHash: Deno.PointerValue /* usize */,
+  hKey: bigint | number /* usize */,
+  hHash: bigint | number /* usize */,
   Final: boolean /* Windows.Win32.Foundation.BOOL */,
   dwFlags: number /* u32 */,
   pbData: Deno.PointerValue | Uint8Array /* ptr */,
@@ -47618,8 +47618,8 @@ export function CryptEncrypt(
 }
 
 export function CryptDecrypt(
-  hKey: Deno.PointerValue /* usize */,
-  hHash: Deno.PointerValue /* usize */,
+  hKey: bigint | number /* usize */,
+  hHash: bigint | number /* usize */,
   Final: boolean /* Windows.Win32.Foundation.BOOL */,
   dwFlags: number /* u32 */,
   pbData: Deno.PointerValue | Uint8Array /* ptr */,
@@ -47629,9 +47629,9 @@ export function CryptDecrypt(
 }
 
 export function CryptCreateHash(
-  hProv: Deno.PointerValue /* usize */,
+  hProv: bigint | number /* usize */,
   Algid: number /* u32 */,
-  hKey: Deno.PointerValue /* usize */,
+  hKey: bigint | number /* usize */,
   dwFlags: number /* u32 */,
   phHash: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -47639,7 +47639,7 @@ export function CryptCreateHash(
 }
 
 export function CryptHashData(
-  hHash: Deno.PointerValue /* usize */,
+  hHash: bigint | number /* usize */,
   pbData: Deno.PointerValue | Uint8Array /* ptr */,
   dwDataLen: number /* u32 */,
   dwFlags: number /* u32 */,
@@ -47648,21 +47648,21 @@ export function CryptHashData(
 }
 
 export function CryptHashSessionKey(
-  hHash: Deno.PointerValue /* usize */,
-  hKey: Deno.PointerValue /* usize */,
+  hHash: bigint | number /* usize */,
+  hKey: bigint | number /* usize */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libADVAPI32_dll.CryptHashSessionKey(hHash, hKey, dwFlags));
 }
 
 export function CryptDestroyHash(
-  hHash: Deno.PointerValue /* usize */,
+  hHash: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libADVAPI32_dll.CryptDestroyHash(hHash));
 }
 
 export function CryptSignHashA(
-  hHash: Deno.PointerValue /* usize */,
+  hHash: bigint | number /* usize */,
   dwKeySpec: number /* u32 */,
   szDescription: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
@@ -47673,7 +47673,7 @@ export function CryptSignHashA(
 }
 
 export function CryptSignHashW(
-  hHash: Deno.PointerValue /* usize */,
+  hHash: bigint | number /* usize */,
   dwKeySpec: number /* u32 */,
   szDescription: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
@@ -47684,10 +47684,10 @@ export function CryptSignHashW(
 }
 
 export function CryptVerifySignatureA(
-  hHash: Deno.PointerValue /* usize */,
+  hHash: bigint | number /* usize */,
   pbSignature: Deno.PointerValue | Uint8Array /* ptr */,
   dwSigLen: number /* u32 */,
-  hPubKey: Deno.PointerValue /* usize */,
+  hPubKey: bigint | number /* usize */,
   szDescription: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -47695,10 +47695,10 @@ export function CryptVerifySignatureA(
 }
 
 export function CryptVerifySignatureW(
-  hHash: Deno.PointerValue /* usize */,
+  hHash: bigint | number /* usize */,
   pbSignature: Deno.PointerValue | Uint8Array /* ptr */,
   dwSigLen: number /* u32 */,
-  hPubKey: Deno.PointerValue /* usize */,
+  hPubKey: bigint | number /* usize */,
   szDescription: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -47802,7 +47802,7 @@ export function CryptEnumProvidersW(
 }
 
 export function CryptContextAddRef(
-  hProv: Deno.PointerValue /* usize */,
+  hProv: bigint | number /* usize */,
   pdwReserved: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -47810,7 +47810,7 @@ export function CryptContextAddRef(
 }
 
 export function CryptDuplicateKey(
-  hKey: Deno.PointerValue /* usize */,
+  hKey: bigint | number /* usize */,
   pdwReserved: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
   phKey: Deno.PointerValue | Uint8Array /* ptr */,
@@ -47819,7 +47819,7 @@ export function CryptDuplicateKey(
 }
 
 export function CryptDuplicateHash(
-  hHash: Deno.PointerValue /* usize */,
+  hHash: bigint | number /* usize */,
   pdwReserved: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
   phHash: Deno.PointerValue | Uint8Array /* ptr */,
@@ -48169,7 +48169,7 @@ export function BCryptDeriveKeyPBKDF2(
   cbPassword: number /* u32 */,
   pbSalt: Deno.PointerValue | Uint8Array /* ptr */,
   cbSalt: number /* u32 */,
-  cIterations: Deno.PointerValue /* u64 */,
+  cIterations: bigint | number /* u64 */,
   pbDerivedKey: Deno.PointerValue | Uint8Array /* ptr */,
   cbDerivedKey: number /* u32 */,
   dwFlags: number /* u32 */,
@@ -48548,8 +48548,8 @@ export function NCryptIsKeyHandle(
 export function NCryptTranslateHandle(
   phProvider: Deno.PointerValue | Uint8Array /* ptr */,
   phKey: Deno.PointerValue | Uint8Array /* ptr */,
-  hLegacyProv: Deno.PointerValue /* usize */,
-  hLegacyKey: Deno.PointerValue /* usize */,
+  hLegacyProv: bigint | number /* usize */,
+  hLegacyKey: bigint | number /* usize */,
   dwLegacyKeySpec: CERT_KEY_SPEC /* Windows.Win32.Security.Cryptography.CERT_KEY_SPEC */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
@@ -49864,7 +49864,7 @@ export function CertGetIntendedKeyUsage(
 }
 
 export function CryptInstallDefaultContext(
-  hCryptProv: Deno.PointerValue /* usize */,
+  hCryptProv: bigint | number /* usize */,
   dwDefaultType: CRYPT_DEFAULT_CONTEXT_TYPE /* Windows.Win32.Security.Cryptography.CRYPT_DEFAULT_CONTEXT_TYPE */,
   pvDefaultPara: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: CRYPT_DEFAULT_CONTEXT_FLAGS /* Windows.Win32.Security.Cryptography.CRYPT_DEFAULT_CONTEXT_FLAGS */,
@@ -49918,7 +49918,7 @@ export function CryptExportPublicKeyInfoFromBCryptKeyHandle(
 }
 
 export function CryptImportPublicKeyInfo(
-  hCryptProv: Deno.PointerValue /* usize */,
+  hCryptProv: bigint | number /* usize */,
   dwCertEncodingType: number /* u32 */,
   pInfo: Deno.PointerValue | Uint8Array /* ptr */,
   phKey: Deno.PointerValue | Uint8Array /* ptr */,
@@ -49927,7 +49927,7 @@ export function CryptImportPublicKeyInfo(
 }
 
 export function CryptImportPublicKeyInfoEx(
-  hCryptProv: Deno.PointerValue /* usize */,
+  hCryptProv: bigint | number /* usize */,
   dwCertEncodingType: number /* u32 */,
   pInfo: Deno.PointerValue | Uint8Array /* ptr */,
   aiKeyAlg: number /* u32 */,
@@ -49977,7 +49977,7 @@ export function CryptImportPKCS8(
 }
 
 export function CryptExportPKCS8(
-  hCryptProv: Deno.PointerValue /* usize */,
+  hCryptProv: bigint | number /* usize */,
   dwKeySpec: number /* u32 */,
   pszPrivateKeyObjId: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
@@ -50902,7 +50902,7 @@ export function NCryptStreamOpenToUnprotectEx(
 export function NCryptStreamUpdate(
   hStream: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.NCRYPT_STREAM_HANDLE */,
   pbData: Deno.PointerValue | Uint8Array /* ptr */,
-  cbData: Deno.PointerValue /* usize */,
+  cbData: bigint | number /* usize */,
   fFinal: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libncrypt_dll.NCryptStreamUpdate(util.toPointer(hStream), util.toPointer(pbData), cbData, util.boolToFfi(fFinal));

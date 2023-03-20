@@ -793,7 +793,7 @@ export class NET_INTERFACE_CONTEXTView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.NetworkManagement.WindowsConnectionManager.NET_INTERFACE_CONTEXT_TABLE (size: 24)

@@ -700,9 +700,9 @@ export class WINBIO_REGISTERED_FORMATView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -728,22 +728,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -822,7 +822,7 @@ export interface LARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue;
   /** i64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: bigint | number;
 }
 
 export const sizeofLARGE_INTEGER = 24;
@@ -862,7 +862,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  get QuadPart(): Deno.PointerValue {
+  get QuadPart(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -877,7 +877,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  set QuadPart(value: Deno.PointerValue) {
+  set QuadPart(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -1144,7 +1144,7 @@ export class WINBIO_BIR_HEADERView {
  */
 export interface WINBIO_BDB_ANSI_381_HEADER {
   /** u64 */
-  RecordLength: Deno.PointerValue;
+  RecordLength: bigint | number;
   /** u32 */
   FormatIdentifier: number;
   /** u32 */
@@ -1225,7 +1225,7 @@ export class WINBIO_BDB_ANSI_381_HEADERView {
   }
 
   // 0x00: u64
-  get RecordLength(): Deno.PointerValue {
+  get RecordLength(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -1303,7 +1303,7 @@ export class WINBIO_BDB_ANSI_381_HEADERView {
   // 0x2a: pad6
 
   // 0x00: u64
-  set RecordLength(value: Deno.PointerValue) {
+  set RecordLength(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -1547,7 +1547,7 @@ export interface WINBIO_SECURE_BUFFER_HEADER_V1 {
   /** u32 */
   Flags: number;
   /** u64 */
-  ValidationTag: Deno.PointerValue;
+  ValidationTag: bigint | number;
 }
 
 export const sizeofWINBIO_SECURE_BUFFER_HEADER_V1 = 24;
@@ -1595,7 +1595,7 @@ export class WINBIO_SECURE_BUFFER_HEADER_V1View {
   // 0x0c: pad4
 
   // 0x10: u64
-  get ValidationTag(): Deno.PointerValue {
+  get ValidationTag(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -1617,7 +1617,7 @@ export class WINBIO_SECURE_BUFFER_HEADER_V1View {
   // 0x0c: pad4
 
   // 0x10: u64
-  set ValidationTag(value: Deno.PointerValue) {
+  set ValidationTag(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -2434,9 +2434,9 @@ export interface WINBIO_PRESENCE {
   /** Windows.Win32.Devices.BiometricFramework.WINBIO_IDENTITY */
   Identity: Uint8Array | Deno.PointerValue;
   /** u64 */
-  TrackingId: Deno.PointerValue;
+  TrackingId: bigint | number;
   /** u64 */
-  Ticket: Deno.PointerValue;
+  Ticket: bigint | number;
   /** Windows.Win32.Devices.BiometricFramework.WINBIO_PRESENCE_PROPERTIES */
   Properties: Uint8Array | Deno.PointerValue;
   /** _Authorization_e__Struct */
@@ -2513,12 +2513,12 @@ export class WINBIO_PRESENCEView {
   }
 
   // 0x20: u64
-  get TrackingId(): Deno.PointerValue {
+  get TrackingId(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: u64
-  get Ticket(): Deno.PointerValue {
+  get Ticket(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -2564,12 +2564,12 @@ export class WINBIO_PRESENCEView {
   }
 
   // 0x20: u64
-  set TrackingId(value: Deno.PointerValue) {
+  set TrackingId(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: u64
-  set Ticket(value: Deno.PointerValue) {
+  set Ticket(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
@@ -3685,7 +3685,7 @@ export class WINBIO_ANTI_SPOOF_POLICYView {
  */
 export interface WINBIO_EXTENDED_ENROLLMENT_PARAMETERS {
   /** usize */
-  Size: Deno.PointerValue;
+  Size: bigint | number;
   /** u8 */
   SubFactor: number;
 }
@@ -3714,7 +3714,7 @@ export class WINBIO_EXTENDED_ENROLLMENT_PARAMETERSView {
   }
 
   // 0x00: usize
-  get Size(): Deno.PointerValue {
+  get Size(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -3726,7 +3726,7 @@ export class WINBIO_EXTENDED_ENROLLMENT_PARAMETERSView {
   // 0x09: pad7
 
   // 0x00: usize
-  set Size(value: Deno.PointerValue) {
+  set Size(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -3808,9 +3808,9 @@ export interface WINBIO_PROTECTION_POLICY {
   /** System.Guid */
   DatabaseId: Uint8Array | Deno.PointerValue;
   /** u64 */
-  UserState: Deno.PointerValue;
+  UserState: bigint | number;
   /** usize */
-  PolicySize: Deno.PointerValue;
+  PolicySize: bigint | number;
   /** array */
   Policy: Deno.PointerValue;
 }
@@ -3866,12 +3866,12 @@ export class WINBIO_PROTECTION_POLICYView {
   }
 
   // 0x18: u64
-  get UserState(): Deno.PointerValue {
+  get UserState(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: usize
-  get PolicySize(): Deno.PointerValue {
+  get PolicySize(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -3899,12 +3899,12 @@ export class WINBIO_PROTECTION_POLICYView {
   }
 
   // 0x18: u64
-  set UserState(value: Deno.PointerValue) {
+  set UserState(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: usize
-  set PolicySize(value: Deno.PointerValue) {
+  set PolicySize(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -3919,7 +3919,7 @@ export class WINBIO_PROTECTION_POLICYView {
  */
 export interface WINBIO_GESTURE_METADATA {
   /** usize */
-  Size: Deno.PointerValue;
+  Size: bigint | number;
   /** u32 */
   BiometricType: number;
   /** u32 */
@@ -3956,7 +3956,7 @@ export class WINBIO_GESTURE_METADATAView {
   }
 
   // 0x00: usize
-  get Size(): Deno.PointerValue {
+  get Size(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -3978,7 +3978,7 @@ export class WINBIO_GESTURE_METADATAView {
   // 0x14: pad4
 
   // 0x00: usize
-  set Size(value: Deno.PointerValue) {
+  set Size(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -4009,9 +4009,9 @@ export interface WINBIO_ASYNC_RESULT {
   /** u32 */
   Operation: number;
   /** u64 */
-  SequenceNumber: Deno.PointerValue;
+  SequenceNumber: bigint | number;
   /** i64 */
-  TimeStamp: Deno.PointerValue;
+  TimeStamp: bigint | number;
   /** Windows.Win32.Foundation.HRESULT */
   ApiStatus: Uint8Array | Deno.PointerValue;
   /** u32 */
@@ -4068,12 +4068,12 @@ export class WINBIO_ASYNC_RESULTView {
   }
 
   // 0x08: u64
-  get SequenceNumber(): Deno.PointerValue {
+  get SequenceNumber(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: i64
-  get TimeStamp(): Deno.PointerValue {
+  get TimeStamp(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -4113,12 +4113,12 @@ export class WINBIO_ASYNC_RESULTView {
   }
 
   // 0x08: u64
-  set SequenceNumber(value: Deno.PointerValue) {
+  set SequenceNumber(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: i64
-  set TimeStamp(value: Deno.PointerValue) {
+  set TimeStamp(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
@@ -4156,15 +4156,15 @@ export interface WINBIO_STORAGE_RECORD {
   /** ptr */
   IndexVector: Deno.PointerValue | Uint8Array;
   /** usize */
-  IndexElementCount: Deno.PointerValue;
+  IndexElementCount: bigint | number;
   /** ptr */
   TemplateBlob: Deno.PointerValue | Uint8Array;
   /** usize */
-  TemplateBlobSize: Deno.PointerValue;
+  TemplateBlobSize: bigint | number;
   /** ptr */
   PayloadBlob: Deno.PointerValue | Uint8Array;
   /** usize */
-  PayloadBlobSize: Deno.PointerValue;
+  PayloadBlobSize: bigint | number;
 }
 
 export const sizeofWINBIO_STORAGE_RECORD = 64;
@@ -4222,7 +4222,7 @@ export class WINBIO_STORAGE_RECORDView {
   }
 
   // 0x18: usize
-  get IndexElementCount(): Deno.PointerValue {
+  get IndexElementCount(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -4233,7 +4233,7 @@ export class WINBIO_STORAGE_RECORDView {
   }
 
   // 0x28: usize
-  get TemplateBlobSize(): Deno.PointerValue {
+  get TemplateBlobSize(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -4244,7 +4244,7 @@ export class WINBIO_STORAGE_RECORDView {
   }
 
   // 0x38: usize
-  get PayloadBlobSize(): Deno.PointerValue {
+  get PayloadBlobSize(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
@@ -4266,7 +4266,7 @@ export class WINBIO_STORAGE_RECORDView {
   }
 
   // 0x18: usize
-  set IndexElementCount(value: Deno.PointerValue) {
+  set IndexElementCount(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -4276,7 +4276,7 @@ export class WINBIO_STORAGE_RECORDView {
   }
 
   // 0x28: usize
-  set TemplateBlobSize(value: Deno.PointerValue) {
+  set TemplateBlobSize(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
@@ -4286,12 +4286,12 @@ export class WINBIO_STORAGE_RECORDView {
   }
 
   // 0x38: usize
-  set PayloadBlobSize(value: Deno.PointerValue) {
+  set PayloadBlobSize(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.Devices.BiometricFramework.WINBIO_PIPELINE (size: 80)
@@ -4535,7 +4535,7 @@ export interface WINBIO_SENSOR_INTERFACE {
   /** u32 */
   Type: number;
   /** usize */
-  Size: Deno.PointerValue;
+  Size: bigint | number;
   /** System.Guid */
   AdapterId: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Devices.BiometricFramework.PIBIO_SENSOR_ATTACH_FN */
@@ -4705,7 +4705,7 @@ export class WINBIO_SENSOR_INTERFACEView {
   // 0x0c: pad4
 
   // 0x10: usize
-  get Size(): Deno.PointerValue {
+  get Size(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -4914,7 +4914,7 @@ export class WINBIO_SENSOR_INTERFACEView {
   // 0x0c: pad4
 
   // 0x10: usize
-  set Size(value: Deno.PointerValue) {
+  set Size(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -5088,7 +5088,7 @@ export interface WINBIO_ENGINE_INTERFACE {
   /** u32 */
   Type: number;
   /** usize */
-  Size: Deno.PointerValue;
+  Size: bigint | number;
   /** System.Guid */
   AdapterId: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Devices.BiometricFramework.PIBIO_ENGINE_ATTACH_FN */
@@ -5298,7 +5298,7 @@ export class WINBIO_ENGINE_INTERFACEView {
   // 0x0c: pad4
 
   // 0x10: usize
-  get Size(): Deno.PointerValue {
+  get Size(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -5567,7 +5567,7 @@ export class WINBIO_ENGINE_INTERFACEView {
   // 0x0c: pad4
 
   // 0x10: usize
-  set Size(value: Deno.PointerValue) {
+  set Size(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -5791,7 +5791,7 @@ export interface WINBIO_STORAGE_INTERFACE {
   /** u32 */
   Type: number;
   /** usize */
-  Size: Deno.PointerValue;
+  Size: bigint | number;
   /** System.Guid */
   AdapterId: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Devices.BiometricFramework.PIBIO_STORAGE_ATTACH_FN */
@@ -5957,7 +5957,7 @@ export class WINBIO_STORAGE_INTERFACEView {
   // 0x0c: pad4
 
   // 0x10: usize
-  get Size(): Deno.PointerValue {
+  get Size(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -6160,7 +6160,7 @@ export class WINBIO_STORAGE_INTERFACEView {
   // 0x0c: pad4
 
   // 0x10: usize
-  set Size(value: Deno.PointerValue) {
+  set Size(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -6329,7 +6329,7 @@ export interface WINBIO_FRAMEWORK_INTERFACE {
   /** u32 */
   Type: number;
   /** usize */
-  Size: Deno.PointerValue;
+  Size: bigint | number;
   /** System.Guid */
   AdapterId: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Devices.BiometricFramework.PIBIO_FRAMEWORK_SET_UNIT_STATUS_FN */
@@ -6551,7 +6551,7 @@ export class WINBIO_FRAMEWORK_INTERFACEView {
   // 0x0c: pad4
 
   // 0x10: usize
-  get Size(): Deno.PointerValue {
+  get Size(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -6838,7 +6838,7 @@ export class WINBIO_FRAMEWORK_INTERFACEView {
   // 0x0c: pad4
 
   // 0x10: usize
-  set Size(value: Deno.PointerValue) {
+  set Size(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -8333,7 +8333,7 @@ export class WINBIO_NOTIFY_WAKEView {
   // 0x14: pad4
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 // Native Libraries
 
@@ -8635,7 +8635,7 @@ export function WinBioOpenSession(
   PoolType: WINBIO_POOL /* Windows.Win32.Devices.BiometricFramework.WINBIO_POOL */,
   Flags: number /* u32 */,
   UnitArray: Deno.PointerValue | Uint8Array /* ptr */,
-  UnitCount: Deno.PointerValue /* usize */,
+  UnitCount: bigint | number /* usize */,
   DatabaseId: Deno.PointerValue | Uint8Array /* ptr */,
   SessionHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
@@ -8647,7 +8647,7 @@ export function WinBioAsyncOpenSession(
   PoolType: WINBIO_POOL /* Windows.Win32.Devices.BiometricFramework.WINBIO_POOL */,
   Flags: number /* u32 */,
   UnitArray: Deno.PointerValue | Uint8Array /* ptr */,
-  UnitCount: Deno.PointerValue /* usize */,
+  UnitCount: bigint | number /* usize */,
   DatabaseId: Deno.PointerValue | Uint8Array /* ptr */,
   NotificationMethod: WINBIO_ASYNC_NOTIFICATION_METHOD /* Windows.Win32.Devices.BiometricFramework.WINBIO_ASYNC_NOTIFICATION_METHOD */,
   TargetWindow: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
@@ -8742,7 +8742,7 @@ export function WinBioEnrollBegin(
 
 export function WinBioEnrollSelect(
   SessionHandle: number /* u32 */,
-  SelectorValue: Deno.PointerValue /* u64 */,
+  SelectorValue: bigint | number /* u64 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libwinbio_dll.WinBioEnrollSelect(SessionHandle, SelectorValue);
 }
@@ -8872,9 +8872,9 @@ export function WinBioControlUnit(
   Component: WINBIO_COMPONENT /* Windows.Win32.Devices.BiometricFramework.WINBIO_COMPONENT */,
   ControlCode: number /* u32 */,
   SendBuffer: Deno.PointerValue | Uint8Array /* ptr */,
-  SendBufferSize: Deno.PointerValue /* usize */,
+  SendBufferSize: bigint | number /* usize */,
   ReceiveBuffer: Deno.PointerValue | Uint8Array /* ptr */,
-  ReceiveBufferSize: Deno.PointerValue /* usize */,
+  ReceiveBufferSize: bigint | number /* usize */,
   ReceiveDataSize: Deno.PointerValue | Uint8Array /* ptr */,
   OperationStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
@@ -8887,9 +8887,9 @@ export function WinBioControlUnitPrivileged(
   Component: WINBIO_COMPONENT /* Windows.Win32.Devices.BiometricFramework.WINBIO_COMPONENT */,
   ControlCode: number /* u32 */,
   SendBuffer: Deno.PointerValue | Uint8Array /* ptr */,
-  SendBufferSize: Deno.PointerValue /* usize */,
+  SendBufferSize: bigint | number /* usize */,
   ReceiveBuffer: Deno.PointerValue | Uint8Array /* ptr */,
-  ReceiveBufferSize: Deno.PointerValue /* usize */,
+  ReceiveBufferSize: bigint | number /* usize */,
   ReceiveDataSize: Deno.PointerValue | Uint8Array /* ptr */,
   OperationStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
@@ -8917,7 +8917,7 @@ export function WinBioSetProperty(
   Identity: Deno.PointerValue | Uint8Array /* ptr */,
   SubFactor: number /* u8 */,
   PropertyBuffer: Deno.PointerValue | Uint8Array /* ptr */,
-  PropertyBufferSize: Deno.PointerValue /* usize */,
+  PropertyBufferSize: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libwinbio_dll.WinBioSetProperty(SessionHandle, PropertyType, PropertyId, UnitId, util.toPointer(Identity), SubFactor, util.toPointer(PropertyBuffer), PropertyBufferSize);
 }
@@ -8931,7 +8931,7 @@ export function WinBioFree(
 export function WinBioSetCredential(
   Type: WINBIO_CREDENTIAL_TYPE /* Windows.Win32.Devices.BiometricFramework.WINBIO_CREDENTIAL_TYPE */,
   Credential: Deno.PointerValue | Uint8Array /* ptr */,
-  CredentialSize: Deno.PointerValue /* usize */,
+  CredentialSize: bigint | number /* usize */,
   Format: WINBIO_CREDENTIAL_FORMAT /* Windows.Win32.Devices.BiometricFramework.WINBIO_CREDENTIAL_FORMAT */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libwinbio_dll.WinBioSetCredential(Type, util.toPointer(Credential), CredentialSize, Format);

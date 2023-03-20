@@ -310,9 +310,9 @@ export type BOOL = number;
  */
 export interface BG_FILE_PROGRESS {
   /** u64 */
-  BytesTotal: Deno.PointerValue;
+  BytesTotal: bigint | number;
   /** u64 */
-  BytesTransferred: Deno.PointerValue;
+  BytesTransferred: bigint | number;
   /** Windows.Win32.Foundation.BOOL */
   Completed: boolean;
 }
@@ -343,12 +343,12 @@ export class BG_FILE_PROGRESSView {
   }
 
   // 0x00: u64
-  get BytesTotal(): Deno.PointerValue {
+  get BytesTotal(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get BytesTransferred(): Deno.PointerValue {
+  get BytesTransferred(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -360,12 +360,12 @@ export class BG_FILE_PROGRESSView {
   // 0x14: pad4
 
   // 0x00: u64
-  set BytesTotal(value: Deno.PointerValue) {
+  set BytesTotal(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set BytesTransferred(value: Deno.PointerValue) {
+  set BytesTransferred(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -447,9 +447,9 @@ export class BG_FILE_INFOView {
  */
 export interface BG_JOB_PROGRESS {
   /** u64 */
-  BytesTotal: Deno.PointerValue;
+  BytesTotal: bigint | number;
   /** u64 */
-  BytesTransferred: Deno.PointerValue;
+  BytesTransferred: bigint | number;
   /** u32 */
   FilesTotal: number;
   /** u32 */
@@ -483,12 +483,12 @@ export class BG_JOB_PROGRESSView {
   }
 
   // 0x00: u64
-  get BytesTotal(): Deno.PointerValue {
+  get BytesTotal(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get BytesTransferred(): Deno.PointerValue {
+  get BytesTransferred(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -503,12 +503,12 @@ export class BG_JOB_PROGRESSView {
   }
 
   // 0x00: u64
-  set BytesTotal(value: Deno.PointerValue) {
+  set BytesTotal(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set BytesTransferred(value: Deno.PointerValue) {
+  set BytesTransferred(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -651,9 +651,9 @@ export class BG_JOB_TIMESView {
  */
 export interface BG_JOB_REPLY_PROGRESS {
   /** u64 */
-  BytesTotal: Deno.PointerValue;
+  BytesTotal: bigint | number;
   /** u64 */
-  BytesTransferred: Deno.PointerValue;
+  BytesTransferred: bigint | number;
 }
 
 export const sizeofBG_JOB_REPLY_PROGRESS = 16;
@@ -679,22 +679,22 @@ export class BG_JOB_REPLY_PROGRESSView {
   }
 
   // 0x00: u64
-  get BytesTotal(): Deno.PointerValue {
+  get BytesTotal(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get BytesTransferred(): Deno.PointerValue {
+  get BytesTransferred(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set BytesTotal(value: Deno.PointerValue) {
+  set BytesTotal(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set BytesTransferred(value: Deno.PointerValue) {
+  set BytesTransferred(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -875,9 +875,9 @@ export class BG_AUTH_CREDENTIALSView {
  */
 export interface BG_FILE_RANGE {
   /** u64 */
-  InitialOffset: Deno.PointerValue;
+  InitialOffset: bigint | number;
   /** u64 */
-  Length: Deno.PointerValue;
+  Length: bigint | number;
 }
 
 export const sizeofBG_FILE_RANGE = 16;
@@ -903,22 +903,22 @@ export class BG_FILE_RANGEView {
   }
 
   // 0x00: u64
-  get InitialOffset(): Deno.PointerValue {
+  get InitialOffset(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Length(): Deno.PointerValue {
+  get Length(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set InitialOffset(value: Deno.PointerValue) {
+  set InitialOffset(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Length(value: Deno.PointerValue) {
+  set Length(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -934,7 +934,7 @@ export interface BITS_JOB_PROPERTY_VALUE {
   /** Windows.Win32.Foundation.BOOL */
   Enable: boolean;
   /** u64 */
-  Uint64: Deno.PointerValue;
+  Uint64: bigint | number;
   /** Windows.Win32.Networking.BackgroundIntelligentTransferService.BG_AUTH_TARGET */
   Target: BG_AUTH_TARGET;
 }
@@ -991,7 +991,7 @@ export class BITS_JOB_PROPERTY_VALUEView {
   // 0x14: pad4
 
   // 0x18: u64
-  get Uint64(): Deno.PointerValue {
+  get Uint64(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -1022,7 +1022,7 @@ export class BITS_JOB_PROPERTY_VALUEView {
   // 0x14: pad4
 
   // 0x18: u64
-  set Uint64(value: Deno.PointerValue) {
+  set Uint64(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 

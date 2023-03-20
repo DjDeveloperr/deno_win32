@@ -2389,9 +2389,9 @@ export class PROTOCOL_ARGUMENTView {
 
 export type HRESULT = number;
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 // Native Libraries
 
@@ -3127,7 +3127,7 @@ export function CoInternetParseIUri(
   pwzResult: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchResult: number /* u32 */,
   pcchResult: Deno.PointerValue | Uint8Array /* ptr */,
-  dwReserved: Deno.PointerValue /* usize */,
+  dwReserved: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return liburlmon_dll.CoInternetParseIUri(util.toPointer(pIUri), ParseAction, dwFlags, util.pwstrToFfi(pwzResult), cchResult, util.toPointer(pcchResult), dwReserved);
 }
@@ -3149,7 +3149,7 @@ export function CoInternetCombineUrlEx(
   pwzRelativeUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwCombineFlags: number /* u32 */,
   ppCombinedUri: Deno.PointerValue | Uint8Array /* ptr */,
-  dwReserved: Deno.PointerValue /* usize */,
+  dwReserved: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return liburlmon_dll.CoInternetCombineUrlEx(util.toPointer(pBaseUri), util.pwstrToFfi(pwzRelativeUrl), dwCombineFlags, util.toPointer(ppCombinedUri), dwReserved);
 }
@@ -3159,7 +3159,7 @@ export function CoInternetCombineIUri(
   pRelativeUri: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUri */,
   dwCombineFlags: number /* u32 */,
   ppCombinedUri: Deno.PointerValue | Uint8Array /* ptr */,
-  dwReserved: Deno.PointerValue /* usize */,
+  dwReserved: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return liburlmon_dll.CoInternetCombineIUri(util.toPointer(pBaseUri), util.toPointer(pRelativeUri), dwCombineFlags, util.toPointer(ppCombinedUri), dwReserved);
 }
@@ -3213,7 +3213,7 @@ export function CoInternetGetSecurityUrlEx(
   pUri: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUri */,
   ppSecUri: Deno.PointerValue | Uint8Array /* ptr */,
   psuAction: PSUACTION /* Windows.Win32.System.Com.Urlmon.PSUACTION */,
-  dwReserved: Deno.PointerValue /* usize */,
+  dwReserved: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return liburlmon_dll.CoInternetGetSecurityUrlEx(util.toPointer(pUri), util.toPointer(ppSecUri), psuAction, dwReserved);
 }

@@ -21,11 +21,11 @@ export type BOOL = number;
  */
 export interface DIAGNOSTIC_DATA_RECORD {
   /** i64 */
-  rowId: Deno.PointerValue;
+  rowId: bigint | number;
   /** u64 */
-  timestamp: Deno.PointerValue;
+  timestamp: bigint | number;
   /** u64 */
-  eventKeywords: Deno.PointerValue;
+  eventKeywords: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   fullEventName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
@@ -116,17 +116,17 @@ export class DIAGNOSTIC_DATA_RECORDView {
   }
 
   // 0x00: i64
-  get rowId(): Deno.PointerValue {
+  get rowId(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: u64
-  get timestamp(): Deno.PointerValue {
+  get timestamp(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get eventKeywords(): Deno.PointerValue {
+  get eventKeywords(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -196,17 +196,17 @@ export class DIAGNOSTIC_DATA_RECORDView {
   }
 
   // 0x00: i64
-  set rowId(value: Deno.PointerValue) {
+  set rowId(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set timestamp(value: Deno.PointerValue) {
+  set timestamp(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set eventKeywords(value: Deno.PointerValue) {
+  set eventKeywords(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -682,7 +682,7 @@ export interface DIAGNOSTIC_DATA_EVENT_BINARY_STATS {
   /** u32 */
   eventCount: number;
   /** u64 */
-  uploadSizeBytes: Deno.PointerValue;
+  uploadSizeBytes: bigint | number;
 }
 
 export const sizeofDIAGNOSTIC_DATA_EVENT_BINARY_STATS = 32;
@@ -738,7 +738,7 @@ export class DIAGNOSTIC_DATA_EVENT_BINARY_STATSView {
   // 0x14: pad4
 
   // 0x18: u64
-  get uploadSizeBytes(): Deno.PointerValue {
+  get uploadSizeBytes(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -762,7 +762,7 @@ export class DIAGNOSTIC_DATA_EVENT_BINARY_STATSView {
   // 0x14: pad4
 
   // 0x18: u64
-  set uploadSizeBytes(value: Deno.PointerValue) {
+  set uploadSizeBytes(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 }
@@ -774,9 +774,9 @@ export interface DIAGNOSTIC_DATA_GENERAL_STATS {
   /** u32 */
   optInLevel: number;
   /** u64 */
-  transcriptSizeBytes: Deno.PointerValue;
+  transcriptSizeBytes: bigint | number;
   /** u64 */
-  oldestEventTimestamp: Deno.PointerValue;
+  oldestEventTimestamp: bigint | number;
   /** u32 */
   totalEventCountLast24Hours: number;
   /** f32 */
@@ -820,12 +820,12 @@ export class DIAGNOSTIC_DATA_GENERAL_STATSView {
   // 0x04: pad4
 
   // 0x08: u64
-  get transcriptSizeBytes(): Deno.PointerValue {
+  get transcriptSizeBytes(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get oldestEventTimestamp(): Deno.PointerValue {
+  get oldestEventTimestamp(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -847,12 +847,12 @@ export class DIAGNOSTIC_DATA_GENERAL_STATSView {
   // 0x04: pad4
 
   // 0x08: u64
-  set transcriptSizeBytes(value: Deno.PointerValue) {
+  set transcriptSizeBytes(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set oldestEventTimestamp(value: Deno.PointerValue) {
+  set oldestEventTimestamp(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -1115,7 +1115,7 @@ export interface DIAGNOSTIC_REPORT_DATA {
   /** Windows.Win32.Foundation.FILETIME */
   creationTime: Uint8Array | Deno.PointerValue;
   /** u64 */
-  sizeInBytes: Deno.PointerValue;
+  sizeInBytes: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   cabId: string | null | Uint8Array | Uint16Array;
   /** u32 */
@@ -1137,7 +1137,7 @@ export interface DIAGNOSTIC_REPORT_DATA {
   /** Windows.Win32.Foundation.PWSTR */
   bucketIdString: string | null | Uint8Array | Uint16Array;
   /** u64 */
-  legacyBucketId: Deno.PointerValue;
+  legacyBucketId: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   reportKey: string | null | Uint8Array | Uint16Array;
 }
@@ -1242,7 +1242,7 @@ export class DIAGNOSTIC_REPORT_DATAView {
   }
 
   // 0x20: u64
-  get sizeInBytes(): Deno.PointerValue {
+  get sizeInBytes(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -1309,7 +1309,7 @@ export class DIAGNOSTIC_REPORT_DATAView {
   }
 
   // 0x78: u64
-  get legacyBucketId(): Deno.PointerValue {
+  get legacyBucketId(): bigint | number {
     return Number(this.view.getBigUint64(120, true));
   }
 
@@ -1340,7 +1340,7 @@ export class DIAGNOSTIC_REPORT_DATAView {
   }
 
   // 0x20: u64
-  set sizeInBytes(value: Deno.PointerValue) {
+  set sizeInBytes(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -1405,7 +1405,7 @@ export class DIAGNOSTIC_REPORT_DATAView {
   }
 
   // 0x78: u64
-  set legacyBucketId(value: Deno.PointerValue) {
+  set legacyBucketId(value: bigint | number) {
     this.view.setBigUint64(120, BigInt(value), true);
   }
 
@@ -1418,17 +1418,17 @@ export class DIAGNOSTIC_REPORT_DATAView {
 
 export type HRESULT = number;
 
-export type HDIAGNOSTIC_DATA_QUERY_SESSION = Deno.PointerValue;
+export type HDIAGNOSTIC_DATA_QUERY_SESSION = bigint | number;
 
-export type HDIAGNOSTIC_EVENT_TAG_DESCRIPTION = Deno.PointerValue;
+export type HDIAGNOSTIC_EVENT_TAG_DESCRIPTION = bigint | number;
 
-export type HDIAGNOSTIC_EVENT_PRODUCER_DESCRIPTION = Deno.PointerValue;
+export type HDIAGNOSTIC_EVENT_PRODUCER_DESCRIPTION = bigint | number;
 
-export type HDIAGNOSTIC_EVENT_CATEGORY_DESCRIPTION = Deno.PointerValue;
+export type HDIAGNOSTIC_EVENT_CATEGORY_DESCRIPTION = bigint | number;
 
-export type HDIAGNOSTIC_RECORD = Deno.PointerValue;
+export type HDIAGNOSTIC_RECORD = bigint | number;
 
-export type HDIAGNOSTIC_REPORT = Deno.PointerValue;
+export type HDIAGNOSTIC_REPORT = bigint | number;
 
 // Native Libraries
 
@@ -1617,7 +1617,7 @@ export function DdqGetDiagnosticRecordStats(
 
 export function DdqGetDiagnosticRecordPayload(
   hSession: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
-  rowId: Deno.PointerValue /* i64 */,
+  rowId: bigint | number /* i64 */,
   payload: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordPayload(util.toPointer(hSession), rowId, util.toPointer(payload));
@@ -1728,7 +1728,7 @@ export function DdqGetDiagnosticRecordPage(
   searchCriteria: Deno.PointerValue | Uint8Array /* ptr */,
   offset: number /* u32 */,
   pageRecordCount: number /* u32 */,
-  baseRowId: Deno.PointerValue /* i64 */,
+  baseRowId: bigint | number /* i64 */,
   hRecord: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordPage(util.toPointer(hSession), util.toPointer(searchCriteria), offset, pageRecordCount, baseRowId, util.toPointer(hRecord));

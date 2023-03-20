@@ -3607,17 +3607,17 @@ export const TOKEN_ALL_ACCESS = 983295;
 
 // Structs
 
-export type TimerQueueHandle = Deno.PointerValue;
+export type TimerQueueHandle = bigint | number;
 
-export type PTP_POOL = Deno.PointerValue;
+export type PTP_POOL = bigint | number;
 
-export type NamespaceHandle = Deno.PointerValue;
+export type NamespaceHandle = bigint | number;
 
-export type BoundaryDescriptorHandle = Deno.PointerValue;
+export type BoundaryDescriptorHandle = bigint | number;
 
 export type LPPROC_THREAD_ATTRIBUTE_LIST = Deno.PointerValue | Uint8Array;
 
-export type HINSTANCE = Deno.PointerValue;
+export type HINSTANCE = bigint | number;
 
 /**
  * _Detailed_e__Struct (size: 24)
@@ -3831,7 +3831,7 @@ export class REASON_CONTEXTView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.System.Threading.PROCESS_INFORMATION (size: 24)
@@ -4651,13 +4651,13 @@ export class THREAD_POWER_THROTTLING_STATEView {
  */
 export interface APP_MEMORY_INFORMATION {
   /** u64 */
-  AvailableCommit: Deno.PointerValue;
+  AvailableCommit: bigint | number;
   /** u64 */
-  PrivateCommitUsage: Deno.PointerValue;
+  PrivateCommitUsage: bigint | number;
   /** u64 */
-  PeakPrivateCommitUsage: Deno.PointerValue;
+  PeakPrivateCommitUsage: bigint | number;
   /** u64 */
-  TotalCommitUsage: Deno.PointerValue;
+  TotalCommitUsage: bigint | number;
 }
 
 export const sizeofAPP_MEMORY_INFORMATION = 32;
@@ -4687,42 +4687,42 @@ export class APP_MEMORY_INFORMATIONView {
   }
 
   // 0x00: u64
-  get AvailableCommit(): Deno.PointerValue {
+  get AvailableCommit(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get PrivateCommitUsage(): Deno.PointerValue {
+  get PrivateCommitUsage(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get PeakPrivateCommitUsage(): Deno.PointerValue {
+  get PeakPrivateCommitUsage(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get TotalCommitUsage(): Deno.PointerValue {
+  get TotalCommitUsage(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x00: u64
-  set AvailableCommit(value: Deno.PointerValue) {
+  set AvailableCommit(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set PrivateCommitUsage(value: Deno.PointerValue) {
+  set PrivateCommitUsage(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set PeakPrivateCommitUsage(value: Deno.PointerValue) {
+  set PeakPrivateCommitUsage(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set TotalCommitUsage(value: Deno.PointerValue) {
+  set TotalCommitUsage(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 }
@@ -4805,7 +4805,7 @@ export interface PROCESS_MEMORY_EXHAUSTION_INFO {
   /** Windows.Win32.System.Threading.PROCESS_MEMORY_EXHAUSTION_TYPE */
   Type: PROCESS_MEMORY_EXHAUSTION_TYPE;
   /** usize */
-  Value: Deno.PointerValue;
+  Value: bigint | number;
 }
 
 export const sizeofPROCESS_MEMORY_EXHAUSTION_INFO = 16;
@@ -4850,7 +4850,7 @@ export class PROCESS_MEMORY_EXHAUSTION_INFOView {
   }
 
   // 0x08: usize
-  get Value(): Deno.PointerValue {
+  get Value(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -4870,7 +4870,7 @@ export class PROCESS_MEMORY_EXHAUSTION_INFOView {
   }
 
   // 0x08: usize
-  set Value(value: Deno.PointerValue) {
+  set Value(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -5049,9 +5049,9 @@ export class PROCESS_LEAP_SECOND_INFOView {
  */
 export interface PROCESS_DYNAMIC_EH_CONTINUATION_TARGET {
   /** usize */
-  TargetAddress: Deno.PointerValue;
+  TargetAddress: bigint | number;
   /** usize */
-  Flags: Deno.PointerValue;
+  Flags: bigint | number;
 }
 
 export const sizeofPROCESS_DYNAMIC_EH_CONTINUATION_TARGET = 16;
@@ -5077,22 +5077,22 @@ export class PROCESS_DYNAMIC_EH_CONTINUATION_TARGETView {
   }
 
   // 0x00: usize
-  get TargetAddress(): Deno.PointerValue {
+  get TargetAddress(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: usize
-  get Flags(): Deno.PointerValue {
+  get Flags(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: usize
-  set TargetAddress(value: Deno.PointerValue) {
+  set TargetAddress(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: usize
-  set Flags(value: Deno.PointerValue) {
+  set Flags(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -5184,9 +5184,9 @@ export class PROCESS_DYNAMIC_EH_CONTINUATION_TARGETS_INFORMATIONView {
  */
 export interface PROCESS_DYNAMIC_ENFORCED_ADDRESS_RANGE {
   /** usize */
-  BaseAddress: Deno.PointerValue;
+  BaseAddress: bigint | number;
   /** usize */
-  Size: Deno.PointerValue;
+  Size: bigint | number;
   /** u32 */
   Flags: number;
 }
@@ -5217,12 +5217,12 @@ export class PROCESS_DYNAMIC_ENFORCED_ADDRESS_RANGEView {
   }
 
   // 0x00: usize
-  get BaseAddress(): Deno.PointerValue {
+  get BaseAddress(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: usize
-  get Size(): Deno.PointerValue {
+  get Size(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -5234,12 +5234,12 @@ export class PROCESS_DYNAMIC_ENFORCED_ADDRESS_RANGEView {
   // 0x14: pad4
 
   // 0x00: usize
-  set BaseAddress(value: Deno.PointerValue) {
+  set BaseAddress(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: usize
-  set Size(value: Deno.PointerValue) {
+  set Size(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -5338,17 +5338,17 @@ export class PROCESS_DYNAMIC_ENFORCED_ADDRESS_RANGES_INFORMATIONView {
  */
 export interface IO_COUNTERS {
   /** u64 */
-  ReadOperationCount: Deno.PointerValue;
+  ReadOperationCount: bigint | number;
   /** u64 */
-  WriteOperationCount: Deno.PointerValue;
+  WriteOperationCount: bigint | number;
   /** u64 */
-  OtherOperationCount: Deno.PointerValue;
+  OtherOperationCount: bigint | number;
   /** u64 */
-  ReadTransferCount: Deno.PointerValue;
+  ReadTransferCount: bigint | number;
   /** u64 */
-  WriteTransferCount: Deno.PointerValue;
+  WriteTransferCount: bigint | number;
   /** u64 */
-  OtherTransferCount: Deno.PointerValue;
+  OtherTransferCount: bigint | number;
 }
 
 export const sizeofIO_COUNTERS = 48;
@@ -5382,62 +5382,62 @@ export class IO_COUNTERSView {
   }
 
   // 0x00: u64
-  get ReadOperationCount(): Deno.PointerValue {
+  get ReadOperationCount(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get WriteOperationCount(): Deno.PointerValue {
+  get WriteOperationCount(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get OtherOperationCount(): Deno.PointerValue {
+  get OtherOperationCount(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get ReadTransferCount(): Deno.PointerValue {
+  get ReadTransferCount(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get WriteTransferCount(): Deno.PointerValue {
+  get WriteTransferCount(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: u64
-  get OtherTransferCount(): Deno.PointerValue {
+  get OtherTransferCount(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x00: u64
-  set ReadOperationCount(value: Deno.PointerValue) {
+  set ReadOperationCount(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set WriteOperationCount(value: Deno.PointerValue) {
+  set WriteOperationCount(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set OtherOperationCount(value: Deno.PointerValue) {
+  set OtherOperationCount(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set ReadTransferCount(value: Deno.PointerValue) {
+  set ReadTransferCount(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set WriteTransferCount(value: Deno.PointerValue) {
+  set WriteTransferCount(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: u64
-  set OtherTransferCount(value: Deno.PointerValue) {
+  set OtherTransferCount(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 }
@@ -5806,7 +5806,7 @@ export interface RTL_CRITICAL_SECTION {
   /** Windows.Win32.Foundation.HANDLE */
   LockSemaphore: Uint8Array | Deno.PointerValue;
   /** usize */
-  SpinCount: Deno.PointerValue;
+  SpinCount: bigint | number;
 }
 
 export const sizeofRTL_CRITICAL_SECTION = 40;
@@ -5868,7 +5868,7 @@ export class RTL_CRITICAL_SECTIONView {
   }
 
   // 0x20: usize
-  get SpinCount(): Deno.PointerValue {
+  get SpinCount(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -5898,7 +5898,7 @@ export class RTL_CRITICAL_SECTIONView {
   }
 
   // 0x20: usize
-  set SpinCount(value: Deno.PointerValue) {
+  set SpinCount(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 }
@@ -5988,9 +5988,9 @@ export class RTL_CONDITION_VARIABLEView {
  */
 export interface TP_POOL_STACK_INFORMATION {
   /** usize */
-  StackReserve: Deno.PointerValue;
+  StackReserve: bigint | number;
   /** usize */
-  StackCommit: Deno.PointerValue;
+  StackCommit: bigint | number;
 }
 
 export const sizeofTP_POOL_STACK_INFORMATION = 16;
@@ -6016,22 +6016,22 @@ export class TP_POOL_STACK_INFORMATIONView {
   }
 
   // 0x00: usize
-  get StackReserve(): Deno.PointerValue {
+  get StackReserve(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: usize
-  get StackCommit(): Deno.PointerValue {
+  get StackCommit(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: usize
-  set StackReserve(value: Deno.PointerValue) {
+  set StackReserve(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: usize
-  set StackCommit(value: Deno.PointerValue) {
+  set StackCommit(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -7011,13 +7011,13 @@ export interface TP_CALLBACK_ENVIRON_V3 {
   /** Windows.Win32.System.Threading.PTP_POOL */
   Pool: Uint8Array | Deno.PointerValue;
   /** isize */
-  CleanupGroup: Deno.PointerValue;
+  CleanupGroup: bigint | number;
   /** Windows.Win32.System.Threading.PTP_CLEANUP_GROUP_CANCEL_CALLBACK */
   CleanupGroupCancelCallback: Uint8Array | Deno.PointerValue;
   /** ptr */
   RaceDll: Deno.PointerValue | Uint8Array;
   /** isize */
-  ActivationContext: Deno.PointerValue;
+  ActivationContext: bigint | number;
   /** Windows.Win32.System.Threading.PTP_SIMPLE_CALLBACK */
   FinalizationCallback: Uint8Array | Deno.PointerValue;
   /** _u_e__Union */
@@ -7081,7 +7081,7 @@ export class TP_CALLBACK_ENVIRON_V3View {
   }
 
   // 0x10: isize
-  get CleanupGroup(): Deno.PointerValue {
+  get CleanupGroup(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -7098,7 +7098,7 @@ export class TP_CALLBACK_ENVIRON_V3View {
   }
 
   // 0x28: isize
-  get ActivationContext(): Deno.PointerValue {
+  get ActivationContext(): bigint | number {
     return Number(this.view.getBigInt64(40, true));
   }
 
@@ -7137,7 +7137,7 @@ export class TP_CALLBACK_ENVIRON_V3View {
   }
 
   // 0x10: isize
-  set CleanupGroup(value: Deno.PointerValue) {
+  set CleanupGroup(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
@@ -7152,7 +7152,7 @@ export class TP_CALLBACK_ENVIRON_V3View {
   }
 
   // 0x28: isize
-  set ActivationContext(value: Deno.PointerValue) {
+  set ActivationContext(value: bigint | number) {
     this.view.setBigInt64(40, BigInt(value), true);
   }
 
@@ -7271,9 +7271,9 @@ export class UMS_SCHEDULER_STARTUP_INFOView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -7299,22 +7299,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -8106,7 +8106,7 @@ export interface PROCESS_BASIC_INFORMATION {
   /** array */
   Reserved2: Deno.PointerValue;
   /** usize */
-  UniqueProcessId: Deno.PointerValue;
+  UniqueProcessId: bigint | number;
   /** ptr */
   Reserved3: Deno.PointerValue | Uint8Array;
 }
@@ -8158,7 +8158,7 @@ export class PROCESS_BASIC_INFORMATIONView {
   }
 
   // 0x18: usize
-  get UniqueProcessId(): Deno.PointerValue {
+  get UniqueProcessId(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -8184,7 +8184,7 @@ export class PROCESS_BASIC_INFORMATIONView {
   }
 
   // 0x18: usize
-  set UniqueProcessId(value: Deno.PointerValue) {
+  set UniqueProcessId(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -9443,8 +9443,8 @@ export function GetProcessWorkingSetSize(
 
 export function SetProcessWorkingSetSize(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  dwMinimumWorkingSetSize: Deno.PointerValue /* usize */,
-  dwMaximumWorkingSetSize: Deno.PointerValue /* usize */,
+  dwMinimumWorkingSetSize: bigint | number /* usize */,
+  dwMaximumWorkingSetSize: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetProcessWorkingSetSize(util.toPointer(hProcess), dwMinimumWorkingSetSize, dwMaximumWorkingSetSize));
 }
@@ -9886,7 +9886,7 @@ export function Sleep(
 export function WaitOnAddress(
   Address: Deno.PointerValue | Uint8Array /* ptr */,
   CompareAddress: Deno.PointerValue | Uint8Array /* ptr */,
-  AddressSize: Deno.PointerValue /* usize */,
+  AddressSize: bigint | number /* usize */,
   dwMilliseconds: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libapi_ms_win_core_synch_l1_2_0_dll.WaitOnAddress(util.toPointer(Address), util.toPointer(CompareAddress), AddressSize, dwMilliseconds));
@@ -9973,7 +9973,7 @@ export function QueryDepthSList(
 export function QueueUserAPC(
   pfnAPC: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PAPCFUNC */,
   hThread: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  dwData: Deno.PointerValue /* usize */,
+  dwData: bigint | number /* usize */,
 ): number /* u32 */ {
   return libKERNEL32_dll.QueueUserAPC(util.toPointer(pfnAPC), util.toPointer(hThread), dwData);
 }
@@ -9981,7 +9981,7 @@ export function QueueUserAPC(
 export function QueueUserAPC2(
   ApcRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PAPCFUNC */,
   Thread: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  Data: Deno.PointerValue /* usize */,
+  Data: bigint | number /* usize */,
   Flags: QUEUE_USER_APC_FLAGS /* Windows.Win32.System.Threading.QUEUE_USER_APC_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.QueueUserAPC2(util.toPointer(ApcRoutine), util.toPointer(Thread), Data, Flags));
@@ -10031,7 +10031,7 @@ export function SwitchToThread(): boolean /* Windows.Win32.Foundation.BOOL */ {
 
 export function CreateThread(
   lpThreadAttributes: Deno.PointerValue | Uint8Array /* ptr */,
-  dwStackSize: Deno.PointerValue /* usize */,
+  dwStackSize: bigint | number /* usize */,
   lpStartAddress: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Threading.LPTHREAD_START_ROUTINE */,
   lpParameter: Deno.PointerValue | Uint8Array /* ptr */,
   dwCreationFlags: THREAD_CREATION_FLAGS /* Windows.Win32.System.Threading.THREAD_CREATION_FLAGS */,
@@ -10043,7 +10043,7 @@ export function CreateThread(
 export function CreateRemoteThread(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lpThreadAttributes: Deno.PointerValue | Uint8Array /* ptr */,
-  dwStackSize: Deno.PointerValue /* usize */,
+  dwStackSize: bigint | number /* usize */,
   lpStartAddress: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Threading.LPTHREAD_START_ROUTINE */,
   lpParameter: Deno.PointerValue | Uint8Array /* ptr */,
   dwCreationFlags: number /* u32 */,
@@ -10298,9 +10298,9 @@ export function DeleteProcThreadAttributeList(
 export function UpdateProcThreadAttribute(
   lpAttributeList: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Threading.LPPROC_THREAD_ATTRIBUTE_LIST */,
   dwFlags: number /* u32 */,
-  Attribute: Deno.PointerValue /* usize */,
+  Attribute: bigint | number /* usize */,
   lpValue: Deno.PointerValue | Uint8Array /* ptr */,
-  cbSize: Deno.PointerValue /* usize */,
+  cbSize: bigint | number /* usize */,
   lpPreviousValue: Deno.PointerValue | Uint8Array /* ptr */,
   lpReturnSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -10340,7 +10340,7 @@ export function QueryProcessAffinityUpdateMode(
 export function CreateRemoteThreadEx(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lpThreadAttributes: Deno.PointerValue | Uint8Array /* ptr */,
-  dwStackSize: Deno.PointerValue /* usize */,
+  dwStackSize: bigint | number /* usize */,
   lpStartAddress: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Threading.LPTHREAD_START_ROUTINE */,
   lpParameter: Deno.PointerValue | Uint8Array /* ptr */,
   dwCreationFlags: number /* u32 */,
@@ -10361,7 +10361,7 @@ export function GetProcessMitigationPolicy(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   MitigationPolicy: PROCESS_MITIGATION_POLICY /* Windows.Win32.System.Threading.PROCESS_MITIGATION_POLICY */,
   lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
-  dwLength: Deno.PointerValue /* usize */,
+  dwLength: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.GetProcessMitigationPolicy(util.toPointer(hProcess), MitigationPolicy, util.toPointer(lpBuffer), dwLength));
 }
@@ -10369,7 +10369,7 @@ export function GetProcessMitigationPolicy(
 export function SetProcessMitigationPolicy(
   MitigationPolicy: PROCESS_MITIGATION_POLICY /* Windows.Win32.System.Threading.PROCESS_MITIGATION_POLICY */,
   lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
-  dwLength: Deno.PointerValue /* usize */,
+  dwLength: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetProcessMitigationPolicy(MitigationPolicy, util.toPointer(lpBuffer), dwLength));
 }
@@ -10486,7 +10486,7 @@ export function IsProcessCritical(
 
 export function SetProtectedPolicy(
   PolicyGuid: Deno.PointerValue | Uint8Array /* ptr */,
-  PolicyValue: Deno.PointerValue /* usize */,
+  PolicyValue: bigint | number /* usize */,
   OldPolicyValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetProtectedPolicy(util.toPointer(PolicyGuid), PolicyValue, util.toPointer(OldPolicyValue)));
@@ -10737,12 +10737,12 @@ export function CloseThreadpool(
   return libKERNEL32_dll.CloseThreadpool(util.toPointer(ptpp));
 }
 
-export function CreateThreadpoolCleanupGroup(): Deno.PointerValue /* isize */ {
+export function CreateThreadpoolCleanupGroup(): bigint | number /* isize */ {
   return libKERNEL32_dll.CreateThreadpoolCleanupGroup();
 }
 
 export function CloseThreadpoolCleanupGroupMembers(
-  ptpcg: Deno.PointerValue /* isize */,
+  ptpcg: bigint | number /* isize */,
   fCancelPendingCallbacks: boolean /* Windows.Win32.Foundation.BOOL */,
   pvCleanupContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
@@ -10750,7 +10750,7 @@ export function CloseThreadpoolCleanupGroupMembers(
 }
 
 export function CloseThreadpoolCleanupGroup(
-  ptpcg: Deno.PointerValue /* isize */,
+  ptpcg: bigint | number /* isize */,
 ): void /* void */ {
   return libKERNEL32_dll.CloseThreadpoolCleanupGroup(ptpcg);
 }
@@ -11225,7 +11225,7 @@ export function GetProcessAffinityMask(
 
 export function SetProcessAffinityMask(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  dwProcessAffinityMask: Deno.PointerValue /* usize */,
+  dwProcessAffinityMask: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetProcessAffinityMask(util.toPointer(hProcess), dwProcessAffinityMask));
 }
@@ -11254,8 +11254,8 @@ export function ConvertFiberToThread(): boolean /* Windows.Win32.Foundation.BOOL
 }
 
 export function CreateFiberEx(
-  dwStackCommitSize: Deno.PointerValue /* usize */,
-  dwStackReserveSize: Deno.PointerValue /* usize */,
+  dwStackCommitSize: bigint | number /* usize */,
+  dwStackReserveSize: bigint | number /* usize */,
   dwFlags: number /* u32 */,
   lpStartAddress: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Threading.LPFIBER_START_ROUTINE */,
   lpParameter: Deno.PointerValue | Uint8Array /* ptr */,
@@ -11271,7 +11271,7 @@ export function ConvertThreadToFiberEx(
 }
 
 export function CreateFiber(
-  dwStackSize: Deno.PointerValue /* usize */,
+  dwStackSize: bigint | number /* usize */,
   lpStartAddress: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Threading.LPFIBER_START_ROUTINE */,
   lpParameter: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
@@ -11379,8 +11379,8 @@ export function GetUmsSystemThreadInformation(
 
 export function SetThreadAffinityMask(
   hThread: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  dwThreadAffinityMask: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
+  dwThreadAffinityMask: bigint | number /* usize */,
+): bigint | number /* usize */ {
   return libKERNEL32_dll.SetThreadAffinityMask(util.toPointer(hThread), dwThreadAffinityMask);
 }
 

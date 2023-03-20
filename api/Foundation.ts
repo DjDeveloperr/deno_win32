@@ -9795,17 +9795,17 @@ export type BOOLEAN = number;
 
 export type BSTR = Deno.PointerValue | Uint8Array;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
-export type HINSTANCE = Deno.PointerValue;
+export type HINSTANCE = bigint | number;
 
 export type HRESULT = number;
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
-export type LPARAM = Deno.PointerValue;
+export type LPARAM = bigint | number;
 
-export type LRESULT = Deno.PointerValue;
+export type LRESULT = bigint | number;
 
 export type NTSTATUS = number;
 
@@ -9815,17 +9815,17 @@ export type PSTR = Deno.PointerValue | Uint8Array;
 
 export type PWSTR = Deno.PointerValue | Uint8Array;
 
-export type WPARAM = Deno.PointerValue;
+export type WPARAM = bigint | number;
 
 export type COLORREF = number;
 
-export type HRSRC = Deno.PointerValue;
+export type HRSRC = bigint | number;
 
 export type CHAR = number;
 
-export type SHANDLE_PTR = Deno.PointerValue;
+export type SHANDLE_PTR = bigint | number;
 
-export type HANDLE_PTR = Deno.PointerValue;
+export type HANDLE_PTR = bigint | number;
 
 /**
  * Windows.Win32.Foundation.SYSTEMTIME (size: 16)
@@ -9969,11 +9969,11 @@ export class SYSTEMTIMEView {
  */
 export interface _Anonymous1_e__Union {
   /** usize */
-  Data0: Deno.PointerValue;
+  Data0: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   String: string | null | Uint8Array | Uint16Array;
   /** usize */
-  u: Deno.PointerValue;
+  u: bigint | number;
   /** ptr */
   psid: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -10025,7 +10025,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  get Data0(): Deno.PointerValue {
+  get Data0(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -10036,7 +10036,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  get u(): Deno.PointerValue {
+  get u(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -10072,7 +10072,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  set Data0(value: Deno.PointerValue) {
+  set Data0(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -10083,7 +10083,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  set u(value: Deno.PointerValue) {
+  set u(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -10120,7 +10120,7 @@ export class _Anonymous1_e__UnionView {
  */
 export interface _Anonymous2_e__Union {
   /** usize */
-  Data1: Deno.PointerValue;
+  Data1: bigint | number;
   /** i32 */
   LogonId_HighPart: number;
 }
@@ -10149,7 +10149,7 @@ export class _Anonymous2_e__UnionView {
   }
 
   // 0x00: usize
-  get Data1(): Deno.PointerValue {
+  get Data1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -10161,7 +10161,7 @@ export class _Anonymous2_e__UnionView {
   // 0x0c: pad4
 
   // 0x00: usize
-  set Data1(value: Deno.PointerValue) {
+  set Data1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -10996,9 +10996,9 @@ export class UNICODE_STRINGView {
  */
 export interface FLOAT128 {
   /** i64 */
-  LowPart: Deno.PointerValue;
+  LowPart: bigint | number;
   /** i64 */
-  HighPart: Deno.PointerValue;
+  HighPart: bigint | number;
 }
 
 export const sizeofFLOAT128 = 16;
@@ -11024,22 +11024,22 @@ export class FLOAT128View {
   }
 
   // 0x00: i64
-  get LowPart(): Deno.PointerValue {
+  get LowPart(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: i64
-  get HighPart(): Deno.PointerValue {
+  get HighPart(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x00: i64
-  set LowPart(value: Deno.PointerValue) {
+  set LowPart(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: i64
-  set HighPart(value: Deno.PointerValue) {
+  set HighPart(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -11049,9 +11049,9 @@ export class FLOAT128View {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -11077,22 +11077,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -11169,7 +11169,7 @@ export interface LARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue;
   /** i64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: bigint | number;
 }
 
 export const sizeofLARGE_INTEGER = 24;
@@ -11209,7 +11209,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  get QuadPart(): Deno.PointerValue {
+  get QuadPart(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -11224,7 +11224,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  set QuadPart(value: Deno.PointerValue) {
+  set QuadPart(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -11238,7 +11238,7 @@ export interface ULARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue;
   /** u64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: bigint | number;
 }
 
 export const sizeofULARGE_INTEGER = 24;
@@ -11278,7 +11278,7 @@ export class ULARGE_INTEGERView {
   }
 
   // 0x10: u64
-  get QuadPart(): Deno.PointerValue {
+  get QuadPart(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -11293,7 +11293,7 @@ export class ULARGE_INTEGERView {
   }
 
   // 0x10: u64
-  set QuadPart(value: Deno.PointerValue) {
+  set QuadPart(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }

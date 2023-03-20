@@ -67,9 +67,9 @@ export interface RdcNeed {
   /** Windows.Win32.Networking.RemoteDifferentialCompression.RdcNeedType */
   m_BlockType: RdcNeedType;
   /** u64 */
-  m_FileOffset: Deno.PointerValue;
+  m_FileOffset: bigint | number;
   /** u64 */
-  m_BlockLength: Deno.PointerValue;
+  m_BlockLength: bigint | number;
 }
 
 export const sizeofRdcNeed = 24;
@@ -105,12 +105,12 @@ export class RdcNeedView {
   // 0x04: pad4
 
   // 0x08: u64
-  get m_FileOffset(): Deno.PointerValue {
+  get m_FileOffset(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get m_BlockLength(): Deno.PointerValue {
+  get m_BlockLength(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -122,12 +122,12 @@ export class RdcNeedView {
   // 0x04: pad4
 
   // 0x08: u64
-  set m_FileOffset(value: Deno.PointerValue) {
+  set m_FileOffset(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set m_BlockLength(value: Deno.PointerValue) {
+  set m_BlockLength(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }

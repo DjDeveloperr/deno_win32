@@ -605,7 +605,7 @@ export interface ENCLAVE_INFORMATION {
   /** ptr */
   BaseAddress: Deno.PointerValue | Uint8Array;
   /** usize */
-  Size: Deno.PointerValue;
+  Size: bigint | number;
   /** Windows.Win32.System.Environment.ENCLAVE_IDENTITY */
   Identity: Uint8Array | Deno.PointerValue;
 }
@@ -655,7 +655,7 @@ export class ENCLAVE_INFORMATIONView {
   }
 
   // 0x10: usize
-  get Size(): Deno.PointerValue {
+  get Size(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -681,7 +681,7 @@ export class ENCLAVE_INFORMATIONView {
   }
 
   // 0x10: usize
-  set Size(value: Deno.PointerValue) {
+  set Size(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -813,13 +813,13 @@ export interface VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR64 {
   /** array */
   ThreadContext: Deno.PointerValue;
   /** u64 */
-  EntryPoint: Deno.PointerValue;
+  EntryPoint: bigint | number;
   /** u64 */
-  StackPointer: Deno.PointerValue;
+  StackPointer: bigint | number;
   /** u64 */
-  ExceptionEntryPoint: Deno.PointerValue;
+  ExceptionEntryPoint: bigint | number;
   /** u64 */
-  ExceptionStack: Deno.PointerValue;
+  ExceptionStack: bigint | number;
   /** u32 */
   ExceptionActive: number;
 }
@@ -862,22 +862,22 @@ export class VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR64View {
   }
 
   // 0x08: u64
-  get EntryPoint(): Deno.PointerValue {
+  get EntryPoint(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get StackPointer(): Deno.PointerValue {
+  get StackPointer(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get ExceptionEntryPoint(): Deno.PointerValue {
+  get ExceptionEntryPoint(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get ExceptionStack(): Deno.PointerValue {
+  get ExceptionStack(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -894,22 +894,22 @@ export class VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR64View {
   }
 
   // 0x08: u64
-  set EntryPoint(value: Deno.PointerValue) {
+  set EntryPoint(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set StackPointer(value: Deno.PointerValue) {
+  set StackPointer(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set ExceptionEntryPoint(value: Deno.PointerValue) {
+  set ExceptionEntryPoint(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set ExceptionStack(value: Deno.PointerValue) {
+  set ExceptionStack(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -932,15 +932,15 @@ export interface VBS_BASIC_ENCLAVE_EXCEPTION_AMD64 {
   /** array */
   ExceptionInformation: Deno.PointerValue;
   /** usize */
-  ExceptionRAX: Deno.PointerValue;
+  ExceptionRAX: bigint | number;
   /** usize */
-  ExceptionRCX: Deno.PointerValue;
+  ExceptionRCX: bigint | number;
   /** usize */
-  ExceptionRIP: Deno.PointerValue;
+  ExceptionRIP: bigint | number;
   /** usize */
-  ExceptionRFLAGS: Deno.PointerValue;
+  ExceptionRFLAGS: bigint | number;
   /** usize */
-  ExceptionRSP: Deno.PointerValue;
+  ExceptionRSP: bigint | number;
 }
 
 export const sizeofVBS_BASIC_ENCLAVE_EXCEPTION_AMD64 = 56;
@@ -994,27 +994,27 @@ export class VBS_BASIC_ENCLAVE_EXCEPTION_AMD64View {
   }
 
   // 0x10: usize
-  get ExceptionRAX(): Deno.PointerValue {
+  get ExceptionRAX(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: usize
-  get ExceptionRCX(): Deno.PointerValue {
+  get ExceptionRCX(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: usize
-  get ExceptionRIP(): Deno.PointerValue {
+  get ExceptionRIP(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: usize
-  get ExceptionRFLAGS(): Deno.PointerValue {
+  get ExceptionRFLAGS(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: usize
-  get ExceptionRSP(): Deno.PointerValue {
+  get ExceptionRSP(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -1034,27 +1034,27 @@ export class VBS_BASIC_ENCLAVE_EXCEPTION_AMD64View {
   }
 
   // 0x10: usize
-  set ExceptionRAX(value: Deno.PointerValue) {
+  set ExceptionRAX(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: usize
-  set ExceptionRCX(value: Deno.PointerValue) {
+  set ExceptionRCX(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: usize
-  set ExceptionRIP(value: Deno.PointerValue) {
+  set ExceptionRIP(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: usize
-  set ExceptionRFLAGS(value: Deno.PointerValue) {
+  set ExceptionRFLAGS(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: usize
-  set ExceptionRSP(value: Deno.PointerValue) {
+  set ExceptionRSP(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 }
@@ -1385,7 +1385,7 @@ export type BOOL = number;
 
 export type PSTR = Deno.PointerValue | Uint8Array;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 export type HRESULT = number;
 
@@ -1720,8 +1720,8 @@ export function IsEnclaveTypeSupported(
 export function CreateEnclave(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lpAddress: Deno.PointerValue | Uint8Array /* ptr */,
-  dwSize: Deno.PointerValue /* usize */,
-  dwInitialCommitment: Deno.PointerValue /* usize */,
+  dwSize: bigint | number /* usize */,
+  dwInitialCommitment: bigint | number /* usize */,
   flEnclaveType: number /* u32 */,
   lpEnclaveInformation: Deno.PointerValue | Uint8Array /* ptr */,
   dwInfoLength: number /* u32 */,
@@ -1734,7 +1734,7 @@ export function LoadEnclaveData(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lpAddress: Deno.PointerValue | Uint8Array /* ptr */,
   lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
-  nSize: Deno.PointerValue /* usize */,
+  nSize: bigint | number /* usize */,
   flProtect: number /* u32 */,
   lpPageInformation: Deno.PointerValue | Uint8Array /* ptr */,
   dwInfoLength: number /* u32 */,
@@ -1769,7 +1769,7 @@ export function LoadEnclaveImageW(
 }
 
 export function CallEnclave(
-  lpRoutine: Deno.PointerValue /* isize */,
+  lpRoutine: bigint | number /* isize */,
   lpParameter: Deno.PointerValue | Uint8Array /* ptr */,
   fWaitForThread: boolean /* Windows.Win32.Foundation.BOOL */,
   lpReturnValue: Deno.PointerValue | Uint8Array /* ptr */,

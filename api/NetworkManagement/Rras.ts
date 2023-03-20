@@ -900,7 +900,7 @@ export const RTM_CHANGE_NOTIFICATION = 3;
 
 // Structs
 
-export type HRASCONN = Deno.PointerValue;
+export type HRASCONN = bigint | number;
 
 /**
  * Windows.Win32.NetworkManagement.Rras.RASIPADDR (size: 8)
@@ -993,9 +993,9 @@ export class RASIPADDRView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -1021,22 +1021,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -1967,7 +1967,7 @@ export interface RASDIALPARAMSW {
   /** u32 */
   dwSubEntry: number;
   /** usize */
-  dwCallbackId: Deno.PointerValue;
+  dwCallbackId: bigint | number;
   /** u32 */
   dwIfIndex: number;
   /** Windows.Win32.Foundation.PWSTR */
@@ -2071,7 +2071,7 @@ export class RASDIALPARAMSWView {
   // 0x3c: pad4
 
   // 0x40: usize
-  get dwCallbackId(): Deno.PointerValue {
+  get dwCallbackId(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
@@ -2133,7 +2133,7 @@ export class RASDIALPARAMSWView {
   // 0x3c: pad4
 
   // 0x40: usize
-  set dwCallbackId(value: Deno.PointerValue) {
+  set dwCallbackId(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
@@ -2174,7 +2174,7 @@ export interface RASDIALPARAMSA {
   /** u32 */
   dwSubEntry: number;
   /** usize */
-  dwCallbackId: Deno.PointerValue;
+  dwCallbackId: bigint | number;
   /** u32 */
   dwIfIndex: number;
   /** Windows.Win32.Foundation.PSTR */
@@ -2278,7 +2278,7 @@ export class RASDIALPARAMSAView {
   // 0x3c: pad4
 
   // 0x40: usize
-  get dwCallbackId(): Deno.PointerValue {
+  get dwCallbackId(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
@@ -2340,7 +2340,7 @@ export class RASDIALPARAMSAView {
   // 0x3c: pad4
 
   // 0x40: usize
-  set dwCallbackId(value: Deno.PointerValue) {
+  set dwCallbackId(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
@@ -2476,7 +2476,7 @@ export class RASDEVSPECIFICINFOView {
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 export type BOOL = number;
 
@@ -2491,9 +2491,9 @@ export interface RASDIALEXTENSIONS {
   /** Windows.Win32.Foundation.HWND */
   hwndParent: Deno.PointerValue;
   /** usize */
-  reserved: Deno.PointerValue;
+  reserved: bigint | number;
   /** usize */
-  reserved1: Deno.PointerValue;
+  reserved1: bigint | number;
   /** Windows.Win32.NetworkManagement.Rras.RASEAPINFO */
   RasEapInfo: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOL */
@@ -2554,12 +2554,12 @@ export class RASDIALEXTENSIONSView {
   }
 
   // 0x10: usize
-  get reserved(): Deno.PointerValue {
+  get reserved(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: usize
-  get reserved1(): Deno.PointerValue {
+  get reserved1(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -2598,12 +2598,12 @@ export class RASDIALEXTENSIONSView {
   }
 
   // 0x10: usize
-  set reserved(value: Deno.PointerValue) {
+  set reserved(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: usize
-  set reserved1(value: Deno.PointerValue) {
+  set reserved1(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -5073,7 +5073,7 @@ export class EXCEPTION_DEBUG_INFOView {
   // 0x0c: pad4
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.System.Diagnostics.Debug.CREATE_THREAD_DEBUG_INFO (size: 24)
@@ -9941,15 +9941,15 @@ export interface RASPBDLGW {
   /** i32 */
   yDlg: number;
   /** usize */
-  dwCallbackId: Deno.PointerValue;
+  dwCallbackId: bigint | number;
   /** Windows.Win32.NetworkManagement.Rras.RASPBDLGFUNCW */
   pCallback: Uint8Array | Deno.PointerValue;
   /** u32 */
   dwError: number;
   /** usize */
-  reserved: Deno.PointerValue;
+  reserved: bigint | number;
   /** usize */
-  reserved2: Deno.PointerValue;
+  reserved2: bigint | number;
 }
 
 export const sizeofRASPBDLGW = 72;
@@ -10024,7 +10024,7 @@ export class RASPBDLGWView {
   // 0x1c: pad4
 
   // 0x20: usize
-  get dwCallbackId(): Deno.PointerValue {
+  get dwCallbackId(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -10042,12 +10042,12 @@ export class RASPBDLGWView {
   // 0x34: pad4
 
   // 0x38: usize
-  get reserved(): Deno.PointerValue {
+  get reserved(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
   // 0x40: usize
-  get reserved2(): Deno.PointerValue {
+  get reserved2(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
@@ -10081,7 +10081,7 @@ export class RASPBDLGWView {
   // 0x1c: pad4
 
   // 0x20: usize
-  set dwCallbackId(value: Deno.PointerValue) {
+  set dwCallbackId(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -10098,12 +10098,12 @@ export class RASPBDLGWView {
   // 0x34: pad4
 
   // 0x38: usize
-  set reserved(value: Deno.PointerValue) {
+  set reserved(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
   // 0x40: usize
-  set reserved2(value: Deno.PointerValue) {
+  set reserved2(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 }
@@ -10123,15 +10123,15 @@ export interface RASPBDLGA {
   /** i32 */
   yDlg: number;
   /** usize */
-  dwCallbackId: Deno.PointerValue;
+  dwCallbackId: bigint | number;
   /** Windows.Win32.NetworkManagement.Rras.RASPBDLGFUNCA */
   pCallback: Uint8Array | Deno.PointerValue;
   /** u32 */
   dwError: number;
   /** usize */
-  reserved: Deno.PointerValue;
+  reserved: bigint | number;
   /** usize */
-  reserved2: Deno.PointerValue;
+  reserved2: bigint | number;
 }
 
 export const sizeofRASPBDLGA = 72;
@@ -10206,7 +10206,7 @@ export class RASPBDLGAView {
   // 0x1c: pad4
 
   // 0x20: usize
-  get dwCallbackId(): Deno.PointerValue {
+  get dwCallbackId(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -10224,12 +10224,12 @@ export class RASPBDLGAView {
   // 0x34: pad4
 
   // 0x38: usize
-  get reserved(): Deno.PointerValue {
+  get reserved(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
   // 0x40: usize
-  get reserved2(): Deno.PointerValue {
+  get reserved2(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
@@ -10263,7 +10263,7 @@ export class RASPBDLGAView {
   // 0x1c: pad4
 
   // 0x20: usize
-  set dwCallbackId(value: Deno.PointerValue) {
+  set dwCallbackId(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -10280,12 +10280,12 @@ export class RASPBDLGAView {
   // 0x34: pad4
 
   // 0x38: usize
-  set reserved(value: Deno.PointerValue) {
+  set reserved(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
   // 0x40: usize
-  set reserved2(value: Deno.PointerValue) {
+  set reserved2(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 }
@@ -10309,9 +10309,9 @@ export interface RASENTRYDLGW {
   /** u32 */
   dwError: number;
   /** usize */
-  reserved: Deno.PointerValue;
+  reserved: bigint | number;
   /** usize */
-  reserved2: Deno.PointerValue;
+  reserved2: bigint | number;
 }
 
 export const sizeofRASENTRYDLGW = 64;
@@ -10397,12 +10397,12 @@ export class RASENTRYDLGWView {
   // 0x2c: pad4
 
   // 0x30: usize
-  get reserved(): Deno.PointerValue {
+  get reserved(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: usize
-  get reserved2(): Deno.PointerValue {
+  get reserved2(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
@@ -10448,12 +10448,12 @@ export class RASENTRYDLGWView {
   // 0x2c: pad4
 
   // 0x30: usize
-  set reserved(value: Deno.PointerValue) {
+  set reserved(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: usize
-  set reserved2(value: Deno.PointerValue) {
+  set reserved2(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 }
@@ -10477,9 +10477,9 @@ export interface RASENTRYDLGA {
   /** u32 */
   dwError: number;
   /** usize */
-  reserved: Deno.PointerValue;
+  reserved: bigint | number;
   /** usize */
-  reserved2: Deno.PointerValue;
+  reserved2: bigint | number;
 }
 
 export const sizeofRASENTRYDLGA = 64;
@@ -10565,12 +10565,12 @@ export class RASENTRYDLGAView {
   // 0x2c: pad4
 
   // 0x30: usize
-  get reserved(): Deno.PointerValue {
+  get reserved(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: usize
-  get reserved2(): Deno.PointerValue {
+  get reserved2(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
@@ -10616,12 +10616,12 @@ export class RASENTRYDLGAView {
   // 0x2c: pad4
 
   // 0x30: usize
-  set reserved(value: Deno.PointerValue) {
+  set reserved(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: usize
-  set reserved2(value: Deno.PointerValue) {
+  set reserved2(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 }
@@ -10645,9 +10645,9 @@ export interface RASDIALDLG {
   /** u32 */
   dwError: number;
   /** usize */
-  reserved: Deno.PointerValue;
+  reserved: bigint | number;
   /** usize */
-  reserved2: Deno.PointerValue;
+  reserved2: bigint | number;
 }
 
 export const sizeofRASDIALDLG = 56;
@@ -10729,12 +10729,12 @@ export class RASDIALDLGView {
   // 0x24: pad4
 
   // 0x28: usize
-  get reserved(): Deno.PointerValue {
+  get reserved(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: usize
-  get reserved2(): Deno.PointerValue {
+  get reserved2(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -10778,12 +10778,12 @@ export class RASDIALDLGView {
   // 0x24: pad4
 
   // 0x28: usize
-  set reserved(value: Deno.PointerValue) {
+  set reserved(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: usize
-  set reserved2(value: Deno.PointerValue) {
+  set reserved2(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 }
@@ -13441,21 +13441,21 @@ export interface RAS_PORT_2 {
   /** u32 */
   dwTotalErrors: number;
   /** u64 */
-  ullBytesXmited: Deno.PointerValue;
+  ullBytesXmited: bigint | number;
   /** u64 */
-  ullBytesRcved: Deno.PointerValue;
+  ullBytesRcved: bigint | number;
   /** u64 */
-  ullFramesXmited: Deno.PointerValue;
+  ullFramesXmited: bigint | number;
   /** u64 */
-  ullFramesRcved: Deno.PointerValue;
+  ullFramesRcved: bigint | number;
   /** u64 */
-  ullBytesTxUncompressed: Deno.PointerValue;
+  ullBytesTxUncompressed: bigint | number;
   /** u64 */
-  ullBytesTxCompressed: Deno.PointerValue;
+  ullBytesTxCompressed: bigint | number;
   /** u64 */
-  ullBytesRcvUncompressed: Deno.PointerValue;
+  ullBytesRcvUncompressed: bigint | number;
   /** u64 */
-  ullBytesRcvCompressed: Deno.PointerValue;
+  ullBytesRcvCompressed: bigint | number;
 }
 
 export const sizeofRAS_PORT_2 = 168;
@@ -13635,42 +13635,42 @@ export class RAS_PORT_2View {
   }
 
   // 0x68: u64
-  get ullBytesXmited(): Deno.PointerValue {
+  get ullBytesXmited(): bigint | number {
     return Number(this.view.getBigUint64(104, true));
   }
 
   // 0x70: u64
-  get ullBytesRcved(): Deno.PointerValue {
+  get ullBytesRcved(): bigint | number {
     return Number(this.view.getBigUint64(112, true));
   }
 
   // 0x78: u64
-  get ullFramesXmited(): Deno.PointerValue {
+  get ullFramesXmited(): bigint | number {
     return Number(this.view.getBigUint64(120, true));
   }
 
   // 0x80: u64
-  get ullFramesRcved(): Deno.PointerValue {
+  get ullFramesRcved(): bigint | number {
     return Number(this.view.getBigUint64(128, true));
   }
 
   // 0x88: u64
-  get ullBytesTxUncompressed(): Deno.PointerValue {
+  get ullBytesTxUncompressed(): bigint | number {
     return Number(this.view.getBigUint64(136, true));
   }
 
   // 0x90: u64
-  get ullBytesTxCompressed(): Deno.PointerValue {
+  get ullBytesTxCompressed(): bigint | number {
     return Number(this.view.getBigUint64(144, true));
   }
 
   // 0x98: u64
-  get ullBytesRcvUncompressed(): Deno.PointerValue {
+  get ullBytesRcvUncompressed(): bigint | number {
     return Number(this.view.getBigUint64(152, true));
   }
 
   // 0xa0: u64
-  get ullBytesRcvCompressed(): Deno.PointerValue {
+  get ullBytesRcvCompressed(): bigint | number {
     return Number(this.view.getBigUint64(160, true));
   }
 
@@ -13772,42 +13772,42 @@ export class RAS_PORT_2View {
   }
 
   // 0x68: u64
-  set ullBytesXmited(value: Deno.PointerValue) {
+  set ullBytesXmited(value: bigint | number) {
     this.view.setBigUint64(104, BigInt(value), true);
   }
 
   // 0x70: u64
-  set ullBytesRcved(value: Deno.PointerValue) {
+  set ullBytesRcved(value: bigint | number) {
     this.view.setBigUint64(112, BigInt(value), true);
   }
 
   // 0x78: u64
-  set ullFramesXmited(value: Deno.PointerValue) {
+  set ullFramesXmited(value: bigint | number) {
     this.view.setBigUint64(120, BigInt(value), true);
   }
 
   // 0x80: u64
-  set ullFramesRcved(value: Deno.PointerValue) {
+  set ullFramesRcved(value: bigint | number) {
     this.view.setBigUint64(128, BigInt(value), true);
   }
 
   // 0x88: u64
-  set ullBytesTxUncompressed(value: Deno.PointerValue) {
+  set ullBytesTxUncompressed(value: bigint | number) {
     this.view.setBigUint64(136, BigInt(value), true);
   }
 
   // 0x90: u64
-  set ullBytesTxCompressed(value: Deno.PointerValue) {
+  set ullBytesTxCompressed(value: bigint | number) {
     this.view.setBigUint64(144, BigInt(value), true);
   }
 
   // 0x98: u64
-  set ullBytesRcvUncompressed(value: Deno.PointerValue) {
+  set ullBytesRcvUncompressed(value: bigint | number) {
     this.view.setBigUint64(152, BigInt(value), true);
   }
 
   // 0xa0: u64
-  set ullBytesRcvCompressed(value: Deno.PointerValue) {
+  set ullBytesRcvCompressed(value: bigint | number) {
     this.view.setBigUint64(160, BigInt(value), true);
   }
 }
@@ -15904,7 +15904,7 @@ export interface PPP_PROJECTION_INFO {
   /** u32 */
   dwIPv4RemoteOptions: number;
   /** u64 */
-  IPv4SubInterfaceIndex: Deno.PointerValue;
+  IPv4SubInterfaceIndex: bigint | number;
   /** u32 */
   dwIPv6NegotiationError: number;
   /** array */
@@ -15916,7 +15916,7 @@ export interface PPP_PROJECTION_INFO {
   /** u32 */
   dwPrefixLength: number;
   /** u64 */
-  IPv6SubInterfaceIndex: Deno.PointerValue;
+  IPv6SubInterfaceIndex: bigint | number;
   /** u32 */
   dwLcpError: number;
   /** Windows.Win32.NetworkManagement.Rras.PPP_LCP */
@@ -16058,7 +16058,7 @@ export class PPP_PROJECTION_INFOView {
   }
 
   // 0x20: u64
-  get IPv4SubInterfaceIndex(): Deno.PointerValue {
+  get IPv4SubInterfaceIndex(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -16095,7 +16095,7 @@ export class PPP_PROJECTION_INFOView {
   // 0x4c: pad4
 
   // 0x50: u64
-  get IPv6SubInterfaceIndex(): Deno.PointerValue {
+  get IPv6SubInterfaceIndex(): bigint | number {
     return Number(this.view.getBigUint64(80, true));
   }
 
@@ -16207,7 +16207,7 @@ export class PPP_PROJECTION_INFOView {
   }
 
   // 0x20: u64
-  set IPv4SubInterfaceIndex(value: Deno.PointerValue) {
+  set IPv4SubInterfaceIndex(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -16241,7 +16241,7 @@ export class PPP_PROJECTION_INFOView {
   // 0x4c: pad4
 
   // 0x50: u64
-  set IPv6SubInterfaceIndex(value: Deno.PointerValue) {
+  set IPv6SubInterfaceIndex(value: bigint | number) {
     this.view.setBigUint64(80, BigInt(value), true);
   }
 
@@ -16341,7 +16341,7 @@ export interface PPP_PROJECTION_INFO2 {
   /** u32 */
   dwIPv4RemoteOptions: number;
   /** u64 */
-  IPv4SubInterfaceIndex: Deno.PointerValue;
+  IPv4SubInterfaceIndex: bigint | number;
   /** u32 */
   dwIPv6NegotiationError: number;
   /** array */
@@ -16353,7 +16353,7 @@ export interface PPP_PROJECTION_INFO2 {
   /** u32 */
   dwPrefixLength: number;
   /** u64 */
-  IPv6SubInterfaceIndex: Deno.PointerValue;
+  IPv6SubInterfaceIndex: bigint | number;
   /** u32 */
   dwLcpError: number;
   /** Windows.Win32.NetworkManagement.Rras.PPP_LCP */
@@ -16500,7 +16500,7 @@ export class PPP_PROJECTION_INFO2View {
   }
 
   // 0x20: u64
-  get IPv4SubInterfaceIndex(): Deno.PointerValue {
+  get IPv4SubInterfaceIndex(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -16537,7 +16537,7 @@ export class PPP_PROJECTION_INFO2View {
   // 0x4c: pad4
 
   // 0x50: u64
-  get IPv6SubInterfaceIndex(): Deno.PointerValue {
+  get IPv6SubInterfaceIndex(): bigint | number {
     return Number(this.view.getBigUint64(80, true));
   }
 
@@ -16656,7 +16656,7 @@ export class PPP_PROJECTION_INFO2View {
   }
 
   // 0x20: u64
-  set IPv4SubInterfaceIndex(value: Deno.PointerValue) {
+  set IPv4SubInterfaceIndex(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -16690,7 +16690,7 @@ export class PPP_PROJECTION_INFO2View {
   // 0x4c: pad4
 
   // 0x50: u64
-  set IPv6SubInterfaceIndex(value: Deno.PointerValue) {
+  set IPv6SubInterfaceIndex(value: bigint | number) {
     this.view.setBigUint64(80, BigInt(value), true);
   }
 
@@ -16793,7 +16793,7 @@ export interface IKEV2_PROJECTION_INFO {
   /** array */
   wszRemoteAddress: Deno.PointerValue;
   /** u64 */
-  IPv4SubInterfaceIndex: Deno.PointerValue;
+  IPv4SubInterfaceIndex: bigint | number;
   /** u32 */
   dwIPv6NegotiationError: number;
   /** array */
@@ -16805,7 +16805,7 @@ export interface IKEV2_PROJECTION_INFO {
   /** u32 */
   dwPrefixLength: number;
   /** u64 */
-  IPv6SubInterfaceIndex: Deno.PointerValue;
+  IPv6SubInterfaceIndex: bigint | number;
   /** u32 */
   dwOptions: number;
   /** u32 */
@@ -16890,7 +16890,7 @@ export class IKEV2_PROJECTION_INFOView {
   }
 
   // 0x18: u64
-  get IPv4SubInterfaceIndex(): Deno.PointerValue {
+  get IPv4SubInterfaceIndex(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -16927,7 +16927,7 @@ export class IKEV2_PROJECTION_INFOView {
   // 0x44: pad4
 
   // 0x48: u64
-  get IPv6SubInterfaceIndex(): Deno.PointerValue {
+  get IPv6SubInterfaceIndex(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
@@ -16976,7 +16976,7 @@ export class IKEV2_PROJECTION_INFOView {
   }
 
   // 0x18: u64
-  set IPv4SubInterfaceIndex(value: Deno.PointerValue) {
+  set IPv4SubInterfaceIndex(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -17010,7 +17010,7 @@ export class IKEV2_PROJECTION_INFOView {
   // 0x44: pad4
 
   // 0x48: u64
-  set IPv6SubInterfaceIndex(value: Deno.PointerValue) {
+  set IPv6SubInterfaceIndex(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
@@ -17053,7 +17053,7 @@ export interface IKEV2_PROJECTION_INFO2 {
   /** array */
   wszRemoteAddress: Deno.PointerValue;
   /** u64 */
-  IPv4SubInterfaceIndex: Deno.PointerValue;
+  IPv4SubInterfaceIndex: bigint | number;
   /** u32 */
   dwIPv6NegotiationError: number;
   /** array */
@@ -17065,7 +17065,7 @@ export interface IKEV2_PROJECTION_INFO2 {
   /** u32 */
   dwPrefixLength: number;
   /** u64 */
-  IPv6SubInterfaceIndex: Deno.PointerValue;
+  IPv6SubInterfaceIndex: bigint | number;
   /** u32 */
   dwOptions: number;
   /** u32 */
@@ -17153,7 +17153,7 @@ export class IKEV2_PROJECTION_INFO2View {
   }
 
   // 0x18: u64
-  get IPv4SubInterfaceIndex(): Deno.PointerValue {
+  get IPv4SubInterfaceIndex(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -17190,7 +17190,7 @@ export class IKEV2_PROJECTION_INFO2View {
   // 0x44: pad4
 
   // 0x48: u64
-  get IPv6SubInterfaceIndex(): Deno.PointerValue {
+  get IPv6SubInterfaceIndex(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
@@ -17242,7 +17242,7 @@ export class IKEV2_PROJECTION_INFO2View {
   }
 
   // 0x18: u64
-  set IPv4SubInterfaceIndex(value: Deno.PointerValue) {
+  set IPv4SubInterfaceIndex(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -17276,7 +17276,7 @@ export class IKEV2_PROJECTION_INFO2View {
   // 0x44: pad4
 
   // 0x48: u64
-  set IPv6SubInterfaceIndex(value: Deno.PointerValue) {
+  set IPv6SubInterfaceIndex(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
@@ -17914,9 +17914,9 @@ export interface RAS_CONNECTION_4 {
   /** Windows.Win32.Foundation.FILETIME */
   connectionStartTime: Uint8Array | Deno.PointerValue;
   /** u64 */
-  ullBytesXmited: Deno.PointerValue;
+  ullBytesXmited: bigint | number;
   /** u64 */
-  ullBytesRcved: Deno.PointerValue;
+  ullBytesRcved: bigint | number;
   /** u32 */
   dwFramesXmited: number;
   /** u32 */
@@ -18102,12 +18102,12 @@ export class RAS_CONNECTION_4View {
   }
 
   // 0x50: u64
-  get ullBytesXmited(): Deno.PointerValue {
+  get ullBytesXmited(): bigint | number {
     return Number(this.view.getBigUint64(80, true));
   }
 
   // 0x58: u64
-  get ullBytesRcved(): Deno.PointerValue {
+  get ullBytesRcved(): bigint | number {
     return Number(this.view.getBigUint64(88, true));
   }
 
@@ -18265,12 +18265,12 @@ export class RAS_CONNECTION_4View {
   }
 
   // 0x50: u64
-  set ullBytesXmited(value: Deno.PointerValue) {
+  set ullBytesXmited(value: bigint | number) {
     this.view.setBigUint64(80, BigInt(value), true);
   }
 
   // 0x58: u64
-  set ullBytesRcved(value: Deno.PointerValue) {
+  set ullBytesRcved(value: bigint | number) {
     this.view.setBigUint64(88, BigInt(value), true);
   }
 
@@ -21778,7 +21778,7 @@ export interface SECURITY_MESSAGE {
   /** Windows.Win32.NetworkManagement.Rras.SECURITY_MESSAGE_MSG_ID */
   dwMsgId: SECURITY_MESSAGE_MSG_ID;
   /** isize */
-  hPort: Deno.PointerValue;
+  hPort: bigint | number;
   /** u32 */
   dwError: number;
   /** array */
@@ -21825,7 +21825,7 @@ export class SECURITY_MESSAGEView {
   // 0x04: pad4
 
   // 0x08: isize
-  get hPort(): Deno.PointerValue {
+  get hPort(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -21856,7 +21856,7 @@ export class SECURITY_MESSAGEView {
   // 0x04: pad4
 
   // 0x08: isize
-  set hPort(value: Deno.PointerValue) {
+  set hPort(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -22558,7 +22558,7 @@ export class RTM_NEXTHOP_LISTView {
  */
 export interface RTM_DEST_INFO {
   /** isize */
-  DestHandle: Deno.PointerValue;
+  DestHandle: bigint | number;
   /** Windows.Win32.NetworkManagement.Rras.RTM_NET_ADDRESS */
   DestAddress: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.FILETIME */
@@ -22602,7 +22602,7 @@ export class RTM_DEST_INFOView {
   }
 
   // 0x00: isize
-  get DestHandle(): Deno.PointerValue {
+  get DestHandle(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
@@ -22635,7 +22635,7 @@ export class RTM_DEST_INFOView {
   }
 
   // 0x00: isize
-  set DestHandle(value: Deno.PointerValue) {
+  set DestHandle(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
@@ -22670,11 +22670,11 @@ export class RTM_DEST_INFOView {
  */
 export interface RTM_ROUTE_INFO {
   /** isize */
-  DestHandle: Deno.PointerValue;
+  DestHandle: bigint | number;
   /** isize */
-  RouteOwner: Deno.PointerValue;
+  RouteOwner: bigint | number;
   /** isize */
-  Neighbour: Deno.PointerValue;
+  Neighbour: bigint | number;
   /** u8 */
   State: number;
   /** u8 */
@@ -22732,17 +22732,17 @@ export class RTM_ROUTE_INFOView {
   }
 
   // 0x00: isize
-  get DestHandle(): Deno.PointerValue {
+  get DestHandle(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: isize
-  get RouteOwner(): Deno.PointerValue {
+  get RouteOwner(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: isize
-  get Neighbour(): Deno.PointerValue {
+  get Neighbour(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -22789,17 +22789,17 @@ export class RTM_ROUTE_INFOView {
   }
 
   // 0x00: isize
-  set DestHandle(value: Deno.PointerValue) {
+  set DestHandle(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set RouteOwner(value: Deno.PointerValue) {
+  set RouteOwner(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: isize
-  set Neighbour(value: Deno.PointerValue) {
+  set Neighbour(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
@@ -22850,7 +22850,7 @@ export interface RTM_NEXTHOP_INFO {
   /** Windows.Win32.NetworkManagement.Rras.RTM_NET_ADDRESS */
   NextHopAddress: Uint8Array | Deno.PointerValue;
   /** isize */
-  NextHopOwner: Deno.PointerValue;
+  NextHopOwner: bigint | number;
   /** u32 */
   InterfaceIndex: number;
   /** u16 */
@@ -22860,7 +22860,7 @@ export interface RTM_NEXTHOP_INFO {
   /** ptr */
   EntitySpecificInfo: Deno.PointerValue | Uint8Array;
   /** isize */
-  RemoteNextHop: Deno.PointerValue;
+  RemoteNextHop: bigint | number;
 }
 
 export const sizeofRTM_NEXTHOP_INFO = 40;
@@ -22902,7 +22902,7 @@ export class RTM_NEXTHOP_INFOView {
   }
 
   // 0x08: isize
-  get NextHopOwner(): Deno.PointerValue {
+  get NextHopOwner(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -22928,7 +22928,7 @@ export class RTM_NEXTHOP_INFOView {
   }
 
   // 0x20: isize
-  get RemoteNextHop(): Deno.PointerValue {
+  get RemoteNextHop(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
@@ -22938,7 +22938,7 @@ export class RTM_NEXTHOP_INFOView {
   }
 
   // 0x08: isize
-  set NextHopOwner(value: Deno.PointerValue) {
+  set NextHopOwner(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -22963,7 +22963,7 @@ export class RTM_NEXTHOP_INFOView {
   }
 
   // 0x20: isize
-  set RemoteNextHop(value: Deno.PointerValue) {
+  set RemoteNextHop(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 }
@@ -25188,7 +25188,7 @@ export function RasDialDlgW(
 }
 
 export function MprAdminConnectionEnumEx(
-  hRasServer: Deno.PointerValue /* isize */,
+  hRasServer: bigint | number /* isize */,
   pObjectHeader: Deno.PointerValue | Uint8Array /* ptr */,
   dwPreferedMaxLen: number /* u32 */,
   lpdwEntriesRead: Deno.PointerValue | Uint8Array /* ptr */,
@@ -25200,7 +25200,7 @@ export function MprAdminConnectionEnumEx(
 }
 
 export function MprAdminConnectionGetInfoEx(
-  hRasServer: Deno.PointerValue /* isize */,
+  hRasServer: bigint | number /* isize */,
   hRasConnection: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pRasConnection: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
@@ -25208,14 +25208,14 @@ export function MprAdminConnectionGetInfoEx(
 }
 
 export function MprAdminServerGetInfoEx(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   pServerInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libMPRAPI_dll.MprAdminServerGetInfoEx(hMprServer, util.toPointer(pServerInfo));
 }
 
 export function MprAdminServerSetInfoEx(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   pServerInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libMPRAPI_dll.MprAdminServerSetInfoEx(hMprServer, util.toPointer(pServerInfo));
@@ -25236,7 +25236,7 @@ export function MprConfigServerSetInfoEx(
 }
 
 export function MprAdminUpdateConnection(
-  hRasServer: Deno.PointerValue /* isize */,
+  hRasServer: bigint | number /* isize */,
   hRasConnection: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pRasUpdateConnection: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
@@ -25251,7 +25251,7 @@ export function MprAdminIsServiceInitialized(
 }
 
 export function MprAdminInterfaceSetCustomInfoEx(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   hInterface: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pCustomInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
@@ -25259,7 +25259,7 @@ export function MprAdminInterfaceSetCustomInfoEx(
 }
 
 export function MprAdminInterfaceGetCustomInfoEx(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   hInterface: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pCustomInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
@@ -25283,7 +25283,7 @@ export function MprConfigInterfaceSetCustomInfoEx(
 }
 
 export function MprAdminConnectionEnum(
-  hRasServer: Deno.PointerValue /* isize */,
+  hRasServer: bigint | number /* isize */,
   dwLevel: number /* u32 */,
   lplpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   dwPrefMaxLen: number /* u32 */,
@@ -25295,7 +25295,7 @@ export function MprAdminConnectionEnum(
 }
 
 export function MprAdminPortEnum(
-  hRasServer: Deno.PointerValue /* isize */,
+  hRasServer: bigint | number /* isize */,
   dwLevel: number /* u32 */,
   hRasConnection: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lplpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
@@ -25308,7 +25308,7 @@ export function MprAdminPortEnum(
 }
 
 export function MprAdminConnectionGetInfo(
-  hRasServer: Deno.PointerValue /* isize */,
+  hRasServer: bigint | number /* isize */,
   dwLevel: number /* u32 */,
   hRasConnection: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lplpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
@@ -25317,7 +25317,7 @@ export function MprAdminConnectionGetInfo(
 }
 
 export function MprAdminPortGetInfo(
-  hRasServer: Deno.PointerValue /* isize */,
+  hRasServer: bigint | number /* isize */,
   dwLevel: number /* u32 */,
   hPort: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lplpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
@@ -25326,28 +25326,28 @@ export function MprAdminPortGetInfo(
 }
 
 export function MprAdminConnectionClearStats(
-  hRasServer: Deno.PointerValue /* isize */,
+  hRasServer: bigint | number /* isize */,
   hRasConnection: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
   return libMPRAPI_dll.MprAdminConnectionClearStats(hRasServer, util.toPointer(hRasConnection));
 }
 
 export function MprAdminPortClearStats(
-  hRasServer: Deno.PointerValue /* isize */,
+  hRasServer: bigint | number /* isize */,
   hPort: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
   return libMPRAPI_dll.MprAdminPortClearStats(hRasServer, util.toPointer(hPort));
 }
 
 export function MprAdminPortReset(
-  hRasServer: Deno.PointerValue /* isize */,
+  hRasServer: bigint | number /* isize */,
   hPort: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
   return libMPRAPI_dll.MprAdminPortReset(hRasServer, util.toPointer(hPort));
 }
 
 export function MprAdminPortDisconnect(
-  hRasServer: Deno.PointerValue /* isize */,
+  hRasServer: bigint | number /* isize */,
   hPort: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
   return libMPRAPI_dll.MprAdminPortDisconnect(hRasServer, util.toPointer(hPort));
@@ -25380,7 +25380,7 @@ export function MprAdminUserSetInfo(
 }
 
 export function MprAdminSendUserMessage(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   hConnection: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lpwszMessage: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
@@ -25409,13 +25409,13 @@ export function MprAdminServerConnect(
 }
 
 export function MprAdminServerDisconnect(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
 ): void /* void */ {
   return libMPRAPI_dll.MprAdminServerDisconnect(hMprServer);
 }
 
 export function MprAdminServerGetCredentials(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   dwLevel: number /* u32 */,
   lplpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
@@ -25423,7 +25423,7 @@ export function MprAdminServerGetCredentials(
 }
 
 export function MprAdminServerSetCredentials(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   dwLevel: number /* u32 */,
   lpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
@@ -25444,7 +25444,7 @@ export function MprAdminGetErrorString(
 }
 
 export function MprAdminServerGetInfo(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   dwLevel: number /* u32 */,
   lplpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
@@ -25452,7 +25452,7 @@ export function MprAdminServerGetInfo(
 }
 
 export function MprAdminServerSetInfo(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   dwLevel: number /* u32 */,
   lpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
@@ -25476,7 +25476,7 @@ export function MprAdminIsDomainRasServer(
 }
 
 export function MprAdminTransportCreate(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   dwTransportId: number /* u32 */,
   lpwsTransportName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pGlobalInfo: Deno.PointerValue | Uint8Array /* ptr */,
@@ -25489,7 +25489,7 @@ export function MprAdminTransportCreate(
 }
 
 export function MprAdminTransportSetInfo(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   dwTransportId: number /* u32 */,
   pGlobalInfo: Deno.PointerValue | Uint8Array /* ptr */,
   dwGlobalInfoSize: number /* u32 */,
@@ -25500,7 +25500,7 @@ export function MprAdminTransportSetInfo(
 }
 
 export function MprAdminTransportGetInfo(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   dwTransportId: number /* u32 */,
   ppGlobalInfo: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwGlobalInfoSize: Deno.PointerValue | Uint8Array /* ptr */,
@@ -25511,7 +25511,7 @@ export function MprAdminTransportGetInfo(
 }
 
 export function MprAdminDeviceEnum(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   dwLevel: number /* u32 */,
   lplpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwTotalEntries: Deno.PointerValue | Uint8Array /* ptr */,
@@ -25520,7 +25520,7 @@ export function MprAdminDeviceEnum(
 }
 
 export function MprAdminInterfaceGetHandle(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   lpwsInterfaceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phInterface: Deno.PointerValue | Uint8Array /* ptr */,
   fIncludeClientInterfaces: boolean /* Windows.Win32.Foundation.BOOL */,
@@ -25529,7 +25529,7 @@ export function MprAdminInterfaceGetHandle(
 }
 
 export function MprAdminInterfaceCreate(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   dwLevel: number /* u32 */,
   lpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   phInterface: Deno.PointerValue | Uint8Array /* ptr */,
@@ -25538,7 +25538,7 @@ export function MprAdminInterfaceCreate(
 }
 
 export function MprAdminInterfaceGetInfo(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   hInterface: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwLevel: number /* u32 */,
   lplpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
@@ -25547,7 +25547,7 @@ export function MprAdminInterfaceGetInfo(
 }
 
 export function MprAdminInterfaceSetInfo(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   hInterface: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwLevel: number /* u32 */,
   lpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
@@ -25556,14 +25556,14 @@ export function MprAdminInterfaceSetInfo(
 }
 
 export function MprAdminInterfaceDelete(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   hInterface: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
   return libMPRAPI_dll.MprAdminInterfaceDelete(hMprServer, util.toPointer(hInterface));
 }
 
 export function MprAdminInterfaceDeviceGetInfo(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   hInterface: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwIndex: number /* u32 */,
   dwLevel: number /* u32 */,
@@ -25573,7 +25573,7 @@ export function MprAdminInterfaceDeviceGetInfo(
 }
 
 export function MprAdminInterfaceDeviceSetInfo(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   hInterface: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwIndex: number /* u32 */,
   dwLevel: number /* u32 */,
@@ -25583,7 +25583,7 @@ export function MprAdminInterfaceDeviceSetInfo(
 }
 
 export function MprAdminInterfaceTransportRemove(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   hInterface: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwTransportId: number /* u32 */,
 ): number /* u32 */ {
@@ -25591,7 +25591,7 @@ export function MprAdminInterfaceTransportRemove(
 }
 
 export function MprAdminInterfaceTransportAdd(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   hInterface: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwTransportId: number /* u32 */,
   pInterfaceInfo: Deno.PointerValue | Uint8Array /* ptr */,
@@ -25601,7 +25601,7 @@ export function MprAdminInterfaceTransportAdd(
 }
 
 export function MprAdminInterfaceTransportGetInfo(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   hInterface: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwTransportId: number /* u32 */,
   ppInterfaceInfo: Deno.PointerValue | Uint8Array /* ptr */,
@@ -25611,7 +25611,7 @@ export function MprAdminInterfaceTransportGetInfo(
 }
 
 export function MprAdminInterfaceTransportSetInfo(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   hInterface: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwTransportId: number /* u32 */,
   pInterfaceInfo: Deno.PointerValue | Uint8Array /* ptr */,
@@ -25621,7 +25621,7 @@ export function MprAdminInterfaceTransportSetInfo(
 }
 
 export function MprAdminInterfaceEnum(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   dwLevel: number /* u32 */,
   lplpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   dwPrefMaxLen: number /* u32 */,
@@ -25653,7 +25653,7 @@ export function MprAdminInterfaceGetCredentials(
 }
 
 export function MprAdminInterfaceSetCredentialsEx(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   hInterface: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwLevel: number /* u32 */,
   lpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
@@ -25662,7 +25662,7 @@ export function MprAdminInterfaceSetCredentialsEx(
 }
 
 export function MprAdminInterfaceGetCredentialsEx(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   hInterface: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwLevel: number /* u32 */,
   lplpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
@@ -25671,7 +25671,7 @@ export function MprAdminInterfaceGetCredentialsEx(
 }
 
 export function MprAdminInterfaceConnect(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   hInterface: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   hEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   fSynchronous: boolean /* Windows.Win32.Foundation.BOOL */,
@@ -25680,14 +25680,14 @@ export function MprAdminInterfaceConnect(
 }
 
 export function MprAdminInterfaceDisconnect(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   hInterface: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
   return libMPRAPI_dll.MprAdminInterfaceDisconnect(hMprServer, util.toPointer(hInterface));
 }
 
 export function MprAdminInterfaceUpdateRoutes(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   hInterface: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwProtocolId: number /* u32 */,
   hEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
@@ -25696,7 +25696,7 @@ export function MprAdminInterfaceUpdateRoutes(
 }
 
 export function MprAdminInterfaceQueryUpdateResult(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   hInterface: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwProtocolId: number /* u32 */,
   lpdwUpdateResult: Deno.PointerValue | Uint8Array /* ptr */,
@@ -25705,21 +25705,21 @@ export function MprAdminInterfaceQueryUpdateResult(
 }
 
 export function MprAdminInterfaceUpdatePhonebookInfo(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   hInterface: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
   return libMPRAPI_dll.MprAdminInterfaceUpdatePhonebookInfo(hMprServer, util.toPointer(hInterface));
 }
 
 export function MprAdminRegisterConnectionNotification(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   hEventNotification: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
   return libMPRAPI_dll.MprAdminRegisterConnectionNotification(hMprServer, util.toPointer(hEventNotification));
 }
 
 export function MprAdminDeregisterConnectionNotification(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   hEventNotification: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
   return libMPRAPI_dll.MprAdminDeregisterConnectionNotification(hMprServer, util.toPointer(hEventNotification));
@@ -25733,13 +25733,13 @@ export function MprAdminMIBServerConnect(
 }
 
 export function MprAdminMIBServerDisconnect(
-  hMibServer: Deno.PointerValue /* isize */,
+  hMibServer: bigint | number /* isize */,
 ): void /* void */ {
   return libMPRAPI_dll.MprAdminMIBServerDisconnect(hMibServer);
 }
 
 export function MprAdminMIBEntryCreate(
-  hMibServer: Deno.PointerValue /* isize */,
+  hMibServer: bigint | number /* isize */,
   dwPid: number /* u32 */,
   dwRoutingPid: number /* u32 */,
   lpEntry: Deno.PointerValue | Uint8Array /* ptr */,
@@ -25749,7 +25749,7 @@ export function MprAdminMIBEntryCreate(
 }
 
 export function MprAdminMIBEntryDelete(
-  hMibServer: Deno.PointerValue /* isize */,
+  hMibServer: bigint | number /* isize */,
   dwProtocolId: number /* u32 */,
   dwRoutingPid: number /* u32 */,
   lpEntry: Deno.PointerValue | Uint8Array /* ptr */,
@@ -25759,7 +25759,7 @@ export function MprAdminMIBEntryDelete(
 }
 
 export function MprAdminMIBEntrySet(
-  hMibServer: Deno.PointerValue /* isize */,
+  hMibServer: bigint | number /* isize */,
   dwProtocolId: number /* u32 */,
   dwRoutingPid: number /* u32 */,
   lpEntry: Deno.PointerValue | Uint8Array /* ptr */,
@@ -25769,7 +25769,7 @@ export function MprAdminMIBEntrySet(
 }
 
 export function MprAdminMIBEntryGet(
-  hMibServer: Deno.PointerValue /* isize */,
+  hMibServer: bigint | number /* isize */,
   dwProtocolId: number /* u32 */,
   dwRoutingPid: number /* u32 */,
   lpInEntry: Deno.PointerValue | Uint8Array /* ptr */,
@@ -25781,7 +25781,7 @@ export function MprAdminMIBEntryGet(
 }
 
 export function MprAdminMIBEntryGetFirst(
-  hMibServer: Deno.PointerValue /* isize */,
+  hMibServer: bigint | number /* isize */,
   dwProtocolId: number /* u32 */,
   dwRoutingPid: number /* u32 */,
   lpInEntry: Deno.PointerValue | Uint8Array /* ptr */,
@@ -25793,7 +25793,7 @@ export function MprAdminMIBEntryGetFirst(
 }
 
 export function MprAdminMIBEntryGetNext(
-  hMibServer: Deno.PointerValue /* isize */,
+  hMibServer: bigint | number /* isize */,
   dwProtocolId: number /* u32 */,
   dwRoutingPid: number /* u32 */,
   lpInEntry: Deno.PointerValue | Uint8Array /* ptr */,
@@ -25851,7 +25851,7 @@ export function MprConfigServerGetInfo(
 }
 
 export function MprConfigServerSetInfo(
-  hMprServer: Deno.PointerValue /* isize */,
+  hMprServer: bigint | number /* isize */,
   dwLevel: number /* u32 */,
   lpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
@@ -26335,13 +26335,13 @@ export function RtmRegisterEntity(
 }
 
 export function RtmDeregisterEntity(
-  RtmRegHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
 ): number /* u32 */ {
   return librtm_dll.RtmDeregisterEntity(RtmRegHandle);
 }
 
 export function RtmGetRegisteredEntities(
-  RtmRegHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
   NumEntities: Deno.PointerValue | Uint8Array /* ptr */,
   EntityHandles: Deno.PointerValue | Uint8Array /* ptr */,
   EntityInfos: Deno.PointerValue | Uint8Array /* ptr */,
@@ -26350,7 +26350,7 @@ export function RtmGetRegisteredEntities(
 }
 
 export function RtmReleaseEntities(
-  RtmRegHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
   NumEntities: number /* u32 */,
   EntityHandles: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
@@ -26358,8 +26358,8 @@ export function RtmReleaseEntities(
 }
 
 export function RtmLockDestination(
-  RtmRegHandle: Deno.PointerValue /* isize */,
-  DestHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
+  DestHandle: bigint | number /* isize */,
   Exclusive: boolean /* Windows.Win32.Foundation.BOOL */,
   LockDest: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
@@ -26367,16 +26367,16 @@ export function RtmLockDestination(
 }
 
 export function RtmGetOpaqueInformationPointer(
-  RtmRegHandle: Deno.PointerValue /* isize */,
-  DestHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
+  DestHandle: bigint | number /* isize */,
   OpaqueInfoPointer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return librtm_dll.RtmGetOpaqueInformationPointer(RtmRegHandle, DestHandle, util.toPointer(OpaqueInfoPointer));
 }
 
 export function RtmGetEntityMethods(
-  RtmRegHandle: Deno.PointerValue /* isize */,
-  EntityHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
+  EntityHandle: bigint | number /* isize */,
   NumMethods: Deno.PointerValue | Uint8Array /* ptr */,
   ExptMethods: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
@@ -26384,8 +26384,8 @@ export function RtmGetEntityMethods(
 }
 
 export function RtmInvokeMethod(
-  RtmRegHandle: Deno.PointerValue /* isize */,
-  EntityHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
+  EntityHandle: bigint | number /* isize */,
   Input: Deno.PointerValue | Uint8Array /* ptr */,
   OutputSize: Deno.PointerValue | Uint8Array /* ptr */,
   Output: Deno.PointerValue | Uint8Array /* ptr */,
@@ -26394,7 +26394,7 @@ export function RtmInvokeMethod(
 }
 
 export function RtmBlockMethods(
-  RtmRegHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
   TargetHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   TargetType: number /* u8 */,
   BlockingFlag: number /* u32 */,
@@ -26403,16 +26403,16 @@ export function RtmBlockMethods(
 }
 
 export function RtmGetEntityInfo(
-  RtmRegHandle: Deno.PointerValue /* isize */,
-  EntityHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
+  EntityHandle: bigint | number /* isize */,
   EntityInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return librtm_dll.RtmGetEntityInfo(RtmRegHandle, EntityHandle, util.toPointer(EntityInfo));
 }
 
 export function RtmGetDestInfo(
-  RtmRegHandle: Deno.PointerValue /* isize */,
-  DestHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
+  DestHandle: bigint | number /* isize */,
   ProtocolId: number /* u32 */,
   TargetViews: number /* u32 */,
   DestInfo: Deno.PointerValue | Uint8Array /* ptr */,
@@ -26421,8 +26421,8 @@ export function RtmGetDestInfo(
 }
 
 export function RtmGetRouteInfo(
-  RtmRegHandle: Deno.PointerValue /* isize */,
-  RouteHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
+  RouteHandle: bigint | number /* isize */,
   RouteInfo: Deno.PointerValue | Uint8Array /* ptr */,
   DestAddress: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
@@ -26430,66 +26430,66 @@ export function RtmGetRouteInfo(
 }
 
 export function RtmGetNextHopInfo(
-  RtmRegHandle: Deno.PointerValue /* isize */,
-  NextHopHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
+  NextHopHandle: bigint | number /* isize */,
   NextHopInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return librtm_dll.RtmGetNextHopInfo(RtmRegHandle, NextHopHandle, util.toPointer(NextHopInfo));
 }
 
 export function RtmReleaseEntityInfo(
-  RtmRegHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
   EntityInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return librtm_dll.RtmReleaseEntityInfo(RtmRegHandle, util.toPointer(EntityInfo));
 }
 
 export function RtmReleaseDestInfo(
-  RtmRegHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
   DestInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return librtm_dll.RtmReleaseDestInfo(RtmRegHandle, util.toPointer(DestInfo));
 }
 
 export function RtmReleaseRouteInfo(
-  RtmRegHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
   RouteInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return librtm_dll.RtmReleaseRouteInfo(RtmRegHandle, util.toPointer(RouteInfo));
 }
 
 export function RtmReleaseNextHopInfo(
-  RtmRegHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
   NextHopInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return librtm_dll.RtmReleaseNextHopInfo(RtmRegHandle, util.toPointer(NextHopInfo));
 }
 
 export function RtmAddRouteToDest(
-  RtmRegHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
   RouteHandle: Deno.PointerValue | Uint8Array /* ptr */,
   DestAddress: Deno.PointerValue | Uint8Array /* ptr */,
   RouteInfo: Deno.PointerValue | Uint8Array /* ptr */,
   TimeToLive: number /* u32 */,
-  RouteListHandle: Deno.PointerValue /* isize */,
+  RouteListHandle: bigint | number /* isize */,
   NotifyType: number /* u32 */,
-  NotifyHandle: Deno.PointerValue /* isize */,
+  NotifyHandle: bigint | number /* isize */,
   ChangeFlags: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return librtm_dll.RtmAddRouteToDest(RtmRegHandle, util.toPointer(RouteHandle), util.toPointer(DestAddress), util.toPointer(RouteInfo), TimeToLive, RouteListHandle, NotifyType, NotifyHandle, util.toPointer(ChangeFlags));
 }
 
 export function RtmDeleteRouteToDest(
-  RtmRegHandle: Deno.PointerValue /* isize */,
-  RouteHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
+  RouteHandle: bigint | number /* isize */,
   ChangeFlags: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return librtm_dll.RtmDeleteRouteToDest(RtmRegHandle, RouteHandle, util.toPointer(ChangeFlags));
 }
 
 export function RtmHoldDestination(
-  RtmRegHandle: Deno.PointerValue /* isize */,
-  DestHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
+  DestHandle: bigint | number /* isize */,
   TargetViews: number /* u32 */,
   HoldTime: number /* u32 */,
 ): number /* u32 */ {
@@ -26497,16 +26497,16 @@ export function RtmHoldDestination(
 }
 
 export function RtmGetRoutePointer(
-  RtmRegHandle: Deno.PointerValue /* isize */,
-  RouteHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
+  RouteHandle: bigint | number /* isize */,
   RoutePointer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return librtm_dll.RtmGetRoutePointer(RtmRegHandle, RouteHandle, util.toPointer(RoutePointer));
 }
 
 export function RtmLockRoute(
-  RtmRegHandle: Deno.PointerValue /* isize */,
-  RouteHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
+  RouteHandle: bigint | number /* isize */,
   Exclusive: boolean /* Windows.Win32.Foundation.BOOL */,
   LockRoute: boolean /* Windows.Win32.Foundation.BOOL */,
   RoutePointer: Deno.PointerValue | Uint8Array /* ptr */,
@@ -26515,19 +26515,19 @@ export function RtmLockRoute(
 }
 
 export function RtmUpdateAndUnlockRoute(
-  RtmRegHandle: Deno.PointerValue /* isize */,
-  RouteHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
+  RouteHandle: bigint | number /* isize */,
   TimeToLive: number /* u32 */,
-  RouteListHandle: Deno.PointerValue /* isize */,
+  RouteListHandle: bigint | number /* isize */,
   NotifyType: number /* u32 */,
-  NotifyHandle: Deno.PointerValue /* isize */,
+  NotifyHandle: bigint | number /* isize */,
   ChangeFlags: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return librtm_dll.RtmUpdateAndUnlockRoute(RtmRegHandle, RouteHandle, TimeToLive, RouteListHandle, NotifyType, NotifyHandle, util.toPointer(ChangeFlags));
 }
 
 export function RtmGetExactMatchDestination(
-  RtmRegHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
   DestAddress: Deno.PointerValue | Uint8Array /* ptr */,
   ProtocolId: number /* u32 */,
   TargetViews: number /* u32 */,
@@ -26537,7 +26537,7 @@ export function RtmGetExactMatchDestination(
 }
 
 export function RtmGetMostSpecificDestination(
-  RtmRegHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
   DestAddress: Deno.PointerValue | Uint8Array /* ptr */,
   ProtocolId: number /* u32 */,
   TargetViews: number /* u32 */,
@@ -26547,8 +26547,8 @@ export function RtmGetMostSpecificDestination(
 }
 
 export function RtmGetLessSpecificDestination(
-  RtmRegHandle: Deno.PointerValue /* isize */,
-  DestHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
+  DestHandle: bigint | number /* isize */,
   ProtocolId: number /* u32 */,
   TargetViews: number /* u32 */,
   DestInfo: Deno.PointerValue | Uint8Array /* ptr */,
@@ -26557,7 +26557,7 @@ export function RtmGetLessSpecificDestination(
 }
 
 export function RtmGetExactMatchRoute(
-  RtmRegHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
   DestAddress: Deno.PointerValue | Uint8Array /* ptr */,
   MatchingFlags: number /* u32 */,
   RouteInfo: Deno.PointerValue | Uint8Array /* ptr */,
@@ -26569,15 +26569,15 @@ export function RtmGetExactMatchRoute(
 }
 
 export function RtmIsBestRoute(
-  RtmRegHandle: Deno.PointerValue /* isize */,
-  RouteHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
+  RouteHandle: bigint | number /* isize */,
   BestInViews: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return librtm_dll.RtmIsBestRoute(RtmRegHandle, RouteHandle, util.toPointer(BestInViews));
 }
 
 export function RtmAddNextHop(
-  RtmRegHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
   NextHopInfo: Deno.PointerValue | Uint8Array /* ptr */,
   NextHopHandle: Deno.PointerValue | Uint8Array /* ptr */,
   ChangeFlags: Deno.PointerValue | Uint8Array /* ptr */,
@@ -26586,7 +26586,7 @@ export function RtmAddNextHop(
 }
 
 export function RtmFindNextHop(
-  RtmRegHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
   NextHopInfo: Deno.PointerValue | Uint8Array /* ptr */,
   NextHopHandle: Deno.PointerValue | Uint8Array /* ptr */,
   NextHopPointer: Deno.PointerValue | Uint8Array /* ptr */,
@@ -26595,24 +26595,24 @@ export function RtmFindNextHop(
 }
 
 export function RtmDeleteNextHop(
-  RtmRegHandle: Deno.PointerValue /* isize */,
-  NextHopHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
+  NextHopHandle: bigint | number /* isize */,
   NextHopInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return librtm_dll.RtmDeleteNextHop(RtmRegHandle, NextHopHandle, util.toPointer(NextHopInfo));
 }
 
 export function RtmGetNextHopPointer(
-  RtmRegHandle: Deno.PointerValue /* isize */,
-  NextHopHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
+  NextHopHandle: bigint | number /* isize */,
   NextHopPointer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return librtm_dll.RtmGetNextHopPointer(RtmRegHandle, NextHopHandle, util.toPointer(NextHopPointer));
 }
 
 export function RtmLockNextHop(
-  RtmRegHandle: Deno.PointerValue /* isize */,
-  NextHopHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
+  NextHopHandle: bigint | number /* isize */,
   Exclusive: boolean /* Windows.Win32.Foundation.BOOL */,
   LockNextHop: boolean /* Windows.Win32.Foundation.BOOL */,
   NextHopPointer: Deno.PointerValue | Uint8Array /* ptr */,
@@ -26621,7 +26621,7 @@ export function RtmLockNextHop(
 }
 
 export function RtmCreateDestEnum(
-  RtmRegHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
   TargetViews: number /* u32 */,
   EnumFlags: number /* u32 */,
   NetAddress: Deno.PointerValue | Uint8Array /* ptr */,
@@ -26632,8 +26632,8 @@ export function RtmCreateDestEnum(
 }
 
 export function RtmGetEnumDests(
-  RtmRegHandle: Deno.PointerValue /* isize */,
-  EnumHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
+  EnumHandle: bigint | number /* isize */,
   NumDests: Deno.PointerValue | Uint8Array /* ptr */,
   DestInfos: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
@@ -26641,7 +26641,7 @@ export function RtmGetEnumDests(
 }
 
 export function RtmReleaseDests(
-  RtmRegHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
   NumDests: number /* u32 */,
   DestInfos: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
@@ -26649,8 +26649,8 @@ export function RtmReleaseDests(
 }
 
 export function RtmCreateRouteEnum(
-  RtmRegHandle: Deno.PointerValue /* isize */,
-  DestHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
+  DestHandle: bigint | number /* isize */,
   TargetViews: number /* u32 */,
   EnumFlags: number /* u32 */,
   StartDest: Deno.PointerValue | Uint8Array /* ptr */,
@@ -26663,8 +26663,8 @@ export function RtmCreateRouteEnum(
 }
 
 export function RtmGetEnumRoutes(
-  RtmRegHandle: Deno.PointerValue /* isize */,
-  EnumHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
+  EnumHandle: bigint | number /* isize */,
   NumRoutes: Deno.PointerValue | Uint8Array /* ptr */,
   RouteHandles: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
@@ -26672,7 +26672,7 @@ export function RtmGetEnumRoutes(
 }
 
 export function RtmReleaseRoutes(
-  RtmRegHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
   NumRoutes: number /* u32 */,
   RouteHandles: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
@@ -26680,7 +26680,7 @@ export function RtmReleaseRoutes(
 }
 
 export function RtmCreateNextHopEnum(
-  RtmRegHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
   EnumFlags: number /* u32 */,
   NetAddress: Deno.PointerValue | Uint8Array /* ptr */,
   RtmEnumHandle: Deno.PointerValue | Uint8Array /* ptr */,
@@ -26689,8 +26689,8 @@ export function RtmCreateNextHopEnum(
 }
 
 export function RtmGetEnumNextHops(
-  RtmRegHandle: Deno.PointerValue /* isize */,
-  EnumHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
+  EnumHandle: bigint | number /* isize */,
   NumNextHops: Deno.PointerValue | Uint8Array /* ptr */,
   NextHopHandles: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
@@ -26698,7 +26698,7 @@ export function RtmGetEnumNextHops(
 }
 
 export function RtmReleaseNextHops(
-  RtmRegHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
   NumNextHops: number /* u32 */,
   NextHopHandles: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
@@ -26706,14 +26706,14 @@ export function RtmReleaseNextHops(
 }
 
 export function RtmDeleteEnumHandle(
-  RtmRegHandle: Deno.PointerValue /* isize */,
-  EnumHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
+  EnumHandle: bigint | number /* isize */,
 ): number /* u32 */ {
   return librtm_dll.RtmDeleteEnumHandle(RtmRegHandle, EnumHandle);
 }
 
 export function RtmRegisterForChangeNotification(
-  RtmRegHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
   TargetViews: number /* u32 */,
   NotifyFlags: number /* u32 */,
   NotifyContext: Deno.PointerValue | Uint8Array /* ptr */,
@@ -26723,8 +26723,8 @@ export function RtmRegisterForChangeNotification(
 }
 
 export function RtmGetChangedDests(
-  RtmRegHandle: Deno.PointerValue /* isize */,
-  NotifyHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
+  NotifyHandle: bigint | number /* isize */,
   NumDests: Deno.PointerValue | Uint8Array /* ptr */,
   ChangedDests: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
@@ -26732,8 +26732,8 @@ export function RtmGetChangedDests(
 }
 
 export function RtmReleaseChangedDests(
-  RtmRegHandle: Deno.PointerValue /* isize */,
-  NotifyHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
+  NotifyHandle: bigint | number /* isize */,
   NumDests: number /* u32 */,
   ChangedDests: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
@@ -26741,8 +26741,8 @@ export function RtmReleaseChangedDests(
 }
 
 export function RtmIgnoreChangedDests(
-  RtmRegHandle: Deno.PointerValue /* isize */,
-  NotifyHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
+  NotifyHandle: bigint | number /* isize */,
   NumDests: number /* u32 */,
   ChangedDests: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
@@ -26750,49 +26750,49 @@ export function RtmIgnoreChangedDests(
 }
 
 export function RtmGetChangeStatus(
-  RtmRegHandle: Deno.PointerValue /* isize */,
-  NotifyHandle: Deno.PointerValue /* isize */,
-  DestHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
+  NotifyHandle: bigint | number /* isize */,
+  DestHandle: bigint | number /* isize */,
   ChangeStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return librtm_dll.RtmGetChangeStatus(RtmRegHandle, NotifyHandle, DestHandle, util.toPointer(ChangeStatus));
 }
 
 export function RtmMarkDestForChangeNotification(
-  RtmRegHandle: Deno.PointerValue /* isize */,
-  NotifyHandle: Deno.PointerValue /* isize */,
-  DestHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
+  NotifyHandle: bigint | number /* isize */,
+  DestHandle: bigint | number /* isize */,
   MarkDest: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
   return librtm_dll.RtmMarkDestForChangeNotification(RtmRegHandle, NotifyHandle, DestHandle, util.boolToFfi(MarkDest));
 }
 
 export function RtmIsMarkedForChangeNotification(
-  RtmRegHandle: Deno.PointerValue /* isize */,
-  NotifyHandle: Deno.PointerValue /* isize */,
-  DestHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
+  NotifyHandle: bigint | number /* isize */,
+  DestHandle: bigint | number /* isize */,
   DestMarked: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return librtm_dll.RtmIsMarkedForChangeNotification(RtmRegHandle, NotifyHandle, DestHandle, util.toPointer(DestMarked));
 }
 
 export function RtmDeregisterFromChangeNotification(
-  RtmRegHandle: Deno.PointerValue /* isize */,
-  NotifyHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
+  NotifyHandle: bigint | number /* isize */,
 ): number /* u32 */ {
   return librtm_dll.RtmDeregisterFromChangeNotification(RtmRegHandle, NotifyHandle);
 }
 
 export function RtmCreateRouteList(
-  RtmRegHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
   RouteListHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return librtm_dll.RtmCreateRouteList(RtmRegHandle, util.toPointer(RouteListHandle));
 }
 
 export function RtmInsertInRouteList(
-  RtmRegHandle: Deno.PointerValue /* isize */,
-  RouteListHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
+  RouteListHandle: bigint | number /* isize */,
   NumRoutes: number /* u32 */,
   RouteHandles: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
@@ -26800,16 +26800,16 @@ export function RtmInsertInRouteList(
 }
 
 export function RtmCreateRouteListEnum(
-  RtmRegHandle: Deno.PointerValue /* isize */,
-  RouteListHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
+  RouteListHandle: bigint | number /* isize */,
   RtmEnumHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return librtm_dll.RtmCreateRouteListEnum(RtmRegHandle, RouteListHandle, util.toPointer(RtmEnumHandle));
 }
 
 export function RtmGetListEnumRoutes(
-  RtmRegHandle: Deno.PointerValue /* isize */,
-  EnumHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
+  EnumHandle: bigint | number /* isize */,
   NumRoutes: Deno.PointerValue | Uint8Array /* ptr */,
   RouteHandles: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
@@ -26817,14 +26817,14 @@ export function RtmGetListEnumRoutes(
 }
 
 export function RtmDeleteRouteList(
-  RtmRegHandle: Deno.PointerValue /* isize */,
-  RouteListHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
+  RouteListHandle: bigint | number /* isize */,
 ): number /* u32 */ {
   return librtm_dll.RtmDeleteRouteList(RtmRegHandle, RouteListHandle);
 }
 
 export function RtmReferenceHandles(
-  RtmRegHandle: Deno.PointerValue /* isize */,
+  RtmRegHandle: bigint | number /* isize */,
   NumHandles: number /* u32 */,
   RtmHandles: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {

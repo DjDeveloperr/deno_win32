@@ -520,9 +520,9 @@ export const EAP_AUTHENTICATOR_SEND_TIMEOUT_INTERACTIVE = 2;
 
 // Structs
 
-export type NCRYPT_KEY_HANDLE = Deno.PointerValue;
+export type NCRYPT_KEY_HANDLE = bigint | number;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.Security.ExtensibleAuthenticationProtocol.NgcTicketContext (size: 24)
@@ -1389,13 +1389,13 @@ export interface PPP_EAP_INFO {
   /** u32 */
   dwEapTypeId: number;
   /** isize */
-  RasEapInitialize: Deno.PointerValue;
+  RasEapInitialize: bigint | number;
   /** isize */
-  RasEapBegin: Deno.PointerValue;
+  RasEapBegin: bigint | number;
   /** isize */
-  RasEapEnd: Deno.PointerValue;
+  RasEapEnd: bigint | number;
   /** isize */
-  RasEapMakeMessage: Deno.PointerValue;
+  RasEapMakeMessage: bigint | number;
 }
 
 export const sizeofPPP_EAP_INFO = 40;
@@ -1439,22 +1439,22 @@ export class PPP_EAP_INFOView {
   }
 
   // 0x08: isize
-  get RasEapInitialize(): Deno.PointerValue {
+  get RasEapInitialize(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: isize
-  get RasEapBegin(): Deno.PointerValue {
+  get RasEapBegin(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get RasEapEnd(): Deno.PointerValue {
+  get RasEapEnd(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
   // 0x20: isize
-  get RasEapMakeMessage(): Deno.PointerValue {
+  get RasEapMakeMessage(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
@@ -1469,22 +1469,22 @@ export class PPP_EAP_INFOView {
   }
 
   // 0x08: isize
-  set RasEapInitialize(value: Deno.PointerValue) {
+  set RasEapInitialize(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: isize
-  set RasEapBegin(value: Deno.PointerValue) {
+  set RasEapBegin(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set RasEapEnd(value: Deno.PointerValue) {
+  set RasEapEnd(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
   // 0x20: isize
-  set RasEapMakeMessage(value: Deno.PointerValue) {
+  set RasEapMakeMessage(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 }
@@ -4675,31 +4675,31 @@ export interface EAP_PEER_METHOD_ROUTINES {
   /** ptr */
   pEapType: Deno.PointerValue | Uint8Array;
   /** isize */
-  EapPeerInitialize: Deno.PointerValue;
+  EapPeerInitialize: bigint | number;
   /** isize */
-  EapPeerGetIdentity: Deno.PointerValue;
+  EapPeerGetIdentity: bigint | number;
   /** isize */
-  EapPeerBeginSession: Deno.PointerValue;
+  EapPeerBeginSession: bigint | number;
   /** isize */
-  EapPeerSetCredentials: Deno.PointerValue;
+  EapPeerSetCredentials: bigint | number;
   /** isize */
-  EapPeerProcessRequestPacket: Deno.PointerValue;
+  EapPeerProcessRequestPacket: bigint | number;
   /** isize */
-  EapPeerGetResponsePacket: Deno.PointerValue;
+  EapPeerGetResponsePacket: bigint | number;
   /** isize */
-  EapPeerGetResult: Deno.PointerValue;
+  EapPeerGetResult: bigint | number;
   /** isize */
-  EapPeerGetUIContext: Deno.PointerValue;
+  EapPeerGetUIContext: bigint | number;
   /** isize */
-  EapPeerSetUIContext: Deno.PointerValue;
+  EapPeerSetUIContext: bigint | number;
   /** isize */
-  EapPeerGetResponseAttributes: Deno.PointerValue;
+  EapPeerGetResponseAttributes: bigint | number;
   /** isize */
-  EapPeerSetResponseAttributes: Deno.PointerValue;
+  EapPeerSetResponseAttributes: bigint | number;
   /** isize */
-  EapPeerEndSession: Deno.PointerValue;
+  EapPeerEndSession: bigint | number;
   /** isize */
-  EapPeerShutdown: Deno.PointerValue;
+  EapPeerShutdown: bigint | number;
 }
 
 export const sizeofEAP_PEER_METHOD_ROUTINES = 120;
@@ -4765,67 +4765,67 @@ export class EAP_PEER_METHOD_ROUTINESView {
   }
 
   // 0x10: isize
-  get EapPeerInitialize(): Deno.PointerValue {
+  get EapPeerInitialize(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get EapPeerGetIdentity(): Deno.PointerValue {
+  get EapPeerGetIdentity(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
   // 0x20: isize
-  get EapPeerBeginSession(): Deno.PointerValue {
+  get EapPeerBeginSession(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
   // 0x28: isize
-  get EapPeerSetCredentials(): Deno.PointerValue {
+  get EapPeerSetCredentials(): bigint | number {
     return Number(this.view.getBigInt64(40, true));
   }
 
   // 0x30: isize
-  get EapPeerProcessRequestPacket(): Deno.PointerValue {
+  get EapPeerProcessRequestPacket(): bigint | number {
     return Number(this.view.getBigInt64(48, true));
   }
 
   // 0x38: isize
-  get EapPeerGetResponsePacket(): Deno.PointerValue {
+  get EapPeerGetResponsePacket(): bigint | number {
     return Number(this.view.getBigInt64(56, true));
   }
 
   // 0x40: isize
-  get EapPeerGetResult(): Deno.PointerValue {
+  get EapPeerGetResult(): bigint | number {
     return Number(this.view.getBigInt64(64, true));
   }
 
   // 0x48: isize
-  get EapPeerGetUIContext(): Deno.PointerValue {
+  get EapPeerGetUIContext(): bigint | number {
     return Number(this.view.getBigInt64(72, true));
   }
 
   // 0x50: isize
-  get EapPeerSetUIContext(): Deno.PointerValue {
+  get EapPeerSetUIContext(): bigint | number {
     return Number(this.view.getBigInt64(80, true));
   }
 
   // 0x58: isize
-  get EapPeerGetResponseAttributes(): Deno.PointerValue {
+  get EapPeerGetResponseAttributes(): bigint | number {
     return Number(this.view.getBigInt64(88, true));
   }
 
   // 0x60: isize
-  get EapPeerSetResponseAttributes(): Deno.PointerValue {
+  get EapPeerSetResponseAttributes(): bigint | number {
     return Number(this.view.getBigInt64(96, true));
   }
 
   // 0x68: isize
-  get EapPeerEndSession(): Deno.PointerValue {
+  get EapPeerEndSession(): bigint | number {
     return Number(this.view.getBigInt64(104, true));
   }
 
   // 0x70: isize
-  get EapPeerShutdown(): Deno.PointerValue {
+  get EapPeerShutdown(): bigint | number {
     return Number(this.view.getBigInt64(112, true));
   }
 
@@ -4842,67 +4842,67 @@ export class EAP_PEER_METHOD_ROUTINESView {
   }
 
   // 0x10: isize
-  set EapPeerInitialize(value: Deno.PointerValue) {
+  set EapPeerInitialize(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set EapPeerGetIdentity(value: Deno.PointerValue) {
+  set EapPeerGetIdentity(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
   // 0x20: isize
-  set EapPeerBeginSession(value: Deno.PointerValue) {
+  set EapPeerBeginSession(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 
   // 0x28: isize
-  set EapPeerSetCredentials(value: Deno.PointerValue) {
+  set EapPeerSetCredentials(value: bigint | number) {
     this.view.setBigInt64(40, BigInt(value), true);
   }
 
   // 0x30: isize
-  set EapPeerProcessRequestPacket(value: Deno.PointerValue) {
+  set EapPeerProcessRequestPacket(value: bigint | number) {
     this.view.setBigInt64(48, BigInt(value), true);
   }
 
   // 0x38: isize
-  set EapPeerGetResponsePacket(value: Deno.PointerValue) {
+  set EapPeerGetResponsePacket(value: bigint | number) {
     this.view.setBigInt64(56, BigInt(value), true);
   }
 
   // 0x40: isize
-  set EapPeerGetResult(value: Deno.PointerValue) {
+  set EapPeerGetResult(value: bigint | number) {
     this.view.setBigInt64(64, BigInt(value), true);
   }
 
   // 0x48: isize
-  set EapPeerGetUIContext(value: Deno.PointerValue) {
+  set EapPeerGetUIContext(value: bigint | number) {
     this.view.setBigInt64(72, BigInt(value), true);
   }
 
   // 0x50: isize
-  set EapPeerSetUIContext(value: Deno.PointerValue) {
+  set EapPeerSetUIContext(value: bigint | number) {
     this.view.setBigInt64(80, BigInt(value), true);
   }
 
   // 0x58: isize
-  set EapPeerGetResponseAttributes(value: Deno.PointerValue) {
+  set EapPeerGetResponseAttributes(value: bigint | number) {
     this.view.setBigInt64(88, BigInt(value), true);
   }
 
   // 0x60: isize
-  set EapPeerSetResponseAttributes(value: Deno.PointerValue) {
+  set EapPeerSetResponseAttributes(value: bigint | number) {
     this.view.setBigInt64(96, BigInt(value), true);
   }
 
   // 0x68: isize
-  set EapPeerEndSession(value: Deno.PointerValue) {
+  set EapPeerEndSession(value: bigint | number) {
     this.view.setBigInt64(104, BigInt(value), true);
   }
 
   // 0x70: isize
-  set EapPeerShutdown(value: Deno.PointerValue) {
+  set EapPeerShutdown(value: bigint | number) {
     this.view.setBigInt64(112, BigInt(value), true);
   }
 }
@@ -4916,25 +4916,25 @@ export interface EAP_AUTHENTICATOR_METHOD_ROUTINES {
   /** ptr */
   pEapType: Deno.PointerValue | Uint8Array;
   /** isize */
-  EapMethodAuthenticatorInitialize: Deno.PointerValue;
+  EapMethodAuthenticatorInitialize: bigint | number;
   /** isize */
-  EapMethodAuthenticatorBeginSession: Deno.PointerValue;
+  EapMethodAuthenticatorBeginSession: bigint | number;
   /** isize */
-  EapMethodAuthenticatorUpdateInnerMethodParams: Deno.PointerValue;
+  EapMethodAuthenticatorUpdateInnerMethodParams: bigint | number;
   /** isize */
-  EapMethodAuthenticatorReceivePacket: Deno.PointerValue;
+  EapMethodAuthenticatorReceivePacket: bigint | number;
   /** isize */
-  EapMethodAuthenticatorSendPacket: Deno.PointerValue;
+  EapMethodAuthenticatorSendPacket: bigint | number;
   /** isize */
-  EapMethodAuthenticatorGetAttributes: Deno.PointerValue;
+  EapMethodAuthenticatorGetAttributes: bigint | number;
   /** isize */
-  EapMethodAuthenticatorSetAttributes: Deno.PointerValue;
+  EapMethodAuthenticatorSetAttributes: bigint | number;
   /** isize */
-  EapMethodAuthenticatorGetResult: Deno.PointerValue;
+  EapMethodAuthenticatorGetResult: bigint | number;
   /** isize */
-  EapMethodAuthenticatorEndSession: Deno.PointerValue;
+  EapMethodAuthenticatorEndSession: bigint | number;
   /** isize */
-  EapMethodAuthenticatorShutdown: Deno.PointerValue;
+  EapMethodAuthenticatorShutdown: bigint | number;
 }
 
 export const sizeofEAP_AUTHENTICATOR_METHOD_ROUTINES = 96;
@@ -4994,52 +4994,52 @@ export class EAP_AUTHENTICATOR_METHOD_ROUTINESView {
   }
 
   // 0x10: isize
-  get EapMethodAuthenticatorInitialize(): Deno.PointerValue {
+  get EapMethodAuthenticatorInitialize(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get EapMethodAuthenticatorBeginSession(): Deno.PointerValue {
+  get EapMethodAuthenticatorBeginSession(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
   // 0x20: isize
-  get EapMethodAuthenticatorUpdateInnerMethodParams(): Deno.PointerValue {
+  get EapMethodAuthenticatorUpdateInnerMethodParams(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
   // 0x28: isize
-  get EapMethodAuthenticatorReceivePacket(): Deno.PointerValue {
+  get EapMethodAuthenticatorReceivePacket(): bigint | number {
     return Number(this.view.getBigInt64(40, true));
   }
 
   // 0x30: isize
-  get EapMethodAuthenticatorSendPacket(): Deno.PointerValue {
+  get EapMethodAuthenticatorSendPacket(): bigint | number {
     return Number(this.view.getBigInt64(48, true));
   }
 
   // 0x38: isize
-  get EapMethodAuthenticatorGetAttributes(): Deno.PointerValue {
+  get EapMethodAuthenticatorGetAttributes(): bigint | number {
     return Number(this.view.getBigInt64(56, true));
   }
 
   // 0x40: isize
-  get EapMethodAuthenticatorSetAttributes(): Deno.PointerValue {
+  get EapMethodAuthenticatorSetAttributes(): bigint | number {
     return Number(this.view.getBigInt64(64, true));
   }
 
   // 0x48: isize
-  get EapMethodAuthenticatorGetResult(): Deno.PointerValue {
+  get EapMethodAuthenticatorGetResult(): bigint | number {
     return Number(this.view.getBigInt64(72, true));
   }
 
   // 0x50: isize
-  get EapMethodAuthenticatorEndSession(): Deno.PointerValue {
+  get EapMethodAuthenticatorEndSession(): bigint | number {
     return Number(this.view.getBigInt64(80, true));
   }
 
   // 0x58: isize
-  get EapMethodAuthenticatorShutdown(): Deno.PointerValue {
+  get EapMethodAuthenticatorShutdown(): bigint | number {
     return Number(this.view.getBigInt64(88, true));
   }
 
@@ -5056,57 +5056,57 @@ export class EAP_AUTHENTICATOR_METHOD_ROUTINESView {
   }
 
   // 0x10: isize
-  set EapMethodAuthenticatorInitialize(value: Deno.PointerValue) {
+  set EapMethodAuthenticatorInitialize(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set EapMethodAuthenticatorBeginSession(value: Deno.PointerValue) {
+  set EapMethodAuthenticatorBeginSession(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
   // 0x20: isize
-  set EapMethodAuthenticatorUpdateInnerMethodParams(value: Deno.PointerValue) {
+  set EapMethodAuthenticatorUpdateInnerMethodParams(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 
   // 0x28: isize
-  set EapMethodAuthenticatorReceivePacket(value: Deno.PointerValue) {
+  set EapMethodAuthenticatorReceivePacket(value: bigint | number) {
     this.view.setBigInt64(40, BigInt(value), true);
   }
 
   // 0x30: isize
-  set EapMethodAuthenticatorSendPacket(value: Deno.PointerValue) {
+  set EapMethodAuthenticatorSendPacket(value: bigint | number) {
     this.view.setBigInt64(48, BigInt(value), true);
   }
 
   // 0x38: isize
-  set EapMethodAuthenticatorGetAttributes(value: Deno.PointerValue) {
+  set EapMethodAuthenticatorGetAttributes(value: bigint | number) {
     this.view.setBigInt64(56, BigInt(value), true);
   }
 
   // 0x40: isize
-  set EapMethodAuthenticatorSetAttributes(value: Deno.PointerValue) {
+  set EapMethodAuthenticatorSetAttributes(value: bigint | number) {
     this.view.setBigInt64(64, BigInt(value), true);
   }
 
   // 0x48: isize
-  set EapMethodAuthenticatorGetResult(value: Deno.PointerValue) {
+  set EapMethodAuthenticatorGetResult(value: bigint | number) {
     this.view.setBigInt64(72, BigInt(value), true);
   }
 
   // 0x50: isize
-  set EapMethodAuthenticatorEndSession(value: Deno.PointerValue) {
+  set EapMethodAuthenticatorEndSession(value: bigint | number) {
     this.view.setBigInt64(80, BigInt(value), true);
   }
 
   // 0x58: isize
-  set EapMethodAuthenticatorShutdown(value: Deno.PointerValue) {
+  set EapMethodAuthenticatorShutdown(value: bigint | number) {
     this.view.setBigInt64(88, BigInt(value), true);
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 // Native Libraries
 

@@ -846,16 +846,16 @@ export const CharacteristicValueChangedEvent = 0;
 
 // Structs
 
-export type HANDLE_SDP_TYPE = Deno.PointerValue;
+export type HANDLE_SDP_TYPE = bigint | number;
 
 /**
  * Windows.Win32.Devices.Bluetooth.SDP_LARGE_INTEGER_16 (size: 16)
  */
 export interface SDP_LARGE_INTEGER_16 {
   /** u64 */
-  LowPart: Deno.PointerValue;
+  LowPart: bigint | number;
   /** i64 */
-  HighPart: Deno.PointerValue;
+  HighPart: bigint | number;
 }
 
 export const sizeofSDP_LARGE_INTEGER_16 = 16;
@@ -881,22 +881,22 @@ export class SDP_LARGE_INTEGER_16View {
   }
 
   // 0x00: u64
-  get LowPart(): Deno.PointerValue {
+  get LowPart(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: i64
-  get HighPart(): Deno.PointerValue {
+  get HighPart(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x00: u64
-  set LowPart(value: Deno.PointerValue) {
+  set LowPart(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: i64
-  set HighPart(value: Deno.PointerValue) {
+  set HighPart(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -906,9 +906,9 @@ export class SDP_LARGE_INTEGER_16View {
  */
 export interface SDP_ULARGE_INTEGER_16 {
   /** u64 */
-  LowPart: Deno.PointerValue;
+  LowPart: bigint | number;
   /** u64 */
-  HighPart: Deno.PointerValue;
+  HighPart: bigint | number;
 }
 
 export const sizeofSDP_ULARGE_INTEGER_16 = 16;
@@ -934,22 +934,22 @@ export class SDP_ULARGE_INTEGER_16View {
   }
 
   // 0x00: u64
-  get LowPart(): Deno.PointerValue {
+  get LowPart(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get HighPart(): Deno.PointerValue {
+  get HighPart(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set LowPart(value: Deno.PointerValue) {
+  set LowPart(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set HighPart(value: Deno.PointerValue) {
+  set HighPart(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -1151,7 +1151,7 @@ export interface BTH_DEVICE_INFO {
   /** u32 */
   flags: number;
   /** u64 */
-  address: Deno.PointerValue;
+  address: bigint | number;
   /** u32 */
   classOfDevice: number;
   /** array */
@@ -1194,7 +1194,7 @@ export class BTH_DEVICE_INFOView {
   // 0x04: pad4
 
   // 0x08: u64
-  get address(): Deno.PointerValue {
+  get address(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -1219,7 +1219,7 @@ export class BTH_DEVICE_INFOView {
   // 0x04: pad4
 
   // 0x08: u64
-  set address(value: Deno.PointerValue) {
+  set address(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -1300,7 +1300,7 @@ export class BTH_RADIO_IN_RANGEView {
  */
 export interface BTH_L2CAP_EVENT_INFO {
   /** u64 */
-  bthAddress: Deno.PointerValue;
+  bthAddress: bigint | number;
   /** u16 */
   psm: number;
   /** u8 */
@@ -1337,7 +1337,7 @@ export class BTH_L2CAP_EVENT_INFOView {
   }
 
   // 0x00: u64
-  get bthAddress(): Deno.PointerValue {
+  get bthAddress(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -1359,7 +1359,7 @@ export class BTH_L2CAP_EVENT_INFOView {
   // 0x0c: pad4
 
   // 0x00: u64
-  set bthAddress(value: Deno.PointerValue) {
+  set bthAddress(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -1386,7 +1386,7 @@ export class BTH_L2CAP_EVENT_INFOView {
  */
 export interface BTH_HCI_EVENT_INFO {
   /** u64 */
-  bthAddress: Deno.PointerValue;
+  bthAddress: bigint | number;
   /** u8 */
   connectionType: number;
   /** u8 */
@@ -1419,7 +1419,7 @@ export class BTH_HCI_EVENT_INFOView {
   }
 
   // 0x00: u64
-  get bthAddress(): Deno.PointerValue {
+  get bthAddress(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -1436,7 +1436,7 @@ export class BTH_HCI_EVENT_INFOView {
   // 0x0a: pad6
 
   // 0x00: u64
-  set bthAddress(value: Deno.PointerValue) {
+  set bthAddress(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -1458,9 +1458,9 @@ export class BTH_HCI_EVENT_INFOView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -1486,22 +1486,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -2251,7 +2251,7 @@ export class BLUETOOTH_AUTHENTICATION_CALLBACK_PARAMSView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.Devices.Bluetooth.BLUETOOTH_DEVICE_SEARCH_PARAMS (size: 40)
@@ -2461,7 +2461,7 @@ export class BLUETOOTH_COD_PAIRSView {
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 /**
  * Windows.Win32.Devices.Bluetooth.BLUETOOTH_SELECT_DEVICE_PARAMS (size: 88)
@@ -3253,7 +3253,7 @@ export interface _data_e__Union {
   /** Windows.Win32.Devices.Bluetooth.SDP_LARGE_INTEGER_16 */
   int128: Uint8Array | Deno.PointerValue;
   /** i64 */
-  int64: Deno.PointerValue;
+  int64: bigint | number;
   /** i32 */
   int32: number;
   /** i16 */
@@ -3263,7 +3263,7 @@ export interface _data_e__Union {
   /** Windows.Win32.Devices.Bluetooth.SDP_ULARGE_INTEGER_16 */
   uint128: Uint8Array | Deno.PointerValue;
   /** u64 */
-  uint64: Deno.PointerValue;
+  uint64: bigint | number;
   /** u32 */
   uint32: number;
   /** u16 */
@@ -3351,7 +3351,7 @@ export class _data_e__UnionView {
   }
 
   // 0x08: i64
-  get int64(): Deno.PointerValue {
+  get int64(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -3379,7 +3379,7 @@ export class _data_e__UnionView {
   }
 
   // 0x20: u64
-  get uint64(): Deno.PointerValue {
+  get uint64(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -3451,7 +3451,7 @@ export class _data_e__UnionView {
   }
 
   // 0x08: i64
-  set int64(value: Deno.PointerValue) {
+  set int64(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -3478,7 +3478,7 @@ export class _data_e__UnionView {
   }
 
   // 0x20: u64
-  set uint64(value: Deno.PointerValue) {
+  set uint64(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -4401,7 +4401,7 @@ export interface BLUETOOTH_GATT_VALUE_CHANGED_EVENT {
   /** u16 */
   ChangedAttributeHandle: number;
   /** usize */
-  CharacteristicValueDataSize: Deno.PointerValue;
+  CharacteristicValueDataSize: bigint | number;
   /** ptr */
   CharacteristicValue: Deno.PointerValue | Uint8Array;
 }
@@ -4439,7 +4439,7 @@ export class BLUETOOTH_GATT_VALUE_CHANGED_EVENTView {
   // 0x02: pad6
 
   // 0x08: usize
-  get CharacteristicValueDataSize(): Deno.PointerValue {
+  get CharacteristicValueDataSize(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -4457,7 +4457,7 @@ export class BLUETOOTH_GATT_VALUE_CHANGED_EVENTView {
   // 0x02: pad6
 
   // 0x08: usize
-  set CharacteristicValueDataSize(value: Deno.PointerValue) {
+  set CharacteristicValueDataSize(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -4474,7 +4474,7 @@ export interface SOCKADDR_BTH {
   /** u16 */
   addressFamily: number;
   /** u64 */
-  btAddr: Deno.PointerValue;
+  btAddr: bigint | number;
   /** System.Guid */
   serviceClassId: Uint8Array | Deno.PointerValue;
   /** u32 */
@@ -4517,7 +4517,7 @@ export class SOCKADDR_BTHView {
   // 0x02: pad6
 
   // 0x08: u64
-  get btAddr(): Deno.PointerValue {
+  get btAddr(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -4542,7 +4542,7 @@ export class SOCKADDR_BTHView {
   // 0x02: pad6
 
   // 0x08: u64
-  set btAddr(value: Deno.PointerValue) {
+  set btAddr(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -5206,7 +5206,7 @@ export class RFCOMM_COMMANDView {
  */
 export interface BTH_PING_REQ {
   /** u64 */
-  btAddr: Deno.PointerValue;
+  btAddr: bigint | number;
   /** u8 */
   dataLen: number;
   /** array */
@@ -5239,7 +5239,7 @@ export class BTH_PING_REQView {
   }
 
   // 0x00: u64
-  get btAddr(): Deno.PointerValue {
+  get btAddr(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -5257,7 +5257,7 @@ export class BTH_PING_REQView {
   }
 
   // 0x00: u64
-  set btAddr(value: Deno.PointerValue) {
+  set btAddr(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -5338,7 +5338,7 @@ export class BTH_PING_RSPView {
  */
 export interface BTH_INFO_REQ {
   /** u64 */
-  btAddr: Deno.PointerValue;
+  btAddr: bigint | number;
   /** u16 */
   infoType: number;
 }
@@ -5367,7 +5367,7 @@ export class BTH_INFO_REQView {
   }
 
   // 0x00: u64
-  get btAddr(): Deno.PointerValue {
+  get btAddr(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -5379,7 +5379,7 @@ export class BTH_INFO_REQView {
   // 0x0a: pad6
 
   // 0x00: u64
-  set btAddr(value: Deno.PointerValue) {
+  set btAddr(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -5671,19 +5671,19 @@ try {
 export function BluetoothFindFirstRadio(
   pbtfrp: Deno.PointerValue | Uint8Array /* ptr */,
   phRadio: Deno.PointerValue | Uint8Array /* ptr */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libBluetoothApis_dll.BluetoothFindFirstRadio(util.toPointer(pbtfrp), util.toPointer(phRadio));
 }
 
 export function BluetoothFindNextRadio(
-  hFind: Deno.PointerValue /* isize */,
+  hFind: bigint | number /* isize */,
   phRadio: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libBluetoothApis_dll.BluetoothFindNextRadio(hFind, util.toPointer(phRadio)));
 }
 
 export function BluetoothFindRadioClose(
-  hFind: Deno.PointerValue /* isize */,
+  hFind: bigint | number /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libBluetoothApis_dll.BluetoothFindRadioClose(hFind));
 }
@@ -5698,19 +5698,19 @@ export function BluetoothGetRadioInfo(
 export function BluetoothFindFirstDevice(
   pbtsp: Deno.PointerValue | Uint8Array /* ptr */,
   pbtdi: Deno.PointerValue | Uint8Array /* ptr */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libBluetoothApis_dll.BluetoothFindFirstDevice(util.toPointer(pbtsp), util.toPointer(pbtdi));
 }
 
 export function BluetoothFindNextDevice(
-  hFind: Deno.PointerValue /* isize */,
+  hFind: bigint | number /* isize */,
   pbtdi: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libBluetoothApis_dll.BluetoothFindNextDevice(hFind, util.toPointer(pbtdi)));
 }
 
 export function BluetoothFindDeviceClose(
-  hFind: Deno.PointerValue /* isize */,
+  hFind: bigint | number /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libBluetoothApis_dll.BluetoothFindDeviceClose(hFind));
 }
@@ -5845,7 +5845,7 @@ export function BluetoothRegisterForAuthenticationEx(
 }
 
 export function BluetoothUnregisterAuthentication(
-  hRegHandle: Deno.PointerValue /* isize */,
+  hRegHandle: bigint | number /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libBluetoothApis_dll.BluetoothUnregisterAuthentication(hRegHandle));
 }
@@ -6004,7 +6004,7 @@ export function BluetoothGATTSetCharacteristicValue(
   hDevice: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Characteristic: Deno.PointerValue | Uint8Array /* ptr */,
   CharacteristicValue: Deno.PointerValue | Uint8Array /* ptr */,
-  ReliableWriteContext: Deno.PointerValue /* u64 */,
+  ReliableWriteContext: bigint | number /* u64 */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libBluetoothApis_dll.BluetoothGATTSetCharacteristicValue(util.toPointer(hDevice), util.toPointer(Characteristic), util.toPointer(CharacteristicValue), ReliableWriteContext, Flags);
@@ -6012,7 +6012,7 @@ export function BluetoothGATTSetCharacteristicValue(
 
 export function BluetoothGATTEndReliableWrite(
   hDevice: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  ReliableWriteContext: Deno.PointerValue /* u64 */,
+  ReliableWriteContext: bigint | number /* u64 */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libBluetoothApis_dll.BluetoothGATTEndReliableWrite(util.toPointer(hDevice), ReliableWriteContext, Flags);
@@ -6020,7 +6020,7 @@ export function BluetoothGATTEndReliableWrite(
 
 export function BluetoothGATTAbortReliableWrite(
   hDevice: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  ReliableWriteContext: Deno.PointerValue /* u64 */,
+  ReliableWriteContext: bigint | number /* u64 */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libBluetoothApis_dll.BluetoothGATTAbortReliableWrite(util.toPointer(hDevice), ReliableWriteContext, Flags);
@@ -6048,7 +6048,7 @@ export function BluetoothGATTRegisterEvent(
 }
 
 export function BluetoothGATTUnregisterEvent(
-  EventHandle: Deno.PointerValue /* isize */,
+  EventHandle: bigint | number /* isize */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libBluetoothApis_dll.BluetoothGATTUnregisterEvent(EventHandle, Flags);

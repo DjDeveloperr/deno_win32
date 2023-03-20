@@ -1913,7 +1913,7 @@ export class RICHEDIT_IMAGE_PARAMETERSView {
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 /**
  * Windows.Win32.UI.Controls.NMHDR (size: 24)
@@ -1922,7 +1922,7 @@ export interface NMHDR {
   /** Windows.Win32.Foundation.HWND */
   hwndFrom: Deno.PointerValue;
   /** usize */
-  idFrom: Deno.PointerValue;
+  idFrom: bigint | number;
   /** u32 */
   code: number;
 }
@@ -1959,7 +1959,7 @@ export class NMHDRView {
   }
 
   // 0x08: usize
-  get idFrom(): Deno.PointerValue {
+  get idFrom(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -1976,7 +1976,7 @@ export class NMHDRView {
   }
 
   // 0x08: usize
-  set idFrom(value: Deno.PointerValue) {
+  set idFrom(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -2378,9 +2378,9 @@ export class CHARFORMATWView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -2406,22 +2406,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -3071,7 +3071,7 @@ export class TEXTRANGEWView {
  */
 export interface EDITSTREAM {
   /** usize */
-  dwCookie: Deno.PointerValue;
+  dwCookie: bigint | number;
   /** u32 */
   dwError: number;
   /** Windows.Win32.UI.Controls.RichEdit.EDITSTREAMCALLBACK */
@@ -3104,7 +3104,7 @@ export class EDITSTREAMView {
   }
 
   // 0x00: usize
-  get dwCookie(): Deno.PointerValue {
+  get dwCookie(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -3122,7 +3122,7 @@ export class EDITSTREAMView {
   }
 
   // 0x00: usize
-  set dwCookie(value: Deno.PointerValue) {
+  set dwCookie(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -3405,7 +3405,7 @@ export class FINDTEXTEXWView {
   }
 }
 
-export type HDC = Deno.PointerValue;
+export type HDC = bigint | number;
 
 /**
  * Windows.Win32.Foundation.RECT (size: 16)
@@ -3996,9 +3996,9 @@ export class PARAFORMAT2View {
   }
 }
 
-export type WPARAM = Deno.PointerValue;
+export type WPARAM = bigint | number;
 
-export type LPARAM = Deno.PointerValue;
+export type LPARAM = bigint | number;
 
 /**
  * Windows.Win32.UI.Controls.RichEdit.MSGFILTER (size: 32)
@@ -4480,7 +4480,7 @@ export class GETCONTEXTMENUEXView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.UI.Controls.RichEdit.ENDROPFILES (size: 24)
@@ -5277,7 +5277,7 @@ export interface REPASTESPECIAL {
   /** Windows.Win32.System.Com.DVASPECT */
   dwAspect: DVASPECT;
   /** usize */
-  dwParam: Deno.PointerValue;
+  dwParam: bigint | number;
 }
 
 export const sizeofREPASTESPECIAL = 16;
@@ -5311,7 +5311,7 @@ export class REPASTESPECIALView {
   // 0x04: pad4
 
   // 0x08: usize
-  get dwParam(): Deno.PointerValue {
+  get dwParam(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -5323,7 +5323,7 @@ export class REPASTESPECIALView {
   // 0x04: pad4
 
   // 0x08: usize
-  set dwParam(value: Deno.PointerValue) {
+  set dwParam(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -5684,7 +5684,7 @@ export interface HYPHENATEINFO {
   /** i16 */
   dxHyphenateZone: number;
   /** isize */
-  pfnHyphenate: Deno.PointerValue;
+  pfnHyphenate: bigint | number;
 }
 
 export const sizeofHYPHENATEINFO = 16;
@@ -5725,7 +5725,7 @@ export class HYPHENATEINFOView {
   // 0x04: pad4
 
   // 0x08: isize
-  get pfnHyphenate(): Deno.PointerValue {
+  get pfnHyphenate(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -5742,7 +5742,7 @@ export class HYPHENATEINFOView {
   // 0x04: pad4
 
   // 0x08: isize
-  set pfnHyphenate(value: Deno.PointerValue) {
+  set pfnHyphenate(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -5806,7 +5806,7 @@ export class CHANGENOTIFYView {
   }
 }
 
-export type HBITMAP = Deno.PointerValue;
+export type HBITMAP = bigint | number;
 
 /**
  * Windows.Win32.UI.Controls.RichEdit.CARET_INFO (size: 16)

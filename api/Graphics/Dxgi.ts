@@ -1414,9 +1414,9 @@ export class DXGI_JPEG_QUANTIZATION_TABLEView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -1442,22 +1442,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -1536,7 +1536,7 @@ export interface LARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue;
   /** i64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: bigint | number;
 }
 
 export const sizeofLARGE_INTEGER = 24;
@@ -1576,7 +1576,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  get QuadPart(): Deno.PointerValue {
+  get QuadPart(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -1591,7 +1591,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  set QuadPart(value: Deno.PointerValue) {
+  set QuadPart(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -1825,11 +1825,11 @@ export interface DXGI_ADAPTER_DESC {
   /** u32 */
   Revision: number;
   /** usize */
-  DedicatedVideoMemory: Deno.PointerValue;
+  DedicatedVideoMemory: bigint | number;
   /** usize */
-  DedicatedSystemMemory: Deno.PointerValue;
+  DedicatedSystemMemory: bigint | number;
   /** usize */
-  SharedSystemMemory: Deno.PointerValue;
+  SharedSystemMemory: bigint | number;
   /** Windows.Win32.Foundation.LUID */
   AdapterLuid: Uint8Array | Deno.PointerValue;
 }
@@ -1897,17 +1897,17 @@ export class DXGI_ADAPTER_DESCView {
   }
 
   // 0x18: usize
-  get DedicatedVideoMemory(): Deno.PointerValue {
+  get DedicatedVideoMemory(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: usize
-  get DedicatedSystemMemory(): Deno.PointerValue {
+  get DedicatedSystemMemory(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: usize
-  get SharedSystemMemory(): Deno.PointerValue {
+  get SharedSystemMemory(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -1943,17 +1943,17 @@ export class DXGI_ADAPTER_DESCView {
   }
 
   // 0x18: usize
-  set DedicatedVideoMemory(value: Deno.PointerValue) {
+  set DedicatedVideoMemory(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: usize
-  set DedicatedSystemMemory(value: Deno.PointerValue) {
+  set DedicatedSystemMemory(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: usize
-  set SharedSystemMemory(value: Deno.PointerValue) {
+  set SharedSystemMemory(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
@@ -2044,7 +2044,7 @@ export class RECTView {
   }
 }
 
-export type HMONITOR = Deno.PointerValue;
+export type HMONITOR = bigint | number;
 
 /**
  * Windows.Win32.Graphics.Dxgi.DXGI_OUTPUT_DESC (size: 32)
@@ -2144,7 +2144,7 @@ export class DXGI_OUTPUT_DESCView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.Graphics.Dxgi.DXGI_SHARED_RESOURCE (size: 8)
@@ -2273,7 +2273,7 @@ export class DXGI_SURFACE_DESCView {
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 /**
  * Windows.Win32.Graphics.Dxgi.DXGI_SWAP_CHAIN_DESC (size: 48)
@@ -2435,11 +2435,11 @@ export interface DXGI_ADAPTER_DESC1 {
   /** u32 */
   Revision: number;
   /** usize */
-  DedicatedVideoMemory: Deno.PointerValue;
+  DedicatedVideoMemory: bigint | number;
   /** usize */
-  DedicatedSystemMemory: Deno.PointerValue;
+  DedicatedSystemMemory: bigint | number;
   /** usize */
-  SharedSystemMemory: Deno.PointerValue;
+  SharedSystemMemory: bigint | number;
   /** Windows.Win32.Foundation.LUID */
   AdapterLuid: Uint8Array | Deno.PointerValue;
   /** u32 */
@@ -2512,17 +2512,17 @@ export class DXGI_ADAPTER_DESC1View {
   }
 
   // 0x18: usize
-  get DedicatedVideoMemory(): Deno.PointerValue {
+  get DedicatedVideoMemory(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: usize
-  get DedicatedSystemMemory(): Deno.PointerValue {
+  get DedicatedSystemMemory(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: usize
-  get SharedSystemMemory(): Deno.PointerValue {
+  get SharedSystemMemory(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -2565,17 +2565,17 @@ export class DXGI_ADAPTER_DESC1View {
   }
 
   // 0x18: usize
-  set DedicatedVideoMemory(value: Deno.PointerValue) {
+  set DedicatedVideoMemory(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: usize
-  set DedicatedSystemMemory(value: Deno.PointerValue) {
+  set DedicatedSystemMemory(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: usize
-  set SharedSystemMemory(value: Deno.PointerValue) {
+  set SharedSystemMemory(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
@@ -3618,11 +3618,11 @@ export interface DXGI_ADAPTER_DESC2 {
   /** u32 */
   Revision: number;
   /** usize */
-  DedicatedVideoMemory: Deno.PointerValue;
+  DedicatedVideoMemory: bigint | number;
   /** usize */
-  DedicatedSystemMemory: Deno.PointerValue;
+  DedicatedSystemMemory: bigint | number;
   /** usize */
-  SharedSystemMemory: Deno.PointerValue;
+  SharedSystemMemory: bigint | number;
   /** Windows.Win32.Foundation.LUID */
   AdapterLuid: Uint8Array | Deno.PointerValue;
   /** u32 */
@@ -3703,17 +3703,17 @@ export class DXGI_ADAPTER_DESC2View {
   }
 
   // 0x18: usize
-  get DedicatedVideoMemory(): Deno.PointerValue {
+  get DedicatedVideoMemory(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: usize
-  get DedicatedSystemMemory(): Deno.PointerValue {
+  get DedicatedSystemMemory(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: usize
-  get SharedSystemMemory(): Deno.PointerValue {
+  get SharedSystemMemory(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -3766,17 +3766,17 @@ export class DXGI_ADAPTER_DESC2View {
   }
 
   // 0x18: usize
-  set DedicatedVideoMemory(value: Deno.PointerValue) {
+  set DedicatedVideoMemory(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: usize
-  set DedicatedSystemMemory(value: Deno.PointerValue) {
+  set DedicatedSystemMemory(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: usize
-  set SharedSystemMemory(value: Deno.PointerValue) {
+  set SharedSystemMemory(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
@@ -4091,13 +4091,13 @@ export class DXGI_FRAME_STATISTICS_MEDIAView {
  */
 export interface DXGI_QUERY_VIDEO_MEMORY_INFO {
   /** u64 */
-  Budget: Deno.PointerValue;
+  Budget: bigint | number;
   /** u64 */
-  CurrentUsage: Deno.PointerValue;
+  CurrentUsage: bigint | number;
   /** u64 */
-  AvailableForReservation: Deno.PointerValue;
+  AvailableForReservation: bigint | number;
   /** u64 */
-  CurrentReservation: Deno.PointerValue;
+  CurrentReservation: bigint | number;
 }
 
 export const sizeofDXGI_QUERY_VIDEO_MEMORY_INFO = 32;
@@ -4127,42 +4127,42 @@ export class DXGI_QUERY_VIDEO_MEMORY_INFOView {
   }
 
   // 0x00: u64
-  get Budget(): Deno.PointerValue {
+  get Budget(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get CurrentUsage(): Deno.PointerValue {
+  get CurrentUsage(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get AvailableForReservation(): Deno.PointerValue {
+  get AvailableForReservation(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get CurrentReservation(): Deno.PointerValue {
+  get CurrentReservation(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x00: u64
-  set Budget(value: Deno.PointerValue) {
+  set Budget(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set CurrentUsage(value: Deno.PointerValue) {
+  set CurrentUsage(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set AvailableForReservation(value: Deno.PointerValue) {
+  set AvailableForReservation(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set CurrentReservation(value: Deno.PointerValue) {
+  set CurrentReservation(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 }
@@ -4368,11 +4368,11 @@ export interface DXGI_ADAPTER_DESC3 {
   /** u32 */
   Revision: number;
   /** usize */
-  DedicatedVideoMemory: Deno.PointerValue;
+  DedicatedVideoMemory: bigint | number;
   /** usize */
-  DedicatedSystemMemory: Deno.PointerValue;
+  DedicatedSystemMemory: bigint | number;
   /** usize */
-  SharedSystemMemory: Deno.PointerValue;
+  SharedSystemMemory: bigint | number;
   /** Windows.Win32.Foundation.LUID */
   AdapterLuid: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Dxgi.DXGI_ADAPTER_FLAG3 */
@@ -4453,17 +4453,17 @@ export class DXGI_ADAPTER_DESC3View {
   }
 
   // 0x18: usize
-  get DedicatedVideoMemory(): Deno.PointerValue {
+  get DedicatedVideoMemory(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: usize
-  get DedicatedSystemMemory(): Deno.PointerValue {
+  get DedicatedSystemMemory(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: usize
-  get SharedSystemMemory(): Deno.PointerValue {
+  get SharedSystemMemory(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -4516,17 +4516,17 @@ export class DXGI_ADAPTER_DESC3View {
   }
 
   // 0x18: usize
-  set DedicatedVideoMemory(value: Deno.PointerValue) {
+  set DedicatedVideoMemory(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: usize
-  set DedicatedSystemMemory(value: Deno.PointerValue) {
+  set DedicatedSystemMemory(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: usize
-  set SharedSystemMemory(value: Deno.PointerValue) {
+  set SharedSystemMemory(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
@@ -4801,7 +4801,7 @@ export interface DXGI_INFO_QUEUE_MESSAGE {
   /** ptr */
   pDescription: Deno.PointerValue | Uint8Array;
   /** usize */
-  DescriptionByteLength: Deno.PointerValue;
+  DescriptionByteLength: bigint | number;
 }
 
 export const sizeofDXGI_INFO_QUEUE_MESSAGE = 40;
@@ -4865,7 +4865,7 @@ export class DXGI_INFO_QUEUE_MESSAGEView {
   }
 
   // 0x20: usize
-  get DescriptionByteLength(): Deno.PointerValue {
+  get DescriptionByteLength(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -4897,7 +4897,7 @@ export class DXGI_INFO_QUEUE_MESSAGEView {
   }
 
   // 0x20: usize
-  set DescriptionByteLength(value: Deno.PointerValue) {
+  set DescriptionByteLength(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 }

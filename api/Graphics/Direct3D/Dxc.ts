@@ -121,7 +121,7 @@ export interface DxcBuffer {
   /** ptr */
   Ptr: Deno.PointerValue | Uint8Array;
   /** usize */
-  Size: Deno.PointerValue;
+  Size: bigint | number;
   /** u32 */
   Encoding: number;
 }
@@ -158,7 +158,7 @@ export class DxcBufferView {
   }
 
   // 0x08: usize
-  get Size(): Deno.PointerValue {
+  get Size(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -175,7 +175,7 @@ export class DxcBufferView {
   }
 
   // 0x08: usize
-  set Size(value: Deno.PointerValue) {
+  set Size(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 

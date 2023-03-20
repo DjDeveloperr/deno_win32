@@ -1575,7 +1575,7 @@ export interface MPIO_PASS_THROUGH_PATH32 {
   /** u8 */
   PortNumber: number;
   /** u64 */
-  MpioPathId: Deno.PointerValue;
+  MpioPathId: bigint | number;
 }
 
 export const sizeofMPIO_PASS_THROUGH_PATH32 = 24;
@@ -1635,7 +1635,7 @@ export class MPIO_PASS_THROUGH_PATH32View {
   }
 
   // 0x10: u64
-  get MpioPathId(): Deno.PointerValue {
+  get MpioPathId(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -1665,7 +1665,7 @@ export class MPIO_PASS_THROUGH_PATH32View {
   }
 
   // 0x10: u64
-  set MpioPathId(value: Deno.PointerValue) {
+  set MpioPathId(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -1685,7 +1685,7 @@ export interface MPIO_PASS_THROUGH_PATH_DIRECT32 {
   /** u8 */
   PortNumber: number;
   /** u64 */
-  MpioPathId: Deno.PointerValue;
+  MpioPathId: bigint | number;
 }
 
 export const sizeofMPIO_PASS_THROUGH_PATH_DIRECT32 = 24;
@@ -1745,7 +1745,7 @@ export class MPIO_PASS_THROUGH_PATH_DIRECT32View {
   }
 
   // 0x10: u64
-  get MpioPathId(): Deno.PointerValue {
+  get MpioPathId(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -1775,7 +1775,7 @@ export class MPIO_PASS_THROUGH_PATH_DIRECT32View {
   }
 
   // 0x10: u64
-  set MpioPathId(value: Deno.PointerValue) {
+  set MpioPathId(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -1795,7 +1795,7 @@ export interface MPIO_PASS_THROUGH_PATH32_EX {
   /** u8 */
   PortNumber: number;
   /** u64 */
-  MpioPathId: Deno.PointerValue;
+  MpioPathId: bigint | number;
 }
 
 export const sizeofMPIO_PASS_THROUGH_PATH32_EX = 24;
@@ -1857,7 +1857,7 @@ export class MPIO_PASS_THROUGH_PATH32_EXView {
   // 0x0c: pad4
 
   // 0x10: u64
-  get MpioPathId(): Deno.PointerValue {
+  get MpioPathId(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -1889,7 +1889,7 @@ export class MPIO_PASS_THROUGH_PATH32_EXView {
   // 0x0c: pad4
 
   // 0x10: u64
-  set MpioPathId(value: Deno.PointerValue) {
+  set MpioPathId(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -1909,7 +1909,7 @@ export interface MPIO_PASS_THROUGH_PATH_DIRECT32_EX {
   /** u8 */
   PortNumber: number;
   /** u64 */
-  MpioPathId: Deno.PointerValue;
+  MpioPathId: bigint | number;
 }
 
 export const sizeofMPIO_PASS_THROUGH_PATH_DIRECT32_EX = 24;
@@ -1971,7 +1971,7 @@ export class MPIO_PASS_THROUGH_PATH_DIRECT32_EXView {
   // 0x0c: pad4
 
   // 0x10: u64
-  get MpioPathId(): Deno.PointerValue {
+  get MpioPathId(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -2003,7 +2003,7 @@ export class MPIO_PASS_THROUGH_PATH_DIRECT32_EXView {
   // 0x0c: pad4
 
   // 0x10: u64
-  set MpioPathId(value: Deno.PointerValue) {
+  set MpioPathId(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -2033,7 +2033,7 @@ export interface SCSI_PASS_THROUGH {
   /** u32 */
   TimeOutValue: number;
   /** usize */
-  DataBufferOffset: Deno.PointerValue;
+  DataBufferOffset: bigint | number;
   /** u32 */
   SenseInfoOffset: number;
   /** array */
@@ -2139,7 +2139,7 @@ export class SCSI_PASS_THROUGHView {
   // 0x11: pad7
 
   // 0x18: usize
-  get DataBufferOffset(): Deno.PointerValue {
+  get DataBufferOffset(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -2209,7 +2209,7 @@ export class SCSI_PASS_THROUGHView {
   // 0x11: pad7
 
   // 0x18: usize
-  set DataBufferOffset(value: Deno.PointerValue) {
+  set DataBufferOffset(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -2476,9 +2476,9 @@ export interface SCSI_PASS_THROUGH_EX {
   /** u32 */
   DataInTransferLength: number;
   /** usize */
-  DataOutBufferOffset: Deno.PointerValue;
+  DataOutBufferOffset: bigint | number;
   /** usize */
-  DataInBufferOffset: Deno.PointerValue;
+  DataInBufferOffset: bigint | number;
   /** array */
   Cdb: Deno.PointerValue;
 }
@@ -2599,12 +2599,12 @@ export class SCSI_PASS_THROUGH_EXView {
   }
 
   // 0x28: usize
-  get DataOutBufferOffset(): Deno.PointerValue {
+  get DataOutBufferOffset(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: usize
-  get DataInBufferOffset(): Deno.PointerValue {
+  get DataInBufferOffset(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -2680,12 +2680,12 @@ export class SCSI_PASS_THROUGH_EXView {
   }
 
   // 0x28: usize
-  set DataOutBufferOffset(value: Deno.PointerValue) {
+  set DataOutBufferOffset(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: usize
-  set DataInBufferOffset(value: Deno.PointerValue) {
+  set DataInBufferOffset(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
@@ -2970,7 +2970,7 @@ export interface ATA_PASS_THROUGH_EX {
   /** u32 */
   ReservedAsUlong: number;
   /** usize */
-  DataBufferOffset: Deno.PointerValue;
+  DataBufferOffset: bigint | number;
   /** array */
   PreviousTaskFile: Deno.PointerValue;
   /** array */
@@ -3068,7 +3068,7 @@ export class ATA_PASS_THROUGH_EXView {
   // 0x14: pad4
 
   // 0x18: usize
-  get DataBufferOffset(): Deno.PointerValue {
+  get DataBufferOffset(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -3132,7 +3132,7 @@ export class ATA_PASS_THROUGH_EXView {
   // 0x14: pad4
 
   // 0x18: usize
-  set DataBufferOffset(value: Deno.PointerValue) {
+  set DataBufferOffset(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -3478,7 +3478,7 @@ export interface MPIO_PASS_THROUGH_PATH {
   /** u8 */
   PortNumber: number;
   /** u64 */
-  MpioPathId: Deno.PointerValue;
+  MpioPathId: bigint | number;
 }
 
 export const sizeofMPIO_PASS_THROUGH_PATH = 24;
@@ -3538,7 +3538,7 @@ export class MPIO_PASS_THROUGH_PATHView {
   }
 
   // 0x10: u64
-  get MpioPathId(): Deno.PointerValue {
+  get MpioPathId(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -3568,7 +3568,7 @@ export class MPIO_PASS_THROUGH_PATHView {
   }
 
   // 0x10: u64
-  set MpioPathId(value: Deno.PointerValue) {
+  set MpioPathId(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -3588,7 +3588,7 @@ export interface MPIO_PASS_THROUGH_PATH_DIRECT {
   /** u8 */
   PortNumber: number;
   /** u64 */
-  MpioPathId: Deno.PointerValue;
+  MpioPathId: bigint | number;
 }
 
 export const sizeofMPIO_PASS_THROUGH_PATH_DIRECT = 24;
@@ -3648,7 +3648,7 @@ export class MPIO_PASS_THROUGH_PATH_DIRECTView {
   }
 
   // 0x10: u64
-  get MpioPathId(): Deno.PointerValue {
+  get MpioPathId(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -3678,7 +3678,7 @@ export class MPIO_PASS_THROUGH_PATH_DIRECTView {
   }
 
   // 0x10: u64
-  set MpioPathId(value: Deno.PointerValue) {
+  set MpioPathId(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -3698,7 +3698,7 @@ export interface MPIO_PASS_THROUGH_PATH_EX {
   /** u8 */
   PortNumber: number;
   /** u64 */
-  MpioPathId: Deno.PointerValue;
+  MpioPathId: bigint | number;
 }
 
 export const sizeofMPIO_PASS_THROUGH_PATH_EX = 24;
@@ -3760,7 +3760,7 @@ export class MPIO_PASS_THROUGH_PATH_EXView {
   // 0x0c: pad4
 
   // 0x10: u64
-  get MpioPathId(): Deno.PointerValue {
+  get MpioPathId(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -3792,7 +3792,7 @@ export class MPIO_PASS_THROUGH_PATH_EXView {
   // 0x0c: pad4
 
   // 0x10: u64
-  set MpioPathId(value: Deno.PointerValue) {
+  set MpioPathId(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -3812,7 +3812,7 @@ export interface MPIO_PASS_THROUGH_PATH_DIRECT_EX {
   /** u8 */
   PortNumber: number;
   /** u64 */
-  MpioPathId: Deno.PointerValue;
+  MpioPathId: bigint | number;
 }
 
 export const sizeofMPIO_PASS_THROUGH_PATH_DIRECT_EX = 24;
@@ -3874,7 +3874,7 @@ export class MPIO_PASS_THROUGH_PATH_DIRECT_EXView {
   // 0x0c: pad4
 
   // 0x10: u64
-  get MpioPathId(): Deno.PointerValue {
+  get MpioPathId(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -3906,7 +3906,7 @@ export class MPIO_PASS_THROUGH_PATH_DIRECT_EXView {
   // 0x0c: pad4
 
   // 0x10: u64
-  set MpioPathId(value: Deno.PointerValue) {
+  set MpioPathId(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -4304,7 +4304,7 @@ export interface NVCACHE_REQUEST_BLOCK {
   /** u32 */
   Count: number;
   /** u64 */
-  LBA: Deno.PointerValue;
+  LBA: bigint | number;
   /** u32 */
   DataBufSize: number;
   /** u32 */
@@ -4379,7 +4379,7 @@ export class NVCACHE_REQUEST_BLOCKView {
   // 0x12: pad6
 
   // 0x18: u64
-  get LBA(): Deno.PointerValue {
+  get LBA(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -4428,7 +4428,7 @@ export class NVCACHE_REQUEST_BLOCKView {
   // 0x12: pad6
 
   // 0x18: u64
-  set LBA(value: Deno.PointerValue) {
+  set LBA(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -4833,9 +4833,9 @@ export class NVCACHE_HINT_PAYLOADView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -4861,22 +4861,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -5200,9 +5200,9 @@ export class STORAGE_DIAGNOSTIC_MP_REQUESTView {
  */
 export interface MP_DEVICE_DATA_SET_RANGE {
   /** i64 */
-  StartingOffset: Deno.PointerValue;
+  StartingOffset: bigint | number;
   /** u64 */
-  LengthInBytes: Deno.PointerValue;
+  LengthInBytes: bigint | number;
 }
 
 export const sizeofMP_DEVICE_DATA_SET_RANGE = 16;
@@ -5228,22 +5228,22 @@ export class MP_DEVICE_DATA_SET_RANGEView {
   }
 
   // 0x00: i64
-  get StartingOffset(): Deno.PointerValue {
+  get StartingOffset(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: u64
-  get LengthInBytes(): Deno.PointerValue {
+  get LengthInBytes(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: i64
-  set StartingOffset(value: Deno.PointerValue) {
+  set StartingOffset(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set LengthInBytes(value: Deno.PointerValue) {
+  set LengthInBytes(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -5915,7 +5915,7 @@ export interface HYBRID_INFORMATION {
   /** u32 */
   FractionBase: number;
   /** u64 */
-  CacheSize: Deno.PointerValue;
+  CacheSize: bigint | number;
   /** _Attributes_e__Struct */
   Attributes: Uint8Array | Deno.PointerValue;
   /** _Priorities_e__Struct */
@@ -5997,7 +5997,7 @@ export class HYBRID_INFORMATIONView {
   }
 
   // 0x20: u64
-  get CacheSize(): Deno.PointerValue {
+  get CacheSize(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -6049,7 +6049,7 @@ export class HYBRID_INFORMATIONView {
   }
 
   // 0x20: u64
-  set CacheSize(value: Deno.PointerValue) {
+  set CacheSize(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -6162,7 +6162,7 @@ export interface HYBRID_DEMOTE_BY_SIZE {
   /** u32 */
   Reserved1: number;
   /** u64 */
-  LbaCount: Deno.PointerValue;
+  LbaCount: bigint | number;
 }
 
 export const sizeofHYBRID_DEMOTE_BY_SIZE = 24;
@@ -6228,7 +6228,7 @@ export class HYBRID_DEMOTE_BY_SIZEView {
   }
 
   // 0x10: u64
-  get LbaCount(): Deno.PointerValue {
+  get LbaCount(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -6263,7 +6263,7 @@ export class HYBRID_DEMOTE_BY_SIZEView {
   }
 
   // 0x10: u64
-  set LbaCount(value: Deno.PointerValue) {
+  set LbaCount(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -6384,7 +6384,7 @@ export interface _Revision_e__Union {
   /** array */
   Info: Deno.PointerValue;
   /** u64 */
-  AsUlonglong: Deno.PointerValue;
+  AsUlonglong: bigint | number;
 }
 
 export const sizeof_Revision_e__Union = 16;
@@ -6416,7 +6416,7 @@ export class _Revision_e__UnionView {
   }
 
   // 0x08: u64
-  get AsUlonglong(): Deno.PointerValue {
+  get AsUlonglong(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -6426,7 +6426,7 @@ export class _Revision_e__UnionView {
   }
 
   // 0x08: u64
-  set AsUlonglong(value: Deno.PointerValue) {
+  set AsUlonglong(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -6950,9 +6950,9 @@ export interface STORAGE_FIRMWARE_DOWNLOAD {
   /** u32 */
   Size: number;
   /** u64 */
-  Offset: Deno.PointerValue;
+  Offset: bigint | number;
   /** u64 */
-  BufferSize: Deno.PointerValue;
+  BufferSize: bigint | number;
   /** array */
   ImageBuffer: Deno.PointerValue;
 }
@@ -6996,12 +6996,12 @@ export class STORAGE_FIRMWARE_DOWNLOADView {
   }
 
   // 0x08: u64
-  get Offset(): Deno.PointerValue {
+  get Offset(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get BufferSize(): Deno.PointerValue {
+  get BufferSize(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -7022,12 +7022,12 @@ export class STORAGE_FIRMWARE_DOWNLOADView {
   }
 
   // 0x08: u64
-  set Offset(value: Deno.PointerValue) {
+  set Offset(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set BufferSize(value: Deno.PointerValue) {
+  set BufferSize(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -7046,9 +7046,9 @@ export interface STORAGE_FIRMWARE_DOWNLOAD_V2 {
   /** u32 */
   Size: number;
   /** u64 */
-  Offset: Deno.PointerValue;
+  Offset: bigint | number;
   /** u64 */
-  BufferSize: Deno.PointerValue;
+  BufferSize: bigint | number;
   /** u8 */
   Slot: number;
   /** array */
@@ -7106,12 +7106,12 @@ export class STORAGE_FIRMWARE_DOWNLOAD_V2View {
   }
 
   // 0x08: u64
-  get Offset(): Deno.PointerValue {
+  get Offset(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get BufferSize(): Deno.PointerValue {
+  get BufferSize(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -7152,12 +7152,12 @@ export class STORAGE_FIRMWARE_DOWNLOAD_V2View {
   }
 
   // 0x08: u64
-  set Offset(value: Deno.PointerValue) {
+  set Offset(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set BufferSize(value: Deno.PointerValue) {
+  set BufferSize(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -7640,7 +7640,7 @@ export interface LARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue;
   /** i64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: bigint | number;
 }
 
 export const sizeofLARGE_INTEGER = 24;
@@ -7680,7 +7680,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  get QuadPart(): Deno.PointerValue {
+  get QuadPart(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -7695,7 +7695,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  set QuadPart(value: Deno.PointerValue) {
+  set QuadPart(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -8824,7 +8824,7 @@ export class ISCSI_LOGIN_OPTIONSView {
  */
 export interface IKE_AUTHENTICATION_PRESHARED_KEY {
   /** u64 */
-  SecurityFlags: Deno.PointerValue;
+  SecurityFlags: bigint | number;
   /** u8 */
   IdType: number;
   /** u32 */
@@ -8870,7 +8870,7 @@ export class IKE_AUTHENTICATION_PRESHARED_KEYView {
   }
 
   // 0x00: u64
-  get SecurityFlags(): Deno.PointerValue {
+  get SecurityFlags(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -8906,7 +8906,7 @@ export class IKE_AUTHENTICATION_PRESHARED_KEYView {
   }
 
   // 0x00: u64
-  set SecurityFlags(value: Deno.PointerValue) {
+  set SecurityFlags(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -9059,9 +9059,9 @@ export class IKE_AUTHENTICATION_INFORMATIONView {
  */
 export interface ISCSI_UNIQUE_SESSION_ID {
   /** u64 */
-  AdapterUnique: Deno.PointerValue;
+  AdapterUnique: bigint | number;
   /** u64 */
-  AdapterSpecific: Deno.PointerValue;
+  AdapterSpecific: bigint | number;
 }
 
 export const sizeofISCSI_UNIQUE_SESSION_ID = 16;
@@ -9087,22 +9087,22 @@ export class ISCSI_UNIQUE_SESSION_IDView {
   }
 
   // 0x00: u64
-  get AdapterUnique(): Deno.PointerValue {
+  get AdapterUnique(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get AdapterSpecific(): Deno.PointerValue {
+  get AdapterSpecific(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set AdapterUnique(value: Deno.PointerValue) {
+  set AdapterUnique(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set AdapterSpecific(value: Deno.PointerValue) {
+  set AdapterSpecific(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -9114,7 +9114,7 @@ export interface SCSI_LUN_LIST {
   /** u32 */
   OSLUN: number;
   /** u64 */
-  TargetLUN: Deno.PointerValue;
+  TargetLUN: bigint | number;
 }
 
 export const sizeofSCSI_LUN_LIST = 16;
@@ -9148,7 +9148,7 @@ export class SCSI_LUN_LISTView {
   // 0x04: pad4
 
   // 0x08: u64
-  get TargetLUN(): Deno.PointerValue {
+  get TargetLUN(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -9160,7 +9160,7 @@ export class SCSI_LUN_LISTView {
   // 0x04: pad4
 
   // 0x08: u64
-  set TargetLUN(value: Deno.PointerValue) {
+  set TargetLUN(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -9838,7 +9838,7 @@ export interface ISCSI_TARGET_PORTAL_INFO_EXW {
   /** u16 */
   Socket: number;
   /** u64 */
-  SecurityFlags: Deno.PointerValue;
+  SecurityFlags: bigint | number;
   /** Windows.Win32.Storage.IscsiDisc.ISCSI_LOGIN_OPTIONS */
   LoginOptions: Uint8Array | Deno.PointerValue;
 }
@@ -9910,7 +9910,7 @@ export class ISCSI_TARGET_PORTAL_INFO_EXWView {
   // 0x22: pad6
 
   // 0x28: u64
-  get SecurityFlags(): Deno.PointerValue {
+  get SecurityFlags(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -9950,7 +9950,7 @@ export class ISCSI_TARGET_PORTAL_INFO_EXWView {
   // 0x22: pad6
 
   // 0x28: u64
-  set SecurityFlags(value: Deno.PointerValue) {
+  set SecurityFlags(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
@@ -9975,7 +9975,7 @@ export interface ISCSI_TARGET_PORTAL_INFO_EXA {
   /** u16 */
   Socket: number;
   /** u64 */
-  SecurityFlags: Deno.PointerValue;
+  SecurityFlags: bigint | number;
   /** Windows.Win32.Storage.IscsiDisc.ISCSI_LOGIN_OPTIONS */
   LoginOptions: Uint8Array | Deno.PointerValue;
 }
@@ -10047,7 +10047,7 @@ export class ISCSI_TARGET_PORTAL_INFO_EXAView {
   // 0x22: pad6
 
   // 0x28: u64
-  get SecurityFlags(): Deno.PointerValue {
+  get SecurityFlags(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -10087,7 +10087,7 @@ export class ISCSI_TARGET_PORTAL_INFO_EXAView {
   // 0x22: pad6
 
   // 0x28: u64
-  set SecurityFlags(value: Deno.PointerValue) {
+  set SecurityFlags(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
@@ -10810,7 +10810,7 @@ export interface ISCSI_CONNECTION_INFO_EX {
   /** Windows.Win32.Storage.IscsiDisc.ISCSI_AUTH_TYPES */
   AuthType: ISCSI_AUTH_TYPES;
   /** u64 */
-  EstimatedThroughput: Deno.PointerValue;
+  EstimatedThroughput: bigint | number;
   /** u32 */
   MaxDatagramSize: number;
 }
@@ -10892,7 +10892,7 @@ export class ISCSI_CONNECTION_INFO_EXView {
   // 0x14: pad4
 
   // 0x18: u64
-  get EstimatedThroughput(): Deno.PointerValue {
+  get EstimatedThroughput(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -10941,7 +10941,7 @@ export class ISCSI_CONNECTION_INFO_EXView {
   // 0x14: pad4
 
   // 0x18: u64
-  set EstimatedThroughput(value: Deno.PointerValue) {
+  set EstimatedThroughput(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -11561,7 +11561,7 @@ export interface PERSISTENT_ISCSI_LOGIN_INFOW {
   /** Windows.Win32.Storage.IscsiDisc.ISCSI_TARGET_PORTALW */
   TargetPortal: Uint8Array | Deno.PointerValue;
   /** u64 */
-  SecurityFlags: Deno.PointerValue;
+  SecurityFlags: bigint | number;
   /** ptr */
   Mappings: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Storage.IscsiDisc.ISCSI_LOGIN_OPTIONS */
@@ -11635,7 +11635,7 @@ export class PERSISTENT_ISCSI_LOGIN_INFOWView {
   }
 
   // 0x28: u64
-  get SecurityFlags(): Deno.PointerValue {
+  get SecurityFlags(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -11679,7 +11679,7 @@ export class PERSISTENT_ISCSI_LOGIN_INFOWView {
   }
 
   // 0x28: u64
-  set SecurityFlags(value: Deno.PointerValue) {
+  set SecurityFlags(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
@@ -11709,7 +11709,7 @@ export interface PERSISTENT_ISCSI_LOGIN_INFOA {
   /** Windows.Win32.Storage.IscsiDisc.ISCSI_TARGET_PORTALA */
   TargetPortal: Uint8Array | Deno.PointerValue;
   /** u64 */
-  SecurityFlags: Deno.PointerValue;
+  SecurityFlags: bigint | number;
   /** ptr */
   Mappings: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Storage.IscsiDisc.ISCSI_LOGIN_OPTIONS */
@@ -11783,7 +11783,7 @@ export class PERSISTENT_ISCSI_LOGIN_INFOAView {
   }
 
   // 0x28: u64
-  get SecurityFlags(): Deno.PointerValue {
+  get SecurityFlags(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -11827,7 +11827,7 @@ export class PERSISTENT_ISCSI_LOGIN_INFOAView {
   }
 
   // 0x28: u64
-  set SecurityFlags(value: Deno.PointerValue) {
+  set SecurityFlags(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
@@ -12270,7 +12270,7 @@ export function AddIScsiConnectionW(
   Reserved: Deno.PointerValue | Uint8Array /* ptr */,
   InitiatorPortNumber: number /* u32 */,
   TargetPortal: Deno.PointerValue | Uint8Array /* ptr */,
-  SecurityFlags: Deno.PointerValue /* u64 */,
+  SecurityFlags: bigint | number /* u64 */,
   LoginOptions: Deno.PointerValue | Uint8Array /* ptr */,
   KeySize: number /* u32 */,
   Key: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
@@ -12284,7 +12284,7 @@ export function AddIScsiConnectionA(
   Reserved: Deno.PointerValue | Uint8Array /* ptr */,
   InitiatorPortNumber: number /* u32 */,
   TargetPortal: Deno.PointerValue | Uint8Array /* ptr */,
-  SecurityFlags: Deno.PointerValue /* u64 */,
+  SecurityFlags: bigint | number /* u64 */,
   LoginOptions: Deno.PointerValue | Uint8Array /* ptr */,
   KeySize: number /* u32 */,
   Key: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
@@ -12356,7 +12356,7 @@ export function AddIScsiSendTargetPortalW(
   InitiatorInstance: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   InitiatorPortNumber: number /* u32 */,
   LoginOptions: Deno.PointerValue | Uint8Array /* ptr */,
-  SecurityFlags: Deno.PointerValue /* u64 */,
+  SecurityFlags: bigint | number /* u64 */,
   Portal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libISCSIDSC_dll.AddIScsiSendTargetPortalW(util.pwstrToFfi(InitiatorInstance), InitiatorPortNumber, util.toPointer(LoginOptions), SecurityFlags, util.toPointer(Portal));
@@ -12366,7 +12366,7 @@ export function AddIScsiSendTargetPortalA(
   InitiatorInstance: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   InitiatorPortNumber: number /* u32 */,
   LoginOptions: Deno.PointerValue | Uint8Array /* ptr */,
-  SecurityFlags: Deno.PointerValue /* u64 */,
+  SecurityFlags: bigint | number /* u64 */,
   Portal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libISCSIDSC_dll.AddIScsiSendTargetPortalA(util.pstrToFfi(InitiatorInstance), InitiatorPortNumber, util.toPointer(LoginOptions), SecurityFlags, util.toPointer(Portal));
@@ -12440,7 +12440,7 @@ export function LoginIScsiTargetW(
   InitiatorInstance: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   InitiatorPortNumber: number /* u32 */,
   TargetPortal: Deno.PointerValue | Uint8Array /* ptr */,
-  SecurityFlags: Deno.PointerValue /* u64 */,
+  SecurityFlags: bigint | number /* u64 */,
   Mappings: Deno.PointerValue | Uint8Array /* ptr */,
   LoginOptions: Deno.PointerValue | Uint8Array /* ptr */,
   KeySize: number /* u32 */,
@@ -12458,7 +12458,7 @@ export function LoginIScsiTargetA(
   InitiatorInstance: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   InitiatorPortNumber: number /* u32 */,
   TargetPortal: Deno.PointerValue | Uint8Array /* ptr */,
-  SecurityFlags: Deno.PointerValue /* u64 */,
+  SecurityFlags: bigint | number /* u64 */,
   Mappings: Deno.PointerValue | Uint8Array /* ptr */,
   LoginOptions: Deno.PointerValue | Uint8Array /* ptr */,
   KeySize: number /* u32 */,
@@ -12512,7 +12512,7 @@ export function RemoveIScsiPersistentTargetA(
 
 export function SendScsiInquiry(
   UniqueSessionId: Deno.PointerValue | Uint8Array /* ptr */,
-  Lun: Deno.PointerValue /* u64 */,
+  Lun: bigint | number /* u64 */,
   EvpdCmddt: number /* u8 */,
   PageCode: number /* u8 */,
   ScsiStatus: Deno.PointerValue | Uint8Array /* ptr */,
@@ -12526,7 +12526,7 @@ export function SendScsiInquiry(
 
 export function SendScsiReadCapacity(
   UniqueSessionId: Deno.PointerValue | Uint8Array /* ptr */,
-  Lun: Deno.PointerValue /* u64 */,
+  Lun: bigint | number /* u64 */,
   ScsiStatus: Deno.PointerValue | Uint8Array /* ptr */,
   ResponseSize: Deno.PointerValue | Uint8Array /* ptr */,
   ResponseBuffer: Deno.PointerValue | Uint8Array /* ptr */,

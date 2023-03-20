@@ -1471,11 +1471,11 @@ export const IMO_SYSTEM = 4;
 
 // Structs
 
-export type HRAWINPUT = Deno.PointerValue;
+export type HRAWINPUT = bigint | number;
 
-export type HGESTUREINFO = Deno.PointerValue;
+export type HGESTUREINFO = bigint | number;
 
-export type HTOUCHINPUT = Deno.PointerValue;
+export type HTOUCHINPUT = bigint | number;
 
 /**
  * Windows.Win32.Foundation.POINT (size: 8)
@@ -2277,7 +2277,7 @@ export class STYLEBUFWView {
   }
 }
 
-export type HBITMAP = Deno.PointerValue;
+export type HBITMAP = bigint | number;
 
 /**
  * Windows.Win32.UI.Input.Ime.IMEMENUITEMINFOA (size: 56)
@@ -2701,7 +2701,7 @@ export class IMECHARPOSITIONView {
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 /**
  * Windows.Win32.UI.Input.Ime.IMEDLG (size: 32)
@@ -2805,11 +2805,11 @@ export class IMEDLGView {
  */
 export interface _Anonymous1_e__Union {
   /** usize */
-  Data0: Deno.PointerValue;
+  Data0: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   String: string | null | Uint8Array | Uint16Array;
   /** usize */
-  u: Deno.PointerValue;
+  u: bigint | number;
   /** ptr */
   psid: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -2861,7 +2861,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  get Data0(): Deno.PointerValue {
+  get Data0(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -2872,7 +2872,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  get u(): Deno.PointerValue {
+  get u(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -2908,7 +2908,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  set Data0(value: Deno.PointerValue) {
+  set Data0(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -2919,7 +2919,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  set u(value: Deno.PointerValue) {
+  set u(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -2956,7 +2956,7 @@ export class _Anonymous1_e__UnionView {
  */
 export interface _Anonymous2_e__Union {
   /** usize */
-  Data1: Deno.PointerValue;
+  Data1: bigint | number;
   /** i32 */
   LogonId_HighPart: number;
 }
@@ -2985,7 +2985,7 @@ export class _Anonymous2_e__UnionView {
   }
 
   // 0x00: usize
-  get Data1(): Deno.PointerValue {
+  get Data1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -2997,7 +2997,7 @@ export class _Anonymous2_e__UnionView {
   // 0x0c: pad4
 
   // 0x00: usize
-  set Data1(value: Deno.PointerValue) {
+  set Data1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -3459,9 +3459,9 @@ export class MORRSLTView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -3487,22 +3487,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -4095,7 +4095,7 @@ export class IMEKMSKEYView {
   }
 }
 
-export type HIMC = Deno.PointerValue;
+export type HIMC = bigint | number;
 
 /**
  * Windows.Win32.UI.Input.Ime.IMEKMS (size: 32)
@@ -5078,9 +5078,9 @@ export class GUIDELINEView {
   // 0x1c: pad4
 }
 
-export type WPARAM = Deno.PointerValue;
+export type WPARAM = bigint | number;
 
-export type LPARAM = Deno.PointerValue;
+export type LPARAM = bigint | number;
 
 /**
  * Windows.Win32.UI.Input.Ime.TRANSMSG (size: 24)
@@ -5820,7 +5820,7 @@ export class _lfFont_e__UnionView {
   }
 }
 
-export type HIMCC = Deno.PointerValue;
+export type HIMCC = bigint | number;
 
 /**
  * Windows.Win32.UI.Input.Ime.INPUTCONTEXT (size: 128)
@@ -6964,7 +6964,7 @@ export class IMECHARINFOView {
   // 0x0c: pad4
 }
 
-export type HICON = Deno.PointerValue;
+export type HICON = bigint | number;
 
 /**
  * Windows.Win32.UI.Input.Ime.IMEAPPLETCFG (size: 56)
@@ -10237,7 +10237,7 @@ export interface MOUSEMOVEPOINT {
   /** u32 */
   time: number;
   /** usize */
-  dwExtraInfo: Deno.PointerValue;
+  dwExtraInfo: bigint | number;
 }
 
 export const sizeofMOUSEMOVEPOINT = 24;
@@ -10285,7 +10285,7 @@ export class MOUSEMOVEPOINTView {
   // 0x0c: pad4
 
   // 0x10: usize
-  get dwExtraInfo(): Deno.PointerValue {
+  get dwExtraInfo(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -10307,7 +10307,7 @@ export class MOUSEMOVEPOINTView {
   // 0x0c: pad4
 
   // 0x10: usize
-  set dwExtraInfo(value: Deno.PointerValue) {
+  set dwExtraInfo(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -10414,7 +10414,7 @@ export interface MOUSEINPUT {
   /** u32 */
   time: number;
   /** usize */
-  dwExtraInfo: Deno.PointerValue;
+  dwExtraInfo: bigint | number;
 }
 
 export const sizeofMOUSEINPUT = 32;
@@ -10476,7 +10476,7 @@ export class MOUSEINPUTView {
   // 0x14: pad4
 
   // 0x18: usize
-  get dwExtraInfo(): Deno.PointerValue {
+  get dwExtraInfo(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -10508,7 +10508,7 @@ export class MOUSEINPUTView {
   // 0x14: pad4
 
   // 0x18: usize
-  set dwExtraInfo(value: Deno.PointerValue) {
+  set dwExtraInfo(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 }
@@ -10526,7 +10526,7 @@ export interface KEYBDINPUT {
   /** u32 */
   time: number;
   /** usize */
-  dwExtraInfo: Deno.PointerValue;
+  dwExtraInfo: bigint | number;
 }
 
 export const sizeofKEYBDINPUT = 24;
@@ -10581,7 +10581,7 @@ export class KEYBDINPUTView {
   // 0x0c: pad4
 
   // 0x10: usize
-  get dwExtraInfo(): Deno.PointerValue {
+  get dwExtraInfo(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -10608,7 +10608,7 @@ export class KEYBDINPUTView {
   // 0x0c: pad4
 
   // 0x10: usize
-  set dwExtraInfo(value: Deno.PointerValue) {
+  set dwExtraInfo(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -10792,7 +10792,7 @@ export class LASTINPUTINFOView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.UI.Input.Touch.TOUCHINPUT (size: 48)
@@ -10813,7 +10813,7 @@ export interface TOUCHINPUT {
   /** u32 */
   dwTime: number;
   /** usize */
-  dwExtraInfo: Deno.PointerValue;
+  dwExtraInfo: bigint | number;
   /** u32 */
   cxContact: number;
   /** u32 */
@@ -10895,7 +10895,7 @@ export class TOUCHINPUTView {
   }
 
   // 0x20: usize
-  get dwExtraInfo(): Deno.PointerValue {
+  get dwExtraInfo(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -10945,7 +10945,7 @@ export class TOUCHINPUTView {
   }
 
   // 0x20: usize
-  set dwExtraInfo(value: Deno.PointerValue) {
+  set dwExtraInfo(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -11037,7 +11037,7 @@ export interface GESTUREINFO {
   /** u32 */
   dwSequenceID: number;
   /** u64 */
-  ullArguments: Deno.PointerValue;
+  ullArguments: bigint | number;
   /** u32 */
   cbExtraArgs: number;
 }
@@ -11120,7 +11120,7 @@ export class GESTUREINFOView {
   }
 
   // 0x28: u64
-  get ullArguments(): Deno.PointerValue {
+  get ullArguments(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -11169,7 +11169,7 @@ export class GESTUREINFOView {
   }
 
   // 0x28: u64
-  set ullArguments(value: Deno.PointerValue) {
+  set ullArguments(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
@@ -11388,7 +11388,7 @@ export interface POINTER_INFO {
   /** u32 */
   dwKeyStates: number;
   /** u64 */
-  PerformanceCount: Deno.PointerValue;
+  PerformanceCount: bigint | number;
   /** Windows.Win32.UI.Input.Pointer.POINTER_BUTTON_CHANGE_TYPE */
   ButtonChangeType: POINTER_BUTTON_CHANGE_TYPE;
 }
@@ -11521,7 +11521,7 @@ export class POINTER_INFOView {
   }
 
   // 0x50: u64
-  get PerformanceCount(): Deno.PointerValue {
+  get PerformanceCount(): bigint | number {
     return Number(this.view.getBigUint64(80, true));
   }
 
@@ -11603,7 +11603,7 @@ export class POINTER_INFOView {
   }
 
   // 0x50: u64
-  set PerformanceCount(value: Deno.PointerValue) {
+  set PerformanceCount(value: bigint | number) {
     this.view.setBigUint64(80, BigInt(value), true);
   }
 
@@ -12371,9 +12371,9 @@ export class RAWHIDView {
  */
 export interface SDP_LARGE_INTEGER_16 {
   /** u64 */
-  LowPart: Deno.PointerValue;
+  LowPart: bigint | number;
   /** i64 */
-  HighPart: Deno.PointerValue;
+  HighPart: bigint | number;
 }
 
 export const sizeofSDP_LARGE_INTEGER_16 = 16;
@@ -12399,22 +12399,22 @@ export class SDP_LARGE_INTEGER_16View {
   }
 
   // 0x00: u64
-  get LowPart(): Deno.PointerValue {
+  get LowPart(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: i64
-  get HighPart(): Deno.PointerValue {
+  get HighPart(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x00: u64
-  set LowPart(value: Deno.PointerValue) {
+  set LowPart(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: i64
-  set HighPart(value: Deno.PointerValue) {
+  set HighPart(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -12426,9 +12426,9 @@ export type CHAR = number;
  */
 export interface SDP_ULARGE_INTEGER_16 {
   /** u64 */
-  LowPart: Deno.PointerValue;
+  LowPart: bigint | number;
   /** u64 */
-  HighPart: Deno.PointerValue;
+  HighPart: bigint | number;
 }
 
 export const sizeofSDP_ULARGE_INTEGER_16 = 16;
@@ -12454,22 +12454,22 @@ export class SDP_ULARGE_INTEGER_16View {
   }
 
   // 0x00: u64
-  get LowPart(): Deno.PointerValue {
+  get LowPart(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get HighPart(): Deno.PointerValue {
+  get HighPart(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set LowPart(value: Deno.PointerValue) {
+  set LowPart(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set HighPart(value: Deno.PointerValue) {
+  set HighPart(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -12717,7 +12717,7 @@ export interface _data_e__Union {
   /** Windows.Win32.Devices.Bluetooth.SDP_LARGE_INTEGER_16 */
   int128: Uint8Array | Deno.PointerValue;
   /** i64 */
-  int64: Deno.PointerValue;
+  int64: bigint | number;
   /** i32 */
   int32: number;
   /** i16 */
@@ -12727,7 +12727,7 @@ export interface _data_e__Union {
   /** Windows.Win32.Devices.Bluetooth.SDP_ULARGE_INTEGER_16 */
   uint128: Uint8Array | Deno.PointerValue;
   /** u64 */
-  uint64: Deno.PointerValue;
+  uint64: bigint | number;
   /** u32 */
   uint32: number;
   /** u16 */
@@ -12815,7 +12815,7 @@ export class _data_e__UnionView {
   }
 
   // 0x08: i64
-  get int64(): Deno.PointerValue {
+  get int64(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -12843,7 +12843,7 @@ export class _data_e__UnionView {
   }
 
   // 0x20: u64
-  get uint64(): Deno.PointerValue {
+  get uint64(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -12915,7 +12915,7 @@ export class _data_e__UnionView {
   }
 
   // 0x08: i64
-  set int64(value: Deno.PointerValue) {
+  set int64(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -12942,7 +12942,7 @@ export class _data_e__UnionView {
   }
 
   // 0x20: u64
-  set uint64(value: Deno.PointerValue) {
+  set uint64(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -13606,7 +13606,7 @@ export class INPUT_MESSAGE_SOURCEView {
   }
 }
 
-export type LRESULT = Deno.PointerValue;
+export type LRESULT = bigint | number;
 
 // Native Libraries
 

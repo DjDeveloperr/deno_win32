@@ -798,7 +798,7 @@ export class WLX_CLIENT_CREDENTIALS_INFO_V2_0View {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.Foundation.LUID (size: 8)
@@ -858,9 +858,9 @@ export class LUIDView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -886,22 +886,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -978,7 +978,7 @@ export interface LARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue;
   /** i64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: bigint | number;
 }
 
 export const sizeofLARGE_INTEGER = 24;
@@ -1018,7 +1018,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  get QuadPart(): Deno.PointerValue {
+  get QuadPart(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -1033,7 +1033,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  set QuadPart(value: Deno.PointerValue) {
+  set QuadPart(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -1043,15 +1043,15 @@ export class LARGE_INTEGERView {
  */
 export interface QUOTA_LIMITS {
   /** usize */
-  PagedPoolLimit: Deno.PointerValue;
+  PagedPoolLimit: bigint | number;
   /** usize */
-  NonPagedPoolLimit: Deno.PointerValue;
+  NonPagedPoolLimit: bigint | number;
   /** usize */
-  MinimumWorkingSetSize: Deno.PointerValue;
+  MinimumWorkingSetSize: bigint | number;
   /** usize */
-  MaximumWorkingSetSize: Deno.PointerValue;
+  MaximumWorkingSetSize: bigint | number;
   /** usize */
-  PagefileLimit: Deno.PointerValue;
+  PagefileLimit: bigint | number;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
   TimeLimit: Uint8Array | Deno.PointerValue;
 }
@@ -1087,27 +1087,27 @@ export class QUOTA_LIMITSView {
   }
 
   // 0x00: usize
-  get PagedPoolLimit(): Deno.PointerValue {
+  get PagedPoolLimit(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: usize
-  get NonPagedPoolLimit(): Deno.PointerValue {
+  get NonPagedPoolLimit(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: usize
-  get MinimumWorkingSetSize(): Deno.PointerValue {
+  get MinimumWorkingSetSize(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: usize
-  get MaximumWorkingSetSize(): Deno.PointerValue {
+  get MaximumWorkingSetSize(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: usize
-  get PagefileLimit(): Deno.PointerValue {
+  get PagefileLimit(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -1118,27 +1118,27 @@ export class QUOTA_LIMITSView {
   }
 
   // 0x00: usize
-  set PagedPoolLimit(value: Deno.PointerValue) {
+  set PagedPoolLimit(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: usize
-  set NonPagedPoolLimit(value: Deno.PointerValue) {
+  set NonPagedPoolLimit(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: usize
-  set MinimumWorkingSetSize(value: Deno.PointerValue) {
+  set MinimumWorkingSetSize(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: usize
-  set MaximumWorkingSetSize(value: Deno.PointerValue) {
+  set MaximumWorkingSetSize(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: usize
-  set PagefileLimit(value: Deno.PointerValue) {
+  set PagefileLimit(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -1607,7 +1607,7 @@ export class WLX_CONSOLESWITCH_CREDENTIALS_INFO_V1_0View {
   }
 }
 
-export type HDESK = Deno.PointerValue;
+export type HDESK = bigint | number;
 
 /**
  * Windows.Win32.Security.WinWlx.WLX_DESKTOP (size: 24)

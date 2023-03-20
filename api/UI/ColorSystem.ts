@@ -315,7 +315,7 @@ export const MicrosoftHardwareColorV2 = 2;
 
 // Structs
 
-export type HCOLORSPACE = Deno.PointerValue;
+export type HCOLORSPACE = bigint | number;
 
 /**
  * Windows.Win32.Graphics.Gdi.CIEXYZ (size: 16)
@@ -2564,9 +2564,9 @@ export class HiFiCOLORView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -2592,22 +2592,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -3805,9 +3805,9 @@ export class ENUMTYPEWView {
   // 0x64: pad4
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
-export type LPARAM = Deno.PointerValue;
+export type LPARAM = bigint | number;
 
 /**
  * Windows.Win32.UI.ColorSystem.COLORMATCHSETUPW (size: 136)
@@ -4654,9 +4654,9 @@ export class WCS_DEVICE_MHC2_CAPABILITIESView {
   // 0x14: pad4
 }
 
-export type HDC = Deno.PointerValue;
+export type HDC = bigint | number;
 
-export type HPALETTE = Deno.PointerValue;
+export type HPALETTE = bigint | number;
 
 export type COLORREF = number;
 
@@ -5386,7 +5386,7 @@ export function OpenColorProfileA(
   dwDesiredAccess: number /* u32 */,
   dwShareMode: number /* u32 */,
   dwCreationMode: number /* u32 */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libmscms_dll.OpenColorProfileA(util.toPointer(pProfile), dwDesiredAccess, dwShareMode, dwCreationMode);
 }
 
@@ -5395,18 +5395,18 @@ export function OpenColorProfileW(
   dwDesiredAccess: number /* u32 */,
   dwShareMode: number /* u32 */,
   dwCreationMode: number /* u32 */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libmscms_dll.OpenColorProfileW(util.toPointer(pProfile), dwDesiredAccess, dwShareMode, dwCreationMode);
 }
 
 export function CloseColorProfile(
-  hProfile: Deno.PointerValue /* isize */,
+  hProfile: bigint | number /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.CloseColorProfile(hProfile));
 }
 
 export function GetColorProfileFromHandle(
-  hProfile: Deno.PointerValue /* isize */,
+  hProfile: bigint | number /* isize */,
   pProfile: Deno.PointerValue | Uint8Array /* ptr */,
   pcbProfile: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -5414,7 +5414,7 @@ export function GetColorProfileFromHandle(
 }
 
 export function IsColorProfileValid(
-  hProfile: Deno.PointerValue /* isize */,
+  hProfile: bigint | number /* isize */,
   pbValid: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.IsColorProfileValid(hProfile, util.toPointer(pbValid)));
@@ -5435,21 +5435,21 @@ export function CreateProfileFromLogColorSpaceW(
 }
 
 export function GetCountColorProfileElements(
-  hProfile: Deno.PointerValue /* isize */,
+  hProfile: bigint | number /* isize */,
   pnElementCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.GetCountColorProfileElements(hProfile, util.toPointer(pnElementCount)));
 }
 
 export function GetColorProfileHeader(
-  hProfile: Deno.PointerValue /* isize */,
+  hProfile: bigint | number /* isize */,
   pHeader: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.GetColorProfileHeader(hProfile, util.toPointer(pHeader)));
 }
 
 export function GetColorProfileElementTag(
-  hProfile: Deno.PointerValue /* isize */,
+  hProfile: bigint | number /* isize */,
   dwIndex: number /* u32 */,
   pTag: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -5457,7 +5457,7 @@ export function GetColorProfileElementTag(
 }
 
 export function IsColorProfileTagPresent(
-  hProfile: Deno.PointerValue /* isize */,
+  hProfile: bigint | number /* isize */,
   tag: number /* u32 */,
   pbPresent: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -5465,7 +5465,7 @@ export function IsColorProfileTagPresent(
 }
 
 export function GetColorProfileElement(
-  hProfile: Deno.PointerValue /* isize */,
+  hProfile: bigint | number /* isize */,
   tag: number /* u32 */,
   dwOffset: number /* u32 */,
   pcbElement: Deno.PointerValue | Uint8Array /* ptr */,
@@ -5476,14 +5476,14 @@ export function GetColorProfileElement(
 }
 
 export function SetColorProfileHeader(
-  hProfile: Deno.PointerValue /* isize */,
+  hProfile: bigint | number /* isize */,
   pHeader: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.SetColorProfileHeader(hProfile, util.toPointer(pHeader)));
 }
 
 export function SetColorProfileElementSize(
-  hProfile: Deno.PointerValue /* isize */,
+  hProfile: bigint | number /* isize */,
   tagType: number /* u32 */,
   pcbElement: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -5491,7 +5491,7 @@ export function SetColorProfileElementSize(
 }
 
 export function SetColorProfileElement(
-  hProfile: Deno.PointerValue /* isize */,
+  hProfile: bigint | number /* isize */,
   tag: number /* u32 */,
   dwOffset: number /* u32 */,
   pcbElement: Deno.PointerValue | Uint8Array /* ptr */,
@@ -5501,7 +5501,7 @@ export function SetColorProfileElement(
 }
 
 export function SetColorProfileElementReference(
-  hProfile: Deno.PointerValue /* isize */,
+  hProfile: bigint | number /* isize */,
   newTag: number /* u32 */,
   refTag: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -5509,7 +5509,7 @@ export function SetColorProfileElementReference(
 }
 
 export function GetPS2ColorSpaceArray(
-  hProfile: Deno.PointerValue /* isize */,
+  hProfile: bigint | number /* isize */,
   dwIntent: number /* u32 */,
   dwCSAType: number /* u32 */,
   pPS2ColorSpaceArray: Deno.PointerValue | Uint8Array /* ptr */,
@@ -5520,7 +5520,7 @@ export function GetPS2ColorSpaceArray(
 }
 
 export function GetPS2ColorRenderingIntent(
-  hProfile: Deno.PointerValue /* isize */,
+  hProfile: bigint | number /* isize */,
   dwIntent: number /* u32 */,
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   pcbPS2ColorRenderingIntent: Deno.PointerValue | Uint8Array /* ptr */,
@@ -5529,7 +5529,7 @@ export function GetPS2ColorRenderingIntent(
 }
 
 export function GetPS2ColorRenderingDictionary(
-  hProfile: Deno.PointerValue /* isize */,
+  hProfile: bigint | number /* isize */,
   dwIntent: number /* u32 */,
   pPS2ColorRenderingDictionary: Deno.PointerValue | Uint8Array /* ptr */,
   pcbPS2ColorRenderingDictionary: Deno.PointerValue | Uint8Array /* ptr */,
@@ -5539,14 +5539,14 @@ export function GetPS2ColorRenderingDictionary(
 }
 
 export function GetNamedProfileInfo(
-  hProfile: Deno.PointerValue /* isize */,
+  hProfile: bigint | number /* isize */,
   pNamedProfileInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.GetNamedProfileInfo(hProfile, util.toPointer(pNamedProfileInfo)));
 }
 
 export function ConvertColorNameToIndex(
-  hProfile: Deno.PointerValue /* isize */,
+  hProfile: bigint | number /* isize */,
   paColorName: Deno.PointerValue | Uint8Array /* ptr */,
   paIndex: Deno.PointerValue | Uint8Array /* ptr */,
   dwCount: number /* u32 */,
@@ -5555,7 +5555,7 @@ export function ConvertColorNameToIndex(
 }
 
 export function ConvertIndexToColorName(
-  hProfile: Deno.PointerValue /* isize */,
+  hProfile: bigint | number /* isize */,
   paIndex: Deno.PointerValue | Uint8Array /* ptr */,
   paColorName: Deno.PointerValue | Uint8Array /* ptr */,
   dwCount: number /* u32 */,
@@ -5577,19 +5577,19 @@ export function CreateDeviceLinkProfile(
 
 export function CreateColorTransformA(
   pLogColorSpace: Deno.PointerValue | Uint8Array /* ptr */,
-  hDestProfile: Deno.PointerValue /* isize */,
-  hTargetProfile: Deno.PointerValue /* isize */,
+  hDestProfile: bigint | number /* isize */,
+  hTargetProfile: bigint | number /* isize */,
   dwFlags: number /* u32 */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libmscms_dll.CreateColorTransformA(util.toPointer(pLogColorSpace), hDestProfile, hTargetProfile, dwFlags);
 }
 
 export function CreateColorTransformW(
   pLogColorSpace: Deno.PointerValue | Uint8Array /* ptr */,
-  hDestProfile: Deno.PointerValue /* isize */,
-  hTargetProfile: Deno.PointerValue /* isize */,
+  hDestProfile: bigint | number /* isize */,
+  hTargetProfile: bigint | number /* isize */,
   dwFlags: number /* u32 */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libmscms_dll.CreateColorTransformW(util.toPointer(pLogColorSpace), hDestProfile, hTargetProfile, dwFlags);
 }
 
@@ -5600,18 +5600,18 @@ export function CreateMultiProfileTransform(
   nIntents: number /* u32 */,
   dwFlags: number /* u32 */,
   indexPreferredCMM: number /* u32 */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libmscms_dll.CreateMultiProfileTransform(util.toPointer(pahProfiles), nProfiles, util.toPointer(padwIntent), nIntents, dwFlags, indexPreferredCMM);
 }
 
 export function DeleteColorTransform(
-  hxform: Deno.PointerValue /* isize */,
+  hxform: bigint | number /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libmscms_dll.DeleteColorTransform(hxform));
 }
 
 export function TranslateBitmapBits(
-  hColorTransform: Deno.PointerValue /* isize */,
+  hColorTransform: bigint | number /* isize */,
   pSrcBits: Deno.PointerValue | Uint8Array /* ptr */,
   bmInput: BMFORMAT /* Windows.Win32.UI.ColorSystem.BMFORMAT */,
   dwWidth: number /* u32 */,
@@ -5627,7 +5627,7 @@ export function TranslateBitmapBits(
 }
 
 export function CheckBitmapBits(
-  hColorTransform: Deno.PointerValue /* isize */,
+  hColorTransform: bigint | number /* isize */,
   pSrcBits: Deno.PointerValue | Uint8Array /* ptr */,
   bmInput: BMFORMAT /* Windows.Win32.UI.ColorSystem.BMFORMAT */,
   dwWidth: number /* u32 */,
@@ -5641,7 +5641,7 @@ export function CheckBitmapBits(
 }
 
 export function TranslateColors(
-  hColorTransform: Deno.PointerValue /* isize */,
+  hColorTransform: bigint | number /* isize */,
   paInputColors: Deno.PointerValue | Uint8Array /* ptr */,
   nColors: number /* u32 */,
   ctInput: COLORTYPE /* Windows.Win32.UI.ColorSystem.COLORTYPE */,
@@ -5652,7 +5652,7 @@ export function TranslateColors(
 }
 
 export function CheckColors(
-  hColorTransform: Deno.PointerValue /* isize */,
+  hColorTransform: bigint | number /* isize */,
   paInputColors: Deno.PointerValue | Uint8Array /* ptr */,
   nColors: number /* u32 */,
   ctInput: COLORTYPE /* Windows.Win32.UI.ColorSystem.COLORTYPE */,
@@ -5662,7 +5662,7 @@ export function CheckColors(
 }
 
 export function GetCMMInfo(
-  hColorTransform: Deno.PointerValue /* isize */,
+  hColorTransform: bigint | number /* isize */,
   param1: number /* u32 */,
 ): number /* u32 */ {
   return libmscms_dll.GetCMMInfo(hColorTransform, param1);
@@ -5947,7 +5947,7 @@ export function WcsSetUsePerUserProfiles(
 }
 
 export function WcsTranslateColors(
-  hColorTransform: Deno.PointerValue /* isize */,
+  hColorTransform: bigint | number /* isize */,
   nColors: number /* u32 */,
   nInputChannels: number /* u32 */,
   cdtInput: COLORDATATYPE /* Windows.Win32.UI.ColorSystem.COLORDATATYPE */,
@@ -5962,7 +5962,7 @@ export function WcsTranslateColors(
 }
 
 export function WcsCheckColors(
-  hColorTransform: Deno.PointerValue /* isize */,
+  hColorTransform: bigint | number /* isize */,
   nColors: number /* u32 */,
   nInputChannels: number /* u32 */,
   cdtInput: COLORDATATYPE /* Windows.Win32.UI.ColorSystem.COLORDATATYPE */,
@@ -5974,7 +5974,7 @@ export function WcsCheckColors(
 }
 
 export function CMCheckColors(
-  hcmTransform: Deno.PointerValue /* isize */,
+  hcmTransform: bigint | number /* isize */,
   lpaInputColors: Deno.PointerValue | Uint8Array /* ptr */,
   nColors: number /* u32 */,
   ctInput: COLORTYPE /* Windows.Win32.UI.ColorSystem.COLORTYPE */,
@@ -5984,7 +5984,7 @@ export function CMCheckColors(
 }
 
 export function CMCheckRGBs(
-  hcmTransform: Deno.PointerValue /* isize */,
+  hcmTransform: bigint | number /* isize */,
   lpSrcBits: Deno.PointerValue | Uint8Array /* ptr */,
   bmInput: BMFORMAT /* Windows.Win32.UI.ColorSystem.BMFORMAT */,
   dwWidth: number /* u32 */,
@@ -5998,7 +5998,7 @@ export function CMCheckRGBs(
 }
 
 export function CMConvertColorNameToIndex(
-  hProfile: Deno.PointerValue /* isize */,
+  hProfile: bigint | number /* isize */,
   paColorName: Deno.PointerValue | Uint8Array /* ptr */,
   paIndex: Deno.PointerValue | Uint8Array /* ptr */,
   dwCount: number /* u32 */,
@@ -6007,7 +6007,7 @@ export function CMConvertColorNameToIndex(
 }
 
 export function CMConvertIndexToColorName(
-  hProfile: Deno.PointerValue /* isize */,
+  hProfile: bigint | number /* isize */,
   paIndex: Deno.PointerValue | Uint8Array /* ptr */,
   paColorName: Deno.PointerValue | Uint8Array /* ptr */,
   dwCount: number /* u32 */,
@@ -6032,7 +6032,7 @@ export function CMCreateMultiProfileTransform(
   padwIntents: Deno.PointerValue | Uint8Array /* ptr */,
   nIntents: number /* u32 */,
   dwFlags: number /* u32 */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libICM32_dll.CMCreateMultiProfileTransform(util.toPointer(pahProfiles), nProfiles, util.toPointer(padwIntents), nIntents, dwFlags);
 }
 
@@ -6047,7 +6047,7 @@ export function CMCreateTransform(
   lpColorSpace: Deno.PointerValue | Uint8Array /* ptr */,
   lpDevCharacter: Deno.PointerValue | Uint8Array /* ptr */,
   lpTargetDevCharacter: Deno.PointerValue | Uint8Array /* ptr */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libICM32_dll.CMCreateTransform(util.toPointer(lpColorSpace), util.toPointer(lpDevCharacter), util.toPointer(lpTargetDevCharacter));
 }
 
@@ -6055,7 +6055,7 @@ export function CMCreateTransformW(
   lpColorSpace: Deno.PointerValue | Uint8Array /* ptr */,
   lpDevCharacter: Deno.PointerValue | Uint8Array /* ptr */,
   lpTargetDevCharacter: Deno.PointerValue | Uint8Array /* ptr */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libICM32_dll.CMCreateTransformW(util.toPointer(lpColorSpace), util.toPointer(lpDevCharacter), util.toPointer(lpTargetDevCharacter));
 }
 
@@ -6064,12 +6064,12 @@ export function CMCreateTransformExt(
   lpDevCharacter: Deno.PointerValue | Uint8Array /* ptr */,
   lpTargetDevCharacter: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libICM32_dll.CMCreateTransformExt(util.toPointer(lpColorSpace), util.toPointer(lpDevCharacter), util.toPointer(lpTargetDevCharacter), dwFlags);
 }
 
 export function CMCheckColorsInGamut(
-  hcmTransform: Deno.PointerValue /* isize */,
+  hcmTransform: bigint | number /* isize */,
   lpaRGBTriple: Deno.PointerValue | Uint8Array /* ptr */,
   lpaResult: Deno.PointerValue | Uint8Array /* ptr */,
   nCount: number /* u32 */,
@@ -6085,7 +6085,7 @@ export function CMCreateProfile(
 }
 
 export function CMTranslateRGB(
-  hcmTransform: Deno.PointerValue /* isize */,
+  hcmTransform: bigint | number /* isize */,
   ColorRef: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.COLORREF */,
   lpColorRef: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
@@ -6094,7 +6094,7 @@ export function CMTranslateRGB(
 }
 
 export function CMTranslateRGBs(
-  hcmTransform: Deno.PointerValue /* isize */,
+  hcmTransform: bigint | number /* isize */,
   lpSrcBits: Deno.PointerValue | Uint8Array /* ptr */,
   bmInput: BMFORMAT /* Windows.Win32.UI.ColorSystem.BMFORMAT */,
   dwWidth: number /* u32 */,
@@ -6112,12 +6112,12 @@ export function CMCreateTransformExtW(
   lpDevCharacter: Deno.PointerValue | Uint8Array /* ptr */,
   lpTargetDevCharacter: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libICM32_dll.CMCreateTransformExtW(util.toPointer(lpColorSpace), util.toPointer(lpDevCharacter), util.toPointer(lpTargetDevCharacter), dwFlags);
 }
 
 export function CMDeleteTransform(
-  hcmTransform: Deno.PointerValue /* isize */,
+  hcmTransform: bigint | number /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libICM32_dll.CMDeleteTransform(hcmTransform));
 }
@@ -6129,21 +6129,21 @@ export function CMGetInfo(
 }
 
 export function CMGetNamedProfileInfo(
-  hProfile: Deno.PointerValue /* isize */,
+  hProfile: bigint | number /* isize */,
   pNamedProfileInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libICM32_dll.CMGetNamedProfileInfo(hProfile, util.toPointer(pNamedProfileInfo)));
 }
 
 export function CMIsProfileValid(
-  hProfile: Deno.PointerValue /* isize */,
+  hProfile: bigint | number /* isize */,
   lpbValid: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libICM32_dll.CMIsProfileValid(hProfile, util.toPointer(lpbValid)));
 }
 
 export function CMTranslateColors(
-  hcmTransform: Deno.PointerValue /* isize */,
+  hcmTransform: bigint | number /* isize */,
   lpaInputColors: Deno.PointerValue | Uint8Array /* ptr */,
   nColors: number /* u32 */,
   ctInput: COLORTYPE /* Windows.Win32.UI.ColorSystem.COLORTYPE */,
@@ -6154,7 +6154,7 @@ export function CMTranslateColors(
 }
 
 export function CMTranslateRGBsExt(
-  hcmTransform: Deno.PointerValue /* isize */,
+  hcmTransform: bigint | number /* isize */,
   lpSrcBits: Deno.PointerValue | Uint8Array /* ptr */,
   bmInput: BMFORMAT /* Windows.Win32.UI.ColorSystem.BMFORMAT */,
   dwWidth: number /* u32 */,
@@ -6177,7 +6177,7 @@ export function WcsOpenColorProfileA(
   dwShareMode: number /* u32 */,
   dwCreationMode: number /* u32 */,
   dwFlags: number /* u32 */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libmscms_dll.WcsOpenColorProfileA(util.toPointer(pCDMPProfile), util.toPointer(pCAMPProfile), util.toPointer(pGMMPProfile), dwDesireAccess, dwShareMode, dwCreationMode, dwFlags);
 }
 
@@ -6189,14 +6189,14 @@ export function WcsOpenColorProfileW(
   dwShareMode: number /* u32 */,
   dwCreationMode: number /* u32 */,
   dwFlags: number /* u32 */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libmscms_dll.WcsOpenColorProfileW(util.toPointer(pCDMPProfile), util.toPointer(pCAMPProfile), util.toPointer(pGMMPProfile), dwDesireAccess, dwShareMode, dwCreationMode, dwFlags);
 }
 
 export function WcsCreateIccProfile(
-  hWcsProfile: Deno.PointerValue /* isize */,
+  hWcsProfile: bigint | number /* isize */,
   dwOptions: number /* u32 */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libmscms_dll.WcsCreateIccProfile(hWcsProfile, dwOptions);
 }
 

@@ -1650,7 +1650,7 @@ export interface VDS_PARTITION_NOTIFICATION {
   /** System.Guid */
   diskId: Uint8Array | Deno.PointerValue;
   /** u64 */
-  ullOffset: Deno.PointerValue;
+  ullOffset: bigint | number;
 }
 
 export const sizeofVDS_PARTITION_NOTIFICATION = 24;
@@ -1692,7 +1692,7 @@ export class VDS_PARTITION_NOTIFICATIONView {
   }
 
   // 0x10: u64
-  get ullOffset(): Deno.PointerValue {
+  get ullOffset(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -1709,7 +1709,7 @@ export class VDS_PARTITION_NOTIFICATIONView {
   }
 
   // 0x10: u64
-  set ullOffset(value: Deno.PointerValue) {
+  set ullOffset(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -2455,9 +2455,9 @@ export class VDS_PORTAL_GROUP_NOTIFICATIONView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -2483,22 +2483,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -2681,9 +2681,9 @@ export class VDS_ASYNC_OUTPUTView {
  */
 export interface VDS_PATH_ID {
   /** u64 */
-  ullSourceId: Deno.PointerValue;
+  ullSourceId: bigint | number;
   /** u64 */
-  ullPathId: Deno.PointerValue;
+  ullPathId: bigint | number;
 }
 
 export const sizeofVDS_PATH_ID = 16;
@@ -2709,22 +2709,22 @@ export class VDS_PATH_IDView {
   }
 
   // 0x00: u64
-  get ullSourceId(): Deno.PointerValue {
+  get ullSourceId(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get ullPathId(): Deno.PointerValue {
+  get ullPathId(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set ullSourceId(value: Deno.PointerValue) {
+  set ullSourceId(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set ullPathId(value: Deno.PointerValue) {
+  set ullPathId(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -3437,11 +3437,11 @@ export class VDS_PROVIDER_PROPView {
  */
 export interface _Anonymous1_e__Union {
   /** usize */
-  Data0: Deno.PointerValue;
+  Data0: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   String: string | null | Uint8Array | Uint16Array;
   /** usize */
-  u: Deno.PointerValue;
+  u: bigint | number;
   /** ptr */
   psid: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -3493,7 +3493,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  get Data0(): Deno.PointerValue {
+  get Data0(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -3504,7 +3504,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  get u(): Deno.PointerValue {
+  get u(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -3540,7 +3540,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  set Data0(value: Deno.PointerValue) {
+  set Data0(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -3551,7 +3551,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  set u(value: Deno.PointerValue) {
+  set u(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -3588,7 +3588,7 @@ export class _Anonymous1_e__UnionView {
  */
 export interface _Anonymous2_e__Union {
   /** usize */
-  Data1: Deno.PointerValue;
+  Data1: bigint | number;
   /** i32 */
   LogonId_HighPart: number;
 }
@@ -3617,7 +3617,7 @@ export class _Anonymous2_e__UnionView {
   }
 
   // 0x00: usize
-  get Data1(): Deno.PointerValue {
+  get Data1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -3629,7 +3629,7 @@ export class _Anonymous2_e__UnionView {
   // 0x0c: pad4
 
   // 0x00: usize
-  set Data1(value: Deno.PointerValue) {
+  set Data1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -3886,9 +3886,9 @@ export class VDS_PATH_POLICYView {
  */
 export interface VDS_HINTS {
   /** u64 */
-  ullHintMask: Deno.PointerValue;
+  ullHintMask: bigint | number;
   /** u64 */
-  ullExpectedMaximumSize: Deno.PointerValue;
+  ullExpectedMaximumSize: bigint | number;
   /** u32 */
   ulOptimalReadSize: number;
   /** u32 */
@@ -3979,12 +3979,12 @@ export class VDS_HINTSView {
   }
 
   // 0x00: u64
-  get ullHintMask(): Deno.PointerValue {
+  get ullHintMask(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get ullExpectedMaximumSize(): Deno.PointerValue {
+  get ullExpectedMaximumSize(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -4071,12 +4071,12 @@ export class VDS_HINTSView {
   // 0x4e: pad2
 
   // 0x00: u64
-  set ullHintMask(value: Deno.PointerValue) {
+  set ullHintMask(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set ullExpectedMaximumSize(value: Deno.PointerValue) {
+  set ullExpectedMaximumSize(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -4168,9 +4168,9 @@ export class VDS_HINTSView {
  */
 export interface VDS_HINTS2 {
   /** u64 */
-  ullHintMask: Deno.PointerValue;
+  ullHintMask: bigint | number;
   /** u64 */
-  ullExpectedMaximumSize: Deno.PointerValue;
+  ullExpectedMaximumSize: bigint | number;
   /** u32 */
   ulOptimalReadSize: number;
   /** u32 */
@@ -4313,12 +4313,12 @@ export class VDS_HINTS2View {
   }
 
   // 0x00: u64
-  get ullHintMask(): Deno.PointerValue {
+  get ullHintMask(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get ullExpectedMaximumSize(): Deno.PointerValue {
+  get ullExpectedMaximumSize(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -4470,12 +4470,12 @@ export class VDS_HINTS2View {
   // 0x82: pad6
 
   // 0x00: u64
-  set ullHintMask(value: Deno.PointerValue) {
+  set ullHintMask(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set ullExpectedMaximumSize(value: Deno.PointerValue) {
+  set ullExpectedMaximumSize(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -5167,7 +5167,7 @@ export interface VDS_DRIVE_PROP {
   /** System.Guid */
   id: Uint8Array | Deno.PointerValue;
   /** u64 */
-  ullSize: Deno.PointerValue;
+  ullSize: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   pwszFriendlyName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
@@ -5233,7 +5233,7 @@ export class VDS_DRIVE_PROPView {
   }
 
   // 0x08: u64
-  get ullSize(): Deno.PointerValue {
+  get ullSize(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -5280,7 +5280,7 @@ export class VDS_DRIVE_PROPView {
   }
 
   // 0x08: u64
-  set ullSize(value: Deno.PointerValue) {
+  set ullSize(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -5329,7 +5329,7 @@ export interface VDS_DRIVE_PROP2 {
   /** System.Guid */
   id: Uint8Array | Deno.PointerValue;
   /** u64 */
-  ullSize: Deno.PointerValue;
+  ullSize: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   pwszFriendlyName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
@@ -5408,7 +5408,7 @@ export class VDS_DRIVE_PROP2View {
   }
 
   // 0x08: u64
-  get ullSize(): Deno.PointerValue {
+  get ullSize(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -5472,7 +5472,7 @@ export class VDS_DRIVE_PROP2View {
   }
 
   // 0x08: u64
-  set ullSize(value: Deno.PointerValue) {
+  set ullSize(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -5540,7 +5540,7 @@ export interface VDS_DRIVE_EXTENT {
   /** System.Guid */
   LunId: Uint8Array | Deno.PointerValue;
   /** u64 */
-  ullSize: Deno.PointerValue;
+  ullSize: bigint | number;
   /** Windows.Win32.Foundation.BOOL */
   bUsed: boolean;
 }
@@ -5585,7 +5585,7 @@ export class VDS_DRIVE_EXTENTView {
   }
 
   // 0x10: u64
-  get ullSize(): Deno.PointerValue {
+  get ullSize(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -5607,7 +5607,7 @@ export class VDS_DRIVE_EXTENTView {
   }
 
   // 0x10: u64
-  set ullSize(value: Deno.PointerValue) {
+  set ullSize(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -5626,7 +5626,7 @@ export interface VDS_LUN_PROP {
   /** System.Guid */
   id: Uint8Array | Deno.PointerValue;
   /** u64 */
-  ullSize: Deno.PointerValue;
+  ullSize: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   pwszFriendlyName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
@@ -5704,7 +5704,7 @@ export class VDS_LUN_PROPView {
   }
 
   // 0x08: u64
-  get ullSize(): Deno.PointerValue {
+  get ullSize(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -5764,7 +5764,7 @@ export class VDS_LUN_PROPView {
   }
 
   // 0x08: u64
-  set ullSize(value: Deno.PointerValue) {
+  set ullSize(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -5826,7 +5826,7 @@ export interface VDS_LUN_PLEX_PROP {
   /** System.Guid */
   id: Uint8Array | Deno.PointerValue;
   /** u64 */
-  ullSize: Deno.PointerValue;
+  ullSize: bigint | number;
   /** Windows.Win32.Storage.VirtualDiskService.VDS_LUN_PLEX_TYPE */
   type: VDS_LUN_PLEX_TYPE;
   /** Windows.Win32.Storage.VirtualDiskService.VDS_LUN_PLEX_STATUS */
@@ -5887,7 +5887,7 @@ export class VDS_LUN_PLEX_PROPView {
   }
 
   // 0x08: u64
-  get ullSize(): Deno.PointerValue {
+  get ullSize(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -5934,7 +5934,7 @@ export class VDS_LUN_PLEX_PROPView {
   }
 
   // 0x08: u64
-  set ullSize(value: Deno.PointerValue) {
+  set ullSize(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -6371,7 +6371,7 @@ export class VDS_POOL_CUSTOM_ATTRIBUTESView {
  */
 export interface VDS_POOL_ATTRIBUTES {
   /** u64 */
-  ullAttributeMask: Deno.PointerValue;
+  ullAttributeMask: bigint | number;
   /** Windows.Win32.Storage.VirtualDiskService.VDS_RAID_TYPE */
   raidType: VDS_RAID_TYPE;
   /** Windows.Win32.Storage.VirtualDiskService.VDS_STORAGE_BUS_TYPE */
@@ -6383,7 +6383,7 @@ export interface VDS_POOL_ATTRIBUTES {
   /** Windows.Win32.Foundation.BOOL */
   bIsThinProvisioned: boolean;
   /** u64 */
-  ullProvisionedSpace: Deno.PointerValue;
+  ullProvisionedSpace: bigint | number;
   /** Windows.Win32.Foundation.BOOL */
   bNoSinglePointOfFailure: boolean;
   /** u32 */
@@ -6443,9 +6443,9 @@ export interface VDS_POOL_ATTRIBUTES {
   /** u32 */
   ulReserved2: number;
   /** u64 */
-  ullReserved1: Deno.PointerValue;
+  ullReserved1: bigint | number;
   /** u64 */
-  ullReserved2: Deno.PointerValue;
+  ullReserved2: bigint | number;
 }
 
 export const sizeofVDS_POOL_ATTRIBUTES = 176;
@@ -6546,7 +6546,7 @@ export class VDS_POOL_ATTRIBUTESView {
   }
 
   // 0x00: u64
-  get ullAttributeMask(): Deno.PointerValue {
+  get ullAttributeMask(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -6577,7 +6577,7 @@ export class VDS_POOL_ATTRIBUTESView {
   }
 
   // 0x20: u64
-  get ullProvisionedSpace(): Deno.PointerValue {
+  get ullProvisionedSpace(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -6728,17 +6728,17 @@ export class VDS_POOL_ATTRIBUTESView {
   }
 
   // 0xa0: u64
-  get ullReserved1(): Deno.PointerValue {
+  get ullReserved1(): bigint | number {
     return Number(this.view.getBigUint64(160, true));
   }
 
   // 0xa8: u64
-  get ullReserved2(): Deno.PointerValue {
+  get ullReserved2(): bigint | number {
     return Number(this.view.getBigUint64(168, true));
   }
 
   // 0x00: u64
-  set ullAttributeMask(value: Deno.PointerValue) {
+  set ullAttributeMask(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -6769,7 +6769,7 @@ export class VDS_POOL_ATTRIBUTESView {
   }
 
   // 0x20: u64
-  set ullProvisionedSpace(value: Deno.PointerValue) {
+  set ullProvisionedSpace(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -6919,12 +6919,12 @@ export class VDS_POOL_ATTRIBUTESView {
   }
 
   // 0xa0: u64
-  set ullReserved1(value: Deno.PointerValue) {
+  set ullReserved1(value: bigint | number) {
     this.view.setBigUint64(160, BigInt(value), true);
   }
 
   // 0xa8: u64
-  set ullReserved2(value: Deno.PointerValue) {
+  set ullReserved2(value: bigint | number) {
     this.view.setBigUint64(168, BigInt(value), true);
   }
 }
@@ -6946,11 +6946,11 @@ export interface VDS_STORAGE_POOL_PROP {
   /** Windows.Win32.Foundation.PWSTR */
   pwszDescription: string | null | Uint8Array | Uint16Array;
   /** u64 */
-  ullTotalConsumedSpace: Deno.PointerValue;
+  ullTotalConsumedSpace: bigint | number;
   /** u64 */
-  ullTotalManagedSpace: Deno.PointerValue;
+  ullTotalManagedSpace: bigint | number;
   /** u64 */
-  ullRemainingFreeSpace: Deno.PointerValue;
+  ullRemainingFreeSpace: bigint | number;
 }
 
 export const sizeofVDS_STORAGE_POOL_PROP = 64;
@@ -7032,17 +7032,17 @@ export class VDS_STORAGE_POOL_PROPView {
   }
 
   // 0x28: u64
-  get ullTotalConsumedSpace(): Deno.PointerValue {
+  get ullTotalConsumedSpace(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: u64
-  get ullTotalManagedSpace(): Deno.PointerValue {
+  get ullTotalManagedSpace(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: u64
-  get ullRemainingFreeSpace(): Deno.PointerValue {
+  get ullRemainingFreeSpace(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
@@ -7081,17 +7081,17 @@ export class VDS_STORAGE_POOL_PROPView {
   }
 
   // 0x28: u64
-  set ullTotalConsumedSpace(value: Deno.PointerValue) {
+  set ullTotalConsumedSpace(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: u64
-  set ullTotalManagedSpace(value: Deno.PointerValue) {
+  set ullTotalManagedSpace(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: u64
-  set ullRemainingFreeSpace(value: Deno.PointerValue) {
+  set ullRemainingFreeSpace(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 }
@@ -7103,7 +7103,7 @@ export interface VDS_STORAGE_POOL_DRIVE_EXTENT {
   /** System.Guid */
   id: Uint8Array | Deno.PointerValue;
   /** u64 */
-  ullSize: Deno.PointerValue;
+  ullSize: bigint | number;
   /** Windows.Win32.Foundation.BOOL */
   bUsed: boolean;
 }
@@ -7140,7 +7140,7 @@ export class VDS_STORAGE_POOL_DRIVE_EXTENTView {
   }
 
   // 0x08: u64
-  get ullSize(): Deno.PointerValue {
+  get ullSize(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -7157,7 +7157,7 @@ export class VDS_STORAGE_POOL_DRIVE_EXTENTView {
   }
 
   // 0x08: u64
-  set ullSize(value: Deno.PointerValue) {
+  set ullSize(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 

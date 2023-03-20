@@ -106,7 +106,7 @@ export type PWSTR = Deno.PointerValue | Uint8Array;
 
 export type BOOLEAN = number;
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 // Native Libraries
 

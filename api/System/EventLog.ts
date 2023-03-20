@@ -224,18 +224,18 @@ export const EvtEventPropertyIdEND = 2;
 
 // Structs
 
-export type EventLogHandle = Deno.PointerValue;
+export type EventLogHandle = bigint | number;
 
-export type EventSourceHandle = Deno.PointerValue;
+export type EventSourceHandle = bigint | number;
 
 /**
  * _Anonymous_e__Struct (size: 16)
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -261,22 +261,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -914,7 +914,7 @@ export class EVENTLOG_FULL_INFORMATIONView {
 
 export type BOOL = number;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 export type PSTR = Deno.PointerValue | Uint8Array;
 
@@ -1159,18 +1159,18 @@ export function EvtOpenSession(
   Login: Deno.PointerValue | Uint8Array /* ptr */,
   Timeout: number /* u32 */,
   Flags: number /* u32 */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libwevtapi_dll.EvtOpenSession(LoginClass, util.toPointer(Login), Timeout, Flags);
 }
 
 export function EvtClose(
-  Object: Deno.PointerValue /* isize */,
+  Object: bigint | number /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwevtapi_dll.EvtClose(Object));
 }
 
 export function EvtCancel(
-  Object: Deno.PointerValue /* isize */,
+  Object: bigint | number /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwevtapi_dll.EvtCancel(Object));
 }
@@ -1184,16 +1184,16 @@ export function EvtGetExtendedStatus(
 }
 
 export function EvtQuery(
-  Session: Deno.PointerValue /* isize */,
+  Session: bigint | number /* isize */,
   Path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Query: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libwevtapi_dll.EvtQuery(Session, util.pwstrToFfi(Path), util.pwstrToFfi(Query), Flags);
 }
 
 export function EvtNext(
-  ResultSet: Deno.PointerValue /* isize */,
+  ResultSet: bigint | number /* isize */,
   EventsSize: number /* u32 */,
   Events: Deno.PointerValue | Uint8Array /* ptr */,
   Timeout: number /* u32 */,
@@ -1204,9 +1204,9 @@ export function EvtNext(
 }
 
 export function EvtSeek(
-  ResultSet: Deno.PointerValue /* isize */,
-  Position: Deno.PointerValue /* i64 */,
-  Bookmark: Deno.PointerValue /* isize */,
+  ResultSet: bigint | number /* isize */,
+  Position: bigint | number /* i64 */,
+  Bookmark: bigint | number /* isize */,
   Timeout: number /* u32 */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -1214,15 +1214,15 @@ export function EvtSeek(
 }
 
 export function EvtSubscribe(
-  Session: Deno.PointerValue /* isize */,
+  Session: bigint | number /* isize */,
   SignalEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ChannelPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Query: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  Bookmark: Deno.PointerValue /* isize */,
+  Bookmark: bigint | number /* isize */,
   Context: Deno.PointerValue | Uint8Array /* ptr */,
   Callback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.EventLog.EVT_SUBSCRIBE_CALLBACK */,
   Flags: number /* u32 */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libwevtapi_dll.EvtSubscribe(Session, util.toPointer(SignalEvent), util.pwstrToFfi(ChannelPath), util.pwstrToFfi(Query), Bookmark, util.toPointer(Context), util.toPointer(Callback), Flags);
 }
 
@@ -1230,13 +1230,13 @@ export function EvtCreateRenderContext(
   ValuePathsCount: number /* u32 */,
   ValuePaths: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: number /* u32 */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libwevtapi_dll.EvtCreateRenderContext(ValuePathsCount, util.toPointer(ValuePaths), Flags);
 }
 
 export function EvtRender(
-  Context: Deno.PointerValue /* isize */,
-  Fragment: Deno.PointerValue /* isize */,
+  Context: bigint | number /* isize */,
+  Fragment: bigint | number /* isize */,
   Flags: number /* u32 */,
   BufferSize: number /* u32 */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
@@ -1247,8 +1247,8 @@ export function EvtRender(
 }
 
 export function EvtFormatMessage(
-  PublisherMetadata: Deno.PointerValue /* isize */,
-  Event: Deno.PointerValue /* isize */,
+  PublisherMetadata: bigint | number /* isize */,
+  Event: bigint | number /* isize */,
   MessageId: number /* u32 */,
   ValueCount: number /* u32 */,
   Values: Deno.PointerValue | Uint8Array /* ptr */,
@@ -1261,15 +1261,15 @@ export function EvtFormatMessage(
 }
 
 export function EvtOpenLog(
-  Session: Deno.PointerValue /* isize */,
+  Session: bigint | number /* isize */,
   Path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libwevtapi_dll.EvtOpenLog(Session, util.pwstrToFfi(Path), Flags);
 }
 
 export function EvtGetLogInfo(
-  Log: Deno.PointerValue /* isize */,
+  Log: bigint | number /* isize */,
   PropertyId: EVT_LOG_PROPERTY_ID /* Windows.Win32.System.EventLog.EVT_LOG_PROPERTY_ID */,
   PropertyValueBufferSize: number /* u32 */,
   PropertyValueBuffer: Deno.PointerValue | Uint8Array /* ptr */,
@@ -1279,7 +1279,7 @@ export function EvtGetLogInfo(
 }
 
 export function EvtClearLog(
-  Session: Deno.PointerValue /* isize */,
+  Session: bigint | number /* isize */,
   ChannelPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   TargetFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
@@ -1288,7 +1288,7 @@ export function EvtClearLog(
 }
 
 export function EvtExportLog(
-  Session: Deno.PointerValue /* isize */,
+  Session: bigint | number /* isize */,
   Path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Query: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   TargetFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
@@ -1298,7 +1298,7 @@ export function EvtExportLog(
 }
 
 export function EvtArchiveExportedLog(
-  Session: Deno.PointerValue /* isize */,
+  Session: bigint | number /* isize */,
   LogFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Locale: number /* u32 */,
   Flags: number /* u32 */,
@@ -1307,14 +1307,14 @@ export function EvtArchiveExportedLog(
 }
 
 export function EvtOpenChannelEnum(
-  Session: Deno.PointerValue /* isize */,
+  Session: bigint | number /* isize */,
   Flags: number /* u32 */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libwevtapi_dll.EvtOpenChannelEnum(Session, Flags);
 }
 
 export function EvtNextChannelPath(
-  ChannelEnum: Deno.PointerValue /* isize */,
+  ChannelEnum: bigint | number /* isize */,
   ChannelPathBufferSize: number /* u32 */,
   ChannelPathBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ChannelPathBufferUsed: Deno.PointerValue | Uint8Array /* ptr */,
@@ -1323,22 +1323,22 @@ export function EvtNextChannelPath(
 }
 
 export function EvtOpenChannelConfig(
-  Session: Deno.PointerValue /* isize */,
+  Session: bigint | number /* isize */,
   ChannelPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libwevtapi_dll.EvtOpenChannelConfig(Session, util.pwstrToFfi(ChannelPath), Flags);
 }
 
 export function EvtSaveChannelConfig(
-  ChannelConfig: Deno.PointerValue /* isize */,
+  ChannelConfig: bigint | number /* isize */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwevtapi_dll.EvtSaveChannelConfig(ChannelConfig, Flags));
 }
 
 export function EvtSetChannelConfigProperty(
-  ChannelConfig: Deno.PointerValue /* isize */,
+  ChannelConfig: bigint | number /* isize */,
   PropertyId: EVT_CHANNEL_CONFIG_PROPERTY_ID /* Windows.Win32.System.EventLog.EVT_CHANNEL_CONFIG_PROPERTY_ID */,
   Flags: number /* u32 */,
   PropertyValue: Deno.PointerValue | Uint8Array /* ptr */,
@@ -1347,7 +1347,7 @@ export function EvtSetChannelConfigProperty(
 }
 
 export function EvtGetChannelConfigProperty(
-  ChannelConfig: Deno.PointerValue /* isize */,
+  ChannelConfig: bigint | number /* isize */,
   PropertyId: EVT_CHANNEL_CONFIG_PROPERTY_ID /* Windows.Win32.System.EventLog.EVT_CHANNEL_CONFIG_PROPERTY_ID */,
   Flags: number /* u32 */,
   PropertyValueBufferSize: number /* u32 */,
@@ -1358,14 +1358,14 @@ export function EvtGetChannelConfigProperty(
 }
 
 export function EvtOpenPublisherEnum(
-  Session: Deno.PointerValue /* isize */,
+  Session: bigint | number /* isize */,
   Flags: number /* u32 */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libwevtapi_dll.EvtOpenPublisherEnum(Session, Flags);
 }
 
 export function EvtNextPublisherId(
-  PublisherEnum: Deno.PointerValue /* isize */,
+  PublisherEnum: bigint | number /* isize */,
   PublisherIdBufferSize: number /* u32 */,
   PublisherIdBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   PublisherIdBufferUsed: Deno.PointerValue | Uint8Array /* ptr */,
@@ -1374,17 +1374,17 @@ export function EvtNextPublisherId(
 }
 
 export function EvtOpenPublisherMetadata(
-  Session: Deno.PointerValue /* isize */,
+  Session: bigint | number /* isize */,
   PublisherId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   LogFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Locale: number /* u32 */,
   Flags: number /* u32 */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libwevtapi_dll.EvtOpenPublisherMetadata(Session, util.pwstrToFfi(PublisherId), util.pwstrToFfi(LogFilePath), Locale, Flags);
 }
 
 export function EvtGetPublisherMetadataProperty(
-  PublisherMetadata: Deno.PointerValue /* isize */,
+  PublisherMetadata: bigint | number /* isize */,
   PropertyId: EVT_PUBLISHER_METADATA_PROPERTY_ID /* Windows.Win32.System.EventLog.EVT_PUBLISHER_METADATA_PROPERTY_ID */,
   Flags: number /* u32 */,
   PublisherMetadataPropertyBufferSize: number /* u32 */,
@@ -1395,21 +1395,21 @@ export function EvtGetPublisherMetadataProperty(
 }
 
 export function EvtOpenEventMetadataEnum(
-  PublisherMetadata: Deno.PointerValue /* isize */,
+  PublisherMetadata: bigint | number /* isize */,
   Flags: number /* u32 */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libwevtapi_dll.EvtOpenEventMetadataEnum(PublisherMetadata, Flags);
 }
 
 export function EvtNextEventMetadata(
-  EventMetadataEnum: Deno.PointerValue /* isize */,
+  EventMetadataEnum: bigint | number /* isize */,
   Flags: number /* u32 */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libwevtapi_dll.EvtNextEventMetadata(EventMetadataEnum, Flags);
 }
 
 export function EvtGetEventMetadataProperty(
-  EventMetadata: Deno.PointerValue /* isize */,
+  EventMetadata: bigint | number /* isize */,
   PropertyId: EVT_EVENT_METADATA_PROPERTY_ID /* Windows.Win32.System.EventLog.EVT_EVENT_METADATA_PROPERTY_ID */,
   Flags: number /* u32 */,
   EventMetadataPropertyBufferSize: number /* u32 */,
@@ -1420,14 +1420,14 @@ export function EvtGetEventMetadataProperty(
 }
 
 export function EvtGetObjectArraySize(
-  ObjectArray: Deno.PointerValue /* isize */,
+  ObjectArray: bigint | number /* isize */,
   ObjectArraySize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwevtapi_dll.EvtGetObjectArraySize(ObjectArray, util.toPointer(ObjectArraySize)));
 }
 
 export function EvtGetObjectArrayProperty(
-  ObjectArray: Deno.PointerValue /* isize */,
+  ObjectArray: bigint | number /* isize */,
   PropertyId: number /* u32 */,
   ArrayIndex: number /* u32 */,
   Flags: number /* u32 */,
@@ -1439,7 +1439,7 @@ export function EvtGetObjectArrayProperty(
 }
 
 export function EvtGetQueryInfo(
-  QueryOrSubscription: Deno.PointerValue /* isize */,
+  QueryOrSubscription: bigint | number /* isize */,
   PropertyId: EVT_QUERY_PROPERTY_ID /* Windows.Win32.System.EventLog.EVT_QUERY_PROPERTY_ID */,
   PropertyValueBufferSize: number /* u32 */,
   PropertyValueBuffer: Deno.PointerValue | Uint8Array /* ptr */,
@@ -1450,19 +1450,19 @@ export function EvtGetQueryInfo(
 
 export function EvtCreateBookmark(
   BookmarkXml: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libwevtapi_dll.EvtCreateBookmark(util.pwstrToFfi(BookmarkXml));
 }
 
 export function EvtUpdateBookmark(
-  Bookmark: Deno.PointerValue /* isize */,
-  Event: Deno.PointerValue /* isize */,
+  Bookmark: bigint | number /* isize */,
+  Event: bigint | number /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwevtapi_dll.EvtUpdateBookmark(Bookmark, Event));
 }
 
 export function EvtGetEventInfo(
-  Event: Deno.PointerValue /* isize */,
+  Event: bigint | number /* isize */,
   PropertyId: EVT_EVENT_PROPERTY_ID /* Windows.Win32.System.EventLog.EVT_EVENT_PROPERTY_ID */,
   PropertyValueBufferSize: number /* u32 */,
   PropertyValueBuffer: Deno.PointerValue | Uint8Array /* ptr */,

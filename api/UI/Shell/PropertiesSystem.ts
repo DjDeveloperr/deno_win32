@@ -580,13 +580,13 @@ export type BOOL = number;
 
 export type BSTR = Deno.PointerValue | Uint8Array;
 
-export type HINSTANCE = Deno.PointerValue;
+export type HINSTANCE = bigint | number;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 export type PSTR = Deno.PointerValue | Uint8Array;
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 // Native Libraries
 
@@ -1998,7 +1998,7 @@ export function PSPropertyBag_ReadULONGLONG(
 export function PSPropertyBag_WriteULONGLONG(
   propBag: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IPropertyBag */,
   propName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  value: Deno.PointerValue /* u64 */,
+  value: bigint | number /* u64 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libPROPSYS_dll.PSPropertyBag_WriteULONGLONG(util.toPointer(propBag), util.pwstrToFfi(propName), value);
 }
@@ -2236,15 +2236,15 @@ export function PropVariantToUInt32WithDefault(
 
 export function PropVariantToInt64WithDefault(
   propvarIn: Deno.PointerValue | Uint8Array /* ptr */,
-  llDefault: Deno.PointerValue /* i64 */,
-): Deno.PointerValue /* i64 */ {
+  llDefault: bigint | number /* i64 */,
+): bigint | number /* i64 */ {
   return libPROPSYS_dll.PropVariantToInt64WithDefault(util.toPointer(propvarIn), llDefault);
 }
 
 export function PropVariantToUInt64WithDefault(
   propvarIn: Deno.PointerValue | Uint8Array /* ptr */,
-  ullDefault: Deno.PointerValue /* u64 */,
-): Deno.PointerValue /* u64 */ {
+  ullDefault: bigint | number /* u64 */,
+): bigint | number /* u64 */ {
   return libPROPSYS_dll.PropVariantToUInt64WithDefault(util.toPointer(propvarIn), ullDefault);
 }
 
@@ -2828,15 +2828,15 @@ export function VariantToUInt32WithDefault(
 
 export function VariantToInt64WithDefault(
   varIn: Deno.PointerValue | Uint8Array /* ptr */,
-  llDefault: Deno.PointerValue /* i64 */,
-): Deno.PointerValue /* i64 */ {
+  llDefault: bigint | number /* i64 */,
+): bigint | number /* i64 */ {
   return libPROPSYS_dll.VariantToInt64WithDefault(util.toPointer(varIn), llDefault);
 }
 
 export function VariantToUInt64WithDefault(
   varIn: Deno.PointerValue | Uint8Array /* ptr */,
-  ullDefault: Deno.PointerValue /* u64 */,
-): Deno.PointerValue /* u64 */ {
+  ullDefault: bigint | number /* u64 */,
+): bigint | number /* u64 */ {
   return libPROPSYS_dll.VariantToUInt64WithDefault(util.toPointer(varIn), ullDefault);
 }
 

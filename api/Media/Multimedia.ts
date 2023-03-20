@@ -4661,13 +4661,13 @@ export const BI_PNG = 5;
 
 // Structs
 
-export type HMMIO = Deno.PointerValue;
+export type HMMIO = bigint | number;
 
-export type HDRVR = Deno.PointerValue;
+export type HDRVR = bigint | number;
 
-export type HIC = Deno.PointerValue;
+export type HIC = bigint | number;
 
-export type HVIDEO = Deno.PointerValue;
+export type HVIDEO = bigint | number;
 
 /**
  * Windows.Win32.Media.Multimedia.ADPCMCOEFSET (size: 8)
@@ -7585,7 +7585,7 @@ export class JPEGINFOHEADERView {
  */
 export interface MCI_GENERIC_PARMS {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
 }
 
 export const sizeofMCI_GENERIC_PARMS = 8;
@@ -7609,12 +7609,12 @@ export class MCI_GENERIC_PARMSView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -7626,7 +7626,7 @@ export type PSTR = Deno.PointerValue | Uint8Array;
  */
 export interface MCI_OPEN_PARMSA {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   wDeviceID: number;
   /** Windows.Win32.Foundation.PSTR */
@@ -7676,7 +7676,7 @@ export class MCI_OPEN_PARMSAView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -7706,7 +7706,7 @@ export class MCI_OPEN_PARMSAView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -7743,7 +7743,7 @@ export type PWSTR = Deno.PointerValue | Uint8Array;
  */
 export interface MCI_OPEN_PARMSW {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   wDeviceID: number;
   /** Windows.Win32.Foundation.PWSTR */
@@ -7793,7 +7793,7 @@ export class MCI_OPEN_PARMSWView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -7823,7 +7823,7 @@ export class MCI_OPEN_PARMSWView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -7858,7 +7858,7 @@ export class MCI_OPEN_PARMSWView {
  */
 export interface MCI_PLAY_PARMS {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   dwFrom: number;
   /** u32 */
@@ -7890,7 +7890,7 @@ export class MCI_PLAY_PARMSView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -7905,7 +7905,7 @@ export class MCI_PLAY_PARMSView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -7925,7 +7925,7 @@ export class MCI_PLAY_PARMSView {
  */
 export interface MCI_SEEK_PARMS {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   dwTo: number;
 }
@@ -7954,7 +7954,7 @@ export class MCI_SEEK_PARMSView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -7966,7 +7966,7 @@ export class MCI_SEEK_PARMSView {
   // 0x0c: pad4
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -7983,9 +7983,9 @@ export class MCI_SEEK_PARMSView {
  */
 export interface MCI_STATUS_PARMS {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** usize */
-  dwReturn: Deno.PointerValue;
+  dwReturn: bigint | number;
   /** u32 */
   dwItem: number;
   /** u32 */
@@ -8019,12 +8019,12 @@ export class MCI_STATUS_PARMSView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: usize
-  get dwReturn(): Deno.PointerValue {
+  get dwReturn(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -8039,12 +8039,12 @@ export class MCI_STATUS_PARMSView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: usize
-  set dwReturn(value: Deno.PointerValue) {
+  set dwReturn(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -8064,7 +8064,7 @@ export class MCI_STATUS_PARMSView {
  */
 export interface MCI_INFO_PARMSA {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.PSTR */
   lpstrReturn: string | null | Uint8Array;
   /** u32 */
@@ -8100,7 +8100,7 @@ export class MCI_INFO_PARMSAView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -8118,7 +8118,7 @@ export class MCI_INFO_PARMSAView {
   // 0x14: pad4
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -8141,7 +8141,7 @@ export class MCI_INFO_PARMSAView {
  */
 export interface MCI_INFO_PARMSW {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   lpstrReturn: string | null | Uint8Array | Uint16Array;
   /** u32 */
@@ -8177,7 +8177,7 @@ export class MCI_INFO_PARMSWView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -8195,7 +8195,7 @@ export class MCI_INFO_PARMSWView {
   // 0x14: pad4
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -8218,7 +8218,7 @@ export class MCI_INFO_PARMSWView {
  */
 export interface MCI_GETDEVCAPS_PARMS {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   dwReturn: number;
   /** u32 */
@@ -8250,7 +8250,7 @@ export class MCI_GETDEVCAPS_PARMSView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -8265,7 +8265,7 @@ export class MCI_GETDEVCAPS_PARMSView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -8285,7 +8285,7 @@ export class MCI_GETDEVCAPS_PARMSView {
  */
 export interface MCI_SYSINFO_PARMSA {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.PSTR */
   lpstrReturn: string | null | Uint8Array;
   /** u32 */
@@ -8329,7 +8329,7 @@ export class MCI_SYSINFO_PARMSAView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -8357,7 +8357,7 @@ export class MCI_SYSINFO_PARMSAView {
   // 0x1c: pad4
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -8390,7 +8390,7 @@ export class MCI_SYSINFO_PARMSAView {
  */
 export interface MCI_SYSINFO_PARMSW {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   lpstrReturn: string | null | Uint8Array | Uint16Array;
   /** u32 */
@@ -8434,7 +8434,7 @@ export class MCI_SYSINFO_PARMSWView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -8462,7 +8462,7 @@ export class MCI_SYSINFO_PARMSWView {
   // 0x1c: pad4
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -8495,7 +8495,7 @@ export class MCI_SYSINFO_PARMSWView {
  */
 export interface MCI_SET_PARMS {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   dwTimeFormat: number;
   /** u32 */
@@ -8527,7 +8527,7 @@ export class MCI_SET_PARMSView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -8542,7 +8542,7 @@ export class MCI_SET_PARMSView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -8557,14 +8557,14 @@ export class MCI_SET_PARMSView {
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 /**
  * Windows.Win32.Media.Multimedia.MCI_BREAK_PARMS (size: 24)
  */
 export interface MCI_BREAK_PARMS {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** i32 */
   nVirtKey: number;
   /** Windows.Win32.Foundation.HWND */
@@ -8597,7 +8597,7 @@ export class MCI_BREAK_PARMSView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -8615,7 +8615,7 @@ export class MCI_BREAK_PARMSView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -8637,7 +8637,7 @@ export class MCI_BREAK_PARMSView {
  */
 export interface MCI_SAVE_PARMSA {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.PSTR */
   lpfilename: string | null | Uint8Array;
 }
@@ -8668,7 +8668,7 @@ export class MCI_SAVE_PARMSAView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -8679,7 +8679,7 @@ export class MCI_SAVE_PARMSAView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -8695,7 +8695,7 @@ export class MCI_SAVE_PARMSAView {
  */
 export interface MCI_SAVE_PARMSW {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   lpfilename: string | null | Uint8Array | Uint16Array;
 }
@@ -8726,7 +8726,7 @@ export class MCI_SAVE_PARMSWView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -8737,7 +8737,7 @@ export class MCI_SAVE_PARMSWView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -8753,7 +8753,7 @@ export class MCI_SAVE_PARMSWView {
  */
 export interface MCI_LOAD_PARMSA {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.PSTR */
   lpfilename: string | null | Uint8Array;
 }
@@ -8784,7 +8784,7 @@ export class MCI_LOAD_PARMSAView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -8795,7 +8795,7 @@ export class MCI_LOAD_PARMSAView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -8811,7 +8811,7 @@ export class MCI_LOAD_PARMSAView {
  */
 export interface MCI_LOAD_PARMSW {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   lpfilename: string | null | Uint8Array | Uint16Array;
 }
@@ -8842,7 +8842,7 @@ export class MCI_LOAD_PARMSWView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -8853,7 +8853,7 @@ export class MCI_LOAD_PARMSWView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -8869,7 +8869,7 @@ export class MCI_LOAD_PARMSWView {
  */
 export interface MCI_RECORD_PARMS {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   dwFrom: number;
   /** u32 */
@@ -8901,7 +8901,7 @@ export class MCI_RECORD_PARMSView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -8916,7 +8916,7 @@ export class MCI_RECORD_PARMSView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -8936,7 +8936,7 @@ export class MCI_RECORD_PARMSView {
  */
 export interface MCI_VD_PLAY_PARMS {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   dwFrom: number;
   /** u32 */
@@ -8973,7 +8973,7 @@ export class MCI_VD_PLAY_PARMSView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -8995,7 +8995,7 @@ export class MCI_VD_PLAY_PARMSView {
   // 0x14: pad4
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -9022,7 +9022,7 @@ export class MCI_VD_PLAY_PARMSView {
  */
 export interface MCI_VD_STEP_PARMS {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   dwFrames: number;
 }
@@ -9051,7 +9051,7 @@ export class MCI_VD_STEP_PARMSView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -9063,7 +9063,7 @@ export class MCI_VD_STEP_PARMSView {
   // 0x0c: pad4
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -9080,7 +9080,7 @@ export class MCI_VD_STEP_PARMSView {
  */
 export interface MCI_VD_ESCAPE_PARMSA {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.PSTR */
   lpstrCommand: string | null | Uint8Array;
 }
@@ -9111,7 +9111,7 @@ export class MCI_VD_ESCAPE_PARMSAView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -9122,7 +9122,7 @@ export class MCI_VD_ESCAPE_PARMSAView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -9138,7 +9138,7 @@ export class MCI_VD_ESCAPE_PARMSAView {
  */
 export interface MCI_VD_ESCAPE_PARMSW {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   lpstrCommand: string | null | Uint8Array | Uint16Array;
 }
@@ -9169,7 +9169,7 @@ export class MCI_VD_ESCAPE_PARMSWView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -9180,7 +9180,7 @@ export class MCI_VD_ESCAPE_PARMSWView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -9196,7 +9196,7 @@ export class MCI_VD_ESCAPE_PARMSWView {
  */
 export interface MCI_WAVE_OPEN_PARMSA {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   wDeviceID: number;
   /** Windows.Win32.Foundation.PSTR */
@@ -9251,7 +9251,7 @@ export class MCI_WAVE_OPEN_PARMSAView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -9288,7 +9288,7 @@ export class MCI_WAVE_OPEN_PARMSAView {
   // 0x2c: pad4
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -9330,7 +9330,7 @@ export class MCI_WAVE_OPEN_PARMSAView {
  */
 export interface MCI_WAVE_OPEN_PARMSW {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   wDeviceID: number;
   /** Windows.Win32.Foundation.PWSTR */
@@ -9385,7 +9385,7 @@ export class MCI_WAVE_OPEN_PARMSWView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -9422,7 +9422,7 @@ export class MCI_WAVE_OPEN_PARMSWView {
   // 0x2c: pad4
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -9464,7 +9464,7 @@ export class MCI_WAVE_OPEN_PARMSWView {
  */
 export interface MCI_WAVE_DELETE_PARMS {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   dwFrom: number;
   /** u32 */
@@ -9496,7 +9496,7 @@ export class MCI_WAVE_DELETE_PARMSView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -9511,7 +9511,7 @@ export class MCI_WAVE_DELETE_PARMSView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -9531,7 +9531,7 @@ export class MCI_WAVE_DELETE_PARMSView {
  */
 export interface MCI_WAVE_SET_PARMS {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   dwTimeFormat: number;
   /** u32 */
@@ -9611,7 +9611,7 @@ export class MCI_WAVE_SET_PARMSView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -9686,7 +9686,7 @@ export class MCI_WAVE_SET_PARMSView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -9766,7 +9766,7 @@ export class MCI_WAVE_SET_PARMSView {
  */
 export interface MCI_SEQ_SET_PARMS {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   dwTimeFormat: number;
   /** u32 */
@@ -9819,7 +9819,7 @@ export class MCI_SEQ_SET_PARMSView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -9861,7 +9861,7 @@ export class MCI_SEQ_SET_PARMSView {
   // 0x24: pad4
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -9908,7 +9908,7 @@ export class MCI_SEQ_SET_PARMSView {
  */
 export interface MCI_ANIM_OPEN_PARMSA {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   wDeviceID: number;
   /** Windows.Win32.Foundation.PSTR */
@@ -9967,7 +9967,7 @@ export class MCI_ANIM_OPEN_PARMSAView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -10010,7 +10010,7 @@ export class MCI_ANIM_OPEN_PARMSAView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -10057,7 +10057,7 @@ export class MCI_ANIM_OPEN_PARMSAView {
  */
 export interface MCI_ANIM_OPEN_PARMSW {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   wDeviceID: number;
   /** Windows.Win32.Foundation.PWSTR */
@@ -10116,7 +10116,7 @@ export class MCI_ANIM_OPEN_PARMSWView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -10159,7 +10159,7 @@ export class MCI_ANIM_OPEN_PARMSWView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -10206,7 +10206,7 @@ export class MCI_ANIM_OPEN_PARMSWView {
  */
 export interface MCI_ANIM_PLAY_PARMS {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   dwFrom: number;
   /** u32 */
@@ -10243,7 +10243,7 @@ export class MCI_ANIM_PLAY_PARMSView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -10265,7 +10265,7 @@ export class MCI_ANIM_PLAY_PARMSView {
   // 0x14: pad4
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -10292,7 +10292,7 @@ export class MCI_ANIM_PLAY_PARMSView {
  */
 export interface MCI_ANIM_STEP_PARMS {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   dwFrames: number;
 }
@@ -10321,7 +10321,7 @@ export class MCI_ANIM_STEP_PARMSView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -10333,7 +10333,7 @@ export class MCI_ANIM_STEP_PARMSView {
   // 0x0c: pad4
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -10350,7 +10350,7 @@ export class MCI_ANIM_STEP_PARMSView {
  */
 export interface MCI_ANIM_WINDOW_PARMSA {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.HWND */
   hWnd: Deno.PointerValue;
   /** u32 */
@@ -10390,7 +10390,7 @@ export class MCI_ANIM_WINDOW_PARMSAView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -10414,7 +10414,7 @@ export class MCI_ANIM_WINDOW_PARMSAView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -10442,7 +10442,7 @@ export class MCI_ANIM_WINDOW_PARMSAView {
  */
 export interface MCI_ANIM_WINDOW_PARMSW {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.HWND */
   hWnd: Deno.PointerValue;
   /** u32 */
@@ -10482,7 +10482,7 @@ export class MCI_ANIM_WINDOW_PARMSWView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -10506,7 +10506,7 @@ export class MCI_ANIM_WINDOW_PARMSWView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -10615,7 +10615,7 @@ export class RECTView {
  */
 export interface MCI_ANIM_RECT_PARMS {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.RECT */
   rc: Uint8Array | Deno.PointerValue;
 }
@@ -10643,7 +10643,7 @@ export class MCI_ANIM_RECT_PARMSView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -10654,7 +10654,7 @@ export class MCI_ANIM_RECT_PARMSView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -10664,14 +10664,14 @@ export class MCI_ANIM_RECT_PARMSView {
   }
 }
 
-export type HDC = Deno.PointerValue;
+export type HDC = bigint | number;
 
 /**
  * Windows.Win32.Media.Multimedia.MCI_ANIM_UPDATE_PARMS (size: 24)
  */
 export interface MCI_ANIM_UPDATE_PARMS {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.RECT */
   rc: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Gdi.HDC */
@@ -10703,7 +10703,7 @@ export class MCI_ANIM_UPDATE_PARMSView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -10720,7 +10720,7 @@ export class MCI_ANIM_UPDATE_PARMSView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -10740,7 +10740,7 @@ export class MCI_ANIM_UPDATE_PARMSView {
  */
 export interface MCI_OVLY_OPEN_PARMSA {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   wDeviceID: number;
   /** Windows.Win32.Foundation.PSTR */
@@ -10799,7 +10799,7 @@ export class MCI_OVLY_OPEN_PARMSAView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -10842,7 +10842,7 @@ export class MCI_OVLY_OPEN_PARMSAView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -10889,7 +10889,7 @@ export class MCI_OVLY_OPEN_PARMSAView {
  */
 export interface MCI_OVLY_OPEN_PARMSW {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   wDeviceID: number;
   /** Windows.Win32.Foundation.PWSTR */
@@ -10948,7 +10948,7 @@ export class MCI_OVLY_OPEN_PARMSWView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -10991,7 +10991,7 @@ export class MCI_OVLY_OPEN_PARMSWView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -11038,7 +11038,7 @@ export class MCI_OVLY_OPEN_PARMSWView {
  */
 export interface MCI_OVLY_WINDOW_PARMSA {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.HWND */
   hWnd: Deno.PointerValue;
   /** u32 */
@@ -11078,7 +11078,7 @@ export class MCI_OVLY_WINDOW_PARMSAView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -11102,7 +11102,7 @@ export class MCI_OVLY_WINDOW_PARMSAView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -11130,7 +11130,7 @@ export class MCI_OVLY_WINDOW_PARMSAView {
  */
 export interface MCI_OVLY_WINDOW_PARMSW {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.HWND */
   hWnd: Deno.PointerValue;
   /** u32 */
@@ -11170,7 +11170,7 @@ export class MCI_OVLY_WINDOW_PARMSWView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -11194,7 +11194,7 @@ export class MCI_OVLY_WINDOW_PARMSWView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -11222,7 +11222,7 @@ export class MCI_OVLY_WINDOW_PARMSWView {
  */
 export interface MCI_OVLY_RECT_PARMS {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.RECT */
   rc: Uint8Array | Deno.PointerValue;
 }
@@ -11250,7 +11250,7 @@ export class MCI_OVLY_RECT_PARMSView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -11261,7 +11261,7 @@ export class MCI_OVLY_RECT_PARMSView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -11276,7 +11276,7 @@ export class MCI_OVLY_RECT_PARMSView {
  */
 export interface MCI_OVLY_SAVE_PARMSA {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.PSTR */
   lpfilename: string | null | Uint8Array;
   /** Windows.Win32.Foundation.RECT */
@@ -11311,7 +11311,7 @@ export class MCI_OVLY_SAVE_PARMSAView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -11328,7 +11328,7 @@ export class MCI_OVLY_SAVE_PARMSAView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -11349,7 +11349,7 @@ export class MCI_OVLY_SAVE_PARMSAView {
  */
 export interface MCI_OVLY_SAVE_PARMSW {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   lpfilename: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.RECT */
@@ -11384,7 +11384,7 @@ export class MCI_OVLY_SAVE_PARMSWView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -11401,7 +11401,7 @@ export class MCI_OVLY_SAVE_PARMSWView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -11422,7 +11422,7 @@ export class MCI_OVLY_SAVE_PARMSWView {
  */
 export interface MCI_OVLY_LOAD_PARMSA {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.PSTR */
   lpfilename: string | null | Uint8Array;
   /** Windows.Win32.Foundation.RECT */
@@ -11457,7 +11457,7 @@ export class MCI_OVLY_LOAD_PARMSAView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -11474,7 +11474,7 @@ export class MCI_OVLY_LOAD_PARMSAView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -11495,7 +11495,7 @@ export class MCI_OVLY_LOAD_PARMSAView {
  */
 export interface MCI_OVLY_LOAD_PARMSW {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   lpfilename: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.RECT */
@@ -11530,7 +11530,7 @@ export class MCI_OVLY_LOAD_PARMSWView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -11547,7 +11547,7 @@ export class MCI_OVLY_LOAD_PARMSWView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -11746,7 +11746,7 @@ export class DRVCONFIGINFOView {
   }
 }
 
-export type HTASK = Deno.PointerValue;
+export type HTASK = bigint | number;
 
 /**
  * Windows.Win32.Media.Multimedia.MMIOINFO (size: 104)
@@ -13999,7 +13999,7 @@ export class JOYINFOEXView {
  */
 export interface MCI_DGV_RECT_PARMS {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.RECT */
   rc: Uint8Array | Deno.PointerValue;
 }
@@ -14027,7 +14027,7 @@ export class MCI_DGV_RECT_PARMSView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -14038,7 +14038,7 @@ export class MCI_DGV_RECT_PARMSView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -14053,7 +14053,7 @@ export class MCI_DGV_RECT_PARMSView {
  */
 export interface MCI_DGV_CAPTURE_PARMSA {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.PSTR */
   lpstrFileName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.RECT */
@@ -14088,7 +14088,7 @@ export class MCI_DGV_CAPTURE_PARMSAView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -14105,7 +14105,7 @@ export class MCI_DGV_CAPTURE_PARMSAView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -14126,7 +14126,7 @@ export class MCI_DGV_CAPTURE_PARMSAView {
  */
 export interface MCI_DGV_CAPTURE_PARMSW {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   lpstrFileName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.RECT */
@@ -14161,7 +14161,7 @@ export class MCI_DGV_CAPTURE_PARMSWView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -14178,7 +14178,7 @@ export class MCI_DGV_CAPTURE_PARMSWView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -14199,7 +14199,7 @@ export class MCI_DGV_CAPTURE_PARMSWView {
  */
 export interface MCI_DGV_COPY_PARMS {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   dwFrom: number;
   /** u32 */
@@ -14243,7 +14243,7 @@ export class MCI_DGV_COPY_PARMSView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -14274,7 +14274,7 @@ export class MCI_DGV_COPY_PARMSView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -14309,7 +14309,7 @@ export class MCI_DGV_COPY_PARMSView {
  */
 export interface MCI_DGV_CUE_PARMS {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   dwTo: number;
 }
@@ -14338,7 +14338,7 @@ export class MCI_DGV_CUE_PARMSView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -14350,7 +14350,7 @@ export class MCI_DGV_CUE_PARMSView {
   // 0x0c: pad4
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -14367,7 +14367,7 @@ export class MCI_DGV_CUE_PARMSView {
  */
 export interface MCI_DGV_CUT_PARMS {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   dwFrom: number;
   /** u32 */
@@ -14411,7 +14411,7 @@ export class MCI_DGV_CUT_PARMSView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -14442,7 +14442,7 @@ export class MCI_DGV_CUT_PARMSView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -14477,7 +14477,7 @@ export class MCI_DGV_CUT_PARMSView {
  */
 export interface MCI_DGV_DELETE_PARMS {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   dwFrom: number;
   /** u32 */
@@ -14521,7 +14521,7 @@ export class MCI_DGV_DELETE_PARMSView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -14552,7 +14552,7 @@ export class MCI_DGV_DELETE_PARMSView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -14587,7 +14587,7 @@ export class MCI_DGV_DELETE_PARMSView {
  */
 export interface MCI_DGV_INFO_PARMSA {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.PSTR */
   lpstrReturn: string | null | Uint8Array;
   /** u32 */
@@ -14626,7 +14626,7 @@ export class MCI_DGV_INFO_PARMSAView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -14647,7 +14647,7 @@ export class MCI_DGV_INFO_PARMSAView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -14673,7 +14673,7 @@ export class MCI_DGV_INFO_PARMSAView {
  */
 export interface MCI_DGV_INFO_PARMSW {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   lpstrReturn: string | null | Uint8Array | Uint16Array;
   /** u32 */
@@ -14712,7 +14712,7 @@ export class MCI_DGV_INFO_PARMSWView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -14733,7 +14733,7 @@ export class MCI_DGV_INFO_PARMSWView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -14759,7 +14759,7 @@ export class MCI_DGV_INFO_PARMSWView {
  */
 export interface MCI_DGV_LIST_PARMSA {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.PSTR */
   lpstrReturn: string | null | Uint8Array;
   /** u32 */
@@ -14810,7 +14810,7 @@ export class MCI_DGV_LIST_PARMSAView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -14844,7 +14844,7 @@ export class MCI_DGV_LIST_PARMSAView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -14883,7 +14883,7 @@ export class MCI_DGV_LIST_PARMSAView {
  */
 export interface MCI_DGV_LIST_PARMSW {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   lpstrReturn: string | null | Uint8Array | Uint16Array;
   /** u32 */
@@ -14934,7 +14934,7 @@ export class MCI_DGV_LIST_PARMSWView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -14968,7 +14968,7 @@ export class MCI_DGV_LIST_PARMSWView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -15007,7 +15007,7 @@ export class MCI_DGV_LIST_PARMSWView {
  */
 export interface MCI_DGV_MONITOR_PARMS {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   dwSource: number;
   /** u32 */
@@ -15039,7 +15039,7 @@ export class MCI_DGV_MONITOR_PARMSView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -15054,7 +15054,7 @@ export class MCI_DGV_MONITOR_PARMSView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -15074,7 +15074,7 @@ export class MCI_DGV_MONITOR_PARMSView {
  */
 export interface MCI_DGV_OPEN_PARMSA {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   wDeviceID: number;
   /** Windows.Win32.Foundation.PSTR */
@@ -15133,7 +15133,7 @@ export class MCI_DGV_OPEN_PARMSAView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -15176,7 +15176,7 @@ export class MCI_DGV_OPEN_PARMSAView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -15223,7 +15223,7 @@ export class MCI_DGV_OPEN_PARMSAView {
  */
 export interface MCI_DGV_OPEN_PARMSW {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   wDeviceID: number;
   /** Windows.Win32.Foundation.PWSTR */
@@ -15282,7 +15282,7 @@ export class MCI_DGV_OPEN_PARMSWView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -15325,7 +15325,7 @@ export class MCI_DGV_OPEN_PARMSWView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -15372,7 +15372,7 @@ export class MCI_DGV_OPEN_PARMSWView {
  */
 export interface MCI_DGV_PASTE_PARMS {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   dwTo: number;
   /** Windows.Win32.Foundation.RECT */
@@ -15413,7 +15413,7 @@ export class MCI_DGV_PASTE_PARMSView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -15441,7 +15441,7 @@ export class MCI_DGV_PASTE_PARMSView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -15473,7 +15473,7 @@ export class MCI_DGV_PASTE_PARMSView {
  */
 export interface MCI_DGV_QUALITY_PARMSA {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   dwItem: number;
   /** Windows.Win32.Foundation.PSTR */
@@ -15517,7 +15517,7 @@ export class MCI_DGV_QUALITY_PARMSAView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -15545,7 +15545,7 @@ export class MCI_DGV_QUALITY_PARMSAView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -15578,7 +15578,7 @@ export class MCI_DGV_QUALITY_PARMSAView {
  */
 export interface MCI_DGV_QUALITY_PARMSW {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   dwItem: number;
   /** Windows.Win32.Foundation.PWSTR */
@@ -15622,7 +15622,7 @@ export class MCI_DGV_QUALITY_PARMSWView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -15650,7 +15650,7 @@ export class MCI_DGV_QUALITY_PARMSWView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -15683,7 +15683,7 @@ export class MCI_DGV_QUALITY_PARMSWView {
  */
 export interface MCI_DGV_RECORD_PARMS {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   dwFrom: number;
   /** u32 */
@@ -15727,7 +15727,7 @@ export class MCI_DGV_RECORD_PARMSView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -15758,7 +15758,7 @@ export class MCI_DGV_RECORD_PARMSView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -15793,7 +15793,7 @@ export class MCI_DGV_RECORD_PARMSView {
  */
 export interface MCI_DGV_RESERVE_PARMSA {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.PSTR */
   lpstrPath: string | null | Uint8Array;
   /** u32 */
@@ -15829,7 +15829,7 @@ export class MCI_DGV_RESERVE_PARMSAView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -15847,7 +15847,7 @@ export class MCI_DGV_RESERVE_PARMSAView {
   // 0x14: pad4
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -15870,7 +15870,7 @@ export class MCI_DGV_RESERVE_PARMSAView {
  */
 export interface MCI_DGV_RESERVE_PARMSW {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   lpstrPath: string | null | Uint8Array | Uint16Array;
   /** u32 */
@@ -15906,7 +15906,7 @@ export class MCI_DGV_RESERVE_PARMSWView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -15924,7 +15924,7 @@ export class MCI_DGV_RESERVE_PARMSWView {
   // 0x14: pad4
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -15947,7 +15947,7 @@ export class MCI_DGV_RESERVE_PARMSWView {
  */
 export interface MCI_DGV_RESTORE_PARMSA {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.PSTR */
   lpstrFileName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.RECT */
@@ -15982,7 +15982,7 @@ export class MCI_DGV_RESTORE_PARMSAView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -15999,7 +15999,7 @@ export class MCI_DGV_RESTORE_PARMSAView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -16020,7 +16020,7 @@ export class MCI_DGV_RESTORE_PARMSAView {
  */
 export interface MCI_DGV_RESTORE_PARMSW {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   lpstrFileName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.RECT */
@@ -16055,7 +16055,7 @@ export class MCI_DGV_RESTORE_PARMSWView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -16072,7 +16072,7 @@ export class MCI_DGV_RESTORE_PARMSWView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -16093,7 +16093,7 @@ export class MCI_DGV_RESTORE_PARMSWView {
  */
 export interface MCI_DGV_SAVE_PARMSA {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.PSTR */
   lpstrFileName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.RECT */
@@ -16128,7 +16128,7 @@ export class MCI_DGV_SAVE_PARMSAView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -16145,7 +16145,7 @@ export class MCI_DGV_SAVE_PARMSAView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -16166,7 +16166,7 @@ export class MCI_DGV_SAVE_PARMSAView {
  */
 export interface MCI_DGV_SAVE_PARMSW {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   lpstrFileName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.RECT */
@@ -16201,7 +16201,7 @@ export class MCI_DGV_SAVE_PARMSWView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -16218,7 +16218,7 @@ export class MCI_DGV_SAVE_PARMSWView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -16239,7 +16239,7 @@ export class MCI_DGV_SAVE_PARMSWView {
  */
 export interface MCI_DGV_SET_PARMS {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   dwTimeFormat: number;
   /** u32 */
@@ -16279,7 +16279,7 @@ export class MCI_DGV_SET_PARMSView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -16304,7 +16304,7 @@ export class MCI_DGV_SET_PARMSView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -16334,7 +16334,7 @@ export class MCI_DGV_SET_PARMSView {
  */
 export interface MCI_DGV_SETAUDIO_PARMSA {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   dwItem: number;
   /** u32 */
@@ -16385,7 +16385,7 @@ export class MCI_DGV_SETAUDIO_PARMSAView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -16419,7 +16419,7 @@ export class MCI_DGV_SETAUDIO_PARMSAView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -16458,7 +16458,7 @@ export class MCI_DGV_SETAUDIO_PARMSAView {
  */
 export interface MCI_DGV_SETAUDIO_PARMSW {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   dwItem: number;
   /** u32 */
@@ -16509,7 +16509,7 @@ export class MCI_DGV_SETAUDIO_PARMSWView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -16543,7 +16543,7 @@ export class MCI_DGV_SETAUDIO_PARMSWView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -16582,7 +16582,7 @@ export class MCI_DGV_SETAUDIO_PARMSWView {
  */
 export interface MCI_DGV_SIGNAL_PARMS {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   dwPosition: number;
   /** u32 */
@@ -16619,7 +16619,7 @@ export class MCI_DGV_SIGNAL_PARMSView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -16641,7 +16641,7 @@ export class MCI_DGV_SIGNAL_PARMSView {
   // 0x14: pad4
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -16668,7 +16668,7 @@ export class MCI_DGV_SIGNAL_PARMSView {
  */
 export interface MCI_DGV_SETVIDEO_PARMSA {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   dwItem: number;
   /** u32 */
@@ -16724,7 +16724,7 @@ export class MCI_DGV_SETVIDEO_PARMSAView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -16765,7 +16765,7 @@ export class MCI_DGV_SETVIDEO_PARMSAView {
   // 0x2c: pad4
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -16811,7 +16811,7 @@ export class MCI_DGV_SETVIDEO_PARMSAView {
  */
 export interface MCI_DGV_SETVIDEO_PARMSW {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   dwItem: number;
   /** u32 */
@@ -16867,7 +16867,7 @@ export class MCI_DGV_SETVIDEO_PARMSWView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -16908,7 +16908,7 @@ export class MCI_DGV_SETVIDEO_PARMSWView {
   // 0x2c: pad4
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -16954,9 +16954,9 @@ export class MCI_DGV_SETVIDEO_PARMSWView {
  */
 export interface MCI_DGV_STATUS_PARMSA {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** usize */
-  dwReturn: Deno.PointerValue;
+  dwReturn: bigint | number;
   /** u32 */
   dwItem: number;
   /** u32 */
@@ -17002,12 +17002,12 @@ export class MCI_DGV_STATUS_PARMSAView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: usize
-  get dwReturn(): Deno.PointerValue {
+  get dwReturn(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -17035,12 +17035,12 @@ export class MCI_DGV_STATUS_PARMSAView {
   // 0x24: pad4
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: usize
-  set dwReturn(value: Deno.PointerValue) {
+  set dwReturn(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -17073,9 +17073,9 @@ export class MCI_DGV_STATUS_PARMSAView {
  */
 export interface MCI_DGV_STATUS_PARMSW {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** usize */
-  dwReturn: Deno.PointerValue;
+  dwReturn: bigint | number;
   /** u32 */
   dwItem: number;
   /** u32 */
@@ -17121,12 +17121,12 @@ export class MCI_DGV_STATUS_PARMSWView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: usize
-  get dwReturn(): Deno.PointerValue {
+  get dwReturn(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -17154,12 +17154,12 @@ export class MCI_DGV_STATUS_PARMSWView {
   // 0x24: pad4
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: usize
-  set dwReturn(value: Deno.PointerValue) {
+  set dwReturn(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -17192,7 +17192,7 @@ export class MCI_DGV_STATUS_PARMSWView {
  */
 export interface MCI_DGV_STEP_PARMS {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** u32 */
   dwFrames: number;
 }
@@ -17221,7 +17221,7 @@ export class MCI_DGV_STEP_PARMSView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -17233,7 +17233,7 @@ export class MCI_DGV_STEP_PARMSView {
   // 0x0c: pad4
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -17250,7 +17250,7 @@ export class MCI_DGV_STEP_PARMSView {
  */
 export interface MCI_DGV_UPDATE_PARMS {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.RECT */
   rc: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Gdi.HDC */
@@ -17282,7 +17282,7 @@ export class MCI_DGV_UPDATE_PARMSView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -17299,7 +17299,7 @@ export class MCI_DGV_UPDATE_PARMSView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -17319,7 +17319,7 @@ export class MCI_DGV_UPDATE_PARMSView {
  */
 export interface MCI_DGV_WINDOW_PARMSA {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.HWND */
   hWnd: Deno.PointerValue;
   /** u32 */
@@ -17359,7 +17359,7 @@ export class MCI_DGV_WINDOW_PARMSAView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -17383,7 +17383,7 @@ export class MCI_DGV_WINDOW_PARMSAView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -17411,7 +17411,7 @@ export class MCI_DGV_WINDOW_PARMSAView {
  */
 export interface MCI_DGV_WINDOW_PARMSW {
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** Windows.Win32.Foundation.HWND */
   hWnd: Deno.PointerValue;
   /** u32 */
@@ -17451,7 +17451,7 @@ export class MCI_DGV_WINDOW_PARMSWView {
   }
 
   // 0x00: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -17475,7 +17475,7 @@ export class MCI_DGV_WINDOW_PARMSWView {
   }
 
   // 0x00: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -17498,7 +17498,7 @@ export class MCI_DGV_WINDOW_PARMSWView {
   }
 }
 
-export type LRESULT = Deno.PointerValue;
+export type LRESULT = bigint | number;
 
 /**
  * Windows.Win32.Media.Multimedia.ICOPEN (size: 56)
@@ -18029,7 +18029,7 @@ export class ICCOMPRESSView {
   }
 }
 
-export type LPARAM = Deno.PointerValue;
+export type LPARAM = bigint | number;
 
 /**
  * Windows.Win32.Media.Multimedia.ICCOMPRESSFRAMES (size: 96)
@@ -18064,9 +18064,9 @@ export interface ICCOMPRESSFRAMES {
   /** u32 */
   dwReserved2: number;
   /** isize */
-  GetData: Deno.PointerValue;
+  GetData: bigint | number;
   /** isize */
-  PutData: Deno.PointerValue;
+  PutData: bigint | number;
 }
 
 export const sizeofICCOMPRESSFRAMES = 96;
@@ -18200,12 +18200,12 @@ export class ICCOMPRESSFRAMESView {
   // 0x4c: pad4
 
   // 0x50: isize
-  get GetData(): Deno.PointerValue {
+  get GetData(): bigint | number {
     return Number(this.view.getBigInt64(80, true));
   }
 
   // 0x58: isize
-  get PutData(): Deno.PointerValue {
+  get PutData(): bigint | number {
     return Number(this.view.getBigInt64(88, true));
   }
 
@@ -18284,12 +18284,12 @@ export class ICCOMPRESSFRAMESView {
   // 0x4c: pad4
 
   // 0x50: isize
-  set GetData(value: Deno.PointerValue) {
+  set GetData(value: bigint | number) {
     this.view.setBigInt64(80, BigInt(value), true);
   }
 
   // 0x58: isize
-  set PutData(value: Deno.PointerValue) {
+  set PutData(value: bigint | number) {
     this.view.setBigInt64(88, BigInt(value), true);
   }
 }
@@ -18303,7 +18303,7 @@ export interface ICSETSTATUSPROC {
   /** Windows.Win32.Foundation.LPARAM */
   lParam: Uint8Array | Deno.PointerValue;
   /** isize */
-  Status: Deno.PointerValue;
+  Status: bigint | number;
 }
 
 export const sizeofICSETSTATUSPROC = 24;
@@ -18345,7 +18345,7 @@ export class ICSETSTATUSPROCView {
   }
 
   // 0x10: isize
-  get Status(): Deno.PointerValue {
+  get Status(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -18362,7 +18362,7 @@ export class ICSETSTATUSPROCView {
   }
 
   // 0x10: isize
-  set Status(value: Deno.PointerValue) {
+  set Status(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -18706,7 +18706,7 @@ export class ICDECOMPRESSEXView {
   }
 }
 
-export type HPALETTE = Deno.PointerValue;
+export type HPALETTE = bigint | number;
 
 /**
  * Windows.Win32.Media.Multimedia.ICDRAWBEGIN (size: 80)
@@ -20825,7 +20825,7 @@ export interface VIDEOHDR {
   /** u32 */
   dwTimeCaptured: number;
   /** usize */
-  dwUser: Deno.PointerValue;
+  dwUser: bigint | number;
   /** u32 */
   dwFlags: number;
   /** array */
@@ -20890,7 +20890,7 @@ export class VIDEOHDRView {
   // 0x14: pad4
 
   // 0x18: usize
-  get dwUser(): Deno.PointerValue {
+  get dwUser(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -20930,7 +20930,7 @@ export class VIDEOHDRView {
   // 0x14: pad4
 
   // 0x18: usize
-  set dwUser(value: Deno.PointerValue) {
+  set dwUser(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -21105,7 +21105,7 @@ export class CHANNEL_CAPSView {
 
 export type BOOL = number;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.Media.Multimedia.CAPDRIVERCAPS (size: 64)
@@ -22129,7 +22129,7 @@ export class DRVM_IOCTL_DATAView {
   }
 }
 
-export type HWAVE = Deno.PointerValue;
+export type HWAVE = bigint | number;
 
 /**
  * Windows.Win32.Media.Multimedia.WAVEOPENDESC (size: 48)
@@ -22140,13 +22140,13 @@ export interface WAVEOPENDESC {
   /** ptr */
   lpFormat: Deno.PointerValue | Uint8Array;
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** usize */
-  dwInstance: Deno.PointerValue;
+  dwInstance: bigint | number;
   /** u32 */
   uMappedDeviceID: number;
   /** usize */
-  dnDevNode: Deno.PointerValue;
+  dnDevNode: bigint | number;
 }
 
 export const sizeofWAVEOPENDESC = 48;
@@ -22193,12 +22193,12 @@ export class WAVEOPENDESCView {
   }
 
   // 0x10: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: usize
-  get dwInstance(): Deno.PointerValue {
+  get dwInstance(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -22210,7 +22210,7 @@ export class WAVEOPENDESCView {
   // 0x24: pad4
 
   // 0x28: usize
-  get dnDevNode(): Deno.PointerValue {
+  get dnDevNode(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -22225,12 +22225,12 @@ export class WAVEOPENDESCView {
   }
 
   // 0x10: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: usize
-  set dwInstance(value: Deno.PointerValue) {
+  set dwInstance(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -22242,7 +22242,7 @@ export class WAVEOPENDESCView {
   // 0x24: pad4
 
   // 0x28: usize
-  set dnDevNode(value: Deno.PointerValue) {
+  set dnDevNode(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 }
@@ -22300,7 +22300,7 @@ export class MIDIOPENSTRMIDView {
   }
 }
 
-export type HMIXER = Deno.PointerValue;
+export type HMIXER = bigint | number;
 
 /**
  * Windows.Win32.Media.Multimedia.MIXEROPENDESC (size: 40)
@@ -22311,11 +22311,11 @@ export interface MIXEROPENDESC {
   /** ptr */
   pReserved0: Deno.PointerValue | Uint8Array;
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** usize */
-  dwInstance: Deno.PointerValue;
+  dwInstance: bigint | number;
   /** usize */
-  dnDevNode: Deno.PointerValue;
+  dnDevNode: bigint | number;
 }
 
 export const sizeofMIXEROPENDESC = 40;
@@ -22359,17 +22359,17 @@ export class MIXEROPENDESCView {
   }
 
   // 0x10: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: usize
-  get dwInstance(): Deno.PointerValue {
+  get dwInstance(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: usize
-  get dnDevNode(): Deno.PointerValue {
+  get dnDevNode(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -22384,17 +22384,17 @@ export class MIXEROPENDESCView {
   }
 
   // 0x10: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: usize
-  set dwInstance(value: Deno.PointerValue) {
+  set dwInstance(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: usize
-  set dnDevNode(value: Deno.PointerValue) {
+  set dnDevNode(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 }
@@ -22605,7 +22605,7 @@ export class MCI_OPEN_DRIVER_PARMSView {
   }
 }
 
-export type HINSTANCE = Deno.PointerValue;
+export type HINSTANCE = bigint | number;
 
 export type HRESULT = number;
 
@@ -23321,8 +23321,8 @@ try {
 export function mciSendCommandA(
   mciId: number /* u32 */,
   uMsg: number /* u32 */,
-  dwParam1: Deno.PointerValue /* usize */,
-  dwParam2: Deno.PointerValue /* usize */,
+  dwParam1: bigint | number /* usize */,
+  dwParam2: bigint | number /* usize */,
 ): number /* u32 */ {
   return libWINMM_dll.mciSendCommandA(mciId, uMsg, dwParam1, dwParam2);
 }
@@ -23330,8 +23330,8 @@ export function mciSendCommandA(
 export function mciSendCommandW(
   mciId: number /* u32 */,
   uMsg: number /* u32 */,
-  dwParam1: Deno.PointerValue /* usize */,
-  dwParam2: Deno.PointerValue /* usize */,
+  dwParam1: bigint | number /* usize */,
+  dwParam2: bigint | number /* usize */,
 ): number /* u32 */ {
   return libWINMM_dll.mciSendCommandW(mciId, uMsg, dwParam1, dwParam2);
 }
@@ -23419,7 +23419,7 @@ export function mciGetYieldProc(
 
 export function mciGetDriverData(
   wDeviceID: number /* u32 */,
-): Deno.PointerValue /* usize */ {
+): bigint | number /* usize */ {
   return libWINMM_dll.mciGetDriverData(wDeviceID);
 }
 
@@ -23433,7 +23433,7 @@ export function mciLoadCommandResource(
 
 export function mciSetDriverData(
   wDeviceID: number /* u32 */,
-  dwData: Deno.PointerValue /* usize */,
+  dwData: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWINMM_dll.mciSetDriverData(wDeviceID, dwData));
 }
@@ -23496,7 +23496,7 @@ export function GetDriverModuleHandle(
 }
 
 export function DefDriverProc(
-  dwDriverIdentifier: Deno.PointerValue /* usize */,
+  dwDriverIdentifier: bigint | number /* usize */,
   hdrvr: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Multimedia.HDRVR */,
   uMsg: number /* u32 */,
   lParam1: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
@@ -23506,13 +23506,13 @@ export function DefDriverProc(
 }
 
 export function DriverCallback(
-  dwCallback: Deno.PointerValue /* usize */,
+  dwCallback: bigint | number /* usize */,
   dwFlags: number /* u32 */,
   hDevice: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Multimedia.HDRVR */,
   dwMsg: number /* u32 */,
-  dwUser: Deno.PointerValue /* usize */,
-  dwParam1: Deno.PointerValue /* usize */,
-  dwParam2: Deno.PointerValue /* usize */,
+  dwUser: bigint | number /* usize */,
+  dwParam1: bigint | number /* usize */,
+  dwParam2: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWINMM_dll.DriverCallback(dwCallback, dwFlags, util.toPointer(hDevice), dwMsg, dwUser, dwParam1, dwParam2));
 }
@@ -23716,7 +23716,7 @@ export function joyGetNumDevs(): number /* u32 */ {
 }
 
 export function joyGetDevCapsA(
-  uJoyID: Deno.PointerValue /* usize */,
+  uJoyID: bigint | number /* usize */,
   pjc: Deno.PointerValue | Uint8Array /* ptr */,
   cbjc: number /* u32 */,
 ): number /* u32 */ {
@@ -23724,7 +23724,7 @@ export function joyGetDevCapsA(
 }
 
 export function joyGetDevCapsW(
-  uJoyID: Deno.PointerValue /* usize */,
+  uJoyID: bigint | number /* usize */,
   pjc: Deno.PointerValue | Uint8Array /* ptr */,
   cbjc: number /* u32 */,
 ): number /* u32 */ {
@@ -23831,8 +23831,8 @@ export function ICClose(
 export function ICSendMessage(
   hic: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Multimedia.HIC */,
   msg: number /* u32 */,
-  dw1: Deno.PointerValue /* usize */,
-  dw2: Deno.PointerValue /* usize */,
+  dw1: bigint | number /* usize */,
+  dw2: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LRESULT */ {
   return libMSVFW32_dll.ICSendMessage(util.toPointer(hic), msg, dw1, dw2);
 }
@@ -23981,18 +23981,18 @@ export function ICCompressorFree(
   return libMSVFW32_dll.ICCompressorFree(util.toPointer(pc));
 }
 
-export function DrawDibOpen(): Deno.PointerValue /* isize */ {
+export function DrawDibOpen(): bigint | number /* isize */ {
   return libMSVFW32_dll.DrawDibOpen();
 }
 
 export function DrawDibClose(
-  hdd: Deno.PointerValue /* isize */,
+  hdd: bigint | number /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libMSVFW32_dll.DrawDibClose(hdd));
 }
 
 export function DrawDibGetBuffer(
-  hdd: Deno.PointerValue /* isize */,
+  hdd: bigint | number /* isize */,
   lpbi: Deno.PointerValue | Uint8Array /* ptr */,
   dwSize: number /* u32 */,
   dwFlags: number /* u32 */,
@@ -24001,20 +24001,20 @@ export function DrawDibGetBuffer(
 }
 
 export function DrawDibGetPalette(
-  hdd: Deno.PointerValue /* isize */,
+  hdd: bigint | number /* isize */,
 ): Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HPALETTE */ {
   return libMSVFW32_dll.DrawDibGetPalette(hdd);
 }
 
 export function DrawDibSetPalette(
-  hdd: Deno.PointerValue /* isize */,
+  hdd: bigint | number /* isize */,
   hpal: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HPALETTE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libMSVFW32_dll.DrawDibSetPalette(hdd, util.toPointer(hpal)));
 }
 
 export function DrawDibChangePalette(
-  hdd: Deno.PointerValue /* isize */,
+  hdd: bigint | number /* isize */,
   iStart: number /* i32 */,
   iLen: number /* i32 */,
   lppe: Deno.PointerValue | Uint8Array /* ptr */,
@@ -24023,7 +24023,7 @@ export function DrawDibChangePalette(
 }
 
 export function DrawDibRealize(
-  hdd: Deno.PointerValue /* isize */,
+  hdd: bigint | number /* isize */,
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   fBackground: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
@@ -24031,20 +24031,20 @@ export function DrawDibRealize(
 }
 
 export function DrawDibStart(
-  hdd: Deno.PointerValue /* isize */,
+  hdd: bigint | number /* isize */,
   rate: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libMSVFW32_dll.DrawDibStart(hdd, rate));
 }
 
 export function DrawDibStop(
-  hdd: Deno.PointerValue /* isize */,
+  hdd: bigint | number /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libMSVFW32_dll.DrawDibStop(hdd));
 }
 
 export function DrawDibBegin(
-  hdd: Deno.PointerValue /* isize */,
+  hdd: bigint | number /* isize */,
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   dxDst: number /* i32 */,
   dyDst: number /* i32 */,
@@ -24057,7 +24057,7 @@ export function DrawDibBegin(
 }
 
 export function DrawDibDraw(
-  hdd: Deno.PointerValue /* isize */,
+  hdd: bigint | number /* isize */,
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   xDst: number /* i32 */,
   yDst: number /* i32 */,
@@ -24075,13 +24075,13 @@ export function DrawDibDraw(
 }
 
 export function DrawDibEnd(
-  hdd: Deno.PointerValue /* isize */,
+  hdd: bigint | number /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libMSVFW32_dll.DrawDibEnd(hdd));
 }
 
 export function DrawDibTime(
-  hdd: Deno.PointerValue /* isize */,
+  hdd: bigint | number /* isize */,
   lpddtime: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libMSVFW32_dll.DrawDibTime(hdd, util.toPointer(lpddtime)));
@@ -24444,7 +24444,7 @@ export function AVISaveOptions(
   nStreams: number /* i32 */,
   ppavi: Deno.PointerValue | Uint8Array /* ptr */,
   plpOptions: Deno.PointerValue | Uint8Array /* ptr */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libAVIFIL32_dll.AVISaveOptions((hwnd), uiFlags, nStreams, util.toPointer(ppavi), util.toPointer(plpOptions));
 }
 
@@ -24671,7 +24671,7 @@ export function GetSaveFileNamePreviewW(
 export function mmTaskCreate(
   lpfn: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Multimedia.LPTASKCALLBACK */,
   lph: Deno.PointerValue | Uint8Array /* ptr */,
-  dwInst: Deno.PointerValue /* usize */,
+  dwInst: bigint | number /* usize */,
 ): number /* u32 */ {
   return libWINMM_dll.mmTaskCreate(util.toPointer(lpfn), util.toPointer(lph), dwInst);
 }

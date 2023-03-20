@@ -376,17 +376,17 @@ export const KEY_ALL_ACCESS = 983103;
  */
 export interface PROCESSOR_POWER_INFORMATION {
   /** u64 */
-  Number: Deno.PointerValue;
+  Number: bigint | number;
   /** u64 */
-  MaxMhz: Deno.PointerValue;
+  MaxMhz: bigint | number;
   /** u64 */
-  CurrentMhz: Deno.PointerValue;
+  CurrentMhz: bigint | number;
   /** u64 */
-  MhzLimit: Deno.PointerValue;
+  MhzLimit: bigint | number;
   /** u64 */
-  MaxIdleState: Deno.PointerValue;
+  MaxIdleState: bigint | number;
   /** u64 */
-  CurrentIdleState: Deno.PointerValue;
+  CurrentIdleState: bigint | number;
 }
 
 export const sizeofPROCESSOR_POWER_INFORMATION = 48;
@@ -420,62 +420,62 @@ export class PROCESSOR_POWER_INFORMATIONView {
   }
 
   // 0x00: u64
-  get Number(): Deno.PointerValue {
+  get Number(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get MaxMhz(): Deno.PointerValue {
+  get MaxMhz(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get CurrentMhz(): Deno.PointerValue {
+  get CurrentMhz(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get MhzLimit(): Deno.PointerValue {
+  get MhzLimit(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get MaxIdleState(): Deno.PointerValue {
+  get MaxIdleState(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: u64
-  get CurrentIdleState(): Deno.PointerValue {
+  get CurrentIdleState(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x00: u64
-  set Number(value: Deno.PointerValue) {
+  set Number(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set MaxMhz(value: Deno.PointerValue) {
+  set MaxMhz(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set CurrentMhz(value: Deno.PointerValue) {
+  set CurrentMhz(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set MhzLimit(value: Deno.PointerValue) {
+  set MhzLimit(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set MaxIdleState(value: Deno.PointerValue) {
+  set MaxIdleState(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: u64
-  set CurrentIdleState(value: Deno.PointerValue) {
+  set CurrentIdleState(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 }
@@ -485,11 +485,11 @@ export class PROCESSOR_POWER_INFORMATIONView {
  */
 export interface SYSTEM_POWER_INFORMATION {
   /** u64 */
-  MaxIdlenessAllowed: Deno.PointerValue;
+  MaxIdlenessAllowed: bigint | number;
   /** u64 */
-  Idleness: Deno.PointerValue;
+  Idleness: bigint | number;
   /** u64 */
-  TimeRemaining: Deno.PointerValue;
+  TimeRemaining: bigint | number;
   /** Windows.Win32.System.Power.POWER_COOLING_MODE */
   CoolingMode: POWER_COOLING_MODE;
 }
@@ -522,17 +522,17 @@ export class SYSTEM_POWER_INFORMATIONView {
   }
 
   // 0x00: u64
-  get MaxIdlenessAllowed(): Deno.PointerValue {
+  get MaxIdlenessAllowed(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Idleness(): Deno.PointerValue {
+  get Idleness(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get TimeRemaining(): Deno.PointerValue {
+  get TimeRemaining(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -544,17 +544,17 @@ export class SYSTEM_POWER_INFORMATIONView {
   // 0x1a: pad6
 
   // 0x00: u64
-  set MaxIdlenessAllowed(value: Deno.PointerValue) {
+  set MaxIdlenessAllowed(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Idleness(value: Deno.PointerValue) {
+  set Idleness(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set TimeRemaining(value: Deno.PointerValue) {
+  set TimeRemaining(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -625,7 +625,7 @@ export class DEVPROPKEYView {
   // 0x0c: pad4
 }
 
-export type HPOWERNOTIFY = Deno.PointerValue;
+export type HPOWERNOTIFY = bigint | number;
 
 /**
  * Windows.Win32.System.Power.GLOBAL_MACHINE_POWER_POLICY (size: 16)
@@ -2508,7 +2508,7 @@ export interface BATTERY_USB_CHARGER_STATUS {
   /** Windows.Win32.System.Power.USB_CHARGER_PORT */
   PortType: USB_CHARGER_PORT;
   /** u64 */
-  PortId: Deno.PointerValue;
+  PortId: bigint | number;
   /** ptr */
   PowerSourceInformation: Deno.PointerValue | Uint8Array;
   /** System.Guid */
@@ -2582,7 +2582,7 @@ export class BATTERY_USB_CHARGER_STATUSView {
   }
 
   // 0x18: u64
-  get PortId(): Deno.PointerValue {
+  get PortId(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -2629,7 +2629,7 @@ export class BATTERY_USB_CHARGER_STATUSView {
   }
 
   // 0x18: u64
-  set PortId(value: Deno.PointerValue) {
+  set PortId(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -2908,7 +2908,7 @@ export interface THERMAL_INFORMATION {
   /** u32 */
   ThermalConstant2: number;
   /** usize */
-  Processors: Deno.PointerValue;
+  Processors: bigint | number;
   /** u32 */
   SamplingPeriod: number;
   /** u32 */
@@ -2981,7 +2981,7 @@ export class THERMAL_INFORMATIONView {
   // 0x0c: pad4
 
   // 0x10: usize
-  get Processors(): Deno.PointerValue {
+  get Processors(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -3036,7 +3036,7 @@ export class THERMAL_INFORMATIONView {
   // 0x0c: pad4
 
   // 0x10: usize
-  set Processors(value: Deno.PointerValue) {
+  set Processors(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -3800,9 +3800,9 @@ export class EMI_METADATA_SIZEView {
  */
 export interface EMI_CHANNEL_MEASUREMENT_DATA {
   /** u64 */
-  AbsoluteEnergy: Deno.PointerValue;
+  AbsoluteEnergy: bigint | number;
   /** u64 */
-  AbsoluteTime: Deno.PointerValue;
+  AbsoluteTime: bigint | number;
 }
 
 export const sizeofEMI_CHANNEL_MEASUREMENT_DATA = 16;
@@ -3828,22 +3828,22 @@ export class EMI_CHANNEL_MEASUREMENT_DATAView {
   }
 
   // 0x00: u64
-  get AbsoluteEnergy(): Deno.PointerValue {
+  get AbsoluteEnergy(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get AbsoluteTime(): Deno.PointerValue {
+  get AbsoluteTime(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set AbsoluteEnergy(value: Deno.PointerValue) {
+  set AbsoluteEnergy(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set AbsoluteTime(value: Deno.PointerValue) {
+  set AbsoluteTime(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -6212,13 +6212,13 @@ export class SYSTEM_POWER_STATUSView {
 
 export type NTSTATUS = number;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
-export type HKEY = Deno.PointerValue;
+export type HKEY = bigint | number;
 
 export type HRESULT = number;
 
-export type LPARAM = Deno.PointerValue;
+export type LPARAM = bigint | number;
 
 export type BOOL = number;
 

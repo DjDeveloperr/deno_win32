@@ -603,7 +603,7 @@ export interface SOCKADDR_STORAGE {
   /** array */
   __ss_pad1: Deno.PointerValue;
   /** i64 */
-  __ss_align: Deno.PointerValue;
+  __ss_align: bigint | number;
   /** array */
   __ss_pad2: Deno.PointerValue;
 }
@@ -649,7 +649,7 @@ export class SOCKADDR_STORAGEView {
   }
 
   // 0x10: i64
-  get __ss_align(): Deno.PointerValue {
+  get __ss_align(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -672,7 +672,7 @@ export class SOCKADDR_STORAGEView {
   }
 
   // 0x10: i64
-  set __ss_align(value: Deno.PointerValue) {
+  set __ss_align(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
@@ -820,7 +820,7 @@ export class WINHTTP_REQUEST_TIMESView {
  */
 export interface WINHTTP_REQUEST_STATS {
   /** u64 */
-  ullFlags: Deno.PointerValue;
+  ullFlags: bigint | number;
   /** u32 */
   ulIndex: number;
   /** u32 */
@@ -856,7 +856,7 @@ export class WINHTTP_REQUEST_STATSView {
   }
 
   // 0x00: u64
-  get ullFlags(): Deno.PointerValue {
+  get ullFlags(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -877,7 +877,7 @@ export class WINHTTP_REQUEST_STATSView {
   }
 
   // 0x00: u64
-  set ullFlags(value: Deno.PointerValue) {
+  set ullFlags(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -904,7 +904,7 @@ export interface WINHTTP_MATCH_CONNECTION_GUID {
   /** System.Guid */
   ConnectionGuid: Uint8Array | Deno.PointerValue;
   /** u64 */
-  ullFlags: Deno.PointerValue;
+  ullFlags: bigint | number;
 }
 
 export const sizeofWINHTTP_MATCH_CONNECTION_GUID = 16;
@@ -936,7 +936,7 @@ export class WINHTTP_MATCH_CONNECTION_GUIDView {
   }
 
   // 0x08: u64
-  get ullFlags(): Deno.PointerValue {
+  get ullFlags(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -946,7 +946,7 @@ export class WINHTTP_MATCH_CONNECTION_GUIDView {
   }
 
   // 0x08: u64
-  set ullFlags(value: Deno.PointerValue) {
+  set ullFlags(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -964,9 +964,9 @@ export interface WINHTTP_RESOLVER_CACHE_CONFIG {
   /** Windows.Win32.Networking.WinHttp.WINHTTP_SECURE_DNS_SETTING */
   SecureDnsSetting: WINHTTP_SECURE_DNS_SETTING;
   /** u64 */
-  ullConnResolutionWaitTime: Deno.PointerValue;
+  ullConnResolutionWaitTime: bigint | number;
   /** u64 */
-  ullFlags: Deno.PointerValue;
+  ullFlags: bigint | number;
 }
 
 export const sizeofWINHTTP_RESOLVER_CACHE_CONFIG = 32;
@@ -1020,12 +1020,12 @@ export class WINHTTP_RESOLVER_CACHE_CONFIGView {
   }
 
   // 0x10: u64
-  get ullConnResolutionWaitTime(): Deno.PointerValue {
+  get ullConnResolutionWaitTime(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get ullFlags(): Deno.PointerValue {
+  get ullFlags(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -1050,12 +1050,12 @@ export class WINHTTP_RESOLVER_CACHE_CONFIGView {
   }
 
   // 0x10: u64
-  set ullConnResolutionWaitTime(value: Deno.PointerValue) {
+  set ullConnResolutionWaitTime(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set ullFlags(value: Deno.PointerValue) {
+  set ullFlags(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 }
@@ -1065,7 +1065,7 @@ export class WINHTTP_RESOLVER_CACHE_CONFIGView {
  */
 export interface WINHTTP_ASYNC_RESULT {
   /** usize */
-  dwResult: Deno.PointerValue;
+  dwResult: bigint | number;
   /** u32 */
   dwError: number;
 }
@@ -1094,7 +1094,7 @@ export class WINHTTP_ASYNC_RESULTView {
   }
 
   // 0x00: usize
-  get dwResult(): Deno.PointerValue {
+  get dwResult(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -1106,7 +1106,7 @@ export class WINHTTP_ASYNC_RESULTView {
   // 0x0c: pad4
 
   // 0x00: usize
-  set dwResult(value: Deno.PointerValue) {
+  set dwResult(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -1836,7 +1836,7 @@ export class WINHTTP_PROXY_RESULTView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.Networking.WinHttp.WINHTTP_PROXY_RESULT_EX (size: 32)
@@ -2505,11 +2505,11 @@ export class WINHTTP_CERTIFICATE_INFOView {
  */
 export interface _Anonymous1_e__Union {
   /** usize */
-  Data0: Deno.PointerValue;
+  Data0: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   String: string | null | Uint8Array | Uint16Array;
   /** usize */
-  u: Deno.PointerValue;
+  u: bigint | number;
   /** ptr */
   psid: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -2561,7 +2561,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  get Data0(): Deno.PointerValue {
+  get Data0(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -2572,7 +2572,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  get u(): Deno.PointerValue {
+  get u(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -2608,7 +2608,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  set Data0(value: Deno.PointerValue) {
+  set Data0(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -2619,7 +2619,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  set u(value: Deno.PointerValue) {
+  set u(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -2656,7 +2656,7 @@ export class _Anonymous1_e__UnionView {
  */
 export interface _Anonymous2_e__Union {
   /** usize */
-  Data1: Deno.PointerValue;
+  Data1: bigint | number;
   /** i32 */
   LogonId_HighPart: number;
 }
@@ -2685,7 +2685,7 @@ export class _Anonymous2_e__UnionView {
   }
 
   // 0x00: usize
-  get Data1(): Deno.PointerValue {
+  get Data1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -2697,7 +2697,7 @@ export class _Anonymous2_e__UnionView {
   // 0x0c: pad4
 
   // 0x00: usize
-  set Data1(value: Deno.PointerValue) {
+  set Data1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -3858,7 +3858,7 @@ export function WinHttpSetStatusCallback(
   hInternet: Deno.PointerValue | Uint8Array /* ptr */,
   lpfnInternetCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.WinHttp.WINHTTP_STATUS_CALLBACK */,
   dwNotificationFlags: number /* u32 */,
-  dwReserved: Deno.PointerValue /* usize */,
+  dwReserved: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Networking.WinHttp.WINHTTP_STATUS_CALLBACK */ {
   return libWINHTTP_dll.WinHttpSetStatusCallback(util.toPointer(hInternet), util.toPointer(lpfnInternetCallback), dwNotificationFlags, dwReserved);
 }
@@ -3950,7 +3950,7 @@ export function WinHttpReadDataEx(
   lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   dwNumberOfBytesToRead: number /* u32 */,
   lpdwNumberOfBytesRead: Deno.PointerValue | Uint8Array /* ptr */,
-  ullFlags: Deno.PointerValue /* u64 */,
+  ullFlags: bigint | number /* u64 */,
   cbProperty: number /* u32 */,
   pvProperty: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
@@ -4025,8 +4025,8 @@ export function WinHttpAddRequestHeaders(
 export function WinHttpAddRequestHeadersEx(
   hRequest: Deno.PointerValue | Uint8Array /* ptr */,
   dwModifiers: number /* u32 */,
-  ullFlags: Deno.PointerValue /* u64 */,
-  ullExtra: Deno.PointerValue /* u64 */,
+  ullFlags: bigint | number /* u64 */,
+  ullExtra: bigint | number /* u64 */,
   cHeaders: number /* u32 */,
   pHeaders: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
@@ -4040,7 +4040,7 @@ export function WinHttpSendRequest(
   lpOptional: Deno.PointerValue | Uint8Array /* ptr */,
   dwOptionalLength: number /* u32 */,
   dwTotalLength: number /* u32 */,
-  dwContext: Deno.PointerValue /* usize */,
+  dwContext: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWINHTTP_dll.WinHttpSendRequest(util.toPointer(hRequest), util.pwstrToFfi(lpszHeaders), dwHeadersLength, util.toPointer(lpOptional), dwOptionalLength, dwTotalLength, dwContext));
 }
@@ -4086,7 +4086,7 @@ export function WinHttpQueryHeaders(
 export function WinHttpQueryHeadersEx(
   hRequest: Deno.PointerValue | Uint8Array /* ptr */,
   dwInfoLevel: number /* u32 */,
-  ullFlags: Deno.PointerValue /* u64 */,
+  ullFlags: bigint | number /* u64 */,
   uiCodePage: number /* u32 */,
   pdwIndex: Deno.PointerValue | Uint8Array /* ptr */,
   pHeaderName: Deno.PointerValue | Uint8Array /* ptr */,
@@ -4101,7 +4101,7 @@ export function WinHttpQueryHeadersEx(
 export function WinHttpQueryConnectionGroup(
   hInternet: Deno.PointerValue | Uint8Array /* ptr */,
   pGuidConnection: Deno.PointerValue | Uint8Array /* ptr */,
-  ullFlags: Deno.PointerValue /* u64 */,
+  ullFlags: bigint | number /* u64 */,
   ppResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libWINHTTP_dll.WinHttpQueryConnectionGroup(util.toPointer(hInternet), util.toPointer(pGuidConnection), ullFlags, util.toPointer(ppResult));
@@ -4140,7 +4140,7 @@ export function WinHttpGetProxyForUrlEx(
   hResolver: Deno.PointerValue | Uint8Array /* ptr */,
   pcwszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pAutoProxyOptions: Deno.PointerValue | Uint8Array /* ptr */,
-  pContext: Deno.PointerValue /* usize */,
+  pContext: bigint | number /* usize */,
 ): number /* u32 */ {
   return libWINHTTP_dll.WinHttpGetProxyForUrlEx(util.toPointer(hResolver), util.pwstrToFfi(pcwszUrl), util.toPointer(pAutoProxyOptions), pContext);
 }
@@ -4151,7 +4151,7 @@ export function WinHttpGetProxyForUrlEx2(
   pAutoProxyOptions: Deno.PointerValue | Uint8Array /* ptr */,
   cbInterfaceSelectionContext: number /* u32 */,
   pInterfaceSelectionContext: Deno.PointerValue | Uint8Array /* ptr */,
-  pContext: Deno.PointerValue /* usize */,
+  pContext: bigint | number /* usize */,
 ): number /* u32 */ {
   return libWINHTTP_dll.WinHttpGetProxyForUrlEx2(util.toPointer(hResolver), util.pwstrToFfi(pcwszUrl), util.toPointer(pAutoProxyOptions), cbInterfaceSelectionContext, util.toPointer(pInterfaceSelectionContext), pContext);
 }
@@ -4236,7 +4236,7 @@ export function WinHttpSetProxySettingsPerUser(
 
 export function WinHttpWebSocketCompleteUpgrade(
   hRequest: Deno.PointerValue | Uint8Array /* ptr */,
-  pContext: Deno.PointerValue /* usize */,
+  pContext: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
   return libWINHTTP_dll.WinHttpWebSocketCompleteUpgrade(util.toPointer(hRequest), pContext);
 }

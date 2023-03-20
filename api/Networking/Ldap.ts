@@ -3600,11 +3600,11 @@ export const ERROR_QUERY_STORAGE_ERROR = 2151284737;
  */
 export interface _ld_sb_e__Struct {
   /** usize */
-  sb_sd: Deno.PointerValue;
+  sb_sd: bigint | number;
   /** array */
   Reserved1: Deno.PointerValue;
   /** usize */
-  sb_naddr: Deno.PointerValue;
+  sb_naddr: bigint | number;
   /** array */
   Reserved2: Deno.PointerValue;
 }
@@ -3636,7 +3636,7 @@ export class _ld_sb_e__StructView {
   }
 
   // 0x00: usize
-  get sb_sd(): Deno.PointerValue {
+  get sb_sd(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -3647,7 +3647,7 @@ export class _ld_sb_e__StructView {
   }
 
   // 0x10: usize
-  get sb_naddr(): Deno.PointerValue {
+  get sb_naddr(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -3658,7 +3658,7 @@ export class _ld_sb_e__StructView {
   }
 
   // 0x00: usize
-  set sb_sd(value: Deno.PointerValue) {
+  set sb_sd(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -3668,7 +3668,7 @@ export class _ld_sb_e__StructView {
   }
 
   // 0x10: usize
-  set sb_naddr(value: Deno.PointerValue) {
+  set sb_naddr(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -5580,7 +5580,7 @@ export class LDAP_REFERRAL_CALLBACKView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 // Native Libraries
 

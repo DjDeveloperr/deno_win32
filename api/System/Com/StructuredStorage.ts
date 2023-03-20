@@ -1760,9 +1760,9 @@ export class CACLSIDView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -1788,22 +1788,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -2382,9 +2382,9 @@ export class SERIALIZEDPROPERTYVALUEView {
  */
 export interface OLESTREAMVTBL {
   /** isize */
-  Get: Deno.PointerValue;
+  Get: bigint | number;
   /** isize */
-  Put: Deno.PointerValue;
+  Put: bigint | number;
 }
 
 export const sizeofOLESTREAMVTBL = 16;
@@ -2410,22 +2410,22 @@ export class OLESTREAMVTBLView {
   }
 
   // 0x00: isize
-  get Get(): Deno.PointerValue {
+  get Get(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: isize
-  get Put(): Deno.PointerValue {
+  get Put(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x00: isize
-  set Get(value: Deno.PointerValue) {
+  set Get(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set Put(value: Deno.PointerValue) {
+  set Put(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -2860,7 +2860,7 @@ export function StgOpenLayoutDocfile(
 }
 
 export function CreateStreamOnHGlobal(
-  hGlobal: Deno.PointerValue /* isize */,
+  hGlobal: bigint | number /* isize */,
   fDeleteOnRelease: boolean /* Windows.Win32.Foundation.BOOL */,
   ppstm: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
@@ -3068,7 +3068,7 @@ export function GetHGlobalFromILockBytes(
 }
 
 export function CreateILockBytesOnHGlobal(
-  hGlobal: Deno.PointerValue /* isize */,
+  hGlobal: bigint | number /* isize */,
   fDeleteOnRelease: boolean /* Windows.Win32.Foundation.BOOL */,
   pplkbyt: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {

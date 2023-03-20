@@ -991,9 +991,9 @@ export const JET_IndexCheckingMax = 3;
 
 // Structs
 
-export type JET_OSSNAPID = Deno.PointerValue;
+export type JET_OSSNAPID = bigint | number;
 
-export type JET_LS = Deno.PointerValue;
+export type JET_LS = bigint | number;
 
 /**
  * Windows.Win32.Storage.Jet.JET_INDEXID (size: 16)
@@ -1212,7 +1212,7 @@ export interface JET_THREADSTATS2 {
   /** u32 */
   cbLogRecord: number;
   /** u64 */
-  cusecPageCacheMiss: Deno.PointerValue;
+  cusecPageCacheMiss: bigint | number;
   /** u32 */
   cPageCacheMiss: number;
 }
@@ -1297,7 +1297,7 @@ export class JET_THREADSTATS2View {
   }
 
   // 0x20: u64
-  get cusecPageCacheMiss(): Deno.PointerValue {
+  get cusecPageCacheMiss(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -1349,7 +1349,7 @@ export class JET_THREADSTATS2View {
   }
 
   // 0x20: u64
-  set cusecPageCacheMiss(value: Deno.PointerValue) {
+  set cusecPageCacheMiss(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -1370,11 +1370,11 @@ export type PWSTR = Deno.PointerValue | Uint8Array;
  */
 export interface _Anonymous1_e__Union {
   /** usize */
-  Data0: Deno.PointerValue;
+  Data0: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   String: string | null | Uint8Array | Uint16Array;
   /** usize */
-  u: Deno.PointerValue;
+  u: bigint | number;
   /** ptr */
   psid: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -1426,7 +1426,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  get Data0(): Deno.PointerValue {
+  get Data0(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -1437,7 +1437,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  get u(): Deno.PointerValue {
+  get u(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -1473,7 +1473,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  set Data0(value: Deno.PointerValue) {
+  set Data0(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -1484,7 +1484,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  set u(value: Deno.PointerValue) {
+  set u(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -1521,7 +1521,7 @@ export class _Anonymous1_e__UnionView {
  */
 export interface _Anonymous2_e__Union {
   /** usize */
-  Data1: Deno.PointerValue;
+  Data1: bigint | number;
   /** i32 */
   LogonId_HighPart: number;
 }
@@ -1550,7 +1550,7 @@ export class _Anonymous2_e__UnionView {
   }
 
   // 0x00: usize
-  get Data1(): Deno.PointerValue {
+  get Data1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -1562,7 +1562,7 @@ export class _Anonymous2_e__UnionView {
   // 0x0c: pad4
 
   // 0x00: usize
-  set Data1(value: Deno.PointerValue) {
+  set Data1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -1801,7 +1801,7 @@ export interface JET_COMMIT_ID {
   /** i32 */
   reserved: number;
   /** i64 */
-  commitId: Deno.PointerValue;
+  commitId: bigint | number;
 }
 
 export const sizeofJET_COMMIT_ID = 24;
@@ -1843,7 +1843,7 @@ export class JET_COMMIT_IDView {
   // 0x0c: pad4
 
   // 0x10: i64
-  get commitId(): Deno.PointerValue {
+  get commitId(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -1860,7 +1860,7 @@ export class JET_COMMIT_IDView {
   // 0x0c: pad4
 
   // 0x10: i64
-  set commitId(value: Deno.PointerValue) {
+  set commitId(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -1880,7 +1880,7 @@ export interface JET_RBSINFOMISC {
   /** u32 */
   ulMinor: number;
   /** u64 */
-  cbLogicalFileSize: Deno.PointerValue;
+  cbLogicalFileSize: bigint | number;
 }
 
 export const sizeofJET_RBSINFOMISC = 40;
@@ -1944,7 +1944,7 @@ export class JET_RBSINFOMISCView {
   }
 
   // 0x20: u64
-  get cbLogicalFileSize(): Deno.PointerValue {
+  get cbLogicalFileSize(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -1976,7 +1976,7 @@ export class JET_RBSINFOMISCView {
   }
 
   // 0x20: u64
-  set cbLogicalFileSize(value: Deno.PointerValue) {
+  set cbLogicalFileSize(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 }
@@ -1996,9 +1996,9 @@ export interface JET_RBSREVERTINFOMISC {
   /** Windows.Win32.Storage.Jet.JET_LOGTIME */
   logtimeRevertFrom: Uint8Array | Deno.PointerValue;
   /** u64 */
-  cSecRevert: Deno.PointerValue;
+  cSecRevert: bigint | number;
   /** u64 */
-  cPagesReverted: Deno.PointerValue;
+  cPagesReverted: bigint | number;
 }
 
 export const sizeofJET_RBSREVERTINFOMISC = 40;
@@ -2060,12 +2060,12 @@ export class JET_RBSREVERTINFOMISCView {
   }
 
   // 0x18: u64
-  get cSecRevert(): Deno.PointerValue {
+  get cSecRevert(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get cPagesReverted(): Deno.PointerValue {
+  get cPagesReverted(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -2095,12 +2095,12 @@ export class JET_RBSREVERTINFOMISCView {
   }
 
   // 0x18: u64
-  set cSecRevert(value: Deno.PointerValue) {
+  set cSecRevert(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set cPagesReverted(value: Deno.PointerValue) {
+  set cPagesReverted(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 }
@@ -2110,21 +2110,21 @@ export class JET_RBSREVERTINFOMISCView {
  */
 export interface JET_RECSIZE {
   /** u64 */
-  cbData: Deno.PointerValue;
+  cbData: bigint | number;
   /** u64 */
-  cbLongValueData: Deno.PointerValue;
+  cbLongValueData: bigint | number;
   /** u64 */
-  cbOverhead: Deno.PointerValue;
+  cbOverhead: bigint | number;
   /** u64 */
-  cbLongValueOverhead: Deno.PointerValue;
+  cbLongValueOverhead: bigint | number;
   /** u64 */
-  cNonTaggedColumns: Deno.PointerValue;
+  cNonTaggedColumns: bigint | number;
   /** u64 */
-  cTaggedColumns: Deno.PointerValue;
+  cTaggedColumns: bigint | number;
   /** u64 */
-  cLongValues: Deno.PointerValue;
+  cLongValues: bigint | number;
   /** u64 */
-  cMultiValues: Deno.PointerValue;
+  cMultiValues: bigint | number;
 }
 
 export const sizeofJET_RECSIZE = 64;
@@ -2162,82 +2162,82 @@ export class JET_RECSIZEView {
   }
 
   // 0x00: u64
-  get cbData(): Deno.PointerValue {
+  get cbData(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get cbLongValueData(): Deno.PointerValue {
+  get cbLongValueData(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get cbOverhead(): Deno.PointerValue {
+  get cbOverhead(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get cbLongValueOverhead(): Deno.PointerValue {
+  get cbLongValueOverhead(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get cNonTaggedColumns(): Deno.PointerValue {
+  get cNonTaggedColumns(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: u64
-  get cTaggedColumns(): Deno.PointerValue {
+  get cTaggedColumns(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: u64
-  get cLongValues(): Deno.PointerValue {
+  get cLongValues(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: u64
-  get cMultiValues(): Deno.PointerValue {
+  get cMultiValues(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
   // 0x00: u64
-  set cbData(value: Deno.PointerValue) {
+  set cbData(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set cbLongValueData(value: Deno.PointerValue) {
+  set cbLongValueData(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set cbOverhead(value: Deno.PointerValue) {
+  set cbOverhead(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set cbLongValueOverhead(value: Deno.PointerValue) {
+  set cbLongValueOverhead(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set cNonTaggedColumns(value: Deno.PointerValue) {
+  set cNonTaggedColumns(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: u64
-  set cTaggedColumns(value: Deno.PointerValue) {
+  set cTaggedColumns(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: u64
-  set cLongValues(value: Deno.PointerValue) {
+  set cLongValues(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: u64
-  set cMultiValues(value: Deno.PointerValue) {
+  set cMultiValues(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 }
@@ -2247,27 +2247,27 @@ export class JET_RECSIZEView {
  */
 export interface JET_RECSIZE2 {
   /** u64 */
-  cbData: Deno.PointerValue;
+  cbData: bigint | number;
   /** u64 */
-  cbLongValueData: Deno.PointerValue;
+  cbLongValueData: bigint | number;
   /** u64 */
-  cbOverhead: Deno.PointerValue;
+  cbOverhead: bigint | number;
   /** u64 */
-  cbLongValueOverhead: Deno.PointerValue;
+  cbLongValueOverhead: bigint | number;
   /** u64 */
-  cNonTaggedColumns: Deno.PointerValue;
+  cNonTaggedColumns: bigint | number;
   /** u64 */
-  cTaggedColumns: Deno.PointerValue;
+  cTaggedColumns: bigint | number;
   /** u64 */
-  cLongValues: Deno.PointerValue;
+  cLongValues: bigint | number;
   /** u64 */
-  cMultiValues: Deno.PointerValue;
+  cMultiValues: bigint | number;
   /** u64 */
-  cCompressedColumns: Deno.PointerValue;
+  cCompressedColumns: bigint | number;
   /** u64 */
-  cbDataCompressed: Deno.PointerValue;
+  cbDataCompressed: bigint | number;
   /** u64 */
-  cbLongValueDataCompressed: Deno.PointerValue;
+  cbLongValueDataCompressed: bigint | number;
 }
 
 export const sizeofJET_RECSIZE2 = 88;
@@ -2311,112 +2311,112 @@ export class JET_RECSIZE2View {
   }
 
   // 0x00: u64
-  get cbData(): Deno.PointerValue {
+  get cbData(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get cbLongValueData(): Deno.PointerValue {
+  get cbLongValueData(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get cbOverhead(): Deno.PointerValue {
+  get cbOverhead(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get cbLongValueOverhead(): Deno.PointerValue {
+  get cbLongValueOverhead(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get cNonTaggedColumns(): Deno.PointerValue {
+  get cNonTaggedColumns(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: u64
-  get cTaggedColumns(): Deno.PointerValue {
+  get cTaggedColumns(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: u64
-  get cLongValues(): Deno.PointerValue {
+  get cLongValues(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: u64
-  get cMultiValues(): Deno.PointerValue {
+  get cMultiValues(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
   // 0x40: u64
-  get cCompressedColumns(): Deno.PointerValue {
+  get cCompressedColumns(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
   // 0x48: u64
-  get cbDataCompressed(): Deno.PointerValue {
+  get cbDataCompressed(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
   // 0x50: u64
-  get cbLongValueDataCompressed(): Deno.PointerValue {
+  get cbLongValueDataCompressed(): bigint | number {
     return Number(this.view.getBigUint64(80, true));
   }
 
   // 0x00: u64
-  set cbData(value: Deno.PointerValue) {
+  set cbData(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set cbLongValueData(value: Deno.PointerValue) {
+  set cbLongValueData(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set cbOverhead(value: Deno.PointerValue) {
+  set cbOverhead(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set cbLongValueOverhead(value: Deno.PointerValue) {
+  set cbLongValueOverhead(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set cNonTaggedColumns(value: Deno.PointerValue) {
+  set cNonTaggedColumns(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: u64
-  set cTaggedColumns(value: Deno.PointerValue) {
+  set cTaggedColumns(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: u64
-  set cLongValues(value: Deno.PointerValue) {
+  set cLongValues(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: u64
-  set cMultiValues(value: Deno.PointerValue) {
+  set cMultiValues(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
   // 0x40: u64
-  set cCompressedColumns(value: Deno.PointerValue) {
+  set cCompressedColumns(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
   // 0x48: u64
-  set cbDataCompressed(value: Deno.PointerValue) {
+  set cbDataCompressed(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
   // 0x50: u64
-  set cbLongValueDataCompressed(value: Deno.PointerValue) {
+  set cbLongValueDataCompressed(value: bigint | number) {
     this.view.setBigUint64(80, BigInt(value), true);
   }
 }
@@ -2554,9 +2554,9 @@ export class JET_RSTMAP_WView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -2582,22 +2582,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -2971,7 +2971,7 @@ export class JET_DBINFOUPGRADEView {
   }
 }
 
-export type JET_TABLEID = Deno.PointerValue;
+export type JET_TABLEID = bigint | number;
 
 /**
  * Windows.Win32.Storage.Jet.JET_OBJECTLIST (size: 56)
@@ -12965,7 +12965,7 @@ export class JET_SETCOLUMNView {
   // 0x24: pad4
 }
 
-export type JET_API_PTR = Deno.PointerValue;
+export type JET_API_PTR = bigint | number;
 
 /**
  * Windows.Win32.Storage.Jet.JET_SETSYSPARAM_A (size: 32)
@@ -13720,7 +13720,7 @@ export class JET_LOGINFO_WView {
   }
 }
 
-export type JET_INSTANCE = Deno.PointerValue;
+export type JET_INSTANCE = bigint | number;
 
 /**
  * Windows.Win32.Storage.Jet.JET_INSTANCE_INFO_A (size: 48)
@@ -13960,9 +13960,9 @@ export class JET_INSTANCE_INFO_WView {
   }
 }
 
-export type JET_SESID = Deno.PointerValue;
+export type JET_SESID = bigint | number;
 
-export type JET_HANDLE = Deno.PointerValue;
+export type JET_HANDLE = bigint | number;
 
 // Native Libraries
 
@@ -15683,7 +15683,7 @@ export function JetBeginTransaction2(
 
 export function JetBeginTransaction3(
   sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
-  trxid: Deno.PointerValue /* i64 */,
+  trxid: bigint | number /* i64 */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
   return libESENT_dll.JetBeginTransaction3(util.toPointer(sesid), trxid, grbit);

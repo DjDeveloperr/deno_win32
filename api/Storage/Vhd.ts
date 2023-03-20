@@ -3474,9 +3474,9 @@ export class VIRTUAL_STORAGE_TYPEView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -3502,22 +3502,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -4180,9 +4180,9 @@ export interface VIRTUAL_DISK_PROGRESS {
   /** u32 */
   OperationStatus: number;
   /** u64 */
-  CurrentValue: Deno.PointerValue;
+  CurrentValue: bigint | number;
   /** u64 */
-  CompletionValue: Deno.PointerValue;
+  CompletionValue: bigint | number;
 }
 
 export const sizeofVIRTUAL_DISK_PROGRESS = 24;
@@ -4218,12 +4218,12 @@ export class VIRTUAL_DISK_PROGRESSView {
   // 0x04: pad4
 
   // 0x08: u64
-  get CurrentValue(): Deno.PointerValue {
+  get CurrentValue(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get CompletionValue(): Deno.PointerValue {
+  get CompletionValue(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -4235,12 +4235,12 @@ export class VIRTUAL_DISK_PROGRESSView {
   // 0x04: pad4
 
   // 0x08: u64
-  set CurrentValue(value: Deno.PointerValue) {
+  set CurrentValue(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set CompletionValue(value: Deno.PointerValue) {
+  set CompletionValue(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -4545,11 +4545,11 @@ export class MIRROR_VIRTUAL_DISK_PARAMETERSView {
  */
 export interface QUERY_CHANGES_VIRTUAL_DISK_RANGE {
   /** u64 */
-  ByteOffset: Deno.PointerValue;
+  ByteOffset: bigint | number;
   /** u64 */
-  ByteLength: Deno.PointerValue;
+  ByteLength: bigint | number;
   /** u64 */
-  Reserved: Deno.PointerValue;
+  Reserved: bigint | number;
 }
 
 export const sizeofQUERY_CHANGES_VIRTUAL_DISK_RANGE = 24;
@@ -4577,32 +4577,32 @@ export class QUERY_CHANGES_VIRTUAL_DISK_RANGEView {
   }
 
   // 0x00: u64
-  get ByteOffset(): Deno.PointerValue {
+  get ByteOffset(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get ByteLength(): Deno.PointerValue {
+  get ByteLength(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get Reserved(): Deno.PointerValue {
+  get Reserved(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x00: u64
-  set ByteOffset(value: Deno.PointerValue) {
+  set ByteOffset(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set ByteLength(value: Deno.PointerValue) {
+  set ByteLength(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set Reserved(value: Deno.PointerValue) {
+  set Reserved(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -5022,7 +5022,7 @@ export class FORK_VIRTUAL_DISK_PARAMETERSView {
 
 export type PSECURITY_DESCRIPTOR = Deno.PointerValue | Uint8Array;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 // Native Libraries
 
@@ -5336,8 +5336,8 @@ export function AddVirtualDiskParent(
 export function QueryChangesVirtualDisk(
   VirtualDiskHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ChangeTrackingId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  ByteOffset: Deno.PointerValue /* u64 */,
-  ByteLength: Deno.PointerValue /* u64 */,
+  ByteOffset: bigint | number /* u64 */,
+  ByteLength: bigint | number /* u64 */,
   Flags: QUERY_CHANGES_VIRTUAL_DISK_FLAG /* Windows.Win32.Storage.Vhd.QUERY_CHANGES_VIRTUAL_DISK_FLAG */,
   Ranges: Deno.PointerValue | Uint8Array /* ptr */,
   RangeCount: Deno.PointerValue | Uint8Array /* ptr */,

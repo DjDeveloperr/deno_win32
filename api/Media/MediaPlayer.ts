@@ -858,7 +858,7 @@ export interface TimedLevel {
   /** i32 */
   state: number;
   /** i64 */
-  timeStamp: Deno.PointerValue;
+  timeStamp: bigint | number;
 }
 
 export const sizeofTimedLevel = 32;
@@ -908,7 +908,7 @@ export class TimedLevelView {
   // 0x14: pad4
 
   // 0x18: i64
-  get timeStamp(): Deno.PointerValue {
+  get timeStamp(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
@@ -930,7 +930,7 @@ export class TimedLevelView {
   // 0x14: pad4
 
   // 0x18: i64
-  set timeStamp(value: Deno.PointerValue) {
+  set timeStamp(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 }

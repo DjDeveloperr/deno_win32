@@ -775,9 +775,9 @@ export interface DSEFFECTDESC {
   /** System.Guid */
   guidDSFXClass: Uint8Array | Deno.PointerValue;
   /** usize */
-  dwReserved1: Deno.PointerValue;
+  dwReserved1: bigint | number;
   /** usize */
-  dwReserved2: Deno.PointerValue;
+  dwReserved2: bigint | number;
 }
 
 export const sizeofDSEFFECTDESC = 32;
@@ -825,12 +825,12 @@ export class DSEFFECTDESCView {
   }
 
   // 0x10: usize
-  get dwReserved1(): Deno.PointerValue {
+  get dwReserved1(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: usize
-  get dwReserved2(): Deno.PointerValue {
+  get dwReserved2(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -850,12 +850,12 @@ export class DSEFFECTDESCView {
   }
 
   // 0x10: usize
-  set dwReserved1(value: Deno.PointerValue) {
+  set dwReserved1(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: usize
-  set dwReserved2(value: Deno.PointerValue) {
+  set dwReserved2(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 }
@@ -1962,7 +1962,7 @@ export class DSCBCAPSView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.Media.Audio.DirectSound.DSBPOSITIONNOTIFY (size: 16)
@@ -3107,7 +3107,7 @@ export class DSCFXNoiseSuppressView {
 
 export type HRESULT = number;
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 // Native Libraries
 

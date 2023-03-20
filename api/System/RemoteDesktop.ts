@@ -627,13 +627,13 @@ export const MB_MISCMASK = 49152;
  */
 export interface AE_CURRENT_POSITION {
   /** u64 */
-  u64DevicePosition: Deno.PointerValue;
+  u64DevicePosition: bigint | number;
   /** u64 */
-  u64StreamPosition: Deno.PointerValue;
+  u64StreamPosition: bigint | number;
   /** u64 */
-  u64PaddingFrames: Deno.PointerValue;
+  u64PaddingFrames: bigint | number;
   /** i64 */
-  hnsQPCPosition: Deno.PointerValue;
+  hnsQPCPosition: bigint | number;
   /** f32 */
   f32FramesPerSecond: number;
   /** Windows.Win32.System.RemoteDesktop.AE_POSITION_FLAGS */
@@ -671,22 +671,22 @@ export class AE_CURRENT_POSITIONView {
   }
 
   // 0x00: u64
-  get u64DevicePosition(): Deno.PointerValue {
+  get u64DevicePosition(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get u64StreamPosition(): Deno.PointerValue {
+  get u64StreamPosition(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get u64PaddingFrames(): Deno.PointerValue {
+  get u64PaddingFrames(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: i64
-  get hnsQPCPosition(): Deno.PointerValue {
+  get hnsQPCPosition(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
@@ -701,22 +701,22 @@ export class AE_CURRENT_POSITIONView {
   }
 
   // 0x00: u64
-  set u64DevicePosition(value: Deno.PointerValue) {
+  set u64DevicePosition(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set u64StreamPosition(value: Deno.PointerValue) {
+  set u64StreamPosition(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set u64PaddingFrames(value: Deno.PointerValue) {
+  set u64PaddingFrames(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: i64
-  set hnsQPCPosition(value: Deno.PointerValue) {
+  set hnsQPCPosition(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
@@ -731,7 +731,7 @@ export class AE_CURRENT_POSITIONView {
   }
 }
 
-export type HwtsVirtualChannelHandle = Deno.PointerValue;
+export type HwtsVirtualChannelHandle = bigint | number;
 
 export type BSTR = Deno.PointerValue | Uint8Array;
 
@@ -2074,9 +2074,9 @@ export class WTSCONFIGINFOAView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -2102,22 +2102,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -2194,7 +2194,7 @@ export interface LARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue;
   /** i64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: bigint | number;
 }
 
 export const sizeofLARGE_INTEGER = 24;
@@ -2234,7 +2234,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  get QuadPart(): Deno.PointerValue {
+  get QuadPart(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -2249,7 +2249,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  set QuadPart(value: Deno.PointerValue) {
+  set QuadPart(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -9071,7 +9071,7 @@ export class EXCEPTION_DEBUG_INFOView {
   // 0x0c: pad4
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.System.Diagnostics.Debug.CREATE_THREAD_DEBUG_INFO (size: 24)
@@ -14467,7 +14467,7 @@ export class WTSSESSION_NOTIFICATIONView {
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 export type PSECURITY_DESCRIPTOR = Deno.PointerValue | Uint8Array;
 

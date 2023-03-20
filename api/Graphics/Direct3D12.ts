@@ -4411,7 +4411,7 @@ export interface D3D12_SHADER_BYTECODE {
   /** ptr */
   pShaderBytecode: Deno.PointerValue | Uint8Array;
   /** usize */
-  BytecodeLength: Deno.PointerValue;
+  BytecodeLength: bigint | number;
 }
 
 export const sizeofD3D12_SHADER_BYTECODE = 16;
@@ -4443,7 +4443,7 @@ export class D3D12_SHADER_BYTECODEView {
   }
 
   // 0x08: usize
-  get BytecodeLength(): Deno.PointerValue {
+  get BytecodeLength(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -4453,7 +4453,7 @@ export class D3D12_SHADER_BYTECODEView {
   }
 
   // 0x08: usize
-  set BytecodeLength(value: Deno.PointerValue) {
+  set BytecodeLength(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -4626,7 +4626,7 @@ export interface D3D12_CACHED_PIPELINE_STATE {
   /** ptr */
   pCachedBlob: Deno.PointerValue | Uint8Array;
   /** usize */
-  CachedBlobSizeInBytes: Deno.PointerValue;
+  CachedBlobSizeInBytes: bigint | number;
 }
 
 export const sizeofD3D12_CACHED_PIPELINE_STATE = 16;
@@ -4658,7 +4658,7 @@ export class D3D12_CACHED_PIPELINE_STATEView {
   }
 
   // 0x08: usize
-  get CachedBlobSizeInBytes(): Deno.PointerValue {
+  get CachedBlobSizeInBytes(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -4668,7 +4668,7 @@ export class D3D12_CACHED_PIPELINE_STATEView {
   }
 
   // 0x08: usize
-  set CachedBlobSizeInBytes(value: Deno.PointerValue) {
+  set CachedBlobSizeInBytes(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -5256,7 +5256,7 @@ export class D3D12_RT_FORMAT_ARRAYView {
  */
 export interface D3D12_PIPELINE_STATE_STREAM_DESC {
   /** usize */
-  SizeInBytes: Deno.PointerValue;
+  SizeInBytes: bigint | number;
   /** ptr */
   pPipelineStateSubobjectStream: Deno.PointerValue | Uint8Array;
 }
@@ -5284,7 +5284,7 @@ export class D3D12_PIPELINE_STATE_STREAM_DESCView {
   }
 
   // 0x00: usize
-  get SizeInBytes(): Deno.PointerValue {
+  get SizeInBytes(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -5295,7 +5295,7 @@ export class D3D12_PIPELINE_STATE_STREAM_DESCView {
   }
 
   // 0x00: usize
-  set SizeInBytes(value: Deno.PointerValue) {
+  set SizeInBytes(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -7045,11 +7045,11 @@ export interface D3D12_FEATURE_DATA_QUERY_META_COMMAND {
   /** ptr */
   pQueryInputData: Deno.PointerValue | Uint8Array;
   /** usize */
-  QueryInputDataSizeInBytes: Deno.PointerValue;
+  QueryInputDataSizeInBytes: bigint | number;
   /** ptr */
   pQueryOutputData: Deno.PointerValue | Uint8Array;
   /** usize */
-  QueryOutputDataSizeInBytes: Deno.PointerValue;
+  QueryOutputDataSizeInBytes: bigint | number;
 }
 
 export const sizeofD3D12_FEATURE_DATA_QUERY_META_COMMAND = 48;
@@ -7103,7 +7103,7 @@ export class D3D12_FEATURE_DATA_QUERY_META_COMMANDView {
   }
 
   // 0x18: usize
-  get QueryInputDataSizeInBytes(): Deno.PointerValue {
+  get QueryInputDataSizeInBytes(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -7114,7 +7114,7 @@ export class D3D12_FEATURE_DATA_QUERY_META_COMMANDView {
   }
 
   // 0x28: usize
-  get QueryOutputDataSizeInBytes(): Deno.PointerValue {
+  get QueryOutputDataSizeInBytes(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -7136,7 +7136,7 @@ export class D3D12_FEATURE_DATA_QUERY_META_COMMANDView {
   }
 
   // 0x18: usize
-  set QueryInputDataSizeInBytes(value: Deno.PointerValue) {
+  set QueryInputDataSizeInBytes(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -7146,7 +7146,7 @@ export class D3D12_FEATURE_DATA_QUERY_META_COMMANDView {
   }
 
   // 0x28: usize
-  set QueryOutputDataSizeInBytes(value: Deno.PointerValue) {
+  set QueryOutputDataSizeInBytes(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 }
@@ -7406,9 +7406,9 @@ export class D3D12_FEATURE_DATA_D3D12_OPTIONS11View {
  */
 export interface D3D12_RESOURCE_ALLOCATION_INFO {
   /** u64 */
-  SizeInBytes: Deno.PointerValue;
+  SizeInBytes: bigint | number;
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
 }
 
 export const sizeofD3D12_RESOURCE_ALLOCATION_INFO = 16;
@@ -7434,22 +7434,22 @@ export class D3D12_RESOURCE_ALLOCATION_INFOView {
   }
 
   // 0x00: u64
-  get SizeInBytes(): Deno.PointerValue {
+  get SizeInBytes(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set SizeInBytes(value: Deno.PointerValue) {
+  set SizeInBytes(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -7459,11 +7459,11 @@ export class D3D12_RESOURCE_ALLOCATION_INFOView {
  */
 export interface D3D12_RESOURCE_ALLOCATION_INFO1 {
   /** u64 */
-  Offset: Deno.PointerValue;
+  Offset: bigint | number;
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  SizeInBytes: Deno.PointerValue;
+  SizeInBytes: bigint | number;
 }
 
 export const sizeofD3D12_RESOURCE_ALLOCATION_INFO1 = 24;
@@ -7491,32 +7491,32 @@ export class D3D12_RESOURCE_ALLOCATION_INFO1View {
   }
 
   // 0x00: u64
-  get Offset(): Deno.PointerValue {
+  get Offset(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get SizeInBytes(): Deno.PointerValue {
+  get SizeInBytes(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x00: u64
-  set Offset(value: Deno.PointerValue) {
+  set Offset(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set SizeInBytes(value: Deno.PointerValue) {
+  set SizeInBytes(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -7626,11 +7626,11 @@ export class D3D12_HEAP_PROPERTIESView {
  */
 export interface D3D12_HEAP_DESC {
   /** u64 */
-  SizeInBytes: Deno.PointerValue;
+  SizeInBytes: bigint | number;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_HEAP_PROPERTIES */
   Properties: Uint8Array | Deno.PointerValue;
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_HEAP_FLAGS */
   Flags: D3D12_HEAP_FLAGS;
 }
@@ -7663,7 +7663,7 @@ export class D3D12_HEAP_DESCView {
   }
 
   // 0x00: u64
-  get SizeInBytes(): Deno.PointerValue {
+  get SizeInBytes(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -7674,7 +7674,7 @@ export class D3D12_HEAP_DESCView {
   }
 
   // 0x10: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -7686,7 +7686,7 @@ export class D3D12_HEAP_DESCView {
   // 0x1c: pad4
 
   // 0x00: u64
-  set SizeInBytes(value: Deno.PointerValue) {
+  set SizeInBytes(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -7696,7 +7696,7 @@ export class D3D12_HEAP_DESCView {
   }
 
   // 0x10: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -7787,9 +7787,9 @@ export interface D3D12_RESOURCE_DESC {
   /** Windows.Win32.Graphics.Direct3D12.D3D12_RESOURCE_DIMENSION */
   Dimension: D3D12_RESOURCE_DIMENSION;
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Width: Deno.PointerValue;
+  Width: bigint | number;
   /** u32 */
   Height: number;
   /** u16 */
@@ -7854,12 +7854,12 @@ export class D3D12_RESOURCE_DESCView {
   // 0x04: pad4
 
   // 0x08: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get Width(): Deno.PointerValue {
+  get Width(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -7909,12 +7909,12 @@ export class D3D12_RESOURCE_DESCView {
   // 0x04: pad4
 
   // 0x08: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set Width(value: Deno.PointerValue) {
+  set Width(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -7963,9 +7963,9 @@ export interface D3D12_RESOURCE_DESC1 {
   /** Windows.Win32.Graphics.Direct3D12.D3D12_RESOURCE_DIMENSION */
   Dimension: D3D12_RESOURCE_DIMENSION;
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Width: Deno.PointerValue;
+  Width: bigint | number;
   /** u32 */
   Height: number;
   /** u16 */
@@ -8034,12 +8034,12 @@ export class D3D12_RESOURCE_DESC1View {
   // 0x04: pad4
 
   // 0x08: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get Width(): Deno.PointerValue {
+  get Width(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -8095,12 +8095,12 @@ export class D3D12_RESOURCE_DESC1View {
   // 0x04: pad4
 
   // 0x08: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set Width(value: Deno.PointerValue) {
+  set Width(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -8210,9 +8210,9 @@ export class D3D12_DEPTH_STENCIL_VALUEView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -8238,22 +8238,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -8377,9 +8377,9 @@ export class D3D12_CLEAR_VALUEView {
  */
 export interface D3D12_RANGE {
   /** usize */
-  Begin: Deno.PointerValue;
+  Begin: bigint | number;
   /** usize */
-  End: Deno.PointerValue;
+  End: bigint | number;
 }
 
 export const sizeofD3D12_RANGE = 16;
@@ -8405,22 +8405,22 @@ export class D3D12_RANGEView {
   }
 
   // 0x00: usize
-  get Begin(): Deno.PointerValue {
+  get Begin(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: usize
-  get End(): Deno.PointerValue {
+  get End(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: usize
-  set Begin(value: Deno.PointerValue) {
+  set Begin(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: usize
-  set End(value: Deno.PointerValue) {
+  set End(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -8430,9 +8430,9 @@ export class D3D12_RANGEView {
  */
 export interface D3D12_RANGE_UINT64 {
   /** u64 */
-  Begin: Deno.PointerValue;
+  Begin: bigint | number;
   /** u64 */
-  End: Deno.PointerValue;
+  End: bigint | number;
 }
 
 export const sizeofD3D12_RANGE_UINT64 = 16;
@@ -8458,22 +8458,22 @@ export class D3D12_RANGE_UINT64View {
   }
 
   // 0x00: u64
-  get Begin(): Deno.PointerValue {
+  get Begin(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get End(): Deno.PointerValue {
+  get End(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Begin(value: Deno.PointerValue) {
+  set Begin(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set End(value: Deno.PointerValue) {
+  set End(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -8542,7 +8542,7 @@ export class D3D12_SUBRESOURCE_RANGE_UINT64View {
  */
 export interface D3D12_SUBRESOURCE_INFO {
   /** u64 */
-  Offset: Deno.PointerValue;
+  Offset: bigint | number;
   /** u32 */
   RowPitch: number;
   /** u32 */
@@ -8574,7 +8574,7 @@ export class D3D12_SUBRESOURCE_INFOView {
   }
 
   // 0x00: u64
-  get Offset(): Deno.PointerValue {
+  get Offset(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -8589,7 +8589,7 @@ export class D3D12_SUBRESOURCE_INFOView {
   }
 
   // 0x00: u64
-  set Offset(value: Deno.PointerValue) {
+  set Offset(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -9379,7 +9379,7 @@ export class D3D12_SUBRESOURCE_FOOTPRINTView {
  */
 export interface D3D12_PLACED_SUBRESOURCE_FOOTPRINT {
   /** u64 */
-  Offset: Deno.PointerValue;
+  Offset: bigint | number;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_SUBRESOURCE_FOOTPRINT */
   Footprint: Uint8Array | Deno.PointerValue;
 }
@@ -9407,7 +9407,7 @@ export class D3D12_PLACED_SUBRESOURCE_FOOTPRINTView {
   }
 
   // 0x00: u64
-  get Offset(): Deno.PointerValue {
+  get Offset(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -9418,7 +9418,7 @@ export class D3D12_PLACED_SUBRESOURCE_FOOTPRINTView {
   }
 
   // 0x00: u64
-  set Offset(value: Deno.PointerValue) {
+  set Offset(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -9696,7 +9696,7 @@ export class D3D12_VIEW_INSTANCING_DESCView {
  */
 export interface D3D12_BUFFER_SRV {
   /** u64 */
-  FirstElement: Deno.PointerValue;
+  FirstElement: bigint | number;
   /** u32 */
   NumElements: number;
   /** u32 */
@@ -9733,7 +9733,7 @@ export class D3D12_BUFFER_SRVView {
   }
 
   // 0x00: u64
-  get FirstElement(): Deno.PointerValue {
+  get FirstElement(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -9755,7 +9755,7 @@ export class D3D12_BUFFER_SRVView {
   // 0x14: pad4
 
   // 0x00: u64
-  set FirstElement(value: Deno.PointerValue) {
+  set FirstElement(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -10485,7 +10485,7 @@ export class D3D12_TEX2DMS_ARRAY_SRVView {
  */
 export interface D3D12_RAYTRACING_ACCELERATION_STRUCTURE_SRV {
   /** u64 */
-  Location: Deno.PointerValue;
+  Location: bigint | number;
 }
 
 export const sizeofD3D12_RAYTRACING_ACCELERATION_STRUCTURE_SRV = 8;
@@ -10509,12 +10509,12 @@ export class D3D12_RAYTRACING_ACCELERATION_STRUCTURE_SRVView {
   }
 
   // 0x00: u64
-  get Location(): Deno.PointerValue {
+  get Location(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: u64
-  set Location(value: Deno.PointerValue) {
+  set Location(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -10611,7 +10611,7 @@ export class D3D12_SHADER_RESOURCE_VIEW_DESCView {
  */
 export interface D3D12_CONSTANT_BUFFER_VIEW_DESC {
   /** u64 */
-  BufferLocation: Deno.PointerValue;
+  BufferLocation: bigint | number;
   /** u32 */
   SizeInBytes: number;
 }
@@ -10640,7 +10640,7 @@ export class D3D12_CONSTANT_BUFFER_VIEW_DESCView {
   }
 
   // 0x00: u64
-  get BufferLocation(): Deno.PointerValue {
+  get BufferLocation(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -10652,7 +10652,7 @@ export class D3D12_CONSTANT_BUFFER_VIEW_DESCView {
   // 0x0c: pad4
 
   // 0x00: u64
-  set BufferLocation(value: Deno.PointerValue) {
+  set BufferLocation(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -10840,13 +10840,13 @@ export class D3D12_SAMPLER_DESCView {
  */
 export interface D3D12_BUFFER_UAV {
   /** u64 */
-  FirstElement: Deno.PointerValue;
+  FirstElement: bigint | number;
   /** u32 */
   NumElements: number;
   /** u32 */
   StructureByteStride: number;
   /** u64 */
-  CounterOffsetInBytes: Deno.PointerValue;
+  CounterOffsetInBytes: bigint | number;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_BUFFER_UAV_FLAGS */
   Flags: D3D12_BUFFER_UAV_FLAGS;
 }
@@ -10881,7 +10881,7 @@ export class D3D12_BUFFER_UAVView {
   }
 
   // 0x00: u64
-  get FirstElement(): Deno.PointerValue {
+  get FirstElement(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -10896,7 +10896,7 @@ export class D3D12_BUFFER_UAVView {
   }
 
   // 0x10: u64
-  get CounterOffsetInBytes(): Deno.PointerValue {
+  get CounterOffsetInBytes(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -10908,7 +10908,7 @@ export class D3D12_BUFFER_UAVView {
   // 0x1c: pad4
 
   // 0x00: u64
-  set FirstElement(value: Deno.PointerValue) {
+  set FirstElement(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -10923,7 +10923,7 @@ export class D3D12_BUFFER_UAVView {
   }
 
   // 0x10: u64
-  set CounterOffsetInBytes(value: Deno.PointerValue) {
+  set CounterOffsetInBytes(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -11330,7 +11330,7 @@ export class D3D12_UNORDERED_ACCESS_VIEW_DESCView {
  */
 export interface D3D12_BUFFER_RTV {
   /** u64 */
-  FirstElement: Deno.PointerValue;
+  FirstElement: bigint | number;
   /** u32 */
   NumElements: number;
 }
@@ -11359,7 +11359,7 @@ export class D3D12_BUFFER_RTVView {
   }
 
   // 0x00: u64
-  get FirstElement(): Deno.PointerValue {
+  get FirstElement(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -11371,7 +11371,7 @@ export class D3D12_BUFFER_RTVView {
   // 0x0c: pad4
 
   // 0x00: u64
-  set FirstElement(value: Deno.PointerValue) {
+  set FirstElement(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -13547,7 +13547,7 @@ export class D3D12_VERSIONED_ROOT_SIGNATURE_DESCView {
  */
 export interface D3D12_CPU_DESCRIPTOR_HANDLE {
   /** usize */
-  ptr: Deno.PointerValue;
+  ptr: bigint | number;
 }
 
 export const sizeofD3D12_CPU_DESCRIPTOR_HANDLE = 8;
@@ -13571,12 +13571,12 @@ export class D3D12_CPU_DESCRIPTOR_HANDLEView {
   }
 
   // 0x00: usize
-  get ptr(): Deno.PointerValue {
+  get ptr(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: usize
-  set ptr(value: Deno.PointerValue) {
+  set ptr(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -13586,7 +13586,7 @@ export class D3D12_CPU_DESCRIPTOR_HANDLEView {
  */
 export interface D3D12_GPU_DESCRIPTOR_HANDLE {
   /** u64 */
-  ptr: Deno.PointerValue;
+  ptr: bigint | number;
 }
 
 export const sizeofD3D12_GPU_DESCRIPTOR_HANDLE = 8;
@@ -13610,12 +13610,12 @@ export class D3D12_GPU_DESCRIPTOR_HANDLEView {
   }
 
   // 0x00: u64
-  get ptr(): Deno.PointerValue {
+  get ptr(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: u64
-  set ptr(value: Deno.PointerValue) {
+  set ptr(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -13784,27 +13784,27 @@ export class D3D12_QUERY_HEAP_DESCView {
  */
 export interface D3D12_QUERY_DATA_PIPELINE_STATISTICS {
   /** u64 */
-  IAVertices: Deno.PointerValue;
+  IAVertices: bigint | number;
   /** u64 */
-  IAPrimitives: Deno.PointerValue;
+  IAPrimitives: bigint | number;
   /** u64 */
-  VSInvocations: Deno.PointerValue;
+  VSInvocations: bigint | number;
   /** u64 */
-  GSInvocations: Deno.PointerValue;
+  GSInvocations: bigint | number;
   /** u64 */
-  GSPrimitives: Deno.PointerValue;
+  GSPrimitives: bigint | number;
   /** u64 */
-  CInvocations: Deno.PointerValue;
+  CInvocations: bigint | number;
   /** u64 */
-  CPrimitives: Deno.PointerValue;
+  CPrimitives: bigint | number;
   /** u64 */
-  PSInvocations: Deno.PointerValue;
+  PSInvocations: bigint | number;
   /** u64 */
-  HSInvocations: Deno.PointerValue;
+  HSInvocations: bigint | number;
   /** u64 */
-  DSInvocations: Deno.PointerValue;
+  DSInvocations: bigint | number;
   /** u64 */
-  CSInvocations: Deno.PointerValue;
+  CSInvocations: bigint | number;
 }
 
 export const sizeofD3D12_QUERY_DATA_PIPELINE_STATISTICS = 88;
@@ -13848,112 +13848,112 @@ export class D3D12_QUERY_DATA_PIPELINE_STATISTICSView {
   }
 
   // 0x00: u64
-  get IAVertices(): Deno.PointerValue {
+  get IAVertices(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get IAPrimitives(): Deno.PointerValue {
+  get IAPrimitives(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get VSInvocations(): Deno.PointerValue {
+  get VSInvocations(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get GSInvocations(): Deno.PointerValue {
+  get GSInvocations(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get GSPrimitives(): Deno.PointerValue {
+  get GSPrimitives(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: u64
-  get CInvocations(): Deno.PointerValue {
+  get CInvocations(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: u64
-  get CPrimitives(): Deno.PointerValue {
+  get CPrimitives(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: u64
-  get PSInvocations(): Deno.PointerValue {
+  get PSInvocations(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
   // 0x40: u64
-  get HSInvocations(): Deno.PointerValue {
+  get HSInvocations(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
   // 0x48: u64
-  get DSInvocations(): Deno.PointerValue {
+  get DSInvocations(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
   // 0x50: u64
-  get CSInvocations(): Deno.PointerValue {
+  get CSInvocations(): bigint | number {
     return Number(this.view.getBigUint64(80, true));
   }
 
   // 0x00: u64
-  set IAVertices(value: Deno.PointerValue) {
+  set IAVertices(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set IAPrimitives(value: Deno.PointerValue) {
+  set IAPrimitives(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set VSInvocations(value: Deno.PointerValue) {
+  set VSInvocations(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set GSInvocations(value: Deno.PointerValue) {
+  set GSInvocations(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set GSPrimitives(value: Deno.PointerValue) {
+  set GSPrimitives(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: u64
-  set CInvocations(value: Deno.PointerValue) {
+  set CInvocations(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: u64
-  set CPrimitives(value: Deno.PointerValue) {
+  set CPrimitives(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: u64
-  set PSInvocations(value: Deno.PointerValue) {
+  set PSInvocations(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
   // 0x40: u64
-  set HSInvocations(value: Deno.PointerValue) {
+  set HSInvocations(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
   // 0x48: u64
-  set DSInvocations(value: Deno.PointerValue) {
+  set DSInvocations(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
   // 0x50: u64
-  set CSInvocations(value: Deno.PointerValue) {
+  set CSInvocations(value: bigint | number) {
     this.view.setBigUint64(80, BigInt(value), true);
   }
 }
@@ -13963,33 +13963,33 @@ export class D3D12_QUERY_DATA_PIPELINE_STATISTICSView {
  */
 export interface D3D12_QUERY_DATA_PIPELINE_STATISTICS1 {
   /** u64 */
-  IAVertices: Deno.PointerValue;
+  IAVertices: bigint | number;
   /** u64 */
-  IAPrimitives: Deno.PointerValue;
+  IAPrimitives: bigint | number;
   /** u64 */
-  VSInvocations: Deno.PointerValue;
+  VSInvocations: bigint | number;
   /** u64 */
-  GSInvocations: Deno.PointerValue;
+  GSInvocations: bigint | number;
   /** u64 */
-  GSPrimitives: Deno.PointerValue;
+  GSPrimitives: bigint | number;
   /** u64 */
-  CInvocations: Deno.PointerValue;
+  CInvocations: bigint | number;
   /** u64 */
-  CPrimitives: Deno.PointerValue;
+  CPrimitives: bigint | number;
   /** u64 */
-  PSInvocations: Deno.PointerValue;
+  PSInvocations: bigint | number;
   /** u64 */
-  HSInvocations: Deno.PointerValue;
+  HSInvocations: bigint | number;
   /** u64 */
-  DSInvocations: Deno.PointerValue;
+  DSInvocations: bigint | number;
   /** u64 */
-  CSInvocations: Deno.PointerValue;
+  CSInvocations: bigint | number;
   /** u64 */
-  ASInvocations: Deno.PointerValue;
+  ASInvocations: bigint | number;
   /** u64 */
-  MSInvocations: Deno.PointerValue;
+  MSInvocations: bigint | number;
   /** u64 */
-  MSPrimitives: Deno.PointerValue;
+  MSPrimitives: bigint | number;
 }
 
 export const sizeofD3D12_QUERY_DATA_PIPELINE_STATISTICS1 = 112;
@@ -14039,142 +14039,142 @@ export class D3D12_QUERY_DATA_PIPELINE_STATISTICS1View {
   }
 
   // 0x00: u64
-  get IAVertices(): Deno.PointerValue {
+  get IAVertices(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get IAPrimitives(): Deno.PointerValue {
+  get IAPrimitives(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get VSInvocations(): Deno.PointerValue {
+  get VSInvocations(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get GSInvocations(): Deno.PointerValue {
+  get GSInvocations(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get GSPrimitives(): Deno.PointerValue {
+  get GSPrimitives(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: u64
-  get CInvocations(): Deno.PointerValue {
+  get CInvocations(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: u64
-  get CPrimitives(): Deno.PointerValue {
+  get CPrimitives(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: u64
-  get PSInvocations(): Deno.PointerValue {
+  get PSInvocations(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
   // 0x40: u64
-  get HSInvocations(): Deno.PointerValue {
+  get HSInvocations(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
   // 0x48: u64
-  get DSInvocations(): Deno.PointerValue {
+  get DSInvocations(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
   // 0x50: u64
-  get CSInvocations(): Deno.PointerValue {
+  get CSInvocations(): bigint | number {
     return Number(this.view.getBigUint64(80, true));
   }
 
   // 0x58: u64
-  get ASInvocations(): Deno.PointerValue {
+  get ASInvocations(): bigint | number {
     return Number(this.view.getBigUint64(88, true));
   }
 
   // 0x60: u64
-  get MSInvocations(): Deno.PointerValue {
+  get MSInvocations(): bigint | number {
     return Number(this.view.getBigUint64(96, true));
   }
 
   // 0x68: u64
-  get MSPrimitives(): Deno.PointerValue {
+  get MSPrimitives(): bigint | number {
     return Number(this.view.getBigUint64(104, true));
   }
 
   // 0x00: u64
-  set IAVertices(value: Deno.PointerValue) {
+  set IAVertices(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set IAPrimitives(value: Deno.PointerValue) {
+  set IAPrimitives(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set VSInvocations(value: Deno.PointerValue) {
+  set VSInvocations(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set GSInvocations(value: Deno.PointerValue) {
+  set GSInvocations(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set GSPrimitives(value: Deno.PointerValue) {
+  set GSPrimitives(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: u64
-  set CInvocations(value: Deno.PointerValue) {
+  set CInvocations(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: u64
-  set CPrimitives(value: Deno.PointerValue) {
+  set CPrimitives(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: u64
-  set PSInvocations(value: Deno.PointerValue) {
+  set PSInvocations(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
   // 0x40: u64
-  set HSInvocations(value: Deno.PointerValue) {
+  set HSInvocations(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
   // 0x48: u64
-  set DSInvocations(value: Deno.PointerValue) {
+  set DSInvocations(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
   // 0x50: u64
-  set CSInvocations(value: Deno.PointerValue) {
+  set CSInvocations(value: bigint | number) {
     this.view.setBigUint64(80, BigInt(value), true);
   }
 
   // 0x58: u64
-  set ASInvocations(value: Deno.PointerValue) {
+  set ASInvocations(value: bigint | number) {
     this.view.setBigUint64(88, BigInt(value), true);
   }
 
   // 0x60: u64
-  set MSInvocations(value: Deno.PointerValue) {
+  set MSInvocations(value: bigint | number) {
     this.view.setBigUint64(96, BigInt(value), true);
   }
 
   // 0x68: u64
-  set MSPrimitives(value: Deno.PointerValue) {
+  set MSPrimitives(value: bigint | number) {
     this.view.setBigUint64(104, BigInt(value), true);
   }
 }
@@ -14184,9 +14184,9 @@ export class D3D12_QUERY_DATA_PIPELINE_STATISTICS1View {
  */
 export interface D3D12_QUERY_DATA_SO_STATISTICS {
   /** u64 */
-  NumPrimitivesWritten: Deno.PointerValue;
+  NumPrimitivesWritten: bigint | number;
   /** u64 */
-  PrimitivesStorageNeeded: Deno.PointerValue;
+  PrimitivesStorageNeeded: bigint | number;
 }
 
 export const sizeofD3D12_QUERY_DATA_SO_STATISTICS = 16;
@@ -14212,22 +14212,22 @@ export class D3D12_QUERY_DATA_SO_STATISTICSView {
   }
 
   // 0x00: u64
-  get NumPrimitivesWritten(): Deno.PointerValue {
+  get NumPrimitivesWritten(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get PrimitivesStorageNeeded(): Deno.PointerValue {
+  get PrimitivesStorageNeeded(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set NumPrimitivesWritten(value: Deno.PointerValue) {
+  set NumPrimitivesWritten(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set PrimitivesStorageNeeded(value: Deno.PointerValue) {
+  set PrimitivesStorageNeeded(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -14237,11 +14237,11 @@ export class D3D12_QUERY_DATA_SO_STATISTICSView {
  */
 export interface D3D12_STREAM_OUTPUT_BUFFER_VIEW {
   /** u64 */
-  BufferLocation: Deno.PointerValue;
+  BufferLocation: bigint | number;
   /** u64 */
-  SizeInBytes: Deno.PointerValue;
+  SizeInBytes: bigint | number;
   /** u64 */
-  BufferFilledSizeLocation: Deno.PointerValue;
+  BufferFilledSizeLocation: bigint | number;
 }
 
 export const sizeofD3D12_STREAM_OUTPUT_BUFFER_VIEW = 24;
@@ -14269,32 +14269,32 @@ export class D3D12_STREAM_OUTPUT_BUFFER_VIEWView {
   }
 
   // 0x00: u64
-  get BufferLocation(): Deno.PointerValue {
+  get BufferLocation(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get SizeInBytes(): Deno.PointerValue {
+  get SizeInBytes(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get BufferFilledSizeLocation(): Deno.PointerValue {
+  get BufferFilledSizeLocation(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x00: u64
-  set BufferLocation(value: Deno.PointerValue) {
+  set BufferLocation(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set SizeInBytes(value: Deno.PointerValue) {
+  set SizeInBytes(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set BufferFilledSizeLocation(value: Deno.PointerValue) {
+  set BufferFilledSizeLocation(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -14557,7 +14557,7 @@ export class D3D12_DISPATCH_ARGUMENTSView {
  */
 export interface D3D12_VERTEX_BUFFER_VIEW {
   /** u64 */
-  BufferLocation: Deno.PointerValue;
+  BufferLocation: bigint | number;
   /** u32 */
   SizeInBytes: number;
   /** u32 */
@@ -14589,7 +14589,7 @@ export class D3D12_VERTEX_BUFFER_VIEWView {
   }
 
   // 0x00: u64
-  get BufferLocation(): Deno.PointerValue {
+  get BufferLocation(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -14604,7 +14604,7 @@ export class D3D12_VERTEX_BUFFER_VIEWView {
   }
 
   // 0x00: u64
-  set BufferLocation(value: Deno.PointerValue) {
+  set BufferLocation(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -14624,7 +14624,7 @@ export class D3D12_VERTEX_BUFFER_VIEWView {
  */
 export interface D3D12_INDEX_BUFFER_VIEW {
   /** u64 */
-  BufferLocation: Deno.PointerValue;
+  BufferLocation: bigint | number;
   /** u32 */
   SizeInBytes: number;
   /** Windows.Win32.Graphics.Dxgi.Common.DXGI_FORMAT */
@@ -14656,7 +14656,7 @@ export class D3D12_INDEX_BUFFER_VIEWView {
   }
 
   // 0x00: u64
-  get BufferLocation(): Deno.PointerValue {
+  get BufferLocation(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -14671,7 +14671,7 @@ export class D3D12_INDEX_BUFFER_VIEWView {
   }
 
   // 0x00: u64
-  set BufferLocation(value: Deno.PointerValue) {
+  set BufferLocation(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -14837,7 +14837,7 @@ export class D3D12_COMMAND_SIGNATURE_DESCView {
  */
 export interface D3D12_WRITEBUFFERIMMEDIATE_PARAMETER {
   /** u64 */
-  Dest: Deno.PointerValue;
+  Dest: bigint | number;
   /** u32 */
   Value: number;
 }
@@ -14866,7 +14866,7 @@ export class D3D12_WRITEBUFFERIMMEDIATE_PARAMETERView {
   }
 
   // 0x00: u64
-  get Dest(): Deno.PointerValue {
+  get Dest(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -14878,7 +14878,7 @@ export class D3D12_WRITEBUFFERIMMEDIATE_PARAMETERView {
   // 0x0c: pad4
 
   // 0x00: u64
-  set Dest(value: Deno.PointerValue) {
+  set Dest(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -16137,9 +16137,9 @@ export class D3D12_STATE_OBJECT_DESCView {
  */
 export interface D3D12_GPU_VIRTUAL_ADDRESS_AND_STRIDE {
   /** u64 */
-  StartAddress: Deno.PointerValue;
+  StartAddress: bigint | number;
   /** u64 */
-  StrideInBytes: Deno.PointerValue;
+  StrideInBytes: bigint | number;
 }
 
 export const sizeofD3D12_GPU_VIRTUAL_ADDRESS_AND_STRIDE = 16;
@@ -16165,22 +16165,22 @@ export class D3D12_GPU_VIRTUAL_ADDRESS_AND_STRIDEView {
   }
 
   // 0x00: u64
-  get StartAddress(): Deno.PointerValue {
+  get StartAddress(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get StrideInBytes(): Deno.PointerValue {
+  get StrideInBytes(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set StartAddress(value: Deno.PointerValue) {
+  set StartAddress(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set StrideInBytes(value: Deno.PointerValue) {
+  set StrideInBytes(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -16190,9 +16190,9 @@ export class D3D12_GPU_VIRTUAL_ADDRESS_AND_STRIDEView {
  */
 export interface D3D12_GPU_VIRTUAL_ADDRESS_RANGE {
   /** u64 */
-  StartAddress: Deno.PointerValue;
+  StartAddress: bigint | number;
   /** u64 */
-  SizeInBytes: Deno.PointerValue;
+  SizeInBytes: bigint | number;
 }
 
 export const sizeofD3D12_GPU_VIRTUAL_ADDRESS_RANGE = 16;
@@ -16218,22 +16218,22 @@ export class D3D12_GPU_VIRTUAL_ADDRESS_RANGEView {
   }
 
   // 0x00: u64
-  get StartAddress(): Deno.PointerValue {
+  get StartAddress(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get SizeInBytes(): Deno.PointerValue {
+  get SizeInBytes(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set StartAddress(value: Deno.PointerValue) {
+  set StartAddress(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set SizeInBytes(value: Deno.PointerValue) {
+  set SizeInBytes(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -16243,11 +16243,11 @@ export class D3D12_GPU_VIRTUAL_ADDRESS_RANGEView {
  */
 export interface D3D12_GPU_VIRTUAL_ADDRESS_RANGE_AND_STRIDE {
   /** u64 */
-  StartAddress: Deno.PointerValue;
+  StartAddress: bigint | number;
   /** u64 */
-  SizeInBytes: Deno.PointerValue;
+  SizeInBytes: bigint | number;
   /** u64 */
-  StrideInBytes: Deno.PointerValue;
+  StrideInBytes: bigint | number;
 }
 
 export const sizeofD3D12_GPU_VIRTUAL_ADDRESS_RANGE_AND_STRIDE = 24;
@@ -16275,32 +16275,32 @@ export class D3D12_GPU_VIRTUAL_ADDRESS_RANGE_AND_STRIDEView {
   }
 
   // 0x00: u64
-  get StartAddress(): Deno.PointerValue {
+  get StartAddress(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get SizeInBytes(): Deno.PointerValue {
+  get SizeInBytes(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get StrideInBytes(): Deno.PointerValue {
+  get StrideInBytes(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x00: u64
-  set StartAddress(value: Deno.PointerValue) {
+  set StartAddress(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set SizeInBytes(value: Deno.PointerValue) {
+  set SizeInBytes(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set StrideInBytes(value: Deno.PointerValue) {
+  set StrideInBytes(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -16310,7 +16310,7 @@ export class D3D12_GPU_VIRTUAL_ADDRESS_RANGE_AND_STRIDEView {
  */
 export interface D3D12_RAYTRACING_GEOMETRY_TRIANGLES_DESC {
   /** u64 */
-  Transform3x4: Deno.PointerValue;
+  Transform3x4: bigint | number;
   /** Windows.Win32.Graphics.Dxgi.Common.DXGI_FORMAT */
   IndexFormat: DXGI_FORMAT;
   /** Windows.Win32.Graphics.Dxgi.Common.DXGI_FORMAT */
@@ -16320,7 +16320,7 @@ export interface D3D12_RAYTRACING_GEOMETRY_TRIANGLES_DESC {
   /** u32 */
   VertexCount: number;
   /** u64 */
-  IndexBuffer: Deno.PointerValue;
+  IndexBuffer: bigint | number;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_GPU_VIRTUAL_ADDRESS_AND_STRIDE */
   VertexBuffer: Uint8Array | Deno.PointerValue;
 }
@@ -16358,7 +16358,7 @@ export class D3D12_RAYTRACING_GEOMETRY_TRIANGLES_DESCView {
   }
 
   // 0x00: u64
-  get Transform3x4(): Deno.PointerValue {
+  get Transform3x4(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -16383,7 +16383,7 @@ export class D3D12_RAYTRACING_GEOMETRY_TRIANGLES_DESCView {
   }
 
   // 0x18: u64
-  get IndexBuffer(): Deno.PointerValue {
+  get IndexBuffer(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -16394,7 +16394,7 @@ export class D3D12_RAYTRACING_GEOMETRY_TRIANGLES_DESCView {
   }
 
   // 0x00: u64
-  set Transform3x4(value: Deno.PointerValue) {
+  set Transform3x4(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -16419,7 +16419,7 @@ export class D3D12_RAYTRACING_GEOMETRY_TRIANGLES_DESCView {
   }
 
   // 0x18: u64
-  set IndexBuffer(value: Deno.PointerValue) {
+  set IndexBuffer(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -16543,7 +16543,7 @@ export class D3D12_RAYTRACING_AABBView {
  */
 export interface D3D12_RAYTRACING_GEOMETRY_AABBS_DESC {
   /** u64 */
-  AABBCount: Deno.PointerValue;
+  AABBCount: bigint | number;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_GPU_VIRTUAL_ADDRESS_AND_STRIDE */
   AABBs: Uint8Array | Deno.PointerValue;
 }
@@ -16571,7 +16571,7 @@ export class D3D12_RAYTRACING_GEOMETRY_AABBS_DESCView {
   }
 
   // 0x00: u64
-  get AABBCount(): Deno.PointerValue {
+  get AABBCount(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -16582,7 +16582,7 @@ export class D3D12_RAYTRACING_GEOMETRY_AABBS_DESCView {
   }
 
   // 0x00: u64
-  set AABBCount(value: Deno.PointerValue) {
+  set AABBCount(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -16597,7 +16597,7 @@ export class D3D12_RAYTRACING_GEOMETRY_AABBS_DESCView {
  */
 export interface D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_DESC {
   /** u64 */
-  DestBuffer: Deno.PointerValue;
+  DestBuffer: bigint | number;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_TYPE */
   InfoType: D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_TYPE;
 }
@@ -16626,7 +16626,7 @@ export class D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_DESCView {
   }
 
   // 0x00: u64
-  get DestBuffer(): Deno.PointerValue {
+  get DestBuffer(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -16638,7 +16638,7 @@ export class D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_DESCView {
   // 0x0c: pad4
 
   // 0x00: u64
-  set DestBuffer(value: Deno.PointerValue) {
+  set DestBuffer(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -16655,7 +16655,7 @@ export class D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_DESCView {
  */
 export interface D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_COMPACTED_SIZE_DESC {
   /** u64 */
-  CompactedSizeInBytes: Deno.PointerValue;
+  CompactedSizeInBytes: bigint | number;
 }
 
 export const sizeofD3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_COMPACTED_SIZE_DESC = 8;
@@ -16679,12 +16679,12 @@ export class D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_COMPACTED_SI
   }
 
   // 0x00: u64
-  get CompactedSizeInBytes(): Deno.PointerValue {
+  get CompactedSizeInBytes(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: u64
-  set CompactedSizeInBytes(value: Deno.PointerValue) {
+  set CompactedSizeInBytes(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -16694,7 +16694,7 @@ export class D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_COMPACTED_SI
  */
 export interface D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_TOOLS_VISUALIZATION_DESC {
   /** u64 */
-  DecodedSizeInBytes: Deno.PointerValue;
+  DecodedSizeInBytes: bigint | number;
 }
 
 export const sizeofD3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_TOOLS_VISUALIZATION_DESC = 8;
@@ -16718,12 +16718,12 @@ export class D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_TOOLS_VISUAL
   }
 
   // 0x00: u64
-  get DecodedSizeInBytes(): Deno.PointerValue {
+  get DecodedSizeInBytes(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: u64
-  set DecodedSizeInBytes(value: Deno.PointerValue) {
+  set DecodedSizeInBytes(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -16786,9 +16786,9 @@ export class D3D12_BUILD_RAYTRACING_ACCELERATION_STRUCTURE_TOOLS_VISUALIZATION_H
  */
 export interface D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_SERIALIZATION_DESC {
   /** u64 */
-  SerializedSizeInBytes: Deno.PointerValue;
+  SerializedSizeInBytes: bigint | number;
   /** u64 */
-  NumBottomLevelAccelerationStructurePointers: Deno.PointerValue;
+  NumBottomLevelAccelerationStructurePointers: bigint | number;
 }
 
 export const sizeofD3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_SERIALIZATION_DESC = 16;
@@ -16814,22 +16814,22 @@ export class D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_SERIALIZATIO
   }
 
   // 0x00: u64
-  get SerializedSizeInBytes(): Deno.PointerValue {
+  get SerializedSizeInBytes(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get NumBottomLevelAccelerationStructurePointers(): Deno.PointerValue {
+  get NumBottomLevelAccelerationStructurePointers(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set SerializedSizeInBytes(value: Deno.PointerValue) {
+  set SerializedSizeInBytes(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set NumBottomLevelAccelerationStructurePointers(value: Deno.PointerValue) {
+  set NumBottomLevelAccelerationStructurePointers(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -16896,11 +16896,11 @@ export interface D3D12_SERIALIZED_RAYTRACING_ACCELERATION_STRUCTURE_HEADER {
   /** Windows.Win32.Graphics.Direct3D12.D3D12_SERIALIZED_DATA_DRIVER_MATCHING_IDENTIFIER */
   DriverMatchingIdentifier: Uint8Array | Deno.PointerValue;
   /** u64 */
-  SerializedSizeInBytesIncludingHeader: Deno.PointerValue;
+  SerializedSizeInBytesIncludingHeader: bigint | number;
   /** u64 */
-  DeserializedSizeInBytes: Deno.PointerValue;
+  DeserializedSizeInBytes: bigint | number;
   /** u64 */
-  NumBottomLevelAccelerationStructurePointersAfterHeader: Deno.PointerValue;
+  NumBottomLevelAccelerationStructurePointersAfterHeader: bigint | number;
 }
 
 export const sizeofD3D12_SERIALIZED_RAYTRACING_ACCELERATION_STRUCTURE_HEADER = 32;
@@ -16936,17 +16936,17 @@ export class D3D12_SERIALIZED_RAYTRACING_ACCELERATION_STRUCTURE_HEADERView {
   }
 
   // 0x08: u64
-  get SerializedSizeInBytesIncludingHeader(): Deno.PointerValue {
+  get SerializedSizeInBytesIncludingHeader(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get DeserializedSizeInBytes(): Deno.PointerValue {
+  get DeserializedSizeInBytes(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get NumBottomLevelAccelerationStructurePointersAfterHeader(): Deno.PointerValue {
+  get NumBottomLevelAccelerationStructurePointersAfterHeader(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -16956,17 +16956,17 @@ export class D3D12_SERIALIZED_RAYTRACING_ACCELERATION_STRUCTURE_HEADERView {
   }
 
   // 0x08: u64
-  set SerializedSizeInBytesIncludingHeader(value: Deno.PointerValue) {
+  set SerializedSizeInBytesIncludingHeader(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set DeserializedSizeInBytes(value: Deno.PointerValue) {
+  set DeserializedSizeInBytes(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set NumBottomLevelAccelerationStructurePointersAfterHeader(value: Deno.PointerValue) {
+  set NumBottomLevelAccelerationStructurePointersAfterHeader(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 }
@@ -16976,7 +16976,7 @@ export class D3D12_SERIALIZED_RAYTRACING_ACCELERATION_STRUCTURE_HEADERView {
  */
 export interface D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_CURRENT_SIZE_DESC {
   /** u64 */
-  CurrentSizeInBytes: Deno.PointerValue;
+  CurrentSizeInBytes: bigint | number;
 }
 
 export const sizeofD3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_CURRENT_SIZE_DESC = 8;
@@ -17000,12 +17000,12 @@ export class D3D12_RAYTRACING_ACCELERATION_STRUCTURE_POSTBUILD_INFO_CURRENT_SIZE
   }
 
   // 0x00: u64
-  get CurrentSizeInBytes(): Deno.PointerValue {
+  get CurrentSizeInBytes(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: u64
-  set CurrentSizeInBytes(value: Deno.PointerValue) {
+  set CurrentSizeInBytes(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -17021,7 +17021,7 @@ export interface D3D12_RAYTRACING_INSTANCE_DESC {
   /** u32 */
   _bitfield2: number;
   /** u64 */
-  AccelerationStructure: Deno.PointerValue;
+  AccelerationStructure: bigint | number;
 }
 
 export const sizeofD3D12_RAYTRACING_INSTANCE_DESC = 24;
@@ -17067,7 +17067,7 @@ export class D3D12_RAYTRACING_INSTANCE_DESCView {
   }
 
   // 0x10: u64
-  get AccelerationStructure(): Deno.PointerValue {
+  get AccelerationStructure(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -17087,7 +17087,7 @@ export class D3D12_RAYTRACING_INSTANCE_DESCView {
   }
 
   // 0x10: u64
-  set AccelerationStructure(value: Deno.PointerValue) {
+  set AccelerationStructure(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -17261,13 +17261,13 @@ export class D3D12_BUILD_RAYTRACING_ACCELERATION_STRUCTURE_INPUTSView {
  */
 export interface D3D12_BUILD_RAYTRACING_ACCELERATION_STRUCTURE_DESC {
   /** u64 */
-  DestAccelerationStructureData: Deno.PointerValue;
+  DestAccelerationStructureData: bigint | number;
   /** Windows.Win32.Graphics.Direct3D12.D3D12_BUILD_RAYTRACING_ACCELERATION_STRUCTURE_INPUTS */
   Inputs: Uint8Array | Deno.PointerValue;
   /** u64 */
-  SourceAccelerationStructureData: Deno.PointerValue;
+  SourceAccelerationStructureData: bigint | number;
   /** u64 */
-  ScratchAccelerationStructureData: Deno.PointerValue;
+  ScratchAccelerationStructureData: bigint | number;
 }
 
 export const sizeofD3D12_BUILD_RAYTRACING_ACCELERATION_STRUCTURE_DESC = 32;
@@ -17297,7 +17297,7 @@ export class D3D12_BUILD_RAYTRACING_ACCELERATION_STRUCTURE_DESCView {
   }
 
   // 0x00: u64
-  get DestAccelerationStructureData(): Deno.PointerValue {
+  get DestAccelerationStructureData(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -17308,17 +17308,17 @@ export class D3D12_BUILD_RAYTRACING_ACCELERATION_STRUCTURE_DESCView {
   }
 
   // 0x10: u64
-  get SourceAccelerationStructureData(): Deno.PointerValue {
+  get SourceAccelerationStructureData(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get ScratchAccelerationStructureData(): Deno.PointerValue {
+  get ScratchAccelerationStructureData(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x00: u64
-  set DestAccelerationStructureData(value: Deno.PointerValue) {
+  set DestAccelerationStructureData(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -17328,12 +17328,12 @@ export class D3D12_BUILD_RAYTRACING_ACCELERATION_STRUCTURE_DESCView {
   }
 
   // 0x10: u64
-  set SourceAccelerationStructureData(value: Deno.PointerValue) {
+  set SourceAccelerationStructureData(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set ScratchAccelerationStructureData(value: Deno.PointerValue) {
+  set ScratchAccelerationStructureData(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 }
@@ -17343,11 +17343,11 @@ export class D3D12_BUILD_RAYTRACING_ACCELERATION_STRUCTURE_DESCView {
  */
 export interface D3D12_RAYTRACING_ACCELERATION_STRUCTURE_PREBUILD_INFO {
   /** u64 */
-  ResultDataMaxSizeInBytes: Deno.PointerValue;
+  ResultDataMaxSizeInBytes: bigint | number;
   /** u64 */
-  ScratchDataSizeInBytes: Deno.PointerValue;
+  ScratchDataSizeInBytes: bigint | number;
   /** u64 */
-  UpdateScratchDataSizeInBytes: Deno.PointerValue;
+  UpdateScratchDataSizeInBytes: bigint | number;
 }
 
 export const sizeofD3D12_RAYTRACING_ACCELERATION_STRUCTURE_PREBUILD_INFO = 24;
@@ -17375,32 +17375,32 @@ export class D3D12_RAYTRACING_ACCELERATION_STRUCTURE_PREBUILD_INFOView {
   }
 
   // 0x00: u64
-  get ResultDataMaxSizeInBytes(): Deno.PointerValue {
+  get ResultDataMaxSizeInBytes(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get ScratchDataSizeInBytes(): Deno.PointerValue {
+  get ScratchDataSizeInBytes(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get UpdateScratchDataSizeInBytes(): Deno.PointerValue {
+  get UpdateScratchDataSizeInBytes(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x00: u64
-  set ResultDataMaxSizeInBytes(value: Deno.PointerValue) {
+  set ResultDataMaxSizeInBytes(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set ScratchDataSizeInBytes(value: Deno.PointerValue) {
+  set ScratchDataSizeInBytes(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set UpdateScratchDataSizeInBytes(value: Deno.PointerValue) {
+  set UpdateScratchDataSizeInBytes(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -18221,7 +18221,7 @@ export class D3D12_DRED_AUTO_BREADCRUMBS_OUTPUT1View {
  */
 export interface D3D12_DRED_PAGE_FAULT_OUTPUT {
   /** u64 */
-  PageFaultVA: Deno.PointerValue;
+  PageFaultVA: bigint | number;
   /** ptr */
   pHeadExistingAllocationNode: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -18253,7 +18253,7 @@ export class D3D12_DRED_PAGE_FAULT_OUTPUTView {
   }
 
   // 0x00: u64
-  get PageFaultVA(): Deno.PointerValue {
+  get PageFaultVA(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -18270,7 +18270,7 @@ export class D3D12_DRED_PAGE_FAULT_OUTPUTView {
   }
 
   // 0x00: u64
-  set PageFaultVA(value: Deno.PointerValue) {
+  set PageFaultVA(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -18290,7 +18290,7 @@ export class D3D12_DRED_PAGE_FAULT_OUTPUTView {
  */
 export interface D3D12_DRED_PAGE_FAULT_OUTPUT1 {
   /** u64 */
-  PageFaultVA: Deno.PointerValue;
+  PageFaultVA: bigint | number;
   /** ptr */
   pHeadExistingAllocationNode: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -18322,7 +18322,7 @@ export class D3D12_DRED_PAGE_FAULT_OUTPUT1View {
   }
 
   // 0x00: u64
-  get PageFaultVA(): Deno.PointerValue {
+  get PageFaultVA(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -18339,7 +18339,7 @@ export class D3D12_DRED_PAGE_FAULT_OUTPUT1View {
   }
 
   // 0x00: u64
-  set PageFaultVA(value: Deno.PointerValue) {
+  set PageFaultVA(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -18359,7 +18359,7 @@ export class D3D12_DRED_PAGE_FAULT_OUTPUT1View {
  */
 export interface D3D12_DRED_PAGE_FAULT_OUTPUT2 {
   /** u64 */
-  PageFaultVA: Deno.PointerValue;
+  PageFaultVA: bigint | number;
   /** ptr */
   pHeadExistingAllocationNode: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -18396,7 +18396,7 @@ export class D3D12_DRED_PAGE_FAULT_OUTPUT2View {
   }
 
   // 0x00: u64
-  get PageFaultVA(): Deno.PointerValue {
+  get PageFaultVA(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -18420,7 +18420,7 @@ export class D3D12_DRED_PAGE_FAULT_OUTPUT2View {
   // 0x1c: pad4
 
   // 0x00: u64
-  set PageFaultVA(value: Deno.PointerValue) {
+  set PageFaultVA(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -19711,7 +19711,7 @@ export interface D3D12_SHADER_CACHE_SESSION_DESC {
   /** u32 */
   MaximumValueFileSizeBytes: number;
   /** u64 */
-  Version: Deno.PointerValue;
+  Version: bigint | number;
 }
 
 export const sizeofD3D12_SHADER_CACHE_SESSION_DESC = 40;
@@ -19781,7 +19781,7 @@ export class D3D12_SHADER_CACHE_SESSION_DESCView {
   // 0x1c: pad4
 
   // 0x20: u64
-  get Version(): Deno.PointerValue {
+  get Version(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -19818,7 +19818,7 @@ export class D3D12_SHADER_CACHE_SESSION_DESCView {
   // 0x1c: pad4
 
   // 0x20: u64
-  set Version(value: Deno.PointerValue) {
+  set Version(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 }
@@ -19830,9 +19830,9 @@ export interface D3D12_SUBRESOURCE_DATA {
   /** ptr */
   pData: Deno.PointerValue | Uint8Array;
   /** isize */
-  RowPitch: Deno.PointerValue;
+  RowPitch: bigint | number;
   /** isize */
-  SlicePitch: Deno.PointerValue;
+  SlicePitch: bigint | number;
 }
 
 export const sizeofD3D12_SUBRESOURCE_DATA = 24;
@@ -19866,12 +19866,12 @@ export class D3D12_SUBRESOURCE_DATAView {
   }
 
   // 0x08: isize
-  get RowPitch(): Deno.PointerValue {
+  get RowPitch(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: isize
-  get SlicePitch(): Deno.PointerValue {
+  get SlicePitch(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -19881,12 +19881,12 @@ export class D3D12_SUBRESOURCE_DATAView {
   }
 
   // 0x08: isize
-  set RowPitch(value: Deno.PointerValue) {
+  set RowPitch(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: isize
-  set SlicePitch(value: Deno.PointerValue) {
+  set SlicePitch(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -19898,9 +19898,9 @@ export interface D3D12_MEMCPY_DEST {
   /** ptr */
   pData: Deno.PointerValue | Uint8Array;
   /** usize */
-  RowPitch: Deno.PointerValue;
+  RowPitch: bigint | number;
   /** usize */
-  SlicePitch: Deno.PointerValue;
+  SlicePitch: bigint | number;
 }
 
 export const sizeofD3D12_MEMCPY_DEST = 24;
@@ -19934,12 +19934,12 @@ export class D3D12_MEMCPY_DESTView {
   }
 
   // 0x08: usize
-  get RowPitch(): Deno.PointerValue {
+  get RowPitch(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: usize
-  get SlicePitch(): Deno.PointerValue {
+  get SlicePitch(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -19949,12 +19949,12 @@ export class D3D12_MEMCPY_DESTView {
   }
 
   // 0x08: usize
-  set RowPitch(value: Deno.PointerValue) {
+  set RowPitch(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: usize
-  set SlicePitch(value: Deno.PointerValue) {
+  set SlicePitch(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -20132,7 +20132,7 @@ export interface D3D12_MESSAGE {
   /** ptr */
   pDescription: Deno.PointerValue | Uint8Array;
   /** usize */
-  DescriptionByteLength: Deno.PointerValue;
+  DescriptionByteLength: bigint | number;
 }
 
 export const sizeofD3D12_MESSAGE = 32;
@@ -20188,7 +20188,7 @@ export class D3D12_MESSAGEView {
   }
 
   // 0x18: usize
-  get DescriptionByteLength(): Deno.PointerValue {
+  get DescriptionByteLength(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -20215,7 +20215,7 @@ export class D3D12_MESSAGEView {
   }
 
   // 0x18: usize
-  set DescriptionByteLength(value: Deno.PointerValue) {
+  set DescriptionByteLength(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 }
@@ -21917,7 +21917,7 @@ export interface D3D12_FUNCTION_DESC {
   /** Windows.Win32.Graphics.Direct3D.D3D_FEATURE_LEVEL */
   MinFeatureLevel: D3D_FEATURE_LEVEL;
   /** u64 */
-  RequiredFeatureFlags: Deno.PointerValue;
+  RequiredFeatureFlags: bigint | number;
   /** Windows.Win32.Foundation.PSTR */
   Name: string | null | Uint8Array;
   /** i32 */
@@ -22163,7 +22163,7 @@ export class D3D12_FUNCTION_DESCView {
   // 0x74: pad4
 
   // 0x78: u64
-  get RequiredFeatureFlags(): Deno.PointerValue {
+  get RequiredFeatureFlags(): bigint | number {
     return Number(this.view.getBigUint64(120, true));
   }
 
@@ -22334,7 +22334,7 @@ export class D3D12_FUNCTION_DESCView {
   // 0x74: pad4
 
   // 0x78: u64
-  set RequiredFeatureFlags(value: Deno.PointerValue) {
+  set RequiredFeatureFlags(value: bigint | number) {
     this.view.setBigUint64(120, BigInt(value), true);
   }
 
@@ -22620,7 +22620,7 @@ export function D3D12SerializeRootSignature(
 
 export function D3D12CreateRootSignatureDeserializer(
   pSrcData: Deno.PointerValue | Uint8Array /* ptr */,
-  SrcDataSizeInBytes: Deno.PointerValue /* usize */,
+  SrcDataSizeInBytes: bigint | number /* usize */,
   pRootSignatureDeserializerInterface: Deno.PointerValue | Uint8Array /* ptr */,
   ppRootSignatureDeserializer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
@@ -22637,7 +22637,7 @@ export function D3D12SerializeVersionedRootSignature(
 
 export function D3D12CreateVersionedRootSignatureDeserializer(
   pSrcData: Deno.PointerValue | Uint8Array /* ptr */,
-  SrcDataSizeInBytes: Deno.PointerValue /* usize */,
+  SrcDataSizeInBytes: bigint | number /* usize */,
   pRootSignatureDeserializerInterface: Deno.PointerValue | Uint8Array /* ptr */,
   ppRootSignatureDeserializer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {

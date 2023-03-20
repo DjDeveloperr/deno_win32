@@ -275,7 +275,7 @@ export class DAV_CALLBACK_CREDView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 // Native Libraries
 

@@ -6,7 +6,7 @@ import * as util from "../../util.ts";
 
 export type PSTR = Deno.PointerValue | Uint8Array;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 export type PWSTR = Deno.PointerValue | Uint8Array;
 

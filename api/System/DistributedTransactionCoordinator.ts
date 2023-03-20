@@ -735,25 +735,25 @@ export interface xa_switch_t {
   /** i32 */
   version: number;
   /** isize */
-  xa_open_entry: Deno.PointerValue;
+  xa_open_entry: bigint | number;
   /** isize */
-  xa_close_entry: Deno.PointerValue;
+  xa_close_entry: bigint | number;
   /** isize */
-  xa_start_entry: Deno.PointerValue;
+  xa_start_entry: bigint | number;
   /** isize */
-  xa_end_entry: Deno.PointerValue;
+  xa_end_entry: bigint | number;
   /** isize */
-  xa_rollback_entry: Deno.PointerValue;
+  xa_rollback_entry: bigint | number;
   /** isize */
-  xa_prepare_entry: Deno.PointerValue;
+  xa_prepare_entry: bigint | number;
   /** isize */
-  xa_commit_entry: Deno.PointerValue;
+  xa_commit_entry: bigint | number;
   /** isize */
-  xa_recover_entry: Deno.PointerValue;
+  xa_recover_entry: bigint | number;
   /** isize */
-  xa_forget_entry: Deno.PointerValue;
+  xa_forget_entry: bigint | number;
   /** isize */
-  xa_complete_entry: Deno.PointerValue;
+  xa_complete_entry: bigint | number;
 }
 
 export const sizeofXa_switch_t = 96;
@@ -817,52 +817,52 @@ export class xa_switch_tView {
   }
 
   // 0x10: isize
-  get xa_open_entry(): Deno.PointerValue {
+  get xa_open_entry(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get xa_close_entry(): Deno.PointerValue {
+  get xa_close_entry(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
   // 0x20: isize
-  get xa_start_entry(): Deno.PointerValue {
+  get xa_start_entry(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
   // 0x28: isize
-  get xa_end_entry(): Deno.PointerValue {
+  get xa_end_entry(): bigint | number {
     return Number(this.view.getBigInt64(40, true));
   }
 
   // 0x30: isize
-  get xa_rollback_entry(): Deno.PointerValue {
+  get xa_rollback_entry(): bigint | number {
     return Number(this.view.getBigInt64(48, true));
   }
 
   // 0x38: isize
-  get xa_prepare_entry(): Deno.PointerValue {
+  get xa_prepare_entry(): bigint | number {
     return Number(this.view.getBigInt64(56, true));
   }
 
   // 0x40: isize
-  get xa_commit_entry(): Deno.PointerValue {
+  get xa_commit_entry(): bigint | number {
     return Number(this.view.getBigInt64(64, true));
   }
 
   // 0x48: isize
-  get xa_recover_entry(): Deno.PointerValue {
+  get xa_recover_entry(): bigint | number {
     return Number(this.view.getBigInt64(72, true));
   }
 
   // 0x50: isize
-  get xa_forget_entry(): Deno.PointerValue {
+  get xa_forget_entry(): bigint | number {
     return Number(this.view.getBigInt64(80, true));
   }
 
   // 0x58: isize
-  get xa_complete_entry(): Deno.PointerValue {
+  get xa_complete_entry(): bigint | number {
     return Number(this.view.getBigInt64(88, true));
   }
 
@@ -882,52 +882,52 @@ export class xa_switch_tView {
   }
 
   // 0x10: isize
-  set xa_open_entry(value: Deno.PointerValue) {
+  set xa_open_entry(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set xa_close_entry(value: Deno.PointerValue) {
+  set xa_close_entry(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
   // 0x20: isize
-  set xa_start_entry(value: Deno.PointerValue) {
+  set xa_start_entry(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 
   // 0x28: isize
-  set xa_end_entry(value: Deno.PointerValue) {
+  set xa_end_entry(value: bigint | number) {
     this.view.setBigInt64(40, BigInt(value), true);
   }
 
   // 0x30: isize
-  set xa_rollback_entry(value: Deno.PointerValue) {
+  set xa_rollback_entry(value: bigint | number) {
     this.view.setBigInt64(48, BigInt(value), true);
   }
 
   // 0x38: isize
-  set xa_prepare_entry(value: Deno.PointerValue) {
+  set xa_prepare_entry(value: bigint | number) {
     this.view.setBigInt64(56, BigInt(value), true);
   }
 
   // 0x40: isize
-  set xa_commit_entry(value: Deno.PointerValue) {
+  set xa_commit_entry(value: bigint | number) {
     this.view.setBigInt64(64, BigInt(value), true);
   }
 
   // 0x48: isize
-  set xa_recover_entry(value: Deno.PointerValue) {
+  set xa_recover_entry(value: bigint | number) {
     this.view.setBigInt64(72, BigInt(value), true);
   }
 
   // 0x50: isize
-  set xa_forget_entry(value: Deno.PointerValue) {
+  set xa_forget_entry(value: bigint | number) {
     this.view.setBigInt64(80, BigInt(value), true);
   }
 
   // 0x58: isize
-  set xa_complete_entry(value: Deno.PointerValue) {
+  set xa_complete_entry(value: bigint | number) {
     this.view.setBigInt64(88, BigInt(value), true);
   }
 }

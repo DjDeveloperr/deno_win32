@@ -5891,17 +5891,17 @@ export const BF_TOPRIGHT = 6;
 
 // Structs
 
-export type HPROPSHEETPAGE = Deno.PointerValue;
+export type HPROPSHEETPAGE = bigint | number;
 
-export type HIMAGELIST = Deno.PointerValue;
+export type HIMAGELIST = bigint | number;
 
-export type HSYNTHETICPOINTERDEVICE = Deno.PointerValue;
+export type HSYNTHETICPOINTERDEVICE = bigint | number;
 
-export type HTREEITEM = Deno.PointerValue;
+export type HTREEITEM = bigint | number;
 
-export type HDSA = Deno.PointerValue;
+export type HDSA = bigint | number;
 
-export type HDPA = Deno.PointerValue;
+export type HDPA = bigint | number;
 
 /**
  * Windows.Win32.UI.Controls.TBBUTTON (size: 40)
@@ -5918,9 +5918,9 @@ export interface TBBUTTON {
   /** array */
   bReserved: Deno.PointerValue;
   /** usize */
-  dwData: Deno.PointerValue;
+  dwData: bigint | number;
   /** isize */
-  iString: Deno.PointerValue;
+  iString: bigint | number;
 }
 
 export const sizeofTBBUTTON = 40;
@@ -5985,12 +5985,12 @@ export class TBBUTTONView {
   }
 
   // 0x18: usize
-  get dwData(): Deno.PointerValue {
+  get dwData(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: isize
-  get iString(): Deno.PointerValue {
+  get iString(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
@@ -6022,23 +6022,23 @@ export class TBBUTTONView {
   }
 
   // 0x18: usize
-  set dwData(value: Deno.PointerValue) {
+  set dwData(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: isize
-  set iString(value: Deno.PointerValue) {
+  set iString(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
-export type HINSTANCE = Deno.PointerValue;
+export type HINSTANCE = bigint | number;
 
 export type PSTR = Deno.PointerValue | Uint8Array;
 
-export type LPARAM = Deno.PointerValue;
+export type LPARAM = bigint | number;
 
 /**
  * Windows.Win32.UI.Controls.Dialogs.OPENFILENAME_NT4A (size: 136)
@@ -7591,7 +7591,7 @@ export interface NMHDR {
   /** Windows.Win32.Foundation.HWND */
   hwndFrom: Deno.PointerValue;
   /** usize */
-  idFrom: Deno.PointerValue;
+  idFrom: bigint | number;
   /** u32 */
   code: number;
 }
@@ -7628,7 +7628,7 @@ export class NMHDRView {
   }
 
   // 0x08: usize
-  get idFrom(): Deno.PointerValue {
+  get idFrom(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -7645,7 +7645,7 @@ export class NMHDRView {
   }
 
   // 0x08: usize
-  set idFrom(value: Deno.PointerValue) {
+  set idFrom(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -8747,7 +8747,7 @@ export class FINDREPLACEWView {
   }
 }
 
-export type HDC = Deno.PointerValue;
+export type HDC = bigint | number;
 
 /**
  * Windows.Win32.UI.Controls.Dialogs.CHOOSEFONTA (size: 104)
@@ -9310,9 +9310,9 @@ export interface PRINTDLGA {
   /** Windows.Win32.Foundation.HWND */
   hwndOwner: Deno.PointerValue;
   /** isize */
-  hDevMode: Deno.PointerValue;
+  hDevMode: bigint | number;
   /** isize */
-  hDevNames: Deno.PointerValue;
+  hDevNames: bigint | number;
   /** Windows.Win32.Graphics.Gdi.HDC */
   hDC: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.Controls.Dialogs.PRINTDLGEX_FLAGS */
@@ -9340,9 +9340,9 @@ export interface PRINTDLGA {
   /** Windows.Win32.Foundation.PSTR */
   lpSetupTemplateName: string | null | Uint8Array;
   /** isize */
-  hPrintTemplate: Deno.PointerValue;
+  hPrintTemplate: bigint | number;
   /** isize */
-  hSetupTemplate: Deno.PointerValue;
+  hSetupTemplate: bigint | number;
 }
 
 export const sizeofPRINTDLGA = 120;
@@ -9423,12 +9423,12 @@ export class PRINTDLGAView {
   }
 
   // 0x10: isize
-  get hDevMode(): Deno.PointerValue {
+  get hDevMode(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get hDevNames(): Deno.PointerValue {
+  get hDevNames(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
@@ -9507,12 +9507,12 @@ export class PRINTDLGAView {
   }
 
   // 0x68: isize
-  get hPrintTemplate(): Deno.PointerValue {
+  get hPrintTemplate(): bigint | number {
     return Number(this.view.getBigInt64(104, true));
   }
 
   // 0x70: isize
-  get hSetupTemplate(): Deno.PointerValue {
+  get hSetupTemplate(): bigint | number {
     return Number(this.view.getBigInt64(112, true));
   }
 
@@ -9529,12 +9529,12 @@ export class PRINTDLGAView {
   }
 
   // 0x10: isize
-  set hDevMode(value: Deno.PointerValue) {
+  set hDevMode(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set hDevNames(value: Deno.PointerValue) {
+  set hDevNames(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
@@ -9608,12 +9608,12 @@ export class PRINTDLGAView {
   }
 
   // 0x68: isize
-  set hPrintTemplate(value: Deno.PointerValue) {
+  set hPrintTemplate(value: bigint | number) {
     this.view.setBigInt64(104, BigInt(value), true);
   }
 
   // 0x70: isize
-  set hSetupTemplate(value: Deno.PointerValue) {
+  set hSetupTemplate(value: bigint | number) {
     this.view.setBigInt64(112, BigInt(value), true);
   }
 }
@@ -9627,9 +9627,9 @@ export interface PRINTDLGW {
   /** Windows.Win32.Foundation.HWND */
   hwndOwner: Deno.PointerValue;
   /** isize */
-  hDevMode: Deno.PointerValue;
+  hDevMode: bigint | number;
   /** isize */
-  hDevNames: Deno.PointerValue;
+  hDevNames: bigint | number;
   /** Windows.Win32.Graphics.Gdi.HDC */
   hDC: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.Controls.Dialogs.PRINTDLGEX_FLAGS */
@@ -9657,9 +9657,9 @@ export interface PRINTDLGW {
   /** Windows.Win32.Foundation.PWSTR */
   lpSetupTemplateName: string | null | Uint8Array | Uint16Array;
   /** isize */
-  hPrintTemplate: Deno.PointerValue;
+  hPrintTemplate: bigint | number;
   /** isize */
-  hSetupTemplate: Deno.PointerValue;
+  hSetupTemplate: bigint | number;
 }
 
 export const sizeofPRINTDLGW = 120;
@@ -9740,12 +9740,12 @@ export class PRINTDLGWView {
   }
 
   // 0x10: isize
-  get hDevMode(): Deno.PointerValue {
+  get hDevMode(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get hDevNames(): Deno.PointerValue {
+  get hDevNames(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
@@ -9824,12 +9824,12 @@ export class PRINTDLGWView {
   }
 
   // 0x68: isize
-  get hPrintTemplate(): Deno.PointerValue {
+  get hPrintTemplate(): bigint | number {
     return Number(this.view.getBigInt64(104, true));
   }
 
   // 0x70: isize
-  get hSetupTemplate(): Deno.PointerValue {
+  get hSetupTemplate(): bigint | number {
     return Number(this.view.getBigInt64(112, true));
   }
 
@@ -9846,12 +9846,12 @@ export class PRINTDLGWView {
   }
 
   // 0x10: isize
-  set hDevMode(value: Deno.PointerValue) {
+  set hDevMode(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set hDevNames(value: Deno.PointerValue) {
+  set hDevNames(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
@@ -9925,12 +9925,12 @@ export class PRINTDLGWView {
   }
 
   // 0x68: isize
-  set hPrintTemplate(value: Deno.PointerValue) {
+  set hPrintTemplate(value: bigint | number) {
     this.view.setBigInt64(104, BigInt(value), true);
   }
 
   // 0x70: isize
-  set hSetupTemplate(value: Deno.PointerValue) {
+  set hSetupTemplate(value: bigint | number) {
     this.view.setBigInt64(112, BigInt(value), true);
   }
 }
@@ -9997,9 +9997,9 @@ export interface PRINTDLGEXA {
   /** Windows.Win32.Foundation.HWND */
   hwndOwner: Deno.PointerValue;
   /** isize */
-  hDevMode: Deno.PointerValue;
+  hDevMode: bigint | number;
   /** isize */
-  hDevNames: Deno.PointerValue;
+  hDevNames: bigint | number;
   /** Windows.Win32.Graphics.Gdi.HDC */
   hDC: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.Controls.Dialogs.PRINTDLGEX_FLAGS */
@@ -10117,12 +10117,12 @@ export class PRINTDLGEXAView {
   }
 
   // 0x10: isize
-  get hDevMode(): Deno.PointerValue {
+  get hDevMode(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get hDevNames(): Deno.PointerValue {
+  get hDevNames(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
@@ -10236,12 +10236,12 @@ export class PRINTDLGEXAView {
   }
 
   // 0x10: isize
-  set hDevMode(value: Deno.PointerValue) {
+  set hDevMode(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set hDevNames(value: Deno.PointerValue) {
+  set hDevNames(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
@@ -10347,9 +10347,9 @@ export interface PRINTDLGEXW {
   /** Windows.Win32.Foundation.HWND */
   hwndOwner: Deno.PointerValue;
   /** isize */
-  hDevMode: Deno.PointerValue;
+  hDevMode: bigint | number;
   /** isize */
-  hDevNames: Deno.PointerValue;
+  hDevNames: bigint | number;
   /** Windows.Win32.Graphics.Gdi.HDC */
   hDC: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.Controls.Dialogs.PRINTDLGEX_FLAGS */
@@ -10467,12 +10467,12 @@ export class PRINTDLGEXWView {
   }
 
   // 0x10: isize
-  get hDevMode(): Deno.PointerValue {
+  get hDevMode(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get hDevNames(): Deno.PointerValue {
+  get hDevNames(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
@@ -10586,12 +10586,12 @@ export class PRINTDLGEXWView {
   }
 
   // 0x10: isize
-  set hDevMode(value: Deno.PointerValue) {
+  set hDevMode(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set hDevNames(value: Deno.PointerValue) {
+  set hDevNames(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
@@ -10912,9 +10912,9 @@ export interface PAGESETUPDLGA {
   /** Windows.Win32.Foundation.HWND */
   hwndOwner: Deno.PointerValue;
   /** isize */
-  hDevMode: Deno.PointerValue;
+  hDevMode: bigint | number;
   /** isize */
-  hDevNames: Deno.PointerValue;
+  hDevNames: bigint | number;
   /** Windows.Win32.UI.Controls.Dialogs.PAGESETUPDLG_FLAGS */
   Flags: PAGESETUPDLG_FLAGS;
   /** Windows.Win32.Foundation.POINT */
@@ -10934,7 +10934,7 @@ export interface PAGESETUPDLGA {
   /** Windows.Win32.Foundation.PSTR */
   lpPageSetupTemplateName: string | null | Uint8Array;
   /** isize */
-  hPageSetupTemplate: Deno.PointerValue;
+  hPageSetupTemplate: bigint | number;
 }
 
 export const sizeofPAGESETUPDLGA = 112;
@@ -11002,12 +11002,12 @@ export class PAGESETUPDLGAView {
   }
 
   // 0x10: isize
-  get hDevMode(): Deno.PointerValue {
+  get hDevMode(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get hDevNames(): Deno.PointerValue {
+  get hDevNames(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
@@ -11067,7 +11067,7 @@ export class PAGESETUPDLGAView {
   }
 
   // 0x68: isize
-  get hPageSetupTemplate(): Deno.PointerValue {
+  get hPageSetupTemplate(): bigint | number {
     return Number(this.view.getBigInt64(104, true));
   }
 
@@ -11084,12 +11084,12 @@ export class PAGESETUPDLGAView {
   }
 
   // 0x10: isize
-  set hDevMode(value: Deno.PointerValue) {
+  set hDevMode(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set hDevNames(value: Deno.PointerValue) {
+  set hDevNames(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
@@ -11142,7 +11142,7 @@ export class PAGESETUPDLGAView {
   }
 
   // 0x68: isize
-  set hPageSetupTemplate(value: Deno.PointerValue) {
+  set hPageSetupTemplate(value: bigint | number) {
     this.view.setBigInt64(104, BigInt(value), true);
   }
 }
@@ -11156,9 +11156,9 @@ export interface PAGESETUPDLGW {
   /** Windows.Win32.Foundation.HWND */
   hwndOwner: Deno.PointerValue;
   /** isize */
-  hDevMode: Deno.PointerValue;
+  hDevMode: bigint | number;
   /** isize */
-  hDevNames: Deno.PointerValue;
+  hDevNames: bigint | number;
   /** Windows.Win32.UI.Controls.Dialogs.PAGESETUPDLG_FLAGS */
   Flags: PAGESETUPDLG_FLAGS;
   /** Windows.Win32.Foundation.POINT */
@@ -11178,7 +11178,7 @@ export interface PAGESETUPDLGW {
   /** Windows.Win32.Foundation.PWSTR */
   lpPageSetupTemplateName: string | null | Uint8Array | Uint16Array;
   /** isize */
-  hPageSetupTemplate: Deno.PointerValue;
+  hPageSetupTemplate: bigint | number;
 }
 
 export const sizeofPAGESETUPDLGW = 112;
@@ -11246,12 +11246,12 @@ export class PAGESETUPDLGWView {
   }
 
   // 0x10: isize
-  get hDevMode(): Deno.PointerValue {
+  get hDevMode(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get hDevNames(): Deno.PointerValue {
+  get hDevNames(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
@@ -11311,7 +11311,7 @@ export class PAGESETUPDLGWView {
   }
 
   // 0x68: isize
-  get hPageSetupTemplate(): Deno.PointerValue {
+  get hPageSetupTemplate(): bigint | number {
     return Number(this.view.getBigInt64(104, true));
   }
 
@@ -11328,12 +11328,12 @@ export class PAGESETUPDLGWView {
   }
 
   // 0x10: isize
-  set hDevMode(value: Deno.PointerValue) {
+  set hDevMode(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set hDevNames(value: Deno.PointerValue) {
+  set hDevNames(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
@@ -11386,7 +11386,7 @@ export class PAGESETUPDLGWView {
   }
 
   // 0x68: isize
-  set hPageSetupTemplate(value: Deno.PointerValue) {
+  set hPageSetupTemplate(value: bigint | number) {
     this.view.setBigInt64(104, BigInt(value), true);
   }
 }
@@ -11396,11 +11396,11 @@ export class PAGESETUPDLGWView {
  */
 export interface _Anonymous1_e__Union {
   /** usize */
-  Data0: Deno.PointerValue;
+  Data0: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   String: string | null | Uint8Array | Uint16Array;
   /** usize */
-  u: Deno.PointerValue;
+  u: bigint | number;
   /** ptr */
   psid: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -11452,7 +11452,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  get Data0(): Deno.PointerValue {
+  get Data0(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -11463,7 +11463,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  get u(): Deno.PointerValue {
+  get u(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -11499,7 +11499,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  set Data0(value: Deno.PointerValue) {
+  set Data0(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -11510,7 +11510,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  set u(value: Deno.PointerValue) {
+  set u(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -11547,7 +11547,7 @@ export class _Anonymous1_e__UnionView {
  */
 export interface _Anonymous2_e__Union {
   /** usize */
-  Data1: Deno.PointerValue;
+  Data1: bigint | number;
   /** i32 */
   LogonId_HighPart: number;
 }
@@ -11576,7 +11576,7 @@ export class _Anonymous2_e__UnionView {
   }
 
   // 0x00: usize
-  get Data1(): Deno.PointerValue {
+  get Data1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -11588,7 +11588,7 @@ export class _Anonymous2_e__UnionView {
   // 0x0c: pad4
 
   // 0x00: usize
-  set Data1(value: Deno.PointerValue) {
+  set Data1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -11992,7 +11992,7 @@ export class PROPSHEETPAGEA_V2View {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.UI.Controls.PROPSHEETPAGEA_V3 (size: 96)
@@ -13635,7 +13635,7 @@ export class _Anonymous4_e__UnionView {
   }
 }
 
-export type HPALETTE = Deno.PointerValue;
+export type HPALETTE = bigint | number;
 
 /**
  * _Anonymous5_e__Union (size: 24)
@@ -14601,9 +14601,9 @@ export interface NMMOUSE {
   /** Windows.Win32.UI.Controls.NMHDR */
   hdr: Uint8Array | Deno.PointerValue;
   /** usize */
-  dwItemSpec: Deno.PointerValue;
+  dwItemSpec: bigint | number;
   /** usize */
-  dwItemData: Deno.PointerValue;
+  dwItemData: bigint | number;
   /** Windows.Win32.Foundation.POINT */
   pt: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.LPARAM */
@@ -14645,12 +14645,12 @@ export class NMMOUSEView {
   }
 
   // 0x08: usize
-  get dwItemSpec(): Deno.PointerValue {
+  get dwItemSpec(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: usize
-  get dwItemData(): Deno.PointerValue {
+  get dwItemData(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -14672,12 +14672,12 @@ export class NMMOUSEView {
   }
 
   // 0x08: usize
-  set dwItemSpec(value: Deno.PointerValue) {
+  set dwItemSpec(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: usize
-  set dwItemData(value: Deno.PointerValue) {
+  set dwItemData(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -15123,7 +15123,7 @@ export interface NMCUSTOMDRAW {
   /** Windows.Win32.Foundation.RECT */
   rc: Uint8Array | Deno.PointerValue;
   /** usize */
-  dwItemSpec: Deno.PointerValue;
+  dwItemSpec: bigint | number;
   /** Windows.Win32.UI.Controls.NMCUSTOMDRAW_DRAW_STATE_FLAGS */
   uItemState: NMCUSTOMDRAW_DRAW_STATE_FLAGS;
   /** Windows.Win32.Foundation.LPARAM */
@@ -15190,7 +15190,7 @@ export class NMCUSTOMDRAWView {
   }
 
   // 0x20: usize
-  get dwItemSpec(): Deno.PointerValue {
+  get dwItemSpec(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -15230,7 +15230,7 @@ export class NMCUSTOMDRAWView {
   }
 
   // 0x20: usize
-  set dwItemSpec(value: Deno.PointerValue) {
+  set dwItemSpec(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -15669,7 +15669,7 @@ export class IMAGELISTDRAWPARAMSView {
   }
 }
 
-export type HBITMAP = Deno.PointerValue;
+export type HBITMAP = bigint | number;
 
 /**
  * Windows.Win32.UI.Controls.IMAGEINFO (size: 32)
@@ -16995,9 +16995,9 @@ export class COLORMAPView {
   }
 }
 
-export type HBRUSH = Deno.PointerValue;
+export type HBRUSH = bigint | number;
 
-export type HPEN = Deno.PointerValue;
+export type HPEN = bigint | number;
 
 /**
  * Windows.Win32.UI.Controls.NMTBCUSTOMDRAW (size: 104)
@@ -17243,7 +17243,7 @@ export interface TBADDBITMAP {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInst: Uint8Array | Deno.PointerValue;
   /** usize */
-  nID: Deno.PointerValue;
+  nID: bigint | number;
 }
 
 export const sizeofTBADDBITMAP = 16;
@@ -17275,7 +17275,7 @@ export class TBADDBITMAPView {
   }
 
   // 0x08: usize
-  get nID(): Deno.PointerValue {
+  get nID(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -17285,12 +17285,12 @@ export class TBADDBITMAPView {
   }
 
   // 0x08: usize
-  set nID(value: Deno.PointerValue) {
+  set nID(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
 
-export type HKEY = Deno.PointerValue;
+export type HKEY = bigint | number;
 
 /**
  * Windows.Win32.UI.Controls.TBSAVEPARAMSA (size: 24)
@@ -17508,11 +17508,11 @@ export interface TBREPLACEBITMAP {
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstOld: Uint8Array | Deno.PointerValue;
   /** usize */
-  nIDOld: Deno.PointerValue;
+  nIDOld: bigint | number;
   /** Windows.Win32.Foundation.HINSTANCE */
   hInstNew: Uint8Array | Deno.PointerValue;
   /** usize */
-  nIDNew: Deno.PointerValue;
+  nIDNew: bigint | number;
   /** i32 */
   nButtons: number;
 }
@@ -17553,7 +17553,7 @@ export class TBREPLACEBITMAPView {
   }
 
   // 0x08: usize
-  get nIDOld(): Deno.PointerValue {
+  get nIDOld(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -17564,7 +17564,7 @@ export class TBREPLACEBITMAPView {
   }
 
   // 0x18: usize
-  get nIDNew(): Deno.PointerValue {
+  get nIDNew(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -17581,7 +17581,7 @@ export class TBREPLACEBITMAPView {
   }
 
   // 0x08: usize
-  set nIDOld(value: Deno.PointerValue) {
+  set nIDOld(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -17591,7 +17591,7 @@ export class TBREPLACEBITMAPView {
   }
 
   // 0x18: usize
-  set nIDNew(value: Deno.PointerValue) {
+  set nIDNew(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -17622,7 +17622,7 @@ export interface TBBUTTONINFOA {
   /** u16 */
   cx: number;
   /** usize */
-  lParam: Deno.PointerValue;
+  lParam: bigint | number;
   /** Windows.Win32.Foundation.PSTR */
   pszText: string | null | Uint8Array;
   /** i32 */
@@ -17710,7 +17710,7 @@ export class TBBUTTONINFOAView {
   // 0x14: pad4
 
   // 0x18: usize
-  get lParam(): Deno.PointerValue {
+  get lParam(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -17765,7 +17765,7 @@ export class TBBUTTONINFOAView {
   // 0x14: pad4
 
   // 0x18: usize
-  set lParam(value: Deno.PointerValue) {
+  set lParam(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -17802,7 +17802,7 @@ export interface TBBUTTONINFOW {
   /** u16 */
   cx: number;
   /** usize */
-  lParam: Deno.PointerValue;
+  lParam: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   pszText: string | null | Uint8Array | Uint16Array;
   /** i32 */
@@ -17890,7 +17890,7 @@ export class TBBUTTONINFOWView {
   // 0x14: pad4
 
   // 0x18: usize
-  get lParam(): Deno.PointerValue {
+  get lParam(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -17945,7 +17945,7 @@ export class TBBUTTONINFOWView {
   // 0x14: pad4
 
   // 0x18: usize
-  set lParam(value: Deno.PointerValue) {
+  set lParam(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -18675,7 +18675,7 @@ export interface NMTBDISPINFOA {
   /** i32 */
   idCommand: number;
   /** usize */
-  lParam: Deno.PointerValue;
+  lParam: bigint | number;
   /** i32 */
   iImage: number;
   /** Windows.Win32.Foundation.PSTR */
@@ -18738,7 +18738,7 @@ export class NMTBDISPINFOAView {
   }
 
   // 0x10: usize
-  get lParam(): Deno.PointerValue {
+  get lParam(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -18778,7 +18778,7 @@ export class NMTBDISPINFOAView {
   }
 
   // 0x10: usize
-  set lParam(value: Deno.PointerValue) {
+  set lParam(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -18814,7 +18814,7 @@ export interface NMTBDISPINFOW {
   /** i32 */
   idCommand: number;
   /** usize */
-  lParam: Deno.PointerValue;
+  lParam: bigint | number;
   /** i32 */
   iImage: number;
   /** Windows.Win32.Foundation.PWSTR */
@@ -18877,7 +18877,7 @@ export class NMTBDISPINFOWView {
   }
 
   // 0x10: usize
-  get lParam(): Deno.PointerValue {
+  get lParam(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -18917,7 +18917,7 @@ export class NMTBDISPINFOWView {
   }
 
   // 0x10: usize
-  set lParam(value: Deno.PointerValue) {
+  set lParam(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -20677,7 +20677,7 @@ export interface TTTOOLINFOA {
   /** Windows.Win32.Foundation.HWND */
   hwnd: Deno.PointerValue;
   /** usize */
-  uId: Deno.PointerValue;
+  uId: bigint | number;
   /** Windows.Win32.Foundation.RECT */
   rect: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.HINSTANCE */
@@ -20746,7 +20746,7 @@ export class TTTOOLINFOAView {
   }
 
   // 0x10: usize
-  get uId(): Deno.PointerValue {
+  get uId(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -20796,7 +20796,7 @@ export class TTTOOLINFOAView {
   }
 
   // 0x10: usize
-  set uId(value: Deno.PointerValue) {
+  set uId(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -20838,7 +20838,7 @@ export interface TTTOOLINFOW {
   /** Windows.Win32.Foundation.HWND */
   hwnd: Deno.PointerValue;
   /** usize */
-  uId: Deno.PointerValue;
+  uId: bigint | number;
   /** Windows.Win32.Foundation.RECT */
   rect: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.HINSTANCE */
@@ -20907,7 +20907,7 @@ export class TTTOOLINFOWView {
   }
 
   // 0x10: usize
-  get uId(): Deno.PointerValue {
+  get uId(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -20957,7 +20957,7 @@ export class TTTOOLINFOWView {
   }
 
   // 0x10: usize
-  set uId(value: Deno.PointerValue) {
+  set uId(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -27346,9 +27346,9 @@ export class TVITEMEXWView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -27374,22 +27374,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -28865,7 +28865,7 @@ export interface COMBOBOXEXITEMA {
   /** Windows.Win32.UI.Controls.COMBOBOX_EX_ITEM_FLAGS */
   mask: COMBOBOX_EX_ITEM_FLAGS;
   /** isize */
-  iItem: Deno.PointerValue;
+  iItem: bigint | number;
   /** Windows.Win32.Foundation.PSTR */
   pszText: string | null | Uint8Array;
   /** i32 */
@@ -28931,7 +28931,7 @@ export class COMBOBOXEXITEMAView {
   // 0x04: pad4
 
   // 0x08: isize
-  get iItem(): Deno.PointerValue {
+  get iItem(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -28982,7 +28982,7 @@ export class COMBOBOXEXITEMAView {
   // 0x04: pad4
 
   // 0x08: isize
-  set iItem(value: Deno.PointerValue) {
+  set iItem(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -29032,7 +29032,7 @@ export interface COMBOBOXEXITEMW {
   /** Windows.Win32.UI.Controls.COMBOBOX_EX_ITEM_FLAGS */
   mask: COMBOBOX_EX_ITEM_FLAGS;
   /** isize */
-  iItem: Deno.PointerValue;
+  iItem: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   pszText: string | null | Uint8Array | Uint16Array;
   /** i32 */
@@ -29098,7 +29098,7 @@ export class COMBOBOXEXITEMWView {
   // 0x04: pad4
 
   // 0x08: isize
-  get iItem(): Deno.PointerValue {
+  get iItem(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -29149,7 +29149,7 @@ export class COMBOBOXEXITEMWView {
   // 0x04: pad4
 
   // 0x08: isize
-  set iItem(value: Deno.PointerValue) {
+  set iItem(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -30611,7 +30611,7 @@ export interface MCGRIDINFO {
   /** Windows.Win32.Foundation.PWSTR */
   pszName: string | null | Uint8Array | Uint16Array;
   /** usize */
-  cchName: Deno.PointerValue;
+  cchName: bigint | number;
 }
 
 export const sizeofMCGRIDINFO = 72;
@@ -30722,7 +30722,7 @@ export class MCGRIDINFOView {
   }
 
   // 0x40: usize
-  get cchName(): Deno.PointerValue {
+  get cchName(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
@@ -30785,7 +30785,7 @@ export class MCGRIDINFOView {
   }
 
   // 0x40: usize
-  set cchName(value: Deno.PointerValue) {
+  set cchName(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 }
@@ -32937,7 +32937,7 @@ export interface TASKDIALOGCONFIG {
   /** Windows.Win32.UI.Controls.PFTASKDIALOGCALLBACK */
   pfCallback: Uint8Array | Deno.PointerValue;
   /** isize */
-  lpCallbackData: Deno.PointerValue;
+  lpCallbackData: bigint | number;
   /** u32 */
   cxWidth: number;
 }
@@ -33168,7 +33168,7 @@ export class TASKDIALOGCONFIGView {
   }
 
   // 0xa0: isize
-  get lpCallbackData(): Deno.PointerValue {
+  get lpCallbackData(): bigint | number {
     return Number(this.view.getBigInt64(160, true));
   }
 
@@ -33304,7 +33304,7 @@ export class TASKDIALOGCONFIGView {
   }
 
   // 0xa0: isize
-  set lpCallbackData(value: Deno.PointerValue) {
+  set lpCallbackData(value: bigint | number) {
     this.view.setBigInt64(160, BigInt(value), true);
   }
 
@@ -37097,7 +37097,7 @@ export class TEXTRANGEWView {
  */
 export interface EDITSTREAM {
   /** usize */
-  dwCookie: Deno.PointerValue;
+  dwCookie: bigint | number;
   /** u32 */
   dwError: number;
   /** Windows.Win32.UI.Controls.RichEdit.EDITSTREAMCALLBACK */
@@ -37130,7 +37130,7 @@ export class EDITSTREAMView {
   }
 
   // 0x00: usize
-  get dwCookie(): Deno.PointerValue {
+  get dwCookie(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -37148,7 +37148,7 @@ export class EDITSTREAMView {
   }
 
   // 0x00: usize
-  set dwCookie(value: Deno.PointerValue) {
+  set dwCookie(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -37939,7 +37939,7 @@ export class PARAFORMAT2View {
   }
 }
 
-export type WPARAM = Deno.PointerValue;
+export type WPARAM = bigint | number;
 
 /**
  * Windows.Win32.UI.Controls.RichEdit.MSGFILTER (size: 32)
@@ -39159,7 +39159,7 @@ export interface REPASTESPECIAL {
   /** Windows.Win32.System.Com.DVASPECT */
   dwAspect: DVASPECT;
   /** usize */
-  dwParam: Deno.PointerValue;
+  dwParam: bigint | number;
 }
 
 export const sizeofREPASTESPECIAL = 16;
@@ -39193,7 +39193,7 @@ export class REPASTESPECIALView {
   // 0x04: pad4
 
   // 0x08: usize
-  get dwParam(): Deno.PointerValue {
+  get dwParam(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -39205,7 +39205,7 @@ export class REPASTESPECIALView {
   // 0x04: pad4
 
   // 0x08: usize
-  set dwParam(value: Deno.PointerValue) {
+  set dwParam(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -39566,7 +39566,7 @@ export interface HYPHENATEINFO {
   /** i16 */
   dxHyphenateZone: number;
   /** isize */
-  pfnHyphenate: Deno.PointerValue;
+  pfnHyphenate: bigint | number;
 }
 
 export const sizeofHYPHENATEINFO = 16;
@@ -39607,7 +39607,7 @@ export class HYPHENATEINFOView {
   // 0x04: pad4
 
   // 0x08: isize
-  get pfnHyphenate(): Deno.PointerValue {
+  get pfnHyphenate(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -39624,7 +39624,7 @@ export class HYPHENATEINFOView {
   // 0x04: pad4
 
   // 0x08: isize
-  set pfnHyphenate(value: Deno.PointerValue) {
+  set pfnHyphenate(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -39937,7 +39937,7 @@ export interface MEASUREITEMSTRUCT {
   /** u32 */
   itemHeight: number;
   /** usize */
-  itemData: Deno.PointerValue;
+  itemData: bigint | number;
 }
 
 export const sizeofMEASUREITEMSTRUCT = 32;
@@ -39999,7 +39999,7 @@ export class MEASUREITEMSTRUCTView {
   // 0x14: pad4
 
   // 0x18: usize
-  get itemData(): Deno.PointerValue {
+  get itemData(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -40031,7 +40031,7 @@ export class MEASUREITEMSTRUCTView {
   // 0x14: pad4
 
   // 0x18: usize
-  set itemData(value: Deno.PointerValue) {
+  set itemData(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 }
@@ -40057,7 +40057,7 @@ export interface DRAWITEMSTRUCT {
   /** Windows.Win32.Foundation.RECT */
   rcItem: Uint8Array | Deno.PointerValue;
   /** usize */
-  itemData: Deno.PointerValue;
+  itemData: bigint | number;
 }
 
 export const sizeofDRAWITEMSTRUCT = 56;
@@ -40143,7 +40143,7 @@ export class DRAWITEMSTRUCTView {
   }
 
   // 0x30: usize
-  get itemData(): Deno.PointerValue {
+  get itemData(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -40190,7 +40190,7 @@ export class DRAWITEMSTRUCTView {
   }
 
   // 0x30: usize
-  set itemData(value: Deno.PointerValue) {
+  set itemData(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 }
@@ -40208,7 +40208,7 @@ export interface DELETEITEMSTRUCT {
   /** Windows.Win32.Foundation.HWND */
   hwndItem: Deno.PointerValue;
   /** usize */
-  itemData: Deno.PointerValue;
+  itemData: bigint | number;
 }
 
 export const sizeofDELETEITEMSTRUCT = 32;
@@ -40264,7 +40264,7 @@ export class DELETEITEMSTRUCTView {
   }
 
   // 0x18: usize
-  get itemData(): Deno.PointerValue {
+  get itemData(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -40291,7 +40291,7 @@ export class DELETEITEMSTRUCTView {
   }
 
   // 0x18: usize
-  set itemData(value: Deno.PointerValue) {
+  set itemData(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 }
@@ -40309,11 +40309,11 @@ export interface COMPAREITEMSTRUCT {
   /** u32 */
   itemID1: number;
   /** usize */
-  itemData1: Deno.PointerValue;
+  itemData1: bigint | number;
   /** u32 */
   itemID2: number;
   /** usize */
-  itemData2: Deno.PointerValue;
+  itemData2: bigint | number;
   /** u32 */
   dwLocaleId: number;
 }
@@ -40379,7 +40379,7 @@ export class COMPAREITEMSTRUCTView {
   // 0x14: pad4
 
   // 0x18: usize
-  get itemData1(): Deno.PointerValue {
+  get itemData1(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -40391,7 +40391,7 @@ export class COMPAREITEMSTRUCTView {
   // 0x24: pad4
 
   // 0x28: usize
-  get itemData2(): Deno.PointerValue {
+  get itemData2(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -40425,7 +40425,7 @@ export class COMPAREITEMSTRUCTView {
   // 0x14: pad4
 
   // 0x18: usize
-  set itemData1(value: Deno.PointerValue) {
+  set itemData1(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -40437,7 +40437,7 @@ export class COMPAREITEMSTRUCTView {
   // 0x24: pad4
 
   // 0x28: usize
-  set itemData2(value: Deno.PointerValue) {
+  set itemData2(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
@@ -40983,7 +40983,7 @@ export class COMBOBOXINFOView {
   }
 }
 
-export type HMONITOR = Deno.PointerValue;
+export type HMONITOR = bigint | number;
 
 /**
  * Windows.Win32.UI.Controls.POINTER_DEVICE_INFO (size: 48)
@@ -41321,13 +41321,13 @@ export class POINTER_DEVICE_CURSOR_INFOView {
   }
 }
 
-export type HICON = Deno.PointerValue;
+export type HICON = bigint | number;
 
-export type HMENU = Deno.PointerValue;
+export type HMENU = bigint | number;
 
-export type HRGN = Deno.PointerValue;
+export type HRGN = bigint | number;
 
-export type LRESULT = Deno.PointerValue;
+export type LRESULT = bigint | number;
 
 // Native Libraries
 
@@ -42229,13 +42229,13 @@ export function DestroyPropertySheetPage(
 
 export function PropertySheetA(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libCOMCTL32_dll.PropertySheetA(util.toPointer(param0));
 }
 
 export function PropertySheetW(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libCOMCTL32_dll.PropertySheetW(util.toPointer(param0));
 }
 
@@ -42554,7 +42554,7 @@ export function CreateToolbarEx(
   wID: number /* u32 */,
   nBitmaps: number /* i32 */,
   hBMInst: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */,
-  wBMID: Deno.PointerValue /* usize */,
+  wBMID: bigint | number /* usize */,
   lpButtons: Deno.PointerValue | Uint8Array /* ptr */,
   iNumButtons: number /* i32 */,
   dxButton: number /* i32 */,
@@ -42568,7 +42568,7 @@ export function CreateToolbarEx(
 
 export function CreateMappedBitmap(
   hInstance: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */,
-  idBitmap: Deno.PointerValue /* isize */,
+  idBitmap: bigint | number /* isize */,
   wFlags: number /* u32 */,
   lpColorMap: Deno.PointerValue | Uint8Array /* ptr */,
   iNumMaps: number /* i32 */,
@@ -42626,7 +42626,7 @@ export function MenuHelp(
 
 export function ShowHideMenuCtl(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
-  uFlags: Deno.PointerValue /* usize */,
+  uFlags: bigint | number /* usize */,
   lpInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libCOMCTL32_dll.ShowHideMenuCtl((hWnd), uFlags, util.toPointer(lpInfo)));
@@ -42792,7 +42792,7 @@ export function DSA_Clone(
 
 export function DSA_GetSize(
   hdsa: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.HDSA */,
-): Deno.PointerValue /* u64 */ {
+): bigint | number /* u64 */ {
   return libCOMCTL32_dll.DSA_GetSize(util.toPointer(hdsa));
 }
 
@@ -42884,7 +42884,7 @@ export function DPA_SetPtr(
 
 export function DPA_GetPtr(
   hdpa: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.HDPA */,
-  i: Deno.PointerValue /* isize */,
+  i: bigint | number /* isize */,
 ): Deno.PointerValue /* ptr */ {
   return libCOMCTL32_dll.DPA_GetPtr(util.toPointer(hdpa), i);
 }
@@ -42898,7 +42898,7 @@ export function DPA_GetPtrIndex(
 
 export function DPA_GetSize(
   hdpa: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.HDPA */,
-): Deno.PointerValue /* u64 */ {
+): bigint | number /* u64 */ {
   return libCOMCTL32_dll.DPA_GetSize(util.toPointer(hdpa));
 }
 
@@ -43036,7 +43036,7 @@ export function FlatSB_SetScrollRange(
 export function FlatSB_SetScrollProp(
   param0: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   index: WSB_PROP /* Windows.Win32.UI.Controls.WSB_PROP */,
-  newValue: Deno.PointerValue /* isize */,
+  newValue: bigint | number /* isize */,
   param3: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libCOMCTL32_dll.FlatSB_SetScrollProp((param0), index, newValue, util.boolToFfi(param3)));
@@ -43119,7 +43119,7 @@ export function EndPanningFeedback(
 }
 
 export function GetThemeAnimationProperty(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   iStoryboardId: number /* i32 */,
   iTargetId: number /* i32 */,
   eProperty: TA_PROPERTY /* Windows.Win32.UI.Controls.TA_PROPERTY */,
@@ -43131,7 +43131,7 @@ export function GetThemeAnimationProperty(
 }
 
 export function GetThemeAnimationTransform(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   iStoryboardId: number /* i32 */,
   iTargetId: number /* i32 */,
   dwTransformIndex: number /* u32 */,
@@ -43143,7 +43143,7 @@ export function GetThemeAnimationTransform(
 }
 
 export function GetThemeTimingFunction(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   iTimingFunctionId: number /* i32 */,
   pTimingFunction: Deno.PointerValue | Uint8Array /* ptr */,
   cbSize: number /* u32 */,
@@ -43155,7 +43155,7 @@ export function GetThemeTimingFunction(
 export function OpenThemeData(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pszClassList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libUXTHEME_dll.OpenThemeData((hwnd), util.pwstrToFfi(pszClassList));
 }
 
@@ -43163,18 +43163,18 @@ export function OpenThemeDataEx(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pszClassList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: OPEN_THEME_DATA_FLAGS /* Windows.Win32.UI.Controls.OPEN_THEME_DATA_FLAGS */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libUXTHEME_dll.OpenThemeDataEx((hwnd), util.pwstrToFfi(pszClassList), dwFlags);
 }
 
 export function CloseThemeData(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libUXTHEME_dll.CloseThemeData(hTheme);
 }
 
 export function DrawThemeBackground(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
@@ -43185,7 +43185,7 @@ export function DrawThemeBackground(
 }
 
 export function DrawThemeBackgroundEx(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
@@ -43196,7 +43196,7 @@ export function DrawThemeBackgroundEx(
 }
 
 export function DrawThemeText(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
@@ -43210,7 +43210,7 @@ export function DrawThemeText(
 }
 
 export function GetThemeBackgroundContentRect(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
@@ -43221,7 +43221,7 @@ export function GetThemeBackgroundContentRect(
 }
 
 export function GetThemeBackgroundExtent(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
@@ -43232,7 +43232,7 @@ export function GetThemeBackgroundExtent(
 }
 
 export function GetThemeBackgroundRegion(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
@@ -43243,7 +43243,7 @@ export function GetThemeBackgroundRegion(
 }
 
 export function GetThemePartSize(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
@@ -43255,7 +43255,7 @@ export function GetThemePartSize(
 }
 
 export function GetThemeTextExtent(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
@@ -43269,7 +43269,7 @@ export function GetThemeTextExtent(
 }
 
 export function GetThemeTextMetrics(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
@@ -43279,7 +43279,7 @@ export function GetThemeTextMetrics(
 }
 
 export function HitTestThemeBackground(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
@@ -43293,7 +43293,7 @@ export function HitTestThemeBackground(
 }
 
 export function DrawThemeEdge(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
@@ -43306,7 +43306,7 @@ export function DrawThemeEdge(
 }
 
 export function DrawThemeIcon(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
@@ -43318,7 +43318,7 @@ export function DrawThemeIcon(
 }
 
 export function IsThemePartDefined(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -43326,7 +43326,7 @@ export function IsThemePartDefined(
 }
 
 export function IsThemeBackgroundPartiallyTransparent(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -43334,7 +43334,7 @@ export function IsThemeBackgroundPartiallyTransparent(
 }
 
 export function GetThemeColor(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
   iPropId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
@@ -43344,7 +43344,7 @@ export function GetThemeColor(
 }
 
 export function GetThemeMetric(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
@@ -43355,7 +43355,7 @@ export function GetThemeMetric(
 }
 
 export function GetThemeString(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
   iPropId: number /* i32 */,
@@ -43366,7 +43366,7 @@ export function GetThemeString(
 }
 
 export function GetThemeBool(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
   iPropId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
@@ -43376,7 +43376,7 @@ export function GetThemeBool(
 }
 
 export function GetThemeInt(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
   iPropId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
@@ -43386,7 +43386,7 @@ export function GetThemeInt(
 }
 
 export function GetThemeEnumValue(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
   iPropId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
@@ -43396,7 +43396,7 @@ export function GetThemeEnumValue(
 }
 
 export function GetThemePosition(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
   iPropId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
@@ -43406,7 +43406,7 @@ export function GetThemePosition(
 }
 
 export function GetThemeFont(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
@@ -43417,7 +43417,7 @@ export function GetThemeFont(
 }
 
 export function GetThemeRect(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
   iPropId: number /* i32 */,
@@ -43427,7 +43427,7 @@ export function GetThemeRect(
 }
 
 export function GetThemeMargins(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
@@ -43439,7 +43439,7 @@ export function GetThemeMargins(
 }
 
 export function GetThemeIntList(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
   iPropId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
@@ -43449,7 +43449,7 @@ export function GetThemeIntList(
 }
 
 export function GetThemePropertyOrigin(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
   iPropId: number /* i32 */,
@@ -43467,7 +43467,7 @@ export function SetWindowTheme(
 }
 
 export function GetThemeFilename(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
   iPropId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
@@ -43478,35 +43478,35 @@ export function GetThemeFilename(
 }
 
 export function GetThemeSysColor(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   iColorId: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.COLORREF */ {
   return libUxTheme_dll.GetThemeSysColor(hTheme, iColorId);
 }
 
 export function GetThemeSysColorBrush(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   iColorId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
 ): Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HBRUSH */ {
   return libUxTheme_dll.GetThemeSysColorBrush(hTheme, iColorId);
 }
 
 export function GetThemeSysBool(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   iBoolId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUxTheme_dll.GetThemeSysBool(hTheme, iBoolId));
 }
 
 export function GetThemeSysSize(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   iSizeId: number /* i32 */,
 ): number /* i32 */ {
   return libUxTheme_dll.GetThemeSysSize(hTheme, iSizeId);
 }
 
 export function GetThemeSysFont(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   iFontId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
   plf: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
@@ -43514,7 +43514,7 @@ export function GetThemeSysFont(
 }
 
 export function GetThemeSysString(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   iStringId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
   pszStringBuff: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchMaxStringChars: number /* i32 */,
@@ -43523,7 +43523,7 @@ export function GetThemeSysString(
 }
 
 export function GetThemeSysInt(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   iIntId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
   piValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
@@ -43540,7 +43540,7 @@ export function IsAppThemed(): boolean /* Windows.Win32.Foundation.BOOL */ {
 
 export function GetWindowTheme(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libUXTHEME_dll.GetWindowTheme((hwnd));
 }
 
@@ -43620,7 +43620,7 @@ export function SetWindowThemeAttribute(
 }
 
 export function DrawThemeTextEx(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
@@ -43634,7 +43634,7 @@ export function DrawThemeTextEx(
 }
 
 export function GetThemeBitmap(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
   iPropId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
@@ -43645,7 +43645,7 @@ export function GetThemeBitmap(
 }
 
 export function GetThemeStream(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
   iPropId: number /* i32 */,
@@ -43670,38 +43670,38 @@ export function BeginBufferedPaint(
   dwFormat: BP_BUFFERFORMAT /* Windows.Win32.UI.Controls.BP_BUFFERFORMAT */,
   pPaintParams: Deno.PointerValue | Uint8Array /* ptr */,
   phdc: Deno.PointerValue | Uint8Array /* ptr */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libUXTHEME_dll.BeginBufferedPaint(util.toPointer(hdcTarget), util.toPointer(prcTarget), dwFormat, util.toPointer(pPaintParams), util.toPointer(phdc));
 }
 
 export function EndBufferedPaint(
-  hBufferedPaint: Deno.PointerValue /* isize */,
+  hBufferedPaint: bigint | number /* isize */,
   fUpdateTarget: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libUXTHEME_dll.EndBufferedPaint(hBufferedPaint, util.boolToFfi(fUpdateTarget));
 }
 
 export function GetBufferedPaintTargetRect(
-  hBufferedPaint: Deno.PointerValue /* isize */,
+  hBufferedPaint: bigint | number /* isize */,
   prc: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libUxTheme_dll.GetBufferedPaintTargetRect(hBufferedPaint, util.toPointer(prc));
 }
 
 export function GetBufferedPaintTargetDC(
-  hBufferedPaint: Deno.PointerValue /* isize */,
+  hBufferedPaint: bigint | number /* isize */,
 ): Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */ {
   return libUxTheme_dll.GetBufferedPaintTargetDC(hBufferedPaint);
 }
 
 export function GetBufferedPaintDC(
-  hBufferedPaint: Deno.PointerValue /* isize */,
+  hBufferedPaint: bigint | number /* isize */,
 ): Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */ {
   return libUxTheme_dll.GetBufferedPaintDC(hBufferedPaint);
 }
 
 export function GetBufferedPaintBits(
-  hBufferedPaint: Deno.PointerValue /* isize */,
+  hBufferedPaint: bigint | number /* isize */,
   ppbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   pcxRow: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
@@ -43709,14 +43709,14 @@ export function GetBufferedPaintBits(
 }
 
 export function BufferedPaintClear(
-  hBufferedPaint: Deno.PointerValue /* isize */,
+  hBufferedPaint: bigint | number /* isize */,
   prc: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libUXTHEME_dll.BufferedPaintClear(hBufferedPaint, util.toPointer(prc));
 }
 
 export function BufferedPaintSetAlpha(
-  hBufferedPaint: Deno.PointerValue /* isize */,
+  hBufferedPaint: bigint | number /* isize */,
   prc: Deno.PointerValue | Uint8Array /* ptr */,
   alpha: number /* u8 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
@@ -43738,12 +43738,12 @@ export function BeginBufferedAnimation(
   pAnimationParams: Deno.PointerValue | Uint8Array /* ptr */,
   phdcFrom: Deno.PointerValue | Uint8Array /* ptr */,
   phdcTo: Deno.PointerValue | Uint8Array /* ptr */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libUxTheme_dll.BeginBufferedAnimation((hwnd), util.toPointer(hdcTarget), util.toPointer(prcTarget), dwFormat, util.toPointer(pPaintParams), util.toPointer(pAnimationParams), util.toPointer(phdcFrom), util.toPointer(phdcTo));
 }
 
 export function EndBufferedAnimation(
-  hbpAnimation: Deno.PointerValue /* isize */,
+  hbpAnimation: bigint | number /* isize */,
   fUpdateTarget: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libUxTheme_dll.EndBufferedAnimation(hbpAnimation, util.boolToFfi(fUpdateTarget));
@@ -43761,7 +43761,7 @@ export function IsCompositionActive(): boolean /* Windows.Win32.Foundation.BOOL 
 }
 
 export function GetThemeTransitionDuration(
-  hTheme: Deno.PointerValue /* isize */,
+  hTheme: bigint | number /* isize */,
   iPartId: number /* i32 */,
   iStateIdFrom: number /* i32 */,
   iStateIdTo: number /* i32 */,

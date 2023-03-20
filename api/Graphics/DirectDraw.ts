@@ -1137,11 +1137,11 @@ export type PWSTR = Deno.PointerValue | Uint8Array;
  */
 export interface _Anonymous1_e__Union {
   /** usize */
-  Data0: Deno.PointerValue;
+  Data0: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   String: string | null | Uint8Array | Uint16Array;
   /** usize */
-  u: Deno.PointerValue;
+  u: bigint | number;
   /** ptr */
   psid: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -1193,7 +1193,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  get Data0(): Deno.PointerValue {
+  get Data0(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -1204,7 +1204,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  get u(): Deno.PointerValue {
+  get u(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -1240,7 +1240,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  set Data0(value: Deno.PointerValue) {
+  set Data0(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -1251,7 +1251,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  set u(value: Deno.PointerValue) {
+  set u(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -1288,7 +1288,7 @@ export class _Anonymous1_e__UnionView {
  */
 export interface _Anonymous2_e__Union {
   /** usize */
-  Data1: Deno.PointerValue;
+  Data1: bigint | number;
   /** i32 */
   LogonId_HighPart: number;
 }
@@ -1317,7 +1317,7 @@ export class _Anonymous2_e__UnionView {
   }
 
   // 0x00: usize
-  get Data1(): Deno.PointerValue {
+  get Data1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -1329,7 +1329,7 @@ export class _Anonymous2_e__UnionView {
   // 0x0c: pad4
 
   // 0x00: usize
-  set Data1(value: Deno.PointerValue) {
+  set Data1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -2003,9 +2003,9 @@ export class DDOSCAPSView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -2031,22 +2031,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -6701,7 +6701,7 @@ export interface LARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue;
   /** i64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: bigint | number;
 }
 
 export const sizeofLARGE_INTEGER = 24;
@@ -6741,7 +6741,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  get QuadPart(): Deno.PointerValue {
+  get QuadPart(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -6756,7 +6756,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  set QuadPart(value: Deno.PointerValue) {
+  set QuadPart(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -7898,7 +7898,7 @@ export interface DDVIDEOPORTCONNECT {
   /** u32 */
   dwFlags: number;
   /** usize */
-  dwReserved1: Deno.PointerValue;
+  dwReserved1: bigint | number;
 }
 
 export const sizeofDDVIDEOPORTCONNECT = 32;
@@ -7954,7 +7954,7 @@ export class DDVIDEOPORTCONNECTView {
   // 0x14: pad4
 
   // 0x18: usize
-  get dwReserved1(): Deno.PointerValue {
+  get dwReserved1(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -7981,7 +7981,7 @@ export class DDVIDEOPORTCONNECTView {
   // 0x14: pad4
 
   // 0x18: usize
-  set dwReserved1(value: Deno.PointerValue) {
+  set dwReserved1(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 }
@@ -8300,9 +8300,9 @@ export interface DDVIDEOPORTDESC {
   /** Windows.Win32.Graphics.DirectDraw.DDVIDEOPORTCONNECT */
   VideoPortType: Uint8Array | Deno.PointerValue;
   /** usize */
-  dwReserved2: Deno.PointerValue;
+  dwReserved2: bigint | number;
   /** usize */
-  dwReserved3: Deno.PointerValue;
+  dwReserved3: bigint | number;
 }
 
 export const sizeofDDVIDEOPORTDESC = 56;
@@ -8392,12 +8392,12 @@ export class DDVIDEOPORTDESCView {
   }
 
   // 0x28: usize
-  get dwReserved2(): Deno.PointerValue {
+  get dwReserved2(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: usize
-  get dwReserved3(): Deno.PointerValue {
+  get dwReserved3(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -8447,12 +8447,12 @@ export class DDVIDEOPORTDESCView {
   }
 
   // 0x28: usize
-  set dwReserved2(value: Deno.PointerValue) {
+  set dwReserved2(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: usize
-  set dwReserved3(value: Deno.PointerValue) {
+  set dwReserved3(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 }
@@ -8565,9 +8565,9 @@ export interface DDVIDEOPORTINFO {
   /** u32 */
   dwVBIHeight: number;
   /** usize */
-  dwReserved1: Deno.PointerValue;
+  dwReserved1: bigint | number;
   /** usize */
-  dwReserved2: Deno.PointerValue;
+  dwReserved2: bigint | number;
 }
 
 export const sizeofDDVIDEOPORTINFO = 80;
@@ -8677,12 +8677,12 @@ export class DDVIDEOPORTINFOView {
   // 0x3c: pad4
 
   // 0x40: usize
-  get dwReserved1(): Deno.PointerValue {
+  get dwReserved1(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
   // 0x48: usize
-  get dwReserved2(): Deno.PointerValue {
+  get dwReserved2(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
@@ -8744,12 +8744,12 @@ export class DDVIDEOPORTINFOView {
   // 0x3c: pad4
 
   // 0x40: usize
-  set dwReserved1(value: Deno.PointerValue) {
+  set dwReserved1(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
   // 0x48: usize
-  set dwReserved2(value: Deno.PointerValue) {
+  set dwReserved2(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 }
@@ -8771,9 +8771,9 @@ export interface DDVIDEOPORTBANDWIDTH {
   /** u32 */
   dwYInterpAndColorkey: number;
   /** usize */
-  dwReserved1: Deno.PointerValue;
+  dwReserved1: bigint | number;
   /** usize */
-  dwReserved2: Deno.PointerValue;
+  dwReserved2: bigint | number;
 }
 
 export const sizeofDDVIDEOPORTBANDWIDTH = 40;
@@ -8841,12 +8841,12 @@ export class DDVIDEOPORTBANDWIDTHView {
   }
 
   // 0x18: usize
-  get dwReserved1(): Deno.PointerValue {
+  get dwReserved1(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: usize
-  get dwReserved2(): Deno.PointerValue {
+  get dwReserved2(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -8881,12 +8881,12 @@ export class DDVIDEOPORTBANDWIDTHView {
   }
 
   // 0x18: usize
-  set dwReserved1(value: Deno.PointerValue) {
+  set dwReserved1(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: usize
-  set dwReserved2(value: Deno.PointerValue) {
+  set dwReserved2(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 }
@@ -8908,9 +8908,9 @@ export interface DDVIDEOPORTSTATUS {
   /** Windows.Win32.Graphics.DirectDraw.DDVIDEOPORTCONNECT */
   VideoPortType: Uint8Array | Deno.PointerValue;
   /** usize */
-  dwReserved2: Deno.PointerValue;
+  dwReserved2: bigint | number;
   /** usize */
-  dwReserved3: Deno.PointerValue;
+  dwReserved3: bigint | number;
 }
 
 export const sizeofDDVIDEOPORTSTATUS = 40;
@@ -8972,12 +8972,12 @@ export class DDVIDEOPORTSTATUSView {
   }
 
   // 0x18: usize
-  get dwReserved2(): Deno.PointerValue {
+  get dwReserved2(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: usize
-  get dwReserved3(): Deno.PointerValue {
+  get dwReserved3(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -9007,12 +9007,12 @@ export class DDVIDEOPORTSTATUSView {
   }
 
   // 0x18: usize
-  set dwReserved2(value: Deno.PointerValue) {
+  set dwReserved2(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: usize
-  set dwReserved3(value: Deno.PointerValue) {
+  set dwReserved3(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 }
@@ -9406,7 +9406,7 @@ export type HRESULT = number;
  */
 export interface DD_GETHEAPALIGNMENTDATA {
   /** usize */
-  dwInstance: Deno.PointerValue;
+  dwInstance: bigint | number;
   /** u32 */
   dwHeap: number;
   /** Windows.Win32.Foundation.HRESULT */
@@ -9447,7 +9447,7 @@ export class DD_GETHEAPALIGNMENTDATAView {
   }
 
   // 0x00: usize
-  get dwInstance(): Deno.PointerValue {
+  get dwInstance(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -9477,7 +9477,7 @@ export class DD_GETHEAPALIGNMENTDATAView {
   }
 
   // 0x00: usize
-  set dwInstance(value: Deno.PointerValue) {
+  set dwInstance(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -9511,7 +9511,7 @@ export interface VMEML {
   /** ptr */
   next: Deno.PointerValue | Uint8Array;
   /** usize */
-  ptr: Deno.PointerValue;
+  ptr: bigint | number;
   /** u32 */
   size: number;
   /** Windows.Win32.Foundation.BOOL */
@@ -9551,7 +9551,7 @@ export class VMEMLView {
   }
 
   // 0x08: usize
-  get ptr(): Deno.PointerValue {
+  get ptr(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -9571,7 +9571,7 @@ export class VMEMLView {
   }
 
   // 0x08: usize
-  set ptr(value: Deno.PointerValue) {
+  set ptr(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -9603,7 +9603,7 @@ export interface VMEMR {
   /** ptr */
   pRight: Deno.PointerValue | Uint8Array;
   /** usize */
-  ptr: Deno.PointerValue;
+  ptr: bigint | number;
   /** u32 */
   size: number;
   /** u32 */
@@ -9617,7 +9617,7 @@ export interface VMEMR {
   /** u32 */
   flags: number;
   /** usize */
-  pBits: Deno.PointerValue;
+  pBits: bigint | number;
   /** Windows.Win32.Foundation.BOOL */
   bDiscardable: boolean;
 }
@@ -9708,7 +9708,7 @@ export class VMEMRView {
   }
 
   // 0x30: usize
-  get ptr(): Deno.PointerValue {
+  get ptr(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -9743,7 +9743,7 @@ export class VMEMRView {
   }
 
   // 0x50: usize
-  get pBits(): Deno.PointerValue {
+  get pBits(): bigint | number {
     return Number(this.view.getBigUint64(80, true));
   }
 
@@ -9785,7 +9785,7 @@ export class VMEMRView {
   }
 
   // 0x30: usize
-  set ptr(value: Deno.PointerValue) {
+  set ptr(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
@@ -9820,7 +9820,7 @@ export class VMEMRView {
   }
 
   // 0x50: usize
-  set pBits(value: Deno.PointerValue) {
+  set pBits(value: bigint | number) {
     this.view.setBigUint64(80, BigInt(value), true);
   }
 
@@ -9832,7 +9832,7 @@ export class VMEMRView {
   // 0x5c: pad4
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.Graphics.DirectDraw.VMEMHEAP (size: 120)
@@ -9849,9 +9849,9 @@ export interface VMEMHEAP {
   /** u32 */
   dwTotalSize: number;
   /** usize */
-  fpGARTLin: Deno.PointerValue;
+  fpGARTLin: bigint | number;
   /** usize */
-  fpGARTDev: Deno.PointerValue;
+  fpGARTDev: bigint | number;
   /** u32 */
   dwCommitedSize: number;
   /** u32 */
@@ -9958,12 +9958,12 @@ export class VMEMHEAPView {
   // 0x1c: pad4
 
   // 0x20: usize
-  get fpGARTLin(): Deno.PointerValue {
+  get fpGARTLin(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: usize
-  get fpGARTDev(): Deno.PointerValue {
+  get fpGARTDev(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -10054,12 +10054,12 @@ export class VMEMHEAPView {
   // 0x1c: pad4
 
   // 0x20: usize
-  set fpGARTLin(value: Deno.PointerValue) {
+  set fpGARTLin(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: usize
-  set fpGARTDev(value: Deno.PointerValue) {
+  set fpGARTDev(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
@@ -10487,9 +10487,9 @@ export interface DDVERSIONDATA {
   /** u32 */
   dwHALVersion: number;
   /** usize */
-  dwReserved1: Deno.PointerValue;
+  dwReserved1: bigint | number;
   /** usize */
-  dwReserved2: Deno.PointerValue;
+  dwReserved2: bigint | number;
 }
 
 export const sizeofDDVERSIONDATA = 24;
@@ -10525,12 +10525,12 @@ export class DDVERSIONDATAView {
   // 0x04: pad4
 
   // 0x08: usize
-  get dwReserved1(): Deno.PointerValue {
+  get dwReserved1(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: usize
-  get dwReserved2(): Deno.PointerValue {
+  get dwReserved2(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -10542,12 +10542,12 @@ export class DDVERSIONDATAView {
   // 0x04: pad4
 
   // 0x08: usize
-  set dwReserved1(value: Deno.PointerValue) {
+  set dwReserved1(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: usize
-  set dwReserved2(value: Deno.PointerValue) {
+  set dwReserved2(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -10559,7 +10559,7 @@ export interface VIDMEM {
   /** u32 */
   dwFlags: number;
   /** usize */
-  fpStart: Deno.PointerValue;
+  fpStart: bigint | number;
   /** _Anonymous1_e__Union */
   Anonymous1: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.DirectDraw.DDSCAPS */
@@ -10609,7 +10609,7 @@ export class VIDMEMView {
   // 0x04: pad4
 
   // 0x08: usize
-  get fpStart(): Deno.PointerValue {
+  get fpStart(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -10645,7 +10645,7 @@ export class VIDMEMView {
   // 0x04: pad4
 
   // 0x08: usize
-  set fpStart(value: Deno.PointerValue) {
+  set fpStart(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -10675,7 +10675,7 @@ export class VIDMEMView {
  */
 export interface VIDMEMINFO {
   /** usize */
-  fpPrimary: Deno.PointerValue;
+  fpPrimary: bigint | number;
   /** u32 */
   dwFlags: number;
   /** u32 */
@@ -10747,7 +10747,7 @@ export class VIDMEMINFOView {
   }
 
   // 0x00: usize
-  get fpPrimary(): Deno.PointerValue {
+  get fpPrimary(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -10814,7 +10814,7 @@ export class VIDMEMINFOView {
   }
 
   // 0x00: usize
-  set fpPrimary(value: Deno.PointerValue) {
+  set fpPrimary(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -10884,7 +10884,7 @@ export class VIDMEMINFOView {
  */
 export interface HEAPALIAS {
   /** usize */
-  fpVidMem: Deno.PointerValue;
+  fpVidMem: bigint | number;
   /** ptr */
   lpAlias: Deno.PointerValue | Uint8Array;
   /** u32 */
@@ -10917,7 +10917,7 @@ export class HEAPALIASView {
   }
 
   // 0x00: usize
-  get fpVidMem(): Deno.PointerValue {
+  get fpVidMem(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -10935,7 +10935,7 @@ export class HEAPALIASView {
   // 0x14: pad4
 
   // 0x00: usize
-  set fpVidMem(value: Deno.PointerValue) {
+  set fpVidMem(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -13228,7 +13228,7 @@ export interface DDRAWI_DDRAWPALETTE_LCL {
   /** ptr */
   lpGbl: Deno.PointerValue | Uint8Array;
   /** usize */
-  dwUnused0: Deno.PointerValue;
+  dwUnused0: bigint | number;
   /** u32 */
   dwLocalRefCnt: number;
   /** Windows.Win32.System.Com.IUnknown */
@@ -13236,13 +13236,13 @@ export interface DDRAWI_DDRAWPALETTE_LCL {
   /** ptr */
   lpDD_lcl: Deno.PointerValue | Uint8Array;
   /** usize */
-  dwReserved1: Deno.PointerValue;
+  dwReserved1: bigint | number;
   /** usize */
-  dwDDRAWReserved1: Deno.PointerValue;
+  dwDDRAWReserved1: bigint | number;
   /** usize */
-  dwDDRAWReserved2: Deno.PointerValue;
+  dwDDRAWReserved2: bigint | number;
   /** usize */
-  dwDDRAWReserved3: Deno.PointerValue;
+  dwDDRAWReserved3: bigint | number;
 }
 
 export const sizeofDDRAWI_DDRAWPALETTE_LCL = 80;
@@ -13299,7 +13299,7 @@ export class DDRAWI_DDRAWPALETTE_LCLView {
   }
 
   // 0x10: usize
-  get dwUnused0(): Deno.PointerValue {
+  get dwUnused0(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -13323,22 +13323,22 @@ export class DDRAWI_DDRAWPALETTE_LCLView {
   }
 
   // 0x30: usize
-  get dwReserved1(): Deno.PointerValue {
+  get dwReserved1(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: usize
-  get dwDDRAWReserved1(): Deno.PointerValue {
+  get dwDDRAWReserved1(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
   // 0x40: usize
-  get dwDDRAWReserved2(): Deno.PointerValue {
+  get dwDDRAWReserved2(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
   // 0x48: usize
-  get dwDDRAWReserved3(): Deno.PointerValue {
+  get dwDDRAWReserved3(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
@@ -13355,7 +13355,7 @@ export class DDRAWI_DDRAWPALETTE_LCLView {
   }
 
   // 0x10: usize
-  set dwUnused0(value: Deno.PointerValue) {
+  set dwUnused0(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -13377,22 +13377,22 @@ export class DDRAWI_DDRAWPALETTE_LCLView {
   }
 
   // 0x30: usize
-  set dwReserved1(value: Deno.PointerValue) {
+  set dwReserved1(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: usize
-  set dwDDRAWReserved1(value: Deno.PointerValue) {
+  set dwDDRAWReserved1(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
   // 0x40: usize
-  set dwDDRAWReserved2(value: Deno.PointerValue) {
+  set dwDDRAWReserved2(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
   // 0x48: usize
-  set dwDDRAWReserved3(value: Deno.PointerValue) {
+  set dwDDRAWReserved3(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 }
@@ -13499,9 +13499,9 @@ export interface DDRAWI_DDRAWCLIPPER_GBL {
   /** u32 */
   dwProcessId: number;
   /** usize */
-  dwReserved1: Deno.PointerValue;
+  dwReserved1: bigint | number;
   /** usize */
-  hWnd: Deno.PointerValue;
+  hWnd: bigint | number;
   /** ptr */
   lpStaticClipList: Deno.PointerValue | Uint8Array;
 }
@@ -13563,12 +13563,12 @@ export class DDRAWI_DDRAWCLIPPER_GBLView {
   // 0x14: pad4
 
   // 0x18: usize
-  get dwReserved1(): Deno.PointerValue {
+  get dwReserved1(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: usize
-  get hWnd(): Deno.PointerValue {
+  get hWnd(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -13601,12 +13601,12 @@ export class DDRAWI_DDRAWCLIPPER_GBLView {
   // 0x14: pad4
 
   // 0x18: usize
-  set dwReserved1(value: Deno.PointerValue) {
+  set dwReserved1(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: usize
-  set hWnd(value: Deno.PointerValue) {
+  set hWnd(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -13633,7 +13633,7 @@ export interface DDRAWI_DDRAWCLIPPER_LCL {
   /** ptr */
   lpDD_int: Deno.PointerValue | Uint8Array;
   /** usize */
-  dwReserved1: Deno.PointerValue;
+  dwReserved1: bigint | number;
   /** Windows.Win32.System.Com.IUnknown */
   pAddrefedThisOwner: Uint8Array | Deno.PointerValue;
 }
@@ -13713,7 +13713,7 @@ export class DDRAWI_DDRAWCLIPPER_LCLView {
   }
 
   // 0x30: usize
-  get dwReserved1(): Deno.PointerValue {
+  get dwReserved1(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -13758,7 +13758,7 @@ export class DDRAWI_DDRAWCLIPPER_LCLView {
   }
 
   // 0x30: usize
-  set dwReserved1(value: Deno.PointerValue) {
+  set dwReserved1(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
@@ -14165,7 +14165,7 @@ export interface DDRAWI_DDRAWSURFACE_GBL {
   /** _Anonymous3_e__Union */
   Anonymous3: Uint8Array | Deno.PointerValue;
   /** usize */
-  fpVidMem: Deno.PointerValue;
+  fpVidMem: bigint | number;
   /** _Anonymous4_e__Union */
   Anonymous4: Uint8Array | Deno.PointerValue;
   /** u16 */
@@ -14175,7 +14175,7 @@ export interface DDRAWI_DDRAWSURFACE_GBL {
   /** u32 */
   dwUsageCount: number;
   /** usize */
-  dwReserved1: Deno.PointerValue;
+  dwReserved1: bigint | number;
   /** Windows.Win32.Graphics.DirectDraw.DDPIXELFORMAT */
   ddpfSurface: Uint8Array | Deno.PointerValue;
 }
@@ -14251,7 +14251,7 @@ export class DDRAWI_DDRAWSURFACE_GBLView {
   }
 
   // 0x20: usize
-  get fpVidMem(): Deno.PointerValue {
+  get fpVidMem(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -14277,7 +14277,7 @@ export class DDRAWI_DDRAWSURFACE_GBLView {
   }
 
   // 0x38: usize
-  get dwReserved1(): Deno.PointerValue {
+  get dwReserved1(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
@@ -14313,7 +14313,7 @@ export class DDRAWI_DDRAWSURFACE_GBLView {
   }
 
   // 0x20: usize
-  set fpVidMem(value: Deno.PointerValue) {
+  set fpVidMem(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -14338,7 +14338,7 @@ export class DDRAWI_DDRAWSURFACE_GBLView {
   }
 
   // 0x38: usize
-  set dwReserved1(value: Deno.PointerValue) {
+  set dwReserved1(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
@@ -14361,23 +14361,23 @@ export interface DDRAWI_DDRAWSURFACE_GBL_MORE {
   /** u32 */
   cPages: number;
   /** usize */
-  dwSavedDCContext: Deno.PointerValue;
+  dwSavedDCContext: bigint | number;
   /** usize */
-  fpAliasedVidMem: Deno.PointerValue;
+  fpAliasedVidMem: bigint | number;
   /** usize */
-  dwDriverReserved: Deno.PointerValue;
+  dwDriverReserved: bigint | number;
   /** usize */
-  dwHELReserved: Deno.PointerValue;
+  dwHELReserved: bigint | number;
   /** u32 */
   cPageUnlocks: number;
   /** usize */
-  hKernelSurface: Deno.PointerValue;
+  hKernelSurface: bigint | number;
   /** u32 */
   dwKernelRefCnt: number;
   /** ptr */
   lpColorInfo: Deno.PointerValue | Uint8Array;
   /** usize */
-  fpNTAlias: Deno.PointerValue;
+  fpNTAlias: bigint | number;
   /** u32 */
   dwContentsStamp: number;
   /** ptr */
@@ -14389,7 +14389,7 @@ export interface DDRAWI_DDRAWSURFACE_GBL_MORE {
   /** u32 */
   dwDDRAWReserved2: number;
   /** usize */
-  fpAliasOfVidMem: Deno.PointerValue;
+  fpAliasOfVidMem: bigint | number;
 }
 
 export const sizeofDDRAWI_DDRAWSURFACE_GBL_MORE = 144;
@@ -14480,22 +14480,22 @@ export class DDRAWI_DDRAWSURFACE_GBL_MOREView {
   // 0x1c: pad4
 
   // 0x20: usize
-  get dwSavedDCContext(): Deno.PointerValue {
+  get dwSavedDCContext(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: usize
-  get fpAliasedVidMem(): Deno.PointerValue {
+  get fpAliasedVidMem(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: usize
-  get dwDriverReserved(): Deno.PointerValue {
+  get dwDriverReserved(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: usize
-  get dwHELReserved(): Deno.PointerValue {
+  get dwHELReserved(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
@@ -14507,7 +14507,7 @@ export class DDRAWI_DDRAWSURFACE_GBL_MOREView {
   // 0x44: pad4
 
   // 0x48: usize
-  get hKernelSurface(): Deno.PointerValue {
+  get hKernelSurface(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
@@ -14525,7 +14525,7 @@ export class DDRAWI_DDRAWSURFACE_GBL_MOREView {
   }
 
   // 0x60: usize
-  get fpNTAlias(): Deno.PointerValue {
+  get fpNTAlias(): bigint | number {
     return Number(this.view.getBigUint64(96, true));
   }
 
@@ -14559,7 +14559,7 @@ export class DDRAWI_DDRAWSURFACE_GBL_MOREView {
   }
 
   // 0x88: usize
-  get fpAliasOfVidMem(): Deno.PointerValue {
+  get fpAliasOfVidMem(): bigint | number {
     return Number(this.view.getBigUint64(136, true));
   }
 
@@ -14588,22 +14588,22 @@ export class DDRAWI_DDRAWSURFACE_GBL_MOREView {
   // 0x1c: pad4
 
   // 0x20: usize
-  set dwSavedDCContext(value: Deno.PointerValue) {
+  set dwSavedDCContext(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: usize
-  set fpAliasedVidMem(value: Deno.PointerValue) {
+  set fpAliasedVidMem(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: usize
-  set dwDriverReserved(value: Deno.PointerValue) {
+  set dwDriverReserved(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: usize
-  set dwHELReserved(value: Deno.PointerValue) {
+  set dwHELReserved(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
@@ -14615,7 +14615,7 @@ export class DDRAWI_DDRAWSURFACE_GBL_MOREView {
   // 0x44: pad4
 
   // 0x48: usize
-  set hKernelSurface(value: Deno.PointerValue) {
+  set hKernelSurface(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
@@ -14632,7 +14632,7 @@ export class DDRAWI_DDRAWSURFACE_GBL_MOREView {
   }
 
   // 0x60: usize
-  set fpNTAlias(value: Deno.PointerValue) {
+  set fpNTAlias(value: bigint | number) {
     this.view.setBigUint64(96, BigInt(value), true);
   }
 
@@ -14664,7 +14664,7 @@ export class DDRAWI_DDRAWSURFACE_GBL_MOREView {
   }
 
   // 0x88: usize
-  set fpAliasOfVidMem(value: Deno.PointerValue) {
+  set fpAliasOfVidMem(value: bigint | number) {
     this.view.setBigUint64(136, BigInt(value), true);
   }
 }
@@ -15198,7 +15198,7 @@ export interface DDRAWI_DDRAWSURFACE_LCL {
   /** ptr */
   lpGbl: Deno.PointerValue | Uint8Array;
   /** usize */
-  hDDSurface: Deno.PointerValue;
+  hDDSurface: bigint | number;
   /** ptr */
   lpAttachList: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -15224,9 +15224,9 @@ export interface DDRAWI_DDRAWSURFACE_LCL {
   /** Windows.Win32.Graphics.DirectDraw.DDCOLORKEY */
   ddckCKSrcBlt: Uint8Array | Deno.PointerValue;
   /** usize */
-  hDC: Deno.PointerValue;
+  hDC: bigint | number;
   /** usize */
-  dwReserved1: Deno.PointerValue;
+  dwReserved1: bigint | number;
   /** Windows.Win32.Graphics.DirectDraw.DDCOLORKEY */
   ddckCKSrcOverlay: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.DirectDraw.DDCOLORKEY */
@@ -15335,7 +15335,7 @@ export class DDRAWI_DDRAWSURFACE_LCLView {
   }
 
   // 0x10: usize
-  get hDDSurface(): Deno.PointerValue {
+  get hDDSurface(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -15409,12 +15409,12 @@ export class DDRAWI_DDRAWSURFACE_LCLView {
   }
 
   // 0x68: usize
-  get hDC(): Deno.PointerValue {
+  get hDC(): bigint | number {
     return Number(this.view.getBigUint64(104, true));
   }
 
   // 0x70: usize
-  get dwReserved1(): Deno.PointerValue {
+  get dwReserved1(): bigint | number {
     return Number(this.view.getBigUint64(112, true));
   }
 
@@ -15485,7 +15485,7 @@ export class DDRAWI_DDRAWSURFACE_LCLView {
   }
 
   // 0x10: usize
-  set hDDSurface(value: Deno.PointerValue) {
+  set hDDSurface(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -15552,12 +15552,12 @@ export class DDRAWI_DDRAWSURFACE_LCLView {
   }
 
   // 0x68: usize
-  set hDC(value: Deno.PointerValue) {
+  set hDC(value: bigint | number) {
     this.view.setBigUint64(104, BigInt(value), true);
   }
 
   // 0x70: usize
-  set dwReserved1(value: Deno.PointerValue) {
+  set dwReserved1(value: bigint | number) {
     this.view.setBigUint64(112, BigInt(value), true);
   }
 
@@ -16999,7 +16999,7 @@ export interface DDRAWI_DIRECTDRAW_GBL {
   /** u32 */
   dwFlags: number;
   /** usize */
-  fpPrimaryOrig: Deno.PointerValue;
+  fpPrimaryOrig: bigint | number;
   /** Windows.Win32.Graphics.DirectDraw.DDCORECAPS */
   ddCaps: Uint8Array | Deno.PointerValue;
   /** u32 */
@@ -17055,9 +17055,9 @@ export interface DDRAWI_DIRECTDRAW_GBL {
   /** u32 */
   dwAliasedLockCnt: number;
   /** usize */
-  dwReserved3: Deno.PointerValue;
+  dwReserved3: bigint | number;
   /** usize */
-  hDD: Deno.PointerValue;
+  hDD: bigint | number;
   /** array */
   cObsolete: Deno.PointerValue;
   /** u32 */
@@ -17081,9 +17081,9 @@ export interface DDRAWI_DIRECTDRAW_GBL {
   /** u32 */
   dwSaveNumModes: number;
   /** usize */
-  lpD3DGlobalDriverData: Deno.PointerValue;
+  lpD3DGlobalDriverData: bigint | number;
   /** usize */
-  lpD3DHALCallbacks: Deno.PointerValue;
+  lpD3DHALCallbacks: bigint | number;
   /** Windows.Win32.Graphics.DirectDraw.DDCORECAPS */
   ddBothCaps: Uint8Array | Deno.PointerValue;
   /** ptr */
@@ -17091,7 +17091,7 @@ export interface DDRAWI_DIRECTDRAW_GBL {
   /** ptr */
   dvpList: Deno.PointerValue | Uint8Array;
   /** usize */
-  lpD3DHALCallbacks2: Deno.PointerValue;
+  lpD3DHALCallbacks2: bigint | number;
   /** Windows.Win32.Foundation.RECT */
   rectDevice: Uint8Array | Deno.PointerValue;
   /** u32 */
@@ -17103,9 +17103,9 @@ export interface DDRAWI_DIRECTDRAW_GBL {
   /** ptr */
   phaiHeapAliases: Deno.PointerValue | Uint8Array;
   /** usize */
-  hKernelHandle: Deno.PointerValue;
+  hKernelHandle: bigint | number;
   /** usize */
-  pfnNotifyProc: Deno.PointerValue;
+  pfnNotifyProc: bigint | number;
   /** ptr */
   lpDDKernelCaps: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -17115,7 +17115,7 @@ export interface DDRAWI_DIRECTDRAW_GBL {
   /** ptr */
   lpddNLVBothCaps: Deno.PointerValue | Uint8Array;
   /** usize */
-  lpD3DExtendedCaps: Deno.PointerValue;
+  lpD3DExtendedCaps: bigint | number;
   /** u32 */
   dwDOSBoxEvent: number;
   /** Windows.Win32.Foundation.RECT */
@@ -17123,7 +17123,7 @@ export interface DDRAWI_DIRECTDRAW_GBL {
   /** array */
   cDriverName: Deno.PointerValue;
   /** usize */
-  lpD3DHALCallbacks3: Deno.PointerValue;
+  lpD3DHALCallbacks3: bigint | number;
   /** u32 */
   dwNumZPixelFormats: number;
   /** ptr */
@@ -17313,7 +17313,7 @@ export class DDRAWI_DIRECTDRAW_GBLView {
   }
 
   // 0x08: usize
-  get fpPrimaryOrig(): Deno.PointerValue {
+  get fpPrimaryOrig(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -17478,12 +17478,12 @@ export class DDRAWI_DIRECTDRAW_GBLView {
   }
 
   // 0xd0: usize
-  get dwReserved3(): Deno.PointerValue {
+  get dwReserved3(): bigint | number {
     return Number(this.view.getBigUint64(208, true));
   }
 
   // 0xd8: usize
-  get hDD(): Deno.PointerValue {
+  get hDD(): bigint | number {
     return Number(this.view.getBigUint64(216, true));
   }
 
@@ -17546,12 +17546,12 @@ export class DDRAWI_DIRECTDRAW_GBLView {
   }
 
   // 0x118: usize
-  get lpD3DGlobalDriverData(): Deno.PointerValue {
+  get lpD3DGlobalDriverData(): bigint | number {
     return Number(this.view.getBigUint64(280, true));
   }
 
   // 0x120: usize
-  get lpD3DHALCallbacks(): Deno.PointerValue {
+  get lpD3DHALCallbacks(): bigint | number {
     return Number(this.view.getBigUint64(288, true));
   }
 
@@ -17574,7 +17574,7 @@ export class DDRAWI_DIRECTDRAW_GBLView {
   }
 
   // 0x140: usize
-  get lpD3DHALCallbacks2(): Deno.PointerValue {
+  get lpD3DHALCallbacks2(): bigint | number {
     return Number(this.view.getBigUint64(320, true));
   }
 
@@ -17610,12 +17610,12 @@ export class DDRAWI_DIRECTDRAW_GBLView {
   }
 
   // 0x170: usize
-  get hKernelHandle(): Deno.PointerValue {
+  get hKernelHandle(): bigint | number {
     return Number(this.view.getBigUint64(368, true));
   }
 
   // 0x178: usize
-  get pfnNotifyProc(): Deno.PointerValue {
+  get pfnNotifyProc(): bigint | number {
     return Number(this.view.getBigUint64(376, true));
   }
 
@@ -17644,7 +17644,7 @@ export class DDRAWI_DIRECTDRAW_GBLView {
   }
 
   // 0x1a0: usize
-  get lpD3DExtendedCaps(): Deno.PointerValue {
+  get lpD3DExtendedCaps(): bigint | number {
     return Number(this.view.getBigUint64(416, true));
   }
 
@@ -17668,7 +17668,7 @@ export class DDRAWI_DIRECTDRAW_GBLView {
   }
 
   // 0x1c0: usize
-  get lpD3DHALCallbacks3(): Deno.PointerValue {
+  get lpD3DHALCallbacks3(): bigint | number {
     return Number(this.view.getBigUint64(448, true));
   }
 
@@ -17715,7 +17715,7 @@ export class DDRAWI_DIRECTDRAW_GBLView {
   }
 
   // 0x08: usize
-  set fpPrimaryOrig(value: Deno.PointerValue) {
+  set fpPrimaryOrig(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -17863,12 +17863,12 @@ export class DDRAWI_DIRECTDRAW_GBLView {
   }
 
   // 0xd0: usize
-  set dwReserved3(value: Deno.PointerValue) {
+  set dwReserved3(value: bigint | number) {
     this.view.setBigUint64(208, BigInt(value), true);
   }
 
   // 0xd8: usize
-  set hDD(value: Deno.PointerValue) {
+  set hDD(value: bigint | number) {
     this.view.setBigUint64(216, BigInt(value), true);
   }
 
@@ -17928,12 +17928,12 @@ export class DDRAWI_DIRECTDRAW_GBLView {
   }
 
   // 0x118: usize
-  set lpD3DGlobalDriverData(value: Deno.PointerValue) {
+  set lpD3DGlobalDriverData(value: bigint | number) {
     this.view.setBigUint64(280, BigInt(value), true);
   }
 
   // 0x120: usize
-  set lpD3DHALCallbacks(value: Deno.PointerValue) {
+  set lpD3DHALCallbacks(value: bigint | number) {
     this.view.setBigUint64(288, BigInt(value), true);
   }
 
@@ -17953,7 +17953,7 @@ export class DDRAWI_DIRECTDRAW_GBLView {
   }
 
   // 0x140: usize
-  set lpD3DHALCallbacks2(value: Deno.PointerValue) {
+  set lpD3DHALCallbacks2(value: bigint | number) {
     this.view.setBigUint64(320, BigInt(value), true);
   }
 
@@ -17985,12 +17985,12 @@ export class DDRAWI_DIRECTDRAW_GBLView {
   }
 
   // 0x170: usize
-  set hKernelHandle(value: Deno.PointerValue) {
+  set hKernelHandle(value: bigint | number) {
     this.view.setBigUint64(368, BigInt(value), true);
   }
 
   // 0x178: usize
-  set pfnNotifyProc(value: Deno.PointerValue) {
+  set pfnNotifyProc(value: bigint | number) {
     this.view.setBigUint64(376, BigInt(value), true);
   }
 
@@ -18015,7 +18015,7 @@ export class DDRAWI_DIRECTDRAW_GBLView {
   }
 
   // 0x1a0: usize
-  set lpD3DExtendedCaps(value: Deno.PointerValue) {
+  set lpD3DExtendedCaps(value: bigint | number) {
     this.view.setBigUint64(416, BigInt(value), true);
   }
 
@@ -18037,7 +18037,7 @@ export class DDRAWI_DIRECTDRAW_GBLView {
   }
 
   // 0x1c0: usize
-  set lpD3DHALCallbacks3(value: Deno.PointerValue) {
+  set lpD3DHALCallbacks3(value: bigint | number) {
     this.view.setBigUint64(448, BigInt(value), true);
   }
 
@@ -18071,7 +18071,7 @@ export class DDRAWI_DIRECTDRAW_GBLView {
   }
 }
 
-export type HINSTANCE = Deno.PointerValue;
+export type HINSTANCE = bigint | number;
 
 /**
  * Windows.Win32.Graphics.DirectDraw.DDRAWI_DIRECTDRAW_LCL (size: 184)
@@ -18094,9 +18094,9 @@ export interface DDRAWI_DIRECTDRAW_LCL {
   /** u32 */
   dwObsolete1: number;
   /** usize */
-  hWnd: Deno.PointerValue;
+  hWnd: bigint | number;
   /** usize */
-  hDC: Deno.PointerValue;
+  hDC: bigint | number;
   /** u32 */
   dwErrorMode: number;
   /** ptr */
@@ -18112,21 +18112,21 @@ export interface DDRAWI_DIRECTDRAW_LCL {
   /** ptr */
   lpDDCB: Deno.PointerValue | Uint8Array;
   /** usize */
-  hDDVxd: Deno.PointerValue;
+  hDDVxd: bigint | number;
   /** u32 */
   dwAppHackFlags: number;
   /** usize */
-  hFocusWnd: Deno.PointerValue;
+  hFocusWnd: bigint | number;
   /** u32 */
   dwHotTracking: number;
   /** u32 */
   dwIMEState: number;
   /** usize */
-  hWndPopup: Deno.PointerValue;
+  hWndPopup: bigint | number;
   /** usize */
-  hDD: Deno.PointerValue;
+  hDD: bigint | number;
   /** usize */
-  hGammaCalibrator: Deno.PointerValue;
+  hGammaCalibrator: bigint | number;
   /** Windows.Win32.Graphics.DirectDraw.LPDDGAMMACALIBRATORPROC */
   lpGammaCalibrator: Uint8Array | Deno.PointerValue;
 }
@@ -18253,12 +18253,12 @@ export class DDRAWI_DIRECTDRAW_LCLView {
   // 0x2c: pad4
 
   // 0x30: usize
-  get hWnd(): Deno.PointerValue {
+  get hWnd(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: usize
-  get hDC(): Deno.PointerValue {
+  get hDC(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
@@ -18307,7 +18307,7 @@ export class DDRAWI_DIRECTDRAW_LCLView {
   }
 
   // 0x78: usize
-  get hDDVxd(): Deno.PointerValue {
+  get hDDVxd(): bigint | number {
     return Number(this.view.getBigUint64(120, true));
   }
 
@@ -18319,7 +18319,7 @@ export class DDRAWI_DIRECTDRAW_LCLView {
   // 0x84: pad4
 
   // 0x88: usize
-  get hFocusWnd(): Deno.PointerValue {
+  get hFocusWnd(): bigint | number {
     return Number(this.view.getBigUint64(136, true));
   }
 
@@ -18334,17 +18334,17 @@ export class DDRAWI_DIRECTDRAW_LCLView {
   }
 
   // 0x98: usize
-  get hWndPopup(): Deno.PointerValue {
+  get hWndPopup(): bigint | number {
     return Number(this.view.getBigUint64(152, true));
   }
 
   // 0xa0: usize
-  get hDD(): Deno.PointerValue {
+  get hDD(): bigint | number {
     return Number(this.view.getBigUint64(160, true));
   }
 
   // 0xa8: usize
-  get hGammaCalibrator(): Deno.PointerValue {
+  get hGammaCalibrator(): bigint | number {
     return Number(this.view.getBigUint64(168, true));
   }
 
@@ -18399,12 +18399,12 @@ export class DDRAWI_DIRECTDRAW_LCLView {
   // 0x2c: pad4
 
   // 0x30: usize
-  set hWnd(value: Deno.PointerValue) {
+  set hWnd(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: usize
-  set hDC(value: Deno.PointerValue) {
+  set hDC(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
@@ -18448,7 +18448,7 @@ export class DDRAWI_DIRECTDRAW_LCLView {
   }
 
   // 0x78: usize
-  set hDDVxd(value: Deno.PointerValue) {
+  set hDDVxd(value: bigint | number) {
     this.view.setBigUint64(120, BigInt(value), true);
   }
 
@@ -18460,7 +18460,7 @@ export class DDRAWI_DIRECTDRAW_LCLView {
   // 0x84: pad4
 
   // 0x88: usize
-  set hFocusWnd(value: Deno.PointerValue) {
+  set hFocusWnd(value: bigint | number) {
     this.view.setBigUint64(136, BigInt(value), true);
   }
 
@@ -18475,17 +18475,17 @@ export class DDRAWI_DIRECTDRAW_LCLView {
   }
 
   // 0x98: usize
-  set hWndPopup(value: Deno.PointerValue) {
+  set hWndPopup(value: bigint | number) {
     this.view.setBigUint64(152, BigInt(value), true);
   }
 
   // 0xa0: usize
-  set hDD(value: Deno.PointerValue) {
+  set hDD(value: bigint | number) {
     this.view.setBigUint64(160, BigInt(value), true);
   }
 
   // 0xa8: usize
-  set hGammaCalibrator(value: Deno.PointerValue) {
+  set hGammaCalibrator(value: bigint | number) {
     this.view.setBigUint64(168, BigInt(value), true);
   }
 
@@ -18620,11 +18620,11 @@ export interface DDRAWI_DDVIDEOPORT_LCL {
   /** u32 */
   dwRefCnt: number;
   /** usize */
-  fpLastFlip: Deno.PointerValue;
+  fpLastFlip: bigint | number;
   /** usize */
-  dwReserved1: Deno.PointerValue;
+  dwReserved1: bigint | number;
   /** usize */
-  dwReserved2: Deno.PointerValue;
+  dwReserved2: bigint | number;
   /** Windows.Win32.Foundation.HANDLE */
   hDDVideoPort: Uint8Array | Deno.PointerValue;
   /** u32 */
@@ -18772,17 +18772,17 @@ export class DDRAWI_DDVIDEOPORT_LCLView {
   // 0x44: pad4
 
   // 0x48: usize
-  get fpLastFlip(): Deno.PointerValue {
+  get fpLastFlip(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
   // 0x50: usize
-  get dwReserved1(): Deno.PointerValue {
+  get dwReserved1(): bigint | number {
     return Number(this.view.getBigUint64(80, true));
   }
 
   // 0x58: usize
-  get dwReserved2(): Deno.PointerValue {
+  get dwReserved2(): bigint | number {
     return Number(this.view.getBigUint64(88, true));
   }
 
@@ -18894,17 +18894,17 @@ export class DDRAWI_DDVIDEOPORT_LCLView {
   // 0x44: pad4
 
   // 0x48: usize
-  set fpLastFlip(value: Deno.PointerValue) {
+  set fpLastFlip(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
   // 0x50: usize
-  set dwReserved1(value: Deno.PointerValue) {
+  set dwReserved1(value: bigint | number) {
     this.view.setBigUint64(80, BigInt(value), true);
   }
 
   // 0x58: usize
-  set dwReserved2(value: Deno.PointerValue) {
+  set dwReserved2(value: bigint | number) {
     this.view.setBigUint64(88, BigInt(value), true);
   }
 
@@ -19329,9 +19329,9 @@ export interface DDHALINFO {
   /** u32 */
   hInstance: number;
   /** usize */
-  lpD3DGlobalDriverData: Deno.PointerValue;
+  lpD3DGlobalDriverData: bigint | number;
   /** usize */
-  lpD3DHALCallbacks: Deno.PointerValue;
+  lpD3DHALCallbacks: bigint | number;
   /** ptr */
   lpDDExeBufCallbacks: Deno.PointerValue | Uint8Array;
 }
@@ -19493,12 +19493,12 @@ export class DDHALINFOView {
   // 0x74: pad4
 
   // 0x78: usize
-  get lpD3DGlobalDriverData(): Deno.PointerValue {
+  get lpD3DGlobalDriverData(): bigint | number {
     return Number(this.view.getBigUint64(120, true));
   }
 
   // 0x80: usize
-  get lpD3DHALCallbacks(): Deno.PointerValue {
+  get lpD3DHALCallbacks(): bigint | number {
     return Number(this.view.getBigUint64(128, true));
   }
 
@@ -19596,12 +19596,12 @@ export class DDHALINFOView {
   // 0x74: pad4
 
   // 0x78: usize
-  set lpD3DGlobalDriverData(value: Deno.PointerValue) {
+  set lpD3DGlobalDriverData(value: bigint | number) {
     this.view.setBigUint64(120, BigInt(value), true);
   }
 
   // 0x80: usize
-  set lpD3DHALCallbacks(value: Deno.PointerValue) {
+  set lpD3DHALCallbacks(value: bigint | number) {
     this.view.setBigUint64(128, BigInt(value), true);
   }
 
@@ -21998,7 +21998,7 @@ export interface DDHAL_WAITFORVERTICALBLANKDATA {
   /** u32 */
   bIsInVB: number;
   /** usize */
-  hEvent: Deno.PointerValue;
+  hEvent: bigint | number;
   /** Windows.Win32.Foundation.HRESULT */
   ddRVal: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.DirectDraw.LPDDHAL_WAITFORVERTICALBLANK */
@@ -22052,7 +22052,7 @@ export class DDHAL_WAITFORVERTICALBLANKDATAView {
   }
 
   // 0x10: usize
-  get hEvent(): Deno.PointerValue {
+  get hEvent(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -22084,7 +22084,7 @@ export class DDHAL_WAITFORVERTICALBLANKDATAView {
   }
 
   // 0x10: usize
-  set hEvent(value: Deno.PointerValue) {
+  set hEvent(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -23851,7 +23851,7 @@ export interface DDHAL_GETVPORTFLIPSTATUSDATA {
   /** ptr */
   lpDD: Deno.PointerValue | Uint8Array;
   /** usize */
-  fpSurface: Deno.PointerValue;
+  fpSurface: bigint | number;
   /** Windows.Win32.Foundation.HRESULT */
   ddRVal: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.DirectDraw.LPDDHALVPORTCB_GETFLIPSTATUS */
@@ -23891,7 +23891,7 @@ export class DDHAL_GETVPORTFLIPSTATUSDATAView {
   }
 
   // 0x08: usize
-  get fpSurface(): Deno.PointerValue {
+  get fpSurface(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -23913,7 +23913,7 @@ export class DDHAL_GETVPORTFLIPSTATUSDATAView {
   }
 
   // 0x08: usize
-  set fpSurface(value: Deno.PointerValue) {
+  set fpSurface(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -24598,7 +24598,7 @@ export interface DDHAL_GETDRIVERINFODATA {
   /** Windows.Win32.Foundation.HRESULT */
   ddRVal: Uint8Array | Deno.PointerValue;
   /** usize */
-  dwContext: Deno.PointerValue;
+  dwContext: bigint | number;
 }
 
 export const sizeofDDHAL_GETDRIVERINFODATA = 56;
@@ -24680,7 +24680,7 @@ export class DDHAL_GETDRIVERINFODATAView {
   }
 
   // 0x30: usize
-  get dwContext(): Deno.PointerValue {
+  get dwContext(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -24724,7 +24724,7 @@ export class DDHAL_GETDRIVERINFODATAView {
   }
 
   // 0x30: usize
-  set dwContext(value: Deno.PointerValue) {
+  set dwContext(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 }
@@ -24866,11 +24866,11 @@ export interface DDHAL_UPDATENONLOCALHEAPDATA {
   /** u32 */
   dwHeap: number;
   /** usize */
-  fpGARTLin: Deno.PointerValue;
+  fpGARTLin: bigint | number;
   /** usize */
-  fpGARTDev: Deno.PointerValue;
+  fpGARTDev: bigint | number;
   /** usize */
-  ulPolicyMaxBytes: Deno.PointerValue;
+  ulPolicyMaxBytes: bigint | number;
   /** Windows.Win32.Foundation.HRESULT */
   ddRVal: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.DirectDraw.LPDDHAL_UPDATENONLOCALHEAP */
@@ -24924,17 +24924,17 @@ export class DDHAL_UPDATENONLOCALHEAPDATAView {
   // 0x0c: pad4
 
   // 0x10: usize
-  get fpGARTLin(): Deno.PointerValue {
+  get fpGARTLin(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: usize
-  get fpGARTDev(): Deno.PointerValue {
+  get fpGARTDev(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: usize
-  get ulPolicyMaxBytes(): Deno.PointerValue {
+  get ulPolicyMaxBytes(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -24963,17 +24963,17 @@ export class DDHAL_UPDATENONLOCALHEAPDATAView {
   // 0x0c: pad4
 
   // 0x10: usize
-  set fpGARTLin(value: Deno.PointerValue) {
+  set fpGARTLin(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: usize
-  set fpGARTDev(value: Deno.PointerValue) {
+  set fpGARTDev(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: usize
-  set ulPolicyMaxBytes(value: Deno.PointerValue) {
+  set ulPolicyMaxBytes(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -24993,7 +24993,7 @@ export class DDHAL_UPDATENONLOCALHEAPDATAView {
  */
 export interface DDHAL_GETHEAPALIGNMENTDATA {
   /** usize */
-  dwInstance: Deno.PointerValue;
+  dwInstance: bigint | number;
   /** u32 */
   dwHeap: number;
   /** Windows.Win32.Foundation.HRESULT */
@@ -25034,7 +25034,7 @@ export class DDHAL_GETHEAPALIGNMENTDATAView {
   }
 
   // 0x00: usize
-  get dwInstance(): Deno.PointerValue {
+  get dwInstance(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -25064,7 +25064,7 @@ export class DDHAL_GETHEAPALIGNMENTDATAView {
   }
 
   // 0x00: usize
-  set dwInstance(value: Deno.PointerValue) {
+  set dwInstance(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -25375,7 +25375,7 @@ export interface DDHAL_SYNCSURFACEDATA {
   /** u32 */
   dwSurfaceOffset: number;
   /** usize */
-  fpLockPtr: Deno.PointerValue;
+  fpLockPtr: bigint | number;
   /** i32 */
   lPitch: number;
   /** u32 */
@@ -25389,11 +25389,11 @@ export interface DDHAL_SYNCSURFACEDATA {
   /** u32 */
   dwOverlayDestHeight: number;
   /** usize */
-  dwDriverReserved1: Deno.PointerValue;
+  dwDriverReserved1: bigint | number;
   /** usize */
-  dwDriverReserved2: Deno.PointerValue;
+  dwDriverReserved2: bigint | number;
   /** usize */
-  dwDriverReserved3: Deno.PointerValue;
+  dwDriverReserved3: bigint | number;
   /** Windows.Win32.Foundation.HRESULT */
   ddRVal: Uint8Array | Deno.PointerValue;
 }
@@ -25475,7 +25475,7 @@ export class DDHAL_SYNCSURFACEDATAView {
   // 0x1c: pad4
 
   // 0x20: usize
-  get fpLockPtr(): Deno.PointerValue {
+  get fpLockPtr(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -25510,17 +25510,17 @@ export class DDHAL_SYNCSURFACEDATAView {
   }
 
   // 0x40: usize
-  get dwDriverReserved1(): Deno.PointerValue {
+  get dwDriverReserved1(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
   // 0x48: usize
-  get dwDriverReserved2(): Deno.PointerValue {
+  get dwDriverReserved2(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
   // 0x50: usize
-  get dwDriverReserved3(): Deno.PointerValue {
+  get dwDriverReserved3(): bigint | number {
     return Number(this.view.getBigUint64(80, true));
   }
 
@@ -25555,7 +25555,7 @@ export class DDHAL_SYNCSURFACEDATAView {
   // 0x1c: pad4
 
   // 0x20: usize
-  set fpLockPtr(value: Deno.PointerValue) {
+  set fpLockPtr(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -25590,17 +25590,17 @@ export class DDHAL_SYNCSURFACEDATAView {
   }
 
   // 0x40: usize
-  set dwDriverReserved1(value: Deno.PointerValue) {
+  set dwDriverReserved1(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
   // 0x48: usize
-  set dwDriverReserved2(value: Deno.PointerValue) {
+  set dwDriverReserved2(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
   // 0x50: usize
-  set dwDriverReserved3(value: Deno.PointerValue) {
+  set dwDriverReserved3(value: bigint | number) {
     this.view.setBigUint64(80, BigInt(value), true);
   }
 
@@ -25627,11 +25627,11 @@ export interface DDHAL_SYNCVIDEOPORTDATA {
   /** u32 */
   dwVBIHeight: number;
   /** usize */
-  dwDriverReserved1: Deno.PointerValue;
+  dwDriverReserved1: bigint | number;
   /** usize */
-  dwDriverReserved2: Deno.PointerValue;
+  dwDriverReserved2: bigint | number;
   /** usize */
-  dwDriverReserved3: Deno.PointerValue;
+  dwDriverReserved3: bigint | number;
   /** Windows.Win32.Foundation.HRESULT */
   ddRVal: Uint8Array | Deno.PointerValue;
 }
@@ -25713,17 +25713,17 @@ export class DDHAL_SYNCVIDEOPORTDATAView {
   // 0x24: pad4
 
   // 0x28: usize
-  get dwDriverReserved1(): Deno.PointerValue {
+  get dwDriverReserved1(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: usize
-  get dwDriverReserved2(): Deno.PointerValue {
+  get dwDriverReserved2(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: usize
-  get dwDriverReserved3(): Deno.PointerValue {
+  get dwDriverReserved3(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
@@ -25768,17 +25768,17 @@ export class DDHAL_SYNCVIDEOPORTDATAView {
   // 0x24: pad4
 
   // 0x28: usize
-  set dwDriverReserved1(value: Deno.PointerValue) {
+  set dwDriverReserved1(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: usize
-  set dwDriverReserved2(value: Deno.PointerValue) {
+  set dwDriverReserved2(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: usize
-  set dwDriverReserved3(value: Deno.PointerValue) {
+  set dwDriverReserved3(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
@@ -27433,7 +27433,7 @@ export interface VIDEOMEMORY {
   /** u32 */
   dwFlags: number;
   /** usize */
-  fpStart: Deno.PointerValue;
+  fpStart: bigint | number;
   /** _Anonymous1_e__Union */
   Anonymous1: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.DirectDraw.DDSCAPS */
@@ -27483,7 +27483,7 @@ export class VIDEOMEMORYView {
   // 0x04: pad4
 
   // 0x08: usize
-  get fpStart(): Deno.PointerValue {
+  get fpStart(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -27519,7 +27519,7 @@ export class VIDEOMEMORYView {
   // 0x04: pad4
 
   // 0x08: usize
-  set fpStart(value: Deno.PointerValue) {
+  set fpStart(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -27549,7 +27549,7 @@ export class VIDEOMEMORYView {
  */
 export interface VIDEOMEMORYINFO {
   /** usize */
-  fpPrimary: Deno.PointerValue;
+  fpPrimary: bigint | number;
   /** u32 */
   dwFlags: number;
   /** u32 */
@@ -27618,7 +27618,7 @@ export class VIDEOMEMORYINFOView {
   }
 
   // 0x00: usize
-  get fpPrimary(): Deno.PointerValue {
+  get fpPrimary(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -27682,7 +27682,7 @@ export class VIDEOMEMORYINFOView {
   }
 
   // 0x00: usize
-  set fpPrimary(value: Deno.PointerValue) {
+  set fpPrimary(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -29324,7 +29324,7 @@ export class DD_NONLOCALVIDMEMCAPSView {
  */
 export interface DD_PALETTE_GLOBAL {
   /** usize */
-  dwReserved1: Deno.PointerValue;
+  dwReserved1: bigint | number;
 }
 
 export const sizeofDD_PALETTE_GLOBAL = 8;
@@ -29348,12 +29348,12 @@ export class DD_PALETTE_GLOBALView {
   }
 
   // 0x00: usize
-  get dwReserved1(): Deno.PointerValue {
+  get dwReserved1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: usize
-  set dwReserved1(value: Deno.PointerValue) {
+  set dwReserved1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -29365,7 +29365,7 @@ export interface DD_PALETTE_LOCAL {
   /** u32 */
   dwReserved0: number;
   /** usize */
-  dwReserved1: Deno.PointerValue;
+  dwReserved1: bigint | number;
 }
 
 export const sizeofDD_PALETTE_LOCAL = 16;
@@ -29399,7 +29399,7 @@ export class DD_PALETTE_LOCALView {
   // 0x04: pad4
 
   // 0x08: usize
-  get dwReserved1(): Deno.PointerValue {
+  get dwReserved1(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -29411,7 +29411,7 @@ export class DD_PALETTE_LOCALView {
   // 0x04: pad4
 
   // 0x08: usize
-  set dwReserved1(value: Deno.PointerValue) {
+  set dwReserved1(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -29421,7 +29421,7 @@ export class DD_PALETTE_LOCALView {
  */
 export interface DD_CLIPPER_GLOBAL {
   /** usize */
-  dwReserved1: Deno.PointerValue;
+  dwReserved1: bigint | number;
 }
 
 export const sizeofDD_CLIPPER_GLOBAL = 8;
@@ -29445,12 +29445,12 @@ export class DD_CLIPPER_GLOBALView {
   }
 
   // 0x00: usize
-  get dwReserved1(): Deno.PointerValue {
+  get dwReserved1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: usize
-  set dwReserved1(value: Deno.PointerValue) {
+  set dwReserved1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -29460,7 +29460,7 @@ export class DD_CLIPPER_GLOBALView {
  */
 export interface DD_CLIPPER_LOCAL {
   /** usize */
-  dwReserved1: Deno.PointerValue;
+  dwReserved1: bigint | number;
 }
 
 export const sizeofDD_CLIPPER_LOCAL = 8;
@@ -29484,12 +29484,12 @@ export class DD_CLIPPER_LOCALView {
   }
 
   // 0x00: usize
-  get dwReserved1(): Deno.PointerValue {
+  get dwReserved1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: usize
-  set dwReserved1(value: Deno.PointerValue) {
+  set dwReserved1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -29598,7 +29598,7 @@ export interface DD_SURFACE_GLOBAL {
   /** _Anonymous2_e__Union */
   Anonymous2: Uint8Array | Deno.PointerValue;
   /** usize */
-  fpVidMem: Deno.PointerValue;
+  fpVidMem: bigint | number;
   /** _Anonymous3_e__Union */
   Anonymous3: Uint8Array | Deno.PointerValue;
   /** i32 */
@@ -29610,11 +29610,11 @@ export interface DD_SURFACE_GLOBAL {
   /** u32 */
   wWidth: number;
   /** usize */
-  dwReserved1: Deno.PointerValue;
+  dwReserved1: bigint | number;
   /** Windows.Win32.Graphics.DirectDraw.DDPIXELFORMAT */
   ddpfSurface: Uint8Array | Deno.PointerValue;
   /** usize */
-  fpHeapOffset: Deno.PointerValue;
+  fpHeapOffset: bigint | number;
   /** Windows.Win32.Foundation.HANDLE */
   hCreatorProcess: Uint8Array | Deno.PointerValue;
 }
@@ -29674,7 +29674,7 @@ export class DD_SURFACE_GLOBALView {
   }
 
   // 0x10: usize
-  get fpVidMem(): Deno.PointerValue {
+  get fpVidMem(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -29705,7 +29705,7 @@ export class DD_SURFACE_GLOBALView {
   }
 
   // 0x30: usize
-  get dwReserved1(): Deno.PointerValue {
+  get dwReserved1(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -29716,7 +29716,7 @@ export class DD_SURFACE_GLOBALView {
   }
 
   // 0x40: usize
-  get fpHeapOffset(): Deno.PointerValue {
+  get fpHeapOffset(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
@@ -29737,7 +29737,7 @@ export class DD_SURFACE_GLOBALView {
   }
 
   // 0x10: usize
-  set fpVidMem(value: Deno.PointerValue) {
+  set fpVidMem(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -29767,7 +29767,7 @@ export class DD_SURFACE_GLOBALView {
   }
 
   // 0x30: usize
-  set dwReserved1(value: Deno.PointerValue) {
+  set dwReserved1(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
@@ -29777,7 +29777,7 @@ export class DD_SURFACE_GLOBALView {
   }
 
   // 0x40: usize
-  set fpHeapOffset(value: Deno.PointerValue) {
+  set fpHeapOffset(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
@@ -29910,7 +29910,7 @@ export interface DD_SURFACE_LOCAL {
   /** Windows.Win32.Graphics.DirectDraw.DDSCAPS */
   ddsCaps: Uint8Array | Deno.PointerValue;
   /** usize */
-  dwReserved1: Deno.PointerValue;
+  dwReserved1: bigint | number;
   /** _Anonymous1_e__Union */
   Anonymous1: Uint8Array | Deno.PointerValue;
   /** _Anonymous2_e__Union */
@@ -29984,7 +29984,7 @@ export class DD_SURFACE_LOCALView {
   }
 
   // 0x18: usize
-  get dwReserved1(): Deno.PointerValue {
+  get dwReserved1(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -30042,7 +30042,7 @@ export class DD_SURFACE_LOCALView {
   }
 
   // 0x18: usize
-  set dwReserved1(value: Deno.PointerValue) {
+  set dwReserved1(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -31393,9 +31393,9 @@ export interface DD_DIRECTDRAW_GLOBAL {
   /** ptr */
   dhpdev: Deno.PointerValue | Uint8Array;
   /** usize */
-  dwReserved1: Deno.PointerValue;
+  dwReserved1: bigint | number;
   /** usize */
-  dwReserved2: Deno.PointerValue;
+  dwReserved2: bigint | number;
   /** ptr */
   lpDDVideoPortCaps: Deno.PointerValue | Uint8Array;
 }
@@ -31433,12 +31433,12 @@ export class DD_DIRECTDRAW_GLOBALView {
   }
 
   // 0x08: usize
-  get dwReserved1(): Deno.PointerValue {
+  get dwReserved1(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: usize
-  get dwReserved2(): Deno.PointerValue {
+  get dwReserved2(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -31454,12 +31454,12 @@ export class DD_DIRECTDRAW_GLOBALView {
   }
 
   // 0x08: usize
-  set dwReserved1(value: Deno.PointerValue) {
+  set dwReserved1(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: usize
-  set dwReserved2(value: Deno.PointerValue) {
+  set dwReserved2(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -31528,11 +31528,11 @@ export interface DD_VIDEOPORT_LOCAL {
   /** u32 */
   dwNumVBIAutoflip: number;
   /** usize */
-  dwReserved1: Deno.PointerValue;
+  dwReserved1: bigint | number;
   /** usize */
-  dwReserved2: Deno.PointerValue;
+  dwReserved2: bigint | number;
   /** usize */
-  dwReserved3: Deno.PointerValue;
+  dwReserved3: bigint | number;
 }
 
 export const sizeofDD_VIDEOPORT_LOCAL = 72;
@@ -31614,17 +31614,17 @@ export class DD_VIDEOPORT_LOCALView {
   }
 
   // 0x30: usize
-  get dwReserved1(): Deno.PointerValue {
+  get dwReserved1(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: usize
-  get dwReserved2(): Deno.PointerValue {
+  get dwReserved2(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
   // 0x40: usize
-  get dwReserved3(): Deno.PointerValue {
+  get dwReserved3(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
@@ -31664,17 +31664,17 @@ export class DD_VIDEOPORT_LOCALView {
   }
 
   // 0x30: usize
-  set dwReserved1(value: Deno.PointerValue) {
+  set dwReserved1(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: usize
-  set dwReserved2(value: Deno.PointerValue) {
+  set dwReserved2(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
   // 0x40: usize
-  set dwReserved3(value: Deno.PointerValue) {
+  set dwReserved3(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 }
@@ -32061,11 +32061,11 @@ export interface DD_UPDATENONLOCALHEAPDATA {
   /** u32 */
   dwHeap: number;
   /** usize */
-  fpGARTLin: Deno.PointerValue;
+  fpGARTLin: bigint | number;
   /** usize */
-  fpGARTDev: Deno.PointerValue;
+  fpGARTDev: bigint | number;
   /** usize */
-  ulPolicyMaxBytes: Deno.PointerValue;
+  ulPolicyMaxBytes: bigint | number;
   /** Windows.Win32.Foundation.HRESULT */
   ddRVal: Uint8Array | Deno.PointerValue;
   /** ptr */
@@ -32119,17 +32119,17 @@ export class DD_UPDATENONLOCALHEAPDATAView {
   // 0x0c: pad4
 
   // 0x10: usize
-  get fpGARTLin(): Deno.PointerValue {
+  get fpGARTLin(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: usize
-  get fpGARTDev(): Deno.PointerValue {
+  get fpGARTDev(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: usize
-  get ulPolicyMaxBytes(): Deno.PointerValue {
+  get ulPolicyMaxBytes(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -32158,17 +32158,17 @@ export class DD_UPDATENONLOCALHEAPDATAView {
   // 0x0c: pad4
 
   // 0x10: usize
-  set fpGARTLin(value: Deno.PointerValue) {
+  set fpGARTLin(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: usize
-  set fpGARTDev(value: Deno.PointerValue) {
+  set fpGARTDev(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: usize
-  set ulPolicyMaxBytes(value: Deno.PointerValue) {
+  set ulPolicyMaxBytes(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -32547,7 +32547,7 @@ export interface DD_LOCKDATA {
   /** u32 */
   dwFlags: number;
   /** usize */
-  fpProcess: Deno.PointerValue;
+  fpProcess: bigint | number;
 }
 
 export const sizeofDD_LOCKDATA = 72;
@@ -32639,7 +32639,7 @@ export class DD_LOCKDATAView {
   // 0x3c: pad4
 
   // 0x40: usize
-  get fpProcess(): Deno.PointerValue {
+  get fpProcess(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
@@ -32688,7 +32688,7 @@ export class DD_LOCKDATAView {
   // 0x3c: pad4
 
   // 0x40: usize
-  set fpProcess(value: Deno.PointerValue) {
+  set fpProcess(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 }
@@ -34501,7 +34501,7 @@ export interface DD_WAITFORVERTICALBLANKDATA {
   /** u32 */
   bIsInVB: number;
   /** usize */
-  hEvent: Deno.PointerValue;
+  hEvent: bigint | number;
   /** Windows.Win32.Foundation.HRESULT */
   ddRVal: Uint8Array | Deno.PointerValue;
   /** ptr */
@@ -34555,7 +34555,7 @@ export class DD_WAITFORVERTICALBLANKDATAView {
   }
 
   // 0x10: usize
-  get hEvent(): Deno.PointerValue {
+  get hEvent(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -34587,7 +34587,7 @@ export class DD_WAITFORVERTICALBLANKDATAView {
   }
 
   // 0x10: usize
-  set hEvent(value: Deno.PointerValue) {
+  set hEvent(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -34806,7 +34806,7 @@ export interface DD_MAPMEMORYDATA {
   /** Windows.Win32.Foundation.HANDLE */
   hProcess: Uint8Array | Deno.PointerValue;
   /** usize */
-  fpProcess: Deno.PointerValue;
+  fpProcess: bigint | number;
   /** Windows.Win32.Foundation.HRESULT */
   ddRVal: Uint8Array | Deno.PointerValue;
 }
@@ -34860,7 +34860,7 @@ export class DD_MAPMEMORYDATAView {
   }
 
   // 0x18: usize
-  get fpProcess(): Deno.PointerValue {
+  get fpProcess(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -34888,7 +34888,7 @@ export class DD_MAPMEMORYDATAView {
   }
 
   // 0x18: usize
-  set fpProcess(value: Deno.PointerValue) {
+  set fpProcess(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -36074,7 +36074,7 @@ export interface DD_GETVPORTFLIPSTATUSDATA {
   /** ptr */
   lpDD: Deno.PointerValue | Uint8Array;
   /** usize */
-  fpSurface: Deno.PointerValue;
+  fpSurface: bigint | number;
   /** Windows.Win32.Foundation.HRESULT */
   ddRVal: Uint8Array | Deno.PointerValue;
   /** ptr */
@@ -36114,7 +36114,7 @@ export class DD_GETVPORTFLIPSTATUSDATAView {
   }
 
   // 0x08: usize
-  get fpSurface(): Deno.PointerValue {
+  get fpSurface(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -36136,7 +36136,7 @@ export class DD_GETVPORTFLIPSTATUSDATAView {
   }
 
   // 0x08: usize
-  set fpSurface(value: Deno.PointerValue) {
+  set fpSurface(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -37358,7 +37358,7 @@ export interface DD_SYNCSURFACEDATA {
   /** u32 */
   dwSurfaceOffset: number;
   /** usize */
-  fpLockPtr: Deno.PointerValue;
+  fpLockPtr: bigint | number;
   /** i32 */
   lPitch: number;
   /** u32 */
@@ -37436,7 +37436,7 @@ export class DD_SYNCSURFACEDATAView {
   // 0x14: pad4
 
   // 0x18: usize
-  get fpLockPtr(): Deno.PointerValue {
+  get fpLockPtr(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -37494,7 +37494,7 @@ export class DD_SYNCSURFACEDATAView {
   // 0x14: pad4
 
   // 0x18: usize
-  set fpLockPtr(value: Deno.PointerValue) {
+  set fpLockPtr(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -39602,7 +39602,7 @@ export interface DDSURFACEDATA {
   /** u32 */
   dwSurfaceOffset: number;
   /** usize */
-  fpLockPtr: Deno.PointerValue;
+  fpLockPtr: bigint | number;
   /** u32 */
   dwWidth: number;
   /** u32 */
@@ -39720,7 +39720,7 @@ export class DDSURFACEDATAView {
   }
 
   // 0x08: usize
-  get fpLockPtr(): Deno.PointerValue {
+  get fpLockPtr(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -39835,7 +39835,7 @@ export class DDSURFACEDATAView {
   }
 
   // 0x08: usize
-  set fpLockPtr(value: Deno.PointerValue) {
+  set fpLockPtr(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -40519,7 +40519,7 @@ export class DDLOCKININFOView {
  */
 export interface DDLOCKOUTINFO {
   /** usize */
-  dwSurfacePtr: Deno.PointerValue;
+  dwSurfacePtr: bigint | number;
 }
 
 export const sizeofDDLOCKOUTINFO = 8;
@@ -40543,12 +40543,12 @@ export class DDLOCKOUTINFOView {
   }
 
   // 0x00: usize
-  get dwSurfacePtr(): Deno.PointerValue {
+  get dwSurfacePtr(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: usize
-  set dwSurfacePtr(value: Deno.PointerValue) {
+  set dwSurfacePtr(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -40997,7 +40997,7 @@ export interface DDTRANSFERININFO {
   /** u32 */
   dwEndLine: number;
   /** usize */
-  dwTransferID: Deno.PointerValue;
+  dwTransferID: bigint | number;
   /** u32 */
   dwTransferFlags: number;
   /** ptr */
@@ -41052,7 +41052,7 @@ export class DDTRANSFERININFOView {
   }
 
   // 0x10: usize
-  get dwTransferID(): Deno.PointerValue {
+  get dwTransferID(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -41085,7 +41085,7 @@ export class DDTRANSFERININFOView {
   }
 
   // 0x10: usize
-  set dwTransferID(value: Deno.PointerValue) {
+  set dwTransferID(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -41151,7 +41151,7 @@ export class DDTRANSFEROUTINFOView {
  */
 export interface DDGETTRANSFERSTATUSOUTINFO {
   /** usize */
-  dwTransferID: Deno.PointerValue;
+  dwTransferID: bigint | number;
 }
 
 export const sizeofDDGETTRANSFERSTATUSOUTINFO = 8;
@@ -41175,12 +41175,12 @@ export class DDGETTRANSFERSTATUSOUTINFOView {
   }
 
   // 0x00: usize
-  get dwTransferID(): Deno.PointerValue {
+  get dwTransferID(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: usize
-  set dwTransferID(value: Deno.PointerValue) {
+  set dwTransferID(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }

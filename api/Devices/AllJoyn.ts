@@ -514,13 +514,13 @@ export interface alljoyn_certificateid {
   /** ptr */
   serial: Deno.PointerValue | Uint8Array;
   /** usize */
-  serialLen: Deno.PointerValue;
+  serialLen: bigint | number;
   /** ptr */
   issuerPublicKey: Deno.PointerValue | Uint8Array;
   /** ptr */
   issuerAki: Deno.PointerValue | Uint8Array;
   /** usize */
-  issuerAkiLen: Deno.PointerValue;
+  issuerAkiLen: bigint | number;
 }
 
 export const sizeofAlljoyn_certificateid = 40;
@@ -558,7 +558,7 @@ export class alljoyn_certificateidView {
   }
 
   // 0x08: usize
-  get serialLen(): Deno.PointerValue {
+  get serialLen(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -575,7 +575,7 @@ export class alljoyn_certificateidView {
   }
 
   // 0x20: usize
-  get issuerAkiLen(): Deno.PointerValue {
+  get issuerAkiLen(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -585,7 +585,7 @@ export class alljoyn_certificateidView {
   }
 
   // 0x08: usize
-  set serialLen(value: Deno.PointerValue) {
+  set serialLen(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -600,7 +600,7 @@ export class alljoyn_certificateidView {
   }
 
   // 0x20: usize
-  set issuerAkiLen(value: Deno.PointerValue) {
+  set issuerAkiLen(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 }
@@ -610,7 +610,7 @@ export class alljoyn_certificateidView {
  */
 export interface alljoyn_certificateidarray {
   /** usize */
-  count: Deno.PointerValue;
+  count: bigint | number;
   /** ptr */
   ids: Deno.PointerValue | Uint8Array;
 }
@@ -638,7 +638,7 @@ export class alljoyn_certificateidarrayView {
   }
 
   // 0x00: usize
-  get count(): Deno.PointerValue {
+  get count(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -649,7 +649,7 @@ export class alljoyn_certificateidarrayView {
   }
 
   // 0x00: usize
-  set count(value: Deno.PointerValue) {
+  set count(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -664,7 +664,7 @@ export class alljoyn_certificateidarrayView {
  */
 export interface alljoyn_manifestarray {
   /** usize */
-  count: Deno.PointerValue;
+  count: bigint | number;
   /** ptr */
   xmls: Deno.PointerValue | Uint8Array;
 }
@@ -692,7 +692,7 @@ export class alljoyn_manifestarrayView {
   }
 
   // 0x00: usize
-  get count(): Deno.PointerValue {
+  get count(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -703,7 +703,7 @@ export class alljoyn_manifestarrayView {
   }
 
   // 0x00: usize
-  set count(value: Deno.PointerValue) {
+  set count(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -1208,7 +1208,7 @@ export class alljoyn_buslistener_callbacksView {
   }
 }
 
-export type alljoyn_interfacedescription = Deno.PointerValue;
+export type alljoyn_interfacedescription = bigint | number;
 
 export type PSTR = Deno.PointerValue | Uint8Array;
 
@@ -2014,65 +2014,65 @@ export class alljoyn_observerlistener_callbackView {
   }
 }
 
-export type alljoyn_aboutdata = Deno.PointerValue;
+export type alljoyn_aboutdata = bigint | number;
 
-export type alljoyn_aboutdatalistener = Deno.PointerValue;
+export type alljoyn_aboutdatalistener = bigint | number;
 
-export type alljoyn_aboutlistener = Deno.PointerValue;
+export type alljoyn_aboutlistener = bigint | number;
 
-export type alljoyn_aboutobj = Deno.PointerValue;
+export type alljoyn_aboutobj = bigint | number;
 
-export type alljoyn_aboutobjectdescription = Deno.PointerValue;
+export type alljoyn_aboutobjectdescription = bigint | number;
 
-export type alljoyn_aboutproxy = Deno.PointerValue;
+export type alljoyn_aboutproxy = bigint | number;
 
-export type alljoyn_applicationstatelistener = Deno.PointerValue;
+export type alljoyn_applicationstatelistener = bigint | number;
 
-export type alljoyn_authlistener = Deno.PointerValue;
+export type alljoyn_authlistener = bigint | number;
 
-export type alljoyn_autopinger = Deno.PointerValue;
+export type alljoyn_autopinger = bigint | number;
 
-export type alljoyn_busattachment = Deno.PointerValue;
+export type alljoyn_busattachment = bigint | number;
 
-export type alljoyn_buslistener = Deno.PointerValue;
+export type alljoyn_buslistener = bigint | number;
 
-export type alljoyn_busobject = Deno.PointerValue;
+export type alljoyn_busobject = bigint | number;
 
-export type alljoyn_credentials = Deno.PointerValue;
+export type alljoyn_credentials = bigint | number;
 
-export type alljoyn_keystore = Deno.PointerValue;
+export type alljoyn_keystore = bigint | number;
 
-export type alljoyn_keystorelistener = Deno.PointerValue;
+export type alljoyn_keystorelistener = bigint | number;
 
-export type alljoyn_message = Deno.PointerValue;
+export type alljoyn_message = bigint | number;
 
-export type alljoyn_msgarg = Deno.PointerValue;
+export type alljoyn_msgarg = bigint | number;
 
-export type alljoyn_observer = Deno.PointerValue;
+export type alljoyn_observer = bigint | number;
 
-export type alljoyn_observerlistener = Deno.PointerValue;
+export type alljoyn_observerlistener = bigint | number;
 
-export type alljoyn_permissionconfigurationlistener = Deno.PointerValue;
+export type alljoyn_permissionconfigurationlistener = bigint | number;
 
-export type alljoyn_permissionconfigurator = Deno.PointerValue;
+export type alljoyn_permissionconfigurator = bigint | number;
 
-export type alljoyn_pinglistener = Deno.PointerValue;
+export type alljoyn_pinglistener = bigint | number;
 
-export type alljoyn_proxybusobject = Deno.PointerValue;
+export type alljoyn_proxybusobject = bigint | number;
 
-export type alljoyn_proxybusobject_ref = Deno.PointerValue;
+export type alljoyn_proxybusobject_ref = bigint | number;
 
-export type alljoyn_securityapplicationproxy = Deno.PointerValue;
+export type alljoyn_securityapplicationproxy = bigint | number;
 
-export type alljoyn_sessionlistener = Deno.PointerValue;
+export type alljoyn_sessionlistener = bigint | number;
 
-export type alljoyn_sessionopts = Deno.PointerValue;
+export type alljoyn_sessionopts = bigint | number;
 
-export type alljoyn_sessionportlistener = Deno.PointerValue;
+export type alljoyn_sessionportlistener = bigint | number;
 
 export type PWSTR = Deno.PointerValue | Uint8Array;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 export type BOOL = number;
 
@@ -4369,14 +4369,14 @@ export function alljoyn_msgarg_destroy(
 }
 
 export function alljoyn_msgarg_array_create(
-  size: Deno.PointerValue /* usize */,
+  size: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */ {
   return libMSAJApi_dll.alljoyn_msgarg_array_create(size);
 }
 
 export function alljoyn_msgarg_array_element(
   arg: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  index: Deno.PointerValue /* usize */,
+  index: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */ {
   return libMSAJApi_dll.alljoyn_msgarg_array_element(util.toPointer(arg), index);
 }
@@ -4425,7 +4425,7 @@ export function alljoyn_msgarg_array_set(
 
 export function alljoyn_msgarg_array_get(
   args: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  numArgs: Deno.PointerValue /* usize */,
+  numArgs: bigint | number /* usize */,
   signature: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
   return libMSAJApi_dll.alljoyn_msgarg_array_get(util.toPointer(args), numArgs, util.pstrToFfi(signature));
@@ -4434,36 +4434,36 @@ export function alljoyn_msgarg_array_get(
 export function alljoyn_msgarg_tostring(
   arg: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   str: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  buf: Deno.PointerValue /* usize */,
-  indent: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
+  buf: bigint | number /* usize */,
+  indent: bigint | number /* usize */,
+): bigint | number /* usize */ {
   return libMSAJApi_dll.alljoyn_msgarg_tostring(util.toPointer(arg), util.pstrToFfi(str), buf, indent);
 }
 
 export function alljoyn_msgarg_array_tostring(
   args: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  numArgs: Deno.PointerValue /* usize */,
+  numArgs: bigint | number /* usize */,
   str: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  buf: Deno.PointerValue /* usize */,
-  indent: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
+  buf: bigint | number /* usize */,
+  indent: bigint | number /* usize */,
+): bigint | number /* usize */ {
   return libMSAJApi_dll.alljoyn_msgarg_array_tostring(util.toPointer(args), numArgs, util.pstrToFfi(str), buf, indent);
 }
 
 export function alljoyn_msgarg_signature(
   arg: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   str: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  buf: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
+  buf: bigint | number /* usize */,
+): bigint | number /* usize */ {
   return libMSAJApi_dll.alljoyn_msgarg_signature(util.toPointer(arg), util.pstrToFfi(str), buf);
 }
 
 export function alljoyn_msgarg_array_signature(
   values: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  numValues: Deno.PointerValue /* usize */,
+  numValues: bigint | number /* usize */,
   str: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  buf: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
+  buf: bigint | number /* usize */,
+): bigint | number /* usize */ {
   return libMSAJApi_dll.alljoyn_msgarg_array_signature(util.toPointer(values), numValues, util.pstrToFfi(str), buf);
 }
 
@@ -4501,7 +4501,7 @@ export function alljoyn_msgarg_stabilize(
 
 export function alljoyn_msgarg_array_set_offset(
   args: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  argOffset: Deno.PointerValue /* usize */,
+  argOffset: bigint | number /* usize */,
   numArgs: Deno.PointerValue | Uint8Array /* ptr */,
   signature: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
@@ -4559,14 +4559,14 @@ export function alljoyn_msgarg_set_uint32(
 
 export function alljoyn_msgarg_set_int64(
   arg: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  x: Deno.PointerValue /* i64 */,
+  x: bigint | number /* i64 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
   return libMSAJApi_dll.alljoyn_msgarg_set_int64(util.toPointer(arg), x);
 }
 
 export function alljoyn_msgarg_set_uint64(
   arg: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  t: Deno.PointerValue /* u64 */,
+  t: bigint | number /* u64 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
   return libMSAJApi_dll.alljoyn_msgarg_set_uint64(util.toPointer(arg), t);
 }
@@ -4692,7 +4692,7 @@ export function alljoyn_msgarg_get_variant(
 
 export function alljoyn_msgarg_set_uint8_array(
   arg: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  length: Deno.PointerValue /* usize */,
+  length: bigint | number /* usize */,
   ay: Deno.PointerValue | Uint8Array /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
   return libMSAJApi_dll.alljoyn_msgarg_set_uint8_array(util.toPointer(arg), length, util.toPointer(ay));
@@ -4700,7 +4700,7 @@ export function alljoyn_msgarg_set_uint8_array(
 
 export function alljoyn_msgarg_set_bool_array(
   arg: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  length: Deno.PointerValue /* usize */,
+  length: bigint | number /* usize */,
   ab: Deno.PointerValue | Uint8Array /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
   return libMSAJApi_dll.alljoyn_msgarg_set_bool_array(util.toPointer(arg), length, util.toPointer(ab));
@@ -4708,7 +4708,7 @@ export function alljoyn_msgarg_set_bool_array(
 
 export function alljoyn_msgarg_set_int16_array(
   arg: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  length: Deno.PointerValue /* usize */,
+  length: bigint | number /* usize */,
   an: Deno.PointerValue | Uint8Array /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
   return libMSAJApi_dll.alljoyn_msgarg_set_int16_array(util.toPointer(arg), length, util.toPointer(an));
@@ -4716,7 +4716,7 @@ export function alljoyn_msgarg_set_int16_array(
 
 export function alljoyn_msgarg_set_uint16_array(
   arg: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  length: Deno.PointerValue /* usize */,
+  length: bigint | number /* usize */,
   aq: Deno.PointerValue | Uint8Array /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
   return libMSAJApi_dll.alljoyn_msgarg_set_uint16_array(util.toPointer(arg), length, util.toPointer(aq));
@@ -4724,7 +4724,7 @@ export function alljoyn_msgarg_set_uint16_array(
 
 export function alljoyn_msgarg_set_int32_array(
   arg: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  length: Deno.PointerValue /* usize */,
+  length: bigint | number /* usize */,
   ai: Deno.PointerValue | Uint8Array /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
   return libMSAJApi_dll.alljoyn_msgarg_set_int32_array(util.toPointer(arg), length, util.toPointer(ai));
@@ -4732,7 +4732,7 @@ export function alljoyn_msgarg_set_int32_array(
 
 export function alljoyn_msgarg_set_uint32_array(
   arg: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  length: Deno.PointerValue /* usize */,
+  length: bigint | number /* usize */,
   au: Deno.PointerValue | Uint8Array /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
   return libMSAJApi_dll.alljoyn_msgarg_set_uint32_array(util.toPointer(arg), length, util.toPointer(au));
@@ -4740,7 +4740,7 @@ export function alljoyn_msgarg_set_uint32_array(
 
 export function alljoyn_msgarg_set_int64_array(
   arg: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  length: Deno.PointerValue /* usize */,
+  length: bigint | number /* usize */,
   ax: Deno.PointerValue | Uint8Array /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
   return libMSAJApi_dll.alljoyn_msgarg_set_int64_array(util.toPointer(arg), length, util.toPointer(ax));
@@ -4748,7 +4748,7 @@ export function alljoyn_msgarg_set_int64_array(
 
 export function alljoyn_msgarg_set_uint64_array(
   arg: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  length: Deno.PointerValue /* usize */,
+  length: bigint | number /* usize */,
   at: Deno.PointerValue | Uint8Array /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
   return libMSAJApi_dll.alljoyn_msgarg_set_uint64_array(util.toPointer(arg), length, util.toPointer(at));
@@ -4756,7 +4756,7 @@ export function alljoyn_msgarg_set_uint64_array(
 
 export function alljoyn_msgarg_set_double_array(
   arg: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  length: Deno.PointerValue /* usize */,
+  length: bigint | number /* usize */,
   ad: Deno.PointerValue | Uint8Array /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
   return libMSAJApi_dll.alljoyn_msgarg_set_double_array(util.toPointer(arg), length, util.toPointer(ad));
@@ -4764,7 +4764,7 @@ export function alljoyn_msgarg_set_double_array(
 
 export function alljoyn_msgarg_set_string_array(
   arg: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  length: Deno.PointerValue /* usize */,
+  length: bigint | number /* usize */,
   as: Deno.PointerValue | Uint8Array /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
   return libMSAJApi_dll.alljoyn_msgarg_set_string_array(util.toPointer(arg), length, util.toPointer(as));
@@ -4772,7 +4772,7 @@ export function alljoyn_msgarg_set_string_array(
 
 export function alljoyn_msgarg_set_objectpath_array(
   arg: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  length: Deno.PointerValue /* usize */,
+  length: bigint | number /* usize */,
   ao: Deno.PointerValue | Uint8Array /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
   return libMSAJApi_dll.alljoyn_msgarg_set_objectpath_array(util.toPointer(arg), length, util.toPointer(ao));
@@ -4780,7 +4780,7 @@ export function alljoyn_msgarg_set_objectpath_array(
 
 export function alljoyn_msgarg_set_signature_array(
   arg: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  length: Deno.PointerValue /* usize */,
+  length: bigint | number /* usize */,
   ag: Deno.PointerValue | Uint8Array /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
   return libMSAJApi_dll.alljoyn_msgarg_set_signature_array(util.toPointer(arg), length, util.toPointer(ag));
@@ -4869,13 +4869,13 @@ export function alljoyn_msgarg_get_variant_array(
 
 export function alljoyn_msgarg_get_array_numberofelements(
   arg: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-): Deno.PointerValue /* usize */ {
+): bigint | number /* usize */ {
   return libMSAJApi_dll.alljoyn_msgarg_get_array_numberofelements(util.toPointer(arg));
 }
 
 export function alljoyn_msgarg_get_array_element(
   arg: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  index: Deno.PointerValue /* usize */,
+  index: bigint | number /* usize */,
   element: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libMSAJApi_dll.alljoyn_msgarg_get_array_element(util.toPointer(arg), index, util.toPointer(element));
@@ -4883,7 +4883,7 @@ export function alljoyn_msgarg_get_array_element(
 
 export function alljoyn_msgarg_get_array_elementsignature(
   arg: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  index: Deno.PointerValue /* usize */,
+  index: bigint | number /* usize */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
   return util.pstrFromFfi(libMSAJApi_dll.alljoyn_msgarg_get_array_elementsignature(util.toPointer(arg), index));
 }
@@ -4911,20 +4911,20 @@ export function alljoyn_msgarg_setdictentry(
 export function alljoyn_msgarg_setstruct(
   arg: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
   struct_members: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  num_members: Deno.PointerValue /* usize */,
+  num_members: bigint | number /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
   return libMSAJApi_dll.alljoyn_msgarg_setstruct(util.toPointer(arg), util.toPointer(struct_members), num_members);
 }
 
 export function alljoyn_msgarg_getnummembers(
   arg: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-): Deno.PointerValue /* usize */ {
+): bigint | number /* usize */ {
   return libMSAJApi_dll.alljoyn_msgarg_getnummembers(util.toPointer(arg));
 }
 
 export function alljoyn_msgarg_getmember(
   arg: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  index: Deno.PointerValue /* usize */,
+  index: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */ {
   return libMSAJApi_dll.alljoyn_msgarg_getmember(util.toPointer(arg), index);
 }
@@ -4977,7 +4977,7 @@ export function alljoyn_aboutdata_createfrommsgarg(
 export function alljoyn_aboutdata_setappid(
   data: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */,
   appId: Deno.PointerValue | Uint8Array /* ptr */,
-  num: Deno.PointerValue /* usize */,
+  num: bigint | number /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
   return libMSAJApi_dll.alljoyn_aboutdata_setappid(util.toPointer(data), util.toPointer(appId), num);
 }
@@ -5097,8 +5097,8 @@ export function alljoyn_aboutdata_setsupportedlanguage(
 export function alljoyn_aboutdata_getsupportedlanguages(
   data: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */,
   languageTags: Deno.PointerValue | Uint8Array /* ptr */,
-  num: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
+  num: bigint | number /* usize */,
+): bigint | number /* usize */ {
   return libMSAJApi_dll.alljoyn_aboutdata_getsupportedlanguages(util.toPointer(data), util.toPointer(languageTags), num);
 }
 
@@ -5202,8 +5202,8 @@ export function alljoyn_aboutdata_getfield(
 export function alljoyn_aboutdata_getfields(
   data: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutdata */,
   fields: Deno.PointerValue | Uint8Array /* ptr */,
-  num_fields: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
+  num_fields: bigint | number /* usize */,
+): bigint | number /* usize */ {
   return libMSAJApi_dll.alljoyn_aboutdata_getfields(util.toPointer(data), util.toPointer(fields), num_fields);
 }
 
@@ -5272,7 +5272,7 @@ export function alljoyn_abouticon_setcontent(
   icon: Deno.PointerValue | Uint8Array /* ptr */,
   type: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   data: Deno.PointerValue | Uint8Array /* ptr */,
-  csize: Deno.PointerValue /* usize */,
+  csize: bigint | number /* usize */,
   ownsData: number /* u8 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
   return libMSAJApi_dll.alljoyn_abouticon_setcontent(util.toPointer(icon), util.pstrToFfi(type), util.toPointer(data), csize, ownsData);
@@ -5397,10 +5397,10 @@ export function alljoyn_permissionconfigurator_claim(
   caKey: Deno.PointerValue | Uint8Array /* ptr */,
   identityCertificateChain: Deno.PointerValue | Uint8Array /* ptr */,
   groupId: Deno.PointerValue | Uint8Array /* ptr */,
-  groupSize: Deno.PointerValue /* usize */,
+  groupSize: bigint | number /* usize */,
   groupAuthority: Deno.PointerValue | Uint8Array /* ptr */,
   manifestsXmls: Deno.PointerValue | Uint8Array /* ptr */,
-  manifestsCount: Deno.PointerValue /* usize */,
+  manifestsCount: bigint | number /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
   return libMSAJApi_dll.alljoyn_permissionconfigurator_claim(util.toPointer(configurator), util.toPointer(caKey), util.toPointer(identityCertificateChain), util.toPointer(groupId), groupSize, util.toPointer(groupAuthority), util.toPointer(manifestsXmls), manifestsCount);
 }
@@ -5409,7 +5409,7 @@ export function alljoyn_permissionconfigurator_updateidentity(
   configurator: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_permissionconfigurator */,
   identityCertificateChain: Deno.PointerValue | Uint8Array /* ptr */,
   manifestsXmls: Deno.PointerValue | Uint8Array /* ptr */,
-  manifestsCount: Deno.PointerValue /* usize */,
+  manifestsCount: bigint | number /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
   return libMSAJApi_dll.alljoyn_permissionconfigurator_updateidentity(util.toPointer(configurator), util.toPointer(identityCertificateChain), util.toPointer(manifestsXmls), manifestsCount);
 }
@@ -5443,7 +5443,7 @@ export function alljoyn_permissionconfigurator_manifestarray_cleanup(
 export function alljoyn_permissionconfigurator_installmanifests(
   configurator: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_permissionconfigurator */,
   manifestsXmls: Deno.PointerValue | Uint8Array /* ptr */,
-  manifestsCount: Deno.PointerValue /* usize */,
+  manifestsCount: bigint | number /* usize */,
   append: number /* i32 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
   return libMSAJApi_dll.alljoyn_permissionconfigurator_installmanifests(util.toPointer(configurator), util.toPointer(manifestsXmls), manifestsCount, append);
@@ -5518,10 +5518,10 @@ export function alljoyn_permissionconfigurator_installmembership(
 export function alljoyn_permissionconfigurator_removemembership(
   configurator: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_permissionconfigurator */,
   serial: Deno.PointerValue | Uint8Array /* ptr */,
-  serialLen: Deno.PointerValue /* usize */,
+  serialLen: bigint | number /* usize */,
   issuerPublicKey: Deno.PointerValue | Uint8Array /* ptr */,
   issuerAki: Deno.PointerValue | Uint8Array /* ptr */,
-  issuerAkiLen: Deno.PointerValue /* usize */,
+  issuerAkiLen: bigint | number /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
   return libMSAJApi_dll.alljoyn_permissionconfigurator_removemembership(util.toPointer(configurator), util.toPointer(serial), serialLen, util.toPointer(issuerPublicKey), util.toPointer(issuerAki), issuerAkiLen);
 }
@@ -5747,7 +5747,7 @@ export function alljoyn_message_getargs(
 
 export function alljoyn_message_getarg(
   msg: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
-  argN: Deno.PointerValue /* usize */,
+  argN: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */ {
   return libMSAJApi_dll.alljoyn_message_getarg(util.toPointer(msg), argN);
 }
@@ -5836,16 +5836,16 @@ export function alljoyn_message_geterrorname(
 export function alljoyn_message_tostring(
   msg: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
   str: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  buf: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
+  buf: bigint | number /* usize */,
+): bigint | number /* usize */ {
   return libMSAJApi_dll.alljoyn_message_tostring(util.toPointer(msg), util.pstrToFfi(str), buf);
 }
 
 export function alljoyn_message_description(
   msg: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
   str: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  buf: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
+  buf: bigint | number /* usize */,
+): bigint | number /* usize */ {
   return libMSAJApi_dll.alljoyn_message_description(util.toPointer(msg), util.pstrToFfi(str), buf);
 }
 
@@ -5914,7 +5914,7 @@ export function alljoyn_authlistenerasync_destroy(
 export function alljoyn_authlistener_setsharedsecret(
   listener: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_authlistener */,
   sharedSecret: Deno.PointerValue | Uint8Array /* ptr */,
-  sharedSecretSize: Deno.PointerValue /* usize */,
+  sharedSecretSize: bigint | number /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
   return libMSAJApi_dll.alljoyn_authlistener_setsharedsecret(util.toPointer(listener), util.toPointer(sharedSecret), sharedSecretSize);
 }
@@ -6035,13 +6035,13 @@ export function alljoyn_buslistener_destroy(
 
 export function alljoyn_interfacedescription_member_getannotationscount(
   member: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_member */,
-): Deno.PointerValue /* usize */ {
+): bigint | number /* usize */ {
   return libMSAJApi_dll.alljoyn_interfacedescription_member_getannotationscount(util.toPointer(member));
 }
 
 export function alljoyn_interfacedescription_member_getannotationatindex(
   member: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_member */,
-  index: Deno.PointerValue /* usize */,
+  index: bigint | number /* usize */,
   name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   name_size: Deno.PointerValue | Uint8Array /* ptr */,
   value: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
@@ -6062,14 +6062,14 @@ export function alljoyn_interfacedescription_member_getannotation(
 export function alljoyn_interfacedescription_member_getargannotationscount(
   member: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_member */,
   argName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-): Deno.PointerValue /* usize */ {
+): bigint | number /* usize */ {
   return libMSAJApi_dll.alljoyn_interfacedescription_member_getargannotationscount(util.toPointer(member), util.pstrToFfi(argName));
 }
 
 export function alljoyn_interfacedescription_member_getargannotationatindex(
   member: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_member */,
   argName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  index: Deno.PointerValue /* usize */,
+  index: bigint | number /* usize */,
   name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   name_size: Deno.PointerValue | Uint8Array /* ptr */,
   value: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
@@ -6090,13 +6090,13 @@ export function alljoyn_interfacedescription_member_getargannotation(
 
 export function alljoyn_interfacedescription_property_getannotationscount(
   property: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_property */,
-): Deno.PointerValue /* usize */ {
+): bigint | number /* usize */ {
   return libMSAJApi_dll.alljoyn_interfacedescription_property_getannotationscount(util.toPointer(property));
 }
 
 export function alljoyn_interfacedescription_property_getannotationatindex(
   property: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_property */,
-  index: Deno.PointerValue /* usize */,
+  index: bigint | number /* usize */,
   name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   name_size: Deno.PointerValue | Uint8Array /* ptr */,
   value: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
@@ -6139,13 +6139,13 @@ export function alljoyn_interfacedescription_getannotation(
 
 export function alljoyn_interfacedescription_getannotationscount(
   iface: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
-): Deno.PointerValue /* usize */ {
+): bigint | number /* usize */ {
   return libMSAJApi_dll.alljoyn_interfacedescription_getannotationscount(util.toPointer(iface));
 }
 
 export function alljoyn_interfacedescription_getannotationatindex(
   iface: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
-  index: Deno.PointerValue /* usize */,
+  index: bigint | number /* usize */,
   name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   name_size: Deno.PointerValue | Uint8Array /* ptr */,
   value: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
@@ -6196,8 +6196,8 @@ export function alljoyn_interfacedescription_getmemberannotation(
 export function alljoyn_interfacedescription_getmembers(
   iface: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
   members: Deno.PointerValue | Uint8Array /* ptr */,
-  numMembers: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
+  numMembers: bigint | number /* usize */,
+): bigint | number /* usize */ {
   return libMSAJApi_dll.alljoyn_interfacedescription_getmembers(util.toPointer(iface), util.toPointer(members), numMembers);
 }
 
@@ -6260,8 +6260,8 @@ export function alljoyn_interfacedescription_getproperty(
 export function alljoyn_interfacedescription_getproperties(
   iface: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
   props: Deno.PointerValue | Uint8Array /* ptr */,
-  numProps: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
+  numProps: bigint | number /* usize */,
+): bigint | number /* usize */ {
   return libMSAJApi_dll.alljoyn_interfacedescription_getproperties(util.toPointer(iface), util.toPointer(props), numProps);
 }
 
@@ -6315,9 +6315,9 @@ export function alljoyn_interfacedescription_getname(
 export function alljoyn_interfacedescription_introspect(
   iface: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
   str: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  buf: Deno.PointerValue /* usize */,
-  indent: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
+  buf: bigint | number /* usize */,
+  indent: bigint | number /* usize */,
+): bigint | number /* usize */ {
   return libMSAJApi_dll.alljoyn_interfacedescription_introspect(util.toPointer(iface), util.pstrToFfi(str), buf, indent);
 }
 
@@ -6343,16 +6343,16 @@ export function alljoyn_interfacedescription_setdescriptionlanguage(
 export function alljoyn_interfacedescription_getdescriptionlanguages(
   iface: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
   languages: Deno.PointerValue | Uint8Array /* ptr */,
-  size: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
+  size: bigint | number /* usize */,
+): bigint | number /* usize */ {
   return libMSAJApi_dll.alljoyn_interfacedescription_getdescriptionlanguages(util.toPointer(iface), util.toPointer(languages), size);
 }
 
 export function alljoyn_interfacedescription_getdescriptionlanguages2(
   iface: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
   languages: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  languagesSize: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
+  languagesSize: bigint | number /* usize */,
+): bigint | number /* usize */ {
   return libMSAJApi_dll.alljoyn_interfacedescription_getdescriptionlanguages2(util.toPointer(iface), util.pstrToFfi(languages), languagesSize);
 }
 
@@ -6374,9 +6374,9 @@ export function alljoyn_interfacedescription_setdescriptionforlanguage(
 export function alljoyn_interfacedescription_getdescriptionforlanguage(
   iface: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
   description: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  maxLanguageLength: Deno.PointerValue /* usize */,
+  maxLanguageLength: bigint | number /* usize */,
   languageTag: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-): Deno.PointerValue /* usize */ {
+): bigint | number /* usize */ {
   return libMSAJApi_dll.alljoyn_interfacedescription_getdescriptionforlanguage(util.toPointer(iface), util.pstrToFfi(description), maxLanguageLength, util.pstrToFfi(languageTag));
 }
 
@@ -6401,9 +6401,9 @@ export function alljoyn_interfacedescription_getmemberdescriptionforlanguage(
   iface: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
   member: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   description: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  maxLanguageLength: Deno.PointerValue /* usize */,
+  maxLanguageLength: bigint | number /* usize */,
   languageTag: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-): Deno.PointerValue /* usize */ {
+): bigint | number /* usize */ {
   return libMSAJApi_dll.alljoyn_interfacedescription_getmemberdescriptionforlanguage(util.toPointer(iface), util.pstrToFfi(member), util.pstrToFfi(description), maxLanguageLength, util.pstrToFfi(languageTag));
 }
 
@@ -6431,9 +6431,9 @@ export function alljoyn_interfacedescription_getargdescriptionforlanguage(
   member: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   arg: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   description: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  maxLanguageLength: Deno.PointerValue /* usize */,
+  maxLanguageLength: bigint | number /* usize */,
   languageTag: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-): Deno.PointerValue /* usize */ {
+): bigint | number /* usize */ {
   return libMSAJApi_dll.alljoyn_interfacedescription_getargdescriptionforlanguage(util.toPointer(iface), util.pstrToFfi(member), util.pstrToFfi(arg), util.pstrToFfi(description), maxLanguageLength, util.pstrToFfi(languageTag));
 }
 
@@ -6458,9 +6458,9 @@ export function alljoyn_interfacedescription_getpropertydescriptionforlanguage(
   iface: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription */,
   property: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   description: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  maxLanguageLength: Deno.PointerValue /* usize */,
+  maxLanguageLength: bigint | number /* usize */,
   languageTag: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-): Deno.PointerValue /* usize */ {
+): bigint | number /* usize */ {
   return libMSAJApi_dll.alljoyn_interfacedescription_getpropertydescriptionforlanguage(util.toPointer(iface), util.pstrToFfi(property), util.pstrToFfi(description), maxLanguageLength, util.pstrToFfi(languageTag));
 }
 
@@ -6560,7 +6560,7 @@ export function alljoyn_busobject_emitpropertieschanged(
   bus: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_busobject */,
   ifcName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   propNames: Deno.PointerValue | Uint8Array /* ptr */,
-  numProps: Deno.PointerValue /* usize */,
+  numProps: bigint | number /* usize */,
   id: number /* u32 */,
 ): void /* void */ {
   return libMSAJApi_dll.alljoyn_busobject_emitpropertieschanged(util.toPointer(bus), util.pstrToFfi(ifcName), util.toPointer(propNames), numProps, id);
@@ -6569,8 +6569,8 @@ export function alljoyn_busobject_emitpropertieschanged(
 export function alljoyn_busobject_getname(
   bus: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_busobject */,
   buffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  bufferSz: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
+  bufferSz: bigint | number /* usize */,
+): bigint | number /* usize */ {
   return libMSAJApi_dll.alljoyn_busobject_getname(util.toPointer(bus), util.pstrToFfi(buffer), bufferSz);
 }
 
@@ -6593,7 +6593,7 @@ export function alljoyn_busobject_addmethodhandler(
 export function alljoyn_busobject_addmethodhandlers(
   bus: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_busobject */,
   entries: Deno.PointerValue | Uint8Array /* ptr */,
-  numEntries: Deno.PointerValue /* usize */,
+  numEntries: bigint | number /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
   return libMSAJApi_dll.alljoyn_busobject_addmethodhandlers(util.toPointer(bus), util.toPointer(entries), numEntries);
 }
@@ -6602,7 +6602,7 @@ export function alljoyn_busobject_methodreply_args(
   bus: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_busobject */,
   msg: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
   args: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  numArgs: Deno.PointerValue /* usize */,
+  numArgs: bigint | number /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
   return libMSAJApi_dll.alljoyn_busobject_methodreply_args(util.toPointer(bus), util.toPointer(msg), util.toPointer(args), numArgs);
 }
@@ -6636,7 +6636,7 @@ export function alljoyn_busobject_signal(
   sessionId: number /* u32 */,
   signal: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_member */,
   args: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  numArgs: Deno.PointerValue /* usize */,
+  numArgs: bigint | number /* usize */,
   timeToLive: number /* u16 */,
   flags: number /* u8 */,
   msg: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
@@ -6667,8 +6667,8 @@ export function alljoyn_busobject_issecure(
 export function alljoyn_busobject_getannouncedinterfacenames(
   bus: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_busobject */,
   interfaces: Deno.PointerValue | Uint8Array /* ptr */,
-  numInterfaces: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
+  numInterfaces: bigint | number /* usize */,
+): bigint | number /* usize */ {
   return libMSAJApi_dll.alljoyn_busobject_getannouncedinterfacenames(util.toPointer(bus), util.toPointer(interfaces), numInterfaces);
 }
 
@@ -6728,8 +6728,8 @@ export function alljoyn_proxybusobject_addinterface_by_name(
 export function alljoyn_proxybusobject_getchildren(
   proxyObj: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */,
   children: Deno.PointerValue | Uint8Array /* ptr */,
-  numChildren: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
+  numChildren: bigint | number /* usize */,
+): bigint | number /* usize */ {
   return libMSAJApi_dll.alljoyn_proxybusobject_getchildren(util.toPointer(proxyObj), util.toPointer(children), numChildren);
 }
 
@@ -6819,7 +6819,7 @@ export function alljoyn_proxybusobject_registerpropertieschangedlistener(
   proxyObj: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */,
   iface: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   properties: Deno.PointerValue | Uint8Array /* ptr */,
-  numProperties: Deno.PointerValue /* usize */,
+  numProperties: bigint | number /* usize */,
   callback: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject_listener_propertieschanged_ptr */,
   context: Deno.PointerValue | Uint8Array /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
@@ -6851,7 +6851,7 @@ export function alljoyn_proxybusobject_methodcall(
   ifaceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   methodName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   args: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  numArgs: Deno.PointerValue /* usize */,
+  numArgs: bigint | number /* usize */,
   replyMsg: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
   timeout: number /* u32 */,
   flags: number /* u8 */,
@@ -6863,7 +6863,7 @@ export function alljoyn_proxybusobject_methodcall_member(
   proxyObj: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */,
   method: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_member */,
   args: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  numArgs: Deno.PointerValue /* usize */,
+  numArgs: bigint | number /* usize */,
   replyMsg: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_message */,
   timeout: number /* u32 */,
   flags: number /* u8 */,
@@ -6876,7 +6876,7 @@ export function alljoyn_proxybusobject_methodcall_noreply(
   ifaceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   methodName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   args: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  numArgs: Deno.PointerValue /* usize */,
+  numArgs: bigint | number /* usize */,
   flags: number /* u8 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
   return libMSAJApi_dll.alljoyn_proxybusobject_methodcall_noreply(util.toPointer(proxyObj), util.pstrToFfi(ifaceName), util.pstrToFfi(methodName), util.toPointer(args), numArgs, flags);
@@ -6886,7 +6886,7 @@ export function alljoyn_proxybusobject_methodcall_member_noreply(
   proxyObj: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */,
   method: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_member */,
   args: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  numArgs: Deno.PointerValue /* usize */,
+  numArgs: bigint | number /* usize */,
   flags: number /* u8 */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
   return libMSAJApi_dll.alljoyn_proxybusobject_methodcall_member_noreply(util.toPointer(proxyObj), util.toPointer(method), util.toPointer(args), numArgs, flags);
@@ -6898,7 +6898,7 @@ export function alljoyn_proxybusobject_methodcallasync(
   methodName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   replyFunc: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_messagereceiver_replyhandler_ptr */,
   args: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  numArgs: Deno.PointerValue /* usize */,
+  numArgs: bigint | number /* usize */,
   context: Deno.PointerValue | Uint8Array /* ptr */,
   timeout: number /* u32 */,
   flags: number /* u8 */,
@@ -6911,7 +6911,7 @@ export function alljoyn_proxybusobject_methodcallasync_member(
   method: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_interfacedescription_member */,
   replyFunc: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_messagereceiver_replyhandler_ptr */,
   args: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_msgarg */,
-  numArgs: Deno.PointerValue /* usize */,
+  numArgs: bigint | number /* usize */,
   context: Deno.PointerValue | Uint8Array /* ptr */,
   timeout: number /* u32 */,
   flags: number /* u8 */,
@@ -6951,8 +6951,8 @@ export function alljoyn_proxybusobject_getinterface(
 export function alljoyn_proxybusobject_getinterfaces(
   proxyObj: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_proxybusobject */,
   ifaces: Deno.PointerValue | Uint8Array /* ptr */,
-  numIfaces: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
+  numIfaces: bigint | number /* usize */,
+): bigint | number /* usize */ {
   return libMSAJApi_dll.alljoyn_proxybusobject_getinterfaces(util.toPointer(proxyObj), util.toPointer(ifaces), numIfaces);
 }
 
@@ -7323,8 +7323,8 @@ export function alljoyn_busattachment_createinterfacesfromxml(
 export function alljoyn_busattachment_getinterfaces(
   bus: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   ifaces: Deno.PointerValue | Uint8Array /* ptr */,
-  numIfaces: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
+  numIfaces: bigint | number /* usize */,
+): bigint | number /* usize */ {
   return libMSAJApi_dll.alljoyn_busattachment_getinterfaces(util.toPointer(bus), util.toPointer(ifaces), numIfaces);
 }
 
@@ -7614,7 +7614,7 @@ export function alljoyn_busattachment_unregisterallaboutlisteners(
 export function alljoyn_busattachment_whoimplements_interfaces(
   bus: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   implementsInterfaces: Deno.PointerValue | Uint8Array /* ptr */,
-  numberInterfaces: Deno.PointerValue /* usize */,
+  numberInterfaces: bigint | number /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
   return libMSAJApi_dll.alljoyn_busattachment_whoimplements_interfaces(util.toPointer(bus), util.toPointer(implementsInterfaces), numberInterfaces);
 }
@@ -7629,7 +7629,7 @@ export function alljoyn_busattachment_whoimplements_interface(
 export function alljoyn_busattachment_cancelwhoimplements_interfaces(
   bus: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   implementsInterfaces: Deno.PointerValue | Uint8Array /* ptr */,
-  numberInterfaces: Deno.PointerValue /* usize */,
+  numberInterfaces: bigint | number /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
   return libMSAJApi_dll.alljoyn_busattachment_cancelwhoimplements_interfaces(util.toPointer(bus), util.toPointer(implementsInterfaces), numberInterfaces);
 }
@@ -7782,8 +7782,8 @@ export function alljoyn_aboutobjectdescription_destroy(
 export function alljoyn_aboutobjectdescription_getpaths(
   description: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutobjectdescription */,
   paths: Deno.PointerValue | Uint8Array /* ptr */,
-  numPaths: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
+  numPaths: bigint | number /* usize */,
+): bigint | number /* usize */ {
   return libMSAJApi_dll.alljoyn_aboutobjectdescription_getpaths(util.toPointer(description), util.toPointer(paths), numPaths);
 }
 
@@ -7791,8 +7791,8 @@ export function alljoyn_aboutobjectdescription_getinterfaces(
   description: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutobjectdescription */,
   path: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   interfaces: Deno.PointerValue | Uint8Array /* ptr */,
-  numInterfaces: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
+  numInterfaces: bigint | number /* usize */,
+): bigint | number /* usize */ {
   return libMSAJApi_dll.alljoyn_aboutobjectdescription_getinterfaces(util.toPointer(description), util.pstrToFfi(path), util.toPointer(interfaces), numInterfaces);
 }
 
@@ -7800,8 +7800,8 @@ export function alljoyn_aboutobjectdescription_getinterfacepaths(
   description: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_aboutobjectdescription */,
   interfaceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   paths: Deno.PointerValue | Uint8Array /* ptr */,
-  numPaths: Deno.PointerValue /* usize */,
-): Deno.PointerValue /* usize */ {
+  numPaths: bigint | number /* usize */,
+): bigint | number /* usize */ {
   return libMSAJApi_dll.alljoyn_aboutobjectdescription_getinterfacepaths(util.toPointer(description), util.pstrToFfi(interfaceName), util.toPointer(paths), numPaths);
 }
 
@@ -8028,7 +8028,7 @@ export function alljoyn_observerlistener_destroy(
 export function alljoyn_observer_create(
   bus: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_busattachment */,
   mandatoryInterfaces: Deno.PointerValue | Uint8Array /* ptr */,
-  numMandatoryInterfaces: Deno.PointerValue /* usize */,
+  numMandatoryInterfaces: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_observer */ {
   return libMSAJApi_dll.alljoyn_observer_create(util.toPointer(bus), util.toPointer(mandatoryInterfaces), numMandatoryInterfaces);
 }
@@ -8111,10 +8111,10 @@ export function alljoyn_securityapplicationproxy_claim(
   caKey: Deno.PointerValue | Uint8Array /* ptr */,
   identityCertificateChain: Deno.PointerValue | Uint8Array /* ptr */,
   groupId: Deno.PointerValue | Uint8Array /* ptr */,
-  groupSize: Deno.PointerValue /* usize */,
+  groupSize: bigint | number /* usize */,
   groupAuthority: Deno.PointerValue | Uint8Array /* ptr */,
   manifestsXmls: Deno.PointerValue | Uint8Array /* ptr */,
-  manifestsCount: Deno.PointerValue /* usize */,
+  manifestsCount: bigint | number /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
   return libMSAJApi_dll.alljoyn_securityapplicationproxy_claim(util.toPointer(proxy), util.toPointer(caKey), util.toPointer(identityCertificateChain), util.toPointer(groupId), groupSize, util.toPointer(groupAuthority), util.toPointer(manifestsXmls), manifestsCount);
 }
@@ -8184,7 +8184,7 @@ export function alljoyn_securityapplicationproxy_updateidentity(
   proxy: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.AllJoyn.alljoyn_securityapplicationproxy */,
   identityCertificateChain: Deno.PointerValue | Uint8Array /* ptr */,
   manifestsXmls: Deno.PointerValue | Uint8Array /* ptr */,
-  manifestsCount: Deno.PointerValue /* usize */,
+  manifestsCount: bigint | number /* usize */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
   return libMSAJApi_dll.alljoyn_securityapplicationproxy_updateidentity(util.toPointer(proxy), util.toPointer(identityCertificateChain), util.toPointer(manifestsXmls), manifestsCount);
 }
@@ -8267,7 +8267,7 @@ export function alljoyn_securityapplicationproxy_setmanifestsignature(
   unsignedManifestXml: Deno.PointerValue | Uint8Array /* ptr */,
   identityCertificatePem: Deno.PointerValue | Uint8Array /* ptr */,
   signature: Deno.PointerValue | Uint8Array /* ptr */,
-  signatureSize: Deno.PointerValue /* usize */,
+  signatureSize: bigint | number /* usize */,
   signedManifestXml: Deno.PointerValue | Uint8Array /* ptr */,
 ): QStatus /* Windows.Win32.Devices.AllJoyn.QStatus */ {
   return libMSAJApi_dll.alljoyn_securityapplicationproxy_setmanifestsignature(util.toPointer(unsignedManifestXml), util.toPointer(identityCertificatePem), util.toPointer(signature), signatureSize, util.toPointer(signedManifestXml));

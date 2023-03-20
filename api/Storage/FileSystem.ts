@@ -1069,17 +1069,17 @@ export class FILE_DISPOSITION_INFOView {
   }
 }
 
-export type FindFileHandle = Deno.PointerValue;
+export type FindFileHandle = bigint | number;
 
-export type FindFileNameHandle = Deno.PointerValue;
+export type FindFileNameHandle = bigint | number;
 
-export type FindStreamHandle = Deno.PointerValue;
+export type FindStreamHandle = bigint | number;
 
-export type FindChangeNotificationHandle = Deno.PointerValue;
+export type FindChangeNotificationHandle = bigint | number;
 
-export type FindVolumeHandle = Deno.PointerValue;
+export type FindVolumeHandle = bigint | number;
 
-export type FindVolumeMointPointHandle = Deno.PointerValue;
+export type FindVolumeMointPointHandle = bigint | number;
 
 /**
  * Windows.Win32.Foundation.FILETIME (size: 8)
@@ -1489,9 +1489,9 @@ export class WIN32_FIND_DATAWView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -1517,22 +1517,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -1611,7 +1611,7 @@ export interface LARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue;
   /** i64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: bigint | number;
 }
 
 export const sizeofLARGE_INTEGER = 24;
@@ -1651,7 +1651,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  get QuadPart(): Deno.PointerValue {
+  get QuadPart(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -1666,7 +1666,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  set QuadPart(value: Deno.PointerValue) {
+  set QuadPart(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -2373,27 +2373,27 @@ export class KCRM_PROTOCOL_BLOBView {
  */
 export interface DISK_SPACE_INFORMATION {
   /** u64 */
-  ActualTotalAllocationUnits: Deno.PointerValue;
+  ActualTotalAllocationUnits: bigint | number;
   /** u64 */
-  ActualAvailableAllocationUnits: Deno.PointerValue;
+  ActualAvailableAllocationUnits: bigint | number;
   /** u64 */
-  ActualPoolUnavailableAllocationUnits: Deno.PointerValue;
+  ActualPoolUnavailableAllocationUnits: bigint | number;
   /** u64 */
-  CallerTotalAllocationUnits: Deno.PointerValue;
+  CallerTotalAllocationUnits: bigint | number;
   /** u64 */
-  CallerAvailableAllocationUnits: Deno.PointerValue;
+  CallerAvailableAllocationUnits: bigint | number;
   /** u64 */
-  CallerPoolUnavailableAllocationUnits: Deno.PointerValue;
+  CallerPoolUnavailableAllocationUnits: bigint | number;
   /** u64 */
-  UsedAllocationUnits: Deno.PointerValue;
+  UsedAllocationUnits: bigint | number;
   /** u64 */
-  TotalReservedAllocationUnits: Deno.PointerValue;
+  TotalReservedAllocationUnits: bigint | number;
   /** u64 */
-  VolumeStorageReserveAllocationUnits: Deno.PointerValue;
+  VolumeStorageReserveAllocationUnits: bigint | number;
   /** u64 */
-  AvailableCommittedAllocationUnits: Deno.PointerValue;
+  AvailableCommittedAllocationUnits: bigint | number;
   /** u64 */
-  PoolAvailableAllocationUnits: Deno.PointerValue;
+  PoolAvailableAllocationUnits: bigint | number;
   /** u32 */
   SectorsPerAllocationUnit: number;
   /** u32 */
@@ -2445,57 +2445,57 @@ export class DISK_SPACE_INFORMATIONView {
   }
 
   // 0x00: u64
-  get ActualTotalAllocationUnits(): Deno.PointerValue {
+  get ActualTotalAllocationUnits(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get ActualAvailableAllocationUnits(): Deno.PointerValue {
+  get ActualAvailableAllocationUnits(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get ActualPoolUnavailableAllocationUnits(): Deno.PointerValue {
+  get ActualPoolUnavailableAllocationUnits(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get CallerTotalAllocationUnits(): Deno.PointerValue {
+  get CallerTotalAllocationUnits(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get CallerAvailableAllocationUnits(): Deno.PointerValue {
+  get CallerAvailableAllocationUnits(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: u64
-  get CallerPoolUnavailableAllocationUnits(): Deno.PointerValue {
+  get CallerPoolUnavailableAllocationUnits(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: u64
-  get UsedAllocationUnits(): Deno.PointerValue {
+  get UsedAllocationUnits(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: u64
-  get TotalReservedAllocationUnits(): Deno.PointerValue {
+  get TotalReservedAllocationUnits(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
   // 0x40: u64
-  get VolumeStorageReserveAllocationUnits(): Deno.PointerValue {
+  get VolumeStorageReserveAllocationUnits(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
   // 0x48: u64
-  get AvailableCommittedAllocationUnits(): Deno.PointerValue {
+  get AvailableCommittedAllocationUnits(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
   // 0x50: u64
-  get PoolAvailableAllocationUnits(): Deno.PointerValue {
+  get PoolAvailableAllocationUnits(): bigint | number {
     return Number(this.view.getBigUint64(80, true));
   }
 
@@ -2510,57 +2510,57 @@ export class DISK_SPACE_INFORMATIONView {
   }
 
   // 0x00: u64
-  set ActualTotalAllocationUnits(value: Deno.PointerValue) {
+  set ActualTotalAllocationUnits(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set ActualAvailableAllocationUnits(value: Deno.PointerValue) {
+  set ActualAvailableAllocationUnits(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set ActualPoolUnavailableAllocationUnits(value: Deno.PointerValue) {
+  set ActualPoolUnavailableAllocationUnits(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set CallerTotalAllocationUnits(value: Deno.PointerValue) {
+  set CallerTotalAllocationUnits(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set CallerAvailableAllocationUnits(value: Deno.PointerValue) {
+  set CallerAvailableAllocationUnits(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: u64
-  set CallerPoolUnavailableAllocationUnits(value: Deno.PointerValue) {
+  set CallerPoolUnavailableAllocationUnits(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: u64
-  set UsedAllocationUnits(value: Deno.PointerValue) {
+  set UsedAllocationUnits(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: u64
-  set TotalReservedAllocationUnits(value: Deno.PointerValue) {
+  set TotalReservedAllocationUnits(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
   // 0x40: u64
-  set VolumeStorageReserveAllocationUnits(value: Deno.PointerValue) {
+  set VolumeStorageReserveAllocationUnits(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
   // 0x48: u64
-  set AvailableCommittedAllocationUnits(value: Deno.PointerValue) {
+  set AvailableCommittedAllocationUnits(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
   // 0x50: u64
-  set PoolAvailableAllocationUnits(value: Deno.PointerValue) {
+  set PoolAvailableAllocationUnits(value: bigint | number) {
     this.view.setBigUint64(80, BigInt(value), true);
   }
 
@@ -2865,7 +2865,7 @@ export class BY_HANDLE_FILE_INFORMATIONView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.Storage.FileSystem.CREATEFILE2_EXTENDED_PARAMETERS (size: 32)
@@ -10791,7 +10791,7 @@ export class MediaLabelInfoView {
  */
 export interface CLS_LSN {
   /** u64 */
-  Internal: Deno.PointerValue;
+  Internal: bigint | number;
 }
 
 export const sizeofCLS_LSN = 8;
@@ -10815,12 +10815,12 @@ export class CLS_LSNView {
   }
 
   // 0x00: u64
-  get Internal(): Deno.PointerValue {
+  get Internal(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: u64
-  set Internal(value: Deno.PointerValue) {
+  set Internal(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -10942,15 +10942,15 @@ export class CLS_WRITE_ENTRYView {
  */
 export interface CLS_INFORMATION {
   /** i64 */
-  TotalAvailable: Deno.PointerValue;
+  TotalAvailable: bigint | number;
   /** i64 */
-  CurrentAvailable: Deno.PointerValue;
+  CurrentAvailable: bigint | number;
   /** i64 */
-  TotalReservation: Deno.PointerValue;
+  TotalReservation: bigint | number;
   /** u64 */
-  BaseFileSize: Deno.PointerValue;
+  BaseFileSize: bigint | number;
   /** u64 */
-  ContainerSize: Deno.PointerValue;
+  ContainerSize: bigint | number;
   /** u32 */
   TotalContainers: number;
   /** u32 */
@@ -11030,27 +11030,27 @@ export class CLS_INFORMATIONView {
   }
 
   // 0x00: i64
-  get TotalAvailable(): Deno.PointerValue {
+  get TotalAvailable(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: i64
-  get CurrentAvailable(): Deno.PointerValue {
+  get CurrentAvailable(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: i64
-  get TotalReservation(): Deno.PointerValue {
+  get TotalReservation(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: u64
-  get BaseFileSize(): Deno.PointerValue {
+  get BaseFileSize(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get ContainerSize(): Deno.PointerValue {
+  get ContainerSize(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -11121,27 +11121,27 @@ export class CLS_INFORMATIONView {
   }
 
   // 0x00: i64
-  set TotalAvailable(value: Deno.PointerValue) {
+  set TotalAvailable(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: i64
-  set CurrentAvailable(value: Deno.PointerValue) {
+  set CurrentAvailable(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: i64
-  set TotalReservation(value: Deno.PointerValue) {
+  set TotalReservation(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set BaseFileSize(value: Deno.PointerValue) {
+  set BaseFileSize(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set ContainerSize(value: Deno.PointerValue) {
+  set ContainerSize(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -11390,13 +11390,13 @@ export interface CLS_CONTAINER_INFORMATION {
   /** u32 */
   FileAttributes: number;
   /** u64 */
-  CreationTime: Deno.PointerValue;
+  CreationTime: bigint | number;
   /** u64 */
-  LastAccessTime: Deno.PointerValue;
+  LastAccessTime: bigint | number;
   /** u64 */
-  LastWriteTime: Deno.PointerValue;
+  LastWriteTime: bigint | number;
   /** i64 */
-  ContainerSize: Deno.PointerValue;
+  ContainerSize: bigint | number;
   /** u32 */
   FileNameActualLength: number;
   /** u32 */
@@ -11461,22 +11461,22 @@ export class CLS_CONTAINER_INFORMATIONView {
   // 0x04: pad4
 
   // 0x08: u64
-  get CreationTime(): Deno.PointerValue {
+  get CreationTime(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get LastAccessTime(): Deno.PointerValue {
+  get LastAccessTime(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get LastWriteTime(): Deno.PointerValue {
+  get LastWriteTime(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: i64
-  get ContainerSize(): Deno.PointerValue {
+  get ContainerSize(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
@@ -11521,22 +11521,22 @@ export class CLS_CONTAINER_INFORMATIONView {
   // 0x04: pad4
 
   // 0x08: u64
-  set CreationTime(value: Deno.PointerValue) {
+  set CreationTime(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set LastAccessTime(value: Deno.PointerValue) {
+  set LastAccessTime(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set LastWriteTime(value: Deno.PointerValue) {
+  set LastWriteTime(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: i64
-  set ContainerSize(value: Deno.PointerValue) {
+  set ContainerSize(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 
@@ -11680,13 +11680,13 @@ export interface CLS_IO_STATISTICS {
   /** Windows.Win32.Storage.FileSystem.CLS_IO_STATISTICS_HEADER */
   hdrIoStats: Uint8Array | Deno.PointerValue;
   /** u64 */
-  cFlush: Deno.PointerValue;
+  cFlush: bigint | number;
   /** u64 */
-  cbFlush: Deno.PointerValue;
+  cbFlush: bigint | number;
   /** u64 */
-  cMetaFlush: Deno.PointerValue;
+  cMetaFlush: bigint | number;
   /** u64 */
-  cbMetaFlush: Deno.PointerValue;
+  cbMetaFlush: bigint | number;
 }
 
 export const sizeofCLS_IO_STATISTICS = 40;
@@ -11724,22 +11724,22 @@ export class CLS_IO_STATISTICSView {
   }
 
   // 0x08: u64
-  get cFlush(): Deno.PointerValue {
+  get cFlush(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get cbFlush(): Deno.PointerValue {
+  get cbFlush(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get cMetaFlush(): Deno.PointerValue {
+  get cMetaFlush(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get cbMetaFlush(): Deno.PointerValue {
+  get cbMetaFlush(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -11749,22 +11749,22 @@ export class CLS_IO_STATISTICSView {
   }
 
   // 0x08: u64
-  set cFlush(value: Deno.PointerValue) {
+  set cFlush(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set cbFlush(value: Deno.PointerValue) {
+  set cbFlush(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set cMetaFlush(value: Deno.PointerValue) {
+  set cMetaFlush(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set cbMetaFlush(value: Deno.PointerValue) {
+  set cbMetaFlush(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 }
@@ -11905,9 +11905,9 @@ export class CLS_SCAN_CONTEXTView {
  */
 export interface CLS_ARCHIVE_DESCRIPTOR {
   /** u64 */
-  coffLow: Deno.PointerValue;
+  coffLow: bigint | number;
   /** u64 */
-  coffHigh: Deno.PointerValue;
+  coffHigh: bigint | number;
   /** Windows.Win32.Storage.FileSystem.CLS_CONTAINER_INFORMATION */
   infoContainer: Uint8Array | Deno.PointerValue;
 }
@@ -11937,12 +11937,12 @@ export class CLS_ARCHIVE_DESCRIPTORView {
   }
 
   // 0x00: u64
-  get coffLow(): Deno.PointerValue {
+  get coffLow(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get coffHigh(): Deno.PointerValue {
+  get coffHigh(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -11953,12 +11953,12 @@ export class CLS_ARCHIVE_DESCRIPTORView {
   }
 
   // 0x00: u64
-  set coffLow(value: Deno.PointerValue) {
+  set coffLow(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set coffHigh(value: Deno.PointerValue) {
+  set coffHigh(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -12358,7 +12358,7 @@ export class _NewContainerPrefix_e__StructView {
  */
 export interface _NewContainerSuffix_e__Struct {
   /** u64 */
-  NextContainerSuffix: Deno.PointerValue;
+  NextContainerSuffix: bigint | number;
 }
 
 export const sizeof_NewContainerSuffix_e__Struct = 8;
@@ -12382,12 +12382,12 @@ export class _NewContainerSuffix_e__StructView {
   }
 
   // 0x00: u64
-  get NextContainerSuffix(): Deno.PointerValue {
+  get NextContainerSuffix(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: u64
-  set NextContainerSuffix(value: Deno.PointerValue) {
+  set NextContainerSuffix(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -12890,11 +12890,11 @@ export class LOG_MANAGEMENT_CALLBACKSView {
  */
 export interface DISKQUOTA_USER_INFORMATION {
   /** i64 */
-  QuotaUsed: Deno.PointerValue;
+  QuotaUsed: bigint | number;
   /** i64 */
-  QuotaThreshold: Deno.PointerValue;
+  QuotaThreshold: bigint | number;
   /** i64 */
-  QuotaLimit: Deno.PointerValue;
+  QuotaLimit: bigint | number;
 }
 
 export const sizeofDISKQUOTA_USER_INFORMATION = 24;
@@ -12922,32 +12922,32 @@ export class DISKQUOTA_USER_INFORMATIONView {
   }
 
   // 0x00: i64
-  get QuotaUsed(): Deno.PointerValue {
+  get QuotaUsed(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: i64
-  get QuotaThreshold(): Deno.PointerValue {
+  get QuotaThreshold(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: i64
-  get QuotaLimit(): Deno.PointerValue {
+  get QuotaLimit(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x00: i64
-  set QuotaUsed(value: Deno.PointerValue) {
+  set QuotaUsed(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: i64
-  set QuotaThreshold(value: Deno.PointerValue) {
+  set QuotaThreshold(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: i64
-  set QuotaLimit(value: Deno.PointerValue) {
+  set QuotaLimit(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -14445,7 +14445,7 @@ export interface TXF_LOG_RECORD_WRITE {
   /** System.Guid */
   KtmGuid: Uint8Array | Deno.PointerValue;
   /** i64 */
-  ByteOffsetInFile: Deno.PointerValue;
+  ByteOffsetInFile: bigint | number;
   /** u32 */
   NumBytesWritten: number;
   /** u32 */
@@ -14532,7 +14532,7 @@ export class TXF_LOG_RECORD_WRITEView {
   }
 
   // 0x20: i64
-  get ByteOffsetInFile(): Deno.PointerValue {
+  get ByteOffsetInFile(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
@@ -14589,7 +14589,7 @@ export class TXF_LOG_RECORD_WRITEView {
   }
 
   // 0x20: i64
-  set ByteOffsetInFile(value: Deno.PointerValue) {
+  set ByteOffsetInFile(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 
@@ -14631,7 +14631,7 @@ export interface TXF_LOG_RECORD_TRUNCATE {
   /** System.Guid */
   KtmGuid: Uint8Array | Deno.PointerValue;
   /** i64 */
-  NewFileSize: Deno.PointerValue;
+  NewFileSize: bigint | number;
   /** u32 */
   FileNameLength: number;
   /** u32 */
@@ -14710,7 +14710,7 @@ export class TXF_LOG_RECORD_TRUNCATEView {
   }
 
   // 0x20: i64
-  get NewFileSize(): Deno.PointerValue {
+  get NewFileSize(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
@@ -14757,7 +14757,7 @@ export class TXF_LOG_RECORD_TRUNCATEView {
   }
 
   // 0x20: i64
-  set NewFileSize(value: Deno.PointerValue) {
+  set NewFileSize(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 
@@ -15025,7 +15025,7 @@ export class VOLUME_NUMBERView {
  */
 export interface VOLUME_LOGICAL_OFFSET {
   /** i64 */
-  LogicalOffset: Deno.PointerValue;
+  LogicalOffset: bigint | number;
 }
 
 export const sizeofVOLUME_LOGICAL_OFFSET = 8;
@@ -15049,12 +15049,12 @@ export class VOLUME_LOGICAL_OFFSETView {
   }
 
   // 0x00: i64
-  get LogicalOffset(): Deno.PointerValue {
+  get LogicalOffset(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x00: i64
-  set LogicalOffset(value: Deno.PointerValue) {
+  set LogicalOffset(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 }
@@ -15066,7 +15066,7 @@ export interface VOLUME_PHYSICAL_OFFSET {
   /** u32 */
   DiskNumber: number;
   /** i64 */
-  Offset: Deno.PointerValue;
+  Offset: bigint | number;
 }
 
 export const sizeofVOLUME_PHYSICAL_OFFSET = 16;
@@ -15100,7 +15100,7 @@ export class VOLUME_PHYSICAL_OFFSETView {
   // 0x04: pad4
 
   // 0x08: i64
-  get Offset(): Deno.PointerValue {
+  get Offset(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -15112,7 +15112,7 @@ export class VOLUME_PHYSICAL_OFFSETView {
   // 0x04: pad4
 
   // 0x08: i64
-  set Offset(value: Deno.PointerValue) {
+  set Offset(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -15249,7 +15249,7 @@ export class VOLUME_READ_PLEX_INPUTView {
  */
 export interface VOLUME_SET_GPT_ATTRIBUTES_INFORMATION {
   /** u64 */
-  GptAttributes: Deno.PointerValue;
+  GptAttributes: bigint | number;
   /** Windows.Win32.Foundation.BOOLEAN */
   RevertOnClose: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
@@ -15290,7 +15290,7 @@ export class VOLUME_SET_GPT_ATTRIBUTES_INFORMATIONView {
   }
 
   // 0x00: u64
-  get GptAttributes(): Deno.PointerValue {
+  get GptAttributes(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -15319,7 +15319,7 @@ export class VOLUME_SET_GPT_ATTRIBUTES_INFORMATIONView {
   // 0x1e: pad2
 
   // 0x00: u64
-  set GptAttributes(value: Deno.PointerValue) {
+  set GptAttributes(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -15355,9 +15355,9 @@ export interface VOLUME_GET_BC_PROPERTIES_INPUT {
   /** u32 */
   Reserved1: number;
   /** u64 */
-  LowestByteOffset: Deno.PointerValue;
+  LowestByteOffset: bigint | number;
   /** u64 */
-  HighestByteOffset: Deno.PointerValue;
+  HighestByteOffset: bigint | number;
   /** u32 */
   AccessType: number;
   /** u32 */
@@ -15405,12 +15405,12 @@ export class VOLUME_GET_BC_PROPERTIES_INPUTView {
   }
 
   // 0x08: u64
-  get LowestByteOffset(): Deno.PointerValue {
+  get LowestByteOffset(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get HighestByteOffset(): Deno.PointerValue {
+  get HighestByteOffset(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -15435,12 +15435,12 @@ export class VOLUME_GET_BC_PROPERTIES_INPUTView {
   }
 
   // 0x08: u64
-  set LowestByteOffset(value: Deno.PointerValue) {
+  set LowestByteOffset(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set HighestByteOffset(value: Deno.PointerValue) {
+  set HighestByteOffset(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -15464,13 +15464,13 @@ export interface VOLUME_GET_BC_PROPERTIES_OUTPUT {
   /** u32 */
   MinimumPeriod: number;
   /** u64 */
-  MaximumRequestSize: Deno.PointerValue;
+  MaximumRequestSize: bigint | number;
   /** u32 */
   EstimatedTimePerRequest: number;
   /** u32 */
   NumOutStandingRequests: number;
   /** u64 */
-  RequestSize: Deno.PointerValue;
+  RequestSize: bigint | number;
 }
 
 export const sizeofVOLUME_GET_BC_PROPERTIES_OUTPUT = 32;
@@ -15514,7 +15514,7 @@ export class VOLUME_GET_BC_PROPERTIES_OUTPUTView {
   }
 
   // 0x08: u64
-  get MaximumRequestSize(): Deno.PointerValue {
+  get MaximumRequestSize(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -15529,7 +15529,7 @@ export class VOLUME_GET_BC_PROPERTIES_OUTPUTView {
   }
 
   // 0x18: u64
-  get RequestSize(): Deno.PointerValue {
+  get RequestSize(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -15544,7 +15544,7 @@ export class VOLUME_GET_BC_PROPERTIES_OUTPUTView {
   }
 
   // 0x08: u64
-  set MaximumRequestSize(value: Deno.PointerValue) {
+  set MaximumRequestSize(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -15559,7 +15559,7 @@ export class VOLUME_GET_BC_PROPERTIES_OUTPUTView {
   }
 
   // 0x18: u64
-  set RequestSize(value: Deno.PointerValue) {
+  set RequestSize(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 }
@@ -15581,9 +15581,9 @@ export interface VOLUME_ALLOCATE_BC_STREAM_INPUT {
   /** array */
   Reserved1: Deno.PointerValue;
   /** u64 */
-  LowestByteOffset: Deno.PointerValue;
+  LowestByteOffset: bigint | number;
   /** u64 */
-  HighestByteOffset: Deno.PointerValue;
+  HighestByteOffset: bigint | number;
   /** u32 */
   AccessType: number;
   /** u32 */
@@ -15665,12 +15665,12 @@ export class VOLUME_ALLOCATE_BC_STREAM_INPUTView {
   }
 
   // 0x28: u64
-  get LowestByteOffset(): Deno.PointerValue {
+  get LowestByteOffset(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: u64
-  get HighestByteOffset(): Deno.PointerValue {
+  get HighestByteOffset(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -15717,12 +15717,12 @@ export class VOLUME_ALLOCATE_BC_STREAM_INPUTView {
   }
 
   // 0x28: u64
-  set LowestByteOffset(value: Deno.PointerValue) {
+  set LowestByteOffset(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: u64
-  set HighestByteOffset(value: Deno.PointerValue) {
+  set HighestByteOffset(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
@@ -15742,7 +15742,7 @@ export class VOLUME_ALLOCATE_BC_STREAM_INPUTView {
  */
 export interface VOLUME_ALLOCATE_BC_STREAM_OUTPUT {
   /** u64 */
-  RequestSize: Deno.PointerValue;
+  RequestSize: bigint | number;
   /** u32 */
   NumOutStandingRequests: number;
 }
@@ -15771,7 +15771,7 @@ export class VOLUME_ALLOCATE_BC_STREAM_OUTPUTView {
   }
 
   // 0x00: u64
-  get RequestSize(): Deno.PointerValue {
+  get RequestSize(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -15783,7 +15783,7 @@ export class VOLUME_ALLOCATE_BC_STREAM_OUTPUTView {
   // 0x0c: pad4
 
   // 0x00: u64
-  set RequestSize(value: Deno.PointerValue) {
+  set RequestSize(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -15800,9 +15800,9 @@ export class VOLUME_ALLOCATE_BC_STREAM_OUTPUTView {
  */
 export interface FILE_EXTENT {
   /** u64 */
-  VolumeOffset: Deno.PointerValue;
+  VolumeOffset: bigint | number;
   /** u64 */
-  ExtentLength: Deno.PointerValue;
+  ExtentLength: bigint | number;
 }
 
 export const sizeofFILE_EXTENT = 16;
@@ -15828,22 +15828,22 @@ export class FILE_EXTENTView {
   }
 
   // 0x00: u64
-  get VolumeOffset(): Deno.PointerValue {
+  get VolumeOffset(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get ExtentLength(): Deno.PointerValue {
+  get ExtentLength(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set VolumeOffset(value: Deno.PointerValue) {
+  set VolumeOffset(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set ExtentLength(value: Deno.PointerValue) {
+  set ExtentLength(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -15925,7 +15925,7 @@ export interface VOLUME_ALLOCATION_HINT_INPUT {
   /** u32 */
   NumberOfClusters: number;
   /** i64 */
-  StartingClusterNumber: Deno.PointerValue;
+  StartingClusterNumber: bigint | number;
 }
 
 export const sizeofVOLUME_ALLOCATION_HINT_INPUT = 16;
@@ -15963,7 +15963,7 @@ export class VOLUME_ALLOCATION_HINT_INPUTView {
   }
 
   // 0x08: i64
-  get StartingClusterNumber(): Deno.PointerValue {
+  get StartingClusterNumber(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -15978,7 +15978,7 @@ export class VOLUME_ALLOCATION_HINT_INPUTView {
   }
 
   // 0x08: i64
-  set StartingClusterNumber(value: Deno.PointerValue) {
+  set StartingClusterNumber(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -16028,7 +16028,7 @@ export class VOLUME_ALLOCATION_HINT_OUTPUTView {
  */
 export interface VOLUME_SHRINK_INFO {
   /** u64 */
-  VolumeSize: Deno.PointerValue;
+  VolumeSize: bigint | number;
 }
 
 export const sizeofVOLUME_SHRINK_INFO = 8;
@@ -16052,12 +16052,12 @@ export class VOLUME_SHRINK_INFOView {
   }
 
   // 0x00: u64
-  get VolumeSize(): Deno.PointerValue {
+  get VolumeSize(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: u64
-  set VolumeSize(value: Deno.PointerValue) {
+  set VolumeSize(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -19211,9 +19211,9 @@ export class STAT_SERVER_0View {
  */
 export interface FH_OVERLAPPED {
   /** usize */
-  Internal: Deno.PointerValue;
+  Internal: bigint | number;
   /** usize */
-  InternalHigh: Deno.PointerValue;
+  InternalHigh: bigint | number;
   /** u32 */
   Offset: number;
   /** u32 */
@@ -19223,13 +19223,13 @@ export interface FH_OVERLAPPED {
   /** Windows.Win32.Storage.FileSystem.PFN_IO_COMPLETION */
   pfnCompletion: Uint8Array | Deno.PointerValue;
   /** usize */
-  Reserved1: Deno.PointerValue;
+  Reserved1: bigint | number;
   /** usize */
-  Reserved2: Deno.PointerValue;
+  Reserved2: bigint | number;
   /** usize */
-  Reserved3: Deno.PointerValue;
+  Reserved3: bigint | number;
   /** usize */
-  Reserved4: Deno.PointerValue;
+  Reserved4: bigint | number;
 }
 
 export const sizeofFH_OVERLAPPED = 72;
@@ -19271,12 +19271,12 @@ export class FH_OVERLAPPEDView {
   }
 
   // 0x00: usize
-  get Internal(): Deno.PointerValue {
+  get Internal(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: usize
-  get InternalHigh(): Deno.PointerValue {
+  get InternalHigh(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -19303,32 +19303,32 @@ export class FH_OVERLAPPEDView {
   }
 
   // 0x28: usize
-  get Reserved1(): Deno.PointerValue {
+  get Reserved1(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: usize
-  get Reserved2(): Deno.PointerValue {
+  get Reserved2(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: usize
-  get Reserved3(): Deno.PointerValue {
+  get Reserved3(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
   // 0x40: usize
-  get Reserved4(): Deno.PointerValue {
+  get Reserved4(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
   // 0x00: usize
-  set Internal(value: Deno.PointerValue) {
+  set Internal(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: usize
-  set InternalHigh(value: Deno.PointerValue) {
+  set InternalHigh(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -19353,22 +19353,22 @@ export class FH_OVERLAPPEDView {
   }
 
   // 0x28: usize
-  set Reserved1(value: Deno.PointerValue) {
+  set Reserved1(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: usize
-  set Reserved2(value: Deno.PointerValue) {
+  set Reserved2(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: usize
-  set Reserved3(value: Deno.PointerValue) {
+  set Reserved3(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
   // 0x40: usize
-  set Reserved4(value: Deno.PointerValue) {
+  set Reserved4(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 }
@@ -20129,11 +20129,11 @@ export type HRESULT = number;
  */
 export interface IORING_CQE {
   /** usize */
-  UserData: Deno.PointerValue;
+  UserData: bigint | number;
   /** Windows.Win32.Foundation.HRESULT */
   ResultCode: Uint8Array | Deno.PointerValue;
   /** usize */
-  Information: Deno.PointerValue;
+  Information: bigint | number;
 }
 
 export const sizeofIORING_CQE = 24;
@@ -20161,7 +20161,7 @@ export class IORING_CQEView {
   }
 
   // 0x00: usize
-  get UserData(): Deno.PointerValue {
+  get UserData(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -20172,12 +20172,12 @@ export class IORING_CQEView {
   }
 
   // 0x10: usize
-  get Information(): Deno.PointerValue {
+  get Information(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x00: usize
-  set UserData(value: Deno.PointerValue) {
+  set UserData(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -20187,7 +20187,7 @@ export class IORING_CQEView {
   }
 
   // 0x10: usize
-  set Information(value: Deno.PointerValue) {
+  set Information(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -20561,7 +20561,7 @@ export interface FILE_SEGMENT_ELEMENT {
   /** ptr */
   Buffer: Deno.PointerValue | Uint8Array;
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
 }
 
 export const sizeofFILE_SEGMENT_ELEMENT = 16;
@@ -20593,7 +20593,7 @@ export class FILE_SEGMENT_ELEMENTView {
   }
 
   // 0x08: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -20603,7 +20603,7 @@ export class FILE_SEGMENT_ELEMENTView {
   }
 
   // 0x08: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -23053,7 +23053,7 @@ export class FILE_STORAGE_INFOView {
  */
 export interface FILE_ID_INFO {
   /** u64 */
-  VolumeSerialNumber: Deno.PointerValue;
+  VolumeSerialNumber: bigint | number;
   /** Windows.Win32.Storage.FileSystem.FILE_ID_128 */
   FileId: Uint8Array | Deno.PointerValue;
 }
@@ -23081,7 +23081,7 @@ export class FILE_ID_INFOView {
   }
 
   // 0x00: u64
-  get VolumeSerialNumber(): Deno.PointerValue {
+  get VolumeSerialNumber(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -23092,7 +23092,7 @@ export class FILE_ID_INFOView {
   }
 
   // 0x00: u64
-  set VolumeSerialNumber(value: Deno.PointerValue) {
+  set VolumeSerialNumber(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -26157,7 +26157,7 @@ export function SetFileTime(
 
 export function SetFileValidData(
   hFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  ValidDataLength: Deno.PointerValue /* i64 */,
+  ValidDataLength: bigint | number /* i64 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.SetFileValidData(util.toPointer(hFile), ValidDataLength));
 }
@@ -27637,7 +27637,7 @@ export function GetNotificationResourceManagerAsync(
 export function SetResourceManagerCompletionPort(
   ResourceManagerHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   IoCompletionPortHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  CompletionKey: Deno.PointerValue /* usize */,
+  CompletionKey: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libktmw32_dll.SetResourceManagerCompletionPort(util.toPointer(ResourceManagerHandle), util.toPointer(IoCompletionPortHandle), CompletionKey));
 }
@@ -28021,8 +28021,8 @@ export function SetIoRingCompletionEvent(
 export function BuildIoRingCancelRequest(
   ioRing: Deno.PointerValue | Uint8Array /* ptr */,
   file: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.FileSystem.IORING_HANDLE_REF */,
-  opToCancel: Deno.PointerValue /* usize */,
-  userData: Deno.PointerValue /* usize */,
+  opToCancel: bigint | number /* usize */,
+  userData: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libapi_ms_win_core_ioring_l1_1_0_dll.BuildIoRingCancelRequest(util.toPointer(ioRing), util.toPointer(file), opToCancel, userData);
 }
@@ -28032,8 +28032,8 @@ export function BuildIoRingReadFile(
   fileRef: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.FileSystem.IORING_HANDLE_REF */,
   dataRef: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.FileSystem.IORING_BUFFER_REF */,
   numberOfBytesToRead: number /* u32 */,
-  fileOffset: Deno.PointerValue /* u64 */,
-  userData: Deno.PointerValue /* usize */,
+  fileOffset: bigint | number /* u64 */,
+  userData: bigint | number /* usize */,
   flags: IORING_SQE_FLAGS /* Windows.Win32.Storage.FileSystem.IORING_SQE_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libapi_ms_win_core_ioring_l1_1_0_dll.BuildIoRingReadFile(util.toPointer(ioRing), util.toPointer(fileRef), util.toPointer(dataRef), numberOfBytesToRead, fileOffset, userData, flags);
@@ -28043,7 +28043,7 @@ export function BuildIoRingRegisterFileHandles(
   ioRing: Deno.PointerValue | Uint8Array /* ptr */,
   count: number /* u32 */,
   handles: Deno.PointerValue | Uint8Array /* ptr */,
-  userData: Deno.PointerValue /* usize */,
+  userData: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libapi_ms_win_core_ioring_l1_1_0_dll.BuildIoRingRegisterFileHandles(util.toPointer(ioRing), count, util.toPointer(handles), userData);
 }
@@ -28052,7 +28052,7 @@ export function BuildIoRingRegisterBuffers(
   ioRing: Deno.PointerValue | Uint8Array /* ptr */,
   count: number /* u32 */,
   buffers: Deno.PointerValue | Uint8Array /* ptr */,
-  userData: Deno.PointerValue /* usize */,
+  userData: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libapi_ms_win_core_ioring_l1_1_0_dll.BuildIoRingRegisterBuffers(util.toPointer(ioRing), count, util.toPointer(buffers), userData);
 }

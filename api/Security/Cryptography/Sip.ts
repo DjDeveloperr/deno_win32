@@ -35,7 +35,7 @@ export const PKCS_7_ASN_ENCODING = 65536;
 
 // Structs
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 export type PWSTR = Deno.PointerValue | Uint8Array;
 
@@ -164,9 +164,9 @@ export class CRYPT_ALGORITHM_IDENTIFIERView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -192,22 +192,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -286,7 +286,7 @@ export interface SIP_SUBJECTINFO {
   /** u32 */
   dwIntVersion: number;
   /** usize */
-  hProv: Deno.PointerValue;
+  hProv: bigint | number;
   /** Windows.Win32.Security.Cryptography.CRYPT_ALGORITHM_IDENTIFIER */
   DigestAlgorithm: Uint8Array | Deno.PointerValue;
   /** u32 */
@@ -413,7 +413,7 @@ export class SIP_SUBJECTINFOView {
   }
 
   // 0x30: usize
-  get hProv(): Deno.PointerValue {
+  get hProv(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -512,7 +512,7 @@ export class SIP_SUBJECTINFOView {
   }
 
   // 0x30: usize
-  set hProv(value: Deno.PointerValue) {
+  set hProv(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 

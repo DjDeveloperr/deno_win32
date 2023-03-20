@@ -4500,14 +4500,14 @@ export const COP_APPLICATION_SPECIFIC = 14;
 
 // Structs
 
-export type HACCESSOR = Deno.PointerValue;
+export type HACCESSOR = bigint | number;
 
 /**
  * Windows.Win32.System.Search.DBVECTOR (size: 16)
  */
 export interface DBVECTOR {
   /** usize */
-  size: Deno.PointerValue;
+  size: bigint | number;
   /** ptr */
   ptr: Deno.PointerValue | Uint8Array;
 }
@@ -4535,7 +4535,7 @@ export class DBVECTORView {
   }
 
   // 0x00: usize
-  get size(): Deno.PointerValue {
+  get size(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -4546,7 +4546,7 @@ export class DBVECTORView {
   }
 
   // 0x00: usize
-  set size(value: Deno.PointerValue) {
+  set size(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -5123,7 +5123,7 @@ export interface DBBINDEXT {
   /** ptr */
   pExtension: Deno.PointerValue | Uint8Array;
   /** usize */
-  ulExtension: Deno.PointerValue;
+  ulExtension: bigint | number;
 }
 
 export const sizeofDBBINDEXT = 16;
@@ -5155,7 +5155,7 @@ export class DBBINDEXTView {
   }
 
   // 0x08: usize
-  get ulExtension(): Deno.PointerValue {
+  get ulExtension(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -5165,7 +5165,7 @@ export class DBBINDEXTView {
   }
 
   // 0x08: usize
-  set ulExtension(value: Deno.PointerValue) {
+  set ulExtension(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -5175,13 +5175,13 @@ export class DBBINDEXTView {
  */
 export interface DBBINDING {
   /** usize */
-  iOrdinal: Deno.PointerValue;
+  iOrdinal: bigint | number;
   /** usize */
-  obValue: Deno.PointerValue;
+  obValue: bigint | number;
   /** usize */
-  obLength: Deno.PointerValue;
+  obLength: bigint | number;
   /** usize */
-  obStatus: Deno.PointerValue;
+  obStatus: bigint | number;
   /** Windows.Win32.System.Com.ITypeInfo */
   pTypeInfo: Uint8Array | Deno.PointerValue;
   /** ptr */
@@ -5195,7 +5195,7 @@ export interface DBBINDING {
   /** u32 */
   eParamIO: number;
   /** usize */
-  cbMaxLen: Deno.PointerValue;
+  cbMaxLen: bigint | number;
   /** u32 */
   dwFlags: number;
   /** u16 */
@@ -5256,22 +5256,22 @@ export class DBBINDINGView {
   }
 
   // 0x00: usize
-  get iOrdinal(): Deno.PointerValue {
+  get iOrdinal(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: usize
-  get obValue(): Deno.PointerValue {
+  get obValue(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: usize
-  get obLength(): Deno.PointerValue {
+  get obLength(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: usize
-  get obStatus(): Deno.PointerValue {
+  get obStatus(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -5311,7 +5311,7 @@ export class DBBINDINGView {
   // 0x44: pad4
 
   // 0x48: usize
-  get cbMaxLen(): Deno.PointerValue {
+  get cbMaxLen(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
@@ -5336,22 +5336,22 @@ export class DBBINDINGView {
   }
 
   // 0x00: usize
-  set iOrdinal(value: Deno.PointerValue) {
+  set iOrdinal(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: usize
-  set obValue(value: Deno.PointerValue) {
+  set obValue(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: usize
-  set obLength(value: Deno.PointerValue) {
+  set obLength(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: usize
-  set obStatus(value: Deno.PointerValue) {
+  set obStatus(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -5388,7 +5388,7 @@ export class DBBINDINGView {
   // 0x44: pad4
 
   // 0x48: usize
-  set cbMaxLen(value: Deno.PointerValue) {
+  set cbMaxLen(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
@@ -5420,9 +5420,9 @@ export type HRESULT = number;
  */
 export interface DBFAILUREINFO {
   /** usize */
-  hRow: Deno.PointerValue;
+  hRow: bigint | number;
   /** usize */
-  iColumn: Deno.PointerValue;
+  iColumn: bigint | number;
   /** Windows.Win32.Foundation.HRESULT */
   failure: Uint8Array | Deno.PointerValue;
 }
@@ -5452,12 +5452,12 @@ export class DBFAILUREINFOView {
   }
 
   // 0x00: usize
-  get hRow(): Deno.PointerValue {
+  get hRow(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: usize
-  get iColumn(): Deno.PointerValue {
+  get iColumn(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -5468,12 +5468,12 @@ export class DBFAILUREINFOView {
   }
 
   // 0x00: usize
-  set hRow(value: Deno.PointerValue) {
+  set hRow(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: usize
-  set iColumn(value: Deno.PointerValue) {
+  set iColumn(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -5492,11 +5492,11 @@ export interface DBCOLUMNINFO {
   /** Windows.Win32.System.Com.ITypeInfo */
   pTypeInfo: Uint8Array | Deno.PointerValue;
   /** usize */
-  iOrdinal: Deno.PointerValue;
+  iOrdinal: bigint | number;
   /** u32 */
   dwFlags: number;
   /** usize */
-  ulColumnSize: Deno.PointerValue;
+  ulColumnSize: bigint | number;
   /** u16 */
   wType: number;
   /** u8 */
@@ -5561,7 +5561,7 @@ export class DBCOLUMNINFOView {
   }
 
   // 0x10: usize
-  get iOrdinal(): Deno.PointerValue {
+  get iOrdinal(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -5573,7 +5573,7 @@ export class DBCOLUMNINFOView {
   // 0x1c: pad4
 
   // 0x20: usize
-  get ulColumnSize(): Deno.PointerValue {
+  get ulColumnSize(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -5612,7 +5612,7 @@ export class DBCOLUMNINFOView {
   }
 
   // 0x10: usize
-  set iOrdinal(value: Deno.PointerValue) {
+  set iOrdinal(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -5624,7 +5624,7 @@ export class DBCOLUMNINFOView {
   // 0x1c: pad4
 
   // 0x20: usize
-  set ulColumnSize(value: Deno.PointerValue) {
+  set ulColumnSize(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -5658,7 +5658,7 @@ export interface DBPARAMS {
   /** ptr */
   pData: Deno.PointerValue | Uint8Array;
   /** usize */
-  cParamSets: Deno.PointerValue;
+  cParamSets: bigint | number;
   /** Windows.Win32.System.Search.HACCESSOR */
   hAccessor: Uint8Array | Deno.PointerValue;
 }
@@ -5694,7 +5694,7 @@ export class DBPARAMSView {
   }
 
   // 0x08: usize
-  get cParamSets(): Deno.PointerValue {
+  get cParamSets(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -5710,7 +5710,7 @@ export class DBPARAMSView {
   }
 
   // 0x08: usize
-  set cParamSets(value: Deno.PointerValue) {
+  set cParamSets(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -5727,13 +5727,13 @@ export interface DBPARAMINFO {
   /** u32 */
   dwFlags: number;
   /** usize */
-  iOrdinal: Deno.PointerValue;
+  iOrdinal: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   pwszName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.System.Com.ITypeInfo */
   pTypeInfo: Uint8Array | Deno.PointerValue;
   /** usize */
-  ulParamSize: Deno.PointerValue;
+  ulParamSize: bigint | number;
   /** u16 */
   wType: number;
   /** u8 */
@@ -5789,7 +5789,7 @@ export class DBPARAMINFOView {
   // 0x04: pad4
 
   // 0x08: usize
-  get iOrdinal(): Deno.PointerValue {
+  get iOrdinal(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -5806,7 +5806,7 @@ export class DBPARAMINFOView {
   }
 
   // 0x20: usize
-  get ulParamSize(): Deno.PointerValue {
+  get ulParamSize(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -5835,7 +5835,7 @@ export class DBPARAMINFOView {
   // 0x04: pad4
 
   // 0x08: usize
-  set iOrdinal(value: Deno.PointerValue) {
+  set iOrdinal(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -5851,7 +5851,7 @@ export class DBPARAMINFOView {
   }
 
   // 0x20: usize
-  set ulParamSize(value: Deno.PointerValue) {
+  set ulParamSize(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -5952,9 +5952,9 @@ export class DBPROPIDSETView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -5980,22 +5980,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -6525,7 +6525,7 @@ export interface DBCOLUMNDESC {
   /** u32 */
   cPropertySets: number;
   /** usize */
-  ulColumnSize: Deno.PointerValue;
+  ulColumnSize: bigint | number;
   /** Windows.Win32.Storage.IndexServer.DBID */
   dbcid: Uint8Array | Deno.PointerValue;
   /** u16 */
@@ -6611,7 +6611,7 @@ export class DBCOLUMNDESCView {
   // 0x24: pad4
 
   // 0x28: usize
-  get ulColumnSize(): Deno.PointerValue {
+  get ulColumnSize(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -6667,7 +6667,7 @@ export class DBCOLUMNDESCView {
   // 0x24: pad4
 
   // 0x28: usize
-  set ulColumnSize(value: Deno.PointerValue) {
+  set ulColumnSize(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
@@ -6703,13 +6703,13 @@ export interface DBCOLUMNACCESS {
   /** Windows.Win32.Storage.IndexServer.DBID */
   columnid: Uint8Array | Deno.PointerValue;
   /** usize */
-  cbDataLen: Deno.PointerValue;
+  cbDataLen: bigint | number;
   /** u32 */
   dwStatus: number;
   /** usize */
-  cbMaxLen: Deno.PointerValue;
+  cbMaxLen: bigint | number;
   /** usize */
-  dwReserved: Deno.PointerValue;
+  dwReserved: bigint | number;
   /** u16 */
   wType: number;
   /** u8 */
@@ -6769,7 +6769,7 @@ export class DBCOLUMNACCESSView {
   }
 
   // 0x10: usize
-  get cbDataLen(): Deno.PointerValue {
+  get cbDataLen(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -6781,12 +6781,12 @@ export class DBCOLUMNACCESSView {
   // 0x1c: pad4
 
   // 0x20: usize
-  get cbMaxLen(): Deno.PointerValue {
+  get cbMaxLen(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: usize
-  get dwReserved(): Deno.PointerValue {
+  get dwReserved(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -6818,7 +6818,7 @@ export class DBCOLUMNACCESSView {
   }
 
   // 0x10: usize
-  set cbDataLen(value: Deno.PointerValue) {
+  set cbDataLen(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -6830,12 +6830,12 @@ export class DBCOLUMNACCESSView {
   // 0x1c: pad4
 
   // 0x20: usize
-  set cbMaxLen(value: Deno.PointerValue) {
+  set cbMaxLen(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: usize
-  set dwReserved(value: Deno.PointerValue) {
+  set dwReserved(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
@@ -6866,13 +6866,13 @@ export interface DBCONSTRAINTDESC {
   /** u32 */
   ConstraintType: number;
   /** usize */
-  cColumns: Deno.PointerValue;
+  cColumns: bigint | number;
   /** ptr */
   rgColumnList: Deno.PointerValue | Uint8Array;
   /** ptr */
   pReferencedTableID: Deno.PointerValue | Uint8Array;
   /** usize */
-  cForeignKeyColumns: Deno.PointerValue;
+  cForeignKeyColumns: bigint | number;
   /** ptr */
   rgForeignKeyColumnList: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Foundation.PWSTR */
@@ -6886,7 +6886,7 @@ export interface DBCONSTRAINTDESC {
   /** u32 */
   Deferrability: number;
   /** usize */
-  cReserved: Deno.PointerValue;
+  cReserved: bigint | number;
   /** ptr */
   rgReserved: Deno.PointerValue | Uint8Array;
 }
@@ -6955,7 +6955,7 @@ export class DBCONSTRAINTDESCView {
   // 0x0c: pad4
 
   // 0x10: usize
-  get cColumns(): Deno.PointerValue {
+  get cColumns(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -6972,7 +6972,7 @@ export class DBCONSTRAINTDESCView {
   }
 
   // 0x28: usize
-  get cForeignKeyColumns(): Deno.PointerValue {
+  get cForeignKeyColumns(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -7009,7 +7009,7 @@ export class DBCONSTRAINTDESCView {
   }
 
   // 0x50: usize
-  get cReserved(): Deno.PointerValue {
+  get cReserved(): bigint | number {
     return Number(this.view.getBigUint64(80, true));
   }
 
@@ -7032,7 +7032,7 @@ export class DBCONSTRAINTDESCView {
   // 0x0c: pad4
 
   // 0x10: usize
-  set cColumns(value: Deno.PointerValue) {
+  set cColumns(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -7047,7 +7047,7 @@ export class DBCONSTRAINTDESCView {
   }
 
   // 0x28: usize
-  set cForeignKeyColumns(value: Deno.PointerValue) {
+  set cForeignKeyColumns(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
@@ -7083,7 +7083,7 @@ export class DBCONSTRAINTDESCView {
   }
 
   // 0x50: usize
-  set cReserved(value: Deno.PointerValue) {
+  set cReserved(value: bigint | number) {
     this.view.setBigUint64(80, BigInt(value), true);
   }
 
@@ -7098,13 +7098,13 @@ export class DBCONSTRAINTDESCView {
  */
 export interface MDAXISINFO {
   /** usize */
-  cbSize: Deno.PointerValue;
+  cbSize: bigint | number;
   /** usize */
-  iAxis: Deno.PointerValue;
+  iAxis: bigint | number;
   /** usize */
-  cDimensions: Deno.PointerValue;
+  cDimensions: bigint | number;
   /** usize */
-  cCoordinates: Deno.PointerValue;
+  cCoordinates: bigint | number;
   /** ptr */
   rgcColumns: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -7142,22 +7142,22 @@ export class MDAXISINFOView {
   }
 
   // 0x00: usize
-  get cbSize(): Deno.PointerValue {
+  get cbSize(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: usize
-  get iAxis(): Deno.PointerValue {
+  get iAxis(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: usize
-  get cDimensions(): Deno.PointerValue {
+  get cDimensions(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: usize
-  get cCoordinates(): Deno.PointerValue {
+  get cCoordinates(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -7174,22 +7174,22 @@ export class MDAXISINFOView {
   }
 
   // 0x00: usize
-  set cbSize(value: Deno.PointerValue) {
+  set cbSize(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: usize
-  set iAxis(value: Deno.PointerValue) {
+  set iAxis(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: usize
-  set cDimensions(value: Deno.PointerValue) {
+  set cDimensions(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: usize
-  set cCoordinates(value: Deno.PointerValue) {
+  set cCoordinates(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -7466,7 +7466,7 @@ export interface DBPARAMBINDINFO {
   /** Windows.Win32.Foundation.PWSTR */
   pwszName: string | null | Uint8Array | Uint16Array;
   /** usize */
-  ulParamSize: Deno.PointerValue;
+  ulParamSize: bigint | number;
   /** u32 */
   dwFlags: number;
   /** u8 */
@@ -7525,7 +7525,7 @@ export class DBPARAMBINDINFOView {
   }
 
   // 0x10: usize
-  get ulParamSize(): Deno.PointerValue {
+  get ulParamSize(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -7559,7 +7559,7 @@ export class DBPARAMBINDINFOView {
   }
 
   // 0x10: usize
-  set ulParamSize(value: Deno.PointerValue) {
+  set ulParamSize(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -7825,13 +7825,13 @@ export class ERRORINFOView {
  */
 export interface DBROWWATCHCHANGE {
   /** usize */
-  hRegion: Deno.PointerValue;
+  hRegion: bigint | number;
   /** u32 */
   eChangeKind: number;
   /** usize */
-  hRow: Deno.PointerValue;
+  hRow: bigint | number;
   /** usize */
-  iRow: Deno.PointerValue;
+  iRow: bigint | number;
 }
 
 export const sizeofDBROWWATCHCHANGE = 32;
@@ -7862,7 +7862,7 @@ export class DBROWWATCHCHANGEView {
   }
 
   // 0x00: usize
-  get hRegion(): Deno.PointerValue {
+  get hRegion(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -7874,17 +7874,17 @@ export class DBROWWATCHCHANGEView {
   // 0x0c: pad4
 
   // 0x10: usize
-  get hRow(): Deno.PointerValue {
+  get hRow(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: usize
-  get iRow(): Deno.PointerValue {
+  get iRow(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x00: usize
-  set hRegion(value: Deno.PointerValue) {
+  set hRegion(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -7896,12 +7896,12 @@ export class DBROWWATCHCHANGEView {
   // 0x0c: pad4
 
   // 0x10: usize
-  set hRow(value: Deno.PointerValue) {
+  set hRow(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: usize
-  set iRow(value: Deno.PointerValue) {
+  set iRow(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 }
@@ -12707,11 +12707,11 @@ export class CATEGORIZATIONSETView {
  */
 export interface _Anonymous1_e__Union {
   /** usize */
-  Data0: Deno.PointerValue;
+  Data0: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   String: string | null | Uint8Array | Uint16Array;
   /** usize */
-  u: Deno.PointerValue;
+  u: bigint | number;
   /** ptr */
   psid: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -12763,7 +12763,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  get Data0(): Deno.PointerValue {
+  get Data0(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -12774,7 +12774,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  get u(): Deno.PointerValue {
+  get u(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -12810,7 +12810,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  set Data0(value: Deno.PointerValue) {
+  set Data0(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -12821,7 +12821,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  set u(value: Deno.PointerValue) {
+  set u(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -12858,7 +12858,7 @@ export class _Anonymous1_e__UnionView {
  */
 export interface _Anonymous2_e__Union {
   /** usize */
-  Data1: Deno.PointerValue;
+  Data1: bigint | number;
   /** i32 */
   LogonId_HighPart: number;
 }
@@ -12887,7 +12887,7 @@ export class _Anonymous2_e__UnionView {
   }
 
   // 0x00: usize
-  get Data1(): Deno.PointerValue {
+  get Data1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -12899,7 +12899,7 @@ export class _Anonymous2_e__UnionView {
   // 0x0c: pad4
 
   // 0x00: usize
-  set Data1(value: Deno.PointerValue) {
+  set Data1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -13246,7 +13246,7 @@ export class SSERRORINFOView {
 
 export type PSTR = Deno.PointerValue | Uint8Array;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 // Native Libraries
 
@@ -14952,7 +14952,7 @@ export function SQLCloseEnumServers(
 
 export function SQLDriverConnect(
   hdbc: Deno.PointerValue | Uint8Array /* ptr */,
-  hwnd: Deno.PointerValue /* isize */,
+  hwnd: bigint | number /* isize */,
   szConnStrIn: Deno.PointerValue | Uint8Array /* ptr */,
   cchConnStrIn: number /* i16 */,
   szConnStrOut: Deno.PointerValue | Uint8Array /* ptr */,
@@ -15338,7 +15338,7 @@ export function SQLDataSourcesW(
 
 export function SQLDriverConnectW(
   hdbc: Deno.PointerValue | Uint8Array /* ptr */,
-  hwnd: Deno.PointerValue /* isize */,
+  hwnd: bigint | number /* isize */,
   szConnStrIn: Deno.PointerValue | Uint8Array /* ptr */,
   cchConnStrIn: number /* i16 */,
   szConnStrOut: Deno.PointerValue | Uint8Array /* ptr */,
@@ -15705,7 +15705,7 @@ export function SQLDataSourcesA(
 
 export function SQLDriverConnectA(
   hdbc: Deno.PointerValue | Uint8Array /* ptr */,
-  hwnd: Deno.PointerValue /* isize */,
+  hwnd: bigint | number /* isize */,
   szConnStrIn: Deno.PointerValue | Uint8Array /* ptr */,
   cbConnStrIn: number /* i16 */,
   szConnStrOut: Deno.PointerValue | Uint8Array /* ptr */,

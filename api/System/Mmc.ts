@@ -268,9 +268,9 @@ export type PWSTR = Deno.PointerValue | Uint8Array;
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -296,22 +296,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -615,7 +615,7 @@ export class MMCBUTTONView {
 
 export type BOOL = number;
 
-export type LPARAM = Deno.PointerValue;
+export type LPARAM = bigint | number;
 
 /**
  * Windows.Win32.System.Mmc.RESULTDATAITEM (size: 56)
@@ -626,7 +626,7 @@ export interface RESULTDATAITEM {
   /** Windows.Win32.Foundation.BOOL */
   bScopeItem: boolean;
   /** isize */
-  itemID: Deno.PointerValue;
+  itemID: bigint | number;
   /** i32 */
   nIndex: number;
   /** i32 */
@@ -696,7 +696,7 @@ export class RESULTDATAITEMView {
   }
 
   // 0x08: isize
-  get itemID(): Deno.PointerValue {
+  get itemID(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -750,7 +750,7 @@ export class RESULTDATAITEMView {
   }
 
   // 0x08: isize
-  set itemID(value: Deno.PointerValue) {
+  set itemID(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -884,9 +884,9 @@ export interface SCOPEDATAITEM {
   /** Windows.Win32.Foundation.LPARAM */
   lParam: Uint8Array | Deno.PointerValue;
   /** isize */
-  relativeID: Deno.PointerValue;
+  relativeID: bigint | number;
   /** isize */
-  ID: Deno.PointerValue;
+  ID: bigint | number;
 }
 
 export const sizeofSCOPEDATAITEM = 56;
@@ -969,12 +969,12 @@ export class SCOPEDATAITEMView {
   }
 
   // 0x28: isize
-  get relativeID(): Deno.PointerValue {
+  get relativeID(): bigint | number {
     return Number(this.view.getBigInt64(40, true));
   }
 
   // 0x30: isize
-  get ID(): Deno.PointerValue {
+  get ID(): bigint | number {
     return Number(this.view.getBigInt64(48, true));
   }
 
@@ -1017,12 +1017,12 @@ export class SCOPEDATAITEMView {
   }
 
   // 0x28: isize
-  set relativeID(value: Deno.PointerValue) {
+  set relativeID(value: bigint | number) {
     this.view.setBigInt64(40, BigInt(value), true);
   }
 
   // 0x30: isize
-  set ID(value: Deno.PointerValue) {
+  set ID(value: bigint | number) {
     this.view.setBigInt64(48, BigInt(value), true);
   }
 }
@@ -1297,7 +1297,7 @@ export interface MMC_RESTORE_VIEW {
   /** u32 */
   dwSize: number;
   /** isize */
-  cookie: Deno.PointerValue;
+  cookie: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   pViewType: string | null | Uint8Array | Uint16Array;
   /** i32 */
@@ -1343,7 +1343,7 @@ export class MMC_RESTORE_VIEWView {
   // 0x04: pad4
 
   // 0x08: isize
-  get cookie(): Deno.PointerValue {
+  get cookie(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -1368,7 +1368,7 @@ export class MMC_RESTORE_VIEWView {
   // 0x04: pad4
 
   // 0x08: isize
-  set cookie(value: Deno.PointerValue) {
+  set cookie(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -1395,7 +1395,7 @@ export interface MMC_EXPANDSYNC_STRUCT {
   /** Windows.Win32.Foundation.BOOL */
   bExpanding: boolean;
   /** isize */
-  hItem: Deno.PointerValue;
+  hItem: bigint | number;
 }
 
 export const sizeofMMC_EXPANDSYNC_STRUCT = 16;
@@ -1433,7 +1433,7 @@ export class MMC_EXPANDSYNC_STRUCTView {
   }
 
   // 0x08: isize
-  get hItem(): Deno.PointerValue {
+  get hItem(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -1448,7 +1448,7 @@ export class MMC_EXPANDSYNC_STRUCTView {
   }
 
   // 0x08: isize
-  set hItem(value: Deno.PointerValue) {
+  set hItem(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -2150,7 +2150,7 @@ export interface MMC_LISTPAD_INFO {
   /** Windows.Win32.Foundation.PWSTR */
   szButtonText: string | null | Uint8Array | Uint16Array;
   /** isize */
-  nCommandID: Deno.PointerValue;
+  nCommandID: bigint | number;
 }
 
 export const sizeofMMC_LISTPAD_INFO = 24;
@@ -2196,7 +2196,7 @@ export class MMC_LISTPAD_INFOView {
   }
 
   // 0x10: isize
-  get nCommandID(): Deno.PointerValue {
+  get nCommandID(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -2213,7 +2213,7 @@ export class MMC_LISTPAD_INFOView {
   }
 
   // 0x10: isize
-  set nCommandID(value: Deno.PointerValue) {
+  set nCommandID(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -2229,7 +2229,7 @@ export interface MMC_COLUMN_DATA {
   /** i32 */
   nWidth: number;
   /** usize */
-  ulReserved: Deno.PointerValue;
+  ulReserved: bigint | number;
 }
 
 export const sizeofMMC_COLUMN_DATA = 24;
@@ -2277,7 +2277,7 @@ export class MMC_COLUMN_DATAView {
   // 0x0c: pad4
 
   // 0x10: usize
-  get ulReserved(): Deno.PointerValue {
+  get ulReserved(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -2299,7 +2299,7 @@ export class MMC_COLUMN_DATAView {
   // 0x0c: pad4
 
   // 0x10: usize
-  set ulReserved(value: Deno.PointerValue) {
+  set ulReserved(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -2381,7 +2381,7 @@ export interface MMC_SORT_DATA {
   /** u32 */
   dwSortOptions: number;
   /** usize */
-  ulReserved: Deno.PointerValue;
+  ulReserved: bigint | number;
 }
 
 export const sizeofMMC_SORT_DATA = 16;
@@ -2419,7 +2419,7 @@ export class MMC_SORT_DATAView {
   }
 
   // 0x08: usize
-  get ulReserved(): Deno.PointerValue {
+  get ulReserved(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -2434,7 +2434,7 @@ export class MMC_SORT_DATAView {
   }
 
   // 0x08: usize
-  set ulReserved(value: Deno.PointerValue) {
+  set ulReserved(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -2514,7 +2514,7 @@ export interface RDITEMHDR {
   /** u32 */
   dwFlags: number;
   /** isize */
-  cookie: Deno.PointerValue;
+  cookie: bigint | number;
   /** Windows.Win32.Foundation.LPARAM */
   lpReserved: Uint8Array | Deno.PointerValue;
 }
@@ -2552,7 +2552,7 @@ export class RDITEMHDRView {
   // 0x04: pad4
 
   // 0x08: isize
-  get cookie(): Deno.PointerValue {
+  get cookie(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -2570,7 +2570,7 @@ export class RDITEMHDRView {
   // 0x04: pad4
 
   // 0x08: isize
-  set cookie(value: Deno.PointerValue) {
+  set cookie(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 

@@ -286,13 +286,13 @@ export const NUM_CUSTOM_COLORS = 16;
 
 // Structs
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
-export type HINSTANCE = Deno.PointerValue;
+export type HINSTANCE = bigint | number;
 
 export type PSTR = Deno.PointerValue | Uint8Array;
 
-export type LPARAM = Deno.PointerValue;
+export type LPARAM = bigint | number;
 
 /**
  * Windows.Win32.UI.Controls.Dialogs.OPENFILENAME_NT4A (size: 136)
@@ -1845,7 +1845,7 @@ export interface NMHDR {
   /** Windows.Win32.Foundation.HWND */
   hwndFrom: Deno.PointerValue;
   /** usize */
-  idFrom: Deno.PointerValue;
+  idFrom: bigint | number;
   /** u32 */
   code: number;
 }
@@ -1882,7 +1882,7 @@ export class NMHDRView {
   }
 
   // 0x08: usize
-  get idFrom(): Deno.PointerValue {
+  get idFrom(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -1899,7 +1899,7 @@ export class NMHDRView {
   }
 
   // 0x08: usize
-  set idFrom(value: Deno.PointerValue) {
+  set idFrom(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -3001,7 +3001,7 @@ export class FINDREPLACEWView {
   }
 }
 
-export type HDC = Deno.PointerValue;
+export type HDC = bigint | number;
 
 /**
  * Windows.Win32.UI.Controls.Dialogs.CHOOSEFONTA (size: 104)
@@ -3564,9 +3564,9 @@ export interface PRINTDLGA {
   /** Windows.Win32.Foundation.HWND */
   hwndOwner: Deno.PointerValue;
   /** isize */
-  hDevMode: Deno.PointerValue;
+  hDevMode: bigint | number;
   /** isize */
-  hDevNames: Deno.PointerValue;
+  hDevNames: bigint | number;
   /** Windows.Win32.Graphics.Gdi.HDC */
   hDC: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.Controls.Dialogs.PRINTDLGEX_FLAGS */
@@ -3594,9 +3594,9 @@ export interface PRINTDLGA {
   /** Windows.Win32.Foundation.PSTR */
   lpSetupTemplateName: string | null | Uint8Array;
   /** isize */
-  hPrintTemplate: Deno.PointerValue;
+  hPrintTemplate: bigint | number;
   /** isize */
-  hSetupTemplate: Deno.PointerValue;
+  hSetupTemplate: bigint | number;
 }
 
 export const sizeofPRINTDLGA = 120;
@@ -3677,12 +3677,12 @@ export class PRINTDLGAView {
   }
 
   // 0x10: isize
-  get hDevMode(): Deno.PointerValue {
+  get hDevMode(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get hDevNames(): Deno.PointerValue {
+  get hDevNames(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
@@ -3761,12 +3761,12 @@ export class PRINTDLGAView {
   }
 
   // 0x68: isize
-  get hPrintTemplate(): Deno.PointerValue {
+  get hPrintTemplate(): bigint | number {
     return Number(this.view.getBigInt64(104, true));
   }
 
   // 0x70: isize
-  get hSetupTemplate(): Deno.PointerValue {
+  get hSetupTemplate(): bigint | number {
     return Number(this.view.getBigInt64(112, true));
   }
 
@@ -3783,12 +3783,12 @@ export class PRINTDLGAView {
   }
 
   // 0x10: isize
-  set hDevMode(value: Deno.PointerValue) {
+  set hDevMode(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set hDevNames(value: Deno.PointerValue) {
+  set hDevNames(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
@@ -3862,12 +3862,12 @@ export class PRINTDLGAView {
   }
 
   // 0x68: isize
-  set hPrintTemplate(value: Deno.PointerValue) {
+  set hPrintTemplate(value: bigint | number) {
     this.view.setBigInt64(104, BigInt(value), true);
   }
 
   // 0x70: isize
-  set hSetupTemplate(value: Deno.PointerValue) {
+  set hSetupTemplate(value: bigint | number) {
     this.view.setBigInt64(112, BigInt(value), true);
   }
 }
@@ -3881,9 +3881,9 @@ export interface PRINTDLGW {
   /** Windows.Win32.Foundation.HWND */
   hwndOwner: Deno.PointerValue;
   /** isize */
-  hDevMode: Deno.PointerValue;
+  hDevMode: bigint | number;
   /** isize */
-  hDevNames: Deno.PointerValue;
+  hDevNames: bigint | number;
   /** Windows.Win32.Graphics.Gdi.HDC */
   hDC: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.Controls.Dialogs.PRINTDLGEX_FLAGS */
@@ -3911,9 +3911,9 @@ export interface PRINTDLGW {
   /** Windows.Win32.Foundation.PWSTR */
   lpSetupTemplateName: string | null | Uint8Array | Uint16Array;
   /** isize */
-  hPrintTemplate: Deno.PointerValue;
+  hPrintTemplate: bigint | number;
   /** isize */
-  hSetupTemplate: Deno.PointerValue;
+  hSetupTemplate: bigint | number;
 }
 
 export const sizeofPRINTDLGW = 120;
@@ -3994,12 +3994,12 @@ export class PRINTDLGWView {
   }
 
   // 0x10: isize
-  get hDevMode(): Deno.PointerValue {
+  get hDevMode(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get hDevNames(): Deno.PointerValue {
+  get hDevNames(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
@@ -4078,12 +4078,12 @@ export class PRINTDLGWView {
   }
 
   // 0x68: isize
-  get hPrintTemplate(): Deno.PointerValue {
+  get hPrintTemplate(): bigint | number {
     return Number(this.view.getBigInt64(104, true));
   }
 
   // 0x70: isize
-  get hSetupTemplate(): Deno.PointerValue {
+  get hSetupTemplate(): bigint | number {
     return Number(this.view.getBigInt64(112, true));
   }
 
@@ -4100,12 +4100,12 @@ export class PRINTDLGWView {
   }
 
   // 0x10: isize
-  set hDevMode(value: Deno.PointerValue) {
+  set hDevMode(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set hDevNames(value: Deno.PointerValue) {
+  set hDevNames(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
@@ -4179,12 +4179,12 @@ export class PRINTDLGWView {
   }
 
   // 0x68: isize
-  set hPrintTemplate(value: Deno.PointerValue) {
+  set hPrintTemplate(value: bigint | number) {
     this.view.setBigInt64(104, BigInt(value), true);
   }
 
   // 0x70: isize
-  set hSetupTemplate(value: Deno.PointerValue) {
+  set hSetupTemplate(value: bigint | number) {
     this.view.setBigInt64(112, BigInt(value), true);
   }
 }
@@ -4251,9 +4251,9 @@ export interface PRINTDLGEXA {
   /** Windows.Win32.Foundation.HWND */
   hwndOwner: Deno.PointerValue;
   /** isize */
-  hDevMode: Deno.PointerValue;
+  hDevMode: bigint | number;
   /** isize */
-  hDevNames: Deno.PointerValue;
+  hDevNames: bigint | number;
   /** Windows.Win32.Graphics.Gdi.HDC */
   hDC: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.Controls.Dialogs.PRINTDLGEX_FLAGS */
@@ -4371,12 +4371,12 @@ export class PRINTDLGEXAView {
   }
 
   // 0x10: isize
-  get hDevMode(): Deno.PointerValue {
+  get hDevMode(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get hDevNames(): Deno.PointerValue {
+  get hDevNames(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
@@ -4490,12 +4490,12 @@ export class PRINTDLGEXAView {
   }
 
   // 0x10: isize
-  set hDevMode(value: Deno.PointerValue) {
+  set hDevMode(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set hDevNames(value: Deno.PointerValue) {
+  set hDevNames(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
@@ -4601,9 +4601,9 @@ export interface PRINTDLGEXW {
   /** Windows.Win32.Foundation.HWND */
   hwndOwner: Deno.PointerValue;
   /** isize */
-  hDevMode: Deno.PointerValue;
+  hDevMode: bigint | number;
   /** isize */
-  hDevNames: Deno.PointerValue;
+  hDevNames: bigint | number;
   /** Windows.Win32.Graphics.Gdi.HDC */
   hDC: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.UI.Controls.Dialogs.PRINTDLGEX_FLAGS */
@@ -4721,12 +4721,12 @@ export class PRINTDLGEXWView {
   }
 
   // 0x10: isize
-  get hDevMode(): Deno.PointerValue {
+  get hDevMode(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get hDevNames(): Deno.PointerValue {
+  get hDevNames(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
@@ -4840,12 +4840,12 @@ export class PRINTDLGEXWView {
   }
 
   // 0x10: isize
-  set hDevMode(value: Deno.PointerValue) {
+  set hDevMode(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set hDevNames(value: Deno.PointerValue) {
+  set hDevNames(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
@@ -5166,9 +5166,9 @@ export interface PAGESETUPDLGA {
   /** Windows.Win32.Foundation.HWND */
   hwndOwner: Deno.PointerValue;
   /** isize */
-  hDevMode: Deno.PointerValue;
+  hDevMode: bigint | number;
   /** isize */
-  hDevNames: Deno.PointerValue;
+  hDevNames: bigint | number;
   /** Windows.Win32.UI.Controls.Dialogs.PAGESETUPDLG_FLAGS */
   Flags: PAGESETUPDLG_FLAGS;
   /** Windows.Win32.Foundation.POINT */
@@ -5188,7 +5188,7 @@ export interface PAGESETUPDLGA {
   /** Windows.Win32.Foundation.PSTR */
   lpPageSetupTemplateName: string | null | Uint8Array;
   /** isize */
-  hPageSetupTemplate: Deno.PointerValue;
+  hPageSetupTemplate: bigint | number;
 }
 
 export const sizeofPAGESETUPDLGA = 112;
@@ -5256,12 +5256,12 @@ export class PAGESETUPDLGAView {
   }
 
   // 0x10: isize
-  get hDevMode(): Deno.PointerValue {
+  get hDevMode(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get hDevNames(): Deno.PointerValue {
+  get hDevNames(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
@@ -5321,7 +5321,7 @@ export class PAGESETUPDLGAView {
   }
 
   // 0x68: isize
-  get hPageSetupTemplate(): Deno.PointerValue {
+  get hPageSetupTemplate(): bigint | number {
     return Number(this.view.getBigInt64(104, true));
   }
 
@@ -5338,12 +5338,12 @@ export class PAGESETUPDLGAView {
   }
 
   // 0x10: isize
-  set hDevMode(value: Deno.PointerValue) {
+  set hDevMode(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set hDevNames(value: Deno.PointerValue) {
+  set hDevNames(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
@@ -5396,7 +5396,7 @@ export class PAGESETUPDLGAView {
   }
 
   // 0x68: isize
-  set hPageSetupTemplate(value: Deno.PointerValue) {
+  set hPageSetupTemplate(value: bigint | number) {
     this.view.setBigInt64(104, BigInt(value), true);
   }
 }
@@ -5410,9 +5410,9 @@ export interface PAGESETUPDLGW {
   /** Windows.Win32.Foundation.HWND */
   hwndOwner: Deno.PointerValue;
   /** isize */
-  hDevMode: Deno.PointerValue;
+  hDevMode: bigint | number;
   /** isize */
-  hDevNames: Deno.PointerValue;
+  hDevNames: bigint | number;
   /** Windows.Win32.UI.Controls.Dialogs.PAGESETUPDLG_FLAGS */
   Flags: PAGESETUPDLG_FLAGS;
   /** Windows.Win32.Foundation.POINT */
@@ -5432,7 +5432,7 @@ export interface PAGESETUPDLGW {
   /** Windows.Win32.Foundation.PWSTR */
   lpPageSetupTemplateName: string | null | Uint8Array | Uint16Array;
   /** isize */
-  hPageSetupTemplate: Deno.PointerValue;
+  hPageSetupTemplate: bigint | number;
 }
 
 export const sizeofPAGESETUPDLGW = 112;
@@ -5500,12 +5500,12 @@ export class PAGESETUPDLGWView {
   }
 
   // 0x10: isize
-  get hDevMode(): Deno.PointerValue {
+  get hDevMode(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get hDevNames(): Deno.PointerValue {
+  get hDevNames(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
@@ -5565,7 +5565,7 @@ export class PAGESETUPDLGWView {
   }
 
   // 0x68: isize
-  get hPageSetupTemplate(): Deno.PointerValue {
+  get hPageSetupTemplate(): bigint | number {
     return Number(this.view.getBigInt64(104, true));
   }
 
@@ -5582,12 +5582,12 @@ export class PAGESETUPDLGWView {
   }
 
   // 0x10: isize
-  set hDevMode(value: Deno.PointerValue) {
+  set hDevMode(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set hDevNames(value: Deno.PointerValue) {
+  set hDevNames(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
@@ -5640,7 +5640,7 @@ export class PAGESETUPDLGWView {
   }
 
   // 0x68: isize
-  set hPageSetupTemplate(value: Deno.PointerValue) {
+  set hPageSetupTemplate(value: bigint | number) {
     this.view.setBigInt64(104, BigInt(value), true);
   }
 }

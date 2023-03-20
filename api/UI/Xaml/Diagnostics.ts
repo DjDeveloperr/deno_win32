@@ -285,9 +285,9 @@ export class SourceInfoView {
  */
 export interface ParentChildRelation {
   /** u64 */
-  Parent: Deno.PointerValue;
+  Parent: bigint | number;
   /** u64 */
-  Child: Deno.PointerValue;
+  Child: bigint | number;
   /** u32 */
   ChildIndex: number;
 }
@@ -318,12 +318,12 @@ export class ParentChildRelationView {
   }
 
   // 0x00: u64
-  get Parent(): Deno.PointerValue {
+  get Parent(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Child(): Deno.PointerValue {
+  get Child(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -335,12 +335,12 @@ export class ParentChildRelationView {
   // 0x14: pad4
 
   // 0x00: u64
-  set Parent(value: Deno.PointerValue) {
+  set Parent(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Child(value: Deno.PointerValue) {
+  set Child(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -357,7 +357,7 @@ export class ParentChildRelationView {
  */
 export interface VisualElement {
   /** u64 */
-  Handle: Deno.PointerValue;
+  Handle: bigint | number;
   /** Windows.Win32.UI.Xaml.Diagnostics.SourceInfo */
   SrcInfo: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BSTR */
@@ -398,7 +398,7 @@ export class VisualElementView {
   }
 
   // 0x00: u64
-  get Handle(): Deno.PointerValue {
+  get Handle(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -428,7 +428,7 @@ export class VisualElementView {
   // 0x24: pad4
 
   // 0x00: u64
-  set Handle(value: Deno.PointerValue) {
+  set Handle(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -460,7 +460,7 @@ export class VisualElementView {
  */
 export interface PropertyChainSource {
   /** u64 */
-  Handle: Deno.PointerValue;
+  Handle: bigint | number;
   /** Windows.Win32.Foundation.BSTR */
   TargetType: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BSTR */
@@ -501,7 +501,7 @@ export class PropertyChainSourceView {
   }
 
   // 0x00: u64
-  get Handle(): Deno.PointerValue {
+  get Handle(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -531,7 +531,7 @@ export class PropertyChainSourceView {
   }
 
   // 0x00: u64
-  set Handle(value: Deno.PointerValue) {
+  set Handle(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -579,7 +579,7 @@ export interface PropertyChainValue {
   /** Windows.Win32.Foundation.BOOL */
   Overridden: boolean;
   /** i64 */
-  MetadataBits: Deno.PointerValue;
+  MetadataBits: bigint | number;
   /** Windows.Win32.Foundation.BSTR */
   PropertyName: Uint8Array | Deno.PointerValue;
   /** u32 */
@@ -672,7 +672,7 @@ export class PropertyChainValueView {
   // 0x34: pad4
 
   // 0x38: i64
-  get MetadataBits(): Deno.PointerValue {
+  get MetadataBits(): bigint | number {
     return Number(this.view.getBigInt64(56, true));
   }
 
@@ -729,7 +729,7 @@ export class PropertyChainValueView {
   // 0x34: pad4
 
   // 0x38: i64
-  set MetadataBits(value: Deno.PointerValue) {
+  set MetadataBits(value: bigint | number) {
     this.view.setBigInt64(56, BigInt(value), true);
   }
 
@@ -827,7 +827,7 @@ export interface CollectionElementValue {
   /** Windows.Win32.Foundation.BSTR */
   Value: Uint8Array | Deno.PointerValue;
   /** i64 */
-  MetadataBits: Deno.PointerValue;
+  MetadataBits: bigint | number;
 }
 
 export const sizeofCollectionElementValue = 32;
@@ -877,7 +877,7 @@ export class CollectionElementValueView {
   }
 
   // 0x18: i64
-  get MetadataBits(): Deno.PointerValue {
+  get MetadataBits(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
@@ -899,7 +899,7 @@ export class CollectionElementValueView {
   }
 
   // 0x18: i64
-  set MetadataBits(value: Deno.PointerValue) {
+  set MetadataBits(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 }

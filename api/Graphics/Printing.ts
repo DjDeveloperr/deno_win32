@@ -1746,7 +1746,7 @@ export const IntermediatePageCount = 1;
  */
 export interface SPLCLIENT_INFO_2_WINXP {
   /** u64 */
-  hSplPrinter: Deno.PointerValue;
+  hSplPrinter: bigint | number;
 }
 
 export const sizeofSPLCLIENT_INFO_2_WINXP = 8;
@@ -1770,12 +1770,12 @@ export class SPLCLIENT_INFO_2_WINXPView {
   }
 
   // 0x00: u64
-  get hSplPrinter(): Deno.PointerValue {
+  get hSplPrinter(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: u64
-  set hSplPrinter(value: Deno.PointerValue) {
+  set hSplPrinter(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -1984,7 +1984,7 @@ export class ImgErrorInfoView {
   // 0x54: pad4
 }
 
-export type LPARAM = Deno.PointerValue;
+export type LPARAM = bigint | number;
 
 /**
  * Windows.Win32.Graphics.Printing.OPTPARAM (size: 40)
@@ -1999,7 +1999,7 @@ export interface OPTPARAM {
   /** ptr */
   pData: Deno.PointerValue | Uint8Array;
   /** usize */
-  IconID: Deno.PointerValue;
+  IconID: bigint | number;
   /** Windows.Win32.Foundation.LPARAM */
   lParam: Uint8Array | Deno.PointerValue;
   /** array */
@@ -2063,7 +2063,7 @@ export class OPTPARAMView {
   }
 
   // 0x10: usize
-  get IconID(): Deno.PointerValue {
+  get IconID(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -2102,7 +2102,7 @@ export class OPTPARAMView {
   }
 
   // 0x10: usize
-  set IconID(value: Deno.PointerValue) {
+  set IconID(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -2404,11 +2404,11 @@ export type PWSTR = Deno.PointerValue | Uint8Array;
  */
 export interface _Anonymous1_e__Union {
   /** usize */
-  Data0: Deno.PointerValue;
+  Data0: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   String: string | null | Uint8Array | Uint16Array;
   /** usize */
-  u: Deno.PointerValue;
+  u: bigint | number;
   /** ptr */
   psid: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -2460,7 +2460,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  get Data0(): Deno.PointerValue {
+  get Data0(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -2471,7 +2471,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  get u(): Deno.PointerValue {
+  get u(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -2507,7 +2507,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  set Data0(value: Deno.PointerValue) {
+  set Data0(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -2518,7 +2518,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  set u(value: Deno.PointerValue) {
+  set u(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -2555,7 +2555,7 @@ export class _Anonymous1_e__UnionView {
  */
 export interface _Anonymous2_e__Union {
   /** usize */
-  Data1: Deno.PointerValue;
+  Data1: bigint | number;
   /** i32 */
   LogonId_HighPart: number;
 }
@@ -2584,7 +2584,7 @@ export class _Anonymous2_e__UnionView {
   }
 
   // 0x00: usize
-  get Data1(): Deno.PointerValue {
+  get Data1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -2596,7 +2596,7 @@ export class _Anonymous2_e__UnionView {
   // 0x0c: pad4
 
   // 0x00: usize
-  set Data1(value: Deno.PointerValue) {
+  set Data1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -2621,7 +2621,7 @@ export interface EXTPUSH {
   /** _Anonymous1_e__Union */
   Anonymous1: Uint8Array | Deno.PointerValue;
   /** usize */
-  IconID: Deno.PointerValue;
+  IconID: bigint | number;
   /** _Anonymous2_e__Union */
   Anonymous2: Uint8Array | Deno.PointerValue;
   /** array */
@@ -2686,7 +2686,7 @@ export class EXTPUSHView {
   }
 
   // 0x18: usize
-  get IconID(): Deno.PointerValue {
+  get IconID(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -2725,7 +2725,7 @@ export class EXTPUSHView {
   }
 
   // 0x18: usize
-  set IconID(value: Deno.PointerValue) {
+  set IconID(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -2755,7 +2755,7 @@ export interface EXTCHKBOX {
   /** ptr */
   pCheckedName: Deno.PointerValue | Uint8Array;
   /** usize */
-  IconID: Deno.PointerValue;
+  IconID: bigint | number;
   /** array */
   wReserved: Deno.PointerValue;
   /** array */
@@ -2828,7 +2828,7 @@ export class EXTCHKBOXView {
   }
 
   // 0x20: usize
-  get IconID(): Deno.PointerValue {
+  get IconID(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -2872,7 +2872,7 @@ export class EXTCHKBOXView {
   }
 
   // 0x20: usize
-  set IconID(value: Deno.PointerValue) {
+  set IconID(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -2887,7 +2887,7 @@ export class EXTCHKBOXView {
   }
 }
 
-export type HINSTANCE = Deno.PointerValue;
+export type HINSTANCE = bigint | number;
 
 /**
  * Windows.Win32.Graphics.Printing.OIEXT (size: 32)
@@ -3005,7 +3005,7 @@ export interface OPTITEM {
   /** u32 */
   Flags: number;
   /** usize */
-  UserData: Deno.PointerValue;
+  UserData: bigint | number;
   /** ptr */
   pName: Deno.PointerValue | Uint8Array;
   /** _Anonymous1_e__Union */
@@ -3097,7 +3097,7 @@ export class OPTITEMView {
   }
 
   // 0x08: usize
-  get UserData(): Deno.PointerValue {
+  get UserData(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -3178,7 +3178,7 @@ export class OPTITEMView {
   }
 
   // 0x08: usize
-  set UserData(value: Deno.PointerValue) {
+  set UserData(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -3233,16 +3233,16 @@ export class OPTITEMView {
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 /**
  * _Anonymous_e__Struct (size: 16)
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -3268,22 +3268,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -3364,9 +3364,9 @@ export interface CPSUICBPARAM {
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue;
   /** usize */
-  UserData: Deno.PointerValue;
+  UserData: bigint | number;
   /** usize */
-  Result: Deno.PointerValue;
+  Result: bigint | number;
 }
 
 export const sizeofCPSUICBPARAM = 64;
@@ -3458,12 +3458,12 @@ export class CPSUICBPARAMView {
   }
 
   // 0x30: usize
-  get UserData(): Deno.PointerValue {
+  get UserData(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: usize
-  get Result(): Deno.PointerValue {
+  get Result(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
@@ -3512,12 +3512,12 @@ export class CPSUICBPARAMView {
   }
 
   // 0x30: usize
-  set UserData(value: Deno.PointerValue) {
+  set UserData(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: usize
-  set Result(value: Deno.PointerValue) {
+  set Result(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 }
@@ -3535,7 +3535,7 @@ export interface DLGPAGE {
   /** ptr */
   pTabName: Deno.PointerValue | Uint8Array;
   /** usize */
-  IconID: Deno.PointerValue;
+  IconID: bigint | number;
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue;
 }
@@ -3596,7 +3596,7 @@ export class DLGPAGEView {
   }
 
   // 0x18: usize
-  get IconID(): Deno.PointerValue {
+  get IconID(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -3629,7 +3629,7 @@ export class DLGPAGEView {
   }
 
   // 0x18: usize
-  set IconID(value: Deno.PointerValue) {
+  set IconID(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -3652,7 +3652,7 @@ export interface COMPROPSHEETUI {
   /** ptr */
   pCallerName: Deno.PointerValue | Uint8Array;
   /** usize */
-  UserData: Deno.PointerValue;
+  UserData: bigint | number;
   /** ptr */
   pHelpFile: Deno.PointerValue | Uint8Array;
   /** Windows.Win32.Graphics.Printing._CPSUICALLBACK */
@@ -3666,7 +3666,7 @@ export interface COMPROPSHEETUI {
   /** u16 */
   cDlgPage: number;
   /** usize */
-  IconID: Deno.PointerValue;
+  IconID: bigint | number;
   /** ptr */
   pOptItemName: Deno.PointerValue | Uint8Array;
   /** u16 */
@@ -3755,7 +3755,7 @@ export class COMPROPSHEETUIView {
   }
 
   // 0x18: usize
-  get UserData(): Deno.PointerValue {
+  get UserData(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -3796,7 +3796,7 @@ export class COMPROPSHEETUIView {
   // 0x44: pad4
 
   // 0x48: usize
-  get IconID(): Deno.PointerValue {
+  get IconID(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
@@ -3847,7 +3847,7 @@ export class COMPROPSHEETUIView {
   }
 
   // 0x18: usize
-  set UserData(value: Deno.PointerValue) {
+  set UserData(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -3884,7 +3884,7 @@ export class COMPROPSHEETUIView {
   // 0x44: pad4
 
   // 0x48: usize
-  set IconID(value: Deno.PointerValue) {
+  set IconID(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
@@ -3911,9 +3911,9 @@ export class COMPROPSHEETUIView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
-export type LRESULT = Deno.PointerValue;
+export type LRESULT = bigint | number;
 
 /**
  * Windows.Win32.Graphics.Printing.SETRESULT_INFO (size: 24)
@@ -4014,11 +4014,11 @@ export interface INSERTPSUIPAGE_INFO {
   /** u8 */
   Mode: number;
   /** usize */
-  dwData1: Deno.PointerValue;
+  dwData1: bigint | number;
   /** usize */
-  dwData2: Deno.PointerValue;
+  dwData2: bigint | number;
   /** usize */
-  dwData3: Deno.PointerValue;
+  dwData3: bigint | number;
 }
 
 export const sizeofINSERTPSUIPAGE_INFO = 32;
@@ -4070,17 +4070,17 @@ export class INSERTPSUIPAGE_INFOView {
   // 0x04: pad4
 
   // 0x08: usize
-  get dwData1(): Deno.PointerValue {
+  get dwData1(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: usize
-  get dwData2(): Deno.PointerValue {
+  get dwData2(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: usize
-  get dwData3(): Deno.PointerValue {
+  get dwData3(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -4102,17 +4102,17 @@ export class INSERTPSUIPAGE_INFOView {
   // 0x04: pad4
 
   // 0x08: usize
-  set dwData1(value: Deno.PointerValue) {
+  set dwData1(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: usize
-  set dwData2(value: Deno.PointerValue) {
+  set dwData2(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: usize
-  set dwData3(value: Deno.PointerValue) {
+  set dwData3(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 }
@@ -4298,9 +4298,9 @@ export interface PROPSHEETUI_INFO {
   /** Windows.Win32.Foundation.LPARAM */
   lParamInit: Uint8Array | Deno.PointerValue;
   /** usize */
-  UserData: Deno.PointerValue;
+  UserData: bigint | number;
   /** usize */
-  Result: Deno.PointerValue;
+  Result: bigint | number;
 }
 
 export const sizeofPROPSHEETUI_INFO = 48;
@@ -4378,12 +4378,12 @@ export class PROPSHEETUI_INFOView {
   }
 
   // 0x20: usize
-  get UserData(): Deno.PointerValue {
+  get UserData(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: usize
-  get Result(): Deno.PointerValue {
+  get Result(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -4423,17 +4423,17 @@ export class PROPSHEETUI_INFOView {
   }
 
   // 0x20: usize
-  set UserData(value: Deno.PointerValue) {
+  set UserData(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: usize
-  set Result(value: Deno.PointerValue) {
+  set Result(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 }
 
-export type HICON = Deno.PointerValue;
+export type HICON = bigint | number;
 
 /**
  * Windows.Win32.Graphics.Printing.PROPSHEETUI_GETICON_INFO (size: 16)
@@ -10588,7 +10588,7 @@ export interface DRIVER_INFO_6A {
   /** Windows.Win32.Foundation.FILETIME */
   ftDriverDate: Uint8Array | Deno.PointerValue;
   /** u64 */
-  dwlDriverVersion: Deno.PointerValue;
+  dwlDriverVersion: bigint | number;
   /** Windows.Win32.Foundation.PSTR */
   pszMfgName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
@@ -10768,7 +10768,7 @@ export class DRIVER_INFO_6AView {
   }
 
   // 0x60: u64
-  get dwlDriverVersion(): Deno.PointerValue {
+  get dwlDriverVersion(): bigint | number {
     return Number(this.view.getBigUint64(96, true));
   }
 
@@ -10869,7 +10869,7 @@ export class DRIVER_INFO_6AView {
   }
 
   // 0x60: u64
-  set dwlDriverVersion(value: Deno.PointerValue) {
+  set dwlDriverVersion(value: bigint | number) {
     this.view.setBigUint64(96, BigInt(value), true);
   }
 
@@ -10927,7 +10927,7 @@ export interface DRIVER_INFO_6W {
   /** Windows.Win32.Foundation.FILETIME */
   ftDriverDate: Uint8Array | Deno.PointerValue;
   /** u64 */
-  dwlDriverVersion: Deno.PointerValue;
+  dwlDriverVersion: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   pszMfgName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
@@ -11107,7 +11107,7 @@ export class DRIVER_INFO_6WView {
   }
 
   // 0x60: u64
-  get dwlDriverVersion(): Deno.PointerValue {
+  get dwlDriverVersion(): bigint | number {
     return Number(this.view.getBigUint64(96, true));
   }
 
@@ -11208,7 +11208,7 @@ export class DRIVER_INFO_6WView {
   }
 
   // 0x60: u64
-  set dwlDriverVersion(value: Deno.PointerValue) {
+  set dwlDriverVersion(value: bigint | number) {
     this.view.setBigUint64(96, BigInt(value), true);
   }
 
@@ -11266,7 +11266,7 @@ export interface DRIVER_INFO_8A {
   /** Windows.Win32.Foundation.FILETIME */
   ftDriverDate: Uint8Array | Deno.PointerValue;
   /** u64 */
-  dwlDriverVersion: Deno.PointerValue;
+  dwlDriverVersion: bigint | number;
   /** Windows.Win32.Foundation.PSTR */
   pszMfgName: string | null | Uint8Array;
   /** Windows.Win32.Foundation.PSTR */
@@ -11290,7 +11290,7 @@ export interface DRIVER_INFO_8A {
   /** Windows.Win32.Foundation.FILETIME */
   ftMinInboxDriverVerDate: Uint8Array | Deno.PointerValue;
   /** u64 */
-  dwlMinInboxDriverVerVersion: Deno.PointerValue;
+  dwlMinInboxDriverVerVersion: bigint | number;
 }
 
 export const sizeofDRIVER_INFO_8A = 200;
@@ -11494,7 +11494,7 @@ export class DRIVER_INFO_8AView {
   }
 
   // 0x60: u64
-  get dwlDriverVersion(): Deno.PointerValue {
+  get dwlDriverVersion(): bigint | number {
     return Number(this.view.getBigUint64(96, true));
   }
 
@@ -11566,7 +11566,7 @@ export class DRIVER_INFO_8AView {
   }
 
   // 0xc0: u64
-  get dwlMinInboxDriverVerVersion(): Deno.PointerValue {
+  get dwlMinInboxDriverVerVersion(): bigint | number {
     return Number(this.view.getBigUint64(192, true));
   }
 
@@ -11643,7 +11643,7 @@ export class DRIVER_INFO_8AView {
   }
 
   // 0x60: u64
-  set dwlDriverVersion(value: Deno.PointerValue) {
+  set dwlDriverVersion(value: bigint | number) {
     this.view.setBigUint64(96, BigInt(value), true);
   }
 
@@ -11714,7 +11714,7 @@ export class DRIVER_INFO_8AView {
   }
 
   // 0xc0: u64
-  set dwlMinInboxDriverVerVersion(value: Deno.PointerValue) {
+  set dwlMinInboxDriverVerVersion(value: bigint | number) {
     this.view.setBigUint64(192, BigInt(value), true);
   }
 }
@@ -11748,7 +11748,7 @@ export interface DRIVER_INFO_8W {
   /** Windows.Win32.Foundation.FILETIME */
   ftDriverDate: Uint8Array | Deno.PointerValue;
   /** u64 */
-  dwlDriverVersion: Deno.PointerValue;
+  dwlDriverVersion: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   pszMfgName: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
@@ -11772,7 +11772,7 @@ export interface DRIVER_INFO_8W {
   /** Windows.Win32.Foundation.FILETIME */
   ftMinInboxDriverVerDate: Uint8Array | Deno.PointerValue;
   /** u64 */
-  dwlMinInboxDriverVerVersion: Deno.PointerValue;
+  dwlMinInboxDriverVerVersion: bigint | number;
 }
 
 export const sizeofDRIVER_INFO_8W = 200;
@@ -11976,7 +11976,7 @@ export class DRIVER_INFO_8WView {
   }
 
   // 0x60: u64
-  get dwlDriverVersion(): Deno.PointerValue {
+  get dwlDriverVersion(): bigint | number {
     return Number(this.view.getBigUint64(96, true));
   }
 
@@ -12048,7 +12048,7 @@ export class DRIVER_INFO_8WView {
   }
 
   // 0xc0: u64
-  get dwlMinInboxDriverVerVersion(): Deno.PointerValue {
+  get dwlMinInboxDriverVerVersion(): bigint | number {
     return Number(this.view.getBigUint64(192, true));
   }
 
@@ -12125,7 +12125,7 @@ export class DRIVER_INFO_8WView {
   }
 
   // 0x60: u64
-  set dwlDriverVersion(value: Deno.PointerValue) {
+  set dwlDriverVersion(value: bigint | number) {
     this.view.setBigUint64(96, BigInt(value), true);
   }
 
@@ -12196,7 +12196,7 @@ export class DRIVER_INFO_8WView {
   }
 
   // 0xc0: u64
-  set dwlMinInboxDriverVerVersion(value: Deno.PointerValue) {
+  set dwlMinInboxDriverVerVersion(value: bigint | number) {
     this.view.setBigUint64(192, BigInt(value), true);
   }
 }
@@ -17441,7 +17441,7 @@ export interface CORE_PRINTER_DRIVERA {
   /** Windows.Win32.Foundation.FILETIME */
   ftDriverDate: Uint8Array | Deno.PointerValue;
   /** u64 */
-  dwlDriverVersion: Deno.PointerValue;
+  dwlDriverVersion: bigint | number;
   /** array */
   szPackageID: Deno.PointerValue;
 }
@@ -17485,7 +17485,7 @@ export class CORE_PRINTER_DRIVERAView {
   }
 
   // 0x10: u64
-  get dwlDriverVersion(): Deno.PointerValue {
+  get dwlDriverVersion(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -17506,7 +17506,7 @@ export class CORE_PRINTER_DRIVERAView {
   }
 
   // 0x10: u64
-  set dwlDriverVersion(value: Deno.PointerValue) {
+  set dwlDriverVersion(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -17525,7 +17525,7 @@ export interface CORE_PRINTER_DRIVERW {
   /** Windows.Win32.Foundation.FILETIME */
   ftDriverDate: Uint8Array | Deno.PointerValue;
   /** u64 */
-  dwlDriverVersion: Deno.PointerValue;
+  dwlDriverVersion: bigint | number;
   /** array */
   szPackageID: Deno.PointerValue;
 }
@@ -17569,7 +17569,7 @@ export class CORE_PRINTER_DRIVERWView {
   }
 
   // 0x10: u64
-  get dwlDriverVersion(): Deno.PointerValue {
+  get dwlDriverVersion(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -17590,7 +17590,7 @@ export class CORE_PRINTER_DRIVERWView {
   }
 
   // 0x10: u64
-  set dwlDriverVersion(value: Deno.PointerValue) {
+  set dwlDriverVersion(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -17670,7 +17670,7 @@ export interface _value_e__Union {
   /** i32 */
   propertyInt32: number;
   /** i64 */
-  propertyInt64: Deno.PointerValue;
+  propertyInt64: bigint | number;
   /** _propertyBlob_e__Struct */
   propertyBlob: Uint8Array | Deno.PointerValue;
 }
@@ -17729,7 +17729,7 @@ export class _value_e__UnionView {
   // 0x14: pad4
 
   // 0x18: i64
-  get propertyInt64(): Deno.PointerValue {
+  get propertyInt64(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
@@ -17760,7 +17760,7 @@ export class _value_e__UnionView {
   // 0x14: pad4
 
   // 0x18: i64
-  set propertyInt64(value: Deno.PointerValue) {
+  set propertyInt64(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
@@ -20601,7 +20601,7 @@ export interface USERDATA {
   /** u32 */
   dwSize: number;
   /** usize */
-  dwItemID: Deno.PointerValue;
+  dwItemID: bigint | number;
   /** Windows.Win32.Foundation.PSTR */
   pKeyWordName: string | null | Uint8Array;
   /** array */
@@ -20646,7 +20646,7 @@ export class USERDATAView {
   // 0x04: pad4
 
   // 0x08: usize
-  get dwItemID(): Deno.PointerValue {
+  get dwItemID(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -20670,7 +20670,7 @@ export class USERDATAView {
   // 0x04: pad4
 
   // 0x08: usize
-  set dwItemID(value: Deno.PointerValue) {
+  set dwItemID(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -25397,7 +25397,7 @@ export interface BranchOfficeJobDataPrinted {
   /** Windows.Win32.Foundation.PWSTR */
   pPortName: string | null | Uint8Array | Uint16Array;
   /** i64 */
-  Size: Deno.PointerValue;
+  Size: bigint | number;
   /** u32 */
   TotalPages: number;
 }
@@ -25491,7 +25491,7 @@ export class BranchOfficeJobDataPrintedView {
   }
 
   // 0x30: i64
-  get Size(): Deno.PointerValue {
+  get Size(): bigint | number {
     return Number(this.view.getBigInt64(48, true));
   }
 
@@ -25540,7 +25540,7 @@ export class BranchOfficeJobDataPrintedView {
   }
 
   // 0x30: i64
-  set Size(value: Deno.PointerValue) {
+  set Size(value: bigint | number) {
     this.view.setBigInt64(48, BigInt(value), true);
   }
 
@@ -25567,9 +25567,9 @@ export interface BranchOfficeJobDataError {
   /** Windows.Win32.Foundation.PWSTR */
   pDataType: string | null | Uint8Array | Uint16Array;
   /** i64 */
-  TotalSize: Deno.PointerValue;
+  TotalSize: bigint | number;
   /** i64 */
-  PrintedSize: Deno.PointerValue;
+  PrintedSize: bigint | number;
   /** u32 */
   TotalPages: number;
   /** u32 */
@@ -25678,12 +25678,12 @@ export class BranchOfficeJobDataErrorView {
   }
 
   // 0x28: i64
-  get TotalSize(): Deno.PointerValue {
+  get TotalSize(): bigint | number {
     return Number(this.view.getBigInt64(40, true));
   }
 
   // 0x30: i64
-  get PrintedSize(): Deno.PointerValue {
+  get PrintedSize(): bigint | number {
     return Number(this.view.getBigInt64(48, true));
   }
 
@@ -25747,12 +25747,12 @@ export class BranchOfficeJobDataErrorView {
   }
 
   // 0x28: i64
-  set TotalSize(value: Deno.PointerValue) {
+  set TotalSize(value: bigint | number) {
     this.view.setBigInt64(40, BigInt(value), true);
   }
 
   // 0x30: i64
-  set PrintedSize(value: Deno.PointerValue) {
+  set PrintedSize(value: bigint | number) {
     this.view.setBigInt64(48, BigInt(value), true);
   }
 
@@ -25790,7 +25790,7 @@ export class BranchOfficeJobDataErrorView {
  */
 export interface BranchOfficeJobDataRendered {
   /** i64 */
-  Size: Deno.PointerValue;
+  Size: bigint | number;
   /** u32 */
   ICMMethod: number;
   /** i16 */
@@ -25839,7 +25839,7 @@ export class BranchOfficeJobDataRenderedView {
   }
 
   // 0x00: i64
-  get Size(): Deno.PointerValue {
+  get Size(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
@@ -25876,7 +25876,7 @@ export class BranchOfficeJobDataRenderedView {
   // 0x16: pad2
 
   // 0x00: i64
-  set Size(value: Deno.PointerValue) {
+  set Size(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
@@ -26486,7 +26486,7 @@ export class SPLCLIENT_INFO_1View {
  */
 export interface SPLCLIENT_INFO_2_W2K {
   /** usize */
-  hSplPrinter: Deno.PointerValue;
+  hSplPrinter: bigint | number;
 }
 
 export const sizeofSPLCLIENT_INFO_2_W2K = 8;
@@ -26510,12 +26510,12 @@ export class SPLCLIENT_INFO_2_W2KView {
   }
 
   // 0x00: usize
-  get hSplPrinter(): Deno.PointerValue {
+  get hSplPrinter(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: usize
-  set hSplPrinter(value: Deno.PointerValue) {
+  set hSplPrinter(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -26525,7 +26525,7 @@ export class SPLCLIENT_INFO_2_W2KView {
  */
 export interface _SPLCLIENT_INFO_2_V3 {
   /** u64 */
-  hSplPrinter: Deno.PointerValue;
+  hSplPrinter: bigint | number;
 }
 
 export const sizeof_SPLCLIENT_INFO_2_V3 = 8;
@@ -26549,12 +26549,12 @@ export class _SPLCLIENT_INFO_2_V3View {
   }
 
   // 0x00: u64
-  get hSplPrinter(): Deno.PointerValue {
+  get hSplPrinter(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: u64
-  set hSplPrinter(value: Deno.PointerValue) {
+  set hSplPrinter(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -26582,7 +26582,7 @@ export interface SPLCLIENT_INFO_3_VISTA {
   /** u16 */
   wProcessorArchitecture: number;
   /** u64 */
-  hSplPrinter: Deno.PointerValue;
+  hSplPrinter: bigint | number;
 }
 
 export const sizeofSPLCLIENT_INFO_3_VISTA = 56;
@@ -26683,7 +26683,7 @@ export class SPLCLIENT_INFO_3_VISTAView {
   // 0x2e: pad2
 
   // 0x30: u64
-  get hSplPrinter(): Deno.PointerValue {
+  get hSplPrinter(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -26739,7 +26739,7 @@ export class SPLCLIENT_INFO_3_VISTAView {
   // 0x2e: pad2
 
   // 0x30: u64
-  set hSplPrinter(value: Deno.PointerValue) {
+  set hSplPrinter(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 }
@@ -26749,217 +26749,217 @@ export class SPLCLIENT_INFO_3_VISTAView {
  */
 export interface PRINTPROVIDOR {
   /** isize */
-  fpOpenPrinter: Deno.PointerValue;
+  fpOpenPrinter: bigint | number;
   /** isize */
-  fpSetJob: Deno.PointerValue;
+  fpSetJob: bigint | number;
   /** isize */
-  fpGetJob: Deno.PointerValue;
+  fpGetJob: bigint | number;
   /** isize */
-  fpEnumJobs: Deno.PointerValue;
+  fpEnumJobs: bigint | number;
   /** isize */
-  fpAddPrinter: Deno.PointerValue;
+  fpAddPrinter: bigint | number;
   /** isize */
-  fpDeletePrinter: Deno.PointerValue;
+  fpDeletePrinter: bigint | number;
   /** isize */
-  fpSetPrinter: Deno.PointerValue;
+  fpSetPrinter: bigint | number;
   /** isize */
-  fpGetPrinter: Deno.PointerValue;
+  fpGetPrinter: bigint | number;
   /** isize */
-  fpEnumPrinters: Deno.PointerValue;
+  fpEnumPrinters: bigint | number;
   /** isize */
-  fpAddPrinterDriver: Deno.PointerValue;
+  fpAddPrinterDriver: bigint | number;
   /** isize */
-  fpEnumPrinterDrivers: Deno.PointerValue;
+  fpEnumPrinterDrivers: bigint | number;
   /** isize */
-  fpGetPrinterDriver: Deno.PointerValue;
+  fpGetPrinterDriver: bigint | number;
   /** isize */
-  fpGetPrinterDriverDirectory: Deno.PointerValue;
+  fpGetPrinterDriverDirectory: bigint | number;
   /** isize */
-  fpDeletePrinterDriver: Deno.PointerValue;
+  fpDeletePrinterDriver: bigint | number;
   /** isize */
-  fpAddPrintProcessor: Deno.PointerValue;
+  fpAddPrintProcessor: bigint | number;
   /** isize */
-  fpEnumPrintProcessors: Deno.PointerValue;
+  fpEnumPrintProcessors: bigint | number;
   /** isize */
-  fpGetPrintProcessorDirectory: Deno.PointerValue;
+  fpGetPrintProcessorDirectory: bigint | number;
   /** isize */
-  fpDeletePrintProcessor: Deno.PointerValue;
+  fpDeletePrintProcessor: bigint | number;
   /** isize */
-  fpEnumPrintProcessorDatatypes: Deno.PointerValue;
+  fpEnumPrintProcessorDatatypes: bigint | number;
   /** isize */
-  fpStartDocPrinter: Deno.PointerValue;
+  fpStartDocPrinter: bigint | number;
   /** isize */
-  fpStartPagePrinter: Deno.PointerValue;
+  fpStartPagePrinter: bigint | number;
   /** isize */
-  fpWritePrinter: Deno.PointerValue;
+  fpWritePrinter: bigint | number;
   /** isize */
-  fpEndPagePrinter: Deno.PointerValue;
+  fpEndPagePrinter: bigint | number;
   /** isize */
-  fpAbortPrinter: Deno.PointerValue;
+  fpAbortPrinter: bigint | number;
   /** isize */
-  fpReadPrinter: Deno.PointerValue;
+  fpReadPrinter: bigint | number;
   /** isize */
-  fpEndDocPrinter: Deno.PointerValue;
+  fpEndDocPrinter: bigint | number;
   /** isize */
-  fpAddJob: Deno.PointerValue;
+  fpAddJob: bigint | number;
   /** isize */
-  fpScheduleJob: Deno.PointerValue;
+  fpScheduleJob: bigint | number;
   /** isize */
-  fpGetPrinterData: Deno.PointerValue;
+  fpGetPrinterData: bigint | number;
   /** isize */
-  fpSetPrinterData: Deno.PointerValue;
+  fpSetPrinterData: bigint | number;
   /** isize */
-  fpWaitForPrinterChange: Deno.PointerValue;
+  fpWaitForPrinterChange: bigint | number;
   /** isize */
-  fpClosePrinter: Deno.PointerValue;
+  fpClosePrinter: bigint | number;
   /** isize */
-  fpAddForm: Deno.PointerValue;
+  fpAddForm: bigint | number;
   /** isize */
-  fpDeleteForm: Deno.PointerValue;
+  fpDeleteForm: bigint | number;
   /** isize */
-  fpGetForm: Deno.PointerValue;
+  fpGetForm: bigint | number;
   /** isize */
-  fpSetForm: Deno.PointerValue;
+  fpSetForm: bigint | number;
   /** isize */
-  fpEnumForms: Deno.PointerValue;
+  fpEnumForms: bigint | number;
   /** isize */
-  fpEnumMonitors: Deno.PointerValue;
+  fpEnumMonitors: bigint | number;
   /** isize */
-  fpEnumPorts: Deno.PointerValue;
+  fpEnumPorts: bigint | number;
   /** isize */
-  fpAddPort: Deno.PointerValue;
+  fpAddPort: bigint | number;
   /** isize */
-  fpConfigurePort: Deno.PointerValue;
+  fpConfigurePort: bigint | number;
   /** isize */
-  fpDeletePort: Deno.PointerValue;
+  fpDeletePort: bigint | number;
   /** isize */
-  fpCreatePrinterIC: Deno.PointerValue;
+  fpCreatePrinterIC: bigint | number;
   /** isize */
-  fpPlayGdiScriptOnPrinterIC: Deno.PointerValue;
+  fpPlayGdiScriptOnPrinterIC: bigint | number;
   /** isize */
-  fpDeletePrinterIC: Deno.PointerValue;
+  fpDeletePrinterIC: bigint | number;
   /** isize */
-  fpAddPrinterConnection: Deno.PointerValue;
+  fpAddPrinterConnection: bigint | number;
   /** isize */
-  fpDeletePrinterConnection: Deno.PointerValue;
+  fpDeletePrinterConnection: bigint | number;
   /** isize */
-  fpPrinterMessageBox: Deno.PointerValue;
+  fpPrinterMessageBox: bigint | number;
   /** isize */
-  fpAddMonitor: Deno.PointerValue;
+  fpAddMonitor: bigint | number;
   /** isize */
-  fpDeleteMonitor: Deno.PointerValue;
+  fpDeleteMonitor: bigint | number;
   /** isize */
-  fpResetPrinter: Deno.PointerValue;
+  fpResetPrinter: bigint | number;
   /** isize */
-  fpGetPrinterDriverEx: Deno.PointerValue;
+  fpGetPrinterDriverEx: bigint | number;
   /** isize */
-  fpFindFirstPrinterChangeNotification: Deno.PointerValue;
+  fpFindFirstPrinterChangeNotification: bigint | number;
   /** isize */
-  fpFindClosePrinterChangeNotification: Deno.PointerValue;
+  fpFindClosePrinterChangeNotification: bigint | number;
   /** isize */
-  fpAddPortEx: Deno.PointerValue;
+  fpAddPortEx: bigint | number;
   /** isize */
-  fpShutDown: Deno.PointerValue;
+  fpShutDown: bigint | number;
   /** isize */
-  fpRefreshPrinterChangeNotification: Deno.PointerValue;
+  fpRefreshPrinterChangeNotification: bigint | number;
   /** isize */
-  fpOpenPrinterEx: Deno.PointerValue;
+  fpOpenPrinterEx: bigint | number;
   /** isize */
-  fpAddPrinterEx: Deno.PointerValue;
+  fpAddPrinterEx: bigint | number;
   /** isize */
-  fpSetPort: Deno.PointerValue;
+  fpSetPort: bigint | number;
   /** isize */
-  fpEnumPrinterData: Deno.PointerValue;
+  fpEnumPrinterData: bigint | number;
   /** isize */
-  fpDeletePrinterData: Deno.PointerValue;
+  fpDeletePrinterData: bigint | number;
   /** isize */
-  fpClusterSplOpen: Deno.PointerValue;
+  fpClusterSplOpen: bigint | number;
   /** isize */
-  fpClusterSplClose: Deno.PointerValue;
+  fpClusterSplClose: bigint | number;
   /** isize */
-  fpClusterSplIsAlive: Deno.PointerValue;
+  fpClusterSplIsAlive: bigint | number;
   /** isize */
-  fpSetPrinterDataEx: Deno.PointerValue;
+  fpSetPrinterDataEx: bigint | number;
   /** isize */
-  fpGetPrinterDataEx: Deno.PointerValue;
+  fpGetPrinterDataEx: bigint | number;
   /** isize */
-  fpEnumPrinterDataEx: Deno.PointerValue;
+  fpEnumPrinterDataEx: bigint | number;
   /** isize */
-  fpEnumPrinterKey: Deno.PointerValue;
+  fpEnumPrinterKey: bigint | number;
   /** isize */
-  fpDeletePrinterDataEx: Deno.PointerValue;
+  fpDeletePrinterDataEx: bigint | number;
   /** isize */
-  fpDeletePrinterKey: Deno.PointerValue;
+  fpDeletePrinterKey: bigint | number;
   /** isize */
-  fpSeekPrinter: Deno.PointerValue;
+  fpSeekPrinter: bigint | number;
   /** isize */
-  fpDeletePrinterDriverEx: Deno.PointerValue;
+  fpDeletePrinterDriverEx: bigint | number;
   /** isize */
-  fpAddPerMachineConnection: Deno.PointerValue;
+  fpAddPerMachineConnection: bigint | number;
   /** isize */
-  fpDeletePerMachineConnection: Deno.PointerValue;
+  fpDeletePerMachineConnection: bigint | number;
   /** isize */
-  fpEnumPerMachineConnections: Deno.PointerValue;
+  fpEnumPerMachineConnections: bigint | number;
   /** isize */
-  fpXcvData: Deno.PointerValue;
+  fpXcvData: bigint | number;
   /** isize */
-  fpAddPrinterDriverEx: Deno.PointerValue;
+  fpAddPrinterDriverEx: bigint | number;
   /** isize */
-  fpSplReadPrinter: Deno.PointerValue;
+  fpSplReadPrinter: bigint | number;
   /** isize */
-  fpDriverUnloadComplete: Deno.PointerValue;
+  fpDriverUnloadComplete: bigint | number;
   /** isize */
-  fpGetSpoolFileInfo: Deno.PointerValue;
+  fpGetSpoolFileInfo: bigint | number;
   /** isize */
-  fpCommitSpoolData: Deno.PointerValue;
+  fpCommitSpoolData: bigint | number;
   /** isize */
-  fpCloseSpoolFileHandle: Deno.PointerValue;
+  fpCloseSpoolFileHandle: bigint | number;
   /** isize */
-  fpFlushPrinter: Deno.PointerValue;
+  fpFlushPrinter: bigint | number;
   /** isize */
-  fpSendRecvBidiData: Deno.PointerValue;
+  fpSendRecvBidiData: bigint | number;
   /** isize */
-  fpAddPrinterConnection2: Deno.PointerValue;
+  fpAddPrinterConnection2: bigint | number;
   /** isize */
-  fpGetPrintClassObject: Deno.PointerValue;
+  fpGetPrintClassObject: bigint | number;
   /** isize */
-  fpReportJobProcessingProgress: Deno.PointerValue;
+  fpReportJobProcessingProgress: bigint | number;
   /** isize */
-  fpEnumAndLogProvidorObjects: Deno.PointerValue;
+  fpEnumAndLogProvidorObjects: bigint | number;
   /** isize */
-  fpInternalGetPrinterDriver: Deno.PointerValue;
+  fpInternalGetPrinterDriver: bigint | number;
   /** isize */
-  fpFindCompatibleDriver: Deno.PointerValue;
+  fpFindCompatibleDriver: bigint | number;
   /** isize */
-  fpGetJobNamedPropertyValue: Deno.PointerValue;
+  fpGetJobNamedPropertyValue: bigint | number;
   /** isize */
-  fpSetJobNamedProperty: Deno.PointerValue;
+  fpSetJobNamedProperty: bigint | number;
   /** isize */
-  fpDeleteJobNamedProperty: Deno.PointerValue;
+  fpDeleteJobNamedProperty: bigint | number;
   /** isize */
-  fpEnumJobNamedProperties: Deno.PointerValue;
+  fpEnumJobNamedProperties: bigint | number;
   /** isize */
-  fpPowerEvent: Deno.PointerValue;
+  fpPowerEvent: bigint | number;
   /** isize */
-  fpGetUserPropertyBag: Deno.PointerValue;
+  fpGetUserPropertyBag: bigint | number;
   /** isize */
-  fpCanShutdown: Deno.PointerValue;
+  fpCanShutdown: bigint | number;
   /** isize */
-  fpLogJobInfoForBranchOffice: Deno.PointerValue;
+  fpLogJobInfoForBranchOffice: bigint | number;
   /** isize */
-  fpRegeneratePrintDeviceCapabilities: Deno.PointerValue;
+  fpRegeneratePrintDeviceCapabilities: bigint | number;
   /** isize */
-  fpPrintSupportOperation: Deno.PointerValue;
+  fpPrintSupportOperation: bigint | number;
   /** isize */
-  fpIppCreateJobOnPrinter: Deno.PointerValue;
+  fpIppCreateJobOnPrinter: bigint | number;
   /** isize */
-  fpIppGetJobAttributes: Deno.PointerValue;
+  fpIppGetJobAttributes: bigint | number;
   /** isize */
-  fpIppSetJobAttributes: Deno.PointerValue;
+  fpIppSetJobAttributes: bigint | number;
   /** isize */
-  fpIppGetPrinterAttributes: Deno.PointerValue;
+  fpIppGetPrinterAttributes: bigint | number;
   /** isize */
-  fpIppSetPrinterAttributes: Deno.PointerValue;
+  fpIppSetPrinterAttributes: bigint | number;
 }
 
 export const sizeofPRINTPROVIDOR = 848;
@@ -27193,1062 +27193,1062 @@ export class PRINTPROVIDORView {
   }
 
   // 0x00: isize
-  get fpOpenPrinter(): Deno.PointerValue {
+  get fpOpenPrinter(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: isize
-  get fpSetJob(): Deno.PointerValue {
+  get fpSetJob(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: isize
-  get fpGetJob(): Deno.PointerValue {
+  get fpGetJob(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get fpEnumJobs(): Deno.PointerValue {
+  get fpEnumJobs(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
   // 0x20: isize
-  get fpAddPrinter(): Deno.PointerValue {
+  get fpAddPrinter(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
   // 0x28: isize
-  get fpDeletePrinter(): Deno.PointerValue {
+  get fpDeletePrinter(): bigint | number {
     return Number(this.view.getBigInt64(40, true));
   }
 
   // 0x30: isize
-  get fpSetPrinter(): Deno.PointerValue {
+  get fpSetPrinter(): bigint | number {
     return Number(this.view.getBigInt64(48, true));
   }
 
   // 0x38: isize
-  get fpGetPrinter(): Deno.PointerValue {
+  get fpGetPrinter(): bigint | number {
     return Number(this.view.getBigInt64(56, true));
   }
 
   // 0x40: isize
-  get fpEnumPrinters(): Deno.PointerValue {
+  get fpEnumPrinters(): bigint | number {
     return Number(this.view.getBigInt64(64, true));
   }
 
   // 0x48: isize
-  get fpAddPrinterDriver(): Deno.PointerValue {
+  get fpAddPrinterDriver(): bigint | number {
     return Number(this.view.getBigInt64(72, true));
   }
 
   // 0x50: isize
-  get fpEnumPrinterDrivers(): Deno.PointerValue {
+  get fpEnumPrinterDrivers(): bigint | number {
     return Number(this.view.getBigInt64(80, true));
   }
 
   // 0x58: isize
-  get fpGetPrinterDriver(): Deno.PointerValue {
+  get fpGetPrinterDriver(): bigint | number {
     return Number(this.view.getBigInt64(88, true));
   }
 
   // 0x60: isize
-  get fpGetPrinterDriverDirectory(): Deno.PointerValue {
+  get fpGetPrinterDriverDirectory(): bigint | number {
     return Number(this.view.getBigInt64(96, true));
   }
 
   // 0x68: isize
-  get fpDeletePrinterDriver(): Deno.PointerValue {
+  get fpDeletePrinterDriver(): bigint | number {
     return Number(this.view.getBigInt64(104, true));
   }
 
   // 0x70: isize
-  get fpAddPrintProcessor(): Deno.PointerValue {
+  get fpAddPrintProcessor(): bigint | number {
     return Number(this.view.getBigInt64(112, true));
   }
 
   // 0x78: isize
-  get fpEnumPrintProcessors(): Deno.PointerValue {
+  get fpEnumPrintProcessors(): bigint | number {
     return Number(this.view.getBigInt64(120, true));
   }
 
   // 0x80: isize
-  get fpGetPrintProcessorDirectory(): Deno.PointerValue {
+  get fpGetPrintProcessorDirectory(): bigint | number {
     return Number(this.view.getBigInt64(128, true));
   }
 
   // 0x88: isize
-  get fpDeletePrintProcessor(): Deno.PointerValue {
+  get fpDeletePrintProcessor(): bigint | number {
     return Number(this.view.getBigInt64(136, true));
   }
 
   // 0x90: isize
-  get fpEnumPrintProcessorDatatypes(): Deno.PointerValue {
+  get fpEnumPrintProcessorDatatypes(): bigint | number {
     return Number(this.view.getBigInt64(144, true));
   }
 
   // 0x98: isize
-  get fpStartDocPrinter(): Deno.PointerValue {
+  get fpStartDocPrinter(): bigint | number {
     return Number(this.view.getBigInt64(152, true));
   }
 
   // 0xa0: isize
-  get fpStartPagePrinter(): Deno.PointerValue {
+  get fpStartPagePrinter(): bigint | number {
     return Number(this.view.getBigInt64(160, true));
   }
 
   // 0xa8: isize
-  get fpWritePrinter(): Deno.PointerValue {
+  get fpWritePrinter(): bigint | number {
     return Number(this.view.getBigInt64(168, true));
   }
 
   // 0xb0: isize
-  get fpEndPagePrinter(): Deno.PointerValue {
+  get fpEndPagePrinter(): bigint | number {
     return Number(this.view.getBigInt64(176, true));
   }
 
   // 0xb8: isize
-  get fpAbortPrinter(): Deno.PointerValue {
+  get fpAbortPrinter(): bigint | number {
     return Number(this.view.getBigInt64(184, true));
   }
 
   // 0xc0: isize
-  get fpReadPrinter(): Deno.PointerValue {
+  get fpReadPrinter(): bigint | number {
     return Number(this.view.getBigInt64(192, true));
   }
 
   // 0xc8: isize
-  get fpEndDocPrinter(): Deno.PointerValue {
+  get fpEndDocPrinter(): bigint | number {
     return Number(this.view.getBigInt64(200, true));
   }
 
   // 0xd0: isize
-  get fpAddJob(): Deno.PointerValue {
+  get fpAddJob(): bigint | number {
     return Number(this.view.getBigInt64(208, true));
   }
 
   // 0xd8: isize
-  get fpScheduleJob(): Deno.PointerValue {
+  get fpScheduleJob(): bigint | number {
     return Number(this.view.getBigInt64(216, true));
   }
 
   // 0xe0: isize
-  get fpGetPrinterData(): Deno.PointerValue {
+  get fpGetPrinterData(): bigint | number {
     return Number(this.view.getBigInt64(224, true));
   }
 
   // 0xe8: isize
-  get fpSetPrinterData(): Deno.PointerValue {
+  get fpSetPrinterData(): bigint | number {
     return Number(this.view.getBigInt64(232, true));
   }
 
   // 0xf0: isize
-  get fpWaitForPrinterChange(): Deno.PointerValue {
+  get fpWaitForPrinterChange(): bigint | number {
     return Number(this.view.getBigInt64(240, true));
   }
 
   // 0xf8: isize
-  get fpClosePrinter(): Deno.PointerValue {
+  get fpClosePrinter(): bigint | number {
     return Number(this.view.getBigInt64(248, true));
   }
 
   // 0x100: isize
-  get fpAddForm(): Deno.PointerValue {
+  get fpAddForm(): bigint | number {
     return Number(this.view.getBigInt64(256, true));
   }
 
   // 0x108: isize
-  get fpDeleteForm(): Deno.PointerValue {
+  get fpDeleteForm(): bigint | number {
     return Number(this.view.getBigInt64(264, true));
   }
 
   // 0x110: isize
-  get fpGetForm(): Deno.PointerValue {
+  get fpGetForm(): bigint | number {
     return Number(this.view.getBigInt64(272, true));
   }
 
   // 0x118: isize
-  get fpSetForm(): Deno.PointerValue {
+  get fpSetForm(): bigint | number {
     return Number(this.view.getBigInt64(280, true));
   }
 
   // 0x120: isize
-  get fpEnumForms(): Deno.PointerValue {
+  get fpEnumForms(): bigint | number {
     return Number(this.view.getBigInt64(288, true));
   }
 
   // 0x128: isize
-  get fpEnumMonitors(): Deno.PointerValue {
+  get fpEnumMonitors(): bigint | number {
     return Number(this.view.getBigInt64(296, true));
   }
 
   // 0x130: isize
-  get fpEnumPorts(): Deno.PointerValue {
+  get fpEnumPorts(): bigint | number {
     return Number(this.view.getBigInt64(304, true));
   }
 
   // 0x138: isize
-  get fpAddPort(): Deno.PointerValue {
+  get fpAddPort(): bigint | number {
     return Number(this.view.getBigInt64(312, true));
   }
 
   // 0x140: isize
-  get fpConfigurePort(): Deno.PointerValue {
+  get fpConfigurePort(): bigint | number {
     return Number(this.view.getBigInt64(320, true));
   }
 
   // 0x148: isize
-  get fpDeletePort(): Deno.PointerValue {
+  get fpDeletePort(): bigint | number {
     return Number(this.view.getBigInt64(328, true));
   }
 
   // 0x150: isize
-  get fpCreatePrinterIC(): Deno.PointerValue {
+  get fpCreatePrinterIC(): bigint | number {
     return Number(this.view.getBigInt64(336, true));
   }
 
   // 0x158: isize
-  get fpPlayGdiScriptOnPrinterIC(): Deno.PointerValue {
+  get fpPlayGdiScriptOnPrinterIC(): bigint | number {
     return Number(this.view.getBigInt64(344, true));
   }
 
   // 0x160: isize
-  get fpDeletePrinterIC(): Deno.PointerValue {
+  get fpDeletePrinterIC(): bigint | number {
     return Number(this.view.getBigInt64(352, true));
   }
 
   // 0x168: isize
-  get fpAddPrinterConnection(): Deno.PointerValue {
+  get fpAddPrinterConnection(): bigint | number {
     return Number(this.view.getBigInt64(360, true));
   }
 
   // 0x170: isize
-  get fpDeletePrinterConnection(): Deno.PointerValue {
+  get fpDeletePrinterConnection(): bigint | number {
     return Number(this.view.getBigInt64(368, true));
   }
 
   // 0x178: isize
-  get fpPrinterMessageBox(): Deno.PointerValue {
+  get fpPrinterMessageBox(): bigint | number {
     return Number(this.view.getBigInt64(376, true));
   }
 
   // 0x180: isize
-  get fpAddMonitor(): Deno.PointerValue {
+  get fpAddMonitor(): bigint | number {
     return Number(this.view.getBigInt64(384, true));
   }
 
   // 0x188: isize
-  get fpDeleteMonitor(): Deno.PointerValue {
+  get fpDeleteMonitor(): bigint | number {
     return Number(this.view.getBigInt64(392, true));
   }
 
   // 0x190: isize
-  get fpResetPrinter(): Deno.PointerValue {
+  get fpResetPrinter(): bigint | number {
     return Number(this.view.getBigInt64(400, true));
   }
 
   // 0x198: isize
-  get fpGetPrinterDriverEx(): Deno.PointerValue {
+  get fpGetPrinterDriverEx(): bigint | number {
     return Number(this.view.getBigInt64(408, true));
   }
 
   // 0x1a0: isize
-  get fpFindFirstPrinterChangeNotification(): Deno.PointerValue {
+  get fpFindFirstPrinterChangeNotification(): bigint | number {
     return Number(this.view.getBigInt64(416, true));
   }
 
   // 0x1a8: isize
-  get fpFindClosePrinterChangeNotification(): Deno.PointerValue {
+  get fpFindClosePrinterChangeNotification(): bigint | number {
     return Number(this.view.getBigInt64(424, true));
   }
 
   // 0x1b0: isize
-  get fpAddPortEx(): Deno.PointerValue {
+  get fpAddPortEx(): bigint | number {
     return Number(this.view.getBigInt64(432, true));
   }
 
   // 0x1b8: isize
-  get fpShutDown(): Deno.PointerValue {
+  get fpShutDown(): bigint | number {
     return Number(this.view.getBigInt64(440, true));
   }
 
   // 0x1c0: isize
-  get fpRefreshPrinterChangeNotification(): Deno.PointerValue {
+  get fpRefreshPrinterChangeNotification(): bigint | number {
     return Number(this.view.getBigInt64(448, true));
   }
 
   // 0x1c8: isize
-  get fpOpenPrinterEx(): Deno.PointerValue {
+  get fpOpenPrinterEx(): bigint | number {
     return Number(this.view.getBigInt64(456, true));
   }
 
   // 0x1d0: isize
-  get fpAddPrinterEx(): Deno.PointerValue {
+  get fpAddPrinterEx(): bigint | number {
     return Number(this.view.getBigInt64(464, true));
   }
 
   // 0x1d8: isize
-  get fpSetPort(): Deno.PointerValue {
+  get fpSetPort(): bigint | number {
     return Number(this.view.getBigInt64(472, true));
   }
 
   // 0x1e0: isize
-  get fpEnumPrinterData(): Deno.PointerValue {
+  get fpEnumPrinterData(): bigint | number {
     return Number(this.view.getBigInt64(480, true));
   }
 
   // 0x1e8: isize
-  get fpDeletePrinterData(): Deno.PointerValue {
+  get fpDeletePrinterData(): bigint | number {
     return Number(this.view.getBigInt64(488, true));
   }
 
   // 0x1f0: isize
-  get fpClusterSplOpen(): Deno.PointerValue {
+  get fpClusterSplOpen(): bigint | number {
     return Number(this.view.getBigInt64(496, true));
   }
 
   // 0x1f8: isize
-  get fpClusterSplClose(): Deno.PointerValue {
+  get fpClusterSplClose(): bigint | number {
     return Number(this.view.getBigInt64(504, true));
   }
 
   // 0x200: isize
-  get fpClusterSplIsAlive(): Deno.PointerValue {
+  get fpClusterSplIsAlive(): bigint | number {
     return Number(this.view.getBigInt64(512, true));
   }
 
   // 0x208: isize
-  get fpSetPrinterDataEx(): Deno.PointerValue {
+  get fpSetPrinterDataEx(): bigint | number {
     return Number(this.view.getBigInt64(520, true));
   }
 
   // 0x210: isize
-  get fpGetPrinterDataEx(): Deno.PointerValue {
+  get fpGetPrinterDataEx(): bigint | number {
     return Number(this.view.getBigInt64(528, true));
   }
 
   // 0x218: isize
-  get fpEnumPrinterDataEx(): Deno.PointerValue {
+  get fpEnumPrinterDataEx(): bigint | number {
     return Number(this.view.getBigInt64(536, true));
   }
 
   // 0x220: isize
-  get fpEnumPrinterKey(): Deno.PointerValue {
+  get fpEnumPrinterKey(): bigint | number {
     return Number(this.view.getBigInt64(544, true));
   }
 
   // 0x228: isize
-  get fpDeletePrinterDataEx(): Deno.PointerValue {
+  get fpDeletePrinterDataEx(): bigint | number {
     return Number(this.view.getBigInt64(552, true));
   }
 
   // 0x230: isize
-  get fpDeletePrinterKey(): Deno.PointerValue {
+  get fpDeletePrinterKey(): bigint | number {
     return Number(this.view.getBigInt64(560, true));
   }
 
   // 0x238: isize
-  get fpSeekPrinter(): Deno.PointerValue {
+  get fpSeekPrinter(): bigint | number {
     return Number(this.view.getBigInt64(568, true));
   }
 
   // 0x240: isize
-  get fpDeletePrinterDriverEx(): Deno.PointerValue {
+  get fpDeletePrinterDriverEx(): bigint | number {
     return Number(this.view.getBigInt64(576, true));
   }
 
   // 0x248: isize
-  get fpAddPerMachineConnection(): Deno.PointerValue {
+  get fpAddPerMachineConnection(): bigint | number {
     return Number(this.view.getBigInt64(584, true));
   }
 
   // 0x250: isize
-  get fpDeletePerMachineConnection(): Deno.PointerValue {
+  get fpDeletePerMachineConnection(): bigint | number {
     return Number(this.view.getBigInt64(592, true));
   }
 
   // 0x258: isize
-  get fpEnumPerMachineConnections(): Deno.PointerValue {
+  get fpEnumPerMachineConnections(): bigint | number {
     return Number(this.view.getBigInt64(600, true));
   }
 
   // 0x260: isize
-  get fpXcvData(): Deno.PointerValue {
+  get fpXcvData(): bigint | number {
     return Number(this.view.getBigInt64(608, true));
   }
 
   // 0x268: isize
-  get fpAddPrinterDriverEx(): Deno.PointerValue {
+  get fpAddPrinterDriverEx(): bigint | number {
     return Number(this.view.getBigInt64(616, true));
   }
 
   // 0x270: isize
-  get fpSplReadPrinter(): Deno.PointerValue {
+  get fpSplReadPrinter(): bigint | number {
     return Number(this.view.getBigInt64(624, true));
   }
 
   // 0x278: isize
-  get fpDriverUnloadComplete(): Deno.PointerValue {
+  get fpDriverUnloadComplete(): bigint | number {
     return Number(this.view.getBigInt64(632, true));
   }
 
   // 0x280: isize
-  get fpGetSpoolFileInfo(): Deno.PointerValue {
+  get fpGetSpoolFileInfo(): bigint | number {
     return Number(this.view.getBigInt64(640, true));
   }
 
   // 0x288: isize
-  get fpCommitSpoolData(): Deno.PointerValue {
+  get fpCommitSpoolData(): bigint | number {
     return Number(this.view.getBigInt64(648, true));
   }
 
   // 0x290: isize
-  get fpCloseSpoolFileHandle(): Deno.PointerValue {
+  get fpCloseSpoolFileHandle(): bigint | number {
     return Number(this.view.getBigInt64(656, true));
   }
 
   // 0x298: isize
-  get fpFlushPrinter(): Deno.PointerValue {
+  get fpFlushPrinter(): bigint | number {
     return Number(this.view.getBigInt64(664, true));
   }
 
   // 0x2a0: isize
-  get fpSendRecvBidiData(): Deno.PointerValue {
+  get fpSendRecvBidiData(): bigint | number {
     return Number(this.view.getBigInt64(672, true));
   }
 
   // 0x2a8: isize
-  get fpAddPrinterConnection2(): Deno.PointerValue {
+  get fpAddPrinterConnection2(): bigint | number {
     return Number(this.view.getBigInt64(680, true));
   }
 
   // 0x2b0: isize
-  get fpGetPrintClassObject(): Deno.PointerValue {
+  get fpGetPrintClassObject(): bigint | number {
     return Number(this.view.getBigInt64(688, true));
   }
 
   // 0x2b8: isize
-  get fpReportJobProcessingProgress(): Deno.PointerValue {
+  get fpReportJobProcessingProgress(): bigint | number {
     return Number(this.view.getBigInt64(696, true));
   }
 
   // 0x2c0: isize
-  get fpEnumAndLogProvidorObjects(): Deno.PointerValue {
+  get fpEnumAndLogProvidorObjects(): bigint | number {
     return Number(this.view.getBigInt64(704, true));
   }
 
   // 0x2c8: isize
-  get fpInternalGetPrinterDriver(): Deno.PointerValue {
+  get fpInternalGetPrinterDriver(): bigint | number {
     return Number(this.view.getBigInt64(712, true));
   }
 
   // 0x2d0: isize
-  get fpFindCompatibleDriver(): Deno.PointerValue {
+  get fpFindCompatibleDriver(): bigint | number {
     return Number(this.view.getBigInt64(720, true));
   }
 
   // 0x2d8: isize
-  get fpGetJobNamedPropertyValue(): Deno.PointerValue {
+  get fpGetJobNamedPropertyValue(): bigint | number {
     return Number(this.view.getBigInt64(728, true));
   }
 
   // 0x2e0: isize
-  get fpSetJobNamedProperty(): Deno.PointerValue {
+  get fpSetJobNamedProperty(): bigint | number {
     return Number(this.view.getBigInt64(736, true));
   }
 
   // 0x2e8: isize
-  get fpDeleteJobNamedProperty(): Deno.PointerValue {
+  get fpDeleteJobNamedProperty(): bigint | number {
     return Number(this.view.getBigInt64(744, true));
   }
 
   // 0x2f0: isize
-  get fpEnumJobNamedProperties(): Deno.PointerValue {
+  get fpEnumJobNamedProperties(): bigint | number {
     return Number(this.view.getBigInt64(752, true));
   }
 
   // 0x2f8: isize
-  get fpPowerEvent(): Deno.PointerValue {
+  get fpPowerEvent(): bigint | number {
     return Number(this.view.getBigInt64(760, true));
   }
 
   // 0x300: isize
-  get fpGetUserPropertyBag(): Deno.PointerValue {
+  get fpGetUserPropertyBag(): bigint | number {
     return Number(this.view.getBigInt64(768, true));
   }
 
   // 0x308: isize
-  get fpCanShutdown(): Deno.PointerValue {
+  get fpCanShutdown(): bigint | number {
     return Number(this.view.getBigInt64(776, true));
   }
 
   // 0x310: isize
-  get fpLogJobInfoForBranchOffice(): Deno.PointerValue {
+  get fpLogJobInfoForBranchOffice(): bigint | number {
     return Number(this.view.getBigInt64(784, true));
   }
 
   // 0x318: isize
-  get fpRegeneratePrintDeviceCapabilities(): Deno.PointerValue {
+  get fpRegeneratePrintDeviceCapabilities(): bigint | number {
     return Number(this.view.getBigInt64(792, true));
   }
 
   // 0x320: isize
-  get fpPrintSupportOperation(): Deno.PointerValue {
+  get fpPrintSupportOperation(): bigint | number {
     return Number(this.view.getBigInt64(800, true));
   }
 
   // 0x328: isize
-  get fpIppCreateJobOnPrinter(): Deno.PointerValue {
+  get fpIppCreateJobOnPrinter(): bigint | number {
     return Number(this.view.getBigInt64(808, true));
   }
 
   // 0x330: isize
-  get fpIppGetJobAttributes(): Deno.PointerValue {
+  get fpIppGetJobAttributes(): bigint | number {
     return Number(this.view.getBigInt64(816, true));
   }
 
   // 0x338: isize
-  get fpIppSetJobAttributes(): Deno.PointerValue {
+  get fpIppSetJobAttributes(): bigint | number {
     return Number(this.view.getBigInt64(824, true));
   }
 
   // 0x340: isize
-  get fpIppGetPrinterAttributes(): Deno.PointerValue {
+  get fpIppGetPrinterAttributes(): bigint | number {
     return Number(this.view.getBigInt64(832, true));
   }
 
   // 0x348: isize
-  get fpIppSetPrinterAttributes(): Deno.PointerValue {
+  get fpIppSetPrinterAttributes(): bigint | number {
     return Number(this.view.getBigInt64(840, true));
   }
 
   // 0x00: isize
-  set fpOpenPrinter(value: Deno.PointerValue) {
+  set fpOpenPrinter(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set fpSetJob(value: Deno.PointerValue) {
+  set fpSetJob(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: isize
-  set fpGetJob(value: Deno.PointerValue) {
+  set fpGetJob(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set fpEnumJobs(value: Deno.PointerValue) {
+  set fpEnumJobs(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
   // 0x20: isize
-  set fpAddPrinter(value: Deno.PointerValue) {
+  set fpAddPrinter(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 
   // 0x28: isize
-  set fpDeletePrinter(value: Deno.PointerValue) {
+  set fpDeletePrinter(value: bigint | number) {
     this.view.setBigInt64(40, BigInt(value), true);
   }
 
   // 0x30: isize
-  set fpSetPrinter(value: Deno.PointerValue) {
+  set fpSetPrinter(value: bigint | number) {
     this.view.setBigInt64(48, BigInt(value), true);
   }
 
   // 0x38: isize
-  set fpGetPrinter(value: Deno.PointerValue) {
+  set fpGetPrinter(value: bigint | number) {
     this.view.setBigInt64(56, BigInt(value), true);
   }
 
   // 0x40: isize
-  set fpEnumPrinters(value: Deno.PointerValue) {
+  set fpEnumPrinters(value: bigint | number) {
     this.view.setBigInt64(64, BigInt(value), true);
   }
 
   // 0x48: isize
-  set fpAddPrinterDriver(value: Deno.PointerValue) {
+  set fpAddPrinterDriver(value: bigint | number) {
     this.view.setBigInt64(72, BigInt(value), true);
   }
 
   // 0x50: isize
-  set fpEnumPrinterDrivers(value: Deno.PointerValue) {
+  set fpEnumPrinterDrivers(value: bigint | number) {
     this.view.setBigInt64(80, BigInt(value), true);
   }
 
   // 0x58: isize
-  set fpGetPrinterDriver(value: Deno.PointerValue) {
+  set fpGetPrinterDriver(value: bigint | number) {
     this.view.setBigInt64(88, BigInt(value), true);
   }
 
   // 0x60: isize
-  set fpGetPrinterDriverDirectory(value: Deno.PointerValue) {
+  set fpGetPrinterDriverDirectory(value: bigint | number) {
     this.view.setBigInt64(96, BigInt(value), true);
   }
 
   // 0x68: isize
-  set fpDeletePrinterDriver(value: Deno.PointerValue) {
+  set fpDeletePrinterDriver(value: bigint | number) {
     this.view.setBigInt64(104, BigInt(value), true);
   }
 
   // 0x70: isize
-  set fpAddPrintProcessor(value: Deno.PointerValue) {
+  set fpAddPrintProcessor(value: bigint | number) {
     this.view.setBigInt64(112, BigInt(value), true);
   }
 
   // 0x78: isize
-  set fpEnumPrintProcessors(value: Deno.PointerValue) {
+  set fpEnumPrintProcessors(value: bigint | number) {
     this.view.setBigInt64(120, BigInt(value), true);
   }
 
   // 0x80: isize
-  set fpGetPrintProcessorDirectory(value: Deno.PointerValue) {
+  set fpGetPrintProcessorDirectory(value: bigint | number) {
     this.view.setBigInt64(128, BigInt(value), true);
   }
 
   // 0x88: isize
-  set fpDeletePrintProcessor(value: Deno.PointerValue) {
+  set fpDeletePrintProcessor(value: bigint | number) {
     this.view.setBigInt64(136, BigInt(value), true);
   }
 
   // 0x90: isize
-  set fpEnumPrintProcessorDatatypes(value: Deno.PointerValue) {
+  set fpEnumPrintProcessorDatatypes(value: bigint | number) {
     this.view.setBigInt64(144, BigInt(value), true);
   }
 
   // 0x98: isize
-  set fpStartDocPrinter(value: Deno.PointerValue) {
+  set fpStartDocPrinter(value: bigint | number) {
     this.view.setBigInt64(152, BigInt(value), true);
   }
 
   // 0xa0: isize
-  set fpStartPagePrinter(value: Deno.PointerValue) {
+  set fpStartPagePrinter(value: bigint | number) {
     this.view.setBigInt64(160, BigInt(value), true);
   }
 
   // 0xa8: isize
-  set fpWritePrinter(value: Deno.PointerValue) {
+  set fpWritePrinter(value: bigint | number) {
     this.view.setBigInt64(168, BigInt(value), true);
   }
 
   // 0xb0: isize
-  set fpEndPagePrinter(value: Deno.PointerValue) {
+  set fpEndPagePrinter(value: bigint | number) {
     this.view.setBigInt64(176, BigInt(value), true);
   }
 
   // 0xb8: isize
-  set fpAbortPrinter(value: Deno.PointerValue) {
+  set fpAbortPrinter(value: bigint | number) {
     this.view.setBigInt64(184, BigInt(value), true);
   }
 
   // 0xc0: isize
-  set fpReadPrinter(value: Deno.PointerValue) {
+  set fpReadPrinter(value: bigint | number) {
     this.view.setBigInt64(192, BigInt(value), true);
   }
 
   // 0xc8: isize
-  set fpEndDocPrinter(value: Deno.PointerValue) {
+  set fpEndDocPrinter(value: bigint | number) {
     this.view.setBigInt64(200, BigInt(value), true);
   }
 
   // 0xd0: isize
-  set fpAddJob(value: Deno.PointerValue) {
+  set fpAddJob(value: bigint | number) {
     this.view.setBigInt64(208, BigInt(value), true);
   }
 
   // 0xd8: isize
-  set fpScheduleJob(value: Deno.PointerValue) {
+  set fpScheduleJob(value: bigint | number) {
     this.view.setBigInt64(216, BigInt(value), true);
   }
 
   // 0xe0: isize
-  set fpGetPrinterData(value: Deno.PointerValue) {
+  set fpGetPrinterData(value: bigint | number) {
     this.view.setBigInt64(224, BigInt(value), true);
   }
 
   // 0xe8: isize
-  set fpSetPrinterData(value: Deno.PointerValue) {
+  set fpSetPrinterData(value: bigint | number) {
     this.view.setBigInt64(232, BigInt(value), true);
   }
 
   // 0xf0: isize
-  set fpWaitForPrinterChange(value: Deno.PointerValue) {
+  set fpWaitForPrinterChange(value: bigint | number) {
     this.view.setBigInt64(240, BigInt(value), true);
   }
 
   // 0xf8: isize
-  set fpClosePrinter(value: Deno.PointerValue) {
+  set fpClosePrinter(value: bigint | number) {
     this.view.setBigInt64(248, BigInt(value), true);
   }
 
   // 0x100: isize
-  set fpAddForm(value: Deno.PointerValue) {
+  set fpAddForm(value: bigint | number) {
     this.view.setBigInt64(256, BigInt(value), true);
   }
 
   // 0x108: isize
-  set fpDeleteForm(value: Deno.PointerValue) {
+  set fpDeleteForm(value: bigint | number) {
     this.view.setBigInt64(264, BigInt(value), true);
   }
 
   // 0x110: isize
-  set fpGetForm(value: Deno.PointerValue) {
+  set fpGetForm(value: bigint | number) {
     this.view.setBigInt64(272, BigInt(value), true);
   }
 
   // 0x118: isize
-  set fpSetForm(value: Deno.PointerValue) {
+  set fpSetForm(value: bigint | number) {
     this.view.setBigInt64(280, BigInt(value), true);
   }
 
   // 0x120: isize
-  set fpEnumForms(value: Deno.PointerValue) {
+  set fpEnumForms(value: bigint | number) {
     this.view.setBigInt64(288, BigInt(value), true);
   }
 
   // 0x128: isize
-  set fpEnumMonitors(value: Deno.PointerValue) {
+  set fpEnumMonitors(value: bigint | number) {
     this.view.setBigInt64(296, BigInt(value), true);
   }
 
   // 0x130: isize
-  set fpEnumPorts(value: Deno.PointerValue) {
+  set fpEnumPorts(value: bigint | number) {
     this.view.setBigInt64(304, BigInt(value), true);
   }
 
   // 0x138: isize
-  set fpAddPort(value: Deno.PointerValue) {
+  set fpAddPort(value: bigint | number) {
     this.view.setBigInt64(312, BigInt(value), true);
   }
 
   // 0x140: isize
-  set fpConfigurePort(value: Deno.PointerValue) {
+  set fpConfigurePort(value: bigint | number) {
     this.view.setBigInt64(320, BigInt(value), true);
   }
 
   // 0x148: isize
-  set fpDeletePort(value: Deno.PointerValue) {
+  set fpDeletePort(value: bigint | number) {
     this.view.setBigInt64(328, BigInt(value), true);
   }
 
   // 0x150: isize
-  set fpCreatePrinterIC(value: Deno.PointerValue) {
+  set fpCreatePrinterIC(value: bigint | number) {
     this.view.setBigInt64(336, BigInt(value), true);
   }
 
   // 0x158: isize
-  set fpPlayGdiScriptOnPrinterIC(value: Deno.PointerValue) {
+  set fpPlayGdiScriptOnPrinterIC(value: bigint | number) {
     this.view.setBigInt64(344, BigInt(value), true);
   }
 
   // 0x160: isize
-  set fpDeletePrinterIC(value: Deno.PointerValue) {
+  set fpDeletePrinterIC(value: bigint | number) {
     this.view.setBigInt64(352, BigInt(value), true);
   }
 
   // 0x168: isize
-  set fpAddPrinterConnection(value: Deno.PointerValue) {
+  set fpAddPrinterConnection(value: bigint | number) {
     this.view.setBigInt64(360, BigInt(value), true);
   }
 
   // 0x170: isize
-  set fpDeletePrinterConnection(value: Deno.PointerValue) {
+  set fpDeletePrinterConnection(value: bigint | number) {
     this.view.setBigInt64(368, BigInt(value), true);
   }
 
   // 0x178: isize
-  set fpPrinterMessageBox(value: Deno.PointerValue) {
+  set fpPrinterMessageBox(value: bigint | number) {
     this.view.setBigInt64(376, BigInt(value), true);
   }
 
   // 0x180: isize
-  set fpAddMonitor(value: Deno.PointerValue) {
+  set fpAddMonitor(value: bigint | number) {
     this.view.setBigInt64(384, BigInt(value), true);
   }
 
   // 0x188: isize
-  set fpDeleteMonitor(value: Deno.PointerValue) {
+  set fpDeleteMonitor(value: bigint | number) {
     this.view.setBigInt64(392, BigInt(value), true);
   }
 
   // 0x190: isize
-  set fpResetPrinter(value: Deno.PointerValue) {
+  set fpResetPrinter(value: bigint | number) {
     this.view.setBigInt64(400, BigInt(value), true);
   }
 
   // 0x198: isize
-  set fpGetPrinterDriverEx(value: Deno.PointerValue) {
+  set fpGetPrinterDriverEx(value: bigint | number) {
     this.view.setBigInt64(408, BigInt(value), true);
   }
 
   // 0x1a0: isize
-  set fpFindFirstPrinterChangeNotification(value: Deno.PointerValue) {
+  set fpFindFirstPrinterChangeNotification(value: bigint | number) {
     this.view.setBigInt64(416, BigInt(value), true);
   }
 
   // 0x1a8: isize
-  set fpFindClosePrinterChangeNotification(value: Deno.PointerValue) {
+  set fpFindClosePrinterChangeNotification(value: bigint | number) {
     this.view.setBigInt64(424, BigInt(value), true);
   }
 
   // 0x1b0: isize
-  set fpAddPortEx(value: Deno.PointerValue) {
+  set fpAddPortEx(value: bigint | number) {
     this.view.setBigInt64(432, BigInt(value), true);
   }
 
   // 0x1b8: isize
-  set fpShutDown(value: Deno.PointerValue) {
+  set fpShutDown(value: bigint | number) {
     this.view.setBigInt64(440, BigInt(value), true);
   }
 
   // 0x1c0: isize
-  set fpRefreshPrinterChangeNotification(value: Deno.PointerValue) {
+  set fpRefreshPrinterChangeNotification(value: bigint | number) {
     this.view.setBigInt64(448, BigInt(value), true);
   }
 
   // 0x1c8: isize
-  set fpOpenPrinterEx(value: Deno.PointerValue) {
+  set fpOpenPrinterEx(value: bigint | number) {
     this.view.setBigInt64(456, BigInt(value), true);
   }
 
   // 0x1d0: isize
-  set fpAddPrinterEx(value: Deno.PointerValue) {
+  set fpAddPrinterEx(value: bigint | number) {
     this.view.setBigInt64(464, BigInt(value), true);
   }
 
   // 0x1d8: isize
-  set fpSetPort(value: Deno.PointerValue) {
+  set fpSetPort(value: bigint | number) {
     this.view.setBigInt64(472, BigInt(value), true);
   }
 
   // 0x1e0: isize
-  set fpEnumPrinterData(value: Deno.PointerValue) {
+  set fpEnumPrinterData(value: bigint | number) {
     this.view.setBigInt64(480, BigInt(value), true);
   }
 
   // 0x1e8: isize
-  set fpDeletePrinterData(value: Deno.PointerValue) {
+  set fpDeletePrinterData(value: bigint | number) {
     this.view.setBigInt64(488, BigInt(value), true);
   }
 
   // 0x1f0: isize
-  set fpClusterSplOpen(value: Deno.PointerValue) {
+  set fpClusterSplOpen(value: bigint | number) {
     this.view.setBigInt64(496, BigInt(value), true);
   }
 
   // 0x1f8: isize
-  set fpClusterSplClose(value: Deno.PointerValue) {
+  set fpClusterSplClose(value: bigint | number) {
     this.view.setBigInt64(504, BigInt(value), true);
   }
 
   // 0x200: isize
-  set fpClusterSplIsAlive(value: Deno.PointerValue) {
+  set fpClusterSplIsAlive(value: bigint | number) {
     this.view.setBigInt64(512, BigInt(value), true);
   }
 
   // 0x208: isize
-  set fpSetPrinterDataEx(value: Deno.PointerValue) {
+  set fpSetPrinterDataEx(value: bigint | number) {
     this.view.setBigInt64(520, BigInt(value), true);
   }
 
   // 0x210: isize
-  set fpGetPrinterDataEx(value: Deno.PointerValue) {
+  set fpGetPrinterDataEx(value: bigint | number) {
     this.view.setBigInt64(528, BigInt(value), true);
   }
 
   // 0x218: isize
-  set fpEnumPrinterDataEx(value: Deno.PointerValue) {
+  set fpEnumPrinterDataEx(value: bigint | number) {
     this.view.setBigInt64(536, BigInt(value), true);
   }
 
   // 0x220: isize
-  set fpEnumPrinterKey(value: Deno.PointerValue) {
+  set fpEnumPrinterKey(value: bigint | number) {
     this.view.setBigInt64(544, BigInt(value), true);
   }
 
   // 0x228: isize
-  set fpDeletePrinterDataEx(value: Deno.PointerValue) {
+  set fpDeletePrinterDataEx(value: bigint | number) {
     this.view.setBigInt64(552, BigInt(value), true);
   }
 
   // 0x230: isize
-  set fpDeletePrinterKey(value: Deno.PointerValue) {
+  set fpDeletePrinterKey(value: bigint | number) {
     this.view.setBigInt64(560, BigInt(value), true);
   }
 
   // 0x238: isize
-  set fpSeekPrinter(value: Deno.PointerValue) {
+  set fpSeekPrinter(value: bigint | number) {
     this.view.setBigInt64(568, BigInt(value), true);
   }
 
   // 0x240: isize
-  set fpDeletePrinterDriverEx(value: Deno.PointerValue) {
+  set fpDeletePrinterDriverEx(value: bigint | number) {
     this.view.setBigInt64(576, BigInt(value), true);
   }
 
   // 0x248: isize
-  set fpAddPerMachineConnection(value: Deno.PointerValue) {
+  set fpAddPerMachineConnection(value: bigint | number) {
     this.view.setBigInt64(584, BigInt(value), true);
   }
 
   // 0x250: isize
-  set fpDeletePerMachineConnection(value: Deno.PointerValue) {
+  set fpDeletePerMachineConnection(value: bigint | number) {
     this.view.setBigInt64(592, BigInt(value), true);
   }
 
   // 0x258: isize
-  set fpEnumPerMachineConnections(value: Deno.PointerValue) {
+  set fpEnumPerMachineConnections(value: bigint | number) {
     this.view.setBigInt64(600, BigInt(value), true);
   }
 
   // 0x260: isize
-  set fpXcvData(value: Deno.PointerValue) {
+  set fpXcvData(value: bigint | number) {
     this.view.setBigInt64(608, BigInt(value), true);
   }
 
   // 0x268: isize
-  set fpAddPrinterDriverEx(value: Deno.PointerValue) {
+  set fpAddPrinterDriverEx(value: bigint | number) {
     this.view.setBigInt64(616, BigInt(value), true);
   }
 
   // 0x270: isize
-  set fpSplReadPrinter(value: Deno.PointerValue) {
+  set fpSplReadPrinter(value: bigint | number) {
     this.view.setBigInt64(624, BigInt(value), true);
   }
 
   // 0x278: isize
-  set fpDriverUnloadComplete(value: Deno.PointerValue) {
+  set fpDriverUnloadComplete(value: bigint | number) {
     this.view.setBigInt64(632, BigInt(value), true);
   }
 
   // 0x280: isize
-  set fpGetSpoolFileInfo(value: Deno.PointerValue) {
+  set fpGetSpoolFileInfo(value: bigint | number) {
     this.view.setBigInt64(640, BigInt(value), true);
   }
 
   // 0x288: isize
-  set fpCommitSpoolData(value: Deno.PointerValue) {
+  set fpCommitSpoolData(value: bigint | number) {
     this.view.setBigInt64(648, BigInt(value), true);
   }
 
   // 0x290: isize
-  set fpCloseSpoolFileHandle(value: Deno.PointerValue) {
+  set fpCloseSpoolFileHandle(value: bigint | number) {
     this.view.setBigInt64(656, BigInt(value), true);
   }
 
   // 0x298: isize
-  set fpFlushPrinter(value: Deno.PointerValue) {
+  set fpFlushPrinter(value: bigint | number) {
     this.view.setBigInt64(664, BigInt(value), true);
   }
 
   // 0x2a0: isize
-  set fpSendRecvBidiData(value: Deno.PointerValue) {
+  set fpSendRecvBidiData(value: bigint | number) {
     this.view.setBigInt64(672, BigInt(value), true);
   }
 
   // 0x2a8: isize
-  set fpAddPrinterConnection2(value: Deno.PointerValue) {
+  set fpAddPrinterConnection2(value: bigint | number) {
     this.view.setBigInt64(680, BigInt(value), true);
   }
 
   // 0x2b0: isize
-  set fpGetPrintClassObject(value: Deno.PointerValue) {
+  set fpGetPrintClassObject(value: bigint | number) {
     this.view.setBigInt64(688, BigInt(value), true);
   }
 
   // 0x2b8: isize
-  set fpReportJobProcessingProgress(value: Deno.PointerValue) {
+  set fpReportJobProcessingProgress(value: bigint | number) {
     this.view.setBigInt64(696, BigInt(value), true);
   }
 
   // 0x2c0: isize
-  set fpEnumAndLogProvidorObjects(value: Deno.PointerValue) {
+  set fpEnumAndLogProvidorObjects(value: bigint | number) {
     this.view.setBigInt64(704, BigInt(value), true);
   }
 
   // 0x2c8: isize
-  set fpInternalGetPrinterDriver(value: Deno.PointerValue) {
+  set fpInternalGetPrinterDriver(value: bigint | number) {
     this.view.setBigInt64(712, BigInt(value), true);
   }
 
   // 0x2d0: isize
-  set fpFindCompatibleDriver(value: Deno.PointerValue) {
+  set fpFindCompatibleDriver(value: bigint | number) {
     this.view.setBigInt64(720, BigInt(value), true);
   }
 
   // 0x2d8: isize
-  set fpGetJobNamedPropertyValue(value: Deno.PointerValue) {
+  set fpGetJobNamedPropertyValue(value: bigint | number) {
     this.view.setBigInt64(728, BigInt(value), true);
   }
 
   // 0x2e0: isize
-  set fpSetJobNamedProperty(value: Deno.PointerValue) {
+  set fpSetJobNamedProperty(value: bigint | number) {
     this.view.setBigInt64(736, BigInt(value), true);
   }
 
   // 0x2e8: isize
-  set fpDeleteJobNamedProperty(value: Deno.PointerValue) {
+  set fpDeleteJobNamedProperty(value: bigint | number) {
     this.view.setBigInt64(744, BigInt(value), true);
   }
 
   // 0x2f0: isize
-  set fpEnumJobNamedProperties(value: Deno.PointerValue) {
+  set fpEnumJobNamedProperties(value: bigint | number) {
     this.view.setBigInt64(752, BigInt(value), true);
   }
 
   // 0x2f8: isize
-  set fpPowerEvent(value: Deno.PointerValue) {
+  set fpPowerEvent(value: bigint | number) {
     this.view.setBigInt64(760, BigInt(value), true);
   }
 
   // 0x300: isize
-  set fpGetUserPropertyBag(value: Deno.PointerValue) {
+  set fpGetUserPropertyBag(value: bigint | number) {
     this.view.setBigInt64(768, BigInt(value), true);
   }
 
   // 0x308: isize
-  set fpCanShutdown(value: Deno.PointerValue) {
+  set fpCanShutdown(value: bigint | number) {
     this.view.setBigInt64(776, BigInt(value), true);
   }
 
   // 0x310: isize
-  set fpLogJobInfoForBranchOffice(value: Deno.PointerValue) {
+  set fpLogJobInfoForBranchOffice(value: bigint | number) {
     this.view.setBigInt64(784, BigInt(value), true);
   }
 
   // 0x318: isize
-  set fpRegeneratePrintDeviceCapabilities(value: Deno.PointerValue) {
+  set fpRegeneratePrintDeviceCapabilities(value: bigint | number) {
     this.view.setBigInt64(792, BigInt(value), true);
   }
 
   // 0x320: isize
-  set fpPrintSupportOperation(value: Deno.PointerValue) {
+  set fpPrintSupportOperation(value: bigint | number) {
     this.view.setBigInt64(800, BigInt(value), true);
   }
 
   // 0x328: isize
-  set fpIppCreateJobOnPrinter(value: Deno.PointerValue) {
+  set fpIppCreateJobOnPrinter(value: bigint | number) {
     this.view.setBigInt64(808, BigInt(value), true);
   }
 
   // 0x330: isize
-  set fpIppGetJobAttributes(value: Deno.PointerValue) {
+  set fpIppGetJobAttributes(value: bigint | number) {
     this.view.setBigInt64(816, BigInt(value), true);
   }
 
   // 0x338: isize
-  set fpIppSetJobAttributes(value: Deno.PointerValue) {
+  set fpIppSetJobAttributes(value: bigint | number) {
     this.view.setBigInt64(824, BigInt(value), true);
   }
 
   // 0x340: isize
-  set fpIppGetPrinterAttributes(value: Deno.PointerValue) {
+  set fpIppGetPrinterAttributes(value: bigint | number) {
     this.view.setBigInt64(832, BigInt(value), true);
   }
 
   // 0x348: isize
-  set fpIppSetPrinterAttributes(value: Deno.PointerValue) {
+  set fpIppSetPrinterAttributes(value: bigint | number) {
     this.view.setBigInt64(840, BigInt(value), true);
   }
 }
@@ -28414,25 +28414,25 @@ export interface MONITORREG {
   /** u32 */
   cbSize: number;
   /** isize */
-  fpCreateKey: Deno.PointerValue;
+  fpCreateKey: bigint | number;
   /** isize */
-  fpOpenKey: Deno.PointerValue;
+  fpOpenKey: bigint | number;
   /** isize */
-  fpCloseKey: Deno.PointerValue;
+  fpCloseKey: bigint | number;
   /** isize */
-  fpDeleteKey: Deno.PointerValue;
+  fpDeleteKey: bigint | number;
   /** isize */
-  fpEnumKey: Deno.PointerValue;
+  fpEnumKey: bigint | number;
   /** isize */
-  fpQueryInfoKey: Deno.PointerValue;
+  fpQueryInfoKey: bigint | number;
   /** isize */
-  fpSetValue: Deno.PointerValue;
+  fpSetValue: bigint | number;
   /** isize */
-  fpDeleteValue: Deno.PointerValue;
+  fpDeleteValue: bigint | number;
   /** isize */
-  fpEnumValue: Deno.PointerValue;
+  fpEnumValue: bigint | number;
   /** isize */
-  fpQueryValue: Deno.PointerValue;
+  fpQueryValue: bigint | number;
 }
 
 export const sizeofMONITORREG = 88;
@@ -28484,52 +28484,52 @@ export class MONITORREGView {
   // 0x04: pad4
 
   // 0x08: isize
-  get fpCreateKey(): Deno.PointerValue {
+  get fpCreateKey(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: isize
-  get fpOpenKey(): Deno.PointerValue {
+  get fpOpenKey(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get fpCloseKey(): Deno.PointerValue {
+  get fpCloseKey(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
   // 0x20: isize
-  get fpDeleteKey(): Deno.PointerValue {
+  get fpDeleteKey(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
   // 0x28: isize
-  get fpEnumKey(): Deno.PointerValue {
+  get fpEnumKey(): bigint | number {
     return Number(this.view.getBigInt64(40, true));
   }
 
   // 0x30: isize
-  get fpQueryInfoKey(): Deno.PointerValue {
+  get fpQueryInfoKey(): bigint | number {
     return Number(this.view.getBigInt64(48, true));
   }
 
   // 0x38: isize
-  get fpSetValue(): Deno.PointerValue {
+  get fpSetValue(): bigint | number {
     return Number(this.view.getBigInt64(56, true));
   }
 
   // 0x40: isize
-  get fpDeleteValue(): Deno.PointerValue {
+  get fpDeleteValue(): bigint | number {
     return Number(this.view.getBigInt64(64, true));
   }
 
   // 0x48: isize
-  get fpEnumValue(): Deno.PointerValue {
+  get fpEnumValue(): bigint | number {
     return Number(this.view.getBigInt64(72, true));
   }
 
   // 0x50: isize
-  get fpQueryValue(): Deno.PointerValue {
+  get fpQueryValue(): bigint | number {
     return Number(this.view.getBigInt64(80, true));
   }
 
@@ -28541,57 +28541,57 @@ export class MONITORREGView {
   // 0x04: pad4
 
   // 0x08: isize
-  set fpCreateKey(value: Deno.PointerValue) {
+  set fpCreateKey(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: isize
-  set fpOpenKey(value: Deno.PointerValue) {
+  set fpOpenKey(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set fpCloseKey(value: Deno.PointerValue) {
+  set fpCloseKey(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
   // 0x20: isize
-  set fpDeleteKey(value: Deno.PointerValue) {
+  set fpDeleteKey(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 
   // 0x28: isize
-  set fpEnumKey(value: Deno.PointerValue) {
+  set fpEnumKey(value: bigint | number) {
     this.view.setBigInt64(40, BigInt(value), true);
   }
 
   // 0x30: isize
-  set fpQueryInfoKey(value: Deno.PointerValue) {
+  set fpQueryInfoKey(value: bigint | number) {
     this.view.setBigInt64(48, BigInt(value), true);
   }
 
   // 0x38: isize
-  set fpSetValue(value: Deno.PointerValue) {
+  set fpSetValue(value: bigint | number) {
     this.view.setBigInt64(56, BigInt(value), true);
   }
 
   // 0x40: isize
-  set fpDeleteValue(value: Deno.PointerValue) {
+  set fpDeleteValue(value: bigint | number) {
     this.view.setBigInt64(64, BigInt(value), true);
   }
 
   // 0x48: isize
-  set fpEnumValue(value: Deno.PointerValue) {
+  set fpEnumValue(value: bigint | number) {
     this.view.setBigInt64(72, BigInt(value), true);
   }
 
   // 0x50: isize
-  set fpQueryValue(value: Deno.PointerValue) {
+  set fpQueryValue(value: bigint | number) {
     this.view.setBigInt64(80, BigInt(value), true);
   }
 }
 
-export type HKEY = Deno.PointerValue;
+export type HKEY = bigint | number;
 
 /**
  * Windows.Win32.Graphics.Printing.MONITORINIT (size: 48)
@@ -28725,39 +28725,39 @@ export class MONITORINITView {
  */
 export interface MONITOR {
   /** isize */
-  pfnEnumPorts: Deno.PointerValue;
+  pfnEnumPorts: bigint | number;
   /** isize */
-  pfnOpenPort: Deno.PointerValue;
+  pfnOpenPort: bigint | number;
   /** isize */
-  pfnOpenPortEx: Deno.PointerValue;
+  pfnOpenPortEx: bigint | number;
   /** isize */
-  pfnStartDocPort: Deno.PointerValue;
+  pfnStartDocPort: bigint | number;
   /** isize */
-  pfnWritePort: Deno.PointerValue;
+  pfnWritePort: bigint | number;
   /** isize */
-  pfnReadPort: Deno.PointerValue;
+  pfnReadPort: bigint | number;
   /** isize */
-  pfnEndDocPort: Deno.PointerValue;
+  pfnEndDocPort: bigint | number;
   /** isize */
-  pfnClosePort: Deno.PointerValue;
+  pfnClosePort: bigint | number;
   /** isize */
-  pfnAddPort: Deno.PointerValue;
+  pfnAddPort: bigint | number;
   /** isize */
-  pfnAddPortEx: Deno.PointerValue;
+  pfnAddPortEx: bigint | number;
   /** isize */
-  pfnConfigurePort: Deno.PointerValue;
+  pfnConfigurePort: bigint | number;
   /** isize */
-  pfnDeletePort: Deno.PointerValue;
+  pfnDeletePort: bigint | number;
   /** isize */
-  pfnGetPrinterDataFromPort: Deno.PointerValue;
+  pfnGetPrinterDataFromPort: bigint | number;
   /** isize */
-  pfnSetPortTimeOuts: Deno.PointerValue;
+  pfnSetPortTimeOuts: bigint | number;
   /** isize */
-  pfnXcvOpenPort: Deno.PointerValue;
+  pfnXcvOpenPort: bigint | number;
   /** isize */
-  pfnXcvDataPort: Deno.PointerValue;
+  pfnXcvDataPort: bigint | number;
   /** isize */
-  pfnXcvClosePort: Deno.PointerValue;
+  pfnXcvClosePort: bigint | number;
 }
 
 export const sizeofMONITOR = 136;
@@ -28813,172 +28813,172 @@ export class MONITORView {
   }
 
   // 0x00: isize
-  get pfnEnumPorts(): Deno.PointerValue {
+  get pfnEnumPorts(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: isize
-  get pfnOpenPort(): Deno.PointerValue {
+  get pfnOpenPort(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: isize
-  get pfnOpenPortEx(): Deno.PointerValue {
+  get pfnOpenPortEx(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get pfnStartDocPort(): Deno.PointerValue {
+  get pfnStartDocPort(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
   // 0x20: isize
-  get pfnWritePort(): Deno.PointerValue {
+  get pfnWritePort(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
   // 0x28: isize
-  get pfnReadPort(): Deno.PointerValue {
+  get pfnReadPort(): bigint | number {
     return Number(this.view.getBigInt64(40, true));
   }
 
   // 0x30: isize
-  get pfnEndDocPort(): Deno.PointerValue {
+  get pfnEndDocPort(): bigint | number {
     return Number(this.view.getBigInt64(48, true));
   }
 
   // 0x38: isize
-  get pfnClosePort(): Deno.PointerValue {
+  get pfnClosePort(): bigint | number {
     return Number(this.view.getBigInt64(56, true));
   }
 
   // 0x40: isize
-  get pfnAddPort(): Deno.PointerValue {
+  get pfnAddPort(): bigint | number {
     return Number(this.view.getBigInt64(64, true));
   }
 
   // 0x48: isize
-  get pfnAddPortEx(): Deno.PointerValue {
+  get pfnAddPortEx(): bigint | number {
     return Number(this.view.getBigInt64(72, true));
   }
 
   // 0x50: isize
-  get pfnConfigurePort(): Deno.PointerValue {
+  get pfnConfigurePort(): bigint | number {
     return Number(this.view.getBigInt64(80, true));
   }
 
   // 0x58: isize
-  get pfnDeletePort(): Deno.PointerValue {
+  get pfnDeletePort(): bigint | number {
     return Number(this.view.getBigInt64(88, true));
   }
 
   // 0x60: isize
-  get pfnGetPrinterDataFromPort(): Deno.PointerValue {
+  get pfnGetPrinterDataFromPort(): bigint | number {
     return Number(this.view.getBigInt64(96, true));
   }
 
   // 0x68: isize
-  get pfnSetPortTimeOuts(): Deno.PointerValue {
+  get pfnSetPortTimeOuts(): bigint | number {
     return Number(this.view.getBigInt64(104, true));
   }
 
   // 0x70: isize
-  get pfnXcvOpenPort(): Deno.PointerValue {
+  get pfnXcvOpenPort(): bigint | number {
     return Number(this.view.getBigInt64(112, true));
   }
 
   // 0x78: isize
-  get pfnXcvDataPort(): Deno.PointerValue {
+  get pfnXcvDataPort(): bigint | number {
     return Number(this.view.getBigInt64(120, true));
   }
 
   // 0x80: isize
-  get pfnXcvClosePort(): Deno.PointerValue {
+  get pfnXcvClosePort(): bigint | number {
     return Number(this.view.getBigInt64(128, true));
   }
 
   // 0x00: isize
-  set pfnEnumPorts(value: Deno.PointerValue) {
+  set pfnEnumPorts(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set pfnOpenPort(value: Deno.PointerValue) {
+  set pfnOpenPort(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: isize
-  set pfnOpenPortEx(value: Deno.PointerValue) {
+  set pfnOpenPortEx(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set pfnStartDocPort(value: Deno.PointerValue) {
+  set pfnStartDocPort(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
   // 0x20: isize
-  set pfnWritePort(value: Deno.PointerValue) {
+  set pfnWritePort(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 
   // 0x28: isize
-  set pfnReadPort(value: Deno.PointerValue) {
+  set pfnReadPort(value: bigint | number) {
     this.view.setBigInt64(40, BigInt(value), true);
   }
 
   // 0x30: isize
-  set pfnEndDocPort(value: Deno.PointerValue) {
+  set pfnEndDocPort(value: bigint | number) {
     this.view.setBigInt64(48, BigInt(value), true);
   }
 
   // 0x38: isize
-  set pfnClosePort(value: Deno.PointerValue) {
+  set pfnClosePort(value: bigint | number) {
     this.view.setBigInt64(56, BigInt(value), true);
   }
 
   // 0x40: isize
-  set pfnAddPort(value: Deno.PointerValue) {
+  set pfnAddPort(value: bigint | number) {
     this.view.setBigInt64(64, BigInt(value), true);
   }
 
   // 0x48: isize
-  set pfnAddPortEx(value: Deno.PointerValue) {
+  set pfnAddPortEx(value: bigint | number) {
     this.view.setBigInt64(72, BigInt(value), true);
   }
 
   // 0x50: isize
-  set pfnConfigurePort(value: Deno.PointerValue) {
+  set pfnConfigurePort(value: bigint | number) {
     this.view.setBigInt64(80, BigInt(value), true);
   }
 
   // 0x58: isize
-  set pfnDeletePort(value: Deno.PointerValue) {
+  set pfnDeletePort(value: bigint | number) {
     this.view.setBigInt64(88, BigInt(value), true);
   }
 
   // 0x60: isize
-  set pfnGetPrinterDataFromPort(value: Deno.PointerValue) {
+  set pfnGetPrinterDataFromPort(value: bigint | number) {
     this.view.setBigInt64(96, BigInt(value), true);
   }
 
   // 0x68: isize
-  set pfnSetPortTimeOuts(value: Deno.PointerValue) {
+  set pfnSetPortTimeOuts(value: bigint | number) {
     this.view.setBigInt64(104, BigInt(value), true);
   }
 
   // 0x70: isize
-  set pfnXcvOpenPort(value: Deno.PointerValue) {
+  set pfnXcvOpenPort(value: bigint | number) {
     this.view.setBigInt64(112, BigInt(value), true);
   }
 
   // 0x78: isize
-  set pfnXcvDataPort(value: Deno.PointerValue) {
+  set pfnXcvDataPort(value: bigint | number) {
     this.view.setBigInt64(120, BigInt(value), true);
   }
 
   // 0x80: isize
-  set pfnXcvClosePort(value: Deno.PointerValue) {
+  set pfnXcvClosePort(value: bigint | number) {
     this.view.setBigInt64(128, BigInt(value), true);
   }
 }
@@ -29049,49 +29049,49 @@ export interface MONITOR2 {
   /** u32 */
   cbSize: number;
   /** isize */
-  pfnEnumPorts: Deno.PointerValue;
+  pfnEnumPorts: bigint | number;
   /** isize */
-  pfnOpenPort: Deno.PointerValue;
+  pfnOpenPort: bigint | number;
   /** isize */
-  pfnOpenPortEx: Deno.PointerValue;
+  pfnOpenPortEx: bigint | number;
   /** isize */
-  pfnStartDocPort: Deno.PointerValue;
+  pfnStartDocPort: bigint | number;
   /** isize */
-  pfnWritePort: Deno.PointerValue;
+  pfnWritePort: bigint | number;
   /** isize */
-  pfnReadPort: Deno.PointerValue;
+  pfnReadPort: bigint | number;
   /** isize */
-  pfnEndDocPort: Deno.PointerValue;
+  pfnEndDocPort: bigint | number;
   /** isize */
-  pfnClosePort: Deno.PointerValue;
+  pfnClosePort: bigint | number;
   /** isize */
-  pfnAddPort: Deno.PointerValue;
+  pfnAddPort: bigint | number;
   /** isize */
-  pfnAddPortEx: Deno.PointerValue;
+  pfnAddPortEx: bigint | number;
   /** isize */
-  pfnConfigurePort: Deno.PointerValue;
+  pfnConfigurePort: bigint | number;
   /** isize */
-  pfnDeletePort: Deno.PointerValue;
+  pfnDeletePort: bigint | number;
   /** isize */
-  pfnGetPrinterDataFromPort: Deno.PointerValue;
+  pfnGetPrinterDataFromPort: bigint | number;
   /** isize */
-  pfnSetPortTimeOuts: Deno.PointerValue;
+  pfnSetPortTimeOuts: bigint | number;
   /** isize */
-  pfnXcvOpenPort: Deno.PointerValue;
+  pfnXcvOpenPort: bigint | number;
   /** isize */
-  pfnXcvDataPort: Deno.PointerValue;
+  pfnXcvDataPort: bigint | number;
   /** isize */
-  pfnXcvClosePort: Deno.PointerValue;
+  pfnXcvClosePort: bigint | number;
   /** isize */
-  pfnShutdown: Deno.PointerValue;
+  pfnShutdown: bigint | number;
   /** isize */
-  pfnSendRecvBidiDataFromPort: Deno.PointerValue;
+  pfnSendRecvBidiDataFromPort: bigint | number;
   /** isize */
-  pfnNotifyUsedPorts: Deno.PointerValue;
+  pfnNotifyUsedPorts: bigint | number;
   /** isize */
-  pfnNotifyUnusedPorts: Deno.PointerValue;
+  pfnNotifyUnusedPorts: bigint | number;
   /** isize */
-  pfnPowerEvent: Deno.PointerValue;
+  pfnPowerEvent: bigint | number;
 }
 
 export const sizeofMONITOR2 = 184;
@@ -29167,112 +29167,112 @@ export class MONITOR2View {
   // 0x04: pad4
 
   // 0x08: isize
-  get pfnEnumPorts(): Deno.PointerValue {
+  get pfnEnumPorts(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: isize
-  get pfnOpenPort(): Deno.PointerValue {
+  get pfnOpenPort(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get pfnOpenPortEx(): Deno.PointerValue {
+  get pfnOpenPortEx(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
   // 0x20: isize
-  get pfnStartDocPort(): Deno.PointerValue {
+  get pfnStartDocPort(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
   // 0x28: isize
-  get pfnWritePort(): Deno.PointerValue {
+  get pfnWritePort(): bigint | number {
     return Number(this.view.getBigInt64(40, true));
   }
 
   // 0x30: isize
-  get pfnReadPort(): Deno.PointerValue {
+  get pfnReadPort(): bigint | number {
     return Number(this.view.getBigInt64(48, true));
   }
 
   // 0x38: isize
-  get pfnEndDocPort(): Deno.PointerValue {
+  get pfnEndDocPort(): bigint | number {
     return Number(this.view.getBigInt64(56, true));
   }
 
   // 0x40: isize
-  get pfnClosePort(): Deno.PointerValue {
+  get pfnClosePort(): bigint | number {
     return Number(this.view.getBigInt64(64, true));
   }
 
   // 0x48: isize
-  get pfnAddPort(): Deno.PointerValue {
+  get pfnAddPort(): bigint | number {
     return Number(this.view.getBigInt64(72, true));
   }
 
   // 0x50: isize
-  get pfnAddPortEx(): Deno.PointerValue {
+  get pfnAddPortEx(): bigint | number {
     return Number(this.view.getBigInt64(80, true));
   }
 
   // 0x58: isize
-  get pfnConfigurePort(): Deno.PointerValue {
+  get pfnConfigurePort(): bigint | number {
     return Number(this.view.getBigInt64(88, true));
   }
 
   // 0x60: isize
-  get pfnDeletePort(): Deno.PointerValue {
+  get pfnDeletePort(): bigint | number {
     return Number(this.view.getBigInt64(96, true));
   }
 
   // 0x68: isize
-  get pfnGetPrinterDataFromPort(): Deno.PointerValue {
+  get pfnGetPrinterDataFromPort(): bigint | number {
     return Number(this.view.getBigInt64(104, true));
   }
 
   // 0x70: isize
-  get pfnSetPortTimeOuts(): Deno.PointerValue {
+  get pfnSetPortTimeOuts(): bigint | number {
     return Number(this.view.getBigInt64(112, true));
   }
 
   // 0x78: isize
-  get pfnXcvOpenPort(): Deno.PointerValue {
+  get pfnXcvOpenPort(): bigint | number {
     return Number(this.view.getBigInt64(120, true));
   }
 
   // 0x80: isize
-  get pfnXcvDataPort(): Deno.PointerValue {
+  get pfnXcvDataPort(): bigint | number {
     return Number(this.view.getBigInt64(128, true));
   }
 
   // 0x88: isize
-  get pfnXcvClosePort(): Deno.PointerValue {
+  get pfnXcvClosePort(): bigint | number {
     return Number(this.view.getBigInt64(136, true));
   }
 
   // 0x90: isize
-  get pfnShutdown(): Deno.PointerValue {
+  get pfnShutdown(): bigint | number {
     return Number(this.view.getBigInt64(144, true));
   }
 
   // 0x98: isize
-  get pfnSendRecvBidiDataFromPort(): Deno.PointerValue {
+  get pfnSendRecvBidiDataFromPort(): bigint | number {
     return Number(this.view.getBigInt64(152, true));
   }
 
   // 0xa0: isize
-  get pfnNotifyUsedPorts(): Deno.PointerValue {
+  get pfnNotifyUsedPorts(): bigint | number {
     return Number(this.view.getBigInt64(160, true));
   }
 
   // 0xa8: isize
-  get pfnNotifyUnusedPorts(): Deno.PointerValue {
+  get pfnNotifyUnusedPorts(): bigint | number {
     return Number(this.view.getBigInt64(168, true));
   }
 
   // 0xb0: isize
-  get pfnPowerEvent(): Deno.PointerValue {
+  get pfnPowerEvent(): bigint | number {
     return Number(this.view.getBigInt64(176, true));
   }
 
@@ -29284,112 +29284,112 @@ export class MONITOR2View {
   // 0x04: pad4
 
   // 0x08: isize
-  set pfnEnumPorts(value: Deno.PointerValue) {
+  set pfnEnumPorts(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: isize
-  set pfnOpenPort(value: Deno.PointerValue) {
+  set pfnOpenPort(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set pfnOpenPortEx(value: Deno.PointerValue) {
+  set pfnOpenPortEx(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
   // 0x20: isize
-  set pfnStartDocPort(value: Deno.PointerValue) {
+  set pfnStartDocPort(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 
   // 0x28: isize
-  set pfnWritePort(value: Deno.PointerValue) {
+  set pfnWritePort(value: bigint | number) {
     this.view.setBigInt64(40, BigInt(value), true);
   }
 
   // 0x30: isize
-  set pfnReadPort(value: Deno.PointerValue) {
+  set pfnReadPort(value: bigint | number) {
     this.view.setBigInt64(48, BigInt(value), true);
   }
 
   // 0x38: isize
-  set pfnEndDocPort(value: Deno.PointerValue) {
+  set pfnEndDocPort(value: bigint | number) {
     this.view.setBigInt64(56, BigInt(value), true);
   }
 
   // 0x40: isize
-  set pfnClosePort(value: Deno.PointerValue) {
+  set pfnClosePort(value: bigint | number) {
     this.view.setBigInt64(64, BigInt(value), true);
   }
 
   // 0x48: isize
-  set pfnAddPort(value: Deno.PointerValue) {
+  set pfnAddPort(value: bigint | number) {
     this.view.setBigInt64(72, BigInt(value), true);
   }
 
   // 0x50: isize
-  set pfnAddPortEx(value: Deno.PointerValue) {
+  set pfnAddPortEx(value: bigint | number) {
     this.view.setBigInt64(80, BigInt(value), true);
   }
 
   // 0x58: isize
-  set pfnConfigurePort(value: Deno.PointerValue) {
+  set pfnConfigurePort(value: bigint | number) {
     this.view.setBigInt64(88, BigInt(value), true);
   }
 
   // 0x60: isize
-  set pfnDeletePort(value: Deno.PointerValue) {
+  set pfnDeletePort(value: bigint | number) {
     this.view.setBigInt64(96, BigInt(value), true);
   }
 
   // 0x68: isize
-  set pfnGetPrinterDataFromPort(value: Deno.PointerValue) {
+  set pfnGetPrinterDataFromPort(value: bigint | number) {
     this.view.setBigInt64(104, BigInt(value), true);
   }
 
   // 0x70: isize
-  set pfnSetPortTimeOuts(value: Deno.PointerValue) {
+  set pfnSetPortTimeOuts(value: bigint | number) {
     this.view.setBigInt64(112, BigInt(value), true);
   }
 
   // 0x78: isize
-  set pfnXcvOpenPort(value: Deno.PointerValue) {
+  set pfnXcvOpenPort(value: bigint | number) {
     this.view.setBigInt64(120, BigInt(value), true);
   }
 
   // 0x80: isize
-  set pfnXcvDataPort(value: Deno.PointerValue) {
+  set pfnXcvDataPort(value: bigint | number) {
     this.view.setBigInt64(128, BigInt(value), true);
   }
 
   // 0x88: isize
-  set pfnXcvClosePort(value: Deno.PointerValue) {
+  set pfnXcvClosePort(value: bigint | number) {
     this.view.setBigInt64(136, BigInt(value), true);
   }
 
   // 0x90: isize
-  set pfnShutdown(value: Deno.PointerValue) {
+  set pfnShutdown(value: bigint | number) {
     this.view.setBigInt64(144, BigInt(value), true);
   }
 
   // 0x98: isize
-  set pfnSendRecvBidiDataFromPort(value: Deno.PointerValue) {
+  set pfnSendRecvBidiDataFromPort(value: bigint | number) {
     this.view.setBigInt64(152, BigInt(value), true);
   }
 
   // 0xa0: isize
-  set pfnNotifyUsedPorts(value: Deno.PointerValue) {
+  set pfnNotifyUsedPorts(value: bigint | number) {
     this.view.setBigInt64(160, BigInt(value), true);
   }
 
   // 0xa8: isize
-  set pfnNotifyUnusedPorts(value: Deno.PointerValue) {
+  set pfnNotifyUnusedPorts(value: bigint | number) {
     this.view.setBigInt64(168, BigInt(value), true);
   }
 
   // 0xb0: isize
-  set pfnPowerEvent(value: Deno.PointerValue) {
+  set pfnPowerEvent(value: bigint | number) {
     this.view.setBigInt64(176, BigInt(value), true);
   }
 }
@@ -29401,11 +29401,11 @@ export interface MONITORUI {
   /** u32 */
   dwMonitorUISize: number;
   /** isize */
-  pfnAddPortUI: Deno.PointerValue;
+  pfnAddPortUI: bigint | number;
   /** isize */
-  pfnConfigurePortUI: Deno.PointerValue;
+  pfnConfigurePortUI: bigint | number;
   /** isize */
-  pfnDeletePortUI: Deno.PointerValue;
+  pfnDeletePortUI: bigint | number;
 }
 
 export const sizeofMONITORUI = 32;
@@ -29443,17 +29443,17 @@ export class MONITORUIView {
   // 0x04: pad4
 
   // 0x08: isize
-  get pfnAddPortUI(): Deno.PointerValue {
+  get pfnAddPortUI(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: isize
-  get pfnConfigurePortUI(): Deno.PointerValue {
+  get pfnConfigurePortUI(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get pfnDeletePortUI(): Deno.PointerValue {
+  get pfnDeletePortUI(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
@@ -29465,17 +29465,17 @@ export class MONITORUIView {
   // 0x04: pad4
 
   // 0x08: isize
-  set pfnAddPortUI(value: Deno.PointerValue) {
+  set pfnAddPortUI(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: isize
-  set pfnConfigurePortUI(value: Deno.PointerValue) {
+  set pfnConfigurePortUI(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set pfnDeletePortUI(value: Deno.PointerValue) {
+  set pfnDeletePortUI(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 }
@@ -29753,7 +29753,7 @@ export class SHOWUIPARAMSView {
 
 export type HRESULT = number;
 
-export type HDC = Deno.PointerValue;
+export type HDC = bigint | number;
 
 // Native Libraries
 
@@ -30660,13 +30660,13 @@ export function CommonPropertySheetUIW(
 
 export function GetCPSUIUserData(
   hDlg: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
-): Deno.PointerValue /* usize */ {
+): bigint | number /* usize */ {
   return libCOMPSTUI_dll.GetCPSUIUserData((hDlg));
 }
 
 export function SetCPSUIUserData(
   hDlg: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
-  CPSUIUserData: Deno.PointerValue /* usize */,
+  CPSUIUserData: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libCOMPSTUI_dll.SetCPSUIUserData((hDlg), CPSUIUserData));
 }
@@ -31878,14 +31878,14 @@ export function DeletePrintProvidorW(
 
 export function IsValidDevmodeA(
   pDevmode: Deno.PointerValue | Uint8Array /* ptr */,
-  DevmodeSize: Deno.PointerValue /* usize */,
+  DevmodeSize: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwinspool_drv.IsValidDevmodeA(util.toPointer(pDevmode), DevmodeSize));
 }
 
 export function IsValidDevmodeW(
   pDevmode: Deno.PointerValue | Uint8Array /* ptr */,
-  DevmodeSize: Deno.PointerValue /* usize */,
+  DevmodeSize: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libwinspool_drv.IsValidDevmodeW(util.toPointer(pDevmode), DevmodeSize));
 }
@@ -31995,7 +31995,7 @@ export function CorePrinterDriverInstalledA(
   pszEnvironment: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   CoreDriverGUID: Uint8Array | Deno.PointerValue /* System.Guid */,
   ftDriverDate: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.FILETIME */,
-  dwlDriverVersion: Deno.PointerValue /* u64 */,
+  dwlDriverVersion: bigint | number /* u64 */,
   pbDriverInstalled: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libwinspool_drv.CorePrinterDriverInstalledA(util.pstrToFfi(pszServer), util.pstrToFfi(pszEnvironment), util.toPointer(CoreDriverGUID), util.toPointer(ftDriverDate), dwlDriverVersion, util.toPointer(pbDriverInstalled));
@@ -32006,7 +32006,7 @@ export function CorePrinterDriverInstalledW(
   pszEnvironment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   CoreDriverGUID: Uint8Array | Deno.PointerValue /* System.Guid */,
   ftDriverDate: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.FILETIME */,
-  dwlDriverVersion: Deno.PointerValue /* u64 */,
+  dwlDriverVersion: bigint | number /* u64 */,
   pbDriverInstalled: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libwinspool_drv.CorePrinterDriverInstalledW(util.pwstrToFfi(pszServer), util.pwstrToFfi(pszEnvironment), util.toPointer(CoreDriverGUID), util.toPointer(ftDriverDate), dwlDriverVersion, util.toPointer(pbDriverInstalled));
@@ -32373,7 +32373,7 @@ export function RouterAllocBidiResponseContainer(
 }
 
 export function RouterAllocBidiMem(
-  NumBytes: Deno.PointerValue /* usize */,
+  NumBytes: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
   return libSPOOLSS_dll.RouterAllocBidiMem(NumBytes);
 }

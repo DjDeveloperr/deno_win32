@@ -20,7 +20,7 @@ export interface HARDWARE_COUNTER_DATA {
   /** u32 */
   Reserved: number;
   /** u64 */
-  Value: Deno.PointerValue;
+  Value: bigint | number;
 }
 
 export const sizeofHARDWARE_COUNTER_DATA = 16;
@@ -58,7 +58,7 @@ export class HARDWARE_COUNTER_DATAView {
   }
 
   // 0x08: u64
-  get Value(): Deno.PointerValue {
+  get Value(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -73,7 +73,7 @@ export class HARDWARE_COUNTER_DATAView {
   }
 
   // 0x08: u64
-  set Value(value: Deno.PointerValue) {
+  set Value(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -91,9 +91,9 @@ export interface PERFORMANCE_DATA {
   /** u32 */
   ContextSwitchCount: number;
   /** u64 */
-  WaitReasonBitMap: Deno.PointerValue;
+  WaitReasonBitMap: bigint | number;
   /** u64 */
-  CycleTime: Deno.PointerValue;
+  CycleTime: bigint | number;
   /** u32 */
   RetryCount: number;
   /** u32 */
@@ -159,12 +159,12 @@ export class PERFORMANCE_DATAView {
   }
 
   // 0x08: u64
-  get WaitReasonBitMap(): Deno.PointerValue {
+  get WaitReasonBitMap(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get CycleTime(): Deno.PointerValue {
+  get CycleTime(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -205,12 +205,12 @@ export class PERFORMANCE_DATAView {
   }
 
   // 0x08: u64
-  set WaitReasonBitMap(value: Deno.PointerValue) {
+  set WaitReasonBitMap(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set CycleTime(value: Deno.PointerValue) {
+  set CycleTime(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -230,7 +230,7 @@ export class PERFORMANCE_DATAView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 // Native Libraries
 
@@ -260,7 +260,7 @@ try {
 export function EnableThreadProfiling(
   ThreadHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Flags: number /* u32 */,
-  HardwareCounters: Deno.PointerValue /* u64 */,
+  HardwareCounters: bigint | number /* u64 */,
   PerformanceDataHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libKERNEL32_dll.EnableThreadProfiling(util.toPointer(ThreadHandle), Flags, HardwareCounters, util.toPointer(PerformanceDataHandle));

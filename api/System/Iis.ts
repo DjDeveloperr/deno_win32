@@ -1051,9 +1051,9 @@ export interface LOGGING_PARAMETERS {
   /** u32 */
   dwLocalIpPort: number;
   /** u64 */
-  BytesSent: Deno.PointerValue;
+  BytesSent: bigint | number;
   /** u64 */
-  BytesReceived: Deno.PointerValue;
+  BytesReceived: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   pszCommand: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
@@ -1210,12 +1210,12 @@ export class LOGGING_PARAMETERSView {
   // 0x3c: pad4
 
   // 0x40: u64
-  get BytesSent(): Deno.PointerValue {
+  get BytesSent(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
   // 0x48: u64
-  get BytesReceived(): Deno.PointerValue {
+  get BytesReceived(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
@@ -1317,12 +1317,12 @@ export class LOGGING_PARAMETERSView {
   // 0x3c: pad4
 
   // 0x40: u64
-  set BytesSent(value: Deno.PointerValue) {
+  set BytesSent(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
   // 0x48: u64
-  set BytesReceived(value: Deno.PointerValue) {
+  set BytesReceived(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
@@ -1453,9 +1453,9 @@ export interface PRE_PROCESS_PARAMETERS {
   /** Windows.Win32.Foundation.FILETIME */
   SessionStartTime: Uint8Array | Deno.PointerValue;
   /** u64 */
-  BytesSentPerSession: Deno.PointerValue;
+  BytesSentPerSession: bigint | number;
   /** u64 */
-  BytesReceivedPerSession: Deno.PointerValue;
+  BytesReceivedPerSession: bigint | number;
 }
 
 export const sizeofPRE_PROCESS_PARAMETERS = 104;
@@ -1597,12 +1597,12 @@ export class PRE_PROCESS_PARAMETERSView {
   }
 
   // 0x58: u64
-  get BytesSentPerSession(): Deno.PointerValue {
+  get BytesSentPerSession(): bigint | number {
     return Number(this.view.getBigUint64(88, true));
   }
 
   // 0x60: u64
-  get BytesReceivedPerSession(): Deno.PointerValue {
+  get BytesReceivedPerSession(): bigint | number {
     return Number(this.view.getBigUint64(96, true));
   }
 
@@ -1674,12 +1674,12 @@ export class PRE_PROCESS_PARAMETERSView {
   }
 
   // 0x58: u64
-  set BytesSentPerSession(value: Deno.PointerValue) {
+  set BytesSentPerSession(value: bigint | number) {
     this.view.setBigUint64(88, BigInt(value), true);
   }
 
   // 0x60: u64
-  set BytesReceivedPerSession(value: Deno.PointerValue) {
+  set BytesReceivedPerSession(value: bigint | number) {
     this.view.setBigUint64(96, BigInt(value), true);
   }
 }
@@ -1705,9 +1705,9 @@ export interface POST_PROCESS_PARAMETERS {
   /** u32 */
   dwLocalIpPort: number;
   /** u64 */
-  BytesSent: Deno.PointerValue;
+  BytesSent: bigint | number;
   /** u64 */
-  BytesReceived: Deno.PointerValue;
+  BytesReceived: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   pszCommand: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.Foundation.PWSTR */
@@ -1725,9 +1725,9 @@ export interface POST_PROCESS_PARAMETERS {
   /** Windows.Win32.Foundation.FILETIME */
   SessionStartTime: Uint8Array | Deno.PointerValue;
   /** u64 */
-  BytesSentPerSession: Deno.PointerValue;
+  BytesSentPerSession: bigint | number;
   /** u64 */
-  BytesReceivedPerSession: Deno.PointerValue;
+  BytesReceivedPerSession: bigint | number;
 }
 
 export const sizeofPOST_PROCESS_PARAMETERS = 152;
@@ -1871,12 +1871,12 @@ export class POST_PROCESS_PARAMETERSView {
   // 0x3c: pad4
 
   // 0x40: u64
-  get BytesSent(): Deno.PointerValue {
+  get BytesSent(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
   // 0x48: u64
-  get BytesReceived(): Deno.PointerValue {
+  get BytesReceived(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
@@ -1927,12 +1927,12 @@ export class POST_PROCESS_PARAMETERSView {
   }
 
   // 0x88: u64
-  get BytesSentPerSession(): Deno.PointerValue {
+  get BytesSentPerSession(): bigint | number {
     return Number(this.view.getBigUint64(136, true));
   }
 
   // 0x90: u64
-  get BytesReceivedPerSession(): Deno.PointerValue {
+  get BytesReceivedPerSession(): bigint | number {
     return Number(this.view.getBigUint64(144, true));
   }
 
@@ -1987,12 +1987,12 @@ export class POST_PROCESS_PARAMETERSView {
   // 0x3c: pad4
 
   // 0x40: u64
-  set BytesSent(value: Deno.PointerValue) {
+  set BytesSent(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
   // 0x48: u64
-  set BytesReceived(value: Deno.PointerValue) {
+  set BytesReceived(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
@@ -2041,12 +2041,12 @@ export class POST_PROCESS_PARAMETERSView {
   }
 
   // 0x88: u64
-  set BytesSentPerSession(value: Deno.PointerValue) {
+  set BytesSentPerSession(value: bigint | number) {
     this.view.setBigUint64(136, BigInt(value), true);
   }
 
   // 0x90: u64
-  set BytesReceivedPerSession(value: Deno.PointerValue) {
+  set BytesReceivedPerSession(value: bigint | number) {
     this.view.setBigUint64(144, BigInt(value), true);
   }
 }
@@ -2318,9 +2318,9 @@ export class METADATA_GETALL_RECORDView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -2346,22 +2346,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -2787,13 +2787,13 @@ export interface EXTENSION_CONTROL_BLOCK {
   /** Windows.Win32.Foundation.PSTR */
   lpszContentType: string | null | Uint8Array;
   /** isize */
-  GetServerVariable: Deno.PointerValue;
+  GetServerVariable: bigint | number;
   /** isize */
-  WriteClient: Deno.PointerValue;
+  WriteClient: bigint | number;
   /** isize */
-  ReadClient: Deno.PointerValue;
+  ReadClient: bigint | number;
   /** isize */
-  ServerSupportFunction: Deno.PointerValue;
+  ServerSupportFunction: bigint | number;
 }
 
 export const sizeofEXTENSION_CONTROL_BLOCK = 120;
@@ -2940,22 +2940,22 @@ export class EXTENSION_CONTROL_BLOCKView {
   }
 
   // 0x58: isize
-  get GetServerVariable(): Deno.PointerValue {
+  get GetServerVariable(): bigint | number {
     return Number(this.view.getBigInt64(88, true));
   }
 
   // 0x60: isize
-  get WriteClient(): Deno.PointerValue {
+  get WriteClient(): bigint | number {
     return Number(this.view.getBigInt64(96, true));
   }
 
   // 0x68: isize
-  get ReadClient(): Deno.PointerValue {
+  get ReadClient(): bigint | number {
     return Number(this.view.getBigInt64(104, true));
   }
 
   // 0x70: isize
-  get ServerSupportFunction(): Deno.PointerValue {
+  get ServerSupportFunction(): bigint | number {
     return Number(this.view.getBigInt64(112, true));
   }
 
@@ -3032,22 +3032,22 @@ export class EXTENSION_CONTROL_BLOCKView {
   }
 
   // 0x58: isize
-  set GetServerVariable(value: Deno.PointerValue) {
+  set GetServerVariable(value: bigint | number) {
     this.view.setBigInt64(88, BigInt(value), true);
   }
 
   // 0x60: isize
-  set WriteClient(value: Deno.PointerValue) {
+  set WriteClient(value: bigint | number) {
     this.view.setBigInt64(96, BigInt(value), true);
   }
 
   // 0x68: isize
-  set ReadClient(value: Deno.PointerValue) {
+  set ReadClient(value: bigint | number) {
     this.view.setBigInt64(104, BigInt(value), true);
   }
 
   // 0x70: isize
-  set ServerSupportFunction(value: Deno.PointerValue) {
+  set ServerSupportFunction(value: bigint | number) {
     this.view.setBigInt64(112, BigInt(value), true);
   }
 }
@@ -3254,7 +3254,7 @@ export class HSE_UNICODE_URL_MAPEX_INFOView {
   // 0x14: pad4
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.System.Iis.HSE_TF_INFO (size: 72)
@@ -4192,9 +4192,9 @@ export interface HSE_VECTOR_ELEMENT {
   /** ptr */
   pvContext: Deno.PointerValue | Uint8Array;
   /** u64 */
-  cbOffset: Deno.PointerValue;
+  cbOffset: bigint | number;
   /** u64 */
-  cbSize: Deno.PointerValue;
+  cbSize: bigint | number;
 }
 
 export const sizeofHSE_VECTOR_ELEMENT = 32;
@@ -4238,12 +4238,12 @@ export class HSE_VECTOR_ELEMENTView {
   }
 
   // 0x10: u64
-  get cbOffset(): Deno.PointerValue {
+  get cbOffset(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get cbSize(): Deno.PointerValue {
+  get cbSize(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -4260,12 +4260,12 @@ export class HSE_VECTOR_ELEMENTView {
   }
 
   // 0x10: u64
-  set cbOffset(value: Deno.PointerValue) {
+  set cbOffset(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set cbSize(value: Deno.PointerValue) {
+  set cbSize(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 }
@@ -4668,15 +4668,15 @@ export interface HTTP_FILTER_CONTEXT {
   /** ptr */
   pFilterContext: Deno.PointerValue | Uint8Array;
   /** isize */
-  GetServerVariable: Deno.PointerValue;
+  GetServerVariable: bigint | number;
   /** isize */
-  AddResponseHeaders: Deno.PointerValue;
+  AddResponseHeaders: bigint | number;
   /** isize */
-  WriteClient: Deno.PointerValue;
+  WriteClient: bigint | number;
   /** isize */
-  AllocMem: Deno.PointerValue;
+  AllocMem: bigint | number;
   /** isize */
-  ServerSupportFunction: Deno.PointerValue;
+  ServerSupportFunction: bigint | number;
 }
 
 export const sizeofHTTP_FILTER_CONTEXT = 72;
@@ -4752,27 +4752,27 @@ export class HTTP_FILTER_CONTEXTView {
   }
 
   // 0x20: isize
-  get GetServerVariable(): Deno.PointerValue {
+  get GetServerVariable(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
   // 0x28: isize
-  get AddResponseHeaders(): Deno.PointerValue {
+  get AddResponseHeaders(): bigint | number {
     return Number(this.view.getBigInt64(40, true));
   }
 
   // 0x30: isize
-  get WriteClient(): Deno.PointerValue {
+  get WriteClient(): bigint | number {
     return Number(this.view.getBigInt64(48, true));
   }
 
   // 0x38: isize
-  get AllocMem(): Deno.PointerValue {
+  get AllocMem(): bigint | number {
     return Number(this.view.getBigInt64(56, true));
   }
 
   // 0x40: isize
-  get ServerSupportFunction(): Deno.PointerValue {
+  get ServerSupportFunction(): bigint | number {
     return Number(this.view.getBigInt64(64, true));
   }
 
@@ -4807,27 +4807,27 @@ export class HTTP_FILTER_CONTEXTView {
   }
 
   // 0x20: isize
-  set GetServerVariable(value: Deno.PointerValue) {
+  set GetServerVariable(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 
   // 0x28: isize
-  set AddResponseHeaders(value: Deno.PointerValue) {
+  set AddResponseHeaders(value: bigint | number) {
     this.view.setBigInt64(40, BigInt(value), true);
   }
 
   // 0x30: isize
-  set WriteClient(value: Deno.PointerValue) {
+  set WriteClient(value: bigint | number) {
     this.view.setBigInt64(48, BigInt(value), true);
   }
 
   // 0x38: isize
-  set AllocMem(value: Deno.PointerValue) {
+  set AllocMem(value: bigint | number) {
     this.view.setBigInt64(56, BigInt(value), true);
   }
 
   // 0x40: isize
-  set ServerSupportFunction(value: Deno.PointerValue) {
+  set ServerSupportFunction(value: bigint | number) {
     this.view.setBigInt64(64, BigInt(value), true);
   }
 }
@@ -4924,11 +4924,11 @@ export class HTTP_FILTER_RAW_DATAView {
  */
 export interface HTTP_FILTER_PREPROC_HEADERS {
   /** isize */
-  GetHeader: Deno.PointerValue;
+  GetHeader: bigint | number;
   /** isize */
-  SetHeader: Deno.PointerValue;
+  SetHeader: bigint | number;
   /** isize */
-  AddHeader: Deno.PointerValue;
+  AddHeader: bigint | number;
   /** u32 */
   HttpStatus: number;
   /** u32 */
@@ -4964,17 +4964,17 @@ export class HTTP_FILTER_PREPROC_HEADERSView {
   }
 
   // 0x00: isize
-  get GetHeader(): Deno.PointerValue {
+  get GetHeader(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: isize
-  get SetHeader(): Deno.PointerValue {
+  get SetHeader(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: isize
-  get AddHeader(): Deno.PointerValue {
+  get AddHeader(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -4989,17 +4989,17 @@ export class HTTP_FILTER_PREPROC_HEADERSView {
   }
 
   // 0x00: isize
-  set GetHeader(value: Deno.PointerValue) {
+  set GetHeader(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set SetHeader(value: Deno.PointerValue) {
+  set SetHeader(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: isize
-  set AddHeader(value: Deno.PointerValue) {
+  set AddHeader(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
@@ -5636,13 +5636,13 @@ export class HTTP_FILTER_LOGView {
  */
 export interface HTTP_FILTER_AUTH_COMPLETE_INFO {
   /** isize */
-  GetHeader: Deno.PointerValue;
+  GetHeader: bigint | number;
   /** isize */
-  SetHeader: Deno.PointerValue;
+  SetHeader: bigint | number;
   /** isize */
-  AddHeader: Deno.PointerValue;
+  AddHeader: bigint | number;
   /** isize */
-  GetUserToken: Deno.PointerValue;
+  GetUserToken: bigint | number;
   /** u32 */
   HttpStatus: number;
   /** Windows.Win32.Foundation.BOOL */
@@ -5685,22 +5685,22 @@ export class HTTP_FILTER_AUTH_COMPLETE_INFOView {
   }
 
   // 0x00: isize
-  get GetHeader(): Deno.PointerValue {
+  get GetHeader(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: isize
-  get SetHeader(): Deno.PointerValue {
+  get SetHeader(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: isize
-  get AddHeader(): Deno.PointerValue {
+  get AddHeader(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get GetUserToken(): Deno.PointerValue {
+  get GetUserToken(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
@@ -5722,22 +5722,22 @@ export class HTTP_FILTER_AUTH_COMPLETE_INFOView {
   // 0x2c: pad4
 
   // 0x00: isize
-  set GetHeader(value: Deno.PointerValue) {
+  set GetHeader(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set SetHeader(value: Deno.PointerValue) {
+  set SetHeader(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: isize
-  set AddHeader(value: Deno.PointerValue) {
+  set AddHeader(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set GetUserToken(value: Deno.PointerValue) {
+  set GetUserToken(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 

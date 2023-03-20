@@ -2128,7 +2128,7 @@ export class NET_IF_ALIAS_LHView {
  */
 export interface _Info_e__Struct {
   /** u64 */
-  _bitfield: Deno.PointerValue;
+  _bitfield: bigint | number;
 }
 
 export const sizeof_Info_e__Struct = 8;
@@ -2152,12 +2152,12 @@ export class _Info_e__StructView {
   }
 
   // 0x00: u64
-  get _bitfield(): Deno.PointerValue {
+  get _bitfield(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: u64
-  set _bitfield(value: Deno.PointerValue) {
+  set _bitfield(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -2167,7 +2167,7 @@ export class _Info_e__StructView {
  */
 export interface NET_LUID_LH {
   /** u64 */
-  Value: Deno.PointerValue;
+  Value: bigint | number;
   /** _Info_e__Struct */
   Info: Uint8Array | Deno.PointerValue;
 }
@@ -2195,7 +2195,7 @@ export class NET_LUID_LHView {
   }
 
   // 0x00: u64
-  get Value(): Deno.PointerValue {
+  get Value(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -2206,7 +2206,7 @@ export class NET_LUID_LHView {
   }
 
   // 0x00: u64
-  set Value(value: Deno.PointerValue) {
+  set Value(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -2427,51 +2427,51 @@ export interface NDIS_INTERFACE_INFORMATION {
   /** Windows.Win32.Foundation.BOOLEAN */
   ifDeviceWakeUpEnable: Uint8Array | Deno.PointerValue;
   /** u64 */
-  XmitLinkSpeed: Deno.PointerValue;
+  XmitLinkSpeed: bigint | number;
   /** u64 */
-  RcvLinkSpeed: Deno.PointerValue;
+  RcvLinkSpeed: bigint | number;
   /** u64 */
-  ifLastChange: Deno.PointerValue;
+  ifLastChange: bigint | number;
   /** u64 */
-  ifCounterDiscontinuityTime: Deno.PointerValue;
+  ifCounterDiscontinuityTime: bigint | number;
   /** u64 */
-  ifInUnknownProtos: Deno.PointerValue;
+  ifInUnknownProtos: bigint | number;
   /** u64 */
-  ifInDiscards: Deno.PointerValue;
+  ifInDiscards: bigint | number;
   /** u64 */
-  ifInErrors: Deno.PointerValue;
+  ifInErrors: bigint | number;
   /** u64 */
-  ifHCInOctets: Deno.PointerValue;
+  ifHCInOctets: bigint | number;
   /** u64 */
-  ifHCInUcastPkts: Deno.PointerValue;
+  ifHCInUcastPkts: bigint | number;
   /** u64 */
-  ifHCInMulticastPkts: Deno.PointerValue;
+  ifHCInMulticastPkts: bigint | number;
   /** u64 */
-  ifHCInBroadcastPkts: Deno.PointerValue;
+  ifHCInBroadcastPkts: bigint | number;
   /** u64 */
-  ifHCOutOctets: Deno.PointerValue;
+  ifHCOutOctets: bigint | number;
   /** u64 */
-  ifHCOutUcastPkts: Deno.PointerValue;
+  ifHCOutUcastPkts: bigint | number;
   /** u64 */
-  ifHCOutMulticastPkts: Deno.PointerValue;
+  ifHCOutMulticastPkts: bigint | number;
   /** u64 */
-  ifHCOutBroadcastPkts: Deno.PointerValue;
+  ifHCOutBroadcastPkts: bigint | number;
   /** u64 */
-  ifOutErrors: Deno.PointerValue;
+  ifOutErrors: bigint | number;
   /** u64 */
-  ifOutDiscards: Deno.PointerValue;
+  ifOutDiscards: bigint | number;
   /** u64 */
-  ifHCInUcastOctets: Deno.PointerValue;
+  ifHCInUcastOctets: bigint | number;
   /** u64 */
-  ifHCInMulticastOctets: Deno.PointerValue;
+  ifHCInMulticastOctets: bigint | number;
   /** u64 */
-  ifHCInBroadcastOctets: Deno.PointerValue;
+  ifHCInBroadcastOctets: bigint | number;
   /** u64 */
-  ifHCOutUcastOctets: Deno.PointerValue;
+  ifHCOutUcastOctets: bigint | number;
   /** u64 */
-  ifHCOutMulticastOctets: Deno.PointerValue;
+  ifHCOutMulticastOctets: bigint | number;
   /** u64 */
-  ifHCOutBroadcastOctets: Deno.PointerValue;
+  ifHCOutBroadcastOctets: bigint | number;
   /** u32 */
   CompartmentId: number;
   /** u32 */
@@ -2601,117 +2601,117 @@ export class NDIS_INTERFACE_INFORMATIONView {
   }
 
   // 0x28: u64
-  get XmitLinkSpeed(): Deno.PointerValue {
+  get XmitLinkSpeed(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: u64
-  get RcvLinkSpeed(): Deno.PointerValue {
+  get RcvLinkSpeed(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: u64
-  get ifLastChange(): Deno.PointerValue {
+  get ifLastChange(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
   // 0x40: u64
-  get ifCounterDiscontinuityTime(): Deno.PointerValue {
+  get ifCounterDiscontinuityTime(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
   // 0x48: u64
-  get ifInUnknownProtos(): Deno.PointerValue {
+  get ifInUnknownProtos(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
   // 0x50: u64
-  get ifInDiscards(): Deno.PointerValue {
+  get ifInDiscards(): bigint | number {
     return Number(this.view.getBigUint64(80, true));
   }
 
   // 0x58: u64
-  get ifInErrors(): Deno.PointerValue {
+  get ifInErrors(): bigint | number {
     return Number(this.view.getBigUint64(88, true));
   }
 
   // 0x60: u64
-  get ifHCInOctets(): Deno.PointerValue {
+  get ifHCInOctets(): bigint | number {
     return Number(this.view.getBigUint64(96, true));
   }
 
   // 0x68: u64
-  get ifHCInUcastPkts(): Deno.PointerValue {
+  get ifHCInUcastPkts(): bigint | number {
     return Number(this.view.getBigUint64(104, true));
   }
 
   // 0x70: u64
-  get ifHCInMulticastPkts(): Deno.PointerValue {
+  get ifHCInMulticastPkts(): bigint | number {
     return Number(this.view.getBigUint64(112, true));
   }
 
   // 0x78: u64
-  get ifHCInBroadcastPkts(): Deno.PointerValue {
+  get ifHCInBroadcastPkts(): bigint | number {
     return Number(this.view.getBigUint64(120, true));
   }
 
   // 0x80: u64
-  get ifHCOutOctets(): Deno.PointerValue {
+  get ifHCOutOctets(): bigint | number {
     return Number(this.view.getBigUint64(128, true));
   }
 
   // 0x88: u64
-  get ifHCOutUcastPkts(): Deno.PointerValue {
+  get ifHCOutUcastPkts(): bigint | number {
     return Number(this.view.getBigUint64(136, true));
   }
 
   // 0x90: u64
-  get ifHCOutMulticastPkts(): Deno.PointerValue {
+  get ifHCOutMulticastPkts(): bigint | number {
     return Number(this.view.getBigUint64(144, true));
   }
 
   // 0x98: u64
-  get ifHCOutBroadcastPkts(): Deno.PointerValue {
+  get ifHCOutBroadcastPkts(): bigint | number {
     return Number(this.view.getBigUint64(152, true));
   }
 
   // 0xa0: u64
-  get ifOutErrors(): Deno.PointerValue {
+  get ifOutErrors(): bigint | number {
     return Number(this.view.getBigUint64(160, true));
   }
 
   // 0xa8: u64
-  get ifOutDiscards(): Deno.PointerValue {
+  get ifOutDiscards(): bigint | number {
     return Number(this.view.getBigUint64(168, true));
   }
 
   // 0xb0: u64
-  get ifHCInUcastOctets(): Deno.PointerValue {
+  get ifHCInUcastOctets(): bigint | number {
     return Number(this.view.getBigUint64(176, true));
   }
 
   // 0xb8: u64
-  get ifHCInMulticastOctets(): Deno.PointerValue {
+  get ifHCInMulticastOctets(): bigint | number {
     return Number(this.view.getBigUint64(184, true));
   }
 
   // 0xc0: u64
-  get ifHCInBroadcastOctets(): Deno.PointerValue {
+  get ifHCInBroadcastOctets(): bigint | number {
     return Number(this.view.getBigUint64(192, true));
   }
 
   // 0xc8: u64
-  get ifHCOutUcastOctets(): Deno.PointerValue {
+  get ifHCOutUcastOctets(): bigint | number {
     return Number(this.view.getBigUint64(200, true));
   }
 
   // 0xd0: u64
-  get ifHCOutMulticastOctets(): Deno.PointerValue {
+  get ifHCOutMulticastOctets(): bigint | number {
     return Number(this.view.getBigUint64(208, true));
   }
 
   // 0xd8: u64
-  get ifHCOutBroadcastOctets(): Deno.PointerValue {
+  get ifHCOutBroadcastOctets(): bigint | number {
     return Number(this.view.getBigUint64(216, true));
   }
 
@@ -2763,117 +2763,117 @@ export class NDIS_INTERFACE_INFORMATIONView {
   }
 
   // 0x28: u64
-  set XmitLinkSpeed(value: Deno.PointerValue) {
+  set XmitLinkSpeed(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: u64
-  set RcvLinkSpeed(value: Deno.PointerValue) {
+  set RcvLinkSpeed(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: u64
-  set ifLastChange(value: Deno.PointerValue) {
+  set ifLastChange(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
   // 0x40: u64
-  set ifCounterDiscontinuityTime(value: Deno.PointerValue) {
+  set ifCounterDiscontinuityTime(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
   // 0x48: u64
-  set ifInUnknownProtos(value: Deno.PointerValue) {
+  set ifInUnknownProtos(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
   // 0x50: u64
-  set ifInDiscards(value: Deno.PointerValue) {
+  set ifInDiscards(value: bigint | number) {
     this.view.setBigUint64(80, BigInt(value), true);
   }
 
   // 0x58: u64
-  set ifInErrors(value: Deno.PointerValue) {
+  set ifInErrors(value: bigint | number) {
     this.view.setBigUint64(88, BigInt(value), true);
   }
 
   // 0x60: u64
-  set ifHCInOctets(value: Deno.PointerValue) {
+  set ifHCInOctets(value: bigint | number) {
     this.view.setBigUint64(96, BigInt(value), true);
   }
 
   // 0x68: u64
-  set ifHCInUcastPkts(value: Deno.PointerValue) {
+  set ifHCInUcastPkts(value: bigint | number) {
     this.view.setBigUint64(104, BigInt(value), true);
   }
 
   // 0x70: u64
-  set ifHCInMulticastPkts(value: Deno.PointerValue) {
+  set ifHCInMulticastPkts(value: bigint | number) {
     this.view.setBigUint64(112, BigInt(value), true);
   }
 
   // 0x78: u64
-  set ifHCInBroadcastPkts(value: Deno.PointerValue) {
+  set ifHCInBroadcastPkts(value: bigint | number) {
     this.view.setBigUint64(120, BigInt(value), true);
   }
 
   // 0x80: u64
-  set ifHCOutOctets(value: Deno.PointerValue) {
+  set ifHCOutOctets(value: bigint | number) {
     this.view.setBigUint64(128, BigInt(value), true);
   }
 
   // 0x88: u64
-  set ifHCOutUcastPkts(value: Deno.PointerValue) {
+  set ifHCOutUcastPkts(value: bigint | number) {
     this.view.setBigUint64(136, BigInt(value), true);
   }
 
   // 0x90: u64
-  set ifHCOutMulticastPkts(value: Deno.PointerValue) {
+  set ifHCOutMulticastPkts(value: bigint | number) {
     this.view.setBigUint64(144, BigInt(value), true);
   }
 
   // 0x98: u64
-  set ifHCOutBroadcastPkts(value: Deno.PointerValue) {
+  set ifHCOutBroadcastPkts(value: bigint | number) {
     this.view.setBigUint64(152, BigInt(value), true);
   }
 
   // 0xa0: u64
-  set ifOutErrors(value: Deno.PointerValue) {
+  set ifOutErrors(value: bigint | number) {
     this.view.setBigUint64(160, BigInt(value), true);
   }
 
   // 0xa8: u64
-  set ifOutDiscards(value: Deno.PointerValue) {
+  set ifOutDiscards(value: bigint | number) {
     this.view.setBigUint64(168, BigInt(value), true);
   }
 
   // 0xb0: u64
-  set ifHCInUcastOctets(value: Deno.PointerValue) {
+  set ifHCInUcastOctets(value: bigint | number) {
     this.view.setBigUint64(176, BigInt(value), true);
   }
 
   // 0xb8: u64
-  set ifHCInMulticastOctets(value: Deno.PointerValue) {
+  set ifHCInMulticastOctets(value: bigint | number) {
     this.view.setBigUint64(184, BigInt(value), true);
   }
 
   // 0xc0: u64
-  set ifHCInBroadcastOctets(value: Deno.PointerValue) {
+  set ifHCInBroadcastOctets(value: bigint | number) {
     this.view.setBigUint64(192, BigInt(value), true);
   }
 
   // 0xc8: u64
-  set ifHCOutUcastOctets(value: Deno.PointerValue) {
+  set ifHCOutUcastOctets(value: bigint | number) {
     this.view.setBigUint64(200, BigInt(value), true);
   }
 
   // 0xd0: u64
-  set ifHCOutMulticastOctets(value: Deno.PointerValue) {
+  set ifHCOutMulticastOctets(value: bigint | number) {
     this.view.setBigUint64(208, BigInt(value), true);
   }
 
   // 0xd8: u64
-  set ifHCOutBroadcastOctets(value: Deno.PointerValue) {
+  set ifHCOutBroadcastOctets(value: bigint | number) {
     this.view.setBigUint64(216, BigInt(value), true);
   }
 
@@ -3052,7 +3052,7 @@ export interface NDIS_VAR_DATA_DESC {
   /** u16 */
   MaximumLength: number;
   /** usize */
-  Offset: Deno.PointerValue;
+  Offset: bigint | number;
 }
 
 export const sizeofNDIS_VAR_DATA_DESC = 16;
@@ -3093,7 +3093,7 @@ export class NDIS_VAR_DATA_DESCView {
   // 0x04: pad4
 
   // 0x08: usize
-  get Offset(): Deno.PointerValue {
+  get Offset(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -3110,7 +3110,7 @@ export class NDIS_VAR_DATA_DESCView {
   // 0x04: pad4
 
   // 0x08: usize
-  set Offset(value: Deno.PointerValue) {
+  set Offset(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -3196,41 +3196,41 @@ export interface NDIS_STATISTICS_INFO {
   /** u32 */
   SupportedStatistics: number;
   /** u64 */
-  ifInDiscards: Deno.PointerValue;
+  ifInDiscards: bigint | number;
   /** u64 */
-  ifInErrors: Deno.PointerValue;
+  ifInErrors: bigint | number;
   /** u64 */
-  ifHCInOctets: Deno.PointerValue;
+  ifHCInOctets: bigint | number;
   /** u64 */
-  ifHCInUcastPkts: Deno.PointerValue;
+  ifHCInUcastPkts: bigint | number;
   /** u64 */
-  ifHCInMulticastPkts: Deno.PointerValue;
+  ifHCInMulticastPkts: bigint | number;
   /** u64 */
-  ifHCInBroadcastPkts: Deno.PointerValue;
+  ifHCInBroadcastPkts: bigint | number;
   /** u64 */
-  ifHCOutOctets: Deno.PointerValue;
+  ifHCOutOctets: bigint | number;
   /** u64 */
-  ifHCOutUcastPkts: Deno.PointerValue;
+  ifHCOutUcastPkts: bigint | number;
   /** u64 */
-  ifHCOutMulticastPkts: Deno.PointerValue;
+  ifHCOutMulticastPkts: bigint | number;
   /** u64 */
-  ifHCOutBroadcastPkts: Deno.PointerValue;
+  ifHCOutBroadcastPkts: bigint | number;
   /** u64 */
-  ifOutErrors: Deno.PointerValue;
+  ifOutErrors: bigint | number;
   /** u64 */
-  ifOutDiscards: Deno.PointerValue;
+  ifOutDiscards: bigint | number;
   /** u64 */
-  ifHCInUcastOctets: Deno.PointerValue;
+  ifHCInUcastOctets: bigint | number;
   /** u64 */
-  ifHCInMulticastOctets: Deno.PointerValue;
+  ifHCInMulticastOctets: bigint | number;
   /** u64 */
-  ifHCInBroadcastOctets: Deno.PointerValue;
+  ifHCInBroadcastOctets: bigint | number;
   /** u64 */
-  ifHCOutUcastOctets: Deno.PointerValue;
+  ifHCOutUcastOctets: bigint | number;
   /** u64 */
-  ifHCOutMulticastOctets: Deno.PointerValue;
+  ifHCOutMulticastOctets: bigint | number;
   /** u64 */
-  ifHCOutBroadcastOctets: Deno.PointerValue;
+  ifHCOutBroadcastOctets: bigint | number;
 }
 
 export const sizeofNDIS_STATISTICS_INFO = 160;
@@ -3306,92 +3306,92 @@ export class NDIS_STATISTICS_INFOView {
   // 0x0c: pad4
 
   // 0x10: u64
-  get ifInDiscards(): Deno.PointerValue {
+  get ifInDiscards(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get ifInErrors(): Deno.PointerValue {
+  get ifInErrors(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get ifHCInOctets(): Deno.PointerValue {
+  get ifHCInOctets(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: u64
-  get ifHCInUcastPkts(): Deno.PointerValue {
+  get ifHCInUcastPkts(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: u64
-  get ifHCInMulticastPkts(): Deno.PointerValue {
+  get ifHCInMulticastPkts(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: u64
-  get ifHCInBroadcastPkts(): Deno.PointerValue {
+  get ifHCInBroadcastPkts(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
   // 0x40: u64
-  get ifHCOutOctets(): Deno.PointerValue {
+  get ifHCOutOctets(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
   // 0x48: u64
-  get ifHCOutUcastPkts(): Deno.PointerValue {
+  get ifHCOutUcastPkts(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
   // 0x50: u64
-  get ifHCOutMulticastPkts(): Deno.PointerValue {
+  get ifHCOutMulticastPkts(): bigint | number {
     return Number(this.view.getBigUint64(80, true));
   }
 
   // 0x58: u64
-  get ifHCOutBroadcastPkts(): Deno.PointerValue {
+  get ifHCOutBroadcastPkts(): bigint | number {
     return Number(this.view.getBigUint64(88, true));
   }
 
   // 0x60: u64
-  get ifOutErrors(): Deno.PointerValue {
+  get ifOutErrors(): bigint | number {
     return Number(this.view.getBigUint64(96, true));
   }
 
   // 0x68: u64
-  get ifOutDiscards(): Deno.PointerValue {
+  get ifOutDiscards(): bigint | number {
     return Number(this.view.getBigUint64(104, true));
   }
 
   // 0x70: u64
-  get ifHCInUcastOctets(): Deno.PointerValue {
+  get ifHCInUcastOctets(): bigint | number {
     return Number(this.view.getBigUint64(112, true));
   }
 
   // 0x78: u64
-  get ifHCInMulticastOctets(): Deno.PointerValue {
+  get ifHCInMulticastOctets(): bigint | number {
     return Number(this.view.getBigUint64(120, true));
   }
 
   // 0x80: u64
-  get ifHCInBroadcastOctets(): Deno.PointerValue {
+  get ifHCInBroadcastOctets(): bigint | number {
     return Number(this.view.getBigUint64(128, true));
   }
 
   // 0x88: u64
-  get ifHCOutUcastOctets(): Deno.PointerValue {
+  get ifHCOutUcastOctets(): bigint | number {
     return Number(this.view.getBigUint64(136, true));
   }
 
   // 0x90: u64
-  get ifHCOutMulticastOctets(): Deno.PointerValue {
+  get ifHCOutMulticastOctets(): bigint | number {
     return Number(this.view.getBigUint64(144, true));
   }
 
   // 0x98: u64
-  get ifHCOutBroadcastOctets(): Deno.PointerValue {
+  get ifHCOutBroadcastOctets(): bigint | number {
     return Number(this.view.getBigUint64(152, true));
   }
 
@@ -3408,92 +3408,92 @@ export class NDIS_STATISTICS_INFOView {
   // 0x0c: pad4
 
   // 0x10: u64
-  set ifInDiscards(value: Deno.PointerValue) {
+  set ifInDiscards(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set ifInErrors(value: Deno.PointerValue) {
+  set ifInErrors(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set ifHCInOctets(value: Deno.PointerValue) {
+  set ifHCInOctets(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: u64
-  set ifHCInUcastPkts(value: Deno.PointerValue) {
+  set ifHCInUcastPkts(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: u64
-  set ifHCInMulticastPkts(value: Deno.PointerValue) {
+  set ifHCInMulticastPkts(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: u64
-  set ifHCInBroadcastPkts(value: Deno.PointerValue) {
+  set ifHCInBroadcastPkts(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
   // 0x40: u64
-  set ifHCOutOctets(value: Deno.PointerValue) {
+  set ifHCOutOctets(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
   // 0x48: u64
-  set ifHCOutUcastPkts(value: Deno.PointerValue) {
+  set ifHCOutUcastPkts(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
   // 0x50: u64
-  set ifHCOutMulticastPkts(value: Deno.PointerValue) {
+  set ifHCOutMulticastPkts(value: bigint | number) {
     this.view.setBigUint64(80, BigInt(value), true);
   }
 
   // 0x58: u64
-  set ifHCOutBroadcastPkts(value: Deno.PointerValue) {
+  set ifHCOutBroadcastPkts(value: bigint | number) {
     this.view.setBigUint64(88, BigInt(value), true);
   }
 
   // 0x60: u64
-  set ifOutErrors(value: Deno.PointerValue) {
+  set ifOutErrors(value: bigint | number) {
     this.view.setBigUint64(96, BigInt(value), true);
   }
 
   // 0x68: u64
-  set ifOutDiscards(value: Deno.PointerValue) {
+  set ifOutDiscards(value: bigint | number) {
     this.view.setBigUint64(104, BigInt(value), true);
   }
 
   // 0x70: u64
-  set ifHCInUcastOctets(value: Deno.PointerValue) {
+  set ifHCInUcastOctets(value: bigint | number) {
     this.view.setBigUint64(112, BigInt(value), true);
   }
 
   // 0x78: u64
-  set ifHCInMulticastOctets(value: Deno.PointerValue) {
+  set ifHCInMulticastOctets(value: bigint | number) {
     this.view.setBigUint64(120, BigInt(value), true);
   }
 
   // 0x80: u64
-  set ifHCInBroadcastOctets(value: Deno.PointerValue) {
+  set ifHCInBroadcastOctets(value: bigint | number) {
     this.view.setBigUint64(128, BigInt(value), true);
   }
 
   // 0x88: u64
-  set ifHCOutUcastOctets(value: Deno.PointerValue) {
+  set ifHCOutUcastOctets(value: bigint | number) {
     this.view.setBigUint64(136, BigInt(value), true);
   }
 
   // 0x90: u64
-  set ifHCOutMulticastOctets(value: Deno.PointerValue) {
+  set ifHCOutMulticastOctets(value: bigint | number) {
     this.view.setBigUint64(144, BigInt(value), true);
   }
 
   // 0x98: u64
-  set ifHCOutBroadcastOctets(value: Deno.PointerValue) {
+  set ifHCOutBroadcastOctets(value: bigint | number) {
     this.view.setBigUint64(152, BigInt(value), true);
   }
 }
@@ -4347,9 +4347,9 @@ export class NDIS_802_11_CONFIGURATIONView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -4375,22 +4375,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -4469,7 +4469,7 @@ export interface LARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue;
   /** i64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: bigint | number;
 }
 
 export const sizeofLARGE_INTEGER = 24;
@@ -4509,7 +4509,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  get QuadPart(): Deno.PointerValue {
+  get QuadPart(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -4524,7 +4524,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  set QuadPart(value: Deno.PointerValue) {
+  set QuadPart(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -4946,7 +4946,7 @@ export interface NDIS_802_11_KEY {
   /** array */
   BSSID: Deno.PointerValue;
   /** u64 */
-  KeyRSC: Deno.PointerValue;
+  KeyRSC: bigint | number;
   /** array */
   KeyMaterial: Deno.PointerValue;
 }
@@ -5006,7 +5006,7 @@ export class NDIS_802_11_KEYView {
   }
 
   // 0x18: u64
-  get KeyRSC(): Deno.PointerValue {
+  get KeyRSC(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -5039,7 +5039,7 @@ export class NDIS_802_11_KEYView {
   }
 
   // 0x18: u64
-  set KeyRSC(value: Deno.PointerValue) {
+  set KeyRSC(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -7337,7 +7337,7 @@ export class OFFLOAD_SECURITY_ASSOCIATIONView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.NetworkManagement.Ndis.OFFLOAD_IPSEC_ADD_SA (size: 72)
@@ -8523,7 +8523,7 @@ export class GEN_GET_TIME_CAPSView {
  */
 export interface GEN_GET_NETCARD_TIME {
   /** u64 */
-  ReadTime: Deno.PointerValue;
+  ReadTime: bigint | number;
 }
 
 export const sizeofGEN_GET_NETCARD_TIME = 8;
@@ -8547,12 +8547,12 @@ export class GEN_GET_NETCARD_TIMEView {
   }
 
   // 0x00: u64
-  get ReadTime(): Deno.PointerValue {
+  get ReadTime(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: u64
-  set ReadTime(value: Deno.PointerValue) {
+  set ReadTime(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -8908,9 +8908,9 @@ export class NDIS_CO_LINK_SPEEDView {
  */
 export interface NDIS_LINK_SPEED {
   /** u64 */
-  XmitLinkSpeed: Deno.PointerValue;
+  XmitLinkSpeed: bigint | number;
   /** u64 */
-  RcvLinkSpeed: Deno.PointerValue;
+  RcvLinkSpeed: bigint | number;
 }
 
 export const sizeofNDIS_LINK_SPEED = 16;
@@ -8936,22 +8936,22 @@ export class NDIS_LINK_SPEEDView {
   }
 
   // 0x00: u64
-  get XmitLinkSpeed(): Deno.PointerValue {
+  get XmitLinkSpeed(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get RcvLinkSpeed(): Deno.PointerValue {
+  get RcvLinkSpeed(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set XmitLinkSpeed(value: Deno.PointerValue) {
+  set XmitLinkSpeed(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set RcvLinkSpeed(value: Deno.PointerValue) {
+  set RcvLinkSpeed(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -9103,9 +9103,9 @@ export interface NDIS_LINK_STATE {
   /** Windows.Win32.NetworkManagement.Ndis.NET_IF_MEDIA_DUPLEX_STATE */
   MediaDuplexState: NET_IF_MEDIA_DUPLEX_STATE;
   /** u64 */
-  XmitLinkSpeed: Deno.PointerValue;
+  XmitLinkSpeed: bigint | number;
   /** u64 */
-  RcvLinkSpeed: Deno.PointerValue;
+  RcvLinkSpeed: bigint | number;
   /** Windows.Win32.NetworkManagement.Ndis.NDIS_SUPPORTED_PAUSE_FUNCTIONS */
   PauseFunctions: NDIS_SUPPORTED_PAUSE_FUNCTIONS;
   /** u32 */
@@ -9161,12 +9161,12 @@ export class NDIS_LINK_STATEView {
   }
 
   // 0x10: u64
-  get XmitLinkSpeed(): Deno.PointerValue {
+  get XmitLinkSpeed(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get RcvLinkSpeed(): Deno.PointerValue {
+  get RcvLinkSpeed(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -9196,12 +9196,12 @@ export class NDIS_LINK_STATEView {
   }
 
   // 0x10: u64
-  set XmitLinkSpeed(value: Deno.PointerValue) {
+  set XmitLinkSpeed(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set RcvLinkSpeed(value: Deno.PointerValue) {
+  set RcvLinkSpeed(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -9225,9 +9225,9 @@ export interface NDIS_LINK_PARAMETERS {
   /** Windows.Win32.NetworkManagement.Ndis.NET_IF_MEDIA_DUPLEX_STATE */
   MediaDuplexState: NET_IF_MEDIA_DUPLEX_STATE;
   /** u64 */
-  XmitLinkSpeed: Deno.PointerValue;
+  XmitLinkSpeed: bigint | number;
   /** u64 */
-  RcvLinkSpeed: Deno.PointerValue;
+  RcvLinkSpeed: bigint | number;
   /** Windows.Win32.NetworkManagement.Ndis.NDIS_SUPPORTED_PAUSE_FUNCTIONS */
   PauseFunctions: NDIS_SUPPORTED_PAUSE_FUNCTIONS;
   /** u32 */
@@ -9279,12 +9279,12 @@ export class NDIS_LINK_PARAMETERSView {
   // 0x0c: pad4
 
   // 0x10: u64
-  get XmitLinkSpeed(): Deno.PointerValue {
+  get XmitLinkSpeed(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get RcvLinkSpeed(): Deno.PointerValue {
+  get RcvLinkSpeed(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -9311,12 +9311,12 @@ export class NDIS_LINK_PARAMETERSView {
   // 0x0c: pad4
 
   // 0x10: u64
-  set XmitLinkSpeed(value: Deno.PointerValue) {
+  set XmitLinkSpeed(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set RcvLinkSpeed(value: Deno.PointerValue) {
+  set RcvLinkSpeed(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -11487,7 +11487,7 @@ export interface NDIS_WMI_METHOD_HEADER {
   /** Windows.Win32.NetworkManagement.Ndis.NET_LUID_LH */
   NetLuid: Uint8Array | Deno.PointerValue;
   /** u64 */
-  RequestId: Deno.PointerValue;
+  RequestId: bigint | number;
   /** u32 */
   Timeout: number;
   /** array */
@@ -11546,7 +11546,7 @@ export class NDIS_WMI_METHOD_HEADERView {
   }
 
   // 0x18: u64
-  get RequestId(): Deno.PointerValue {
+  get RequestId(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -11581,7 +11581,7 @@ export class NDIS_WMI_METHOD_HEADERView {
   }
 
   // 0x18: u64
-  set RequestId(value: Deno.PointerValue) {
+  set RequestId(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -11609,7 +11609,7 @@ export interface NDIS_WMI_SET_HEADER {
   /** Windows.Win32.NetworkManagement.Ndis.NET_LUID_LH */
   NetLuid: Uint8Array | Deno.PointerValue;
   /** u64 */
-  RequestId: Deno.PointerValue;
+  RequestId: bigint | number;
   /** u32 */
   Timeout: number;
   /** array */
@@ -11668,7 +11668,7 @@ export class NDIS_WMI_SET_HEADERView {
   }
 
   // 0x18: u64
-  get RequestId(): Deno.PointerValue {
+  get RequestId(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -11703,7 +11703,7 @@ export class NDIS_WMI_SET_HEADERView {
   }
 
   // 0x18: u64
-  set RequestId(value: Deno.PointerValue) {
+  set RequestId(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -11731,7 +11731,7 @@ export interface NDIS_WMI_EVENT_HEADER {
   /** Windows.Win32.NetworkManagement.Ndis.NET_LUID_LH */
   NetLuid: Uint8Array | Deno.PointerValue;
   /** u64 */
-  RequestId: Deno.PointerValue;
+  RequestId: bigint | number;
   /** u32 */
   PortNumber: number;
   /** u32 */
@@ -11798,7 +11798,7 @@ export class NDIS_WMI_EVENT_HEADERView {
   }
 
   // 0x18: u64
-  get RequestId(): Deno.PointerValue {
+  get RequestId(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -11843,7 +11843,7 @@ export class NDIS_WMI_EVENT_HEADERView {
   }
 
   // 0x18: u64
-  set RequestId(value: Deno.PointerValue) {
+  set RequestId(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -12405,9 +12405,9 @@ export interface NDIS_PORT_STATE {
   /** Windows.Win32.NetworkManagement.Ndis.NET_IF_MEDIA_CONNECT_STATE */
   MediaConnectState: NET_IF_MEDIA_CONNECT_STATE;
   /** u64 */
-  XmitLinkSpeed: Deno.PointerValue;
+  XmitLinkSpeed: bigint | number;
   /** u64 */
-  RcvLinkSpeed: Deno.PointerValue;
+  RcvLinkSpeed: bigint | number;
   /** Windows.Win32.NetworkManagement.Ndis.NET_IF_DIRECTION_TYPE */
   Direction: NET_IF_DIRECTION_TYPE;
   /** Windows.Win32.NetworkManagement.Ndis.NDIS_PORT_CONTROL_STATE */
@@ -12475,12 +12475,12 @@ export class NDIS_PORT_STATEView {
   // 0x0c: pad4
 
   // 0x10: u64
-  get XmitLinkSpeed(): Deno.PointerValue {
+  get XmitLinkSpeed(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get RcvLinkSpeed(): Deno.PointerValue {
+  get RcvLinkSpeed(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -12527,12 +12527,12 @@ export class NDIS_PORT_STATEView {
   // 0x0c: pad4
 
   // 0x10: u64
-  set XmitLinkSpeed(value: Deno.PointerValue) {
+  set XmitLinkSpeed(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set RcvLinkSpeed(value: Deno.PointerValue) {
+  set RcvLinkSpeed(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -12582,9 +12582,9 @@ export interface NDIS_PORT_CHARACTERISTICS {
   /** Windows.Win32.NetworkManagement.Ndis.NET_IF_MEDIA_CONNECT_STATE */
   MediaConnectState: NET_IF_MEDIA_CONNECT_STATE;
   /** u64 */
-  XmitLinkSpeed: Deno.PointerValue;
+  XmitLinkSpeed: bigint | number;
   /** u64 */
-  RcvLinkSpeed: Deno.PointerValue;
+  RcvLinkSpeed: bigint | number;
   /** Windows.Win32.NetworkManagement.Ndis.NET_IF_DIRECTION_TYPE */
   Direction: NET_IF_DIRECTION_TYPE;
   /** Windows.Win32.NetworkManagement.Ndis.NDIS_PORT_CONTROL_STATE */
@@ -12667,12 +12667,12 @@ export class NDIS_PORT_CHARACTERISTICSView {
   }
 
   // 0x18: u64
-  get XmitLinkSpeed(): Deno.PointerValue {
+  get XmitLinkSpeed(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get RcvLinkSpeed(): Deno.PointerValue {
+  get RcvLinkSpeed(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -12729,12 +12729,12 @@ export class NDIS_PORT_CHARACTERISTICSView {
   }
 
   // 0x18: u64
-  set XmitLinkSpeed(value: Deno.PointerValue) {
+  set XmitLinkSpeed(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set RcvLinkSpeed(value: Deno.PointerValue) {
+  set RcvLinkSpeed(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -13210,13 +13210,13 @@ export interface NDIS_TIMESTAMP_CAPABILITIES {
   /** Windows.Win32.NetworkManagement.Ndis.NDIS_OBJECT_HEADER */
   Header: Uint8Array | Deno.PointerValue;
   /** u64 */
-  HardwareClockFrequencyHz: Deno.PointerValue;
+  HardwareClockFrequencyHz: bigint | number;
   /** Windows.Win32.Foundation.BOOLEAN */
   CrossTimestamp: Uint8Array | Deno.PointerValue;
   /** u64 */
-  Reserved1: Deno.PointerValue;
+  Reserved1: bigint | number;
   /** u64 */
-  Reserved2: Deno.PointerValue;
+  Reserved2: bigint | number;
   /** Windows.Win32.NetworkManagement.Ndis.NDIS_TIMESTAMP_CAPABILITY_FLAGS */
   TimestampFlags: Uint8Array | Deno.PointerValue;
 }
@@ -13258,7 +13258,7 @@ export class NDIS_TIMESTAMP_CAPABILITIESView {
   }
 
   // 0x08: u64
-  get HardwareClockFrequencyHz(): Deno.PointerValue {
+  get HardwareClockFrequencyHz(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -13269,12 +13269,12 @@ export class NDIS_TIMESTAMP_CAPABILITIESView {
   }
 
   // 0x18: u64
-  get Reserved1(): Deno.PointerValue {
+  get Reserved1(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get Reserved2(): Deno.PointerValue {
+  get Reserved2(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -13290,7 +13290,7 @@ export class NDIS_TIMESTAMP_CAPABILITIESView {
   }
 
   // 0x08: u64
-  set HardwareClockFrequencyHz(value: Deno.PointerValue) {
+  set HardwareClockFrequencyHz(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -13300,12 +13300,12 @@ export class NDIS_TIMESTAMP_CAPABILITIESView {
   }
 
   // 0x18: u64
-  set Reserved1(value: Deno.PointerValue) {
+  set Reserved1(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set Reserved2(value: Deno.PointerValue) {
+  set Reserved2(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -13324,11 +13324,11 @@ export interface NDIS_HARDWARE_CROSSTIMESTAMP {
   /** u32 */
   Flags: number;
   /** u64 */
-  SystemTimestamp1: Deno.PointerValue;
+  SystemTimestamp1: bigint | number;
   /** u64 */
-  HardwareClockTimestamp: Deno.PointerValue;
+  HardwareClockTimestamp: bigint | number;
   /** u64 */
-  SystemTimestamp2: Deno.PointerValue;
+  SystemTimestamp2: bigint | number;
 }
 
 export const sizeofNDIS_HARDWARE_CROSSTIMESTAMP = 40;
@@ -13374,17 +13374,17 @@ export class NDIS_HARDWARE_CROSSTIMESTAMPView {
   // 0x0c: pad4
 
   // 0x10: u64
-  get SystemTimestamp1(): Deno.PointerValue {
+  get SystemTimestamp1(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get HardwareClockTimestamp(): Deno.PointerValue {
+  get HardwareClockTimestamp(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get SystemTimestamp2(): Deno.PointerValue {
+  get SystemTimestamp2(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -13401,17 +13401,17 @@ export class NDIS_HARDWARE_CROSSTIMESTAMPView {
   // 0x0c: pad4
 
   // 0x10: u64
-  set SystemTimestamp1(value: Deno.PointerValue) {
+  set SystemTimestamp1(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set HardwareClockTimestamp(value: Deno.PointerValue) {
+  set HardwareClockTimestamp(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set SystemTimestamp2(value: Deno.PointerValue) {
+  set SystemTimestamp2(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 }
@@ -13485,9 +13485,9 @@ export interface NDK_ADAPTER_INFO {
   /** u32 */
   DeviceId: number;
   /** usize */
-  MaxRegistrationSize: Deno.PointerValue;
+  MaxRegistrationSize: bigint | number;
   /** usize */
-  MaxWindowSize: Deno.PointerValue;
+  MaxWindowSize: bigint | number;
   /** u32 */
   FRMRPageCount: number;
   /** u32 */
@@ -13604,12 +13604,12 @@ export class NDK_ADAPTER_INFOView {
   }
 
   // 0x10: usize
-  get MaxRegistrationSize(): Deno.PointerValue {
+  get MaxRegistrationSize(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: usize
-  get MaxWindowSize(): Deno.PointerValue {
+  get MaxWindowSize(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -13716,12 +13716,12 @@ export class NDK_ADAPTER_INFOView {
   }
 
   // 0x10: usize
-  set MaxRegistrationSize(value: Deno.PointerValue) {
+  set MaxRegistrationSize(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: usize
-  set MaxWindowSize(value: Deno.PointerValue) {
+  set MaxWindowSize(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 

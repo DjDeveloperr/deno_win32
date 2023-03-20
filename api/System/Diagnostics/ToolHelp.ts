@@ -28,11 +28,11 @@ export const HF32_SHARED = 2;
  */
 export interface HEAPLIST32 {
   /** usize */
-  dwSize: Deno.PointerValue;
+  dwSize: bigint | number;
   /** u32 */
   th32ProcessID: number;
   /** usize */
-  th32HeapID: Deno.PointerValue;
+  th32HeapID: bigint | number;
   /** u32 */
   dwFlags: number;
 }
@@ -66,7 +66,7 @@ export class HEAPLIST32View {
   }
 
   // 0x00: usize
-  get dwSize(): Deno.PointerValue {
+  get dwSize(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -78,7 +78,7 @@ export class HEAPLIST32View {
   // 0x0c: pad4
 
   // 0x10: usize
-  get th32HeapID(): Deno.PointerValue {
+  get th32HeapID(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -90,7 +90,7 @@ export class HEAPLIST32View {
   // 0x1c: pad4
 
   // 0x00: usize
-  set dwSize(value: Deno.PointerValue) {
+  set dwSize(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -102,7 +102,7 @@ export class HEAPLIST32View {
   // 0x0c: pad4
 
   // 0x10: usize
-  set th32HeapID(value: Deno.PointerValue) {
+  set th32HeapID(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -114,20 +114,20 @@ export class HEAPLIST32View {
   // 0x1c: pad4
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.System.Diagnostics.ToolHelp.HEAPENTRY32 (size: 56)
  */
 export interface HEAPENTRY32 {
   /** usize */
-  dwSize: Deno.PointerValue;
+  dwSize: bigint | number;
   /** Windows.Win32.Foundation.HANDLE */
   hHandle: Uint8Array | Deno.PointerValue;
   /** usize */
-  dwAddress: Deno.PointerValue;
+  dwAddress: bigint | number;
   /** usize */
-  dwBlockSize: Deno.PointerValue;
+  dwBlockSize: bigint | number;
   /** Windows.Win32.System.Diagnostics.ToolHelp.HEAPENTRY32_FLAGS */
   dwFlags: HEAPENTRY32_FLAGS;
   /** u32 */
@@ -137,7 +137,7 @@ export interface HEAPENTRY32 {
   /** u32 */
   th32ProcessID: number;
   /** usize */
-  th32HeapID: Deno.PointerValue;
+  th32HeapID: bigint | number;
 }
 
 export const sizeofHEAPENTRY32 = 56;
@@ -177,7 +177,7 @@ export class HEAPENTRY32View {
   }
 
   // 0x00: usize
-  get dwSize(): Deno.PointerValue {
+  get dwSize(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -188,12 +188,12 @@ export class HEAPENTRY32View {
   }
 
   // 0x10: usize
-  get dwAddress(): Deno.PointerValue {
+  get dwAddress(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: usize
-  get dwBlockSize(): Deno.PointerValue {
+  get dwBlockSize(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -218,12 +218,12 @@ export class HEAPENTRY32View {
   }
 
   // 0x30: usize
-  get th32HeapID(): Deno.PointerValue {
+  get th32HeapID(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x00: usize
-  set dwSize(value: Deno.PointerValue) {
+  set dwSize(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -233,12 +233,12 @@ export class HEAPENTRY32View {
   }
 
   // 0x10: usize
-  set dwAddress(value: Deno.PointerValue) {
+  set dwAddress(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: usize
-  set dwBlockSize(value: Deno.PointerValue) {
+  set dwBlockSize(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -263,7 +263,7 @@ export class HEAPENTRY32View {
   }
 
   // 0x30: usize
-  set th32HeapID(value: Deno.PointerValue) {
+  set th32HeapID(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 }
@@ -279,7 +279,7 @@ export interface PROCESSENTRY32W {
   /** u32 */
   th32ProcessID: number;
   /** usize */
-  th32DefaultHeapID: Deno.PointerValue;
+  th32DefaultHeapID: bigint | number;
   /** u32 */
   th32ModuleID: number;
   /** u32 */
@@ -352,7 +352,7 @@ export class PROCESSENTRY32WView {
   // 0x0c: pad4
 
   // 0x10: usize
-  get th32DefaultHeapID(): Deno.PointerValue {
+  get th32DefaultHeapID(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -407,7 +407,7 @@ export class PROCESSENTRY32WView {
   // 0x0c: pad4
 
   // 0x10: usize
-  set th32DefaultHeapID(value: Deno.PointerValue) {
+  set th32DefaultHeapID(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -455,7 +455,7 @@ export interface PROCESSENTRY32 {
   /** u32 */
   th32ProcessID: number;
   /** usize */
-  th32DefaultHeapID: Deno.PointerValue;
+  th32DefaultHeapID: bigint | number;
   /** u32 */
   th32ModuleID: number;
   /** u32 */
@@ -528,7 +528,7 @@ export class PROCESSENTRY32View {
   // 0x0c: pad4
 
   // 0x10: usize
-  get th32DefaultHeapID(): Deno.PointerValue {
+  get th32DefaultHeapID(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -583,7 +583,7 @@ export class PROCESSENTRY32View {
   // 0x0c: pad4
 
   // 0x10: usize
-  set th32DefaultHeapID(value: Deno.PointerValue) {
+  set th32DefaultHeapID(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -748,7 +748,7 @@ export class THREADENTRY32View {
   // 0x1c: pad4
 }
 
-export type HINSTANCE = Deno.PointerValue;
+export type HINSTANCE = bigint | number;
 
 /**
  * Windows.Win32.System.Diagnostics.ToolHelp.MODULEENTRY32W (size: 64)
@@ -1207,7 +1207,7 @@ export function Heap32ListNext(
 export function Heap32First(
   lphe: Deno.PointerValue | Uint8Array /* ptr */,
   th32ProcessID: number /* u32 */,
-  th32HeapID: Deno.PointerValue /* usize */,
+  th32HeapID: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.Heap32First(util.toPointer(lphe), th32ProcessID, th32HeapID));
 }
@@ -1222,7 +1222,7 @@ export function Toolhelp32ReadProcessMemory(
   th32ProcessID: number /* u32 */,
   lpBaseAddress: Deno.PointerValue | Uint8Array /* ptr */,
   lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
-  cbRead: Deno.PointerValue /* usize */,
+  cbRead: bigint | number /* usize */,
   lpNumberOfBytesRead: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.Toolhelp32ReadProcessMemory(th32ProcessID, util.toPointer(lpBaseAddress), util.toPointer(lpBuffer), cbRead, util.toPointer(lpNumberOfBytesRead)));

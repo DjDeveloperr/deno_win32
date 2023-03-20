@@ -10,7 +10,7 @@ export const CDB_REPORT_BYTES = 1;
 
 // Structs
 
-export type HCOMDB = Deno.PointerValue;
+export type HCOMDB = bigint | number;
 
 export type BOOL = number;
 

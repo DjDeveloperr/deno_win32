@@ -193,19 +193,19 @@ export const WS_EX_NOACTIVATE = 134217728;
 
 // Structs
 
-export type DPI_AWARENESS_CONTEXT = Deno.PointerValue;
+export type DPI_AWARENESS_CONTEXT = bigint | number;
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 export type PWSTR = Deno.PointerValue | Uint8Array;
 
 export type BOOL = number;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 export type HRESULT = number;
 
-export type HMONITOR = Deno.PointerValue;
+export type HMONITOR = bigint | number;
 
 // Native Libraries
 
@@ -346,7 +346,7 @@ export function OpenThemeDataForDpi(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pszClassList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dpi: number /* u32 */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libUxTheme_dll.OpenThemeDataForDpi((hwnd), util.pwstrToFfi(pszClassList), dpi);
 }
 

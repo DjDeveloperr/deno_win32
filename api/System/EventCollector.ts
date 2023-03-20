@@ -95,9 +95,9 @@ export const EcRuntimeStatusActiveStatusTrying = 4;
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -123,22 +123,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -341,12 +341,12 @@ try {
 
 export function EcOpenSubscriptionEnum(
   Flags: number /* u32 */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libWecApi_dll.EcOpenSubscriptionEnum(Flags);
 }
 
 export function EcEnumNextSubscription(
-  SubscriptionEnum: Deno.PointerValue /* isize */,
+  SubscriptionEnum: bigint | number /* isize */,
   SubscriptionNameBufferSize: number /* u32 */,
   SubscriptionNameBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SubscriptionNameBufferUsed: Deno.PointerValue | Uint8Array /* ptr */,
@@ -358,12 +358,12 @@ export function EcOpenSubscription(
   SubscriptionName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   AccessMask: number /* u32 */,
   Flags: number /* u32 */,
-): Deno.PointerValue /* isize */ {
+): bigint | number /* isize */ {
   return libWecApi_dll.EcOpenSubscription(util.pwstrToFfi(SubscriptionName), AccessMask, Flags);
 }
 
 export function EcSetSubscriptionProperty(
-  Subscription: Deno.PointerValue /* isize */,
+  Subscription: bigint | number /* isize */,
   PropertyId: EC_SUBSCRIPTION_PROPERTY_ID /* Windows.Win32.System.EventCollector.EC_SUBSCRIPTION_PROPERTY_ID */,
   Flags: number /* u32 */,
   PropertyValue: Deno.PointerValue | Uint8Array /* ptr */,
@@ -372,7 +372,7 @@ export function EcSetSubscriptionProperty(
 }
 
 export function EcGetSubscriptionProperty(
-  Subscription: Deno.PointerValue /* isize */,
+  Subscription: bigint | number /* isize */,
   PropertyId: EC_SUBSCRIPTION_PROPERTY_ID /* Windows.Win32.System.EventCollector.EC_SUBSCRIPTION_PROPERTY_ID */,
   Flags: number /* u32 */,
   PropertyValueBufferSize: number /* u32 */,
@@ -383,7 +383,7 @@ export function EcGetSubscriptionProperty(
 }
 
 export function EcSaveSubscription(
-  Subscription: Deno.PointerValue /* isize */,
+  Subscription: bigint | number /* isize */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWecApi_dll.EcSaveSubscription(Subscription, Flags));
@@ -397,14 +397,14 @@ export function EcDeleteSubscription(
 }
 
 export function EcGetObjectArraySize(
-  ObjectArray: Deno.PointerValue /* isize */,
+  ObjectArray: bigint | number /* isize */,
   ObjectArraySize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWecApi_dll.EcGetObjectArraySize(ObjectArray, util.toPointer(ObjectArraySize)));
 }
 
 export function EcSetObjectArrayProperty(
-  ObjectArray: Deno.PointerValue /* isize */,
+  ObjectArray: bigint | number /* isize */,
   PropertyId: EC_SUBSCRIPTION_PROPERTY_ID /* Windows.Win32.System.EventCollector.EC_SUBSCRIPTION_PROPERTY_ID */,
   ArrayIndex: number /* u32 */,
   Flags: number /* u32 */,
@@ -414,7 +414,7 @@ export function EcSetObjectArrayProperty(
 }
 
 export function EcGetObjectArrayProperty(
-  ObjectArray: Deno.PointerValue /* isize */,
+  ObjectArray: bigint | number /* isize */,
   PropertyId: EC_SUBSCRIPTION_PROPERTY_ID /* Windows.Win32.System.EventCollector.EC_SUBSCRIPTION_PROPERTY_ID */,
   ArrayIndex: number /* u32 */,
   Flags: number /* u32 */,
@@ -426,14 +426,14 @@ export function EcGetObjectArrayProperty(
 }
 
 export function EcInsertObjectArrayElement(
-  ObjectArray: Deno.PointerValue /* isize */,
+  ObjectArray: bigint | number /* isize */,
   ArrayIndex: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWecApi_dll.EcInsertObjectArrayElement(ObjectArray, ArrayIndex));
 }
 
 export function EcRemoveObjectArrayElement(
-  ObjectArray: Deno.PointerValue /* isize */,
+  ObjectArray: bigint | number /* isize */,
   ArrayIndex: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWecApi_dll.EcRemoveObjectArrayElement(ObjectArray, ArrayIndex));
@@ -460,7 +460,7 @@ export function EcRetrySubscription(
 }
 
 export function EcClose(
-  Object: Deno.PointerValue /* isize */,
+  Object: bigint | number /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libWecApi_dll.EcClose(Object));
 }

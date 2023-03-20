@@ -2490,7 +2490,7 @@ export class EXCEPTION_DEBUG_INFOView {
   // 0x0c: pad4
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.System.Diagnostics.Debug.CREATE_THREAD_DEBUG_INFO (size: 24)
@@ -6040,7 +6040,7 @@ export interface RPC_DISPATCH_TABLE {
   /** Windows.Win32.System.Rpc.RPC_DISPATCH_FUNCTION */
   DispatchTable: Uint8Array | Deno.PointerValue;
   /** isize */
-  Reserved: Deno.PointerValue;
+  Reserved: bigint | number;
 }
 
 export const sizeofRPC_DISPATCH_TABLE = 24;
@@ -6082,7 +6082,7 @@ export class RPC_DISPATCH_TABLEView {
   }
 
   // 0x10: isize
-  get Reserved(): Deno.PointerValue {
+  get Reserved(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -6099,7 +6099,7 @@ export class RPC_DISPATCH_TABLEView {
   }
 
   // 0x10: isize
-  set Reserved(value: Deno.PointerValue) {
+  set Reserved(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -6348,7 +6348,7 @@ export interface RPC_CLIENT_INTERFACE {
   /** ptr */
   RpcProtseqEndpoint: Deno.PointerValue | Uint8Array;
   /** usize */
-  Reserved: Deno.PointerValue;
+  Reserved: bigint | number;
   /** ptr */
   InterpreterInfo: Deno.PointerValue | Uint8Array;
   /** u32 */
@@ -6433,7 +6433,7 @@ export class RPC_CLIENT_INTERFACEView {
   }
 
   // 0x30: usize
-  get Reserved(): Deno.PointerValue {
+  get Reserved(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -6485,7 +6485,7 @@ export class RPC_CLIENT_INTERFACEView {
   }
 
   // 0x30: usize
-  set Reserved(value: Deno.PointerValue) {
+  set Reserved(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
@@ -7179,7 +7179,7 @@ export interface _IOC_e__Struct {
   /** u32 */
   dwNumberOfBytesTransferred: number;
   /** usize */
-  dwCompletionKey: Deno.PointerValue;
+  dwCompletionKey: bigint | number;
   /** ptr */
   lpOverlapped: Deno.PointerValue | Uint8Array;
 }
@@ -7225,7 +7225,7 @@ export class _IOC_e__StructView {
   // 0x0c: pad4
 
   // 0x10: usize
-  get dwCompletionKey(): Deno.PointerValue {
+  get dwCompletionKey(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -7248,7 +7248,7 @@ export class _IOC_e__StructView {
   // 0x0c: pad4
 
   // 0x10: usize
-  set dwCompletionKey(value: Deno.PointerValue) {
+  set dwCompletionKey(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -7258,7 +7258,7 @@ export class _IOC_e__StructView {
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 /**
  * _IntPtr_e__Struct (size: 16)
@@ -10006,15 +10006,15 @@ export interface MIDL_STUB_MESSAGE {
   /** u16 */
   UniquePtrCount: number;
   /** usize */
-  MaxCount: Deno.PointerValue;
+  MaxCount: bigint | number;
   /** u32 */
   Offset: number;
   /** u32 */
   ActualCount: number;
   /** isize */
-  pfnAllocate: Deno.PointerValue;
+  pfnAllocate: bigint | number;
   /** isize */
-  pfnFree: Deno.PointerValue;
+  pfnFree: bigint | number;
   /** ptr */
   StackTop: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -10066,13 +10066,13 @@ export interface MIDL_STUB_MESSAGE {
   /** ptr */
   pMemoryList: Deno.PointerValue | Uint8Array;
   /** isize */
-  pCSInfo: Deno.PointerValue;
+  pCSInfo: bigint | number;
   /** ptr */
   ConformanceMark: Deno.PointerValue | Uint8Array;
   /** ptr */
   VarianceMark: Deno.PointerValue | Uint8Array;
   /** isize */
-  Unused: Deno.PointerValue;
+  Unused: bigint | number;
   /** ptr */
   pContext: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -10080,11 +10080,11 @@ export interface MIDL_STUB_MESSAGE {
   /** ptr */
   pUserMarshalList: Deno.PointerValue | Uint8Array;
   /** isize */
-  Reserved51_3: Deno.PointerValue;
+  Reserved51_3: bigint | number;
   /** isize */
-  Reserved51_4: Deno.PointerValue;
+  Reserved51_4: bigint | number;
   /** isize */
-  Reserved51_5: Deno.PointerValue;
+  Reserved51_5: bigint | number;
 }
 
 export const sizeofMIDL_STUB_MESSAGE = 400;
@@ -10336,7 +10336,7 @@ export class MIDL_STUB_MESSAGEView {
   // 0x64: pad4
 
   // 0x68: usize
-  get MaxCount(): Deno.PointerValue {
+  get MaxCount(): bigint | number {
     return Number(this.view.getBigUint64(104, true));
   }
 
@@ -10351,12 +10351,12 @@ export class MIDL_STUB_MESSAGEView {
   }
 
   // 0x78: isize
-  get pfnAllocate(): Deno.PointerValue {
+  get pfnAllocate(): bigint | number {
     return Number(this.view.getBigInt64(120, true));
   }
 
   // 0x80: isize
-  get pfnFree(): Deno.PointerValue {
+  get pfnFree(): bigint | number {
     return Number(this.view.getBigInt64(128, true));
   }
 
@@ -10509,7 +10509,7 @@ export class MIDL_STUB_MESSAGEView {
   }
 
   // 0x140: isize
-  get pCSInfo(): Deno.PointerValue {
+  get pCSInfo(): bigint | number {
     return Number(this.view.getBigInt64(320, true));
   }
 
@@ -10526,7 +10526,7 @@ export class MIDL_STUB_MESSAGEView {
   }
 
   // 0x158: isize
-  get Unused(): Deno.PointerValue {
+  get Unused(): bigint | number {
     return Number(this.view.getBigInt64(344, true));
   }
 
@@ -10549,17 +10549,17 @@ export class MIDL_STUB_MESSAGEView {
   }
 
   // 0x178: isize
-  get Reserved51_3(): Deno.PointerValue {
+  get Reserved51_3(): bigint | number {
     return Number(this.view.getBigInt64(376, true));
   }
 
   // 0x180: isize
-  get Reserved51_4(): Deno.PointerValue {
+  get Reserved51_4(): bigint | number {
     return Number(this.view.getBigInt64(384, true));
   }
 
   // 0x188: isize
-  get Reserved51_5(): Deno.PointerValue {
+  get Reserved51_5(): bigint | number {
     return Number(this.view.getBigInt64(392, true));
   }
 
@@ -10663,7 +10663,7 @@ export class MIDL_STUB_MESSAGEView {
   // 0x64: pad4
 
   // 0x68: usize
-  set MaxCount(value: Deno.PointerValue) {
+  set MaxCount(value: bigint | number) {
     this.view.setBigUint64(104, BigInt(value), true);
   }
 
@@ -10678,12 +10678,12 @@ export class MIDL_STUB_MESSAGEView {
   }
 
   // 0x78: isize
-  set pfnAllocate(value: Deno.PointerValue) {
+  set pfnAllocate(value: bigint | number) {
     this.view.setBigInt64(120, BigInt(value), true);
   }
 
   // 0x80: isize
-  set pfnFree(value: Deno.PointerValue) {
+  set pfnFree(value: bigint | number) {
     this.view.setBigInt64(128, BigInt(value), true);
   }
 
@@ -10817,7 +10817,7 @@ export class MIDL_STUB_MESSAGEView {
   }
 
   // 0x140: isize
-  set pCSInfo(value: Deno.PointerValue) {
+  set pCSInfo(value: bigint | number) {
     this.view.setBigInt64(320, BigInt(value), true);
   }
 
@@ -10832,7 +10832,7 @@ export class MIDL_STUB_MESSAGEView {
   }
 
   // 0x158: isize
-  set Unused(value: Deno.PointerValue) {
+  set Unused(value: bigint | number) {
     this.view.setBigInt64(344, BigInt(value), true);
   }
 
@@ -10852,17 +10852,17 @@ export class MIDL_STUB_MESSAGEView {
   }
 
   // 0x178: isize
-  set Reserved51_3(value: Deno.PointerValue) {
+  set Reserved51_3(value: bigint | number) {
     this.view.setBigInt64(376, BigInt(value), true);
   }
 
   // 0x180: isize
-  set Reserved51_4(value: Deno.PointerValue) {
+  set Reserved51_4(value: bigint | number) {
     this.view.setBigInt64(384, BigInt(value), true);
   }
 
   // 0x188: isize
-  set Reserved51_5(value: Deno.PointerValue) {
+  set Reserved51_5(value: bigint | number) {
     this.view.setBigInt64(392, BigInt(value), true);
   }
 }
@@ -11318,9 +11318,9 @@ export class USER_MARSHAL_CBView {
  */
 export interface MALLOC_FREE_STRUCT {
   /** isize */
-  pfnAllocate: Deno.PointerValue;
+  pfnAllocate: bigint | number;
   /** isize */
-  pfnFree: Deno.PointerValue;
+  pfnFree: bigint | number;
 }
 
 export const sizeofMALLOC_FREE_STRUCT = 16;
@@ -11346,22 +11346,22 @@ export class MALLOC_FREE_STRUCTView {
   }
 
   // 0x00: isize
-  get pfnAllocate(): Deno.PointerValue {
+  get pfnAllocate(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: isize
-  get pfnFree(): Deno.PointerValue {
+  get pfnFree(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x00: isize
-  set pfnAllocate(value: Deno.PointerValue) {
+  set pfnAllocate(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: isize
-  set pfnFree(value: Deno.PointerValue) {
+  set pfnFree(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -11696,9 +11696,9 @@ export interface MIDL_STUB_DESC {
   /** ptr */
   RpcInterfaceInformation: Deno.PointerValue | Uint8Array;
   /** isize */
-  pfnAllocate: Deno.PointerValue;
+  pfnAllocate: bigint | number;
   /** isize */
-  pfnFree: Deno.PointerValue;
+  pfnFree: bigint | number;
   /** _IMPLICIT_HANDLE_INFO_e__Union */
   IMPLICIT_HANDLE_INFO: Uint8Array | Deno.PointerValue;
   /** ptr */
@@ -11726,7 +11726,7 @@ export interface MIDL_STUB_DESC {
   /** ptr */
   NotifyRoutineTable: Deno.PointerValue | Uint8Array;
   /** usize */
-  mFlags: Deno.PointerValue;
+  mFlags: bigint | number;
   /** ptr */
   CsRoutineTables: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -11801,12 +11801,12 @@ export class MIDL_STUB_DESCView {
   }
 
   // 0x08: isize
-  get pfnAllocate(): Deno.PointerValue {
+  get pfnAllocate(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: isize
-  get pfnFree(): Deno.PointerValue {
+  get pfnFree(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -11888,7 +11888,7 @@ export class MIDL_STUB_DESCView {
   }
 
   // 0x78: usize
-  get mFlags(): Deno.PointerValue {
+  get mFlags(): bigint | number {
     return Number(this.view.getBigUint64(120, true));
   }
 
@@ -11916,12 +11916,12 @@ export class MIDL_STUB_DESCView {
   }
 
   // 0x08: isize
-  set pfnAllocate(value: Deno.PointerValue) {
+  set pfnAllocate(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: isize
-  set pfnFree(value: Deno.PointerValue) {
+  set pfnFree(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
@@ -11993,7 +11993,7 @@ export class MIDL_STUB_DESCView {
   }
 
   // 0x78: usize
-  set mFlags(value: Deno.PointerValue) {
+  set mFlags(value: bigint | number) {
     this.view.setBigUint64(120, BigInt(value), true);
   }
 
@@ -12079,7 +12079,7 @@ export interface MIDL_METHOD_PROPERTY {
   /** u32 */
   Id: number;
   /** usize */
-  Value: Deno.PointerValue;
+  Value: bigint | number;
 }
 
 export const sizeofMIDL_METHOD_PROPERTY = 16;
@@ -12113,7 +12113,7 @@ export class MIDL_METHOD_PROPERTYView {
   // 0x04: pad4
 
   // 0x08: usize
-  get Value(): Deno.PointerValue {
+  get Value(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -12125,7 +12125,7 @@ export class MIDL_METHOD_PROPERTYView {
   // 0x04: pad4
 
   // 0x08: usize
-  set Value(value: Deno.PointerValue) {
+  set Value(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -12265,7 +12265,7 @@ export interface MIDL_SERVER_INFO {
   /** ptr */
   pTransferSyntax: Deno.PointerValue | Uint8Array;
   /** usize */
-  nCount: Deno.PointerValue;
+  nCount: bigint | number;
   /** ptr */
   pSyntaxInfo: Deno.PointerValue | Uint8Array;
 }
@@ -12341,7 +12341,7 @@ export class MIDL_SERVER_INFOView {
   }
 
   // 0x30: usize
-  get nCount(): Deno.PointerValue {
+  get nCount(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -12382,7 +12382,7 @@ export class MIDL_SERVER_INFOView {
   }
 
   // 0x30: usize
-  set nCount(value: Deno.PointerValue) {
+  set nCount(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
@@ -12405,7 +12405,7 @@ export interface MIDL_STUBLESS_PROXY_INFO {
   /** ptr */
   pTransferSyntax: Deno.PointerValue | Uint8Array;
   /** usize */
-  nCount: Deno.PointerValue;
+  nCount: bigint | number;
   /** ptr */
   pSyntaxInfo: Deno.PointerValue | Uint8Array;
 }
@@ -12465,7 +12465,7 @@ export class MIDL_STUBLESS_PROXY_INFOView {
   }
 
   // 0x20: usize
-  get nCount(): Deno.PointerValue {
+  get nCount(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -12496,7 +12496,7 @@ export class MIDL_STUBLESS_PROXY_INFOView {
   }
 
   // 0x20: usize
-  set nCount(value: Deno.PointerValue) {
+  set nCount(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -12525,7 +12525,7 @@ export interface MIDL_SYNTAX_INFO {
   /** ptr */
   pMethodProperties: Deno.PointerValue | Uint8Array;
   /** usize */
-  pReserved2: Deno.PointerValue;
+  pReserved2: bigint | number;
 }
 
 export const sizeofMIDL_SYNTAX_INFO = 64;
@@ -12605,7 +12605,7 @@ export class MIDL_SYNTAX_INFOView {
   }
 
   // 0x38: usize
-  get pReserved2(): Deno.PointerValue {
+  get pReserved2(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
@@ -12645,7 +12645,7 @@ export class MIDL_SYNTAX_INFOView {
   }
 
   // 0x38: usize
-  set pReserved2(value: Deno.PointerValue) {
+  set pReserved2(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 }
@@ -12657,7 +12657,7 @@ export interface CLIENT_CALL_RETURN {
   /** ptr */
   Pointer: Deno.PointerValue | Uint8Array;
   /** isize */
-  Simple: Deno.PointerValue;
+  Simple: bigint | number;
 }
 
 export const sizeofCLIENT_CALL_RETURN = 16;
@@ -12689,7 +12689,7 @@ export class CLIENT_CALL_RETURNView {
   }
 
   // 0x08: isize
-  get Simple(): Deno.PointerValue {
+  get Simple(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -12699,7 +12699,7 @@ export class CLIENT_CALL_RETURNView {
   }
 
   // 0x08: isize
-  set Simple(value: Deno.PointerValue) {
+  set Simple(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -13011,9 +13011,9 @@ export interface NDR_USER_MARSHAL_INFO_LEVEL1 {
   /** u32 */
   BufferSize: number;
   /** isize */
-  pfnAllocate: Deno.PointerValue;
+  pfnAllocate: bigint | number;
   /** isize */
-  pfnFree: Deno.PointerValue;
+  pfnFree: bigint | number;
   /** Windows.Win32.System.Com.IRpcChannelBuffer */
   pRpcChannelBuffer: Uint8Array | Deno.PointerValue;
   /** array */
@@ -13065,12 +13065,12 @@ export class NDR_USER_MARSHAL_INFO_LEVEL1View {
   // 0x0c: pad4
 
   // 0x10: isize
-  get pfnAllocate(): Deno.PointerValue {
+  get pfnAllocate(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get pfnFree(): Deno.PointerValue {
+  get pfnFree(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
@@ -13099,12 +13099,12 @@ export class NDR_USER_MARSHAL_INFO_LEVEL1View {
   // 0x0c: pad4
 
   // 0x10: isize
-  set pfnAllocate(value: Deno.PointerValue) {
+  set pfnAllocate(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set pfnFree(value: Deno.PointerValue) {
+  set pfnFree(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
@@ -13124,9 +13124,9 @@ export class NDR_USER_MARSHAL_INFO_LEVEL1View {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -13152,22 +13152,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -13722,9 +13722,9 @@ export interface NDR64_RANGE_FORMAT {
   /** u16 */
   Reserved: number;
   /** i64 */
-  MinValue: Deno.PointerValue;
+  MinValue: bigint | number;
   /** i64 */
-  MaxValue: Deno.PointerValue;
+  MaxValue: bigint | number;
 }
 
 export const sizeofNDR64_RANGE_FORMAT = 24;
@@ -13774,12 +13774,12 @@ export class NDR64_RANGE_FORMATView {
   // 0x04: pad4
 
   // 0x08: i64
-  get MinValue(): Deno.PointerValue {
+  get MinValue(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: i64
-  get MaxValue(): Deno.PointerValue {
+  get MaxValue(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -13801,12 +13801,12 @@ export class NDR64_RANGE_FORMATView {
   // 0x04: pad4
 
   // 0x08: i64
-  set MinValue(value: Deno.PointerValue) {
+  set MinValue(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: i64
-  set MaxValue(value: Deno.PointerValue) {
+  set MaxValue(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -16436,7 +16436,7 @@ export class NDR64_UNION_ARM_SELECTORView {
  */
 export interface NDR64_UNION_ARM {
   /** i64 */
-  CaseValue: Deno.PointerValue;
+  CaseValue: bigint | number;
   /** ptr */
   Type: Deno.PointerValue | Uint8Array;
   /** u32 */
@@ -16469,7 +16469,7 @@ export class NDR64_UNION_ARMView {
   }
 
   // 0x00: i64
-  get CaseValue(): Deno.PointerValue {
+  get CaseValue(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
@@ -16487,7 +16487,7 @@ export class NDR64_UNION_ARMView {
   // 0x14: pad4
 
   // 0x00: i64
-  set CaseValue(value: Deno.PointerValue) {
+  set CaseValue(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
@@ -17501,9 +17501,9 @@ export interface NDR64_RANGED_STRING_FORMAT {
   /** u32 */
   Reserved: number;
   /** u64 */
-  Min: Deno.PointerValue;
+  Min: bigint | number;
   /** u64 */
-  Max: Deno.PointerValue;
+  Max: bigint | number;
 }
 
 export const sizeofNDR64_RANGED_STRING_FORMAT = 32;
@@ -17547,12 +17547,12 @@ export class NDR64_RANGED_STRING_FORMATView {
   // 0x0c: pad4
 
   // 0x10: u64
-  get Min(): Deno.PointerValue {
+  get Min(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get Max(): Deno.PointerValue {
+  get Max(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -17569,12 +17569,12 @@ export class NDR64_RANGED_STRING_FORMATView {
   // 0x0c: pad4
 
   // 0x10: u64
-  set Min(value: Deno.PointerValue) {
+  set Min(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set Max(value: Deno.PointerValue) {
+  set Max(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 }
@@ -17852,7 +17852,7 @@ export interface NDR64_EXPR_CONST64 {
   /** u16 */
   Reserved1: number;
   /** i64 */
-  ConstValue: Deno.PointerValue;
+  ConstValue: bigint | number;
 }
 
 export const sizeofNDR64_EXPR_CONST64 = 16;
@@ -17900,7 +17900,7 @@ export class NDR64_EXPR_CONST64View {
   // 0x04: pad4
 
   // 0x08: i64
-  get ConstValue(): Deno.PointerValue {
+  get ConstValue(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -17922,7 +17922,7 @@ export class NDR64_EXPR_CONST64View {
   // 0x04: pad4
 
   // 0x08: i64
-  set ConstValue(value: Deno.PointerValue) {
+  set ConstValue(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -21026,7 +21026,7 @@ export function RpcBindingFree(
 export function RpcBindingSetOption(
   hBinding: Deno.PointerValue | Uint8Array /* ptr */,
   option: number /* u32 */,
-  optionValue: Deno.PointerValue /* usize */,
+  optionValue: bigint | number /* usize */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
   return libRPCRT4_dll.RpcBindingSetOption(util.toPointer(hBinding), option, optionValue);
 }
@@ -22499,7 +22499,7 @@ export function I_RpcBindingIsServerLocal(
 export function I_RpcBindingSetPrivateOption(
   hBinding: Deno.PointerValue | Uint8Array /* ptr */,
   option: number /* u32 */,
-  optionValue: Deno.PointerValue /* usize */,
+  optionValue: bigint | number /* usize */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
   return libRPCRT4_dll.I_RpcBindingSetPrivateOption(util.toPointer(hBinding), option, optionValue);
 }
@@ -23095,7 +23095,7 @@ export function RpcErrorSaveErrorInfo(
 
 export function RpcErrorLoadErrorInfo(
   ErrorBlob: Deno.PointerValue | Uint8Array /* ptr */,
-  BlobSize: Deno.PointerValue /* usize */,
+  BlobSize: bigint | number /* usize */,
   EnumHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
   return libRPCRT4_dll.RpcErrorLoadErrorInfo(util.toPointer(ErrorBlob), BlobSize, util.toPointer(EnumHandle));
@@ -23245,13 +23245,13 @@ export function I_RpcReBindBuffer(
 }
 
 export function NDRCContextBinding(
-  CContext: Deno.PointerValue /* isize */,
+  CContext: bigint | number /* isize */,
 ): Deno.PointerValue /* ptr */ {
   return libRPCRT4_dll.NDRCContextBinding(CContext);
 }
 
 export function NDRCContextMarshall(
-  CContext: Deno.PointerValue /* isize */,
+  CContext: bigint | number /* isize */,
   pBuff: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
   return libRPCRT4_dll.NDRCContextMarshall(CContext, util.toPointer(pBuff));
@@ -23479,7 +23479,7 @@ export function NdrInterfacePointerMarshall(
 
 export function NdrClientContextMarshall(
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
-  ContextHandle: Deno.PointerValue /* isize */,
+  ContextHandle: bigint | number /* isize */,
   fCheck: number /* i32 */,
 ): void /* void */ {
   return libRPCRT4_dll.NdrClientContextMarshall(util.toPointer(pStubMsg), ContextHandle, fCheck);
@@ -24315,7 +24315,7 @@ export function NdrMapCommAndFaultStatus(
 }
 
 export function RpcSsAllocate(
-  Size: Deno.PointerValue /* usize */,
+  Size: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
   return libRPCRT4_dll.RpcSsAllocate(Size);
 }
@@ -24361,7 +24361,7 @@ export function RpcSsSwapClientAllocFree(
 }
 
 export function RpcSmAllocate(
-  Size: Deno.PointerValue /* usize */,
+  Size: bigint | number /* usize */,
   pStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
   return libRPCRT4_dll.RpcSmAllocate(Size, util.toPointer(pStatus));
@@ -24440,7 +24440,7 @@ export function NdrRpcSmSetClientToOsf(
 }
 
 export function NdrRpcSmClientAllocate(
-  Size: Deno.PointerValue /* usize */,
+  Size: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
   return libRPCRT4_dll.NdrRpcSmClientAllocate(Size);
 }
@@ -24452,7 +24452,7 @@ export function NdrRpcSmClientFree(
 }
 
 export function NdrRpcSsDefaultAllocate(
-  Size: Deno.PointerValue /* usize */,
+  Size: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
   return libRPCRT4_dll.NdrRpcSsDefaultAllocate(Size);
 }
@@ -24478,7 +24478,7 @@ export function NdrFullPointerXlatFree(
 
 export function NdrAllocate(
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
-  Len: Deno.PointerValue /* usize */,
+  Len: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
   return libRPCRT4_dll.NdrAllocate(util.toPointer(pStubMsg), Len);
 }
@@ -24492,7 +24492,7 @@ export function NdrClearOutParameters(
 }
 
 export function NdrOleAllocate(
-  Size: Deno.PointerValue /* usize */,
+  Size: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
   return libRPCRT4_dll.NdrOleAllocate(Size);
 }
@@ -24700,7 +24700,7 @@ export function MesInqProcEncodingId(
 
 export function NdrMesSimpleTypeAlignSize(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
-): Deno.PointerValue /* usize */ {
+): bigint | number /* usize */ {
   return libRPCRT4_dll.NdrMesSimpleTypeAlignSize(util.toPointer(param0));
 }
 
@@ -24726,7 +24726,7 @@ export function NdrMesTypeAlignSize(
   pStubDesc: Deno.PointerValue | Uint8Array /* ptr */,
   pFormatString: Deno.PointerValue | Uint8Array /* ptr */,
   pObject: Deno.PointerValue | Uint8Array /* ptr */,
-): Deno.PointerValue /* usize */ {
+): bigint | number /* usize */ {
   return libRPCRT4_dll.NdrMesTypeAlignSize(util.toPointer(Handle), util.toPointer(pStubDesc), util.toPointer(pFormatString), util.toPointer(pObject));
 }
 
@@ -24754,7 +24754,7 @@ export function NdrMesTypeAlignSize2(
   pStubDesc: Deno.PointerValue | Uint8Array /* ptr */,
   pFormatString: Deno.PointerValue | Uint8Array /* ptr */,
   pObject: Deno.PointerValue | Uint8Array /* ptr */,
-): Deno.PointerValue /* usize */ {
+): bigint | number /* usize */ {
   return libRPCRT4_dll.NdrMesTypeAlignSize2(util.toPointer(Handle), util.toPointer(pPicklingInfo), util.toPointer(pStubDesc), util.toPointer(pFormatString), util.toPointer(pObject));
 }
 
@@ -24811,7 +24811,7 @@ export function NdrMesTypeAlignSize3(
   ArrTypeOffset: Deno.PointerValue | Uint8Array /* ptr */,
   nTypeIndex: number /* u32 */,
   pObject: Deno.PointerValue | Uint8Array /* ptr */,
-): Deno.PointerValue /* usize */ {
+): bigint | number /* usize */ {
   return libRPCRT4_dll.NdrMesTypeAlignSize3(util.toPointer(Handle), util.toPointer(pPicklingInfo), util.toPointer(pProxyInfo), util.toPointer(ArrTypeOffset), nTypeIndex, util.toPointer(pObject));
 }
 
@@ -24878,7 +24878,7 @@ export function NdrMesSimpleTypeEncodeAll(
 export function NdrMesSimpleTypeAlignSizeAll(
   Handle: Deno.PointerValue | Uint8Array /* ptr */,
   pProxyInfo: Deno.PointerValue | Uint8Array /* ptr */,
-): Deno.PointerValue /* usize */ {
+): bigint | number /* usize */ {
   return libRPCRT4_dll.NdrMesSimpleTypeAlignSizeAll(util.toPointer(Handle), util.toPointer(pProxyInfo));
 }
 

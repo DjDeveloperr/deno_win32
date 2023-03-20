@@ -400,7 +400,7 @@ export type FIRMWARE_TABLE_ID = number;
  */
 export interface GROUP_AFFINITY {
   /** usize */
-  Mask: Deno.PointerValue;
+  Mask: bigint | number;
   /** u16 */
   Group: number;
   /** array */
@@ -433,7 +433,7 @@ export class GROUP_AFFINITYView {
   }
 
   // 0x00: usize
-  get Mask(): Deno.PointerValue {
+  get Mask(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -451,7 +451,7 @@ export class GROUP_AFFINITYView {
   }
 
   // 0x00: usize
-  set Mask(value: Deno.PointerValue) {
+  set Mask(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -473,9 +473,9 @@ export class GROUP_AFFINITYView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -501,22 +501,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -589,7 +589,7 @@ export interface SYSTEM_INFO {
   /** ptr */
   lpMaximumApplicationAddress: Deno.PointerValue | Uint8Array;
   /** usize */
-  dwActiveProcessorMask: Deno.PointerValue;
+  dwActiveProcessorMask: bigint | number;
   /** u32 */
   dwNumberOfProcessors: number;
   /** u32 */
@@ -667,7 +667,7 @@ export class SYSTEM_INFOView {
   }
 
   // 0x20: usize
-  get dwActiveProcessorMask(): Deno.PointerValue {
+  get dwActiveProcessorMask(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -719,7 +719,7 @@ export class SYSTEM_INFOView {
   }
 
   // 0x20: usize
-  set dwActiveProcessorMask(value: Deno.PointerValue) {
+  set dwActiveProcessorMask(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -758,19 +758,19 @@ export interface MEMORYSTATUSEX {
   /** u32 */
   dwMemoryLoad: number;
   /** u64 */
-  ullTotalPhys: Deno.PointerValue;
+  ullTotalPhys: bigint | number;
   /** u64 */
-  ullAvailPhys: Deno.PointerValue;
+  ullAvailPhys: bigint | number;
   /** u64 */
-  ullTotalPageFile: Deno.PointerValue;
+  ullTotalPageFile: bigint | number;
   /** u64 */
-  ullAvailPageFile: Deno.PointerValue;
+  ullAvailPageFile: bigint | number;
   /** u64 */
-  ullTotalVirtual: Deno.PointerValue;
+  ullTotalVirtual: bigint | number;
   /** u64 */
-  ullAvailVirtual: Deno.PointerValue;
+  ullAvailVirtual: bigint | number;
   /** u64 */
-  ullAvailExtendedVirtual: Deno.PointerValue;
+  ullAvailExtendedVirtual: bigint | number;
 }
 
 export const sizeofMEMORYSTATUSEX = 64;
@@ -820,37 +820,37 @@ export class MEMORYSTATUSEXView {
   }
 
   // 0x08: u64
-  get ullTotalPhys(): Deno.PointerValue {
+  get ullTotalPhys(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get ullAvailPhys(): Deno.PointerValue {
+  get ullAvailPhys(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get ullTotalPageFile(): Deno.PointerValue {
+  get ullTotalPageFile(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: u64
-  get ullAvailPageFile(): Deno.PointerValue {
+  get ullAvailPageFile(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: u64
-  get ullTotalVirtual(): Deno.PointerValue {
+  get ullTotalVirtual(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: u64
-  get ullAvailVirtual(): Deno.PointerValue {
+  get ullAvailVirtual(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: u64
-  get ullAvailExtendedVirtual(): Deno.PointerValue {
+  get ullAvailExtendedVirtual(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
@@ -865,37 +865,37 @@ export class MEMORYSTATUSEXView {
   }
 
   // 0x08: u64
-  set ullTotalPhys(value: Deno.PointerValue) {
+  set ullTotalPhys(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set ullAvailPhys(value: Deno.PointerValue) {
+  set ullAvailPhys(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set ullTotalPageFile(value: Deno.PointerValue) {
+  set ullTotalPageFile(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: u64
-  set ullAvailPageFile(value: Deno.PointerValue) {
+  set ullAvailPageFile(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: u64
-  set ullTotalVirtual(value: Deno.PointerValue) {
+  set ullTotalVirtual(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: u64
-  set ullAvailVirtual(value: Deno.PointerValue) {
+  set ullAvailVirtual(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: u64
-  set ullAvailExtendedVirtual(value: Deno.PointerValue) {
+  set ullAvailExtendedVirtual(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 }
@@ -1005,7 +1005,7 @@ export class CACHE_DESCRIPTORView {
  */
 export interface SYSTEM_LOGICAL_PROCESSOR_INFORMATION {
   /** usize */
-  ProcessorMask: Deno.PointerValue;
+  ProcessorMask: bigint | number;
   /** Windows.Win32.System.SystemInformation.LOGICAL_PROCESSOR_RELATIONSHIP */
   Relationship: LOGICAL_PROCESSOR_RELATIONSHIP;
   /** _Anonymous_e__Union */
@@ -1038,7 +1038,7 @@ export class SYSTEM_LOGICAL_PROCESSOR_INFORMATIONView {
   }
 
   // 0x00: usize
-  get ProcessorMask(): Deno.PointerValue {
+  get ProcessorMask(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -1056,7 +1056,7 @@ export class SYSTEM_LOGICAL_PROCESSOR_INFORMATIONView {
   }
 
   // 0x00: usize
-  set ProcessorMask(value: Deno.PointerValue) {
+  set ProcessorMask(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -1433,7 +1433,7 @@ export interface PROCESSOR_GROUP_INFO {
   /** array */
   Reserved: Deno.PointerValue;
   /** usize */
-  ActiveProcessorMask: Deno.PointerValue;
+  ActiveProcessorMask: bigint | number;
 }
 
 export const sizeofPROCESSOR_GROUP_INFO = 24;
@@ -1482,7 +1482,7 @@ export class PROCESSOR_GROUP_INFOView {
   }
 
   // 0x10: usize
-  get ActiveProcessorMask(): Deno.PointerValue {
+  get ActiveProcessorMask(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -1504,7 +1504,7 @@ export class PROCESSOR_GROUP_INFOView {
   }
 
   // 0x10: usize
-  set ActiveProcessorMask(value: Deno.PointerValue) {
+  set ActiveProcessorMask(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -1780,7 +1780,7 @@ export class SYSTEM_POOL_ZEROING_INFORMATIONView {
  */
 export interface SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION {
   /** u64 */
-  CycleTime: Deno.PointerValue;
+  CycleTime: bigint | number;
 }
 
 export const sizeofSYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION = 8;
@@ -1804,12 +1804,12 @@ export class SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATIONView {
   }
 
   // 0x00: u64
-  get CycleTime(): Deno.PointerValue {
+  get CycleTime(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: u64
-  set CycleTime(value: Deno.PointerValue) {
+  set CycleTime(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -2467,17 +2467,17 @@ export interface MEMORYSTATUS {
   /** u32 */
   dwMemoryLoad: number;
   /** usize */
-  dwTotalPhys: Deno.PointerValue;
+  dwTotalPhys: bigint | number;
   /** usize */
-  dwAvailPhys: Deno.PointerValue;
+  dwAvailPhys: bigint | number;
   /** usize */
-  dwTotalPageFile: Deno.PointerValue;
+  dwTotalPageFile: bigint | number;
   /** usize */
-  dwAvailPageFile: Deno.PointerValue;
+  dwAvailPageFile: bigint | number;
   /** usize */
-  dwTotalVirtual: Deno.PointerValue;
+  dwTotalVirtual: bigint | number;
   /** usize */
-  dwAvailVirtual: Deno.PointerValue;
+  dwAvailVirtual: bigint | number;
 }
 
 export const sizeofMEMORYSTATUS = 56;
@@ -2525,32 +2525,32 @@ export class MEMORYSTATUSView {
   }
 
   // 0x08: usize
-  get dwTotalPhys(): Deno.PointerValue {
+  get dwTotalPhys(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: usize
-  get dwAvailPhys(): Deno.PointerValue {
+  get dwAvailPhys(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: usize
-  get dwTotalPageFile(): Deno.PointerValue {
+  get dwTotalPageFile(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: usize
-  get dwAvailPageFile(): Deno.PointerValue {
+  get dwAvailPageFile(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: usize
-  get dwTotalVirtual(): Deno.PointerValue {
+  get dwTotalVirtual(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: usize
-  get dwAvailVirtual(): Deno.PointerValue {
+  get dwAvailVirtual(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -2565,32 +2565,32 @@ export class MEMORYSTATUSView {
   }
 
   // 0x08: usize
-  set dwTotalPhys(value: Deno.PointerValue) {
+  set dwTotalPhys(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: usize
-  set dwAvailPhys(value: Deno.PointerValue) {
+  set dwAvailPhys(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: usize
-  set dwTotalPageFile(value: Deno.PointerValue) {
+  set dwTotalPageFile(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: usize
-  set dwAvailPageFile(value: Deno.PointerValue) {
+  set dwAvailPageFile(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: usize
-  set dwTotalVirtual(value: Deno.PointerValue) {
+  set dwTotalVirtual(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: usize
-  set dwAvailVirtual(value: Deno.PointerValue) {
+  set dwAvailVirtual(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 }
@@ -2603,7 +2603,7 @@ export type PWSTR = Deno.PointerValue | Uint8Array;
 
 export type HRESULT = number;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 // Native Libraries
 
@@ -2949,7 +2949,7 @@ export function GetTickCount(): number /* u32 */ {
   return libKERNEL32_dll.GetTickCount();
 }
 
-export function GetTickCount64(): Deno.PointerValue /* u64 */ {
+export function GetTickCount64(): bigint | number /* u64 */ {
   return libKERNEL32_dll.GetTickCount64();
 }
 
@@ -3090,10 +3090,10 @@ export function GetProductInfo(
 }
 
 export function VerSetConditionMask(
-  ConditionMask: Deno.PointerValue /* u64 */,
+  ConditionMask: bigint | number /* u64 */,
   TypeMask: VER_FLAGS /* Windows.Win32.System.SystemInformation.VER_FLAGS */,
   Condition: number /* u8 */,
-): Deno.PointerValue /* u64 */ {
+): bigint | number /* u64 */ {
   return libKERNEL32_dll.VerSetConditionMask(ConditionMask, TypeMask, Condition);
 }
 
@@ -3150,7 +3150,7 @@ export function SetSystemTimeAdjustment(
 }
 
 export function SetSystemTimeAdjustmentPrecise(
-  dwTimeAdjustment: Deno.PointerValue /* u64 */,
+  dwTimeAdjustment: bigint | number /* u64 */,
   bTimeAdjustmentDisabled: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libapi_ms_win_core_sysinfo_l1_2_4_dll.SetSystemTimeAdjustmentPrecise(dwTimeAdjustment, util.boolToFfi(bTimeAdjustmentDisabled)));
@@ -3286,7 +3286,7 @@ export function RtlConvertDeviceFamilyInfoToString(
 export function RtlSwitchedVVI(
   VersionInfo: Deno.PointerValue | Uint8Array /* ptr */,
   TypeMask: number /* u32 */,
-  ConditionMask: Deno.PointerValue /* u64 */,
+  ConditionMask: bigint | number /* u64 */,
 ): number /* u32 */ {
   return libntdll_dll.RtlSwitchedVVI(util.toPointer(VersionInfo), TypeMask, ConditionMask);
 }
@@ -3310,7 +3310,7 @@ export function GetFirmwareType(
 export function VerifyVersionInfoA(
   lpVersionInformation: Deno.PointerValue | Uint8Array /* ptr */,
   dwTypeMask: VER_FLAGS /* Windows.Win32.System.SystemInformation.VER_FLAGS */,
-  dwlConditionMask: Deno.PointerValue /* u64 */,
+  dwlConditionMask: bigint | number /* u64 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.VerifyVersionInfoA(util.toPointer(lpVersionInformation), dwTypeMask, dwlConditionMask));
 }
@@ -3318,7 +3318,7 @@ export function VerifyVersionInfoA(
 export function VerifyVersionInfoW(
   lpVersionInformation: Deno.PointerValue | Uint8Array /* ptr */,
   dwTypeMask: VER_FLAGS /* Windows.Win32.System.SystemInformation.VER_FLAGS */,
-  dwlConditionMask: Deno.PointerValue /* u64 */,
+  dwlConditionMask: bigint | number /* u64 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.VerifyVersionInfoW(util.toPointer(lpVersionInformation), dwTypeMask, dwlConditionMask));
 }

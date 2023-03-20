@@ -24,9 +24,9 @@ export type KERB_CRYPTO_KEY_TYPE = number;
 export type LSA_AUTH_INFORMATION_AUTH_TYPE = number;
 export type SECPKG_PACKAGE_CHANGE_TYPE = number;
 export type TRUSTED_DOMAIN_TRUST_ATTRIBUTES = number;
-export type ISC_REQ_HIGH_FLAGS = Deno.PointerValue;
+export type ISC_REQ_HIGH_FLAGS = bigint | number;
 export type ISC_REQ_FLAGS = number;
-export type ASC_REQ_HIGH_FLAGS = Deno.PointerValue;
+export type ASC_REQ_HIGH_FLAGS = bigint | number;
 export type ASC_REQ_FLAGS = number;
 export type SID_NAME_USE = number;
 export type LSA_LOOKUP_DOMAIN_INFO_CLASS = number;
@@ -2170,7 +2170,7 @@ export const CONNECT_COMPLETED = 2;
 
 // Structs
 
-export type LsaHandle = Deno.PointerValue;
+export type LsaHandle = bigint | number;
 
 export type PWSTR = Deno.PointerValue | Uint8Array;
 
@@ -3387,9 +3387,9 @@ export class LSA_TRANSLATED_SIDView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -3415,22 +3415,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -3507,7 +3507,7 @@ export interface LARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue;
   /** i64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: bigint | number;
 }
 
 export const sizeofLARGE_INTEGER = 24;
@@ -3547,7 +3547,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  get QuadPart(): Deno.PointerValue {
+  get QuadPart(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -3562,7 +3562,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  set QuadPart(value: Deno.PointerValue) {
+  set QuadPart(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -4077,15 +4077,15 @@ export class POLICY_REPLICA_SOURCE_INFOView {
  */
 export interface QUOTA_LIMITS {
   /** usize */
-  PagedPoolLimit: Deno.PointerValue;
+  PagedPoolLimit: bigint | number;
   /** usize */
-  NonPagedPoolLimit: Deno.PointerValue;
+  NonPagedPoolLimit: bigint | number;
   /** usize */
-  MinimumWorkingSetSize: Deno.PointerValue;
+  MinimumWorkingSetSize: bigint | number;
   /** usize */
-  MaximumWorkingSetSize: Deno.PointerValue;
+  MaximumWorkingSetSize: bigint | number;
   /** usize */
-  PagefileLimit: Deno.PointerValue;
+  PagefileLimit: bigint | number;
   /** Windows.Win32.Foundation.LARGE_INTEGER */
   TimeLimit: Uint8Array | Deno.PointerValue;
 }
@@ -4121,27 +4121,27 @@ export class QUOTA_LIMITSView {
   }
 
   // 0x00: usize
-  get PagedPoolLimit(): Deno.PointerValue {
+  get PagedPoolLimit(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: usize
-  get NonPagedPoolLimit(): Deno.PointerValue {
+  get NonPagedPoolLimit(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: usize
-  get MinimumWorkingSetSize(): Deno.PointerValue {
+  get MinimumWorkingSetSize(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: usize
-  get MaximumWorkingSetSize(): Deno.PointerValue {
+  get MaximumWorkingSetSize(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: usize
-  get PagefileLimit(): Deno.PointerValue {
+  get PagefileLimit(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -4152,27 +4152,27 @@ export class QUOTA_LIMITSView {
   }
 
   // 0x00: usize
-  set PagedPoolLimit(value: Deno.PointerValue) {
+  set PagedPoolLimit(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: usize
-  set NonPagedPoolLimit(value: Deno.PointerValue) {
+  set NonPagedPoolLimit(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: usize
-  set MinimumWorkingSetSize(value: Deno.PointerValue) {
+  set MinimumWorkingSetSize(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: usize
-  set MaximumWorkingSetSize(value: Deno.PointerValue) {
+  set MaximumWorkingSetSize(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: usize
-  set PagefileLimit(value: Deno.PointerValue) {
+  set PagefileLimit(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -6809,13 +6809,13 @@ export class CENTRAL_ACCESS_POLICYView {
  */
 export interface NEGOTIATE_PACKAGE_PREFIX {
   /** usize */
-  PackageId: Deno.PointerValue;
+  PackageId: bigint | number;
   /** ptr */
   PackageDataA: Deno.PointerValue | Uint8Array;
   /** ptr */
   PackageDataW: Deno.PointerValue | Uint8Array;
   /** usize */
-  PrefixLen: Deno.PointerValue;
+  PrefixLen: bigint | number;
   /** array */
   Prefix: Deno.PointerValue;
 }
@@ -6849,7 +6849,7 @@ export class NEGOTIATE_PACKAGE_PREFIXView {
   }
 
   // 0x00: usize
-  get PackageId(): Deno.PointerValue {
+  get PackageId(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -6866,7 +6866,7 @@ export class NEGOTIATE_PACKAGE_PREFIXView {
   }
 
   // 0x18: usize
-  get PrefixLen(): Deno.PointerValue {
+  get PrefixLen(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -6877,7 +6877,7 @@ export class NEGOTIATE_PACKAGE_PREFIXView {
   }
 
   // 0x00: usize
-  set PackageId(value: Deno.PointerValue) {
+  set PackageId(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -6892,7 +6892,7 @@ export class NEGOTIATE_PACKAGE_PREFIXView {
   }
 
   // 0x18: usize
-  set PrefixLen(value: Deno.PointerValue) {
+  set PrefixLen(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -8719,7 +8719,7 @@ export interface MSV1_0_NTLM3_RESPONSE {
   /** u32 */
   MsgWord: number;
   /** u64 */
-  TimeStamp: Deno.PointerValue;
+  TimeStamp: bigint | number;
   /** array */
   ChallengeFromClient: Deno.PointerValue;
   /** u32 */
@@ -8792,7 +8792,7 @@ export class MSV1_0_NTLM3_RESPONSEView {
   }
 
   // 0x10: u64
-  get TimeStamp(): Deno.PointerValue {
+  get TimeStamp(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -8841,7 +8841,7 @@ export class MSV1_0_NTLM3_RESPONSEView {
   }
 
   // 0x10: u64
-  set TimeStamp(value: Deno.PointerValue) {
+  set TimeStamp(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -12430,9 +12430,9 @@ export class KERB_EXTERNAL_TICKETView {
  */
 export interface SecHandle {
   /** usize */
-  dwLower: Deno.PointerValue;
+  dwLower: bigint | number;
   /** usize */
-  dwUpper: Deno.PointerValue;
+  dwUpper: bigint | number;
 }
 
 export const sizeofSecHandle = 16;
@@ -12458,22 +12458,22 @@ export class SecHandleView {
   }
 
   // 0x00: usize
-  get dwLower(): Deno.PointerValue {
+  get dwLower(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: usize
-  get dwUpper(): Deno.PointerValue {
+  get dwUpper(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: usize
-  set dwLower(value: Deno.PointerValue) {
+  set dwLower(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: usize
-  set dwUpper(value: Deno.PointerValue) {
+  set dwUpper(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -13030,7 +13030,7 @@ export class KERB_QUERY_KDC_PROXY_CACHE_REQUESTView {
  */
 export interface KDC_PROXY_CACHE_ENTRY_DATA {
   /** u64 */
-  SinceLastUsed: Deno.PointerValue;
+  SinceLastUsed: bigint | number;
   /** Windows.Win32.Foundation.UNICODE_STRING */
   DomainName: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.UNICODE_STRING */
@@ -13087,7 +13087,7 @@ export class KDC_PROXY_CACHE_ENTRY_DATAView {
   }
 
   // 0x00: u64
-  get SinceLastUsed(): Deno.PointerValue {
+  get SinceLastUsed(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -13141,7 +13141,7 @@ export class KDC_PROXY_CACHE_ENTRY_DATAView {
   }
 
   // 0x00: u64
-  set SinceLastUsed(value: Deno.PointerValue) {
+  set SinceLastUsed(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -15437,7 +15437,7 @@ export class KERB_CLEANUP_MACHINE_PKINIT_CREDS_REQUESTView {
  */
 export interface KERB_BINDING_CACHE_ENTRY_DATA {
   /** u64 */
-  DiscoveryTime: Deno.PointerValue;
+  DiscoveryTime: bigint | number;
   /** Windows.Win32.Foundation.UNICODE_STRING */
   RealmName: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.UNICODE_STRING */
@@ -15489,7 +15489,7 @@ export class KERB_BINDING_CACHE_ENTRY_DATAView {
   }
 
   // 0x00: u64
-  get DiscoveryTime(): Deno.PointerValue {
+  get DiscoveryTime(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -15532,7 +15532,7 @@ export class KERB_BINDING_CACHE_ENTRY_DATAView {
   }
 
   // 0x00: u64
-  set DiscoveryTime(value: Deno.PointerValue) {
+  set DiscoveryTime(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -16286,7 +16286,7 @@ export class PKU2U_CERT_BLOBView {
  */
 export interface PKU2U_CREDUI_CONTEXT {
   /** u64 */
-  Version: Deno.PointerValue;
+  Version: bigint | number;
   /** u16 */
   cbHeaderLength: number;
   /** u32 */
@@ -16327,7 +16327,7 @@ export class PKU2U_CREDUI_CONTEXTView {
   }
 
   // 0x00: u64
-  get Version(): Deno.PointerValue {
+  get Version(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -16354,7 +16354,7 @@ export class PKU2U_CREDUI_CONTEXTView {
   // 0x14: pad4
 
   // 0x00: u64
-  set Version(value: Deno.PointerValue) {
+  set Version(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -17590,7 +17590,7 @@ export class SEC_DTLS_MTUView {
  */
 export interface SEC_FLAGS {
   /** u64 */
-  Flags: Deno.PointerValue;
+  Flags: bigint | number;
 }
 
 export const sizeofSEC_FLAGS = 8;
@@ -17614,12 +17614,12 @@ export class SEC_FLAGSView {
   }
 
   // 0x00: u64
-  get Flags(): Deno.PointerValue {
+  get Flags(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x00: u64
-  set Flags(value: Deno.PointerValue) {
+  set Flags(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 }
@@ -20473,9 +20473,9 @@ export interface SECPKG_APP_MODE_INFO {
   /** u32 */
   UserFunction: number;
   /** usize */
-  Argument1: Deno.PointerValue;
+  Argument1: bigint | number;
   /** usize */
-  Argument2: Deno.PointerValue;
+  Argument2: bigint | number;
   /** Windows.Win32.Security.Authentication.Identity.SecBuffer */
   UserData: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.BOOLEAN */
@@ -20519,12 +20519,12 @@ export class SECPKG_APP_MODE_INFOView {
   // 0x04: pad4
 
   // 0x08: usize
-  get Argument1(): Deno.PointerValue {
+  get Argument1(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: usize
-  get Argument2(): Deno.PointerValue {
+  get Argument2(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -20548,12 +20548,12 @@ export class SECPKG_APP_MODE_INFOView {
   // 0x04: pad4
 
   // 0x08: usize
-  set Argument1(value: Deno.PointerValue) {
+  set Argument1(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: usize
-  set Argument2(value: Deno.PointerValue) {
+  set Argument2(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -23693,7 +23693,7 @@ export class SAM_REGISTER_MAPPING_TABLEView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.Security.Authentication.Identity.SECPKG_CLIENT_INFO (size: 56)
@@ -24269,7 +24269,7 @@ export class SECPKG_SUPPLIED_CREDENTIALView {
  */
 export interface SECPKG_CREDENTIAL {
   /** u64 */
-  Version: Deno.PointerValue;
+  Version: bigint | number;
   /** u16 */
   cbHeaderLength: number;
   /** u32 */
@@ -24347,7 +24347,7 @@ export class SECPKG_CREDENTIALView {
   }
 
   // 0x00: u64
-  get Version(): Deno.PointerValue {
+  get Version(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -24427,7 +24427,7 @@ export class SECPKG_CREDENTIALView {
   }
 
   // 0x00: u64
-  set Version(value: Deno.PointerValue) {
+  set Version(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -24980,7 +24980,7 @@ export interface SECPKG_PRIMARY_CRED_EX {
   /** Windows.Win32.Foundation.UNICODE_STRING */
   Spare4: Uint8Array | Deno.PointerValue;
   /** usize */
-  PackageId: Deno.PointerValue;
+  PackageId: bigint | number;
   /** Windows.Win32.Foundation.LUID */
   PrevLogonId: Uint8Array | Deno.PointerValue;
   /** u32 */
@@ -25127,7 +25127,7 @@ export class SECPKG_PRIMARY_CRED_EXView {
   }
 
   // 0x70: usize
-  get PackageId(): Deno.PointerValue {
+  get PackageId(): bigint | number {
     return Number(this.view.getBigUint64(112, true));
   }
 
@@ -25217,7 +25217,7 @@ export class SECPKG_PRIMARY_CRED_EXView {
   }
 
   // 0x70: usize
-  set PackageId(value: Deno.PointerValue) {
+  set PackageId(value: bigint | number) {
     this.view.setBigUint64(112, BigInt(value), true);
   }
 
@@ -29383,7 +29383,7 @@ export interface SECPKG_EVENT_PACKAGE_CHANGE {
   /** Windows.Win32.Security.Authentication.Identity.SECPKG_PACKAGE_CHANGE_TYPE */
   ChangeType: SECPKG_PACKAGE_CHANGE_TYPE;
   /** usize */
-  PackageId: Deno.PointerValue;
+  PackageId: bigint | number;
   /** Windows.Win32.Foundation.UNICODE_STRING */
   PackageName: Uint8Array | Deno.PointerValue;
 }
@@ -29421,7 +29421,7 @@ export class SECPKG_EVENT_PACKAGE_CHANGEView {
   // 0x04: pad4
 
   // 0x08: usize
-  get PackageId(): Deno.PointerValue {
+  get PackageId(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -29439,7 +29439,7 @@ export class SECPKG_EVENT_PACKAGE_CHANGEView {
   // 0x04: pad4
 
   // 0x08: usize
-  set PackageId(value: Deno.PointerValue) {
+  set PackageId(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -34687,7 +34687,7 @@ export class SecPkgContext_CertInfoView {
   // 0x24: pad4
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 /**
  * Windows.Win32.Security.Authentication.Identity.SecPkgContext_UiInfo (size: 8)
@@ -35771,7 +35771,7 @@ export interface SCHANNEL_CERT_HASH {
   /** u32 */
   dwFlags: number;
   /** usize */
-  hProv: Deno.PointerValue;
+  hProv: bigint | number;
   /** array */
   ShaHash: Deno.PointerValue;
 }
@@ -35813,7 +35813,7 @@ export class SCHANNEL_CERT_HASHView {
   }
 
   // 0x08: usize
-  get hProv(): Deno.PointerValue {
+  get hProv(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -35834,7 +35834,7 @@ export class SCHANNEL_CERT_HASHView {
   }
 
   // 0x08: usize
-  set hProv(value: Deno.PointerValue) {
+  set hProv(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -35853,7 +35853,7 @@ export interface SCHANNEL_CERT_HASH_STORE {
   /** u32 */
   dwFlags: number;
   /** usize */
-  hProv: Deno.PointerValue;
+  hProv: bigint | number;
   /** array */
   ShaHash: Deno.PointerValue;
   /** array */
@@ -35899,7 +35899,7 @@ export class SCHANNEL_CERT_HASH_STOREView {
   }
 
   // 0x08: usize
-  get hProv(): Deno.PointerValue {
+  get hProv(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -35926,7 +35926,7 @@ export class SCHANNEL_CERT_HASH_STOREView {
   }
 
   // 0x08: usize
-  set hProv(value: Deno.PointerValue) {
+  set hProv(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -36404,7 +36404,7 @@ export interface SCH_CRED_SECRET_CAPI {
   /** u32 */
   dwType: number;
   /** usize */
-  hProv: Deno.PointerValue;
+  hProv: bigint | number;
 }
 
 export const sizeofSCH_CRED_SECRET_CAPI = 16;
@@ -36438,7 +36438,7 @@ export class SCH_CRED_SECRET_CAPIView {
   // 0x04: pad4
 
   // 0x08: usize
-  get hProv(): Deno.PointerValue {
+  get hProv(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -36450,7 +36450,7 @@ export class SCH_CRED_SECRET_CAPIView {
   // 0x04: pad4
 
   // 0x08: usize
-  set hProv(value: Deno.PointerValue) {
+  set hProv(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -38545,7 +38545,7 @@ export interface SL_LICENSING_STATUS {
   /** Windows.Win32.Foundation.HRESULT */
   hrReason: Uint8Array | Deno.PointerValue;
   /** u64 */
-  qwValidityExpiration: Deno.PointerValue;
+  qwValidityExpiration: bigint | number;
 }
 
 export const sizeofSL_LICENSING_STATUS = 40;
@@ -38609,7 +38609,7 @@ export class SL_LICENSING_STATUSView {
   }
 
   // 0x20: u64
-  get qwValidityExpiration(): Deno.PointerValue {
+  get qwValidityExpiration(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -38641,7 +38641,7 @@ export class SL_LICENSING_STATUSView {
   }
 
   // 0x20: u64
-  set qwValidityExpiration(value: Deno.PointerValue) {
+  set qwValidityExpiration(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 }

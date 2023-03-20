@@ -231,9 +231,9 @@ export interface DMO_OUTPUT_DATA_BUFFER {
   /** u32 */
   dwStatus: number;
   /** i64 */
-  rtTimestamp: Deno.PointerValue;
+  rtTimestamp: bigint | number;
   /** i64 */
-  rtTimelength: Deno.PointerValue;
+  rtTimelength: bigint | number;
 }
 
 export const sizeofDMO_OUTPUT_DATA_BUFFER = 32;
@@ -277,12 +277,12 @@ export class DMO_OUTPUT_DATA_BUFFERView {
   // 0x0c: pad4
 
   // 0x10: i64
-  get rtTimestamp(): Deno.PointerValue {
+  get rtTimestamp(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: i64
-  get rtTimelength(): Deno.PointerValue {
+  get rtTimelength(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
@@ -299,12 +299,12 @@ export class DMO_OUTPUT_DATA_BUFFERView {
   // 0x0c: pad4
 
   // 0x10: i64
-  set rtTimestamp(value: Deno.PointerValue) {
+  set rtTimestamp(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: i64
-  set rtTimelength(value: Deno.PointerValue) {
+  set rtTimelength(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 }

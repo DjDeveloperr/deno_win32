@@ -94,7 +94,7 @@ export const FOCUS_EVENT = 16;
 
 // Structs
 
-export type HPCON = Deno.PointerValue;
+export type HPCON = bigint | number;
 
 /**
  * Windows.Win32.System.Console.COORD (size: 8)
@@ -1644,7 +1644,7 @@ export class CONSOLE_HISTORY_INFOView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 export type HRESULT = number;
 
@@ -1652,7 +1652,7 @@ export type PSTR = Deno.PointerValue | Uint8Array;
 
 export type PWSTR = Deno.PointerValue | Uint8Array;
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 // Native Libraries
 

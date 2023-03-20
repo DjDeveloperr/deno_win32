@@ -165,13 +165,13 @@ export const SecurityDelegation = 3;
 
 // Structs
 
-export type HSZ = Deno.PointerValue;
+export type HSZ = bigint | number;
 
-export type HCONV = Deno.PointerValue;
+export type HCONV = bigint | number;
 
-export type HCONVLIST = Deno.PointerValue;
+export type HCONVLIST = bigint | number;
 
-export type HDDEDATA = Deno.PointerValue;
+export type HDDEDATA = bigint | number;
 
 /**
  * Windows.Win32.System.DataExchange.DDEACK (size: 8)
@@ -820,7 +820,7 @@ export class CONVCONTEXTView {
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 /**
  * Windows.Win32.System.DataExchange.CONVINFO (size: 112)
@@ -829,7 +829,7 @@ export interface CONVINFO {
   /** u32 */
   cb: number;
   /** usize */
-  hUser: Deno.PointerValue;
+  hUser: bigint | number;
   /** Windows.Win32.System.DataExchange.HCONV */
   hConvPartner: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.System.DataExchange.HSZ */
@@ -920,7 +920,7 @@ export class CONVINFOView {
   // 0x04: pad4
 
   // 0x08: usize
-  get hUser(): Deno.PointerValue {
+  get hUser(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -1013,7 +1013,7 @@ export class CONVINFOView {
   // 0x04: pad4
 
   // 0x08: usize
-  set hUser(value: Deno.PointerValue) {
+  set hUser(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -1095,9 +1095,9 @@ export class CONVINFOView {
  */
 export interface DDEML_MSG_HOOK_DATA {
   /** usize */
-  uiLo: Deno.PointerValue;
+  uiLo: bigint | number;
   /** usize */
-  uiHi: Deno.PointerValue;
+  uiHi: bigint | number;
   /** u32 */
   cbData: number;
   /** array */
@@ -1132,12 +1132,12 @@ export class DDEML_MSG_HOOK_DATAView {
   }
 
   // 0x00: usize
-  get uiLo(): Deno.PointerValue {
+  get uiLo(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: usize
-  get uiHi(): Deno.PointerValue {
+  get uiHi(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -1155,12 +1155,12 @@ export class DDEML_MSG_HOOK_DATAView {
   }
 
   // 0x00: usize
-  set uiLo(value: Deno.PointerValue) {
+  set uiLo(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: usize
-  set uiHi(value: Deno.PointerValue) {
+  set uiHi(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -1177,11 +1177,11 @@ export class DDEML_MSG_HOOK_DATAView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
-export type WPARAM = Deno.PointerValue;
+export type WPARAM = bigint | number;
 
-export type LPARAM = Deno.PointerValue;
+export type LPARAM = bigint | number;
 
 /**
  * Windows.Win32.System.DataExchange.MONMSGSTRUCT (size: 64)
@@ -1365,9 +1365,9 @@ export interface MONCBSTRUCT {
   /** Windows.Win32.System.DataExchange.HDDEDATA */
   hData: Uint8Array | Deno.PointerValue;
   /** usize */
-  dwData1: Deno.PointerValue;
+  dwData1: bigint | number;
   /** usize */
-  dwData2: Deno.PointerValue;
+  dwData2: bigint | number;
   /** Windows.Win32.System.DataExchange.CONVCONTEXT */
   cc: Uint8Array | Deno.PointerValue;
   /** u32 */
@@ -1484,12 +1484,12 @@ export class MONCBSTRUCTView {
   }
 
   // 0x40: usize
-  get dwData1(): Deno.PointerValue {
+  get dwData1(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
   // 0x48: usize
-  get dwData2(): Deno.PointerValue {
+  get dwData2(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
@@ -1565,12 +1565,12 @@ export class MONCBSTRUCTView {
   }
 
   // 0x40: usize
-  set dwData1(value: Deno.PointerValue) {
+  set dwData1(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
   // 0x48: usize
-  set dwData2(value: Deno.PointerValue) {
+  set dwData2(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
@@ -2261,7 +2261,7 @@ export class MONCONVSTRUCTView {
   }
 }
 
-export type HMETAFILE = Deno.PointerValue;
+export type HMETAFILE = bigint | number;
 
 /**
  * Windows.Win32.System.DataExchange.METAFILEPICT (size: 24)
@@ -2355,7 +2355,7 @@ export class METAFILEPICTView {
  */
 export interface COPYDATASTRUCT {
   /** usize */
-  dwData: Deno.PointerValue;
+  dwData: bigint | number;
   /** u32 */
   cbData: number;
   /** ptr */
@@ -2388,7 +2388,7 @@ export class COPYDATASTRUCTView {
   }
 
   // 0x00: usize
-  get dwData(): Deno.PointerValue {
+  get dwData(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -2406,7 +2406,7 @@ export class COPYDATASTRUCTView {
   }
 
   // 0x00: usize
-  set dwData(value: Deno.PointerValue) {
+  set dwData(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -2427,9 +2427,9 @@ export type PSTR = Deno.PointerValue | Uint8Array;
 
 export type PWSTR = Deno.PointerValue | Uint8Array;
 
-export type HDC = Deno.PointerValue;
+export type HDC = bigint | number;
 
-export type HENHMETAFILE = Deno.PointerValue;
+export type HENHMETAFILE = bigint | number;
 
 // Native Libraries
 
@@ -2775,8 +2775,8 @@ export function ImpersonateDdeClientWindow(
 
 export function PackDDElParam(
   msg: number /* u32 */,
-  uiLo: Deno.PointerValue /* usize */,
-  uiHi: Deno.PointerValue /* usize */,
+  uiLo: bigint | number /* usize */,
+  uiHi: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */ {
   return libUSER32_dll.PackDDElParam(msg, uiLo, uiHi);
 }
@@ -2801,8 +2801,8 @@ export function ReuseDDElParam(
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
   msgIn: number /* u32 */,
   msgOut: number /* u32 */,
-  uiLo: Deno.PointerValue /* usize */,
-  uiHi: Deno.PointerValue /* usize */,
+  uiLo: bigint | number /* usize */,
+  uiHi: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */ {
   return libUSER32_dll.ReuseDDElParam(util.toPointer(lParam), msgIn, msgOut, uiLo, uiHi);
 }
@@ -2886,7 +2886,7 @@ export function DdeQueryConvInfo(
 export function DdeSetUserHandle(
   hConv: Uint8Array | Deno.PointerValue /* Windows.Win32.System.DataExchange.HCONV */,
   id: number /* u32 */,
-  hUser: Deno.PointerValue /* usize */,
+  hUser: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libUSER32_dll.DdeSetUserHandle(util.toPointer(hConv), id, hUser));
 }

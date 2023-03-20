@@ -4186,7 +4186,7 @@ export const ERROR_QUERY_STORAGE_ERROR = 2151284737;
 
 // Structs
 
-export type HKEY = Deno.PointerValue;
+export type HKEY = bigint | number;
 
 /**
  * Windows.Win32.System.Registry.val_context (size: 24)
@@ -4588,7 +4588,7 @@ export interface VALENTA {
   /** u32 */
   ve_valuelen: number;
   /** usize */
-  ve_valueptr: Deno.PointerValue;
+  ve_valueptr: bigint | number;
   /** Windows.Win32.System.Registry.REG_VALUE_TYPE */
   ve_type: REG_VALUE_TYPE;
 }
@@ -4638,7 +4638,7 @@ export class VALENTAView {
   // 0x0c: pad4
 
   // 0x10: usize
-  get ve_valueptr(): Deno.PointerValue {
+  get ve_valueptr(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -4663,7 +4663,7 @@ export class VALENTAView {
   // 0x0c: pad4
 
   // 0x10: usize
-  set ve_valueptr(value: Deno.PointerValue) {
+  set ve_valueptr(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -4684,7 +4684,7 @@ export interface VALENTW {
   /** u32 */
   ve_valuelen: number;
   /** usize */
-  ve_valueptr: Deno.PointerValue;
+  ve_valueptr: bigint | number;
   /** Windows.Win32.System.Registry.REG_VALUE_TYPE */
   ve_type: REG_VALUE_TYPE;
 }
@@ -4734,7 +4734,7 @@ export class VALENTWView {
   // 0x0c: pad4
 
   // 0x10: usize
-  get ve_valueptr(): Deno.PointerValue {
+  get ve_valueptr(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -4759,7 +4759,7 @@ export class VALENTWView {
   // 0x0c: pad4
 
   // 0x10: usize
-  set ve_valueptr(value: Deno.PointerValue) {
+  set ve_valueptr(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -4927,7 +4927,7 @@ export class DSKTLSYSTEMTIMEView {
   // 0x12: pad6
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 export type PSECURITY_DESCRIPTOR = Deno.PointerValue | Uint8Array;
 

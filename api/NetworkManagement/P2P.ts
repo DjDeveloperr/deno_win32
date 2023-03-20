@@ -602,9 +602,9 @@ export class PNRPINFO_V1View {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -630,22 +630,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -1576,7 +1576,7 @@ export class EXCEPTION_DEBUG_INFOView {
   // 0x0c: pad4
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.System.Diagnostics.Debug.CREATE_THREAD_DEBUG_INFO (size: 24)
@@ -2567,9 +2567,9 @@ export interface PEER_CONNECTION_INFO {
   /** u32 */
   dwFlags: number;
   /** u64 */
-  ullConnectionId: Deno.PointerValue;
+  ullConnectionId: bigint | number;
   /** u64 */
-  ullNodeId: Deno.PointerValue;
+  ullNodeId: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   pwzPeerId: string | null | Uint8Array | Uint16Array;
   /** Windows.Win32.NetworkManagement.P2P.PEER_ADDRESS */
@@ -2620,12 +2620,12 @@ export class PEER_CONNECTION_INFOView {
   }
 
   // 0x08: u64
-  get ullConnectionId(): Deno.PointerValue {
+  get ullConnectionId(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get ullNodeId(): Deno.PointerValue {
+  get ullNodeId(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -2652,12 +2652,12 @@ export class PEER_CONNECTION_INFOView {
   }
 
   // 0x08: u64
-  set ullConnectionId(value: Deno.PointerValue) {
+  set ullConnectionId(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set ullNodeId(value: Deno.PointerValue) {
+  set ullNodeId(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -2680,7 +2680,7 @@ export interface PEER_EVENT_INCOMING_DATA {
   /** u32 */
   dwSize: number;
   /** u64 */
-  ullConnectionId: Deno.PointerValue;
+  ullConnectionId: bigint | number;
   /** System.Guid */
   type: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.NetworkManagement.P2P.PEER_DATA */
@@ -2722,7 +2722,7 @@ export class PEER_EVENT_INCOMING_DATAView {
   // 0x04: pad4
 
   // 0x08: u64
-  get ullConnectionId(): Deno.PointerValue {
+  get ullConnectionId(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -2746,7 +2746,7 @@ export class PEER_EVENT_INCOMING_DATAView {
   // 0x04: pad4
 
   // 0x08: u64
-  set ullConnectionId(value: Deno.PointerValue) {
+  set ullConnectionId(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -2855,11 +2855,11 @@ export interface PEER_EVENT_CONNECTION_CHANGE_DATA {
   /** Windows.Win32.NetworkManagement.P2P.PEER_CONNECTION_STATUS */
   status: PEER_CONNECTION_STATUS;
   /** u64 */
-  ullConnectionId: Deno.PointerValue;
+  ullConnectionId: bigint | number;
   /** u64 */
-  ullNodeId: Deno.PointerValue;
+  ullNodeId: bigint | number;
   /** u64 */
-  ullNextConnectionId: Deno.PointerValue;
+  ullNextConnectionId: bigint | number;
   /** Windows.Win32.Foundation.HRESULT */
   hrConnectionFailedReason: Uint8Array | Deno.PointerValue;
 }
@@ -2905,17 +2905,17 @@ export class PEER_EVENT_CONNECTION_CHANGE_DATAView {
   }
 
   // 0x08: u64
-  get ullConnectionId(): Deno.PointerValue {
+  get ullConnectionId(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get ullNodeId(): Deno.PointerValue {
+  get ullNodeId(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get ullNextConnectionId(): Deno.PointerValue {
+  get ullNextConnectionId(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -2936,17 +2936,17 @@ export class PEER_EVENT_CONNECTION_CHANGE_DATAView {
   }
 
   // 0x08: u64
-  set ullConnectionId(value: Deno.PointerValue) {
+  set ullConnectionId(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set ullNodeId(value: Deno.PointerValue) {
+  set ullNodeId(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set ullNextConnectionId(value: Deno.PointerValue) {
+  set ullNextConnectionId(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -3207,7 +3207,7 @@ export interface PEER_NODE_INFO {
   /** u32 */
   dwSize: number;
   /** u64 */
-  ullNodeId: Deno.PointerValue;
+  ullNodeId: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   pwzPeerId: string | null | Uint8Array | Uint16Array;
   /** u32 */
@@ -3264,7 +3264,7 @@ export class PEER_NODE_INFOView {
   // 0x04: pad4
 
   // 0x08: u64
-  get ullNodeId(): Deno.PointerValue {
+  get ullNodeId(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -3301,7 +3301,7 @@ export class PEER_NODE_INFOView {
   // 0x04: pad4
 
   // 0x08: u64
-  set ullNodeId(value: Deno.PointerValue) {
+  set ullNodeId(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -3339,7 +3339,7 @@ export interface PEER_EVENT_NODE_CHANGE_DATA {
   /** Windows.Win32.NetworkManagement.P2P.PEER_NODE_CHANGE_TYPE */
   changeType: PEER_NODE_CHANGE_TYPE;
   /** u64 */
-  ullNodeId: Deno.PointerValue;
+  ullNodeId: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   pwzPeerId: string | null | Uint8Array | Uint16Array;
 }
@@ -3384,7 +3384,7 @@ export class PEER_EVENT_NODE_CHANGE_DATAView {
   }
 
   // 0x08: u64
-  get ullNodeId(): Deno.PointerValue {
+  get ullNodeId(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -3405,7 +3405,7 @@ export class PEER_EVENT_NODE_CHANGE_DATAView {
   }
 
   // 0x08: u64
-  set ullNodeId(value: Deno.PointerValue) {
+  set ullNodeId(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -3927,7 +3927,7 @@ export interface PEER_MEMBER {
   /** Windows.Win32.Foundation.PWSTR */
   pwzAttributes: string | null | Uint8Array | Uint16Array;
   /** u64 */
-  ullNodeId: Deno.PointerValue;
+  ullNodeId: bigint | number;
   /** u32 */
   cAddresses: number;
   /** ptr */
@@ -4000,7 +4000,7 @@ export class PEER_MEMBERView {
   }
 
   // 0x18: u64
-  get ullNodeId(): Deno.PointerValue {
+  get ullNodeId(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -4046,7 +4046,7 @@ export class PEER_MEMBERView {
   }
 
   // 0x18: u64
-  set ullNodeId(value: Deno.PointerValue) {
+  set ullNodeId(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -6811,31 +6811,31 @@ export interface DRT_SECURITY_PROVIDER {
   /** ptr */
   pvContext: Deno.PointerValue | Uint8Array;
   /** isize */
-  Attach: Deno.PointerValue;
+  Attach: bigint | number;
   /** isize */
-  Detach: Deno.PointerValue;
+  Detach: bigint | number;
   /** isize */
-  RegisterKey: Deno.PointerValue;
+  RegisterKey: bigint | number;
   /** isize */
-  UnregisterKey: Deno.PointerValue;
+  UnregisterKey: bigint | number;
   /** isize */
-  ValidateAndUnpackPayload: Deno.PointerValue;
+  ValidateAndUnpackPayload: bigint | number;
   /** isize */
-  SecureAndPackPayload: Deno.PointerValue;
+  SecureAndPackPayload: bigint | number;
   /** isize */
-  FreeData: Deno.PointerValue;
+  FreeData: bigint | number;
   /** isize */
-  EncryptData: Deno.PointerValue;
+  EncryptData: bigint | number;
   /** isize */
-  DecryptData: Deno.PointerValue;
+  DecryptData: bigint | number;
   /** isize */
-  GetSerializedCredential: Deno.PointerValue;
+  GetSerializedCredential: bigint | number;
   /** isize */
-  ValidateRemoteCredential: Deno.PointerValue;
+  ValidateRemoteCredential: bigint | number;
   /** isize */
-  SignData: Deno.PointerValue;
+  SignData: bigint | number;
   /** isize */
-  VerifyData: Deno.PointerValue;
+  VerifyData: bigint | number;
 }
 
 export const sizeofDRT_SECURITY_PROVIDER = 112;
@@ -6891,67 +6891,67 @@ export class DRT_SECURITY_PROVIDERView {
   }
 
   // 0x08: isize
-  get Attach(): Deno.PointerValue {
+  get Attach(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: isize
-  get Detach(): Deno.PointerValue {
+  get Detach(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get RegisterKey(): Deno.PointerValue {
+  get RegisterKey(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
   // 0x20: isize
-  get UnregisterKey(): Deno.PointerValue {
+  get UnregisterKey(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
   // 0x28: isize
-  get ValidateAndUnpackPayload(): Deno.PointerValue {
+  get ValidateAndUnpackPayload(): bigint | number {
     return Number(this.view.getBigInt64(40, true));
   }
 
   // 0x30: isize
-  get SecureAndPackPayload(): Deno.PointerValue {
+  get SecureAndPackPayload(): bigint | number {
     return Number(this.view.getBigInt64(48, true));
   }
 
   // 0x38: isize
-  get FreeData(): Deno.PointerValue {
+  get FreeData(): bigint | number {
     return Number(this.view.getBigInt64(56, true));
   }
 
   // 0x40: isize
-  get EncryptData(): Deno.PointerValue {
+  get EncryptData(): bigint | number {
     return Number(this.view.getBigInt64(64, true));
   }
 
   // 0x48: isize
-  get DecryptData(): Deno.PointerValue {
+  get DecryptData(): bigint | number {
     return Number(this.view.getBigInt64(72, true));
   }
 
   // 0x50: isize
-  get GetSerializedCredential(): Deno.PointerValue {
+  get GetSerializedCredential(): bigint | number {
     return Number(this.view.getBigInt64(80, true));
   }
 
   // 0x58: isize
-  get ValidateRemoteCredential(): Deno.PointerValue {
+  get ValidateRemoteCredential(): bigint | number {
     return Number(this.view.getBigInt64(88, true));
   }
 
   // 0x60: isize
-  get SignData(): Deno.PointerValue {
+  get SignData(): bigint | number {
     return Number(this.view.getBigInt64(96, true));
   }
 
   // 0x68: isize
-  get VerifyData(): Deno.PointerValue {
+  get VerifyData(): bigint | number {
     return Number(this.view.getBigInt64(104, true));
   }
 
@@ -6961,67 +6961,67 @@ export class DRT_SECURITY_PROVIDERView {
   }
 
   // 0x08: isize
-  set Attach(value: Deno.PointerValue) {
+  set Attach(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: isize
-  set Detach(value: Deno.PointerValue) {
+  set Detach(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set RegisterKey(value: Deno.PointerValue) {
+  set RegisterKey(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
   // 0x20: isize
-  set UnregisterKey(value: Deno.PointerValue) {
+  set UnregisterKey(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 
   // 0x28: isize
-  set ValidateAndUnpackPayload(value: Deno.PointerValue) {
+  set ValidateAndUnpackPayload(value: bigint | number) {
     this.view.setBigInt64(40, BigInt(value), true);
   }
 
   // 0x30: isize
-  set SecureAndPackPayload(value: Deno.PointerValue) {
+  set SecureAndPackPayload(value: bigint | number) {
     this.view.setBigInt64(48, BigInt(value), true);
   }
 
   // 0x38: isize
-  set FreeData(value: Deno.PointerValue) {
+  set FreeData(value: bigint | number) {
     this.view.setBigInt64(56, BigInt(value), true);
   }
 
   // 0x40: isize
-  set EncryptData(value: Deno.PointerValue) {
+  set EncryptData(value: bigint | number) {
     this.view.setBigInt64(64, BigInt(value), true);
   }
 
   // 0x48: isize
-  set DecryptData(value: Deno.PointerValue) {
+  set DecryptData(value: bigint | number) {
     this.view.setBigInt64(72, BigInt(value), true);
   }
 
   // 0x50: isize
-  set GetSerializedCredential(value: Deno.PointerValue) {
+  set GetSerializedCredential(value: bigint | number) {
     this.view.setBigInt64(80, BigInt(value), true);
   }
 
   // 0x58: isize
-  set ValidateRemoteCredential(value: Deno.PointerValue) {
+  set ValidateRemoteCredential(value: bigint | number) {
     this.view.setBigInt64(88, BigInt(value), true);
   }
 
   // 0x60: isize
-  set SignData(value: Deno.PointerValue) {
+  set SignData(value: bigint | number) {
     this.view.setBigInt64(96, BigInt(value), true);
   }
 
   // 0x68: isize
-  set VerifyData(value: Deno.PointerValue) {
+  set VerifyData(value: bigint | number) {
     this.view.setBigInt64(104, BigInt(value), true);
   }
 }
@@ -7033,19 +7033,19 @@ export interface DRT_BOOTSTRAP_PROVIDER {
   /** ptr */
   pvContext: Deno.PointerValue | Uint8Array;
   /** isize */
-  Attach: Deno.PointerValue;
+  Attach: bigint | number;
   /** isize */
-  Detach: Deno.PointerValue;
+  Detach: bigint | number;
   /** isize */
-  InitResolve: Deno.PointerValue;
+  InitResolve: bigint | number;
   /** isize */
-  IssueResolve: Deno.PointerValue;
+  IssueResolve: bigint | number;
   /** isize */
-  EndResolve: Deno.PointerValue;
+  EndResolve: bigint | number;
   /** isize */
-  Register: Deno.PointerValue;
+  Register: bigint | number;
   /** isize */
-  Unregister: Deno.PointerValue;
+  Unregister: bigint | number;
 }
 
 export const sizeofDRT_BOOTSTRAP_PROVIDER = 64;
@@ -7089,37 +7089,37 @@ export class DRT_BOOTSTRAP_PROVIDERView {
   }
 
   // 0x08: isize
-  get Attach(): Deno.PointerValue {
+  get Attach(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: isize
-  get Detach(): Deno.PointerValue {
+  get Detach(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: isize
-  get InitResolve(): Deno.PointerValue {
+  get InitResolve(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
   // 0x20: isize
-  get IssueResolve(): Deno.PointerValue {
+  get IssueResolve(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
   // 0x28: isize
-  get EndResolve(): Deno.PointerValue {
+  get EndResolve(): bigint | number {
     return Number(this.view.getBigInt64(40, true));
   }
 
   // 0x30: isize
-  get Register(): Deno.PointerValue {
+  get Register(): bigint | number {
     return Number(this.view.getBigInt64(48, true));
   }
 
   // 0x38: isize
-  get Unregister(): Deno.PointerValue {
+  get Unregister(): bigint | number {
     return Number(this.view.getBigInt64(56, true));
   }
 
@@ -7129,37 +7129,37 @@ export class DRT_BOOTSTRAP_PROVIDERView {
   }
 
   // 0x08: isize
-  set Attach(value: Deno.PointerValue) {
+  set Attach(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: isize
-  set Detach(value: Deno.PointerValue) {
+  set Detach(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: isize
-  set InitResolve(value: Deno.PointerValue) {
+  set InitResolve(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
   // 0x20: isize
-  set IssueResolve(value: Deno.PointerValue) {
+  set IssueResolve(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 
   // 0x28: isize
-  set EndResolve(value: Deno.PointerValue) {
+  set EndResolve(value: bigint | number) {
     this.view.setBigInt64(40, BigInt(value), true);
   }
 
   // 0x30: isize
-  set Register(value: Deno.PointerValue) {
+  set Register(value: bigint | number) {
     this.view.setBigInt64(48, BigInt(value), true);
   }
 
   // 0x38: isize
-  set Unregister(value: Deno.PointerValue) {
+  set Unregister(value: bigint | number) {
     this.view.setBigInt64(56, BigInt(value), true);
   }
 }
@@ -7486,7 +7486,7 @@ export interface SOCKADDR_STORAGE {
   /** array */
   __ss_pad1: Deno.PointerValue;
   /** i64 */
-  __ss_align: Deno.PointerValue;
+  __ss_align: bigint | number;
   /** array */
   __ss_pad2: Deno.PointerValue;
 }
@@ -7532,7 +7532,7 @@ export class SOCKADDR_STORAGEView {
   }
 
   // 0x10: i64
-  get __ss_align(): Deno.PointerValue {
+  get __ss_align(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -7555,7 +7555,7 @@ export class SOCKADDR_STORAGEView {
   }
 
   // 0x10: i64
-  set __ss_align(value: Deno.PointerValue) {
+  set __ss_align(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
@@ -8182,7 +8182,7 @@ export class PEERDIST_CLIENT_BASIC_INFOView {
   // 0x04: pad4
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 // Native Libraries
 
@@ -9234,7 +9234,7 @@ export function PeerGraphOpenDirectConnection(
 
 export function PeerGraphSendData(
   hGraph: Deno.PointerValue | Uint8Array /* ptr */,
-  ullConnectionId: Deno.PointerValue /* u64 */,
+  ullConnectionId: bigint | number /* u64 */,
   pType: Deno.PointerValue | Uint8Array /* ptr */,
   cbData: number /* u32 */,
   pvData: Deno.PointerValue | Uint8Array /* ptr */,
@@ -9244,7 +9244,7 @@ export function PeerGraphSendData(
 
 export function PeerGraphCloseDirectConnection(
   hGraph: Deno.PointerValue | Uint8Array /* ptr */,
-  ullConnectionId: Deno.PointerValue /* u64 */,
+  ullConnectionId: bigint | number /* u64 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libP2PGRAPH_dll.PeerGraphCloseDirectConnection(util.toPointer(hGraph), ullConnectionId);
 }
@@ -9274,7 +9274,7 @@ export function PeerGraphSetPresence(
 
 export function PeerGraphGetNodeInfo(
   hGraph: Deno.PointerValue | Uint8Array /* ptr */,
-  ullNodeId: Deno.PointerValue /* u64 */,
+  ullNodeId: bigint | number /* u64 */,
   ppNodeInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libP2PGRAPH_dll.PeerGraphGetNodeInfo(util.toPointer(hGraph), ullNodeId, util.toPointer(ppNodeInfo));
@@ -9469,7 +9469,7 @@ export function PeerGroupOpenDirectConnection(
 
 export function PeerGroupCloseDirectConnection(
   hGroup: Deno.PointerValue | Uint8Array /* ptr */,
-  ullConnectionId: Deno.PointerValue /* u64 */,
+  ullConnectionId: bigint | number /* u64 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libP2P_dll.PeerGroupCloseDirectConnection(util.toPointer(hGroup), ullConnectionId);
 }
@@ -9484,7 +9484,7 @@ export function PeerGroupEnumConnections(
 
 export function PeerGroupSendData(
   hGroup: Deno.PointerValue | Uint8Array /* ptr */,
-  ullConnectionId: Deno.PointerValue /* u64 */,
+  ullConnectionId: bigint | number /* u64 */,
   pType: Deno.PointerValue | Uint8Array /* ptr */,
   cbData: number /* u32 */,
   pvData: Deno.PointerValue | Uint8Array /* ptr */,
@@ -9629,7 +9629,7 @@ export function PeerGroupResumePasswordAuthentication(
 export function PeerIdentityCreate(
   pwzClassifier: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pwzFriendlyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  hCryptProv: Deno.PointerValue /* usize */,
+  hCryptProv: bigint | number /* usize */,
   ppwzIdentity: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
   return libP2P_dll.PeerIdentityCreate(util.pwstrToFfi(pwzClassifier), util.pwstrToFfi(pwzFriendlyName), hCryptProv, util.toPointer(ppwzIdentity));
@@ -10289,22 +10289,22 @@ export function PeerDistStartup(
 }
 
 export function PeerDistShutdown(
-  hPeerDist: Deno.PointerValue /* isize */,
+  hPeerDist: bigint | number /* isize */,
 ): number /* u32 */ {
   return libPeerDist_dll.PeerDistShutdown(hPeerDist);
 }
 
 export function PeerDistGetStatus(
-  hPeerDist: Deno.PointerValue /* isize */,
+  hPeerDist: bigint | number /* isize */,
   pPeerDistStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libPeerDist_dll.PeerDistGetStatus(hPeerDist, util.toPointer(pPeerDistStatus));
 }
 
 export function PeerDistRegisterForStatusChangeNotification(
-  hPeerDist: Deno.PointerValue /* isize */,
+  hPeerDist: bigint | number /* isize */,
   hCompletionPort: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  ulCompletionKey: Deno.PointerValue /* usize */,
+  ulCompletionKey: bigint | number /* usize */,
   lpOverlapped: Deno.PointerValue | Uint8Array /* ptr */,
   pPeerDistStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
@@ -10312,27 +10312,27 @@ export function PeerDistRegisterForStatusChangeNotification(
 }
 
 export function PeerDistUnregisterForStatusChangeNotification(
-  hPeerDist: Deno.PointerValue /* isize */,
+  hPeerDist: bigint | number /* isize */,
 ): number /* u32 */ {
   return libPeerDist_dll.PeerDistUnregisterForStatusChangeNotification(hPeerDist);
 }
 
 export function PeerDistServerPublishStream(
-  hPeerDist: Deno.PointerValue /* isize */,
+  hPeerDist: bigint | number /* isize */,
   cbContentIdentifier: number /* u32 */,
   pContentIdentifier: Deno.PointerValue | Uint8Array /* ptr */,
-  cbContentLength: Deno.PointerValue /* u64 */,
+  cbContentLength: bigint | number /* u64 */,
   pPublishOptions: Deno.PointerValue | Uint8Array /* ptr */,
   hCompletionPort: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  ulCompletionKey: Deno.PointerValue /* usize */,
+  ulCompletionKey: bigint | number /* usize */,
   phStream: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libPeerDist_dll.PeerDistServerPublishStream(hPeerDist, cbContentIdentifier, util.toPointer(pContentIdentifier), cbContentLength, util.toPointer(pPublishOptions), util.toPointer(hCompletionPort), ulCompletionKey, util.toPointer(phStream));
 }
 
 export function PeerDistServerPublishAddToStream(
-  hPeerDist: Deno.PointerValue /* isize */,
-  hStream: Deno.PointerValue /* isize */,
+  hPeerDist: bigint | number /* isize */,
+  hStream: bigint | number /* isize */,
   cbNumberOfBytes: number /* u32 */,
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   lpOverlapped: Deno.PointerValue | Uint8Array /* ptr */,
@@ -10341,22 +10341,22 @@ export function PeerDistServerPublishAddToStream(
 }
 
 export function PeerDistServerPublishCompleteStream(
-  hPeerDist: Deno.PointerValue /* isize */,
-  hStream: Deno.PointerValue /* isize */,
+  hPeerDist: bigint | number /* isize */,
+  hStream: bigint | number /* isize */,
   lpOverlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libPeerDist_dll.PeerDistServerPublishCompleteStream(hPeerDist, hStream, util.toPointer(lpOverlapped));
 }
 
 export function PeerDistServerCloseStreamHandle(
-  hPeerDist: Deno.PointerValue /* isize */,
-  hStream: Deno.PointerValue /* isize */,
+  hPeerDist: bigint | number /* isize */,
+  hStream: bigint | number /* isize */,
 ): number /* u32 */ {
   return libPeerDist_dll.PeerDistServerCloseStreamHandle(hPeerDist, hStream);
 }
 
 export function PeerDistServerUnpublish(
-  hPeerDist: Deno.PointerValue /* isize */,
+  hPeerDist: bigint | number /* isize */,
   cbContentIdentifier: number /* u32 */,
   pContentIdentifier: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
@@ -10364,21 +10364,21 @@ export function PeerDistServerUnpublish(
 }
 
 export function PeerDistServerOpenContentInformation(
-  hPeerDist: Deno.PointerValue /* isize */,
+  hPeerDist: bigint | number /* isize */,
   cbContentIdentifier: number /* u32 */,
   pContentIdentifier: Deno.PointerValue | Uint8Array /* ptr */,
-  ullContentOffset: Deno.PointerValue /* u64 */,
-  cbContentLength: Deno.PointerValue /* u64 */,
+  ullContentOffset: bigint | number /* u64 */,
+  cbContentLength: bigint | number /* u64 */,
   hCompletionPort: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  ulCompletionKey: Deno.PointerValue /* usize */,
+  ulCompletionKey: bigint | number /* usize */,
   phContentInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libPeerDist_dll.PeerDistServerOpenContentInformation(hPeerDist, cbContentIdentifier, util.toPointer(pContentIdentifier), ullContentOffset, cbContentLength, util.toPointer(hCompletionPort), ulCompletionKey, util.toPointer(phContentInfo));
 }
 
 export function PeerDistServerRetrieveContentInformation(
-  hPeerDist: Deno.PointerValue /* isize */,
-  hContentInfo: Deno.PointerValue /* isize */,
+  hPeerDist: bigint | number /* isize */,
+  hContentInfo: bigint | number /* isize */,
   cbMaxNumberOfBytes: number /* u32 */,
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   lpOverlapped: Deno.PointerValue | Uint8Array /* ptr */,
@@ -10387,14 +10387,14 @@ export function PeerDistServerRetrieveContentInformation(
 }
 
 export function PeerDistServerCloseContentInformation(
-  hPeerDist: Deno.PointerValue /* isize */,
-  hContentInfo: Deno.PointerValue /* isize */,
+  hPeerDist: bigint | number /* isize */,
+  hContentInfo: bigint | number /* isize */,
 ): number /* u32 */ {
   return libPeerDist_dll.PeerDistServerCloseContentInformation(hPeerDist, hContentInfo);
 }
 
 export function PeerDistServerCancelAsyncOperation(
-  hPeerDist: Deno.PointerValue /* isize */,
+  hPeerDist: bigint | number /* isize */,
   cbContentIdentifier: number /* u32 */,
   pContentIdentifier: Deno.PointerValue | Uint8Array /* ptr */,
   pOverlapped: Deno.PointerValue | Uint8Array /* ptr */,
@@ -10403,25 +10403,25 @@ export function PeerDistServerCancelAsyncOperation(
 }
 
 export function PeerDistClientOpenContent(
-  hPeerDist: Deno.PointerValue /* isize */,
+  hPeerDist: bigint | number /* isize */,
   pContentTag: Deno.PointerValue | Uint8Array /* ptr */,
   hCompletionPort: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  ulCompletionKey: Deno.PointerValue /* usize */,
+  ulCompletionKey: bigint | number /* usize */,
   phContentHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libPeerDist_dll.PeerDistClientOpenContent(hPeerDist, util.toPointer(pContentTag), util.toPointer(hCompletionPort), ulCompletionKey, util.toPointer(phContentHandle));
 }
 
 export function PeerDistClientCloseContent(
-  hPeerDist: Deno.PointerValue /* isize */,
-  hContentHandle: Deno.PointerValue /* isize */,
+  hPeerDist: bigint | number /* isize */,
+  hContentHandle: bigint | number /* isize */,
 ): number /* u32 */ {
   return libPeerDist_dll.PeerDistClientCloseContent(hPeerDist, hContentHandle);
 }
 
 export function PeerDistClientAddContentInformation(
-  hPeerDist: Deno.PointerValue /* isize */,
-  hContentHandle: Deno.PointerValue /* isize */,
+  hPeerDist: bigint | number /* isize */,
+  hContentHandle: bigint | number /* isize */,
   cbNumberOfBytes: number /* u32 */,
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   lpOverlapped: Deno.PointerValue | Uint8Array /* ptr */,
@@ -10430,16 +10430,16 @@ export function PeerDistClientAddContentInformation(
 }
 
 export function PeerDistClientCompleteContentInformation(
-  hPeerDist: Deno.PointerValue /* isize */,
-  hContentHandle: Deno.PointerValue /* isize */,
+  hPeerDist: bigint | number /* isize */,
+  hContentHandle: bigint | number /* isize */,
   lpOverlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libPeerDist_dll.PeerDistClientCompleteContentInformation(hPeerDist, hContentHandle, util.toPointer(lpOverlapped));
 }
 
 export function PeerDistClientAddData(
-  hPeerDist: Deno.PointerValue /* isize */,
-  hContentHandle: Deno.PointerValue /* isize */,
+  hPeerDist: bigint | number /* isize */,
+  hContentHandle: bigint | number /* isize */,
   cbNumberOfBytes: number /* u32 */,
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   lpOverlapped: Deno.PointerValue | Uint8Array /* ptr */,
@@ -10448,8 +10448,8 @@ export function PeerDistClientAddData(
 }
 
 export function PeerDistClientBlockRead(
-  hPeerDist: Deno.PointerValue /* isize */,
-  hContentHandle: Deno.PointerValue /* isize */,
+  hPeerDist: bigint | number /* isize */,
+  hContentHandle: bigint | number /* isize */,
   cbMaxNumberOfBytes: number /* u32 */,
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   dwTimeoutInMilliseconds: number /* u32 */,
@@ -10459,8 +10459,8 @@ export function PeerDistClientBlockRead(
 }
 
 export function PeerDistClientStreamRead(
-  hPeerDist: Deno.PointerValue /* isize */,
-  hContentHandle: Deno.PointerValue /* isize */,
+  hPeerDist: bigint | number /* isize */,
+  hContentHandle: bigint | number /* isize */,
   cbMaxNumberOfBytes: number /* u32 */,
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   dwTimeoutInMilliseconds: number /* u32 */,
@@ -10470,34 +10470,34 @@ export function PeerDistClientStreamRead(
 }
 
 export function PeerDistClientFlushContent(
-  hPeerDist: Deno.PointerValue /* isize */,
+  hPeerDist: bigint | number /* isize */,
   pContentTag: Deno.PointerValue | Uint8Array /* ptr */,
   hCompletionPort: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  ulCompletionKey: Deno.PointerValue /* usize */,
+  ulCompletionKey: bigint | number /* usize */,
   lpOverlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libPeerDist_dll.PeerDistClientFlushContent(hPeerDist, util.toPointer(pContentTag), util.toPointer(hCompletionPort), ulCompletionKey, util.toPointer(lpOverlapped));
 }
 
 export function PeerDistClientCancelAsyncOperation(
-  hPeerDist: Deno.PointerValue /* isize */,
-  hContentHandle: Deno.PointerValue /* isize */,
+  hPeerDist: bigint | number /* isize */,
+  hContentHandle: bigint | number /* isize */,
   pOverlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libPeerDist_dll.PeerDistClientCancelAsyncOperation(hPeerDist, hContentHandle, util.toPointer(pOverlapped));
 }
 
 export function PeerDistGetStatusEx(
-  hPeerDist: Deno.PointerValue /* isize */,
+  hPeerDist: bigint | number /* isize */,
   pPeerDistStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libPeerDist_dll.PeerDistGetStatusEx(hPeerDist, util.toPointer(pPeerDistStatus));
 }
 
 export function PeerDistRegisterForStatusChangeNotificationEx(
-  hPeerDist: Deno.PointerValue /* isize */,
+  hPeerDist: bigint | number /* isize */,
   hCompletionPort: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  ulCompletionKey: Deno.PointerValue /* usize */,
+  ulCompletionKey: bigint | number /* usize */,
   lpOverlapped: Deno.PointerValue | Uint8Array /* ptr */,
   pPeerDistStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
@@ -10513,22 +10513,22 @@ export function PeerDistGetOverlappedResult(
 }
 
 export function PeerDistServerOpenContentInformationEx(
-  hPeerDist: Deno.PointerValue /* isize */,
+  hPeerDist: bigint | number /* isize */,
   cbContentIdentifier: number /* u32 */,
   pContentIdentifier: Deno.PointerValue | Uint8Array /* ptr */,
-  ullContentOffset: Deno.PointerValue /* u64 */,
-  cbContentLength: Deno.PointerValue /* u64 */,
+  ullContentOffset: bigint | number /* u64 */,
+  cbContentLength: bigint | number /* u64 */,
   pRetrievalOptions: Deno.PointerValue | Uint8Array /* ptr */,
   hCompletionPort: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  ulCompletionKey: Deno.PointerValue /* usize */,
+  ulCompletionKey: bigint | number /* usize */,
   phContentInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libPeerDist_dll.PeerDistServerOpenContentInformationEx(hPeerDist, cbContentIdentifier, util.toPointer(pContentIdentifier), ullContentOffset, cbContentLength, util.toPointer(pRetrievalOptions), util.toPointer(hCompletionPort), ulCompletionKey, util.toPointer(phContentInfo));
 }
 
 export function PeerDistClientGetInformationByHandle(
-  hPeerDist: Deno.PointerValue /* isize */,
-  hContentHandle: Deno.PointerValue /* isize */,
+  hPeerDist: bigint | number /* isize */,
+  hContentHandle: bigint | number /* isize */,
   PeerDistClientInfoClass: PEERDIST_CLIENT_INFO_BY_HANDLE_CLASS /* Windows.Win32.NetworkManagement.P2P.PEERDIST_CLIENT_INFO_BY_HANDLE_CLASS */,
   dwBufferSize: number /* u32 */,
   lpInformation: Deno.PointerValue | Uint8Array /* ptr */,

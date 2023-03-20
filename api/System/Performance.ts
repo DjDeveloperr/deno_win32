@@ -355,18 +355,18 @@ export const sysmonBatchAddFilesAutoCounters = 3;
 
 // Structs
 
-export type PerfProviderHandle = Deno.PointerValue;
+export type PerfProviderHandle = bigint | number;
 
-export type PerfQueryHandle = Deno.PointerValue;
+export type PerfQueryHandle = bigint | number;
 
 /**
  * _Anonymous_e__Struct (size: 16)
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -392,22 +392,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -486,7 +486,7 @@ export interface LARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue;
   /** i64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: bigint | number;
 }
 
 export const sizeofLARGE_INTEGER = 24;
@@ -526,7 +526,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  get QuadPart(): Deno.PointerValue {
+  get QuadPart(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -541,7 +541,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  set QuadPart(value: Deno.PointerValue) {
+  set QuadPart(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -943,7 +943,7 @@ export interface HARDWARE_COUNTER_DATA {
   /** u32 */
   Reserved: number;
   /** u64 */
-  Value: Deno.PointerValue;
+  Value: bigint | number;
 }
 
 export const sizeofHARDWARE_COUNTER_DATA = 16;
@@ -981,7 +981,7 @@ export class HARDWARE_COUNTER_DATAView {
   }
 
   // 0x08: u64
-  get Value(): Deno.PointerValue {
+  get Value(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -996,7 +996,7 @@ export class HARDWARE_COUNTER_DATAView {
   }
 
   // 0x08: u64
-  set Value(value: Deno.PointerValue) {
+  set Value(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -1014,9 +1014,9 @@ export interface PERFORMANCE_DATA {
   /** u32 */
   ContextSwitchCount: number;
   /** u64 */
-  WaitReasonBitMap: Deno.PointerValue;
+  WaitReasonBitMap: bigint | number;
   /** u64 */
-  CycleTime: Deno.PointerValue;
+  CycleTime: bigint | number;
   /** u32 */
   RetryCount: number;
   /** u32 */
@@ -1082,12 +1082,12 @@ export class PERFORMANCE_DATAView {
   }
 
   // 0x08: u64
-  get WaitReasonBitMap(): Deno.PointerValue {
+  get WaitReasonBitMap(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get CycleTime(): Deno.PointerValue {
+  get CycleTime(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -1128,12 +1128,12 @@ export class PERFORMANCE_DATAView {
   }
 
   // 0x08: u64
-  set WaitReasonBitMap(value: Deno.PointerValue) {
+  set WaitReasonBitMap(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set CycleTime(value: Deno.PointerValue) {
+  set CycleTime(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -1245,7 +1245,7 @@ export interface PERF_COUNTER_INFO {
   /** u32 */
   Type: number;
   /** u64 */
-  Attrib: Deno.PointerValue;
+  Attrib: bigint | number;
   /** u32 */
   Size: number;
   /** u32 */
@@ -1299,7 +1299,7 @@ export class PERF_COUNTER_INFOView {
   }
 
   // 0x08: u64
-  get Attrib(): Deno.PointerValue {
+  get Attrib(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -1334,7 +1334,7 @@ export class PERF_COUNTER_INFOView {
   }
 
   // 0x08: u64
-  set Attrib(value: Deno.PointerValue) {
+  set Attrib(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -1850,7 +1850,7 @@ export interface PERF_COUNTER_REG_INFO {
   /** u32 */
   Type: number;
   /** u64 */
-  Attrib: Deno.PointerValue;
+  Attrib: bigint | number;
   /** u32 */
   DetailLevel: number;
   /** i32 */
@@ -1920,7 +1920,7 @@ export class PERF_COUNTER_REG_INFOView {
   }
 
   // 0x08: u64
-  get Attrib(): Deno.PointerValue {
+  get Attrib(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -1975,7 +1975,7 @@ export class PERF_COUNTER_REG_INFOView {
   }
 
   // 0x08: u64
-  set Attrib(value: Deno.PointerValue) {
+  set Attrib(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -2396,11 +2396,11 @@ export interface PERF_DATA_HEADER {
   /** u32 */
   dwNumCounters: number;
   /** i64 */
-  PerfTimeStamp: Deno.PointerValue;
+  PerfTimeStamp: bigint | number;
   /** i64 */
-  PerfTime100NSec: Deno.PointerValue;
+  PerfTime100NSec: bigint | number;
   /** i64 */
-  PerfFreq: Deno.PointerValue;
+  PerfFreq: bigint | number;
   /** Windows.Win32.Foundation.SYSTEMTIME */
   SystemTime: Uint8Array | Deno.PointerValue;
 }
@@ -2446,17 +2446,17 @@ export class PERF_DATA_HEADERView {
   }
 
   // 0x08: i64
-  get PerfTimeStamp(): Deno.PointerValue {
+  get PerfTimeStamp(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: i64
-  get PerfTime100NSec(): Deno.PointerValue {
+  get PerfTime100NSec(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: i64
-  get PerfFreq(): Deno.PointerValue {
+  get PerfFreq(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
@@ -2477,17 +2477,17 @@ export class PERF_DATA_HEADERView {
   }
 
   // 0x08: i64
-  set PerfTimeStamp(value: Deno.PointerValue) {
+  set PerfTimeStamp(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: i64
-  set PerfTime100NSec(value: Deno.PointerValue) {
+  set PerfTime100NSec(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: i64
-  set PerfFreq(value: Deno.PointerValue) {
+  set PerfFreq(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
@@ -3183,9 +3183,9 @@ export interface PDH_RAW_COUNTER {
   /** Windows.Win32.Foundation.FILETIME */
   TimeStamp: Uint8Array | Deno.PointerValue;
   /** i64 */
-  FirstValue: Deno.PointerValue;
+  FirstValue: bigint | number;
   /** i64 */
-  SecondValue: Deno.PointerValue;
+  SecondValue: bigint | number;
   /** u32 */
   MultiCount: number;
 }
@@ -3234,12 +3234,12 @@ export class PDH_RAW_COUNTERView {
   }
 
   // 0x10: i64
-  get FirstValue(): Deno.PointerValue {
+  get FirstValue(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
   // 0x18: i64
-  get SecondValue(): Deno.PointerValue {
+  get SecondValue(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
@@ -3263,12 +3263,12 @@ export class PDH_RAW_COUNTERView {
   }
 
   // 0x10: i64
-  set FirstValue(value: Deno.PointerValue) {
+  set FirstValue(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
   // 0x18: i64
-  set SecondValue(value: Deno.PointerValue) {
+  set SecondValue(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
@@ -4219,9 +4219,9 @@ export interface PDH_COUNTER_INFO_A {
   /** i32 */
   lDefaultScale: number;
   /** usize */
-  dwUserData: Deno.PointerValue;
+  dwUserData: bigint | number;
   /** usize */
-  dwQueryUserData: Deno.PointerValue;
+  dwQueryUserData: bigint | number;
   /** Windows.Win32.Foundation.PSTR */
   szFullPath: string | null | Uint8Array;
   /** _Anonymous_e__Union */
@@ -4311,12 +4311,12 @@ export class PDH_COUNTER_INFO_AView {
   }
 
   // 0x18: usize
-  get dwUserData(): Deno.PointerValue {
+  get dwUserData(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: usize
-  get dwQueryUserData(): Deno.PointerValue {
+  get dwQueryUserData(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -4375,12 +4375,12 @@ export class PDH_COUNTER_INFO_AView {
   }
 
   // 0x18: usize
-  set dwUserData(value: Deno.PointerValue) {
+  set dwUserData(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: usize
-  set dwQueryUserData(value: Deno.PointerValue) {
+  set dwQueryUserData(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -4424,9 +4424,9 @@ export interface PDH_COUNTER_INFO_W {
   /** i32 */
   lDefaultScale: number;
   /** usize */
-  dwUserData: Deno.PointerValue;
+  dwUserData: bigint | number;
   /** usize */
-  dwQueryUserData: Deno.PointerValue;
+  dwQueryUserData: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   szFullPath: string | null | Uint8Array | Uint16Array;
   /** _Anonymous_e__Union */
@@ -4516,12 +4516,12 @@ export class PDH_COUNTER_INFO_WView {
   }
 
   // 0x18: usize
-  get dwUserData(): Deno.PointerValue {
+  get dwUserData(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
   // 0x20: usize
-  get dwQueryUserData(): Deno.PointerValue {
+  get dwQueryUserData(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -4580,12 +4580,12 @@ export class PDH_COUNTER_INFO_WView {
   }
 
   // 0x18: usize
-  set dwUserData(value: Deno.PointerValue) {
+  set dwUserData(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
   // 0x20: usize
-  set dwQueryUserData(value: Deno.PointerValue) {
+  set dwQueryUserData(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -4617,9 +4617,9 @@ export class PDH_COUNTER_INFO_WView {
  */
 export interface PDH_TIME_INFO {
   /** i64 */
-  StartTime: Deno.PointerValue;
+  StartTime: bigint | number;
   /** i64 */
-  EndTime: Deno.PointerValue;
+  EndTime: bigint | number;
   /** u32 */
   SampleCount: number;
 }
@@ -4650,12 +4650,12 @@ export class PDH_TIME_INFOView {
   }
 
   // 0x00: i64
-  get StartTime(): Deno.PointerValue {
+  get StartTime(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: i64
-  get EndTime(): Deno.PointerValue {
+  get EndTime(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -4667,12 +4667,12 @@ export class PDH_TIME_INFOView {
   // 0x14: pad4
 
   // 0x00: i64
-  set StartTime(value: Deno.PointerValue) {
+  set StartTime(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: i64
-  set EndTime(value: Deno.PointerValue) {
+  set EndTime(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -5115,7 +5115,7 @@ export class PDH_LOG_SERVICE_QUERY_INFO_WView {
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 /**
  * Windows.Win32.System.Performance.PDH_BROWSE_DLG_CONFIG_HW (size: 72)
@@ -5126,7 +5126,7 @@ export interface PDH_BROWSE_DLG_CONFIG_HW {
   /** Windows.Win32.Foundation.HWND */
   hWndOwner: Deno.PointerValue;
   /** isize */
-  hDataSource: Deno.PointerValue;
+  hDataSource: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   szReturnPathBuffer: string | null | Uint8Array | Uint16Array;
   /** u32 */
@@ -5134,7 +5134,7 @@ export interface PDH_BROWSE_DLG_CONFIG_HW {
   /** Windows.Win32.System.Performance.CounterPathCallBack */
   pCallBack: Uint8Array | Deno.PointerValue;
   /** usize */
-  dwCallBackArg: Deno.PointerValue;
+  dwCallBackArg: bigint | number;
   /** i32 */
   CallBackStatus: number;
   /** Windows.Win32.System.Performance.PERF_DETAIL */
@@ -5203,7 +5203,7 @@ export class PDH_BROWSE_DLG_CONFIG_HWView {
   }
 
   // 0x10: isize
-  get hDataSource(): Deno.PointerValue {
+  get hDataSource(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -5227,7 +5227,7 @@ export class PDH_BROWSE_DLG_CONFIG_HWView {
   }
 
   // 0x30: usize
-  get dwCallBackArg(): Deno.PointerValue {
+  get dwCallBackArg(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -5260,7 +5260,7 @@ export class PDH_BROWSE_DLG_CONFIG_HWView {
   }
 
   // 0x10: isize
-  set hDataSource(value: Deno.PointerValue) {
+  set hDataSource(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
@@ -5283,7 +5283,7 @@ export class PDH_BROWSE_DLG_CONFIG_HWView {
   }
 
   // 0x30: usize
-  set dwCallBackArg(value: Deno.PointerValue) {
+  set dwCallBackArg(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
@@ -5313,7 +5313,7 @@ export interface PDH_BROWSE_DLG_CONFIG_HA {
   /** Windows.Win32.Foundation.HWND */
   hWndOwner: Deno.PointerValue;
   /** isize */
-  hDataSource: Deno.PointerValue;
+  hDataSource: bigint | number;
   /** Windows.Win32.Foundation.PSTR */
   szReturnPathBuffer: string | null | Uint8Array;
   /** u32 */
@@ -5321,7 +5321,7 @@ export interface PDH_BROWSE_DLG_CONFIG_HA {
   /** Windows.Win32.System.Performance.CounterPathCallBack */
   pCallBack: Uint8Array | Deno.PointerValue;
   /** usize */
-  dwCallBackArg: Deno.PointerValue;
+  dwCallBackArg: bigint | number;
   /** i32 */
   CallBackStatus: number;
   /** Windows.Win32.System.Performance.PERF_DETAIL */
@@ -5390,7 +5390,7 @@ export class PDH_BROWSE_DLG_CONFIG_HAView {
   }
 
   // 0x10: isize
-  get hDataSource(): Deno.PointerValue {
+  get hDataSource(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -5414,7 +5414,7 @@ export class PDH_BROWSE_DLG_CONFIG_HAView {
   }
 
   // 0x30: usize
-  get dwCallBackArg(): Deno.PointerValue {
+  get dwCallBackArg(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -5447,7 +5447,7 @@ export class PDH_BROWSE_DLG_CONFIG_HAView {
   }
 
   // 0x10: isize
-  set hDataSource(value: Deno.PointerValue) {
+  set hDataSource(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 
@@ -5470,7 +5470,7 @@ export class PDH_BROWSE_DLG_CONFIG_HAView {
   }
 
   // 0x30: usize
-  set dwCallBackArg(value: Deno.PointerValue) {
+  set dwCallBackArg(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
@@ -5508,7 +5508,7 @@ export interface PDH_BROWSE_DLG_CONFIG_W {
   /** Windows.Win32.System.Performance.CounterPathCallBack */
   pCallBack: Uint8Array | Deno.PointerValue;
   /** usize */
-  dwCallBackArg: Deno.PointerValue;
+  dwCallBackArg: bigint | number;
   /** i32 */
   CallBackStatus: number;
   /** Windows.Win32.System.Performance.PERF_DETAIL */
@@ -5605,7 +5605,7 @@ export class PDH_BROWSE_DLG_CONFIG_WView {
   }
 
   // 0x30: usize
-  get dwCallBackArg(): Deno.PointerValue {
+  get dwCallBackArg(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -5662,7 +5662,7 @@ export class PDH_BROWSE_DLG_CONFIG_WView {
   }
 
   // 0x30: usize
-  set dwCallBackArg(value: Deno.PointerValue) {
+  set dwCallBackArg(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
@@ -5700,7 +5700,7 @@ export interface PDH_BROWSE_DLG_CONFIG_A {
   /** Windows.Win32.System.Performance.CounterPathCallBack */
   pCallBack: Uint8Array | Deno.PointerValue;
   /** usize */
-  dwCallBackArg: Deno.PointerValue;
+  dwCallBackArg: bigint | number;
   /** i32 */
   CallBackStatus: number;
   /** Windows.Win32.System.Performance.PERF_DETAIL */
@@ -5797,7 +5797,7 @@ export class PDH_BROWSE_DLG_CONFIG_AView {
   }
 
   // 0x30: usize
-  get dwCallBackArg(): Deno.PointerValue {
+  get dwCallBackArg(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -5854,7 +5854,7 @@ export class PDH_BROWSE_DLG_CONFIG_AView {
   }
 
   // 0x30: usize
-  set dwCallBackArg(value: Deno.PointerValue) {
+  set dwCallBackArg(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
@@ -5877,7 +5877,7 @@ export class PDH_BROWSE_DLG_CONFIG_AView {
 
 export type BOOL = number;
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 export type BOOLEAN = number;
 
@@ -6460,7 +6460,7 @@ export function QueryPerformanceFrequency(
 export function InstallPerfDllW(
   szComputerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpIniFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  dwFlags: Deno.PointerValue /* usize */,
+  dwFlags: bigint | number /* usize */,
 ): number /* u32 */ {
   return libloadperf_dll.InstallPerfDllW(util.pwstrToFfi(szComputerName), util.pwstrToFfi(lpIniFile), dwFlags);
 }
@@ -6468,7 +6468,7 @@ export function InstallPerfDllW(
 export function InstallPerfDllA(
   szComputerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpIniFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  dwFlags: Deno.PointerValue /* usize */,
+  dwFlags: bigint | number /* usize */,
 ): number /* u32 */ {
   return libloadperf_dll.InstallPerfDllA(util.pstrToFfi(szComputerName), util.pstrToFfi(lpIniFile), dwFlags);
 }
@@ -6505,7 +6505,7 @@ export function UpdatePerfNameFilesA(
   szNewCtrFilePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szNewHlpFilePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szLanguageID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  dwFlags: Deno.PointerValue /* usize */,
+  dwFlags: bigint | number /* usize */,
 ): number /* u32 */ {
   return libloadperf_dll.UpdatePerfNameFilesA(util.pstrToFfi(szNewCtrFilePath), util.pstrToFfi(szNewHlpFilePath), util.pstrToFfi(szLanguageID), dwFlags);
 }
@@ -6514,7 +6514,7 @@ export function UpdatePerfNameFilesW(
   szNewCtrFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szNewHlpFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szLanguageID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  dwFlags: Deno.PointerValue /* usize */,
+  dwFlags: bigint | number /* usize */,
 ): number /* u32 */ {
   return libloadperf_dll.UpdatePerfNameFilesW(util.pwstrToFfi(szNewCtrFilePath), util.pwstrToFfi(szNewHlpFilePath), util.pwstrToFfi(szLanguageID), dwFlags);
 }
@@ -6624,7 +6624,7 @@ export function PerfSetULongLongCounterValue(
   Provider: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Instance: Deno.PointerValue | Uint8Array /* ptr */,
   CounterId: number /* u32 */,
-  Value: Deno.PointerValue /* u64 */,
+  Value: bigint | number /* u64 */,
 ): number /* u32 */ {
   return libADVAPI32_dll.PerfSetULongLongCounterValue(util.toPointer(Provider), util.toPointer(Instance), CounterId, Value);
 }
@@ -6642,7 +6642,7 @@ export function PerfIncrementULongLongCounterValue(
   Provider: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Instance: Deno.PointerValue | Uint8Array /* ptr */,
   CounterId: number /* u32 */,
-  Value: Deno.PointerValue /* u64 */,
+  Value: bigint | number /* u64 */,
 ): number /* u32 */ {
   return libADVAPI32_dll.PerfIncrementULongLongCounterValue(util.toPointer(Provider), util.toPointer(Instance), CounterId, Value);
 }
@@ -6660,7 +6660,7 @@ export function PerfDecrementULongLongCounterValue(
   Provider: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Instance: Deno.PointerValue | Uint8Array /* ptr */,
   CounterId: number /* u32 */,
-  Value: Deno.PointerValue /* u64 */,
+  Value: bigint | number /* u64 */,
 ): number /* u32 */ {
   return libADVAPI32_dll.PerfDecrementULongLongCounterValue(util.toPointer(Provider), util.toPointer(Instance), CounterId, Value);
 }
@@ -6751,7 +6751,7 @@ export function PdhGetDllVersion(
 
 export function PdhOpenQueryW(
   szDataSource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  dwUserData: Deno.PointerValue /* usize */,
+  dwUserData: bigint | number /* usize */,
   phQuery: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhOpenQueryW(util.pwstrToFfi(szDataSource), dwUserData, util.toPointer(phQuery));
@@ -6759,89 +6759,89 @@ export function PdhOpenQueryW(
 
 export function PdhOpenQueryA(
   szDataSource: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  dwUserData: Deno.PointerValue /* usize */,
+  dwUserData: bigint | number /* usize */,
   phQuery: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhOpenQueryA(util.pstrToFfi(szDataSource), dwUserData, util.toPointer(phQuery));
 }
 
 export function PdhAddCounterW(
-  hQuery: Deno.PointerValue /* isize */,
+  hQuery: bigint | number /* isize */,
   szFullCounterPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  dwUserData: Deno.PointerValue /* usize */,
+  dwUserData: bigint | number /* usize */,
   phCounter: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhAddCounterW(hQuery, util.pwstrToFfi(szFullCounterPath), dwUserData, util.toPointer(phCounter));
 }
 
 export function PdhAddCounterA(
-  hQuery: Deno.PointerValue /* isize */,
+  hQuery: bigint | number /* isize */,
   szFullCounterPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  dwUserData: Deno.PointerValue /* usize */,
+  dwUserData: bigint | number /* usize */,
   phCounter: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhAddCounterA(hQuery, util.pstrToFfi(szFullCounterPath), dwUserData, util.toPointer(phCounter));
 }
 
 export function PdhAddEnglishCounterW(
-  hQuery: Deno.PointerValue /* isize */,
+  hQuery: bigint | number /* isize */,
   szFullCounterPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  dwUserData: Deno.PointerValue /* usize */,
+  dwUserData: bigint | number /* usize */,
   phCounter: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhAddEnglishCounterW(hQuery, util.pwstrToFfi(szFullCounterPath), dwUserData, util.toPointer(phCounter));
 }
 
 export function PdhAddEnglishCounterA(
-  hQuery: Deno.PointerValue /* isize */,
+  hQuery: bigint | number /* isize */,
   szFullCounterPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  dwUserData: Deno.PointerValue /* usize */,
+  dwUserData: bigint | number /* usize */,
   phCounter: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhAddEnglishCounterA(hQuery, util.pstrToFfi(szFullCounterPath), dwUserData, util.toPointer(phCounter));
 }
 
 export function PdhCollectQueryDataWithTime(
-  hQuery: Deno.PointerValue /* isize */,
+  hQuery: bigint | number /* isize */,
   pllTimeStamp: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhCollectQueryDataWithTime(hQuery, util.toPointer(pllTimeStamp));
 }
 
 export function PdhValidatePathExW(
-  hDataSource: Deno.PointerValue /* isize */,
+  hDataSource: bigint | number /* isize */,
   szFullPathBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libpdh_dll.PdhValidatePathExW(hDataSource, util.pwstrToFfi(szFullPathBuffer));
 }
 
 export function PdhValidatePathExA(
-  hDataSource: Deno.PointerValue /* isize */,
+  hDataSource: bigint | number /* isize */,
   szFullPathBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libpdh_dll.PdhValidatePathExA(hDataSource, util.pstrToFfi(szFullPathBuffer));
 }
 
 export function PdhRemoveCounter(
-  hCounter: Deno.PointerValue /* isize */,
+  hCounter: bigint | number /* isize */,
 ): number /* i32 */ {
   return libpdh_dll.PdhRemoveCounter(hCounter);
 }
 
 export function PdhCollectQueryData(
-  hQuery: Deno.PointerValue /* isize */,
+  hQuery: bigint | number /* isize */,
 ): number /* i32 */ {
   return libpdh_dll.PdhCollectQueryData(hQuery);
 }
 
 export function PdhCloseQuery(
-  hQuery: Deno.PointerValue /* isize */,
+  hQuery: bigint | number /* isize */,
 ): number /* i32 */ {
   return libpdh_dll.PdhCloseQuery(hQuery);
 }
 
 export function PdhGetFormattedCounterValue(
-  hCounter: Deno.PointerValue /* isize */,
+  hCounter: bigint | number /* isize */,
   dwFormat: PDH_FMT /* Windows.Win32.System.Performance.PDH_FMT */,
   lpdwType: Deno.PointerValue | Uint8Array /* ptr */,
   pValue: Deno.PointerValue | Uint8Array /* ptr */,
@@ -6850,7 +6850,7 @@ export function PdhGetFormattedCounterValue(
 }
 
 export function PdhGetFormattedCounterArrayA(
-  hCounter: Deno.PointerValue /* isize */,
+  hCounter: bigint | number /* isize */,
   dwFormat: PDH_FMT /* Windows.Win32.System.Performance.PDH_FMT */,
   lpdwBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwItemCount: Deno.PointerValue | Uint8Array /* ptr */,
@@ -6860,7 +6860,7 @@ export function PdhGetFormattedCounterArrayA(
 }
 
 export function PdhGetFormattedCounterArrayW(
-  hCounter: Deno.PointerValue /* isize */,
+  hCounter: bigint | number /* isize */,
   dwFormat: PDH_FMT /* Windows.Win32.System.Performance.PDH_FMT */,
   lpdwBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwItemCount: Deno.PointerValue | Uint8Array /* ptr */,
@@ -6870,7 +6870,7 @@ export function PdhGetFormattedCounterArrayW(
 }
 
 export function PdhGetRawCounterValue(
-  hCounter: Deno.PointerValue /* isize */,
+  hCounter: bigint | number /* isize */,
   lpdwType: Deno.PointerValue | Uint8Array /* ptr */,
   pValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
@@ -6878,7 +6878,7 @@ export function PdhGetRawCounterValue(
 }
 
 export function PdhGetRawCounterArrayA(
-  hCounter: Deno.PointerValue /* isize */,
+  hCounter: bigint | number /* isize */,
   lpdwBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwItemCount: Deno.PointerValue | Uint8Array /* ptr */,
   ItemBuffer: Deno.PointerValue | Uint8Array /* ptr */,
@@ -6887,7 +6887,7 @@ export function PdhGetRawCounterArrayA(
 }
 
 export function PdhGetRawCounterArrayW(
-  hCounter: Deno.PointerValue /* isize */,
+  hCounter: bigint | number /* isize */,
   lpdwBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwItemCount: Deno.PointerValue | Uint8Array /* ptr */,
   ItemBuffer: Deno.PointerValue | Uint8Array /* ptr */,
@@ -6896,7 +6896,7 @@ export function PdhGetRawCounterArrayW(
 }
 
 export function PdhCalculateCounterFromRawValue(
-  hCounter: Deno.PointerValue /* isize */,
+  hCounter: bigint | number /* isize */,
   dwFormat: PDH_FMT /* Windows.Win32.System.Performance.PDH_FMT */,
   rawValue1: Deno.PointerValue | Uint8Array /* ptr */,
   rawValue2: Deno.PointerValue | Uint8Array /* ptr */,
@@ -6906,7 +6906,7 @@ export function PdhCalculateCounterFromRawValue(
 }
 
 export function PdhComputeCounterStatistics(
-  hCounter: Deno.PointerValue /* isize */,
+  hCounter: bigint | number /* isize */,
   dwFormat: PDH_FMT /* Windows.Win32.System.Performance.PDH_FMT */,
   dwFirstEntry: number /* u32 */,
   dwNumEntries: number /* u32 */,
@@ -6917,7 +6917,7 @@ export function PdhComputeCounterStatistics(
 }
 
 export function PdhGetCounterInfoW(
-  hCounter: Deno.PointerValue /* isize */,
+  hCounter: bigint | number /* isize */,
   bRetrieveExplainText: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
   pdwBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
   lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
@@ -6926,7 +6926,7 @@ export function PdhGetCounterInfoW(
 }
 
 export function PdhGetCounterInfoA(
-  hCounter: Deno.PointerValue /* isize */,
+  hCounter: bigint | number /* isize */,
   bRetrieveExplainText: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
   pdwBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
   lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
@@ -6935,7 +6935,7 @@ export function PdhGetCounterInfoA(
 }
 
 export function PdhSetCounterScaleFactor(
-  hCounter: Deno.PointerValue /* isize */,
+  hCounter: bigint | number /* isize */,
   lFactor: number /* i32 */,
 ): number /* i32 */ {
   return libpdh_dll.PdhSetCounterScaleFactor(hCounter, lFactor);
@@ -7213,7 +7213,7 @@ export function PdhOpenLogW(
   szLogFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwAccessFlags: PDH_LOG /* Windows.Win32.System.Performance.PDH_LOG */,
   lpdwLogType: Deno.PointerValue | Uint8Array /* ptr */,
-  hQuery: Deno.PointerValue /* isize */,
+  hQuery: bigint | number /* isize */,
   dwMaxSize: number /* u32 */,
   szUserCaption: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phLog: Deno.PointerValue | Uint8Array /* ptr */,
@@ -7225,7 +7225,7 @@ export function PdhOpenLogA(
   szLogFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwAccessFlags: PDH_LOG /* Windows.Win32.System.Performance.PDH_LOG */,
   lpdwLogType: Deno.PointerValue | Uint8Array /* ptr */,
-  hQuery: Deno.PointerValue /* isize */,
+  hQuery: bigint | number /* isize */,
   dwMaxSize: number /* u32 */,
   szUserCaption: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   phLog: Deno.PointerValue | Uint8Array /* ptr */,
@@ -7234,34 +7234,34 @@ export function PdhOpenLogA(
 }
 
 export function PdhUpdateLogW(
-  hLog: Deno.PointerValue /* isize */,
+  hLog: bigint | number /* isize */,
   szUserString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
   return libpdh_dll.PdhUpdateLogW(hLog, util.pwstrToFfi(szUserString));
 }
 
 export function PdhUpdateLogA(
-  hLog: Deno.PointerValue /* isize */,
+  hLog: bigint | number /* isize */,
   szUserString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
   return libpdh_dll.PdhUpdateLogA(hLog, util.pstrToFfi(szUserString));
 }
 
 export function PdhUpdateLogFileCatalog(
-  hLog: Deno.PointerValue /* isize */,
+  hLog: bigint | number /* isize */,
 ): number /* i32 */ {
   return libpdh_dll.PdhUpdateLogFileCatalog(hLog);
 }
 
 export function PdhGetLogFileSize(
-  hLog: Deno.PointerValue /* isize */,
+  hLog: bigint | number /* isize */,
   llSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhGetLogFileSize(hLog, util.toPointer(llSize));
 }
 
 export function PdhCloseLog(
-  hLog: Deno.PointerValue /* isize */,
+  hLog: bigint | number /* isize */,
   dwFlags: number /* u32 */,
 ): number /* i32 */ {
   return libpdh_dll.PdhCloseLog(hLog, dwFlags);
@@ -7286,13 +7286,13 @@ export function PdhSelectDataSourceA(
 }
 
 export function PdhIsRealTimeQuery(
-  hQuery: Deno.PointerValue /* isize */,
+  hQuery: bigint | number /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libpdh_dll.PdhIsRealTimeQuery(hQuery));
 }
 
 export function PdhSetQueryTimeRange(
-  hQuery: Deno.PointerValue /* isize */,
+  hQuery: bigint | number /* isize */,
   pInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhSetQueryTimeRange(hQuery, util.toPointer(pInfo));
@@ -7317,7 +7317,7 @@ export function PdhGetDataSourceTimeRangeA(
 }
 
 export function PdhCollectQueryDataEx(
-  hQuery: Deno.PointerValue /* isize */,
+  hQuery: bigint | number /* isize */,
   dwIntervalTime: number /* u32 */,
   hNewDataEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* i32 */ {
@@ -7336,14 +7336,14 @@ export function PdhFormatFromRawValue(
 }
 
 export function PdhGetCounterTimeBase(
-  hCounter: Deno.PointerValue /* isize */,
+  hCounter: bigint | number /* isize */,
   pTimeBase: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhGetCounterTimeBase(hCounter, util.toPointer(pTimeBase));
 }
 
 export function PdhReadRawLogRecord(
-  hLog: Deno.PointerValue /* isize */,
+  hLog: bigint | number /* isize */,
   ftRecord: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.FILETIME */,
   pRawLogRecord: Deno.PointerValue | Uint8Array /* ptr */,
   pdwBufferLength: Deno.PointerValue | Uint8Array /* ptr */,
@@ -7372,15 +7372,15 @@ export function PdhBindInputDataSourceA(
 }
 
 export function PdhOpenQueryH(
-  hDataSource: Deno.PointerValue /* isize */,
-  dwUserData: Deno.PointerValue /* usize */,
+  hDataSource: bigint | number /* isize */,
+  dwUserData: bigint | number /* usize */,
   phQuery: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
   return libpdh_dll.PdhOpenQueryH(hDataSource, dwUserData, util.toPointer(phQuery));
 }
 
 export function PdhEnumMachinesHW(
-  hDataSource: Deno.PointerValue /* isize */,
+  hDataSource: bigint | number /* isize */,
   mszMachineList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
@@ -7388,7 +7388,7 @@ export function PdhEnumMachinesHW(
 }
 
 export function PdhEnumMachinesHA(
-  hDataSource: Deno.PointerValue /* isize */,
+  hDataSource: bigint | number /* isize */,
   mszMachineList: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
@@ -7396,7 +7396,7 @@ export function PdhEnumMachinesHA(
 }
 
 export function PdhEnumObjectsHW(
-  hDataSource: Deno.PointerValue /* isize */,
+  hDataSource: bigint | number /* isize */,
   szMachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   mszObjectList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
@@ -7407,7 +7407,7 @@ export function PdhEnumObjectsHW(
 }
 
 export function PdhEnumObjectsHA(
-  hDataSource: Deno.PointerValue /* isize */,
+  hDataSource: bigint | number /* isize */,
   szMachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   mszObjectList: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
@@ -7418,7 +7418,7 @@ export function PdhEnumObjectsHA(
 }
 
 export function PdhEnumObjectItemsHW(
-  hDataSource: Deno.PointerValue /* isize */,
+  hDataSource: bigint | number /* isize */,
   szMachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szObjectName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   mszCounterList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
@@ -7432,7 +7432,7 @@ export function PdhEnumObjectItemsHW(
 }
 
 export function PdhEnumObjectItemsHA(
-  hDataSource: Deno.PointerValue /* isize */,
+  hDataSource: bigint | number /* isize */,
   szMachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szObjectName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   mszCounterList: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
@@ -7446,7 +7446,7 @@ export function PdhEnumObjectItemsHA(
 }
 
 export function PdhExpandWildCardPathHW(
-  hDataSource: Deno.PointerValue /* isize */,
+  hDataSource: bigint | number /* isize */,
   szWildCardPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   mszExpandedPathList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchPathListLength: Deno.PointerValue | Uint8Array /* ptr */,
@@ -7456,7 +7456,7 @@ export function PdhExpandWildCardPathHW(
 }
 
 export function PdhExpandWildCardPathHA(
-  hDataSource: Deno.PointerValue /* isize */,
+  hDataSource: bigint | number /* isize */,
   szWildCardPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   mszExpandedPathList: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchPathListLength: Deno.PointerValue | Uint8Array /* ptr */,
@@ -7466,7 +7466,7 @@ export function PdhExpandWildCardPathHA(
 }
 
 export function PdhGetDataSourceTimeRangeH(
-  hDataSource: Deno.PointerValue /* isize */,
+  hDataSource: bigint | number /* isize */,
   pdwNumEntries: Deno.PointerValue | Uint8Array /* ptr */,
   pInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pdwBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
@@ -7475,7 +7475,7 @@ export function PdhGetDataSourceTimeRangeH(
 }
 
 export function PdhGetDefaultPerfObjectHW(
-  hDataSource: Deno.PointerValue /* isize */,
+  hDataSource: bigint | number /* isize */,
   szMachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szDefaultObjectName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
@@ -7484,7 +7484,7 @@ export function PdhGetDefaultPerfObjectHW(
 }
 
 export function PdhGetDefaultPerfObjectHA(
-  hDataSource: Deno.PointerValue /* isize */,
+  hDataSource: bigint | number /* isize */,
   szMachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szDefaultObjectName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
@@ -7493,7 +7493,7 @@ export function PdhGetDefaultPerfObjectHA(
 }
 
 export function PdhGetDefaultPerfCounterHW(
-  hDataSource: Deno.PointerValue /* isize */,
+  hDataSource: bigint | number /* isize */,
   szMachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szObjectName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szDefaultCounterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
@@ -7503,7 +7503,7 @@ export function PdhGetDefaultPerfCounterHW(
 }
 
 export function PdhGetDefaultPerfCounterHA(
-  hDataSource: Deno.PointerValue /* isize */,
+  hDataSource: bigint | number /* isize */,
   szMachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szObjectName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szDefaultCounterName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
@@ -7565,7 +7565,7 @@ export function PdhEnumLogSetNamesA(
 }
 
 export function PdhGetLogSetGUID(
-  hLog: Deno.PointerValue /* isize */,
+  hLog: bigint | number /* isize */,
   pGuid: Deno.PointerValue | Uint8Array /* ptr */,
   pRunId: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
@@ -7573,7 +7573,7 @@ export function PdhGetLogSetGUID(
 }
 
 export function PdhSetLogSetRunID(
-  hLog: Deno.PointerValue /* isize */,
+  hLog: bigint | number /* isize */,
   RunId: number /* i32 */,
 ): number /* i32 */ {
   return libpdh_dll.PdhSetLogSetRunID(hLog, RunId);

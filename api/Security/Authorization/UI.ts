@@ -85,7 +85,7 @@ export const SI_SHOW_CENTRAL_POLICY_ACTIVATED = 6;
 
 // Structs
 
-export type HINSTANCE = Deno.PointerValue;
+export type HINSTANCE = bigint | number;
 
 export type PWSTR = Deno.PointerValue | Uint8Array;
 
@@ -780,9 +780,9 @@ export class EFFPERM_RESULT_LISTView {
   }
 }
 
-export type HPROPSHEETPAGE = Deno.PointerValue;
+export type HPROPSHEETPAGE = bigint | number;
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 export type BOOL = number;
 

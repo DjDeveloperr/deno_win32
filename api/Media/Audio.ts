@@ -1665,7 +1665,7 @@ export class UNCOMPRESSEDAUDIOFORMATView {
  */
 export interface APO_CONNECTION_PROPERTY {
   /** usize */
-  pBuffer: Deno.PointerValue;
+  pBuffer: bigint | number;
   /** u32 */
   u32ValidFrameCount: number;
   /** Windows.Win32.Media.Audio.Apo.APO_BUFFER_FLAGS */
@@ -1702,7 +1702,7 @@ export class APO_CONNECTION_PROPERTYView {
   }
 
   // 0x00: usize
-  get pBuffer(): Deno.PointerValue {
+  get pBuffer(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -1724,7 +1724,7 @@ export class APO_CONNECTION_PROPERTYView {
   // 0x14: pad4
 
   // 0x00: usize
-  set pBuffer(value: Deno.PointerValue) {
+  set pBuffer(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -1753,7 +1753,7 @@ export interface APO_CONNECTION_PROPERTY_V2 {
   /** Windows.Win32.Media.Audio.Apo.APO_CONNECTION_PROPERTY */
   property: Uint8Array | Deno.PointerValue;
   /** u64 */
-  u64QPCTime: Deno.PointerValue;
+  u64QPCTime: bigint | number;
 }
 
 export const sizeofAPO_CONNECTION_PROPERTY_V2 = 16;
@@ -1785,7 +1785,7 @@ export class APO_CONNECTION_PROPERTY_V2View {
   }
 
   // 0x08: u64
-  get u64QPCTime(): Deno.PointerValue {
+  get u64QPCTime(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -1795,7 +1795,7 @@ export class APO_CONNECTION_PROPERTY_V2View {
   }
 
   // 0x08: u64
-  set u64QPCTime(value: Deno.PointerValue) {
+  set u64QPCTime(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -1807,7 +1807,7 @@ export interface APO_CONNECTION_DESCRIPTOR {
   /** Windows.Win32.Media.Audio.Apo.APO_CONNECTION_BUFFER_TYPE */
   Type: APO_CONNECTION_BUFFER_TYPE;
   /** usize */
-  pBuffer: Deno.PointerValue;
+  pBuffer: bigint | number;
   /** u32 */
   u32MaxFrameCount: number;
   /** Windows.Win32.Media.Audio.Apo.IAudioMediaType */
@@ -1855,7 +1855,7 @@ export class APO_CONNECTION_DESCRIPTORView {
   // 0x04: pad4
 
   // 0x08: usize
-  get pBuffer(): Deno.PointerValue {
+  get pBuffer(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -1887,7 +1887,7 @@ export class APO_CONNECTION_DESCRIPTORView {
   // 0x04: pad4
 
   // 0x08: usize
-  set pBuffer(value: Deno.PointerValue) {
+  set pBuffer(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -2450,7 +2450,7 @@ export class APOInitSystemEffects2View {
   // 0x3c: pad4
 }
 
-export type LPARAM = Deno.PointerValue;
+export type LPARAM = bigint | number;
 
 export type PWSTR = Deno.PointerValue | Uint8Array;
 
@@ -2977,9 +2977,9 @@ export class AUDIO_SYSTEMEFFECTS_PROPERTY_CHANGE_NOTIFICATIONView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -3005,22 +3005,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -5927,7 +5927,7 @@ export interface DMUS_EVENTHEADER {
   /** u32 */
   dwChannelGroup: number;
   /** i64 */
-  rtDelta: Deno.PointerValue;
+  rtDelta: bigint | number;
   /** u32 */
   dwFlags: number;
 }
@@ -5970,7 +5970,7 @@ export class DMUS_EVENTHEADERView {
   }
 
   // 0x08: i64
-  get rtDelta(): Deno.PointerValue {
+  get rtDelta(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -5992,7 +5992,7 @@ export class DMUS_EVENTHEADERView {
   }
 
   // 0x08: i64
-  set rtDelta(value: Deno.PointerValue) {
+  set rtDelta(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -7136,7 +7136,7 @@ export interface DMUS_VOICE_STATE {
   /** Windows.Win32.Foundation.BOOL */
   bExists: boolean;
   /** u64 */
-  spPosition: Deno.PointerValue;
+  spPosition: bigint | number;
 }
 
 export const sizeofDMUS_VOICE_STATE = 16;
@@ -7170,7 +7170,7 @@ export class DMUS_VOICE_STATEView {
   // 0x04: pad4
 
   // 0x08: u64
-  get spPosition(): Deno.PointerValue {
+  get spPosition(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -7182,7 +7182,7 @@ export class DMUS_VOICE_STATEView {
   // 0x04: pad4
 
   // 0x08: u64
-  set spPosition(value: Deno.PointerValue) {
+  set spPosition(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -8562,9 +8562,9 @@ export interface DSEFFECTDESC {
   /** System.Guid */
   guidDSFXClass: Uint8Array | Deno.PointerValue;
   /** usize */
-  dwReserved1: Deno.PointerValue;
+  dwReserved1: bigint | number;
   /** usize */
-  dwReserved2: Deno.PointerValue;
+  dwReserved2: bigint | number;
 }
 
 export const sizeofDSEFFECTDESC = 32;
@@ -8612,12 +8612,12 @@ export class DSEFFECTDESCView {
   }
 
   // 0x10: usize
-  get dwReserved1(): Deno.PointerValue {
+  get dwReserved1(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: usize
-  get dwReserved2(): Deno.PointerValue {
+  get dwReserved2(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -8637,12 +8637,12 @@ export class DSEFFECTDESCView {
   }
 
   // 0x10: usize
-  set dwReserved1(value: Deno.PointerValue) {
+  set dwReserved1(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: usize
-  set dwReserved2(value: Deno.PointerValue) {
+  set dwReserved2(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 }
@@ -9749,7 +9749,7 @@ export class DSCBCAPSView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.Media.Audio.DirectSound.DSBPOSITIONNOTIFY (size: 16)
@@ -11079,31 +11079,31 @@ export class AUDIO_VOLUME_NOTIFICATION_DATAView {
   }
 }
 
-export type HMIDI = Deno.PointerValue;
+export type HMIDI = bigint | number;
 
-export type HMIDIIN = Deno.PointerValue;
+export type HMIDIIN = bigint | number;
 
-export type HMIDIOUT = Deno.PointerValue;
+export type HMIDIOUT = bigint | number;
 
-export type HMIDISTRM = Deno.PointerValue;
+export type HMIDISTRM = bigint | number;
 
-export type HMIXER = Deno.PointerValue;
+export type HMIXER = bigint | number;
 
-export type HMIXEROBJ = Deno.PointerValue;
+export type HMIXEROBJ = bigint | number;
 
-export type HWAVE = Deno.PointerValue;
+export type HWAVE = bigint | number;
 
-export type HWAVEOUT = Deno.PointerValue;
+export type HWAVEOUT = bigint | number;
 
-export type HWAVEIN = Deno.PointerValue;
+export type HWAVEIN = bigint | number;
 
-export type HACMDRIVERID = Deno.PointerValue;
+export type HACMDRIVERID = bigint | number;
 
-export type HACMDRIVER = Deno.PointerValue;
+export type HACMDRIVER = bigint | number;
 
-export type HACMSTREAM = Deno.PointerValue;
+export type HACMSTREAM = bigint | number;
 
-export type HACMOBJ = Deno.PointerValue;
+export type HACMOBJ = bigint | number;
 
 /**
  * _Samples_e__Union (size: 8)
@@ -11546,11 +11546,11 @@ export interface MIDIOPENDESC {
   /** Windows.Win32.Media.Audio.HMIDI */
   hMidi: Uint8Array | Deno.PointerValue;
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** usize */
-  dwInstance: Deno.PointerValue;
+  dwInstance: bigint | number;
   /** usize */
-  dnDevNode: Deno.PointerValue;
+  dnDevNode: bigint | number;
   /** u32 */
   cIds: number;
   /** array */
@@ -11595,17 +11595,17 @@ export class MIDIOPENDESCView {
   }
 
   // 0x08: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: usize
-  get dwInstance(): Deno.PointerValue {
+  get dwInstance(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: usize
-  get dnDevNode(): Deno.PointerValue {
+  get dnDevNode(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -11628,17 +11628,17 @@ export class MIDIOPENDESCView {
   }
 
   // 0x08: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: usize
-  set dwInstance(value: Deno.PointerValue) {
+  set dwInstance(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: usize
-  set dnDevNode(value: Deno.PointerValue) {
+  set dnDevNode(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -12994,7 +12994,7 @@ export interface XAUDIO2_VOICE_STATE {
   /** u32 */
   BuffersQueued: number;
   /** u64 */
-  SamplesPlayed: Deno.PointerValue;
+  SamplesPlayed: bigint | number;
 }
 
 export const sizeofXAUDIO2_VOICE_STATE = 24;
@@ -13036,7 +13036,7 @@ export class XAUDIO2_VOICE_STATEView {
   // 0x0c: pad4
 
   // 0x10: u64
-  get SamplesPlayed(): Deno.PointerValue {
+  get SamplesPlayed(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -13053,7 +13053,7 @@ export class XAUDIO2_VOICE_STATEView {
   // 0x0c: pad4
 
   // 0x10: u64
-  set SamplesPlayed(value: Deno.PointerValue) {
+  set SamplesPlayed(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -13063,9 +13063,9 @@ export class XAUDIO2_VOICE_STATEView {
  */
 export interface XAUDIO2_PERFORMANCE_DATA {
   /** u64 */
-  AudioCyclesSinceLastQuery: Deno.PointerValue;
+  AudioCyclesSinceLastQuery: bigint | number;
   /** u64 */
-  TotalCyclesSinceLastQuery: Deno.PointerValue;
+  TotalCyclesSinceLastQuery: bigint | number;
   /** u32 */
   MinimumCyclesPerQuantum: number;
   /** u32 */
@@ -13139,12 +13139,12 @@ export class XAUDIO2_PERFORMANCE_DATAView {
   }
 
   // 0x00: u64
-  get AudioCyclesSinceLastQuery(): Deno.PointerValue {
+  get AudioCyclesSinceLastQuery(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get TotalCyclesSinceLastQuery(): Deno.PointerValue {
+  get TotalCyclesSinceLastQuery(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -13209,12 +13209,12 @@ export class XAUDIO2_PERFORMANCE_DATAView {
   }
 
   // 0x00: u64
-  set AudioCyclesSinceLastQuery(value: Deno.PointerValue) {
+  set AudioCyclesSinceLastQuery(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set TotalCyclesSinceLastQuery(value: Deno.PointerValue) {
+  set TotalCyclesSinceLastQuery(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -14496,7 +14496,7 @@ export interface ACMSTREAMHEADER {
   /** u32 */
   fdwStatus: number;
   /** usize */
-  dwUser: Deno.PointerValue;
+  dwUser: bigint | number;
   /** ptr */
   pbSrc: Deno.PointerValue | Uint8Array;
   /** u32 */
@@ -14504,7 +14504,7 @@ export interface ACMSTREAMHEADER {
   /** u32 */
   cbSrcLengthUsed: number;
   /** usize */
-  dwSrcUser: Deno.PointerValue;
+  dwSrcUser: bigint | number;
   /** ptr */
   pbDst: Deno.PointerValue | Uint8Array;
   /** u32 */
@@ -14512,7 +14512,7 @@ export interface ACMSTREAMHEADER {
   /** u32 */
   cbDstLengthUsed: number;
   /** usize */
-  dwDstUser: Deno.PointerValue;
+  dwDstUser: bigint | number;
   /** array */
   dwReservedDriver: Deno.PointerValue;
 }
@@ -14570,7 +14570,7 @@ export class ACMSTREAMHEADERView {
   }
 
   // 0x08: usize
-  get dwUser(): Deno.PointerValue {
+  get dwUser(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -14591,7 +14591,7 @@ export class ACMSTREAMHEADERView {
   }
 
   // 0x20: usize
-  get dwSrcUser(): Deno.PointerValue {
+  get dwSrcUser(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -14612,7 +14612,7 @@ export class ACMSTREAMHEADERView {
   }
 
   // 0x38: usize
-  get dwDstUser(): Deno.PointerValue {
+  get dwDstUser(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
@@ -14633,7 +14633,7 @@ export class ACMSTREAMHEADERView {
   }
 
   // 0x08: usize
-  set dwUser(value: Deno.PointerValue) {
+  set dwUser(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -14653,7 +14653,7 @@ export class ACMSTREAMHEADERView {
   }
 
   // 0x20: usize
-  set dwSrcUser(value: Deno.PointerValue) {
+  set dwSrcUser(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -14673,7 +14673,7 @@ export class ACMSTREAMHEADERView {
   }
 
   // 0x38: usize
-  set dwDstUser(value: Deno.PointerValue) {
+  set dwDstUser(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
@@ -14694,7 +14694,7 @@ export interface WAVEHDR {
   /** u32 */
   dwBytesRecorded: number;
   /** usize */
-  dwUser: Deno.PointerValue;
+  dwUser: bigint | number;
   /** u32 */
   dwFlags: number;
   /** u32 */
@@ -14702,7 +14702,7 @@ export interface WAVEHDR {
   /** ptr */
   lpNext: Deno.PointerValue | Uint8Array;
   /** usize */
-  reserved: Deno.PointerValue;
+  reserved: bigint | number;
 }
 
 export const sizeofWAVEHDR = 48;
@@ -14759,7 +14759,7 @@ export class WAVEHDRView {
   }
 
   // 0x10: usize
-  get dwUser(): Deno.PointerValue {
+  get dwUser(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -14780,7 +14780,7 @@ export class WAVEHDRView {
   }
 
   // 0x28: usize
-  get reserved(): Deno.PointerValue {
+  get reserved(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -14801,7 +14801,7 @@ export class WAVEHDRView {
   }
 
   // 0x10: usize
-  set dwUser(value: Deno.PointerValue) {
+  set dwUser(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -14821,7 +14821,7 @@ export class WAVEHDRView {
   }
 
   // 0x28: usize
-  set reserved(value: Deno.PointerValue) {
+  set reserved(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 }
@@ -17456,13 +17456,13 @@ export interface MIDIHDR {
   /** u32 */
   dwBytesRecorded: number;
   /** usize */
-  dwUser: Deno.PointerValue;
+  dwUser: bigint | number;
   /** u32 */
   dwFlags: number;
   /** ptr */
   lpNext: Deno.PointerValue | Uint8Array;
   /** usize */
-  reserved: Deno.PointerValue;
+  reserved: bigint | number;
   /** u32 */
   dwOffset: number;
   /** array */
@@ -17527,7 +17527,7 @@ export class MIDIHDRView {
   }
 
   // 0x10: usize
-  get dwUser(): Deno.PointerValue {
+  get dwUser(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -17545,7 +17545,7 @@ export class MIDIHDRView {
   }
 
   // 0x28: usize
-  get reserved(): Deno.PointerValue {
+  get reserved(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -17579,7 +17579,7 @@ export class MIDIHDRView {
   }
 
   // 0x10: usize
-  set dwUser(value: Deno.PointerValue) {
+  set dwUser(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -17596,7 +17596,7 @@ export class MIDIHDRView {
   }
 
   // 0x28: usize
-  set reserved(value: Deno.PointerValue) {
+  set reserved(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
@@ -19119,7 +19119,7 @@ export interface MIXERLINEA {
   /** u32 */
   fdwLine: number;
   /** usize */
-  dwUser: Deno.PointerValue;
+  dwUser: bigint | number;
   /** Windows.Win32.Media.Audio.MIXERLINE_COMPONENTTYPE */
   dwComponentType: MIXERLINE_COMPONENTTYPE;
   /** u32 */
@@ -19209,7 +19209,7 @@ export class MIXERLINEAView {
   // 0x14: pad4
 
   // 0x18: usize
-  get dwUser(): Deno.PointerValue {
+  get dwUser(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -19279,7 +19279,7 @@ export class MIXERLINEAView {
   // 0x14: pad4
 
   // 0x18: usize
-  set dwUser(value: Deno.PointerValue) {
+  set dwUser(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -19334,7 +19334,7 @@ export interface MIXERLINEW {
   /** u32 */
   fdwLine: number;
   /** usize */
-  dwUser: Deno.PointerValue;
+  dwUser: bigint | number;
   /** Windows.Win32.Media.Audio.MIXERLINE_COMPONENTTYPE */
   dwComponentType: MIXERLINE_COMPONENTTYPE;
   /** u32 */
@@ -19424,7 +19424,7 @@ export class MIXERLINEWView {
   // 0x14: pad4
 
   // 0x18: usize
-  get dwUser(): Deno.PointerValue {
+  get dwUser(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -19494,7 +19494,7 @@ export class MIXERLINEWView {
   // 0x14: pad4
 
   // 0x18: usize
-  set dwUser(value: Deno.PointerValue) {
+  set dwUser(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -23006,7 +23006,7 @@ export class AUDIOCLIENT_ACTIVATION_PARAMSView {
   }
 }
 
-export type HICON = Deno.PointerValue;
+export type HICON = bigint | number;
 
 /**
  * Windows.Win32.Media.Audio.ACMDRIVERDETAILSA (size: 88)
@@ -24036,9 +24036,9 @@ export class tACMFORMATDETAILSWView {
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
-export type HINSTANCE = Deno.PointerValue;
+export type HINSTANCE = bigint | number;
 
 /**
  * Windows.Win32.Media.Audio.ACMFORMATCHOOSEA (size: 112)
@@ -26001,15 +26001,15 @@ export interface ACMDRVSTREAMINSTANCE {
   /** ptr */
   pwfltr: Deno.PointerValue | Uint8Array;
   /** usize */
-  dwCallback: Deno.PointerValue;
+  dwCallback: bigint | number;
   /** usize */
-  dwInstance: Deno.PointerValue;
+  dwInstance: bigint | number;
   /** u32 */
   fdwOpen: number;
   /** u32 */
   fdwDriver: number;
   /** usize */
-  dwDriver: Deno.PointerValue;
+  dwDriver: bigint | number;
   /** Windows.Win32.Media.Audio.HACMSTREAM */
   has: Uint8Array | Deno.PointerValue;
 }
@@ -26079,12 +26079,12 @@ export class ACMDRVSTREAMINSTANCEView {
   }
 
   // 0x20: usize
-  get dwCallback(): Deno.PointerValue {
+  get dwCallback(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: usize
-  get dwInstance(): Deno.PointerValue {
+  get dwInstance(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -26099,7 +26099,7 @@ export class ACMDRVSTREAMINSTANCEView {
   }
 
   // 0x38: usize
-  get dwDriver(): Deno.PointerValue {
+  get dwDriver(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
@@ -26132,12 +26132,12 @@ export class ACMDRVSTREAMINSTANCEView {
   }
 
   // 0x20: usize
-  set dwCallback(value: Deno.PointerValue) {
+  set dwCallback(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: usize
-  set dwInstance(value: Deno.PointerValue) {
+  set dwInstance(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
@@ -26152,7 +26152,7 @@ export class ACMDRVSTREAMINSTANCEView {
   }
 
   // 0x38: usize
-  set dwDriver(value: Deno.PointerValue) {
+  set dwDriver(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
@@ -26171,7 +26171,7 @@ export interface ACMDRVSTREAMHEADER {
   /** u32 */
   fdwStatus: number;
   /** usize */
-  dwUser: Deno.PointerValue;
+  dwUser: bigint | number;
   /** ptr */
   pbSrc: Deno.PointerValue | Uint8Array;
   /** u32 */
@@ -26179,7 +26179,7 @@ export interface ACMDRVSTREAMHEADER {
   /** u32 */
   cbSrcLengthUsed: number;
   /** usize */
-  dwSrcUser: Deno.PointerValue;
+  dwSrcUser: bigint | number;
   /** ptr */
   pbDst: Deno.PointerValue | Uint8Array;
   /** u32 */
@@ -26187,7 +26187,7 @@ export interface ACMDRVSTREAMHEADER {
   /** u32 */
   cbDstLengthUsed: number;
   /** usize */
-  dwDstUser: Deno.PointerValue;
+  dwDstUser: bigint | number;
   /** u32 */
   fdwConvert: number;
   /** ptr */
@@ -26195,11 +26195,11 @@ export interface ACMDRVSTREAMHEADER {
   /** u32 */
   fdwDriver: number;
   /** usize */
-  dwDriver: Deno.PointerValue;
+  dwDriver: bigint | number;
   /** u32 */
   fdwPrepared: number;
   /** usize */
-  dwPrepared: Deno.PointerValue;
+  dwPrepared: bigint | number;
   /** ptr */
   pbPreparedSrc: Deno.PointerValue | Uint8Array;
   /** u32 */
@@ -26286,7 +26286,7 @@ export class ACMDRVSTREAMHEADERView {
   }
 
   // 0x08: usize
-  get dwUser(): Deno.PointerValue {
+  get dwUser(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -26307,7 +26307,7 @@ export class ACMDRVSTREAMHEADERView {
   }
 
   // 0x20: usize
-  get dwSrcUser(): Deno.PointerValue {
+  get dwSrcUser(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
@@ -26328,7 +26328,7 @@ export class ACMDRVSTREAMHEADERView {
   }
 
   // 0x38: usize
-  get dwDstUser(): Deno.PointerValue {
+  get dwDstUser(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
@@ -26353,7 +26353,7 @@ export class ACMDRVSTREAMHEADERView {
   // 0x54: pad4
 
   // 0x58: usize
-  get dwDriver(): Deno.PointerValue {
+  get dwDriver(): bigint | number {
     return Number(this.view.getBigUint64(88, true));
   }
 
@@ -26365,7 +26365,7 @@ export class ACMDRVSTREAMHEADERView {
   // 0x64: pad4
 
   // 0x68: usize
-  get dwPrepared(): Deno.PointerValue {
+  get dwPrepared(): bigint | number {
     return Number(this.view.getBigUint64(104, true));
   }
 
@@ -26406,7 +26406,7 @@ export class ACMDRVSTREAMHEADERView {
   }
 
   // 0x08: usize
-  set dwUser(value: Deno.PointerValue) {
+  set dwUser(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -26426,7 +26426,7 @@ export class ACMDRVSTREAMHEADERView {
   }
 
   // 0x20: usize
-  set dwSrcUser(value: Deno.PointerValue) {
+  set dwSrcUser(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
@@ -26446,7 +26446,7 @@ export class ACMDRVSTREAMHEADERView {
   }
 
   // 0x38: usize
-  set dwDstUser(value: Deno.PointerValue) {
+  set dwDstUser(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
@@ -26470,7 +26470,7 @@ export class ACMDRVSTREAMHEADERView {
   // 0x54: pad4
 
   // 0x58: usize
-  set dwDriver(value: Deno.PointerValue) {
+  set dwDriver(value: bigint | number) {
     this.view.setBigUint64(88, BigInt(value), true);
   }
 
@@ -26482,7 +26482,7 @@ export class ACMDRVSTREAMHEADERView {
   // 0x64: pad4
 
   // 0x68: usize
-  set dwPrepared(value: Deno.PointerValue) {
+  set dwPrepared(value: bigint | number) {
     this.view.setBigUint64(104, BigInt(value), true);
   }
 
@@ -26715,7 +26715,7 @@ export class ACMDRVFORMATSUGGESTView {
 
 export type HRESULT = number;
 
-export type LRESULT = Deno.PointerValue;
+export type LRESULT = bigint | number;
 
 // Native Libraries
 
@@ -27420,7 +27420,7 @@ export function waveOutGetNumDevs(): number /* u32 */ {
 }
 
 export function waveOutGetDevCapsA(
-  uDeviceID: Deno.PointerValue /* usize */,
+  uDeviceID: bigint | number /* usize */,
   pwoc: Deno.PointerValue | Uint8Array /* ptr */,
   cbwoc: number /* u32 */,
 ): number /* u32 */ {
@@ -27428,7 +27428,7 @@ export function waveOutGetDevCapsA(
 }
 
 export function waveOutGetDevCapsW(
-  uDeviceID: Deno.PointerValue /* usize */,
+  uDeviceID: bigint | number /* usize */,
   pwoc: Deno.PointerValue | Uint8Array /* ptr */,
   cbwoc: number /* u32 */,
 ): number /* u32 */ {
@@ -27469,8 +27469,8 @@ export function waveOutOpen(
   phwo: Deno.PointerValue | Uint8Array /* ptr */,
   uDeviceID: number /* u32 */,
   pwfx: Deno.PointerValue | Uint8Array /* ptr */,
-  dwCallback: Deno.PointerValue /* usize */,
-  dwInstance: Deno.PointerValue /* usize */,
+  dwCallback: bigint | number /* usize */,
+  dwInstance: bigint | number /* usize */,
   fdwOpen: MIDI_WAVE_OPEN_TYPE /* Windows.Win32.Media.Audio.MIDI_WAVE_OPEN_TYPE */,
 ): number /* u32 */ {
   return libWINMM_dll.waveOutOpen(util.toPointer(phwo), uDeviceID, util.toPointer(pwfx), dwCallback, dwInstance, fdwOpen);
@@ -27576,8 +27576,8 @@ export function waveOutGetID(
 export function waveOutMessage(
   hwo: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HWAVEOUT */,
   uMsg: number /* u32 */,
-  dw1: Deno.PointerValue /* usize */,
-  dw2: Deno.PointerValue /* usize */,
+  dw1: bigint | number /* usize */,
+  dw2: bigint | number /* usize */,
 ): number /* u32 */ {
   return libWINMM_dll.waveOutMessage(util.toPointer(hwo), uMsg, dw1, dw2);
 }
@@ -27587,7 +27587,7 @@ export function waveInGetNumDevs(): number /* u32 */ {
 }
 
 export function waveInGetDevCapsA(
-  uDeviceID: Deno.PointerValue /* usize */,
+  uDeviceID: bigint | number /* usize */,
   pwic: Deno.PointerValue | Uint8Array /* ptr */,
   cbwic: number /* u32 */,
 ): number /* u32 */ {
@@ -27595,7 +27595,7 @@ export function waveInGetDevCapsA(
 }
 
 export function waveInGetDevCapsW(
-  uDeviceID: Deno.PointerValue /* usize */,
+  uDeviceID: bigint | number /* usize */,
   pwic: Deno.PointerValue | Uint8Array /* ptr */,
   cbwic: number /* u32 */,
 ): number /* u32 */ {
@@ -27622,8 +27622,8 @@ export function waveInOpen(
   phwi: Deno.PointerValue | Uint8Array /* ptr */,
   uDeviceID: number /* u32 */,
   pwfx: Deno.PointerValue | Uint8Array /* ptr */,
-  dwCallback: Deno.PointerValue /* usize */,
-  dwInstance: Deno.PointerValue /* usize */,
+  dwCallback: bigint | number /* usize */,
+  dwInstance: bigint | number /* usize */,
   fdwOpen: MIDI_WAVE_OPEN_TYPE /* Windows.Win32.Media.Audio.MIDI_WAVE_OPEN_TYPE */,
 ): number /* u32 */ {
   return libWINMM_dll.waveInOpen(util.toPointer(phwi), uDeviceID, util.toPointer(pwfx), dwCallback, dwInstance, fdwOpen);
@@ -27695,8 +27695,8 @@ export function waveInGetID(
 export function waveInMessage(
   hwi: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HWAVEIN */,
   uMsg: number /* u32 */,
-  dw1: Deno.PointerValue /* usize */,
-  dw2: Deno.PointerValue /* usize */,
+  dw1: bigint | number /* usize */,
+  dw2: bigint | number /* usize */,
 ): number /* u32 */ {
   return libWINMM_dll.waveInMessage(util.toPointer(hwi), uMsg, dw1, dw2);
 }
@@ -27709,8 +27709,8 @@ export function midiStreamOpen(
   phms: Deno.PointerValue | Uint8Array /* ptr */,
   puDeviceID: Deno.PointerValue | Uint8Array /* ptr */,
   cMidi: number /* u32 */,
-  dwCallback: Deno.PointerValue /* usize */,
-  dwInstance: Deno.PointerValue /* usize */,
+  dwCallback: bigint | number /* usize */,
+  dwInstance: bigint | number /* usize */,
   fdwOpen: number /* u32 */,
 ): number /* u32 */ {
   return libWINMM_dll.midiStreamOpen(util.toPointer(phms), util.toPointer(puDeviceID), cMidi, dwCallback, dwInstance, fdwOpen);
@@ -27781,7 +27781,7 @@ export function midiDisconnect(
 }
 
 export function midiOutGetDevCapsA(
-  uDeviceID: Deno.PointerValue /* usize */,
+  uDeviceID: bigint | number /* usize */,
   pmoc: Deno.PointerValue | Uint8Array /* ptr */,
   cbmoc: number /* u32 */,
 ): number /* u32 */ {
@@ -27789,7 +27789,7 @@ export function midiOutGetDevCapsA(
 }
 
 export function midiOutGetDevCapsW(
-  uDeviceID: Deno.PointerValue /* usize */,
+  uDeviceID: bigint | number /* usize */,
   pmoc: Deno.PointerValue | Uint8Array /* ptr */,
   cbmoc: number /* u32 */,
 ): number /* u32 */ {
@@ -27829,8 +27829,8 @@ export function midiOutGetErrorTextW(
 export function midiOutOpen(
   phmo: Deno.PointerValue | Uint8Array /* ptr */,
   uDeviceID: number /* u32 */,
-  dwCallback: Deno.PointerValue /* usize */,
-  dwInstance: Deno.PointerValue /* usize */,
+  dwCallback: bigint | number /* usize */,
+  dwInstance: bigint | number /* usize */,
   fdwOpen: MIDI_WAVE_OPEN_TYPE /* Windows.Win32.Media.Audio.MIDI_WAVE_OPEN_TYPE */,
 ): number /* u32 */ {
   return libWINMM_dll.midiOutOpen(util.toPointer(phmo), uDeviceID, dwCallback, dwInstance, fdwOpen);
@@ -27907,8 +27907,8 @@ export function midiOutGetID(
 export function midiOutMessage(
   hmo: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HMIDIOUT */,
   uMsg: number /* u32 */,
-  dw1: Deno.PointerValue /* usize */,
-  dw2: Deno.PointerValue /* usize */,
+  dw1: bigint | number /* usize */,
+  dw2: bigint | number /* usize */,
 ): number /* u32 */ {
   return libWINMM_dll.midiOutMessage(util.toPointer(hmo), uMsg, dw1, dw2);
 }
@@ -27918,7 +27918,7 @@ export function midiInGetNumDevs(): number /* u32 */ {
 }
 
 export function midiInGetDevCapsA(
-  uDeviceID: Deno.PointerValue /* usize */,
+  uDeviceID: bigint | number /* usize */,
   pmic: Deno.PointerValue | Uint8Array /* ptr */,
   cbmic: number /* u32 */,
 ): number /* u32 */ {
@@ -27926,7 +27926,7 @@ export function midiInGetDevCapsA(
 }
 
 export function midiInGetDevCapsW(
-  uDeviceID: Deno.PointerValue /* usize */,
+  uDeviceID: bigint | number /* usize */,
   pmic: Deno.PointerValue | Uint8Array /* ptr */,
   cbmic: number /* u32 */,
 ): number /* u32 */ {
@@ -27952,8 +27952,8 @@ export function midiInGetErrorTextW(
 export function midiInOpen(
   phmi: Deno.PointerValue | Uint8Array /* ptr */,
   uDeviceID: number /* u32 */,
-  dwCallback: Deno.PointerValue /* usize */,
-  dwInstance: Deno.PointerValue /* usize */,
+  dwCallback: bigint | number /* usize */,
+  dwInstance: bigint | number /* usize */,
   fdwOpen: MIDI_WAVE_OPEN_TYPE /* Windows.Win32.Media.Audio.MIDI_WAVE_OPEN_TYPE */,
 ): number /* u32 */ {
   return libWINMM_dll.midiInOpen(util.toPointer(phmi), uDeviceID, dwCallback, dwInstance, fdwOpen);
@@ -28017,8 +28017,8 @@ export function midiInGetID(
 export function midiInMessage(
   hmi: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HMIDIIN */,
   uMsg: number /* u32 */,
-  dw1: Deno.PointerValue /* usize */,
-  dw2: Deno.PointerValue /* usize */,
+  dw1: bigint | number /* usize */,
+  dw2: bigint | number /* usize */,
 ): number /* u32 */ {
   return libWINMM_dll.midiInMessage(util.toPointer(hmi), uMsg, dw1, dw2);
 }
@@ -28028,7 +28028,7 @@ export function auxGetNumDevs(): number /* u32 */ {
 }
 
 export function auxGetDevCapsA(
-  uDeviceID: Deno.PointerValue /* usize */,
+  uDeviceID: bigint | number /* usize */,
   pac: Deno.PointerValue | Uint8Array /* ptr */,
   cbac: number /* u32 */,
 ): number /* u32 */ {
@@ -28036,7 +28036,7 @@ export function auxGetDevCapsA(
 }
 
 export function auxGetDevCapsW(
-  uDeviceID: Deno.PointerValue /* usize */,
+  uDeviceID: bigint | number /* usize */,
   pac: Deno.PointerValue | Uint8Array /* ptr */,
   cbac: number /* u32 */,
 ): number /* u32 */ {
@@ -28060,8 +28060,8 @@ export function auxGetVolume(
 export function auxOutMessage(
   uDeviceID: number /* u32 */,
   uMsg: number /* u32 */,
-  dw1: Deno.PointerValue /* usize */,
-  dw2: Deno.PointerValue /* usize */,
+  dw1: bigint | number /* usize */,
+  dw2: bigint | number /* usize */,
 ): number /* u32 */ {
   return libWINMM_dll.auxOutMessage(uDeviceID, uMsg, dw1, dw2);
 }
@@ -28071,7 +28071,7 @@ export function mixerGetNumDevs(): number /* u32 */ {
 }
 
 export function mixerGetDevCapsA(
-  uMxId: Deno.PointerValue /* usize */,
+  uMxId: bigint | number /* usize */,
   pmxcaps: Deno.PointerValue | Uint8Array /* ptr */,
   cbmxcaps: number /* u32 */,
 ): number /* u32 */ {
@@ -28079,7 +28079,7 @@ export function mixerGetDevCapsA(
 }
 
 export function mixerGetDevCapsW(
-  uMxId: Deno.PointerValue /* usize */,
+  uMxId: bigint | number /* usize */,
   pmxcaps: Deno.PointerValue | Uint8Array /* ptr */,
   cbmxcaps: number /* u32 */,
 ): number /* u32 */ {
@@ -28089,8 +28089,8 @@ export function mixerGetDevCapsW(
 export function mixerOpen(
   phmx: Deno.PointerValue | Uint8Array /* ptr */,
   uMxId: number /* u32 */,
-  dwCallback: Deno.PointerValue /* usize */,
-  dwInstance: Deno.PointerValue /* usize */,
+  dwCallback: bigint | number /* usize */,
+  dwInstance: bigint | number /* usize */,
   fdwOpen: number /* u32 */,
 ): number /* u32 */ {
   return libWINMM_dll.mixerOpen(util.toPointer(phmx), uMxId, dwCallback, dwInstance, fdwOpen);
@@ -28105,8 +28105,8 @@ export function mixerClose(
 export function mixerMessage(
   hmx: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HMIXER */,
   uMsg: number /* u32 */,
-  dwParam1: Deno.PointerValue /* usize */,
-  dwParam2: Deno.PointerValue /* usize */,
+  dwParam1: bigint | number /* usize */,
+  dwParam2: bigint | number /* usize */,
 ): number /* u32 */ {
   return libWINMM_dll.mixerMessage(util.toPointer(hmx), uMsg, dwParam1, dwParam2);
 }
@@ -28257,7 +28257,7 @@ export function acmMetrics(
 
 export function acmDriverEnum(
   fnCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.ACMDRIVERENUMCB */,
-  dwInstance: Deno.PointerValue /* usize */,
+  dwInstance: bigint | number /* usize */,
   fdwEnum: number /* u32 */,
 ): number /* u32 */ {
   return libMSACM32_dll.acmDriverEnum(util.toPointer(fnCallback), dwInstance, fdwEnum);
@@ -28366,7 +28366,7 @@ export function acmFormatTagEnumA(
   had: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HACMDRIVER */,
   paftd: Deno.PointerValue | Uint8Array /* ptr */,
   fnCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.ACMFORMATTAGENUMCBA */,
-  dwInstance: Deno.PointerValue /* usize */,
+  dwInstance: bigint | number /* usize */,
   fdwEnum: number /* u32 */,
 ): number /* u32 */ {
   return libMSACM32_dll.acmFormatTagEnumA(util.toPointer(had), util.toPointer(paftd), util.toPointer(fnCallback), dwInstance, fdwEnum);
@@ -28376,7 +28376,7 @@ export function acmFormatTagEnumW(
   had: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HACMDRIVER */,
   paftd: Deno.PointerValue | Uint8Array /* ptr */,
   fnCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.ACMFORMATTAGENUMCBW */,
-  dwInstance: Deno.PointerValue /* usize */,
+  dwInstance: bigint | number /* usize */,
   fdwEnum: number /* u32 */,
 ): number /* u32 */ {
   return libMSACM32_dll.acmFormatTagEnumW(util.toPointer(had), util.toPointer(paftd), util.toPointer(fnCallback), dwInstance, fdwEnum);
@@ -28402,7 +28402,7 @@ export function acmFormatEnumA(
   had: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HACMDRIVER */,
   pafd: Deno.PointerValue | Uint8Array /* ptr */,
   fnCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.ACMFORMATENUMCBA */,
-  dwInstance: Deno.PointerValue /* usize */,
+  dwInstance: bigint | number /* usize */,
   fdwEnum: number /* u32 */,
 ): number /* u32 */ {
   return libMSACM32_dll.acmFormatEnumA(util.toPointer(had), util.toPointer(pafd), util.toPointer(fnCallback), dwInstance, fdwEnum);
@@ -28412,7 +28412,7 @@ export function acmFormatEnumW(
   had: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HACMDRIVER */,
   pafd: Deno.PointerValue | Uint8Array /* ptr */,
   fnCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.ACMFORMATENUMCBW */,
-  dwInstance: Deno.PointerValue /* usize */,
+  dwInstance: bigint | number /* usize */,
   fdwEnum: number /* u32 */,
 ): number /* u32 */ {
   return libMSACM32_dll.acmFormatEnumW(util.toPointer(had), util.toPointer(pafd), util.toPointer(fnCallback), dwInstance, fdwEnum);
@@ -28460,7 +28460,7 @@ export function acmFilterTagEnumA(
   had: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HACMDRIVER */,
   paftd: Deno.PointerValue | Uint8Array /* ptr */,
   fnCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.ACMFILTERTAGENUMCBA */,
-  dwInstance: Deno.PointerValue /* usize */,
+  dwInstance: bigint | number /* usize */,
   fdwEnum: number /* u32 */,
 ): number /* u32 */ {
   return libMSACM32_dll.acmFilterTagEnumA(util.toPointer(had), util.toPointer(paftd), util.toPointer(fnCallback), dwInstance, fdwEnum);
@@ -28470,7 +28470,7 @@ export function acmFilterTagEnumW(
   had: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HACMDRIVER */,
   paftd: Deno.PointerValue | Uint8Array /* ptr */,
   fnCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.ACMFILTERTAGENUMCBW */,
-  dwInstance: Deno.PointerValue /* usize */,
+  dwInstance: bigint | number /* usize */,
   fdwEnum: number /* u32 */,
 ): number /* u32 */ {
   return libMSACM32_dll.acmFilterTagEnumW(util.toPointer(had), util.toPointer(paftd), util.toPointer(fnCallback), dwInstance, fdwEnum);
@@ -28496,7 +28496,7 @@ export function acmFilterEnumA(
   had: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HACMDRIVER */,
   pafd: Deno.PointerValue | Uint8Array /* ptr */,
   fnCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.ACMFILTERENUMCBA */,
-  dwInstance: Deno.PointerValue /* usize */,
+  dwInstance: bigint | number /* usize */,
   fdwEnum: number /* u32 */,
 ): number /* u32 */ {
   return libMSACM32_dll.acmFilterEnumA(util.toPointer(had), util.toPointer(pafd), util.toPointer(fnCallback), dwInstance, fdwEnum);
@@ -28506,7 +28506,7 @@ export function acmFilterEnumW(
   had: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HACMDRIVER */,
   pafd: Deno.PointerValue | Uint8Array /* ptr */,
   fnCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.ACMFILTERENUMCBW */,
-  dwInstance: Deno.PointerValue /* usize */,
+  dwInstance: bigint | number /* usize */,
   fdwEnum: number /* u32 */,
 ): number /* u32 */ {
   return libMSACM32_dll.acmFilterEnumW(util.toPointer(had), util.toPointer(pafd), util.toPointer(fnCallback), dwInstance, fdwEnum);
@@ -28530,8 +28530,8 @@ export function acmStreamOpen(
   pwfxSrc: Deno.PointerValue | Uint8Array /* ptr */,
   pwfxDst: Deno.PointerValue | Uint8Array /* ptr */,
   pwfltr: Deno.PointerValue | Uint8Array /* ptr */,
-  dwCallback: Deno.PointerValue /* usize */,
-  dwInstance: Deno.PointerValue /* usize */,
+  dwCallback: bigint | number /* usize */,
+  dwInstance: bigint | number /* usize */,
   fdwOpen: number /* u32 */,
 ): number /* u32 */ {
   return libMSACM32_dll.acmStreamOpen(util.toPointer(phas), util.toPointer(had), util.toPointer(pwfxSrc), util.toPointer(pwfxDst), util.toPointer(pwfltr), dwCallback, dwInstance, fdwOpen);

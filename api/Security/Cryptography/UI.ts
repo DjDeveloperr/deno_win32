@@ -213,13 +213,13 @@ export const CERT_SET_KEY_CONTEXT_PROP_ID = 1;
 
 // Structs
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
-export type HINSTANCE = Deno.PointerValue;
+export type HINSTANCE = bigint | number;
 
 export type PSTR = Deno.PointerValue | Uint8Array;
 
-export type LPARAM = Deno.PointerValue;
+export type LPARAM = bigint | number;
 
 /**
  * Windows.Win32.Security.Cryptography.UI.CERT_SELECT_STRUCT_A (size: 136)
@@ -258,7 +258,7 @@ export interface CERT_SELECT_STRUCT_A {
   /** u32 */
   dwHelpId: number;
   /** usize */
-  hprov: Deno.PointerValue;
+  hprov: bigint | number;
 }
 
 export const sizeofCERT_SELECT_STRUCT_A = 136;
@@ -432,7 +432,7 @@ export class CERT_SELECT_STRUCT_AView {
   // 0x7c: pad4
 
   // 0x80: usize
-  get hprov(): Deno.PointerValue {
+  get hprov(): bigint | number {
     return Number(this.view.getBigUint64(128, true));
   }
 
@@ -531,7 +531,7 @@ export class CERT_SELECT_STRUCT_AView {
   // 0x7c: pad4
 
   // 0x80: usize
-  set hprov(value: Deno.PointerValue) {
+  set hprov(value: bigint | number) {
     this.view.setBigUint64(128, BigInt(value), true);
   }
 }
@@ -575,7 +575,7 @@ export interface CERT_SELECT_STRUCT_W {
   /** u32 */
   dwHelpId: number;
   /** usize */
-  hprov: Deno.PointerValue;
+  hprov: bigint | number;
 }
 
 export const sizeofCERT_SELECT_STRUCT_W = 136;
@@ -749,7 +749,7 @@ export class CERT_SELECT_STRUCT_WView {
   // 0x7c: pad4
 
   // 0x80: usize
-  get hprov(): Deno.PointerValue {
+  get hprov(): bigint | number {
     return Number(this.view.getBigUint64(128, true));
   }
 
@@ -848,7 +848,7 @@ export class CERT_SELECT_STRUCT_WView {
   // 0x7c: pad4
 
   // 0x80: usize
-  set hprov(value: Deno.PointerValue) {
+  set hprov(value: bigint | number) {
     this.view.setBigUint64(128, BigInt(value), true);
   }
 }
@@ -886,7 +886,7 @@ export interface CERT_VIEWPROPERTIES_STRUCT_A {
   /** ptr */
   rghstoreTrust: Deno.PointerValue | Uint8Array;
   /** usize */
-  hprov: Deno.PointerValue;
+  hprov: bigint | number;
   /** Windows.Win32.Foundation.LPARAM */
   lCustData: Uint8Array | Deno.PointerValue;
   /** u32 */
@@ -1064,7 +1064,7 @@ export class CERT_VIEWPROPERTIES_STRUCT_AView {
   }
 
   // 0x68: usize
-  get hprov(): Deno.PointerValue {
+  get hprov(): bigint | number {
     return Number(this.view.getBigUint64(104, true));
   }
 
@@ -1190,7 +1190,7 @@ export class CERT_VIEWPROPERTIES_STRUCT_AView {
   }
 
   // 0x68: usize
-  set hprov(value: Deno.PointerValue) {
+  set hprov(value: bigint | number) {
     this.view.setBigUint64(104, BigInt(value), true);
   }
 
@@ -1268,7 +1268,7 @@ export interface CERT_VIEWPROPERTIES_STRUCT_W {
   /** ptr */
   rghstoreTrust: Deno.PointerValue | Uint8Array;
   /** usize */
-  hprov: Deno.PointerValue;
+  hprov: bigint | number;
   /** Windows.Win32.Foundation.LPARAM */
   lCustData: Uint8Array | Deno.PointerValue;
   /** u32 */
@@ -1446,7 +1446,7 @@ export class CERT_VIEWPROPERTIES_STRUCT_WView {
   }
 
   // 0x68: usize
-  get hprov(): Deno.PointerValue {
+  get hprov(): bigint | number {
     return Number(this.view.getBigUint64(104, true));
   }
 
@@ -1572,7 +1572,7 @@ export class CERT_VIEWPROPERTIES_STRUCT_WView {
   }
 
   // 0x68: usize
-  set hprov(value: Deno.PointerValue) {
+  set hprov(value: bigint | number) {
     this.view.setBigUint64(104, BigInt(value), true);
   }
 
@@ -1818,7 +1818,7 @@ export interface CERT_VERIFY_CERTIFICATE_TRUST {
   /** Windows.Win32.Foundation.PSTR */
   pszUsageOid: string | null | Uint8Array;
   /** usize */
-  hprov: Deno.PointerValue;
+  hprov: bigint | number;
   /** u32 */
   cRootStores: number;
   /** ptr */
@@ -1944,7 +1944,7 @@ export class CERT_VERIFY_CERTIFICATE_TRUSTView {
   }
 
   // 0x28: usize
-  get hprov(): Deno.PointerValue {
+  get hprov(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -2057,7 +2057,7 @@ export class CERT_VERIFY_CERTIFICATE_TRUSTView {
   }
 
   // 0x28: usize
-  set hprov(value: Deno.PointerValue) {
+  set hprov(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
@@ -2704,9 +2704,9 @@ export class CRYPTUI_WIZ_DIGITAL_SIGN_PVK_FILE_INFOView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -2732,22 +2732,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -3083,11 +3083,11 @@ export class CRYPTUI_WIZ_DIGITAL_SIGN_EXTENDED_INFOView {
  */
 export interface _Anonymous1_e__Union {
   /** usize */
-  Data0: Deno.PointerValue;
+  Data0: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   String: string | null | Uint8Array | Uint16Array;
   /** usize */
-  u: Deno.PointerValue;
+  u: bigint | number;
   /** ptr */
   psid: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -3139,7 +3139,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  get Data0(): Deno.PointerValue {
+  get Data0(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -3150,7 +3150,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  get u(): Deno.PointerValue {
+  get u(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -3186,7 +3186,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  set Data0(value: Deno.PointerValue) {
+  set Data0(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -3197,7 +3197,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  set u(value: Deno.PointerValue) {
+  set u(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -3234,7 +3234,7 @@ export class _Anonymous1_e__UnionView {
  */
 export interface _Anonymous2_e__Union {
   /** usize */
-  Data1: Deno.PointerValue;
+  Data1: bigint | number;
   /** i32 */
   LogonId_HighPart: number;
 }
@@ -3263,7 +3263,7 @@ export class _Anonymous2_e__UnionView {
   }
 
   // 0x00: usize
-  get Data1(): Deno.PointerValue {
+  get Data1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -3275,7 +3275,7 @@ export class _Anonymous2_e__UnionView {
   // 0x0c: pad4
 
   // 0x00: usize
-  set Data1(value: Deno.PointerValue) {
+  set Data1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 

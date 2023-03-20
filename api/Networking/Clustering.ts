@@ -1860,9 +1860,9 @@ export const CLUADMEX_OT_NETINTERFACE = 7;
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -1888,22 +1888,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -2705,7 +2705,7 @@ export interface ULARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue;
   /** u64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: bigint | number;
 }
 
 export const sizeofULARGE_INTEGER = 24;
@@ -2745,7 +2745,7 @@ export class ULARGE_INTEGERView {
   }
 
   // 0x10: u64
-  get QuadPart(): Deno.PointerValue {
+  get QuadPart(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -2760,7 +2760,7 @@ export class ULARGE_INTEGERView {
   }
 
   // 0x10: u64
-  set QuadPart(value: Deno.PointerValue) {
+  set QuadPart(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -4874,7 +4874,7 @@ export interface NOTIFY_FILTER_AND_TYPE {
   /** u32 */
   dwObjectType: number;
   /** i64 */
-  FilterFlags: Deno.PointerValue;
+  FilterFlags: bigint | number;
 }
 
 export const sizeofNOTIFY_FILTER_AND_TYPE = 16;
@@ -4908,7 +4908,7 @@ export class NOTIFY_FILTER_AND_TYPEView {
   // 0x04: pad4
 
   // 0x08: i64
-  get FilterFlags(): Deno.PointerValue {
+  get FilterFlags(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -4920,7 +4920,7 @@ export class NOTIFY_FILTER_AND_TYPEView {
   // 0x04: pad4
 
   // 0x08: i64
-  set FilterFlags(value: Deno.PointerValue) {
+  set FilterFlags(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -6190,7 +6190,7 @@ export interface LARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue;
   /** i64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: bigint | number;
 }
 
 export const sizeofLARGE_INTEGER = 24;
@@ -6230,7 +6230,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  get QuadPart(): Deno.PointerValue {
+  get QuadPart(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -6245,7 +6245,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  set QuadPart(value: Deno.PointerValue) {
+  set QuadPart(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -6958,9 +6958,9 @@ export interface CLUSTER_SHARED_VOLUME_STATE_INFO_EX {
   /** array */
   szVolumeFriendlyName: Deno.PointerValue;
   /** u64 */
-  RedirectedIOReason: Deno.PointerValue;
+  RedirectedIOReason: bigint | number;
   /** u64 */
-  VolumeRedirectedIOReason: Deno.PointerValue;
+  VolumeRedirectedIOReason: bigint | number;
 }
 
 export const sizeofCLUSTER_SHARED_VOLUME_STATE_INFO_EX = 48;
@@ -7020,12 +7020,12 @@ export class CLUSTER_SHARED_VOLUME_STATE_INFO_EXView {
   }
 
   // 0x20: u64
-  get RedirectedIOReason(): Deno.PointerValue {
+  get RedirectedIOReason(): bigint | number {
     return Number(this.view.getBigUint64(32, true));
   }
 
   // 0x28: u64
-  get VolumeRedirectedIOReason(): Deno.PointerValue {
+  get VolumeRedirectedIOReason(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
@@ -7052,12 +7052,12 @@ export class CLUSTER_SHARED_VOLUME_STATE_INFO_EXView {
   }
 
   // 0x20: u64
-  set RedirectedIOReason(value: Deno.PointerValue) {
+  set RedirectedIOReason(value: bigint | number) {
     this.view.setBigUint64(32, BigInt(value), true);
   }
 
   // 0x28: u64
-  set VolumeRedirectedIOReason(value: Deno.PointerValue) {
+  set VolumeRedirectedIOReason(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 }
@@ -8637,7 +8637,7 @@ export class SYSTEMTIMEView {
  */
 export interface CLUSCTL_GROUP_GET_LAST_MOVE_TIME_OUTPUT {
   /** u64 */
-  GetTickCount64: Deno.PointerValue;
+  GetTickCount64: bigint | number;
   /** Windows.Win32.Foundation.SYSTEMTIME */
   GetSystemTime: Uint8Array | Deno.PointerValue;
   /** u32 */
@@ -8670,7 +8670,7 @@ export class CLUSCTL_GROUP_GET_LAST_MOVE_TIME_OUTPUTView {
   }
 
   // 0x00: u64
-  get GetTickCount64(): Deno.PointerValue {
+  get GetTickCount64(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -8688,7 +8688,7 @@ export class CLUSCTL_GROUP_GET_LAST_MOVE_TIME_OUTPUTView {
   // 0x14: pad4
 
   // 0x00: u64
-  set GetTickCount64(value: Deno.PointerValue) {
+  set GetTickCount64(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -9159,7 +9159,7 @@ export class CLUSPROP_BUFFER_HELPERView {
  */
 export interface SR_RESOURCE_TYPE_REPLICATED_PARTITION_INFO {
   /** u64 */
-  PartitionOffset: Deno.PointerValue;
+  PartitionOffset: bigint | number;
   /** u32 */
   Capabilities: number;
 }
@@ -9188,7 +9188,7 @@ export class SR_RESOURCE_TYPE_REPLICATED_PARTITION_INFOView {
   }
 
   // 0x00: u64
-  get PartitionOffset(): Deno.PointerValue {
+  get PartitionOffset(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -9200,7 +9200,7 @@ export class SR_RESOURCE_TYPE_REPLICATED_PARTITION_INFOView {
   // 0x0c: pad4
 
   // 0x00: u64
-  set PartitionOffset(value: Deno.PointerValue) {
+  set PartitionOffset(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -9743,7 +9743,7 @@ export interface SR_RESOURCE_TYPE_ADD_REPLICATION_GROUP {
   /** array */
   LogPath: Deno.PointerValue;
   /** u64 */
-  MaxLogSizeInBytes: Deno.PointerValue;
+  MaxLogSizeInBytes: bigint | number;
   /** u16 */
   LogType: number;
   /** u32 */
@@ -9825,7 +9825,7 @@ export class SR_RESOURCE_TYPE_ADD_REPLICATION_GROUPView {
   }
 
   // 0x18: u64
-  get MaxLogSizeInBytes(): Deno.PointerValue {
+  get MaxLogSizeInBytes(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -9893,7 +9893,7 @@ export class SR_RESOURCE_TYPE_ADD_REPLICATION_GROUPView {
   }
 
   // 0x18: u64
-  set MaxLogSizeInBytes(value: Deno.PointerValue) {
+  set MaxLogSizeInBytes(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -10060,7 +10060,7 @@ export class CLUSCTL_RESOURCE_TYPE_STORAGE_GET_AVAILABLE_DISKS_EX2_INPUTView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.Networking.Clustering.RESOURCE_STATUS (size: 24)
@@ -10154,11 +10154,11 @@ export class RESOURCE_STATUSView {
  */
 export interface NodeUtilizationInfoElement {
   /** u64 */
-  Id: Deno.PointerValue;
+  Id: bigint | number;
   /** u64 */
-  AvailableMemory: Deno.PointerValue;
+  AvailableMemory: bigint | number;
   /** u64 */
-  AvailableMemoryAfterReclamation: Deno.PointerValue;
+  AvailableMemoryAfterReclamation: bigint | number;
 }
 
 export const sizeofNodeUtilizationInfoElement = 24;
@@ -10186,32 +10186,32 @@ export class NodeUtilizationInfoElementView {
   }
 
   // 0x00: u64
-  get Id(): Deno.PointerValue {
+  get Id(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get AvailableMemory(): Deno.PointerValue {
+  get AvailableMemory(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get AvailableMemoryAfterReclamation(): Deno.PointerValue {
+  get AvailableMemoryAfterReclamation(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x00: u64
-  set Id(value: Deno.PointerValue) {
+  set Id(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set AvailableMemory(value: Deno.PointerValue) {
+  set AvailableMemory(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set AvailableMemoryAfterReclamation(value: Deno.PointerValue) {
+  set AvailableMemoryAfterReclamation(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -10221,9 +10221,9 @@ export class NodeUtilizationInfoElementView {
  */
 export interface ResourceUtilizationInfoElement {
   /** u64 */
-  PhysicalNumaId: Deno.PointerValue;
+  PhysicalNumaId: bigint | number;
   /** u64 */
-  CurrentMemory: Deno.PointerValue;
+  CurrentMemory: bigint | number;
 }
 
 export const sizeofResourceUtilizationInfoElement = 16;
@@ -10249,22 +10249,22 @@ export class ResourceUtilizationInfoElementView {
   }
 
   // 0x00: u64
-  get PhysicalNumaId(): Deno.PointerValue {
+  get PhysicalNumaId(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get CurrentMemory(): Deno.PointerValue {
+  get CurrentMemory(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set PhysicalNumaId(value: Deno.PointerValue) {
+  set PhysicalNumaId(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set CurrentMemory(value: Deno.PointerValue) {
+  set CurrentMemory(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -12435,23 +12435,23 @@ export class CLUS_WORKERView {
  */
 export interface PaxosTagCStruct {
   /** u64 */
-  __padding__PaxosTagVtable: Deno.PointerValue;
+  __padding__PaxosTagVtable: bigint | number;
   /** u64 */
-  __padding__NextEpochVtable: Deno.PointerValue;
+  __padding__NextEpochVtable: bigint | number;
   /** u64 */
-  __padding__NextEpoch_DateTimeVtable: Deno.PointerValue;
+  __padding__NextEpoch_DateTimeVtable: bigint | number;
   /** u64 */
-  NextEpoch_DateTime_ticks: Deno.PointerValue;
+  NextEpoch_DateTime_ticks: bigint | number;
   /** i32 */
   NextEpoch_Value: number;
   /** u32 */
   __padding__BoundryNextEpoch: number;
   /** u64 */
-  __padding__EpochVtable: Deno.PointerValue;
+  __padding__EpochVtable: bigint | number;
   /** u64 */
-  __padding__Epoch_DateTimeVtable: Deno.PointerValue;
+  __padding__Epoch_DateTimeVtable: bigint | number;
   /** u64 */
-  Epoch_DateTime_ticks: Deno.PointerValue;
+  Epoch_DateTime_ticks: bigint | number;
   /** i32 */
   Epoch_Value: number;
   /** u32 */
@@ -12507,22 +12507,22 @@ export class PaxosTagCStructView {
   }
 
   // 0x00: u64
-  get __padding__PaxosTagVtable(): Deno.PointerValue {
+  get __padding__PaxosTagVtable(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get __padding__NextEpochVtable(): Deno.PointerValue {
+  get __padding__NextEpochVtable(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get __padding__NextEpoch_DateTimeVtable(): Deno.PointerValue {
+  get __padding__NextEpoch_DateTimeVtable(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get NextEpoch_DateTime_ticks(): Deno.PointerValue {
+  get NextEpoch_DateTime_ticks(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -12537,17 +12537,17 @@ export class PaxosTagCStructView {
   }
 
   // 0x28: u64
-  get __padding__EpochVtable(): Deno.PointerValue {
+  get __padding__EpochVtable(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x30: u64
-  get __padding__Epoch_DateTimeVtable(): Deno.PointerValue {
+  get __padding__Epoch_DateTimeVtable(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: u64
-  get Epoch_DateTime_ticks(): Deno.PointerValue {
+  get Epoch_DateTime_ticks(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
@@ -12572,22 +12572,22 @@ export class PaxosTagCStructView {
   }
 
   // 0x00: u64
-  set __padding__PaxosTagVtable(value: Deno.PointerValue) {
+  set __padding__PaxosTagVtable(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set __padding__NextEpochVtable(value: Deno.PointerValue) {
+  set __padding__NextEpochVtable(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set __padding__NextEpoch_DateTimeVtable(value: Deno.PointerValue) {
+  set __padding__NextEpoch_DateTimeVtable(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set NextEpoch_DateTime_ticks(value: Deno.PointerValue) {
+  set NextEpoch_DateTime_ticks(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -12602,17 +12602,17 @@ export class PaxosTagCStructView {
   }
 
   // 0x28: u64
-  set __padding__EpochVtable(value: Deno.PointerValue) {
+  set __padding__EpochVtable(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 
   // 0x30: u64
-  set __padding__Epoch_DateTimeVtable(value: Deno.PointerValue) {
+  set __padding__Epoch_DateTimeVtable(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: u64
-  set Epoch_DateTime_ticks(value: Deno.PointerValue) {
+  set Epoch_DateTime_ticks(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
@@ -12770,11 +12770,11 @@ export class WitnessTagHelperView {
   }
 }
 
-export type HKEY = Deno.PointerValue;
+export type HKEY = bigint | number;
 
 export type PSECURITY_DESCRIPTOR = Deno.PointerValue | Uint8Array;
 
-export type SC_HANDLE = Deno.PointerValue;
+export type SC_HANDLE = bigint | number;
 
 // Native Libraries
 
@@ -14321,7 +14321,7 @@ export function CreateClusterNotifyPortV2(
   hCluster: Deno.PointerValue | Uint8Array /* ptr */,
   Filters: Deno.PointerValue | Uint8Array /* ptr */,
   dwFilterCount: number /* u32 */,
-  dwNotifyKey: Deno.PointerValue /* usize */,
+  dwNotifyKey: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
   return libCLUSAPI_dll.CreateClusterNotifyPortV2(util.toPointer(hChange), util.toPointer(hCluster), util.toPointer(Filters), dwFilterCount, dwNotifyKey);
 }
@@ -14330,7 +14330,7 @@ export function RegisterClusterNotifyV2(
   hChange: Deno.PointerValue | Uint8Array /* ptr */,
   Filter: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.Clustering.NOTIFY_FILTER_AND_TYPE */,
   hObject: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  dwNotifyKey: Deno.PointerValue /* usize */,
+  dwNotifyKey: bigint | number /* usize */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.RegisterClusterNotifyV2(util.toPointer(hChange), util.toPointer(Filter), util.toPointer(hObject), dwNotifyKey);
 }
@@ -14365,7 +14365,7 @@ export function CreateClusterNotifyPort(
   hChange: Deno.PointerValue | Uint8Array /* ptr */,
   hCluster: Deno.PointerValue | Uint8Array /* ptr */,
   dwFilter: number /* u32 */,
-  dwNotifyKey: Deno.PointerValue /* usize */,
+  dwNotifyKey: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
   return libCLUSAPI_dll.CreateClusterNotifyPort(util.toPointer(hChange), util.toPointer(hCluster), dwFilter, dwNotifyKey);
 }
@@ -14374,7 +14374,7 @@ export function RegisterClusterNotify(
   hChange: Deno.PointerValue | Uint8Array /* ptr */,
   dwFilterType: number /* u32 */,
   hObject: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  dwNotifyKey: Deno.PointerValue /* usize */,
+  dwNotifyKey: bigint | number /* usize */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.RegisterClusterNotify(util.toPointer(hChange), dwFilterType, util.toPointer(hObject), dwNotifyKey);
 }
@@ -15196,7 +15196,7 @@ export function ChangeClusterResourceGroup(
 export function ChangeClusterResourceGroupEx(
   hResource: Deno.PointerValue | Uint8Array /* ptr */,
   hGroup: Deno.PointerValue | Uint8Array /* ptr */,
-  Flags: Deno.PointerValue /* u64 */,
+  Flags: bigint | number /* u64 */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.ChangeClusterResourceGroupEx(util.toPointer(hResource), util.toPointer(hGroup), Flags);
 }
@@ -15936,9 +15936,9 @@ export function GetNodeCloudTypeDW(
 export function RegisterClusterResourceTypeNotifyV2(
   hChange: Deno.PointerValue | Uint8Array /* ptr */,
   hCluster: Deno.PointerValue | Uint8Array /* ptr */,
-  Flags: Deno.PointerValue /* i64 */,
+  Flags: bigint | number /* i64 */,
   resTypeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  dwNotifyKey: Deno.PointerValue /* usize */,
+  dwNotifyKey: bigint | number /* usize */,
 ): number /* u32 */ {
   return libCLUSAPI_dll.RegisterClusterResourceTypeNotifyV2(util.toPointer(hChange), util.toPointer(hCluster), Flags, util.pwstrToFfi(resTypeName), dwNotifyKey);
 }
@@ -16320,7 +16320,7 @@ export function ResUtilGetQwordValue(
   hkeyClusterKey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
   pszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pqwOutValue: Deno.PointerValue | Uint8Array /* ptr */,
-  qwDefaultValue: Deno.PointerValue /* u64 */,
+  qwDefaultValue: bigint | number /* u64 */,
 ): number /* u32 */ {
   return libRESUTILS_dll.ResUtilGetQwordValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), util.toPointer(pqwOutValue), qwDefaultValue);
 }
@@ -16377,7 +16377,7 @@ export function ResUtilSetDwordValue(
 export function ResUtilSetQwordValue(
   hkeyClusterKey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
   pszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  qwNewValue: Deno.PointerValue /* u64 */,
+  qwNewValue: bigint | number /* u64 */,
   pqwOutValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libRESUTILS_dll.ResUtilSetQwordValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), qwNewValue, util.toPointer(pqwOutValue));
@@ -16486,7 +16486,7 @@ export function ResUtilSetResourceServiceEnvironment(
   pszServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hResource: Deno.PointerValue | Uint8Array /* ptr */,
   pfnLogEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.Clustering.PLOG_EVENT_ROUTINE */,
-  hResourceHandle: Deno.PointerValue /* isize */,
+  hResourceHandle: bigint | number /* isize */,
 ): number /* u32 */ {
   return libRESUTILS_dll.ResUtilSetResourceServiceEnvironment(util.pwstrToFfi(pszServiceName), util.toPointer(hResource), util.toPointer(pfnLogEvent), hResourceHandle);
 }
@@ -16494,7 +16494,7 @@ export function ResUtilSetResourceServiceEnvironment(
 export function ResUtilRemoveResourceServiceEnvironment(
   pszServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pfnLogEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.Clustering.PLOG_EVENT_ROUTINE */,
-  hResourceHandle: Deno.PointerValue /* isize */,
+  hResourceHandle: bigint | number /* isize */,
 ): number /* u32 */ {
   return libRESUTILS_dll.ResUtilRemoveResourceServiceEnvironment(util.pwstrToFfi(pszServiceName), util.toPointer(pfnLogEvent), hResourceHandle);
 }
@@ -16504,7 +16504,7 @@ export function ResUtilSetResourceServiceStartParameters(
   schSCMHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.SC_HANDLE */,
   phService: Deno.PointerValue | Uint8Array /* ptr */,
   pfnLogEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.Clustering.PLOG_EVENT_ROUTINE */,
-  hResourceHandle: Deno.PointerValue /* isize */,
+  hResourceHandle: bigint | number /* isize */,
 ): number /* u32 */ {
   return libRESUTILS_dll.ResUtilSetResourceServiceStartParameters(util.pwstrToFfi(pszServiceName), util.toPointer(schSCMHandle), util.toPointer(phService), util.toPointer(pfnLogEvent), hResourceHandle);
 }
@@ -16622,7 +16622,7 @@ export function ClusWorkerTerminateEx(
 
 export function ClusWorkersTerminate(
   ClusWorkers: Deno.PointerValue | Uint8Array /* ptr */,
-  ClusWorkersCount: Deno.PointerValue /* usize */,
+  ClusWorkersCount: bigint | number /* usize */,
   TimeoutInMilliseconds: number /* u32 */,
   WaitOnly: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
@@ -16727,7 +16727,7 @@ export function ResUtilTerminateServiceProcessFromResDll(
   bOffline: boolean /* Windows.Win32.Foundation.BOOL */,
   pdwResourceState: Deno.PointerValue | Uint8Array /* ptr */,
   pfnLogEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.Clustering.PLOG_EVENT_ROUTINE */,
-  hResourceHandle: Deno.PointerValue /* isize */,
+  hResourceHandle: bigint | number /* isize */,
 ): number /* u32 */ {
   return libRESUTILS_dll.ResUtilTerminateServiceProcessFromResDll(dwServicePid, util.boolToFfi(bOffline), util.toPointer(pdwResourceState), util.toPointer(pfnLogEvent), hResourceHandle);
 }
@@ -16810,7 +16810,7 @@ export function ResUtilSetResourceServiceStartParametersEx(
   phService: Deno.PointerValue | Uint8Array /* ptr */,
   dwDesiredAccess: number /* u32 */,
   pfnLogEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.Clustering.PLOG_EVENT_ROUTINE */,
-  hResourceHandle: Deno.PointerValue /* isize */,
+  hResourceHandle: bigint | number /* isize */,
 ): number /* u32 */ {
   return libRESUTILS_dll.ResUtilSetResourceServiceStartParametersEx(util.pwstrToFfi(pszServiceName), util.toPointer(schSCMHandle), util.toPointer(phService), dwDesiredAccess, util.toPointer(pfnLogEvent), hResourceHandle);
 }
@@ -17040,8 +17040,8 @@ export function RegisterAppInstance(
 
 export function RegisterAppInstanceVersion(
   AppInstanceId: Deno.PointerValue | Uint8Array /* ptr */,
-  InstanceVersionHigh: Deno.PointerValue /* u64 */,
-  InstanceVersionLow: Deno.PointerValue /* u64 */,
+  InstanceVersionHigh: bigint | number /* u64 */,
+  InstanceVersionLow: bigint | number /* u64 */,
 ): number /* u32 */ {
   return libNTLANMAN_dll.RegisterAppInstanceVersion(util.toPointer(AppInstanceId), InstanceVersionHigh, InstanceVersionLow);
 }

@@ -862,7 +862,7 @@ export const EMR_MAX = 122;
 
 // Structs
 
-export type HGLRC = Deno.PointerValue;
+export type HGLRC = bigint | number;
 
 /**
  * Windows.Win32.Graphics.OpenGL.PIXELFORMATDESCRIPTOR (size: 40)
@@ -1879,11 +1879,11 @@ export class LAYERPLANEDESCRIPTORView {
   }
 }
 
-export type HDC = Deno.PointerValue;
+export type HDC = bigint | number;
 
 export type BOOL = number;
 
-export type HENHMETAFILE = Deno.PointerValue;
+export type HENHMETAFILE = bigint | number;
 
 export type PSTR = Deno.PointerValue | Uint8Array;
 
@@ -6405,7 +6405,7 @@ export function gluSphere(
 export function gluQuadricCallback(
   qobj: Deno.PointerValue | Uint8Array /* ptr */,
   which: number /* u32 */,
-  fn: Deno.PointerValue /* isize */,
+  fn: bigint | number /* isize */,
 ): void /* void */ {
   return libGLU32_dll.gluQuadricCallback(util.toPointer(qobj), which, fn);
 }
@@ -6473,7 +6473,7 @@ export function gluTessNormal(
 export function gluTessCallback(
   tess: Deno.PointerValue | Uint8Array /* ptr */,
   which: number /* u32 */,
-  fn: Deno.PointerValue /* isize */,
+  fn: bigint | number /* isize */,
 ): void /* void */ {
   return libGLU32_dll.gluTessCallback(util.toPointer(tess), which, fn);
 }
@@ -6598,7 +6598,7 @@ export function gluGetNurbsProperty(
 export function gluNurbsCallback(
   nobj: Deno.PointerValue | Uint8Array /* ptr */,
   which: number /* u32 */,
-  fn: Deno.PointerValue /* isize */,
+  fn: bigint | number /* isize */,
 ): void /* void */ {
   return libGLU32_dll.gluNurbsCallback(util.toPointer(nobj), which, fn);
 }

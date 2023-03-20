@@ -1249,21 +1249,21 @@ export class DEVPROPKEYView {
   // 0x0c: pad4
 }
 
-export type HSEMAPHORE = Deno.PointerValue;
+export type HSEMAPHORE = bigint | number;
 
-export type HSURF = Deno.PointerValue;
+export type HSURF = bigint | number;
 
-export type HFASTMUTEX = Deno.PointerValue;
+export type HFASTMUTEX = bigint | number;
 
-export type HDRVOBJ = Deno.PointerValue;
+export type HDRVOBJ = bigint | number;
 
-export type HDEV = Deno.PointerValue;
+export type HDEV = bigint | number;
 
-export type HBM = Deno.PointerValue;
+export type HBM = bigint | number;
 
-export type DHSURF = Deno.PointerValue;
+export type DHSURF = bigint | number;
 
-export type DHPDEV = Deno.PointerValue;
+export type DHPDEV = bigint | number;
 
 /**
  * Windows.Win32.Devices.Display.DISPLAYCONFIG_RATIONAL (size: 8)
@@ -1376,9 +1376,9 @@ export class DISPLAYCONFIG_2DREGIONView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -1404,22 +1404,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -1484,7 +1484,7 @@ export class _Anonymous_e__UnionView {
  */
 export interface DISPLAYCONFIG_VIDEO_SIGNAL_INFO {
   /** u64 */
-  pixelRate: Deno.PointerValue;
+  pixelRate: bigint | number;
   /** Windows.Win32.Devices.Display.DISPLAYCONFIG_RATIONAL */
   hSyncFreq: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Devices.Display.DISPLAYCONFIG_RATIONAL */
@@ -1533,7 +1533,7 @@ export class DISPLAYCONFIG_VIDEO_SIGNAL_INFOView {
   }
 
   // 0x00: u64
-  get pixelRate(): Deno.PointerValue {
+  get pixelRate(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -1575,7 +1575,7 @@ export class DISPLAYCONFIG_VIDEO_SIGNAL_INFOView {
   // 0x34: pad4
 
   // 0x00: u64
-  set pixelRate(value: Deno.PointerValue) {
+  set pixelRate(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -3418,7 +3418,7 @@ export class DISPLAYCONFIG_SET_MONITOR_SPECIALIZATIONView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.Devices.Display.PHYSICAL_MONITOR (size: 16)
@@ -3755,11 +3755,11 @@ export type PWSTR = Deno.PointerValue | Uint8Array;
  */
 export interface _Anonymous1_e__Union {
   /** usize */
-  Data0: Deno.PointerValue;
+  Data0: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   String: string | null | Uint8Array | Uint16Array;
   /** usize */
-  u: Deno.PointerValue;
+  u: bigint | number;
   /** ptr */
   psid: Deno.PointerValue | Uint8Array;
   /** ptr */
@@ -3811,7 +3811,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  get Data0(): Deno.PointerValue {
+  get Data0(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -3822,7 +3822,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  get u(): Deno.PointerValue {
+  get u(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -3858,7 +3858,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x00: usize
-  set Data0(value: Deno.PointerValue) {
+  set Data0(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -3869,7 +3869,7 @@ export class _Anonymous1_e__UnionView {
   }
 
   // 0x10: usize
-  set u(value: Deno.PointerValue) {
+  set u(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -3906,7 +3906,7 @@ export class _Anonymous1_e__UnionView {
  */
 export interface _Anonymous2_e__Union {
   /** usize */
-  Data1: Deno.PointerValue;
+  Data1: bigint | number;
   /** i32 */
   LogonId_HighPart: number;
 }
@@ -3935,7 +3935,7 @@ export class _Anonymous2_e__UnionView {
   }
 
   // 0x00: usize
-  get Data1(): Deno.PointerValue {
+  get Data1(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -3947,7 +3947,7 @@ export class _Anonymous2_e__UnionView {
   // 0x0c: pad4
 
   // 0x00: usize
-  set Data1(value: Deno.PointerValue) {
+  set Data1(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -7191,7 +7191,7 @@ export interface LARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue;
   /** i64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: bigint | number;
 }
 
 export const sizeofLARGE_INTEGER = 24;
@@ -7231,7 +7231,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  get QuadPart(): Deno.PointerValue {
+  get QuadPart(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -7246,7 +7246,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  set QuadPart(value: Deno.PointerValue) {
+  set QuadPart(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -8335,7 +8335,7 @@ export class LOGFONTWView {
   }
 }
 
-export type HPALETTE = Deno.PointerValue;
+export type HPALETTE = bigint | number;
 
 /**
  * Windows.Win32.Devices.Display.DEVINFO (size: 64)
@@ -9989,9 +9989,9 @@ export interface FONTOBJ {
   /** u32 */
   flFontType: number;
   /** usize */
-  iTTUniq: Deno.PointerValue;
+  iTTUniq: bigint | number;
   /** usize */
-  iFile: Deno.PointerValue;
+  iFile: bigint | number;
   /** Windows.Win32.Foundation.SIZE */
   sizLogResPpi: Uint8Array | Deno.PointerValue;
   /** u32 */
@@ -10062,12 +10062,12 @@ export class FONTOBJView {
   }
 
   // 0x10: usize
-  get iTTUniq(): Deno.PointerValue {
+  get iTTUniq(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: usize
-  get iFile(): Deno.PointerValue {
+  get iFile(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -10117,12 +10117,12 @@ export class FONTOBJView {
   }
 
   // 0x10: usize
-  set iTTUniq(value: Deno.PointerValue) {
+  set iTTUniq(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: usize
-  set iFile(value: Deno.PointerValue) {
+  set iFile(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -12379,7 +12379,7 @@ export class ENG_TIME_FIELDSView {
   }
 }
 
-export type HDC = Deno.PointerValue;
+export type HDC = bigint | number;
 
 /**
  * Windows.Win32.Devices.Display.EMFINFO (size: 32)
@@ -12870,7 +12870,7 @@ export interface VIDEO_WIN32K_CALLBACKS_PARAMS {
   /** ptr */
   PhysDisp: Deno.PointerValue | Uint8Array;
   /** usize */
-  Param: Deno.PointerValue;
+  Param: bigint | number;
   /** i32 */
   Status: number;
   /** Windows.Win32.Foundation.BOOLEAN */
@@ -12933,7 +12933,7 @@ export class VIDEO_WIN32K_CALLBACKS_PARAMSView {
   }
 
   // 0x10: usize
-  get Param(): Deno.PointerValue {
+  get Param(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -12981,7 +12981,7 @@ export class VIDEO_WIN32K_CALLBACKS_PARAMSView {
   }
 
   // 0x10: usize
-  set Param(value: Deno.PointerValue) {
+  set Param(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -16958,35 +16958,35 @@ export interface VIDEO_PERFORMANCE_COUNTER {
   /** array */
   KBytesRestored: Deno.PointerValue;
   /** u64 */
-  NbProcessCommited: Deno.PointerValue;
+  NbProcessCommited: bigint | number;
   /** u64 */
-  NbAllocationCommited: Deno.PointerValue;
+  NbAllocationCommited: bigint | number;
   /** u64 */
-  NbAllocationMarked: Deno.PointerValue;
+  NbAllocationMarked: bigint | number;
   /** u64 */
-  KBytesAllocated: Deno.PointerValue;
+  KBytesAllocated: bigint | number;
   /** u64 */
-  KBytesAvailable: Deno.PointerValue;
+  KBytesAvailable: bigint | number;
   /** u64 */
-  KBytesCurMarked: Deno.PointerValue;
+  KBytesCurMarked: bigint | number;
   /** u64 */
-  Reference: Deno.PointerValue;
+  Reference: bigint | number;
   /** u64 */
-  Unreference: Deno.PointerValue;
+  Unreference: bigint | number;
   /** u64 */
-  TrueReference: Deno.PointerValue;
+  TrueReference: bigint | number;
   /** u64 */
-  NbOfPageIn: Deno.PointerValue;
+  NbOfPageIn: bigint | number;
   /** u64 */
-  KBytesPageIn: Deno.PointerValue;
+  KBytesPageIn: bigint | number;
   /** u64 */
-  NbOfPageOut: Deno.PointerValue;
+  NbOfPageOut: bigint | number;
   /** u64 */
-  KBytesPageOut: Deno.PointerValue;
+  KBytesPageOut: bigint | number;
   /** u64 */
-  NbOfRotateOut: Deno.PointerValue;
+  NbOfRotateOut: bigint | number;
   /** u64 */
-  KBytesRotateOut: Deno.PointerValue;
+  KBytesRotateOut: bigint | number;
 }
 
 export const sizeofVIDEO_PERFORMANCE_COUNTER = 168;
@@ -17086,77 +17086,77 @@ export class VIDEO_PERFORMANCE_COUNTERView {
   }
 
   // 0x30: u64
-  get NbProcessCommited(): Deno.PointerValue {
+  get NbProcessCommited(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
   // 0x38: u64
-  get NbAllocationCommited(): Deno.PointerValue {
+  get NbAllocationCommited(): bigint | number {
     return Number(this.view.getBigUint64(56, true));
   }
 
   // 0x40: u64
-  get NbAllocationMarked(): Deno.PointerValue {
+  get NbAllocationMarked(): bigint | number {
     return Number(this.view.getBigUint64(64, true));
   }
 
   // 0x48: u64
-  get KBytesAllocated(): Deno.PointerValue {
+  get KBytesAllocated(): bigint | number {
     return Number(this.view.getBigUint64(72, true));
   }
 
   // 0x50: u64
-  get KBytesAvailable(): Deno.PointerValue {
+  get KBytesAvailable(): bigint | number {
     return Number(this.view.getBigUint64(80, true));
   }
 
   // 0x58: u64
-  get KBytesCurMarked(): Deno.PointerValue {
+  get KBytesCurMarked(): bigint | number {
     return Number(this.view.getBigUint64(88, true));
   }
 
   // 0x60: u64
-  get Reference(): Deno.PointerValue {
+  get Reference(): bigint | number {
     return Number(this.view.getBigUint64(96, true));
   }
 
   // 0x68: u64
-  get Unreference(): Deno.PointerValue {
+  get Unreference(): bigint | number {
     return Number(this.view.getBigUint64(104, true));
   }
 
   // 0x70: u64
-  get TrueReference(): Deno.PointerValue {
+  get TrueReference(): bigint | number {
     return Number(this.view.getBigUint64(112, true));
   }
 
   // 0x78: u64
-  get NbOfPageIn(): Deno.PointerValue {
+  get NbOfPageIn(): bigint | number {
     return Number(this.view.getBigUint64(120, true));
   }
 
   // 0x80: u64
-  get KBytesPageIn(): Deno.PointerValue {
+  get KBytesPageIn(): bigint | number {
     return Number(this.view.getBigUint64(128, true));
   }
 
   // 0x88: u64
-  get NbOfPageOut(): Deno.PointerValue {
+  get NbOfPageOut(): bigint | number {
     return Number(this.view.getBigUint64(136, true));
   }
 
   // 0x90: u64
-  get KBytesPageOut(): Deno.PointerValue {
+  get KBytesPageOut(): bigint | number {
     return Number(this.view.getBigUint64(144, true));
   }
 
   // 0x98: u64
-  get NbOfRotateOut(): Deno.PointerValue {
+  get NbOfRotateOut(): bigint | number {
     return Number(this.view.getBigUint64(152, true));
   }
 
   // 0xa0: u64
-  get KBytesRotateOut(): Deno.PointerValue {
+  get KBytesRotateOut(): bigint | number {
     return Number(this.view.getBigUint64(160, true));
   }
 
@@ -17191,77 +17191,77 @@ export class VIDEO_PERFORMANCE_COUNTERView {
   }
 
   // 0x30: u64
-  set NbProcessCommited(value: Deno.PointerValue) {
+  set NbProcessCommited(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
   // 0x38: u64
-  set NbAllocationCommited(value: Deno.PointerValue) {
+  set NbAllocationCommited(value: bigint | number) {
     this.view.setBigUint64(56, BigInt(value), true);
   }
 
   // 0x40: u64
-  set NbAllocationMarked(value: Deno.PointerValue) {
+  set NbAllocationMarked(value: bigint | number) {
     this.view.setBigUint64(64, BigInt(value), true);
   }
 
   // 0x48: u64
-  set KBytesAllocated(value: Deno.PointerValue) {
+  set KBytesAllocated(value: bigint | number) {
     this.view.setBigUint64(72, BigInt(value), true);
   }
 
   // 0x50: u64
-  set KBytesAvailable(value: Deno.PointerValue) {
+  set KBytesAvailable(value: bigint | number) {
     this.view.setBigUint64(80, BigInt(value), true);
   }
 
   // 0x58: u64
-  set KBytesCurMarked(value: Deno.PointerValue) {
+  set KBytesCurMarked(value: bigint | number) {
     this.view.setBigUint64(88, BigInt(value), true);
   }
 
   // 0x60: u64
-  set Reference(value: Deno.PointerValue) {
+  set Reference(value: bigint | number) {
     this.view.setBigUint64(96, BigInt(value), true);
   }
 
   // 0x68: u64
-  set Unreference(value: Deno.PointerValue) {
+  set Unreference(value: bigint | number) {
     this.view.setBigUint64(104, BigInt(value), true);
   }
 
   // 0x70: u64
-  set TrueReference(value: Deno.PointerValue) {
+  set TrueReference(value: bigint | number) {
     this.view.setBigUint64(112, BigInt(value), true);
   }
 
   // 0x78: u64
-  set NbOfPageIn(value: Deno.PointerValue) {
+  set NbOfPageIn(value: bigint | number) {
     this.view.setBigUint64(120, BigInt(value), true);
   }
 
   // 0x80: u64
-  set KBytesPageIn(value: Deno.PointerValue) {
+  set KBytesPageIn(value: bigint | number) {
     this.view.setBigUint64(128, BigInt(value), true);
   }
 
   // 0x88: u64
-  set NbOfPageOut(value: Deno.PointerValue) {
+  set NbOfPageOut(value: bigint | number) {
     this.view.setBigUint64(136, BigInt(value), true);
   }
 
   // 0x90: u64
-  set KBytesPageOut(value: Deno.PointerValue) {
+  set KBytesPageOut(value: bigint | number) {
     this.view.setBigUint64(144, BigInt(value), true);
   }
 
   // 0x98: u64
-  set NbOfRotateOut(value: Deno.PointerValue) {
+  set NbOfRotateOut(value: bigint | number) {
     this.view.setBigUint64(152, BigInt(value), true);
   }
 
   // 0xa0: u64
-  set KBytesRotateOut(value: Deno.PointerValue) {
+  set KBytesRotateOut(value: bigint | number) {
     this.view.setBigUint64(160, BigInt(value), true);
   }
 }
@@ -19969,13 +19969,13 @@ export class MIPI_DSI_RESETView {
   }
 }
 
-export type HMONITOR = Deno.PointerValue;
+export type HMONITOR = bigint | number;
 
 export type HRESULT = number;
 
 export type PSTR = Deno.PointerValue | Uint8Array;
 
-export type HBITMAP = Deno.PointerValue;
+export type HBITMAP = bigint | number;
 
 // Native Libraries
 

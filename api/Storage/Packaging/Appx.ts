@@ -3869,9 +3869,9 @@ export class APPX_ENCRYPTED_EXEMPTIONSView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -3897,22 +3897,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -4409,7 +4409,7 @@ export class PACKAGE_VIRTUALIZATION_CONTEXT_HANDLE__View {
   // 0x04: pad4
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 export type PSID = Deno.PointerValue | Uint8Array;
 
@@ -5159,7 +5159,7 @@ export function ReleasePackageVirtualizationContext(
 }
 
 export function DeactivatePackageVirtualizationContext(
-  cookie: Deno.PointerValue /* usize */,
+  cookie: bigint | number /* usize */,
 ): void /* void */ {
   return libKERNEL32_dll.DeactivatePackageVirtualizationContext(cookie);
 }

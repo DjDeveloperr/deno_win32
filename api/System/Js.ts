@@ -474,7 +474,7 @@ export function JsGetRuntimeMemoryLimit(
 
 export function JsSetRuntimeMemoryLimit(
   runtime: Deno.PointerValue | Uint8Array /* ptr */,
-  memoryLimit: Deno.PointerValue /* usize */,
+  memoryLimit: bigint | number /* usize */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsSetRuntimeMemoryLimit(util.toPointer(runtime), memoryLimit);
 }
@@ -536,7 +536,7 @@ export function JsIdle(
 
 export function JsParseScript(
   script: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  sourceContext: Deno.PointerValue /* usize */,
+  sourceContext: bigint | number /* usize */,
   sourceUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   result: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
@@ -545,7 +545,7 @@ export function JsParseScript(
 
 export function JsRunScript(
   script: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  sourceContext: Deno.PointerValue /* usize */,
+  sourceContext: bigint | number /* usize */,
   sourceUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   result: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
@@ -563,7 +563,7 @@ export function JsSerializeScript(
 export function JsParseSerializedScript(
   script: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   buffer: Deno.PointerValue | Uint8Array /* ptr */,
-  sourceContext: Deno.PointerValue /* usize */,
+  sourceContext: bigint | number /* usize */,
   sourceUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   result: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
@@ -573,7 +573,7 @@ export function JsParseSerializedScript(
 export function JsRunSerializedScript(
   script: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   buffer: Deno.PointerValue | Uint8Array /* ptr */,
-  sourceContext: Deno.PointerValue /* usize */,
+  sourceContext: bigint | number /* usize */,
   sourceUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   result: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
@@ -683,7 +683,7 @@ export function JsGetStringLength(
 
 export function JsPointerToString(
   stringValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  stringLength: Deno.PointerValue /* usize */,
+  stringLength: bigint | number /* usize */,
   value: Deno.PointerValue | Uint8Array /* ptr */,
 ): JsErrorCode /* Windows.Win32.System.Js.JsErrorCode */ {
   return libchakra_dll.JsPointerToString(util.pwstrToFfi(stringValue), stringLength, util.toPointer(value));

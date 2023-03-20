@@ -9,9 +9,9 @@ import * as util from "../../util.ts";
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -37,22 +37,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -112,16 +112,16 @@ export class _Anonymous_e__UnionView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.System.IO.OVERLAPPED (size: 32)
  */
 export interface OVERLAPPED {
   /** usize */
-  Internal: Deno.PointerValue;
+  Internal: bigint | number;
   /** usize */
-  InternalHigh: Deno.PointerValue;
+  InternalHigh: bigint | number;
   /** _Anonymous_e__Union */
   Anonymous: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.HANDLE */
@@ -155,12 +155,12 @@ export class OVERLAPPEDView {
   }
 
   // 0x00: usize
-  get Internal(): Deno.PointerValue {
+  get Internal(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: usize
-  get InternalHigh(): Deno.PointerValue {
+  get InternalHigh(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -177,12 +177,12 @@ export class OVERLAPPEDView {
   }
 
   // 0x00: usize
-  set Internal(value: Deno.PointerValue) {
+  set Internal(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: usize
-  set InternalHigh(value: Deno.PointerValue) {
+  set InternalHigh(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -202,11 +202,11 @@ export class OVERLAPPEDView {
  */
 export interface OVERLAPPED_ENTRY {
   /** usize */
-  lpCompletionKey: Deno.PointerValue;
+  lpCompletionKey: bigint | number;
   /** ptr */
   lpOverlapped: Deno.PointerValue | Uint8Array;
   /** usize */
-  Internal: Deno.PointerValue;
+  Internal: bigint | number;
   /** u32 */
   dwNumberOfBytesTransferred: number;
 }
@@ -239,7 +239,7 @@ export class OVERLAPPED_ENTRYView {
   }
 
   // 0x00: usize
-  get lpCompletionKey(): Deno.PointerValue {
+  get lpCompletionKey(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -250,7 +250,7 @@ export class OVERLAPPED_ENTRYView {
   }
 
   // 0x10: usize
-  get Internal(): Deno.PointerValue {
+  get Internal(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -262,7 +262,7 @@ export class OVERLAPPED_ENTRYView {
   // 0x1c: pad4
 
   // 0x00: usize
-  set lpCompletionKey(value: Deno.PointerValue) {
+  set lpCompletionKey(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -272,7 +272,7 @@ export class OVERLAPPED_ENTRYView {
   }
 
   // 0x10: usize
-  set Internal(value: Deno.PointerValue) {
+  set Internal(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -348,7 +348,7 @@ try {
 export function CreateIoCompletionPort(
   FileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ExistingCompletionPort: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
-  CompletionKey: Deno.PointerValue /* usize */,
+  CompletionKey: bigint | number /* usize */,
   NumberOfConcurrentThreads: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
   return libKERNEL32_dll.CreateIoCompletionPort(util.toPointer(FileHandle), util.toPointer(ExistingCompletionPort), CompletionKey, NumberOfConcurrentThreads);
@@ -378,7 +378,7 @@ export function GetQueuedCompletionStatusEx(
 export function PostQueuedCompletionStatus(
   CompletionPort: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwNumberOfBytesTransferred: number /* u32 */,
-  dwCompletionKey: Deno.PointerValue /* usize */,
+  dwCompletionKey: bigint | number /* usize */,
   lpOverlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libKERNEL32_dll.PostQueuedCompletionStatus(util.toPointer(CompletionPort), dwNumberOfBytesTransferred, dwCompletionKey, util.toPointer(lpOverlapped)));

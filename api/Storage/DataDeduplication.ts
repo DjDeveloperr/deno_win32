@@ -56,9 +56,9 @@ export interface DEDUP_CONTAINER_EXTENT {
   /** u32 */
   ContainerIndex: number;
   /** i64 */
-  StartOffset: Deno.PointerValue;
+  StartOffset: bigint | number;
   /** i64 */
-  Length: Deno.PointerValue;
+  Length: bigint | number;
 }
 
 export const sizeofDEDUP_CONTAINER_EXTENT = 24;
@@ -94,12 +94,12 @@ export class DEDUP_CONTAINER_EXTENTView {
   // 0x04: pad4
 
   // 0x08: i64
-  get StartOffset(): Deno.PointerValue {
+  get StartOffset(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x10: i64
-  get Length(): Deno.PointerValue {
+  get Length(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -111,12 +111,12 @@ export class DEDUP_CONTAINER_EXTENTView {
   // 0x04: pad4
 
   // 0x08: i64
-  set StartOffset(value: Deno.PointerValue) {
+  set StartOffset(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
   // 0x10: i64
-  set Length(value: Deno.PointerValue) {
+  set Length(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -126,9 +126,9 @@ export class DEDUP_CONTAINER_EXTENTView {
  */
 export interface DDP_FILE_EXTENT {
   /** i64 */
-  Length: Deno.PointerValue;
+  Length: bigint | number;
   /** i64 */
-  Offset: Deno.PointerValue;
+  Offset: bigint | number;
 }
 
 export const sizeofDDP_FILE_EXTENT = 16;
@@ -154,22 +154,22 @@ export class DDP_FILE_EXTENTView {
   }
 
   // 0x00: i64
-  get Length(): Deno.PointerValue {
+  get Length(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
   // 0x08: i64
-  get Offset(): Deno.PointerValue {
+  get Offset(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
   // 0x00: i64
-  set Length(value: Deno.PointerValue) {
+  set Length(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
   // 0x08: i64
-  set Offset(value: Deno.PointerValue) {
+  set Offset(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -181,9 +181,9 @@ export interface DEDUP_CHUNK_INFO_HASH32 {
   /** u32 */
   ChunkFlags: number;
   /** u64 */
-  ChunkOffsetInStream: Deno.PointerValue;
+  ChunkOffsetInStream: bigint | number;
   /** u64 */
-  ChunkSize: Deno.PointerValue;
+  ChunkSize: bigint | number;
   /** array */
   HashVal: Deno.PointerValue;
 }
@@ -223,12 +223,12 @@ export class DEDUP_CHUNK_INFO_HASH32View {
   // 0x04: pad4
 
   // 0x08: u64
-  get ChunkOffsetInStream(): Deno.PointerValue {
+  get ChunkOffsetInStream(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get ChunkSize(): Deno.PointerValue {
+  get ChunkSize(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -246,12 +246,12 @@ export class DEDUP_CHUNK_INFO_HASH32View {
   // 0x04: pad4
 
   // 0x08: u64
-  set ChunkOffsetInStream(value: Deno.PointerValue) {
+  set ChunkOffsetInStream(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set ChunkSize(value: Deno.PointerValue) {
+  set ChunkSize(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -397,7 +397,7 @@ export interface DedupStreamEntry {
   /** u32 */
   LogicalSize: number;
   /** u64 */
-  Offset: Deno.PointerValue;
+  Offset: bigint | number;
 }
 
 export const sizeofDedupStreamEntry = 24;
@@ -439,7 +439,7 @@ export class DedupStreamEntryView {
   // 0x0c: pad4
 
   // 0x10: u64
-  get Offset(): Deno.PointerValue {
+  get Offset(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -456,7 +456,7 @@ export class DedupStreamEntryView {
   // 0x0c: pad4
 
   // 0x10: u64
-  set Offset(value: Deno.PointerValue) {
+  set Offset(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -470,9 +470,9 @@ export interface DedupStream {
   /** Windows.Win32.Foundation.BSTR */
   Path: Uint8Array | Deno.PointerValue;
   /** u64 */
-  Offset: Deno.PointerValue;
+  Offset: bigint | number;
   /** u64 */
-  Length: Deno.PointerValue;
+  Length: bigint | number;
   /** u32 */
   ChunkCount: number;
 }
@@ -511,12 +511,12 @@ export class DedupStreamView {
   }
 
   // 0x08: u64
-  get Offset(): Deno.PointerValue {
+  get Offset(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get Length(): Deno.PointerValue {
+  get Length(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -533,12 +533,12 @@ export class DedupStreamView {
   }
 
   // 0x08: u64
-  set Offset(value: Deno.PointerValue) {
+  set Offset(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set Length(value: Deno.PointerValue) {
+  set Length(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 

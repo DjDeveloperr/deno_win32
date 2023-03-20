@@ -1058,7 +1058,7 @@ export const DsRoleOperationNeedReboot = 2;
 
 // Structs
 
-export type HICON = Deno.PointerValue;
+export type HICON = bigint | number;
 
 export type PWSTR = Deno.PointerValue | Uint8Array;
 
@@ -1164,9 +1164,9 @@ export class CQFORMView {
   }
 }
 
-export type HINSTANCE = Deno.PointerValue;
+export type HINSTANCE = bigint | number;
 
-export type LPARAM = Deno.PointerValue;
+export type LPARAM = bigint | number;
 
 /**
  * Windows.Win32.Networking.ActiveDirectory.CQPAGE (size: 48)
@@ -1314,9 +1314,9 @@ export class CQPAGEView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -1342,22 +1342,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -3047,7 +3047,7 @@ export class ADS_SEARCHPREF_INFOView {
   // 0x14: pad4
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.Networking.ActiveDirectory.ADS_SEARCH_COLUMN (size: 40)
@@ -4357,7 +4357,7 @@ export class DSCLASSCREATIONINFOView {
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 /**
  * Windows.Win32.Networking.ActiveDirectory.DSBROWSEINFOW (size: 112)
@@ -9346,9 +9346,9 @@ export interface DS_REPL_NEIGHBORW {
   /** System.Guid */
   uuidAsyncIntersiteTransportObjGuid: Uint8Array | Deno.PointerValue;
   /** i64 */
-  usnLastObjChangeSynced: Deno.PointerValue;
+  usnLastObjChangeSynced: bigint | number;
   /** i64 */
-  usnAttributeFilter: Deno.PointerValue;
+  usnAttributeFilter: bigint | number;
   /** Windows.Win32.Foundation.FILETIME */
   ftimeLastSyncSuccess: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.FILETIME */
@@ -9480,12 +9480,12 @@ export class DS_REPL_NEIGHBORWView {
   }
 
   // 0x48: i64
-  get usnLastObjChangeSynced(): Deno.PointerValue {
+  get usnLastObjChangeSynced(): bigint | number {
     return Number(this.view.getBigInt64(72, true));
   }
 
   // 0x50: i64
-  get usnAttributeFilter(): Deno.PointerValue {
+  get usnAttributeFilter(): bigint | number {
     return Number(this.view.getBigInt64(80, true));
   }
 
@@ -9566,12 +9566,12 @@ export class DS_REPL_NEIGHBORWView {
   }
 
   // 0x48: i64
-  set usnLastObjChangeSynced(value: Deno.PointerValue) {
+  set usnLastObjChangeSynced(value: bigint | number) {
     this.view.setBigInt64(72, BigInt(value), true);
   }
 
   // 0x50: i64
-  set usnAttributeFilter(value: Deno.PointerValue) {
+  set usnAttributeFilter(value: bigint | number) {
     this.view.setBigInt64(80, BigInt(value), true);
   }
 
@@ -9621,9 +9621,9 @@ export interface DS_REPL_NEIGHBORW_BLOB {
   /** System.Guid */
   uuidAsyncIntersiteTransportObjGuid: Uint8Array | Deno.PointerValue;
   /** i64 */
-  usnLastObjChangeSynced: Deno.PointerValue;
+  usnLastObjChangeSynced: bigint | number;
   /** i64 */
-  usnAttributeFilter: Deno.PointerValue;
+  usnAttributeFilter: bigint | number;
   /** Windows.Win32.Foundation.FILETIME */
   ftimeLastSyncSuccess: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.FILETIME */
@@ -9739,12 +9739,12 @@ export class DS_REPL_NEIGHBORW_BLOBView {
   }
 
   // 0x38: i64
-  get usnLastObjChangeSynced(): Deno.PointerValue {
+  get usnLastObjChangeSynced(): bigint | number {
     return Number(this.view.getBigInt64(56, true));
   }
 
   // 0x40: i64
-  get usnAttributeFilter(): Deno.PointerValue {
+  get usnAttributeFilter(): bigint | number {
     return Number(this.view.getBigInt64(64, true));
   }
 
@@ -9821,12 +9821,12 @@ export class DS_REPL_NEIGHBORW_BLOBView {
   }
 
   // 0x38: i64
-  set usnLastObjChangeSynced(value: Deno.PointerValue) {
+  set usnLastObjChangeSynced(value: bigint | number) {
     this.view.setBigInt64(56, BigInt(value), true);
   }
 
   // 0x40: i64
-  set usnAttributeFilter(value: Deno.PointerValue) {
+  set usnAttributeFilter(value: bigint | number) {
     this.view.setBigInt64(64, BigInt(value), true);
   }
 
@@ -9926,7 +9926,7 @@ export interface DS_REPL_CURSOR {
   /** System.Guid */
   uuidSourceDsaInvocationID: Uint8Array | Deno.PointerValue;
   /** i64 */
-  usnAttributeFilter: Deno.PointerValue;
+  usnAttributeFilter: bigint | number;
 }
 
 export const sizeofDS_REPL_CURSOR = 16;
@@ -9958,7 +9958,7 @@ export class DS_REPL_CURSORView {
   }
 
   // 0x08: i64
-  get usnAttributeFilter(): Deno.PointerValue {
+  get usnAttributeFilter(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -9968,7 +9968,7 @@ export class DS_REPL_CURSORView {
   }
 
   // 0x08: i64
-  set usnAttributeFilter(value: Deno.PointerValue) {
+  set usnAttributeFilter(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 }
@@ -9980,7 +9980,7 @@ export interface DS_REPL_CURSOR_2 {
   /** System.Guid */
   uuidSourceDsaInvocationID: Uint8Array | Deno.PointerValue;
   /** i64 */
-  usnAttributeFilter: Deno.PointerValue;
+  usnAttributeFilter: bigint | number;
   /** Windows.Win32.Foundation.FILETIME */
   ftimeLastSyncSuccess: Uint8Array | Deno.PointerValue;
 }
@@ -10016,7 +10016,7 @@ export class DS_REPL_CURSOR_2View {
   }
 
   // 0x08: i64
-  get usnAttributeFilter(): Deno.PointerValue {
+  get usnAttributeFilter(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -10032,7 +10032,7 @@ export class DS_REPL_CURSOR_2View {
   }
 
   // 0x08: i64
-  set usnAttributeFilter(value: Deno.PointerValue) {
+  set usnAttributeFilter(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -10049,7 +10049,7 @@ export interface DS_REPL_CURSOR_3W {
   /** System.Guid */
   uuidSourceDsaInvocationID: Uint8Array | Deno.PointerValue;
   /** i64 */
-  usnAttributeFilter: Deno.PointerValue;
+  usnAttributeFilter: bigint | number;
   /** Windows.Win32.Foundation.FILETIME */
   ftimeLastSyncSuccess: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Foundation.PWSTR */
@@ -10092,7 +10092,7 @@ export class DS_REPL_CURSOR_3WView {
   }
 
   // 0x08: i64
-  get usnAttributeFilter(): Deno.PointerValue {
+  get usnAttributeFilter(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -10114,7 +10114,7 @@ export class DS_REPL_CURSOR_3WView {
   }
 
   // 0x08: i64
-  set usnAttributeFilter(value: Deno.PointerValue) {
+  set usnAttributeFilter(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -10137,7 +10137,7 @@ export interface DS_REPL_CURSOR_BLOB {
   /** System.Guid */
   uuidSourceDsaInvocationID: Uint8Array | Deno.PointerValue;
   /** i64 */
-  usnAttributeFilter: Deno.PointerValue;
+  usnAttributeFilter: bigint | number;
   /** Windows.Win32.Foundation.FILETIME */
   ftimeLastSyncSuccess: Uint8Array | Deno.PointerValue;
   /** u32 */
@@ -10178,7 +10178,7 @@ export class DS_REPL_CURSOR_BLOBView {
   }
 
   // 0x08: i64
-  get usnAttributeFilter(): Deno.PointerValue {
+  get usnAttributeFilter(): bigint | number {
     return Number(this.view.getBigInt64(8, true));
   }
 
@@ -10201,7 +10201,7 @@ export class DS_REPL_CURSOR_BLOBView {
   }
 
   // 0x08: i64
-  set usnAttributeFilter(value: Deno.PointerValue) {
+  set usnAttributeFilter(value: bigint | number) {
     this.view.setBigInt64(8, BigInt(value), true);
   }
 
@@ -10435,9 +10435,9 @@ export interface DS_REPL_ATTR_META_DATA {
   /** System.Guid */
   uuidLastOriginatingDsaInvocationID: Uint8Array | Deno.PointerValue;
   /** i64 */
-  usnOriginatingChange: Deno.PointerValue;
+  usnOriginatingChange: bigint | number;
   /** i64 */
-  usnLocalChange: Deno.PointerValue;
+  usnLocalChange: bigint | number;
 }
 
 export const sizeofDS_REPL_ATTR_META_DATA = 48;
@@ -10500,12 +10500,12 @@ export class DS_REPL_ATTR_META_DATAView {
   }
 
   // 0x20: i64
-  get usnOriginatingChange(): Deno.PointerValue {
+  get usnOriginatingChange(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
   // 0x28: i64
-  get usnLocalChange(): Deno.PointerValue {
+  get usnLocalChange(): bigint | number {
     return Number(this.view.getBigInt64(40, true));
   }
 
@@ -10533,12 +10533,12 @@ export class DS_REPL_ATTR_META_DATAView {
   }
 
   // 0x20: i64
-  set usnOriginatingChange(value: Deno.PointerValue) {
+  set usnOriginatingChange(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 
   // 0x28: i64
-  set usnLocalChange(value: Deno.PointerValue) {
+  set usnLocalChange(value: bigint | number) {
     this.view.setBigInt64(40, BigInt(value), true);
   }
 }
@@ -10556,9 +10556,9 @@ export interface DS_REPL_ATTR_META_DATA_2 {
   /** System.Guid */
   uuidLastOriginatingDsaInvocationID: Uint8Array | Deno.PointerValue;
   /** i64 */
-  usnOriginatingChange: Deno.PointerValue;
+  usnOriginatingChange: bigint | number;
   /** i64 */
-  usnLocalChange: Deno.PointerValue;
+  usnLocalChange: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   pszLastOriginatingDsaDN: string | null | Uint8Array | Uint16Array;
 }
@@ -10628,12 +10628,12 @@ export class DS_REPL_ATTR_META_DATA_2View {
   }
 
   // 0x20: i64
-  get usnOriginatingChange(): Deno.PointerValue {
+  get usnOriginatingChange(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
   // 0x28: i64
-  get usnLocalChange(): Deno.PointerValue {
+  get usnLocalChange(): bigint | number {
     return Number(this.view.getBigInt64(40, true));
   }
 
@@ -10667,12 +10667,12 @@ export class DS_REPL_ATTR_META_DATA_2View {
   }
 
   // 0x20: i64
-  set usnOriginatingChange(value: Deno.PointerValue) {
+  set usnOriginatingChange(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 
   // 0x28: i64
-  set usnLocalChange(value: Deno.PointerValue) {
+  set usnLocalChange(value: bigint | number) {
     this.view.setBigInt64(40, BigInt(value), true);
   }
 
@@ -10696,9 +10696,9 @@ export interface DS_REPL_ATTR_META_DATA_BLOB {
   /** System.Guid */
   uuidLastOriginatingDsaInvocationID: Uint8Array | Deno.PointerValue;
   /** i64 */
-  usnOriginatingChange: Deno.PointerValue;
+  usnOriginatingChange: bigint | number;
   /** i64 */
-  usnLocalChange: Deno.PointerValue;
+  usnLocalChange: bigint | number;
   /** u32 */
   oszLastOriginatingDsaDN: number;
 }
@@ -10759,12 +10759,12 @@ export class DS_REPL_ATTR_META_DATA_BLOBView {
   }
 
   // 0x18: i64
-  get usnOriginatingChange(): Deno.PointerValue {
+  get usnOriginatingChange(): bigint | number {
     return Number(this.view.getBigInt64(24, true));
   }
 
   // 0x20: i64
-  get usnLocalChange(): Deno.PointerValue {
+  get usnLocalChange(): bigint | number {
     return Number(this.view.getBigInt64(32, true));
   }
 
@@ -10796,12 +10796,12 @@ export class DS_REPL_ATTR_META_DATA_BLOBView {
   }
 
   // 0x18: i64
-  set usnOriginatingChange(value: Deno.PointerValue) {
+  set usnOriginatingChange(value: bigint | number) {
     this.view.setBigInt64(24, BigInt(value), true);
   }
 
   // 0x20: i64
-  set usnLocalChange(value: Deno.PointerValue) {
+  set usnLocalChange(value: bigint | number) {
     this.view.setBigInt64(32, BigInt(value), true);
   }
 
@@ -11674,9 +11674,9 @@ export interface DS_REPL_VALUE_META_DATA {
   /** System.Guid */
   uuidLastOriginatingDsaInvocationID: Uint8Array | Deno.PointerValue;
   /** i64 */
-  usnOriginatingChange: Deno.PointerValue;
+  usnOriginatingChange: bigint | number;
   /** i64 */
-  usnLocalChange: Deno.PointerValue;
+  usnLocalChange: bigint | number;
 }
 
 export const sizeofDS_REPL_VALUE_META_DATA = 88;
@@ -11784,12 +11784,12 @@ export class DS_REPL_VALUE_META_DATAView {
   }
 
   // 0x48: i64
-  get usnOriginatingChange(): Deno.PointerValue {
+  get usnOriginatingChange(): bigint | number {
     return Number(this.view.getBigInt64(72, true));
   }
 
   // 0x50: i64
-  get usnLocalChange(): Deno.PointerValue {
+  get usnLocalChange(): bigint | number {
     return Number(this.view.getBigInt64(80, true));
   }
 
@@ -11845,12 +11845,12 @@ export class DS_REPL_VALUE_META_DATAView {
   }
 
   // 0x48: i64
-  set usnOriginatingChange(value: Deno.PointerValue) {
+  set usnOriginatingChange(value: bigint | number) {
     this.view.setBigInt64(72, BigInt(value), true);
   }
 
   // 0x50: i64
-  set usnLocalChange(value: Deno.PointerValue) {
+  set usnLocalChange(value: bigint | number) {
     this.view.setBigInt64(80, BigInt(value), true);
   }
 }
@@ -11878,9 +11878,9 @@ export interface DS_REPL_VALUE_META_DATA_2 {
   /** System.Guid */
   uuidLastOriginatingDsaInvocationID: Uint8Array | Deno.PointerValue;
   /** i64 */
-  usnOriginatingChange: Deno.PointerValue;
+  usnOriginatingChange: bigint | number;
   /** i64 */
-  usnLocalChange: Deno.PointerValue;
+  usnLocalChange: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   pszLastOriginatingDsaDN: string | null | Uint8Array | Uint16Array;
 }
@@ -11995,12 +11995,12 @@ export class DS_REPL_VALUE_META_DATA_2View {
   }
 
   // 0x48: i64
-  get usnOriginatingChange(): Deno.PointerValue {
+  get usnOriginatingChange(): bigint | number {
     return Number(this.view.getBigInt64(72, true));
   }
 
   // 0x50: i64
-  get usnLocalChange(): Deno.PointerValue {
+  get usnLocalChange(): bigint | number {
     return Number(this.view.getBigInt64(80, true));
   }
 
@@ -12062,12 +12062,12 @@ export class DS_REPL_VALUE_META_DATA_2View {
   }
 
   // 0x48: i64
-  set usnOriginatingChange(value: Deno.PointerValue) {
+  set usnOriginatingChange(value: bigint | number) {
     this.view.setBigInt64(72, BigInt(value), true);
   }
 
   // 0x50: i64
-  set usnLocalChange(value: Deno.PointerValue) {
+  set usnLocalChange(value: bigint | number) {
     this.view.setBigInt64(80, BigInt(value), true);
   }
 
@@ -12101,9 +12101,9 @@ export interface DS_REPL_VALUE_META_DATA_EXT {
   /** System.Guid */
   uuidLastOriginatingDsaInvocationID: Uint8Array | Deno.PointerValue;
   /** i64 */
-  usnOriginatingChange: Deno.PointerValue;
+  usnOriginatingChange: bigint | number;
   /** i64 */
-  usnLocalChange: Deno.PointerValue;
+  usnLocalChange: bigint | number;
   /** Windows.Win32.Foundation.PWSTR */
   pszLastOriginatingDsaDN: string | null | Uint8Array | Uint16Array;
   /** u32 */
@@ -12231,12 +12231,12 @@ export class DS_REPL_VALUE_META_DATA_EXTView {
   }
 
   // 0x48: i64
-  get usnOriginatingChange(): Deno.PointerValue {
+  get usnOriginatingChange(): bigint | number {
     return Number(this.view.getBigInt64(72, true));
   }
 
   // 0x50: i64
-  get usnLocalChange(): Deno.PointerValue {
+  get usnLocalChange(): bigint | number {
     return Number(this.view.getBigInt64(80, true));
   }
 
@@ -12315,12 +12315,12 @@ export class DS_REPL_VALUE_META_DATA_EXTView {
   }
 
   // 0x48: i64
-  set usnOriginatingChange(value: Deno.PointerValue) {
+  set usnOriginatingChange(value: bigint | number) {
     this.view.setBigInt64(72, BigInt(value), true);
   }
 
   // 0x50: i64
-  set usnLocalChange(value: Deno.PointerValue) {
+  set usnLocalChange(value: bigint | number) {
     this.view.setBigInt64(80, BigInt(value), true);
   }
 
@@ -12371,9 +12371,9 @@ export interface DS_REPL_VALUE_META_DATA_BLOB {
   /** System.Guid */
   uuidLastOriginatingDsaInvocationID: Uint8Array | Deno.PointerValue;
   /** i64 */
-  usnOriginatingChange: Deno.PointerValue;
+  usnOriginatingChange: bigint | number;
   /** i64 */
-  usnLocalChange: Deno.PointerValue;
+  usnLocalChange: bigint | number;
   /** u32 */
   oszLastOriginatingDsaDN: number;
 }
@@ -12474,12 +12474,12 @@ export class DS_REPL_VALUE_META_DATA_BLOBView {
   }
 
   // 0x38: i64
-  get usnOriginatingChange(): Deno.PointerValue {
+  get usnOriginatingChange(): bigint | number {
     return Number(this.view.getBigInt64(56, true));
   }
 
   // 0x40: i64
-  get usnLocalChange(): Deno.PointerValue {
+  get usnLocalChange(): bigint | number {
     return Number(this.view.getBigInt64(64, true));
   }
 
@@ -12538,12 +12538,12 @@ export class DS_REPL_VALUE_META_DATA_BLOBView {
   }
 
   // 0x38: i64
-  set usnOriginatingChange(value: Deno.PointerValue) {
+  set usnOriginatingChange(value: bigint | number) {
     this.view.setBigInt64(56, BigInt(value), true);
   }
 
   // 0x40: i64
-  set usnLocalChange(value: Deno.PointerValue) {
+  set usnLocalChange(value: bigint | number) {
     this.view.setBigInt64(64, BigInt(value), true);
   }
 
@@ -12578,9 +12578,9 @@ export interface DS_REPL_VALUE_META_DATA_BLOB_EXT {
   /** System.Guid */
   uuidLastOriginatingDsaInvocationID: Uint8Array | Deno.PointerValue;
   /** i64 */
-  usnOriginatingChange: Deno.PointerValue;
+  usnOriginatingChange: bigint | number;
   /** i64 */
-  usnLocalChange: Deno.PointerValue;
+  usnLocalChange: bigint | number;
   /** u32 */
   oszLastOriginatingDsaDN: number;
   /** u32 */
@@ -12692,12 +12692,12 @@ export class DS_REPL_VALUE_META_DATA_BLOB_EXTView {
   }
 
   // 0x38: i64
-  get usnOriginatingChange(): Deno.PointerValue {
+  get usnOriginatingChange(): bigint | number {
     return Number(this.view.getBigInt64(56, true));
   }
 
   // 0x40: i64
-  get usnLocalChange(): Deno.PointerValue {
+  get usnLocalChange(): bigint | number {
     return Number(this.view.getBigInt64(64, true));
   }
 
@@ -12769,12 +12769,12 @@ export class DS_REPL_VALUE_META_DATA_BLOB_EXTView {
   }
 
   // 0x38: i64
-  set usnOriginatingChange(value: Deno.PointerValue) {
+  set usnOriginatingChange(value: bigint | number) {
     this.view.setBigInt64(56, BigInt(value), true);
   }
 
   // 0x40: i64
-  set usnLocalChange(value: Deno.PointerValue) {
+  set usnLocalChange(value: bigint | number) {
     this.view.setBigInt64(64, BigInt(value), true);
   }
 
@@ -14043,9 +14043,9 @@ export class DS_DOMAIN_TRUSTSAView {
   }
 }
 
-export type GetDcContextHandle = Deno.PointerValue;
+export type GetDcContextHandle = bigint | number;
 
-export type ADS_SEARCH_HANDLE = Deno.PointerValue;
+export type ADS_SEARCH_HANDLE = bigint | number;
 
 export type PSECURITY_DESCRIPTOR = Deno.PointerValue | Uint8Array;
 
@@ -15621,7 +15621,7 @@ export function DsReplicaSyncAllA(
   hDS: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pszNameContext: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ulFlags: number /* u32 */,
-  pFnCallBack: Deno.PointerValue /* isize */,
+  pFnCallBack: bigint | number /* isize */,
   pCallbackData: Deno.PointerValue | Uint8Array /* ptr */,
   pErrors: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
@@ -15632,7 +15632,7 @@ export function DsReplicaSyncAllW(
   hDS: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pszNameContext: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulFlags: number /* u32 */,
-  pFnCallBack: Deno.PointerValue /* isize */,
+  pFnCallBack: bigint | number /* isize */,
   pCallbackData: Deno.PointerValue | Uint8Array /* ptr */,
   pErrors: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {

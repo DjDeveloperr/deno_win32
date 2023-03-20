@@ -2031,9 +2031,9 @@ export class D2D_SIZE_UView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -2059,22 +2059,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -3438,7 +3438,7 @@ export class D2D1_RENDER_TARGET_PROPERTIESView {
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 /**
  * Windows.Win32.Graphics.Direct2D.D2D1_HWND_RENDER_TARGET_PROPERTIES (size: 24)
@@ -3523,9 +3523,9 @@ export interface D2D1_DRAWING_STATE_DESCRIPTION {
   /** Windows.Win32.Graphics.Direct2D.D2D1_TEXT_ANTIALIAS_MODE */
   textAntialiasMode: D2D1_TEXT_ANTIALIAS_MODE;
   /** u64 */
-  tag1: Deno.PointerValue;
+  tag1: bigint | number;
   /** u64 */
-  tag2: Deno.PointerValue;
+  tag2: bigint | number;
   /** Windows.Win32.Graphics.Direct2D.Common.D2D_MATRIX_3X2_F */
   transform: Uint8Array | Deno.PointerValue;
 }
@@ -3569,12 +3569,12 @@ export class D2D1_DRAWING_STATE_DESCRIPTIONView {
   }
 
   // 0x08: u64
-  get tag1(): Deno.PointerValue {
+  get tag1(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get tag2(): Deno.PointerValue {
+  get tag2(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -3595,12 +3595,12 @@ export class D2D1_DRAWING_STATE_DESCRIPTIONView {
   }
 
   // 0x08: u64
-  set tag1(value: Deno.PointerValue) {
+  set tag1(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set tag2(value: Deno.PointerValue) {
+  set tag2(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -4497,9 +4497,9 @@ export interface D2D1_DRAWING_STATE_DESCRIPTION1 {
   /** Windows.Win32.Graphics.Direct2D.D2D1_TEXT_ANTIALIAS_MODE */
   textAntialiasMode: D2D1_TEXT_ANTIALIAS_MODE;
   /** u64 */
-  tag1: Deno.PointerValue;
+  tag1: bigint | number;
   /** u64 */
-  tag2: Deno.PointerValue;
+  tag2: bigint | number;
   /** Windows.Win32.Graphics.Direct2D.Common.D2D_MATRIX_3X2_F */
   transform: Uint8Array | Deno.PointerValue;
   /** Windows.Win32.Graphics.Direct2D.D2D1_PRIMITIVE_BLEND */
@@ -4551,12 +4551,12 @@ export class D2D1_DRAWING_STATE_DESCRIPTION1View {
   }
 
   // 0x08: u64
-  get tag1(): Deno.PointerValue {
+  get tag1(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get tag2(): Deno.PointerValue {
+  get tag2(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -4587,12 +4587,12 @@ export class D2D1_DRAWING_STATE_DESCRIPTION1View {
   }
 
   // 0x08: u64
-  set tag1(value: Deno.PointerValue) {
+  set tag1(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set tag2(value: Deno.PointerValue) {
+  set tag2(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 

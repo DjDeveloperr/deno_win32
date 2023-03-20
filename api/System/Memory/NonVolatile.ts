@@ -11,7 +11,7 @@ export interface NV_MEMORY_RANGE {
   /** ptr */
   BaseAddress: Deno.PointerValue | Uint8Array;
   /** usize */
-  Length: Deno.PointerValue;
+  Length: bigint | number;
 }
 
 export const sizeofNV_MEMORY_RANGE = 16;
@@ -43,7 +43,7 @@ export class NV_MEMORY_RANGEView {
   }
 
   // 0x08: usize
-  get Length(): Deno.PointerValue {
+  get Length(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -53,7 +53,7 @@ export class NV_MEMORY_RANGEView {
   }
 
   // 0x08: usize
-  set Length(value: Deno.PointerValue) {
+  set Length(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -97,7 +97,7 @@ try {
 
 export function RtlGetNonVolatileToken(
   NvBuffer: Deno.PointerValue | Uint8Array /* ptr */,
-  Size: Deno.PointerValue /* usize */,
+  Size: bigint | number /* usize */,
   NvToken: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
   return libntdll_dll.RtlGetNonVolatileToken(util.toPointer(NvBuffer), Size, util.toPointer(NvToken));
@@ -112,7 +112,7 @@ export function RtlFreeNonVolatileToken(
 export function RtlFlushNonVolatileMemory(
   NvToken: Deno.PointerValue | Uint8Array /* ptr */,
   NvBuffer: Deno.PointerValue | Uint8Array /* ptr */,
-  Size: Deno.PointerValue /* usize */,
+  Size: bigint | number /* usize */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
   return libntdll_dll.RtlFlushNonVolatileMemory(util.toPointer(NvToken), util.toPointer(NvBuffer), Size, Flags);
@@ -128,7 +128,7 @@ export function RtlWriteNonVolatileMemory(
   NvToken: Deno.PointerValue | Uint8Array /* ptr */,
   NvDestination: Deno.PointerValue | Uint8Array /* ptr */,
   Source: Deno.PointerValue | Uint8Array /* ptr */,
-  Size: Deno.PointerValue /* usize */,
+  Size: bigint | number /* usize */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
   return libntdll_dll.RtlWriteNonVolatileMemory(util.toPointer(NvToken), util.toPointer(NvDestination), util.toPointer(Source), Size, Flags);
@@ -137,7 +137,7 @@ export function RtlWriteNonVolatileMemory(
 export function RtlFillNonVolatileMemory(
   NvToken: Deno.PointerValue | Uint8Array /* ptr */,
   NvDestination: Deno.PointerValue | Uint8Array /* ptr */,
-  Size: Deno.PointerValue /* usize */,
+  Size: bigint | number /* usize */,
   Value: number /* u8 */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
@@ -147,7 +147,7 @@ export function RtlFillNonVolatileMemory(
 export function RtlFlushNonVolatileMemoryRanges(
   NvToken: Deno.PointerValue | Uint8Array /* ptr */,
   NvRanges: Deno.PointerValue | Uint8Array /* ptr */,
-  NumRanges: Deno.PointerValue /* usize */,
+  NumRanges: bigint | number /* usize */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
   return libntdll_dll.RtlFlushNonVolatileMemoryRanges(util.toPointer(NvToken), util.toPointer(NvRanges), NumRanges, Flags);

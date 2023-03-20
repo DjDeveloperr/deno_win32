@@ -1260,15 +1260,15 @@ export const RECO_TYPE_WCHAR = 1;
 
 // Structs
 
-export type HRECOALT = Deno.PointerValue;
+export type HRECOALT = bigint | number;
 
-export type HRECOCONTEXT = Deno.PointerValue;
+export type HRECOCONTEXT = bigint | number;
 
-export type HRECOGNIZER = Deno.PointerValue;
+export type HRECOGNIZER = bigint | number;
 
-export type HRECOLATTICE = Deno.PointerValue;
+export type HRECOLATTICE = bigint | number;
 
-export type HRECOWORDLIST = Deno.PointerValue;
+export type HRECOWORDLIST = bigint | number;
 
 /**
  * Windows.Win32.UI.TabletPC.SYSTEM_EVENT_DATA (size: 32)
@@ -2050,7 +2050,7 @@ export class FLICK_DATAView {
   // 0x04: pad4
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 /**
  * Windows.Win32.UI.Controls.NMHDR (size: 24)
@@ -2059,7 +2059,7 @@ export interface NMHDR {
   /** Windows.Win32.Foundation.HWND */
   hwndFrom: Deno.PointerValue;
   /** usize */
-  idFrom: Deno.PointerValue;
+  idFrom: bigint | number;
   /** u32 */
   code: number;
 }
@@ -2096,7 +2096,7 @@ export class NMHDRView {
   }
 
   // 0x08: usize
-  get idFrom(): Deno.PointerValue {
+  get idFrom(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -2113,7 +2113,7 @@ export class NMHDRView {
   }
 
   // 0x08: usize
-  set idFrom(value: Deno.PointerValue) {
+  set idFrom(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -2200,9 +2200,9 @@ export class IEC_STROKEINFOView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -2228,22 +2228,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }

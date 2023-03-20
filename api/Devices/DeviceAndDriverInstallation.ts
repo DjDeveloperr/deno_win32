@@ -1493,9 +1493,9 @@ export const PRIORITY_HIGH = 2;
 
 // Structs
 
-export type HCMNOTIFICATION = Deno.PointerValue;
+export type HCMNOTIFICATION = bigint | number;
 
-export type HDEVINFO = Deno.PointerValue;
+export type HDEVINFO = bigint | number;
 
 /**
  * Windows.Win32.Devices.DeviceAndDriverInstallation.INFCONTEXT (size: 24)
@@ -1653,9 +1653,9 @@ export class SP_INF_INFORMATIONView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -1681,22 +1681,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -4292,7 +4292,7 @@ export interface SP_DEVINFO_DATA {
   /** u32 */
   DevInst: number;
   /** usize */
-  Reserved: Deno.PointerValue;
+  Reserved: bigint | number;
 }
 
 export const sizeofSP_DEVINFO_DATA = 32;
@@ -4344,7 +4344,7 @@ export class SP_DEVINFO_DATAView {
   // 0x14: pad4
 
   // 0x18: usize
-  get Reserved(): Deno.PointerValue {
+  get Reserved(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -4368,7 +4368,7 @@ export class SP_DEVINFO_DATAView {
   // 0x14: pad4
 
   // 0x18: usize
-  set Reserved(value: Deno.PointerValue) {
+  set Reserved(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 }
@@ -4384,7 +4384,7 @@ export interface SP_DEVICE_INTERFACE_DATA {
   /** u32 */
   Flags: number;
   /** usize */
-  Reserved: Deno.PointerValue;
+  Reserved: bigint | number;
 }
 
 export const sizeofSP_DEVICE_INTERFACE_DATA = 32;
@@ -4436,7 +4436,7 @@ export class SP_DEVICE_INTERFACE_DATAView {
   // 0x14: pad4
 
   // 0x18: usize
-  get Reserved(): Deno.PointerValue {
+  get Reserved(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -4460,7 +4460,7 @@ export class SP_DEVICE_INTERFACE_DATAView {
   // 0x14: pad4
 
   // 0x18: usize
-  set Reserved(value: Deno.PointerValue) {
+  set Reserved(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 }
@@ -4583,7 +4583,7 @@ export class SP_DEVICE_INTERFACE_DETAIL_DATA_WView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.Devices.DeviceAndDriverInstallation.SP_DEVINFO_LIST_DETAIL_DATA_A (size: 32)
@@ -4763,7 +4763,7 @@ export class SP_DEVINFO_LIST_DETAIL_DATA_WView {
   }
 }
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 /**
  * Windows.Win32.Devices.DeviceAndDriverInstallation.SP_DEVINSTALL_PARAMS_A (size: 72)
@@ -4784,7 +4784,7 @@ export interface SP_DEVINSTALL_PARAMS_A {
   /** ptr */
   FileQueue: Deno.PointerValue | Uint8Array;
   /** usize */
-  ClassInstallReserved: Deno.PointerValue;
+  ClassInstallReserved: bigint | number;
   /** u32 */
   Reserved: number;
   /** array */
@@ -4873,7 +4873,7 @@ export class SP_DEVINSTALL_PARAMS_AView {
   }
 
   // 0x30: usize
-  get ClassInstallReserved(): Deno.PointerValue {
+  get ClassInstallReserved(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -4928,7 +4928,7 @@ export class SP_DEVINSTALL_PARAMS_AView {
   }
 
   // 0x30: usize
-  set ClassInstallReserved(value: Deno.PointerValue) {
+  set ClassInstallReserved(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
@@ -4964,7 +4964,7 @@ export interface SP_DEVINSTALL_PARAMS_W {
   /** ptr */
   FileQueue: Deno.PointerValue | Uint8Array;
   /** usize */
-  ClassInstallReserved: Deno.PointerValue;
+  ClassInstallReserved: bigint | number;
   /** u32 */
   Reserved: number;
   /** array */
@@ -5053,7 +5053,7 @@ export class SP_DEVINSTALL_PARAMS_WView {
   }
 
   // 0x30: usize
-  get ClassInstallReserved(): Deno.PointerValue {
+  get ClassInstallReserved(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -5108,7 +5108,7 @@ export class SP_DEVINSTALL_PARAMS_WView {
   }
 
   // 0x30: usize
-  set ClassInstallReserved(value: Deno.PointerValue) {
+  set ClassInstallReserved(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 
@@ -5645,7 +5645,7 @@ export class SP_DETECTDEVICE_PARAMSView {
   }
 }
 
-export type LPARAM = Deno.PointerValue;
+export type LPARAM = bigint | number;
 
 /**
  * Windows.Win32.Devices.DeviceAndDriverInstallation.SP_INSTALLWIZARD_DATA (size: 56)
@@ -6093,7 +6093,7 @@ export interface SP_DRVINFO_DATA_V2_A {
   /** u32 */
   DriverType: number;
   /** usize */
-  Reserved: Deno.PointerValue;
+  Reserved: bigint | number;
   /** array */
   Description: Deno.PointerValue;
   /** array */
@@ -6103,7 +6103,7 @@ export interface SP_DRVINFO_DATA_V2_A {
   /** Windows.Win32.Foundation.FILETIME */
   DriverDate: Uint8Array | Deno.PointerValue;
   /** u64 */
-  DriverVersion: Deno.PointerValue;
+  DriverVersion: bigint | number;
 }
 
 export const sizeofSP_DRVINFO_DATA_V2_A = 56;
@@ -6151,7 +6151,7 @@ export class SP_DRVINFO_DATA_V2_AView {
   }
 
   // 0x08: usize
-  get Reserved(): Deno.PointerValue {
+  get Reserved(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -6180,7 +6180,7 @@ export class SP_DRVINFO_DATA_V2_AView {
   }
 
   // 0x30: u64
-  get DriverVersion(): Deno.PointerValue {
+  get DriverVersion(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -6195,7 +6195,7 @@ export class SP_DRVINFO_DATA_V2_AView {
   }
 
   // 0x08: usize
-  set Reserved(value: Deno.PointerValue) {
+  set Reserved(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -6220,7 +6220,7 @@ export class SP_DRVINFO_DATA_V2_AView {
   }
 
   // 0x30: u64
-  set DriverVersion(value: Deno.PointerValue) {
+  set DriverVersion(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 }
@@ -6234,7 +6234,7 @@ export interface SP_DRVINFO_DATA_V2_W {
   /** u32 */
   DriverType: number;
   /** usize */
-  Reserved: Deno.PointerValue;
+  Reserved: bigint | number;
   /** array */
   Description: Deno.PointerValue;
   /** array */
@@ -6244,7 +6244,7 @@ export interface SP_DRVINFO_DATA_V2_W {
   /** Windows.Win32.Foundation.FILETIME */
   DriverDate: Uint8Array | Deno.PointerValue;
   /** u64 */
-  DriverVersion: Deno.PointerValue;
+  DriverVersion: bigint | number;
 }
 
 export const sizeofSP_DRVINFO_DATA_V2_W = 56;
@@ -6292,7 +6292,7 @@ export class SP_DRVINFO_DATA_V2_WView {
   }
 
   // 0x08: usize
-  get Reserved(): Deno.PointerValue {
+  get Reserved(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -6321,7 +6321,7 @@ export class SP_DRVINFO_DATA_V2_WView {
   }
 
   // 0x30: u64
-  get DriverVersion(): Deno.PointerValue {
+  get DriverVersion(): bigint | number {
     return Number(this.view.getBigUint64(48, true));
   }
 
@@ -6336,7 +6336,7 @@ export class SP_DRVINFO_DATA_V2_WView {
   }
 
   // 0x08: usize
-  set Reserved(value: Deno.PointerValue) {
+  set Reserved(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -6361,7 +6361,7 @@ export class SP_DRVINFO_DATA_V2_WView {
   }
 
   // 0x30: u64
-  set DriverVersion(value: Deno.PointerValue) {
+  set DriverVersion(value: bigint | number) {
     this.view.setBigUint64(48, BigInt(value), true);
   }
 }
@@ -6375,7 +6375,7 @@ export interface SP_DRVINFO_DATA_V1_A {
   /** u32 */
   DriverType: number;
   /** usize */
-  Reserved: Deno.PointerValue;
+  Reserved: bigint | number;
   /** array */
   Description: Deno.PointerValue;
   /** array */
@@ -6425,7 +6425,7 @@ export class SP_DRVINFO_DATA_V1_AView {
   }
 
   // 0x08: usize
-  get Reserved(): Deno.PointerValue {
+  get Reserved(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -6458,7 +6458,7 @@ export class SP_DRVINFO_DATA_V1_AView {
   }
 
   // 0x08: usize
-  set Reserved(value: Deno.PointerValue) {
+  set Reserved(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -6487,7 +6487,7 @@ export interface SP_DRVINFO_DATA_V1_W {
   /** u32 */
   DriverType: number;
   /** usize */
-  Reserved: Deno.PointerValue;
+  Reserved: bigint | number;
   /** array */
   Description: Deno.PointerValue;
   /** array */
@@ -6537,7 +6537,7 @@ export class SP_DRVINFO_DATA_V1_WView {
   }
 
   // 0x08: usize
-  get Reserved(): Deno.PointerValue {
+  get Reserved(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -6570,7 +6570,7 @@ export class SP_DRVINFO_DATA_V1_WView {
   }
 
   // 0x08: usize
-  set Reserved(value: Deno.PointerValue) {
+  set Reserved(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -6603,7 +6603,7 @@ export interface SP_DRVINFO_DETAIL_DATA_A {
   /** u32 */
   CompatIDsLength: number;
   /** usize */
-  Reserved: Deno.PointerValue;
+  Reserved: bigint | number;
   /** array */
   SectionName: Deno.PointerValue;
   /** array */
@@ -6675,7 +6675,7 @@ export class SP_DRVINFO_DETAIL_DATA_AView {
   }
 
   // 0x18: usize
-  get Reserved(): Deno.PointerValue {
+  get Reserved(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -6726,7 +6726,7 @@ export class SP_DRVINFO_DETAIL_DATA_AView {
   }
 
   // 0x18: usize
-  set Reserved(value: Deno.PointerValue) {
+  set Reserved(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -6764,7 +6764,7 @@ export interface SP_DRVINFO_DETAIL_DATA_W {
   /** u32 */
   CompatIDsLength: number;
   /** usize */
-  Reserved: Deno.PointerValue;
+  Reserved: bigint | number;
   /** array */
   SectionName: Deno.PointerValue;
   /** array */
@@ -6836,7 +6836,7 @@ export class SP_DRVINFO_DETAIL_DATA_WView {
   }
 
   // 0x18: usize
-  get Reserved(): Deno.PointerValue {
+  get Reserved(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -6887,7 +6887,7 @@ export class SP_DRVINFO_DETAIL_DATA_WView {
   }
 
   // 0x18: usize
-  set Reserved(value: Deno.PointerValue) {
+  set Reserved(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -6923,7 +6923,7 @@ export interface SP_DRVINSTALL_PARAMS {
   /** u32 */
   Flags: number;
   /** usize */
-  PrivateData: Deno.PointerValue;
+  PrivateData: bigint | number;
   /** u32 */
   Reserved: number;
 }
@@ -6976,7 +6976,7 @@ export class SP_DRVINSTALL_PARAMSView {
   // 0x0c: pad4
 
   // 0x10: usize
-  get PrivateData(): Deno.PointerValue {
+  get PrivateData(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -7005,7 +7005,7 @@ export class SP_DRVINSTALL_PARAMSView {
   // 0x0c: pad4
 
   // 0x10: usize
-  set PrivateData(value: Deno.PointerValue) {
+  set PrivateData(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -7087,7 +7087,7 @@ export class COINSTALLER_CONTEXT_DATAView {
   }
 }
 
-export type HIMAGELIST = Deno.PointerValue;
+export type HIMAGELIST = bigint | number;
 
 /**
  * Windows.Win32.Devices.DeviceAndDriverInstallation.SP_CLASSIMAGELIST_DATA (size: 24)
@@ -7098,7 +7098,7 @@ export interface SP_CLASSIMAGELIST_DATA {
   /** Windows.Win32.UI.Controls.HIMAGELIST */
   ImageList: Uint8Array | Deno.PointerValue;
   /** usize */
-  Reserved: Deno.PointerValue;
+  Reserved: bigint | number;
 }
 
 export const sizeofSP_CLASSIMAGELIST_DATA = 24;
@@ -7140,7 +7140,7 @@ export class SP_CLASSIMAGELIST_DATAView {
   }
 
   // 0x10: usize
-  get Reserved(): Deno.PointerValue {
+  get Reserved(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -7157,7 +7157,7 @@ export class SP_CLASSIMAGELIST_DATAView {
   }
 
   // 0x10: usize
-  set Reserved(value: Deno.PointerValue) {
+  set Reserved(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -8232,7 +8232,7 @@ export interface CONFLICT_DETAILS_A {
   /** u32 */
   CD_dnDevInst: number;
   /** usize */
-  CD_rdResDes: Deno.PointerValue;
+  CD_rdResDes: bigint | number;
   /** u32 */
   CD_ulFlags: number;
   /** array */
@@ -8289,7 +8289,7 @@ export class CONFLICT_DETAILS_AView {
   // 0x0c: pad4
 
   // 0x10: usize
-  get CD_rdResDes(): Deno.PointerValue {
+  get CD_rdResDes(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -8324,7 +8324,7 @@ export class CONFLICT_DETAILS_AView {
   // 0x0c: pad4
 
   // 0x10: usize
-  set CD_rdResDes(value: Deno.PointerValue) {
+  set CD_rdResDes(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -8352,7 +8352,7 @@ export interface CONFLICT_DETAILS_W {
   /** u32 */
   CD_dnDevInst: number;
   /** usize */
-  CD_rdResDes: Deno.PointerValue;
+  CD_rdResDes: bigint | number;
   /** u32 */
   CD_ulFlags: number;
   /** array */
@@ -8409,7 +8409,7 @@ export class CONFLICT_DETAILS_WView {
   // 0x0c: pad4
 
   // 0x10: usize
-  get CD_rdResDes(): Deno.PointerValue {
+  get CD_rdResDes(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -8444,7 +8444,7 @@ export class CONFLICT_DETAILS_WView {
   // 0x0c: pad4
 
   // 0x10: usize
-  set CD_rdResDes(value: Deno.PointerValue) {
+  set CD_rdResDes(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -8466,13 +8466,13 @@ export class CONFLICT_DETAILS_WView {
  */
 export interface MEM_RANGE {
   /** u64 */
-  MR_Align: Deno.PointerValue;
+  MR_Align: bigint | number;
   /** u32 */
   MR_nBytes: number;
   /** u64 */
-  MR_Min: Deno.PointerValue;
+  MR_Min: bigint | number;
   /** u64 */
-  MR_Max: Deno.PointerValue;
+  MR_Max: bigint | number;
   /** u32 */
   MR_Flags: number;
   /** u32 */
@@ -8511,7 +8511,7 @@ export class MEM_RANGEView {
   }
 
   // 0x00: u64
-  get MR_Align(): Deno.PointerValue {
+  get MR_Align(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -8523,12 +8523,12 @@ export class MEM_RANGEView {
   // 0x0c: pad4
 
   // 0x10: u64
-  get MR_Min(): Deno.PointerValue {
+  get MR_Min(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get MR_Max(): Deno.PointerValue {
+  get MR_Max(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -8543,7 +8543,7 @@ export class MEM_RANGEView {
   }
 
   // 0x00: u64
-  set MR_Align(value: Deno.PointerValue) {
+  set MR_Align(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -8555,12 +8555,12 @@ export class MEM_RANGEView {
   // 0x0c: pad4
 
   // 0x10: u64
-  set MR_Min(value: Deno.PointerValue) {
+  set MR_Min(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set MR_Max(value: Deno.PointerValue) {
+  set MR_Max(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -8584,9 +8584,9 @@ export interface MEM_DES {
   /** u32 */
   MD_Type: number;
   /** u64 */
-  MD_Alloc_Base: Deno.PointerValue;
+  MD_Alloc_Base: bigint | number;
   /** u64 */
-  MD_Alloc_End: Deno.PointerValue;
+  MD_Alloc_End: bigint | number;
   /** u32 */
   MD_Flags: number;
   /** u32 */
@@ -8634,12 +8634,12 @@ export class MEM_DESView {
   }
 
   // 0x08: u64
-  get MD_Alloc_Base(): Deno.PointerValue {
+  get MD_Alloc_Base(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get MD_Alloc_End(): Deno.PointerValue {
+  get MD_Alloc_End(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -8664,12 +8664,12 @@ export class MEM_DESView {
   }
 
   // 0x08: u64
-  set MD_Alloc_Base(value: Deno.PointerValue) {
+  set MD_Alloc_Base(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set MD_Alloc_End(value: Deno.PointerValue) {
+  set MD_Alloc_End(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -8744,13 +8744,13 @@ export class MEM_RESOURCEView {
  */
 export interface MEM_LARGE_RANGE {
   /** u64 */
-  MLR_Align: Deno.PointerValue;
+  MLR_Align: bigint | number;
   /** u64 */
-  MLR_nBytes: Deno.PointerValue;
+  MLR_nBytes: bigint | number;
   /** u64 */
-  MLR_Min: Deno.PointerValue;
+  MLR_Min: bigint | number;
   /** u64 */
-  MLR_Max: Deno.PointerValue;
+  MLR_Max: bigint | number;
   /** u32 */
   MLR_Flags: number;
   /** u32 */
@@ -8788,22 +8788,22 @@ export class MEM_LARGE_RANGEView {
   }
 
   // 0x00: u64
-  get MLR_Align(): Deno.PointerValue {
+  get MLR_Align(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get MLR_nBytes(): Deno.PointerValue {
+  get MLR_nBytes(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get MLR_Min(): Deno.PointerValue {
+  get MLR_Min(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get MLR_Max(): Deno.PointerValue {
+  get MLR_Max(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -8818,22 +8818,22 @@ export class MEM_LARGE_RANGEView {
   }
 
   // 0x00: u64
-  set MLR_Align(value: Deno.PointerValue) {
+  set MLR_Align(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set MLR_nBytes(value: Deno.PointerValue) {
+  set MLR_nBytes(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set MLR_Min(value: Deno.PointerValue) {
+  set MLR_Min(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set MLR_Max(value: Deno.PointerValue) {
+  set MLR_Max(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -8857,9 +8857,9 @@ export interface MEM_LARGE_DES {
   /** u32 */
   MLD_Type: number;
   /** u64 */
-  MLD_Alloc_Base: Deno.PointerValue;
+  MLD_Alloc_Base: bigint | number;
   /** u64 */
-  MLD_Alloc_End: Deno.PointerValue;
+  MLD_Alloc_End: bigint | number;
   /** u32 */
   MLD_Flags: number;
   /** u32 */
@@ -8907,12 +8907,12 @@ export class MEM_LARGE_DESView {
   }
 
   // 0x08: u64
-  get MLD_Alloc_Base(): Deno.PointerValue {
+  get MLD_Alloc_Base(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get MLD_Alloc_End(): Deno.PointerValue {
+  get MLD_Alloc_End(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -8937,12 +8937,12 @@ export class MEM_LARGE_DESView {
   }
 
   // 0x08: u64
-  set MLD_Alloc_Base(value: Deno.PointerValue) {
+  set MLD_Alloc_Base(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set MLD_Alloc_End(value: Deno.PointerValue) {
+  set MLD_Alloc_End(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -9017,17 +9017,17 @@ export class MEM_LARGE_RESOURCEView {
  */
 export interface IO_RANGE {
   /** u64 */
-  IOR_Align: Deno.PointerValue;
+  IOR_Align: bigint | number;
   /** u32 */
   IOR_nPorts: number;
   /** u64 */
-  IOR_Min: Deno.PointerValue;
+  IOR_Min: bigint | number;
   /** u64 */
-  IOR_Max: Deno.PointerValue;
+  IOR_Max: bigint | number;
   /** u32 */
   IOR_RangeFlags: number;
   /** u64 */
-  IOR_Alias: Deno.PointerValue;
+  IOR_Alias: bigint | number;
 }
 
 export const sizeofIO_RANGE = 48;
@@ -9063,7 +9063,7 @@ export class IO_RANGEView {
   }
 
   // 0x00: u64
-  get IOR_Align(): Deno.PointerValue {
+  get IOR_Align(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -9075,12 +9075,12 @@ export class IO_RANGEView {
   // 0x0c: pad4
 
   // 0x10: u64
-  get IOR_Min(): Deno.PointerValue {
+  get IOR_Min(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
   // 0x18: u64
-  get IOR_Max(): Deno.PointerValue {
+  get IOR_Max(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -9092,12 +9092,12 @@ export class IO_RANGEView {
   // 0x24: pad4
 
   // 0x28: u64
-  get IOR_Alias(): Deno.PointerValue {
+  get IOR_Alias(): bigint | number {
     return Number(this.view.getBigUint64(40, true));
   }
 
   // 0x00: u64
-  set IOR_Align(value: Deno.PointerValue) {
+  set IOR_Align(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -9109,12 +9109,12 @@ export class IO_RANGEView {
   // 0x0c: pad4
 
   // 0x10: u64
-  set IOR_Min(value: Deno.PointerValue) {
+  set IOR_Min(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
   // 0x18: u64
-  set IOR_Max(value: Deno.PointerValue) {
+  set IOR_Max(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -9126,7 +9126,7 @@ export class IO_RANGEView {
   // 0x24: pad4
 
   // 0x28: u64
-  set IOR_Alias(value: Deno.PointerValue) {
+  set IOR_Alias(value: bigint | number) {
     this.view.setBigUint64(40, BigInt(value), true);
   }
 }
@@ -9140,9 +9140,9 @@ export interface IO_DES {
   /** u32 */
   IOD_Type: number;
   /** u64 */
-  IOD_Alloc_Base: Deno.PointerValue;
+  IOD_Alloc_Base: bigint | number;
   /** u64 */
-  IOD_Alloc_End: Deno.PointerValue;
+  IOD_Alloc_End: bigint | number;
   /** u32 */
   IOD_DesFlags: number;
 }
@@ -9187,12 +9187,12 @@ export class IO_DESView {
   }
 
   // 0x08: u64
-  get IOD_Alloc_Base(): Deno.PointerValue {
+  get IOD_Alloc_Base(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x10: u64
-  get IOD_Alloc_End(): Deno.PointerValue {
+  get IOD_Alloc_End(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -9214,12 +9214,12 @@ export class IO_DESView {
   }
 
   // 0x08: u64
-  set IOD_Alloc_Base(value: Deno.PointerValue) {
+  set IOD_Alloc_Base(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
   // 0x10: u64
-  set IOD_Alloc_End(value: Deno.PointerValue) {
+  set IOD_Alloc_End(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -9679,7 +9679,7 @@ export interface IRQ_DES_64 {
   /** u32 */
   IRQD_Alloc_Num: number;
   /** u64 */
-  IRQD_Affinity: Deno.PointerValue;
+  IRQD_Affinity: bigint | number;
 }
 
 export const sizeofIRQ_DES_64 = 24;
@@ -9731,7 +9731,7 @@ export class IRQ_DES_64View {
   }
 
   // 0x10: u64
-  get IRQD_Affinity(): Deno.PointerValue {
+  get IRQD_Affinity(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -9756,7 +9756,7 @@ export class IRQ_DES_64View {
   }
 
   // 0x10: u64
-  set IRQD_Affinity(value: Deno.PointerValue) {
+  set IRQD_Affinity(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 }
@@ -10954,7 +10954,7 @@ export interface LARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue;
   /** i64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: bigint | number;
 }
 
 export const sizeofLARGE_INTEGER = 24;
@@ -10994,7 +10994,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  get QuadPart(): Deno.PointerValue {
+  get QuadPart(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -11009,7 +11009,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  set QuadPart(value: Deno.PointerValue) {
+  set QuadPart(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -12469,11 +12469,11 @@ export class CM_NOTIFY_EVENT_DATAView {
   }
 }
 
-export type HKEY = Deno.PointerValue;
+export type HKEY = bigint | number;
 
-export type HINSTANCE = Deno.PointerValue;
+export type HINSTANCE = bigint | number;
 
-export type HDC = Deno.PointerValue;
+export type HDC = bigint | number;
 
 /**
  * Windows.Win32.Foundation.RECT (size: 16)
@@ -12556,7 +12556,7 @@ export class RECTView {
   }
 }
 
-export type HPROPSHEETPAGE = Deno.PointerValue;
+export type HPROPSHEETPAGE = bigint | number;
 
 // Native Libraries
 
@@ -16056,7 +16056,7 @@ export function SetupQuerySpaceRequiredOnDriveW(
 export function SetupAdjustDiskSpaceListA(
   DiskSpace: Deno.PointerValue | Uint8Array /* ptr */,
   DriveRoot: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  Amount: Deno.PointerValue /* i64 */,
+  Amount: bigint | number /* i64 */,
   Reserved1: Deno.PointerValue | Uint8Array /* ptr */,
   Reserved2: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -16066,7 +16066,7 @@ export function SetupAdjustDiskSpaceListA(
 export function SetupAdjustDiskSpaceListW(
   DiskSpace: Deno.PointerValue | Uint8Array /* ptr */,
   DriveRoot: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  Amount: Deno.PointerValue /* i64 */,
+  Amount: bigint | number /* i64 */,
   Reserved1: Deno.PointerValue | Uint8Array /* ptr */,
   Reserved2: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
@@ -16076,7 +16076,7 @@ export function SetupAdjustDiskSpaceListW(
 export function SetupAddToDiskSpaceListA(
   DiskSpace: Deno.PointerValue | Uint8Array /* ptr */,
   TargetFilespec: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
-  FileSize: Deno.PointerValue /* i64 */,
+  FileSize: bigint | number /* i64 */,
   Operation: SETUP_FILE_OPERATION /* Windows.Win32.Devices.DeviceAndDriverInstallation.SETUP_FILE_OPERATION */,
   Reserved1: Deno.PointerValue | Uint8Array /* ptr */,
   Reserved2: number /* u32 */,
@@ -16087,7 +16087,7 @@ export function SetupAddToDiskSpaceListA(
 export function SetupAddToDiskSpaceListW(
   DiskSpace: Deno.PointerValue | Uint8Array /* ptr */,
   TargetFilespec: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
-  FileSize: Deno.PointerValue /* i64 */,
+  FileSize: bigint | number /* i64 */,
   Operation: SETUP_FILE_OPERATION /* Windows.Win32.Devices.DeviceAndDriverInstallation.SETUP_FILE_OPERATION */,
   Reserved1: Deno.PointerValue | Uint8Array /* ptr */,
   Reserved2: number /* u32 */,
@@ -16258,8 +16258,8 @@ export function SetupTermDefaultQueueCallback(
 export function SetupDefaultQueueCallbackA(
   Context: Deno.PointerValue | Uint8Array /* ptr */,
   Notification: number /* u32 */,
-  Param1: Deno.PointerValue /* usize */,
-  Param2: Deno.PointerValue /* usize */,
+  Param1: bigint | number /* usize */,
+  Param2: bigint | number /* usize */,
 ): number /* u32 */ {
   return libSETUPAPI_dll.SetupDefaultQueueCallbackA(util.toPointer(Context), Notification, Param1, Param2);
 }
@@ -16267,8 +16267,8 @@ export function SetupDefaultQueueCallbackA(
 export function SetupDefaultQueueCallbackW(
   Context: Deno.PointerValue | Uint8Array /* ptr */,
   Notification: number /* u32 */,
-  Param1: Deno.PointerValue /* usize */,
-  Param2: Deno.PointerValue /* usize */,
+  Param1: bigint | number /* usize */,
+  Param2: bigint | number /* usize */,
 ): number /* u32 */ {
   return libSETUPAPI_dll.SetupDefaultQueueCallbackW(util.toPointer(Context), Notification, Param1, Param2);
 }
@@ -16497,18 +16497,18 @@ export function SetupCloseLog(): void /* void */ {
   return libSETUPAPI_dll.SetupCloseLog();
 }
 
-export function SetupGetThreadLogToken(): Deno.PointerValue /* u64 */ {
+export function SetupGetThreadLogToken(): bigint | number /* u64 */ {
   return libSETUPAPI_dll.SetupGetThreadLogToken();
 }
 
 export function SetupSetThreadLogToken(
-  LogToken: Deno.PointerValue /* u64 */,
+  LogToken: bigint | number /* u64 */,
 ): void /* void */ {
   return libSETUPAPI_dll.SetupSetThreadLogToken(LogToken);
 }
 
 export function SetupWriteTextLog(
-  LogToken: Deno.PointerValue /* u64 */,
+  LogToken: bigint | number /* u64 */,
   Category: number /* u32 */,
   Flags: number /* u32 */,
   MessageStr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
@@ -16517,7 +16517,7 @@ export function SetupWriteTextLog(
 }
 
 export function SetupWriteTextLogError(
-  LogToken: Deno.PointerValue /* u64 */,
+  LogToken: bigint | number /* u64 */,
   Category: number /* u32 */,
   LogFlags: number /* u32 */,
   Error: number /* u32 */,
@@ -16527,7 +16527,7 @@ export function SetupWriteTextLogError(
 }
 
 export function SetupWriteTextLogInfLine(
-  LogToken: Deno.PointerValue /* u64 */,
+  LogToken: bigint | number /* u64 */,
   Flags: number /* u32 */,
   InfHandle: Deno.PointerValue | Uint8Array /* ptr */,
   Context: Deno.PointerValue | Uint8Array /* ptr */,
@@ -18068,7 +18068,7 @@ export function CM_Add_Empty_Log_Conf_Ex(
   dnDevInst: number /* u32 */,
   Priority: PRIORITY /* Windows.Win32.Data.HtmlHelp.PRIORITY */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Add_Empty_Log_Conf_Ex(util.toPointer(plcLogConf), dnDevInst, Priority, ulFlags, hMachine);
 }
@@ -18093,7 +18093,7 @@ export function CM_Add_ID_ExA(
   dnDevInst: number /* u32 */,
   pszID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Add_ID_ExA(dnDevInst, util.pstrToFfi(pszID), ulFlags, hMachine);
 }
@@ -18102,15 +18102,15 @@ export function CM_Add_ID_ExW(
   dnDevInst: number /* u32 */,
   pszID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Add_ID_ExW(dnDevInst, util.pwstrToFfi(pszID), ulFlags, hMachine);
 }
 
 export function CM_Add_Range(
-  ullStartValue: Deno.PointerValue /* u64 */,
-  ullEndValue: Deno.PointerValue /* u64 */,
-  rlh: Deno.PointerValue /* usize */,
+  ullStartValue: bigint | number /* u64 */,
+  ullEndValue: bigint | number /* u64 */,
+  rlh: bigint | number /* usize */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Add_Range(ullStartValue, ullEndValue, rlh, ulFlags);
@@ -18118,7 +18118,7 @@ export function CM_Add_Range(
 
 export function CM_Add_Res_Des(
   prdResDes: Deno.PointerValue | Uint8Array /* ptr */,
-  lcLogConf: Deno.PointerValue /* usize */,
+  lcLogConf: bigint | number /* usize */,
   ResourceID: number /* u32 */,
   ResourceData: Deno.PointerValue | Uint8Array /* ptr */,
   ResourceLen: number /* u32 */,
@@ -18129,12 +18129,12 @@ export function CM_Add_Res_Des(
 
 export function CM_Add_Res_Des_Ex(
   prdResDes: Deno.PointerValue | Uint8Array /* ptr */,
-  lcLogConf: Deno.PointerValue /* usize */,
+  lcLogConf: bigint | number /* usize */,
   ResourceID: number /* u32 */,
   ResourceData: Deno.PointerValue | Uint8Array /* ptr */,
   ResourceLen: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Add_Res_Des_Ex(util.toPointer(prdResDes), lcLogConf, ResourceID, util.toPointer(ResourceData), ResourceLen, ulFlags, hMachine);
 }
@@ -18176,7 +18176,7 @@ export function CM_Create_DevNode_ExA(
   pDeviceID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dnParent: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Create_DevNode_ExA(util.toPointer(pdnDevInst), util.pstrToFfi(pDeviceID), dnParent, ulFlags, hMachine);
 }
@@ -18186,7 +18186,7 @@ export function CM_Create_DevNode_ExW(
   pDeviceID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dnParent: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Create_DevNode_ExW(util.toPointer(pdnDevInst), util.pwstrToFfi(pDeviceID), dnParent, ulFlags, hMachine);
 }
@@ -18208,7 +18208,7 @@ export function CM_Delete_Class_Key(
 export function CM_Delete_Class_Key_Ex(
   ClassGuid: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Delete_Class_Key_Ex(util.toPointer(ClassGuid), ulFlags, hMachine);
 }
@@ -18225,15 +18225,15 @@ export function CM_Delete_DevNode_Key_Ex(
   dnDevNode: number /* u32 */,
   ulHardwareProfile: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Delete_DevNode_Key_Ex(dnDevNode, ulHardwareProfile, ulFlags, hMachine);
 }
 
 export function CM_Delete_Range(
-  ullStartValue: Deno.PointerValue /* u64 */,
-  ullEndValue: Deno.PointerValue /* u64 */,
-  rlh: Deno.PointerValue /* usize */,
+  ullStartValue: bigint | number /* u64 */,
+  ullEndValue: bigint | number /* u64 */,
+  rlh: bigint | number /* usize */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Delete_Range(ullStartValue, ullEndValue, rlh, ulFlags);
@@ -18257,7 +18257,7 @@ export function CM_Detect_Resource_Conflict_Ex(
   ResourceLen: number /* u32 */,
   pbConflictDetected: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Detect_Resource_Conflict_Ex(dnDevInst, ResourceID, util.toPointer(ResourceData), ResourceLen, util.toPointer(pbConflictDetected), ulFlags, hMachine);
 }
@@ -18272,20 +18272,20 @@ export function CM_Disable_DevNode(
 export function CM_Disable_DevNode_Ex(
   dnDevInst: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Disable_DevNode_Ex(dnDevInst, ulFlags, hMachine);
 }
 
 export function CM_Disconnect_Machine(
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Disconnect_Machine(hMachine);
 }
 
 export function CM_Dup_Range_List(
-  rlhOld: Deno.PointerValue /* usize */,
-  rlhNew: Deno.PointerValue /* usize */,
+  rlhOld: bigint | number /* usize */,
+  rlhNew: bigint | number /* usize */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Dup_Range_List(rlhOld, rlhNew, ulFlags);
@@ -18301,7 +18301,7 @@ export function CM_Enable_DevNode(
 export function CM_Enable_DevNode_Ex(
   dnDevInst: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Enable_DevNode_Ex(dnDevInst, ulFlags, hMachine);
 }
@@ -18318,7 +18318,7 @@ export function CM_Enumerate_Classes_Ex(
   ulClassIndex: number /* u32 */,
   ClassGuid: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Enumerate_Classes_Ex(ulClassIndex, util.toPointer(ClassGuid), ulFlags, hMachine);
 }
@@ -18346,7 +18346,7 @@ export function CM_Enumerate_Enumerators_ExA(
   Buffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pulLength: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Enumerate_Enumerators_ExA(ulEnumIndex, util.pstrToFfi(Buffer), util.toPointer(pulLength), ulFlags, hMachine);
 }
@@ -18356,25 +18356,25 @@ export function CM_Enumerate_Enumerators_ExW(
   Buffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pulLength: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Enumerate_Enumerators_ExW(ulEnumIndex, util.pwstrToFfi(Buffer), util.toPointer(pulLength), ulFlags, hMachine);
 }
 
 export function CM_Find_Range(
   pullStart: Deno.PointerValue | Uint8Array /* ptr */,
-  ullStart: Deno.PointerValue /* u64 */,
+  ullStart: bigint | number /* u64 */,
   ulLength: number /* u32 */,
-  ullAlignment: Deno.PointerValue /* u64 */,
-  ullEnd: Deno.PointerValue /* u64 */,
-  rlh: Deno.PointerValue /* usize */,
+  ullAlignment: bigint | number /* u64 */,
+  ullEnd: bigint | number /* u64 */,
+  rlh: bigint | number /* usize */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Find_Range(util.toPointer(pullStart), ullStart, ulLength, ullAlignment, ullEnd, rlh, ulFlags);
 }
 
 export function CM_First_Range(
-  rlh: Deno.PointerValue /* usize */,
+  rlh: bigint | number /* usize */,
   pullStart: Deno.PointerValue | Uint8Array /* ptr */,
   pullEnd: Deno.PointerValue | Uint8Array /* ptr */,
   preElement: Deno.PointerValue | Uint8Array /* ptr */,
@@ -18384,28 +18384,28 @@ export function CM_First_Range(
 }
 
 export function CM_Free_Log_Conf(
-  lcLogConfToBeFreed: Deno.PointerValue /* usize */,
+  lcLogConfToBeFreed: bigint | number /* usize */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Free_Log_Conf(lcLogConfToBeFreed, ulFlags);
 }
 
 export function CM_Free_Log_Conf_Ex(
-  lcLogConfToBeFreed: Deno.PointerValue /* usize */,
+  lcLogConfToBeFreed: bigint | number /* usize */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Free_Log_Conf_Ex(lcLogConfToBeFreed, ulFlags, hMachine);
 }
 
 export function CM_Free_Log_Conf_Handle(
-  lcLogConf: Deno.PointerValue /* usize */,
+  lcLogConf: bigint | number /* usize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Free_Log_Conf_Handle(lcLogConf);
 }
 
 export function CM_Free_Range_List(
-  rlh: Deno.PointerValue /* usize */,
+  rlh: bigint | number /* usize */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Free_Range_List(rlh, ulFlags);
@@ -18413,7 +18413,7 @@ export function CM_Free_Range_List(
 
 export function CM_Free_Res_Des(
   prdResDes: Deno.PointerValue | Uint8Array /* ptr */,
-  rdResDes: Deno.PointerValue /* usize */,
+  rdResDes: bigint | number /* usize */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Free_Res_Des(util.toPointer(prdResDes), rdResDes, ulFlags);
@@ -18421,15 +18421,15 @@ export function CM_Free_Res_Des(
 
 export function CM_Free_Res_Des_Ex(
   prdResDes: Deno.PointerValue | Uint8Array /* ptr */,
-  rdResDes: Deno.PointerValue /* usize */,
+  rdResDes: bigint | number /* usize */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Free_Res_Des_Ex(util.toPointer(prdResDes), rdResDes, ulFlags, hMachine);
 }
 
 export function CM_Free_Res_Des_Handle(
-  rdResDes: Deno.PointerValue /* usize */,
+  rdResDes: bigint | number /* usize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Free_Res_Des_Handle(rdResDes);
 }
@@ -18446,7 +18446,7 @@ export function CM_Get_Child_Ex(
   pdnDevInst: Deno.PointerValue | Uint8Array /* ptr */,
   dnDevInst: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Child_Ex(util.toPointer(pdnDevInst), dnDevInst, ulFlags, hMachine);
 }
@@ -18474,7 +18474,7 @@ export function CM_Get_Class_Name_ExA(
   Buffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pulLength: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Class_Name_ExA(util.toPointer(ClassGuid), util.pstrToFfi(Buffer), util.toPointer(pulLength), ulFlags, hMachine);
 }
@@ -18484,7 +18484,7 @@ export function CM_Get_Class_Name_ExW(
   Buffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pulLength: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Class_Name_ExW(util.toPointer(ClassGuid), util.pwstrToFfi(Buffer), util.toPointer(pulLength), ulFlags, hMachine);
 }
@@ -18512,7 +18512,7 @@ export function CM_Get_Class_Key_Name_ExA(
   pszKeyName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pulLength: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Class_Key_Name_ExA(util.toPointer(ClassGuid), util.pstrToFfi(pszKeyName), util.toPointer(pulLength), ulFlags, hMachine);
 }
@@ -18522,7 +18522,7 @@ export function CM_Get_Class_Key_Name_ExW(
   pszKeyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pulLength: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Class_Key_Name_ExW(util.toPointer(ClassGuid), util.pwstrToFfi(pszKeyName), util.toPointer(pulLength), ulFlags, hMachine);
 }
@@ -18539,7 +18539,7 @@ export function CM_Get_Depth_Ex(
   pulDepth: Deno.PointerValue | Uint8Array /* ptr */,
   dnDevInst: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Depth_Ex(util.toPointer(pulDepth), dnDevInst, ulFlags, hMachine);
 }
@@ -18567,7 +18567,7 @@ export function CM_Get_Device_ID_ExA(
   Buffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   BufferLen: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Device_ID_ExA(dnDevInst, util.pstrToFfi(Buffer), BufferLen, ulFlags, hMachine);
 }
@@ -18577,7 +18577,7 @@ export function CM_Get_Device_ID_ExW(
   Buffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   BufferLen: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Device_ID_ExW(dnDevInst, util.pwstrToFfi(Buffer), BufferLen, ulFlags, hMachine);
 }
@@ -18605,7 +18605,7 @@ export function CM_Get_Device_ID_List_ExA(
   Buffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   BufferLen: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Device_ID_List_ExA(util.pstrToFfi(pszFilter), util.pstrToFfi(Buffer), BufferLen, ulFlags, hMachine);
 }
@@ -18615,7 +18615,7 @@ export function CM_Get_Device_ID_List_ExW(
   Buffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   BufferLen: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Device_ID_List_ExW(util.pwstrToFfi(pszFilter), util.pwstrToFfi(Buffer), BufferLen, ulFlags, hMachine);
 }
@@ -18640,7 +18640,7 @@ export function CM_Get_Device_ID_List_Size_ExA(
   pulLen: Deno.PointerValue | Uint8Array /* ptr */,
   pszFilter: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Device_ID_List_Size_ExA(util.toPointer(pulLen), util.pstrToFfi(pszFilter), ulFlags, hMachine);
 }
@@ -18649,7 +18649,7 @@ export function CM_Get_Device_ID_List_Size_ExW(
   pulLen: Deno.PointerValue | Uint8Array /* ptr */,
   pszFilter: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Device_ID_List_Size_ExW(util.toPointer(pulLen), util.pwstrToFfi(pszFilter), ulFlags, hMachine);
 }
@@ -18666,7 +18666,7 @@ export function CM_Get_Device_ID_Size_Ex(
   pulLen: Deno.PointerValue | Uint8Array /* ptr */,
   dnDevInst: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Device_ID_Size_Ex(util.toPointer(pulLen), dnDevInst, ulFlags, hMachine);
 }
@@ -18689,7 +18689,7 @@ export function CM_Get_DevNode_Property_ExW(
   PropertyBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   PropertyBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_DevNode_Property_ExW(dnDevInst, util.toPointer(PropertyKey), util.toPointer(PropertyType), util.toPointer(PropertyBuffer), util.toPointer(PropertyBufferSize), ulFlags, hMachine);
 }
@@ -18708,7 +18708,7 @@ export function CM_Get_DevNode_Property_Keys_Ex(
   PropertyKeyArray: Deno.PointerValue | Uint8Array /* ptr */,
   PropertyKeyCount: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_DevNode_Property_Keys_Ex(dnDevInst, util.toPointer(PropertyKeyArray), util.toPointer(PropertyKeyCount), ulFlags, hMachine);
 }
@@ -18742,7 +18742,7 @@ export function CM_Get_DevNode_Registry_Property_ExA(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   pulLength: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_DevNode_Registry_Property_ExA(dnDevInst, ulProperty, util.toPointer(pulRegDataType), util.toPointer(Buffer), util.toPointer(pulLength), ulFlags, hMachine);
 }
@@ -18754,7 +18754,7 @@ export function CM_Get_DevNode_Registry_Property_ExW(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   pulLength: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_DevNode_Registry_Property_ExW(dnDevInst, ulProperty, util.toPointer(pulRegDataType), util.toPointer(Buffer), util.toPointer(pulLength), ulFlags, hMachine);
 }
@@ -18788,7 +18788,7 @@ export function CM_Get_DevNode_Custom_Property_ExA(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   pulLength: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_DevNode_Custom_Property_ExA(dnDevInst, util.pstrToFfi(pszCustomPropertyName), util.toPointer(pulRegDataType), util.toPointer(Buffer), util.toPointer(pulLength), ulFlags, hMachine);
 }
@@ -18800,7 +18800,7 @@ export function CM_Get_DevNode_Custom_Property_ExW(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   pulLength: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_DevNode_Custom_Property_ExW(dnDevInst, util.pwstrToFfi(pszCustomPropertyName), util.toPointer(pulRegDataType), util.toPointer(Buffer), util.toPointer(pulLength), ulFlags, hMachine);
 }
@@ -18819,7 +18819,7 @@ export function CM_Get_DevNode_Status_Ex(
   pulProblemNumber: Deno.PointerValue | Uint8Array /* ptr */,
   dnDevInst: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_DevNode_Status_Ex(util.toPointer(pulStatus), util.toPointer(pulProblemNumber), dnDevInst, ulFlags, hMachine);
 }
@@ -18836,7 +18836,7 @@ export function CM_Get_First_Log_Conf_Ex(
   plcLogConf: Deno.PointerValue | Uint8Array /* ptr */,
   dnDevInst: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_First_Log_Conf_Ex(util.toPointer(plcLogConf), dnDevInst, ulFlags, hMachine);
 }
@@ -18851,7 +18851,7 @@ export function CM_Get_Global_State(
 export function CM_Get_Global_State_Ex(
   pulState: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Global_State_Ex(util.toPointer(pulState), ulFlags, hMachine);
 }
@@ -18868,7 +18868,7 @@ export function CM_Get_Hardware_Profile_Info_ExA(
   ulIndex: number /* u32 */,
   pHWProfileInfo: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Hardware_Profile_Info_ExA(ulIndex, util.toPointer(pHWProfileInfo), ulFlags, hMachine);
 }
@@ -18885,7 +18885,7 @@ export function CM_Get_Hardware_Profile_Info_ExW(
   ulIndex: number /* u32 */,
   pHWProfileInfo: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Hardware_Profile_Info_ExW(ulIndex, util.toPointer(pHWProfileInfo), ulFlags, hMachine);
 }
@@ -18913,7 +18913,7 @@ export function CM_Get_HW_Prof_Flags_ExA(
   ulHardwareProfile: number /* u32 */,
   pulValue: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_HW_Prof_Flags_ExA(util.pstrToFfi(pDeviceID), ulHardwareProfile, util.toPointer(pulValue), ulFlags, hMachine);
 }
@@ -18923,7 +18923,7 @@ export function CM_Get_HW_Prof_Flags_ExW(
   ulHardwareProfile: number /* u32 */,
   pulValue: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_HW_Prof_Flags_ExW(util.pwstrToFfi(pDeviceID), ulHardwareProfile, util.toPointer(pulValue), ulFlags, hMachine);
 }
@@ -18954,7 +18954,7 @@ export function CM_Get_Device_Interface_Alias_ExA(
   pszAliasDeviceInterface: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pulLength: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Device_Interface_Alias_ExA(util.pstrToFfi(pszDeviceInterface), util.toPointer(AliasInterfaceGuid), util.pstrToFfi(pszAliasDeviceInterface), util.toPointer(pulLength), ulFlags, hMachine);
 }
@@ -18965,7 +18965,7 @@ export function CM_Get_Device_Interface_Alias_ExW(
   pszAliasDeviceInterface: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pulLength: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Device_Interface_Alias_ExW(util.pwstrToFfi(pszDeviceInterface), util.toPointer(AliasInterfaceGuid), util.pwstrToFfi(pszAliasDeviceInterface), util.toPointer(pulLength), ulFlags, hMachine);
 }
@@ -18996,7 +18996,7 @@ export function CM_Get_Device_Interface_List_ExA(
   Buffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   BufferLen: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Device_Interface_List_ExA(util.toPointer(InterfaceClassGuid), util.pstrToFfi(pDeviceID), util.pstrToFfi(Buffer), BufferLen, ulFlags, hMachine);
 }
@@ -19007,7 +19007,7 @@ export function CM_Get_Device_Interface_List_ExW(
   Buffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   BufferLen: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Device_Interface_List_ExW(util.toPointer(InterfaceClassGuid), util.pwstrToFfi(pDeviceID), util.pwstrToFfi(Buffer), BufferLen, ulFlags, hMachine);
 }
@@ -19035,7 +19035,7 @@ export function CM_Get_Device_Interface_List_Size_ExA(
   InterfaceClassGuid: Deno.PointerValue | Uint8Array /* ptr */,
   pDeviceID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Device_Interface_List_Size_ExA(util.toPointer(pulLen), util.toPointer(InterfaceClassGuid), util.pstrToFfi(pDeviceID), ulFlags, hMachine);
 }
@@ -19045,7 +19045,7 @@ export function CM_Get_Device_Interface_List_Size_ExW(
   InterfaceClassGuid: Deno.PointerValue | Uint8Array /* ptr */,
   pDeviceID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Device_Interface_List_Size_ExW(util.toPointer(pulLen), util.toPointer(InterfaceClassGuid), util.pwstrToFfi(pDeviceID), ulFlags, hMachine);
 }
@@ -19068,7 +19068,7 @@ export function CM_Get_Device_Interface_Property_ExW(
   PropertyBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   PropertyBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Device_Interface_Property_ExW(util.pwstrToFfi(pszDeviceInterface), util.toPointer(PropertyKey), util.toPointer(PropertyType), util.toPointer(PropertyBuffer), util.toPointer(PropertyBufferSize), ulFlags, hMachine);
 }
@@ -19087,13 +19087,13 @@ export function CM_Get_Device_Interface_Property_Keys_ExW(
   PropertyKeyArray: Deno.PointerValue | Uint8Array /* ptr */,
   PropertyKeyCount: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Device_Interface_Property_Keys_ExW(util.pwstrToFfi(pszDeviceInterface), util.toPointer(PropertyKeyArray), util.toPointer(PropertyKeyCount), ulFlags, hMachine);
 }
 
 export function CM_Get_Log_Conf_Priority(
-  lcLogConf: Deno.PointerValue /* usize */,
+  lcLogConf: bigint | number /* usize */,
   pPriority: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -19101,17 +19101,17 @@ export function CM_Get_Log_Conf_Priority(
 }
 
 export function CM_Get_Log_Conf_Priority_Ex(
-  lcLogConf: Deno.PointerValue /* usize */,
+  lcLogConf: bigint | number /* usize */,
   pPriority: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Log_Conf_Priority_Ex(lcLogConf, util.toPointer(pPriority), ulFlags, hMachine);
 }
 
 export function CM_Get_Next_Log_Conf(
   plcLogConf: Deno.PointerValue | Uint8Array /* ptr */,
-  lcLogConf: Deno.PointerValue /* usize */,
+  lcLogConf: bigint | number /* usize */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Next_Log_Conf(util.toPointer(plcLogConf), lcLogConf, ulFlags);
@@ -19119,9 +19119,9 @@ export function CM_Get_Next_Log_Conf(
 
 export function CM_Get_Next_Log_Conf_Ex(
   plcLogConf: Deno.PointerValue | Uint8Array /* ptr */,
-  lcLogConf: Deno.PointerValue /* usize */,
+  lcLogConf: bigint | number /* usize */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Next_Log_Conf_Ex(util.toPointer(plcLogConf), lcLogConf, ulFlags, hMachine);
 }
@@ -19138,13 +19138,13 @@ export function CM_Get_Parent_Ex(
   pdnDevInst: Deno.PointerValue | Uint8Array /* ptr */,
   dnDevInst: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Parent_Ex(util.toPointer(pdnDevInst), dnDevInst, ulFlags, hMachine);
 }
 
 export function CM_Get_Res_Des_Data(
-  rdResDes: Deno.PointerValue /* usize */,
+  rdResDes: bigint | number /* usize */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   BufferLen: number /* u32 */,
   ulFlags: number /* u32 */,
@@ -19153,18 +19153,18 @@ export function CM_Get_Res_Des_Data(
 }
 
 export function CM_Get_Res_Des_Data_Ex(
-  rdResDes: Deno.PointerValue /* usize */,
+  rdResDes: bigint | number /* usize */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   BufferLen: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Res_Des_Data_Ex(rdResDes, util.toPointer(Buffer), BufferLen, ulFlags, hMachine);
 }
 
 export function CM_Get_Res_Des_Data_Size(
   pulSize: Deno.PointerValue | Uint8Array /* ptr */,
-  rdResDes: Deno.PointerValue /* usize */,
+  rdResDes: bigint | number /* usize */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Res_Des_Data_Size(util.toPointer(pulSize), rdResDes, ulFlags);
@@ -19172,9 +19172,9 @@ export function CM_Get_Res_Des_Data_Size(
 
 export function CM_Get_Res_Des_Data_Size_Ex(
   pulSize: Deno.PointerValue | Uint8Array /* ptr */,
-  rdResDes: Deno.PointerValue /* usize */,
+  rdResDes: bigint | number /* usize */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Res_Des_Data_Size_Ex(util.toPointer(pulSize), rdResDes, ulFlags, hMachine);
 }
@@ -19191,7 +19191,7 @@ export function CM_Get_Sibling_Ex(
   pdnDevInst: Deno.PointerValue | Uint8Array /* ptr */,
   dnDevInst: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Sibling_Ex(util.toPointer(pdnDevInst), dnDevInst, ulFlags, hMachine);
 }
@@ -19201,7 +19201,7 @@ export function CM_Get_Version(): number /* u16 */ {
 }
 
 export function CM_Get_Version_Ex(
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): number /* u16 */ {
   return libCFGMGR32_dll.CM_Get_Version_Ex(hMachine);
 }
@@ -19214,24 +19214,24 @@ export function CM_Is_Version_Available(
 
 export function CM_Is_Version_Available_Ex(
   wVersion: number /* u16 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
   return util.boolFromFfi(libCFGMGR32_dll.CM_Is_Version_Available_Ex(wVersion, hMachine));
 }
 
 export function CM_Intersect_Range_List(
-  rlhOld1: Deno.PointerValue /* usize */,
-  rlhOld2: Deno.PointerValue /* usize */,
-  rlhNew: Deno.PointerValue /* usize */,
+  rlhOld1: bigint | number /* usize */,
+  rlhOld2: bigint | number /* usize */,
+  rlhNew: bigint | number /* usize */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Intersect_Range_List(rlhOld1, rlhOld2, rlhNew, ulFlags);
 }
 
 export function CM_Invert_Range_List(
-  rlhOld: Deno.PointerValue /* usize */,
-  rlhNew: Deno.PointerValue /* usize */,
-  ullMaxValue: Deno.PointerValue /* u64 */,
+  rlhOld: bigint | number /* usize */,
+  rlhNew: bigint | number /* usize */,
+  ullMaxValue: bigint | number /* u64 */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Invert_Range_List(rlhOld, rlhNew, ullMaxValue, ulFlags);
@@ -19257,7 +19257,7 @@ export function CM_Locate_DevNode_ExA(
   pdnDevInst: Deno.PointerValue | Uint8Array /* ptr */,
   pDeviceID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Locate_DevNode_ExA(util.toPointer(pdnDevInst), util.pstrToFfi(pDeviceID), ulFlags, hMachine);
 }
@@ -19266,15 +19266,15 @@ export function CM_Locate_DevNode_ExW(
   pdnDevInst: Deno.PointerValue | Uint8Array /* ptr */,
   pDeviceID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Locate_DevNode_ExW(util.toPointer(pdnDevInst), util.pwstrToFfi(pDeviceID), ulFlags, hMachine);
 }
 
 export function CM_Merge_Range_List(
-  rlhOld1: Deno.PointerValue /* usize */,
-  rlhOld2: Deno.PointerValue /* usize */,
-  rlhNew: Deno.PointerValue /* usize */,
+  rlhOld1: bigint | number /* usize */,
+  rlhOld2: bigint | number /* usize */,
+  rlhNew: bigint | number /* usize */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Merge_Range_List(rlhOld1, rlhOld2, rlhNew, ulFlags);
@@ -19282,7 +19282,7 @@ export function CM_Merge_Range_List(
 
 export function CM_Modify_Res_Des(
   prdResDes: Deno.PointerValue | Uint8Array /* ptr */,
-  rdResDes: Deno.PointerValue /* usize */,
+  rdResDes: bigint | number /* usize */,
   ResourceID: number /* u32 */,
   ResourceData: Deno.PointerValue | Uint8Array /* ptr */,
   ResourceLen: number /* u32 */,
@@ -19293,12 +19293,12 @@ export function CM_Modify_Res_Des(
 
 export function CM_Modify_Res_Des_Ex(
   prdResDes: Deno.PointerValue | Uint8Array /* ptr */,
-  rdResDes: Deno.PointerValue /* usize */,
+  rdResDes: bigint | number /* usize */,
   ResourceID: number /* u32 */,
   ResourceData: Deno.PointerValue | Uint8Array /* ptr */,
   ResourceLen: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Modify_Res_Des_Ex(util.toPointer(prdResDes), rdResDes, ResourceID, util.toPointer(ResourceData), ResourceLen, ulFlags, hMachine);
 }
@@ -19315,7 +19315,7 @@ export function CM_Move_DevNode_Ex(
   dnFromDevInst: number /* u32 */,
   dnToDevInst: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Move_DevNode_Ex(dnFromDevInst, dnToDevInst, ulFlags, hMachine);
 }
@@ -19331,7 +19331,7 @@ export function CM_Next_Range(
 
 export function CM_Get_Next_Res_Des(
   prdResDes: Deno.PointerValue | Uint8Array /* ptr */,
-  rdResDes: Deno.PointerValue /* usize */,
+  rdResDes: bigint | number /* usize */,
   ForResource: number /* u32 */,
   pResourceID: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
@@ -19341,11 +19341,11 @@ export function CM_Get_Next_Res_Des(
 
 export function CM_Get_Next_Res_Des_Ex(
   prdResDes: Deno.PointerValue | Uint8Array /* ptr */,
-  rdResDes: Deno.PointerValue /* usize */,
+  rdResDes: bigint | number /* usize */,
   ForResource: number /* u32 */,
   pResourceID: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Next_Res_Des_Ex(util.toPointer(prdResDes), rdResDes, ForResource, util.toPointer(pResourceID), ulFlags, hMachine);
 }
@@ -19379,7 +19379,7 @@ export function CM_Open_Class_Key_ExA(
   Disposition: number /* u32 */,
   phkClass: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Open_Class_Key_ExA(util.toPointer(ClassGuid), util.pstrToFfi(pszClassName), samDesired, Disposition, util.toPointer(phkClass), ulFlags, hMachine);
 }
@@ -19391,7 +19391,7 @@ export function CM_Open_Class_Key_ExW(
   Disposition: number /* u32 */,
   phkClass: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Open_Class_Key_ExW(util.toPointer(ClassGuid), util.pwstrToFfi(pszClassName), samDesired, Disposition, util.toPointer(phkClass), ulFlags, hMachine);
 }
@@ -19414,7 +19414,7 @@ export function CM_Open_DevNode_Key_Ex(
   Disposition: number /* u32 */,
   phkDevice: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Open_DevNode_Key_Ex(dnDevNode, samDesired, ulHardwareProfile, Disposition, util.toPointer(phkDevice), ulFlags, hMachine);
 }
@@ -19445,7 +19445,7 @@ export function CM_Open_Device_Interface_Key_ExA(
   Disposition: number /* u32 */,
   phkDeviceInterface: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Open_Device_Interface_Key_ExA(util.pstrToFfi(pszDeviceInterface), samDesired, Disposition, util.toPointer(phkDeviceInterface), ulFlags, hMachine);
 }
@@ -19456,7 +19456,7 @@ export function CM_Open_Device_Interface_Key_ExW(
   Disposition: number /* u32 */,
   phkDeviceInterface: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Open_Device_Interface_Key_ExW(util.pwstrToFfi(pszDeviceInterface), samDesired, Disposition, util.toPointer(phkDeviceInterface), ulFlags, hMachine);
 }
@@ -19478,7 +19478,7 @@ export function CM_Delete_Device_Interface_KeyW(
 export function CM_Delete_Device_Interface_Key_ExA(
   pszDeviceInterface: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Delete_Device_Interface_Key_ExA(util.pstrToFfi(pszDeviceInterface), ulFlags, hMachine);
 }
@@ -19486,7 +19486,7 @@ export function CM_Delete_Device_Interface_Key_ExA(
 export function CM_Delete_Device_Interface_Key_ExW(
   pszDeviceInterface: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Delete_Device_Interface_Key_ExW(util.pwstrToFfi(pszDeviceInterface), ulFlags, hMachine);
 }
@@ -19507,7 +19507,7 @@ export function CM_Query_Arbitrator_Free_Data_Ex(
   dnDevInst: number /* u32 */,
   ResourceID: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Query_Arbitrator_Free_Data_Ex(util.toPointer(pData), DataLen, dnDevInst, ResourceID, ulFlags, hMachine);
 }
@@ -19526,7 +19526,7 @@ export function CM_Query_Arbitrator_Free_Size_Ex(
   dnDevInst: number /* u32 */,
   ResourceID: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Query_Arbitrator_Free_Size_Ex(util.toPointer(pulSize), dnDevInst, ResourceID, ulFlags, hMachine);
 }
@@ -19541,7 +19541,7 @@ export function CM_Query_Remove_SubTree(
 export function CM_Query_Remove_SubTree_Ex(
   dnAncestor: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Query_Remove_SubTree_Ex(dnAncestor, ulFlags, hMachine);
 }
@@ -19572,7 +19572,7 @@ export function CM_Query_And_Remove_SubTree_ExA(
   pszVetoName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ulNameLength: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Query_And_Remove_SubTree_ExA(dnAncestor, util.toPointer(pVetoType), util.pstrToFfi(pszVetoName), ulNameLength, ulFlags, hMachine);
 }
@@ -19583,7 +19583,7 @@ export function CM_Query_And_Remove_SubTree_ExW(
   pszVetoName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulNameLength: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Query_And_Remove_SubTree_ExW(dnAncestor, util.toPointer(pVetoType), util.pwstrToFfi(pszVetoName), ulNameLength, ulFlags, hMachine);
 }
@@ -19604,7 +19604,7 @@ export function CM_Request_Device_Eject_ExA(
   pszVetoName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ulNameLength: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Request_Device_Eject_ExA(dnDevInst, util.toPointer(pVetoType), util.pstrToFfi(pszVetoName), ulNameLength, ulFlags, hMachine);
 }
@@ -19625,7 +19625,7 @@ export function CM_Request_Device_Eject_ExW(
   pszVetoName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulNameLength: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Request_Device_Eject_ExW(dnDevInst, util.toPointer(pVetoType), util.pwstrToFfi(pszVetoName), ulNameLength, ulFlags, hMachine);
 }
@@ -19640,7 +19640,7 @@ export function CM_Reenumerate_DevNode(
 export function CM_Reenumerate_DevNode_Ex(
   dnDevInst: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Reenumerate_DevNode_Ex(dnDevInst, ulFlags, hMachine);
 }
@@ -19674,7 +19674,7 @@ export function CM_Register_Device_Interface_ExA(
   pszDeviceInterface: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pulLength: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Register_Device_Interface_ExA(dnDevInst, util.toPointer(InterfaceClassGuid), util.pstrToFfi(pszReference), util.pstrToFfi(pszDeviceInterface), util.toPointer(pulLength), ulFlags, hMachine);
 }
@@ -19686,7 +19686,7 @@ export function CM_Register_Device_Interface_ExW(
   pszDeviceInterface: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pulLength: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Register_Device_Interface_ExW(dnDevInst, util.toPointer(InterfaceClassGuid), util.pwstrToFfi(pszReference), util.pwstrToFfi(pszDeviceInterface), util.toPointer(pulLength), ulFlags, hMachine);
 }
@@ -19695,7 +19695,7 @@ export function CM_Set_DevNode_Problem_Ex(
   dnDevInst: number /* u32 */,
   ulProblem: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Set_DevNode_Problem_Ex(dnDevInst, ulProblem, ulFlags, hMachine);
 }
@@ -19725,7 +19725,7 @@ export function CM_Unregister_Device_InterfaceW(
 export function CM_Unregister_Device_Interface_ExA(
   pszDeviceInterface: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Unregister_Device_Interface_ExA(util.pstrToFfi(pszDeviceInterface), ulFlags, hMachine);
 }
@@ -19733,7 +19733,7 @@ export function CM_Unregister_Device_Interface_ExA(
 export function CM_Unregister_Device_Interface_ExW(
   pszDeviceInterface: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Unregister_Device_Interface_ExW(util.pwstrToFfi(pszDeviceInterface), ulFlags, hMachine);
 }
@@ -19748,7 +19748,7 @@ export function CM_Register_Device_Driver(
 export function CM_Register_Device_Driver_Ex(
   dnDevInst: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Register_Device_Driver_Ex(dnDevInst, ulFlags, hMachine);
 }
@@ -19763,7 +19763,7 @@ export function CM_Remove_SubTree(
 export function CM_Remove_SubTree_Ex(
   dnAncestor: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Remove_SubTree_Ex(dnAncestor, ulFlags, hMachine);
 }
@@ -19786,7 +19786,7 @@ export function CM_Set_DevNode_Property_ExW(
   PropertyBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   PropertyBufferSize: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Set_DevNode_Property_ExW(dnDevInst, util.toPointer(PropertyKey), PropertyType, util.toPointer(PropertyBuffer), PropertyBufferSize, ulFlags, hMachine);
 }
@@ -19817,7 +19817,7 @@ export function CM_Set_DevNode_Registry_Property_ExA(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   ulLength: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Set_DevNode_Registry_Property_ExA(dnDevInst, ulProperty, util.toPointer(Buffer), ulLength, ulFlags, hMachine);
 }
@@ -19828,7 +19828,7 @@ export function CM_Set_DevNode_Registry_Property_ExW(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   ulLength: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Set_DevNode_Registry_Property_ExW(dnDevInst, ulProperty, util.toPointer(Buffer), ulLength, ulFlags, hMachine);
 }
@@ -19851,7 +19851,7 @@ export function CM_Set_Device_Interface_Property_ExW(
   PropertyBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   PropertyBufferSize: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Set_Device_Interface_Property_ExW(util.pwstrToFfi(pszDeviceInterface), util.toPointer(PropertyKey), PropertyType, util.toPointer(PropertyBuffer), PropertyBufferSize, ulFlags, hMachine);
 }
@@ -19864,7 +19864,7 @@ export function CM_Is_Dock_Station_Present(
 
 export function CM_Is_Dock_Station_Present_Ex(
   pbPresent: Deno.PointerValue | Uint8Array /* ptr */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Is_Dock_Station_Present_Ex(util.toPointer(pbPresent), hMachine);
 }
@@ -19874,7 +19874,7 @@ export function CM_Request_Eject_PC(): CONFIGRET /* Windows.Win32.Devices.Device
 }
 
 export function CM_Request_Eject_PC_Ex(
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Request_Eject_PC_Ex(hMachine);
 }
@@ -19902,7 +19902,7 @@ export function CM_Set_HW_Prof_Flags_ExA(
   ulConfig: number /* u32 */,
   ulValue: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Set_HW_Prof_Flags_ExA(util.pstrToFfi(pDeviceID), ulConfig, ulValue, ulFlags, hMachine);
 }
@@ -19912,7 +19912,7 @@ export function CM_Set_HW_Prof_Flags_ExW(
   ulConfig: number /* u32 */,
   ulValue: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Set_HW_Prof_Flags_ExW(util.pwstrToFfi(pDeviceID), ulConfig, ulValue, ulFlags, hMachine);
 }
@@ -19927,15 +19927,15 @@ export function CM_Setup_DevNode(
 export function CM_Setup_DevNode_Ex(
   dnDevInst: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Setup_DevNode_Ex(dnDevInst, ulFlags, hMachine);
 }
 
 export function CM_Test_Range_Available(
-  ullStartValue: Deno.PointerValue /* u64 */,
-  ullEndValue: Deno.PointerValue /* u64 */,
-  rlh: Deno.PointerValue /* usize */,
+  ullStartValue: bigint | number /* u64 */,
+  ullEndValue: bigint | number /* u64 */,
+  rlh: bigint | number /* usize */,
   ulFlags: number /* u32 */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Test_Range_Available(ullStartValue, ullEndValue, rlh, ulFlags);
@@ -19951,7 +19951,7 @@ export function CM_Uninstall_DevNode(
 export function CM_Uninstall_DevNode_Ex(
   dnDevInst: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Uninstall_DevNode_Ex(dnDevInst, ulFlags, hMachine);
 }
@@ -19964,7 +19964,7 @@ export function CM_Run_Detection(
 
 export function CM_Run_Detection_Ex(
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Run_Detection_Ex(ulFlags, hMachine);
 }
@@ -19979,7 +19979,7 @@ export function CM_Set_HW_Prof(
 export function CM_Set_HW_Prof_Ex(
   ulHardwareProfile: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Set_HW_Prof_Ex(ulHardwareProfile, ulFlags, hMachine);
 }
@@ -19991,26 +19991,26 @@ export function CM_Query_Resource_Conflict_List(
   ResourceData: Deno.PointerValue | Uint8Array /* ptr */,
   ResourceLen: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Query_Resource_Conflict_List(util.toPointer(pclConflictList), dnDevInst, ResourceID, util.toPointer(ResourceData), ResourceLen, ulFlags, hMachine);
 }
 
 export function CM_Free_Resource_Conflict_Handle(
-  clConflictList: Deno.PointerValue /* usize */,
+  clConflictList: bigint | number /* usize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Free_Resource_Conflict_Handle(clConflictList);
 }
 
 export function CM_Get_Resource_Conflict_Count(
-  clConflictList: Deno.PointerValue /* usize */,
+  clConflictList: bigint | number /* usize */,
   pulCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Resource_Conflict_Count(clConflictList, util.toPointer(pulCount));
 }
 
 export function CM_Get_Resource_Conflict_DetailsA(
-  clConflictList: Deno.PointerValue /* usize */,
+  clConflictList: bigint | number /* usize */,
   ulIndex: number /* u32 */,
   pConflictDetails: Deno.PointerValue | Uint8Array /* ptr */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -20018,7 +20018,7 @@ export function CM_Get_Resource_Conflict_DetailsA(
 }
 
 export function CM_Get_Resource_Conflict_DetailsW(
-  clConflictList: Deno.PointerValue /* usize */,
+  clConflictList: bigint | number /* usize */,
   ulIndex: number /* u32 */,
   pConflictDetails: Deno.PointerValue | Uint8Array /* ptr */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
@@ -20043,7 +20043,7 @@ export function CM_Get_Class_Property_ExW(
   PropertyBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   PropertyBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Class_Property_ExW(util.toPointer(ClassGUID), util.toPointer(PropertyKey), util.toPointer(PropertyType), util.toPointer(PropertyBuffer), util.toPointer(PropertyBufferSize), ulFlags, hMachine);
 }
@@ -20062,7 +20062,7 @@ export function CM_Get_Class_Property_Keys_Ex(
   PropertyKeyArray: Deno.PointerValue | Uint8Array /* ptr */,
   PropertyKeyCount: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Class_Property_Keys_Ex(util.toPointer(ClassGUID), util.toPointer(PropertyKeyArray), util.toPointer(PropertyKeyCount), ulFlags, hMachine);
 }
@@ -20085,7 +20085,7 @@ export function CM_Set_Class_Property_ExW(
   PropertyBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   PropertyBufferSize: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Set_Class_Property_ExW(util.toPointer(ClassGUID), util.toPointer(PropertyKey), PropertyType, util.toPointer(PropertyBuffer), PropertyBufferSize, ulFlags, hMachine);
 }
@@ -20097,7 +20097,7 @@ export function CM_Get_Class_Registry_PropertyA(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   pulLength: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Class_Registry_PropertyA(util.toPointer(ClassGuid), ulProperty, util.toPointer(pulRegDataType), util.toPointer(Buffer), util.toPointer(pulLength), ulFlags, hMachine);
 }
@@ -20109,7 +20109,7 @@ export function CM_Get_Class_Registry_PropertyW(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   pulLength: Deno.PointerValue | Uint8Array /* ptr */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Get_Class_Registry_PropertyW(util.toPointer(ClassGuid), ulProperty, util.toPointer(pulRegDataType), util.toPointer(Buffer), util.toPointer(pulLength), ulFlags, hMachine);
 }
@@ -20120,7 +20120,7 @@ export function CM_Set_Class_Registry_PropertyA(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   ulLength: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Set_Class_Registry_PropertyA(util.toPointer(ClassGuid), ulProperty, util.toPointer(Buffer), ulLength, ulFlags, hMachine);
 }
@@ -20131,7 +20131,7 @@ export function CM_Set_Class_Registry_PropertyW(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   ulLength: number /* u32 */,
   ulFlags: number /* u32 */,
-  hMachine: Deno.PointerValue /* isize */,
+  hMachine: bigint | number /* isize */,
 ): CONFIGRET /* Windows.Win32.Devices.DeviceAndDriverInstallation.CONFIGRET */ {
   return libCFGMGR32_dll.CM_Set_Class_Registry_PropertyW(util.toPointer(ClassGuid), ulProperty, util.toPointer(Buffer), ulLength, ulFlags, hMachine);
 }

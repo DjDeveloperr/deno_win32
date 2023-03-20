@@ -270,16 +270,16 @@ export const MaximumFileInfoByHandleClass = 25;
 
 // Structs
 
-export type CF_CONNECTION_KEY = Deno.PointerValue;
+export type CF_CONNECTION_KEY = bigint | number;
 
 /**
  * _Anonymous_e__Struct (size: 16)
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -305,22 +305,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -399,7 +399,7 @@ export interface LARGE_INTEGER {
   /** _u_e__Struct */
   u: Uint8Array | Deno.PointerValue;
   /** i64 */
-  QuadPart: Deno.PointerValue;
+  QuadPart: bigint | number;
 }
 
 export const sizeofLARGE_INTEGER = 24;
@@ -439,7 +439,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  get QuadPart(): Deno.PointerValue {
+  get QuadPart(): bigint | number {
     return Number(this.view.getBigInt64(16, true));
   }
 
@@ -454,7 +454,7 @@ export class LARGE_INTEGERView {
   }
 
   // 0x10: i64
-  set QuadPart(value: Deno.PointerValue) {
+  set QuadPart(value: bigint | number) {
     this.view.setBigInt64(16, BigInt(value), true);
   }
 }
@@ -637,7 +637,7 @@ export interface CF_PLACEHOLDER_CREATE_INFO {
   /** Windows.Win32.Foundation.HRESULT */
   Result: Uint8Array | Deno.PointerValue;
   /** i64 */
-  CreateUsn: Deno.PointerValue;
+  CreateUsn: bigint | number;
 }
 
 export const sizeofCF_PLACEHOLDER_CREATE_INFO = 48;
@@ -710,7 +710,7 @@ export class CF_PLACEHOLDER_CREATE_INFOView {
   }
 
   // 0x28: i64
-  get CreateUsn(): Deno.PointerValue {
+  get CreateUsn(): bigint | number {
     return Number(this.view.getBigInt64(40, true));
   }
 
@@ -746,7 +746,7 @@ export class CF_PLACEHOLDER_CREATE_INFOView {
   }
 
   // 0x28: i64
-  set CreateUsn(value: Deno.PointerValue) {
+  set CreateUsn(value: bigint | number) {
     this.view.setBigInt64(40, BigInt(value), true);
   }
 }
@@ -2998,7 +2998,7 @@ export class CF_SYNC_ROOT_STANDARD_INFOView {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 export type BOOLEAN = number;
 

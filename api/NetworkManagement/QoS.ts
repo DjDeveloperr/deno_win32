@@ -558,9 +558,9 @@ export const FILTERSPEC_END = 6;
 
 // Structs
 
-export type LPM_HANDLE = Deno.PointerValue;
+export type LPM_HANDLE = bigint | number;
 
-export type RHANDLE = Deno.PointerValue;
+export type RHANDLE = bigint | number;
 
 /**
  * Windows.Win32.NetworkManagement.QoS.QOS_OBJECT_HDR (size: 8)
@@ -4613,11 +4613,11 @@ export interface QOS_FLOW_FUNDAMENTALS {
   /** Windows.Win32.Foundation.BOOL */
   BottleneckBandwidthSet: boolean;
   /** u64 */
-  BottleneckBandwidth: Deno.PointerValue;
+  BottleneckBandwidth: bigint | number;
   /** Windows.Win32.Foundation.BOOL */
   AvailableBandwidthSet: boolean;
   /** u64 */
-  AvailableBandwidth: Deno.PointerValue;
+  AvailableBandwidth: bigint | number;
   /** Windows.Win32.Foundation.BOOL */
   RTTSet: boolean;
   /** u32 */
@@ -4664,7 +4664,7 @@ export class QOS_FLOW_FUNDAMENTALSView {
   // 0x04: pad4
 
   // 0x08: u64
-  get BottleneckBandwidth(): Deno.PointerValue {
+  get BottleneckBandwidth(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -4676,7 +4676,7 @@ export class QOS_FLOW_FUNDAMENTALSView {
   // 0x14: pad4
 
   // 0x18: u64
-  get AvailableBandwidth(): Deno.PointerValue {
+  get AvailableBandwidth(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -4698,7 +4698,7 @@ export class QOS_FLOW_FUNDAMENTALSView {
   // 0x04: pad4
 
   // 0x08: u64
-  set BottleneckBandwidth(value: Deno.PointerValue) {
+  set BottleneckBandwidth(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 
@@ -4710,7 +4710,7 @@ export class QOS_FLOW_FUNDAMENTALSView {
   // 0x14: pad4
 
   // 0x18: u64
-  set AvailableBandwidth(value: Deno.PointerValue) {
+  set AvailableBandwidth(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 
@@ -4730,7 +4730,7 @@ export class QOS_FLOW_FUNDAMENTALSView {
  */
 export interface QOS_FLOWRATE_OUTGOING {
   /** u64 */
-  Bandwidth: Deno.PointerValue;
+  Bandwidth: bigint | number;
   /** Windows.Win32.NetworkManagement.QoS.QOS_SHAPING */
   ShapingBehavior: QOS_SHAPING;
   /** Windows.Win32.NetworkManagement.QoS.QOS_FLOWRATE_REASON */
@@ -4762,7 +4762,7 @@ export class QOS_FLOWRATE_OUTGOINGView {
   }
 
   // 0x00: u64
-  get Bandwidth(): Deno.PointerValue {
+  get Bandwidth(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -4777,7 +4777,7 @@ export class QOS_FLOWRATE_OUTGOINGView {
   }
 
   // 0x00: u64
-  set Bandwidth(value: Deno.PointerValue) {
+  set Bandwidth(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -5562,7 +5562,7 @@ export interface TC_SUPPORTED_INFO_BUFFER {
   /** array */
   InstanceID: Deno.PointerValue;
   /** u64 */
-  InterfaceLuid: Deno.PointerValue;
+  InterfaceLuid: bigint | number;
   /** Windows.Win32.NetworkManagement.QoS.ADDRESS_LIST_DESCRIPTOR */
   AddrListDesc: Uint8Array | Deno.PointerValue;
 }
@@ -5608,7 +5608,7 @@ export class TC_SUPPORTED_INFO_BUFFERView {
   }
 
   // 0x10: u64
-  get InterfaceLuid(): Deno.PointerValue {
+  get InterfaceLuid(): bigint | number {
     return Number(this.view.getBigUint64(16, true));
   }
 
@@ -5631,7 +5631,7 @@ export class TC_SUPPORTED_INFO_BUFFERView {
   }
 
   // 0x10: u64
-  set InterfaceLuid(value: Deno.PointerValue) {
+  set InterfaceLuid(value: bigint | number) {
     this.view.setBigUint64(16, BigInt(value), true);
   }
 
@@ -6796,9 +6796,9 @@ export class RSVP_FILTERSPEC_V6_GPIView {
  */
 export interface _Anonymous_e__Struct {
   /** u64 */
-  Alignment: Deno.PointerValue;
+  Alignment: bigint | number;
   /** u64 */
-  Region: Deno.PointerValue;
+  Region: bigint | number;
 }
 
 export const sizeof_Anonymous_e__Struct = 16;
@@ -6824,22 +6824,22 @@ export class _Anonymous_e__StructView {
   }
 
   // 0x00: u64
-  get Alignment(): Deno.PointerValue {
+  get Alignment(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
   // 0x08: u64
-  get Region(): Deno.PointerValue {
+  get Region(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
   // 0x00: u64
-  set Alignment(value: Deno.PointerValue) {
+  set Alignment(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
   // 0x08: u64
-  set Region(value: Deno.PointerValue) {
+  set Region(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }
@@ -8550,7 +8550,7 @@ export class SIPAEVENT_VSM_IDK_INFO_PAYLOADView {
  */
 export interface SIPAEVENT_SI_POLICY_PAYLOAD {
   /** u64 */
-  PolicyVersion: Deno.PointerValue;
+  PolicyVersion: bigint | number;
   /** u16 */
   PolicyNameLength: number;
   /** u16 */
@@ -8590,7 +8590,7 @@ export class SIPAEVENT_SI_POLICY_PAYLOADView {
   }
 
   // 0x00: u64
-  get PolicyVersion(): Deno.PointerValue {
+  get PolicyVersion(): bigint | number {
     return Number(this.view.getBigUint64(0, true));
   }
 
@@ -8616,7 +8616,7 @@ export class SIPAEVENT_SI_POLICY_PAYLOADView {
   }
 
   // 0x00: u64
-  set PolicyVersion(value: Deno.PointerValue) {
+  set PolicyVersion(value: bigint | number) {
     this.view.setBigUint64(0, BigInt(value), true);
   }
 
@@ -8646,7 +8646,7 @@ export class SIPAEVENT_SI_POLICY_PAYLOADView {
  */
 export interface SIPAEVENT_REVOCATION_LIST_PAYLOAD {
   /** i64 */
-  CreationTime: Deno.PointerValue;
+  CreationTime: bigint | number;
   /** u32 */
   DigestLength: number;
   /** u16 */
@@ -8683,7 +8683,7 @@ export class SIPAEVENT_REVOCATION_LIST_PAYLOADView {
   }
 
   // 0x00: i64
-  get CreationTime(): Deno.PointerValue {
+  get CreationTime(): bigint | number {
     return Number(this.view.getBigInt64(0, true));
   }
 
@@ -8706,7 +8706,7 @@ export class SIPAEVENT_REVOCATION_LIST_PAYLOADView {
   }
 
   // 0x00: i64
-  set CreationTime(value: Deno.PointerValue) {
+  set CreationTime(value: bigint | number) {
     this.view.setBigInt64(0, BigInt(value), true);
   }
 
@@ -8925,9 +8925,9 @@ export class SIPAEVENT_SBCP_INFO_PAYLOAD_V1View {
   }
 }
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
-export type SOCKET = Deno.PointerValue;
+export type SOCKET = bigint | number;
 
 export type PSTR = Deno.PointerValue | Uint8Array;
 

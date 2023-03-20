@@ -72,7 +72,7 @@ export interface MAGIMAGEHEADER {
   /** u32 */
   offset: number;
   /** usize */
-  cbSize: Deno.PointerValue;
+  cbSize: bigint | number;
 }
 
 export const sizeofMAGIMAGEHEADER = 32;
@@ -132,7 +132,7 @@ export class MAGIMAGEHEADERView {
   }
 
   // 0x18: usize
-  get cbSize(): Deno.PointerValue {
+  get cbSize(): bigint | number {
     return Number(this.view.getBigUint64(24, true));
   }
 
@@ -162,7 +162,7 @@ export class MAGIMAGEHEADERView {
   }
 
   // 0x18: usize
-  set cbSize(value: Deno.PointerValue) {
+  set cbSize(value: bigint | number) {
     this.view.setBigUint64(24, BigInt(value), true);
   }
 }
@@ -209,7 +209,7 @@ export class MAGCOLOREFFECTView {
 
 export type BOOL = number;
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 /**
  * Windows.Win32.Foundation.RECT (size: 16)

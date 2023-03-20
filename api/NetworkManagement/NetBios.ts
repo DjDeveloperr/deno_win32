@@ -90,7 +90,7 @@ export const NRC_PENDING = 255;
 
 // Structs
 
-export type HANDLE = Deno.PointerValue;
+export type HANDLE = bigint | number;
 
 /**
  * Windows.Win32.NetworkManagement.NetBios.NCB (size: 80)
@@ -117,7 +117,7 @@ export interface NCB {
   /** u8 */
   ncb_sto: number;
   /** isize */
-  ncb_post: Deno.PointerValue;
+  ncb_post: bigint | number;
   /** u8 */
   ncb_lana_num: number;
   /** u8 */
@@ -240,7 +240,7 @@ export class NCBView {
   // 0x2a: pad6
 
   // 0x30: isize
-  get ncb_post(): Deno.PointerValue {
+  get ncb_post(): bigint | number {
     return Number(this.view.getBigInt64(48, true));
   }
 
@@ -325,7 +325,7 @@ export class NCBView {
   // 0x2a: pad6
 
   // 0x30: isize
-  set ncb_post(value: Deno.PointerValue) {
+  set ncb_post(value: bigint | number) {
     this.view.setBigInt64(48, BigInt(value), true);
   }
 

@@ -346,7 +346,7 @@ export interface SYNC_VERSION {
   /** u32 */
   dwLastUpdatingReplicaKey: number;
   /** u64 */
-  ullTickCount: Deno.PointerValue;
+  ullTickCount: bigint | number;
 }
 
 export const sizeofSYNC_VERSION = 16;
@@ -380,7 +380,7 @@ export class SYNC_VERSIONView {
   // 0x04: pad4
 
   // 0x08: u64
-  get ullTickCount(): Deno.PointerValue {
+  get ullTickCount(): bigint | number {
     return Number(this.view.getBigUint64(8, true));
   }
 
@@ -392,7 +392,7 @@ export class SYNC_VERSIONView {
   // 0x04: pad4
 
   // 0x08: u64
-  set ullTickCount(value: Deno.PointerValue) {
+  set ullTickCount(value: bigint | number) {
     this.view.setBigUint64(8, BigInt(value), true);
   }
 }

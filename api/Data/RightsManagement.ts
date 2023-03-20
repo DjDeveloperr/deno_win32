@@ -719,7 +719,7 @@ export type HRESULT = number;
 
 export type BOOL = number;
 
-export type HWND = Deno.PointerValue;
+export type HWND = bigint | number;
 
 // Native Libraries
 
